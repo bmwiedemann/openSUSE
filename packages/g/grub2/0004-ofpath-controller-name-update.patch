@@ -1,0 +1,28 @@
+From 7717cd9c27f18703287403af1a955588e3d0261f Mon Sep 17 00:00:00 2001
+From: mamatha <mainamdar@in.ibm.com>
+Date: Sat, 24 Sep 2022 11:22:39 +0530
+Subject: [PATCH 4/4] ofpath controller name update
+
+patch to update ofpath controller name
+
+Signed-off-by: mamatha <mainamdar@in.ibm.com>
+---
+ grub-core/osdep/linux/ofpath.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/grub-core/osdep/linux/ofpath.c b/grub-core/osdep/linux/ofpath.c
+index 212782d3f..7d31cfd0f 100644
+--- a/grub-core/osdep/linux/ofpath.c
++++ b/grub-core/osdep/linux/ofpath.c
+@@ -483,6 +483,8 @@ of_path_get_nvmeof_adapter_info(char* sysfs_path,
+   buf3=strchr(buf2,'-')+1;
+   buf3=strchr(buf3,'-')+1;
+   nvmeof_info->target_wwpn = buf3;
++  buf3=strchr(buf3,'x')+1;
++  nvmeof_info->target_wwpn = buf3;
+   buf3 = strchr(nvmeof_info->target_wwpn,',');
+   *buf3 = '\0';
+ 
+-- 
+2.35.3
+

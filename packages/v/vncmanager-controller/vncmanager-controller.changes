@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Mon Aug 28 12:46:32 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- Use obs_scm targeting the new github repo at
+  https://github.com/openSUSE/vncmanager-controller
+- Update to version 1.0.2:
+  * Fixes bsc#1214410 with forcing the use of xcb platform plugin
+- Drop updated upstream patches:
+  * U_Declare-gnome-shell-versions-3.10-to-3.26-as-support.patch
+  * u_Declare-also-gnome-shell-versions-3.27-to-41-as-supp.patch
+  * 0001-fix-js-code-incompatibility-with-gnome-3.34.patch
+- Cleanup specfile
+
+-------------------------------------------------------------------
+Tue Mar  8 13:12:27 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- replace broken U_vncmanager-controller-Declare-gnome-shell-versions-3.10-to-3.34-as-supported.patch 
+  again with latest upstream commit U_Declare-gnome-shell-versions-3.10-to-3.26-as-support.patch 
+- u_Declare-also-gnome-shell-versions-3.27-to-41-as-supp.patch
+  * Declare also gnome shell versions 3.27 to 41 as supported
+
+-------------------------------------------------------------------
+Fri Aug  6 06:53:54 UTC 2021 - Ali Abdallah <ali.abdallah@suse.com>
+
+- 0001-fix-js-code-incompatibility-with-gnome-3.34.patch: Fix JS code
+  code incompatibility with newer gnome-shell versions such as gnome-shell
+  3.34 (bsc#1188118)
+- Explicitly declare newer gnome-shell versions as supported.
+  * Added U_vncmanager-controller-Declare-gnome-shell-versions-3.10-to-3.34-as-supported.patch
+  * Deleted U_vncmanager-controller-Declare-gnome-shell-versions-3.10-to-3.26-as-supported.patch
+
+-------------------------------------------------------------------
+Wed Sep 23 11:07:57 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- n_UsrEtc.patch
+  * move autostart file to /usr/etc/xdg/autostart (boo#1173048) 
+
+-------------------------------------------------------------------
+Fri Nov  8 13:20:47 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- patch U_vncmanager-controller-Declare-gnome-shell-versions-3.10-to-3.26-as-supported.patch 
+  mentioned in previous changelog enty also covers the fix for
+  bsc#1102080 (same issue)
+
+-------------------------------------------------------------------
+Tue Jul 17 09:02:21 UTC 2018 - msrb@suse.com
+
+- U_vncmanager-controller-Declare-gnome-shell-versions-3.10-to-3.26-as-supported.patch
+  * Makes the extension load on newer gnome shell versions.
+    (bnc#1100768)
+
+-------------------------------------------------------------------
+Mon Jun 11 08:02:00 UTC 2018 - msrb@suse.com
+
+- Update to version 1.0.1
+  * Fixes build with Qt 5.11
+  * Remove patch which is now included:
+    U_vncmanager-fix-installation-directory-and-metadata-of-gnome-shell-extension.patch
+
+-------------------------------------------------------------------
+Thu Mar  1 11:56:26 UTC 2018 - sndirsch@suse.com
+
+- fixed Buildrequires to use pkconfig files instead of devel
+  package names
+
+-------------------------------------------------------------------
+Wed May 18 10:51:17 UTC 2016 - msrb@suse.com
+
+- Improve dependencies. (bnc#980573)
+
+-------------------------------------------------------------------
+Thu May 12 12:11:31 UTC 2016 - msrb@suse.com
+
+- U_vncmanager-fix-installation-directory-and-metadata-of-gnome-shell-extension.patch
+  (bnc#979647)
+- Add LICENSE file to docs.
+
+-------------------------------------------------------------------
+Fri Apr 29 10:38:00 UTC 2016 - msrb@suse.com
+
+- Change group to System/X11/Utilities.
+
+-------------------------------------------------------------------
+Tue Jan 19 12:02:49 UTC 2016 - msrb@suse.com
+
+- Switch to Qt5.
+
+-------------------------------------------------------------------
+Mon Nov  9 09:50:31 UTC 2015 - msrb@suse.com
+
+- Create package.
+

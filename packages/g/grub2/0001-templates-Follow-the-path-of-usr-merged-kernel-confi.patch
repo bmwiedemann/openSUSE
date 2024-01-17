@@ -1,0 +1,40 @@
+From 60d1d3b959e72c2cbd014be311c350a9b11b1289 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 7 Sep 2021 10:06:50 +0800
+Subject: [PATCH] templates: Follow the path of usr merged kernel config
+
+The background for usr merge can be found at:
+
+https://www.freedesktop.org/wiki/Software/systemd/TheCaseForTheUsrMerge/
+
+This patch adapts related mkconfig scripts to follow the usr merge for
+looking up kernel configs.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ util/grub.d/10_linux.in     | 2 +-
+ util/grub.d/20_linux_xen.in | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -351,7 +351,7 @@
+   fi
+ 
+   config=
+-  for i in "${dirname}/config-${version}" "${dirname}/config-${alt_version}" "/etc/kernels/kernel-config-${version}" ; do
++  for i in "${dirname}/config-${version}" "${dirname}/config-${alt_version}" "/etc/kernels/kernel-config-${version}" "/usr/lib/modules/${version}/config" ; do
+     if test -e "${i}" ; then
+       config="${i}"
+       break
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -307,7 +307,7 @@
+ 	version=$(echo $basename | sed -e "s,^[^0-9]*-,,g")
+ 	dirname=$(dirname $i)
+ 	config=
+-	for j in "${dirname}/config-${version}" "${dirname}/config-${alt_version}" "/etc/kernels/kernel-config-${version}" ; do
++	for j in "${dirname}/config-${version}" "${dirname}/config-${alt_version}" "/etc/kernels/kernel-config-${version}" "/usr/lib/modules/${version}/config" ; do
+ 	    if test -e "${j}" ; then
+ 		config="${j}"
+ 		break

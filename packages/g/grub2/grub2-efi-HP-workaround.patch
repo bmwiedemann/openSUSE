@@ -1,0 +1,95 @@
+
+v2: Add GRUB_FILE_TYPE_CONFIG to grub_file_open, see also upstream commit
+ca0a4f689 verifiers: File type for fine-grained signature-verification controlling
+
+--- a/grub-core/kern/efi/init.c
++++ b/grub-core/kern/efi/init.c
+@@ -28,6 +28,7 @@
+ #include <grub/env.h>
+ #include <grub/mm.h>
+ #include <grub/kernel.h>
++#include <grub/file.h>
+ #include <grub/stack_protector.h>
+ 
+ #ifdef GRUB_STACK_PROTECTOR
+@@ -135,6 +136,67 @@
+ void (*grub_efi_net_config) (grub_efi_handle_t hnd,
+ 			     char **device,
+ 			     char **path);
++static char *
++workaround_efi_firmware_path (const char *device, const char *path)
++{
++  char *config = NULL;;
++  char *config_upper = NULL;
++  char *path_upper = NULL;
++  char *ret_path = NULL;
++  grub_file_t config_fd = NULL;
++  char *s;
++
++  if (!device || !path)
++    return NULL;
++
++  /* only workaround if booting off from cd device */
++  if (grub_strncmp (device, "cd", 2) != 0)
++    goto quit;
++
++  config = grub_xasprintf ("(%s)%s/grub.cfg", device, path);
++  config_fd = grub_file_open (config, GRUB_FILE_TYPE_CONFIG);
++
++  /* everything's fine, so quit the workaround */
++  if (config_fd)
++    goto quit;
++
++  /* reset grub error state because noone else does... */
++  grub_errno = GRUB_ERR_NONE;
++
++  /* try again, this time upper case path */
++  path_upper = grub_strdup (path);
++  if (! path_upper)
++    goto quit;
++
++  s = path_upper;
++  for (; *s; s++) *s = grub_toupper(*s);
++
++  config_upper = grub_xasprintf ("(%s)%s/grub.cfg", device, path_upper);
++  if (! config_upper)
++    goto quit;
++
++  config_fd = grub_file_open (config_upper, GRUB_FILE_TYPE_CONFIG);
++
++  /* if config can be found by the upper case path, return it */
++  if (config_fd)
++    ret_path = grub_strdup (path_upper);
++
++quit:
++
++  if (config_fd)
++    grub_file_close (config_fd);
++
++  if (grub_errno)
++    grub_errno = GRUB_ERR_NONE;
++
++  if (config)
++    grub_free (config);
++
++  if (config_upper)
++    grub_free (config_upper);
++
++  return ret_path;
++}
+ 
+ void
+ grub_machine_get_bootlocation (char **device, char **path)
+@@ -159,6 +221,12 @@
+       p = grub_strrchr (*path, '/');
+       if (p)
+         *p = '\0';
++
++      if ((p = workaround_efi_firmware_path (*device, *path)))
++	{
++	  grub_free (*path);
++	  *path = p;
++	}
+     }
+ }
+ 

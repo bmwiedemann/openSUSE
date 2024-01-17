@@ -1,0 +1,5 @@
+<package name="libnl-doc" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security:netfilter" package="libnl-doc"/>
+</package>

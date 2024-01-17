@@ -1,0 +1,117 @@
+From: Michael Chang <mchang@suse.com>
+References: bsc#1085842
+Patch-Mainline: no
+
+The grub can be installed with removable option to support booting from
+removable media with standard UEFI default file path of the form:
+ \EFI\BOOT\BOOT{machine type short-name}.EFI
+
+It does not make use of distributor directory, which becomes a problem for UEFI
+Xen installation as it requires that directory to be present for storing xen
+stuff like chainloaded hypervisor, xen kernel and so on. Moreover it makes bad
+assumption that hypervisor will be chainloaded by grub under the same
+directory, which is also not always true.
+
+This patch fixes the problem by ensuring the directory available to Xen
+installation if any Xen hypervisor found and independent to grub boot path
+$cmdpath to work.
+
+---
+ util/grub.d/20_linux_xen.in |   62 ++++++++++++++++++++++++--------------------
+ 1 file changed, 35 insertions(+), 27 deletions(-)
+
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -113,32 +113,6 @@
+ 
+ title_correction_code=
+ 
+-if [ -d /sys/firmware/efi ]; then
+-  is_efi=true
+-  err_msg=""
+-  efi_dir="/boot/efi/efi/${os}"
+-  grub_dir=/boot/@PACKAGE@
+-  xen_dir=/usr/share/efi/$machine
+-  [ -d $xen_dir ] || xen_dir=/usr/lib64/efi
+-  for d in $grub_dir $efi_dir $xen_dir; do
+-    [ ! -d "$d" ] || continue
+-    err_msg="${err_msg}$ME: Essential directory '$d' not found!\n"
+-  done
+-  if ! [ -d "$efi_dir" -a -d "$grub_dir" -a -d "$xen_dir" ]; then
+-    err_msg="${err_msg}$ME: XEN configuration skipped!\n"
+-  else
+-    rm -f  $grub_dir/xen*.cfg
+-    if [ -s $efi_dir/grub.xen-files ]; then
+-      for f in $(sort $efi_dir/grub.xen-files| uniq); do
+-	rm -f $efi_dir/$f
+-      done
+-      : > $efi_dir/grub.xen-files
+-    fi
+-  fi
+-else
+-  is_efi=false
+-fi
+-
+ grub2_unquote ()
+ {
+   awk '
+@@ -264,10 +238,15 @@
+ 	kernel=${basename} root=${linux_root_device_thisversion} ${args_unq}
+ 	ramdisk=${initrd_real}
+ 	EOF
++    if [ -z "${prepare_efi_cache}" ]; then
++      grub_device_efi="`${grub_probe} --target=device /boot/efi`"
++      prepare_efi_cache="$(prepare_grub_to_access_device ${grub_device_efi} | grub_add_tab)"
++    fi
++    printf '%s\n' "${prepare_efi_cache}" | sed "s/^/$submenu_indentation/"
+     message="$(gettext_printf "Loading Xen %s with Linux %s ..." ${xen_version} ${version})"
+     sed "s/^/$submenu_indentation/" <<-EOF
+ 	 	echo	'$(echo "$message" | grub_quote)'
+-	 	chainloader  \$cmdpath/${xen_basename} ${xen_basename} ${SUSE_CMDLINE_XENEFI} $section
++	 	chainloader  ${rel_efi_dir}/${xen_basename} ${xen_basename} ${SUSE_CMDLINE_XENEFI} $section
+ 	}
+ 	EOF
+     for f in ${grub_dir}/$xen_cfg ${xen_dir}/${xen_basename} ${dirname}/${basename} ${dirname}/${initrd_real}; do
+@@ -363,6 +342,7 @@
+     done
+ fi
+ prepare_boot_cache=
++prepare_efi_cache=
+ boot_device_id=
+ 
+ title_correction_code=
+@@ -432,6 +412,34 @@
+ 
+ is_top_level=true
+ 
++if [ -d /sys/firmware/efi ] && [ "x${xen_list}" != "x" ]; then
++  is_efi=true
++  err_msg=""
++  efi_dir="/boot/efi/efi/${os}"
++  grub_dir=/boot/grub2
++  xen_dir=/usr/share/efi/$machine
++  [ -d $xen_dir ] || xen_dir=/usr/lib64/efi
++  for d in $grub_dir $xen_dir; do
++    [ ! -d "$d" ] || continue
++    err_msg="${err_msg}$ME: Essential directory '$d' not found!\n"
++  done
++  if ! [ -d "$grub_dir" -a -d "$xen_dir" ]; then
++    err_msg="${err_msg}$ME: XEN configuration skipped!\n"
++  else
++    mkdir -p $efi_dir
++    rel_efi_dir=`make_system_path_relative_to_its_root $efi_dir`
++    rm -f  $grub_dir/xen*.cfg
++    if [ -s $efi_dir/grub.xen-files ]; then
++      for f in $(sort $efi_dir/grub.xen-files| uniq); do
++	rm -f $efi_dir/$f
++      done
++      : > $efi_dir/grub.xen-files
++    fi
++  fi
++else
++  is_efi=false
++fi
++
+ for current_xen in ${reverse_sorted_xen_list}; do
+     xen_basename=`basename ${current_xen}`
+     xen_dirname=`dirname ${current_xen}`

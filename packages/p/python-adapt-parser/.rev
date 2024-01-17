@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ef32170cd8f037f89aacea2aeefc6525</srcmd5>
+    <version>0.3.0</version>
+    <time>1521193140</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-adapt-parser, required by mycroft-core</comment>
+    <requestid>582364</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9d637d2617389fa9ac4cbfb171717de4</srcmd5>
+    <version>0.3.2</version>
+    <time>1551785196</time>
+    <user>dimstar_suse</user>
+    <comment>- Siwtch to unittest-xml-reporting
+
+- Update to 0.3.2:
+  * no upstream changelog
+- Switch to github tarball for tests</comment>
+    <requestid>681657</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b57de6941d25676a9a007e9a782d6118</srcmd5>
+    <version>0.3.3</version>
+    <time>1560338006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708401</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2d45d6271b394c813dc797e4d80b58fd</srcmd5>
+    <version>0.3.4</version>
+    <time>1579195444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765024</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>28abcb58dbe49a95b890d8be6925b942</srcmd5>
+    <version>0.6.1</version>
+    <time>1634417232</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.1:
+  * Support for python 2.7 is now a firm thing and not just implied. 
+
+- Update to 0.5.1
+  * Publish to pypi from master after tagging
+  * Fix name of LICENSE file in MANIFEST (#140)
+  * Hard code Pypi user to __token__
+  * Add checks and bdist_wheel
+  * Split PR workflow from push workflow
+  * Add automatic tagging
+  * Remove old publish scripts
+  * Add support for publishing to pypi
+- from version 0.5.0
+  * Guarantee sorted results from IntentDeterminationEngine.determine_intent (#137)
+  * Fixes issue 97 (#138)
+- from version 0.4.3
+  * Updated docstrings, and some small fixes (#132)
+  * Bump version to 0.4.2
+  * Fix use after remove
+  * Test that a removed regexp can be re-added
+  * Fix storing regex as string when cleaned
+- from version 0.4.1
+  * Scoring tests and fixes (#131)
+  * Issues/114 (#128)
+  * Add .envrc to git-ignore
+  * Consolidate requirements
+  * Remove unused requirement argparse
+  * Add license and readme to MANIFEST.in
+  * Use run_tests.sh in github actions
+  * Add run_tests.sh to easily do linting and tests</comment>
+    <requestid>925651</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>84767eccba83815207bdbd74c04d18f4</srcmd5>
+    <version>1.0.0</version>
+    <time>1637970698</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.0.0
+  * Safe defaults #147
+  * Updated docstrings
+  * Fix is_prefix() implementation in Trie #148
+  * Python2 is officially supported
+  * Removed requirement of pyee</comment>
+    <requestid>934030</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>35a9ec77ecadbb9b5157caa9fd6a3af4</srcmd5>
+    <version>1.0.0</version>
+    <time>1666185193</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix sitelib in files section
+- Add patch remove-python-six.patch to do not require python-six
+- Remove python-six dependency
+- Remove not needed deps:
+  * unittest-xml-reporting
+  * python-pyee
+- Use pytest in check instead unittest
+</comment>
+    <requestid>1029975</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c72853c896d8a3ec9dd97a982d7ee0b2</srcmd5>
+    <version>1.0.0</version>
+    <time>1699388826</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123889</requestid>
+  </revision>
+</revisionlist>

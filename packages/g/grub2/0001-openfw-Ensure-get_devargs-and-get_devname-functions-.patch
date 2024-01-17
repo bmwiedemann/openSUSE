@@ -1,0 +1,52 @@
+From 468628bdc39800341e7aa6ff7795cc0d93cfaf3f Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 11 Apr 2023 10:59:34 +0800
+Subject: [PATCH 1/2] openfw: Ensure get_devargs and get_devname functions are
+ consistent
+
+Commit 165c9b234 changed the logic of ieee1275_get_devargs() to use the
+first or second occurrence of a colon as a separator between device name
+and arguments. However, this didn't align with the complementary
+function ieee1275_get_devname, which uses the first occurrence of a
+colon after the namespace keyword as arguments for the nvme-of device.
+
+This commit addresses the inconsistency by ensuring that both functions
+follow a common logic. Now, get_devargs and get_devname functions are
+consistent with each other, making it easier to understand and maintain
+the codebase.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/kern/ieee1275/openfw.c | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/grub-core/kern/ieee1275/openfw.c b/grub-core/kern/ieee1275/openfw.c
+index e2ffec32d..3bbd07d95 100644
+--- a/grub-core/kern/ieee1275/openfw.c
++++ b/grub-core/kern/ieee1275/openfw.c
+@@ -354,13 +354,16 @@ static char *
+ grub_ieee1275_get_devargs (const char *path)
+ {
+   char *colon = grub_strchr (path, ':');
+-  char *colon_check = colon;
+ 
+-  /* Find the last occurence of colon */
+-  while(colon_check){
+-    colon = colon_check;
+-    colon_check = grub_strchr (colon+1, ':');
+-  }
++  /* Use the same logic in grub_ieee1275_get_devname for nvme-of arguments */
++  if (grub_strstr(path, "nvme-of"))
++    {
++      char *namespace_split = grub_strstr(path,"/namespace@");
++      if (namespace_split)
++	colon = grub_strchr (namespace_split, ':');
++      else
++	colon = NULL;
++    }
+ 
+   if (! colon)
+     return 0;
+-- 
+2.39.2
+

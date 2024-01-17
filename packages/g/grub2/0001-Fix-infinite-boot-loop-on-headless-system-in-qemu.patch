@@ -1,0 +1,66 @@
+From f76317d9dc35dbc576820ba6c2a6a8e41f5338b5 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 19 May 2022 13:08:12 +0800
+Subject: [PATCH] Fix infinite boot loop on headless system in qemu
+
+After finishing headless virtual machine installation via serial
+console, the reboot fails in grub with infinte boot loop and also
+keyboard input for serial console is unresponsive.
+
+The cause of infinte loop boils down to legacy vga driver in grub
+crashes when '-dispaly none' is used as qemu's display type described in
+the manual as:
+
+"Do not display video output. The guest will still see an emulated
+graphics card, but its output will not be displayed tothe QEMU  user.
+This option differs from the -nographic option in that it only affects
+what is done with video output; -nographic also changes the destination
+of the serial and parallel port data."
+
+Given there's no sensible way found to skip the emulated device from the
+legacy vga module, we ended up removing it from all_video dependency so
+it wouldn't be loaded by default. In any case, the vbe module remain
+loaded and should fulfill the requirement of most hardwares even twenty
+years old or more.
+
+The unresponsive serial input is also fixed by ensuring that console
+input is loaded via appended so that they won't fail altogether with
+errors by other console device if specifying on the same list.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/genmoddep.awk  |  3 +++
+ util/grub.d/00_header.in | 10 +++++++++-
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+
+--- a/grub-core/genmoddep.awk
++++ b/grub-core/genmoddep.awk
+@@ -98,6 +98,9 @@
+   }
+   modlist = ""
+   while (getline <"video.lst") {
++      if ($1 == "vga") {
++          continue;
++      }
+       modlist = modlist " " $1;
+   }
+   printf "all_video:%s\n", modlist;
+--- a/util/grub.d/00_header.in
++++ b/util/grub.d/00_header.in
+@@ -287,7 +287,15 @@
+   ;;
+   x*)
+     cat << EOF
+-terminal_output ${GRUB_TERMINAL_OUTPUT}
++
++for i in ${GRUB_TERMINAL_OUTPUT}; do
++  if [ x\${use_append} = xtrue ]; then
++     terminal_output --append \$i
++  elif terminal_output \$i; then
++     use_append=true;
++  fi
++done
++
+ EOF
+   ;;
+ esac

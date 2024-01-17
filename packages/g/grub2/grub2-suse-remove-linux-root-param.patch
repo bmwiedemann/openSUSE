@@ -1,0 +1,75 @@
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -299,7 +299,8 @@
+   GRUB_OS_PROBER_SKIP_LIST \
+   GRUB_DISABLE_SUBMENU \
+   SUSE_BTRFS_SNAPSHOT_BOOTING \
+-  SUSE_CMDLINE_XENEFI
++  SUSE_CMDLINE_XENEFI \
++  SUSE_REMOVE_LINUX_ROOT_PARAM
+ 
+ if test "x${grub_cfg}" != "x"; then
+   rm -f "${grub_cfg}.new"
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -76,7 +76,7 @@
+ 	else
+ 	rootsubvol="`make_system_path_relative_to_its_root /`"
+ 	rootsubvol="${rootsubvol#/}"
+-	if [ "x${rootsubvol}" != x ]; then
++	if [ "x${rootsubvol}" != x ] && [ "x$SUSE_REMOVE_LINUX_ROOT_PARAM" != "xtrue" ]; then
+ 	    GRUB_CMDLINE_LINUX="rootflags=subvol=${rootsubvol} ${GRUB_CMDLINE_LINUX}"
+ 	fi
+ 	fi;;
+@@ -87,6 +87,10 @@
+ 	;;
+ esac
+ 
++if [ "x$SUSE_REMOVE_LINUX_ROOT_PARAM" = "xtrue" ]; then
++  LINUX_ROOT_DEVICE=""
++fi
++
+ title_correction_code=
+ 
+ hotkey=1
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -100,7 +100,7 @@
+ 	else
+ 	rootsubvol="`make_system_path_relative_to_its_root /`"
+ 	rootsubvol="${rootsubvol#/}"
+-	if [ "x${rootsubvol}" != x ]; then
++	if [ "x${rootsubvol}" != x ] && [ "x$SUSE_REMOVE_LINUX_ROOT_PARAM" != "xtrue" ]; then
+ 	    GRUB_CMDLINE_LINUX="rootflags=subvol=${rootsubvol} ${GRUB_CMDLINE_LINUX}"
+ 	fi
+ 	fi;;
+@@ -111,6 +111,10 @@
+ 	;;
+ esac
+ 
++if [ "x$SUSE_REMOVE_LINUX_ROOT_PARAM" = "xtrue" ]; then
++  LINUX_ROOT_DEVICE=""
++fi
++
+ title_correction_code=
+ 
+ grub2_unquote ()
+--- a/util/s390x/zipl2grub.pl.in
++++ b/util/s390x/zipl2grub.pl.in
+@@ -384,9 +384,13 @@
+     } else {
+       $v = "";
+     }
+-    if ($k eq "GRUB_DEVICE" && $v !~ /^UUID/ && ! -e $v) {
+-      s{root=\@$k\@}{}g;
+-      next;
++    if ($k eq "GRUB_DEVICE") {
++      if (($v !~ /^UUID/ && ! -e $v) ||
++          (exists( $C{SUSE_REMOVE_LINUX_ROOT_PARAM}) &&
++          $C{SUSE_REMOVE_LINUX_ROOT_PARAM} eq "true")) {
++        s{root=\@$k\@}{}g;
++        next;
++      }
+     }
+     s{\@$k\@}{$v}g;
+   }

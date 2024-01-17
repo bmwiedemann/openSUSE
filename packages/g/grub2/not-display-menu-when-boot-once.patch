@@ -1,0 +1,31 @@
+From 78270522e8b8c0674941e0752c245dd8468e5bf8 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 1 Aug 2012 15:46:34 +0800
+Subject: [PATCH] not display menu when boot once
+
+References: bnc#771587
+Patch-Mainline: no
+
+We should prevent the menu from being displayed if boot once is
+specified. This is in order to compliant with Grub1's behavior
+and is better than current as it's not make any sense to bother
+user to make decision when decision has been made.
+---
+ util/grub.d/00_header.in |   10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+Index: grub-2.02~beta2/util/grub.d/00_header.in
+===================================================================
+--- grub-2.02~beta2.orig/util/grub.d/00_header.in
++++ grub-2.02~beta2/util/grub.d/00_header.in
+@@ -304,7 +304,9 @@ make_timeout ()
+ 	style="menu"
+     fi
+     cat << EOF
+-if [ x\$feature_timeout_style = xy ] ; then
++if [ x\${boot_once} = xtrue ]; then
++  set timeout=0
++elif [ x\$feature_timeout_style = xy ] ; then
+   set timeout_style=${style}
+   set timeout=${timeout}
+ EOF

@@ -1,0 +1,39 @@
+---
+ grub-core/video/efi_gop.c |   11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+--- a/grub-core/video/efi_gop.c
++++ b/grub-core/video/efi_gop.c
+@@ -358,6 +358,7 @@ grub_video_gop_setup (unsigned int width
+   grub_err_t err;
+   unsigned bpp;
+   int found = 0;
++  int avoid_low_resolution = 1;
+   unsigned long long best_volume = 0;
+   unsigned int preferred_width = 0, preferred_height = 0;
+   grub_uint8_t *buffer;
+@@ -376,8 +377,11 @@ grub_video_gop_setup (unsigned int width
+ 	}
+     }
+ 
++again:
+   /* Keep current mode if possible.  */
+-  if (gop->mode->info)
++  if (gop->mode->info &&
++      (!avoid_low_resolution ||
++       (gop->mode->info->width >= 800 && gop->mode->info->height >= 600)))
+     {
+       bpp = grub_video_gop_get_bpp (gop->mode->info);
+       if (bpp && ((width == gop->mode->info->width
+@@ -450,6 +454,11 @@ grub_video_gop_setup (unsigned int width
+ 
+   if (!found)
+     {
++      if (avoid_low_resolution && gop->mode->info)
++        {
++          avoid_low_resolution = 0;
++          goto again;
++        }
+       grub_dprintf ("video", "GOP: no mode found\n");
+       return grub_error (GRUB_ERR_UNKNOWN_DEVICE, "no matching mode found");
+     }

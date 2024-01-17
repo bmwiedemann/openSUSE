@@ -1,0 +1,57 @@
+From 337b3d963d28b3544e8817428fb68ca559613a39 Mon Sep 17 00:00:00 2001
+From: Peter Jones <pjones@redhat.com>
+Date: Thu, 9 Sep 2021 10:59:28 -0400
+Subject: [PATCH 2/2] Arm: check for the PE magic for the compiled arch
+
+In "arm64: Fix EFI loader kernel image allocation", Ben fixed the kernel
+alignment to match the alignment given in the PE header.  In doing so, a
+check for valid PE magic was added, which was hard-coded to the value
+seen on Aarch64 (GRUB_PE32_PE64_MAGIC).
+
+Unfortunately, this code is shared between 64-bit and 32-bit, and so
+that value broke 32-bit Arm systems.
+
+This patch adds a constant definition for GRUB_PE32_PEXX_MAGIC, which is
+either GRUB_PE32_PE64_MAGIC or GRUB_PE32_PE32_MAGIC, depending on which
+platform is being built, and uses it in the header magic check.
+
+Resolves: rhbz#2000756
+
+Signed-off-by: Peter Jones <pjones@redhat.com>
+---
+ grub-core/loader/arm64/efi/linux.c | 2 +-
+ include/grub/arm/linux.h           | 1 +
+ include/grub/arm64/linux.h         | 1 +
+ 3 files changed, 3 insertions(+), 1 deletion(-)
+
+--- a/grub-core/loader/arm64/efi/linux.c
++++ b/grub-core/loader/arm64/efi/linux.c
+@@ -376,7 +376,7 @@
+ 
+   pe = (void *)((unsigned long)kernel + lh->hdr_offset);
+ 
+-  if (pe->opt.magic != GRUB_PE32_PE64_MAGIC)
++  if (pe->opt.magic != GRUB_PE32_PEXX_MAGIC)
+     return grub_error(GRUB_ERR_BAD_OS, "Invalid PE optional header magic");
+ 
+   *total_size   = pe->opt.image_size;
+--- a/include/grub/arm/linux.h
++++ b/include/grub/arm/linux.h
+@@ -33,6 +33,7 @@
+ };
+ 
+ #if defined(__arm__)
++# define GRUB_PE32_PEXX_MAGIC GRUB_PE32_PE32_MAGIC
+ # define grub_armxx_linux_pe_header grub_arm_linux_pe_header
+ #endif
+ 
+--- a/include/grub/arm64/linux.h
++++ b/include/grub/arm64/linux.h
+@@ -33,6 +33,7 @@
+ 
+ #if defined(__aarch64__)
+ # define GRUB_LINUX_ARMXX_MAGIC_SIGNATURE GRUB_LINUX_ARM64_MAGIC_SIGNATURE
++# define GRUB_PE32_PEXX_MAGIC GRUB_PE32_PE64_MAGIC
+ # define grub_armxx_linux_pe_header grub_arm64_linux_pe_header
+ #endif
+ 

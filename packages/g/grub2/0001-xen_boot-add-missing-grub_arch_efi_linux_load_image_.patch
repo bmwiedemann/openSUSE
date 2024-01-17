@@ -1,0 +1,83 @@
+From 6c06378c1bf6ae21788427e62ab0011b7f1bc2f0 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Fri, 25 Nov 2022 16:11:24 +0800
+Subject: [PATCH] xen_boot: add missing grub_arch_efi_linux_load_image_header
+
+The new xen_boot module has used grub_arch_efi_linux_load_image_header
+exported by grub-core/loader/arm64/linux.c. It is not a problem for
+upstream but many downstream projects may not use it and take
+grub-core/loader/arm64/efi/linux.c as a replacement as PE entry is the
+preferred way in combination with shim loader.
+
+This patch did a trivial workaround just adding back the dropped
+defintion to the xen_boot itself.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/loader/arm64/xen_boot.c | 50 +++++++++++++++++++++++++++++++
+ 1 file changed, 50 insertions(+)
+
+diff --git a/grub-core/loader/arm64/xen_boot.c b/grub-core/loader/arm64/xen_boot.c
+index 26e1472c9..b82a2db89 100644
+--- a/grub-core/loader/arm64/xen_boot.c
++++ b/grub-core/loader/arm64/xen_boot.c
+@@ -84,6 +84,56 @@ static int loaded;
+ static struct xen_boot_binary *xen_hypervisor;
+ static struct xen_boot_binary *module_head;
+ 
++/* The function is exported by grub-core/loader/arm64/linux.c that is not built
++ * because we use PE entry provided by grub-core/loader/arm64/efi/linux.c
++ */
++static bool initrd_use_loadfile2 = false;
++
++grub_err_t
++grub_arch_efi_linux_load_image_header (grub_file_t file,
++                                      struct linux_arch_kernel_header * lh)
++{
++  grub_file_seek (file, 0);
++  if (grub_file_read (file, lh, sizeof (*lh)) < (grub_ssize_t) sizeof (*lh))
++    return grub_error(GRUB_ERR_FILE_READ_ERROR, "failed to read Linux image header");
++
++  if ((lh->code0 & 0xffff) != GRUB_PE32_MAGIC)
++    return grub_error (GRUB_ERR_NOT_IMPLEMENTED_YET,
++		       N_("plain image kernel not supported - rebuild with CONFIG_(U)EFI_STUB enabled"));
++
++  grub_dprintf ("linux", "UEFI stub kernel:\n");
++  grub_dprintf ("linux", "PE/COFF header @ %08x\n", lh->hdr_offset);
++
++  /*
++   * The PE/COFF spec permits the COFF header to appear anywhere in the file, so
++   * we need to double check whether it was where we expected it, and if not, we
++   * must load it from the correct offset into the pe_image_header field of
++   * struct linux_arch_kernel_header.
++   */
++  if ((grub_uint8_t *) lh + lh->hdr_offset != (grub_uint8_t *) &lh->pe_image_header)
++    {
++      if (grub_file_seek (file, lh->hdr_offset) == (grub_off_t) -1
++          || grub_file_read (file, &lh->pe_image_header,
++                             sizeof (struct grub_pe_image_header))
++             != sizeof (struct grub_pe_image_header))
++        return grub_error (GRUB_ERR_FILE_READ_ERROR, "failed to read COFF image header");
++    }
++
++  /*
++   * Linux kernels built for any architecture are guaranteed to support the
++   * LoadFile2 based initrd loading protocol if the image version is >= 1.
++   */
++  if (lh->pe_image_header.optional_header.major_image_version >= 1)
++    initrd_use_loadfile2 = true;
++  else
++    initrd_use_loadfile2 = false;
++
++  grub_dprintf ("linux", "LoadFile2 initrd loading %sabled\n",
++                initrd_use_loadfile2 ? "en" : "dis");
++
++  return GRUB_ERR_NONE;
++}
++
+ static __inline grub_addr_t
+ xen_boot_address_align (grub_addr_t start, grub_size_t align)
+ {
+-- 
+2.41.0
+

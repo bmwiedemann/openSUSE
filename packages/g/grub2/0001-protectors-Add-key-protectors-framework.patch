@@ -1,0 +1,177 @@
+From 5affde982dea827580e36ccc658e439397f51ce8 Mon Sep 17 00:00:00 2001
+From: Hernan Gatta <hegatta@linux.microsoft.com>
+Date: Tue, 1 Feb 2022 05:02:53 -0800
+Subject: [PATCH 1/5] protectors: Add key protectors framework
+
+A key protector encapsulates functionality to retrieve an unlocking key
+for a fully-encrypted disk from a specific source. A key protector
+module registers itself with the key protectors framework when it is
+loaded and unregisters when unloaded. Additionally, a key protector may
+accept parameters that describe how it should operate.
+
+The key protectors framework, besides offering registration and
+unregistration functions, also offers a one-stop routine for finding and
+invoking a key protector by name. If a key protector with the specified
+name exists and if an unlocking key is successfully retrieved by it, the
+function returns to the caller the retrieved key and its length.
+
+Signed-off-by: Hernan Gatta <hegatta@linux.microsoft.com>
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ grub-core/Makefile.am       |  1 +
+ grub-core/Makefile.core.def |  1 +
+ grub-core/kern/protectors.c | 75 +++++++++++++++++++++++++++++++++++++
+ include/grub/protector.h    | 48 ++++++++++++++++++++++++
+ 4 files changed, 125 insertions(+)
+ create mode 100644 grub-core/kern/protectors.c
+ create mode 100644 include/grub/protector.h
+
+--- a/grub-core/Makefile.am
++++ b/grub-core/Makefile.am
+@@ -90,6 +90,7 @@
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/mm.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/parser.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/partition.h
++KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/protector.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/stack_protector.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/term.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/time.h
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -149,6 +149,7 @@
+   common = kern/misc.c;
+   common = kern/parser.c;
+   common = kern/partition.c;
++  common = kern/protectors.c;
+   common = kern/rescue_parser.c;
+   common = kern/rescue_reader.c;
+   common = kern/term.c;
+--- /dev/null
++++ b/grub-core/kern/protectors.c
+@@ -0,0 +1,75 @@
++/*
++ *  GRUB  --  GRand Unified Bootloader
++ *  Copyright (C) 2022 Microsoft Corporation
++ *
++ *  GRUB is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  GRUB is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include <grub/list.h>
++#include <grub/misc.h>
++#include <grub/mm.h>
++#include <grub/protector.h>
++
++struct grub_key_protector *grub_key_protectors = NULL;
++
++grub_err_t
++grub_key_protector_register (struct grub_key_protector *protector)
++{
++  if (protector == NULL || protector->name == NULL || grub_strlen(protector->name) == 0)
++    return GRUB_ERR_BAD_ARGUMENT;
++
++  if (grub_key_protectors &&
++      grub_named_list_find (GRUB_AS_NAMED_LIST (grub_key_protectors),
++			    protector->name))
++    return GRUB_ERR_BAD_ARGUMENT;
++
++  grub_list_push (GRUB_AS_LIST_P (&grub_key_protectors),
++		  GRUB_AS_LIST (protector));
++
++  return GRUB_ERR_NONE;
++}
++
++grub_err_t
++grub_key_protector_unregister (struct grub_key_protector *protector)
++{
++  if (protector == NULL)
++    return GRUB_ERR_BAD_ARGUMENT;
++
++  grub_list_remove (GRUB_AS_LIST (protector));
++
++  return GRUB_ERR_NONE;
++}
++
++grub_err_t
++grub_key_protector_recover_key (const char *protector, grub_uint8_t **key,
++				grub_size_t *key_size)
++{
++  struct grub_key_protector *kp = NULL;
++
++  if (grub_key_protectors == NULL)
++    return GRUB_ERR_OUT_OF_RANGE;
++
++  if (protector == NULL || grub_strlen (protector) == 0)
++    return GRUB_ERR_BAD_ARGUMENT;
++
++  kp = grub_named_list_find (GRUB_AS_NAMED_LIST (grub_key_protectors),
++			     protector);
++  if (kp == NULL)
++    return grub_error (GRUB_ERR_OUT_OF_RANGE,
++		       N_("A key protector with name '%s' could not be found. "
++			  "Is the name spelled correctly and is the "
++			  "corresponding module loaded?"), protector);
++
++  return kp->recover_key (key, key_size);
++}
+--- /dev/null
++++ b/include/grub/protector.h
+@@ -0,0 +1,48 @@
++/*
++ *  GRUB  --  GRand Unified Bootloader
++ *  Copyright (C) 2022 Microsoft Corporation
++ *
++ *  GRUB is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  GRUB is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef GRUB_PROTECTOR_HEADER
++#define GRUB_PROTECTOR_HEADER 1
++
++#include <grub/err.h>
++#include <grub/types.h>
++
++struct grub_key_protector
++{
++  struct grub_key_protector *next;
++  struct grub_key_protector **prev;
++
++  const char *name;
++
++  grub_err_t (*recover_key) (grub_uint8_t **key, grub_size_t *key_size);
++};
++
++extern struct grub_key_protector *EXPORT_VAR (grub_key_protectors);
++
++grub_err_t
++EXPORT_FUNC (grub_key_protector_register) (struct grub_key_protector *protector);
++
++grub_err_t
++EXPORT_FUNC (grub_key_protector_unregister) (struct grub_key_protector *protector);
++
++grub_err_t
++EXPORT_FUNC (grub_key_protector_recover_key) (const char *protector,
++					      grub_uint8_t **key,
++					      grub_size_t *key_size);
++
++#endif /* ! GRUB_PROTECTOR_HEADER */

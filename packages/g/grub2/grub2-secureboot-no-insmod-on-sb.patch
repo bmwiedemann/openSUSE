@@ -1,0 +1,51 @@
+From 29c89e27805f7a6a22bce11ed9bb430e19c972a9 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@ubuntu.com>
+Date: Tue, 23 Oct 2012 10:40:49 -0400
+Subject: [PATCH 449/482] Don't allow insmod when secure boot is enabled.
+
+References: fate#314485
+Patch-Mainline: no
+
+v2:
+Use grub_efi_get_secureboot to get secure boot status
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/kern/dl.c      | 17 +++++++++++++++++
+ grub-core/kern/efi/efi.c | 28 ++++++++++++++++++++++++++++
+ include/grub/efi/efi.h   |  1 +
+ 3 files changed, 46 insertions(+)
+
+--- a/grub-core/kern/dl.c
++++ b/grub-core/kern/dl.c
+@@ -38,6 +38,10 @@
+ #define GRUB_MODULES_MACHINE_READONLY
+ #endif
+ 
++#ifdef GRUB_MACHINE_EFI
++#include <grub/efi/sb.h>
++#endif
++
+ 
+ 
+ #pragma GCC diagnostic ignored "-Wcast-align"
+@@ -708,6 +712,19 @@
+ 
+   grub_boot_time ("Loading module %s", filename);
+ 
++#ifdef GRUB_MACHINE_EFI
++  if (grub_efi_get_secureboot () == GRUB_EFI_SECUREBOOT_MODE_ENABLED)
++    {
++#if 0
++      /* This is an error, but grub2-mkconfig still generates a pile of
++       * insmod commands, so emitting it would be mostly just obnoxious. */
++      grub_error (GRUB_ERR_ACCESS_DENIED,
++		  "Secure Boot forbids loading module from %s", filename);
++#endif
++      return 0;
++    }
++#endif
++
+   file = grub_file_open (filename, GRUB_FILE_TYPE_GRUB_MODULE);
+   if (! file)
+     return 0;

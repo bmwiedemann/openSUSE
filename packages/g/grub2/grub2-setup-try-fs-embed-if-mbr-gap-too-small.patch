@@ -1,0 +1,61 @@
+
+V2: Add fs_ prefix to fs functions by upstream commit ad4bfee
+
+Index: grub-2.06~rc1/util/setup.c
+===================================================================
+--- grub-2.06~rc1.orig/util/setup.c
++++ grub-2.06~rc1/util/setup.c
+@@ -530,8 +530,42 @@ SETUP (const char *dir,
+       err = grub_util_ldm_embed (dest_dev->disk, &nsec, maxsec,
+ 				 GRUB_EMBED_PCBIOS, &sectors);
+     else if (ctx.dest_partmap)
+-      err = ctx.dest_partmap->embed (dest_dev->disk, &nsec, maxsec,
+-				     GRUB_EMBED_PCBIOS, &sectors, warn_small);
++      {
++        err = ctx.dest_partmap->embed (dest_dev->disk, &nsec, maxsec,
++				       GRUB_EMBED_PCBIOS, &sectors, warn_small);
++#ifdef GRUB_SETUP_BIOS
++        if ((err == GRUB_ERR_OUT_OF_RANGE || err == GRUB_ERR_FILE_NOT_FOUND)
++            && dest_dev->disk->id == root_dev->disk->id
++            && dest_dev->disk->dev->id == root_dev->disk->dev->id)
++          {
++            grub_fs_t root_fs;
++
++            root_fs = grub_fs_probe (root_dev);
++            if (root_fs && root_fs->fs_embed)
++              {
++                grub_disk_addr_t *fs_sectors;
++                unsigned int fs_nsec;
++
++                fs_sectors = NULL;
++                fs_nsec = core_sectors;
++                err = root_fs->fs_embed (root_dev, &fs_nsec, maxsec,
++                                      GRUB_EMBED_PCBIOS, &fs_sectors);
++                if (!err && fs_nsec >= core_sectors)
++                  {
++                    sectors = fs_sectors;
++                    nsec = fs_nsec;
++                    ctx.container = root_dev->disk->partition;
++                    core_dev = root_dev;
++                  }
++                else
++                  {
++                    if (fs_sectors)
++                      grub_free (fs_sectors);
++                  }
++              }
++          }
++#endif
++      }
+     else
+       err = fs->fs_embed (dest_dev, &nsec, maxsec,
+ 			  GRUB_EMBED_PCBIOS, &sectors);
+@@ -643,7 +677,7 @@ SETUP (const char *dir,
+ 
+     /* Write the core image onto the disk.  */
+     for (i = 0; i < nsec; i++)
+-      grub_disk_write (dest_dev->disk, sectors[i], 0,
++      grub_disk_write (core_dev->disk, sectors[i], 0,
+ 		       GRUB_DISK_SECTOR_SIZE,
+ 		       core_img + i * GRUB_DISK_SECTOR_SIZE);
+ #endif

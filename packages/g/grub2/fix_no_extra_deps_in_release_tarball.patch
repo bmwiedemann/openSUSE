@@ -1,0 +1,4 @@
+--- /dev/null
++++ b/grub-core/extra_deps.lst
+@@ -0,0 +1 @@
++depends bli part_gpt

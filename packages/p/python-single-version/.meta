@@ -1,0 +1,6 @@
+<package name="python-single-version" project="openSUSE:Factory">
+  <title></title>
+  <description>Utility to let you have a single source of version in your code base.</description>
+  <devel project="devel:languages:python" package="python-single-version"/>
+  <url>https://github.com/hongquan/single-version</url>
+</package>

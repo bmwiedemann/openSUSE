@@ -1,0 +1,286 @@
+From fe7ed9104cef56f9e532a0c9a7164393d5d69ae1 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Fri, 17 Nov 2023 12:32:59 +0800
+Subject: [PATCH 1/4] Improve TPM key protection on boot interruptions
+
+The unattended boot process for full disk encryption relies on an
+authorized TPM policy to ensure the system's integrity before releasing
+the key to grub. Subsequently, grub assumes responsibility for securing
+the boot process, directing it towards a trusted default without any
+expected interruptions. Any interruption during this process indicates
+potential modification attempts, and releasing the obtained key to the
+next stage should not occur in such cases.
+
+This commit addresses a vulnerability associated with interrupted boot
+processes that could potentially enable malicious modifications to the
+default or trusted boot target. To reinforce system security, the code
+has been updated to incorporate measures that discard the TPM protected
+key in the event of boot interruptions.
+
+Furthermore, this patch aims to enhance code readability by renaming
+structures and function names related to cryptographic keys, improving
+clarity and maintainability.
+
+By implementing these changes, this enhancement seeks to fortify the
+protection of TPM keys, thereby ensuring a more robust defense against
+potential unauthorized modifications during the boot process.
+
+Signed-Off-by Michael Chang <mchang@suse.com>
+---
+ grub-core/commands/crypttab.c | 38 ++++++++++++++++++++++++++---------
+ grub-core/disk/cryptodisk.c   |  8 +++++++-
+ grub-core/loader/linux.c      |  6 +++---
+ grub-core/normal/main.c       |  2 +-
+ grub-core/normal/menu.c       |  7 +++++++
+ grub-core/normal/menu_entry.c |  2 +-
+ include/grub/crypttab.h       | 18 ++++++++++-------
+ 7 files changed, 59 insertions(+), 22 deletions(-)
+
+diff --git a/grub-core/commands/crypttab.c b/grub-core/commands/crypttab.c
+index c2217ca98..9397bede9 100644
+--- a/grub-core/commands/crypttab.c
++++ b/grub-core/commands/crypttab.c
+@@ -9,17 +9,20 @@
+ 
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+-struct grub_key_publisher *kpuber;
++grub_crypto_key_list_t *cryptokey_lst;
+ 
+ grub_err_t
+-grub_initrd_publish_key (const char *uuid, const char *key, grub_size_t key_len, const char *path)
++grub_cryptokey_add_or_update (const char *uuid, const char *key, grub_size_t key_len, const char *path, int is_tpmkey)
+ {
+-  struct grub_key_publisher *cur = NULL;
++  grub_crypto_key_list_t *cur = NULL;
+ 
+-  FOR_LIST_ELEMENTS (cur, kpuber)
++  FOR_LIST_ELEMENTS (cur, cryptokey_lst)
+     if (grub_uuidcasecmp (cur->name, uuid, sizeof (cur->name)) == 0)
+       break;
+ 
++  if (!cur && !uuid)
++    return GRUB_ERR_NONE;
++
+   if (!cur)
+     cur = grub_zalloc (sizeof (*cur));
+   if (!cur)
+@@ -44,21 +47,24 @@ grub_initrd_publish_key (const char *uuid, const char *key, grub_size_t key_len,
+       cur->path = grub_strdup (path);
+     }
+ 
++  if (is_tpmkey >= 0)
++    cur->is_tpmkey = is_tpmkey;
++
+   if (!cur->name)
+     {
+       cur->name = grub_strdup (uuid);
+-      grub_list_push (GRUB_AS_LIST_P (&kpuber), GRUB_AS_LIST (cur));
++      grub_list_push (GRUB_AS_LIST_P (&cryptokey_lst), GRUB_AS_LIST (cur));
+     }
+ 
+   return GRUB_ERR_NONE;
+ }
+ 
+ void
+-grub_initrd_discard_key (void)
++grub_cryptokey_discard (void)
+ {
+-  struct grub_key_publisher *cur, *nxt;
++  grub_crypto_key_list_t *cur, *nxt;
+ 
+-  FOR_LIST_ELEMENTS_SAFE (cur, nxt, kpuber)
++  FOR_LIST_ELEMENTS_SAFE (cur, nxt, cryptokey_lst)
+ 	{
+ 	  grub_list_remove (GRUB_AS_LIST (cur));
+ 	  grub_memset (cur->key, 0, cur->key_len);
+@@ -69,6 +75,20 @@ grub_initrd_discard_key (void)
+ 	}
+ }
+ 
++void
++grub_cryptokey_tpmkey_discard (void)
++{
++  grub_crypto_key_list_t *cur = NULL;
++
++  FOR_LIST_ELEMENTS (cur, cryptokey_lst)
++    if (cur->is_tpmkey)
++      break;
++
++  /* Discard all keys if any of them is tpm */
++  if (cur)
++    grub_cryptokey_discard();
++}
++
+ static grub_err_t
+ grub_cmd_crypttab_entry (grub_command_t cmd __attribute__ ((unused)),
+ 	       int argc, char **argv)
+@@ -92,7 +112,7 @@ grub_cmd_crypttab_entry (grub_command_t cmd __attribute__ ((unused)),
+     }
+ 
+   /*FIXME: Validate UUID string*/
+-  return grub_initrd_publish_key (argv[1], NULL, 0, path);
++  return grub_cryptokey_add_or_update (argv[1], NULL, 0, path, -1);
+ }
+ 
+ static grub_command_t cmd;
+diff --git a/grub-core/disk/cryptodisk.c b/grub-core/disk/cryptodisk.c
+index c79d4125a..d90ca06dc 100644
+--- a/grub-core/disk/cryptodisk.c
++++ b/grub-core/disk/cryptodisk.c
+@@ -1071,6 +1071,9 @@ grub_cryptodisk_scan_device_real (const char *name,
+   struct cryptodisk_read_hook_ctx read_hook_data = {0};
+   int askpass = 0;
+   char *part = NULL;
++#ifndef GRUB_UTIL
++  int is_tpmkey = 0;
++#endif
+ 
+   dev = grub_cryptodisk_get_by_source_disk (source);
+ 
+@@ -1183,6 +1186,9 @@ grub_cryptodisk_scan_device_real (const char *name,
+ 	     ret = grub_cryptodisk_insert (dev, name, source);
+ 	     if (ret != GRUB_ERR_NONE)
+ 	       goto error;
++#ifndef GRUB_UTIL
++	     is_tpmkey = 1;
++#endif
+ 	     goto cleanup;
+ 	   }
+ 	}
+@@ -1244,7 +1250,7 @@ grub_cryptodisk_scan_device_real (const char *name,
+ 
+ #ifndef GRUB_UTIL
+   if (cargs->key_data && dev)
+-    grub_initrd_publish_key (dev->uuid, (const char *)cargs->key_data, cargs->key_len, NULL);
++    grub_cryptokey_add_or_update (dev->uuid, (const char *)cargs->key_data, cargs->key_len, NULL, is_tpmkey);
+ #endif
+   if (askpass)
+     {
+diff --git a/grub-core/loader/linux.c b/grub-core/loader/linux.c
+index 9ee8f3790..e5e792958 100644
+--- a/grub-core/loader/linux.c
++++ b/grub-core/loader/linux.c
+@@ -226,13 +226,13 @@ grub_initrd_init (int argc, char *argv[],
+   int i;
+   int newc = 0;
+   struct dir *root = 0;
+-  struct grub_key_publisher *pk;
++  grub_crypto_key_list_t *pk;
+   int numkey = 0;
+ 
+   initrd_ctx->nfiles = 0;
+   initrd_ctx->components = 0;
+ 
+-  FOR_LIST_ELEMENTS (pk, kpuber)
++  FOR_LIST_ELEMENTS (pk, cryptokey_lst)
+     if (pk->key && pk->path)
+       numkey++;
+ 
+@@ -305,7 +305,7 @@ grub_initrd_init (int argc, char *argv[],
+ 	goto overflow;
+     }
+ 
+-  FOR_LIST_ELEMENTS (pk, kpuber)
++  FOR_LIST_ELEMENTS (pk, cryptokey_lst)
+     if (pk->key && pk->path)
+       {
+ 	grub_initrd_component (pk->key, pk->key_len, pk->path, initrd_ctx);
+diff --git a/grub-core/normal/main.c b/grub-core/normal/main.c
+index a3f711d1d..1b426af69 100644
+--- a/grub-core/normal/main.c
++++ b/grub-core/normal/main.c
+@@ -479,7 +479,7 @@ grub_cmdline_run (int nested, int force_auth)
+       return;
+     }
+ 
+-  grub_initrd_discard_key ();
++  grub_cryptokey_discard ();
+   grub_normal_reader_init (nested);
+ 
+   while (1)
+diff --git a/grub-core/normal/menu.c b/grub-core/normal/menu.c
+index 14b0ab1ec..1df2638d7 100644
+--- a/grub-core/normal/menu.c
++++ b/grub-core/normal/menu.c
+@@ -32,6 +32,7 @@
+ #include <grub/script_sh.h>
+ #include <grub/gfxterm.h>
+ #include <grub/dl.h>
++#include <grub/crypttab.h>
+ 
+ /* Time to delay after displaying an error message about a default/fallback
+    entry failing to boot.  */
+@@ -708,6 +709,7 @@ run_menu (grub_menu_t menu, int nested, int *auto_boot, int *notify_boot)
+ 	  if (grub_key_is_interrupt (key))
+ 	    {
+ 	      timeout = -1;
++	      grub_cryptokey_tpmkey_discard();
+ 	      break;
+ 	    }
+ 
+@@ -790,6 +792,11 @@ run_menu (grub_menu_t menu, int nested, int *auto_boot, int *notify_boot)
+ 	      clear_timeout ();
+ 	    }
+ 
++	  /* Timeout is interrupted by external input, Forget tpmkey if timeout
++	   * is not cut by enter */
++	  if (c != '\n' && c != '\r')
++	      grub_cryptokey_tpmkey_discard();
++
+ 	  switch (c)
+ 	    {
+ 	    case GRUB_TERM_KEY_HOME:
+diff --git a/grub-core/normal/menu_entry.c b/grub-core/normal/menu_entry.c
+index 384ab9ce3..e5ba91ea4 100644
+--- a/grub-core/normal/menu_entry.c
++++ b/grub-core/normal/menu_entry.c
+@@ -1263,7 +1263,7 @@ grub_menu_entry_run (grub_menu_entry_t entry)
+       return;
+     }
+ 
+-  grub_initrd_discard_key();
++  grub_cryptokey_discard();
+ 
+   screen = make_screen (entry);
+   if (! screen)
+diff --git a/include/grub/crypttab.h b/include/grub/crypttab.h
+index 113c53cfc..f86404686 100644
+--- a/include/grub/crypttab.h
++++ b/include/grub/crypttab.h
+@@ -4,21 +4,25 @@
+ #include <grub/types.h>
+ #include <grub/err.h>
+ 
+-struct grub_key_publisher
++typedef struct grub_crypto_key_list
+ {
+-  struct grub_key_publisher *next;
+-  struct grub_key_publisher **prev;
++  struct grub_crypto_key_list *next;
++  struct grub_crypto_key_list **prev;
+   char *name; /* UUID */
+   char *path;
+   char *key;
+   grub_size_t key_len;
+-};
++  int is_tpmkey;
++} grub_crypto_key_list_t;
+ 
+-extern struct grub_key_publisher *EXPORT_VAR (kpuber);
++extern grub_crypto_key_list_t *EXPORT_VAR (cryptokey_lst);
+ 
+ grub_err_t
+-grub_initrd_publish_key (const char *uuid, const char *key, grub_size_t key_len, const char *path);
++grub_cryptokey_add_or_update (const char *uuid, const char *key, grub_size_t key_len, const char *path, int is_tpmkey);
+ 
+ void
+-grub_initrd_discard_key (void);
++grub_cryptokey_discard (void);
++
++void
++grub_cryptokey_tpmkey_discard (void);
+ #endif /* ! GRUB_CRYPTTAB_HEADER */
+-- 
+2.42.1
+

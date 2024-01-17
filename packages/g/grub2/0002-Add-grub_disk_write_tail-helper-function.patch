@@ -1,0 +1,53 @@
+From c0d00403a297d6023eab6189ba87dc8a3f6d1e85 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 7 Feb 2022 20:44:40 +0800
+Subject: [PATCH 2/5] Add grub_disk_write_tail helper function
+
+This helps in writing data to partition where the end of buffer is
+aligned to end of partition.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/lib/disk.c | 18 ++++++++++++++++++
+ include/grub/disk.h  |  3 +++
+ 2 files changed, 21 insertions(+)
+
+--- a/grub-core/lib/disk.c
++++ b/grub-core/lib/disk.c
+@@ -52,6 +52,24 @@
+ }
+ 
+ grub_err_t
++grub_disk_write_tail (grub_disk_t disk, grub_size_t size, const void *buf)
++{
++  grub_partition_t part;
++  grub_disk_addr_t sector;
++  grub_off_t offset;
++
++  if (!disk->partition)
++    return GRUB_ERR_NONE;
++
++  part = disk->partition;
++  sector = part->len;
++  sector -= (size + GRUB_DISK_SECTOR_SIZE - 1) >> GRUB_DISK_SECTOR_BITS;
++  offset = size & (GRUB_DISK_SECTOR_SIZE - 1);
++
++  return grub_disk_write (disk, sector, offset, size, buf);
++}
++
++grub_err_t
+ grub_disk_write (grub_disk_t disk, grub_disk_addr_t sector,
+ 		 grub_off_t offset, grub_size_t size, const void *buf)
+ {
+--- a/include/grub/disk.h
++++ b/include/grub/disk.h
+@@ -252,6 +252,9 @@
+ 					grub_off_t offset,
+ 					grub_size_t size,
+ 					void *buf);
++grub_err_t grub_disk_write_tail (grub_disk_t disk,
++			       grub_size_t size,
++			       const void *buf);
+ grub_err_t grub_disk_write (grub_disk_t disk,
+ 			    grub_disk_addr_t sector,
+ 			    grub_off_t offset,

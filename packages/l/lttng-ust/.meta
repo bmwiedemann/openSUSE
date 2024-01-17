@@ -1,0 +1,5 @@
+<package name="lttng-ust" project="openSUSE:Factory">
+  <title>Linux Trace Toolkit Userspace Tracer library</title>
+  <description>This library may be used by user space applications to generate tracepoints within the kernel LTT subsystem.</description>
+  <devel project="devel:tools:lttng" package="lttng-ust"/>
+</package>

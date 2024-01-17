@@ -1,0 +1,188 @@
+From: Raymund Will <rw@suse.com>
+Subject: Use chainloader to boot xen.efi under UEFI.
+References: bnc#871857, bnc#879148
+Patch-Mainline: no
+
+As XEN on SLE12 is not multiboot2 ready, some very dirty hacking
+is necessary to boot via xen.efi and separate configfile snippets
+(as done in SLE11SP3 secureboot).
+
+To that end said configfile snippets, xen efi-binaries, kernels and initrds
+need to copied to the EFI system partition during 'grub2-mkconfig'!
+
+V0:
+- first, somewhat fragile version, without any sort of cleanup for ESP.
+V1:
+- add missing whitespace.  (bnc879148)
+V2:
+- second, much less fragile version, using only one config file per
+  XEN hypervisor version with sections for different kernels, avoiding
+  useless duplicates for sym-linked hypervisors. and removing previously
+  installed files from ESP.
+V3:
+- support move to '/usr/share/efi/$machine' for EFI-binaries. (bsc#1122563)
+
+---
+ util/grub.d/20_linux_xen.in |  109 +++++++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 97 insertions(+), 12 deletions(-)
+
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -21,6 +21,8 @@
+ exec_prefix="@exec_prefix@"
+ datarootdir="@datarootdir@"
+ 
++ME=$(basename $0)
++
+ . "$pkgdatadir/grub-mkconfig_lib"
+ 
+ export TEXTDOMAIN=@PACKAGE@
+@@ -36,11 +38,23 @@
+ 
+ if [ "x${GRUB_DISTRIBUTOR}" = "x" ] ; then
+   OS=GNU/Linux
++  os=linux
+ else
+   OS="${GRUB_DISTRIBUTOR}"
+-  CLASS="--class $(echo ${GRUB_DISTRIBUTOR} | tr 'A-Z' 'a-z' | cut -d' ' -f1|LC_ALL=C sed 's,[^[:alnum:]_],_,g') ${CLASS}"
++  os="$(echo ${GRUB_DISTRIBUTOR} | tr 'A-Z' 'a-z' | cut -d' ' -f1)"
++  CLASS="--class ${os} ${CLASS}"
+ fi
+ 
++machine=`uname -m`
++
++case "$machine" in
++    i?86) GENKERNEL_ARCH="x86" ;;
++    mips|mips64) GENKERNEL_ARCH="mips" ;;
++    mipsel|mips64el) GENKERNEL_ARCH="mipsel" ;;
++    arm*) GENKERNEL_ARCH="arm" ;;
++    *) GENKERNEL_ARCH="$machine" ;;
++esac
++
+ # loop-AES arranges things so that /dev/loop/X can be our root device, but
+ # the initrds that Linux uses don't like that.
+ case ${GRUB_DEVICE} in
+@@ -99,6 +113,32 @@
+ 
+ title_correction_code=
+ 
++if [ -d /sys/firmware/efi ]; then
++  is_efi=true
++  err_msg=""
++  efi_dir="/boot/efi/efi/${os}"
++  grub_dir=/boot/@PACKAGE@
++  xen_dir=/usr/share/efi/$machine
++  [ -d $xen_dir ] || xen_dir=/usr/lib64/efi
++  for d in $grub_dir $efi_dir $xen_dir; do
++    [ ! -d "$d" ] || continue
++    err_msg="${err_msg}$ME: Essential directory '$d' not found!\n"
++  done
++  if ! [ -d "$efi_dir" -a -d "$grub_dir" -a -d "$xen_dir" ]; then
++    err_msg="${err_msg}$ME: XEN configuration skipped!\n"
++  else
++    rm -f  $grub_dir/xen*.cfg
++    if [ -s $efi_dir/grub.xen-files ]; then
++      for f in $(sort $efi_dir/grub.xen-files| uniq); do
++	rm -f $efi_dir/$f
++      done
++      : > $efi_dir/grub.xen-files
++    fi
++  fi
++else
++  is_efi=false
++fi
++
+ linux_entry ()
+ {
+   linux_entry_xsm "$@" false
+@@ -154,6 +194,40 @@
+       save_default_entry | grub_add_tab | sed "s/^/$submenu_indentation/"
+   fi
+ 
++  if $is_efi; then
++    xen_cfg=${xen_basename/.efi/.cfg}
++    if [ "$section_count" = 0 ]; then
++      cat <<-EOF > $grub_dir/$xen_cfg
++	# disclaimer
++	[global]
++	#default=
++	EOF
++    fi
++    section_count=$(expr $section_count + 1)
++    if [ x$type != xrecovery ] ; then
++      section="config.$section_count"
++    else
++      section="failsafe.$section_count"
++    fi
++    cat <<-EOF >> $grub_dir/$xen_cfg
++
++	[$section]
++	options=${xen_args}
++	kernel=${basename} root=${linux_root_device_thisversion} ${args}
++	ramdisk=${initrd_real}
++	EOF
++    message="$(gettext_printf "Loading Xen %s with Linux %s ..." ${xen_version} ${version})"
++    sed "s/^/$submenu_indentation/" <<-EOF
++	 	echo	'$(echo "$message" | grub_quote)'
++	 	chainloader  \$cmdpath/${xen_basename} ${xen_basename} $section
++	}
++	EOF
++    for f in ${grub_dir}/$xen_cfg ${xen_dir}/${xen_basename} ${dirname}/${basename} ${dirname}/${initrd_real}; do
++      cp --preserve=timestamps $f $efi_dir
++      echo $(basename $f) >> $efi_dir/grub.xen-files
++    done
++    return
++  fi
+   if [ -z "${prepare_boot_cache}" ]; then
+     prepare_boot_cache="$(prepare_grub_to_access_device ${GRUB_DEVICE_BOOT} | grub_add_tab)"
+   fi
+@@ -245,16 +319,6 @@
+ 
+ title_correction_code=
+ 
+-machine=`uname -m`
+-
+-case "$machine" in
+-    i?86) GENKERNEL_ARCH="x86" ;;
+-    mips|mips64) GENKERNEL_ARCH="mips" ;;
+-    mipsel|mips64el) GENKERNEL_ARCH="mipsel" ;;
+-    arm*) GENKERNEL_ARCH="arm" ;;
+-    *) GENKERNEL_ARCH="$machine" ;;
+-esac
+-
+ # Extra indentation to add to menu entries in a submenu. We're not in a submenu
+ # yet, so it's empty. In a submenu it will be equal to '\t' (one tab).
+ submenu_indentation=""
+@@ -325,6 +389,24 @@
+     xen_dirname=`dirname ${current_xen}`
+     rel_xen_dirname=`make_system_path_relative_to_its_root $xen_dirname`
+     xen_version=`echo $xen_basename | sed -e "s,.gz$,,g;s,^xen-,,g"`
++    xen_list=`echo $xen_list | tr ' ' '\n' | grep -vx $current_xen | tr '\n' ' '`
++    if $is_efi; then
++      xen_basename=${xen_basename/.gz/.efi}
++      if ! [ -f ${xen_dir}/${xen_basename} ]; then
++	echo "Skip missing hypervisor $xen_dir/$xen_basename" >&2
++	continue
++      elif [ -L ${xen_dir}/${xen_basename} ]; then
++	xen_target=$(basename $(readlink -e ${xen_dir}/${xen_basename}))
++	if [ -f ${efi_dir}/${xen_target} ]; then
++	  echo "Skip duplicate $xen_dir/$xen_basename for $xen_target" >&2
++	  continue
++	fi
++      elif [ -n "$err_msg" ]; then
++	break
++      fi
++      gettext_printf "Found hypervisor: %s\n" "$current_xen" >&2
++      section_count=0
++    fi
+     if [ -z "$boot_device_id" ]; then
+ 	boot_device_id="$(grub_get_device_id "${GRUB_DEVICE}")"
+     fi
+@@ -445,3 +527,7 @@
+ fi
+ 
+ echo "$title_correction_code"
++
++if [ -n "$err_msg" ]; then
++  echo -en "$err_msg" >&2
++fi

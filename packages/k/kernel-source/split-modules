@@ -1,0 +1,222 @@
+#!/bin/bash
+# 
+# given a Module.base and modules.dep, generate list
+# of base / supported / unsupported modules
+
+set -e
+export LC_COLLATE=C
+
+usage()
+{
+	echo "Usage: ${0##*/} -b Module.base [-d dir] [-i] [-e] [-o outdir]"
+	echo "  -i    Ignore supported.conf errors"
+	echo "  -e    Create the -extra filelist (otherwise, treat all modules as supported)"
+}
+
+options=$(getopt -o b:d:o:ie -- "$@")
+if test $? -ne 0; then
+	usage >&2
+	exit 1
+fi
+eval set -- "$options"
+opt_builddir=
+opt_out=.
+opt_dir=.
+opt_ignore_errors=false
+opt_extra=false
+while test $# -gt 0; do
+	opt=$1
+	shift
+	case "$opt" in
+	-b | -d | -o)
+		arg=$1
+		shift
+	esac
+	case "$opt" in
+	-b)
+		opt_builddir=$arg ;;
+	-d)
+		opt_dir=$arg ;;
+	-o)
+		opt_out=$arg ;;
+	-i)
+		opt_ignore_errors=true ;;
+	-e)
+		opt_extra=true ;;
+	--)
+		break ;;
+	*)
+		echo "Unknown option $opt" >&2
+		exit 1
+	esac
+done
+if test -z "$opt_builddir"; then
+	usage >&2
+	exit 1
+fi
+
+trap 'rm -rf "$tmp"' EXIT
+tmp=$(mktemp -d)
+mkdir "$tmp/empty"
+
+find "$opt_dir" -type f \( -name '*.ko' -o -name '*.ko.xz' -o -name '*.ko.gz' -o -name '*.ko.zst' \) -printf '/%P\n' | \
+	awk -F/ '{ n=$NF; gsub(/-/, "_", n); sub(/\.ko(\.xz|\.gz|\.zst)?$/, "", n); print n " " $0; }' | \
+	sort >"$tmp/all"
+
+err=false
+while read mod path; do
+	if $opt_extra; then
+		support=$(/sbin/modinfo -F supported "$opt_dir/$path")
+	else
+		support=yes
+	fi
+	case "$support" in
+	yes | external)
+		echo "$mod"
+		;;
+	no)
+		;;
+	"")
+		echo "warning: $mod not listed in supported.conf" >&2
+		;;
+	*)
+		echo "error: invalid support flag for $mod: $support" >&2
+		err=true
+		;;
+	esac
+done <"$tmp/all" | sort -u >"$tmp/supp"
+if $err; then
+	exit 1
+fi
+
+modules_dep=$(find "$opt_dir" -type f -name modules.dep)
+if test -z "$modules_dep"; then
+	echo "Cannot find modules.dep in $opt_dir" >&2
+	exit 1
+fi
+(
+	echo '%:
+	@echo $@
+ifdef EXPLAIN
+	@for dep in $^; do echo "$$dep needed by $@"; done >> $(EXPLAIN)
+endif
+'
+	sed -r 's:[^ ]*/([^/]*)\.ko(\.xz|\.gz|\.zst)?\>:\1:g; y/-/_/' "$modules_dep"
+) >"$tmp/dep"
+
+add_dependent_modules()
+{
+	xargs -r make $MAKE_ARGS EXPLAIN=$1 -rRs -C "$tmp/empty" -f "$tmp/dep" | sort -u
+}
+
+# base
+if test -f "$opt_builddir/Module.base"; then
+    sed 'y/-/_/' <"$opt_builddir/Module.base" | add_dependent_modules >"$tmp/base"
+else
+    touch "$tmp/base"
+fi
+join -j 1 -o 2.2 "$tmp/base" "$tmp/all" >"$opt_out/base-modules"
+
+# base firmware
+kver=$(make $MAKE_ARGS -s -C "$opt_builddir" kernelrelease)
+fw_dir=/lib/firmware/$kver
+test -d $opt_dir/usr$fw_dir && fw_dir=/usr$fw_dir
+if test -d "$opt_dir$fw_dir"; then
+	join <(/sbin/modinfo -F firmware \
+		$(sed "s:^:$opt_dir:" "$opt_out/base-modules") | sort) \
+	     <(find "$opt_dir$fw_dir" -type f -printf '%P\n' | sort)
+fi | sed "s:^:$fw_dir:" >"$opt_out/base-firmware"
+
+# kmps
+for f in "$opt_builddir"/Module.*-kmp; do
+	test -f "$f" || continue
+	kmp=${f##*/Module.}
+	sed 'y/-/_/' <"$f" >"$tmp/$kmp"
+	join -j 1 -o 2.2 "$tmp/$kmp" "$tmp/all" >"$opt_out/$kmp-modules"
+	cat "$tmp/$kmp"
+done | sort -u >"$tmp/kmp-all"
+join -v1 "$tmp/supp" "$tmp/kmp-all" >"$tmp/supp-main"
+
+# main
+add_dependent_modules "$tmp/supp-explain" <"$tmp/supp-main" >"$tmp/supp-all"
+if ! cmp -s "$tmp/supp-main" "$tmp/supp-all"; then
+	# FIXME: Error message not accurate if a supported KMP module is
+	# needed by a module in the main package
+	echo "The following unsupported modules are used by supported modules:" >&2
+	join -j1 -a2 <(sort "$tmp/supp-explain") \
+		 <(join -v2 "$tmp/supp-main" "$tmp/supp-all") >&2
+	echo "Please fix supported.conf." >&2
+	if ! $opt_ignore_errors; then
+		exit 1
+	fi
+fi
+join -j 1 -o 2.2 "$tmp/supp-all" "$tmp/all" >"$opt_out/main-modules"
+
+# unsupported
+join -j 1 -v 2 -o 2.2 <(sort -u "$tmp/supp-all" "$tmp/kmp-all") "$tmp/all" | sort -u > "$opt_out/unsupported-modules"
+
+# split again to extra and optional
+if $opt_extra && test -f "$opt_builddir/Module.optional"; then
+
+    declare -A modmarks wcmarks
+    wcpaths=()
+    while read mark path; do
+	case $path in
+	    *.ko.xz|*.ko.gz|*.ko.zst)
+		path=${path%.*};;
+	esac
+	path=${path%.ko}
+	mod=${path##*/}
+	modmarks["$mod"]="$mark"
+	# paths with wildcards need to be verified sequentially, so we keep
+	# the paths in the array wcpaths and each mark in wcmarks[]
+	case "$path" in
+	    *[\*\?\[]*)
+		wcpaths[${#wcpaths[@]}]="$path"
+		wcmarks["$path"]="$mark";;
+	esac
+    done < "$opt_builddir/Module.optional"
+
+    while read xpath; do
+	path=$xpath
+	case $path in
+	    *.ko.xz|*.ko.gz|*.ko.zst)
+		path=${path%.*};;
+	esac
+	path=${path%.ko}
+	mod=${path##*/}
+	x=${modmarks["$mod"]}
+	if [ -n "$x" ]; then
+	    test x"$x" = x"-" && echo "$xpath"
+	    continue
+	fi
+
+	# unmatched modules must be handled via wildcard
+	path=${path#/lib/modules/*/kernel/}
+	for m in "${wcpaths[@]}"; do
+	    case "$path" in
+		($m)
+		    test x${wcmarks["$m"]} = x"-" && echo "$xpath"
+		    break;;
+	    esac
+	done
+    done < "$opt_out/unsupported-modules" | sort > "$tmp/unsupp-extra"
+
+    cat "$tmp/supp-all" "$tmp/kmp-all" "$tmp/unsupp-extra" | \
+	sed -r 's:[^ ]*/([^/]*)\.ko(\.xz|\.gz|\.zst)?\>:\1:g; y/-/_/' | sort -u > "$tmp/unsupp-extra-all"
+    add_dependent_modules "$tmp/unsupp-explain" <"$tmp/unsupp-extra-all" >"$tmp/unsupp-extra-dep"
+    if ! cmp -s "$tmp/unsupp-extra-all" "$tmp/unsupp-extra-dep"; then
+	echo "The following optional modules are used by extra modules:" >&2
+	join -j1 -a2 <(sort "$tmp/unsupp-explain") \
+		 <(join -v2 "$tmp/unsupp-extra-all" "$tmp/unsupp-extra-dep") >&2
+	echo "Please fix supported.conf." >&2
+	if ! $opt_ignore_errors; then
+		exit 1
+	fi
+    fi
+
+    join -j 1 -v 2 "$tmp/unsupp-extra" "$opt_out/unsupported-modules" > "$opt_out/optional-modules"
+    mv "$tmp/unsupp-extra" "$opt_out/unsupported-modules"
+fi
+
+exit 0

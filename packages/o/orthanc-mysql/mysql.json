@@ -1,0 +1,18 @@
+{
+    /**
+     * Configuration to use MySQL instead of the default SQLite
+     * back-end of Orthanc. You will have to install the
+     * "orthanc-postgresql" package to take advantage of this feature.
+     **/
+  "MySQL" : {
+    "EnableIndex" : true,
+    "EnableStorage" : false,
+    "Host" : "localhost",    // For TCP connections (notably Windows)
+    "Port" : 3306,           // For TCP connections (notably Windows)
+    "UnixSocket" : "/var/run/mysqld/mysqld.sock",  // For UNIX on localhost
+    "Database" : "orthanc",
+    "Username" : "orthanc",
+    "Password" : "orthanc",
+    "Lock" : true            // See section about Locking
+    }
+}

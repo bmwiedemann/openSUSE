@@ -1,0 +1,115 @@
+From 3c612287086a5f590f80d874e8c5c6042bf7f6a0 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 24 Feb 2021 23:51:38 +0800
+Subject: [PATCH 44/46] squash! kern: Add lockdown support
+
+Since the lockdown feature is efi specific, the
+grub_{command,extcmd}_lockdown functions can be removed from other
+platform for not taking up space in kernel image.
+---
+ grub-core/commands/extcmd.c |  2 ++
+ grub-core/kern/command.c    |  2 ++
+ include/grub/command.h      | 11 +++++++++++
+ include/grub/extcmd.h       | 13 +++++++++++++
+ 4 files changed, 28 insertions(+)
+
+diff --git a/grub-core/commands/extcmd.c b/grub-core/commands/extcmd.c
+index 90a5ca24a..4ac111a99 100644
+--- a/grub-core/commands/extcmd.c
++++ b/grub-core/commands/extcmd.c
+@@ -111,6 +111,7 @@ grub_register_extcmd (const char *name, grub_extcmd_func_t func,
+ 				    summary, description, parser, 1);
+ }
+ 
++#ifdef GRUB_MACHINE_EFI
+ static grub_err_t
+ grub_extcmd_lockdown (grub_extcmd_context_t ctxt __attribute__ ((unused)),
+                       int argc __attribute__ ((unused)),
+@@ -132,6 +133,7 @@ grub_register_extcmd_lockdown (const char *name, grub_extcmd_func_t func,
+ 
+   return grub_register_extcmd (name, func, flags, summary, description, parser);
+ }
++#endif
+ 
+ void
+ grub_unregister_extcmd (grub_extcmd_t ext)
+diff --git a/grub-core/kern/command.c b/grub-core/kern/command.c
+index 4aabcd4b5..17363af7b 100644
+--- a/grub-core/kern/command.c
++++ b/grub-core/kern/command.c
+@@ -78,6 +78,7 @@ grub_register_command_prio (const char *name,
+   return cmd;
+ }
+ 
++#ifdef GRUB_MACHINE_EFI
+ static grub_err_t
+ grub_cmd_lockdown (grub_command_t cmd __attribute__ ((unused)),
+                    int argc __attribute__ ((unused)),
+@@ -100,6 +101,7 @@ grub_register_command_lockdown (const char *name,
+ 
+   return grub_register_command_prio (name, func, summary, description, 0);
+ }
++#endif
+ 
+ void
+ grub_unregister_command (grub_command_t cmd)
+diff --git a/include/grub/command.h b/include/grub/command.h
+index 2a6f7f846..b518e262e 100644
+--- a/include/grub/command.h
++++ b/include/grub/command.h
+@@ -86,11 +86,22 @@ EXPORT_FUNC(grub_register_command_prio) (const char *name,
+ 					 const char *summary,
+ 					 const char *description,
+ 					 int prio);
++#ifdef GRUB_MACHINE_EFI
+ grub_command_t
+ EXPORT_FUNC(grub_register_command_lockdown) (const char *name,
+                                              grub_command_func_t func,
+                                              const char *summary,
+                                              const char *description);
++#else
++static inline grub_command_t
++grub_register_command_lockdown (const char *name,
++                                grub_command_func_t func,
++                                const char *summary,
++                                const char *description)
++{
++  return grub_register_command_prio (name, func, summary, description, 0);
++}
++#endif
+ void EXPORT_FUNC(grub_unregister_command) (grub_command_t cmd);
+ 
+ static inline grub_command_t
+diff --git a/include/grub/extcmd.h b/include/grub/extcmd.h
+index fe9248b8b..fa1328ea5 100644
+--- a/include/grub/extcmd.h
++++ b/include/grub/extcmd.h
+@@ -62,12 +62,25 @@ grub_extcmd_t EXPORT_FUNC(grub_register_extcmd) (const char *name,
+ 						 const char *description,
+ 						 const struct grub_arg_option *parser);
+ 
++#ifdef GRUB_MACHINE_EFI
+ grub_extcmd_t EXPORT_FUNC(grub_register_extcmd_lockdown) (const char *name,
+                                                           grub_extcmd_func_t func,
+                                                           grub_command_flags_t flags,
+                                                           const char *summary,
+                                                           const char *description,
+                                                           const struct grub_arg_option *parser);
++#else
++static inline grub_extcmd_t
++grub_register_extcmd_lockdown (const char *name,
++                               grub_extcmd_func_t func,
++                               grub_command_flags_t flags,
++                               const char *summary,
++                               const char *description,
++                               const struct grub_arg_option *parser)
++{
++  return grub_register_extcmd (name, func, flags, summary, description, parser);
++}
++#endif
+ 
+ grub_extcmd_t EXPORT_FUNC(grub_register_extcmd_prio) (const char *name,
+ 						      grub_extcmd_func_t func,
+-- 
+2.26.2
+

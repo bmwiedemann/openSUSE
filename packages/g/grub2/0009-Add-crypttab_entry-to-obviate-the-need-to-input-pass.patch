@@ -1,0 +1,327 @@
+From 749f7dee6f63217e536663aebb817aec72a65d5a Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 9 Jun 2022 21:06:00 +0800
+Subject: [PATCH 09/10] Add crypttab_entry to obviate the need to input
+ password twice
+
+This patch adds crypttab_entry command to hint grub where to put the key file
+automatically loaded by linux cryptsetup. It's syntax is similar to
+/etc/crypttab so that it is relatively straightforward to import.
+
+  crypttab_entry <volume-name> <encrypted-device> <key-file>
+
+For eg:
+
+  crypttab_entry cr_root 5e1dd109e39343f984da57fd742d3f23 none
+
+Please note the "encrypted-device" only accepts UUID without dashes as it is
+the only identification used by grub's cryptodisk device. The crypttab_entry
+can also be used multiple times to specify encrypted volumes unlocked by
+"cryptomount -a".
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/Makefile.core.def   |    5 +
+ grub-core/commands/crypttab.c |   47 ++++++++++++++
+ grub-core/disk/cryptodisk.c   |    6 +
+ grub-core/loader/linux.c      |  137 ++++++++++++++++++++++++++++++++++++++++--
+ include/grub/linux.h          |    3 
+ 5 files changed, 193 insertions(+), 5 deletions(-)
+ create mode 100644 grub-core/commands/crypttab.c
+
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -2695,3 +2695,8 @@
+   cflags = '$(CFLAGS_POSIX) $(CFLAGS_GNULIB)';
+   cppflags = '$(CPPFLAGS_POSIX) $(CPPFLAGS_GNULIB)';
+ };
++
++module = {
++  name = crypttab;
++  common = commands/crypttab.c;
++};
+--- /dev/null
++++ b/grub-core/commands/crypttab.c
+@@ -0,0 +1,47 @@
++
++#include <grub/dl.h>
++#include <grub/command.h>
++#include <grub/misc.h>
++#include <grub/i18n.h>
++#include <grub/linux.h>
++
++GRUB_MOD_LICENSE ("GPLv3+");
++
++static grub_err_t
++grub_cmd_crypttab_entry (grub_command_t cmd __attribute__ ((unused)),
++	       int argc, char **argv)
++{
++  char buf[64];
++  const char *path = NULL;
++
++  if (argc == 2)
++    path = NULL;
++  else if (argc == 3)
++    path = argv[2];
++  else
++    return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("two or three arguments expected"));
++
++  if (!path
++      || grub_strcmp (path, "none") == 0
++      || grub_strcmp (path, "-") == 0)
++    {
++      grub_snprintf (buf, sizeof (buf), "/etc/cryptsetup-keys.d/%s.key", argv[0]);
++      path = buf;
++    }
++
++  /*FIXME: Validate UUID string*/
++  return grub_initrd_publish_key (argv[1], NULL, 0, path);
++}
++
++static grub_command_t cmd;
++
++GRUB_MOD_INIT(crypttab)
++{
++  cmd = grub_register_command ("crypttab_entry", grub_cmd_crypttab_entry,
++			       N_("VOLUME-NAME ENCRYPTED-DEVICE KEY-FILE") , N_("No description"));
++}
++
++GRUB_MOD_FINI(crypttab)
++{
++  grub_unregister_command (cmd);
++}
+--- a/grub-core/disk/cryptodisk.c
++++ b/grub-core/disk/cryptodisk.c
+@@ -30,6 +30,8 @@
+ 
+ #ifdef GRUB_UTIL
+ #include <grub/emu/hostdisk.h>
++#else
++#include <grub/linux.h>
+ #endif
+ 
+ GRUB_MOD_LICENSE ("GPLv3+");
+@@ -1235,6 +1237,10 @@
+   if (cargs->hdr_file != NULL)
+     source->read_hook = NULL;
+ 
++#ifndef GRUB_UTIL
++  if (cargs->key_data && dev)
++    grub_initrd_publish_key (dev->uuid, (const char *)cargs->key_data, cargs->key_len, NULL);
++#endif
+   if (askpass)
+     {
+       cargs->key_len = 0;
+--- a/grub-core/loader/linux.c
++++ b/grub-core/loader/linux.c
+@@ -5,6 +5,7 @@
+ #include <grub/file.h>
+ #include <grub/mm.h>
+ #include <grub/safemath.h>
++#include <grub/list.h>
+ 
+ struct newc_head
+ {
+@@ -27,6 +28,7 @@
+ struct grub_linux_initrd_component
+ {
+   grub_file_t file;
++  char *buf;
+   char *newc_name;
+   grub_off_t size;
+ };
+@@ -38,6 +40,18 @@
+   struct dir *child;
+ };
+ 
++struct grub_key_publisher
++{
++  struct grub_key_publisher *next;
++  struct grub_key_publisher **prev;
++  char *name; /* UUID */
++  char *path;
++  char *key;
++  grub_size_t key_len;
++};
++
++static struct grub_key_publisher *kpuber;
++
+ static char
+ hex (grub_uint8_t val)
+ {
+@@ -162,6 +176,65 @@
+   return GRUB_ERR_NONE;
+ }
+ 
++static grub_err_t
++grub_initrd_component (const char *buf, int bufsz, const char *newc_name,
++		  struct grub_linux_initrd_context *initrd_ctx)
++{
++  struct dir *root = 0;
++  struct grub_linux_initrd_component *comp = initrd_ctx->components + initrd_ctx->nfiles;
++  grub_size_t dir_size, name_len;
++
++  while (*newc_name == '/')
++    newc_name++;
++
++  initrd_ctx->size = ALIGN_UP (initrd_ctx->size, 4);
++  comp->newc_name = grub_strdup (newc_name);
++  if (!comp->newc_name ||
++      insert_dir (comp->newc_name, &root, 0, &dir_size))
++    {
++      /* FIXME: Check NULL file pointer before close */
++      grub_initrd_close (initrd_ctx);
++      return grub_errno;
++    }
++  /* Should name_len count terminating null ? */
++  name_len = grub_strlen (comp->newc_name) + 1;
++  if (grub_add (initrd_ctx->size,
++		ALIGN_UP (sizeof (struct newc_head) + name_len, 4),
++		&initrd_ctx->size) ||
++      grub_add (initrd_ctx->size, dir_size, &initrd_ctx->size))
++    goto overflow;
++
++  comp->buf = grub_malloc (bufsz);
++  if (!comp->buf)
++    {
++      free_dir (root);
++      grub_initrd_close (initrd_ctx);
++      return grub_errno;
++    }
++  grub_memcpy (comp->buf, buf, bufsz);
++  initrd_ctx->nfiles++;
++  comp->size = bufsz;
++  if (grub_add (initrd_ctx->size, comp->size,
++		&initrd_ctx->size))
++    goto overflow;
++
++  initrd_ctx->size = ALIGN_UP (initrd_ctx->size, 4);
++  if (grub_add (initrd_ctx->size,
++		ALIGN_UP (sizeof (struct newc_head)
++			  + sizeof ("TRAILER!!!") - 1, 4),
++		&initrd_ctx->size))
++    goto overflow;
++
++  free_dir (root);
++  root = 0;
++  return GRUB_ERR_NONE;
++
++ overflow:
++  free_dir (root);
++  grub_initrd_close (initrd_ctx);
++  return grub_error (GRUB_ERR_OUT_OF_RANGE, N_("overflow is detected"));
++}
++
+ grub_err_t
+ grub_initrd_init (int argc, char *argv[],
+ 		  struct grub_linux_initrd_context *initrd_ctx)
+@@ -169,11 +242,17 @@
+   int i;
+   int newc = 0;
+   struct dir *root = 0;
++  struct grub_key_publisher *pk;
++  int numkey = 0;
+ 
+   initrd_ctx->nfiles = 0;
+   initrd_ctx->components = 0;
+ 
+-  initrd_ctx->components = grub_calloc (argc, sizeof (initrd_ctx->components[0]));
++  FOR_LIST_ELEMENTS (pk, kpuber)
++    if (pk->key && pk->path)
++      numkey++;
++
++  initrd_ctx->components = grub_calloc (argc + numkey, sizeof (initrd_ctx->components[0]));
+   if (!initrd_ctx->components)
+     return grub_errno;
+ 
+@@ -253,6 +332,10 @@
+       root = 0;
+     }
+ 
++  FOR_LIST_ELEMENTS (pk, kpuber)
++    if (pk->key && pk->path)
++      grub_initrd_component (pk->key, pk->key_len, pk->path, initrd_ctx);
++
+   return GRUB_ERR_NONE;
+ 
+  overflow:
+@@ -276,7 +359,9 @@
+   for (i = 0; i < initrd_ctx->nfiles; i++)
+     {
+       grub_free (initrd_ctx->components[i].newc_name);
+-      grub_file_close (initrd_ctx->components[i].file);
++      if (initrd_ctx->components[i].file)
++	grub_file_close (initrd_ctx->components[i].file);
++      grub_free (initrd_ctx->components[i].buf);
+     }
+   grub_free (initrd_ctx->components);
+   initrd_ctx->components = 0;
+@@ -325,7 +410,12 @@
+ 	}
+ 
+       cursize = initrd_ctx->components[i].size;
+-      if (grub_file_read (initrd_ctx->components[i].file, ptr, cursize)
++      if (initrd_ctx->components[i].buf)
++	{
++	  grub_memcpy (ptr, initrd_ctx->components[i].buf, cursize);
++	  newc = 1;
++	}
++      else if (grub_file_read (initrd_ctx->components[i].file, ptr, cursize)
+ 	  != cursize)
+ 	{
+ 	  if (!grub_errno)
+@@ -346,3 +436,45 @@
+   root = 0;
+   return GRUB_ERR_NONE;
+ }
++
++grub_err_t
++grub_initrd_publish_key (const char *uuid, const char *key, grub_size_t key_len, const char *path)
++{
++  struct grub_key_publisher *cur = NULL;
++
++  FOR_LIST_ELEMENTS (cur, kpuber)
++    if (grub_uuidcasecmp (cur->name, uuid, sizeof (cur->name)) == 0)
++      break;
++
++  if (!cur)
++    cur = grub_zalloc (sizeof (*cur));
++  if (!cur)
++    return grub_errno;
++
++  if (key && key_len)
++    {
++      grub_free (cur->key);
++      cur->key = grub_malloc (key_len);
++      if (!cur->key)
++	{
++	  grub_free (cur);
++	  return grub_errno;
++	}
++      grub_memcpy (cur->key, key, key_len);
++      cur->key_len = key_len;
++    }
++
++  if (path)
++    {
++      grub_free (cur->path);
++      cur->path = grub_strdup (path);
++    }
++
++  if (!cur->name)
++    {
++      cur->name = grub_strdup (uuid);
++      grub_list_push (GRUB_AS_LIST_P (&kpuber), GRUB_AS_LIST (cur));
++    }
++
++  return GRUB_ERR_NONE;
++}
+--- a/include/grub/linux.h
++++ b/include/grub/linux.h
+@@ -22,3 +22,6 @@
+ grub_err_t
+ grub_initrd_load (struct grub_linux_initrd_context *initrd_ctx,
+ 		  void *target);
++
++grub_err_t
++grub_initrd_publish_key (const char *uuid, const char *key, grub_size_t key_len, const char *path);

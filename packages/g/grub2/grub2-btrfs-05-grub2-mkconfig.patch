@@ -1,0 +1,137 @@
+
+Always declare path specification in case of inconsistent declaration
+elsewhere. (bsc#1209165)
+
+---
+ util/grub-mkconfig.in       |    3 ++-
+ util/grub-mkconfig_lib.in   |    4 ++++
+ util/grub.d/00_header.in    |   23 ++++++++++++++++++++++-
+ util/grub.d/10_linux.in     |   11 ++++++++++-
+ util/grub.d/20_linux_xen.in |    4 ++++
+ 5 files changed, 42 insertions(+), 3 deletions(-)
+
+--- a/util/grub-mkconfig_lib.in
++++ b/util/grub-mkconfig_lib.in
+@@ -49,7 +49,11 @@
+ 
+ make_system_path_relative_to_its_root ()
+ {
++  if [ "x${SUSE_BTRFS_SNAPSHOT_BOOTING}" = "xtrue" ] ; then
++  "${grub_mkrelpath}" -r "$1"
++  else
+   "${grub_mkrelpath}" "$1"
++  fi
+ }
+ 
+ is_path_readable_by_grub ()
+--- a/util/grub.d/00_header.in
++++ b/util/grub.d/00_header.in
+@@ -27,6 +27,21 @@
+ 
+ . "$pkgdatadir/grub-mkconfig_lib"
+ 
++if [ "x${SUSE_BTRFS_SNAPSHOT_BOOTING}" = "xtrue" ] &&
++   [ "x${GRUB_FS}" = "xbtrfs" ] ; then
++    cat <<EOF
++set btrfs_relative_path="y"
++export btrfs_relative_path
++EOF
++else
++# Always declare path specification in case of inconsistent declaration
++# elsewhere. (bsc#1209165)
++    cat <<EOF
++set btrfs_relative_path="n"
++export btrfs_relative_path
++EOF
++fi
++
+ # Do this as early as possible, since other commands might depend on it.
+ # (e.g. the `loadfont' command might need lvm or raid modules)
+ for i in ${GRUB_PRELOAD_MODULES} ; do
+@@ -43,7 +58,9 @@
+ if [ "x${GRUB_TIMEOUT_BUTTON}" = "x" ] ; then GRUB_TIMEOUT_BUTTON="$GRUB_TIMEOUT" ; fi
+ 
+ cat << EOF
+-if [ -s \$prefix/grubenv ]; then
++if [ -f \${config_directory}/grubenv ]; then
++  load_env -f \${config_directory}/grubenv
++elif [ -s \$prefix/grubenv ]; then
+   load_env
+ fi
+ 
+@@ -401,3 +418,15 @@
+ if [ "x${GRUB_BADRAM}" != "x" ] ; then
+   echo "badram ${GRUB_BADRAM}"
+ fi
++
++if [ "x${SUSE_BTRFS_SNAPSHOT_BOOTING}" = "xtrue" ] &&
++   [ "x${GRUB_FS}" = "xbtrfs" ] ; then
++    # Note: No $snapshot_num on *read-only* rollback!  (bsc#901487)
++    cat <<EOF
++if [ -n "\$extra_cmdline" ]; then
++  submenu "Bootable snapshot #\$snapshot_num" {
++    menuentry "If OK, run 'snapper rollback' and reboot." { true; }
++  }
++fi
++EOF
++fi
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -297,7 +297,8 @@
+   GRUB_ENABLE_CRYPTODISK \
+   GRUB_BADRAM \
+   GRUB_OS_PROBER_SKIP_LIST \
+-  GRUB_DISABLE_SUBMENU
++  GRUB_DISABLE_SUBMENU \
++  SUSE_BTRFS_SNAPSHOT_BOOTING
+ 
+ if test "x${grub_cfg}" != "x"; then
+   rm -f "${grub_cfg}.new"
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -71,10 +71,14 @@
+ 
+ case x"$GRUB_FS" in
+     xbtrfs)
++	if [ "x${SUSE_BTRFS_SNAPSHOT_BOOTING}" = "xtrue" ]; then
++	GRUB_CMDLINE_LINUX="${GRUB_CMDLINE_LINUX} \${extra_cmdline}"
++	else
+ 	rootsubvol="`make_system_path_relative_to_its_root /`"
+ 	rootsubvol="${rootsubvol#/}"
+ 	if [ "x${rootsubvol}" != x ]; then
+ 	    GRUB_CMDLINE_LINUX="rootflags=subvol=${rootsubvol} ${GRUB_CMDLINE_LINUX}"
++	fi
+ 	fi;;
+     xzfs)
+ 	rpool=`${grub_probe} --device ${GRUB_DEVICE} --target=fs_label 2>/dev/null || true`
+@@ -295,7 +299,12 @@
+   if [ $PLATFORM != "emu" ]; then
+     hotkey=0
+   else
+-    rel_dirname=$dirname
++    if [ "x${SUSE_BTRFS_SNAPSHOT_BOOTING}" = "xtrue" ] &&
++       [ "x${GRUB_FS}" = "xbtrfs" ] ; then
++       rel_dirname="\${btrfs_subvol}$dirname"
++    else
++       rel_dirname="$dirname"
++    fi
+   fi
+   version=`echo $basename | sed -e "s,^[^0-9]*-,,g"`
+   alt_version=`echo $version | sed -e "s,\.old$,,g"`
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -81,10 +81,14 @@
+ 
+ case x"$GRUB_FS" in
+     xbtrfs)
++	if [ "x${SUSE_BTRFS_SNAPSHOT_BOOTING}" = "xtrue" ]; then
++	GRUB_CMDLINE_LINUX="${GRUB_CMDLINE_LINUX} \${extra_cmdline}"
++	else
+ 	rootsubvol="`make_system_path_relative_to_its_root /`"
+ 	rootsubvol="${rootsubvol#/}"
+ 	if [ "x${rootsubvol}" != x ]; then
+ 	    GRUB_CMDLINE_LINUX="rootflags=subvol=${rootsubvol} ${GRUB_CMDLINE_LINUX}"
++	fi
+ 	fi;;
+     xzfs)
+ 	rpool=`${grub_probe} --device ${GRUB_DEVICE} --target=fs_label 2>/dev/null || true`

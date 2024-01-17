@@ -1,0 +1,165 @@
+--- a/include/grub/tpm.h
++++ b/include/grub/tpm.h
+@@ -36,6 +36,12 @@
+ 
+ #define EV_IPL 0x0d
+ 
++struct grub_tpm_digest {
++	const char *	algorithm;
++	unsigned int	size;
++	unsigned char	value[1];	/* variable length */
++};
++
+ grub_err_t grub_tpm_measure (unsigned char *buf, grub_size_t size,
+ 			     grub_uint8_t pcr, const char *description);
+ int grub_tpm_present (void);
+@@ -45,5 +51,7 @@
+ {
+   return grub_env_get_bool ("tpm_fail_fatal", false);
+ }
++struct grub_tpm_digest *grub_tpm_read_pcr (grub_uint8_t index, const char *algo);
++void grub_tpm_digest_free (struct grub_tpm_digest *d);
+ 
+ #endif
+--- a/grub-core/commands/efi/tpm.c
++++ b/grub-core/commands/efi/tpm.c
+@@ -24,6 +24,7 @@
+ #include <grub/efi/efi.h>
+ #include <grub/efi/cc.h>
+ #include <grub/efi/tpm.h>
++#include <grub/tpm2/tpm2.h>
+ #include <grub/mm.h>
+ #include <grub/tpm.h>
+ #include <grub/term.h>
+@@ -186,6 +187,91 @@
+   return grub_efi_log_event_status (status);
+ }
+ 
++static void
++grub_tpm2_select_pcr(TPML_PCR_SELECTION *o, unsigned int pcrIndex, unsigned int algo)
++{
++  TPMS_PCR_SELECTION *pcr;
++
++  pcr = &o->pcrSelections[o->count++];
++  pcr->hash = algo;
++  pcr->sizeOfSelect = 3;
++  pcr->pcrSelect[TPM2_PCR_TO_SELECT(pcrIndex)] |= TPM2_PCR_TO_BIT(pcrIndex);
++}
++
++struct grub_tpm_hash_info {
++  const char *name;
++  grub_size_t size;
++  int id;
++};
++
++static const struct grub_tpm_hash_info *
++grub_tpm2_get_digest_info (const char *algo)
++{
++  static struct grub_tpm_hash_info __hashes[] = {
++	  { "sha256",	32,	TPM_ALG_SHA256 },	/* first entry is the default */
++	  { "sha512",	64,	TPM_ALG_SHA512 },
++	  { "sha1",	20,	TPM_ALG_SHA1 },
++	  { NULL }
++  };
++  struct grub_tpm_hash_info *h;
++
++  if (algo == NULL)
++    return &__hashes[0];
++
++  for (h = __hashes; h->name; ++h)
++    if (!grub_strcmp(h->name, algo))
++      return h;
++
++  return NULL;
++}
++
++static grub_err_t
++grub_tpm2_read_pcr (grub_int8_t pcrIndex, const char *algo, struct grub_tpm_digest **ret)
++{
++  const struct grub_tpm_hash_info *info;
++  TPML_PCR_SELECTION inSelection, outSelection;
++  grub_uint32_t pcrUpdateCounter;
++  TPML_DIGEST digests = { 0 };
++  TPM2B_DIGEST *d;
++  struct grub_tpm_digest *result;
++  int rc;
++
++  info = grub_tpm2_get_digest_info (algo);
++  if (info == NULL)
++    return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("Unknown digest algorithm %s"), algo);
++
++  grub_memset(&inSelection, 0, sizeof(inSelection));
++  grub_memset(&outSelection, 0, sizeof(outSelection));
++  grub_tpm2_select_pcr(&inSelection, pcrIndex, info->id);
++
++  rc = TPM2_PCR_Read(
++      NULL,
++      &inSelection,
++      &pcrUpdateCounter,
++      &outSelection,
++      &digests,
++      NULL
++    );
++
++  if (rc != 0)
++    return grub_error (GRUB_ERR_BAD_DEVICE, "TPM2_PCR_Read failed, status=%d", rc);
++
++  d = &digests.digests[0];
++
++  *ret = result = grub_malloc (sizeof (*result) + d->size);
++  grub_memcpy (result->value, d->buffer, d->size);
++  result->algorithm = info->name;
++  result->size = d->size;
++
++  return GRUB_ERR_NONE;
++}
++
++void
++grub_tpm_digest_free (struct grub_tpm_digest *d)
++{
++  grub_free (d);
++}
++
+ static grub_err_t
+ grub_tpm2_log_event (grub_efi_handle_t tpm_handle, unsigned char *buf,
+ 		     grub_size_t size, grub_uint8_t pcr,
+@@ -323,3 +409,26 @@
+       return grub_tpm2_present (tpm);
+     }
+ }
++
++struct grub_tpm_digest *
++grub_tpm_read_pcr (grub_uint8_t pcr, const char *algo)
++{
++  grub_efi_handle_t tpm_handle;
++  grub_efi_uint8_t protocol_version;
++  struct grub_tpm_digest *result = NULL;
++
++
++  if (!grub_tpm_handle_find (&tpm_handle, &protocol_version))
++    return 0;
++
++  if (protocol_version != 2)
++    {
++      grub_error (GRUB_ERR_BAD_DEVICE, N_("%s: TPM version %d not implemented"), __func__, protocol_version);
++      return NULL;
++    }
++
++  if (grub_tpm2_read_pcr (pcr, algo, &result))
++    return NULL;
++
++  return result;
++}
+--- a/include/grub/tpm2/tpm2.h
++++ b/include/grub/tpm2/tpm2.h
+@@ -23,6 +23,10 @@
+ #include <grub/tpm2/internal/structs.h>
+ #include <grub/tpm2/internal/functions.h>
+ 
++/* Defined in: TCG TPM Specification, v1.59, Part 2, Section 10.6.1. */
++#define TPM2_PCR_TO_SELECT(x)  ((x) / 8)
++#define TPM2_PCR_TO_BIT(x)     (1 << ((x) % 8))
++
+ /* Well-Known Windows SRK handle */
+ #define TPM2_SRK_HANDLE 0x81000001
+ 

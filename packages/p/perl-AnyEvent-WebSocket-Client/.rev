@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>119198ec167e1ab75862ce9498541a2e</srcmd5>
+    <version>0.53</version>
+    <time>1604779267</time>
+    <user>dimstar_suse</user>
+    <comment>several Dancer2 Plugins including dependencies</comment>
+    <requestid>845924</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>253978a54f39e12e0941deade3c9a46d</srcmd5>
+    <version>0.54</version>
+    <time>1616598791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880562</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>40ab874407022868716abcff28c7e080</srcmd5>
+    <version>0.55</version>
+    <time>1685743610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090312</requestid>
+  </revision>
+</revisionlist>

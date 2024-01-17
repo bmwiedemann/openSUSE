@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42c8c152de39aa9b1af82dcc14b77f78</srcmd5>
+    <version>0.12.4</version>
+    <time>1522225756</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590719</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d39b1633756342cff99720daf5e8fadc</srcmd5>
+    <version>0.12.4</version>
+    <time>1544726434</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653957</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c13f49e2049c2669be03528b5834675d</srcmd5>
+    <version>0.12.5</version>
+    <time>1551455287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.5:
+  * various test fixes
+  * few crasher fixes</comment>
+    <requestid>680057</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ac4ab2cb47f0bfee1293a0cc8915227d</srcmd5>
+    <version>0.12.5</version>
+    <time>1554458727</time>
+    <user>dimstar_suse</user>
+    <comment>- Run tests only under py3 as CherryPy is available only there
+
+- Activate test suite, with two tests currently failing
+- Trim description, removing irrelevant information about httplib2
+- Recommend lockfile, as a lightweight dependency needed for FileCache,
+  which is a primary use of CacheControl.</comment>
+    <requestid>691698</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>2b770b095cef17dff64300e361e7498c</srcmd5>
+    <version>0.12.5</version>
+    <time>1569391812</time>
+    <user>dimstar_suse</user>
+    <comment>- Restrict pytest to 3.x as newer released do not work with
+  this package</comment>
+    <requestid>732618</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>f35d9f97ca13ed943cfabe64cc528f45</srcmd5>
+    <version>0.12.5</version>
+    <time>1572617646</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to work with new pytest:
+  * pytest4.patch</comment>
+    <requestid>744702</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>12b3a63521b69f48afda2ec87c0ebb40</srcmd5>
+    <version>0.12.6</version>
+    <time>1578069401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760434</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7c17f95093936629c94c3697e427e662</srcmd5>
+    <version>0.12.6</version>
+    <time>1591742684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809828</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f653e529652eccb4f9753df795d5dcfc</srcmd5>
+    <version>0.12.10</version>
+    <time>1639075509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935720</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>56af2776ccd3e254d58aae26a0dc2b2b</srcmd5>
+    <version>0.12.11</version>
+    <time>1659554188</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992331</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>310a73efce98a2ed06d9be1d9089549e</srcmd5>
+    <version>0.12.11</version>
+    <time>1683559477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085439</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>9dfdb55608695ada3f3164654a5d0909</srcmd5>
+    <version>0.12.11</version>
+    <time>1685476960</time>
+    <user>dimstar_suse</user>
+    <comment>- Add requests-fix.patch to support latest version of urllib3 and
+  requests
+  gh#ionrock/cachecontrol#301, gh#ionrock/cachecontrol#304
+</comment>
+    <requestid>1089718</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0ad1c097901504c6e2c73281bf2a8822</srcmd5>
+    <version>0.13.1</version>
+    <time>1687900591</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.13.1 
+  * Support for old serialization formats has been removed.
+  * Move the serialization implementation into own method.
+  * Drop support for Python older than 3.7.
+- version 0.13.0
+  * YANKED
+  * The project has been moved to the PSF organization.
+  * Discard the strict attribute when serializing and deserializing responses.
+  * Fix the IncompleteRead error thrown by urllib3 2.0.
+  * Remove usage of utcnow in favor of timezone-aware datetimes.
+  * Remove the compat module.
+  * Use Python's unittest.mock library instead of mock.
+  * Add type annotations.
+  * Exclude the tests directory from the wheel.
+- version 0.12.14
+  * Revert the change &quot;switch lockfile to filelock&quot; to fix the compatibility issue.
+- version 0.12.13
+  * Discard the strict attribute when serializing and deserializing responses.
+  * Fix the IncompleteRead error thrown by urllib3 2.0.
+  * Exclude the tests directory from the wheel.
+- Remove requests-fix.patch (obsolete)</comment>
+    <requestid>1095465</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>379c874e9d06d95beb8c693496e89b74</srcmd5>
+    <version>0.13.1</version>
+    <time>1704281413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136189</requestid>
+  </revision>
+</revisionlist>

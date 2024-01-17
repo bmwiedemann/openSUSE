@@ -1,0 +1,289 @@
+From 71575829c303fe8522b46fc96b1f99f1aa4178e7 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Fri, 19 Mar 2021 22:58:45 +0800
+Subject: [PATCH] Workaround volatile efi boot variable
+
+The efi variable in Microsoft Azure virtual machine is volatile that it cannot
+persist across power cycling. If we use efi variable to communicate with efi
+boot manager for booting a distribution, the process would silently fail as the
+default loader in the efi system partition will start to take over the process
+whenever the efi variable evaporated.
+
+That will lead to undefined symbol error one day as the default path didn't
+receive any grub update so it cannot keep up with new ABI requirement by
+updated grub modules.
+
+The patch will try to workaround the problem by providing grub update to the
+default path along with the distribution specific one. To avoid negative side
+effects of inadvertently overwritting other loader intended in default path,
+care must be taken to ensure that:
+
+1. The workaround only takes place on detected Azure virtual machine
+2. The default path is not in use by shim for the secure boot
+---
+ Makefile.util.def                             |   1 +
+ .../osdep/basic/efi_removable_fallback.c      |  26 +++
+ grub-core/osdep/efi_removable_fallback.c      |   5 +
+ .../osdep/linux/efi_removable_fallback.c      | 151 ++++++++++++++++++
+ include/grub/util/install.h                   |   3 +
+ util/grub-install.c                           |  19 +++
+ 6 files changed, 205 insertions(+)
+ create mode 100644 grub-core/osdep/basic/efi_removable_fallback.c
+ create mode 100644 grub-core/osdep/efi_removable_fallback.c
+ create mode 100644 grub-core/osdep/linux/efi_removable_fallback.c
+
+--- a/Makefile.util.def
++++ b/Makefile.util.def
+@@ -681,6 +681,9 @@
+   common = grub-core/osdep/journaled_fs.c;
+   extra_dist = grub-core/osdep/basic/journaled_fs.c;
+   extra_dist = grub-core/osdep/linux/journaled_fs.c;
++  common = grub-core/osdep/efi_removable_fallback.c;
++  extra_dist = grub-core/osdep/basic/efi_removable_fallback.c;
++  extra_dist = grub-core/osdep/linux/efi_removable_fallback.c;
+ 
+   ldadd = '$(LIBLZMA)';
+   ldadd = libgrubmods.a;
+--- /dev/null
++++ b/grub-core/osdep/basic/efi_removable_fallback.c
+@@ -0,0 +1,26 @@
++/*
++ *  GRUB  --  GRand Unified Bootloader
++ *  Copyright (C) 2013 Free Software Foundation, Inc.
++ *
++ *  GRUB is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  GRUB is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include <grub/util/install.h>
++
++const char *
++grub_install_efi_removable_fallback (const char *efidir, enum grub_install_plat platform)
++{
++  return NULL;
++}
++
+--- /dev/null
++++ b/grub-core/osdep/efi_removable_fallback.c
+@@ -0,0 +1,5 @@
++#ifdef __linux__
++#include "linux/efi_removable_fallback.c"
++#else
++#include "basic/efi_removable_fallback.c"
++#endif
+--- /dev/null
++++ b/grub-core/osdep/linux/efi_removable_fallback.c
+@@ -0,0 +1,151 @@
++/*
++ *  GRUB  --  GRand Unified Bootloader
++ *  Copyright (C) 2013 Free Software Foundation, Inc.
++ *
++ *  GRUB is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  GRUB is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include <config.h>
++
++#include <grub/util/install.h>
++#include <grub/emu/exec.h>
++#include <grub/emu/misc.h>
++#include <string.h>
++
++static char *
++get_dmi_id (const char *id)
++{
++  FILE *fp;
++  char *buf = NULL;
++  size_t len = 0;
++
++  char *dmi_entry;
++
++  dmi_entry = grub_util_path_concat (2, "/sys/class/dmi/id", id);
++
++  fp = grub_util_fopen (dmi_entry, "r");
++  if (!fp)
++    {
++      free (dmi_entry);
++      return NULL;
++    }
++
++  if (getline (&buf, &len, fp) == -1)
++    {
++      fclose (fp);
++      free (dmi_entry);
++      return NULL;
++    }
++
++  fclose (fp);
++  free (dmi_entry);
++  return buf;
++}
++
++
++static struct dmi {
++  const char *id;
++  const char *val;
++} azure_dmi [3] = {
++  {"bios_vendor", "Microsoft Corporation"},
++  {"product_name", "Virtual Machine"},
++  {"sys_vendor", "Microsoft Corporation"},
++};
++
++static int
++is_azure (void)
++{
++  int i;
++  int n = sizeof (azure_dmi) / sizeof (struct dmi);
++
++  for (i = 0; i < n; ++i)
++    {
++      char *val;
++
++      val = get_dmi_id (azure_dmi[i].id);
++      if (!val)
++	break;
++      if (strncmp (val, azure_dmi[i].val, strlen (azure_dmi[i].val)) != 0)
++	{
++	  free (val);
++	  break;
++	}
++      free (val);
++    }
++
++  return (i == n) ? 1 : 0;
++}
++
++static int
++guess_shim_installed (const char *instdir)
++{
++  const char *shim[] = {"fallback.efi", "MokManager.efi", NULL};
++  const char **s;
++
++  for (s = shim; *s ; ++s)
++    {
++      char *p = grub_util_path_concat (2, instdir, *s);
++
++      if (access (p, F_OK) == 0)
++	{
++	  free (p);
++	  return 1;
++	}
++      free (p);
++    }
++
++  return 0;
++}
++
++const char *
++grub_install_efi_removable_fallback (const char *efidir, enum grub_install_plat platform)
++{
++  char *instdir;
++
++  if (!is_azure ())
++    return NULL;
++
++  instdir = grub_util_path_concat (3, efidir, "EFI", "BOOT");
++
++  if (guess_shim_installed (instdir))
++    {
++      grub_util_info ("skip removable fallback occupied by shim");
++      return NULL;
++    }
++
++  free (instdir);
++
++  switch (platform)
++    {
++    case GRUB_INSTALL_PLATFORM_I386_EFI:
++      return "BOOTIA32.EFI";
++    case GRUB_INSTALL_PLATFORM_X86_64_EFI:
++      return "BOOTX64.EFI";
++    case GRUB_INSTALL_PLATFORM_IA64_EFI:
++      return "BOOTIA64.EFI";
++    case GRUB_INSTALL_PLATFORM_ARM_EFI:
++      return "BOOTARM.EFI";
++    case GRUB_INSTALL_PLATFORM_ARM64_EFI:
++      return "BOOTAA64.EFI";
++    case GRUB_INSTALL_PLATFORM_RISCV32_EFI:
++      return "BOOTRISCV32.EFI";
++    case GRUB_INSTALL_PLATFORM_RISCV64_EFI:
++      return "BOOTRISCV64.EFI";
++    default:
++      grub_util_error ("%s", _("You've found a bug"));
++      break;
++    }
++  return NULL;
++}
++
+--- a/include/grub/util/install.h
++++ b/include/grub/util/install.h
+@@ -303,4 +303,7 @@
+ 
+ int
+ grub_install_sync_fs_journal (const char *path);
++
++const char *
++grub_install_efi_removable_fallback (const char *efidir, enum grub_install_plat platform);
+ #endif
+--- a/util/grub-install.c
++++ b/util/grub-install.c
+@@ -901,6 +901,7 @@
+   const char *pkgdatadir;
+   char *rootdir_path;
+   char **rootdir_devices;
++  char *efidir_root;
+ 
+   grub_util_host_init (&argc, &argv);
+   product_version = xstrdup (PACKAGE_VERSION);
+@@ -1175,6 +1176,7 @@
+ 	}
+       if (!efidir)
+ 	grub_util_error ("%s", _("cannot find EFI directory"));
++      efidir_root = grub_strdup (efidir);
+       efidir_device_names = grub_guess_root_devices (efidir);
+       if (!efidir_device_names || !efidir_device_names[0])
+ 	grub_util_error (_("cannot find a device for %s (is /dev mounted?)"),
+@@ -2217,6 +2219,23 @@
+ 	    free (grub_efi_cfg);
+ 	  }
+       }
++      if (!removable)
++	{
++	  const char *f;
++
++	  f = grub_install_efi_removable_fallback (efidir_root, platform);
++	  if (f)
++	    {
++	      char *t = grub_util_path_concat (3, efidir_root, "EFI", "BOOT");
++	      char *dst = grub_util_path_concat (2, t, f);
++
++	      grub_install_mkdir_p (t);
++	      fprintf (stderr, _("Install to %s as fallback.\n"), dst);
++	      grub_install_copy_file (imgfile, dst, 1);
++	      grub_free (t);
++	      grub_free (dst);
++	    }
++	}
+       if (!removable && update_nvram)
+ 	{
+ 	  char * efifile_path;

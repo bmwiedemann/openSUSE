@@ -1,0 +1,16 @@
+--- a/util/grub-install.c
++++ b/util/grub-install.c
+@@ -1501,6 +1501,13 @@
+ 
+   grub_util_unlink (load_cfg);
+ 
++  if (1)
++    {
++      load_cfg_f = grub_util_fopen (load_cfg, "wb");
++      have_load_cfg = 1;
++      fprintf (load_cfg_f, "tpm_record_pcrs 0-9\n");
++    }
++
+   if (debug_image && debug_image[0])
+     {
+       load_cfg_f = grub_util_fopen (load_cfg, "wb");

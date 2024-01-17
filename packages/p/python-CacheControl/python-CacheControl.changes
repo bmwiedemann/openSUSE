@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Fri Dec 29 11:48:07 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove BuildRequires and Suggests python-redis since it's not
+  really used when building and there's no reason to suggest it
+  unless someone wants to explicitly use redis, this simplifies
+  the dependencies which is useful for SLE.
+
+-------------------------------------------------------------------
+Mon Jun 19 12:38:35 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Update to v0.13.1 
+  * Support for old serialization formats has been removed.
+  * Move the serialization implementation into own method.
+  * Drop support for Python older than 3.7.
+- version 0.13.0
+  * YANKED
+  * The project has been moved to the PSF organization.
+  * Discard the strict attribute when serializing and deserializing responses.
+  * Fix the IncompleteRead error thrown by urllib3 2.0.
+  * Remove usage of utcnow in favor of timezone-aware datetimes.
+  * Remove the compat module.
+  * Use Python's unittest.mock library instead of mock.
+  * Add type annotations.
+  * Exclude the tests directory from the wheel.
+- version 0.12.14
+  * Revert the change "switch lockfile to filelock" to fix the compatibility issue.
+- version 0.12.13
+  * Discard the strict attribute when serializing and deserializing responses.
+  * Fix the IncompleteRead error thrown by urllib3 2.0.
+  * Exclude the tests directory from the wheel.
+- Remove requests-fix.patch (obsolete)
+
+-------------------------------------------------------------------
+Tue May 30 07:53:24 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add requests-fix.patch to support latest version of urllib3 and
+  requests
+  gh#ionrock/cachecontrol#301, gh#ionrock/cachecontrol#304
+
+-------------------------------------------------------------------
+Mon May  8 06:37:48 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Tue Aug  2 10:26:39 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to v0.12.11
+  * Added new variant of FileCache, SeparateBodyFileCache, which uses
+    less memory by storing the body in a separate file than metadata,
+    and streaming data in and out directly to/from that file.
+
+-------------------------------------------------------------------
+Sat Dec  4 21:10:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.12.10
+  * Dropped support for Python 2.7, 3.4, 3.5.
+  * Reduced memory usage when caching large files.
+
+-------------------------------------------------------------------
+Wed May 27 09:36:33 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Thu Jan  2 11:57:41 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Drop merged pytest4.patch
+- Add explanation of one test failure
+- Remove mention of httplib2 from package summary
+- Update to v0.12.6
+  * Test if cache is None before falling back to DictCache
+  * Fixed body in 304 response to etag request
+  * Added check for "*" value in Vary header
+  * Make v4 cache compatible with msgpack 1.0 in the future
+
+-------------------------------------------------------------------
+Fri Nov  1 09:31:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to work with new pytest:
+  * pytest4.patch
+
+-------------------------------------------------------------------
+Wed Sep 18 09:15:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Restrict pytest to 3.x as newer released do not work with
+  this package
+
+-------------------------------------------------------------------
+Fri Apr  5 07:14:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Run tests only under py3 as CherryPy is available only there
+
+-------------------------------------------------------------------
+Mon Mar 25 09:46:31 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite, with two tests currently failing
+- Trim description, removing irrelevant information about httplib2
+- Recommend lockfile, as a lightweight dependency needed for FileCache,
+  which is a primary use of CacheControl.
+
+-------------------------------------------------------------------
+Thu Feb 28 09:10:36 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.12.5:
+  * various test fixes
+  * few crasher fixes
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:22 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Mar 23 15:11:34 UTC 2018 - tbechtold@suse.com
+
+- Initial packaging (version 0.12.4)

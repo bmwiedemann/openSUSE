@@ -1,0 +1,86 @@
+From 5f7f27d1198ef425f4943cc10132509415bbaf55 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 24 Jan 2019 16:41:04 +0800
+Subject: [PATCH] video: limit the resolution for fixed bimap font
+
+As grub uses fixed bitmap font and also its size is a fixed property, it is not
+possible to accommodate to all resolutions, therefore we raise some limit to
+the preferred resolution as most themes are designed on popular device and the
+resolution in its prime, which is supposedly Full HD.
+
+This change also makes grub font readable on hiDPI device without going through
+the steps in.
+
+https://wiki.archlinux.org/index.php/HiDPI#GRUB
+
+v2: efi_gop: Avoid high resolution when trying to keep current mode. 
+
+---
+ grub-core/video/efi_gop.c     | 7 +++++++
+ grub-core/video/i386/pc/vbe.c | 8 +++++++-
+ 2 files changed, 14 insertions(+), 1 deletion(-)
+
+--- a/grub-core/video/efi_gop.c
++++ b/grub-core/video/efi_gop.c
+@@ -358,7 +358,7 @@
+   grub_err_t err;
+   unsigned bpp;
+   int found = 0;
+-  int avoid_low_resolution = 1;
++  int avoid_extreme_resolution = 1;
+   unsigned long long best_volume = 0;
+   unsigned int preferred_width = 0, preferred_height = 0;
+   grub_uint8_t *buffer;
+@@ -375,13 +375,21 @@
+ 	  preferred_height = 600;
+ 	  grub_errno = GRUB_ERR_NONE;
+ 	}
++      else
++	{
++	  /* Limit the range of preferred resolution not exceeding FHD
++	     to keep the fixed bitmap font readable */
++	  preferred_width = (preferred_width < 1920) ? preferred_width : 1920;
++	  preferred_height = (preferred_height < 1080) ? preferred_height : 1080;
++	}
+     }
+ 
+ again:
+   /* Keep current mode if possible.  */
+   if (gop->mode->info &&
+-      (!avoid_low_resolution ||
+-       (gop->mode->info->width >= 800 && gop->mode->info->height >= 600)))
++      (!avoid_extreme_resolution ||
++       ((gop->mode->info->width >= 800 && gop->mode->info->height >= 600) &&
++       (gop->mode->info->width <= 1920 && gop->mode->info->height <= 1080))))
+     {
+       bpp = grub_video_gop_get_bpp (gop->mode->info);
+       if (bpp && ((width == gop->mode->info->width
+@@ -454,9 +462,9 @@
+ 
+   if (!found)
+     {
+-      if (avoid_low_resolution && gop->mode->info)
++      if (avoid_extreme_resolution && gop->mode->info)
+         {
+-          avoid_low_resolution = 0;
++          avoid_extreme_resolution = 0;
+           goto again;
+         }
+       grub_dprintf ("video", "GOP: no mode found\n");
+--- a/grub-core/video/i386/pc/vbe.c
++++ b/grub-core/video/i386/pc/vbe.c
+@@ -994,7 +994,13 @@
+     {
+       grub_vbe_get_preferred_mode (&width, &height);
+       if (grub_errno == GRUB_ERR_NONE)
+-	preferred_mode = 1;
++	{
++	  preferred_mode = 1;
++	  /* Limit the range of preferred resolution not exceeding FHD
++	     to keep the fixed bitmap font readable */
++	  width = (width < 1920) ? width : 1920;
++	  height = (height < 1080) ? height : 1080;
++	}
+       else
+ 	{
+ 	  /* Fall back to 640x480.  This is conservative, but the largest

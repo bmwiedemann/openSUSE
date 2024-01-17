@@ -1,0 +1,218 @@
+From 3085db0922a1d803d4a9dfe54daae6fef20e4340 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 13 Apr 2020 16:08:59 +0800
+Subject: [PATCH] grub-install: force journal draining to ensure data integrity
+
+In XFS, the system would end up in unbootable state if an abrupt power
+off after grub-install is occuring. It can be easily reproduced with.
+
+  grub-install /dev/vda; reboot -f
+
+The grub error would show many different kinds of corruption in
+filesystem and the problem boils down to incompleted journal transaction
+which would leave pending writes behind in the on-disk journal. It is
+therefore necessary to recover the system via re-mounting the filesystem
+from linux system that all pending journal log can be replayed.
+
+On the other hand if journal draining can be enforced by grub-install
+then it can bring more resilience to such abrupt power loss. The fsync
+is not enough here for XFS, because that only writes in-memory log to
+on-disk (ie makes sure broken state can be repaired). Unfortunately
+there's no designated system call to serve solely for the journal
+draining, so it can only be achieved via fsfreeze system call that the
+journal draining can happen as a byproduct during the process.
+
+This patch adds fsfreeze/unfreeze at the end of grub-install to induce
+journal draining on journaled file system. However btrfs is excluded
+from the list as it is using fsync to drain journal and also is not
+desired as reportedly having negative side effect. With this patch
+applied, the boot falilure can no longer be reproduced with above
+procedure.
+
+v2:
+Fix boot failure after kdump due to the content of grub.cfg is not
+completed with pending modificaton in xfs journal (bsc#1186975)
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ Makefile.util.def                    |  1 +
+ grub-core/osdep/basic/journaled_fs.c | 26 +++++++++++++++++++
+ grub-core/osdep/journaled_fs.c       |  5 ++++
+ grub-core/osdep/linux/journaled_fs.c | 48 ++++++++++++++++++++++++++++++++++++
+ include/grub/util/install.h          |  2 ++
+ util/grub-install.c                  | 20 +++++++++++++++
+ 6 files changed, 102 insertions(+)
+ create mode 100644 grub-core/osdep/basic/journaled_fs.c
+ create mode 100644 grub-core/osdep/journaled_fs.c
+ create mode 100644 grub-core/osdep/linux/journaled_fs.c
+
+--- a/Makefile.util.def
++++ b/Makefile.util.def
+@@ -672,6 +672,9 @@
+   emu_condition = COND_s390x;
+   common = grub-core/kern/emu/argp_common.c;
+   common = grub-core/osdep/init.c;
++  common = grub-core/osdep/journaled_fs.c;
++  extra_dist = grub-core/osdep/basic/journaled_fs.c;
++  extra_dist = grub-core/osdep/linux/journaled_fs.c;
+ 
+   ldadd = '$(LIBLZMA)';
+   ldadd = libgrubmods.a;
+--- /dev/null
++++ b/grub-core/osdep/basic/journaled_fs.c
+@@ -0,0 +1,26 @@
++/*
++ *  GRUB  --  GRand Unified Bootloader
++ *  Copyright (C) 2010,2011,2012,2013  Free Software Foundation, Inc.
++ *
++ *  GRUB is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  GRUB is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include <grub/util/install.h>
++
++int
++grub_install_sync_fs_journal (const char *path)
++{
++  return 1;
++}
++
+--- /dev/null
++++ b/grub-core/osdep/journaled_fs.c
+@@ -0,0 +1,5 @@
++#ifdef __linux__
++#include "linux/journaled_fs.c"
++#else
++#include "basic/journaled_fs.c"
++#endif
+--- /dev/null
++++ b/grub-core/osdep/linux/journaled_fs.c
+@@ -0,0 +1,48 @@
++/*
++ *  GRUB  --  GRand Unified Bootloader
++ *  Copyright (C) 2010,2011,2012,2013  Free Software Foundation, Inc.
++ *
++ *  GRUB is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  GRUB is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include <fcntl.h>
++#include <linux/fs.h>
++#include <sys/ioctl.h>
++#include <errno.h>
++#include <grub/util/install.h>
++
++int
++grub_install_sync_fs_journal (const char *path)
++{
++  int fd, ret;
++
++  fd = open (path, O_RDONLY);
++
++  if (fd == -1)
++    return 1;
++
++  if (ioctl (fd, FIFREEZE, 0) == 0)
++    {
++      ioctl(fd, FITHAW, 0);
++      ret = 1;
++    }
++  else if (errno == EOPNOTSUPP)
++    ret = 1;
++  else
++    ret = 0;
++
++  close (fd);
++  return ret;
++}
++
+--- a/include/grub/util/install.h
++++ b/include/grub/util/install.h
+@@ -301,4 +301,6 @@
+ }
+ #endif
+ 
++int
++grub_install_sync_fs_journal (const char *path);
+ #endif
+--- a/util/grub-install.c
++++ b/util/grub-install.c
+@@ -42,6 +42,7 @@
+ #include <grub/emu/config.h>
+ #include <grub/util/ofpath.h>
+ #include <grub/hfsplus.h>
++#include <grub/time.h>
+ 
+ #include <string.h>
+ 
+@@ -2074,6 +2075,24 @@
+       break;
+     }
+ 
++  {
++    const char *journaled_fs[] = {"xfs", "ext2", NULL};
++    int i;
++
++    for (i = 0; journaled_fs[i]; ++i)
++      if (grub_strcmp (grub_fs->name, journaled_fs[i]) == 0)
++	{
++	  int retries = 10;
++
++	  /* If the fs is already frozen at that point, we could generally
++	   * expected that it will be soon unfrozen again (assuming some other
++	   * process has frozen it for snapshotting or something), so we may
++	   * as well retry a few (limited) times in a delay loop. */
++	  while (retries-- && !grub_install_sync_fs_journal (grubdir))
++	    grub_sleep (1);
++	  break;
++	}
++  }
+   /*
+    * Either there are no platform specific code, or it didn't raise
+    * ponr. Raise it here, because usually this is already past point
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -335,6 +335,15 @@
+   esac
+ done
+ 
++sync_fs_journal () {
++  if test "x$GRUB_DEVICE" = "x$GRUB_DEVICE_BOOT" &&
++     test "x$GRUB_FS" = "xxfs" -o "x$GRUB_FS" = "xext2" &&
++     test "x${grub_cfg}" != "x" -a "x`make_system_path_relative_to_its_root $grub_cfg`" = "x/boot/grub2/grub.cfg" &&
++     test -x /usr/sbin/fsfreeze; then
++    /usr/sbin/fsfreeze --freeze / && /usr/sbin/fsfreeze --unfreeze /
++  fi
++} >&2
++
+ if test "x${grub_cfg}" != "x" ; then
+   if ! ${grub_script_check} ${grub_cfg}.new; then
+     # TRANSLATORS: %s is replaced by filename
+@@ -351,6 +360,7 @@
+     cat ${grub_cfg}.new > ${grub_cfg}
+     umask $oldumask
+     rm -f ${grub_cfg}.new
++    sync_fs_journal || true
+   fi
+ fi
+ 

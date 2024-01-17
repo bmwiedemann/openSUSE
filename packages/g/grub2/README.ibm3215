@@ -1,0 +1,59 @@
+[Disclaimer: I do not know enough (by far) about the inner workings
+and secrets of these printer-consoles, so please correct me/send advice,
+if there are better solutions!]
+
+On 3215/327x things are dramatically different from everywhere else.
+You'll have to live with some severe limitations:
+
+0. Interactivity is quite limited.  You'll need to "blindly" type,
+   most of the time, to see the effect only on "submission" ([Enter]).
+   In edit and shell mode it's sometimes useful to insert underlines
+   just to see, where the curser (AKA "point") is.  (BTW, 3270 is _much_
+   better at displaying/refreshing grub2 screens than 3215.)
+1. No cursor-movement-, alt-, meta-, and control-keys (like [ESC]).
+2. To work around the lack of control-keys, the "[^][C]-sends-interrupt"-
+   trick is extended to translate sequences of caret followed by character
+   to the respective control-character.  In the following this sequence
+   of two keystrokes is referred to as '^c' instead of that somewhat balky
+   [^][C].  Thus an [ESC] keypress can be generated with '^[' ("caret"
+   followed by "opening square bracket").
+3. If a caret itself is needed, send one on it's own (i.e. a solitary [^]
+   followed by [Enter] -- or use '^^'.
+4. No '[Enter]', because it can't be avoided on *any* input.
+5. If you still need one to arrive at the application, you may either
+   press '[Enter]' *twice* (one empty line, sort of) or add '^j' to your
+   input.  In menu mode '^f' works as well (see below).  But using "empty
+   lines" does now work very reliably, so explicit control sequences
+   are to be preferred.  This has the additional advantage, that combined
+   sequences can be sent, e.g. to exit from 'grub2-emu' without doing
+   anything, you can simply type 'cexit^j' and submit that with [Enter].
+
+Common Substitutes:
+ '^j'`	=> [Enter]	"engage"
+ '^['	=> [ESC]	"abort" / return to previous "state"
+ '^i'	=> [TAB]	try completion (in edit & shell mode)
+
+Available Keys in Menu Mode:
+ '^a'	first entry		'^e'	last entry
+ '^p'	previous entry		'^n'	next entry
+ '^g'	previous page		'^c'	next page
+ '^f'	boot selected entry/enter sub-menu (same as '^j')
+ 'e'	edit selected entry	'c'	enter grub-shell
+
+Available Keys in Edit Mode:
+ '^p'	previous line		'^n'	next line
+ '^b'	backward char		'^f'	forward char
+ '^a'	beginning of line	'^e'	end of line
+ '^h'	backspace		'^d'	delete
+ '^k'	kill (to end of) line	'^y'	yank
+ '^o'	open line		'^l'	refresh screen
+ '^x'	boot entry		'^c'	enter grub-shell
+
+Availble Keys on Command Line Mode:
+ '^p'	previous command	'^n'	next command (from history)
+ '^a'	beginning of line	'^e'	end of line
+ '^b'	backward char		'^f'	forward char
+ '^h'	backspace		'^d'	delete
+ '^k'	kill (to end of) line	'^u'	discard line
+ '^y'	yank
+

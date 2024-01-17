@@ -1,0 +1,164 @@
+From 496b6b20cbce3fc27228d1d8290089fb7107b8de Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Fri, 18 Feb 2022 21:51:16 +0800
+Subject: [PATCH 5/5] export environment at start up
+
+If the prep_loadenv module is built into the core image, it will read
+the environment block automatically during start up and export all
+variables. The will ease integration with those without early scripts to
+running the command.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/Makefile.core.def       |  2 +
+ grub-core/commands/prep_loadenv.c | 77 +++++++++++++++++++++++++++++++
+ grub-core/kern/env.c              |  2 +
+ grub-core/kern/main.c             |  3 ++
+ include/grub/env.h                |  1 +
+ 5 files changed, 85 insertions(+)
+
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -2678,4 +2678,6 @@
+   name = prep_loadenv;
+   common = commands/prep_loadenv.c;
+   enable = powerpc_ieee1275;
++  cflags = '$(CFLAGS_POSIX) $(CFLAGS_GNULIB)';
++  cppflags = '$(CPPFLAGS_POSIX) $(CPPFLAGS_GNULIB)';
+ };
+--- a/grub-core/commands/prep_loadenv.c
++++ b/grub-core/commands/prep_loadenv.c
+@@ -10,6 +10,7 @@
+ #include <grub/extcmd.h>
+ #include <grub/i18n.h>
+ #include <grub/gpt_partition.h>
++#include <regex.h>
+ 
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+@@ -185,6 +186,65 @@
+ }
+ 
+ static grub_err_t
++boot_disk_prep_partname (char **name)
++{
++  regex_t regex;
++  int ret;
++  grub_size_t s;
++  char *comperr;
++  const char *cmdpath;
++  regmatch_t *matches = NULL;
++  grub_err_t err = GRUB_ERR_NONE;
++
++  *name = NULL;
++
++  cmdpath = grub_env_get ("cmdpath");
++  if (!cmdpath)
++    return GRUB_ERR_NONE;
++
++  ret = regcomp (&regex, "\\(([^,]+)(,?.*)?\\)(.*)", REG_EXTENDED);
++  if (ret)
++    goto fail;
++
++  matches = grub_calloc (regex.re_nsub + 1, sizeof (*matches));
++  if (! matches)
++    goto fail;
++
++  ret = regexec (&regex, cmdpath, regex.re_nsub + 1, matches, 0);
++  if (!ret)
++    {
++      char *devname = devname = match_substr (matches + 1, cmdpath);
++      if (!devname)
++	{
++	  err = grub_error (GRUB_ERR_FILE_NOT_FOUND, "%s contains no disk name", cmdpath);
++	  goto out;
++	}
++
++      err = prep_partname (devname, name);
++ out:
++      grub_free (devname);
++      regfree (&regex);
++      grub_free (matches);
++      return err;
++    }
++
++ fail:
++  grub_free (matches);
++  s = regerror (ret, &regex, 0, 0);
++  comperr = grub_malloc (s);
++  if (!comperr)
++    {
++      regfree (&regex);
++      return grub_errno;
++    }
++  regerror (ret, &regex, comperr, s);
++  err = grub_error (GRUB_ERR_TEST_FAILURE, "%s", comperr);
++  regfree (&regex);
++  grub_free (comperr);
++  return err;
++}
++
++static grub_err_t
+ grub_cmd_prep_loadenv (grub_command_t cmd __attribute__ ((unused)),
+ 		       int argc,
+ 		       char **argv)
+@@ -214,10 +274,27 @@
+   return GRUB_ERR_NONE;
+ }
+ 
++static void
++early_prep_loadenv (void)
++{
++  grub_err_t err;
++  char *prep;
++
++  err = boot_disk_prep_partname (&prep);
++  if (err == GRUB_ERR_NONE && prep)
++    err = prep_read_envblk (prep);
++  if (err == GRUB_ERR_BAD_FILE_TYPE || err == GRUB_ERR_FILE_NOT_FOUND)
++    grub_error_pop ();
++  if (err != GRUB_ERR_NONE)
++    grub_print_error ();
++  grub_free (prep);
++}
++
+ static grub_command_t cmd_prep_load;
+ 
+ GRUB_MOD_INIT(prep_loadenv)
+ {
++  early_env_hook = early_prep_loadenv;
+   cmd_prep_load =
+     grub_register_command("prep_load_env", grub_cmd_prep_loadenv,
+ 			  "DEVICE",
+--- a/grub-core/kern/env.c
++++ b/grub-core/kern/env.c
+@@ -28,6 +28,8 @@
+ /* The current context.  */
+ struct grub_env_context *grub_current_context = &initial_context;
+ 
++void (*early_env_hook) (void) = NULL;
++
+ /* Return the hash representation of the string S.  */
+ static unsigned int
+ grub_env_hashval (const char *s)
+--- a/grub-core/kern/main.c
++++ b/grub-core/kern/main.c
+@@ -309,6 +309,9 @@
+ 
+   grub_boot_time ("Before execution of embedded config.");
+ 
++  if (early_env_hook != NULL)
++    early_env_hook ();
++
+   if (load_config)
+     grub_parser_execute (load_config);
+ 
+--- a/include/grub/env.h
++++ b/include/grub/env.h
+@@ -69,5 +69,6 @@
+ grub_err_t
+ grub_env_extractor_close (int source);
+ 
++extern void (*EXPORT_VAR (early_env_hook)) (void);
+ 
+ #endif /* ! GRUB_ENV_HEADER */

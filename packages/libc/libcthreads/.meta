@@ -1,0 +1,5 @@
+<package name="libcthreads" project="openSUSE:Factory">
+  <title>Library for cross-platform C threads functions</title>
+  <description>libcthreads is part of the libyal family of c libraries.  libyal is primarily used by digital forensic applications.</description>
+  <devel project="security:forensics" package="libcthreads"/>
+</package>

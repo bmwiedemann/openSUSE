@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Mon Jul 18 13:21:32 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Deduplicate files in python_sitelib.
+
+-------------------------------------------------------------------
+Mon Jul 17 20:09:11 UTC 2022 - arun@gmx.de
+
+- specfile:
+  * fix build: include python-rpm-macros and python-packaging
+  
+-------------------------------------------------------------------
+Thu Jul 15 03:42:15 UTC 2022 - arun@gmx.de
+
+- specfile:
+  * update for newer python packaging
+  * fix some rpm warnings
+  
+-------------------------------------------------------------------
+Mon Nov 18 10:25:39 UTC 2013 - speilicke@suse.com
+
+- Update to version 0.2.0
+  + No changelog
+
+-------------------------------------------------------------------
+Thu Oct 24 11:00:52 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Mon Mar 12 08:31:56 UTC 2012 - saschpe@suse.de
+
+- Initial version
+

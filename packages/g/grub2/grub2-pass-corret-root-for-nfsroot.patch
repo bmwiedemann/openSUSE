@@ -1,0 +1,135 @@
+From 340fd0c8717c2bf33163a18bfec72243b0e51862 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 30 Aug 2012 15:43:17 +0800
+Subject: [PATCH] Pass corret root= for nfsroot
+
+References: bnc#774548, bsc#1069094
+Patch-Mainline: no
+
+Fix / is mounted on nfs. The fix is to pass kernel parameters
+with correct root= for nfs. However since grub2 doesn't support
+nfs file system module, the /boot on nfs is not possible and
+grub2-probe not work in probing nfs mounted path. The fix is merely
+on the script level and not use grub2-probe for above reasons.
+
+v2: Filter out autofs and securityfs from /proc/self/mountinfo (bsc#1069094)
+
+---
+ util/grub-mkconfig.in |   37 ++++++++++++++++++++++++++++++-------
+ 1 files changed, 30 insertions(+), 7 deletions(-)
+
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -131,26 +131,54 @@
+     exit 1
+ fi
+ 
+-# Device containing our userland.  Typically used for root= parameter.
+-GRUB_DEVICE="`${grub_probe} --target=device /`"
+-GRUB_DEVICE_UUID="`${grub_probe} --device ${GRUB_DEVICE} --target=fs_uuid 2> /dev/null`" || true
+-GRUB_DEVICE_PARTUUID="`${grub_probe} --device ${GRUB_DEVICE} --target=partuuid 2> /dev/null`" || true
++probe_nfsroot_device () {
++    while read line ; do
++        part1=`echo $line | sed -e 's! - .*$!!'`
++        part2=`echo $line | sed -n -e 's! - \(.*\)$!\n\1!p' | sed 1d`
++
++        set -- $part1
++        path=$5
++
++        set -- $part2
++        fstype=$1
++        device=$2
++
++        if [ "x${path}" = "x/" ] &&
++           [ "x${fstype}" = "xnfs" -o "x${fstype}" = "xnfs4" ] ; then
++            echo "${fstype}:$device"
++            return
++        fi
++    done
++}
+ 
+-# Device containing our /boot partition.  Usually the same as GRUB_DEVICE.
+-GRUB_DEVICE_BOOT="`${grub_probe} --target=device /boot`"
+-GRUB_DEVICE_BOOT_UUID="`${grub_probe} --device ${GRUB_DEVICE_BOOT} --target=fs_uuid 2> /dev/null`" || true
++NFSROOT_DEVICE="`awk '($9!="autofs")&&($9!="securityfs")' /proc/self/mountinfo | probe_nfsroot_device`"
+ 
+ # Disable os-prober by default due to security reasons.
+ GRUB_DISABLE_OS_PROBER="true"
+ 
+-# Filesystem for the device containing our userland.  Used for stuff like
+-# choosing Hurd filesystem module.
+-GRUB_FS="`${grub_probe} --device ${GRUB_DEVICE} --target=fs 2> /dev/null || echo unknown`"
++if [ "x${NFSROOT_DEVICE}" != "x" ]; then
++    GRUB_DEVICE=""
++    GRUB_DEVICE_UUID=""
++    GRUB_DEVICE_PARTUUID=""
++    GRUB_FS="unknown"
++else
++    # Filesystem for the device containing our userland.  Used for stuff like
++    # choosing Hurd filesystem module.
++    GRUB_FS="`${grub_probe} --device ${GRUB_DEVICE} --target=fs 2> /dev/null || echo unknown`"
++    # Device containing our userland.  Typically used for root= parameter.
++    GRUB_DEVICE="`${grub_probe} --target=device /`"
++    GRUB_DEVICE_UUID="`${grub_probe} --device ${GRUB_DEVICE} --target=fs_uuid 2> /dev/null`" || true
++    GRUB_DEVICE_PARTUUID="`${grub_probe} --device ${GRUB_DEVICE} --target=partuuid 2> /dev/null`" || true
++fi
+ 
+-if [ x"$GRUB_FS" = xunknown ]; then
++if [ x"$GRUB_FS" = x ] || [ x"$GRUB_FS" = xunknown ]; then
+     GRUB_FS="$(stat -f -c %T / || echo unknown)"
+ fi
+ 
++# Device containing our /boot partition.  Usually the same as GRUB_DEVICE.
++GRUB_DEVICE_BOOT="`${grub_probe} --target=device /boot`"
++GRUB_DEVICE_BOOT_UUID="`${grub_probe} --device ${GRUB_DEVICE_BOOT} --target=fs_uuid 2> /dev/null`" || true
++
+ # Provide a default set of stock linux early initrd images.
+ # Define here so the list can be modified in the sourced config file.
+ if [ "x${GRUB_EARLY_INITRD_LINUX_STOCK}" = "x" ]; then
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -88,6 +88,12 @@
+   type="$3"
+   args="$4"
+ 
++  if [ -n "${linux_root_device_thisversion}" ]; then
++    root_device="root=${linux_root_device_thisversion}"
++  else
++    root_device=""
++  fi
++
+   if [ -z "$boot_device_id" ]; then
+       boot_device_id="$(grub_get_device_id "${GRUB_DEVICE}")"
+   fi
+@@ -143,7 +149,7 @@
+   message="$(gettext_printf "Loading Linux %s ..." ${version})"
+   sed "s/^/$submenu_indentation/" << EOF
+ 	echo	'$(echo "$message" | grub_quote)'
+-	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ${args}
++	linux	${rel_dirname}/${basename} ${root_device} ${args}
+ EOF
+   if test -n "${initrd}" ; then
+     # TRANSLATORS: ramdisk isn't identifier. Should be translated.
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -109,6 +109,11 @@
+   args="$5"
+   xen_args="$6"
+   xsm="$7"
++  if [ -n "${linux_root_device_thisversion}" ]; then
++    root_device="root=${linux_root_device_thisversion}"
++  else
++    root_device=""
++  fi
+   # If user wants to enable XSM support, make sure there's
+   # corresponding policy file.
+   xenpolicy=
+@@ -160,7 +165,7 @@
+         fi
+ 	${xen_loader}	${rel_xen_dirname}/${xen_basename} placeholder ${xen_args} \${xen_rm_opts}
+ 	echo	'$(echo "$lmessage" | grub_quote)'
+-	${module_loader}	${rel_dirname}/${basename} placeholder root=${linux_root_device_thisversion} ${args}
++	${module_loader}	${rel_dirname}/${basename} placeholder ${root_device} ${args}
+ EOF
+   if test -n "${initrd}" ; then
+     # TRANSLATORS: ramdisk isn't identifier. Should be translated.

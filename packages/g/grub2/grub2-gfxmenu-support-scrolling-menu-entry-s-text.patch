@@ -1,0 +1,269 @@
+From b4c5f80fbfaf912553eca1b12da6fc49de4ae37f Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 7 Jan 2019 17:55:05 +0800
+Subject: [PATCH] gfxmenu: support scrolling menu entry's text
+
+If menu entry's title text is longer than its display width, the
+overlong text simply get truncated. The only possible way to view the
+full text is through the menu editing mode, but is a hassle switching
+over the mode back and forth. Also menu editing mode could be password
+protected which makes it not generally available to everyone.
+
+This patch implemented scrolling text support to the title of grub's
+gfxmenu to make it convenient for viewing the truncated text by pressing
+the ctrl+l and ctrl+r to scroll the highlighted text left and right. The
+scrolled result will remain in place to help memorizing it after
+changing highlight to other entry.
+
+V1:
+  * Use grub_calloc for overflow check and return NULL when it would
+    occur.
+---
+ grub-core/gfxmenu/gfxmenu.c   |  3 +++
+ grub-core/gfxmenu/gui_label.c |  2 ++
+ grub-core/gfxmenu/gui_list.c  | 38 ++++++++++++++++++++++++++++++++++
+ grub-core/gfxmenu/view.c      | 48 +++++++++++++++++++++++++++++++++++++++++++
+ grub-core/normal/menu.c       | 16 +++++++++++++++
+ include/grub/gfxmenu_view.h   |  4 ++++
+ include/grub/menu_viewer.h    |  1 +
+ 7 files changed, 112 insertions(+)
+
+--- a/grub-core/gfxmenu/gfxmenu.c
++++ b/grub-core/gfxmenu/gfxmenu.c
+@@ -108,6 +108,15 @@
+   view->menu = menu;
+   view->nested = nested;
+   view->first_timeout = -1;
++  if (menu->size)
++    {
++      view->menu_title_offset = grub_calloc (menu->size, sizeof (*view->menu_title_offset));
++      if (!view->menu_title_offset)
++	{
++	  grub_free (instance);
++	  return grub_errno;
++	}
++    }
+ 
+   grub_video_set_viewport (0, 0, mode_info.width, mode_info.height);
+   if (view->double_repaint)
+@@ -123,6 +132,7 @@
+   instance->fini = grub_gfxmenu_viewer_fini;
+   instance->print_timeout = grub_gfxmenu_print_timeout;
+   instance->clear_timeout = grub_gfxmenu_clear_timeout;
++  instance->scroll_chosen_entry = grub_gfxmenu_scroll_chosen_entry;
+ 
+   grub_menu_register_viewer (instance);
+ 
+--- a/grub-core/gfxmenu/gui_label.c
++++ b/grub-core/gfxmenu/gui_label.c
+@@ -192,6 +192,8 @@
+ 	       "or `c' for a command-line.");
+ 	   else if (grub_strcmp (value, "@KEYMAP_SHORT@") == 0)
+ 	    value = _("enter: boot, `e': options, `c': cmd-line");
++	   else if (grub_strcmp (value, "@SUSE_KEYMAP_SCROLL_ENTRY@") == 0)
++	    value = _("ctrl+l: scroll entry left, ctrl+r: scroll entry right");
+ 	   /* FIXME: Add more templates here if needed.  */
+ 
+ 	  if (grub_printf_fmt_check(value, "%d") != GRUB_ERR_NONE)
+--- a/grub-core/gfxmenu/gui_list.c
++++ b/grub-core/gfxmenu/gui_list.c
+@@ -24,6 +24,7 @@
+ #include <grub/gfxmenu_view.h>
+ #include <grub/gfxwidgets.h>
+ #include <grub/color.h>
++#include <grub/charset.h>
+ 
+ enum scrollbar_slice_mode {
+   SCROLLBAR_SLICE_WEST,
+@@ -314,6 +315,33 @@
+   thumb->draw (thumb, thumbx, thumby);
+ }
+ 
++static const char *
++grub_utf8_offset_code (const char *src, grub_size_t srcsize, int num)
++{
++  int count = 0;
++  grub_uint32_t code = 0;
++
++  while (srcsize && num)
++    {
++      if (srcsize != (grub_size_t)-1)
++	srcsize--;
++      if (!grub_utf8_process ((grub_uint8_t)*src++, &code, &count))
++	return 0;
++      if (count != 0)
++	continue;
++      if (code == 0)
++	return 0;
++      if (code > GRUB_UNICODE_LAST_VALID)
++	return 0;
++      --num;
++    }
++
++  if (!num)
++    return src;
++
++  return 0;
++}
++
+ /* Draw the list of items.  */
+ static void
+ draw_menu (list_impl_t self, int num_shown_items)
+@@ -433,6 +461,16 @@
+       const char *item_title =
+         grub_menu_get_entry (self->view->menu, menu_index)->title;
+ 
++      {
++	int off = self->view->menu_title_offset[menu_index];
++	const char *scrolled_title;
++
++	scrolled_title = grub_utf8_offset_code (item_title, grub_strlen (item_title), off);
++
++	if (scrolled_title)
++	  item_title = scrolled_title;
++      }
++
+       sviewport.y = item_top + top_pad;
+       sviewport.width = viewport_width;
+       grub_gui_set_viewport (&sviewport, &svpsave);
+--- a/grub-core/gfxmenu/view.c
++++ b/grub-core/gfxmenu/view.c
+@@ -37,6 +37,7 @@
+ #include <grub/gui_string_util.h>
+ #include <grub/icon_manager.h>
+ #include <grub/i18n.h>
++#include <grub/charset.h>
+ 
+ static void
+ init_terminal (grub_gfxmenu_view_t view);
+@@ -103,6 +104,7 @@
+   view->title_text = grub_strdup (_("GRUB Boot Menu"));
+   view->progress_message_text = 0;
+   view->theme_path = 0;
++  view->menu_title_offset = 0;
+ 
+   /* Set the timeout bar's frame.  */
+   view->progress_message_frame.width = view->screen.width * 4 / 5;
+@@ -142,6 +144,7 @@
+   grub_free (view->title_text);
+   grub_free (view->progress_message_text);
+   grub_free (view->theme_path);
++  grub_free (view->menu_title_offset);
+   if (view->canvas)
+     view->canvas->component.ops->destroy (view->canvas);
+   grub_free (view);
+@@ -410,6 +413,52 @@
+   grub_gfxmenu_redraw_menu (view);
+ }
+ 
++static int
++grub_utf8_get_num_code (const char *src, grub_size_t srcsize)
++{
++  int count = 0;
++  grub_uint32_t code = 0;
++  int num = 0;
++
++  while (srcsize)
++    {
++      if (srcsize != (grub_size_t)-1)
++	srcsize--;
++      if (!grub_utf8_process ((grub_uint8_t)*src++, &code, &count))
++	return 0;
++      if (count != 0)
++	continue;
++      if (code == 0)
++	return num;
++      if (code > GRUB_UNICODE_LAST_VALID)
++	return 0;
++      ++num;
++    }
++
++  return num;
++}
++
++void
++grub_gfxmenu_scroll_chosen_entry (void *data, int diren)
++{
++  grub_gfxmenu_view_t view = data;
++  const char *item_title;
++  int off;
++
++  if (!view->menu->size)
++    return;
++
++  item_title =grub_menu_get_entry (view->menu, view->selected)->title;
++  off = view->menu_title_offset[view->selected] + diren;
++
++  if (off < 0
++      || off > grub_utf8_get_num_code (item_title, grub_strlen(item_title)))
++    return;
++
++  view->menu_title_offset[view->selected] = off;
++  grub_gfxmenu_redraw_menu (view);
++}
++
+ static void
+ grub_gfxmenu_draw_terminal_box (void)
+ {
+--- a/grub-core/normal/menu.c
++++ b/grub-core/normal/menu.c
+@@ -400,6 +400,15 @@
+ }
+ 
+ static void
++menu_scroll_chosen_entry (int diren)
++{
++  struct grub_menu_viewer *cur;
++  for (cur = viewers; cur; cur = cur->next)
++    if (cur->scroll_chosen_entry)
++      cur->scroll_chosen_entry (cur->data, diren);
++}
++
++static void
+ menu_print_timeout (int timeout)
+ {
+   struct grub_menu_viewer *cur;
+@@ -829,6 +838,13 @@
+ 	      menu_set_chosen_entry (current_entry);
+ 	      break;
+ 
++	    case GRUB_TERM_CTRL | 'w':
++	      menu_scroll_chosen_entry (1);
++	      break;
++	    case GRUB_TERM_CTRL | 'r':
++	      menu_scroll_chosen_entry (-1);
++	      break;
++
+ 	    case '\n':
+ 	    case '\r':
+ 	    case GRUB_TERM_KEY_RIGHT:
+--- a/include/grub/gfxmenu_view.h
++++ b/include/grub/gfxmenu_view.h
+@@ -61,6 +61,8 @@
+ grub_gfxmenu_print_timeout (int timeout, void *data);
+ void
+ grub_gfxmenu_set_chosen_entry (int entry, void *data);
++void
++grub_gfxmenu_scroll_chosen_entry (void *data, int diren);
+ 
+ grub_err_t grub_font_draw_string (const char *str,
+ 				  grub_font_t font,
+@@ -119,6 +121,8 @@
+   int nested;
+ 
+   int first_timeout;
++
++  int *menu_title_offset;
+ };
+ 
+ #endif /* ! GRUB_GFXMENU_VIEW_HEADER */
+--- a/include/grub/menu_viewer.h
++++ b/include/grub/menu_viewer.h
+@@ -33,6 +33,7 @@
+   void (*set_chosen_entry) (int entry, void *data);
+   void (*print_timeout) (int timeout, void *data);
+   void (*clear_timeout) (void *data);
++  void (*scroll_chosen_entry) (void *data, int diren);
+   void (*fini) (void *fini);
+ };
+ 

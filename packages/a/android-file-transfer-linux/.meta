@@ -1,0 +1,6 @@
+<package name="android-file-transfer-linux" project="openSUSE:Factory">
+  <title>Android File Transfer for Linux</title>
+  <description>Android File Transfer for Linux — a MTP client with minimalist UI</description>
+  <devel project="hardware" package="android-file-transfer-linux"/>
+  <url>https://github.com/whoozle/android-file-transfer-linux</url>
+</package>

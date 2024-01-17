@@ -1,0 +1,20 @@
+Description: preserve the Python source directory instead of deleting it
+Author: Dmitry Shachnev <mitya57@debian.org>
+Forwarded: not-needed
+Last-Update: 2020-07-18
+
+Index: snowball-2.1.0/GNUmakefile
+===================================================================
+--- snowball-2.1.0.orig/GNUmakefile
++++ snowball-2.1.0/GNUmakefile
+@@ -464,9 +464,7 @@ dist_libstemmer_python: $(PYTHON_SOURCES
+ 	cp -a $(PYTHON_SOURCES) $${dest}/src/$(python_runtime_dir) && \
+ 	cp -a $(PYTHON_SAMPLE_SOURCES) $${dest}/src/$(python_sample_dir) && \
+ 	cp -a $(PYTHON_RUNTIME_SOURCES) $${dest}/src/$(python_runtime_dir) && \
+-	cp -a $(COMMON_FILES) $(PYTHON_PACKAGE_FILES) $${dest} && \
+-	(cd $${dest} && $(python) setup.py sdist bdist_wheel && cp dist/*.tar.gz dist/*.whl ..) && \
+-	rm -rf $${dest}
++	cp -a $(COMMON_FILES) $(PYTHON_PACKAGE_FILES) $${dest}
+ 
+ dist_libstemmer_js: $(JS_SOURCES)
+ 	destname=jsstemmer-$(SNOWBALL_VERSION); \

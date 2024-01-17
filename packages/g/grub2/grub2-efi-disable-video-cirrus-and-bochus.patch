@@ -1,0 +1,31 @@
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -2142,13 +2142,13 @@
+ module = {
+   name = video_cirrus;
+   x86 = video/cirrus.c;
+-  enable = x86;
++  enable = x86_noefi;
+ };
+ 
+ module = {
+   name = video_bochs;
+   x86 = video/bochs.c;
+-  enable = x86;
++  enable = x86_noefi;
+ };
+ 
+ module = {
+--- a/gentpl.py
++++ b/gentpl.py
+@@ -92,6 +92,10 @@
+ GROUPS["i386_coreboot_multiboot_qemu"] = ["i386_coreboot", "i386_multiboot", "i386_qemu"]
+ GROUPS["nopc"] = GRUB_PLATFORMS[:]; GROUPS["nopc"].remove("i386_pc")
+ 
++# x86 without efi
++GROUPS["x86_noefi"] = GROUPS["x86"][:]
++GROUPS["x86_noefi"].remove("i386_efi"); GROUPS["x86_noefi"].remove("x86_64_efi");
++
+ #
+ # Create platform => groups reverse map, where groups covering that
+ # platform are ordered by their sizes

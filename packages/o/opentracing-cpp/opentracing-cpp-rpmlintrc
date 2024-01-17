@@ -1,0 +1,9 @@
+# This is a source package and /usr/src is a correct path to install files.
+addFilter("opentracing-cpp-source.* suse-filelist-forbidden-fhs23")
+# This is a source package, it's fine to have git files.
+addFilter("opentracing-cpp-source.* version-control-internal-file")
+# This is a source package, it's fine to have hidden files.
+addFilter("opentracing-cpp-source.* hidden-file-or-dir")
+# This is a source package, it's fine to have have duplitate files, despite the
+# fact that fdpues should get rid of them...
+addFilter("opentracing-cpp-source.* files-duplicate")

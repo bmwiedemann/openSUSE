@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Thu Jan 13 17:57:14 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with newer auto version by adding the
+  auto-value-annotations artifact to the dependencies
+
+-------------------------------------------------------------------
+Tue May 11 17:25:43 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Increase java version requirement in order to build with newer
+  guava
+
+-------------------------------------------------------------------
+Tue Nov 26 15:13:50 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 0.24 to fix building of javadoc with
+  java 11
+
+-------------------------------------------------------------------
+Tue May  7 10:58:36 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of truth 0.23

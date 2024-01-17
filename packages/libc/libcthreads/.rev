@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>daa7fb248d28bb05a5efd75e4cac2aa6</srcmd5>
+    <version>0~20130723</version>
+    <time>1382355850</time>
+    <user>scarabeus_factory</user>
+    <comment>A new library as part of the libyal collection of c libraries.  Many of the libyal member libraries are already in factory. libvshadow currently has libcthreads built internally.  This will allow it to be a standalone package.</comment>
+    <requestid>202024</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>daa7fb248d28bb05a5efd75e4cac2aa6</srcmd5>
+    <version>0~20130723</version>
+    <time>1409301527</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>65ca21f9b78e4dd6566855ff24d33c7a</srcmd5>
+    <version>0~20140105</version>
+    <time>1409407446</time>
+    <user>coolo</user>
+    <comment>update to v0~20140105</comment>
+    <requestid>246903</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2e1405353143b3454e19de440e8fe0c0</srcmd5>
+    <version>0~20150101</version>
+    <time>1420927505</time>
+    <user>dimstar_suse</user>
+    <comment>Part of libyal 2015 refresh - may need to go to staging D.  libcstring is a dependency and is currently in staging D.</comment>
+    <requestid>280464</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>23dbb5887f8bab1e08b23c6c0cc88ca0</srcmd5>
+    <version>0~20170101</version>
+    <time>1487681270</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458548</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ee56274fc00fe00d6ff53702dff808fc</srcmd5>
+    <version>0~20180724</version>
+    <time>1557141736</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0~20180724
+        * Changes to represent EAGAIN in error messages
+        * Changes to represent EDEADLK in error messages 
+        * Code clean up
+</comment>
+    <requestid>693957</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9d06d7103be4a38da653f9d9afabb7ec</srcmd5>
+    <version>0~20200508</version>
+    <time>1608918648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858533</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d24ad364e56f83d9c0bc843b8406da7c</srcmd5>
+    <version>20210415</version>
+    <time>1623012049</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897775</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b5aae6f662443c5d9e4d18e86c50bc30</srcmd5>
+    <version>20211115</version>
+    <time>1637970665</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to tag 20211115</comment>
+    <requestid>933885</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8db5cf29053e9bfcf1b33e37e4d7ee48</srcmd5>
+    <version>20220102</version>
+    <time>1641680642</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220102</comment>
+    <requestid>944878</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>001a433215d737a869528c0785bb7a5a</srcmd5>
+    <version>20220102</version>
+    <time>1660051703</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993978</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>4e961723891858fa332ce97919b749e8</srcmd5>
+    <version>20220102</version>
+    <time>1669629967</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038452</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c1f845769f1825323037e884e65068b1</srcmd5>
+    <version>20240102</version>
+    <time>1704281409</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20240102</comment>
+    <requestid>1136170</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,34 @@
+From e2e0fe44cf2a03744e96f886f95ab2c2a8aed331 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 18 Jul 2012 14:54:32 +0800
+Subject: [PATCH] fix error: terminal 'gfxterm' isn't found
+
+References: bnc#771393
+Patch-Mainline: no
+
+If set GRUB_TERMINAL="gfxterm", the error message "terminal
+'gfxterm' isn't found" will be logged to screen. This is caused
+by GRUB_TERMINAL_INPUT erroneously set to gfxterm. This patch
+fixes the issue by not setting it.
+
+v2:
+Fix error gfxterm isn't found with multiple terminals (bsc#1187565)
+
+---
+ util/grub-mkconfig.in |    6 +++++-
+ 1 files changed, 5 insertions(+), 1 deletions(-)
+
+Index: grub-2.06/util/grub-mkconfig.in
+===================================================================
+--- grub-2.06.orig/util/grub-mkconfig.in
++++ grub-2.06/util/grub-mkconfig.in
+@@ -172,7 +172,8 @@ fi
+ 
+ # XXX: should this be deprecated at some point?
+ if [ "x${GRUB_TERMINAL}" != "x" ] ; then
+-  GRUB_TERMINAL_INPUT="${GRUB_TERMINAL}"
++# bnc#771393, bsc#1187565 - fix error: terminal 'gfxterm' isn't found.
++  GRUB_TERMINAL_INPUT="`echo ${GRUB_TERMINAL} | sed -e '/\bgfxterm\b/{s/\bconsole\b//g;s/\bgfxterm\b/console/}'`"
+   GRUB_TERMINAL_OUTPUT="${GRUB_TERMINAL}"
+ fi
+ 

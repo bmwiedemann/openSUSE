@@ -1,0 +1,66 @@
+From 889c0894d358e48c02f8225426893094f20004e5 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 4 Oct 2018 10:32:07 +0800
+Subject: [PATCH] linux/getroot: Support NVDIMM device names
+
+There are two types of NVDIMM block devices in linux: fsdax and blk.
+For fsdax, the device name would be /dev/pmemXpY, /dev/pmemXsY,
+/dev/pmemX.YpZ, or /dev/pmemX.YsZ.
+For blk, the name would be /dev/ndblkX.YpZ or /dev/ndblkX.YsZ
+---
+ grub-core/osdep/linux/getroot.c | 44 +++++++++++++++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
+
+--- a/grub-core/osdep/linux/getroot.c
++++ b/grub-core/osdep/linux/getroot.c
+@@ -971,6 +971,50 @@
+ 	  *pp = '\0';
+ 	  return path;
+ 	}
++
++      /* If this is a NVDIMM device in fsdax mode */
++      if (strncmp ("pmem", p, 4) == 0 && p[4] >= '0' && p[4] <= '9')
++	{
++	  /* /dev/pmem[0-9]+(\.[0-9]+)?((p[0-9]+)?|s[0-9]*) */
++	  char *pp = strchr (p + 4, 'p');
++	  if (pp)
++	    {
++	      *is_part = 1;
++	      *pp = '\0';
++	    }
++	  else
++	    {
++	      pp = strchr (p + 4, 's');
++	      if (pp && pp[1] >= '0' && pp[1] <= '9')
++		{
++		  *is_part = 1;
++		  pp[1] = '\0';
++		}
++	    }
++	  return path;
++	}
++
++      /* If this is a NVDIMM device in block mode */
++      if (strncmp ("ndblk", p, 5) == 0 && p[5] >= '0' && p[5] <= '9')
++	{
++	  /* /dev/ndblk[0-9]+\.[0-9]+((p[0-9]+)?|s[0-9]*) */
++	  char *pp = strchr (p + 5, 'p');
++	  if (pp)
++	    {
++	      *is_part = 1;
++	      *pp = '\0';
++	    }
++	  else
++	    {
++	      pp = strchr (p + 5, 's');
++	      if (pp && pp[1] >= '0' && pp[1] <= '9')
++		{
++		  *is_part = 1;
++		  pp[1] = '\0';
++		}
++	    }
++	  return path;
++	}
+     }
+ 
+   return path;

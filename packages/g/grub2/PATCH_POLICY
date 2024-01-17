@@ -1,0 +1,6 @@
+Make sure the patches you add contain tags similar to patches in the kernel
+RPM. This means, it should contain From, Subject, Patch-mainline tags and also
+a description of the problem, i.e. what the patch is for.
+
+Also, if it is not a SUSE/openSUSE-specific patch (unlikely is), post the patch to
+upstream too.

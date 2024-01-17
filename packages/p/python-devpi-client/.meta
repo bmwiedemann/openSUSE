@@ -1,0 +1,5 @@
+<package name="python-devpi-client" project="openSUSE:Factory">
+  <title>python-devpi-client</title>
+  <description>devpi upload/install/... workflow commands for Python developers.</description>
+  <devel project="devel:languages:python" package="python-devpi-client"/>
+</package>

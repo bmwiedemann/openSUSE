@@ -1,0 +1,256 @@
+---
+ configure.ac    |    3 --
+ src/Makefile.am |    8 +++----
+ src/client.c    |   38 ++++++++-------------------------
+ src/daemon.c    |   64 ++++++++++++++++++++++----------------------------------
+ 4 files changed, 41 insertions(+), 72 deletions(-)
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -40,8 +40,7 @@
+ PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED)
+ PKG_CHECK_MODULES(DBUS, dbus-glib-1)
+ PKG_CHECK_MODULES(LIBNOTIFY, libnotify)
+-PKG_CHECK_MODULES(POLKITDBUS, polkit-dbus)
+-PKG_CHECK_MODULES(POLKITGNOME, polkit-gnome)
++PKG_CHECK_MODULES(POLKIT, polkit-gobject-1)
+ AC_ARG_WITH(pm,
+   AS_HELP_STRING([--with-pm=hal|upower],
+ 		 [Power-management backend, either hal or upower]),
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,6 +1,6 @@
+ hp_drive_guarddatadir = $(datadir)/hp-drive-guard
+ dbusservicedir=$(DBUS_SYS_DIR)
+-polkit_policydir = $(datadir)/PolicyKit/policy
++polkitdir = $(datadir)/polkit-1/actions
+ 
+ hpgcdir = @HELPER_EXEC_DIR@
+ 
+@@ -11,8 +11,8 @@
+ hp_drive_guard_client_SOURCES = \
+   client.c common.h setup.c serverconfig.c serverconfig.h
+ 
+-LDADD = @POLKITGNOME_LIBS@ @LIBNOTIFY_LIBS@ 
+-AM_CFLAGS = @POLKITGNOME_CFLAGS@ @LIBNOTIFY_CFLAGS@ 
++LDADD = @POLKIT_LIBS@ @LIBNOTIFY_LIBS@ 
++AM_CFLAGS = @POLKIT_CFLAGS@ @LIBNOTIFY_CFLAGS@ 
+ if PM_BACKEND_HAL
+ LDADD += @HAL_LIBS@
+ AM_CFLAGS += @HAL_CFLAGS@
+@@ -45,7 +45,7 @@
+ 
+ dbusservice_DATA = hp-drive-guard-dbus.conf
+ autostart_DATA = hp-drive-guard-client.desktop
+-dist_polkit_policy_DATA = com.hp.driveguard.policy
++dist_polkit_DATA = com.hp.driveguard.policy
+ 
+ EXTRA_DIST = \
+ 	hp-drive-guard-dbus.conf \
+--- a/src/client.c
++++ b/src/client.c
+@@ -44,8 +44,6 @@
+ #include <dbus/dbus-glib.h>
+ #include <dbus/dbus-glib-lowlevel.h>
+ 
+-#include <polkit-gnome/polkit-gnome.h>
+-
+ #include "../config.h"
+ #include "common.h"
+ 
+@@ -126,8 +124,6 @@
+   NotifyNotification *notifications [2];
+ 
+   DBusConnection *dbus_connection;
+-
+-  PolKitGnomeContext *pkgc;
+ }
+ DriveGuard;
+ 
+@@ -451,13 +447,13 @@
+ }
+ 
+ static void
+-drive_guard_start_protection_cb (PolKitGnomeAction *action, gpointer data)
++drive_guard_start_protection_cb (GtkMenuItem *item, gpointer data)
+ {
+   send_enable_method ((DriveGuard *)data, TRUE);
+ }
+ 
+ static void
+-drive_guard_stop_protection_cb (PolKitGnomeAction *action, gpointer data)
++drive_guard_stop_protection_cb (GtkMenuItem *item, gpointer data)
+ {
+   send_enable_method ((DriveGuard *)data, FALSE);
+ }
+@@ -481,6 +477,14 @@
+     N_("_System Setup"), "<control>S",
+     N_("Setup HP DriveGuard service"), /* tooltip */
+     G_CALLBACK (drive_guard_setup_cb) },
++  { "start", GTK_STOCK_GO_FORWARD,
++    N_("Start Protection"), "<control>F",
++    N_("Start HP DriveGuard again"), /* tooltip */
++    G_CALLBACK (drive_guard_start_protection_cb) },
++  { "stop", GTK_STOCK_STOP,
++    N_("Pause Protection"), "<control>T",
++    N_("Stop HP DriveGuard temporarily"), /* tooltip */
++    G_CALLBACK (drive_guard_stop_protection_cb) },
+   { "quit", GTK_STOCK_QUIT,
+     N_("_Quit"), "<control>Q",
+     N_("Quit"), /* tooltip */
+@@ -524,8 +528,6 @@
+ drive_guard_popup_menu_cb (GtkStatusIcon *status_icon, guint button,
+ 			   guint32 timestamp, DriveGuard *drive_guard)
+ {
+-  PolKitAction *pk_action;
+-  PolKitGnomeAction *action;
+   GtkActionGroup *actions;
+   GtkUIManager *ui;
+   GtkWidget *menu;
+@@ -534,24 +536,6 @@
+   gtk_action_group_set_translation_domain (actions, PACKAGE);
+   gtk_action_group_add_actions (actions, entries, G_N_ELEMENTS (entries), drive_guard);
+ 
+-  pk_action = polkit_action_new ();
+-  polkit_action_set_action_id (pk_action, DRIVE_GUARD_POLICY_ACTION_TOGGLE);
+-  action = polkit_gnome_action_new_default ("start", pk_action,
+-					    _("Start Protection"),
+-                                            _("Start HP DriveGuard again"));
+-  g_signal_connect (G_OBJECT (action), "activate",
+-		    G_CALLBACK (drive_guard_start_protection_cb),
+-		    drive_guard);
+-  gtk_action_group_add_action (actions, GTK_ACTION (action));
+-  action = polkit_gnome_action_new_default ("stop", pk_action,
+-					    _("Pause Protection"),
+-                                            _("Stop HP DriveGuard temporarily"));
+-  g_signal_connect (G_OBJECT (action), "activate",
+-		    G_CALLBACK (drive_guard_stop_protection_cb),
+-		    drive_guard);
+-  gtk_action_group_add_action (actions, GTK_ACTION (action));
+-  polkit_action_unref (pk_action);
+-
+   ui = gtk_ui_manager_new ();
+   gtk_ui_manager_insert_action_group (ui, actions, 0);
+   switch (drive_guard->current_state) {
+@@ -591,8 +575,6 @@
+   context = g_main_context_default ();
+   drive_guard->main_loop = g_main_loop_new (context, FALSE);
+ 
+-  drive_guard->pkgc = polkit_gnome_context_get (NULL);
+-
+   for (i = 0; i < DRIVE_GUARD_DRIVE_STATE_MAX; i++)
+   {
+     drive_guard->state_pixbuf [i] = make_drive_state_pixbuf (i);
+--- a/src/daemon.c
++++ b/src/daemon.c
+@@ -42,7 +42,7 @@
+ #include <dbus/dbus-glib.h>
+ #include <dbus/dbus-glib-lowlevel.h>
+ 
+-#include <polkit-dbus/polkit-dbus.h>
++#include <polkit/polkit.h>
+ 
+ #include "common.h"
+ #include "serverconfig.h"
+@@ -179,7 +179,7 @@
+   LaptopHW *laptop_hw;
+   int current_timeout;
+ 
+-  PolKitContext *polkit_ctx;
++  PolkitAuthority *auth;
+ 
+   char *core_argv[MAX_DRIVE_GUARD_DEVICES + 3];
+   int num_unload_devs;
+@@ -238,37 +238,32 @@
+ }
+ 
+ static gboolean
+-check_polkit_authorized (DBusConnection *conn, DBusMessage *message,
++check_polkit_authorized (DBusMessage *message,
+ 			 DriveGuardServer *drive_guard)
+ {
+-  DBusError error;
+-  PolKitCaller *pk_caller;
+-  PolKitAction *pk_action;
+-  PolKitResult pk_result;
+-
+-  if (!drive_guard->polkit_ctx)
+-    return FALSE;
+-
+-  dbus_error_init (&error);
+-  pk_caller = polkit_caller_new_from_dbus_name (conn,
+-						dbus_message_get_sender (message),
+-						&error);
+-  if (dbus_error_is_set (&error)) {
+-    dbus_error_free (&error);
+-    if (pk_caller)
+-      polkit_caller_unref (pk_caller);
++  const char *sender;
++  PolkitSubject *subject;
++  PolkitAuthorizationResult *result;
++  gboolean authed;
++  GError *error = NULL;
++
++  sender = dbus_message_get_sender (message);
++  subject = polkit_system_bus_name_new (sender);
++  result = polkit_authority_check_authorization_sync (drive_guard->auth,
++                                                      subject,
++                                                      DRIVE_GUARD_POLICY_ACTION_TOGGLE,
++                                                      NULL,
++                                                      POLKIT_CHECK_AUTHORIZATION_FLAGS_ALLOW_USER_INTERACTION,
++                                                      NULL, &error);
++  g_object_unref (subject);
++  if (error) {
++    g_error_free (error);
+     return FALSE;
+   }
+ 
+-  pk_action = polkit_action_new ();
+-  polkit_action_set_action_id (pk_action, DRIVE_GUARD_POLICY_ACTION_TOGGLE);
+-  pk_result = polkit_context_is_caller_authorized (drive_guard->polkit_ctx,
+-						   pk_action, pk_caller,
+-						   FALSE, NULL);
+-  polkit_caller_unref (pk_caller);
+-  polkit_action_unref (pk_action);
+-
+-  return (pk_result == POLKIT_RESULT_YES);
++  authed = polkit_authorization_result_get_is_authorized (result);
++  g_object_unref (result);
++  return authed;
+ }
+ 
+ static void drive_guard_start_core (DriveGuardServer *drive_guard);
+@@ -369,7 +364,7 @@
+   {
+     guint32 n;
+ 
+-    if (!check_polkit_authorized (conn, message, drive_guard_server)) {
++    if (!check_polkit_authorized (message, drive_guard_server)) {
+       goto fail;
+     }
+     
+@@ -575,7 +570,7 @@
+   int freefall_fd;
+   int shmfd;
+   struct hp_drive_guard_shm *shm;
+-  PolKitError *err;
++  GError *error = NULL;
+ 
+   freefall_fd = open (FREEFALL_WATCH_DEVICE, O_RDONLY | O_NONBLOCK);
+   if (freefall_fd < 0) {
+@@ -617,14 +612,7 @@
+   drive_guard_server->context = g_main_context_default ();
+   drive_guard_server->main_loop = g_main_loop_new (drive_guard_server->context, FALSE);
+ 
+-  drive_guard_server->polkit_ctx = polkit_context_new ();
+-  err = NULL;
+-  if (!polkit_context_init (drive_guard_server->polkit_ctx, &err)) {
+-    if (err)
+-      polkit_error_free (err);
+-    polkit_context_unref (drive_guard_server->polkit_ctx);
+-    drive_guard_server->polkit_ctx = NULL;
+-  }
++  drive_guard_server->auth = polkit_authority_get_sync (NULL, &error);
+ 
+   drive_guard_server_init_dbus (drive_guard_server);
+ 

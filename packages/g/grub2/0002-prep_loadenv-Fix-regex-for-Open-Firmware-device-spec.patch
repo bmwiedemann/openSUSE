@@ -1,0 +1,205 @@
+From 990902e28c390217d25ea474e5ef163d79eadc7f Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Fri, 31 Mar 2023 15:19:58 +0800
+Subject: [PATCH 2/2] prep_loadenv: Fix regex for Open Firmware device
+ specifier with encoded commas
+
+The Open Firmware device specifier allows for comma-separated properties
+of a component, but this conflicts with the way that grub separates
+device and partition in its device specifier. To address this, grub
+encodes commas in Open Firmware device strings with a leading backslash
+as an established convention.
+
+However, the regular expression used to extract the boot device
+substring from the $cmdpath environment variable did not properly retain
+commas with leading backslashes as part of the device. This could cause
+the comma to be incorrectly interpreted as a partition delimiter and
+result in a broken name for the boot disk.
+
+To fix this issue, we have updated the regular expression to properly
+handle the encoded comma in the Open Firmware device specifier, ensuring
+that the correct boot device is identified and used.
+
+v2:
+Fix the issue of freeing an uninitialized pointer in early_prep_loadenv.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/commands/prep_loadenv.c | 108 ++++++++++++++++++++++--------
+ 1 file changed, 79 insertions(+), 29 deletions(-)
+
+--- a/grub-core/commands/prep_loadenv.c
++++ b/grub-core/commands/prep_loadenv.c
+@@ -15,7 +15,7 @@
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+ static char *
+-match_substr (regmatch_t *match, const char *str)
++match_substr (const regmatch_t *match, const char *str)
+ {
+   if (match->rm_so != -1)
+     {
+@@ -185,24 +185,18 @@
+   return err;
+ }
+ 
+-static grub_err_t
+-boot_disk_prep_partname (char **name)
++static regmatch_t *
++regex_match_str (const char *pattern, const char *str, grub_size_t *nmatch)
+ {
+   regex_t regex;
+   int ret;
+   grub_size_t s;
+   char *comperr;
+-  const char *cmdpath;
+   regmatch_t *matches = NULL;
+   grub_err_t err = GRUB_ERR_NONE;
+ 
+-  *name = NULL;
+-
+-  cmdpath = grub_env_get ("cmdpath");
+-  if (!cmdpath)
+-    return GRUB_ERR_NONE;
+-
+-  ret = regcomp (&regex, "\\(([^,]+)(,?.*)?\\)(.*)", REG_EXTENDED);
++  *nmatch = 0;
++  ret = regcomp (&regex, pattern, REG_EXTENDED);
+   if (ret)
+     goto fail;
+ 
+@@ -210,22 +204,11 @@
+   if (! matches)
+     goto fail;
+ 
+-  ret = regexec (&regex, cmdpath, regex.re_nsub + 1, matches, 0);
+-  if (!ret)
++  ret = regexec (&regex, str, regex.re_nsub + 1, matches, 0);
++  if (ret == 0)
+     {
+-      char *devname = devname = match_substr (matches + 1, cmdpath);
+-      if (!devname)
+-	{
+-	  err = grub_error (GRUB_ERR_FILE_NOT_FOUND, "%s contains no disk name", cmdpath);
+-	  goto out;
+-	}
+-
+-      err = prep_partname (devname, name);
+- out:
+-      grub_free (devname);
+-      regfree (&regex);
+-      grub_free (matches);
+-      return err;
++      *nmatch = regex.re_nsub + 1;
++      return matches;
+     }
+ 
+  fail:
+@@ -235,13 +218,60 @@
+   if (!comperr)
+     {
+       regfree (&regex);
+-      return grub_errno;
++      return NULL;
+     }
+   regerror (ret, &regex, comperr, s);
+   err = grub_error (GRUB_ERR_TEST_FAILURE, "%s", comperr);
+   regfree (&regex);
+   grub_free (comperr);
+-  return err;
++  return NULL;
++}
++
++static grub_err_t
++boot_disk_prep_partname (const char *varname, char **name)
++{
++  const char *cmdpath;
++  regmatch_t *matches;
++  grub_size_t nmatch;
++  char *devname = NULL;
++
++  *name = NULL;
++
++  if (varname)
++    cmdpath = grub_env_get (varname);
++  else
++    cmdpath = grub_env_get ("cmdpath");
++  if (!cmdpath)
++    return GRUB_ERR_NONE;
++
++  matches = regex_match_str("\\((.*)\\)(.*)", cmdpath, &nmatch);
++  if (matches && nmatch >= 2)
++    devname = match_substr (matches + 1, cmdpath);
++  if (devname == NULL)
++    goto quit;
++  grub_free (matches);
++
++  matches = regex_match_str ("(.*[^\\])(,.*)", devname, &nmatch);
++  if (matches && nmatch >= 2)
++    {
++      char *n = match_substr (matches + 1, devname);
++      grub_free (devname);
++      devname = n;
++    }
++  else
++    grub_errno = GRUB_ERR_NONE;
++  if (devname)
++    {
++      grub_printf ("search prep from disk `%s'\n", devname);
++      prep_partname (devname, name);
++    }
++
++ quit:
++  grub_free (devname);
++  grub_free (matches);
++  if (grub_errno)
++    grub_print_error ();
++  return GRUB_ERR_NONE;
+ }
+ 
+ static grub_err_t
+@@ -274,13 +304,31 @@
+   return GRUB_ERR_NONE;
+ }
+ 
++static grub_err_t
++grub_cmd_prep_partname (grub_command_t cmd __attribute__ ((unused)),
++			int argc,
++			char **argv)
++{
++  char *prep = NULL;
++  const char *varname = NULL;
++
++  if (argc > 0)
++    varname = argv[0];
++
++  boot_disk_prep_partname(varname, &prep);
++  if (prep)
++    grub_printf ("prep: %s\n", prep);
++
++  return GRUB_ERR_NONE;
++}
++
+ static void
+ early_prep_loadenv (void)
+ {
+   grub_err_t err;
+-  char *prep;
++  char *prep = NULL;
+ 
+-  err = boot_disk_prep_partname (&prep);
++  err = boot_disk_prep_partname (NULL, &prep);
+   if (err == GRUB_ERR_NONE && prep)
+     err = prep_read_envblk (prep);
+   if (err == GRUB_ERR_BAD_FILE_TYPE || err == GRUB_ERR_FILE_NOT_FOUND)
+@@ -296,6 +344,10 @@
+ {
+   early_env_hook = early_prep_loadenv;
+   cmd_prep_load =
++    grub_register_command("prep_partname", grub_cmd_prep_partname,
++			  "VARNAME",
++			  N_("Get partition name of PReP."));
++  cmd_prep_load =
+     grub_register_command("prep_load_env", grub_cmd_prep_loadenv,
+ 			  "DEVICE",
+ 			  N_("Load variables from environment block file."));

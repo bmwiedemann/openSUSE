@@ -1,0 +1,24 @@
+diff --color -ur zcfan-1.2.1.orig/Makefile zcfan-1.2.1/Makefile
+--- zcfan-1.2.1.orig/Makefile 2022-08-12 03:50:01.000000000 +0200
++++ zcfan-1.2.1/Makefile  2023-09-04 10:14:18.332038220 +0200
+@@ -5,7 +5,7 @@
+ 
+ INSTALL:=install
+ prefix:=/usr/local
+-bindir:=$(prefix)/bin
++bindir:=$(prefix)/sbin
+ datarootdir:=$(prefix)/share
+ mandir:=$(datarootdir)/man
+ 
+diff --color -ur zcfan-1.2.1.orig/zcfan.service zcfan-1.2.1/zcfan.service
+--- zcfan-1.2.1.orig/zcfan.service  2022-08-12 03:50:01.000000000 +0200
++++ zcfan-1.2.1/zcfan.service 2023-09-04 10:15:28.486174496 +0200
+@@ -2,7 +2,7 @@
+ Description=Zero-configuration fan control for ThinkPad
+ 
+ [Service]
+-ExecStart=/usr/bin/zcfan
++ExecStart=/usr/sbin/zcfan
+ Restart=always
+ RestartSec=500ms
+ 

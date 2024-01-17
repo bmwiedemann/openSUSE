@@ -1,0 +1,373 @@
+From 9e61624db77e5073961126457f599bc70e877fd1 Mon Sep 17 00:00:00 2001
+From: Diego Domingos <diegodo@br.ibm.com>
+Date: Tue, 15 Mar 2022 15:59:41 -0400
+Subject: [PATCH 2/4] ieee1275/ofpath: enable NVMeoF logical device translation
+
+This patch add code to enable the translation of logical devices to the of NVMeoFC paths.
+---
+ grub-core/osdep/linux/ofpath.c | 260 +++++++++++++++++++++++++++++++--
+ include/grub/util/ofpath.h     |  29 ++++
+ 2 files changed, 280 insertions(+), 9 deletions(-)
+
+diff --git a/grub-core/osdep/linux/ofpath.c b/grub-core/osdep/linux/ofpath.c
+index 89beceef4..212782d3f 100644
+--- a/grub-core/osdep/linux/ofpath.c
++++ b/grub-core/osdep/linux/ofpath.c
+@@ -137,7 +137,7 @@ trim_newline (char *path)
+     *end-- = '\0';
+ }
+ 
+-#define MAX_DISK_CAT    64
++#define MAX_DISK_CAT    512
+ 
+ static char *
+ find_obppath (const char *sysfs_path_orig)
+@@ -313,6 +313,69 @@ get_basename(char *p)
+   return ret;
+ }
+ 
++
++void
++add_filename_to_pile(char *filename, struct ofpath_files_list_root* root){
++    struct ofpath_files_list_node* file;
++
++    file = malloc(sizeof(struct ofpath_files_list_node));
++
++    file->filename = filename;
++
++    if(root->first == NULL){
++      root->items = 1;
++      root->first = file;
++      file->next = NULL;
++    } else {
++      root->items++;
++      file->next = root->first;
++      root->first = file;
++    }
++}
++
++
++void
++find_file(char* filename, char* directory, struct ofpath_files_list_root* root, int max_depth, int depth){
++   struct dirent *ep;
++   struct stat statbuf;
++   DIR *dp;
++
++   if(depth > max_depth){
++           return;
++   }
++
++   if((dp = opendir(directory)) == NULL){
++    
++    return;
++   }
++
++   while((ep = readdir(dp)) != NULL){
++
++     char* full_path = malloc(1024*sizeof(char));
++     snprintf(full_path,1024,"%s/%s",directory,ep->d_name);
++
++     lstat(full_path,&statbuf);
++
++     if(S_ISLNK(statbuf.st_mode)){
++             
++             continue;
++     }
++
++     if(!strcmp(ep->d_name,".") || !strcmp(ep->d_name,"..")){
++       continue;
++     }
++
++     if(!strcmp(ep->d_name,filename)){
++        add_filename_to_pile(full_path, root);
++     }
++
++     find_file(filename, full_path, root, max_depth, depth+1);
++
++   }
++   closedir(dp);
++}
++
++
+ static char *
+ of_path_of_vdisk(const char *sys_devname __attribute__((unused)),
+ 		 const char *device,
+@@ -351,7 +414,142 @@ of_path_of_ide(const char *sys_devname __attribute__((unused)), const char *devi
+   return ret;
+ }
+ 
+-#ifdef __sparc__
++char*
++of_find_fc_host(char* host_wwpn){
++
++  FILE* fp;
++  char *buf;
++  char portname_filename[sizeof("port_name")] = "port_name";
++  char devices_path[sizeof("/sys/devices")] = "/sys/devices";
++
++  struct ofpath_files_list_root* portnames_file_list;
++
++  portnames_file_list=malloc(sizeof(portnames_file_list));
++  portnames_file_list->items=0;
++  portnames_file_list->first=NULL;
++
++  find_file(portname_filename, devices_path, portnames_file_list, 10, 0);
++
++  struct ofpath_files_list_node* node = portnames_file_list->first;
++  while(node != NULL){
++      fp = fopen(node->filename,"r");
++      buf = malloc(sizeof(char)*512);
++      fscanf(fp, "%s", buf);
++      fclose(fp);
++      if((strcmp(buf,host_wwpn) == 0) && grub_strstr(node->filename, "fc_host")){
++	  return node->filename;
++      }
++      node = node->next;
++  }
++
++  return NULL;
++}
++
++void
++of_path_get_nvmeof_adapter_info(char* sysfs_path,
++		                struct ofpath_nvmeof_info* nvmeof_info){
++
++  FILE *fp;
++  char *buf, *buf2, *buf3;
++
++  nvmeof_info->host_wwpn = malloc(sizeof(char)*256);
++  nvmeof_info->target_wwpn = malloc(sizeof(char)*256);
++  nvmeof_info->nqn = malloc(sizeof(char)*256);
++
++  buf = malloc(sizeof(char)*512);
++  snprintf(buf,512,"%s/subsysnqn",sysfs_path);
++  fp = fopen(buf,"r");
++  fscanf(fp, "%s", nvmeof_info->nqn);
++  fclose(fp);
++
++  snprintf(buf,512,"%s/cntlid",sysfs_path);
++  fp = fopen(buf,"r");
++  fscanf(fp, "%u", &(nvmeof_info->cntlid));
++  fclose(fp);
++
++  //snprintf(buf,512,"%s/nsid",sysfs_path); 
++  //fp = fopen(buf,"r");
++  //fscanf(fp, "%u", &(nvmeof_info->nsid));
++  //fclose(fp);
++
++  snprintf(buf,512,"%s/address",sysfs_path);
++  fp = fopen(buf,"r");
++  buf2 = malloc(sizeof(char)*512);
++  fscanf(fp, "%s", buf2);
++  fclose(fp);
++
++  nvmeof_info->host_wwpn = strrchr(buf2,'-')+1;
++
++  buf3=strchr(buf2,'-')+1;
++  buf3=strchr(buf3,'-')+1;
++  nvmeof_info->target_wwpn = buf3;
++  buf3 = strchr(nvmeof_info->target_wwpn,',');
++  *buf3 = '\0';
++
++
++  free(buf);
++
++  return;
++}
++
++#define MAX_NVME_NSID_DIGITS 6
++
++static char *
++of_path_get_nvme_controller_name_node(const char* devname)
++{
++  char *controller_node, *end;
++
++  controller_node = strdup(devname);
++
++  end = grub_strchr(controller_node+1, 'n');
++
++  if(end != NULL){
++    *end = '\0';
++  }
++
++  return controller_node;
++}
++
++unsigned int
++of_path_get_nvme_nsid(const char* devname)
++{
++  unsigned int nsid;
++  char *sysfs_path, *buf;
++  FILE *fp;
++  
++  buf=malloc(sizeof(char)*512);
++
++  sysfs_path = block_device_get_sysfs_path_and_link (devname);
++
++  snprintf(buf,512,"%s/%s/nsid",sysfs_path,devname);
++  fp = fopen(buf,"r");
++  fscanf(fp, "%u", &(nsid));
++  fclose(fp);
++
++  free(sysfs_path);
++  free(buf);
++
++  return nsid;
++
++}
++
++static char *
++nvme_get_syspath(const char *nvmedev)
++{
++  char *sysfs_path, *controller_node;
++  sysfs_path = block_device_get_sysfs_path_and_link (nvmedev);
++  
++  if(strstr(sysfs_path,"nvme-subsystem")){
++    controller_node = of_path_get_nvme_controller_name_node(nvmedev);
++    strcat(sysfs_path,"/");
++    strcat(sysfs_path,controller_node);
++    sysfs_path = xrealpath(sysfs_path);
++  }
++
++  return sysfs_path;
++}
++
++
+ static char *
+ of_path_of_nvme(const char *sys_devname __attribute__((unused)),
+ 	        const char *device,
+@@ -360,6 +558,7 @@ of_path_of_nvme(const char *sys_devname __attribute__((unused)),
+ {
+   char *sysfs_path, *of_path, disk[MAX_DISK_CAT];
+   const char *digit_string, *part_end;
++  int chars_written;
+ 
+   digit_string = trailing_digits (device);
+   part_end = devicenode + strlen (devicenode) - 1;
+@@ -379,15 +578,61 @@ of_path_of_nvme(const char *sys_devname __attribute__((unused)),
+       /* Remove the p. */
+       *end = '\0';
+       sscanf (digit_string, "%d", &part);
+-      snprintf (disk, sizeof (disk), "/disk@1:%c", 'a' + (part - 1));
+-      sysfs_path = block_device_get_sysfs_path_and_link (nvmedev);
++
++      sysfs_path = nvme_get_syspath(nvmedev);
++
++      /* If is a NVMeoF */
++      if(strstr(sysfs_path,"nvme-fabrics")){
++        struct ofpath_nvmeof_info* nvmeof_info;
++        nvmeof_info = malloc(sizeof(nvmeof_info));
++
++        of_path_get_nvmeof_adapter_info(sysfs_path, nvmeof_info);
++
++        sysfs_path = of_find_fc_host(nvmeof_info->host_wwpn);
++
++        chars_written = snprintf(disk,sizeof(disk),"/nvme-of/controller@%s,%x:nqn=%s",
++                          nvmeof_info->target_wwpn,
++                          0xffff,
++                          nvmeof_info->nqn);
++        
++        unsigned int nsid = of_path_get_nvme_nsid(nvmedev);
++
++        if(nsid){
++          snprintf(disk+chars_written,sizeof(disk) - chars_written,
++			  "/namespace@%x:%d",nsid, part);
++        }
++
++      } else {
++           snprintf (disk, sizeof (disk), "/disk@1:%c", 'a' + (part - 1));
++      }
+       free (nvmedev);
+     }
+   else
+     {
+       /* We do not have the parition. */
+-      snprintf (disk, sizeof (disk), "/disk@1");
+-      sysfs_path = block_device_get_sysfs_path_and_link (device);
++      sysfs_path = nvme_get_syspath (device);
++      if(strstr(sysfs_path,"nvme-fabrics")){
++        struct ofpath_nvmeof_info* nvmeof_info;
++        nvmeof_info = malloc(sizeof(nvmeof_info));
++
++        of_path_get_nvmeof_adapter_info(sysfs_path, nvmeof_info);
++      
++      	sysfs_path = of_find_fc_host(nvmeof_info->host_wwpn);
++
++        chars_written = snprintf(disk,sizeof(disk),"/nvme-of/controller@%s,%x:nqn=%s",
++                          nvmeof_info->target_wwpn,
++                          0xffff,
++                          nvmeof_info->nqn);
++        
++	unsigned int nsid = of_path_get_nvme_nsid(device);
++        if(nsid){
++          snprintf(disk+chars_written,sizeof(disk) - chars_written,
++			  "/namespace@%x",nsid);
++	}
++      } else {
++	      snprintf (disk, sizeof (disk), "/disk@1");
++      }
++
+     }
+ 
+   of_path = find_obppath (sysfs_path);
+@@ -398,7 +643,6 @@ of_path_of_nvme(const char *sys_devname __attribute__((unused)),
+   free (sysfs_path);
+   return of_path;
+ }
+-#endif
+ 
+ static void
+ of_fc_port_name(const char *path, const char *subpath, char *port_name)
+@@ -840,11 +1084,9 @@ grub_util_devname_to_ofpath (const char *sys_devname)
+     /* All the models I've seen have a devalias "floppy".
+        New models have no floppy at all. */
+     ofpath = xstrdup ("floppy");
+-#ifdef __sparc__
+   else if (device[0] == 'n' && device[1] == 'v' && device[2] == 'm'
+            && device[3] == 'e')
+     ofpath = of_path_of_nvme (name_buf, device, devnode, devicenode);
+-#endif
+   else
+     {
+       grub_util_warn (_("unknown device type %s"), device);
+diff --git a/include/grub/util/ofpath.h b/include/grub/util/ofpath.h
+index b43c523cb..a0ec30620 100644
+--- a/include/grub/util/ofpath.h
++++ b/include/grub/util/ofpath.h
+@@ -3,4 +3,33 @@
+ 
+ char *grub_util_devname_to_ofpath (const char *devname);
+ 
++struct ofpath_files_list_node {
++  char* filename;
++  struct ofpath_files_list_node* next;
++};
++
++struct ofpath_files_list_root {
++  int items;
++  struct ofpath_files_list_node* first;
++};
++
++struct ofpath_nvmeof_info {
++  char* host_wwpn;
++  char* target_wwpn;
++  char* nqn;
++  int cntlid;
++  int nsid;
++};
++
++void of_path_get_nvmeof_adapter_info(char* sysfs_path,
++                               struct ofpath_nvmeof_info* nvmeof_info);
++
++unsigned int of_path_get_nvme_nsid(const char* devname);
++
++void add_filename_to_pile(char *filename, struct ofpath_files_list_root* root);
++
++void find_file(char* filename, char* directory, struct ofpath_files_list_root* root, int max_depth, int depth);
++
++char* of_find_fc_host(char* host_wwpn);
++
+ #endif /* ! GRUB_OFPATH_MACHINE_UTIL_HEADER */
+-- 
+2.35.3
+

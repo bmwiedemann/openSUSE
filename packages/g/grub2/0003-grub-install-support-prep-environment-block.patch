@@ -1,0 +1,137 @@
+From c31fc5aa0ded9ce1e774d0a3526cfee19be1b77f Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 7 Feb 2022 20:49:01 +0800
+Subject: [PATCH 3/5] grub-install: support prep environment block
+
+The grub-install can be instructed to create environment block at end of
+PReP paritition with probed device identities and properties in
+variables to facilitate root device discovery. So far these variables
+are defined for this purpose:
+
+ENV_FS_UUID - The filesystem uuid for the grub root device
+ENV_CRYPTO_UUID - The crytodisk uuid for the grub root device separated
+by space
+ENV_GRUB_DIR - The path to grub prefix directory
+ENV_HINT - The recommended hint string for searching root device
+
+The size of environment block is defined in GRUB_ENVBLK_PREP_SIZE which
+is 4096 bytes and can be extended in the future.
+
+v2: Improve detection of ENV_CRYPTO_UUID by traversing all members of
+the logical disk and utilize a space as a separator when multiple UUIDs
+are found (bsc#1216075). 
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ include/grub/lib/envblk.h |  3 +++
+ util/grub-install.c       | 38 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 41 insertions(+)
+
+--- a/include/grub/lib/envblk.h
++++ b/include/grub/lib/envblk.h
+@@ -24,6 +24,9 @@
+ 
+ #ifndef ASM_FILE
+ 
++#include <grub/disk.h>
++#define GRUB_ENVBLK_PREP_SIZE (GRUB_DISK_SECTOR_SIZE << 3)
++
+ struct grub_envblk
+ {
+   char *buf;
+--- a/util/grub-install.c
++++ b/util/grub-install.c
+@@ -43,6 +43,7 @@
+ #include <grub/util/ofpath.h>
+ #include <grub/hfsplus.h>
+ #include <grub/time.h>
++#include <grub/lib/envblk.h>
+ 
+ #include <string.h>
+ 
+@@ -609,6 +610,41 @@
+     }
+ }
+ 
++static char *
++cryptodisk_uuids (grub_disk_t disk, int in_recurse)
++{
++  grub_disk_memberlist_t list = NULL, tmp;
++  static char *ret;
++
++  if (!in_recurse)
++    ret = NULL;
++
++  if (disk->dev->disk_memberlist)
++    list = disk->dev->disk_memberlist (disk);
++
++  while (list)
++    {
++      ret = cryptodisk_uuids (list->disk, 1);
++      tmp = list->next;
++      free (list);
++      list = tmp;
++    }
++
++  if (disk->dev->id == GRUB_DISK_DEVICE_CRYPTODISK_ID)
++    {
++      if (!ret)
++        ret = grub_strdup (grub_util_cryptodisk_get_uuid (disk));
++      else
++	{
++	  char *s = grub_xasprintf ("%s %s", grub_util_cryptodisk_get_uuid (disk), ret);
++	  grub_free (ret);
++	  ret = s;
++	}
++    }
++
++  return ret;
++}
++
+ static int
+ is_same_disk (const char *a, const char *b)
+ {
+@@ -2138,6 +2174,43 @@
+ 	  if (write_to_disk (ins_dev, imgfile))
+ 	    grub_util_error ("%s", _("failed to copy Grub to the PReP partition"));
+ 	  grub_set_install_backup_ponr ();
++
++	  if ((signed_grub_mode >= SIGNED_GRUB_FORCE) || ((signed_grub_mode == SIGNED_GRUB_AUTO) && (ppc_sb_state > 0)))
++	    {
++	      char *uuid = NULL;
++	      grub_envblk_t envblk = NULL;
++	      char *buf;
++	      char *cryptouuid = NULL;
++
++	      if (grub_dev->disk)
++		cryptouuid = cryptodisk_uuids (grub_dev->disk, 0);
++
++	      if (grub_fs->fs_uuid && grub_fs->fs_uuid (grub_dev, &uuid))
++		{
++		  grub_print_error ();
++		  grub_errno = 0;
++		  uuid = NULL;
++		}
++	      buf = grub_envblk_buf (GRUB_ENVBLK_PREP_SIZE);
++	      envblk = grub_envblk_open (buf, GRUB_ENVBLK_PREP_SIZE);
++	      if (uuid)
++		grub_envblk_set (envblk, "ENV_FS_UUID", uuid);
++	      if (cryptouuid)
++		grub_envblk_set (envblk, "ENV_CRYPTO_UUID", cryptouuid);
++	      if (relative_grubdir)
++		grub_envblk_set (envblk, "ENV_GRUB_DIR", relative_grubdir);
++	      if (have_abstractions)
++		grub_envblk_set (envblk, "ENV_HINT", grub_dev->disk->name);
++	      if (use_relative_path_on_btrfs)
++		grub_envblk_set (envblk, "btrfs_relative_path", "1");
++	      if (envblk)
++		{
++		  fprintf (stderr, _("Write environment block to PReP.\n"));
++		  if (grub_disk_write_tail (ins_dev->disk, envblk->size, envblk->buf))
++		    grub_util_error ("%s", _("failed to write environment block to the PReP partition"));
++		}
++	      grub_envblk_close (envblk);
++	    }
+ 	  grub_device_close (ins_dev);
+ 	  if (update_nvram)
+ 	    grub_install_register_ieee1275 (1, grub_util_get_os_disk (install_device),

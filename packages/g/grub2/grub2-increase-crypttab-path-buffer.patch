@@ -1,0 +1,26 @@
+From bbf0d5b3bcdde357de343032ecf358764faf0339 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 16 Dec 2022 09:19:50 +0800
+Subject: [PATCH] commands/crypttab: increase the size of the path buffer
+
+Allocate a larger buffer for the cryptsetup.d path in case the system
+uses a long volume name.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ grub-core/commands/crypttab.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: grub-2.06/grub-core/commands/crypttab.c
+===================================================================
+--- grub-2.06.orig/grub-core/commands/crypttab.c
++++ grub-2.06/grub-core/commands/crypttab.c
+@@ -11,7 +11,7 @@ static grub_err_t
+ grub_cmd_crypttab_entry (grub_command_t cmd __attribute__ ((unused)),
+ 	       int argc, char **argv)
+ {
+-  char buf[64];
++  char buf[256];
+   const char *path = NULL;
+ 
+   if (argc == 2)

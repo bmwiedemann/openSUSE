@@ -1,0 +1,133 @@
+---
+ grub-core/loader/emu/linux.c  |    4 ++--
+ util/s390x/dracut-grub2.sh.in |   14 ++++++++++++--
+ util/s390x/zipl2grub.conf.in  |    1 +
+ util/s390x/zipl2grub.pl.in    |   31 ++++++++++++++++++++++---------
+ 4 files changed, 37 insertions(+), 13 deletions(-)
+
+--- a/util/s390x/dracut-grub2.sh.in
++++ b/util/s390x/dracut-grub2.sh.in
+@@ -18,6 +18,9 @@
+    done < /proc/mounts
+    echo $rofs
+   }
++  checkcat() {
++    [ -r $1 ] && cat $1
++  }
+   checkd() {
+     [ -d $1 ] && echo true || echo false
+   }
+@@ -76,6 +79,7 @@
+     export grub2bootw=$(checksubvol /boot/writable)
+     export grub2devfs=$(checkd /sysroot/dev/disk)
+     export grub2snap=$(checksnap)
++    export grub2secure=$(checkcat /sys/firmware/ipl/secure)
+     debug "" export -p
+ 
+         _ctty="$(RD_DEBUG= getarg rd.ctty=)" && _ctty="/dev/${_ctty##*/}"
+@@ -107,7 +111,7 @@
+     debug "Trying grub2-emu (ro=$grub2rofs, TERM=$TERM, ctty=$_ctty)..."
+     setsid $CTTY -- chroot /sysroot $bindir/grub2-emu -X -X 0<>$_ctty 1>&0 2>&0
+ 
+-    if [ -x /sysroot@libdir@/grub2/zipl-refresh ]; then
++    if [ "$grub2secure" != 1 ]&&[ -x /sysroot@libdir@/grub2/zipl-refresh ]; then
+ 	setsid $CTTY -- /sysroot@libdir@/grub2/zipl-refresh 0<>$_ctty 1>&0 2>&0
+ 	if [ $? != 0 ]; then
+ 	    warn "Not continuing"
+@@ -117,12 +121,18 @@
+ 	    sleep 3
+ 	    reboot
+ 	fi
+-    else
++    elif [ "$grub2secure" != 1 ]; then
+ 	echo "
+   Attention: 'grub2' failed to start the target kernel and 'zipl-refresh'
+   is not available.  This should never happen.  Please contact support." >& $_ctty
+ 	warn "Not continuing"
+ 	emergency_shell -n grub2-emu-kexec
++    else
++	echo "
++  Attention: 'grub2' failed to start the target kernel and secure boot seems
++  active.  Automatic recovery not available.  Please contact support." >& $_ctty
++	warn "Not continuing"
++	emergency_shell -n grub2-emu-kexec
+     fi
+ 
+     $grub2snap || umount /sysroot/.snapshots
+--- a/util/s390x/zipl2grub.conf.in
++++ b/util/s390x/zipl2grub.conf.in
+@@ -45,6 +45,7 @@
+     timeout = 60
+     default = 1
+     prompt = 0
++    secure = @SUSE_SECURE_BOOT@
+     1 = grub2
+     2 = skip-grub2
+     3 = grub2-mem1G
+--- a/util/s390x/zipl2grub.pl.in
++++ b/util/s390x/zipl2grub.pl.in
+@@ -21,6 +21,7 @@
+ my $cfg = "";
+ my %fsdev = ();
+ my %fstype = ();
++my %SBL = (); # key/value of $sysconfbl
+ 
+ my %C = (
+   GRUB_CMDLINE_LINUX_DEFAULT => "quiet splash=silent",
+@@ -251,6 +252,15 @@
+   }
+   close( IN);
+ }
++if ( -r $sysconfbl ) {
++  open( IN, "< $sysconfbl") ||  die;
++  while ( <IN> ) {
++    next if ( m{^\s*#} );
++    next unless ( m{^\s*([^=#\s]+)="(.*)"(?:\s*|\s+#.*)$} );
++    $SBL{$1} = $2;
++  }
++  close( IN);
++}
+ if ( -r "/etc/fstab" ) {
+   my $regex = qr{^(\S+)\s+(\S+)\s+(\S+)\s+\S+\s+\S+\s+\S+\s*(?:#.*)?$};
+   open( IN, "< /etc/fstab") || die;
+@@ -313,21 +323,21 @@
+   }
+ }
+ if ( $C{GRUB_CMDLINE_LINUX_DEFAULT} eq "quiet splash=silent" &&
+-     -r $sysconfbl) {
+-  open( IN, "< $sysconfbl") ||  die;
+-  while ( <IN> ) {
+-    next if ( m{^\s*#} );
+-    if ( m{^DEFAULT_APPEND=".*"(?:\s*|\s+#.*)$} ) {
+-      $C{GRUB_CMDLINE_LINUX_DEFAULT} = $1;
+-    }
+-  }
+-  close( IN);
++     exists( $SBL{DEFAULT_APPEND}) ) {
++  $C{GRUB_CMDLINE_LINUX_DEFAULT} = $SBL{DEFAULT_APPEND};
+ }
+ 
+ if ( ! exists( $C{GRUB_DEVICE})) {
+   Panic( 0, "$C: Default not ready and no fallback.  Please retry later!\n");
+ }
+ 
++if ( !exists( $C{SUSE_SECURE_BOOT}) ) {
++  $C{SUSE_SECURE_BOOT} = "0";
++  if ( exists( $SBL{SECURE_BOOT}) && $SBL{SECURE_BOOT} =~ m{^(yes|true|1)$} ) {
++    $C{SUSE_SECURE_BOOT} = "1";
++  }
++}
++
+ if ( ! exists( $C{GRUB_EMU_CONMODE}) && exists( $C{GRUB_CONMODE}) ) {
+   # GRUB_CONMODE is used for 'grub2-emu' as well
+   $C{GRUB_EMU_CONMODE} = $C{GRUB_CONMODE};
+@@ -360,6 +370,9 @@
+   foreach ( sort( keys( %C)) ) {
+     printf( "%s=\"%s\"\n", $_, $C{$_});
+   }
++  foreach ( sort( keys( %SBL)) ) {
++    printf( "SBL: %s=\"%s\"\n", $_, $SBL{$_});
++  }
+ }
+ 
+ open( IN, "< $in") ||

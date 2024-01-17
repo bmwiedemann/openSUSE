@@ -1,0 +1,14 @@
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -363,6 +363,11 @@
+     cat ${grub_cfg}.new > ${grub_cfg}
+     umask $oldumask
+     rm -f ${grub_cfg}.new
++    # check if default entry need to be corrected for updated distributor version
++    # and/or use fallback entry if default kernel entry removed
++    if test -x /usr/sbin/grub2-check-default; then
++       /usr/sbin/grub2-check-default >&2
++    fi
+     sync_fs_journal || true
+   fi
+ fi

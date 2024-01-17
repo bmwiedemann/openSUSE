@@ -1,0 +1,36 @@
+From 64494ffc442a5de05b237ad48d27c70d22849a44 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 3 Aug 2023 15:52:52 +0800
+Subject: [PATCH 3/4] cryptodisk: wipe out the cached keys from protectors
+
+An attacker may insert a malicious disk with the same crypto UUID and
+trick grub2 to mount the fake root. Even though the key from the key
+protector fails to unlock the fake root, it's not wiped out cleanly so
+the attacker could dump the memory to retrieve the secret key. To defend
+such attack, wipe out the cached key when we don't need it.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ grub-core/disk/cryptodisk.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/disk/cryptodisk.c b/grub-core/disk/cryptodisk.c
+index cf37a0934..f42437f4e 100644
+--- a/grub-core/disk/cryptodisk.c
++++ b/grub-core/disk/cryptodisk.c
+@@ -1348,7 +1348,11 @@ grub_cryptodisk_clear_key_cache (struct grub_cryptomount_args *cargs)
+     return;
+ 
+   for (i = 0; cargs->protectors[i]; i++)
+-    grub_free (cargs->key_cache[i].key);
++    {
++      if (cargs->key_cache[i].key)
++	grub_memset (cargs->key_cache[i].key, 0, cargs->key_cache[i].key_len);
++      grub_free (cargs->key_cache[i].key);
++    }
+ 
+   grub_free (cargs->key_cache);
+ }
+-- 
+2.35.3
+

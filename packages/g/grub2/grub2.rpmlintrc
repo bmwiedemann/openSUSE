@@ -1,0 +1,14 @@
+addFilter("zero-length /boot/grub2/grub.cfg")
+addFilter("non-etc-or-var-file-marked-as-conffile /boot/grub2/grub.cfg")
+addFilter("non-conffile-in-etc /etc/bash_completion.d/grub")
+addFilter("non-conffile-in-etc /etc/grub.d/README")
+addFilter("statically-linked-binary .*/grub2/*/kernel.img")
+# We need to supply unstripped files for grub
+addFilter("unstripped-binary-or-object .*/grub2/*/.*.mod")
+# TODO: s390 Experts: is this sensible?!
+addFilter("s390x: W: executable-stack")
+# We need to provide compatibility sym-links in noarch package
+addFilter("suse-filelist-forbidden-noarch")
+addFilter("filelist-forbidden-noarch")
+#
+addFilter('arch-independent-package-contains-binary-or-object')

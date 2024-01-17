@@ -1,0 +1,101 @@
+From 806bb18c3493537530b6b0387143752478078f5b Mon Sep 17 00:00:00 2001
+From: Daniel Axtens <dja@axtens.net>
+Date: Mon, 28 Sep 2020 11:11:17 +1000
+Subject: [PATCH 22/23] ieee1275: enter lockdown based on /ibm,secure-boot
+
+If the 'ibm,secure-boot' property of the root node is 2 or greater,
+enter lockdown.
+
+Signed-off-by: Daniel Axtens <dja@axtens.net>
+---
+ docs/grub.texi                |  4 ++--
+ grub-core/Makefile.core.def    |  1 +
+ grub-core/kern/ieee1275/init.c | 27 +++++++++++++++++++++++++++
+ include/grub/lockdown.h        |  3 ++-
+ 4 files changed, 32 insertions(+), 3 deletions(-)
+
+--- a/docs/grub.texi
++++ b/docs/grub.texi
+@@ -6795,8 +6795,8 @@
+ @section Lockdown when booting on a secure setup
+ 
+ The GRUB can be locked down when booted on a secure boot environment, for example
+-if the UEFI secure boot is enabled. On a locked down configuration, the GRUB will
+-be restricted and some operations/commands cannot be executed.
++if UEFI or Power secure boot is enabled. On a locked down configuration, the
++GRUB will be restricted and some operations/commands cannot be executed.
+ 
+ The @samp{lockdown} variable is set to @samp{y} when the GRUB is locked down.
+ Otherwise it does not exit.
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -331,6 +331,7 @@
+   powerpc_ieee1275 = kern/powerpc/cache.S;
+   powerpc_ieee1275 = kern/powerpc/dl.c;
+   powerpc_ieee1275 = kern/powerpc/compiler-rt.S;
++  powerpc_ieee1275 = kern/lockdown.c;
+ 
+   sparc64_ieee1275 = kern/sparc64/cache.S;
+   sparc64_ieee1275 = kern/sparc64/dl.c;
+--- a/grub-core/kern/ieee1275/init.c
++++ b/grub-core/kern/ieee1275/init.c
+@@ -49,6 +49,7 @@
+ #if defined(__powerpc__) || defined(__i386__)
+ #include <grub/ieee1275/alloc.h>
+ #endif
++#include <grub/lockdown.h>
+ 
+ /* The maximum heap size we're going to claim at boot. Not used by sparc. */
+ #ifdef __i386__
+@@ -893,6 +894,30 @@
+     }
+ }
+ 
++static void
++grub_get_ieee1275_secure_boot (void)
++{
++  grub_ieee1275_phandle_t root;
++  int rc;
++  grub_uint32_t is_sb;
++
++  grub_ieee1275_finddevice ("/", &root);
++
++  rc = grub_ieee1275_get_integer_property (root, "ibm,secure-boot", &is_sb,
++                                           sizeof (is_sb), 0);
++
++  /* ibm,secure-boot:
++   * 0 - disabled
++   * 1 - audit
++   * 2 - enforce
++   * 3 - enforce + OS-specific behaviour
++   *
++   * We only support enforce.
++   */
++  if (rc >= 0 && is_sb >= 2)
++    grub_lockdown ();
++}
++
+ grub_addr_t grub_modbase;
+ 
+ void
+@@ -918,6 +943,8 @@
+ #else
+   grub_install_get_time_ms (grub_rtc_get_time_ms);
+ #endif
++
++  grub_get_ieee1275_secure_boot ();
+ }
+ 
+ void
+--- a/include/grub/lockdown.h
++++ b/include/grub/lockdown.h
+@@ -24,7 +24,8 @@
+ #define GRUB_LOCKDOWN_DISABLED       0
+ #define GRUB_LOCKDOWN_ENABLED        1
+ 
+-#ifdef GRUB_MACHINE_EFI
++#if defined(GRUB_MACHINE_EFI) || \
++    (defined(__powerpc__) && defined(GRUB_MACHINE_IEEE1275))
+ extern void
+ EXPORT_FUNC (grub_lockdown) (void);
+ extern int

@@ -1,0 +1,9 @@
+--- vncmanager-controller-1.0.1/CMakeLists.txt.orig	2020-09-23 13:05:16.131990000 +0200
++++ vncmanager-controller-1.0.1/CMakeLists.txt	2020-09-23 13:05:47.219317000 +0200
+@@ -25,5 +25,5 @@ add_executable(vncmanager-controller ${v
+ target_link_libraries(vncmanager-controller Qt5::Widgets Qt5::Network Qt5::X11Extras X11 Xvnc)
+ 
+ install(TARGETS vncmanager-controller RUNTIME DESTINATION bin)
+-install(FILES vncmanager-controller.desktop DESTINATION /${CMAKE_INSTALL_SYSCONFDIR}/xdg/autostart)
++install(FILES vncmanager-controller.desktop DESTINATION /usr/etc/xdg/autostart)
+ install(FILES gnome-shell-extension/extension.js gnome-shell-extension/metadata.json DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/gnome-shell/extensions/vncmanager-controller@vncmanager.michalsrb.github.com)

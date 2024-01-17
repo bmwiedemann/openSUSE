@@ -1,0 +1,10 @@
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source."https://github.com/rust-windowing/glutin.git"]
+git = "https://github.com/rust-windowing/glutin.git"
+rev = "07c461e"
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"

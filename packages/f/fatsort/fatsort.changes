@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Fri Mar 17 16:59:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.5.640:
+  * refactored character conversion and fixed bugs related to
+    multi-byte characters
+  * added checks for overly long filenames
+  * added test cases for long file names
+
+-------------------------------------------------------------------
+Mon Dec 20 21:52:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.4.625:
+  * Fixed randomization for fatXX.
+  * added test cases for randomization option 
+
+-------------------------------------------------------------------
+Wed Aug 12 11:03:50 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.6.3.622:
+  * fatsort release file now includes precompiled makefile
+  * fixed support for macOS (thanks to Max for the fix)
+  * declared OPT_LOCALE as extern
+  * fixed uninitialized variable
+  * avoided some string truncation compiler warnings
+  * implemented platform independent transliteration for invalid
+    multi-byte characters during conversion
+  * test makefile now returns error code
+
+-------------------------------------------------------------------
+Thu Jun 11 09:50:19 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+
+-------------------------------------------------------------------
+Mon Feb  3 14:36:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Small packaging improvements
+
+-------------------------------------------------------------------
+Sat Nov 30 14:17:55 UTC 2019 - malcolmlewis@opensuse.org
+
+- Updated to version 1.6.2.605:
+  * FIX: multiple endianness issues with exFAT
+  * Now using /proc/self/mounts instead of /etc/mtab to check
+    whether filesystem is mounted.
+- Changes from version 1.6.1:
+  * FIX: missing check if directory entries are of type file.
+  * Option -l now considers options -d, -D, -x, -X, -e and -E.
+  * Added check for dirty volumes.
+  * Added new test cases.
+- Changes from version 1.6.0:
+  * exFAT is now supported!
+  * Directory entries are now only written back if reordering
+    happened.
+  * FIX: memory leak with regular expression lists.
+  * Code rewrite to make additional platforms possible in future.
+
+-------------------------------------------------------------------
+Tue Mar  5 11:10:42 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file
+
+-------------------------------------------------------------------
+Sat Oct 13 04:48:28 UTC 2018 - sean@suspend.net
+
+- Update to version 1.5.0.456:
+  * added options -e and -E to select directories with regular expressions
+  * FIX: possible memory leak for OPT_LOCALE
+  * FIX: bug affecting case sensitive sorting with locales
+
+-------------------------------------------------------------------
+Thu Oct 26 08:17:58 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.4.2.439:
+  * FIX: sorting with option -m on big endian architectures is now
+    working as intended
+  * reproducible docker tests added for i386, amd64, ppc64le
+  * added clean target for manpage
+  * updated tests
+- Changes for version 1.4.1:
+  * fixed memory leak when providing multiple locales
+  * fixed test tc_check_consistent_version
+  * added //TRANSLIT to iconv_open so iconv will no longer fail
+    when a character cannot be converted
+  * added missing test cases
+- Changes for version 1.4:
+  * added option -L to specify an alternate locale to be used
+  * added warning if C locale is used
+  * added valgrind tests
+  * fixed possible memory leak found with valgrind
+- Changes for version 1.3.1:
+  * increased maximum cluster size to 64kb
+  * fixed descriptions for options -I, -o, -d, -D, -x and -X in
+    manpage
+  * replaced some fclose with fs_close
+  * changed iconv error to warning
+  * fixed a test case
+
+-------------------------------------------------------------------
+Sun May 29 08:00:05 UTC 2016 - mpluskal@suse.com
+
+- Cleanup package
+- Update to version 1.3.365
+
+-------------------------------------------------------------------
+Tue Apr  8 18:55:38 UTC 2014 - marec@detebe.org
+
+- updated to version 1.3
+
+-------------------------------------------------------------------
+Tue Dec 10 22:56:42 UTC 2013 - marec@detebe.org
+
+- updated to version 1.2
+
+-------------------------------------------------------------------
+Tue Jun 11 17:01:25 UTC 2013 - marec@detebe.org
+
+- updated to version 1.1.1
+
+-------------------------------------------------------------------
+Fri May 24 13:50:14 UTC 2013 - marec@detebe.org
+
+- updated to version 1.1
+
+-------------------------------------------------------------------
+Mon May 20 10:27:30 UTC 2013 - marec@detebe.org
+
+- updated to version 1.0.1
+
+-------------------------------------------------------------------
+Mon Apr 15 16:34:07 UTC 2013 - marec@detebe.org
+
+- initial package build
+

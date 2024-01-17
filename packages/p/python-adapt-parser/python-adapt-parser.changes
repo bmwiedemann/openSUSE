@@ -1,0 +1,145 @@
+-------------------------------------------------------------------
+Tue Nov  7 09:58:56 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
+Wed Oct 19 11:27:15 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix sitelib in files section
+
+-------------------------------------------------------------------
+Wed Oct 19 10:59:31 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patch remove-python-six.patch to do not require python-six
+- Remove python-six dependency
+- Remove not needed deps:
+  * unittest-xml-reporting
+  * python-pyee
+- Use pytest in check instead unittest
+
+-------------------------------------------------------------------
+Tue Nov  2 10:26:21 UTC 2021 - pgajdos@suse.com
+
+- version update to 1.0.0
+  * Safe defaults #147
+  * Updated docstrings
+  * Fix is_prefix() implementation in Trie #148
+  * Python2 is officially supported
+  * Removed requirement of pyee
+
+-------------------------------------------------------------------
+Sat Oct 16 09:45:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.1:
+  * Support for python 2.7 is now a firm thing and not just implied. 
+
+-------------------------------------------------------------------
+Thu Sep  2 12:28:07 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.5.1
+  * Publish to pypi from master after tagging
+  * Fix name of LICENSE file in MANIFEST (#140)
+  * Hard code Pypi user to __token__
+  * Add checks and bdist_wheel
+  * Split PR workflow from push workflow
+  * Add automatic tagging
+  * Remove old publish scripts
+  * Add support for publishing to pypi
+- from version 0.5.0
+  * Guarantee sorted results from IntentDeterminationEngine.determine_intent (#137)
+  * Fixes issue 97 (#138)
+- from version 0.4.3
+  * Updated docstrings, and some small fixes (#132)
+  * Bump version to 0.4.2
+  * Fix use after remove
+  * Test that a removed regexp can be re-added
+  * Fix storing regex as string when cleaned
+- from version 0.4.1
+  * Scoring tests and fixes (#131)
+  * Issues/114 (#128)
+  * Add .envrc to git-ignore
+  * Consolidate requirements
+  * Remove unused requirement argparse
+  * Add license and readme to MANIFEST.in
+  * Use run_tests.sh in github actions
+  * Add run_tests.sh to easily do linting and tests
+  * Remove run_tests.py and add test instructions
+  * Add test requirements into test-requirements.txt
+  * Enable flake8 checks for some basic errors
+  * Drop use of Travis CI
+  * Drop support for Python 3.5
+  * Run unit tests in Github Actions
+- from version 0.4.0
+  * Add support for dropping regex entities
+  * Drop nonlocal variables in scan
+  * Add support for dropping registered entities
+  * Add "scan" method to Trie
+  * Add basic tests for removing from Trie
+  * Add drop_intent tests
+  * Fix regex warnings
+  * Add functionality to drop intent parsers
+  * Add python 3.9 as a supported version
+  * Add python 3.9 to test suite
+- from version 0.3.7
+  * Add readme
+  * Update to pyee 8.1.0
+  * chore(intent.py): fix typo in docstring
+  * chore(trie.py): fix typo in docstring
+  * chore(engine.py): correct include_tags's docstring
+  * Issue #109: unused imports/variable declarations
+  * Issue #109: unused imports/variable declarations
+- from version 0.3.6
+  * Upgrade to the latest version of pyee
+  * Change the URL for more docs
+- from version 0.3.5
+  * Issue #86
+  * Remove python 2.7-3.4 and add 3.6-8 from travis run
+  * Update engine.py (fix typos in docstring)
+- Update BuildRequires and Requires from requirements.txt
+- Update filename argument to %setup invocation
+- Update sed filename argument from setup.py to requirements.txt
+- Update testsuite invocation to `%python_exec setup.py test`
+
+-------------------------------------------------------------------
+Thu Jan 16 15:20:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.3.4
+  * minor fixes
+
+-------------------------------------------------------------------
+Fri Jun  7 14:25:19 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.3.3
+  * Change license to Apache 2.0 
+  * other minor changes
+
+-------------------------------------------------------------------
+Tue Mar  5 09:50:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Siwtch to unittest-xml-reporting
+
+-------------------------------------------------------------------
+Mon Mar  4 14:04:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3.2:
+  * no upstream changelog
+- Switch to github tarball for tests
+
+-------------------------------------------------------------------
+Tue Jan  9 11:56:54 UTC 2018 - alarrosa@suse.com
+
+- Remove unneeded buildrequires
+
+-------------------------------------------------------------------
+Fri Nov 17 10:57:07 UTC 2017 - alarrosa@suse.com
+
+- Don't force to require specific python module versions in requirements.txt,
+  but allow newer versions since TW usually updates quite often and
+  python-adapt-parser should continue working.
+
+-------------------------------------------------------------------
+Tue Sep  5 15:15:34 UTC 2017 - alarrosa@suse.com
+
+- Initial release of adapt-parser 0.3.0 

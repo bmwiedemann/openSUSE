@@ -1,0 +1,39 @@
+From d02304f70b5b9c79761d8084ab9dfc66d84688e2 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 30 Nov 2022 17:02:50 +0800
+Subject: [PATCH] font: Try memdisk fonts with the same name
+
+---
+ grub-core/font/font.c | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/font/font.c b/grub-core/font/font.c
+index 18de52562..92ff415bf 100644
+--- a/grub-core/font/font.c
++++ b/grub-core/font/font.c
+@@ -451,7 +451,21 @@ grub_font_load (const char *filename)
+ #endif
+ 
+   if (filename[0] == '(' || filename[0] == '/' || filename[0] == '+')
+-    file = grub_buffile_open (filename, GRUB_FILE_TYPE_FONT, 1024);
++    {
++      char *n = grub_strdup (filename);
++      char *p = grub_strrchr (n, '/');
++      if (p)
++	{
++	  char *q = grub_strrchr (p, '.');
++	  if (q)
++	    *q = 0;
++	  p++;
++	  file = try_open_from_prefix ("(memdisk)", p);
++	}
++      grub_free (n);
++      if (!file)
++	file = grub_buffile_open (filename, GRUB_FILE_TYPE_FONT, 1024);
++    }
+   else
+     {
+       file = try_open_from_prefix ("(memdisk)", filename);
+-- 
+2.41.0
+

@@ -1,0 +1,25 @@
+# List of obsolete kernel flavors
+# <arch>/<new flavor>	<old flavor>	<upper bound of shipped versions>
+
+# SLES 11 SP3 / openSUSE 13.1
+i386/default		trace		3.13
+
+x86_64/default		trace		3.13
+x86_64/default		bigsmp		3.1
+
+s390x/default		trace		3.13
+
+# openSUSE 13.2 / Tumbleweed until 2015-10-01
+i386/pae	desktop		4.3
+x86_64/default	desktop		4.3
+
+# SLE 12 SP1
+i386/pae	xen		4.4
+i386/pae	ec2		4.4
+x86_64/default	xen		4.4
+x86_64/default	ec2		4.4
+
+x86_64/rt	compute		3.13
+x86_64/rt_debug	compute_debug	3.13
+
+

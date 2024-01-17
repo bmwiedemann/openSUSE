@@ -1,0 +1,25 @@
+From 3729b131ef1dcaa043242e8074418249695d381b Mon Sep 17 00:00:00 2001
+From: Jiri Slaby <jirislaby@gmail.com>
+Date: Sun, 24 Jun 2012 20:51:52 +0200
+Subject: [PATCH] use grub2 as a package name
+
+This will ease all of the renaming of directories and all the pkgdata
+hacks.
+
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ configure    |   24 ++++++++++++------------
+ configure.ac |    2 +-
+ 2 files changed, 13 insertions(+), 13 deletions(-)
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -34,7 +34,7 @@
+ dnl the target type. See INSTALL for full list of variables and
+ dnl description of the relationships between them.
+ 
+-AC_INIT([GRUB],[2.12],[bug-grub@gnu.org])
++AC_INIT([GRUB2],[2.12],[bug-grub@gnu.org])
+ 
+ AS_CASE(["$ERROR_PLATFORM_NOT_SUPPORT_SSP"],
+   [n | no | nO | N | No | NO], [ERROR_PLATFORM_NOT_SUPPORT_SSP=no],

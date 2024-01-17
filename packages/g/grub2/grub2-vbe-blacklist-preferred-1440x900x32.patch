@@ -1,0 +1,18 @@
+--- a/grub-core/video/i386/pc/vbe.c
++++ b/grub-core/video/i386/pc/vbe.c
+@@ -1054,6 +1054,15 @@
+ 	      || vbe_mode_info.y_resolution > height)
+ 	    /* Resolution exceeds that of preferred mode.  */
+ 	    continue;
++
++	  /* Blacklist 1440x900x32 from preferred mode handling until a
++	     better solution is available.  This mode causes problems on
++	     many Thinkpads.
++	   */
++	  if (vbe_mode_info.x_resolution == 1440 &&
++	      vbe_mode_info.y_resolution == 900 &&
++	      vbe_mode_info.bits_per_pixel == 32)
++	    continue;
+ 	}
+       else
+ 	{

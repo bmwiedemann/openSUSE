@@ -1,0 +1,8 @@
+<package name="gocryptfs" project="openSUSE:Factory">
+  <title>gocryptfs</title>
+  <description>gocryptfs is built on top the excellent go-fuse FUSE library. This project was inspired by EncFS and strives to fix its security issues while providing good performance.
+
+gocryptfs uses file-based encryption that is implemented as a mountable FUSE filesystem. Each file in gocryptfs is stored as one corresponding encrypted file on disk.</description>
+  <devel project="devel:languages:go" package="gocryptfs"/>
+  <url>https://nuetzlich.net/gocryptfs/</url>
+</package>

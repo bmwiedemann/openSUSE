@@ -1,0 +1,644 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>83ce5dd9b76d0f05e67ff6b17bed209a</srcmd5>
+    <version>0.6</version>
+    <time>1235878934</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>469383550282f500209e5bacb4761757</srcmd5>
+    <version>0.6</version>
+    <time>1237577227</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>469383550282f500209e5bacb4761757</srcmd5>
+    <version>0.6</version>
+    <time>1237577227</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>0a5cd7687694df80824d8c775bc67232</srcmd5>
+    <version>0.6</version>
+    <time>1268924609</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>bffae4413c26e566ae144add87127fee</srcmd5>
+    <version>0.6</version>
+    <time>1270131021</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE4:Factory:Desktop/libindi based on submit request 36460 from user llunak
+</comment>
+    <requestid>36460</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>bffae4413c26e566ae144add87127fee</srcmd5>
+    <version>0.6</version>
+    <time>1278667359</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>bffae4413c26e566ae144add87127fee</srcmd5>
+    <version>0.6</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>bffae4413c26e566ae144add87127fee</srcmd5>
+    <version>0.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>def8ca8ae90c733f60d7270a4aa65911</srcmd5>
+    <version>0.6.2</version>
+    <time>1306844022</time>
+    <user>saschpe</user>
+    <comment>Update to version 0.6.2, Spec file updates, Added 2 patches (forwarded request 70943 from adra)</comment>
+    <requestid>71818</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e82d89799ca5089e27d427389f8c7325</srcmd5>
+    <version>0.8</version>
+    <time>1316465683</time>
+    <user>lrupp</user>
+    <comment>Update to version 0.8, Spec file updates, Added 2 patches (forwarded request 83208 from adra)</comment>
+    <requestid>83365</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>e82d89799ca5089e27d427389f8c7325</srcmd5>
+    <version>0.8</version>
+    <time>1319182104</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>10aa1ee39348401c4b404aef3b9644b5</srcmd5>
+    <version>0.8</version>
+    <time>1323192257</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>dc3cfa51b2a409ff7bf25fa67f733a64</srcmd5>
+    <version>0.8</version>
+    <time>1323705446</time>
+    <user>coolo</user>
+    <comment>- Fix build with new cfitsio</comment>
+    <requestid>96310</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6e0fbb0058754d56b9ab0ce6817291ed</srcmd5>
+    <version>0.9</version>
+    <time>1327093653</time>
+    <user>coolo</user>
+    <comment>Update to version 0.9, Added/Removed patches, Spec file updates (forwarded request 100789 from adra)</comment>
+    <requestid>100890</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>71a9874924b68ac955523411b6d3388e</srcmd5>
+    <version>0.9</version>
+    <time>1332148067</time>
+    <user>coolo</user>
+    <comment>Added a patch (taken from Fedora) to fix compilation with gcc-4.7 (forwarded request 109347 from adra)</comment>
+    <requestid>109503</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>3297995e9381356bbd59bf42bb30b33c</srcmd5>
+    <version>0.9</version>
+    <time>1338030318</time>
+    <user>coolo</user>
+    <comment>Removed cfitsio_link_libs.patch (not needed after the update of cfitsio package and cfitsio.pc fix regarding library linking) (forwarded request 122086 from adra)</comment>
+    <requestid>122091</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>3297995e9381356bbd59bf42bb30b33c</srcmd5>
+    <version>0.9</version>
+    <time>1340183597</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>66c549f34042d8136349b9dc9df3e9ee</srcmd5>
+    <version>0.9.5</version>
+    <time>1349630143</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.9.5:
+  * Focuser simulator driver.
+  * CCD, Telescope, Focuser, and Filter simulators improvements including
+    periodic error effects, FWHM, and more.
+  * Major improvements to INDI Base Library and INDI Client Library.
+  * Fixed minor bugs in LX200 Generic, LX200 FS2, Magellan, and Celestron
+    drivers.
+  * Minor bugfixes and improvements.
+  * Fixed color buffer problem in V4L drivers.
+  * Numerous bug fixes and minor improvements.
+  From 0.9.1:
+  * Bugfix release.
+- Removed the previous no-return-in-nonvoid-function.patch (fixed upstream) and
+  added a new one to fix some new &quot;no-return-in-nonvoid-function&quot; rpm
+  post-build check errors.
+- Removed libindi-usleep.patch that fixed compilation with gcc-4.7 (fixed
+  upstream).</comment>
+    <requestid>136866</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cdcfc386320e2e9c4ecab41263b19a61</srcmd5>
+    <version>0.9.6</version>
+    <time>1354887496</time>
+    <user>namtrac</user>
+    <comment>Update to version 0.9.6, Updated no-return-in-nonvoid-function.patch, Added a patch (udev_rules_dir_configurable.patch) to make UDEVRULES_INSTALL_DIR configurable, install the udev rules file in the correct directory (forwarded request 143488 from adra)</comment>
+    <requestid>143631</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>cdcfc386320e2e9c4ecab41263b19a61</srcmd5>
+    <version>0.9.6</version>
+    <time>1359109290</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>b0d34e569b11eb20e16f6433a877f0e9</srcmd5>
+    <version>0.9.6</version>
+    <time>1364473160</time>
+    <user>coolo</user>
+    <comment>- libindi-aarch64.patch: No port I/O on aarch64 (forwarded request 161461 from Andreas_Schwab)</comment>
+    <requestid>161463</requestid>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>b0d34e569b11eb20e16f6433a877f0e9</srcmd5>
+    <version>0.9.6</version>
+    <time>1379662981</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a73147cad90758c8ed70f2252d61dc61</srcmd5>
+    <version>0.9.7</version>
+    <time>1391361373</time>
+    <user>coolo</user>
+    <comment>Update to version 0.9.7</comment>
+    <requestid>220570</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>a73147cad90758c8ed70f2252d61dc61</srcmd5>
+    <version>0.9.7</version>
+    <time>1409301593</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>07fd5f27aa06112444fe5460a96e8c72</srcmd5>
+    <version>1.0.0</version>
+    <time>1424779341</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287306</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>e65cfff1a194d114c97596d65de2d131</srcmd5>
+    <version>1.0.0</version>
+    <time>1436734341</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315350</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4fae426ae713f6c220da2ae73bbea225</srcmd5>
+    <version>1.2.0</version>
+    <time>1467359920</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404910</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b9a373293e1718025c4d17fe90e8e3ae</srcmd5>
+    <version>1.3.1</version>
+    <time>1485250771</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451870</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2a0bf44314d2cde9c1cdc79a8e7f7d57</srcmd5>
+    <version>1.4.1</version>
+    <time>1496327456</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493209</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>313402c78cc7780d0956149c140964e1</srcmd5>
+    <version>1.5.0</version>
+    <time>1506594836</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528477</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7db5350555bbfb1a83c48449cf0117f5</srcmd5>
+    <version>1.6.2</version>
+    <time>1516359142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563237</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>84225e1293705a2e3c074678117a1d1c</srcmd5>
+    <version>1.7.0</version>
+    <time>1523448243</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>595528</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>52c4bd876b41d873538a40c28447a759</srcmd5>
+    <version>1.7.1</version>
+    <time>1523616723</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>596052</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e4c1c15cae99655fd727629921461708</srcmd5>
+    <version>1.7.6</version>
+    <time>1554458555</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.7.6</comment>
+    <requestid>690921</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b3f320ff75b33c3c2515390bf1e7c692</srcmd5>
+    <version>1.7.7</version>
+    <time>1556817591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699881</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>11d16feabdee3be3a3845205bb851694</srcmd5>
+    <version>1.7.9</version>
+    <time>1563018533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714509</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>fb43d96b848a9344718982966b57e917</srcmd5>
+    <version>1.8.3</version>
+    <time>1579195371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764941</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>5ed2e2c564da8a7623daa56e03f6efbe</srcmd5>
+    <version>1.8.4</version>
+    <time>1582643041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778767</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>87bdfca0895ceb2c201d53cf0e6017fc</srcmd5>
+    <version>1.8.5</version>
+    <time>1588023579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798255</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a9b48cdac8162cbd29d80bef4360da90</srcmd5>
+    <version>1.8.6</version>
+    <time>1602155677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.6:
+  * New Pegasus PPBA driver.
+  * New DomePro2 driver.
+  * Add PierSide to indi_ioptron_telescope
+  * Fix Pier Side problem on Gemini mounts
+  * Goto mode selectable for Alt/Az mounts via an UI Switch.
+  * OnStep: Weather sensor (READ) support
+  * OnStep: Support for setting temperatures for dew heaters/focusers
+  * Fix skywatcher altaz crash
+  * Add the focus temperature property to the focus simulator
+  * Logitech HD C270 webcam data added to v4l2_ccd driver
+  * Astrophysics park3 support
+  * Implement Parking for LX200 classic
+  * UDP support for skywatcherAPI
+  * LX200 FS-2 Park
+  * Telescope Simulator Parking to HA/Dec frame
+  * Update Pointing State determination.
+  * Feature Satellite tracking with TLE for 10Micron mounts
+  * Add focuser temperature to FITS header
+  * myFocuserPro2 Fix coil power command
+  * Updated TeenAstro INDI driver for firmware 1.2.0
+- Use %cmake_build instead of %make_jobs</comment>
+    <requestid>840208</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>80c4cdb422e55d7d4e2b4415bb41951d</srcmd5>
+    <version>1.8.7</version>
+    <time>1606649252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851103</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>e64a43db8dcca592dc208b1685ae2cb8</srcmd5>
+    <version>1.8.8</version>
+    <time>1610633134</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862992</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>ff6ea6e7b710f8ea75be9356b2e8423b</srcmd5>
+    <version>1.8.9</version>
+    <time>1614792838</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 1.8.9:
+  + Fix paramount home and sidereal rate
+  + Added labels for USB and Dew
+  + Add entry for star adventurer
+  + Add motor rate and current to the config save
+  + Add CEM26 and GEM28. Migrate CEM40 and GEM45 drivers to
+    iOptronv3 commands and remove parking restrictions
+  + Add preliminary support to inquire pier side for Paramount
+  + Add support to Pegasus Micro 
+  + Updates to DDW driver
+  + Increment version for SkyWAtcher Alt-Az
+  + Add support for AZEQ6
+  + Fix celestrongps guide rate scaling
+  + Various small fixes</comment>
+    <requestid>876005</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>bce84b0f4f1b1249814e3fd03f374018</srcmd5>
+    <version>1.9.0</version>
+    <time>1619447979</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888425</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>1ad36ccbee64b28e87d20548dabbe1ba</srcmd5>
+    <version>1.9.0</version>
+    <time>1623268359</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ioptron_dst_fix.patch (fix boo#1187058)
+  When using iOptron mounts and KStars is set to get time and location
+  from the mount itself, if DST is enabled then KStars is off by 1 hour.
+  This patch fixes this issue.</comment>
+    <requestid>898463</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>0fa6eed6b62b87a22b346938fc1a1edc</srcmd5>
+    <version>1.9.1</version>
+    <time>1624999415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.1:
+  * New AstroTrac 360 driver (Experimental).
+  * New Pegasus FlatMaster and UHC drivers 
+  * New Deep Sky Dad Field Rotator 
+  * Core INDI Library improvements to base device and client classes 
+  * Paramount TCP improvements 
+  * Spectrograph and Receiver classes 
+  * OnStep improvements 
+  * RST-135 location and time fix
+  * Dome OTA fixes
+  * Object Azimuth and Altitude added to FITS header 
+  * Rainbow Focuser fixes
+  * Support for CGX-L 
+  * Fix crash in SkyWatcher API mount driver
+  * Fix iOptron DST bug
+  * Fix lunar and solar order
+  * PMC8 Driver v0.4 (Improved manual slewing, guiding, and other features)
+  * Try to send the guide pulses asynchronously to TheSkyX
+  * Use encoders for parking
+  * Lots of other smmall fixes, for the full changelog please check
+    https://github.com/indilib/indi/blob/master/ChangeLog
+- Drop ioptron_dst_fix.patch (change has been upstreamed)
+- Add fix_include_path.patch</comment>
+    <requestid>903068</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>76737c6fbe82fd242825a45bcd39dc13</srcmd5>
+    <version>1.9.2</version>
+    <time>1631739094</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.2:
+  * Stable Astrotrac Mount driver.
+  * ESATTO Backlash measure and correction 
+  * Correct color space when stacking on indi_v4l2_ccd driver with
+    a web cam that doesn't have color space info. 
+  * The driver for the Planewave Delta-T was not working
+  * Improved handling of myFP2ESP controllers
+  * Pegasus UCH
+  * TheSkyX/Paramount Pier-side + guide async cmd fixes 
+  * Update lx200_OnStep.cpp 
+- Drop fix_include_path.patch</comment>
+    <requestid>919246</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>b53d6a7926ccbc26f3b6d2eb8c9a2ef9</srcmd5>
+    <version>1.9.3</version>
+    <time>1637372351</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.3:
+  * Fast Exposure support. Capture next frame in camera immediately
+    to avoid any delays.
+  * Support for DC focusers in Pegasus DMFC driver.
+  * Updates and cleanup for the OpenWeatherMap driver 
+  * V42L driver supports detecting camera and renaming the driver
+  * LX200 SiteName Fix V2
+  * Improve lynx sync and homing behavior
+  * Fix FocusLynx GetConfig for focusers without HomeOnStart
+  * Force using hour angle when mount is slewing
+  * Correction the amplification values to spec.
+  * Fixes to PlaneWave EFA driver
+  * Add setting of home position for Rigel/Pulsar dome </comment>
+    <requestid>932448</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>cad25d18ae316ddc297a28cba9962b67</srcmd5>
+    <version>1.9.3</version>
+    <time>1639169573</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ioptron_fixes.patch (bsc#1193622):
+  * Fix PEC being on by default, it should be OFF by default.
+  * Fix iOptronV3 parking bug by using a workaround, because the
+    firmware must be fixed by iOptron.
+  * Add meridian behavior action and limit.
+</comment>
+    <requestid>939128</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>9313c7fb7c0a4aa2a3af511d81cfe02a</srcmd5>
+    <version>1.9.4</version>
+    <time>1642548907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947111</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>33a602a9ac8fa125ebe363d4227e6432</srcmd5>
+    <version>1.9.5</version>
+    <time>1647458504</time>
+    <user>dimstar_suse</user>
+    <comment>Fix changelog</comment>
+    <requestid>962237</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>ca673cebc735876a8a65164b08b28cef</srcmd5>
+    <version>1.9.6</version>
+    <time>1653313909</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.6:
+  * add lastparked logic 
+  * Fixing UTC Offset format allowing :SGHH:MM# where MM can be 00, 30 and 45 
+  * Terminate commands missing #, introduce PEC recording and status
+  * fix issue reading worm position 
+  * UTC uninitialized structure fix
+  * Add mount status. Start CP5 
+  * Remove user choice for CM/CMR
+  * Allow any guide rate between 0.1x and 1x 
+  * Driver for WandererRotatorLite</comment>
+    <requestid>978596</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>29925f80e7d44ea142f252080a32c9cb</srcmd5>
+    <version>1.9.7</version>
+    <time>1659382358</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.9.7:
+  * INDI Receiver and rtl-sdr.
+  * Ensure defensive check of UBP previous data to fix crash.
+  * Fast blob transfer.
+  * More AP changes: UDP, Home, Encoder Status, version major/minor.
+  * Fix memory leak when converting blob to base64.
+  * Use 8bits samples in the lookup table.
+  * Adding some basic PEC status and control to lx200gemini.
+  * Add Servo Precision control.
+  * Added RA/DEC guide speed.
+  * Fixed a bug where PEC was always enabled on startup.
+  * Various other fixes.
+</comment>
+    <requestid>991877</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>7f69568abf9e889d28c37a35617b4755</srcmd5>
+    <version>1.9.7</version>
+    <time>1660235555</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>994453</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>bd9d081128655e06781b5c25bcb0f998</srcmd5>
+    <version>1.9.7</version>
+    <time>1661346691</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>998962</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>e3ca5a05f81b5996fa0acdd0d9544cdf</srcmd5>
+    <version>1.9.8</version>
+    <time>1664468016</time>
+    <user>RBrownFactory</user>
+    <comment>Update to 1.9.8</comment>
+    <requestid>1006837</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>b0efebb3ee7e2b9542dd87c208c4b2f6</srcmd5>
+    <version>1.9.9</version>
+    <time>1670588303</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1041803</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>682bce4cd0314308eaf506d178bfd038</srcmd5>
+    <version>1.9.9</version>
+    <time>1671380558</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix cfitsio dep on TW
+</comment>
+    <requestid>1043612</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>cd044c87cccaeebf1f719b63f59fe265</srcmd5>
+    <version>2.0.0</version>
+    <time>1675177809</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.0.0</comment>
+    <requestid>1062234</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>d340234936556e9112e5b8d2a9bf14e5</srcmd5>
+    <version>2.0.0</version>
+    <time>1675873259</time>
+    <user>dimstar_suse</user>
+    <comment>multiple fixes from master since there won't be a new release for the next 2 months</comment>
+    <requestid>1063865</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>3e379b17ab005d60eaa08b5b38ffee36</srcmd5>
+    <version>2.0.0</version>
+    <time>1680209565</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1075601</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>28cbf8e4523691464d026800a060bfd1</srcmd5>
+    <version>2.0.1</version>
+    <time>1681387885</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1079090</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>3e2676cf67a6b5ca928570cf17c2ebe7</srcmd5>
+    <version>2.0.2</version>
+    <time>1685889742</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.2:
+* Minor Fixes discrepancies Indi / SmartwebServer 
+* Add Flip functionality 
+* Pegasus NYX-101
+* Bugfix/mfoc rel movement error
+* Fix AutoPA lx200 OpenAstroTech
+* Esatto: Port state tracking from EsattoArco 
+* PLL: Treat ERR messages as out-of-bound warnings</comment>
+    <requestid>1090744</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>d271d1e11beeb09685fe504ddedde668</srcmd5>
+    <version>2.0.3</version>
+    <time>1691076636</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.0.3</comment>
+    <requestid>1102131</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>5f4398999a2b4d6d1642eb8d997d93e7</srcmd5>
+    <version>2.0.4</version>
+    <time>1696964416</time>
+    <user>anag+factory</user>
+    <comment>update to 2.0.4</comment>
+    <requestid>1116513</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>6779a922b36c40c150464ede36945901</srcmd5>
+    <version>2.0.5</version>
+    <time>1701727283</time>
+    <user>anag+factory</user>
+    <comment>update to 2.0.5</comment>
+    <requestid>1130665</requestid>
+  </revision>
+</revisionlist>

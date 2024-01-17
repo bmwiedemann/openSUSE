@@ -1,0 +1,151 @@
+From adf486860fe0d395579be8b01d4fda8b93377768 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 8 Jun 2022 16:04:12 +0800
+Subject: [PATCH 08/10] linuxefi: Use common grub_initrd_load
+
+By using the common initrd loading routine factored out allows to share between
+features like concatenating initramfs component.
+
+For eg.
+
+ initrdefi /initrd-5.16.15-1-default newc:grub.cfg:/grub2/grub.cfg
+
+The file /grub2/grub.cfg read off from root disk will be available to use as
+/grub.cfg in the target initramfs loaded by grub.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/loader/i386/efi/linux.c | 87 ++++---------------------------
+ 1 file changed, 10 insertions(+), 77 deletions(-)
+
+--- a/grub-core/loader/i386/efi/linux.c
++++ b/grub-core/loader/i386/efi/linux.c
+@@ -30,6 +30,7 @@
+ #include <grub/cpu/efi/memory.h>
+ #include <grub/tpm.h>
+ #include <grub/safemath.h>
++#include <grub/linux.h>
+ 
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+@@ -146,44 +147,6 @@
+   return GRUB_ERR_NONE;
+ }
+ 
+-#define BOUNCE_BUFFER_MAX 0x1000000ull
+-
+-static grub_ssize_t
+-read(grub_file_t file, grub_uint8_t *bufp, grub_size_t len)
+-{
+-  grub_ssize_t bufpos = 0;
+-  static grub_size_t bbufsz = 0;
+-  static char *bbuf = NULL;
+-
+-  if (bbufsz == 0)
+-    bbufsz = MIN(BOUNCE_BUFFER_MAX, len);
+-
+-  while (!bbuf && bbufsz)
+-    {
+-      bbuf = grub_malloc(bbufsz);
+-      if (!bbuf)
+-	bbufsz >>= 1;
+-    }
+-  if (!bbuf)
+-    grub_error (GRUB_ERR_OUT_OF_MEMORY, N_("cannot allocate bounce buffer"));
+-
+-  while (bufpos < (long long)len)
+-    {
+-      grub_ssize_t sz;
+-
+-      sz = grub_file_read (file, bbuf, MIN(bbufsz, len - bufpos));
+-      if (sz < 0)
+-	return sz;
+-      if (sz == 0)
+-	break;
+-
+-      grub_memcpy(bufp + bufpos, bbuf, sz);
+-      bufpos += sz;
+-    }
+-
+-  return bufpos;
+-}
+-
+ #define LOW_U32(val) ((grub_uint32_t)(((grub_addr_t)(val)) & 0xffffffffull))
+ #define HIGH_U32(val) ((grub_uint32_t)(((grub_addr_t)(val) >> 32) & 0xffffffffull))
+ 
+@@ -191,10 +154,8 @@
+ grub_cmd_initrd (grub_command_t cmd __attribute__ ((unused)),
+                  int argc, char *argv[])
+ {
+-  grub_file_t *files = 0;
+-  int i, nfiles = 0;
++  struct grub_linux_initrd_context initrd_ctx = { 0, 0, 0 };
+   grub_size_t size = 0;
+-  grub_uint8_t *ptr;
+ 
+   if (argc == 0)
+     {
+@@ -208,24 +169,10 @@
+       goto fail;
+     }
+ 
+-  files = grub_calloc (argc, sizeof (files[0]));
+-  if (!files)
++  if (grub_initrd_init (argc, argv, &initrd_ctx))
+     goto fail;
+ 
+-  for (i = 0; i < argc; i++)
+-    {
+-      files[i] = grub_file_open (argv[i], GRUB_FILE_TYPE_LINUX_INITRD
+-			 | GRUB_FILE_TYPE_NO_DECOMPRESS);
+-      if (! files[i])
+-        goto fail;
+-      nfiles++;
+-      if (grub_add (size, ALIGN_UP (grub_file_size (files[i]), 4), &size))
+-	{
+-	  grub_error (GRUB_ERR_OUT_OF_RANGE, N_("overflow is detected"));
+-	  goto fail;
+-	}
+-    }
+-
++  size = grub_get_initrd_size (&initrd_ctx);
+   initrd_mem = kernel_alloc(size, N_("can't allocate initrd"));
+   if (initrd_mem == NULL)
+     goto fail;
+@@ -238,30 +185,16 @@
+   params->ext_ramdisk_image = HIGH_U32(initrd_mem);
+ #endif
+ 
+-  ptr = initrd_mem;
+-
+-  for (i = 0; i < nfiles; i++)
+-    {
+-      grub_ssize_t cursize = grub_file_size (files[i]);
+-      if (read (files[i], ptr, cursize) != cursize)
+-        {
+-          if (!grub_errno)
+-            grub_error (GRUB_ERR_FILE_READ_ERROR, N_("premature end of file %s"),
+-                        argv[i]);
+-          goto fail;
+-        }
+-      ptr += cursize;
+-      grub_memset (ptr, 0, ALIGN_UP_OVERHEAD (cursize, 4));
+-      ptr += ALIGN_UP_OVERHEAD (cursize, 4);
+-    }
++  /* FIXME: Use bounce buffers as many UEFI machines apparently can't DMA
++   * correctly above 4GB
++   */
++  if (grub_initrd_load (&initrd_ctx, initrd_mem))
++    goto fail;
+ 
+   params->ramdisk_size = size;
+ 
+  fail:
+-  for (i = 0; i < nfiles; i++)
+-    grub_file_close (files[i]);
+-  grub_free (files);
+-
++  grub_initrd_close (&initrd_ctx);
+   if (initrd_mem && grub_errno)
+     grub_efi_free_pages((grub_efi_physical_address_t)(grub_addr_t)initrd_mem, BYTES_TO_PAGES(size));
+ 

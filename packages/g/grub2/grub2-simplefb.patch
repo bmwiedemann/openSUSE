@@ -1,0 +1,13 @@
+
+
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -116,7 +116,7 @@
+   # FIXME: We need an interface to select vesafb in case efifb can't be used.
+   if [ "x$GRUB_GFXPAYLOAD_LINUX" = x ]; then
+       echo "	load_video" | sed "s/^/$submenu_indentation/"
+-      if grep -qx "CONFIG_FB_EFI=y" "${config}" 2> /dev/null \
++      if grep -qx "CONFIG_\(FB_EFI\|SYSFB_SIMPLEFB\)=y" "${config}" 2> /dev/null \
+ 	  && grep -qx "CONFIG_VT_HW_CONSOLE_BINDING=y" "${config}" 2> /dev/null; then
+ 	  echo "	set gfxpayload=keep" | sed "s/^/$submenu_indentation/"
+       fi

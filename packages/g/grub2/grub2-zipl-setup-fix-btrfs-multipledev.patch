@@ -1,0 +1,17 @@
+---
+ util/s390x/zipl2grub.pl.in |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- a/util/s390x/zipl2grub.pl.in
++++ b/util/s390x/zipl2grub.pl.in
+@@ -384,6 +384,10 @@ while ( <IN> ) {
+     } else {
+       $v = "";
+     }
++    if ($k eq "GRUB_DEVICE" && $v !~ /^UUID/ && ! -e $v) {
++      s{root=\@$k\@}{}g;
++      next;
++    }
+     s{\@$k\@}{$v}g;
+   }
+   Info( 3, $_);

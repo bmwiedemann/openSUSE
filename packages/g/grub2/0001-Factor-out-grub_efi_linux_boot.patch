@@ -1,0 +1,215 @@
+From 82d95254ca0496c8843113665bb9a99876101025 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Fri, 8 Oct 2021 13:36:45 +0800
+Subject: [PATCH 01/11] Factor out grub_efi_linux_boot
+
+Both x86 and arm64 on efi are using handover protocol to boot linux
+kernel. To enable better code reuse, factor out grub_efi_linux_boot from
+arm64 so that it can be shared with x86 platform for the common fixes.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/Makefile.core.def        |  1 +
+ grub-core/loader/arm64/efi/linux.c | 35 +-----------------
+ grub-core/loader/efi/linux.c       | 58 ++++++++++++++++++++++++++++++
+ grub-core/loader/i386/efi/linux.c  | 13 ++-----
+ include/grub/efi/linux.h           | 29 +++++++++++++++
+ 5 files changed, 92 insertions(+), 44 deletions(-)
+ create mode 100644 grub-core/loader/efi/linux.c
+ create mode 100644 include/grub/efi/linux.h
+
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -1860,6 +1860,9 @@
+   riscv64 = loader/efi/linux.c;
+   emu = loader/emu/linux.c;
+   common = loader/linux.c;
++  i386_efi = loader/efi/linux_boot.c;
++  x86_64_efi = loader/efi/linux_boot.c;
++  arm64 = loader/efi/linux_boot.c;
+ };
+ 
+ module = {
+--- a/grub-core/loader/arm64/efi/linux.c
++++ b/grub-core/loader/arm64/efi/linux.c
+@@ -33,6 +33,7 @@
+ #include <grub/i18n.h>
+ #include <grub/lib/cmdline.h>
+ #include <grub/verify.h>
++#include <grub/efi/linux.h>
+ 
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+@@ -51,40 +52,6 @@
+ static grub_addr_t initrd_start;
+ static grub_addr_t initrd_end;
+ 
+-#pragma GCC diagnostic push
+-#pragma GCC diagnostic ignored "-Wcast-align"
+-
+-typedef void (*handover_func) (void *, grub_efi_system_table_t *, void *);
+-
+-static grub_err_t
+-grub_efi_linux_boot (void *kernel_address, grub_off_t offset,
+-		     void *kernel_params)
+-{
+-  grub_efi_loaded_image_t *loaded_image = NULL;
+-  handover_func hf;
+-
+-  /*
+-   * Since the EFI loader is not calling the LoadImage() and StartImage()
+-   * services for loading the kernel and booting respectively, it has to
+-   * set the Loaded Image base address.
+-   */
+-  loaded_image = grub_efi_get_loaded_image (grub_efi_image_handle);
+-  if (loaded_image)
+-    loaded_image->image_base = kernel_addr;
+-  else
+-    grub_dprintf ("linux", "Loaded Image base address could not be set\n");
+-
+-  grub_dprintf ("linux", "kernel_addr: %p handover_offset: %p params: %p\n",
+-		kernel_address, (void *)(grub_efi_uintn_t)offset, kernel_params);
+-  hf = (handover_func)((char *)kernel_address + offset);
+-  grub_dprintf ("linux", "handover_func() = %p\n", hf);
+-  hf (grub_efi_image_handle, grub_efi_system_table, kernel_params);
+-
+-  return GRUB_ERR_BUG;
+-}
+-
+-#pragma GCC diagnostic pop
+-
+ static grub_err_t
+ grub_arch_efi_linux_check_image (struct linux_arch_kernel_header * lh)
+ {
+--- a/grub-core/loader/i386/efi/linux.c
++++ b/grub-core/loader/i386/efi/linux.c
+@@ -26,6 +26,7 @@
+ #include <grub/i18n.h>
+ #include <grub/lib/cmdline.h>
+ #include <grub/efi/efi.h>
++#include <grub/efi/linux.h>
+ 
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+@@ -40,26 +41,18 @@
+ 
+ #define BYTES_TO_PAGES(bytes)   (((bytes) + 0xfff) >> 12)
+ 
+-typedef void(*handover_func)(void *, grub_efi_system_table_t *, struct linux_kernel_params *);
+-
+ static grub_err_t
+ grub_linuxefi_boot (void)
+ {
+-  handover_func hf;
+   int offset = 0;
+ 
+ #ifdef __x86_64__
+   offset = 512;
+ #endif
+-
+-  hf = (handover_func)((char *)kernel_mem + handover_offset + offset);
+-
+   asm volatile ("cli");
+ 
+-  hf (grub_efi_image_handle, grub_efi_system_table, params);
+-
+-  /* Not reached */
+-  return GRUB_ERR_NONE;
++  return grub_efi_linux_boot ((char *)kernel_mem, handover_offset + offset,
++			      params);
+ }
+ 
+ static grub_err_t
+--- /dev/null
++++ b/include/grub/efi/linux.h
+@@ -0,0 +1,29 @@
++/*
++ *  GRUB  --  GRand Unified Bootloader
++ *  Copyright (C) 2014  Free Software Foundation, Inc.
++ *
++ *  GRUB is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  GRUB is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
++ */
++#ifndef GRUB_EFI_LINUX_HEADER
++#define GRUB_EFI_LINUX_HEADER	1
++
++#include <grub/efi/api.h>
++#include <grub/err.h>
++#include <grub/symbol.h>
++
++grub_err_t
++EXPORT_FUNC(grub_efi_linux_boot) (void *kernel_address, grub_off_t offset,
++				  void *kernel_param);
++
++#endif /* ! GRUB_EFI_LINUX_HEADER */
+--- /dev/null
++++ b/grub-core/loader/efi/linux_boot.c
+@@ -0,0 +1,58 @@
++/*
++ *  GRUB  --  GRand Unified Bootloader
++ *  Copyright (C) 2014 Free Software Foundation, Inc.
++ *
++ *  GRUB is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  GRUB is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include <grub/err.h>
++#include <grub/mm.h>
++#include <grub/types.h>
++#include <grub/cpu/linux.h>
++#include <grub/efi/efi.h>
++#include <grub/efi/pe32.h>
++#include <grub/efi/linux.h>
++
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wcast-align"
++
++typedef void (*handover_func) (void *, grub_efi_system_table_t *, void *);
++
++grub_err_t
++grub_efi_linux_boot (void *kernel_addr, grub_off_t offset,
++		     void *kernel_params)
++{
++  grub_efi_loaded_image_t *loaded_image = NULL;
++  handover_func hf;
++
++  /*
++   * Since the EFI loader is not calling the LoadImage() and StartImage()
++   * services for loading the kernel and booting respectively, it has to
++   * set the Loaded Image base address.
++   */
++  loaded_image = grub_efi_get_loaded_image (grub_efi_image_handle);
++  if (loaded_image)
++    loaded_image->image_base = kernel_addr;
++  else
++    grub_dprintf ("linux", "Loaded Image base address could not be set\n");
++
++  grub_dprintf ("linux", "kernel_addr: %p handover_offset: %p params: %p\n",
++		kernel_addr, (void *)(grub_efi_uintn_t)offset, kernel_params);
++  hf = (handover_func)((char *)kernel_addr + offset);
++  hf (grub_efi_image_handle, grub_efi_system_table, kernel_params);
++
++  return GRUB_ERR_BUG;
++}
++
++#pragma GCC diagnostic pop

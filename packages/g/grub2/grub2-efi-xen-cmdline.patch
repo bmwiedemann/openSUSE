@@ -1,0 +1,23 @@
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -298,7 +298,8 @@
+   GRUB_BADRAM \
+   GRUB_OS_PROBER_SKIP_LIST \
+   GRUB_DISABLE_SUBMENU \
+-  SUSE_BTRFS_SNAPSHOT_BOOTING
++  SUSE_BTRFS_SNAPSHOT_BOOTING \
++  SUSE_CMDLINE_XENEFI
+ 
+ if test "x${grub_cfg}" != "x"; then
+   rm -f "${grub_cfg}.new"
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -219,7 +219,7 @@
+     message="$(gettext_printf "Loading Xen %s with Linux %s ..." ${xen_version} ${version})"
+     sed "s/^/$submenu_indentation/" <<-EOF
+ 	 	echo	'$(echo "$message" | grub_quote)'
+-	 	chainloader  \$cmdpath/${xen_basename} ${xen_basename} $section
++	 	chainloader  \$cmdpath/${xen_basename} ${xen_basename} ${SUSE_CMDLINE_XENEFI} $section
+ 	}
+ 	EOF
+     for f in ${grub_dir}/$xen_cfg ${xen_dir}/${xen_basename} ${dirname}/${basename} ${dirname}/${initrd_real}; do

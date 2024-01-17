@@ -1,0 +1,1276 @@
+From: Raymund Will <rw@suse.com>
+Subject: Allow s390x-emu to be "installed"
+References: fate#314213, bnc#866867, bnc#868909, bnc#874155, bnc#876743,
+	bnc#879136, bnc#889562, bnc#889572
+Patch-Mainline: no
+
+V2:
+  * try harder to find root filesystem (incl. subvol-handling).
+  * read /etc/sysconfig/bootloader as final fallback.
+V3:
+  * refresh initrd by default, prefer running kernel and
+    re-zipl despite minor issues.  [bnc#866867, fate#314213]
+V4:
+  * append 'quiet splash=silent' for 'initgrub'-boot.
+  * properly check for dracut script during 'grub2-install'.
+  * move 'zipl2grub.pl' to '/usr/sbin/grub2-zipl-setup'.
+V5:
+  * actually call 'grub2-zipl-setup' from 'grub2-install'.
+  * handle 'GRUB{,_EMU}_CONMODE'.  [bnc#868909]
+V6:
+  * grub2-zipl-setup: support 'xz' initrd compression.  [bnc#874155]
+V7:
+  * dracut-grub2.sh: use 'showconsole' to determine console device.  [bnc#876743]
+  * dracut-grub2.sh: and fall back to '/dev/console' (instead of 'tty1').
+  * dracut-grub2.sh: introduce "debug()" helper function.
+V8:
+  * grub2-zipl-setup: replace poor choice in '/sysroot/sys' check.  [bnc#879136]
+  * grub2-zipl-setup: fix typo in '/sysroot/proc' check.
+V9:
+  * grub2-zipl-setup: honor GRUB_DISABLE_LINUX_UUID.  [bnc#885854]
+V10:
+  * grub2-zipl-setup: fix stupid typo in previous fix.  [bnc#889562, bnc#889572]
+V11:
+  * grub2-zipl-setup: disable 'grub-mkrelpath' acrobatics.  [bnc#889572]
+V12:
+ * dracut-grub2.sh: try to mount '/.snapshots' if missing.  [bnc#892014]
+ * dracut-grub2.sh: use '/dev/shm' for debug output, so it's accessible
+      from grub2-emu's shell.
+V13:
+ * grub2-zipl-setup: make initrd mount '/boot', if needed.  [bnc#873951, bnc#892088]
+ * dracut-grub2.sh: provide /boot from above to grub2-emu in chroot.
+V14:
+ * grub2-zipl-setup: actually remove obsolete kernel/initrds.  [bnc#892810]
+V15:
+ * zipl2grub.conf: turn of zipl-prompt and quiescent plymouth.  [bsc#898198]
+V16:
+ * dracut-grub2.sh: force read-only '/usr' for kexec.  [bsc#932951]
+V17:
+ * grub2-zipl-setup: remove arybase dependency by not referencing $[.  [bsc#1055280]
+V18:
+ * dracut-zipl-refresh.sh.in: initial submission.  [bsc#1127293]
+ * dracut-grub2.sh: try to call zipl-refresh on failed kexec and drop
+   to an emergency shell otherwise
+V19:
+ * dracut-grub2.sh: use 'grep -P' instead of '-E'.  [bsc#1136970]
+V20:
+ * dracut-grub2.sh: add support for '/boot/writable'.  [bsc#1190395]
+
+
+---
+ Makefile.util.def                      |   46 +++
+ configure.ac                           |    9 
+ grub-core/Makefile.core.def            |    7 
+ grub-core/osdep/basic/no_platform.c    |    7 
+ grub-core/osdep/unix/platform.c        |   11 
+ grub-core/osdep/windows/platform.c     |    6 
+ include/grub/util/install.h            |    4 
+ util/grub-install-common.c             |    1 
+ util/grub-install.c                    |   43 +++
+ util/s390x/dracut-grub2.sh.in          |  141 +++++++++++
+ util/s390x/dracut-module-setup.sh.in   |   19 +
+ util/s390x/dracut-zipl-refresh.sh.in   |  183 ++++++++++++++
+ util/s390x/zipl2grub.conf.in           |   26 ++
+ util/s390x/zipl2grub.pl.in             |  423 +++++++++++++++++++++++++++++++++
+ 14 files changed, 923 insertions(+), 3 deletions(-)
+
+--- a/Makefile.util.def
++++ b/Makefile.util.def
+@@ -377,6 +377,7 @@
+   ldadd = grub-core/lib/gnulib/libgnu.a;
+   ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
+   cppflags = '-DGRUB_SETUP_FUNC=grub_util_bios_setup';
++  emu_condition = COND_NOT_s390x;
+ };
+ 
+ program = {
+@@ -397,6 +398,7 @@
+   ldadd = grub-core/lib/gnulib/libgnu.a;
+   ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
+   cppflags = '-DGRUB_SETUP_FUNC=grub_util_sparc_setup';
++  emu_condition = COND_NOT_s390x;
+ };
+ 
+ program = {
+@@ -412,6 +414,7 @@
+   ldadd = libgrubkern.a;
+   ldadd = grub-core/lib/gnulib/libgnu.a;
+   ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
++  emu_condition = COND_NOT_s390x;
+ };
+ 
+ program = {
+@@ -442,6 +445,7 @@
+   ldadd = libgrubkern.a;
+   ldadd = grub-core/lib/gnulib/libgnu.a;
+   ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
++  emu_condition = COND_NOT_s390x;
+ };
+ 
+ data = {
+@@ -665,6 +669,7 @@
+   common = grub-core/disk/host.c;
+ 
+   common = util/resolve.c;
++  emu_condition = COND_s390x;
+   common = grub-core/kern/emu/argp_common.c;
+   common = grub-core/osdep/init.c;
+ 
+@@ -734,6 +739,46 @@
+ };
+ 
+ script = {
++  name = grub-zipl-setup;
++  installdir = sbin;
++  common = util/s390x/zipl2grub.pl.in;
++  enable = emu;
++  emu_condition = COND_s390x;
++};
++
++data = {
++  name = zipl2grub.conf.in;
++  common = util/s390x/zipl2grub.conf.in;
++  installdir = grubconf;
++  enable = emu;
++  emu_condition = COND_s390x;
++};
++
++script = {
++  name = dracut-module-setup.sh;
++  common = util/s390x/dracut-module-setup.sh.in;
++  enable = emu;
++  emu_condition = COND_s390x;
++  installdir = platform;
++};
++
++script = {
++  name = dracut-grub.sh;
++  common = util/s390x/dracut-grub2.sh.in;
++  enable = emu;
++  emu_condition = COND_s390x;
++  installdir = platform;
++};
++
++script = {
++  name = dracut-zipl-refresh;
++  common = util/s390x/dracut-zipl-refresh.sh.in;
++  enable = emu;
++  emu_condition = COND_s390x;
++  installdir = platform;
++};
++
++script = {
+   name = grub-mkconfig_lib;
+   common = util/grub-mkconfig_lib.in;
+   installdir = noinst;
+@@ -1381,6 +1426,7 @@
+   ldadd = libgrubkern.a;
+   ldadd = grub-core/lib/gnulib/libgnu.a;
+   ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
++  emu_condition = COND_NOT_s390x;
+ };
+ 
+ program = {
+--- a/configure.ac
++++ b/configure.ac
+@@ -211,9 +211,9 @@
+    esac
+ fi
+ 
+-if test x"$target_cpu-$platform" = xsparc64-emu ; then
+-   target_m64=1
+-fi
++case x"$target_cpu-$platform" in
++    xsparc64-emu | xs390x-emu) target_m64=1 ;;
++esac
+ 
+ case "$target_os" in
+   windows* | mingw32*) target_os=cygwin ;;
+@@ -2158,6 +2158,9 @@
+ AM_CONDITIONAL([COND_sparc64_emu], [test x$target_cpu = xsparc64 -a x$platform = xemu])
+ AM_CONDITIONAL([COND_x86_64_efi], [test x$target_cpu = xx86_64 -a x$platform = xefi])
+ AM_CONDITIONAL([COND_x86_64_xen], [test x$target_cpu = xx86_64 -a x$platform = xxen])
++AM_CONDITIONAL([COND_s390x], [test x$target_cpu = xs390x ])
++AM_CONDITIONAL([COND_NOT_s390x], [test x$target_cpu != xs390x ])
++AM_CONDITIONAL([COND_s390x_emu], [test x$target_cpu = xs390x -a x$platform = xemu])
+ 
+ AM_CONDITIONAL([COND_HOST_HURD], [test x$host_kernel = xhurd])
+ AM_CONDITIONAL([COND_HOST_LINUX], [test x$host_kernel = xlinux])
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -1186,6 +1186,7 @@
+ module = {
+   name = videotest;
+   common = commands/videotest.c;
++  emu_condition = COND_NOT_s390x;
+ };
+ 
+ module = {
+@@ -1640,6 +1641,7 @@
+   common = gfxmenu/gui_progress_bar.c;
+   common = gfxmenu/gui_util.c;
+   common = gfxmenu/gui_string_util.c;
++  emu_condition = COND_NOT_s390x;
+ };
+ 
+ module = {
+@@ -2078,11 +2080,13 @@
+   name = gfxterm;
+   common = term/gfxterm.c;
+   enable = videomodules;
++  emu_condition = COND_NOT_s390x;
+ };
+ 
+ module = {
+   name = gfxterm_background;
+   common = term/gfxterm_background.c;
++  emu_condition = COND_NOT_s390x;
+ };
+ 
+ module = {
+@@ -2205,6 +2209,7 @@
+   enable = x86_64_efi;
+   enable = emu;
+   enable = xen;
++  emu_condition = COND_NOT_s390x;
+ };
+ 
+ module = {
+@@ -2251,6 +2256,7 @@
+ module = {
+   name = gfxterm_menu;
+   common = tests/gfxterm_menu.c;
++  emu_condition = COND_NOT_s390x;
+ };
+ 
+ module = {
+@@ -2412,6 +2418,7 @@
+   enable = x86_64_efi;
+   enable = emu;
+   enable = xen;
++  emu_condition = COND_NOT_s390x;
+ };
+ 
+ module = {
+--- a/grub-core/osdep/basic/no_platform.c
++++ b/grub-core/osdep/basic/no_platform.c
+@@ -44,3 +44,10 @@
+ {
+   grub_util_error ("%s", _("no SGI routines are available for your platform"));
+ }
++
++void
++grub_install_zipl (const char *d, int i, int f)
++{
++  grub_util_error ("%s", _("no zIPL routines are available for your platform"));
++}
++
+--- a/grub-core/osdep/unix/platform.c
++++ b/grub-core/osdep/unix/platform.c
+@@ -239,3 +239,14 @@
+ 	imgfile, destname, NULL });
+   grub_util_warn ("%s", _("You will have to set `SystemPartition' and `OSLoader' manually."));
+ }
++
++void
++grub_install_zipl (const char *dest, int install, int force)
++{
++  if (grub_util_exec ((const char * []){ PACKAGE"-zipl-setup",
++	verbosity ? "-v" : "",
++	install ? "" : "--debug",
++	!force ? "" : "--force",
++	"-z", dest, NULL }))
++    grub_util_error (_("`%s' failed.\n"), PACKAGE"-zipl-setup");
++}
+--- a/grub-core/osdep/windows/platform.c
++++ b/grub-core/osdep/windows/platform.c
+@@ -434,3 +434,9 @@
+ {
+   grub_util_error ("%s", _("no SGI routines are available for your platform"));
+ }
++
++void
++grub_install_zipl (const char *d, int i, int f)
++{
++  grub_util_error ("%s", _("no zIPL routines are available for your platform"));
++}
+--- a/include/grub/util/install.h
++++ b/include/grub/util/install.h
+@@ -110,6 +110,7 @@
+     GRUB_INSTALL_PLATFORM_LOONGARCH64_EFI,
+     GRUB_INSTALL_PLATFORM_RISCV32_EFI,
+     GRUB_INSTALL_PLATFORM_RISCV64_EFI,
++    GRUB_INSTALL_PLATFORM_S390X_EMU,
+     GRUB_INSTALL_PLATFORM_MAX
+   };
+ 
+@@ -237,6 +238,9 @@
+ grub_install_sgi_setup (const char *install_device,
+ 			const char *imgfile, const char *destname);
+ 
++void
++grub_install_zipl (const char *d, int i, int f);
++
+ int
+ grub_install_compress_gzip (const char *src, const char *dest);
+ int
+--- a/util/grub-install-common.c
++++ b/util/grub-install-common.c
+@@ -924,6 +924,7 @@
+     [GRUB_INSTALL_PLATFORM_LOONGARCH64_EFI] =  { "loongarch64", "efi"       },
+     [GRUB_INSTALL_PLATFORM_RISCV32_EFI] =      { "riscv32",     "efi"       },
+     [GRUB_INSTALL_PLATFORM_RISCV64_EFI] =      { "riscv64",     "efi"       },
++    [GRUB_INSTALL_PLATFORM_S390X_EMU] =        { "s390x",   "emu"       },
+   };
+ 
+ char *
+--- a/util/grub-install.c
++++ b/util/grub-install.c
+@@ -66,6 +66,7 @@
+ static char *disk_module = NULL;
+ static char *efidir = NULL;
+ static char *macppcdir = NULL;
++static char *zipldir = NULL;
+ static int force = 0;
+ static int have_abstractions = 0;
+ static int have_cryptodisk = 0;
+@@ -106,6 +107,7 @@
+     OPTION_NO_BOOTSECTOR,
+     OPTION_NO_RS_CODES,
+     OPTION_MACPPC_DIRECTORY,
++    OPTION_ZIPL_DIRECTORY,
+     OPTION_LABEL_FONT,
+     OPTION_LABEL_COLOR,
+     OPTION_LABEL_BGCOLOR,
+@@ -181,6 +183,11 @@
+       efidir = xstrdup (arg);
+       return 0;
+ 
++    case OPTION_ZIPL_DIRECTORY:
++      free (zipldir);
++      zipldir = xstrdup (arg);
++      return 0;
++
+     case OPTION_DISK_MODULE:
+       free (disk_module);
+       disk_module = xstrdup (arg);
+@@ -298,6 +305,8 @@
+    N_("use DIR as the EFI System Partition root."), 2},
+   {"macppc-directory", OPTION_MACPPC_DIRECTORY, N_("DIR"), 0,
+    N_("use DIR for PPC MAC install."), 2},
++  {"zipl-directory", OPTION_ZIPL_DIRECTORY, N_("DIR"), 0,
++   N_("use DIR as the zIPL Boot Partition root."), 2},
+   {"label-font", OPTION_LABEL_FONT, N_("FILE"), 0, N_("use FILE as font for label"), 2},
+   {"label-color", OPTION_LABEL_COLOR, N_("COLOR"), 0, N_("use COLOR for label"), 2},
+   {"label-bgcolor", OPTION_LABEL_BGCOLOR, N_("COLOR"), 0, N_("use COLOR for label background"), 2},
+@@ -334,6 +343,8 @@
+ #else
+    return NULL;
+ #endif
++#elif defined (__s390x__)
++   return "s390x-emu";
+ #else
+    return NULL;
+ #endif
+@@ -510,6 +521,8 @@
+     case GRUB_INSTALL_PLATFORM_I386_XEN:
+     case GRUB_INSTALL_PLATFORM_X86_64_XEN:
+     case GRUB_INSTALL_PLATFORM_I386_XEN_PVH:
++
++    case GRUB_INSTALL_PLATFORM_S390X_EMU:
+       return 0;
+ 
+       /* pacify warning.  */
+@@ -939,6 +952,7 @@
+     case GRUB_INSTALL_PLATFORM_I386_XEN:
+     case GRUB_INSTALL_PLATFORM_X86_64_XEN:
+     case GRUB_INSTALL_PLATFORM_I386_XEN_PVH:
++    case GRUB_INSTALL_PLATFORM_S390X_EMU:
+       break;
+ 
+     case GRUB_INSTALL_PLATFORM_I386_QEMU:
+@@ -990,6 +1004,7 @@
+     case GRUB_INSTALL_PLATFORM_I386_XEN:
+     case GRUB_INSTALL_PLATFORM_X86_64_XEN:
+     case GRUB_INSTALL_PLATFORM_I386_XEN_PVH:
++    case GRUB_INSTALL_PLATFORM_S390X_EMU:
+       free (install_device);
+       install_device = NULL;
+       break;
+@@ -1291,6 +1306,20 @@
+ 	}
+     }
+ 
++  if (platform == GRUB_INSTALL_PLATFORM_S390X_EMU)
++    {
++      if (!zipldir)
++	{
++	  char *d = grub_util_path_concat (2, bootdir, "zipl");
++	  if (!grub_util_is_directory (d))
++	    {
++	      free (d);
++	      grub_util_error ("%s", _("cannot find zIPL directory"));
++	    }
++	  zipldir = d;
++	}
++    }
++
+   size_t ndev = 0;
+ 
+   /* Write device to a variable so we don't have to traverse /dev every time.  */
+@@ -1543,6 +1572,7 @@
+ 		  case GRUB_INSTALL_PLATFORM_I386_XEN:
+ 		  case GRUB_INSTALL_PLATFORM_X86_64_XEN:
+ 		  case GRUB_INSTALL_PLATFORM_I386_XEN_PVH:
++		  case GRUB_INSTALL_PLATFORM_S390X_EMU:
+ 		    grub_util_warn ("%s", _("no hints available for your platform. Expect reduced performance"));
+ 		    break;
+ 		    /* pacify warning.  */
+@@ -1661,6 +1691,10 @@
+       strcpy (mkimage_target, "sparc64-ieee1275-raw");
+       core_name = "core.img";
+       break;
++    case GRUB_INSTALL_PLATFORM_S390X_EMU:
++      strcpy (mkimage_target, "grub2-emu");
++      core_name = mkimage_target;
++      break;
+       /* pacify warning.  */
+     case GRUB_INSTALL_PLATFORM_MAX:
+       break;
+@@ -1676,6 +1710,7 @@
+ 				       core_name);
+   char *prefix = xasprintf ("%s%s", prefix_drive ? : "",
+ 			    relative_grubdir);
++  if (core_name != mkimage_target)
+   grub_install_make_image_wrap (/* source dir  */ grub_install_source_directory,
+ 				/*prefix */ prefix,
+ 				/* output */ imgfile,
+@@ -1714,6 +1749,10 @@
+ 				       /* image target */ mkimage_target, 0);
+       }
+       break;
++
++    case GRUB_INSTALL_PLATFORM_S390X_EMU:
++      break;
++
+     case GRUB_INSTALL_PLATFORM_ARM_EFI:
+     case GRUB_INSTALL_PLATFORM_ARM64_EFI:
+     case GRUB_INSTALL_PLATFORM_LOONGARCH64_EFI:
+@@ -2013,6 +2052,10 @@
+ 	}
+       break;
+ 
++    case GRUB_INSTALL_PLATFORM_S390X_EMU:
++      grub_install_zipl (zipldir, install_bootsector, force);
++      break;
++
+     case GRUB_INSTALL_PLATFORM_MIPSEL_LOONGSON:
+     case GRUB_INSTALL_PLATFORM_MIPSEL_QEMU_MIPS:
+     case GRUB_INSTALL_PLATFORM_MIPS_QEMU_MIPS:
+--- /dev/null
++++ b/util/s390x/dracut-grub2.sh.in
+@@ -0,0 +1,141 @@
++#!/bin/sh
++# -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
++# ex: ts=8 sw=4 sts=4 et filetype=sh
++#getargbool() { true; }
++
++if getargbool 0 initgrub && [ ! -e /grub2skip ] || [ -e /grub2force ]; then
++  #type getarg >/dev/null 2>&1 || . /lib/dracut-lib.sh
++  checkro() {
++   local tgt="$1"
++   local dev mp fs opts dc
++   local rofs=true
++   while read dev mp fs opts dc; do
++     [ "$mp" = "$tgt" ] || continue
++     case ",$opts," in
++     (*,ro,*) rofs=true;;
++     (*)      rofs=false;;
++     esac
++   done < /proc/mounts
++   echo $rofs
++  }
++  checkd() {
++    [ -d $1 ] && echo true || echo false
++  }
++  checke() {
++    [ -e $1 ] && echo true || echo false
++  }
++  checksubvol() {
++    local tgt="$1"
++    local tst="$2"
++    if [ -n "$tst" -a -e "/sysroot$tgt/$tst" ]; then
++      echo true
++    elif grep  -qP '^[^#\s]+\s+'"$tgt"'\s+' /sysroot/etc/fstab; then
++      echo false
++    else
++      echo true
++    fi
++  }
++  checksnap() {
++    # checksubvol /.snapshots grub-snapshot.cfg
++    if [ -e /sysroot/.snapshots/grub-snapshot.cfg ]; then
++      echo true
++    elif grep  -qP '^[^#\s]+\s+/.snapshots\s+' /sysroot/etc/fstab; then
++      echo false
++    else
++      echo true
++    fi
++  }
++  checkboot() {
++    [ -d /boot/grub2 ] && echo false || echo true
++  }
++  getterm() {
++    local term="$(getarg TERM)"
++    [ -z "$term" ] && term=dumb
++    echo $term
++  }
++  debug() {
++    if [ -n "$1" ]; then
++      echo "$1" >> /dev/.grub2.debug
++    fi
++    shift;
++    [ -n "$*" ] || return 0
++    echo "+ $*" >> /dev/.grub2.debug
++    "$@" >> /dev/.grub2.debug
++  }
++
++  exec_prefix=@exec_prefix@
++  bindir=@bindir@
++  if [ -e /sysroot$bindir/grub2-emu ]; then
++
++    export TERM=$(getterm)
++    export grub2rofs=$(checkro /sysroot)
++    export grub2roufs=$(checkro /sysroot/usr)
++    export grub2sysfs=$(checkd /sysroot/sys/devices/system/memory)
++    export grub2procfs=$(checkd /sysroot/proc/self)
++    export grub2bootfs=$(checkboot)
++    export grub2bootw=$(checksubvol /boot/writable)
++    export grub2devfs=$(checkd /sysroot/dev/disk)
++    export grub2snap=$(checksnap)
++    debug "" export -p
++
++        _ctty="$(RD_DEBUG= getarg rd.ctty=)" && _ctty="/dev/${_ctty##*/}"
++        if [ -z "$_ctty" ]; then
++	    _ctty=$(showconsole)
++	fi
++        if [ -z "$_ctty" ]; then
++            _ctty=console
++            while [ -f /sys/class/tty/$_ctty/active ]; do
++                _ctty=$(cat /sys/class/tty/$_ctty/active)
++                _ctty=${_ctty##* } # last one in the list
++            done
++            _ctty=/dev/$_ctty
++        fi
++        [ -c "$_ctty" ] || _ctty=/dev/console
++        case "$(/usr/bin/setsid --help 2>&1)" in *--ctty*) CTTY="--ctty";; esac
++
++    CTTY="$CTTY --wait"
++    $grub2rofs || mount -o remount,ro /sysroot
++    $grub2roufs || mount -o remount,ro /sysroot/usr
++    $grub2sysfs || mount --bind {,/sysroot}/sys
++    $grub2procfs || mount --bind {,/sysroot}/proc
++    $grub2bootfs || mount --bind {,/sysroot}/boot
++    $grub2devfs || mount --bind {,/sysroot}/dev
++    $grub2snap || chroot /sysroot mount -rn /.snapshots
++    $grub2bootw || chroot /sysroot mount -rn /boot/writable
++    debug "" cat /proc/mounts
++
++    debug "Trying grub2-emu (ro=$grub2rofs, TERM=$TERM, ctty=$_ctty)..."
++    setsid $CTTY -- chroot /sysroot $bindir/grub2-emu -X -X 0<>$_ctty 1>&0 2>&0
++
++    if [ -x /sysroot@libdir@/grub2/zipl-refresh ]; then
++	setsid $CTTY -- /sysroot@libdir@/grub2/zipl-refresh 0<>$_ctty 1>&0 2>&0
++	if [ $? != 0 ]; then
++	    warn "Not continuing"
++	    emergency_shell -n grub2-emu-zipl-refresh
++	else
++	    echo "+ reboot" >& $_ctty
++	    sleep 3
++	    reboot
++	fi
++    else
++	echo "
++  Attention: 'grub2' failed to start the target kernel and 'zipl-refresh'
++  is not available.  This should never happen.  Please contact support." >& $_ctty
++	warn "Not continuing"
++	emergency_shell -n grub2-emu-kexec
++    fi
++
++    $grub2snap || umount /sysroot/.snapshots
++    $grub2devfs || umount /sysroot/dev
++    $grub2bootw || umount /sysroot/boot/writable
++    $grub2bootfs || umount /sysroot/boot
++    $grub2procfs || umount /sysroot/proc
++    $grub2sysfs || umount /sysroot/sys
++    $grub2roufs || mount -o remount,rw /sysroot/usr
++    $grub2rofs || mount -o remount,rw /sysroot
++  else
++    warn "No $bindir/grub2-emu in /sysroot--dropping to emergency shell..."
++    emergency_shell -n no-grub2-emu
++  fi
++fi
++
+--- /dev/null
++++ b/util/s390x/dracut-module-setup.sh.in
+@@ -0,0 +1,19 @@
++#!/bin/bash
++# -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
++# ex: ts=8 sw=4 sts=4 et filetype=sh
++
++# called by dracut
++check() {
++    local _arch=$(uname -m)
++    [ "$_arch" = "s390" -o "$_arch" = "s390x" ] || return 1
++    return 0
++}
++
++# called by dracut
++install() {
++    inst_hook cleanup 99 "$moddir/grub2.sh"
++    inst_multiple showconsole
++    inst_multiple mount umount chroot cat grep /usr/bin/setsid
++    #inst_multiple grub2-emu kexec
++}
++
+--- /dev/null
++++ b/util/s390x/zipl2grub.conf.in
+@@ -0,0 +1,26 @@
++## This is the template for '@zipldir@/config' and is subject to
++## rpm's %config file handling in case of grub2-s390x-emu package update.
++
++[defaultboot]
++defaultmenu = menu
++
++[grub2]
++    target = @zipldir@
++    ramdisk = @zipldir@/initrd,0x2000000
++    image = @zipldir@/image
++    parameters = "root=@GRUB_DEVICE@ @GRUB_EMU_CONMODE@ @GRUB_CMDLINE_LINUX@ @GRUB_CMDLINE_LINUX_DEFAULT@ initgrub quiet splash=silent plymouth.enable=0 "
++
++[skip-grub2]
++    target = @zipldir@
++    ramdisk = @zipldir@/initrd,0x2000000
++    image = @zipldir@/image
++    parameters = "root=@GRUB_DEVICE@ @GRUB_CONMODE@ @GRUB_CMDLINE_LINUX@ @GRUB_CMDLINE_LINUX_DEFAULT@ "
++
++:menu
++    target = @zipldir@
++    timeout = 16
++    default = 1
++    prompt = 0
++    1 = grub2
++    2 = skip-grub2
++
+--- /dev/null
++++ b/util/s390x/zipl2grub.pl.in
+@@ -0,0 +1,423 @@
++#!/usr/bin/perl
++use strict;
++
++my $C = $0; $C =~ s{^.*/}{};
++
++my $in = '@sysconfdir@/default/zipl2grub.conf.in';
++my $default = '@sysconfdir@/default/grub';
++my $fallback = '@sysconfdir@/zipl.conf';
++my $sysconfbl = '@sysconfdir@/sysconfig/bootloader';
++my $zipldir = "";
++my $running = "";
++my $refresh = 1; # needs to default to "on" until most bugs are shaken out!
++my $force = 0;
++my $verbose = 0;
++my $debug = 0;
++my $miss = 0;
++my $cfg = "";
++my %fsdev = ();
++my %fstype = ();
++
++my %C = (
++  GRUB_CMDLINE_LINUX_DEFAULT => "quiet splash=silent",
++  GRUB_DISABLE_LINUX_UUID => "false",
++);
++
++my %Mandatory = (
++  GRUB_CMDLINE_LINUX_DEFAULT => 1,
++  GRUB_DEVICE => 1,
++);
++
++sub Panic($$) {
++  printf( STDERR "%s", $_[1]);
++  exit( $_[0]);
++}
++sub Info($$) {
++  printf( STDERR "%s", $_[1]) if ($_[0] <= $verbose);
++}
++sub System(@) {
++  my (@C) =@_;
++  Info( 1, "+ " . join( " ", @C) . "\n");
++  return 0 if ($debug);
++  system( @C);
++  if ($? == -1) {
++    Panic( $?, "$C[0]: Failed to execute: $!\n");
++  } elsif ($? & 127) {
++    Panic( $?, sprintf( "$C[0]: Died with signal %d with%s coredump\n",
++           ($? & 127),  ($? & 128) ? '' : 'out'));
++  } elsif ( $? >> 8 != 0 ) {
++    Panic( $?, "$C[0]: Failed\n");
++  }
++  return( 0);
++}
++sub cp($$) {
++  my @C = ( "cp", "-p", $_[0], $_[1]);
++  System( @C);
++}
++sub rm($) {
++  return( 0) unless ( -l $_[0] || -e $_[0]);
++  Info( 2, "+ rm $_[0]\n");
++  return 0 if ($debug);
++  unlink( $_[0]) || Panic( 1, "$C: unlink: $!.\n");
++}
++sub mv($$) {
++  Info( 1, "+ mv $_[0] $_[1]\n");
++  return 0 if ($debug);
++  rename($_[0], $_[1]) || Panic( 1, "$C: rename: $!.\n");
++}
++sub ln($$) {
++  Info( 1, "+ ln -sf $_[0] $_[1]\n");
++  return 0 if ($debug);
++  unlink( $_[1]) || Panic( 1, "$C: unlink: $!.\n") if ( -e $_[1]);
++  symlink($_[0], $_[1]) || Panic( 1, "$C: symlink: $!.\n");
++}
++sub BootCopy($$$) {
++  my( $file, $dir, $tgt) = @_;
++  my $curr = "$dir/$tgt";
++  my $prev = "$dir/$tgt.prev";
++  Info(4, "Copy /boot/$file $dir $tgt\n");
++  if ( -l $curr ) {
++    my $curf = readlink( $curr);
++    if ( $curf ne $file ) {
++      if ( -l $prev ) {
++	my $pref = readlink( $prev);
++	$pref = "$dir/$pref" unless ($pref =~ m{^/});
++	rm( $pref);
++      }
++      mv( $curr, $prev);
++    }
++  }
++  cp( "/boot/$file", "$dir/$file");
++  ln( $file, $curr);
++}
++sub MkInitrd($$$) {
++  my( $initrd, $dir, $version) = @_;
++  my @C = ( "dracut", "--hostonly", "--force");
++  my $uuid;
++  if ( exists( $fsdev{"/boot"}) ) {
++  chomp( $uuid = qx{grub2-probe --target=fs_uuid /boot});
++    my ($dev, $type) = ($fsdev{"/boot"},  $fstype{"/boot"});
++    if ( $type eq "auto" ) {
++      chomp( $type = qx{grub2-probe --target=fs /boot});
++    }
++    if ($C{GRUB_DISABLE_LINUX_UUID} eq "true" &&
++	$dev =~ m{^(UUID=|/dev/disk/by-uuid/)}) {
++      chomp( $dev = qx{grub2-probe --target=device /boot});
++    }
++    push @C, "--mount", "$dev /boot $type ro";
++  }
++  push @C, "$dir/$initrd", $version;
++  System( @C);
++  ln( $initrd, "$dir/initrd");
++}
++sub ChkInitrd($$) {
++  my( $dir, $initrd) = @_;
++  my $found = -1;
++  my $d = $dir;
++  my $pattern = qr{lib/dracut/hooks/cleanup/99-grub2.sh};
++  my $show = "cleanup/99-grub2.sh";
++  my $cat = undef;
++  my $magic;
++
++  return $found unless (-r "$dir/$initrd");
++  open( IN, "< $dir/$initrd") || return $found;
++  my $rd = sysread( IN, $magic, 6);
++  close( IN);
++  return $found unless (defined( $rd) && $rd == 6);
++  $cat = "xzcat" if ($magic eq "\xFD7zXZ\x00");
++  $cat = "zcat"  if (substr($magic, 0, 2) eq "\037\213");
++  $cat = "cat"   if (substr($magic, 0, 5) eq "07070");
++  return $found unless (defined($cat));
++
++  my $modinst = "/usr/lib/dracut/modules.d/99grub2/module-setup.sh";
++  if ( -r $modinst ) {
++    my( $hook, $ord, $script);
++    my $pat = qr{^\s*inst_hook\s+(\S+)\s+([0-9]+)\s+\"\$moddir/(grub2\.sh)\"};
++    open( IN, "< $modinst") || die;
++    while ( <IN> ) {
++      next unless ($_ =~ $pat);
++      $show = "$1/$2-$3";
++      $pattern = qr{lib/dracut/hooks/$show}o;
++      last;
++    }
++    close( IN);
++  }
++
++  $found = 0;
++  Info( 3, "+ $cat $d/$initrd | cpio -it | grep '$show'\n");
++  open( IN, "$cat $d/$initrd | cpio -it 2>/dev/null |") ||
++     Panic( 1, "$C: cpio: $!.\n");
++  while ( <IN> ) {
++    $found = 1 if ($_ =~ $pattern);
++  }
++  close( IN);
++  return $found;
++}
++
++sub Usage($) {
++  my @cat = ("",
++	"Parameter error.",
++	"zIPL directory missing.",
++	"Configuration template missing.",
++	"Configuration template unreadable.",
++	"zIPL directory not accesible.",
++	""
++  );
++  my $msg = "";
++
++  $msg .= sprintf( "%s: %s\n", $C, $cat[$_[0]]) if ($_[0] > 0);
++  $msg .= "Usage: $C [-v] [-d] [-f] [-T template] [-z ZIPLDIR]\n";
++  Panic( $_[0], $msg . "\n");
++}
++
++while ( $#ARGV >= 0 ) {
++  $_ = shift;
++  next if /^$/;
++  last if /^--$/;
++  (/^--verbose$/ || /^-v$/)   && ($verbose++, next);
++  (/^--quiet$/ || /^-q$/)     && ($verbose = 0, next);
++  (/^--debug$/ || /^-d$/)     && ($debug = 1, $verbose++, next);
++  (/^--force$/ || /^-f$/)     && ($force = $refresh = 1, next);
++  (/^--refresh$/ || /^-r$/)   && ($refresh = 1, next);
++  (/^--keep$/ || /^-k$/)      && ($refresh = 0, next);
++  (/^--?help/ || /^-h/)       && (Usage(0));
++  (/^--zipldir$/ || /^-z$/)   && ($zipldir = shift || Usage(2), next);
++  (/^--template$/ || /^-T$/)  && ($in = shift || Usage(3), next);
++  (/^-/)                      && (Usage(1));
++  Usage(1);
++}
++Usage(4) if (! -r $in);
++
++if ($zipldir) {
++  $C{zipldir} = $zipldir;  # command-line wins
++} elsif ( exists( $C{zipldir}) ) {
++  $zipldir = $C{zipldir};  # otherwise fall back to config
++} else {
++  $zipldir = $C{zipldir} = "/boot/zipl"; # but don't proceed without...
++}
++Usage(5) if (! -d $zipldir);
++if ( $zipldir eq "/boot" ) {
++  Panic( 5, "$C: zIPL directory '/boot' not supported!\n");
++}
++
++if ( ! -r $default && ! -r $fallback && ! -r $sysconfbl ) {
++  Panic( 0, "$C: No configuration files found. Retry later!\n");
++}
++if ( -r $default ) {
++  open( IN, "< $default") || die;
++  while ( <IN> ) {
++    chomp;
++    s{^\s*#.*$}{};
++    next if m{^\s*$};
++    s{x}{\x01xx\x01}g;
++    s{\\\"}{\x01x1\x01}g;
++    s{\\\'}{\x01x2\x01}g;
++    Info( 5, "<$_>\n");
++    if ( m{^([^\s=]+)='([^']*)'\s*(?:#.*)?$} ||
++         m{^([^\s=]+)="([^"]*)"\s*(?:#.*)?$} ||
++         m{^([^\s=]+)=(\S*)\s*(?:#.*)?$} ) {
++      my ( $k, $v) = ($1, $2);
++      $v =~ s{\x01x2\x01}{\\'}g;
++      $v =~ s{\x01x1\x01}{\\"}g;
++      $v =~ s{\x01xx\x01}{x}g;
++      $C{$k} = $v;
++      next;
++    }
++    print( STDERR "$default:$.: parse error ignored.\n");
++  }
++  close( IN);
++}
++if ( -r "/etc/fstab" ) {
++  my $regex = qr{^(\S+)\s+(\S+)\s+(\S+)\s+\S+\s+\S+\s+\S+\s*(?:#.*)?$};
++  open( IN, "< /etc/fstab") || die;
++  while ( <IN> ) {
++    next if ( m{^\s*#} );
++    my ($dev, $mp, $type) = (m{$regex}o);
++    $fsdev{$mp} = $dev;
++    $fstype{$mp} = $type;
++  }
++  close( IN);
++}
++
++if ( ! exists( $C{GRUB_DEVICE}) &&
++     $C{GRUB_CMDLINE_LINUX_DEFAULT} eq "quiet splash=silent" &&
++     -r $fallback ) {
++  # configuration incomplete, let's try fallback
++    open( IN, "< $fallback") || die;
++    my $section = "";
++    while( <IN> ){
++      if ( m{^\[([^\]]+)\]\s*$} ) {
++        $section = $1;
++      }
++      if ( $section eq "ipl" &&
++	   m{^\s*parameters\s*=\s*\"root=(\S+)(?:\s*|\s+([^\"]+))\"} ) {
++        $C{GRUB_DEVICE} = $1;
++        $C{GRUB_CMDLINE_LINUX_DEFAULT} = $2 if (defined($2) && $2 !~ m{^\s*$});
++        last;
++      }
++    }
++    close( IN);
++    $default = $fallback;
++}
++
++if ( ! exists( $C{GRUB_DEVICE}) && exists( $fsdev{"/"}) ) {
++  my( $dev, $type, $subvol) = ( $fsdev{"/"}, $fstype{"/"}, "");
++  if ( $dev !~ m{^(UUID=|/dev/disk/by-uuid/)} ||
++       $C{GRUB_DISABLE_LINUX_UUID} ne "true" ) {
++    $C{GRUB_DEVICE} = $dev;
++    # grub2-mkrelpath fails on rollback -- and provides no known merit...
++    #chomp( $subvol = qx{grub2-mkrelpath /}) if ( $type eq "btrfs" );
++    #$subvol =~ s{^/}{};
++    #$C{GRUB_DEVICE} .= " rootflags=subvol=$subvol" if ($subvol);
++  }
++}
++if ( ! exists( $C{GRUB_DEVICE}) ) {
++  my( $dev, $uuid, $type, $subvol) = ("", "", "", "");
++  chomp( $dev  = qx{grub2-probe --target=device /});
++  chomp( $uuid = qx{grub2-probe --device $dev --target=fs_uuid});
++  if ( $dev ) {
++    if ( $uuid && $C{GRUB_DISABLE_LINUX_UUID} ne "true" ) {
++      $C{GRUB_DEVICE} = "UUID=$uuid";
++    } else {
++      $C{GRUB_DEVICE} = "$dev";
++    }
++    chomp( $type = qx{stat -f --printf='%T' /});
++    # grub2-mkrelpath fails on rollback -- and provides no known merit...
++    #chomp( $subvol = qx{grub2-mkrelpath /}) if ( $type eq "btrfs" );
++    #$subvol =~ s{^/}{};
++    #$C{GRUB_DEVICE} .= " rootflags=subvol=$subvol" if ($subvol);
++  }
++}
++if ( $C{GRUB_CMDLINE_LINUX_DEFAULT} eq "quiet splash=silent" &&
++     -r $sysconfbl) {
++  open( IN, "< $sysconfbl") ||  die;
++  while ( <IN> ) {
++    next if ( m{^\s*#} );
++    if ( m{^DEFAULT_APPEND=".*"(?:\s*|\s+#.*)$} ) {
++      $C{GRUB_CMDLINE_LINUX_DEFAULT} = $1;
++    }
++  }
++  close( IN);
++}
++
++if ( ! exists( $C{GRUB_DEVICE})) {
++  Panic( 0, "$C: Default not ready and no fallback.  Please retry later!\n");
++}
++
++if ( ! exists( $C{GRUB_EMU_CONMODE}) && exists( $C{GRUB_CONMODE}) ) {
++  # GRUB_CONMODE is used for 'grub2-emu' as well
++  $C{GRUB_EMU_CONMODE} = $C{GRUB_CONMODE};
++}
++if ( exists( $C{GRUB_EMU_CONMODE}) && !exists( $C{GRUB_CONMODE}) ) {
++  # pick up 'conmode=' from CMDLINE
++  my $found = "";
++  foreach ( "GRUB_CMDLINE_LINUX", "GRUB_CMDLINE_LINUX_DEFAULT" ) {
++    next unless ($C{$_} =~ m{ ?conmode=(\S+) ?});
++    $C{GRUB_CONMODE} = $1;
++    last;
++  }
++  if ( !exists( $C{GRUB_CONMODE}) && $C{GRUB_EMU_CONMODE} eq "3270" ) {
++    # force GRUB_CONMODE to 3215 for least surprise
++    $C{GRUB_CONMODE}="3215";
++  }
++}
++if ( exists( $C{GRUB_EMU_CONMODE}) && exists( $C{GRUB_CONMODE})) {
++  # strip "conmode=" from GRUB_CMDLINE{,_LINUX}_DEFAULT
++  foreach ( "GRUB_CMDLINE_LINUX", "GRUB_CMDLINE_LINUX_DEFAULT" ) {
++    $C{$_} =~ s{( ?)conmode=\S+ ?}{$1}g;
++  }
++}
++foreach ("GRUB_EMU_CONMODE", "GRUB_CONMODE") {
++  next unless( exists( $C{$_}) );
++  $C{$_} = "conmode=" . $C{$_};
++}
++
++if ( $debug && $verbose > 2 ) {
++  foreach ( sort( keys( %C)) ) {
++    printf( "%s=\"%s\"\n", $_, $C{$_});
++  }
++}
++
++open( IN, "< $in") ||
++   Panic( 1, "$C: Failed to open 'zipl.conf' template: $!.\n");
++while ( <IN> ) {
++  Info( 3, "$.. <$_$.. >");
++  if ( $. == 1 && m{^## This} ) {
++    $_ = "## This file was written by 'grub2-install/$C'\n" .
++	 "## filling '$in' as template\n";
++  } elsif ( $. == 2 && m{^## rpm's} ) {
++    $_ = "## with values from '$default'.\n" .
++	 "## In-place modifications will eventually go missing!\n";
++  }
++  while ( m{\@([^\@\s]+)\@} ) {
++    my $k = $1;
++    my $v;
++    if ( exists( $C{$k}) ) {
++      $v = $C{$k};
++    } elsif ( exists( $Mandatory{$k}) ) {
++      $v =  "$k";
++      $miss++;
++    } else {
++      $v = "";
++    }
++    s{\@$k\@}{$v}g;
++  }
++  Info( 2, $_);
++  $cfg .= $_;
++}
++if ( $miss ) {
++  Info( 1, "Partially filled config:\n===\n$cfg===\n");
++  Panic( 1, "$C: 'zipl.conf' template could not be filled. \n");
++}
++
++my $ziplconf = "$zipldir/config";
++if ( ! $debug ) {
++  open( OUT, "> $ziplconf") || die;
++  print( OUT $cfg) || die;
++  close( OUT);
++}
++
++# copy out kernel and initrd
++my $defimage = "/boot/image";
++my $definitrd = "/boot/initrd";
++my $ziplimage = "$zipldir/image";
++my $ziplinitrd = "$zipldir/initrd";
++my $Image = "$defimage";
++
++if ( ! $running && ! $force ) {
++  chomp( $running = qx{uname -r});
++  Info( 1, "preferred kernel: '$running'\n");
++  $Image .= "-$running";
++}
++if ( ! -r $Image ) {
++  $Image = $defimage;
++}
++Panic( 1, "$C: kernel '$Image' not readable!?\n") unless (-r $Image);
++
++if ( -l $Image ) {
++  $Image = readlink( $Image);
++}
++my ($image, $version) = ($Image =~ m{^(?:/boot/)?([^-]+-(.+))$});
++my $initrd = "initrd-$version";
++
++if ( !defined($image) || !defined($version) || ! -r "/boot/$image" ) {
++  Panic( 1, "$C: weird $Image. This should never happen!\n");
++}
++
++if ( ! -r $ziplimage || ! -r $ziplinitrd || $refresh ) {
++  BootCopy( $image, $zipldir, "image");
++  BootCopy( $initrd, $zipldir, "initrd") if (-r "/boot/$initrd");
++}
++if ( $refresh || ChkInitrd( $zipldir, "initrd") <= 0 ) {
++  MkInitrd( $initrd, $zipldir, $version);
++}
++if ( ChkInitrd( $zipldir, "initrd") == 0 ) {
++  Info( 0, "$C: dracut does not work as expected! Help needed!\n");
++  $miss++;
++}
++
++# now: go for it!
++my @C = ( "/sbin/zipl", (($verbose) ? "-Vnc" : "-nc"), "$ziplconf" );
++System( @C);
++exit( $miss);
++
+--- /dev/null
++++ b/util/s390x/dracut-zipl-refresh.sh.in
+@@ -0,0 +1,183 @@
++#!/bin/bash
++# ex: ts=8 sw=4 sts=4 et filetype=sh syntax=off
++
++debug=false
++TIMEOUT=300
++[ -n "$SYSROOT" ] ||
++SYSROOT=/sysroot
++[ -d $SYSROOT/boot ] || SYSROOT=
++
++sync()		{ $SYSROOT/usr/bin/sync "$@"; }
++readlink()	{ $SYSROOT/usr/bin/readlink "$@"; }
++newline()	{ echo ""; }
++verbose() {
++  local a
++  local m
++  [ -n "$*" ] || return 0
++  m="+"
++  for a in "$@"; do
++    case "$a" in
++      (*"	"*|*" "*|"") m="$m '$a'";;
++      (*)     m="$m $a";;
++    esac
++  done
++  echo "$m"
++  [ -n "$SYSROOT" -o "$1" = "chroot" ] || return 0
++  "$@"
++}
++
++SYSK="$(readlink $SYSROOT/boot/image)"
++SYSK="${SYSK#image-}"
++ZIPK="$(readlink $SYSROOT/boot/zipl/image)"
++ZIPK="${ZIPK#image-}"
++PRVK="$(readlink $SYSROOT/boot/zipl/image.prev 2> /dev/null)"
++PRVK="${PRVK#image-}"
++RUNK="$(uname -r)"
++# if /boot/zipl is not accessible ZIPK will be empty, assume running kernel
++[ -n "$ZIPK" ] || ZIPK="$RUNK"
++
++[ -n "$SYSROOT" ] || {
++  echo "$0 is not intended for interactive use!"
++  $debug ||
++  exit 0
++  ## test:
++  TIMEOUT=6
++  RUNK=110; ZIPK=110; PRVK=101; SYSK=194
++  ##RUNK=$PRVK; ZIPK=$SYSK # previous booted, newest is default
++  ##t=$ZIPK; ZIPK=$PRVK; PRVK=$t; SYSK=$PRVK  # unknown booted
++  ##ZIPK=$SYSK; PRVK="" # no update
++  ##ZIPK=$SYSK # try previous
++  echo "R=$RUNK S=$SYSK Z=$ZIPK P=$PRVK"
++  #verbose echo "a b" z
++  #verbose echo "^h	^j" ^z
++}
++
++trap newline EXIT
++
++echo -n "
++  Attention: 'grub2' failed to start the target kernel"
++
++if [ "$ZIPK" != "$RUNK" -a "$RUNK" != "$SYSK" ]; then
++  # i.e. "previous" has been selected via zipl, but it fails!?
++  [ "$RUNK" = "$PRVK" ] &&
++  echo " from previous" ||
++  echo " from unknown"
++
++  echo "  ZIPL kernel ($RUNK).  If default ($ZIPK)
++  fails as well, please contact support."
++  exit 1
++fi
++echo "."
++if [ "$ZIPK" = "$SYSK" ]; then
++  [ -z "$PRVK" ] &&
++  echo "
++  No kernel update readily available/installed.  Please contact support." ||
++  echo "
++  You may want to try the previous kernel ($PRVK) with
++  'IPL ... LOADPARM 4', as no update kernel is readily available/installed."
++  exit 1
++fi
++
++echo "
++  A newer kernel ($SYSK) is available and will be deployed
++  in $TIMEOUT seconds.  To facilitate this, the affected file-systems have
++  to be made writable, then 'grub2-install --force' needs to be run,
++  and, on success, a 'reboot' will be initiated.
++
++  Press 'c[Enter]' to interrupt, any other input will proceed... "
++
++trap interrupted=1 INT
++interrupted=0
++input=""
++read -t $TIMEOUT input
++case "$input" in
++  ([Cc]) interrupted=2 ;;
++esac
++if [ $interrupted != 0 ]; then
++  echo "
++  Automatic update cancelled..."
++  exit 1
++fi
++trap - INT
++echo "
++  Attempting automatic update..."
++
++ismounted() {
++  local mode="$1"
++  local tgt="$2"
++  local dev mp fs opts dc
++  while read dev mp fs opts dc; do
++    [ "$mp" = "$tgt" ] || continue
++    case ",$opts," in
++      (*,$mode,*) return 0;;
++    esac
++  done < /proc/mounts
++  return 1
++}
++ismp() {
++  local sysr="$1"
++  local tgt="$2"
++  local dev mp fs opts dc
++  while read dev mp fs opts dc; do
++    case "$dev" in
++      ("#"*) continue;;
++    esac
++    [ "$mp" = "$tgt" ] || continue
++    return 0
++  done < $sysr/etc/fstab
++  return 1
++}
++chroot() {
++  local tgt="$1"; shift
++  if [ -z "$tgt" ]; then
++    echo -n "+"
++    verbose "$@"
++  else
++    /usr/bin/chroot "$tgt" "$@"
++  fi
++}
++cleanup() {
++  local mp
++  echo "  # cleanup"
++  for mp in $UMOUNT; do
++    verbose chroot "$SYSROOT" umount $mp
++  done
++  for mp in $WMOUNT; do
++    verbose mount -o remount,ro $mp
++  done
++  sync; sync
++  [ -z "$EXIT" ] || echo "$EXIT"
++  echo ""
++}
++trap cleanup EXIT
++UMOUNT=""
++WMOUNT=""
++EXIT=""
++
++echo "  # prepare"
++# remount $SYSROOT{,/boot{,/zipl}} read-write
++for mp in {"",/boot{,/zipl}}; do
++  [ -n "$SYSROOT$mp" ] || continue
++  if ismounted rw $SYSROOT$mp; then
++     echo "  # $mp: already read-write: ignore"
++  elif ismounted ro $SYSROOT$mp; then
++    verbose mount -o remount,rw $SYSROOT$mp
++    WMOUNT="$SYSROOT$mp $WMOUNT"
++  elif ismp "$SYSROOT" $mp; then
++    verbose chroot "$SYSROOT" mount -w $mp || exit 1
++    UMOUNT="$mp $UMOUNT"
++  fi
++done
++if [ ! -w $SYSROOT/boot/zipl/config ]; then
++  EXIT="ERROR: $SYSROOT/boot/zipl/config not writable!  Aborting..."
++  exit 1
++fi
++echo "  # action"
++verbose chroot "$SYSROOT" grub2-zipl-setup --force
++ret=$?
++if [ $ret != 0 ]; then
++  EXIT="  # failed ($ret)"
++else
++  EXIT="  # done"
++fi
++exit $ret

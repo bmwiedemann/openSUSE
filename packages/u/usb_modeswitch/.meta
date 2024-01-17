@@ -1,0 +1,9 @@
+<package name="usb_modeswitch" project="openSUSE:Factory">
+  <title>A mode switching tool for controlling multiple-device USB gear</title>
+  <description>USB_ModeSwitch is a mode switching tool for controlling &quot;flip flop&quot;
+(multiple device) USB gear. It allows so-called &quot;Zero-CD&quot; devices that
+show up as USB storage initially to be switched into their more useful
+&quot;application mode&quot;. This is most common for UMTS/3G wireless WAN
+devices.</description>
+  <devel project="hardware" package="usb_modeswitch"/>
+</package>

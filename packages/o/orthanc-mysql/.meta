@@ -1,0 +1,5 @@
+<package name="orthanc-mysql" project="openSUSE:Factory">
+  <title>MySQL plugin for Orthanc</title>
+  <description></description>
+  <devel project="graphics" package="orthanc-mysql"/>
+</package>

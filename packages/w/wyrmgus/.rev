@@ -1,0 +1,182 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6233c319c3fca6b735b30856b7ad917b</srcmd5>
+    <version>2.5.3</version>
+    <time>1494262928</time>
+    <user>dimstar_suse</user>
+    <comment>remove CC license from the engine</comment>
+    <requestid>459436</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c13ae16454e7e151adaaad02c02bec0b</srcmd5>
+    <version>2.8.1</version>
+    <time>1505334806</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523372</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3d2dd7058529c3ac0ec889731824b8fe</srcmd5>
+    <version>3.5.4</version>
+    <time>1555488569</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.5.4
+  * Added data type base class for unit types, upgrades and etc.
+  * Fixed issue which caused rally point map layers to be saved
+    incorrectly.
+  * Remove instances of \r from the config data strings
+  * Added snow and ice flags, made the map field flags into an enum
+  * Added comment to better explain the CPlayer::CanRecruitHero code
+  * Improved the check to see if a file is in the user's home directory
+  * Fixed issue which caused a crash when starting a second game
+  * Fixed issue with quest failure
+  * Improved worker automatic level-up upgrade choice
+  * Potential fix for mouse jumping issues
+  * Added support for certain spells being empowered in a particular plane
+  * Fixed issue which caused building i.e. a road near a rock tile to
+    recalculate the rock tile's transitions.
+- Add patch:
+  * wyrmgus-fix-build.patch
+- Run spec-cleaner
+- Use pkg-config style dependencies
+</comment>
+    <requestid>694752</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d75d97f95d8e12eb7754648917179cac</srcmd5>
+    <version>4.0.3</version>
+    <time>1610050916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858875</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>61b671d98f2e762214721ca499a37ce6</srcmd5>
+    <version>4.1.1</version>
+    <time>1610381696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862231</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7038db275754e865f0d850992064b4a2</srcmd5>
+    <version>4.1.2</version>
+    <time>1610965812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863925</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>963517fc8c33c79aa61ff86dc66102a1</srcmd5>
+    <version>4.1.2</version>
+    <time>1614001244</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874262</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0a7dc2a9c519ce266e5e6315349849b4</srcmd5>
+    <version>4.1.4</version>
+    <time>1614684666</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875802</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>694dd9f9a4791d6a28bed390b3e385fa</srcmd5>
+    <version>4.1.4</version>
+    <time>1615905969</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879374</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>56cb61de9ff050ef372bbcbfde2a5457</srcmd5>
+    <version>5.0.0</version>
+    <time>1629706094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913479</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a8dc9dff4f105325c2e30cf87f18c9aa</srcmd5>
+    <version>5.0.1</version>
+    <time>1629917869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913891</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7ba4eeea60fe3110ef3aef2190d51a27</srcmd5>
+    <version>5.2.3</version>
+    <time>1635366055</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.2.3
+  * Fixed issue which caused a crash if two wall tiles were being built
+    at the same time while adjacent to each other
+  * Fix to Linux compilation error at assert_util.cpp
+  * Improved support for optional subtemplates to have north_of/south_of/
+    etc. settings
+  * Removed the now-unused &quot;sync&quot; parameter for sml_data::print_to_file()
+  * Normalize the hero persistent data save file's filepath 
+- Add Wyrmgus-5.2.3_missing_include.patch
+</comment>
+    <requestid>927807</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>70f7195dc8087a7100599bb483961a82</srcmd5>
+    <version>5.2.4</version>
+    <time>1638831610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936002</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1554b42fbbcee265d18de5fa5d57beb4</srcmd5>
+    <version>5.3.5</version>
+    <time>1651424046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974180</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>52c66dd3dd0a29000619e137741e9092</srcmd5>
+    <version>5.3.6</version>
+    <time>1672315772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045646</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f2b7c3a8805454ae489197079c8386fb</srcmd5>
+    <version>5.3.6</version>
+    <time>1674997885</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061854</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>27bd14eeeba22c66c946ca2dcc30db2b</srcmd5>
+    <version>5.3.6</version>
+    <time>1692294248</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104248</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>1c87e8b1de8ff6cdaaa46fb510a161a4</srcmd5>
+    <version>5.3.6</version>
+    <time>1700162987</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126910</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>9c19314c43f9d53c18e8c0d5e2436c65</srcmd5>
+    <version>5.3.6</version>
+    <time>1702327835</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132362</requestid>
+  </revision>
+</revisionlist>

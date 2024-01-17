@@ -1,0 +1,10 @@
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -195,6 +195,7 @@
+ case "x$machine" in
+     xi?86 | xx86_64) klist="/boot/vmlinuz-* /vmlinuz-* /boot/kernel-*" ;;
+     xaarch64) klist="/boot/Image-* /Image-* /boot/kernel-*" ;;
++    xarm*) klist="/boot/zImage-* /zImage-* /boot/kernel-*" ;;
+     xs390 | xs390x)  klist="/boot/image-* /boot/kernel-*" ;;
+     *) klist="/boot/vmlinuz-* /boot/vmlinux-* /vmlinuz-* /vmlinux-* \
+ 		/boot/kernel-*" ;;

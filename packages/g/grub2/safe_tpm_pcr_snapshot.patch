@@ -1,0 +1,99 @@
+---
+ grub-core/commands/tpm.c |   46 ++++++++++++++++++++++++++++++++++++----------
+ util/grub-install.c      |    6 ++++--
+ 2 files changed, 40 insertions(+), 12 deletions(-)
+
+--- a/grub-core/commands/tpm.c
++++ b/grub-core/commands/tpm.c
+@@ -27,8 +27,10 @@
+ #include <grub/verify.h>
+ #include <grub/dl.h>
+ #include <grub/extcmd.h>
++#ifdef GRUB_MACHINE_EFI
+ #include <grub/tpm2/tpm2.h>
+ #include <grub/efi/efi.h>
++#endif
+ 
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+@@ -97,12 +99,6 @@
+   .verify_string = grub_tpm_verify_string,
+ };
+ 
+-/*
+- * Preserve current PCR values and record them to an EFI variable
+- */
+-#define GRUB2_PCR_BITMASK_DEFAULT	((1 << 16) - 1)
+-#define GRUB2_PCR_BITMASK_ALL		((1 << 24) - 1)
+-
+ static const struct grub_arg_option grub_tpm_record_pcrs_options[] =
+   {
+     {
+@@ -118,6 +114,14 @@
+     {0, 0, 0, 0, 0, 0}
+   };
+ 
++#ifdef GRUB_MACHINE_EFI
++
++/*
++ * Preserve current PCR values and record them to an EFI variable
++ */
++#define GRUB2_PCR_BITMASK_DEFAULT	((1 << 16) - 1)
++#define GRUB2_PCR_BITMASK_ALL		((1 << 24) - 1)
++
+ static grub_err_t
+ grub_tpm_parse_pcr_index (const char *word, const char **end_ret, unsigned int *index)
+ {
+@@ -269,6 +273,10 @@
+   grub_size_t size = 0;
+   int n, rv = 1;
+ 
++  /* To prevent error: unable to read PCR from TPM, if no TPM device available */
++  if (!grub_tpm_present())
++    return GRUB_ERR_NONE;
++
+   if (argc == 0)
+     pcr_bitmask = GRUB2_PCR_BITMASK_DEFAULT;
+   else
+@@ -297,6 +305,18 @@
+   return rv;
+ }
+ 
++#else
++
++static grub_err_t
++grub_tpm_record_pcrs (grub_extcmd_context_t ctxt __attribute__((unused)),
++    int argc __attribute__((unused)),
++    char **args __attribute__((unused)))
++{
++  return GRUB_ERR_NONE;
++}
++
++#endif
++
+ static grub_extcmd_t cmd;
+ 
+ GRUB_MOD_INIT (tpm)
+--- a/util/grub-install.c
++++ b/util/grub-install.c
+@@ -1560,8 +1560,9 @@
+ 
+   grub_util_unlink (load_cfg);
+ 
+-  if (1)
++  if (platform == GRUB_INSTALL_PLATFORM_X86_64_EFI && have_cryptodisk)
+     {
++      grub_install_push_module ("tpm");
+       load_cfg_f = grub_util_fopen (load_cfg, "wb");
+       have_load_cfg = 1;
+       fprintf (load_cfg_f, "tpm_record_pcrs 0-9\n");
+@@ -1569,7 +1570,8 @@
+ 
+   if (debug_image && debug_image[0])
+     {
+-      load_cfg_f = grub_util_fopen (load_cfg, "wb");
++      if (!load_cfg_f)
++	load_cfg_f = grub_util_fopen (load_cfg, "wb");
+       have_load_cfg = 1;
+       fprintf (load_cfg_f, "set debug='%s'\n",
+               debug_image);

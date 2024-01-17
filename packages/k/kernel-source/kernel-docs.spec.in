@@ -1,0 +1,185 @@
+#
+# spec file for package kernel-docs@VARIANT@
+#
+# Copyright (c) @YEAR@ SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+%define srcversion @SRCVERSION@
+%define patchversion @PATCHVERSION@
+%define git_commit @COMMIT_FULL@
+%define variant @VARIANT@%{nil}
+%define build_html @BUILD_HTML@
+%define build_pdf @BUILD_PDF@
+
+%include %_sourcedir/kernel-spec-macros
+
+%(chmod +x %_sourcedir/{@SCRIPTS@})
+
+Name:           kernel-docs@VARIANT@
+Summary:        Kernel Documentation
+License:        GPL-2.0-only
+Group:          Documentation/Man
+Version:        @RPMVERSION@
+%if 0%{?is_kotd}
+Release:        <RELEASE>.g@COMMIT@
+%else
+Release:        @RELEASE@
+%endif
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
+BuildRequires:  bash-sh
+%endif
+# TW (4.13 or later) no longer needs xmlto
+%if 0%{?sle_version}
+BuildRequires:  xmlto
+%endif
+%if %build_pdf || %build_html
+# ReST handling
+BuildRequires:  ImageMagick
+BuildRequires:  graphviz
+BuildRequires:  graphviz-gd
+BuildRequires:  graphviz-gnome
+%if ! 0%{?suse_version} || 0%{?suse_version} > 1500
+BuildRequires:  python3-base
+BuildRequires:  python3-Sphinx
+BuildRequires:  texlive-amscls
+%else
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
+BuildRequires:  python-packaging
+BuildRequires:  python-six
+BuildRequires:  python-Sphinx
+%else
+BuildRequires:  python3-base
+BuildRequires:  python3-Sphinx < 3
+%endif
+%endif
+BuildRequires:  texlive-anyfontsize
+%if %build_pdf
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
+BuildRequires:  python-Sphinx-latex
+%else
+BuildRequires:  python3-base
+BuildRequires:  python3-Sphinx-latex
+%endif
+BuildRequires:  texlive-adjustbox
+BuildRequires:  texlive-dejavu
+BuildRequires:  texlive-dejavu-fonts
+BuildRequires:  texlive-glyphlist
+BuildRequires:  texlive-makeindex
+BuildRequires:  texlive-varwidth
+BuildRequires:  texlive-xetex
+BuildRequires:  texlive-zapfding
+%endif
+%endif
+URL:            https://www.kernel.org/
+Provides:       %name = %version-%source_rel
+Provides:       %name-srchash-%git_commit
+%if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
+ExclusiveArch:  noarch @ARCHS@
+BuildArch:      noarch
+%else
+ExclusiveArch:  do_not_build
+%endif
+@SOURCES@
+
+%description
+A few basic documents from the current kernel sources.
+
+%source_timestamp
+
+%if %build_pdf
+%package pdf
+Summary:        Kernel Documentation (PDF)
+Group:          Documentation/Other
+
+%description pdf
+These are PDF documents built from the current kernel sources.
+
+%source_timestamp
+%endif
+
+%if %build_html
+%package html
+Summary:        Kernel Documentation (HTML)
+Group:          Documentation/HTML
+
+%description html
+These are HTML documents built from the current kernel sources.
+
+%source_timestamp
+%endif
+
+%prep
+%setup -q -c -T -a 0 @UNPACK_PATCHES@
+cp -a linux-%srcversion/{COPYING,CREDITS,MAINTAINERS,README} .
+cd linux-%srcversion
+%_sourcedir/apply-patches %_sourcedir/series.conf %my_builddir %symbols
+
+%build
+cd linux-%srcversion
+export LANG=en_US.utf8
+%if %build_html
+mkdir -p html
+make %{?make_arg} O=$PWD/html \
+%if ! 0%{?suse_version} || 0%{?suse_version} >= 1500
+	     PYTHON=python3 \
+%endif
+	     htmldocs
+%endif
+%if %build_pdf
+mkdir -p pdf
+make %{?make_arg} O=$PWD/pdf \
+%if ! 0%{?suse_version} || 0%{?suse_version} >= 1500
+	     PYTHON=python3 \
+%endif
+	     pdfdocs
+%endif
+
+%install
+cd linux-%srcversion
+%if %build_html
+install -d %{buildroot}%{_datadir}/doc/kernel/html/rst
+cp -a html/Documentation/output/* %{buildroot}%{_datadir}/doc/kernel/html/rst || true
+%endif
+
+%if %build_pdf
+install -d %{buildroot}%{_datadir}/doc/kernel/pdf
+for i in pdf/Documentation/output/latex/*.pdf; do
+    cp -a $i %{buildroot}%{_datadir}/doc/kernel/pdf
+done
+%endif
+
+%files
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
+%doc COPYING
+%else
+%license COPYING
+%endif
+%doc CREDITS MAINTAINERS README
+
+%if %build_pdf
+%files pdf
+%dir %{_datadir}/doc/kernel
+%docdir %{_datadir}/doc/kernel/pdf
+%{_datadir}/doc/kernel/pdf
+%endif
+
+%if %build_html
+%files html
+%dir %{_datadir}/doc/kernel
+%docdir %{_datadir}/doc/kernel/html
+%{_datadir}/doc/kernel/html
+%endif
+
+%changelog

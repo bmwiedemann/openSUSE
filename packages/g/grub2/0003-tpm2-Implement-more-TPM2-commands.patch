@@ -1,0 +1,543 @@
+From a49c4dcbcb04078434f461ed3356c04042be461a Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 8 Feb 2023 10:30:55 +0800
+Subject: [PATCH 3/4] tpm2: Implement more TPM2 commands
+
+This commit implements a few more TPM2 commands as the preparation for
+the authorized policy support.
+
+* TPM2_LoadExternal
+  This command is added to load the external public key to verify the
+  signed policy digest
+* TPM2_HashSequenceStart, TPM2_SequenceUpdate, TPM2_SequenceComplete,
+  and TPM2_Hash
+  With those commands, we can use the TPM as a coprocessor to calculate
+  the hash of a given binary blob.
+* TPM2_VerifySignature
+  This command verifies the given signature with the given public key
+  and returns the validation ticket to authorize the policy.
+* TPM2_PolicyAuthorize
+  This command approves the given policy digest so that we can unseal
+  the key with the newly authorized policy.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ grub-core/tpm2/tpm2.c                  | 424 +++++++++++++++++++++++++
+ include/grub/tpm2/internal/functions.h |  57 ++++
+ 2 files changed, 481 insertions(+)
+
+diff --git a/grub-core/tpm2/tpm2.c b/grub-core/tpm2/tpm2.c
+index d67699a24..159353b08 100644
+--- a/grub-core/tpm2/tpm2.c
++++ b/grub-core/tpm2/tpm2.c
+@@ -427,6 +427,73 @@ TPM2_Load (const TPMI_DH_OBJECT parent_handle,
+   return TPM_RC_SUCCESS;
+ }
+ 
++TPM_RC
++TPM2_LoadExternal (const TPMS_AUTH_COMMAND *authCommand,
++                   const TPM2B_SENSITIVE *inPrivate,
++                   const TPM2B_PUBLIC *inPublic,
++                   const TPMI_RH_HIERARCHY hierarchy,
++                   TPM_HANDLE *objectHandle,
++                   TPM2B_NAME *name,
++                   TPMS_AUTH_RESPONSE *authResponse)
++{
++  TPM_RC rc;
++  struct grub_tpm2_buffer in;
++  struct grub_tpm2_buffer out;
++  TPM_HANDLE objectHandleTmp;
++  TPM2B_NAME nameTmp;
++  TPMS_AUTH_RESPONSE authResponseTmp;
++  TPMI_ST_COMMAND_TAG tag = authCommand ? TPM_ST_SESSIONS : TPM_ST_NO_SESSIONS;
++  TPM_RC responseCode;
++  grub_uint32_t param_size;
++
++  if (!inPublic)
++    return TPM_RC_VALUE;
++
++  if (!objectHandle)
++    objectHandle = &objectHandleTmp;
++  if (!name)
++    name = &nameTmp;
++  if (!authResponse)
++    authResponse = &authResponseTmp;
++
++  grub_memset (objectHandle, 0, sizeof (*objectHandle));
++  grub_memset (name, 0, sizeof (*name));
++  grub_memset (authResponse, 0, sizeof (*authResponse));
++
++  /* Marshal */
++  grub_tpm2_buffer_init (&in);
++  if (authCommand)
++    grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
++  if (inPrivate)
++    grub_tpm2_mu_TPM2B_SENSITIVE_Marshal (&in, inPrivate);
++  else
++    grub_tpm2_buffer_pack_u16 (&in, 0);
++  grub_tpm2_mu_TPM2B_PUBLIC_Marshal (&in, inPublic);
++  grub_tpm2_buffer_pack_u32 (&in, hierarchy);
++  if (in.error)
++    return TPM_RC_FAILURE;
++
++  /* Submit */
++  grub_tpm2_buffer_init (&out);
++  rc = grub_tpm2_submit_command (tag, TPM_CC_LoadExternal, &responseCode, &in, &out);
++  if (rc != TPM_RC_SUCCESS)
++    return rc;
++  if (responseCode != TPM_RC_SUCCESS)
++    return responseCode;
++
++  /* Unmarshal*/
++  grub_tpm2_buffer_unpack_u32 (&out, objectHandle);
++  if (tag == TPM_ST_SESSIONS)
++    grub_tpm2_buffer_unpack_u32 (&out, &param_size);
++  grub_tpm2_mu_TPM2B_Unmarshal (&out, (TPM2B*)name);
++  if (tag == TPM_ST_SESSIONS)
++    grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal (&out, authResponse);
++  if (out.error)
++    return TPM_RC_FAILURE;
++
++  return TPM_RC_SUCCESS;
++}
++
+ TPM_RC
+ TPM2_Unseal (const TPMI_DH_OBJECT itemHandle,
+ 	     const TPMS_AUTH_COMMAND *authCommand,
+@@ -759,3 +826,360 @@ TPM2_EvictControl (const TPMI_RH_PROVISION auth,
+ 
+   return TPM_RC_SUCCESS;
+ }
++
++TPM_RC
++TPM2_HashSequenceStart (const TPMS_AUTH_COMMAND *authCommand,
++                        const TPM2B_AUTH *auth,
++                        const TPMI_ALG_HASH hashAlg,
++                        TPMI_DH_OBJECT *sequenceHandle,
++                        TPMS_AUTH_RESPONSE *authResponse)
++{
++  struct grub_tpm2_buffer in;
++  struct grub_tpm2_buffer out;
++  TPMI_DH_OBJECT sequenceHandleTmp;
++  TPMS_AUTH_RESPONSE authResponseTmp;
++  TPMI_ST_COMMAND_TAG tag = authCommand ? TPM_ST_SESSIONS : TPM_ST_NO_SESSIONS;
++  TPM_RC responseCode;
++  TPM_RC rc;
++  grub_uint32_t parameterSize;
++
++  if (!auth)
++    return TPM_RC_VALUE;
++
++  if (!sequenceHandle)
++    sequenceHandle = &sequenceHandleTmp;
++  if (!authResponse)
++    authResponse = &authResponseTmp;
++
++  grub_memset (sequenceHandle, 0, sizeof (*sequenceHandle));
++  grub_memset (authResponse, 0, sizeof (*authResponse));
++
++  /* Marshal */
++  grub_tpm2_buffer_init (&in);
++  if (authCommand)
++    grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
++  grub_tpm2_mu_TPM2B_Marshal (&in, auth->size, auth->buffer);
++  grub_tpm2_buffer_pack_u16 (&in, hashAlg);
++  if (in.error)
++    return TPM_RC_FAILURE;
++
++  /* Submit */
++  grub_tpm2_buffer_init (&out);
++  rc = grub_tpm2_submit_command (tag, TPM_CC_HashSequenceStart, &responseCode, &in,
++                                 &out);
++  if (rc != TPM_RC_SUCCESS)
++    return rc;
++  if (responseCode != TPM_RC_SUCCESS)
++    return responseCode;
++
++  /* Unmarshal */
++  grub_tpm2_buffer_unpack_u32 (&out, sequenceHandle);
++  if (tag == TPM_ST_SESSIONS)
++    {
++      grub_tpm2_buffer_unpack_u32 (&out, &parameterSize);
++      grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal(&out, authResponse);
++    }
++  if (out.error)
++    return TPM_RC_FAILURE;
++
++  return TPM_RC_SUCCESS;
++}
++
++TPM_RC
++TPM2_SequenceUpdate (const TPMI_DH_OBJECT sequenceHandle,
++                     const TPMS_AUTH_COMMAND *authCommand,
++                     const TPM2B_MAX_BUFFER *buffer,
++                     TPMS_AUTH_RESPONSE *authResponse)
++{
++  struct grub_tpm2_buffer in;
++  struct grub_tpm2_buffer out;
++  TPMS_AUTH_RESPONSE authResponseTmp;
++  TPM_RC responseCode;
++  TPM_RC rc;
++  grub_uint32_t parameterSize;
++
++  if (!authCommand)
++    return TPM_RC_VALUE;
++
++  if (!authResponse)
++    authResponse = &authResponseTmp;
++
++  grub_memset (authResponse, 0, sizeof (*authResponse));
++
++  /* Marshal */
++  grub_tpm2_buffer_init (&in);
++  grub_tpm2_buffer_pack_u32 (&in, sequenceHandle);
++  grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
++  if (buffer)
++    grub_tpm2_mu_TPM2B_Marshal (&in, buffer->size, buffer->buffer);
++  else
++    grub_tpm2_buffer_pack_u16 (&in, 0);
++  if (in.error)
++    return TPM_RC_FAILURE;
++
++  /* Submit */
++  grub_tpm2_buffer_init (&out);
++  rc = grub_tpm2_submit_command (TPM_ST_SESSIONS, TPM_CC_SequenceUpdate,
++                                 &responseCode, &in, &out);
++  if (rc != TPM_RC_SUCCESS)
++    return rc;
++  if (responseCode != TPM_RC_SUCCESS)
++    return responseCode;
++
++  /* Unmarshal */
++  grub_tpm2_buffer_unpack_u32 (&out, &parameterSize);
++  grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal(&out, authResponse);
++  if (out.error)
++    return TPM_RC_FAILURE;
++
++  return TPM_RC_SUCCESS;
++}
++
++TPM_RC
++TPM2_SequenceComplete (const TPMI_DH_OBJECT sequenceHandle,
++                       const TPMS_AUTH_COMMAND *authCommand,
++                       const TPM2B_MAX_BUFFER *buffer,
++                       const TPMI_RH_HIERARCHY hierarchy,
++                       TPM2B_DIGEST *result,
++                       TPMT_TK_HASHCHECK *validation,
++                       TPMS_AUTH_RESPONSE *authResponse)
++{
++  struct grub_tpm2_buffer in;
++  struct grub_tpm2_buffer out;
++  TPM2B_DIGEST resultTmp;
++  TPMT_TK_HASHCHECK validationTmp;
++  TPMS_AUTH_RESPONSE authResponseTmp;
++  TPM_RC responseCode;
++  TPM_RC rc;
++  grub_uint32_t parameterSize;
++
++  if (!authCommand)
++    return TPM_RC_VALUE;
++
++  if (!result)
++    result = &resultTmp;
++  if (!validation)
++    validation = &validationTmp;
++  if (!authResponse)
++    authResponse = &authResponseTmp;
++
++  grub_memset (result, 0, sizeof (*result));
++  grub_memset (validation, 0, sizeof (*validation));
++  grub_memset (authResponse, 0, sizeof (*authResponse));
++
++  /* Marshal */
++  grub_tpm2_buffer_init (&in);
++  grub_tpm2_buffer_pack_u32 (&in, sequenceHandle);
++  grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
++  if (buffer)
++    grub_tpm2_mu_TPM2B_Marshal (&in, buffer->size, buffer->buffer);
++  else
++    grub_tpm2_buffer_pack_u16 (&in, 0);
++  grub_tpm2_buffer_pack_u32 (&in, hierarchy);
++
++  if (in.error)
++    return TPM_RC_FAILURE;
++
++  /* Submit */
++  grub_tpm2_buffer_init (&out);
++  rc = grub_tpm2_submit_command (TPM_ST_SESSIONS, TPM_CC_SequenceComplete,
++                                 &responseCode, &in, &out);
++  if (rc != TPM_RC_SUCCESS)
++    return rc;
++  if (responseCode != TPM_RC_SUCCESS)
++    return responseCode;
++
++  /* Unmarshal */
++  grub_tpm2_buffer_unpack_u32 (&out, &parameterSize);
++  grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (&out, result);
++  grub_tpm2_mu_TPMT_TK_HASHCHECK_Unmarshal (&out, validation);
++  grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal(&out, authResponse);
++  if (out.error)
++    return TPM_RC_FAILURE;
++
++  return TPM_RC_SUCCESS;
++}
++
++TPM_RC
++TPM2_Hash (const TPMS_AUTH_COMMAND *authCommand,
++           const TPM2B_MAX_BUFFER *data,
++           const TPMI_ALG_HASH hashAlg,
++           const TPMI_RH_HIERARCHY hierarchy,
++           TPM2B_DIGEST *outHash,
++           TPMT_TK_HASHCHECK *validation,
++           TPMS_AUTH_RESPONSE *authResponse)
++{
++  TPM_RC rc;
++  struct grub_tpm2_buffer in;
++  struct grub_tpm2_buffer out;
++  TPMS_AUTH_RESPONSE authResponseTmp;
++  TPM2B_DIGEST outHashTmp;
++  TPMT_TK_HASHCHECK validationTmp;
++  TPMI_ST_COMMAND_TAG tag = authCommand ? TPM_ST_SESSIONS : TPM_ST_NO_SESSIONS;
++  TPM_RC responseCode;
++  grub_uint32_t param_size;
++
++  if (hashAlg == TPM_ALG_NULL)
++    return TPM_RC_VALUE;
++
++  if (!outHash)
++    outHash = &outHashTmp;
++  if (!validation)
++    validation = &validationTmp;
++  if (!authResponse)
++    authResponse = &authResponseTmp;
++
++  grub_memset (outHash, 0, sizeof (*outHash));
++  grub_memset (validation, 0, sizeof (*validation));
++  grub_memset (authResponse, 0, sizeof (*authResponse));
++
++  /* Marshal */
++  grub_tpm2_buffer_init (&in);
++  if (authCommand)
++    grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
++  if (data)
++    grub_tpm2_mu_TPM2B_Marshal (&in, data->size, data->buffer);
++  else
++    grub_tpm2_buffer_pack_u16 (&in, 0);
++  grub_tpm2_buffer_pack_u16 (&in, hashAlg);
++  grub_tpm2_buffer_pack_u32 (&in, hierarchy);
++  if (in.error)
++    return TPM_RC_FAILURE;
++
++  /* Submit */
++  grub_tpm2_buffer_init (&out);
++  rc = grub_tpm2_submit_command (tag, TPM_CC_Hash, &responseCode, &in, &out);
++  if (rc != TPM_RC_SUCCESS)
++    return rc;
++  if (responseCode != TPM_RC_SUCCESS)
++    return responseCode;
++
++  /* Unmarshal*/
++  if (tag == TPM_ST_SESSIONS)
++    grub_tpm2_buffer_unpack_u32 (&out, &param_size);
++  grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (&out, outHash);
++  grub_tpm2_mu_TPMT_TK_HASHCHECK_Unmarshal (&out, validation);
++  if (tag == TPM_ST_SESSIONS)
++    grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal (&out, authResponse);
++  if (out.error)
++    return TPM_RC_FAILURE;
++
++  return TPM_RC_SUCCESS;
++}
++
++TPM_RC
++TPM2_VerifySignature (const TPMI_DH_OBJECT keyHandle,
++                      const TPMS_AUTH_COMMAND *authCommand,
++                      const TPM2B_DIGEST *digest,
++                      const TPMT_SIGNATURE *signature,
++                      TPMT_TK_VERIFIED *validation,
++                      TPMS_AUTH_RESPONSE *authResponse)
++{
++  TPM_RC rc;
++  struct grub_tpm2_buffer in;
++  struct grub_tpm2_buffer out;
++  TPMS_AUTH_RESPONSE authResponseTmp;
++  TPMI_ST_COMMAND_TAG tag = authCommand ? TPM_ST_SESSIONS : TPM_ST_NO_SESSIONS;
++  TPMT_TK_VERIFIED validationTmp;
++  TPM_RC responseCode;
++  grub_uint32_t param_size;
++
++  if (!digest || !signature)
++    return TPM_RC_VALUE;
++
++  if (!validation)
++    validation = &validationTmp;
++  if (!authResponse)
++    authResponse = &authResponseTmp;
++
++  grub_memset (validation, 0, sizeof (*validation));
++  grub_memset (authResponse, 0, sizeof (*authResponse));
++
++  /* Marshal */
++  grub_tpm2_buffer_init (&in);
++  if (authCommand)
++    grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
++  grub_tpm2_buffer_pack_u32 (&in, keyHandle);
++  grub_tpm2_mu_TPM2B_Marshal (&in, digest->size, digest->buffer);
++  grub_tpm2_mu_TPMT_SIGNATURE_Marshal (&in, signature);
++  if (in.error)
++    return TPM_RC_FAILURE;
++
++  /* Submit */
++  grub_tpm2_buffer_init (&out);
++  rc = grub_tpm2_submit_command (tag, TPM_CC_VerifySignature, &responseCode, &in, &out);
++  if (rc != TPM_RC_SUCCESS)
++    return rc;
++  if (responseCode != TPM_RC_SUCCESS)
++    return responseCode;
++
++  /* Unmarshal*/
++  if (tag == TPM_ST_SESSIONS)
++    grub_tpm2_buffer_unpack_u32 (&out, &param_size);
++  grub_tpm2_mu_TPMT_TK_VERIFIED_Unmarshal (&out, validation);
++  if (tag == TPM_ST_SESSIONS)
++    grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal (&out, authResponse);
++  if (out.error)
++    return TPM_RC_FAILURE;
++
++  return TPM_RC_SUCCESS;
++}
++
++TPM_RC
++TPM2_PolicyAuthorize (const TPMI_SH_POLICY policySession,
++                      const TPMS_AUTH_COMMAND *authCommand,
++                      const TPM2B_DIGEST *approvedPolicy,
++                      const TPM2B_NONCE *policyRef,
++                      const TPM2B_NAME *keySign,
++                      const TPMT_TK_VERIFIED *checkTicket,
++                      TPMS_AUTH_RESPONSE *authResponse)
++{
++  TPM_RC rc;
++  struct grub_tpm2_buffer in;
++  struct grub_tpm2_buffer out;
++  TPMS_AUTH_RESPONSE authResponseTmp;
++  TPMI_ST_COMMAND_TAG tag = authCommand ? TPM_ST_SESSIONS : TPM_ST_NO_SESSIONS;
++  TPM_RC responseCode;
++  grub_uint32_t param_size;
++
++  if (!approvedPolicy || !keySign || !checkTicket)
++    return TPM_RC_VALUE;
++
++  if (!authResponse)
++    authResponse = &authResponseTmp;
++
++  grub_memset (authResponse, 0, sizeof (*authResponse));
++
++  /* Marshal */
++  grub_tpm2_buffer_init (&in);
++  grub_tpm2_buffer_pack_u32 (&in, policySession);
++  if (authCommand)
++    grub_tpm2_mu_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
++  grub_tpm2_mu_TPM2B_Marshal (&in, approvedPolicy->size, approvedPolicy->buffer);
++  if (policyRef)
++    grub_tpm2_mu_TPM2B_Marshal (&in, policyRef->size, policyRef->buffer);
++  else
++    grub_tpm2_buffer_pack_u16 (&in, 0);
++  grub_tpm2_mu_TPM2B_Marshal (&in, keySign->size, keySign->name);
++  grub_tpm2_mu_TPMT_TK_VERIFIED_Marshal (&in, checkTicket);
++  if (in.error)
++    return TPM_RC_FAILURE;
++
++  /* Submit */
++  grub_tpm2_buffer_init (&out);
++  rc = grub_tpm2_submit_command (tag, TPM_CC_PolicyAuthorize, &responseCode, &in, &out);
++  if (rc != TPM_RC_SUCCESS)
++    return rc;
++  if (responseCode != TPM_RC_SUCCESS)
++    return responseCode;
++
++  /* Unmarshal*/
++  if (tag == TPM_ST_SESSIONS)
++    grub_tpm2_buffer_unpack_u32 (&out, &param_size);
++  if (tag == TPM_ST_SESSIONS)
++    grub_tpm2_mu_TPMS_AUTH_RESPONSE_Unmarshal (&out, authResponse);
++  if (out.error)
++    return TPM_RC_FAILURE;
++
++  return TPM_RC_SUCCESS;
++}
+diff --git a/include/grub/tpm2/internal/functions.h b/include/grub/tpm2/internal/functions.h
+index 9380f26a2..67b78fab8 100644
+--- a/include/grub/tpm2/internal/functions.h
++++ b/include/grub/tpm2/internal/functions.h
+@@ -70,6 +70,15 @@ TPM2_Load (const TPMI_DH_OBJECT parent_handle,
+ 	   TPM2B_NAME *name,
+ 	   TPMS_AUTH_RESPONSE *authResponse);
+ 
++TPM_RC
++TPM2_LoadExternal (const TPMS_AUTH_COMMAND *authCommand,
++                   const TPM2B_SENSITIVE *inPrivate,
++                   const TPM2B_PUBLIC *inPublic,
++                   const TPMI_RH_HIERARCHY hierarchy,
++                   TPM_HANDLE *objectHandle,
++                   TPM2B_NAME *name,
++                   TPMS_AUTH_RESPONSE *authResponse);
++
+ TPM_RC
+ TPM2_Unseal (const TPMI_DH_OBJECT item_handle,
+ 	     const TPMS_AUTH_COMMAND *authCommand,
+@@ -114,4 +123,52 @@ TPM2_EvictControl (const TPMI_RH_PROVISION auth,
+ 		   const TPMI_DH_PERSISTENT persistentHandle,
+ 		   TPMS_AUTH_RESPONSE *authResponse);
+ 
++TPM_RC
++TPM2_HashSequenceStart (const TPMS_AUTH_COMMAND *authCommand,
++                        const TPM2B_AUTH *auth,
++                        const TPMI_ALG_HASH hashAlg,
++                        TPMI_DH_OBJECT *sequenceHandle,
++                        TPMS_AUTH_RESPONSE *authResponse);
++
++TPM_RC
++TPM2_SequenceUpdate (const TPMI_DH_OBJECT sequenceHandle,
++                     const TPMS_AUTH_COMMAND *authCommand,
++                     const TPM2B_MAX_BUFFER *buffer,
++                     TPMS_AUTH_RESPONSE *authResponse);
++
++TPM_RC
++TPM2_SequenceComplete (const TPMI_DH_OBJECT sequenceHandle,
++                       const TPMS_AUTH_COMMAND *authCommand,
++                       const TPM2B_MAX_BUFFER *buffer,
++                       const TPMI_RH_HIERARCHY hierarchy,
++                       TPM2B_DIGEST *result,
++                       TPMT_TK_HASHCHECK *validation,
++                       TPMS_AUTH_RESPONSE *authResponse);
++
++TPM_RC
++TPM2_Hash (const TPMS_AUTH_COMMAND *authCommand,
++           const TPM2B_MAX_BUFFER *data,
++           const TPMI_ALG_HASH hashAlg,
++           const TPMI_RH_HIERARCHY hierarchy,
++           TPM2B_DIGEST *outHash,
++           TPMT_TK_HASHCHECK *validation,
++           TPMS_AUTH_RESPONSE *authResponse);
++
++TPM_RC
++TPM2_VerifySignature (const TPMI_DH_OBJECT keyHandle,
++                      const TPMS_AUTH_COMMAND *authCommand,
++                      const TPM2B_DIGEST *digest,
++                      const TPMT_SIGNATURE *signature,
++                      TPMT_TK_VERIFIED *validation,
++                      TPMS_AUTH_RESPONSE *authResponse);
++
++TPM_RC
++TPM2_PolicyAuthorize (const TPMI_SH_POLICY policySession,
++                      const TPMS_AUTH_COMMAND *authCommand,
++                      const TPM2B_DIGEST *approvedPolicy,
++                      const TPM2B_NONCE *policyRef,
++                      const TPM2B_NAME *keySign,
++                      const TPMT_TK_VERIFIED *checkTicket,
++                      TPMS_AUTH_RESPONSE *authResponse);
++
+ #endif /* ! GRUB_TPM2_INTERNAL_FUNCTIONS_HEADER */
+-- 
+2.35.3
+

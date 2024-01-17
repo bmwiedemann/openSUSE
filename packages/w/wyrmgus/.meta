@@ -1,0 +1,5 @@
+<package name="wyrmgus" project="openSUSE:Factory">
+  <title>Wyrmgus</title>
+  <description>The engine running Wyrmsun forked from Stratagus.</description>
+  <devel project="games" package="wyrmgus"/>
+</package>

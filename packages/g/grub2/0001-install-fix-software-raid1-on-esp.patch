@@ -1,0 +1,396 @@
+From 6444774dae24f439dae3b4bc8d73449d50f06240 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 31 Dec 2020 21:54:07 +0800
+Subject: [PATCH] install: fix software raid1 on esp
+
+While running grub-install on an efi system where efi system partition
+is configured as mdadm software raid1, it fails with errors like this:
+
+  grub2-install: info: copying `/boot/grub2/x86_64-efi/core.efi' -> `/boot/efi/EFI/opensuse/grubx64.efi'.
+  grub2-install: info: Registering with EFI: distributor = `opensuse', path = `\EFI\opensuse\grubx64.efi', ESP at mduuid/9182c46b9d469f79b48850b68f3371a5.
+  grub2-install: info: executing efibootmgr --version </dev/null >/dev/null.
+  grub2-install: info: executing modprobe -q efivars.
+  grub2-install: info: executing efibootmgr -c -d.
+  efibootmgr: option requires an argument -- 'd'
+  efibootmgr version 14
+  usage: efibootmgr [options]
+
+This should work with mdadm raid1 with metadata 0.9 and 1.0 whose
+superblocks are at the end of device. However
+grub_install_register_efi() doesn't seem to work if the target is
+multiple devices so that it errors out.
+
+The patch changes grub_install_register_efi() to accept multiple devices
+that can be used to creating efi boot entries for probed raid1 member
+devices on mounted efi system partition.
+
+This patch also adds check for metadata 0.9 or 1.0 or the validation
+will fail to continue the install.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/disk/diskfilter.c         |  27 +++----
+ grub-core/disk/mdraid1x_linux.c     |   3 +
+ grub-core/osdep/basic/no_platform.c |   3 +-
+ grub-core/osdep/unix/platform.c     |  57 +++++++++++----
+ grub-core/osdep/windows/platform.c  |   3 +-
+ include/grub/diskfilter.h           |   3 +-
+ include/grub/util/install.h         |   5 +-
+ util/grub-install.c                 | 107 ++++++++++++++++++++++++++--
+ 8 files changed, 171 insertions(+), 37 deletions(-)
+
+--- a/grub-core/disk/diskfilter.c
++++ b/grub-core/disk/diskfilter.c
+@@ -159,8 +159,8 @@
+       for (m = arr->pvs; m; m = m->next)
+ 	if (m->disk && m->disk->id == disk->id
+ 	    && m->disk->dev->id == disk->dev->id
+-	    && m->part_start == grub_partition_get_start (disk->partition)
+-	    && m->part_size == grub_disk_native_sectors (disk))
++	    && grub_partition_get_start (m->disk->partition) == grub_partition_get_start (disk->partition)
++	    && grub_disk_native_sectors (m->disk) == grub_disk_native_sectors (disk))
+ 	  return 0;
+     }
+ 
+@@ -1340,19 +1340,23 @@
+ 	? (grub_memcmp (pv->id.uuid, id->uuid, id->uuidlen) == 0)
+ 	: (pv->id.id == id->id))
+       {
++	char *part_name = NULL;
+ 	struct grub_diskfilter_lv *lv;
+ 	/* FIXME: Check whether the update time of the superblocks are
+ 	   the same.  */
+-	if (pv->disk && grub_disk_native_sectors (disk) >= pv->part_size)
++	if (pv->disk && grub_disk_native_sectors (disk) >= grub_disk_native_sectors (pv->disk))
+ 	  return GRUB_ERR_NONE;
+-	pv->disk = grub_disk_open (disk->name);
++	if (disk->partition)
++	  {
++	    char *p = grub_partition_get_name (disk->partition);
++	    if (p)
++	      part_name = grub_xasprintf ("%s,%s", disk->name, p);
++	    grub_free (p);
++	  }
++	pv->disk = grub_disk_open (part_name ? : disk->name);
++	grub_free (part_name);
+ 	if (!pv->disk)
+ 	  return grub_errno;
+-	/* This could happen to LVM on RAID, pv->disk points to the
+-	   raid device, we shouldn't change it.  */
+-	pv->start_sector -= pv->part_start;
+-	pv->part_start = grub_partition_get_start (disk->partition);
+-	pv->part_size = grub_disk_native_sectors (disk);
+ 
+ #ifdef GRUB_UTIL
+ 	{
+@@ -1369,7 +1373,6 @@
+ #endif
+ 	if (start_sector != (grub_uint64_t)-1)
+ 	  pv->start_sector = start_sector;
+-	pv->start_sector += pv->part_start;
+ 	/* Add the device to the array. */
+ 	for (lv = array->lvs; lv; lv = lv->next)
+ 	  if (!lv->became_readable_at && lv->fullname && is_lv_readable (lv, 0))
+@@ -1457,8 +1460,8 @@
+       {
+ 	if (pv->disk && pv->disk->id == disk->id
+ 	    && pv->disk->dev->id == disk->dev->id
+-	    && pv->part_start == grub_partition_get_start (disk->partition)
+-	    && pv->part_size == grub_disk_native_sectors (disk))
++	    && grub_partition_get_start (pv->disk->partition) == grub_partition_get_start (disk->partition)
++	    && grub_disk_native_sectors (pv->disk) == grub_disk_native_sectors (disk))
+ 	  {
+ 	    if (vg_out)
+ 	      *vg_out = vg;
+--- a/grub-core/disk/mdraid1x_linux.c
++++ b/grub-core/disk/mdraid1x_linux.c
+@@ -208,6 +208,9 @@
+ 					 grub_le_to_cpu32 (sb.chunksize),
+ 					 grub_le_to_cpu32 (sb.layout),
+ 					 grub_le_to_cpu32 (sb.level));
++#ifdef GRUB_UTIL
++      array->mdraid1x_minor_version = minor_version;
++#endif
+ 
+       return array;
+     }
+--- a/grub-core/osdep/basic/no_platform.c
++++ b/grub-core/osdep/basic/no_platform.c
+@@ -33,7 +33,8 @@
+ void
+ grub_install_register_efi (grub_device_t efidir_grub_dev,
+ 			   const char *efifile_path,
+-			   const char *efi_distributor)
++			   const char *efi_distributor,
++			   const char *force_disk)
+ {
+   grub_util_error ("%s", _("no EFI routines are available for your platform"));
+ }
+--- a/grub-core/osdep/unix/platform.c
++++ b/grub-core/osdep/unix/platform.c
+@@ -132,15 +132,14 @@
+ }
+ 
+ int
+-grub_install_register_efi (grub_device_t efidir_grub_dev,
++grub_install_register_efi (const grub_disk_t *efidir_grub_disk,
+ 			   const char *efifile_path,
+-			   const char *efi_distributor)
++			   const char *efi_distributor,
++			   const char *force_disk)
+ {
+-  const char * efidir_disk;
+-  int efidir_part;
+   int ret;
+-  efidir_disk = grub_util_biosdisk_get_osdev (efidir_grub_dev->disk);
+-  efidir_part = efidir_grub_dev->disk->partition ? efidir_grub_dev->disk->partition->number + 1 : 1;
++  const grub_disk_t *curdisk;
++  int ndev = 0;
+ 
+   if (grub_util_exec_redirect_null ((const char * []){ "efibootmgr", "--version", NULL }))
+     {
+@@ -158,22 +157,50 @@
+   if (ret)
+     return ret;
+ 
+-  char *efidir_part_str = xasprintf ("%d", efidir_part);
++  for (curdisk = efidir_grub_disk; *curdisk; curdisk++)
++    ndev++;
+ 
+-  if (!verbosity)
+-    ret = grub_util_exec ((const char * []){ "efibootmgr", "-q",
++  for (curdisk = efidir_grub_disk; *curdisk; curdisk++)
++    {
++      const char * efidir_disk;
++      int efidir_part;
++      char *efidir_part_str;
++      char *new_efi_distributor = NULL;
++      grub_disk_t disk = *curdisk;
++
++      efidir_disk = force_disk ? : grub_util_biosdisk_get_osdev (disk);
++      if (!efidir_disk)
++	grub_util_error (_("%s: no device for efi"), disk->name);
++
++      efidir_part = disk->partition ? disk->partition->number + 1 : 1;
++      efidir_part_str = xasprintf ("%d", efidir_part);
++      if (ndev > 1)
++	{
++	  const char *p = grub_strrchr (efidir_disk, '/');
++	  new_efi_distributor = xasprintf ("%s (%s%d)\n",
++			efi_distributor,
++			p ? p + 1: efidir_disk,
++			efidir_part);
++	}
++
++      if (!verbosity)
++	ret = grub_util_exec ((const char * []){ "efibootmgr", "-q",
+ 	  "-c", "-d", efidir_disk,
+ 	  "-p", efidir_part_str, "-w",
+-	  "-L", efi_distributor, "-l",
++	  "-L", new_efi_distributor ? : efi_distributor, "-l",
+ 	  efifile_path, NULL });
+-  else
+-    ret = grub_util_exec ((const char * []){ "efibootmgr",
++      else
++	ret = grub_util_exec ((const char * []){ "efibootmgr",
+ 	  "-c", "-d", efidir_disk,
+ 	  "-p", efidir_part_str, "-w",
+-	  "-L", efi_distributor, "-l",
++	  "-L", new_efi_distributor ? : efi_distributor, "-l",
+ 	  efifile_path, NULL });
+-  free (efidir_part_str);
+-  return ret;
++      free (efidir_part_str);
++      free (new_efi_distributor);
++      if (ret)
++	return ret;
++    }
++  return 0;
+ }
+ 
+ void
+--- a/grub-core/osdep/windows/platform.c
++++ b/grub-core/osdep/windows/platform.c
+@@ -204,7 +204,8 @@
+ int
+ grub_install_register_efi (grub_device_t efidir_grub_dev,
+ 			   const char *efifile_path,
+-			   const char *efi_distributor)
++			   const char *efi_distributor,
++			   const char *force_disk)
+ {
+   grub_uint16_t *boot_order, *new_boot_order;
+   grub_uint16_t *distributor16;
+--- a/include/grub/diskfilter.h
++++ b/include/grub/diskfilter.h
+@@ -49,6 +49,7 @@
+ 
+ #ifdef GRUB_UTIL
+   struct grub_diskfilter *driver;
++  grub_uint8_t mdraid1x_minor_version;
+ #endif
+ };
+ 
+@@ -66,8 +67,6 @@
+   /* Optional.  */
+   char *name;
+   grub_disk_t disk;
+-  grub_disk_addr_t part_start;
+-  grub_disk_addr_t part_size;
+   grub_disk_addr_t start_sector; /* Sector number where the data area starts. */
+   struct grub_diskfilter_pv *next;
+   /* Optional.  */
+--- a/include/grub/util/install.h
++++ b/include/grub/util/install.h
+@@ -236,9 +236,10 @@
+ grub_install_get_powerpc_secure_boot (void);
+ 
+ int
+-grub_install_register_efi (grub_device_t efidir_grub_dev,
++grub_install_register_efi (const grub_disk_t *efidir_grub_disk,
+ 			   const char *efifile_path,
+-			   const char *efi_distributor);
++			   const char *efi_distributor,
++			   const char *force_disk);
+ 
+ void
+ grub_install_register_ieee1275 (int is_prep, const char *install_device,
+--- a/util/grub-install.c
++++ b/util/grub-install.c
+@@ -1719,6 +1719,40 @@
+ 	    }
+ 	}
+       prefix_drive = xasprintf ("(%s)", grub_drives[0]);
++
++      if (platform == GRUB_INSTALL_PLATFORM_X86_64_EFI
++	  && grub_dev->disk
++	  && grub_dev->disk->partition
++	  && grub_fs->fs_uuid)
++	{
++	  int raid_level;
++	  char *uuid = NULL;
++	  char *escaped_relpath = NULL;
++
++	  raid_level = probe_raid_level (grub_dev->disk);
++	  if (raid_level != 1)
++	    goto out;
++
++	  escaped_relpath = escape (relative_grubdir);
++	  if (!escaped_relpath)
++	    goto out;
++
++	  if (grub_fs->fs_uuid (grub_dev, &uuid) || !uuid)
++	    {
++	      grub_print_error ();
++	      grub_errno = 0;
++	      goto out;
++	    }
++
++	  if (!load_cfg_f)
++	    load_cfg_f = grub_util_fopen (load_cfg, "wb");
++	  have_load_cfg = 1;
++	  fprintf (load_cfg_f, "search --no-floppy --fs-uuid --set=root --hint='%s' %s\n", grub_drives[0], uuid);
++	  fprintf (load_cfg_f, "set prefix=($root)'%s'\n", escaped_relpath);
++	  grub_install_push_module ("search");
++ out:
++	  grub_free (escaped_relpath);
++	}
+     }
+ 
+ #ifdef __linux__
+@@ -2258,9 +2292,13 @@
+ 	    {
+ 	      /* Try to make this image bootable using the EFI Boot Manager, if available.  */
+ 	      int ret;
+-	      ret = grub_install_register_efi (efidir_grub_dev,
++	      grub_disk_t efidir_grub_disk[2];
++	      efidir_grub_disk[0] = efidir_grub_dev->disk;
++	      efidir_grub_disk[1] = NULL;
++	      ret = grub_install_register_efi (efidir_grub_disk,
+ 					       "\\System\\Library\\CoreServices",
+-					       efi_distributor);
++					       efi_distributor,
++					       NULL);
+ 	      if (ret)
+ 	        grub_util_error (_("efibootmgr failed to register the boot entry: %s"),
+ 				 strerror (ret));
+@@ -2314,7 +2352,11 @@
+ 	{
+ 	  char * efifile_path;
+ 	  char * part;
++	  int raid_level;
+ 	  int ret;
++	  grub_disk_t *efidir_grub_disk;
++	  grub_disk_memberlist_t list = NULL, cur;
++	  char * force_disk = NULL;
+ 
+ 	  /* Try to make this image bootable using the EFI Boot Manager, if available.  */
+ 	  if (!efi_distributor || efi_distributor[0] == '\0')
+@@ -2331,8 +2373,65 @@
+ 			  efidir_grub_dev->disk->name,
+ 			  (part ? ",": ""), (part ? : ""));
+ 	  grub_free (part);
+-	  ret = grub_install_register_efi (efidir_grub_dev,
+-					   efifile_path, efi_distributor);
++
++	  raid_level = probe_raid_level (efidir_grub_dev->disk);
++	  if (raid_level >= 0 && raid_level != 1)
++	    grub_util_warn (_("unsupported raid level %d detected for efi system partition"), raid_level);
++	  if (raid_level == 1 && !efidir_grub_dev->disk->partition)
++	    {
++	      const char *raidname = NULL;
++
++	      if (efidir_grub_dev->disk->dev->disk_raidname)
++		raidname = efidir_grub_dev->disk->dev->disk_raidname (efidir_grub_dev->disk);
++	      if (raidname
++		  && (grub_strncmp (raidname, "mdraid09", sizeof ("mdraid09")) == 0
++		      || (grub_strcmp (raidname, "mdraid1x") == 0
++			  && ((struct grub_diskfilter_lv *) efidir_grub_dev->disk->data)->vg->mdraid1x_minor_version == 0)))
++		{
++		  if (efidir_grub_dev->disk->dev->disk_memberlist)
++		    list = efidir_grub_dev->disk->dev->disk_memberlist (efidir_grub_dev->disk);
++		}
++	      else
++		{
++		  grub_util_warn (_("this array has metadata at the start and may not be suitable as a efi system partition."
++		    " please ensure that your firmware understands md/v1.x metadata, or use --metadata=0.90"
++		    " to create the array."));
++		  /* Try to continue regardless metadata, nothing to lose here */
++		  if (efidir_grub_dev->disk->dev->disk_memberlist)
++		    list = efidir_grub_dev->disk->dev->disk_memberlist (efidir_grub_dev->disk);
++		}
++	    }
++	  else if (raid_level == 1)
++	    force_disk = grub_util_get_os_disk (install_device);
++	  if (list)
++	    {
++	      int i;
++	      int ndisk = 0;
++
++	      for (cur = list; cur; cur = cur->next)
++		++ndisk;
++	      efidir_grub_disk = xcalloc (ndisk + 1, sizeof (*efidir_grub_disk));
++	      for (cur = list, i = 0; i < ndisk; cur = cur->next, i++)
++		efidir_grub_disk[i] = cur->disk;
++	      efidir_grub_disk[ndisk] = NULL;
++	    }
++	  else
++	    {
++	      efidir_grub_disk = xcalloc (2, sizeof (*efidir_grub_disk));
++	      efidir_grub_disk[0] = efidir_grub_dev->disk;
++	      efidir_grub_disk[1] = NULL;
++	    }
++	  ret = grub_install_register_efi (efidir_grub_disk,
++					   efifile_path, efi_distributor,
++					   force_disk);
++	  while (list)
++	    {
++	      cur = list;
++	      list = list->next;
++	      grub_free (cur);
++	    }
++	  grub_free (force_disk);
++	  grub_free (efidir_grub_disk);
+ 	  if (ret)
+ 	    grub_util_error (_("efibootmgr failed to register the boot entry: %s"),
+ 			     strerror (ret));

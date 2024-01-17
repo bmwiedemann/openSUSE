@@ -1,0 +1,58 @@
+From b0f9dcabe96e5689ecfba9b6abcd27e685eabd48 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 11 May 2022 09:56:11 -0400
+Subject: [PATCH] ofdisk: improve boot time by lookup boot disk first
+
+While booting lvm, grub will try to build up logical volumes via hooks
+to disk iteration where on-disk metadata can be read and parsed. However
+the process can become very slow on multipath as reachable disks are
+duplicated by multiple I/O paths and they all get inspected.
+
+Fortunately grub allows lvm to be lazy binding and opportunistic that
+root volume can be created when it's needed using a smaller set of
+discovered disks. The disk iteration can also be controlled by pull
+methods to only returning specified disks. That said we may be able to
+take advantage of existing design to cause less overhead in lvm
+construction.
+
+This patch will return boot disks in OpenFirmware so they can be used
+first. If lvm managed to create root volume out of those boot disks then
+it is all very nice as they are readily available. Otherwise disk
+scanning will be performed to present all discoverable disks to grub as
+what it was done in the past. The result maybe again time consuming but
+we have nothing to lose here.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/disk/ieee1275/ofdisk.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+--- a/grub-core/disk/ieee1275/ofdisk.c
++++ b/grub-core/disk/ieee1275/ofdisk.c
+@@ -491,10 +491,11 @@
+ {
+   unsigned i;
+ 
+-  if (pull != GRUB_DISK_PULL_NONE)
++  if (pull > GRUB_DISK_PULL_REMOVABLE)
+     return 0;
+ 
+-  scan ();
++  if (pull == GRUB_DISK_PULL_REMOVABLE)
++    scan ();
+ 
+   for (i = 0; i < ARRAY_SIZE (ofdisk_hash); i++)
+     {
+@@ -532,6 +533,12 @@
+ 	  if (!ent->is_boot && ent->is_removable)
+ 	    continue;
+ 
++	  if (pull == GRUB_DISK_PULL_NONE && !ent->is_boot)
++	    continue;
++
++	  if (pull == GRUB_DISK_PULL_REMOVABLE && ent->is_boot)
++	    continue;
++
+ 	  if (hook (ent->grub_shortest, hook_data))
+ 	    return 1;
+ 	}

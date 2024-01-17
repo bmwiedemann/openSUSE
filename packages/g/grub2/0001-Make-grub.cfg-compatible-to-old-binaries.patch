@@ -1,0 +1,82 @@
+From b8457f2e271917c5c83a4fee286bafedf8c5790c Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 8 Aug 2023 17:57:24 +0800
+Subject: [PATCH] Make grub.cfg compatible to old binaries
+
+The new added fwsetup test in the topmost menu is always executed
+regardless older grub may not be able to handle and thus trapped in a
+boot loop between grub and fwsetup.
+
+This in particular is to make sure a smooth transition if grub is rolled
+back to older release and needs to boot newer snapshots.
+
+Also removing dashes in the UUID that every version released in the wild
+can handle.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ util/grub-probe.c               | 20 +++++++++++++++++++-
+ util/grub.d/30_uefi-firmware.in | 16 ++++++++++------
+ 2 files changed, 29 insertions(+), 7 deletions(-)
+
+diff --git a/util/grub-probe.c b/util/grub-probe.c
+index e7efcc268..99c738e44 100644
+--- a/util/grub-probe.c
++++ b/util/grub-probe.c
+@@ -290,8 +290,26 @@ probe_cryptodisk_uuid (grub_disk_t disk, char delim)
+     }
+   if (disk->dev->id == GRUB_DISK_DEVICE_CRYPTODISK_ID)
+     {
++      grub_size_t i, j;
+       const char *uu = grub_util_cryptodisk_get_uuid (disk);
+-      grub_printf ("%s%c", uu, delim);
++      grub_size_t len = grub_strlen (uu);
++      char *p = grub_malloc (len + 1);
++
++      /* Removing dash in the UUID string
++       * This keeps old grub binary to work with newer config in a system,
++       * especially for snapshots. It is a temporary change to make sure smooth
++       * transition from 2.06 to 2.12-rc1 and this hunk can be removed
++       * after 2.12-rc1 release stablized.
++       */
++      for (i = 0, j = 0; i < len; i++)
++        {
++          if (uu[i] != '-')
++            p[j++] = uu[i];
++        }
++      p[j] = '\0';
++
++      grub_printf ("%s%c", p, delim);
++      grub_free (p);
+     }
+ }
+ 
+diff --git a/util/grub.d/30_uefi-firmware.in b/util/grub.d/30_uefi-firmware.in
+index 1c2365ddb..96ff112e5 100644
+--- a/util/grub.d/30_uefi-firmware.in
++++ b/util/grub.d/30_uefi-firmware.in
+@@ -32,11 +32,15 @@ gettext_printf "Adding boot menu entry for UEFI Firmware Settings ...\n" >&2
+ 
+ cat << EOF
+ if [ "\$grub_platform" = "efi" ]; then
+-	fwsetup --is-supported
+-	if [ "\$?" = 0 ]; then
+-		menuentry '$LABEL' \$menuentry_id_option 'uefi-firmware' {
+-			fwsetup
+-		}
+-	fi
++	menuentry '$LABEL' \$menuentry_id_option 'uefi-firmware' {
++                fwsetup --is-supported
++                if [ "\$?" = 0 ]; then
++                        fwsetup
++                else
++                        echo "Your firmware doesn't support setup menu entry from a boot loader"
++                        echo "Press any key to return ..."
++                        read
++                fi
++        }
+ fi
+ EOF
+-- 
+2.41.0
+

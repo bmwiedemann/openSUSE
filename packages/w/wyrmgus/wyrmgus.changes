@@ -1,0 +1,253 @@
+-------------------------------------------------------------------
+Sun Dec 10 19:25:51 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Build with boost 1.75 for openSUSE Leap
+- Use gcc11 for openSUSE Leap
+
+-------------------------------------------------------------------
+Tue Nov  7 10:14:12 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
+Wed Aug 16 21:19:55 UTC 2023 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Precise boost dependency sub package.
+
+-------------------------------------------------------------------
+Sat Jan 28 23:27:41 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add wyrmgus-gl-includes.patch to enable successful build for aarch64
+
+-------------------------------------------------------------------
+Wed Dec 28 10:36:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.6:
+  * full changes: https://github.com/Andrettin/Wyrmgus/compare/v5.3.5...v5.3.6
+  * Added support for unit types to have different construction animations
+    depending on whether they are built on top of something or not
+
+-------------------------------------------------------------------
+Sun May  1 10:39:45 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 5.3.5
+  * Added check to ensure all map template units have a position
+    less than the map template's size
+  * Fixed crash with the civilization group scripted condition if
+    a unit had no civilization
+  * Fixed parameter unused warning
+  * Write the titled names of factions which use a definite article
+    correctly (e.g. "Kingdom of the Netherlands" instead of
+    "Kingdom of Netherlands")
+  * Added support for dialogue nodes to have a player color
+    delineated for their icon
+  * https://github.com/Andrettin/Wyrmgus/compare/v5.2.4...v5.3.5
+- Drop upstream resolved patches
+  * Wyrmgus-5.2.3_missing_include.patch
+  * Wyrmgus-5.2.4_non_void_return.patch
+
+-------------------------------------------------------------------
+Mon Dec  6 13:01:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 5.2.4
+  * Added support for windowed mode
+  * Many bug fixes and improvements, full list:
+    https://github.com/Andrettin/Wyrmgus/compare/v5.2.3...v5.2.4
+- Add Wyrmgus-5.2.4_non_void_return.patch
+
+-------------------------------------------------------------------
+Wed Oct 27 14:33:26 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 5.2.3
+  * Fixed issue which caused a crash if two wall tiles were being built
+    at the same time while adjacent to each other
+  * Fix to Linux compilation error at assert_util.cpp
+  * Improved support for optional subtemplates to have north_of/south_of/
+    etc. settings
+  * Removed the now-unused "sync" parameter for sml_data::print_to_file()
+  * Normalize the hero persistent data save file's filepath 
+- Add Wyrmgus-5.2.3_missing_include.patch
+
+-------------------------------------------------------------------
+Mon Aug 23 16:42:36 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.1
+  * Update to SDL2
+  * Bugfixes
+- Drop patches (not longer needed):
+  * 0001-Fix-to-Clang-compilation-issue-in-video.h.patch
+  * 0002-Removed-some-no-longer-used-SDL-code.patch
+
+-------------------------------------------------------------------
+Sat Aug 21 15:27:14 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.0
+  * Upstream does not provide a changelog
+- Add patches:
+  * 0001-Fix-to-Clang-compilation-issue-in-video.h.patch
+  * 0002-Removed-some-no-longer-used-SDL-code.patch
+
+-------------------------------------------------------------------
+Tue Mar 16 08:33:54 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to avoid OOM
+
+-------------------------------------------------------------------
+Sun Feb 28 13:11:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.4
+  * Bugfix release
+
+-------------------------------------------------------------------
+Thu Feb 19 21:41:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.3
+  * Fix some -Wformat errors in prints
+
+-------------------------------------------------------------------
+Thu Feb 18 09:04:20 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid OOM failures
+
+-------------------------------------------------------------------
+Sun Jan 17 21:44:58 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.2
+  * Log error instead of throwing exception when failing to save
+    the preferences file
+
+-------------------------------------------------------------------
+Sun Jan 10 11:43:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.1
+  * Upstream does not provide a changelog
+
+-------------------------------------------------------------------
+Fri Jan  1 10:42:24 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.5
+  * Check scripted conditions for a unit's current variation when
+    an upgrade is applied to it.
+- Update to version 4.0.4
+  * Made it so the site game data keeps track of resource units
+    which can produce a resource via a button instead of by
+    default, so that that is used when checking whether a gather
+    resources quest should be acceptable.
+
+-------------------------------------------------------------------
+Sun Dec 27 11:18:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.3
+  * Bugfix release
+- Drop not longer needed patches:
+  * 0001-Fixed-erroneous-inline-for-number-to_formatted_strin.patch
+  * wyrmgus-fix-build.patch
+
+-------------------------------------------------------------------
+Thu Dec 24 10:33:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * 0001-Fixed-erroneous-inline-for-number-to_formatted_strin.patch
+
+-------------------------------------------------------------------
+Wed Dec 23 22:10:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.2
+  * Bugfix release
+
+-------------------------------------------------------------------
+Tue Dec 22 16:57:40 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.1
+  * Fixed to the map template world property definition
+- Update patch:
+  * wyrmgus-fix-build.patch
+
+-------------------------------------------------------------------
+Sun Mar  3 13:29:07 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.5.4
+  * Added data type base class for unit types, upgrades and etc.
+  * Fixed issue which caused rally point map layers to be saved
+    incorrectly.
+  * Remove instances of \r from the config data strings
+  * Added snow and ice flags, made the map field flags into an enum
+  * Added comment to better explain the CPlayer::CanRecruitHero code
+  * Improved the check to see if a file is in the user's home directory
+  * Fixed issue which caused a crash when starting a second game
+  * Fixed issue with quest failure
+  * Improved worker automatic level-up upgrade choice
+  * Potential fix for mouse jumping issues
+  * Added support for certain spells being empowered in a particular plane
+  * Fixed issue which caused building i.e. a road near a rock tile to
+    recalculate the rock tile's transitions.
+- Add patch:
+  * wyrmgus-fix-build.patch
+- Run spec-cleaner
+- Use pkg-config style dependencies
+
+-------------------------------------------------------------------
+Sun Sep 10 12:15:24 UTC 2017 - rpm@fthiessen.de
+
+- Update to 2.8.1:
+ * Added code for terrain features
+ * Terrain features are groups of tiles which have their name
+   displayed when one of the tiles is hovered over
+ * Update to supply display
+ * Fixed issue with the AI not building town halls close
+   to silver and gold deposits
+ * Ai force update
+ * Added support for variation weight
+ * Update to character code to make heroes be more dynamically
+   applied to the scenario mode
+ * Fixed issue with minecart stone right-click crash
+ * Fixed issue with genversion
+
+-------------------------------------------------------------------
+Tue Feb  7 16:33:10 UTC 2017 - mailaender@opensuse.org
+
+- Update to version 2.5.3
+
+-------------------------------------------------------------------
+Tue Sep  6 17:05:00 UTC 2016 - malcolmlewis@opensuse.org
+
+- Update to version 2.4.2:
+  + Removed species development system (should be replaced later
+    with something that is lair-based).
+- Changes from version 2.4.1:
+  + Reduced the starting resources of split-off factions, as they
+    were too strong.
+
+-------------------------------------------------------------------
+Sun Aug 21 21:30:34 UTC 2016 - mailaender@opensuse.org
+
+- Updated to version 2.4.0
+- Removed fix-find-toluapp.patch
+
+-------------------------------------------------------------------
+Sun May 15 15:59:44 UTC 2016 - rpm@fthiessen.de
+
+- Updated to version 2.2.1
+- Now using cmake macros
+
+-------------------------------------------------------------------
+Sat Jan 16 02:20:56 UTC 2016 - rpm@fthiessen.de
+
+- Fixed build on openSUSE > 13.2 after tolua++ package got renamed,
+  therefore also modified fix-find-toluapp. patch.
+
+-------------------------------------------------------------------
+Sun Dec 27 17:22:18 UTC 2015 - rpm@fthiessen.de
+
+- Added fix-find-toluapp.patch to fix build on openSUSE > 13.2 
+
+-------------------------------------------------------------------
+Thu Dec 24 15:31:10 UTC 2015 - mailaender@opensuse.org
+
+- update to version 1.8.6
+
+-------------------------------------------------------------------
+Sat Dec 19 16:53:59 UTC 2015 - mailaender@opensuse.org
+
+- initial packaging

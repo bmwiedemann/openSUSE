@@ -1,0 +1,235 @@
+--- a/grub-core/commands/tpm.c
++++ b/grub-core/commands/tpm.c
+@@ -26,6 +26,9 @@
+ #include <grub/term.h>
+ #include <grub/verify.h>
+ #include <grub/dl.h>
++#include <grub/extcmd.h>
++#include <grub/tpm2/tpm2.h>
++#include <grub/efi/efi.h>
+ 
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+@@ -94,8 +97,214 @@
+   .verify_string = grub_tpm_verify_string,
+ };
+ 
++/*
++ * Preserve current PCR values and record them to an EFI variable
++ */
++#define GRUB2_PCR_BITMASK_DEFAULT	((1 << 16) - 1)
++#define GRUB2_PCR_BITMASK_ALL		((1 << 24) - 1)
++
++static const struct grub_arg_option grub_tpm_record_pcrs_options[] =
++  {
++    {
++      .longarg  = "efivar",
++      .shortarg = 'E',
++      .flags    = 0,
++      .arg      = NULL,
++      .type     = ARG_TYPE_STRING,
++      .doc      =
++        N_("The EFI variable to publish the PCRs to (default GrubPcrSnapshot)"),
++    },
++
++    {0, 0, 0, 0, 0, 0}
++  };
++
++static grub_err_t
++grub_tpm_parse_pcr_index (const char *word, const char **end_ret, unsigned int *index)
++{
++  const char *end;
++
++  if (!grub_isdigit (word[0]))
++    return GRUB_ERR_BAD_NUMBER;
++
++  *index = grub_strtoul(word, &end, 0);
++  if (*index > 32)
++    return GRUB_ERR_BAD_NUMBER;
++
++  *end_ret = end;
++  return GRUB_ERR_NONE;
++}
++
++static grub_err_t
++grub_tpm_parse_pcr_list (const char *arg, grub_uint32_t *bitmask)
++{
++  const char *word, *end;
++  unsigned int index, last_index = 0;
++
++  if (!grub_strcmp (arg, "all"))
++    {
++      *bitmask = GRUB2_PCR_BITMASK_ALL;
++      return GRUB_ERR_NONE;
++    }
++
++  word = arg;
++  while (1)
++    {
++      if (grub_tpm_parse_pcr_index (word, &end, &index))
++	goto bad_pcr_index;
++
++      if (*end == '-')
++	{
++          if (grub_tpm_parse_pcr_index (end + 1, &end, &last_index) || last_index < index)
++	    goto bad_pcr_index;
++
++	  while (index <= last_index)
++	    *bitmask |= (1 << (index++));
++	}
++      else
++	*bitmask |= (1 << index);
++
++      if (*end == '\0')
++	break;
++
++      if (*end != ',')
++	goto bad_pcr_index;
++
++       word = end + 1;
++    }
++
++  return GRUB_ERR_NONE;
++
++bad_pcr_index:
++  return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("cannot parse PCR list \"%s\""), arg);
++}
++
++static inline unsigned int
++nbits(grub_uint32_t mask)
++{
++  unsigned int r = 0;
++
++  for (; mask != 0; mask >>= 1)
++    r += (mask & 1);
++  return r;
++}
++
++static grub_err_t
++grub_tpm_snapshot_pcrs (grub_uint32_t pcr_bitmask, const char *algo,
++	       		void **buffer_ret, grub_size_t *size_ret)
++{
++  char *buffer;
++  grub_size_t size = 65536;
++  unsigned int wpos = 0;
++  grub_uint8_t pcr;
++
++  buffer = grub_malloc (size);
++  for (pcr = 0; pcr < 32; ++pcr)
++    {
++      struct grub_tpm_digest *d;
++      unsigned int need, k;
++
++      if (!(pcr_bitmask & (1 << pcr)))
++	continue;
++
++      d = grub_tpm_read_pcr (pcr, algo);
++      if (d == NULL)
++        {
++	  grub_error (GRUB_ERR_BAD_DEVICE, N_("unable to read PCR %d from TPM"), pcr);
++	  continue;
++        }
++
++      /* We need room for the PCR index, 2 spaces, newline, NUL. 16 should be enough. */
++      need = 16 + grub_strlen(d->algorithm) + 2 * d->size;
++      if (wpos + need > size)
++        {
++	  buffer = grub_realloc (buffer, size + need);
++	  if (buffer == NULL)
++	    return grub_error (GRUB_ERR_OUT_OF_MEMORY, N_("Not enough memory when dumping PCR registers"));
++        }
++
++      grub_snprintf (buffer + wpos, size - wpos, "%02d %s ", pcr, d->algorithm);
++      wpos = grub_strlen(buffer);
++
++      for (k = 0; k < d->size; ++k)
++        {
++	  grub_snprintf (buffer + wpos, size - wpos, "%02x", d->value[k]);
++	  wpos += 2;
++        }
++
++      buffer[wpos++] = '\n';
++      buffer[wpos] = '\0';
++
++      grub_tpm_digest_free (d);
++    }
++
++  *buffer_ret = buffer;
++  *size_ret = wpos;
++
++  return GRUB_ERR_NONE;
++}
++
++static grub_err_t
++grub_tpm_write_pcrs_to_efi (void *data, grub_size_t size, const char *var_name)
++{
++  grub_guid_t vendor_guid = { 0x7ce323f2, 0xb841, 0x4d30, { 0xa0, 0xe9, 0x54, 0x74, 0xa7, 0x6c, 0x9a, 0x3f }};
++  grub_err_t rc;
++
++  rc = grub_efi_set_variable_with_attributes(var_name, &vendor_guid,
++                                              data, size,
++                                              GRUB_EFI_VARIABLE_BOOTSERVICE_ACCESS | GRUB_EFI_VARIABLE_RUNTIME_ACCESS);
++
++  if (rc)
++    return grub_error (GRUB_ERR_BAD_DEVICE, N_("Failed to publish PCR snapshot to UEFI variable %s"), var_name);
++
++  return GRUB_ERR_NONE;
++}
++
++static grub_err_t
++grub_tpm_record_pcrs (grub_extcmd_context_t ctxt, int argc, char **args)
++{
++  struct grub_arg_list *state = ctxt->state;
++  grub_uint32_t pcr_bitmask = 0;
++  const char *efivar;
++  void *buffer = NULL;
++  grub_size_t size = 0;
++  int n, rv = 1;
++
++  if (argc == 0)
++    pcr_bitmask = GRUB2_PCR_BITMASK_DEFAULT;
++  else
++    {
++      for (n = 0; n < argc; ++n)
++	if (grub_tpm_parse_pcr_list (args[n], &pcr_bitmask))
++	  return 1;
++    }
++
++  if (grub_tpm_snapshot_pcrs (pcr_bitmask, NULL, &buffer, &size))
++    goto out;
++
++  if (state[0].set)
++    efivar = state[0].arg;
++  else
++    efivar = "GrubPcrSnapshot";
++
++  if (grub_tpm_write_pcrs_to_efi (buffer, size, efivar))
++    goto out;
++
++  rv = 0;
++
++out:
++  if (buffer)
++    grub_free (buffer);
++  return rv;
++}
++
++static grub_extcmd_t cmd;
++
+ GRUB_MOD_INIT (tpm)
+ {
++  cmd = grub_register_extcmd ("tpm_record_pcrs", grub_tpm_record_pcrs, 0,
++			      N_("LIST_OF_PCRS"),
++			      N_("Snapshot one or more PCR values and record them in an EFI variable."),
++			      grub_tpm_record_pcrs_options);
+   /*
+    * Even though this now calls ibmvtpm's grub_tpm_present() from GRUB_MOD_INIT(),
+    * it does seem to call it late enough in the initialization sequence so
+@@ -109,6 +318,7 @@
+ 
+ GRUB_MOD_FINI (tpm)
+ {
++  grub_unregister_extcmd (cmd);
+   if (!grub_tpm_present())
+     return;
+   grub_verifier_unregister (&grub_tpm_verifier);

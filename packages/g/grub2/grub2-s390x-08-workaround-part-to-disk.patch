@@ -1,0 +1,13 @@
+--- a/grub-core/osdep/linux/getroot.c
++++ b/grub-core/osdep/linux/getroot.c
+@@ -740,6 +740,10 @@
+   if (! realpath (os_dev, path))
+     return NULL;
+ 
++#ifdef __s390x__
++  return path;
++#endif
++
+   if (strncmp ("/dev/", path, 5) == 0)
+     {
+       char *p = path + 5;

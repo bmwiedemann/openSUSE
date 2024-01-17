@@ -1,0 +1,6 @@
+addFilter(".*binary-or-shlib-calls-gethostbyname.*")
+addFilter(".*missing-call-to-setgroups-before-setuid.*")
+addFilter(".*no-dependency-on.*")
+addFilter(".*no-version-in-last-changelog.*")
+addFilter(".*position-independent-executable-suggested.*")
+addFilter(".*shared-lib-calls-exit.*")

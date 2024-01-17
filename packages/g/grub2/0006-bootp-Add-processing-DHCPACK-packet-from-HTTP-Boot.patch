@@ -1,0 +1,98 @@
+From 8191aae462f8b755972a0a801f4adbdd6ecaa66c Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 14 Jul 2016 18:45:14 +0800
+Subject: [PATCH 6/8] bootp: Add processing DHCPACK packet from HTTP Boot
+
+The vendor class identifier with the string "HTTPClient" is used to denote the
+packet as responding to HTTP boot request. In DHCP4 config, the filename for
+HTTP boot is the URL of the boot file while for PXE boot it is the path to the
+boot file. As a consequence, the next-server becomes obseleted because the HTTP
+URL already contains the server address for the boot file. For DHCP6 config,
+there's no difference definition in existing config as dhcp6.bootfile-url can
+be used to specify URL for both HTTP and PXE boot file.
+
+This patch adds processing for "HTTPClient" vendor class identifier in DHCPACK
+packet by treating it as HTTP format, not as the PXE format.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+Signed-off-by: Ken Lin <ken.lin@hpe.com>
+---
+ grub-core/net/bootp.c | 67 +++++++++++++++++++++++++++++++++++++++++++++++++--
+ include/grub/net.h    |  1 +
+ 2 files changed, 66 insertions(+), 2 deletions(-)
+
+--- a/grub-core/net/bootp.c
++++ b/grub-core/net/bootp.c
+@@ -352,6 +352,53 @@
+   if (!inter)
+     return 0;
+ 
++  /* FIXME: Introduce new http flag for better synergy with existing tftp code base */
++  if (size > OFFSET_OF (vendor, bp))
++    {
++      char *cidvar;
++      const char *cid;
++
++      opt = find_dhcp_option (bp, size, GRUB_NET_BOOTP_VENDOR_CLASS_IDENTIFIER, &opt_len);
++      if (opt && opt_len)
++	grub_env_set_net_property (name, "vendor_class_identifier", (const char *) opt, opt_len);
++      cidvar = grub_xasprintf ("net_%s_%s", name, "vendor_class_identifier");
++      cid = grub_env_get (cidvar);
++      grub_free (cidvar);
++
++      if (cid && grub_strcmp (cid, "HTTPClient") == 0)
++	{
++	  char *proto, *ip, *pa;
++
++	  /* FIXME: Provide better URL function that returns in place pointers
++	   * so that we don't have to free them.
++	   */
++	  if (!dissect_url (bp->boot_file, &proto, &ip, &pa))
++	    return inter;
++
++	  if (is_def)
++	    {
++	      grub_net_default_server = grub_strdup (ip);
++	      grub_env_set ("net_default_interface", name);
++	      grub_env_export ("net_default_interface");
++	    }
++	  if (device && !*device)
++	    {
++	      *device = grub_xasprintf ("%s,%s", proto, ip);
++	      grub_print_error ();
++	    }
++
++	  boot_file = pa;
++	  boot_file_len = grub_strlen (pa);
++
++	  /* FIXME: Don't use malloc buffer here */
++	  grub_free (proto);
++	  grub_free (ip);
++
++	  /* FIXME: NEED TO FREE boot_file */
++	  goto boot_file;
++	}
++    }
++
+   opt = find_dhcp_option (bp, size, GRUB_NET_DHCP_OVERLOAD, &opt_len);
+   if (opt && opt_len == 1)
+     overload = *opt;
+@@ -428,6 +475,8 @@
+ 	}
+     }
+ 
++boot_file:
++
+   if (boot_file)
+     {
+       grub_env_set_net_property (name, "boot_file", boot_file, boot_file_len);
+--- a/include/grub/net.h
++++ b/include/grub/net.h
+@@ -530,6 +530,7 @@
+     GRUB_NET_DHCP_MESSAGE_TYPE = 53,
+     GRUB_NET_DHCP_SERVER_IDENTIFIER = 54,
+     GRUB_NET_DHCP_PARAMETER_REQUEST_LIST = 55,
++    GRUB_NET_BOOTP_VENDOR_CLASS_IDENTIFIER = 60,
+     GRUB_NET_BOOTP_CLIENT_ID = 61,
+     GRUB_NET_DHCP_TFTP_SERVER_NAME = 66,
+     GRUB_NET_DHCP_BOOTFILE_NAME = 67,

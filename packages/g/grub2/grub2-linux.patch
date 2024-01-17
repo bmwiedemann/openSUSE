@@ -1,0 +1,40 @@
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -31,7 +31,7 @@
+ if [ "x${GRUB_DISTRIBUTOR}" = "x" ] ; then
+   OS=GNU/Linux
+ else
+-  OS="${GRUB_DISTRIBUTOR} GNU/Linux"
++  OS="${GRUB_DISTRIBUTOR}"
+   CLASS="--class $(echo ${GRUB_DISTRIBUTOR} | tr 'A-Z' 'a-z' | cut -d' ' -f1|LC_ALL=C sed 's,[^[:alnum:]_],_,g') ${CLASS}"
+ fi
+ 
+@@ -143,7 +143,7 @@
+   message="$(gettext_printf "Loading Linux %s ..." ${version})"
+   sed "s/^/$submenu_indentation/" << EOF
+ 	echo	'$(echo "$message" | grub_quote)'
+-	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ro ${args}
++	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ${args}
+ EOF
+   if test -n "${initrd}" ; then
+     # TRANSLATORS: ramdisk isn't identifier. Should be translated.
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -31,7 +31,7 @@
+ if [ "x${GRUB_DISTRIBUTOR}" = "x" ] ; then
+   OS=GNU/Linux
+ else
+-  OS="${GRUB_DISTRIBUTOR} GNU/Linux"
++  OS="${GRUB_DISTRIBUTOR}"
+   CLASS="--class $(echo ${GRUB_DISTRIBUTOR} | tr 'A-Z' 'a-z' | cut -d' ' -f1|LC_ALL=C sed 's,[^[:alnum:]_],_,g') ${CLASS}"
+ fi
+ 
+@@ -154,7 +154,7 @@
+         fi
+ 	${xen_loader}	${rel_xen_dirname}/${xen_basename} placeholder ${xen_args} \${xen_rm_opts}
+ 	echo	'$(echo "$lmessage" | grub_quote)'
+-	${module_loader}	${rel_dirname}/${basename} placeholder root=${linux_root_device_thisversion} ro ${args}
++	${module_loader}	${rel_dirname}/${basename} placeholder root=${linux_root_device_thisversion} ${args}
+ EOF
+   if test -n "${initrd}" ; then
+     # TRANSLATORS: ramdisk isn't identifier. Should be translated.

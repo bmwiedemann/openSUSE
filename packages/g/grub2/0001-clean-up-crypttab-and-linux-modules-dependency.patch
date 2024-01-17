@@ -1,0 +1,205 @@
+From e9422d6869f1b2d78a7cfbfcae1610953d87705b Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 16 Feb 2023 21:28:07 +0800
+Subject: [PATCH 1/2] clean up crypttab and linux modules dependency
+
+The linux module could have quite a few dependency to other modules, the
+i386-pc build in particular has many.
+
+  linux: normal vbe video boot cmdline relocator mmap
+
+That will be easy to cause loop dependency if one of these modules has
+to require function from linux. To avoid falling into the pitfall in
+future extension, we move away the key publish related function from
+linux to crypttab module in that it is also a right thing to do.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/commands/crypttab.c | 48 +++++++++++++++++++++++++++++-
+ grub-core/disk/cryptodisk.c   |  2 +-
+ grub-core/loader/linux.c      | 55 +----------------------------------
+ include/grub/crypttab.h       | 22 ++++++++++++++
+ include/grub/linux.h          |  3 --
+ 5 files changed, 71 insertions(+), 59 deletions(-)
+ create mode 100644 include/grub/crypttab.h
+
+--- a/grub-core/commands/crypttab.c
++++ b/grub-core/commands/crypttab.c
+@@ -3,10 +3,56 @@
+ #include <grub/command.h>
+ #include <grub/misc.h>
+ #include <grub/i18n.h>
+-#include <grub/linux.h>
++#include <grub/mm.h>
++#include <grub/list.h>
++#include <grub/crypttab.h>
+ 
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
++struct grub_key_publisher *kpuber;
++
++grub_err_t
++grub_initrd_publish_key (const char *uuid, const char *key, grub_size_t key_len, const char *path)
++{
++  struct grub_key_publisher *cur = NULL;
++
++  FOR_LIST_ELEMENTS (cur, kpuber)
++    if (grub_uuidcasecmp (cur->name, uuid, sizeof (cur->name)) == 0)
++      break;
++
++  if (!cur)
++    cur = grub_zalloc (sizeof (*cur));
++  if (!cur)
++    return grub_errno;
++
++  if (key && key_len)
++    {
++      grub_free (cur->key);
++      cur->key = grub_malloc (key_len);
++      if (!cur->key)
++	{
++	  grub_free (cur);
++	  return grub_errno;
++	}
++      grub_memcpy (cur->key, key, key_len);
++      cur->key_len = key_len;
++    }
++
++  if (path)
++    {
++      grub_free (cur->path);
++      cur->path = grub_strdup (path);
++    }
++
++  if (!cur->name)
++    {
++      cur->name = grub_strdup (uuid);
++      grub_list_push (GRUB_AS_LIST_P (&kpuber), GRUB_AS_LIST (cur));
++    }
++
++  return GRUB_ERR_NONE;
++}
++
+ static grub_err_t
+ grub_cmd_crypttab_entry (grub_command_t cmd __attribute__ ((unused)),
+ 	       int argc, char **argv)
+--- a/grub-core/disk/cryptodisk.c
++++ b/grub-core/disk/cryptodisk.c
+@@ -31,7 +31,7 @@
+ #ifdef GRUB_UTIL
+ #include <grub/emu/hostdisk.h>
+ #else
+-#include <grub/linux.h>
++#include <grub/crypttab.h>
+ #endif
+ 
+ GRUB_MOD_LICENSE ("GPLv3+");
+--- a/grub-core/loader/linux.c
++++ b/grub-core/loader/linux.c
+@@ -6,6 +6,7 @@
+ #include <grub/mm.h>
+ #include <grub/safemath.h>
+ #include <grub/list.h>
++#include <grub/crypttab.h>
+ 
+ struct newc_head
+ {
+@@ -40,18 +41,6 @@
+   struct dir *child;
+ };
+ 
+-struct grub_key_publisher
+-{
+-  struct grub_key_publisher *next;
+-  struct grub_key_publisher **prev;
+-  char *name; /* UUID */
+-  char *path;
+-  char *key;
+-  grub_size_t key_len;
+-};
+-
+-static struct grub_key_publisher *kpuber;
+-
+ static char
+ hex (grub_uint8_t val)
+ {
+@@ -436,45 +425,3 @@
+   root = 0;
+   return GRUB_ERR_NONE;
+ }
+-
+-grub_err_t
+-grub_initrd_publish_key (const char *uuid, const char *key, grub_size_t key_len, const char *path)
+-{
+-  struct grub_key_publisher *cur = NULL;
+-
+-  FOR_LIST_ELEMENTS (cur, kpuber)
+-    if (grub_uuidcasecmp (cur->name, uuid, sizeof (cur->name)) == 0)
+-      break;
+-
+-  if (!cur)
+-    cur = grub_zalloc (sizeof (*cur));
+-  if (!cur)
+-    return grub_errno;
+-
+-  if (key && key_len)
+-    {
+-      grub_free (cur->key);
+-      cur->key = grub_malloc (key_len);
+-      if (!cur->key)
+-	{
+-	  grub_free (cur);
+-	  return grub_errno;
+-	}
+-      grub_memcpy (cur->key, key, key_len);
+-      cur->key_len = key_len;
+-    }
+-
+-  if (path)
+-    {
+-      grub_free (cur->path);
+-      cur->path = grub_strdup (path);
+-    }
+-
+-  if (!cur->name)
+-    {
+-      cur->name = grub_strdup (uuid);
+-      grub_list_push (GRUB_AS_LIST_P (&kpuber), GRUB_AS_LIST (cur));
+-    }
+-
+-  return GRUB_ERR_NONE;
+-}
+--- /dev/null
++++ b/include/grub/crypttab.h
+@@ -0,0 +1,22 @@
++#ifndef GRUB_CRYPTTAB_HEADER
++#define GRUB_CRYPTTAB_HEADER 1
++
++#include <grub/types.h>
++#include <grub/err.h>
++
++struct grub_key_publisher
++{
++  struct grub_key_publisher *next;
++  struct grub_key_publisher **prev;
++  char *name; /* UUID */
++  char *path;
++  char *key;
++  grub_size_t key_len;
++};
++
++extern struct grub_key_publisher *EXPORT_VAR (kpuber);
++
++grub_err_t
++grub_initrd_publish_key (const char *uuid, const char *key, grub_size_t key_len, const char *path);
++
++#endif /* ! GRUB_CRYPTTAB_HEADER */
+--- a/include/grub/linux.h
++++ b/include/grub/linux.h
+@@ -22,6 +22,3 @@
+ grub_err_t
+ grub_initrd_load (struct grub_linux_initrd_context *initrd_ctx,
+ 		  void *target);
+-
+-grub_err_t
+-grub_initrd_publish_key (const char *uuid, const char *key, grub_size_t key_len, const char *path);
