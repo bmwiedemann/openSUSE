@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-software
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_with profiling
 
 Name:           gnome-software
-Version:        45.1
+Version:        45.2
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
@@ -35,7 +35,8 @@ Patch1:         gnome-software-disable-offline-update.patch
 %endif
 # PATCH-FIX-UPSTREAM gnome-software-plugin-opensuse-distro-upgrade.patch glgo#GNOME/gnome-software!1557 sckang@suse.com -- plugins: add opensuse-distro-upgrade plugin
 Patch2:         gnome-software-plugin-opensuse-distro-upgrade.patch
-
+# PATCH-FIX-UPSTREAM gnome-software-support-appstream-1_0.patch boo#1217047 -- Apply upstream changes to support appstream 1.0
+Patch3:         gnome-software-support-appstream-1_0.patch
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
@@ -118,9 +119,11 @@ the GNOME software store.
 
 # Remove any piece of doc that ends up in non-standard locations and use the doc macro instead
 rm %{buildroot}%{_datadir}/doc/%{name}/README.md
+%if !0%{?sle_version} || 0%{?sle_version} >= 160000
 # Move autostart file to /usr/etc
 mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
 mv %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.Software.desktop %{buildroot}%{_distconfdir}/xdg/autostart/org.gnome.Software.desktop
+%endif
 
 cat >> %{buildroot}%{_datadir}/glib-2.0/schemas/20_org.gnome.software-opensuse.gschema.override << FOE
 [org.gnome.software]
@@ -151,7 +154,11 @@ FOE
 %{_libexecdir}/gnome-software-cmd
 %{_libexecdir}/gnome-software-restarter
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%if !0%{?sle_version} || 0%{?sle_version} >= 160000
 %{_distconfdir}/xdg/autostart/org.gnome.Software.desktop
+%else
+%{_sysconfdir}/xdg/autostart/org.gnome.Software.desktop
+%endif
 
 %dir %{_libdir}/gnome-software/plugins-%{gs_plugin_api}/
 %{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_dpkg.so

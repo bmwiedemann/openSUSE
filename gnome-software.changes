@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Dec 28 02:27:35 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Do not use _distconfdir on SLE/Leap less than version 16.
+
+-------------------------------------------------------------------
+Fri Dec 15 09:33:16 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add gnome-software-support-appstream-1_0.patch to
+  support building with appstream 1.0 (boo#1217047)
+
+-------------------------------------------------------------------
+Fri Dec  1 10:46:39 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 45.2:
+  + Updated translations. 
+
+-------------------------------------------------------------------
 Fri Oct 27 05:40:09 UTC 2023 - Jonathan Kang <jonathankang@gnome.org>
 
 - Rebase gnome-software-disable-offline-update.patch(bsc#1216603).
