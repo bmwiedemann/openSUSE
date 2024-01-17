@@ -1,7 +1,7 @@
 #
 # spec file for package lagrange
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define app_id fi.skyjake.Lagrange
 Name:           lagrange
-Version:        1.17.5
+Version:        1.17.6
 Release:        0
 Summary:        Desktop GUI client for browsing Geminispace
 License:        BSD-2-Clause

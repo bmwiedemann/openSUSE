@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 16 21:34:00 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.17.6
+  - Fixed memory leak: fetched pages were not always released from memory
+    (reference miscount).
+  - Fixed minor memory leak in list widgets.
+  - Gopher: Autodetect Gemtext files based on file extension.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
 Tue Dec 12 21:05:50 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.17.5
