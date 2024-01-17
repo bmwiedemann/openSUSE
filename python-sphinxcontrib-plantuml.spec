@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-plantuml
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python3-%{**}}
-
+%{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-plantuml
-Version:        0.24.1
+Version:        0.27
 Release:        0
 Summary:        Sphinx API for Web Apps
 License:        BSD-2-Clause
@@ -30,8 +28,9 @@ Source:         https://github.com/sphinx-contrib/plantuml/archive/%{version}.ta
 Patch0:         py3-for-tests.patch
 BuildRequires:  %{python_module Sphinx >= 2}
 BuildRequires:  %{python_module Sphinx-latex}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  ghostscript
 BuildRequires:  python-rpm-macros
@@ -54,10 +53,10 @@ will create a nice UML schema. WIth PlantUML, you can specify things like height
 %patch0 -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -72,6 +71,6 @@ will create a nice UML schema. WIth PlantUML, you can specify things like height
 %pycache_only %{python_sitelib}/sphinxcontrib/__pycache__
 %{python_sitelib}/sphinxcontrib/plantuml.*
 %{python_sitelib}/sphinxcontrib_plantuml-%{version}-py*-nspkg.pth
-%{python_sitelib}/sphinxcontrib_plantuml-%{version}-py*.*-info
+%{python_sitelib}/sphinxcontrib_plantuml-%{version}.dist-info
 
 %changelog
