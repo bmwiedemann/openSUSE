@@ -1,0 +1,25 @@
+From ad012fa6acc53560a07d05676aa22d1afc66bf22 Mon Sep 17 00:00:00 2001
+From: Mat Booth <mat.booth@redhat.com>
+Date: Thu, 27 Aug 2020 10:52:58 +0100
+Subject: [PATCH 2/4] Also export internal packages in OSGi metadata
+
+---
+ gson/bnd.bnd | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/gson/bnd.bnd b/gson/bnd.bnd
+index 7706d8a..8469930 100644
+--- a/gson/bnd.bnd
++++ b/gson/bnd.bnd
+@@ -13,4 +13,7 @@ Import-Package: sun.misc;resolution:=optional,*
+     com.google.gson,\
+     com.google.gson.annotations,\
+     com.google.gson.reflect,\
+-    com.google.gson.stream
++    com.google.gson.stream,\
++    com.google.gson.internal;x-internal:=true,\
++    com.google.gson.internal.bind;x-internal:=true,\
++    com.google.gson.internal.bind.util;x-internal:=true
+-- 
+2.26.2
+

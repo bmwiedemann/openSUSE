@@ -1,0 +1,6 @@
+<package name="cinnamon" project="openSUSE:Factory">
+  <title>GNU/Linux Desktop featuring a traditional layout</title>
+  <description>Cinnamon is a modern Linux desktop which provides advanced innovative features and a traditional user experience.
+It's easy to use, powerful and flexible.</description>
+  <devel project="X11:Cinnamon:Factory" package="cinnamon"/>
+</package>

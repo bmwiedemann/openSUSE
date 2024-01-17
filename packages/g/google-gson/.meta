@@ -1,0 +1,5 @@
+<package name="google-gson" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="google-gson"/>
+</package>

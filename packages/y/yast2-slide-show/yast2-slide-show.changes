@@ -1,0 +1,1634 @@
+-------------------------------------------------------------------
+Mon May  6 07:55:39 UTC 2019 - Karl Eichwalder <ke@suse.de>
+
+- Update to version 84.87.20190314.3f822a8:
+  * Translated using Weblate (Kabyle)
+
+-------------------------------------------------------------------
+Tue Feb 12 07:19:28 UTC 2019 - ke@suse.com
+
+- Update to version 84.87.20190114.7a77166:
+  * Added translation using Weblate (Kabyle)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (French)
+  * Translated using Weblate (Hindi)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Lithuanian)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Ukrainian)
+
+-------------------------------------------------------------------
+Mon Jul 17 12:53:45 UTC 2017 - git@opensuse.org
+
+- Update to version 84.87.20170716.5593487:
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Ukrainian)
+
+-------------------------------------------------------------------
+Fri Jul 14 11:46:04 UTC 2017 - git@opensuse.org
+
+- revert previous change. Needs more work to also handle CHECKSUMS
+- Update to version 84.87.20170714.02db2bb:
+  * Translated using Weblate (German)
+
+-------------------------------------------------------------------
+Tue Jul 11 09:20:54 UTC 2017 - lnussel@suse.de
+
+- create missing directory.yast entries, looks like noone else does
+  that for us (boo#1048145)
+
+-------------------------------------------------------------------
+Mon Jul 10 13:53:00 UTC 2017 - ke@suse.com
+
+- Update to version 84.87.20170710.0e86021:
+  * Translated using Weblate (German)
+
+-------------------------------------------------------------------
+Mon Jun 19 11:43:31 UTC 2017 - git@opensuse.org
+
+- Update to version 84.87.20170612.c750efa:
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Spanish)
+  * Update with 42.3 changes
+
+-------------------------------------------------------------------
+Wed Jun 07 08:43:29 UTC 2017 - git@opensuse.org
+
+- Update to version 84.87.20170604.1a40600:
+  * Fix typos in slideshow.xml (#7)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Swedish)
+  * changed version number
+  * update slideshow (#8)
+
+-------------------------------------------------------------------
+Mon Nov 07 12:54:21 UTC 2016 - git@opensuse.org
+
+- Update to version 84.87.20161105.deddea9:
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Persian)
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Persian)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Danish)
+
+-------------------------------------------------------------------
+Wed Oct 26 07:33:22 UTC 2016 - git@opensuse.org
+
+- Update to version 84.87.20161025.9dd244e:
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Persian)
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Swedish)
+
+-------------------------------------------------------------------
+Wed Oct 12 10:59:16 UTC 2016 - git@opensuse.org
+
+- Update to version 84.87.20161010.37d253b:
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (French)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Lithuanian)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Ukrainian)
+
+-------------------------------------------------------------------
+Thu Oct 06 11:40:20 UTC 2016 - git@opensuse.org
+
+- Update to version 84.87.20161006.92ed252:
+  * Translated using Weblate (Romanian)
+  * Fix typos
+  * Merge pot file
+  * Translated using Weblate (Lithuanian)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Asturian)
+  * Translated using Weblate (French)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (English)
+  * Translated using Weblate (Czech)
+  * remove Leap if in combination with suse-version entity ("Leap
+    Leap", boo#1003116).
+
+-------------------------------------------------------------------
+Thu Aug 25 13:42:57 UTC 2016 - git@opensuse.org
+
+- Update to version 84.87.20160824.23331ce:
+  * updated changes to 42.2
+  * updated recommended changes
+  * Translated using Weblate (Lithuanian)
+  * update .pot; submit merged .po files
+  * fix minor typos
+  * submit merged .po files
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Ukrainian)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Catalan)
+
+-------------------------------------------------------------------
+Mon Aug  1 14:57:18 UTC 2016 - lnussel@suse.de
+
+- set version in spec file (boo#981645)
+- add Url
+- run fdupes
+
+-------------------------------------------------------------------
+Mon Aug 01 14:47:19 UTC 2016 - git@opensuse.org
+
+- Update to version 84.87.20160724.0fcf6e5:
+  * Modernize slideshow.xml
+  * Translated using Weblate (Arabic)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Chinese (China))
+  * Translated using Weblate (Chinese (Taiwan))
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (French)
+  * Translated using Weblate (German)
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Korean)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Swedish)
+
+-------------------------------------------------------------------
+Mon May 09 09:13:50 UTC 2016 - git@opensuse.org
+
+- Update to version 84.87.20160506.56106a5:
+  + Translated using Weblate (Czech)
+  + Translated using Weblate (French)
+
+-------------------------------------------------------------------
+Thu Apr 28 11:03:26 UTC 2016 - git@opensuse.org
+
+- Update to version 84.87.20160428.904f4cd:
+  + Translated using Weblate (Arabic)
+
+-------------------------------------------------------------------
+Wed Apr 27 13:43:32 UTC 2016 - git@opensuse.org
+
+- Update to version 84.87.20160427.88aaafc:
+  * Call msgmerge with --previous
+  * Import of translations from LCN SVN
+  * Translated using Weblate (Slovak)
+  * Point to www.o.o instead of wiki
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Ukrainian)
+  * Update pot file
+  * Merge pot file to po files
+
+-------------------------------------------------------------------
+Mon Apr 18 16:41:36 UTC 2016 - git@opensuse.org
+
+- Update to version 84.87.20160418.6f56730:
+  * ensure stylesheet is up-to-date (bsc#973609)
+  * SUSE Cloud => SUSE OpenStack Cloud
+  * 3.1.23
+  * Sync also the openSUSE stylesheet
+  * Get rid of YaST build system
+  * Install to /CD1 directly
+  * replace 01_welcome.png with 02_opensuse.png
+  * update README
+
+-------------------------------------------------------------------
+Mon Apr 18 15:09:03 UTC 2016 - git@opensuse.org
+
+- new package layout based on refactored git sources
+- Version 84.87.20160418.6f56730:
+
+-------------------------------------------------------------------
+Fri Apr  1 14:29:45 CEST 2016 - fcrozat@suse.com
+
+- 3.1.23
+- Ensure SLED stylesheet is updated (bsc#973609).
+
+-------------------------------------------------------------------
+Fri Nov  6 09:40:02 UTC 2015 - ke@suse.de
+
+- 3.1.22
+- Update SLE 12 SP1 translations (bsc#933411).
+
+-------------------------------------------------------------------
+Thu Oct 29 14:19:58 UTC 2015 - ke@suse.de
+
+- 3.1.21
+- Update openSUSE Leap translations (bsc#950856).
+
+-------------------------------------------------------------------
+Tue Oct 20 08:35:31 UTC 2015 - ke@suse.de
+
+- 3.1.20
+- Start updating openSUSE Leap translations (bsc#950856).
+
+-------------------------------------------------------------------
+Mon Oct 19 11:48:21 UTC 2015 - ke@suse.de
+
+- 3.1.19
+- Start updating openSUSE Leap translations (bsc#950856).
+
+-------------------------------------------------------------------
+Wed Sep 30 08:14:18 UTC 2015 - ke@suse.de
+
+- 3.1.18
+- Fix de translation (bsc#933411).
+
+-------------------------------------------------------------------
+Wed Sep 16 09:30:44 UTC 2015 - ke@suse.de
+
+- 3.1.17
+- Fix de translation (bsc#933411).
+
+-------------------------------------------------------------------
+Wed Sep 16 07:24:45 UTC 2015 - ke@suse.de
+
+- 3.1.16
+- Update translations, esp. de (bsc#933411).
+
+-------------------------------------------------------------------
+Tue Oct 28 10:09:41 UTC 2014 - ke@suse.de
+
+- 3.1.15
+- Remove statement about infrared/IrDA; bnc#902002.
+
+-------------------------------------------------------------------
+Tue Oct 14 11:22:05 UTC 2014 - ke@suse.de
+
+- 3.1.14
+- Update openSUSE slide show translations.
+
+-------------------------------------------------------------------
+Wed Oct  1 13:41:47 UTC 2014 - ke@suse.de
+
+- 3.1.13
+- Update openSUSE slide show text by awafaa at opensuse org;
+  bnc#897929.
+
+-------------------------------------------------------------------
+Tue Sep 23 15:33:42 UTC 2014 - ke@suse.de
+
+- 3.1.12
+- Update translations, esp. de (bnc#892970).
+
+-------------------------------------------------------------------
+Thu Sep 18 07:36:49 UTC 2014 - ke@suse.de
+
+- 3.1.11
+- Update translations.
+
+-------------------------------------------------------------------
+Thu Sep  4 10:16:21 UTC 2014 - ke@suse.de
+
+- 3.1.10
+- Update translations.
+
+-------------------------------------------------------------------
+Wed Aug 13 13:27:28 UTC 2014 - ke@suse.de
+
+- 3.1.9
+- Update translations.
+- First picture updated by Kenneth Wimer (bnc#889868).
+
+-------------------------------------------------------------------
+Mon Jul 28 11:16:32 UTC 2014 - ke@suse.de
+
+- 3.1.8
+- Fix last slide (wording issue) (bnc#880749).
+- Update translations.
+
+-------------------------------------------------------------------
+Mon Jul  7 09:44:45 UTC 2014 - ke@suse.de
+
+- 3.1.7
+- Update some SLES slides (bnc#885972; bnc#885971).
+
+-------------------------------------------------------------------
+Mon Jul  7 07:54:58 UTC 2014 - ke@suse.de
+
+- 3.1.6
+- Update SLES translations.
+
+-------------------------------------------------------------------
+Mon Jun 16 13:24:07 UTC 2014 - ke@suse.de
+
+- 3.1.5
+- SLES comes now with the default SLE slide show.
+- Update slide show translations.
+
+-------------------------------------------------------------------
+Thu May 15 13:34:21 UTC 2014 - ke@suse.de
+
+- 3.1.4
+
+-------------------------------------------------------------------
+Mon May 12 09:28:56 UTC 2014 - ke@suse.de
+
+- Ken Wimer reworked all SLES and SLED images.
+
+-------------------------------------------------------------------
+Tue Apr 15 13:39:29 UTC 2014 - ke@suse.de
+
+- Add more SLES images.
+- Use SLES contents for SLED, too.
+
+-------------------------------------------------------------------
+Tue Apr 15 09:13:27 UTC 2014 - ke@suse.de
+
+- Add SLES test images.
+- 3.1.2
+
+-------------------------------------------------------------------
+Mon Apr 14 14:20:32 UTC 2014 - ke@suse.de
+
+- Enable SLES; use contents provided by mge.
+- 3.1.1
+
+-------------------------------------------------------------------
+Thu Sep 19 16:47:05 UTC 2013 - lslezak@suse.cz
+
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+
+-------------------------------------------------------------------
+Tue Aug 13 11:21:20 UTC 2013 - lslezak@suse.cz
+
+- fixed build with yast2-devtools >= 3.0.3
+- 3.0.1
+
+-------------------------------------------------------------------
+Tue Jul 30 08:29:33 UTC 2013 - yast-devel@opensuse.org
+
+- version 3.0.0
+
+-------------------------------------------------------------------
+Thu Feb 14 11:02:57 CET 2013 - ke@suse.de
+
+- 2.24.6:
+- Update translations.
+
+-------------------------------------------------------------------
+Mon Feb  4 15:14:06 CET 2013 - ke@suse.de
+
+- 2.24.5:
+- Update translations.
+
+-------------------------------------------------------------------
+Thu Jan 31 14:15:14 CET 2013 - ke@suse.de
+
+- 2.24.4:
+- Update translations.
+
+-------------------------------------------------------------------
+Tue Jan 29 13:59:15 CET 2013 - ke@suse.de
+
+- 2.24.3:
+- Use LibreOffice logo; bnc#793569.
+
+-------------------------------------------------------------------
+Tue Jan 29 13:13:06 CET 2013 - ke@suse.de
+
+- 2.24.2:
+- Update translations.
+
+-------------------------------------------------------------------
+Tue Jan 29 10:08:24 CET 2013 - ke@suse.de
+
+- 2.24.1:
+- SuSELinux: If using automatic installation, online update will not run
+  at the end of the installation; bnc#793710.
+
+-------------------------------------------------------------------
+Mon Aug 13 08:22:55 UTC 2012 - ke@suse.de
+
+- update openSUSE translations.
+
+-------------------------------------------------------------------
+Fri Aug 10 11:03:48 UTC 2012 - ke@suse.de
+
+- update openSUSE translations.
+
+-------------------------------------------------------------------
+Mon Aug  6 15:16:14 UTC 2012 - ke@suse.de
+
+- 2.22.0:
+- Update version number; bnc#671697.
+
+-------------------------------------------------------------------
+Fri Aug  3 09:22:09 UTC 2012 - ke@suse.de
+
+- update openSUSE translations.
+
+-------------------------------------------------------------------
+Fri Jun  1 12:44:44 UTC 2012 - ke@suse.de
+
+- update openSUSE translations.
+
+-------------------------------------------------------------------
+Wed May 16 07:31:42 UTC 2012 - ke@suse.de
+
+- update openSUSE translations.
+
+-------------------------------------------------------------------
+Thu Jan 19 16:50:41 CET 2012 - ke@suse.de
+
+- Fix opensuse.org link; bnc#727049.
+
+-------------------------------------------------------------------
+Wed Dec  7 10:05:55 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Tue Nov  8 10:15:47 UTC 2011 - ke@suse.de
+
+- Actually update the texts...
+
+-------------------------------------------------------------------
+Tue Nov  8 09:38:55 UTC 2011 - ke@suse.de
+
+- Update translations (with min=50%).
+
+-------------------------------------------------------------------
+Fri Nov  4 11:35:35 UTC 2011 - ke@suse.de
+
+- Update translations (with min=50%).
+
+-------------------------------------------------------------------
+Fri Oct 28 12:35:14 UTC 2011 - ke@suse.de
+
+- Update translations (with min=50%).
+
+-------------------------------------------------------------------
+Wed Oct 26 11:54:44 UTC 2011 - ke@suse.de
+
+- Update translations (with min=50%).
+
+-------------------------------------------------------------------
+Thu Oct 13 11:16:25 UTC 2011 - ke@suse.de
+
+- Update translations.
+
+-------------------------------------------------------------------
+Fri Oct  7 12:08:11 UTC 2011 - ke@suse.de
+
+- Update openSUSE slide show translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 11:36:18 CEST 2011 - ke@suse.de
+
+- 2.21.1
+- Update openSUSE slide-show text for 12.1; according to bnc#671697.
+- Apply spec-cleaner proposals such as macro usage instead of variables
+  or standard directories.
+
+-------------------------------------------------------------------
+Fri Sep 16 13:56:06 UTC 2011 - ke@suse.de
+
+- Update openSUSE slide show translations.
+
+-------------------------------------------------------------------
+Fri Aug 26 15:41:21 CEST 2011 - ke@suse.de
+
+- Update openSUSE slide show translations.
+
+-------------------------------------------------------------------
+Fri Jun 17 15:51:17 CEST 2011 - ke@suse.de
+
+- Update openSUSE slide show translations.
+
+-------------------------------------------------------------------
+Tue May 31 09:31:35 CEST 2011 - ke@suse.de
+
+- 2.21.0
+- Update openSUSE slide show template text; provided by aj.
+
+-------------------------------------------------------------------
+Fri Feb 25 10:09:51 CET 2011 - ke@suse.de
+
+- Update openSUSE translations.
+
+-------------------------------------------------------------------
+Thu Feb 17 14:31:36 CET 2011 - ke@suse.de
+
+- Update openSUSE translations.
+
+-------------------------------------------------------------------
+Mon Feb 14 13:14:42 CET 2011 - ke@suse.de
+
+- 2.19.2
+- set version string to 11.4.
+
+-------------------------------------------------------------------
+Fri Feb 11 11:06:33 CET 2011 - ke@suse.de
+
+- Update openSUSE translations.
+
+-------------------------------------------------------------------
+Fri Jun 25 14:45:23 CEST 2010 - ke@suse.de
+
+- Update openSUSE translations.
+
+-------------------------------------------------------------------
+Fri Jun 11 08:51:31 CEST 2010 - ke@suse.de
+
+- Update openSUSE translations.
+
+-------------------------------------------------------------------
+Fri Jun  4 11:10:10 CEST 2010 - ke@suse.de
+
+- Update openSUSE translations.
+
+-------------------------------------------------------------------
+Wed Jun  2 08:36:55 CEST 2010 - ke@suse.de
+
+- Update translations.
+
+-------------------------------------------------------------------
+Wed Jun  2 08:31:42 CEST 2010 - ke@suse.de
+
+- 2.19.1
+- fix openSUSE version string in slideshow.xml.
+
+-------------------------------------------------------------------
+Wed May  5 14:07:20 CEST 2010 - ke@suse.de
+
+- SLED proofreading done; bnc#489002.
+
+-------------------------------------------------------------------
+Tue Mar 30 13:20:24 CEST 2010 - ke@suse.de
+
+- 2.19.0
+- Increase version number; bnc#588396.
+
+-------------------------------------------------------------------
+Mon Feb 15 17:34:45 CET 2010 - seife@opensuse.org  
+ 
+- fix BuildRequires: for FACTORY  
+- disable parallel build
+
+-------------------------------------------------------------------
+Thu Oct 29 11:19:23 CET 2009 - ke@suse.de
+
+- Update translations for openSUSE 11.2 RC2.
+
+-------------------------------------------------------------------
+Fri Oct  9 09:57:33 CEST 2009 - ke@suse.de
+
+- Update translations for openSUSE 11.2 RC1.
+
+-------------------------------------------------------------------
+Thu Sep 24 15:36:21 CEST 2009 - ke@suse.de
+
+- Update translations for openSUSE 11.2 M8..
+
+-------------------------------------------------------------------
+Wed Sep 16 10:36:39 CEST 2009 - ke@suse.de
+
+- 2.18.3:
+- Increate version number; bnc#539275.
+- Update translations.
+
+-------------------------------------------------------------------
+Tue Jul  7 14:00:17 CEST 2009 - ke@suse.de
+
+- 2.18.2:
+- Hardcode package name(s) and description(s) in .spec.in.
+
+-------------------------------------------------------------------
+Tue Jun 23 11:41:10 CEST 2009 - ke@suse.de
+
+- prepare spec yourself: add and adjust helper files coming with
+  bundle-lang-common (provided by coolo).
+
+-------------------------------------------------------------------
+Thu Jun 18 15:07:40 CEST 2009 - ke@suse.de
+
+- Remove translations from SVN and bundle them separately as
+  tar files built in suse-i18n SVN.
+
+-------------------------------------------------------------------
+Wed Jun 17 15:10:34 CEST 2009 - ke@suse.de
+
+- 2.18.1:
+- Update openSUSE translations (11.2).
+
+-------------------------------------------------------------------
+Fri Dec  5 14:05:14 CET 2008 - ke@suse.de
+
+- V.2.17.14:
+- Enable SLED 11 translations.
+
+-------------------------------------------------------------------
+Thu Dec  4 11:54:26 CET 2008 - ke@suse.de
+
+- V.2.17.13:
+- Update German translation from suse-i18n SVN done by Jannick Kuhr;
+  bnc#455973.
+
+-------------------------------------------------------------------
+Thu Nov 20 15:16:18 CET 2008 - ke@suse.de
+
+- V.2.17.12:
+- Update openSUSE translations.
+
+-------------------------------------------------------------------
+Mon Nov 17 13:54:50 CET 2008 - ke@suse.de
+
+- V.2.17.11:
+- SLED: Fix syntax; #444907.
+- openSUSE: Do not mention RealPlayer; reported by Michael Loeffler
+  (bnc#445174).
+
+-------------------------------------------------------------------
+Wed Nov 12 10:53:18 CET 2008 - ke@suse.de
+
+- V.2.17.10:
+- SLED 11: Fix wording, courtesy by Guy Lunardi.
+
+-------------------------------------------------------------------
+Fri Nov  7 11:33:02 CET 2008 - ke@suse.de
+
+- V.2.17.8:
+- Update openSUSE translations.
+
+-------------------------------------------------------------------
+Wed Nov  5 14:36:13 CET 2008 - ke@suse.de
+
+- V.2.17.7:
+- Update SLED 11 contents, courtesy by Stefan Behlert.
+
+-------------------------------------------------------------------
+Mon Nov  3 14:58:43 CET 2008 - ke@suse.de
+
+- V.2.17.6:
+- Fix wording; bnc#439101 reported by Carlos Robinson.
+- Update translations.
+
+-------------------------------------------------------------------
+Fri Oct 24 14:39:44 CEST 2008 - ke@suse.de
+
+- V.2.17.5
+- Fix wording; bnc#384788.
+
+-------------------------------------------------------------------
+Fri Oct 24 12:05:18 CEST 2008 - ke@suse.de
+
+- V.2.17.4
+- Update some translations.
+
+-------------------------------------------------------------------
+Wed Oct 22 11:33:13 CEST 2008 - ke@suse.de
+
+- V.2.17.3
+- Update slide-show text by Joe 'Zonker' Brockmeier; bnc#384788.
+
+-------------------------------------------------------------------
+Thu Jun 26 18:39:15 CEST 2008 - ke@suse.de
+
+- V.2.17.2
+- Update translations.
+- Improve some images  (jimmacfx).
+-------------------------------------------------------------------
+Fri Jun  6 14:59:49 CEST 2008 - ke@suse.de
+
+- V.2.16.11
+- Update translations.
+-------------------------------------------------------------------
+Fri Jun  6 14:58:38 CEST 2008 - ke@suse.de
+
+- V.2.16.10
+- Update translations.
+-------------------------------------------------------------------
+Fri Jun  6 14:57:15 CEST 2008 - ke@suse.de
+
+- V.2.16.9
+- Update translations.
+-------------------------------------------------------------------
+Mon May 26 16:18:47 CEST 2008 - ke@suse.de
+
+- V.2.16.8
+- Update translations.
+-------------------------------------------------------------------
+Mon May 19 18:41:00 CEST 2008 - ke@suse.de
+
+- V.2.16.7
+- Update translations.
+-------------------------------------------------------------------
+Fri May 16 17:59:39 CEST 2008 - ke@suse.de
+
+- V.2.16.6
+- Update translations.
+-------------------------------------------------------------------
+Fri May  9 12:44:30 CEST 2008 - ke@suse.de
+
+- V.2.16.5
+- Update translations.
+-------------------------------------------------------------------
+Mon May  5 13:21:26 CEST 2008 - ke@suse.de
+
+- V.2.16.4
+- Update translations.
+-------------------------------------------------------------------
+Fri May  2 17:31:12 CEST 2008 - ke@suse.de
+
+- V.2.16.3
+- Update translations.
+-------------------------------------------------------------------
+Mon Apr 28 16:11:02 CEST 2008 - ke@suse.de
+
+- V.2.16.2
+- Update translations.
+-------------------------------------------------------------------
+Fri Apr 25 12:07:08 CEST 2008 - ke@suse.de
+
+- V.2.16.1
+- Update translations.
+-------------------------------------------------------------------
+Mon Apr 14 15:45:27 CEST 2008 - ke@suse.de
+
+- V.2.16.0
+- Update slideshow.xml for openSUSE 11.0
+- Update translations from suse-i18n lcn.
+
+-------------------------------------------------------------------
+Mon Mar 17 16:54:33 CET 2008 - sh@suse.de
+
+- Version bump: V 2.16.1
+
+-------------------------------------------------------------------
+Fri Sep 21 10:26:33 CEST 2007 - ke@suse.de
+
+- V.1.15.16:
+- Update sk.
+
+-------------------------------------------------------------------
+Mon Sep 17 14:45:58 CEST 2007 - ke@suse.de
+
+- V.1.15.15:
+- Update de, el, and km.
+
+-------------------------------------------------------------------
+Thu Sep 13 14:53:21 CEST 2007 - ke@suse.de
+
+- V.1.15.14:
+- Update el, fi, pt_BR, and ru.
+
+-------------------------------------------------------------------
+Fri Sep  7 14:59:05 CEST 2007 - ke@suse.de
+
+- V.1.15.13:
+- Update el, hu, km, and sk.
+
+-------------------------------------------------------------------
+Thu Aug 30 13:23:16 CEST 2007 - ke@suse.de
+
+- V.1.15.12:
+- Update el, pt_BR, and km.
+
+-------------------------------------------------------------------
+Mon Aug 27 16:09:43 CEST 2007 - ke@suse.de
+
+- Enable km again; update other translations.
+
+-------------------------------------------------------------------
+Sun Aug 26 19:30:24 CEST 2007 - ke@suse.de
+
+- Remove km temporarily because of encoding issues.
+
+-------------------------------------------------------------------
+Fri Aug 24 15:24:04 CEST 2007 - ke@suse.de
+
+- V.1.15.9:
+- Update or newly add cs, fi, nl, pa, pl, sk, and uk.
+
+-------------------------------------------------------------------
+Mon Aug 20 15:26:20 CEST 2007 - ke@suse.de
+
+- V.2.15.8:
+- Update en_GB, fr, lt, pl, and ru.
+- Add sk.
+
+-------------------------------------------------------------------
+Fri Aug 17 16:17:16 CEST 2007 - ke@suse.de
+
+- V.2.15.6:
+- Update da, hu, and km; Enable da.
+
+-------------------------------------------------------------------
+Mon Aug 13 15:49:00 CEST 2007 - ke@suse.de
+
+- V.2.15.5:
+- Update en en_GB de el hu it km nb pt ru uk zh_TW; remove the other
+  highly incomplete translations.
+
+-------------------------------------------------------------------
+Wed Aug  8 10:00:14 CEST 2007 - ke@suse.de
+
+- V.2.15.4:
+- Re-worked text, thanks to Sabine Soellheim.
+- Revert patch by coolo (2007-07-25); set icecream 0 instead.
+
+-------------------------------------------------------------------
+Fri Jul  6 13:40:44 CEST 2007 - ke@suse.de
+
+- V.2.15.3:
+- Update translation; new languages: el, en_GB, and hr.
+
+-------------------------------------------------------------------
+Tue Jun  5 10:36:54 CEST 2007 - ke@suse.de
+
+- V.2.15.2:
+- Use desktop agnostic slideshow artwork for openSUSE installation
+  provided by Jakub Steiner [#267884.]
+
+-------------------------------------------------------------------
+Fri Apr 27 10:24:22 CEST 2007 - ke@suse.de
+
+- V.2.15.1:
+- For SuSELinux, add translation related files and process based on
+  xml2po.
+
+-------------------------------------------------------------------
+Mon Apr 16 11:18:49 CEST 2007 - ke@suse.de
+
+- Rename one "11_" slide to "12_".
+
+-------------------------------------------------------------------
+Tue Mar 27 11:11:31 CEST 2007 - ke@suse.de
+
+- V.2.15.0:
+- Increase openSUSE version number.
+
+-------------------------------------------------------------------
+Wed Mar 14 15:05:14 CET 2007 - ke@suse.de
+
+- V. 2.14.5:
+- Disable all translations for now.
+
+-------------------------------------------------------------------
+Mon Nov 20 17:06:10 CET 2006 - ke@suse.de
+
+- V. 2.14.4:
+- Update: hu.
+
+-------------------------------------------------------------------
+Fri Nov 17 16:33:24 CET 2006 - ke@suse.de
+
+- V. 2.14.3.
+- Update: de
+
+-------------------------------------------------------------------
+Fri Nov 17 13:47:54 CET 2006 - ke@suse.de
+
+- V. 2.14.2.
+- Update: hu
+
+-------------------------------------------------------------------
+- Checked for merge SP1-Branch -> trunk:
+  No merge intended (10.2 slides are different from SLE slides!)
+- V 2.14.1 
+
+-------------------------------------------------------------------
+Fri Nov 10 10:20:46 CET 2006 - ke@suse.de
+
+- V. 2.13.31
+- Update: bg, da, it, pl, and pt_BR.
+
+-------------------------------------------------------------------
+Mon Nov  6 15:05:35 CET 2006 - ke@suse.de
+
+- V. 2.13.30
+- Update de, es, fr, it, ja, km, lt, nb, zh_CN, and zh_TW.
+
+-------------------------------------------------------------------
+Thu Nov  2 13:51:29 CET 2006 - ke@suse.de
+
+- V. 2.13.29
+- Use the openSUSE logo everywhere; see bug # 216562.
+
+-------------------------------------------------------------------
+Fri Oct 27 11:35:49 CEST 2006 - ke@suse.de
+
+- V. 2.13.27
+- Update cs, da, de, fi, hu, km, lt, nl, ru, and uk.
+
+-------------------------------------------------------------------
+Fri Oct 20 10:40:32 CEST 2006 - ke@suse.de
+
+- V. 2.13.27
+- Add new languages: lt and sv.
+- Update the other languages.
+
+-------------------------------------------------------------------
+Mon Oct  2 14:44:12 CEST 2006 - ke@suse.de
+
+- V. 2.13.26
+- Add new languages: da, et, and ru.
+- Update the other languages.
+
+-------------------------------------------------------------------
+Mon Aug 21 16:35:57 CEST 2006 - ke@suse.de
+
+- V. 2.13.25
+- New slide on documentation.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:13:29 CEST 2006 - ke@suse.de
+
+- V. 2.13.24
+- Update for SL 10.2 alpha3.
+
+-------------------------------------------------------------------
+Fri Jun 23 17:27:53 CEST 2006 - ke@suse.de
+
+- V. 2.13.23
+- Update de, es, fr, it, ja, pt_BR, zh_CN, and zh_TW.
+
+-------------------------------------------------------------------
+Mon Jun 19 16:44:45 CEST 2006 - ke@suse.de
+
+- Update cs, pl, and it for SLED.
+
+-------------------------------------------------------------------
+Fri Jun  9 18:37:31 CEST 2006 - ke@suse.de
+
+- V. 2.13.21
+- Languages for SLED were wrongly checked in; English was in German,
+  etc.
+- Update fi.
+
+-------------------------------------------------------------------
+Thu Jun  8 17:50:30 CEST 2006 - ke@suse.de
+
+- V. 2.13.20
+- Update fi and hu.
+
+-------------------------------------------------------------------
+Thu Jun  8 11:14:11 CEST 2006 - ke@suse.de
+
+- V 2.13.19
+- New product name.
+- New name for slide 10.
+
+-------------------------------------------------------------------
+Thu Jun  1 17:58:31 CEST 2006 - ke@suse.de
+
+- V 2.13.18
+- Add translations from LCN/DOC SVN.
+
+-------------------------------------------------------------------
+Thu May 18 16:22:45 CEST 2006 - sh@suse.de
+
+- V 2.13.17
+- Fixed bug #174804: SLED slide show icons 
+
+-------------------------------------------------------------------
+Tue May  9 17:05:17 CEST 2006 - ke@suse.de
+
+- Update to 2.13.16.
+
+-------------------------------------------------------------------
+Tue May  9 16:30:26 CEST 2006 - sh@suse.de
+
+- Added SLED slide show 
+
+-------------------------------------------------------------------
+Fri Apr 21 17:42:12 CEST 2006 - ke@suse.de
+
+- Update to 2.13.15.
+- Update: ja.
+
+-------------------------------------------------------------------
+Wed Apr 12 16:41:51 CEST 2006 - ke@suse.de
+
+- Update to 2.13.14.
+- Update: pl.
+
+-------------------------------------------------------------------
+Mon Apr 10 14:15:38 CEST 2006 - ke@suse.de
+
+- Update to 2.13.13.
+- Update: km.
+
+-------------------------------------------------------------------
+Fri Apr  7 13:59:24 CEST 2006 - sh@suse.de
+
+- V 2.13.12 
+
+-------------------------------------------------------------------
+Fri Apr  7 13:42:23 CEST 2006 - jw@suse.de
+
+- made firefox-logo (SuSELinux/pic/03_connect.png) compliant with 
+  the mozilla foundation guidelines. Fixes Bug # 163979
+
+-------------------------------------------------------------------
+Thu Apr  6 14:04:49 CEST 2006 - ke@suse.de
+
+- Update to 2.13.11.
+- Update: sl.
+
+-------------------------------------------------------------------
+Fri Mar 24 16:15:47 CET 2006 - ke@suse.de
+
+- Update to 2.13.10.
+- Update: fi pl pt.
+
+-------------------------------------------------------------------
+Wed Mar 22 10:49:10 CET 2006 - ke@suse.de
+
+- Update to 2.13.9.
+- Add uk.
+- Update km.
+- Enable slide 12 for all languages.
+
+-------------------------------------------------------------------
+Mon Mar 13 15:02:33 CET 2006 - ke@suse.de
+
+- Update to 2.13.8.
+- Update: hu.
+
+-------------------------------------------------------------------
+Mon Mar  6 14:07:40 CET 2006 - ke@suse.de
+
+- Update to 2.13.7.
+- Update: km.
+
+-------------------------------------------------------------------
+Mon Feb 13 15:28:42 CET 2006 - ke@suse.de
+
+- Update to 2.13.6:
+- Updated languages: de es fi fr it ja pl pt_BR zh_CN zh_TW.
+
+-------------------------------------------------------------------
+Mon Feb  6 14:03:53 CET 2006 - ke@suse.de
+
+- Update to 2.13.5:
+- Updated languages: pt.
+- Add km for real.
+
+-------------------------------------------------------------------
+Fri Feb  3 15:07:58 CET 2006 - ke@suse.de
+
+- Update to 2.13.4:
+- New language: km.
+- Updated languages: sl, hu, nl, cs, and nb.
+
+-------------------------------------------------------------------
+Mon Jan 30 09:14:26 CET 2006 - ke@suse.de
+
+- New English text; remove no. 12.
+- All translations are incomplete at the moment
+- V 2.13.3
+
+-------------------------------------------------------------------
+Tue Dec  6 11:59:06 CET 2005 - sh@suse.de
+
+- Added pkgconfig to neededforbuild 
+- V 2.13.2
+
+-------------------------------------------------------------------
+Fri Sep  9 16:59:33 CEST 2005 - sh@suse.de
+
+- New SuSE logo in slide show by Ken 
+- V 2.12.7
+
+-------------------------------------------------------------------
+Wed Sep  7 17:14:42 CEST 2005 - sh@suse.de
+
+- Fixed bug #115589 (no slide show translations)
+- V 2.12.6 
+
+-------------------------------------------------------------------
+Fri Sep  2 10:47:03 CEST 2005 - sh@suse.de
+
+- New translations from ke
+- New pics 
+- V 2.12.5
+
+-------------------------------------------------------------------
+Thu Sep  1 13:34:45 CEST 2005 - sh@suse.de
+
+- V 2.12.4
+- New translations from ke
+
+-------------------------------------------------------------------
+Tue Aug  9 16:50:33 CEST 2005 - visnov@suse.cz
+
+- Fix security and devel pictures
+- V 2.12.3 
+
+-------------------------------------------------------------------
+Fri Aug  5 15:42:18 CEST 2005 - visnov@suse.cz
+
+- Updated the slideshow (English only)
+- removed the translations
+- V 2.12.2 
+
+-------------------------------------------------------------------
+Tue Apr  5 15:37:27 CEST 2005 - sh@suse.de
+
+- Merged 9.3 branch to trunk
+- V 2.12.1 
+
+-------------------------------------------------------------------
+Wed Mar 23 14:46:54 CET 2005 - sh@suse.de
+
+- Typo fix by ip / sigi for cs/txt/06_graphics.txt
+- V 2.11.7 
+
+-------------------------------------------------------------------
+Mon Mar 21 16:10:27 CET 2005 - sh@suse.de
+
+- New sl texts by afaber 
+- V 2.11.6
+
+-------------------------------------------------------------------
+Thu Mar 17 16:48:22 CET 2005 - sh@suse.de
+
+- V 2.11.5
+- (Ken) fixed all texts 
+
+-------------------------------------------------------------------
+Wed Mar 16 13:45:41 CET 2005 - sh@suse.de
+
+- V 2.11.4
+- New en texts by ken (proof-read by rwalter)
+
+-------------------------------------------------------------------
+Mon Mar 14 17:34:27 CET 2005 - jsrain@suse.cz
+
+- Added texts for most of the languages
+- 2.11.3
+
+-------------------------------------------------------------------
+Wed Mar  9 13:53:12 CET 2005 - sh@suse.de
+
+- V 2.11.2
+- (Ken) Added missing pic 
+
+-------------------------------------------------------------------
+Mon Mar  7 17:25:06 CET 2005 - sh@suse.de
+
+- First 9.3 pics and texts by Ken 
+- V 2.11.1
+
+-------------------------------------------------------------------
+Wed Sep 29 15:54:59 CEST 2004 - sh@suse.de
+
+- V 2.10.6
+- New cs texts by sigi 
+
+-------------------------------------------------------------------
+Mon Sep 27 15:37:07 CEST 2004 - sh@suse.de
+
+- V 2.10.5
+- Updated texts + pics by cnieman 
+
+-------------------------------------------------------------------
+Mon Sep 13 15:39:03 CEST 2004 - sh@suse.de
+
+- V 2.10.4
+- New pic by cnieman
+- New texts by cnieman 
+
+-------------------------------------------------------------------
+Mon Sep  6 16:30:41 CEST 2004 - sh@suse.de
+
+- V 2.10.3
+- New pic by cnieman
+- New texts by cnieman: sl, en, ja, nl, no, sk 
+
+-------------------------------------------------------------------
+Tue Aug 31 15:39:09 CEST 2004 - sh@suse.de
+
+- V 2.10.2
+- First real pics and en/de texts by cnieman 
+
+-------------------------------------------------------------------
+Mon Aug 23 13:42:30 CEST 2004 - sh@suse.de
+
+- V 2.10.1
+- Removed all old texts and pics (now obsolete)
+- New preliminary texts and pics for new slide show testing by cnieman 
+
+-------------------------------------------------------------------
+Mon Apr  5 17:17:33 CEST 2004 - sh@suse.de
+
+- V 2.9.7 
+- (sigi/cnieman) added ru texts
+
+-------------------------------------------------------------------
+Fri Apr  2 16:36:19 CEST 2004 - sh@suse.de
+
+- License change to GPL
+
+-------------------------------------------------------------------
+Thu Apr  1 14:24:36 CEST 2004 - sh@suse.de
+
+- V 2.9.5
+- New fr, it, sv texts by sigi
+
+-------------------------------------------------------------------
+Wed Mar 31 13:45:15 CEST 2004 - sh@suse.de
+
+- V 2.9.4
+- New bg texts by sigi
+- Some new pics by sigi 
+
+-------------------------------------------------------------------
+Tue Mar 30 12:52:45 CEST 2004 - sh@suse.de
+
+- V 2.9.3
+- Added es, hu, ja, nl texts by cnieman
+- Renamed dk -> da - wrong ISO lang code (use lang, not country)
+- Some new pics by sigi 
+
+-------------------------------------------------------------------
+Mon Mar 22 16:30:37 CET 2004 - sh@suse.de
+
+- V 2.9.3
+- Added dk, no texts by cnieman
+
+-------------------------------------------------------------------
+Mon Mar 22 15:42:41 CET 2004 - sh@suse.de
+
+- Correctly named Czech cs, not cz (cz is the country, lang is cs) 
+
+-------------------------------------------------------------------
+Fri Mar 19 11:54:57 CET 2004 - sh@suse.de
+
+- V 2.9.2
+- New en, cz texts by sigi
+
+-------------------------------------------------------------------
+Tue Mar 16 11:50:51 CET 2004 - sh@suse.de
+
+- V 2.9.1
+- First version for 9.1: New images by sigi, new de texts by cnieman 
+
+-------------------------------------------------------------------
+Mon Sep 22 15:22:28 CEST 2003 - sh@suse.de
+
+- V 2.8.14
+- Typo fixes for Hungarian (sigi) 
+
+-------------------------------------------------------------------
+Mon Sep 22 13:43:12 CEST 2003 - sh@suse.de
+
+- V 2.8.13
+- New Swedish texts by afaber 
+
+-------------------------------------------------------------------
+Fri Sep 19 12:46:25 CEST 2003 - visnov@suse.de
+
+- Fixes for Slovak 
+
+-------------------------------------------------------------------
+Wed Sep 17 15:40:40 CEST 2003 - sh@suse.de
+
+- V 2.8.11
+- Texts for Hungarian (sigi)
+
+-------------------------------------------------------------------
+Tue Sep 16 16:02:35 CEST 2003 - sh@suse.de
+
+- V 2.8.10
+- Fixed bug #30831 (sigi): Old GIMP screen shot
+- Fixed bug #30829 (sigi): Epiphany instead of Galeon in GNOME slide
+
+-------------------------------------------------------------------
+Mon Sep 15 17:45:37 CEST 2003 - msvec@suse.cz
+
+- Galeon -> Epiphany
+- 2.8.9
+
+-------------------------------------------------------------------
+Wed Sep 10 16:50:08 CEST 2003 - visnov@suse.de
+
+- New texts for sk
+
+-------------------------------------------------------------------
+Mon Sep  8 16:24:21 CEST 2003 - sh@suse.de
+
+- V 2.8.8
+- New texts for bg, fr, it, nl from sigi 
+
+-------------------------------------------------------------------
+Fri Sep  5 17:25:34 CEST 2003 - sh@suse.de
+
+- V 2.8.7
+- New images from sigi 
+
+-------------------------------------------------------------------
+Fri Aug 29 13:28:16 CEST 2003 - sh@suse.de
+
+- V 2.8.6
+- New Czech texts from Klara Cihlarova <cihlarov@suse.cz> 
+
+-------------------------------------------------------------------
+Thu Aug 28 16:53:31 CEST 2003 - sh@suse.de
+
+- V 2.8.5
+- Updated German texts from cnieman: Fix for bug #29495 (typos) 
+
+-------------------------------------------------------------------
+Fri Aug 22 13:54:58 CEST 2003 - sh@suse.de
+
+- V 2.8.4
+- New English texts (also used as fallback for nonexistent langs)
+
+-------------------------------------------------------------------
+Thu Aug 21 17:41:02 CEST 2003 - sh@suse.de
+
+- V 2.8.3
+- New slide show images by sigi
+- New German texts by sigi 
+- Removed all other texts (now obsolete)
+- Waiting for English texts as fallback for all non-German users
+  until the final texts will arive
+
+-------------------------------------------------------------------
+Mon Jun 23 16:24:17 CEST 2003 - sh@suse.de
+
+- Own toplevel directories in .spec file for abuild
+
+-------------------------------------------------------------------
+Mon Jun 23 15:39:56 CEST 2003 - sh@suse.de
+
+- Delete unpackaged test environment in .spec file 
+
+-------------------------------------------------------------------
+Tue Jun 10 16:14:08 CEST 2003 - sh@suse.de
+
+- V 2.8.2
+- Fixed RPM-4 build problems: Files installed, but not packaged
+
+-------------------------------------------------------------------
+Tue Mar 18 17:03:07 CET 2003 - sh@suse.de
+
+- V 2.7.12
+- Some fixes in it texts by jj/afaber/Gaetano 
+
+-------------------------------------------------------------------
+Mon Mar 17 17:38:10 CET 2003 - sh@suse.de
+
+- V 2.7.11
+- Added texts for sk (Slovak) by visnov@suse.cz
+
+-------------------------------------------------------------------
+Mon Mar 17 16:09:29 CET 2003 - sh@suse.de
+
+- V 2.7.10
+- New images: mainactor with movie clip, kdevelop rather than
+  qt-designer
+
+-------------------------------------------------------------------
+Mon Mar 17 15:31:21 CET 2003 - sh@suse.de
+
+- New images by Ken
+
+-------------------------------------------------------------------
+Mon Mar 17 12:47:13 CET 2003 - sh@suse.de
+
+- V 2.7.9
+- Rearranged slides (rhaidl)
+- Changed some de texts (rhaidl) 
+
+-------------------------------------------------------------------
+Fri Mar 14 16:03:22 CET 2003 - arvin@suse.de
+
+- fixed encoding in two german texts (bug #25267)
+- added utf-8 check script
+
+-------------------------------------------------------------------
+Fri Mar 14 11:36:40 CET 2003 - sh@suse.de
+
+- V 2.7.7
+- New texts for cs
+- Fixed testsuite build problems (EXTRA_DIST)
+
+-------------------------------------------------------------------
+Thu Mar 13 17:46:19 CET 2003 - sh@suse.de
+
+- V 2.7.6
+- New texts for it
+
+-------------------------------------------------------------------
+Thu Mar 13 16:15:57 CET 2003 - sh@suse.de
+
+- V 2.7.5
+- New texts for fr, es, hu
+
+-------------------------------------------------------------------
+Mon Mar 10 17:12:46 CET 2003 - sh@suse.de
+
+- V 2.7.4
+- New texts / images by jj
+
+-------------------------------------------------------------------
+Mon Mar  3 13:28:31 CET 2003 - sh@suse.de
+
+- New texts / images by jj
+- V 2.7.3
+
+-------------------------------------------------------------------
+Wed Jan 29 16:10:46 CET 2003 - sh@suse.de
+
+- Changed install paths for easier autobuild cooperation
+- V 2.7.2
+
+-------------------------------------------------------------------
+Wed Jan 22 13:10:43 CET 2003 - msvec@suse.de
+
+- handle more slide-shows as subpackages
+- 2.7.1
+
+-------------------------------------------------------------------
+Fri Sep  6 16:59:53 CEST 2002 - sh@suse.de
+
+- V 2.6.4
+- Fixed spanish texts (sigi)
+
+-------------------------------------------------------------------
+Fri Sep  6 15:24:51 CEST 2002 - sh@suse.de
+
+- V 2.6.3
+- New slide images by sigi
+
+-------------------------------------------------------------------
+Tue Aug 13 15:45:54 CEST 2002 - sh@suse.de
+
+- V 2.6.2
+- English texts back from proof reading
+- Reordered slides due to RJW's suggestions
+
+-------------------------------------------------------------------
+Fri Aug 02 13:12:15 CEST 2002 - arvin@suse.de
+
+- don't pack CVS dirs
+- reduced neededforbuild
+
+-------------------------------------------------------------------
+Mon Jul 29 09:41:52 CEST 2002 - msvec@suse.cz
+
+- migrated to new cvs, use auto*, bugfixes
+- 2.6.0
+
+-------------------------------------------------------------------
+Tue Mar 26 14:59:36 CET 2002 - sh@suse.de
+
+- V 2.5.10
+- Fixed bug #15157: wrong background grey in slides
+
+-------------------------------------------------------------------
+Mon Mar 25 14:47:36 CET 2002 - sh@suse.de
+
+- V 2.5.9
+- Czech typo fixes
+- New screen shot - fix for #15467 (de/en language mix)
+
+-------------------------------------------------------------------
+Sat Mar 23 13:10:18 CET 2002 - kukuk@suse.de
+
+- V 2.5.8: Fix typo in german support text [Bug #15410]
+
+-------------------------------------------------------------------
+Tue Mar 19 14:57:29 CET 2002 - sh@suse.de
+
+- V 2.5.7: Hungarian texts have arrived at last (msommer@suse.de)
+
+-------------------------------------------------------------------
+Mon Mar 18 11:19:20 CET 2002 - sh@suse.de
+
+- V 2.5.6: New fr texts, ja back from proofrading (msommer@suse.de)
+- disabled hu texts - no response from Hungarian translators yet
+
+-------------------------------------------------------------------
+Fri Mar 15 15:49:56 CET 2002 - sh@suse.de
+
+- V 2.5.5: New images my wimer@suse.de
+
+-------------------------------------------------------------------
+Wed Mar 13 17:02:45 CET 2002 - kendy@suse.cz
+
+- v. 2.5.4: New Czech texts.
+
+-------------------------------------------------------------------
+Tue Mar 12 15:12:46 CET 2002 - sh@suse.de
+
+- V 2.5.3
+  (msommer): New nl, sv, ja texts
+
+-------------------------------------------------------------------
+Fri Mar  1 14:29:35 CET 2002 - sh@suse.de
+
+- V 2.5.2
+  (msommer): New en, it texts
+
+-------------------------------------------------------------------
+Thu Feb 28 17:15:58 CET 2002 - sh@suse.de
+
+- V 2.5.1
+  (msommer): New German texts
+
+-------------------------------------------------------------------
+Tue Oct  9 14:31:57 CEST 2001 - sh@suse.de
+
+- V 2.4.8
+(msommer + sh): Fixed bug #11645: Bad Hungarian chars in slide show
+
+-------------------------------------------------------------------
+Wed Sep 26 16:01:01 CEST 2001 - sh@suse.de
+
+- V 2.4.7
+- New pic for Linux boxes (English version)
+
+-------------------------------------------------------------------
+Wed Sep 26 14:20:25 CEST 2001 - mfabian@suse.de
+
+- V 2.4.6
+- included fixes for Japanese translations by <tiwai@suse.de>
+
+-------------------------------------------------------------------
+Tue Sep 25 22:53:10 CEST 2001 - mfabian@suse.de
+
+- V 2.4.5
+- added Japanese translations
+
+-------------------------------------------------------------------
+Mon Sep 24 13:51:02 CEST 2001 - sh@suse.de
+
+- V 2.4.4
+- Fixed bug #10803: No czech slide show; moved cz -> cs
+- Minor corrections in de texts by msommer
+
+-------------------------------------------------------------------
+Fri Sep 21 16:51:53 CEST 2001 - sh@suse.de
+
+- V 2.4.3
+- New texts for 12_platform
+- Fixed bug #11138: German advertising of Firewall CD wrong
+  (msommer)
+
+-------------------------------------------------------------------
+Thu Sep 20 12:34:58 CEST 2001 - sh@suse.de
+
+- Added CZ
+- V 2.4.2
+
+-------------------------------------------------------------------
+Tue Sep 18 20:08:25 CEST 2001 - sh@suse.de
+
+- Images (almost) final
+- V 2.4.1
+
+-------------------------------------------------------------------
+Mon Sep  3 16:57:02 CEST 2001 - sh@suse.de
+
+- Initial version
+

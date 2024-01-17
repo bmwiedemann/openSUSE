@@ -1,0 +1,12 @@
+---
+ request-key.conf |    2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/request-key.conf
++++ b/request-key.conf
+@@ -40,3 +40,5 @@ create	user	debug:loop:*	*		|/bin/cat
+ create	user	debug:*		*		/usr/share/keyutils/request-key-debug.sh %k %d %c %S
+ create	cifs.spnego	*	*		/usr/sbin/cifs.upcall %k
+ negate	*	*		*		/bin/keyctl negate %k 30 %S
++create  id_resolver    *	*		/usr/sbin/nfsidmap %k %d -t 600
++

@@ -1,0 +1,36 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 780acf1a..4a24afb2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -18,8 +18,8 @@
+ #
+ 
+ # the oldest stable cmake version we support
+-cmake_minimum_required (VERSION 3.11 FATAL_ERROR)
+-cmake_policy(VERSION 3.11)
++cmake_minimum_required (VERSION 3.10 FATAL_ERROR)
++cmake_policy(VERSION 3.10)
+ 
+ ### set project name (version set later)
+ project (xiphos C CXX)
+diff --git a/cmake/modules/FindBiblesync.cmake b/cmake/modules/FindBiblesync.cmake
+index 0b5261e9..0aee73e1 100755
+--- a/cmake/modules/FindBiblesync.cmake
++++ b/cmake/modules/FindBiblesync.cmake
+@@ -69,9 +69,12 @@ find_package_handle_standard_args(Biblesync
+     REQUIRED_VARS BIBLESYNC_INCLUDE_DIR BIBLESYNC_LIBRARY_DIR
+     VERSION_VAR BIBLESYNC_VERSION)
+ 
+-# If found, add target
++# Another version
+ if(BIBLESYNC_FOUND AND NOT TARGET Biblesync::Biblesync)
+-  add_library(PkgConfig::Biblesync INTERFACE IMPORTED)
+-  target_include_directories(PkgConfig::Biblesync INTERFACE ${BIBLESYNC_INCLUDE_DIR})
+-  target_link_libraries(PkgConfig::Biblesync INTERFACE ${BIBLESYNC_LIBRARY_DIR})
++  add_library(PkgConfig::Biblesync UNKNOWN IMPORTED)
++  set_target_properties(PkgConfig::Biblesync
++    PROPERTIES IMPORTED_LOCATION ${BIBLESYNC_LIBRARY_DIR}
++    INTERFACE_INCLUDE_DIRECTORIES ${BIBLESYNC_INCLUDE_DIR})
+ endif()
++
++

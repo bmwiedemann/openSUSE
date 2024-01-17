@@ -1,0 +1,9 @@
+<package name="redfishtool" project="openSUSE:Factory">
+  <title>A CLI tool for accessing the Redfish API</title>
+  <description>redfishtool is a commandline tool that implements the client side
+of the Redfish RESTful API for Data Center Hardware Management.
+
+</description>
+  <devel project="network:utilities" package="redfishtool"/>
+  <url>https://github.com/DMTF/Redfishtool</url>
+</package>

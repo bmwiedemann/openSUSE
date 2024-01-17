@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e00319d9cf55c00ad61f9298aeea7b8e</srcmd5>
+    <version>2.8.5</version>
+    <time>1572884099</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>744669</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aa1c18eeff936b89932ee69b074d3f47</srcmd5>
+    <version>2.8.8</version>
+    <time>1634677430</time>
+    <user>dimstar_suse</user>
+    <comment>2.8.8</comment>
+    <requestid>926143</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a3135a42a1c43d5df547c25189f7ac36</srcmd5>
+    <version>2.8.8</version>
+    <time>1647974414</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>963891</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>86dde4adadc1c8931cb7b4ba0a73e66a</srcmd5>
+    <version>2.8.9</version>
+    <time>1648739928</time>
+    <user>dimstar_suse</user>
+    <comment>2.8.9</comment>
+    <requestid>966181</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>77d71beedf0456c223c7e89608d0eb32</srcmd5>
+    <version>2.8.9</version>
+    <time>1648841761</time>
+    <user>dimstar_suse</user>
+    <comment>build as a modular jar</comment>
+    <requestid>966358</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>11356a8b49da26198d2f474b5af3f438</srcmd5>
+    <version>2.8.9</version>
+    <time>1651669839</time>
+    <user>dimstar_suse</user>
+    <comment>Add bug id to the changelog</comment>
+    <requestid>974450</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>1fc1a00bfad8ac1fab40113e1357ebd6</srcmd5>
+    <version>2.8.9</version>
+    <time>1653503682</time>
+    <user>dimstar_suse</user>
+    <comment>Sync changes with sle</comment>
+    <requestid>979201</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>6e930f2e9104e2ad1425d4c923249860</srcmd5>
+    <version>2.8.9</version>
+    <time>1694344229</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109953</requestid>
+  </revision>
+</revisionlist>

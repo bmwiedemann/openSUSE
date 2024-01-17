@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Sat Sep  9 13:38:45 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Fri Apr  1 08:00:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with Java >= 9 in order to produce a modular jar by
+  compiling the module-info.java sources with all other classes
+  built with release 8 and still compatible with Java 8
+- Removed patch:
+  * allow-build-with-java8.patch
+    + not needed in this setting
+
+-------------------------------------------------------------------
+Thu Mar 31 09:40:46 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.8.9 (jsc#SLE-24261)
+  * Changes
+    + Make OSGi bundle's dependency on sun.misc optional.
+    + Deprecate Gson.excluder() exposing internal Excluder class.
+    + Prevent Java deserialization of internal classes.
+    + Improve number strategy implementation.
+    + Fix LongSerializationPolicy null handling being inconsistent
+      with Gson.
+    + Support arbitrary Number implementation for Object and Number
+      deserialization.
+    + Bump proguard-maven-plugin from 2.4.0 to 2.5.1.
+    + Don't exclude static local classes.
+    + Fix RuntimeTypeAdapterFactory depending on internal Streams
+      class.
+    + Improve Maven build.
+    + Make dependency on java.sql optional.
+  * fixes bsc#1199064, CVE-2022-25647
+- Removed patch:
+  * sun-misc.patch
+    + integrated upstream
+
+-------------------------------------------------------------------
+Tue Mar 22 10:06:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
+Tue Oct 19 07:08:34 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.8.8
+  * Changes
+    + Fixed issue with recursive types.
+    + Better behaviour with Java 9+ and Unsafe if there is a
+      security manager.
+    + EnumTypeAdapter now works better when ProGuard has obfuscated
+      enum fields.
+- Removed patch:
+  * fix-test.patch
+    + integrated upstream
+- Modified patches:
+  * no-template-plugin.patch
+  * osgi-export-internal.patch
+    + rediff to changed context
+- Added patches:
+  * allow-build-with-java8.patch
+    + lower the unnecessary requirement of Java 9
+  * sun-misc.patch
+    + make import of sun.misc optional since not all versions of
+      jdk export it
+
+-------------------------------------------------------------------
+Fri Nov  1 08:18:35 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of google-gson 2.8.5
