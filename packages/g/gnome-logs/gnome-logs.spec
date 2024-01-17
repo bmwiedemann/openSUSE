@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-logs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@ Summary:        GNOME System Log Viewer
 License:        GPL-3.0-or-later
 Group:          System/X11/Utilities
 URL:            https://wiki.gnome.org/Apps/Logs
-Source0:        https://download.gnome.org/sources/gnome-logs/45/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 
 BuildRequires:  docbook-xsl-stylesheets

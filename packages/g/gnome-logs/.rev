@@ -328,4 +328,12 @@
     <comment>Pushing GNOME 45.rc packages (forwarded request 1109822 from iznogood)</comment>
     <requestid>1110491</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>27f4443359e1e5e32d2989b6027d55c4</srcmd5>
+    <version>45.beta</version>
+    <time>1705526131</time>
+    <user>anag+factory</user>
+    <comment>- Convert to source service for easier updating. (forwarded request 1139287 from dimstar)</comment>
+    <requestid>1139292</requestid>
+  </revision>
 </revisionlist>
