@@ -1,0 +1,5 @@
+<package name="kde-fcstd-thumbnailer" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="graphics" package="kde-fcstd-thumbnailer"/>
+</package>

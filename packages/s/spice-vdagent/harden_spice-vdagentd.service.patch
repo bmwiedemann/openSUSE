@@ -1,0 +1,22 @@
+Index: spice-vdagent-0.21.0/data/spice-vdagentd.service
+===================================================================
+--- spice-vdagent-0.21.0.orig/data/spice-vdagentd.service
++++ spice-vdagent-0.21.0/data/spice-vdagentd.service
+@@ -9,6 +9,17 @@ EnvironmentFile=-/etc/sysconfig/spice-vd
+ ExecStart=/usr/sbin/spice-vdagentd $SPICE_VDAGENTD_EXTRA_ARGS
+ PIDFile=/run/spice-vdagentd/spice-vdagentd.pid
+ PrivateTmp=true
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Restart=on-failure
+ 
+ [Install]

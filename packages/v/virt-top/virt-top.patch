@@ -1,0 +1,203 @@
+--- /dev/null
++++ b/build.sh
+@@ -0,0 +1,6 @@
++set -ex
++pkg=virt-top
++DESTDIR=/dev/shm/$PPID
++dune build   --verbose --for-release-of-packages=${pkg} @install
++dune install --verbose --for-release-of-packages=${pkg}  --prefix=/usr --libdir=$(ocamlc -where) --destdir=${DESTDIR} ${pkg}
++find ${DESTDIR} -ls
+--- /dev/null
++++ b/dune-project
+@@ -0,0 +1,31 @@
++(lang dune 1.11)
++
++(version 1.1.1)
++
++(generate_opam_files false)
++
++(license "GPL-2.0-or-later")
++
++(authors "Richard W.M. Jones <rjones@redhat.com>")
++
++(maintainers "Richard W.M. Jones <rjones@redhat.com>")
++
++(homepage "http://people.redhat.com/~rjones/virt-top/")
++
++(source
++ (uri "git://git.annexia.org/virt-top.git"))
++
++(package
++ (name virt-top)
++ (synopsis "top-like utility")
++ (description
++  "virt-top is a top-like utility for showing stats of virtualized domains. Many keys and command line options are the same as for ordinary top.")
++ (depends
++  (ocaml
++   (>= 4.02.0))
++  (dune
++   (>= 1.11))
++  calendar
++  curses
++  dune-configurator
++  gettext))
+--- /dev/null
++++ b/src/config/discover.ml
+@@ -0,0 +1,25 @@
++module C = Configurator.V1
++
++let () =
++  C.main ~name:"virt-top" (fun c ->
++      let no_pkgconfig : C.Pkg_config.package_conf =
++        { libs = [ "-lxml" ]; cflags = [] }
++      in
++
++      let conf =
++        match C.Pkg_config.get c with
++        | None -> no_pkgconfig
++        | Some pc -> (
++            match
++              C.Pkg_config.query_expr_err pc ~package:"libxml-2.0"
++                ~expr:"libxml-2.0"
++            with
++            | Ok c -> c
++            | Error err -> C.die "%s" err)
++      in
++
++      let config_h = [] in
++
++      C.C_define.gen_header_file c ~fname:"config.h" config_h;
++      C.Flags.write_sexp "c_flags.sexp" (List.rev_append [ "-I." ] conf.cflags);
++      C.Flags.write_sexp "c_library_flags.sexp" conf.libs)
+--- /dev/null
++++ b/src/config/dune
+@@ -0,0 +1,3 @@
++(executable
++ (name discover)
++ (libraries dune-configurator))
+--- /dev/null
++++ b/src/dune
+@@ -0,0 +1,51 @@
++(library
++ (name xml)
++ (modules xml)
++ (libraries libvirt)
++ (c_names xml-c)
++ (c_flags
++  (:include c_flags.sexp))
++ (c_library_flags
++  (:include c_library_flags.sexp)))
++
++(executable
++ (name main)
++ (public_name virt-top)
++ (modules
++  collect
++  csv_output
++  main
++  opt_calendar
++  opt_gettext
++  redraw
++  screen
++  stream_output
++  top
++  types
++  utils
++  version)
++ (libraries calendar curses gettext gettext-stub libvirt str xml))
++
++(rule
++ (target version.ml)
++ (action
++  (write-file %{target} "let version = \"%{version:virt-top}\"")))
++
++(rule
++ (targets c_flags.sexp c_library_flags.sexp config.h)
++ (deps
++  (:discover config/discover.exe))
++ (action
++  (run %{discover})))
++
++(install
++ (files virt-top.1)
++ (section man)
++ (package virt-top))
++
++(rule
++ (target virt-top.1)
++ (deps virt-top.pod)
++ (action
++  (system
++   "pod2man -u -s 1 -c 'Virtualization Support' -r '%{version:virt-top}' %{deps} %{target}")))
+--- a/src/opt_calendar.ml
++++ b/src/opt_calendar.ml
+@@ -25,7 +25,8 @@ open Printf
+ 
+ open Opt_gettext.Gettext ;;
+ 
+-Top.parse_date_time :=
++(* this is not optional *)
++let parse_date_time =
+ fun time ->
+   let cal : Calendar.t =
+     (* time is "+something" *)
+--- /dev/null
++++ b/src/opt_calendar.mli
+@@ -0,0 +1 @@
++val parse_date_time : (string -> float)
+--- /dev/null
++++ b/src/opt_gettext.ml
+@@ -0,0 +1,9 @@
++module Gettext =
++  Gettext.Program
++    (struct
++      let textdomain = "virt-top"
++      let codeset = None
++      let dir = None
++      let dependencies = Gettext.init
++    end)
++    (GettextStub.Native)
+--- a/src/top.ml
++++ b/src/top.ml
+@@ -20,6 +20,7 @@
+ open Printf
+ open Curses
+ 
++open Opt_calendar
+ open Opt_gettext.Gettext
+ open Utils
+ open Types
+@@ -32,13 +33,6 @@ module N = Libvirt.Network
+ 
+ let rcfile = ".virt-toprc"
+ 
+-(* Hook for calendar support (see [opt_calendar.ml]). *)
+-let parse_date_time : (string -> float) ref =
+-  ref (
+-    fun _ ->
+-      failwith (s_"virt-top was compiled without support for dates and times")
+-  )
+-
+ (* Init file. *)
+ type init_file = NoInitFile | DefaultInitFile | InitFile of string
+ 
+@@ -81,7 +75,7 @@ let start_up () =
+     csv_enabled := true
+   and no_init_file () = init_file := NoInitFile
+   and set_init_file filename = init_file := InitFile filename
+-  and set_end_time time = end_time := Some ((!parse_date_time) time)
++  and set_end_time time = end_time := Some ((Opt_calendar.parse_date_time) time)
+   and display_version () =
+     printf "virt-top %s ocaml-libvirt %s\n"
+       Version.version Libvirt_version.version;
+--- a/src/top.mli
++++ b/src/top.mli
+@@ -17,8 +17,5 @@
+    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *)
+ 
+-(* Hook for [Opt_calendar] to override (if present). *)
+-val parse_date_time : (string -> float) ref
+-
+ val start_up : unit -> Types.setup
+ val main_loop : Types.setup -> unit

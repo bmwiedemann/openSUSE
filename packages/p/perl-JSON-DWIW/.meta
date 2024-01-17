@@ -1,0 +1,20 @@
+<package name="perl-JSON-DWIW" project="openSUSE:Factory">
+  <title>JSON converter that Does What I Want</title>
+  <description>Other JSON modules require setting several parameters before calling the
+conversion methods to do what I want. This module does things by default
+that I think should be done when working with JSON in Perl. This module
+also encodes and decodes faster than the JSON manpage.pm and the JSON::Syck
+manpage in my benchmarks.
+
+This means that any piece of data in Perl (assuming it's valid unicode)
+will get converted to something in JSON instead of throwing an exception.
+It also means that output will be strict JSON, while accepted input will be
+flexible, without having to set any options.
+
+For a list of changes in recent versions, see the documentation for the
+JSON::DWIW::Changes manpage.
+
+This module can be downloaded from the
+http://www.cpan.org/authors/id/D/DO/DOWENS/ manpage.</description>
+  <devel project="devel:languages:perl" package="perl-JSON-DWIW"/>
+</package>

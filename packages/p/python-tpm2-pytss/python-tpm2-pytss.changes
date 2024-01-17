@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Fri Feb 17 13:17:22 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add fix_pycparse_float128.patch to fix issue in 32bits platforms
+
+-------------------------------------------------------------------
+Thu Feb 16 15:30:10 UTC 2023 - aplanas@suse.com
+
+- Update to version 2.1.0:
+  * CHANGELOG: update for 2.1.0
+  * SECURITY.md: initial commit
+  * TCTISPIHelper: add missing pass
+  * TCTISPIHelper: update docs on exceptions
+  * build(deps): bump gitpython from 3.1.24 to 3.1.30 in /docs
+  * ci: set publish to use ubuntu-20.04
+  * CHANGELOG: update for 2.1.0-rc0
+  * TCTI: Implement bindings to spi-helper
+  * ci: add 4.0.0, drop 2.4.6
+  * docs: fix PyTCTI members
+  * use released tss2 versions for library version checking
+  * build(deps): bump certifi from 2021.10.8 to 2022.12.7 in /docs
+  * Add util functions to convert a credential from and to tpm2-tools format
+  * ESAPI: start_auth_session support strs for auth_hash
+  * ESAPI: start_auth_session support strings for symdef
+  * types: add parse to TPMT_SYM_[DEF|_OBJECT]
+  * internal: check for sphinx not unittest.mock for docs workaround
+
+-------------------------------------------------------------------
+Thu Dec 08 10:33:50 UTC 2022 - aplanas@suse.com
+
+- Update to version 2.0.0:
+  * CHANGELOG: update for 2.0 release
+  * CHANGELOG: move breaking items to changed
+  * Revert "ci: publish_pkg update to tss 4.0.0-rc0"
+  * ci: publish_pkg update to tss 4.0.0-rc0
+  * ci: update publish script to py3.7
+  * README: Update mailing list
+  * CHANGELOG: update for 2.0-rc0
+  * docs: add PyTCTI to docs
+  * README: add newest libraries
+  * FAPI: drop unused import Dict
+- Drop patch 0001-test_crypto-fix-test_ecc_bad_curves-assert.patch
+
+-------------------------------------------------------------------
+Mon Jul 11 07:35:34 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Initial package for 1.2.0

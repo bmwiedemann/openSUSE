@@ -1,0 +1,5 @@
+<package name="virt-top" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ocaml" package="virt-top"/>
+</package>

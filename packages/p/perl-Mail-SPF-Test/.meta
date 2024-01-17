@@ -1,0 +1,7 @@
+<package name="perl-Mail-SPF-Test" project="openSUSE:Factory">
+  <title></title>
+  <description>
+
+  </description>
+  <devel project="devel:languages:perl" package="perl-Mail-SPF-Test"/>
+</package>

@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cc78ba04ccad2872e77e2b0db127d625</srcmd5>
+    <version>1.001</version>
+    <time>1348669549</time>
+    <user>coolo</user>
+    <comment>Needed for perl-Mail-SPF package.</comment>
+    <requestid>135878</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>cc78ba04ccad2872e77e2b0db127d625</srcmd5>
+    <version>1.001</version>
+    <time>1359109733</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>9df0c7f26a0262e48db1d190752327f6</srcmd5>
+    <version>1.001</version>
+    <time>1365140183</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>162462</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>9df0c7f26a0262e48db1d190752327f6</srcmd5>
+    <version>1.001</version>
+    <time>1379663740</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>9df0c7f26a0262e48db1d190752327f6</srcmd5>
+    <version>1.001</version>
+    <time>1409302370</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>
