@@ -1,7 +1,7 @@
 #
 # spec file for package gtksourceview
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -145,7 +145,7 @@ install -m 644 %{S:1} %{buildroot}%{_datadir}/gtksourceview-3.0/language-specs/
 %{_libdir}/libgtksourceview-3.0.so
 %{_libdir}/pkgconfig/gtksourceview-3.0.pc
 %{_datadir}/gir-1.0/GtkSource-3.0.gir
-%{_datadir}/gtk-doc/html/gtksourceview-3.0/
+%{_datadir}/gtk-doc/
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/gtksourceview-3.0.*
 

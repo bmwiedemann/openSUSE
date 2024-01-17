@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 16 16:44:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a
+  consequence cannot be held responsible to deliver that basic
+  directory structure.
+
+-------------------------------------------------------------------
 Fri Nov  5 22:07:31 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Require libgtksourceview-3_0-1 instead of gtksourceview in the
