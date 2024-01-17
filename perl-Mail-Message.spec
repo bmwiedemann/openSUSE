@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mail-Message
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define cpan_name Mail-Message
 Name:           perl-Mail-Message
-Version:        3.14.0
+Version:        3.15.0
 Release:        0
-%define cpan_version 3.014
+%define cpan_version 3.015
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Processing MIME messages
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -47,56 +47,56 @@ Requires:       perl(Mail::Address) >= 2.17
 Requires:       perl(Time::Zone)
 Requires:       perl(URI) >= 1.23
 Requires:       perl(User::Identity) >= 1.02
-Provides:       perl(Mail::Box::FastScalar) = 3.14.0
-Provides:       perl(Mail::Box::Parser) = 3.14.0
-Provides:       perl(Mail::Box::Parser::Perl) = 3.14.0
-Provides:       perl(Mail::Message) = 3.14.0
-Provides:       perl(Mail::Message::Body) = 3.14.0
-Provides:       perl(Mail::Message::Body::File) = 3.14.0
-Provides:       perl(Mail::Message::Body::Lines) = 3.14.0
-Provides:       perl(Mail::Message::Body::Multipart) = 3.14.0
-Provides:       perl(Mail::Message::Body::Nested) = 3.14.0
-Provides:       perl(Mail::Message::Body::String) = 3.14.0
-Provides:       perl(Mail::Message::Convert) = 3.14.0
-Provides:       perl(Mail::Message::Convert::EmailSimple) = 3.14.0
-Provides:       perl(Mail::Message::Convert::Html) = 3.14.0
-Provides:       perl(Mail::Message::Convert::HtmlFormatPS) = 3.14.0
-Provides:       perl(Mail::Message::Convert::HtmlFormatText) = 3.14.0
-Provides:       perl(Mail::Message::Convert::MailInternet) = 3.14.0
-Provides:       perl(Mail::Message::Convert::MimeEntity) = 3.14.0
-Provides:       perl(Mail::Message::Convert::TextAutoformat) = 3.14.0
-Provides:       perl(Mail::Message::Field) = 3.14.0
-Provides:       perl(Mail::Message::Field::AddrGroup) = 3.14.0
-Provides:       perl(Mail::Message::Field::Address) = 3.14.0
-Provides:       perl(Mail::Message::Field::Addresses) = 3.14.0
-Provides:       perl(Mail::Message::Field::Attribute) = 3.14.0
-Provides:       perl(Mail::Message::Field::AuthResults) = 3.14.0
-Provides:       perl(Mail::Message::Field::DKIM) = 3.14.0
-Provides:       perl(Mail::Message::Field::Date) = 3.14.0
-Provides:       perl(Mail::Message::Field::Fast) = 3.14.0
-Provides:       perl(Mail::Message::Field::Flex) = 3.14.0
-Provides:       perl(Mail::Message::Field::Full) = 3.14.0
-Provides:       perl(Mail::Message::Field::Structured) = 3.14.0
-Provides:       perl(Mail::Message::Field::URIs) = 3.14.0
-Provides:       perl(Mail::Message::Field::Unstructured) = 3.14.0
-Provides:       perl(Mail::Message::Head) = 3.14.0
-Provides:       perl(Mail::Message::Head::Complete) = 3.14.0
-Provides:       perl(Mail::Message::Head::FieldGroup) = 3.14.0
-Provides:       perl(Mail::Message::Head::ListGroup) = 3.14.0
-Provides:       perl(Mail::Message::Head::Partial) = 3.14.0
-Provides:       perl(Mail::Message::Head::ResentGroup) = 3.14.0
-Provides:       perl(Mail::Message::Head::SpamGroup) = 3.14.0
-Provides:       perl(Mail::Message::Part) = 3.14.0
-Provides:       perl(Mail::Message::Replace::MailHeader) = 3.14.0
-Provides:       perl(Mail::Message::Replace::MailInternet) = 3.14.0
-Provides:       perl(Mail::Message::Test) = 3.14.0
-Provides:       perl(Mail::Message::TransferEnc) = 3.14.0
-Provides:       perl(Mail::Message::TransferEnc::Base64) = 3.14.0
-Provides:       perl(Mail::Message::TransferEnc::Binary) = 3.14.0
-Provides:       perl(Mail::Message::TransferEnc::EightBit) = 3.14.0
-Provides:       perl(Mail::Message::TransferEnc::QuotedPrint) = 3.14.0
-Provides:       perl(Mail::Message::TransferEnc::SevenBit) = 3.14.0
-Provides:       perl(Mail::Reporter) = 3.14.0
+Provides:       perl(Mail::Box::FastScalar) = %{version}
+Provides:       perl(Mail::Box::Parser) = %{version}
+Provides:       perl(Mail::Box::Parser::Perl) = %{version}
+Provides:       perl(Mail::Message) = %{version}
+Provides:       perl(Mail::Message::Body) = %{version}
+Provides:       perl(Mail::Message::Body::File) = %{version}
+Provides:       perl(Mail::Message::Body::Lines) = %{version}
+Provides:       perl(Mail::Message::Body::Multipart) = %{version}
+Provides:       perl(Mail::Message::Body::Nested) = %{version}
+Provides:       perl(Mail::Message::Body::String) = %{version}
+Provides:       perl(Mail::Message::Convert) = %{version}
+Provides:       perl(Mail::Message::Convert::EmailSimple) = %{version}
+Provides:       perl(Mail::Message::Convert::Html) = %{version}
+Provides:       perl(Mail::Message::Convert::HtmlFormatPS) = %{version}
+Provides:       perl(Mail::Message::Convert::HtmlFormatText) = %{version}
+Provides:       perl(Mail::Message::Convert::MailInternet) = %{version}
+Provides:       perl(Mail::Message::Convert::MimeEntity) = %{version}
+Provides:       perl(Mail::Message::Convert::TextAutoformat) = %{version}
+Provides:       perl(Mail::Message::Field) = %{version}
+Provides:       perl(Mail::Message::Field::AddrGroup) = %{version}
+Provides:       perl(Mail::Message::Field::Address) = %{version}
+Provides:       perl(Mail::Message::Field::Addresses) = %{version}
+Provides:       perl(Mail::Message::Field::Attribute) = %{version}
+Provides:       perl(Mail::Message::Field::AuthResults) = %{version}
+Provides:       perl(Mail::Message::Field::DKIM) = %{version}
+Provides:       perl(Mail::Message::Field::Date) = %{version}
+Provides:       perl(Mail::Message::Field::Fast) = %{version}
+Provides:       perl(Mail::Message::Field::Flex) = %{version}
+Provides:       perl(Mail::Message::Field::Full) = %{version}
+Provides:       perl(Mail::Message::Field::Structured) = %{version}
+Provides:       perl(Mail::Message::Field::URIs) = %{version}
+Provides:       perl(Mail::Message::Field::Unstructured) = %{version}
+Provides:       perl(Mail::Message::Head) = %{version}
+Provides:       perl(Mail::Message::Head::Complete) = %{version}
+Provides:       perl(Mail::Message::Head::FieldGroup) = %{version}
+Provides:       perl(Mail::Message::Head::ListGroup) = %{version}
+Provides:       perl(Mail::Message::Head::Partial) = %{version}
+Provides:       perl(Mail::Message::Head::ResentGroup) = %{version}
+Provides:       perl(Mail::Message::Head::SpamGroup) = %{version}
+Provides:       perl(Mail::Message::Part) = %{version}
+Provides:       perl(Mail::Message::Replace::MailHeader) = %{version}
+Provides:       perl(Mail::Message::Replace::MailInternet) = %{version}
+Provides:       perl(Mail::Message::Test) = %{version}
+Provides:       perl(Mail::Message::TransferEnc) = %{version}
+Provides:       perl(Mail::Message::TransferEnc::Base64) = %{version}
+Provides:       perl(Mail::Message::TransferEnc::Binary) = %{version}
+Provides:       perl(Mail::Message::TransferEnc::EightBit) = %{version}
+Provides:       perl(Mail::Message::TransferEnc::QuotedPrint) = %{version}
+Provides:       perl(Mail::Message::TransferEnc::SevenBit) = %{version}
+Provides:       perl(Mail::Reporter) = %{version}
 %define         __perllib_provides /bin/true
 %{perl_requires}
 
