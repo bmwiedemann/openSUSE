@@ -1,0 +1,98 @@
+From 3ca837f4fa0ca0e493f75eaa40d0989aae0c669e Mon Sep 17 00:00:00 2001
+From: David Benjamin <davidben@chromium.org>
+Date: Wed, 13 Sep 2023 15:02:18 +0000
+Subject: [PATCH] Fix some IWYU issues around absl APIs
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+These files were relying on internal absl includes to pull in
+absl::make_unique and absl::WrapUnique. The former can just be
+std::make_unique which requires no extra includes. The latter has a base
+version, so let's just use that until/unless we ever decide to align on
+the absl one.
+
+Bug: 1373619
+Change-Id: I157104a415ae71bd268556b7bf601d46661d85e1
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4858866
+Reviewed-by: Ben Kelly <wanderview@chromium.org>
+Reviewed-by: Robert Kaplow <rkaplow@chromium.org>
+Code-Coverage: findit-for-me@appspot.gserviceaccount.com <findit-for-me@appspot.gserviceaccount.com>
+Reviewed-by: Sébastien Lalancette <seblalancette@chromium.org>
+Commit-Queue: David Benjamin <davidben@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1196004}
+---
+ .../browser/commands/mac_key_rotation_command_unittest.cc      | 3 ++-
+ .../common/service_worker/service_worker_router_evaluator.cc   | 2 +-
+ .../service_worker/controller_service_worker_connector.cc      | 2 +-
+ services/metrics/public/cpp/mojo_ukm_recorder.cc               | 3 ++-
+ 4 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/chrome/browser/enterprise/connectors/device_trust/key_management/browser/commands/mac_key_rotation_command_unittest.cc b/chrome/browser/enterprise/connectors/device_trust/key_management/browser/commands/mac_key_rotation_command_unittest.cc
+index 884db50bc66e42c..83680ebb9f6d955 100644
+--- a/chrome/browser/enterprise/connectors/device_trust/key_management/browser/commands/mac_key_rotation_command_unittest.cc
++++ b/chrome/browser/enterprise/connectors/device_trust/key_management/browser/commands/mac_key_rotation_command_unittest.cc
+@@ -7,6 +7,7 @@
+ #include <string>
+ #include <utility>
+ 
++#include "base/memory/ptr_util.h"
+ #include "base/memory/raw_ptr.h"
+ #include "base/memory/scoped_refptr.h"
+ #include "base/test/task_environment.h"
+@@ -88,7 +89,7 @@ class MacKeyRotationCommandTest : public testing::Test {
+         std::move(mock_network_delegate),
+         std::move(mock_persistence_delegate)));
+ 
+-    rotation_command_ = absl::WrapUnique(
++    rotation_command_ = base::WrapUnique(
+         new MacKeyRotationCommand(test_shared_loader_factory_));
+   }
+ 
+diff --git a/content/common/service_worker/service_worker_router_evaluator.cc b/content/common/service_worker/service_worker_router_evaluator.cc
+index cfb6f36d75953f8..0084051a4854969 100644
+--- a/content/common/service_worker/service_worker_router_evaluator.cc
++++ b/content/common/service_worker/service_worker_router_evaluator.cc
+@@ -446,7 +446,7 @@ ServiceWorkerRouterEvaluator::~ServiceWorkerRouterEvaluator() = default;
+ 
+ void ServiceWorkerRouterEvaluator::Compile() {
+   for (const auto& r : rules_.rules) {
+-    std::unique_ptr<RouterRule> rule = absl::make_unique<RouterRule>();
++    std::unique_ptr<RouterRule> rule = std::make_unique<RouterRule>();
+     if (!rule->SetRule(r)) {
+       return;
+     }
+diff --git a/content/renderer/service_worker/controller_service_worker_connector.cc b/content/renderer/service_worker/controller_service_worker_connector.cc
+index e3b5036cb12df1b..86acf848de369aa 100644
+--- a/content/renderer/service_worker/controller_service_worker_connector.cc
++++ b/content/renderer/service_worker/controller_service_worker_connector.cc
+@@ -36,7 +36,7 @@ ControllerServiceWorkerConnector::ControllerServiceWorkerConnector(
+       base::Unretained(this)));
+   if (router_rules) {
+     router_evaluator_ =
+-        absl::make_unique<content::ServiceWorkerRouterEvaluator>(*router_rules);
++        std::make_unique<content::ServiceWorkerRouterEvaluator>(*router_rules);
+     CHECK(router_evaluator_->IsValid());
+     if (remote_cache_storage) {
+       cache_storage_.Bind(std::move(remote_cache_storage));
+diff --git a/services/metrics/public/cpp/mojo_ukm_recorder.cc b/services/metrics/public/cpp/mojo_ukm_recorder.cc
+index bb97a43c82c1c82..9ff817b89858f05 100644
+--- a/services/metrics/public/cpp/mojo_ukm_recorder.cc
++++ b/services/metrics/public/cpp/mojo_ukm_recorder.cc
+@@ -7,6 +7,7 @@
+ #include <utility>
+ 
+ #include "base/functional/bind.h"
++#include "base/memory/ptr_util.h"
+ #include "base/metrics/histogram_macros.h"
+ #include "base/notreached.h"
+ #include "mojo/public/cpp/bindings/pending_remote.h"
+@@ -17,7 +18,7 @@ namespace ukm {
+ 
+ std::unique_ptr<ukm::MojoUkmRecorder> MojoUkmRecorder::Create(
+     mojom::UkmRecorderFactory& factory) {
+-  return absl::WrapUnique(new MojoUkmRecorder(factory));
++  return base::WrapUnique(new MojoUkmRecorder(factory));
+ }
+ 
+ MojoUkmRecorder::MojoUkmRecorder(mojom::UkmRecorderFactory& factory) {

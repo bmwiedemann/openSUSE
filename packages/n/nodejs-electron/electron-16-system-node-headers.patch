@@ -1,0 +1,15 @@
+Index: electron-17.1.0/third_party/electron_node/common.gypi
+===================================================================
+--- electron-17.1.0.orig/third_party/electron_node/common.gypi	2022-03-07 17:39:13.557371769 +0100
++++ electron-17.1.0/third_party/electron_node/common.gypi	2022-03-09 08:29:08.214665848 +0100
+@@ -405,6 +405,10 @@
+           'BUILDING_UV_SHARED=1',
+         ],
+       }],
++      [ 'OS in "linux"', {
++        'cflags': [ '-I/usr/include/electron' ],
++        'libraries': [ '-lz' ],
++      }],
+       [ 'OS in "linux freebsd openbsd solaris aix os400"', {
+         'cflags': [ '-pthread' ],
+         'ldflags': [ '-pthread' ],

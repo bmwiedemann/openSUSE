@@ -1,0 +1,29 @@
+From c72d1bc32d577ca75e3d3b8f8531883b82a07fe7 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Wed, 4 Oct 2023 16:25:15 +0000
+Subject: [PATCH] IWYU: add stdint.h in media::DecoderBufferSideData
+
+Bug: 957519
+Change-Id: Iadcc8dd48af52f4238a09797386fb0cfc3c061d0
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4909837
+Reviewed-by: Mark Foltz <mfoltz@chromium.org>
+Auto-Submit: Stephan Hartmann <stha09@googlemail.com>
+Commit-Queue: Mark Foltz <mfoltz@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1205299}
+---
+ media/base/decoder_buffer_side_data.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/media/base/decoder_buffer_side_data.h b/media/base/decoder_buffer_side_data.h
+index 216fb60f708c7d1..17f7e0f82f9ddd2 100644
+--- a/media/base/decoder_buffer_side_data.h
++++ b/media/base/decoder_buffer_side_data.h
+@@ -5,6 +5,8 @@
+ #ifndef MEDIA_BASE_DECODER_BUFFER_SIDE_DATA_H_
+ #define MEDIA_BASE_DECODER_BUFFER_SIDE_DATA_H_
+ 
++#include <stdint.h>
++
+ #include <vector>
+ 
+ #include "media/base/media_export.h"

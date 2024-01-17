@@ -1,0 +1,29 @@
+From a79de88754003cabac28c28c32ffabcdc1575ede Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Wed, 4 Oct 2023 18:16:59 +0000
+Subject: [PATCH] IWYU: add limits for std::numeric_limits in
+ utf_string_conversion_utils
+
+Bug: 957519
+Change-Id: Id50c855cc2a5af4121c60fb0a1aa98f63650e1a2
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4911077
+Reviewed-by: Daniel Cheng <dcheng@chromium.org>
+Commit-Queue: Daniel Cheng <dcheng@chromium.org>
+Auto-Submit: Stephan Hartmann <stha09@googlemail.com>
+Cr-Commit-Position: refs/heads/main@{#1205344}
+---
+ base/strings/utf_string_conversion_utils.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/base/strings/utf_string_conversion_utils.h b/base/strings/utf_string_conversion_utils.h
+index 230da76eab2f2d1..01b5347e047f4b4 100644
+--- a/base/strings/utf_string_conversion_utils.h
++++ b/base/strings/utf_string_conversion_utils.h
+@@ -11,6 +11,7 @@
+ #include <stddef.h>
+ #include <stdint.h>
+ 
++#include <limits>
+ #include <string>
+ 
+ #include "base/base_export.h"

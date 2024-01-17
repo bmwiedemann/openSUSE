@@ -1,0 +1,23 @@
+[ 8128s] ../../electron/shell/browser/api/electron_api_app.cc: In function 'constexpr int electron::api::{anonymous}::GetPathConstant(base::StringPiece)':
+[ 8128s] ../../electron/shell/browser/api/electron_api_app.cc:507:33: error: call to non-'constexpr' function 'base::internal::flat_tree<Key, GetKeyFromValue, KeyCompare, Container>::const_iterator base::internal::flat_tree<Key, GetKeyFromValue, KeyCompare, Container>::find(const Key&) const [with Key = base::BasicStringPiece<char>; GetKeyFromValue = base::internal::GetFirst; KeyCompare = std::less<void>; Container = std::array<std::pair<const base::BasicStringPiece<char>, int>, 18>; const_iterator = const std::pair<const base::BasicStringPiece<char>, int>*]'
+[ 8128s]   507 |   const auto* iter = Lookup.find(name);
+[ 8128s]       |                      ~~~~~~~~~~~^~~~~~
+[ 8128s] In file included from ../../base/containers/flat_set.h:11,
+[ 8128s]                  from ../../base/containers/id_map.h:20,
+[ 8128s]                  from ../../content/public/browser/render_process_host.h:16:
+[ 8128s] ../../base/containers/flat_tree.h:984:6: note: 'base::internal::flat_tree<Key, GetKeyFromValue, KeyCompare, Container>::const_iterator base::internal::flat_tree<Key, GetKeyFromValue, KeyCompare, Container>::find(const Key&) const [with Key = base::BasicStringPiece<char>; GetKeyFromValue = base::internal::GetFirst; KeyCompare = std::less<void>; Container = std::array<std::pair<const base::BasicStringPiece<char>, int>, 18>; const_iterator = const std::pair<const base::BasicStringPiece<char>, int>*]' declared here
+[ 8128s]   984 | auto flat_tree<Key, GetKeyFromValue, KeyCompare, Container>::find(
+[ 8128s]       |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+--- src/electron/shell/browser/api/electron_api_app.cc.old	2023-08-31 17:37:41.267399900 +0000
++++ src/electron/shell/browser/api/electron_api_app.cc	2023-09-03 10:12:16.007253000 +0000
+@@ -474,7 +474,7 @@ IconLoader::IconSize GetIconSizeByString
+ }
+ 
+ // Return the path constant from string.
+-constexpr int GetPathConstant(base::StringPiece name) {
++int GetPathConstant(base::StringPiece name) {
+   // clang-format off
+   constexpr auto Lookup = base::MakeFixedFlatMapSorted<base::StringPiece, int>({
+       {"appData", DIR_APP_DATA},

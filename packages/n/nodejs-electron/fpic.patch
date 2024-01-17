@@ -1,0 +1,118 @@
+Build targets which go in shared libraries as PIC to avoid linker error
+Use -fpic for code which goes only in dlls (gives smaller code),
+    -fPIC for code which goes in both dlls and main executable
+
+
+--- a/third_party/angle/BUILD.gn
++++ b/third_party/angle/BUILD.gn
+@@ -119,6 +119,8 @@
+ 
+ # This config is applied to internal Angle targets (not pushed to dependents).
+ config("internal_config") {
++  cflags = ["-fPIC", "-fno-semantic-interposition"]
++  asmflags = ["-fPIC", "-fno-semantic-interposition"]
+   include_dirs = [
+     "include",
+     "src",
+--- a/third_party/angle/src/third_party/volk/BUILD.gn
++++ b/third_party/angle/src/third_party/volk/BUILD.gn
+@@ -13,6 +13,8 @@
+ }
+ 
+ source_set("volk") {
++  cflags = ["-fPIC", "-fno-semantic-interposition"]
++  asmflags = ["-fPIC", "-fno-semantic-interposition"]
+   sources = [
+     "volk.c",
+     "volk.h",
+--- a/third_party/swiftshader/BUILD.gn
++++ b/third_party/swiftshader/BUILD.gn
+@@ -15,9 +15,9 @@
+ import("src/Reactor/reactor.gni")
+ 
+ config("swiftshader_config") {
+-  cflags = []
++  cflags = ["-fpic", "-fno-semantic-interposition"]
+   defines = []
+-  asmflags = []
++  asmflags = ["-fpic", "-fno-semantic-interposition"]
+ 
+   if (is_clang) {
+     cflags += [ "-Wno-shadow" ]
+--- a/third_party/swiftshader/third_party/SPIRV-Tools/BUILD.gn
++++ b/third_party/swiftshader/third_party/SPIRV-Tools/BUILD.gn
+@@ -356,7 +356,8 @@
+     ":spvtools_include_gen_dirs",
+   ]
+ 
+-  cflags = []
++  cflags = ["-fpic", "-fno-semantic-interposition"]
++  asmflags = ["-fpic", "-fno-semantic-interposition"]
+   if (is_clang) {
+     cflags += [
+       "-Wno-implicit-fallthrough",
+--- a/third_party/vulkan-deps/spirv-tools/src/BUILD.gn
++++ b/third_party/vulkan-deps/spirv-tools/src/BUILD.gn
+@@ -356,7 +356,8 @@
+     ":spvtools_include_gen_dirs",
+   ]
+ 
+-  cflags = []
++  cflags = ["-fpic", "-fno-semantic-interposition"]
++  asmflags = ["-fpic", "-fno-semantic-interposition"]
+   if (is_clang) {
+     cflags += [
+       "-Wno-implicit-fallthrough",
+--- a/third_party/vulkan_memory_allocator/BUILD.gn
++++ b/third_party/vulkan_memory_allocator/BUILD.gn
+@@ -35,6 +35,8 @@
+ }
+ 
+ source_set("vulkan_memory_allocator") {
++  cflags = ["-fPIC", "-fno-semantic-interposition"]
++  asmflags = ["-fPIC", "-fno-semantic-interposition"]
+   sources = [
+     "include/vk_mem_alloc.h",
+     "vma.cpp",
+--- a/third_party/zlib/google/BUILD.gn
++++ b/third_party/zlib/google/BUILD.gn
+@@ -40,6 +40,8 @@
+ # This allows other users of Chromium's zlib library, but don't use Chromium's
+ # //base, to reuse some boilerplate code.
+ static_library("compression_utils_portable") {
++  cflags = ["-fPIC", "-fno-semantic-interposition"]
++  asmflags = ["-fPIC", "-fno-semantic-interposition"]
+   sources = [
+     "compression_utils_portable.cc",
+     "compression_utils_portable.h",
+--- src/ui/qt/BUILD.gn.old	2022-12-02 23:49:17.792117400 +0100
++++ src/ui/qt/BUILD.gn	2022-12-04 14:32:48.407196100 +0100
+@@ -43,6 +43,8 @@
+   # target instead.
+   public = [ "qt_interface.h" ]
+   sources = [ "qt_interface.cc" ]
++  cflags = ["-fpic", "-fno-semantic-interposition"]
++  asmflags = ["-fpic", "-fno-semantic-interposition"]
+ }
+ 
+ template("qt_shim") {
+@@ -76,6 +78,8 @@
+       sources += get_target_outputs(":generate_moc" + invoker.qt_version)
+       deps += [ ":generate_moc" + invoker.qt_version ]
+     }
++    cflags = ["-fpic", "-fno-semantic-interposition"]
++    asmflags = ["-fpic", "-fno-semantic-interposition"]
+   }
+ }
+ qt_shim("qt5_shim") {
+--- src/third_party/abseil-cpp/BUILD.gn.old
++++ src/third_party/abseil-cpp/BUILD.gn
+@@ -132,6 +132,8 @@ config("absl_define_config") {
+ 
+ config("absl_default_cflags_cc") {
+   cflags_cc = []
++  cflags = ["-fPIC", "-fno-semantic-interposition"]
++  asmflags = ["-fPIC", "-fno-semantic-interposition"]
+   if (is_clang) {
+     cflags_cc += [
+       # TODO(crbug.com/588506): Explicitly enable conversion warnings.

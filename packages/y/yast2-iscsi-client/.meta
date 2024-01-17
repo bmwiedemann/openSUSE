@@ -1,0 +1,6 @@
+<package name="yast2-iscsi-client" project="openSUSE:Factory">
+  <title>YaST2 - iSCSI Client Configuration</title>
+  <description>This package contains the YaST2 component for configuration of an iSCSI
+client.</description>
+  <devel project="YaST:Head" package="yast2-iscsi-client"/>
+</package>

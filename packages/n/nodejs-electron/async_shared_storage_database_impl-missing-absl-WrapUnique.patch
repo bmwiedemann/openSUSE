@@ -1,0 +1,10 @@
+--- a/components/services/storage/shared_storage/async_shared_storage_database_impl.cc
++++ b/components/services/storage/shared_storage/async_shared_storage_database_impl.cc
+@@ -16,6 +16,7 @@
+ #include "components/services/storage/shared_storage/shared_storage_options.h"
+ #include "storage/browser/quota/special_storage_policy.h"
+ #include "url/origin.h"
++#include "third_party/abseil-cpp/absl/memory/memory.h"
+ 
+ namespace storage {
+ 

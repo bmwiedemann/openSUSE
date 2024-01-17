@@ -1,0 +1,55 @@
+The new trigonometric code in v8/third_party is copied verbatim from glibc. Vendoring it is rather perverse on GNU systems,
+especially since the actual glibc code features dynamic dispatch for FMA-capable systems which the bundled copy does not implement.
+
+--- src/v8/BUILD.gn.orig	2023-10-21 08:29:36.669885000 +0000
++++ src/v8/BUILD.gn	2023-10-26 17:17:36.379773800 +0000
+@@ -6230,7 +6230,7 @@ v8_component("v8_libbase") {
+   }
+ 
+   if (v8_use_libm_trig_functions) {
+-    deps += [ ":libm" ]
++    libs += [ "m" ]
+   }
+ 
+   # TODO(infra): Add support for qnx, freebsd, openbsd, netbsd, and solaris.
+--- src/v8/src/base/ieee754.cc.orig	2023-10-21 08:19:44.750081100 +0000
++++ src/v8/src/base/ieee754.cc	2023-10-26 17:19:09.517780600 +0000
+@@ -3023,11 +3023,6 @@ double tanh(double x) {
+ #undef SET_HIGH_WORD
+ #undef SET_LOW_WORD
+ 
+-#if defined(V8_USE_LIBM_TRIG_FUNCTIONS) && defined(BUILDING_V8_BASE_SHARED)
+-double libm_sin(double x) { return glibc_sin(x); }
+-double libm_cos(double x) { return glibc_cos(x); }
+-#endif
+-
+ }  // namespace ieee754
+ }  // namespace base
+ }  // namespace v8
+--- src/v8/src/base/ieee754.h.orig	2023-10-21 08:19:44.750081100 +0000
++++ src/v8/src/base/ieee754.h	2023-10-26 17:21:25.732860000 +0000
+@@ -8,7 +8,7 @@
+ #include "src/base/base-export.h"
+ 
+ #if defined(V8_USE_LIBM_TRIG_FUNCTIONS)
+-#include "third_party/glibc/src/sysdeps/ieee754/dbl-64/trig.h"  // nogncheck
++#include <cmath>
+ #endif
+ 
+ namespace v8 {
+@@ -44,13 +44,8 @@ V8_BASE_EXPORT double atan2(double y, do
+ V8_BASE_EXPORT double fdlibm_sin(double x);
+ V8_BASE_EXPORT double fdlibm_cos(double x);
+ 
+-#if !defined(BUILDING_V8_BASE_SHARED) && !defined(USING_V8_BASE_SHARED)
+-inline double libm_sin(double x) { return glibc_sin(x); }
+-inline double libm_cos(double x) { return glibc_cos(x); }
+-#else
+-V8_BASE_EXPORT double libm_sin(double x);
+-V8_BASE_EXPORT double libm_cos(double x);
+-#endif
++constexpr inline double (&libm_sin)(double) = ::std::sin;
++constexpr inline double (&libm_cos)(double) = ::std::cos;
+ #else
+ V8_BASE_EXPORT double cos(double x);
+ V8_BASE_EXPORT double sin(double x);

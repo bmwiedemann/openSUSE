@@ -1,0 +1,12 @@
+Do not try to configure electron's node against vendored ICU headers
+
+--- a/electron/script/generate-config-gypi.py
++++ b/electron/script/generate-config-gypi.py
+@@ -14,6 +14,7 @@
+ def run_node_configure(target_cpu):
+   configure = os.path.join(NODE_DIR, 'configure.py')
+   args = ['--dest-cpu', target_cpu]
++  args+= ['--with-intl=system-icu']
+   # Enabled in Chromium's V8, will be disabled on 32bit via
+   # common.gypi rules
+   args += ['--experimental-enable-pointer-compression']

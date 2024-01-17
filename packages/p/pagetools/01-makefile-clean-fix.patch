@@ -1,0 +1,15 @@
+Description: Fix of make clean target, as it leaves .d files inside directories
+Author: Víctor Cuadrado Juan <me@viccuad.me>
+Upstream: dead
+
+--- Makefile
++++ Makefile
+@@ -44,7 +44,7 @@
+ 
+ 
+ clean:
+-	rm -rf */*.o core *.d $(PTLIB) pbm_findskew/pbm_findskew tiff_findskew/tiff_findskew
++	rm -rf */*.o core *.d */*.d $(PTLIB) pbm_findskew/pbm_findskew tiff_findskew/tiff_findskew
+ 
+ -include *.d
+ 

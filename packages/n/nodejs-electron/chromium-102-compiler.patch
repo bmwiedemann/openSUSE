@@ -1,0 +1,318 @@
+SUSE: Disable the following:
+* Optimizer flags. Anything other than straight -O2 isn't well tested (either more or less optimization)
+  * -flto still needs to be handled by gn as it needs to be disabled for some targets,
+    and global CFLAGS go at the end of the commandline
+* Submodel options (-march and friends). Upstream notoriously forces SSE3 despite the code not requiring it.
+  * note that cpu options for ARM are currently left in, as they do not seem to do harm and V8 needs to know the exact target anyway
+* Debuginfo format. Upstream seems to force something that is not recognized by rpmbuild.
+  * per-target debuginfo level is left in as it is still useful (-g2 everywhere does not work)
+* Emitting code for the PIC model. It is needed in case of shared libraries, but results in a larger executable (and Electron is already enormous)
+  It should be enabled individually on code that gets into separate libraries (and we know when to do it — otherwise we're getting linker error)
+* -rdynamic. The rationale given is bogus (the allocator gets exported regardless). The main executable needs to be linked with -rdynamic anyway, but eg. chrome_crashpad_handler doesn't.
+
+
+From 307a0f63dd9b118f4b8470ed3d7567e81fdb7a6d Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 22 Apr 2022 09:05:24 +0000
+Subject: [PATCH] Disable various compiler configs
+
+---
+ build/config/compiler/BUILD.gn | 114 +++++----------------------------
+ 1 file changed, 17 insertions(+), 97 deletions(-)
+
+diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
+index d40843b..b92f03b 100644
+--- a/build/config/compiler/BUILD.gn
++++ b/build/config/compiler/BUILD.gn
+@@ -274,9 +274,7 @@
+ 
+   configs += [
+     # See the definitions below.
+-    ":clang_revision",
+     ":rustc_revision",
+-    ":compiler_cpu_abi",
+     ":compiler_codegen",
+     ":compiler_deterministic",
+   ]
+@@ -305,7 +303,12 @@
+   if (!is_win) {
+     # Common POSIX compiler flags setup.
+     # --------------------------------
+-    cflags += [ "-fno-strict-aliasing" ]  # See http://crbug.com/32204
++    # To future SUSE maintainers: Do not re-enable this, you will save yourself hours of debugging!
++    # This is an optimizer flag, not a C dialect flag to make GCC behave like clang.
++    # Despite what the -Wlto-type-mismatch warning text tells you, enabling this will NOT fix miscompiles,
++    # and seems to cause other problems in GCC12. See https://bugs.chromium.org/p/chromium/issues/detail?id=1373615#c6
++    # ANY BUGS DUE TO ALIASING SHOULD BE FIXED IN CODE, AND THE PATCHES SENT UPSTREAM!
++    # cflags += [ "-fno-strict-aliasing" ]  # See http://crbug.com/32204
+ 
+     # Stack protection. ShadowCallStack and Stack protector address the same
+     # problems. Therefore, we only enable one or the other. Clang advertises SCS as
+@@ -432,10 +435,6 @@
+   # Linux/Android/Fuchsia common flags setup.
+   # ---------------------------------
+   if (is_linux || is_chromeos || is_android || is_fuchsia) {
+-    asmflags += [ "-fPIC" ]
+-    cflags += [ "-fPIC" ]
+-    ldflags += [ "-fPIC" ]
+-    rustflags += [ "-Crelocation-model=pic" ]
+ 
+     if (!is_clang) {
+       # Use pipes for communicating between sub-processes. Faster.
+@@ -527,37 +527,6 @@
+     ldflags += [ "-Wl,-z,keep-text-section-prefix" ]
+   }
+ 
+-  if (is_clang && !is_nacl && current_os != "zos") {
+-    cflags += [ "-fcrash-diagnostics-dir=" + clang_diagnostic_dir ]
+-    if (save_reproducers_on_lld_crash && use_lld) {
+-      ldflags += [
+-        "-fcrash-diagnostics=all",
+-        "-fcrash-diagnostics-dir=" + clang_diagnostic_dir,
+-      ]
+-    }
+-
+-    # TODO(hans): Remove this once Clang generates better optimized debug info
+-    # by default. https://crbug.com/765793
+-    cflags += [
+-      "-mllvm",
+-      "-instcombine-lower-dbg-declare=0",
+-    ]
+-    if (!is_debug && use_thin_lto && is_a_target_toolchain) {
+-      if (is_win) {
+-        ldflags += [ "-mllvm:-instcombine-lower-dbg-declare=0" ]
+-      } else {
+-        ldflags += [ "-Wl,-mllvm,-instcombine-lower-dbg-declare=0" ]
+-      }
+-    }
+-
+-    # TODO(crbug.com/1235145): Investigate why/if this should be needed.
+-    if (is_win) {
+-      cflags += [ "/clang:-ffp-contract=off" ]
+-    } else {
+-      cflags += [ "-ffp-contract=off" ]
+-    }
+-  }
+-
+   # C11/C++11 compiler flags setup.
+   # ---------------------------
+   if (is_linux || is_chromeos || is_android || (is_nacl && is_clang) ||
+@@ -862,7 +837,8 @@
+ # without using everything that "compiler" brings in.  Options that
+ # tweak code generation for a particular CPU do not belong here!
+ # See "compiler_codegen", below.
+-config("compiler_cpu_abi") {
++config("compiler_cpu_abi") { }
++config("xcompiler_cpu_abi") {
+   cflags = []
+   ldflags = []
+   defines = []
+@@ -1227,46 +1203,6 @@
+     }
+   }
+ 
+-  # Makes builds independent of absolute file path.
+-  if (is_clang && strip_absolute_paths_from_debug_symbols) {
+-    # If debug option is given, clang includes $cwd in debug info by default.
+-    # For such build, this flag generates reproducible obj files even we use
+-    # different build directory like "out/feature_a" and "out/feature_b" if
+-    # we build same files with same compile flag.
+-    # Other paths are already given in relative, no need to normalize them.
+-    if (is_nacl) {
+-      # TODO(https://crbug.com/1231236): Use -ffile-compilation-dir= here.
+-      cflags += [
+-        "-Xclang",
+-        "-fdebug-compilation-dir",
+-        "-Xclang",
+-        ".",
+-      ]
+-    } else {
+-      # -ffile-compilation-dir is an alias for both -fdebug-compilation-dir=
+-      # and -fcoverage-compilation-dir=.
+-      cflags += [ "-ffile-compilation-dir=." ]
+-      swiftflags += [ "-file-compilation-dir=." ]
+-    }
+-    if (!is_win) {
+-      # We don't use clang -cc1as on Windows (yet? https://crbug.com/762167)
+-      asmflags = [ "-Wa,-fdebug-compilation-dir,." ]
+-    }
+-
+-    if (is_win && use_lld) {
+-      if (symbol_level == 2 || (is_clang && using_sanitizer)) {
+-        # Absolutize source file paths for PDB. Pass the real build directory
+-        # if the pdb contains source-level debug information and if linker
+-        # reproducibility is not critical.
+-        ldflags += [ "/PDBSourcePath:" + rebase_path(root_build_dir) ]
+-      } else {
+-        # Use a fake fixed base directory for paths in the pdb to make the pdb
+-        # output fully deterministic and independent of the build directory.
+-        ldflags += [ "/PDBSourcePath:o:\fake\prefix" ]
+-      }
+-    }
+-  }
+-
+   # Tells the compiler not to use absolute paths when passing the default
+   # paths to the tools it invokes. We don't want this because we don't
+   # really need it and it can mess up the goma cache entries.
+@@ -1400,7 +1337,8 @@
+ # Collects all warning flags that are used by default.  This is used as a
+ # subconfig of both chromium_code and no_chromium_code.  This way these
+ # flags are guaranteed to appear on the compile command line after -Wall.
+-config("default_warnings") {
++config("default_warnings") { }
++config("xdefault_warnings") {
+   cflags = []
+   cflags_c = []
+   cflags_cc = []
+@@ -1597,7 +1535,7 @@
+       defines = [ "_HAS_NODISCARD" ]
+     }
+   } else {
+-    cflags = [ "-Wall" ]
++    cflags = []
+     if (treat_warnings_as_errors) {
+       cflags += [ "-Werror" ]
+ 
+@@ -1606,10 +1544,6 @@
+       # well.
+       ldflags = [ "-Werror" ]
+     }
+-    if (is_clang) {
+-      # Enable extra warnings for chromium_code when we control the compiler.
+-      cflags += [ "-Wextra" ]
+-    }
+ 
+     if (treat_warnings_as_errors) {
+       # Turn rustc warnings into the "deny" lint level, which produce compiler
+@@ -1618,23 +1552,6 @@
+       "__STDC_FORMAT_MACROS",
+     ]
+ 
+-    if (!is_debug && !using_sanitizer && current_cpu != "s390x" &&
+-        current_cpu != "s390" && current_cpu != "ppc64" &&
+-        current_cpu != "mips" && current_cpu != "mips64" &&
+-        current_cpu != "riscv64" && current_cpu != "loong64") {
+-      # Non-chromium code is not guaranteed to compile cleanly with
+-      # _FORTIFY_SOURCE. Also, fortified build may fail when optimizations are
+-      # disabled, so only do that for Release build.
+-      fortify_level = "2"
+-
+-      # ChromeOS supports a high-quality _FORTIFY_SOURCE=3 implementation
+-      # with a few custom glibc patches. Use that if it's available.
+-      if (is_chromeos_ash) {
+-        fortify_level = "3"
+-      }
+-      defines += [ "_FORTIFY_SOURCE=" + fortify_level ]
+-    }
+-
+     if (is_apple) {
+       cflags_objc = [ "-Wimplicit-retain-self" ]
+       cflags_objcc = [ "-Wimplicit-retain-self" ]
+@@ -1841,7 +1841,6 @@
+ config("export_dynamic") {
+   # TODO(crbug.com/1052397): Revisit after target_os flip is completed.
+   if (is_linux || is_chromeos_lacros || export_libcxxabi_from_executables) {
+-    ldflags = [ "-rdynamic" ]
+   }
+ }
+ 
+@@ -1887,7 +1811,8 @@
+ # gcc 4.9 and earlier had no way of suppressing this warning without
+ # suppressing the rest of them.  Here we centralize the identification of
+ # the gcc 4.9 toolchains.
+-config("no_incompatible_pointer_warnings") {
++config("no_incompatible_pointer_warnings") { }
++config("xno_incompatible_pointer_warnings") {
+   cflags = []
+   if (is_clang) {
+     cflags += [ "-Wno-incompatible-pointer-types" ]
+@@ -1990,7 +1915,8 @@
+   }
+ }
+ 
+-config("default_stack_frames") {
++config("default_stack_frames") { }
++config("xdefault_stack_frames") {
+   if (!is_win) {
+     if (enable_frame_pointers) {
+       cflags = [ "-fno-omit-frame-pointer" ]
+@@ -2017,7 +1943,8 @@
+ }
+ 
+ # Default "optimization on" config.
+-config("optimize") {
++config("optimize") { }
++config("xoptimize") {
+   if (is_win) {
+     if (chrome_pgo_phase != 2) {
+       # Favor size over speed, /O1 must be before the common flags.
+@@ -2055,7 +1982,8 @@
+ }
+ 
+ # Turn off optimizations.
+-config("no_optimize") {
++config("no_optimize") { }
++config("xno_optimize") {
+   if (is_win) {
+     cflags = [
+       "/Od",  # Disable optimization.
+@@ -2095,7 +2023,8 @@
+ # Turns up the optimization level. On Windows, this implies whole program
+ # optimization and link-time code generation which is very expensive and should
+ # be used sparingly.
+-config("optimize_max") {
++config("optimize_max") { }
++config("xoptimize_max") {
+   if (is_nacl && is_nacl_irt) {
+     # The NaCl IRT is a special case and always wants its own config.
+     # Various components do:
+@@ -2128,7 +2057,8 @@
+ #
+ # TODO(crbug.com/621335) - rework how all of these configs are related
+ # so that we don't need this disclaimer.
+-config("optimize_speed") {
++config("optimize_speed") { }
++config("xoptimize_speed") {
+   if (is_nacl && is_nacl_irt) {
+     # The NaCl IRT is a special case and always wants its own config.
+     # Various components do:
+@@ -2154,7 +2084,8 @@
+   }
+ }
+ 
+-config("optimize_fuzzing") {
++config("optimize_fuzzing") { }
++config("xoptimize_fuzzing") {
+   cflags = [ "-O1" ] + common_optimize_on_cflags
+   rustflags = [ "-Copt-level=1" ]
+   ldflags = common_optimize_on_ldflags
+@@ -2273,7 +2204,8 @@
+ }
+ 
+ # Full symbols.
+-config("symbols") {
++config("symbols") { cflags = ["-g2"] }
++config("xsymbols") {
+   rustflags = []
+   if (is_win) {
+     if (is_clang) {
+@@ -2398,7 +2330,8 @@
+ # Minimal symbols.
+ # This config guarantees to hold symbol for stack trace which are shown to user
+ # when crash happens in unittests running on buildbot.
+-config("minimal_symbols") {
++config("minimal_symbols") { cflags = ["-g1"] }
++config("xminimal_symbols") {
+   rustflags = []
+   if (is_win) {
+     # Functions, files, and line tables only.
+@@ -2470,7 +2403,8 @@
+ # This configuration contains function names only. That is, the compiler is
+ # told to not generate debug information and the linker then just puts function
+ # names in the final debug information.
+-config("no_symbols") {
++config("no_symbols") { cflags = ["-g0"]}
++config("xno_symbols") {
+   if (is_win) {
+     ldflags = [ "/DEBUG" ]
+ 

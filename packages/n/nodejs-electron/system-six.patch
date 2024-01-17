@@ -1,0 +1,17 @@
+Do not ship a vendored copy of python-six and make python able to find the system copy.
+The `-w` parameter to gen_share_targets_proto.py and several other scripts removes site-packages from PYTHONPATH. This patch disables it.
+
+
+
+--- a/components/resources/protobufs/binary_proto_generator.py
++++ b/components/resources/protobufs/binary_proto_generator.py
+@@ -156,7 +156,8 @@
+   def Run(self):
+     parser = optparse.OptionParser()
+     # TODO(crbug.com/614082): Remove this once the bug is fixed.
+-    parser.add_option('-w', '--wrap', action="store_true", default=False,
++    parser.add_option('-w', '--fake-option', action="store_true", default=False)
++    parser.add_option('--wrap', action="store_true", default=False,
+                       help='Wrap this script in another python '
+                       'execution to disable site-packages.  This is a '
+                       'fix for http://crbug.com/605592')

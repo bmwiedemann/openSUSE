@@ -1,0 +1,13 @@
+Fix spurious U+00a0 “No-Break Space” breaking jinja2 3.0.x. This code no longer exists on upstream master.
+
+--- src/third_party/blink/renderer/build/scripts/core/style/templates/computed_style_base.cc.tmpl.orig	2023-11-09 20:20:31.584067600 +0000
++++ src/third_party/blink/renderer/build/scripts/core/style/templates/computed_style_base.cc.tmpl	2023-11-10 06:05:00.936736900 +0000
+@@ -50,7 +50,7 @@ ComputedStyleBase::ComputedStyleBase(con
+       // that was copied wholesale.
+       {{setter_expression(field)}} = {{encode(field, field.default_value)}};
+     }
+-  {% endfor %}
++  {% endfor %}
+ {% endfor %}
+ }
+ 

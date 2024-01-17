@@ -1,0 +1,12 @@
+Export symbols from the electron executable — needed for dynamically opening node modules
+
+--- a/electron/BUILD.gn
++++ b/electron/BUILD.gn
+@@ -1316,6 +1316,7 @@
+     if (is_linux) {
+       ldflags = [
+         "-pie",
++        "-rdynamic",
+ 
+         # Required for exporting all symbols of libuv.
+         "-Wl,--whole-archive",

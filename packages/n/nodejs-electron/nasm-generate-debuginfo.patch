@@ -1,0 +1,11 @@
+--- a/third_party/nasm/nasm_assemble.gni
++++ b/third_party/nasm/nasm_assemble.gni
+@@ -114,7 +114,7 @@
+                            ])
+ 
+     # Flags.
+-    args = _nasm_flags
++    args = _nasm_flags + [ "-g", "-Fdwarf" ]
+     if (defined(invoker.nasm_flags)) {
+       args += invoker.nasm_flags
+     }

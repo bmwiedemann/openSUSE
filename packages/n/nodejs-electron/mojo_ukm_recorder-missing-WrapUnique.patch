@@ -1,0 +1,10 @@
+--- src/services/metrics/public/cpp/mojo_ukm_recorder.cc.old	2023-08-14 13:59:47.674968400 +0200
++++ src/services/metrics/public/cpp/mojo_ukm_recorder.cc	2023-08-14 22:47:52.938826800 +0200
+@@ -12,6 +12,7 @@
+ #include "mojo/public/cpp/bindings/pending_remote.h"
+ #include "services/metrics/public/mojom/ukm_interface.mojom-forward.h"
+ #include "services/metrics/public/mojom/ukm_interface.mojom.h"
++#include "third_party/abseil-cpp/absl/memory/memory.h"
+ 
+ namespace ukm {
+ 
