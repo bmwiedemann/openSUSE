@@ -216,4 +216,15 @@
   * Add timestamp and timestamp_ms formats to fields.DateTime (#612). Thanks @vgavro for    the suggestion and thanks @vanHoi for the PR.</comment>
     <requestid>1132365</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>80b9267268666ee11a5c2f038891c4df</srcmd5>
+    <version>3.20.2</version>
+    <time>1705526088</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.20.2:
+  * Bug fixes: - Fix Nested field type hint for lambda Schema
+    types (:pr:`2164`).
+  * Other changes: - Officially support Python 3.12 (:pr:`2188`).</comment>
+    <requestid>1139196</requestid>
+  </revision>
 </revisionlist>

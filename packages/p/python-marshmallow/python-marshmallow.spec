@@ -1,7 +1,7 @@
 #
 # spec file for package python-marshmallow
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-marshmallow
-Version:        3.20.1
+Version:        3.20.2
 Release:        0
 Summary:        ORM/ODM/framework-agnostic library to convert datatypes from/to Python types
 License:        BSD-3-Clause AND MIT

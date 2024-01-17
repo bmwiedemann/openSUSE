@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 16 15:06:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.20.2:
+  * Bug fixes: - Fix Nested field type hint for lambda Schema
+    types (:pr:`2164`).
+  * Other changes: - Officially support Python 3.12 (:pr:`2188`).
+
+-------------------------------------------------------------------
 Sun Dec 10 21:27:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.20.1:
