@@ -1328,4 +1328,16 @@ New stable release</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 1137889 from dimstar)</comment>
     <requestid>1137900</requestid>
   </revision>
+  <revision rev="168" vrev="2">
+    <srcmd5>85056f43cf19ea80446806b52dee7e64</srcmd5>
+    <version>45.2</version>
+    <time>1705526122</time>
+    <user>anag+factory</user>
+    <comment>- Convert to source service for easier updating.
+
+- Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a
+  consequence cannot be held responsible to deliver that basic
+  directory structure. (forwarded request 1139247 from dimstar)</comment>
+    <requestid>1139282</requestid>
+  </revision>
 </revisionlist>

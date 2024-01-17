@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 16 17:02:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert to source service for easier updating.
+
+-------------------------------------------------------------------
+Tue Jan 16 16:45:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a
+  consequence cannot be held responsible to deliver that basic
+  directory structure.
+
+-------------------------------------------------------------------
 Wed Jan 10 08:50:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 45.2:
