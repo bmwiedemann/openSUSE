@@ -28,6 +28,8 @@ URL:            https://github.com/redis/redis-py
 Source0:        https://files.pythonhosted.org/packages/source/r/redis/redis-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/redis/redis-py/5.0/pytest.ini
 Patch0:         increase-test-timeout.patch
+# PATCH-FIX-UPSTREAM https://github.com/redis/redis-py/pull/3005
+Patch1:         Close-various-objects-created-during-asyncio-tests.patch
 BuildRequires:  %{python_module async-timeout >= 4.0.2}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module packaging}
@@ -57,6 +59,7 @@ cp %SOURCE1 .
 %ifarch s390x
 %patch -P 0 -p1
 %endif
+%patch -P 1 -p1
 
 # This test passes locally but fails in obs with different
 # environment, like ALP build...

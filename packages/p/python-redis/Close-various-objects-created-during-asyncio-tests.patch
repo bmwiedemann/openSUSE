@@ -1,0 +1,149 @@
+From 29d867899ab7abfb0ec2ef73d5bd3a810f8ab432 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kristj=C3=A1n=20Valur=20J=C3=B3nsson?= <sweskman@gmail.com>
+Date: Fri, 13 Oct 2023 15:54:23 +0000
+Subject: [PATCH] Close various objects created during asyncio tests
+
+---
+ tests/test_asyncio/test_commands.py           |  2 ++
+ tests/test_asyncio/test_connect.py            |  2 ++
+ tests/test_asyncio/test_connection.py         |  4 ++++
+ tests/test_asyncio/test_retry.py              |  3 +++
+ tests/test_asyncio/test_sentinel.py           | 22 +++++++++----------
+ .../test_sentinel_managed_connection.py       |  1 +
+ 6 files changed, 23 insertions(+), 11 deletions(-)
+
+diff --git a/tests/test_asyncio/test_commands.py b/tests/test_asyncio/test_commands.py
+index 9b9852e9ef..35b9f2a29f 100644
+--- a/tests/test_asyncio/test_commands.py
++++ b/tests/test_asyncio/test_commands.py
+@@ -370,10 +370,12 @@ async def test_client_setinfo(self, r: redis.Redis):
+         info = await r2.client_info()
+         assert info["lib-name"] == "test2"
+         assert info["lib-ver"] == "1234"
++        await r2.aclose()
+         r3 = redis.asyncio.Redis(lib_name=None, lib_version=None)
+         info = await r3.client_info()
+         assert info["lib-name"] == ""
+         assert info["lib-ver"] == ""
++        await r3.aclose()
+ 
+     @skip_if_server_version_lt("2.6.9")
+     @pytest.mark.onlynoncluster
+diff --git a/tests/test_asyncio/test_connect.py b/tests/test_asyncio/test_connect.py
+index 0b2d7c2afa..5e6b120fb3 100644
+--- a/tests/test_asyncio/test_connect.py
++++ b/tests/test_asyncio/test_connect.py
+@@ -73,6 +73,8 @@ async def _handler(reader, writer):
+         try:
+             return await _redis_request_handler(reader, writer, stop_event)
+         finally:
++            writer.close()
++            await writer.wait_closed()
+             finished.set()
+ 
+     if isinstance(server_address, str):
+diff --git a/tests/test_asyncio/test_connection.py b/tests/test_asyncio/test_connection.py
+index 28e6b0d9c3..9c7f25bf87 100644
+--- a/tests/test_asyncio/test_connection.py
++++ b/tests/test_asyncio/test_connection.py
+@@ -85,6 +85,8 @@ async def get_conn(_):
+ 
+     assert init_call_count == 1
+     assert command_call_count == 2
++    r.connection = None  # it was a Mock
++    await r.aclose()
+ 
+ 
+ @skip_if_server_version_lt("4.0.0")
+@@ -143,6 +145,7 @@ async def mock_connect():
+     conn._connect.side_effect = mock_connect
+     await conn.connect()
+     assert conn._connect.call_count == 3
++    await conn.disconnect()
+ 
+ 
+ async def test_connect_without_retry_on_os_error():
+@@ -194,6 +197,7 @@ async def test_connection_parse_response_resume(r: redis.Redis):
+         pytest.fail("didn't receive a response")
+     assert response
+     assert i > 0
++    await conn.disconnect()
+ 
+ 
+ @pytest.mark.onlynoncluster
+diff --git a/tests/test_asyncio/test_retry.py b/tests/test_asyncio/test_retry.py
+index 2912ca786c..8bc71c1479 100644
+--- a/tests/test_asyncio/test_retry.py
++++ b/tests/test_asyncio/test_retry.py
+@@ -131,5 +131,8 @@ async def test_get_set_retry_object(self, request):
+         assert r.get_retry()._retries == new_retry_policy._retries
+         assert isinstance(r.get_retry()._backoff, ExponentialBackoff)
+         assert exiting_conn.retry._retries == new_retry_policy._retries
++        await r.connection_pool.release(exiting_conn)
+         new_conn = await r.connection_pool.get_connection("_")
+         assert new_conn.retry._retries == new_retry_policy._retries
++        await r.connection_pool.release(new_conn)
++        await r.aclose()
+diff --git a/tests/test_asyncio/test_sentinel.py b/tests/test_asyncio/test_sentinel.py
+index 25bd7730da..51e59d69d0 100644
+--- a/tests/test_asyncio/test_sentinel.py
++++ b/tests/test_asyncio/test_sentinel.py
+@@ -183,13 +183,13 @@ async def test_discover_slaves(cluster, sentinel):
+ 
+ @pytest.mark.onlynoncluster
+ async def test_master_for(cluster, sentinel, master_ip):
+-    master = sentinel.master_for("mymaster", db=9)
+-    assert await master.ping()
+-    assert master.connection_pool.master_address == (master_ip, 6379)
++    async with sentinel.master_for("mymaster", db=9) as master:
++        assert await master.ping()
++        assert master.connection_pool.master_address == (master_ip, 6379)
+ 
+     # Use internal connection check
+-    master = sentinel.master_for("mymaster", db=9, check_connection=True)
+-    assert await master.ping()
++    async with sentinel.master_for("mymaster", db=9, check_connection=True) as master:
++        assert await master.ping()
+ 
+ 
+ @pytest.mark.onlynoncluster
+@@ -197,16 +197,16 @@ async def test_slave_for(cluster, sentinel):
+     cluster.slaves = [
+         {"ip": "127.0.0.1", "port": 6379, "is_odown": False, "is_sdown": False}
+     ]
+-    slave = sentinel.slave_for("mymaster", db=9)
+-    assert await slave.ping()
++    async with sentinel.slave_for("mymaster", db=9) as slave:
++        assert await slave.ping()
+ 
+ 
+ @pytest.mark.onlynoncluster
+ async def test_slave_for_slave_not_found_error(cluster, sentinel):
+     cluster.master["is_odown"] = True
+-    slave = sentinel.slave_for("mymaster", db=9)
+-    with pytest.raises(SlaveNotFoundError):
+-        await slave.ping()
++    async with sentinel.slave_for("mymaster", db=9) as slave:
++        with pytest.raises(SlaveNotFoundError):
++            await slave.ping()
+ 
+ 
+ @pytest.mark.onlynoncluster
+@@ -260,7 +260,7 @@ async def mock_disconnect():
+         calls += 1
+ 
+     with mock.patch.object(pool, "disconnect", mock_disconnect):
+-        await client.close()
++        await client.aclose()
+ 
+     assert calls == 1
+     await pool.disconnect()
+diff --git a/tests/test_asyncio/test_sentinel_managed_connection.py b/tests/test_asyncio/test_sentinel_managed_connection.py
+index 711b3ee733..cae4b9581f 100644
+--- a/tests/test_asyncio/test_sentinel_managed_connection.py
++++ b/tests/test_asyncio/test_sentinel_managed_connection.py
+@@ -34,3 +34,4 @@ async def mock_connect():
+     conn._connect.side_effect = mock_connect
+     await conn.connect()
+     assert conn._connect.call_count == 3
++    await conn.disconnect()
