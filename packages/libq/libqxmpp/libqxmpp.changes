@@ -1,0 +1,378 @@
+-------------------------------------------------------------------
+Tue Mar 14 14:25:09 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- remove baselibs, not sure if we need 32bit libs anymore.
+
+-------------------------------------------------------------------
+Sat Mar 11 09:18:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.5.3
+
+  * MAM: Fix task is never finished when none of the messages is
+    encrypted but e2ee is enabled
+  * SaslDigestMd5: Fix undefined behaviour with Qt 6 when parsing
+    empty property at the end of the input
+  * CarbonManagerV2: Fix enable IQ sending
+  * Fix various OMEMO issues and update to libomemo-c 0.5
+  * Add CMake option to manually specify Qt major version
+  * Readd old PubSubIq and PubSubItem after justified complaints
+
+-------------------------------------------------------------------
+Fri Feb 24 21:15:55 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.5.2
+  * Fix undefined behaviour in OmemoManager and FileSharingManager
+  * STUN: Fix nonce attribute is not padded
+  Changes in 1.5.1:
+  * Fix build with clang (usage of auto in template argument)
+  Changes in 1.5.0:
+  * New QXmppTask/Promise for asynchronous APIs
+  * Packet sending result reporting (sent, stream management acks)
+  * IQ response recognition and mapping to requests via QXmppTask
+  * Add QXmppTask-based APIs to most of the managers
+  * Implement XEP-0060: Publish-Subscribe (nearly complete)
+  * Implement XEP-0118: User Tune
+  * Implement XEP-0080: User Location
+  * Rewrite MIX items with new PubSubItem
+  * Add specified data forms parsing utilities
+  * Implement XEP-0384: OMEMO Encryption
+  * Implement XEP-0434: Trust Messages (TM)
+  * Implement XEP-0450: Automatic Trust Management (ATM)
+  * Implement XEP-0420: Stanza Content Encryption
+  * Add new Message Carbons manager capable of end-to-end
+    encryption
+  * Adapt QXmppClient to support end-to-end-encryptions
+  * Implement XEP-0446: File metadata element
+  * Implement XEP-0300: Use of Cryptographic Hash Functions
+    in XMPP
+  * Implement XEP-0264: Jingle Content Thumbnails
+  * Implement XEP-0447: Stateless file sharing
+  * Implement XEP-0448: Encryption for stateless file sharing
+  * Add new HTTP File Upload Manager for slot requesting
+    and uploading
+  * Implement stanza parsing for modern audio-video calls
+  * Implement XEP-0444: Message Reactions
+  * Add QXmppNonza as base for stanzas and nonzas
+  * RosterManager: Add subscription request signal with
+    full presence
+* library now major version 4
+
+-------------------------------------------------------------------
+Mon Aug  2 05:49:29 UTC 2021 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- update to 1.4.0:
+  * Qt 6 port, including many undeprecations and some refactoring
+  * Add XEP-0224: Attention manager
+  * Implement MIX-MISC XEP-0407: Invitation message extension
+  * New SCRAM-SHA3-512 and SCRAM-SHA-512 SASL algorithms
+  * Client: Advertise stream management state
+  * RosterManager: Cache roster if stream can be resumed
+  * RosterManager: Enable MIX annotation for roster items
+  * Bind IQ errors are now handled properly
+  * Fix cached stream management packets are resent with the wrong account
+  * TransferManager: Fix undefined behaviour when parsing features
+  * OutgoingServer: Add missing 'to' and 'from' stream attributes
+
+-------------------------------------------------------------------
+Thu Sep 10 13:00:38 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Enable gstreamer
+
+-------------------------------------------------------------------
+Thu Aug 27 18:55:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.3.1:
+  * The most important change of this release is the fix of CVE-2017-5603. QXmpp is
+not vulnerable to roster push attacks (CVE-2016-9928).
+ - QXmppRosterIq: Set subscriptionType to NotSet correctly (#293, @melvo)
+ - Fix `QXMPP_EXPORT` define when linking statically (#299, @leobasilio)
+ - QXmppMessageReceiptManager: Ignore all error messages (#300, @lnjX)
+ - QXmppCarbonManager: Fix CVE-2017-5603 (missing sender check) (#304, @lnjX)
+QXmpp complys with the XMPP Compliance Suites 2020 (XEP-0423) for client
+development in the Core, IM and Advanced Mobile suites now. For this prupose it
+has been updated to RFC6120 and RFC6121. ABI compatibility was kept with this
+release (apart from classes marked as 'NOT FINALIZED').
+ - Port QXmppCallManager to GStreamer (#207, @olesalscheider)
+ - Add XEP-0245: The /me Command (#276, @lnjX)
+ - Add XEP-0357: Push Notifications: Enable/disable IQ (#271, @jbbgameich,
+   @zatroxde)
+ - Add XEP-0359: Unique and Stable Stanza IDs (#256, @lnjX)
+ - Add XEP-0428: Fallback Indication (#253, @lnjX)
+ - Update from RFC3920 to RFC6120:
+   * Deprecate PaymentRequired stanza error condition as it was not adopted in
+     RFC6120 (#277, @lnjX)
+   * Add PolicyViolation stanza error condition added in RFC6120 (#279, @lnjX)
+   * Add redirection URI from RFC6120 for Gone and Redirect conditions (#280,
+     @lnjX)
+   * Add 'by' attribute to QXmppStanza::Error from RFC6120 (#283, @lnjX)
+ - Update from RFC3921 to RFC6121:
+   * Add pre-approved presence subscriptions (#285, @lnjX):
+     - Add 'approved' attribute to QXmppRosterIq
+     - Add stream feature for pre-approved presence subscriptions
+   * Add stream feature for roster versioning (#286, @lnjX)
+ - Use QUuid by default to generate unique stanza IDs (#255, @lnjX)
+ - Add roster extension for MIX-PAM (XEP-0405) (#175, @lnjX)
+ - Update MAM to v0.6 (including namespace bump to `urn:xmpp:mam:2`) (#254,
+   #257, @lnjX)
+ - Add not-authorized stream error condition in QXmppOutgoingClient (#191,
+   @henry61024)
+ - Add missing static service discovery features for supported message
+   extensions (#287, @lnjX)
+ - Add utility constructor to QXmppDataForm and QXmppDataForm::Field to make
+   creation of forms easier (#273, @lnjX)
+ - Make QXmpp work with projects using `QT_NO_KEYWORDS` (#258, @tomcucinotta)
+ - Add hyperlinks to XEP references in the documentation (@lnjX)
+ - Move from Travis-CI to GitHub Actions (#265, @jlaine)
+ - Replace deprecated `qsrand()` and `qrand()` by QRandomGenerator (#267,
+   @melvo)
+ - Add tests for QXmppStanza::Error parsing (#279, @lnjX)
+ - `QXmppStanza::Error::Condition::PaymentRequired`: The error condition was
+   unused and not adopted in RFC6120
+
+-------------------------------------------------------------------
+Tue May 19 10:00:23 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Fix baselibs.conf following the sover bump
+
+-------------------------------------------------------------------
+Mon Apr  6 19:36:39 UTC 2020 - Vinzenz Vietzke <vinz@vinzv.de>
+
+- Update to 1.2.1. Changes since 1.1.0:
+  * QXmppRegistrationManager: Fix failed and succeeded signals are both emitted
+    on success
+  * QXmppMessageReceiptManager: Fix receipts are sent on error messages
+  * QXmppVCardManager: Fix clientVCardReceived() not emitted when IQ is from the
+    bare JID of the user
+  * QXmppRosterManager: Fix 'ask' attribute is included when renaming item
+  * QXmppRosterIq: Add missing implementation of the copy constructor
+  * Implement XEP-0077: In-band registration:
+    * Add registration manager with full unit tests
+    * Add `registered` and `remove` to the IQ
+  * Implement XEP-0231: Bits of Binary
+  * Add `QXmppClient::indexOfExtension<T>()`
+  * Add QXmppStartTlsPacket to replace fixed XML data
+  * Move TLS code to private QXmppTlsManager
+  * Add private QXmppInternalClientExtensions to access private part of the
+    client
+  * Add utility methods to QXmppRegisterIq to create common requests
+  * QXmppMucManager: Make it possible to handle stanzas not handled by the
+    manager
+  * Only send Client State Indication (CSI) states when connected
+  * Fix no documentation is generated for QXmppStanza::Error and
+    QXmppStreamFeatures
+  * Fix some doxygen warnings and undocumented Q_PROPERTYs
+  * Replace deprecated Q_FOREACH
+  * Replace deprecated Q_ENUMS with Q_ENUM
+  * Replace deprecated signal/slots syntax
+  * Switch to Ubuntu Bionic for Travis-CI builds
+  * Use QSharedDataPointers for QXmppRegisterIq, QXmppPubSubIq,
+    QXmppDiscoveryIq, QXmppMam{Query,Result}Iq, QXmppStreamFeatures
+  * Refactor QXmppPubSubIq and add missing tests
+  * Refactor QXmppPresence and add missing tests
+  * Replace manual xmlns writing by writeDefaultNamespace()
+  * Use QT_VERSION_CHECK to generate QXMPP_VERSION
+  * Add clang-format file
+- Fixed shlib-policy-name-error libqxmpp2 (sover bump up to 3).
+
+-------------------------------------------------------------------
+Mon Nov 18 05:20:47 UTC 2019 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Update to 1.1.0. Changes since 1.0.0:
+  * Add support for SCRAM-SHA-1 and SCRAM-SHA-256;
+  * Order SASL mechanisms to prefer the most secure;
+  * Add XEP-0334, -0363, -0367, -0369 (partially), -0380, -0382;
+  * Do not accept receipts from other resources of the used account;
+  * cmake: Set minimum version before creating project() and bump to 3.3;
+  * Deprecate QXmppClient extension getters;
+  * Refactor data form media element, deprecate `QXmppDataForm::Media;
+  * Replace deprecated `qSort()` by `std::sort()`;
+  * Do not use deprecated `QSslSocket::setCaCertificates()`;
+  * Modernize code by using `nullptr`, `override`, etc.;
+  * Move attributes into private d-pointer for future ABI compatibility;
+  * Use raw literals, range based loops and `auto`;
+  * Fix potential SEGFAULT on connection error;
+  * Fix `SO_VERSION` to 1: ABI has changed since last minor release;
+  * Add CMake option for internal tests (`BUILD_INTERNAL_TESTS`).
+- Disable tests needing a network connection += qxmppuploadrequestmanager.
+- Fixed shlib-policy-name-error libqxmpp2 (sover bump up to 2).
+
+-------------------------------------------------------------------
+Tue May  7 06:26:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix SRPM group.
+
+-------------------------------------------------------------------
+Fri May  3 13:21:42 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.0.0. Changes since 0.8.3:
+  * Drop Qt4 support
+  * Fix phone numbers incorrectly read from / written to vCard
+  * Make QXmppStream handle end of incoming stream
+  * Allow QXmppJingleIq to have multiple contents.
+  * Fix QXmppTransferManagerFix convering filename to a QUrl.
+  * Do not ignore SSL errors by default
+  * CMake based build system
+  * Use C++11 compiler standard
+  Check the CHANGELOG.md file for the complete list of changes
+- Drop libqxmpp-qt5
+- Run spec-cleaner
+- Drop obsolete patch: libqxmpp-qt5.patch
+- Trim marketing filler wording from description.
+- Update the license tag to LGPL-2.1-or-later
+
+-------------------------------------------------------------------
+Sat Mar 14 12:40:23 UTC 2015 - dap.darkness@gmail.com
+
+- update to 0.8.3
+  * Add a QXmppClient::sslErrors signal to report SSL errors.
+  * Handle broken servers which send "bad-auth"
+    instead of "not-authorized".
+  * Fix a compilation issue with Qt 5.5 due to a missing include.
+  * Do not install test cases.
+  * Remove trailing comma after last item in enums.
+
+-------------------------------------------------------------------
+Fri Jan  9 19:38:51 UTC 2015 - dap.darkness@gmail.com
+
+- update to 0.8.2
+  * Refactor HTML documentation so that "make docs" works in
+    out-of-source builds.
+  * Add support for Opus audio codec.
+  * Enable error concealment for VPX video codec.
+  * Use QString() instead of "" for default methods arguments,
+    to enable building project which use QT_NO_CAST_FROM_ASCII.
+  * Add support for legacy SSL.
+  * Add XEP-0333: Chat Markers attributes to QXmppMessage.
+  * Add QXmppClient::socketErrorString
+    to retrieve socket error string.
+  * Add equality/inequality operators for QXmppVCardIq.
+  * Add "make check" command to run tests.
+-packaging
+  * Switched to tarball from github.
+  * Added libqxmpp-qt5.patch to implement Qt5 alternative.
+  * Switched to pkgconfig() at Requires section.
+  * Broken old distros: SLE11, openSUSE~11.4.
+  * Let make be verbose.
+  * Added check section.
+
+-------------------------------------------------------------------
+Thu Mar 27 17:09:56 UTC 2014 - dap.darkness@gmail.com
+
+- update to 0.8.0
+  * Add organizations info interface to QXmppVCardIq.
+  * Remove deprecated QXmppPresence::Status type.
+- Source URL was put back.
+- Url tag and Source URL were updated to qxmpp.org.
+
+-------------------------------------------------------------------
+Sun Mar  9 14:12:49 UTC 2014 - dap.darkness@gmail.com
+
+- Source URL was temporary deleted to pass factory-auto.
+
+-------------------------------------------------------------------
+Sun Mar  9 11:10:45 UTC 2014 - dap.darkness@gmail.com
+
+- update to 0.7.6+git.2014.03.09
+  * Added QPair include just in case.
+  * Avoid keeping the source QDomDocument in QXmppElement.
+    Serialize the node instead of keeping QDomElement
+    with a ref to the original QDomDOcument.
+  * QXmppElement::sourceDomElement().
+  * Namespace-based matching for known elements.
+  * Cover non-'x' extensions in tests.
+  * Support other extensions besides 'x' in QXmppMessage.
+  * Fixes to support Qt5.
+  * Re-order member initialization (silences GCC warning).
+  * Fixed possible memory leak in QXmppTransferManager.
+  * Added missing assert for connecting signal in QXmppStream.
+  * Fixed C-style pointer cast.
+  * Fixed uninitialized pointers in QXmppOutgoingClientPrivate.
+  * Fixed uninitialized pointer in QXmppCallPrivate.
+  * Fixed uninitialized pointer in QXmppRtpAudioChannelPrivate.
+  * Fixed uninitialized member in QXmppOutgoingClient.
+  * Fix QXmppServer incoming connections with Qt5 (issue 175).
+
+-------------------------------------------------------------------
+Mon Aug 19 17:07:28 UTC 2013 - dap.darkness@gmail.com
+
+- Full VoIP support was enabled.
+- Spec was fixed up via spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Mar 22 10:33:12 UTC 2013 - schwab@suse.de
+
+- Override LIBDIR instead of moving the library manually
+
+-------------------------------------------------------------------
+Mon Mar 11 19:35:36 UTC 2013 - dap.darkness@gmail.com
+
+- update to 0.7.6
+  * Add QXmppClient::insertExtension to insert an extension at a given index.
+  * Disable Facebook/Google specific mechanisms if no corresponding credentials.
+- Mistake at doc-subpackage description was fixed.
+
+-------------------------------------------------------------------
+Thu Dec 20 18:45:59 UTC 2012 - dap.darkness@gmail.com
+
+- update to 0.7.4
+  * Add XEP-0249: Direct MUC Invitations attributes to QXmppMessage.
+  * Add XEP-0045: Multi-User Chat attributes to QXmppPresence.
+  * Improve GuiClient, stop using deprecated APIs.
+  * Improve QXmppServer.
+  * Improve QXmppTransferManager.
+
+-------------------------------------------------------------------
+Tue Sep 04 10:22:00 UTC 2012 - nekolayer@yandex.ru
+
+ - changed to upstream url
+ - package renamed
+ - Update to version 0.7.1
+   - Fix export of QXmppVCardPhone class.
+   - New XEPs:
+     * XEP-0033: Extended Stanza Addressing
+   - Remove deprecated APIs:
+     * QXmppRosterManager::rosterChanged()
+     * QXmppConfiguration::sASLAuthMechanism()
+   - Improve vCard support:
+     * Add support for free-form descriptive text.
+     * Make it possible to have several addresses.
+     * Make it possible to have several e-mail addresses.
+     * Make it possible to have several phone numbers.
+   - Make it possible to set the client's extended information form (XEP-0128).
+   - Make sure QXmppDiscoveryManager only emits results.
+   - Fix XEP-0115 verification strings (remove duplicate features, sort form values)
+   - Fix issues:
+     * Issue 144: QXmppBookmarkConference autojoin parsing
+   - Add support for see-other-host server change.
+   - Add support for X-MESSENGER-OAUTH2 authentication for Windows Live Messenger.
+   - Make it possible to disable non-SASL authentication.
+   - Add QXmppClient::isAuthenticated() to query whether authentication has been
+     performed.
+
+-------------------------------------------------------------------
+Mon Sep  3 11:22:06 UTC 2012 - idonmez@suse.com
+
+- Fix name for devel package
+
+-------------------------------------------------------------------
+Fri Aug 10 19:51:07 UTC 2012 - dap.darkness@gmail.com
+
+- update to 0.6.3.1
+  * Source tree was sync with upstream.
+  * The library became dynamic.
+
+-------------------------------------------------------------------
+Tue Jul  3 19:48:35 UTC 2012 - dvaleev@suse.com
+
+- fix ppc64 libdir 
+
+-------------------------------------------------------------------
+Thu Mar 06 18:00:00 UTC 2012 - nekolayer@yandex.ru
+
+- update to 0.3.47
+
+-------------------------------------------------------------------
+Sun Jul 31 18:58:49 UTC 2011 - nlminhtl@gmail.com
+
+- first package 
+

@@ -1,0 +1,10 @@
+<package name="libmtp" project="openSUSE:Factory">
+  <title>Commandline utilities for access to MTP Players</title>
+  <description>This package contains binaries and documentation that allow access to
+USB based media players based on the MTP (Media Transfer Protocol)
+authored by Microsoft.
+
+Common devices using this technology are Creative Zen, iRiver, Samsung
+and others.</description>
+  <devel project="devel:libraries:c_c++" package="libmtp"/>
+</package>

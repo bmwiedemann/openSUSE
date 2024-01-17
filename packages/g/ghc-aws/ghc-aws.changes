@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Fri Jun 23 17:52:45 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update aws to version 0.24.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/aws-0.24.1/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Mar 30 17:05:52 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Fri Nov  4 19:21:02 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update aws to version 0.23.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/aws-0.23/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Sat Dec 11 21:52:27 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update aws to version 0.22 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Nov  1 08:30:43 UTC 2021 - psimons@suse.com
+
+- Update aws to version 0.22 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Oct 12 10:51:29 UTC 2021 - psimons@suse.com
+
+- Update aws to version 0.22 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 25 15:45:21 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- relax overconstrained deps on attoparsec 
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Wed Aug 19 06:58:51 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 6GB min disk space for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Tue Aug 18 10:44:03 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:38 UTC 2020 - psimons@suse.com
+
+- Add aws at version 0.22.
+

@@ -1,0 +1,8 @@
+<package name="libctl" project="openSUSE:Factory">
+  <title>guile library for scientific simulations</title>
+  <description>
+libctl is a free Guile (http://www.gnu.org/software/guile/)-based library implementing flexible control files for scientific simulations. It was written to support our MIT Photonic Bands and Meep software, but has proven useful in other programs too.
+  </description>
+  <devel project="science" package="libctl"/>
+  <url>http://ab-initio.mit.edu/wiki/index.php/Libctl</url>
+</package>

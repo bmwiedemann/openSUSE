@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Tue Apr  5 12:11:14 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace libportal-devel BuildRequires with
+  pkgconfig(libportal-gtk3) to be more specific and not be
+  dependant on package names.
+- Add gcolor-libportal-gtk3.patch: Fix build against recent
+  libportal, which has gtk3 and gtk4 backends.
+
+-------------------------------------------------------------------
+Mon May 17 17:47:12 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Use SourceUrl, fixes Factory CI scripts
+
+-------------------------------------------------------------------
+Wed Aug 26 16:47:05 UTC 2020 - Sébastien POHER <sogal@opensuse.org>
+
+- Upgrade to version 2.4.0
+  * Color Picker now works on Wayland
+  * typography and iconography changed to be consistent with GNOME HIG
+  * dropped use of deprecated GTK APIs to make porting to GTK4 a smooth process
+  * multiple other under-the-hood improvements
+
+-------------------------------------------------------------------
+Tue Jan 14 20:12:37 UTC 2020 - Sébastien POHER <sogal@opensuse.org>
+
+- Fix typo in git version
+
+-------------------------------------------------------------------
+Tue Jan 14 18:06:55 UTC 2020 - Sébastien POHER <sogal@opensuse.org>
+
+- Downgrade to git revision 78 as libportal is not shipped in
+  Leap 15.2
+
+-------------------------------------------------------------------
+Mon Jan 13 06:55:34 UTC 2020 - Sébastien POHER <sogal@opensuse.org>
+
+- Upgrade to latest git commit
+- Fix tag 
+
+-------------------------------------------------------------------
+Fri Nov  1 17:44:23 UTC 2019 - Sébastien POHER <sogal@opensuse.org>
+
+- Upgrade to latest git to fix G_PARAM_PRIVATE deprecation error
+- Remove uneeded -Dwerror=false meson flag
+
+-------------------------------------------------------------------
+Wed Oct 30 10:33:47 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Pass -Dwerror=false to meson: to not choke on deprecated APIs. It
+  is not the distro's duty to catch up.
+
+-------------------------------------------------------------------
+Sat Dec 22 17:28:51 UTC 2018 - sogal@opensuse.org
+
+- Removed deprecated %post and %postun macros
+- Removed uneeded Build requirement
+
+-------------------------------------------------------------------
+Sat Dec 22 17:17:04 UTC 2018 - sogal@opensuse.org
+
+- Update French translation, fix bad tar archive.
+
+-------------------------------------------------------------------
+Thu Dec  6 12:45:56 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Generalize description.
+- Use %meson_* instead of calling ninja directly.
+
+-------------------------------------------------------------------
+Wed Oct 31 08:43:22 UTC 2018 - sogal@opensuse.org
+
+- Use %meson macro
+- Disabled build for openSUSE Leap 42.3 as its gettext version is to
+  old (the --xml switch is absent and build faild)
+
+-------------------------------------------------------------------
+Mon Oct 29 15:14:33 UTC 2018 - sogal@opensuse.org
+
+- Updated to 2.3.1
+  * import deprecated GtkColorSelection and GtkHSV
+  * fix crashing GNOME Shell on Wayland
+  * port Gcolor3 to the Meson build system
+  * gcolor3ColorStore: mention that warnings are harmless on first run
+  * fix CTRL-C and other keyboard shortcuts
+  * redesigned saved color page
+  * redesigned header bar
+  * add a GtkShortcutswindow
+  * bumps the required version of GTK+ 3 to 3.20.
+  * add a manual page
+  * new translations: Norwegian Bokmål, Indonesian, Russian, Spanish
+  * updated translations: Dutch, British English, German, Serbian
+- Updated patch gcolor3-suse.patch
+- Updated rpm structure to use %{_datadir}/metainfo and
+  newx upstream "nl.hjdskes" prefix
+- Project is now hosted at gitlab.gnome.org
+
+-------------------------------------------------------------------
+Sat Jul  8 20:26:43 UTC 2017 - sogal@volted.net
+
+- rpmlinting
+
+-------------------------------------------------------------------
+Fri Jul 07 22:48:00 UTC 2017 - sogal <sogal@volted.net>
+
+- First build with git-20170322 version
+    * added patch for Suse desktop file compliance

@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Fri Sep 28 02:52:10 UTC 2018 - sean@suspend.net
+
+- Added additional dictionary libraries
+    * http://downloads.skullsecurity.org/passwords/john.txt.bz2
+    * http://downloads.skullsecurity.org/passwords/cain.txt.bz2
+    * http://downloads.skullsecurity.org/passwords/500-worst-passwords.txt.bz2
+    * http://downloads.skullsecurity.org/passwords/twitter-banned.txt.bz2
+
+-------------------------------------------------------------------
+Thu Aug  9 12:23:43 CEST 2012 - mc@suse.de
+
+- correct License to LGPL-2.1
+
+-------------------------------------------------------------------
+Sat Sep 17 23:58:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Mon Sep  1 17:25:56 CEST 2008 - mc@suse.de
+
+- do not zip the dict by default. A check takes too long.
+
+-------------------------------------------------------------------
+Fri Jun 27 11:44:03 CEST 2008 - mc@suse.de
+
+- update wordlist
+- add german wordlists 
+
+-------------------------------------------------------------------
+Fri Jun 20 16:47:52 CEST 2008 - mc@suse.de
+
+- compress password database 
+
+-------------------------------------------------------------------
+Tue Feb 12 13:56:23 CET 2008 - mc@suse.de
+
+- update common password files 
+
+-------------------------------------------------------------------
+Mon Apr 23 11:56:00 CEST 2007 - mc@suse.de
+
+- full cracklib dictionary - splitted out from cracklib
+

@@ -1,0 +1,5 @@
+<package name="system-user-mktex" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Publishing:TeXLive" package="system-user-mktex"/>
+</package>

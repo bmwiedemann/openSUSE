@@ -1,0 +1,7 @@
+<package name="vdu_controls" project="openSUSE:Factory">
+  <title>Visual Display Unit virtual control panel</title>
+  <description>vdu_controls is a virtual control panel for externally connected VDUs (visual display units).  Controls are included for backlight brightness, and contrast.  vdu_controls uses the ddcutil command line utility to interact with external displays via VESA Display Data Channel (DDC) Virtual Control Panel (VCP) standards.
+</description>
+  <devel project="utilities" package="vdu_controls"/>
+  <url>https://github.com/digitaltrails/vdu_controls</url>
+</package>

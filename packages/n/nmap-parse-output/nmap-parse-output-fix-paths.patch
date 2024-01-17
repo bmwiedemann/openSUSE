@@ -1,0 +1,31 @@
+diff --git a/_nmap-parse-output b/_nmap-parse-output
+index d0d8aff..d54ddf5 100644
+--- a/_nmap-parse-output
++++ b/_nmap-parse-output
+@@ -2,11 +2,8 @@
+ 
+ _nmap-parse-output_completions()
+ {
+-  local NPO_SCRIPT="$(whereis -b nmap-parse-output | cut -d ' ' -f 2)"
+-  if [ -h "$NPO_SCRIPT" ]; then
+-    local NPO_SCRIPT="$(readlink "$NPO_SCRIPT")"
+-  fi
+-  local NMAP_PARSE_OUTPUT_DIR="$( dirname "$NPO_SCRIPT" )/nmap-parse-output-xslt"
++  local NPO_SCRIPT="/usr/bin/nmap-parse-output"
++  local NMAP_PARSE_OUTPUT_DIR="/usr/share/nmap-parse-output/nmap-parse-output-xslt/"
+   
+   if [ -n "$ZSH_VERSION" ]; then
+     # ZSH
+diff --git a/nmap-parse-output b/nmap-parse-output
+index 969dbf4..fafd3f8 100755
+--- a/nmap-parse-output
++++ b/nmap-parse-output
+@@ -10,7 +10,7 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
+ done
+ SCRIPT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+ 
+-XSLT_DIR=$SCRIPT_DIR/nmap-parse-output-xslt
++XSLT_DIR="/usr/share/nmap-parse-output/nmap-parse-output-xslt/"
+ 
+ # functions (mostly for help)
+ function xml_node_text() {

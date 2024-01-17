@@ -1,0 +1,187 @@
+-------------------------------------------------------------------
+Tue Apr 14 19:22:10 UTC 2015 - coolo@suse.com
+
+- updated to 1.29
+   see /usr/share/doc/packages/perl-Set-Scalar/ChangeLog
+
+  1.29 2014-03-24  Dave Oswald <davido@cpan.org>
+    * Fixed set operations examples in POD (Xaerxess via GitHub).
+    
+  1.28 2014-02-24  Dave Oswald <davido@cpan.org>
+    * Fix POD example showing power_set() method returning an iterator. Now it
+      correctly demonstrates power_set_iterator() returning an iterator.
+      (Response to report from vagabonding_electron on PerlMonks.)
+
+-------------------------------------------------------------------
+Sun Feb  9 13:30:02 UTC 2014 - coolo@suse.com
+
+- updated to 1.27
+   * Merge pull request for typo fix in POD.
+   * Merge pull request for adding meta-data via Makefile.PL.
+   * ChangeLog is more standards compliant.
+   * Module POD now mentions current maintainer, and GitHub repo.
+
+-------------------------------------------------------------------
+Fri Jul 26 18:31:45 UTC 2013 - coolo@suse.com
+
+- updated to 1.26
+       * Fixed "Set::Scalar::Valued" [rt.cpan.org #69037], bug reported
+         and fix supplied by Kiran Mukhyala, the problem was in null()
+         not being defined for valued set universes.
+       
+       * Fixed qq[More whitespace in examples could show "picture" of
+         operations] [rt.cpan.org #54172 and #54173], bug reported
+         and fix supplied by MichaelRWolf.  (ASCII art, so relies
+         on fixed-width font.)
+
+-------------------------------------------------------------------
+Wed Feb 27 06:24:29 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:19 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:11 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:03 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:39:04 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Wed Jan 13 16:36:44 CET 2010 - anicka@suse.cz
+
+- update to 1.25
+ * Fixed "trying to add an element twice prevents further
+   adds to the set" [rt.cpan.org #52559]
+ * Removed unused and deprecated (Perl 5.12?) "use UNIVERSAL 'isa'"
+   from Set/Scalar/Virtual.pm.
+ * Add tests for the copy overload.
+	
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+------------------------------------------------------------------
+Mon Aug  3 16:05:05 CEST 2009 - anicka@suse.cz
+
+- update to 1.24
+ * Fixed "The intersection method does not like references in the 
+   set." [rt.cpan.org #46589], bug reported and fix provided by
+   Father Chrysostomos.
+ * Cosmetics: removed trailing whitespace.
+ * Renamed README as README.old.  It has been close to ten years.
+ * Added new README.
+ * Updated copyright years. 
+ 
+-------------------------------------------------------------------
+Tue Jan 20 15:52:31 CET 2009 - anicka@suse.cz
+
+- update to 1.23
+ * Add overload for '@{}' as suggested by John Loverso,
+   meaning that you can now do @$set and get the members
+   of the set (unordered, mind)
+ * Add overload for '=' (how did we manage so long without?)
+ * Remove explicit import of UNIVERSAL::isa()
+ * Add cartesian_product() and power_set(), both as full
+   constructors and as iterators.
+ * Add empty_clone().
+
+-------------------------------------------------------------------
+Thu Nov  1 15:43:38 CET 2007 - anicka@suse.cz
+
+- update to 1.22
+  * Add cartesian_product() and power_set(), both as full
+    constructors and as iterators.
+  * Add empty_clone().
+  * Makefile.PL not requiring Test::More since we are not using it.
+  * Made to work with the upcoming Perl 5.005_05
+    (yes, you read that right), most importantly
+    Scalar::Util made optional (we fall back to
+    pure Perl emulations for blessed() and refaddr()
+    if necessary).  Everything else already worked.
+
+-------------------------------------------------------------------
+Mon Oct  8 09:24:44 CEST 2007 - anicka@suse.cz
+
+- update to 1.21
+  * Made to work with the upcoming Perl 5.005_05, most importantly
+    Scalar::Util made optional (we fall back to
+    pure Perl emulations for blessed() and refaddr()
+    if necessary).  Everything else already worked.
+ * bugfixes
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:57 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan  4 12:19:39 CET 2006 - anicka@suse.cz
+
+- update to 1.20 
+
+-------------------------------------------------------------------
+Wed Sep 28 22:14:09 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Thu Aug 19 13:56:47 CEST 2004 - mjancar@suse.cz
+
+- update to 1.19
+
+-------------------------------------------------------------------
+Thu Feb 26 17:33:34 CET 2004 - mjancar@suse.cz
+
+- update to 1.18
+
+-------------------------------------------------------------------
+Fri Aug 22 15:43:41 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Tue Jul 15 16:23:32 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Wed Jun 18 09:19:16 CEST 2003 - coolo@suse.de
+
+- package directories
+
+-------------------------------------------------------------------
+Tue May 20 12:38:34 CEST 2003 - mjancar@suse.cz
+
+- remove unpackaged files
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Thu Jan 17 12:26:19 CET 2002 - rvasice@suse.cz
+
+- update to version 1.17
+- fixed filelist
+
+-------------------------------------------------------------------
+Mon Aug 13 13:28:37 CEST 2001 - rvasice@suse.cz
+
+- initial package release (version 1.10)
+

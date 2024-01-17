@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b5eb6abd6f2a79f5b0a2a8c087fa3b25</srcmd5>
+    <version>2.8.10</version>
+    <time>1177468070</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f14d0a056965a5f9da49c2270242925</srcmd5>
+    <version>2.8.12</version>
+    <time>1203034700</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="22">
+    <srcmd5>96db62f052bdb68f0d5af423d5fc809a</srcmd5>
+    <version>2.8.12</version>
+    <time>1214187771</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="23">
+    <srcmd5>b5373bc7e4f8f043c524126fe1620ec2</srcmd5>
+    <version>2.8.12</version>
+    <time>1214590063</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="43">
+    <srcmd5>72cd5162ab05146813274bdf081bf603</srcmd5>
+    <version>2.8.12</version>
+    <time>1220645869</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="45">
+    <srcmd5>72cd5162ab05146813274bdf081bf603</srcmd5>
+    <version>2.8.12</version>
+    <time>1220645869</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="46">
+    <srcmd5>87b92e05972f398885ce4664f739c950</srcmd5>
+    <version>2.8.12</version>
+    <time>1268923252</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="48">
+    <srcmd5>87b92e05972f398885ce4664f739c950</srcmd5>
+    <version>2.8.12</version>
+    <time>1278667340</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="49">
+    <srcmd5>87b92e05972f398885ce4664f739c950</srcmd5>
+    <version>2.8.12</version>
+    <time>1278678568</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="52">
+    <srcmd5>87b92e05972f398885ce4664f739c950</srcmd5>
+    <version>2.8.12</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="53">
+    <srcmd5>1a13c426bfed85a7a7fcf906d765bd47</srcmd5>
+    <version>2.8.12</version>
+    <time>1316515827</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 83137 from jengelh)</comment>
+    <requestid>83718</requestid>
+  </revision>
+  <revision rev="12" vrev="55">
+    <srcmd5>1a13c426bfed85a7a7fcf906d765bd47</srcmd5>
+    <version>2.8.12</version>
+    <time>1319181825</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="56">
+    <srcmd5>84ae59c01cdc2a2ef90d7be57aefe6f6</srcmd5>
+    <version>2.8.12</version>
+    <time>1323191065</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="58">
+    <srcmd5>84ae59c01cdc2a2ef90d7be57aefe6f6</srcmd5>
+    <version>2.8.12</version>
+    <time>1340183251</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="59">
+    <srcmd5>d5c8b2d7b3f95e2cd62f400b358a6a8e</srcmd5>
+    <version>2.8.12</version>
+    <time>1344777860</time>
+    <user>namtrac</user>
+    <comment>- correct License to LGPL-2.1</comment>
+    <requestid>130485</requestid>
+  </revision>
+  <revision rev="16" vrev="61">
+    <srcmd5>d5c8b2d7b3f95e2cd62f400b358a6a8e</srcmd5>
+    <version>2.8.12</version>
+    <time>1359108771</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="63">
+    <srcmd5>d5c8b2d7b3f95e2cd62f400b358a6a8e</srcmd5>
+    <version>2.8.12</version>
+    <time>1379662154</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="65">
+    <srcmd5>d5c8b2d7b3f95e2cd62f400b358a6a8e</srcmd5>
+    <version>2.8.12</version>
+    <time>1409300681</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="66">
+    <srcmd5>9ece554da36845f2602c90ac4d101316</srcmd5>
+    <version>2.8.12</version>
+    <time>1539250916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639880</requestid>
+  </revision>
+</revisionlist>

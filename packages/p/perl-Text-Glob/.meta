@@ -1,0 +1,5 @@
+<package name="perl-Text-Glob" project="openSUSE:Factory">
+  <title>Tools for working with paths and file specs across platforms</title>
+  <description>Text::Glob implements glob(3) style matching that can be used to match against text, rather than fetching names from a filesystem. If you want to do full file globbing use the File::Glob module instead.</description>
+  <devel project="devel:languages:perl" package="perl-Text-Glob"/>
+</package>

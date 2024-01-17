@@ -1,0 +1,14 @@
+# macros.erlang
+#
+
+# suse-style macros
+%erlang_dir    %{_libdir}/erlang
+%erlang_libdir %{_libdir}/erlang/lib
+
+%__erl         /usr/bin/erl
+%erlang_app_vsn()  $(%{__erl} -noshell -eval '{ok,[{_,_,C}]}=file:consult("%{1}"), io:format(proplists:get_value(vsn,C)), halt().')
+%erlang_app_name() $(%{__erl} -noshell -eval '{ok,[{_,N,_}]}=file:consult("%{1}"), io:format(N), halt().')
+
+# fedora compat
+%_erldir       %{erlang_dir}
+%_erllibdir    %{erlang_libdir}

@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2184f2f711b9852b2902e268a4a3c138</srcmd5>
+    <version>20210322</version>
+    <time>1616598670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880549</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8e7dfaea07d00c26882f770714a8f68b</srcmd5>
+    <version>20210427</version>
+    <time>1619822772</time>
+    <user>dimstar_suse</user>
+    <comment>- Wait for Internet connectivity before proceeding with next steps.
+  Before this change, the mod-firstboot script was failing when:
+  * there was no network configured on the first boot (happens
+    when using NetworkManager, since it's not configured by YaST
+    during installation)
+  * the script started before wifi connection was properly
+    established
+- 20210427</comment>
+    <requestid>889224</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b1a1b56d6b204fa45d01b9e00b1140b6</srcmd5>
+    <version>20210427</version>
+    <time>1634068120</time>
+    <user>dimstar_suse</user>
+    <comment>- Use &quot;Text Editor&quot; instead of the less-supported &quot;gEdit&quot;</comment>
+    <requestid>924661</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>53b68f97df84fddb01af641e6f62988c</srcmd5>
+    <version>20210427</version>
+    <time>1642724710</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947409</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>c01c8da080568dea60e32db5a94975d4</srcmd5>
+    <version>20210427</version>
+    <time>1646150593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958085</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>45d3ab9fbeeaab29dda84d1613e519c6</srcmd5>
+    <version>20210427</version>
+    <time>1660051552</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Conflicts: plasma-branding-MicroOS</comment>
+    <requestid>993311</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>59cbdd3097908cc2d534d6abdc4afc3d</srcmd5>
+    <version>20210427</version>
+    <time>1664302391</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006034</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>151671a4432bc8cf465503ae158b215e</srcmd5>
+    <version>20230126</version>
+    <time>1674810957</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct the transactional-update reboot method for GNOME Desktop
+- 20230126</comment>
+    <requestid>1061200</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>84edfac837f23bed94f9c7bfc47f3996</srcmd5>
+    <version>20230323</version>
+    <time>1679933718</time>
+    <user>dimstar_suse</user>
+    <comment>- Use new transactional-update drop-in config for Desktop
+  notification configuration
+- 20230323</comment>
+    <requestid>1074231</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a8b249b0792bff81f729fd0eaded20c9</srcmd5>
+    <version>20230420</version>
+    <time>1682079349</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded cleanup of desktop drop-in
+- 20230420 
+
+- Correct location for Desktop drop-in config
+- Clean up invalid desktop drop-in file
+- 20230419</comment>
+    <requestid>1080791</requestid>
+  </revision>
+</revisionlist>

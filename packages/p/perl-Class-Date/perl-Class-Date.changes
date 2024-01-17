@@ -1,0 +1,163 @@
+-------------------------------------------------------------------
+Wed Sep 12 12:30:57 UTC 2018 - pmonrealgonzalez@suse.com
+
+- Update to 1.1.17
+  * Bugfixes:
+    - Modules still had the hard-coded $VERSIONs in them.
+ 
+- Update to 1.1.16
+  - Remove the xs part of the distribution, which  was not adding	
+    much for the extra pain.
+  - Quiet spurious warning
+  - Fix typos in documentation.
+
+- Cleaned spec-file with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Sep 15 15:44:34 UTC 2014 - coolo@suse.com
+
+- updated to 1.1.15
+     - Move Date/Const.pm to lib/Calss/Date/
+     - Move Class::Date::Invalid and Class::Date::Rel to their own files in lib/Class/Date/
+     - Require Scalar::Util and remove work-around lack of Scalar::Util
+     - Require Env::C
+ 
+ 1.1.13 Fri May  2 08:32:15 2014
+     - Use Test::More for testing
+ 
+ 1.1.12 Wed Apr 30 08:44:29 2014
+     - Fixing MANIFEST.SKIP to include Makefile.PL and exclue MYMETA files.
+ 
+ 1.1.11 Wed Apr 30 06:56:24 2014
+     - Convert the pod to UTF8 and add =encoding RT #94657 
+     - Minumum version of perl is not 5.006
+     - Makefile updated
+     - New maintainer: Gabor Szabo
+- remove Class-Date-1.1.10.diff
+
+-------------------------------------------------------------------
+Wed Feb 27 06:47:55 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:13 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:30:59 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Jul 19 14:38:06 CEST 2010 - anicka@suse.cz
+
+- update to 1.1.10
+ * Remove the deprecated UNIVERSAL::import (Vladimir Timofeev)
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Sat Jul 25 19:29:20 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sun Jun 28 17:25:56 CEST 2009 - chris@computersalat.de
+
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o fixed deps
+    req for Date::Parse
+
+-------------------------------------------------------------------
+Tue Jul  8 18:59:20 CEST 2008 - anicka@suse.cz
+
+- remove executable bits from documentation, move tests to %check 
+
+-------------------------------------------------------------------
+Wed Jul 12 13:14:43 CEST 2006 - anicka@suse.cz
+
+- update to 1.1.9
+  * no upstream changelog available
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:31 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan  3 14:28:53 CET 2006 - anicka@suse.cz
+
+- update to 1.1.8 
+
+-------------------------------------------------------------------
+Thu Oct 30 19:10:45 CET 2003 - mjancar@suse.cz
+
+- update to 1.1.7
+- no root for build
+
+-------------------------------------------------------------------
+Fri Aug 22 14:10:16 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Thu Jul 24 13:08:49 CEST 2003 - mjancar@suse.cz
+
+- update to 1.1.6
+
+-------------------------------------------------------------------
+Tue Jul 15 11:50:11 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Wed Jun 18 15:23:52 CEST 2003 - mjancar@suse.cz
+
+- use $RPM_OPT_FLAGS
+- fix filelist
+
+-------------------------------------------------------------------
+Tue May 20 12:38:51 CEST 2003 - mjancar@suse.cz
+
+- remove unpackaged files
+
+-------------------------------------------------------------------
+Thu Oct 17 17:52:33 CEST 2002 - prehak@suse.cz
+
+- update to version 1.1.1
+
+-------------------------------------------------------------------
+Tue Jul 30 18:43:42 CEST 2002 - ro@suse.de
+
+- fix build with perl-5.8 
+
+-------------------------------------------------------------------
+Tue Jul  9 17:33:07 CEST 2002 - prehak@suse.cz
+
+- updated to version 1.0.10
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Thu Jan  3 10:57:13 CET 2002 - cihlar@suse.cz
+
+- update to version 1.0.8
+
+-------------------------------------------------------------------
+Mon Aug 13 16:25:19 CEST 2001 - rvasice@suse.cz
+
+- initial package release (version 1.0.5)
+

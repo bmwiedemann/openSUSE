@@ -1,0 +1,241 @@
+-------------------------------------------------------------------
+Fri Jul 14 03:06:53 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.29
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.29    2023-07-13
+          [CHANGES]
+           * Updates to compile cleanly on perl v5.38
+           * Remember to implement `no Syntax::Keyword::Try` to disable the
+             syntax
+           * Swap all the unit tests to `Test2::V0`
+
+-------------------------------------------------------------------
+Fri Dec  9 03:09:01 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.28
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.28    2022-12-08
+          [CHANGES]
+           * Account for the new structure of ->cop_warnings in perl v5.37.6
+           * Updated to latest hax/ support files; accounting for newPADxVOP in
+             latest bleadperl
+
+-------------------------------------------------------------------
+Mon Feb 21 03:13:26 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.27
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.27    2022-02-22
+          [CHANGES]
+           * Updates to support Feature::Compat::Try 0.05 with new `finally {}`
+             blocks
+
+-------------------------------------------------------------------
+Wed Oct 13 03:06:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.26
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.26    2021-10-12
+          [CHANGES]
+           * Many internal updates to hax/ support files
+
+          [BUGFIXES]
+           * Fix try { return } to work correctly in all contexts without
+             upsetting -DDEBUGGING perls
+
+-------------------------------------------------------------------
+Wed Jun  2 03:07:19 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.25
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.25    2021-06-01
+          [CHANGES]
+           * Rewrite parsing logic to use XS::Parse::Keyword 0.06
+           * Removed the new-deprecated `try do { ... }` experimental syntax
+           * Updated docs now that 5.34 is officially released, including
+             `use feature 'try'`.
+
+-------------------------------------------------------------------
+Tue May 11 03:07:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.24
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.24    2021-05-10
+          [CHANGES]
+           * Deprecate the `try do { ... }` (experimental) syntax now that
+             try-in-do works reliably. It will be removed soon because it gets
+             in the way of converting the parser logic to XS::Parse::Keyword
+           * Add documentation about the core `use feature 'try'` and
+             Feature::Compat::Try module
+           * Added an initial attempt at B::Deparse logic
+
+-------------------------------------------------------------------
+Sun Mar 28 03:07:57 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.23
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.23    2021-03-27
+          [CHANGES]
+           * Unit tests and documentation of the handling of the final-value
+             semantics of `do { try ... }`
+           * Also mention core's `feature 'try'` in documentation
+           * Gives notice that the experimental 'try_value' feature is now
+             discouraged and will eventually be removed
+
+  0.22    2021-03-26
+          [CHANGES]
+           * Preserve wantarray context within the try {} block (RT133616)
+           * List-context `try do {}` now works fine as well
+           * Apply unit-testing for RT134790
+
+-------------------------------------------------------------------
+Sat Jan 23 03:09:35 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.21
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.21    2021-01-22
+          [CHANGES]
+           * Add some import configuration options required to make
+             Feature::Compat::Try work. Currently unit-tested but undocumented.
+
+-------------------------------------------------------------------
+Tue Nov 24 03:06:24 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.20
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.20    2020-11-24
+          [BUGFIXES]
+           * Fix for perl 5.14 by #include'ing hax/ files in the right order
+
+  0.19    2020-11-24
+          [CHANGES]
+           * Avoid the core Off() and Bit() macros as they were removed after
+             perl 5.33.3
+           * Support :experimental(try_value) to activate and silence the
+             warning
+           * Add documentation about the scalar context propagation issue of
+             RT124229
+
+-------------------------------------------------------------------
+Sun Aug  2 03:12:52 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.18    2020-08-01
+          [CHANGES]
+           * De-experiment the `catch ($var)` syntax
+
+  0.17    2020-07-31
+          [CHANGES]
+           * Ensure that `catch ($var)` does not retain exception value after
+             block exit
+           * Docs fixes for clarity on experimental status of `catch ($var)`
+
+          [BUGFIXES]
+           * Ensure sv_isa_sv is a macro for aTHX on threaded perls
+
+-------------------------------------------------------------------
+Wed Jul 29 03:12:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.16
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.16    2020-07-23
+          [CHANGES]
+           * Provide the `:experimental` import tag as a nicer way to silence
+             experimental warnings
+
+          [BUGFIXES]
+           * Don't name a variable `class` because it upsets some C compilers
+             (RT133043)
+
+-------------------------------------------------------------------
+Tue Jul 21 03:18:33 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.15    2020-07-21
+           * Experimental typed `catch (VAR ...)` conditions
+
+-------------------------------------------------------------------
+Wed Jul  8 03:09:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.14    2020-07-07
+           * Optional experimental syntax of `catch (VAR)` instead of previous
+             experimental `catch my VAR`
+           * Mark `catch my VAR` as deprecated
+           * Added explicit use VERSION declarations to every perl file
+
+-------------------------------------------------------------------
+Wed Jul  1 03:13:23 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.13
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.13    2020-06-29
+          [BUGFIXES]
+           * Pack correct MANIFEST to include hax/ files
+
+  0.12    2020-06-29
+          [CHANGES]
+           * Optional and experimental allocation of a new lexical under
+             `catch my $VAR` syntax (RT130702). However, this syntax may not
+             survive long, as part of the ongoing typed catch design work.
+
+          [BUGFIXES]
+           * Work around perl versions prior to 5.22 built with -DDEBUGGING
+             getting upset about new*OP() being invoked with OP_CUSTOM
+             (RT128562)
+
+-------------------------------------------------------------------
+Sun Sep  8 19:54:48 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 0.11
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.11    2019-09-07
+          [CHANGES]
+           * Use wrap_keyword_plugin() instead of direct access to
+             PL_keyword_plugin
+          [BUGFIXES]
+           * Build OP_ENTER/OP_LEAVE structure the correct way so perl 5.31.3
+             doesn't crash
+           * Fix OP_NEXT/OP_LAST/OP_REDO mangling for perl 5.31.3 to avoid
+             CPU spin (RT129975)
+
+-------------------------------------------------------------------
+Fri Jun 14 05:30:08 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.10
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.10    2019-06-13
+          [CHANGES]
+           * Added experimental value-semantic expression form (RT121267)
+           * Document that the module works nicely with Future::AsyncAwait
+           * Ignore import symbols `catch` and `finally`
+  
+          [BUGFIXES]
+           * Fixed spelling mistakes in documentation (patch from debian)
+             (RT124140)
+
+-------------------------------------------------------------------
+Wed Apr  3 07:54:19 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- initial package 0.09
+ * created by cpanspec 1.78.09

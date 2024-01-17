@@ -1,0 +1,742 @@
+-------------------------------------------------------------------
+Wed Jan  3 09:59:35 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.42:
+  * 60-io-scheduler.rules: test for "scheduler" sysfs attribute (boo#1216717)
+
+-------------------------------------------------------------------
+Tue Jan  2 15:35:07 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.41:
+  * rpm-script: fix issue during installation (bsc#1217775)
+  * rpm-script: preun: remove stale .vmlinuz.hmac file
+
+-------------------------------------------------------------------
+Mon Dec 18 20:12:46 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+  * add blacklist entry for reiserfs (jsc#PED-6167)
+  * rpm-script: add symlink /boot/.vmlinuz.hmac (bsc#1217775)
+  * Remove kmp-install (boo#1214360)
+
+-------------------------------------------------------------------
+Thu Dec 14 19:59:57 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.39:
+  * Add more modules to file system blacklist (jsc#PED-6167)
+    Blacklisted filesystem modules that aren't officially supported
+    by SUSE: f2fs, hfsplus, jfss2, kafs, ntfs3, orangefs, pstore, romfs, zonefs.
+    As usual, the blacklist entries can be removed by running an
+    explicit "modrobe $FS_MODULE" command.
+
+-------------------------------------------------------------------
+Fri Oct 27 15:48:07 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.38:
+  * modprobe.d: use softdep to load sd_mod and sg (boo#1216070)
+
+-------------------------------------------------------------------
+Wed Oct 25 19:48:57 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+  * weak-modules2: ignore INITRD_MODULES (jsc#PED-1915), obtain
+    list of modules from dracut.conf.d instead
+
+-------------------------------------------------------------------
+Fri Sep 29 16:49:41 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.36
+  * blacklist RNDIS modules (bsc#1205767, jsc#PED-5731, CVE-2023-23559)
+  * modprobe.d: Blacklist cls_tcindex module (bsc#1210335, CVE-2023-1829)
+
+-------------------------------------------------------------------
+Tue Sep  5 19:10:35 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.35:
+
+  * split off regenerate-initrd-posttrans in the kernel-scriptlets package
+    (boo#1213459)
+  * wm2: Update for usrmerge (boo#1214428)
+
+-------------------------------------------------------------------
+Fri Sep  1 15:35:17 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+  * support old-style markers under /run/regenerate-initrd
+    (bsc#1214877)
+  * Fix comment in regenerate-initrd-posttrans 
+
+-------------------------------------------------------------------
+Tue Aug 15 16:12:13 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.33:
+  * change wording in filesystem blacklist files
+    (gh#openSUSE/suse-module-tools#71)
+  * rpm-script: update bootloader after creating initramfs
+    (boo#1213822)
+  * usrmerge: Drop support for non-usrmerged (boo#1206798)
+
+-------------------------------------------------------------------
+Mon Jul  3 19:37:53 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.32:
+  * rpm-script: check for regenerate-initrd-posttrans in %posttrans
+    (boo#1212957)
+
+-------------------------------------------------------------------
+Tue Jun  6 13:05:55 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.31:
+  * rpm-script: skip run_bootloader check (boo#1208117)
+
+-------------------------------------------------------------------
+Wed Mar 15 15:13:14 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.30:
+  * get rid of weak-modules (bsc#1202353)
+  * Remove last mentions of mkinitrd
+
+-------------------------------------------------------------------
+Thu Feb  2 12:02:36 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.29:
+  * modprobe.conf: s390x: remove softdep on fbcon (boo#1207853)
+
+-------------------------------------------------------------------
+Tue Nov 29 16:13:08 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.28:
+  * Split kernel scriptlets into separate sub-package, again
+    (boo#1202353, boo#1205149)
+
+-------------------------------------------------------------------
+Mon Nov 21 15:52:55 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.27:
+  * 80-hotplug-cpu-mem.rules: use CONST{arch} (bsc#1204423)
+
+-------------------------------------------------------------------
+Fri Nov  4 17:49:31 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+  * Revert "Split kernel scriptlets into separate sub-package"
+   (that change broke some package builds on OBS)
+
+-------------------------------------------------------------------
+Fri Nov  4 17:24:09 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.25:
+  * 80-hotplug-cpu-mem.rules: restrict cpu rule to x86_64 (bsc#1204423)
+
+-------------------------------------------------------------------
+Fri Sep 23 10:40:07 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.24:
+  * Split kernel scriptlets into separate sub-package 
+    "suse-module-tools-scriptlets" on Tumbleweed
+    (gh#openSUSE/suse-module-tools#64)
+
+-------------------------------------------------------------------
+Mon Sep 12 15:28:13 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.23:
+  * cert-script: skip cert handling if efivarfs is not writable
+    (bsc#1201066)
+  * driver-check.sh, unblacklist: convert egrep to grep -E (bsc#1203092)
+
+-------------------------------------------------------------------
+Thu Jul 14 09:54:09 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.22:
+  * weak-modules2: only use kernel version under /run/regenerate-initrd
+  (boo#1201387)
+
+-------------------------------------------------------------------
+Thu Jul  7 08:10:08 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.21:
+  * kernel-scriptlets: don't pass flags to weak-modules2 (bsc#1195391)
+
+-------------------------------------------------------------------
+Thu Jun  2 10:55:37 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.20:
+  * Bump version to 16.0.20
+  * driver-check.sh: avoid false positive error messages (boo#1200107)
+  * don't hardcode /boot for kernel-related files (boo#1199873)
+  * spec file: use "install -p" consistently
+
+-------------------------------------------------------------------
+Fri Jan 28 21:00:00 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.19:
+  * Add /etc/modprobe.d/README on SLE/Leap (bsc#1195051)
+  * rpm-script: force-copy kernel to /boot (boo#1194501)
+
+-------------------------------------------------------------------
+Tue Jan  4 13:32:10 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.18:
+  * cdrom: Disable autoclose by default (boo#1165047).
+  * Make regenerate-initrd-posttrans compatible with Dracut's 
+    UEFI mode (unified kernel image)
+
+-------------------------------------------------------------------
+Mon Dec 20 13:13:04 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.17:
+  * 60-io-scheduler.rules: add rules for virtual devices
+    (boo#1193759)
+  * 60-io-scheduler.rules: enforce "none" for loop devices
+    (boo#1193759)
+  * install some modprobe.d files only for relevant architectures
+    (apm_bios, sonypi, toshiba, legacy rtc) (bsc#1192974)
+
+-------------------------------------------------------------------
+Mon Dec  6 09:04:55 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.16:
+  * modprobe.d: split conf files (jsc#SLE-21626, boo#1193059)
+    - Rather than shipping two large files with modprobe.d options
+      (00-system.conf and 50-blacklist.conf), ship multiple small
+      per-module files. This makes it easier for users to override
+      distribution defaults.
+  * blacklist isst_if_mbox_msr (bsc#1187196)
+  * boot-sysctl: make sure file exists (fix for containers)
+  * remove blacklist entry for snd_bt87x (bsc#1192974, bsc#51718)
+
+-------------------------------------------------------------------
+Mon Nov 08 22:05:58 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.14:
+  * add udev rules from udev-extra-rules (formerly system-tuning-common-SUSE).
+    Both packages are now obsoleted by suse-module-tools.
+    (jsc#SLE-21032)
+  * 60-io-scheduler.rules: don't use BFQ for real multiqueue devices
+    (jsc#SLE-21032, bsc#1192161)
+  * 60-io-scheduler.rules: use "none" for multipath components
+    (bsc#1192161)
+
+-------------------------------------------------------------------
+Fri Oct 22 20:37:38 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.13:
+  * fixup "rpm-script: fix bad exit status in OpenQA (bsc#1191922)"
+
+-------------------------------------------------------------------
+Fri Oct 22 13:12:38 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.12:
+  * rpm-script: fix bad exit status in OpenQA (bsc#1191922)
+  * cert-script: Deal with existing $cert.delete file (bsc#1191804).
+  * cert-script: Ignore kernel keyring for kernel certificates (bsc#1191480).
+  * cert-script: Only print mokutil output in verbose mode.
+
+-------------------------------------------------------------------
+Mon Oct  4 14:25:41 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.11:
+  * inkmp-script(postun): don't pass  existing files to weak-modules2
+    (boo#1191200)
+  * kernel-scriptlets: skip cert scriptlet on non-UEFI systems
+    (boo#1191260)
+
+-------------------------------------------------------------------
+Tue Sep 14 20:53:46 UTC 2021 - obs-service-tar-scm@invalid
+
+- Update to version 16.0.10+7:
+  * rpm-script: link config also into /boot (boo#1189879)
+  * weak-modules2: accept modules under /usr/lib/modules on stdin
+    (for support of usr-merged KMPs)
+  * fix scriptlet path (bsc#1189441)
+
+-------------------------------------------------------------------
+Tue Sep 14 14:14:39 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.10:
+  * Import kernel scriptlets from kernel-source (bsc#1189441)
+  * README.md: document environment variables for weak-modules2
+
+-------------------------------------------------------------------
+Mon Aug 30 13:15:20 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.9:
+  * weak_modules2: fix "warning: %post(kernel-...) scriptlet failed, 
+    exit status 1" message from rpm (boo#1189881)
+  * weak-modules2: add logging at verbose level 2
+  * weak-modules2: control logging with environment variables
+    WM2_VERBOSE, WM2_DEBUG, WM2_LOGFILE
+  * regenerate-initrd-posttrans: friendly notice if dracut not found
+    (boo#1123721)
+
+-------------------------------------------------------------------
+Fri Aug 20 09:05:54 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.8+1:
+  * spec file: fix BuildRequires
+
+-------------------------------------------------------------------
+Thu Aug 19 18:53:24 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.8:
+  * fix problem that initrd may not be rebuilt after installing
+    kernel-$flavor-extra (bsc#1189441)
+
+-------------------------------------------------------------------
+Thu Aug 19 11:31:32 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.7:
+  * add kernel-sysctl.service and boot-sysctl.service for applying
+    kernel-specific sysctl settings (bsc#1184804)
+  * add support for zstd-compressed kernel modules
+
+-------------------------------------------------------------------
+Mon Jul  5 15:14:47 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.6:
+  * modprobe.d: Remove dma=none setting for parport_pc
+    (bsc#1177695)
+
+-------------------------------------------------------------------
+Thu Jul  1 21:03:49 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.5
+  * moved config files to /usr/lib/modprobe.d and /usr/lib/depmod.d
+  * "modprobe $FS" for a blacklisted file system now offers to 
+    unblacklist the module permanently  
+  * disabled automatic un-blacklisting of filesystem modules loaded
+    at installation time
+  * added faster substitute for lsinitrd to speed up weak-modules2
+  * added README.md
+  * modprobe.conf cleanup
+
+-------------------------------------------------------------------
+Thu Jun 17 14:43:13 UTC 2021 - mwilck@suse.com
+
+- Update to version 16.0.4:
+  * re-add legacy subpackage with "weak-modules", and add a
+    "Supplements" dependency on dkms, which needs it
+
+-------------------------------------------------------------------
+Thu Jun 17 13:10:42 UTC 2021 - mwilck@suse.com
+
+- Update to version 16.0.3:
+  * Fix treatment of compressed modules (bsc#1187093)
+
+-------------------------------------------------------------------
+Thu Jun 10 08:41:47 UTC 2021 - mwilck@suse.com
+
+- Update to version 16.0.2:
+  * fix kernel version in dracut invocation (bug in 16.0.0)
+  * spec file: really fix ppc64/ppc64le
+
+-------------------------------------------------------------------
+Thu May 27 19:13:05 UTC 2021 - mwilck@suse.com
+
+- Update to version 16.0.1:
+  * fix ppc64/ppc64le build
+
+-------------------------------------------------------------------
+Thu May 27 09:29:56 UTC 2021 - mwilck@suse.com
+
+- Update to version 16.0.0
+- modprobe.conf cleanup (bsc#1161343)
+  * Unify ppc64 and ppc64le
+  * Delete files for obsolete architectures
+  * Remove obsolete SUSE_INITRD statements (bsc#1161343)
+  * Add dependency on dracut 049.1 (bsc#1142152, ltc#176292, FATE#327775)
+- Replace mkinitrd with dracut everywhere
+- Remove obsolete "weak-modules" script
+
+-------------------------------------------------------------------
+Thu Apr 22 16:29:01 UTC 2021 - obs-service-tar-scm@invalid
+
+- Update to version 15.4.1:
+  * dm-crypt requires essiv in SLE15 SP3 (boo#1183063 bsc#1184134 ltc#192244).
+
+-------------------------------------------------------------------
+Tue Apr 13 15:24:23 UTC 2021 - obs-service-tar-scm@invalid
+
+- Update to version 15.4.0:
+  * Enable f2fs (bsc#1184415)
+
+-------------------------------------------------------------------
+Mon Nov 02 17:03:42 UTC 2020 - mwilck@suse.com
+
+- Update to version 15.3.5:
+  * Skip coldplug for memory devices on ppc64le, using generator
+    (bsc#1174287, bsc#1172745)
+
+-------------------------------------------------------------------
+Tue Aug 25 15:43:20 UTC 2020 - mwilck@suse.com
+
+- Update to version 15.3.4:
+  * spec: rework dependencies
+
+-------------------------------------------------------------------
+Mon Aug 03 21:05:03 UTC 2020 - mwilck@suse.com
+
+- Update to version 15.3.4:
+  * rework dependencies to reduce system size for small OS
+
+-------------------------------------------------------------------
+Fri Jun  5 15:28:50 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Reverted back to tar_scm source service
+  (obs_scm doesn't work well for Ring0 packages)
+
+-------------------------------------------------------------------
+Wed May 27 20:49:04 UTC 2020 - mwilck@suse.com
+
+- Update to version 15.3.3:
+  * spec: remove SLE/openSUSE difference in allow_unsupported_modules
+  (jsc#SLE-12255)
+  * spec: use same fs_blacklist on SLE and openSUSE
+  (jsc#SLE-12255, jsc#SLE-3926)
+  * spec: use br_netfilter softdep only for SLE12
+  (jsc#SLE-12255, bsc#1166531, boo#1158817, bsc#937216)
+
+-------------------------------------------------------------------
+Fri Apr 17 15:32:54 UTC 2020 - mwilck@suse.com
+
+- Update to version 15.3.2:
+  * modprobe.conf.common: eliminate circular uas/usb-storage dependency
+  (bsc#1168661)
+
+-------------------------------------------------------------------
+Mon Jan 20 15:03:51 UTC 2020 - mwilck@suse.com
+
+- Update to version 15.2.10:
+  * ppc64le: fix dependency of papr_scm
+    (bsc#1142152, ltc#176292, FATE#327775).
+
+-------------------------------------------------------------------
+Wed Jan 15 20:46:40 UTC 2020 - mwilck@suse.com
+
+- Update to version 15.2.9:
+  * 00-system.conf: move br_netfilter softdep to separate file
+    (boo#1158817)
+
+-------------------------------------------------------------------
+Thu Jan 09 12:30:58 UTC 2020 - mwilck@suse.com
+
+- Update to version 15.2.8:
+  * Add modprobe.conf.s390x (bsc#1132798)
+
+-------------------------------------------------------------------
+Thu Nov 07 20:34:15 UTC 2019 - mwilck@suse.com
+
+- Update to version 15.2.7:
+  * spec file: avoid %{_libexecdir}
+
+-------------------------------------------------------------------
+Thu Nov 07 19:48:05 UTC 2019 - mwilck@suse.com
+
+- Update to version 15.2.6:
+  * modprobe.conf: add dependency of papr_scm on libnvdimm
+    (bsc#1142152, ltc#176292, FATE#327775).
+
+-------------------------------------------------------------------
+Fri Aug 16 08:46:15 UTC 2019 - mwilck@suse.com
+
+- Update to version 15.2.5:
+  * remove 'modhash' - moved to mokutil package (jsc#SLE-6094)
+
+-------------------------------------------------------------------
+Mon Jul 15 11:58:07 UTC 2019 - mwilck@suse.com
+
+- Update to version 15.2.4:
+  * sg.conf: avoid file conflict with system-tuning-common-SUSE
+
+-------------------------------------------------------------------
+Mon Jul 01 20:18:55 UTC 2019 - mwilck@suse.com
+
+- Update to version 15.2.3:
+  * softdep of bridge on br_netfilter (bsc#937216, bsc#1134819)
+
+-------------------------------------------------------------------
+Tue Jun 18 13:08:07 UTC 2019 - mwilck@suse.com
+
+- Update to version 15.2.2:
+  * kmp-install, driver-check.sh, weak-modules2:
+    Support for compressed kernel modules (bsc#1135854)
+
+-------------------------------------------------------------------
+Fri Jun 14 14:52:19 UTC 2019 - mwilck@suse.com
+
+- Update to version 15.2.1:
+- Install sg.conf under /usr/lib/modules-load.d (bsc#1036463)
+  * sg.conf: avoid file conflict with systemd
+
+-------------------------------------------------------------------
+Fri Jun 14 10:06:55 UTC 2019 - mwilck@suse.com
+
+- Update to version 15.2.0:
+  * weak-modules2: emit "inconsistent" warning only if replacement fails
+  (bsc#1127155)
+
+-------------------------------------------------------------------
+Fri May 17 06:18:33 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only ship RPM macros up to suse_version 1500: after that, the
+  macros can be found in the rpm-config-SUSE package.
+
+-------------------------------------------------------------------
+Fri May 10 09:18:57 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move RPM macros to %_rpmmacrodir.
+
+-------------------------------------------------------------------
+Thu Mar 14 16:02:23 UTC 2019 - mwilck@suse.com
+
+- Update to version 15.1.13:
+  * spec file: add conflicts for dracut < 44.2 (bsc#1127891)
+
+-------------------------------------------------------------------
+Thu Mar 14 14:53:24 UTC 2019 - mwilck@suse.com
+
+- Update to version 15.1.12 (git 1ab0b84):
+  * modprobe.conf.common: add csiostor->cxgb4 dependency
+    (bsc#1100989)
+  * Load fbcon together with virtio_gpu on s390 (bsc#1121996,
+    fate#327159)
+
+-------------------------------------------------------------------
+Mon Feb 18 12:02:27 UTC 2019 - mwilck@suse.com
+
+- Update to version 15.1.11 (git 54df192):
+  * spec file: use more gentle wording in blacklist files
+  * spec file: drop jffs2 and ubifs from blacklist
+
+-------------------------------------------------------------------
+Fri Feb 08 10:44:56 UTC 2019 - mwilck@suse.com
+
+- Update to version 15.1.10 (git b28b13d):
+- implemented fs blacklisting logic (jsc#SLES-4085, fate#326832)
+
+-------------------------------------------------------------------
+Thu Jan 31 23:07:10 UTC 2019 - mwilck@suse.com
+
+- Update to version 15.1.0 (git 6b07b88):
+  * 50-blacklist.conf is not added in Leap before 15.1.
+  fix conditionals and bump version accordingly.
+
+-------------------------------------------------------------------
+Wed Jan 30 23:04:26 UTC 2019 - mwilck@suse.com
+
+- Update to version 15.0.20 (git 1396df5):
+- Fix driver-check.sh (boo#1123697, boo#1123704)
+- add /etc/modprobe.d/50-blacklist.conf from sysconfig package
+  (boo#1107611)
+- Remove hard dependency on mkinitrd (boo#1123721)
+- Make sure code works also without kmod-compat
+- Replace file dependency on /sbin/depmod by weak package dependency
+
+-------------------------------------------------------------------
+Mon Dec 10 12:10:29 UTC 2018 - Martin Wilck <mwilck@suse.com>
+
+- Move "weak-modules" script to -legacy subpackage to avoid
+  dependency on binutils (bsc#1116665)
+
+-------------------------------------------------------------------
+Fri Dec  7 12:45:36 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- Require mkinitrd (provided also by dracut) directly instead of
+  file requires. This is fixing image build failures
+
+-------------------------------------------------------------------
+Wed Nov 07 14:53:52 UTC 2018 - mwilck@suse.com
+
+- Update to version 15.0.1 (git 5c63319):
+- Use /etc/modules-load.d/sg.conf for sg driver autoloading
+  (bsc#1036463)
+  * added /etc/modules-load.d/sg.conf
+
+-------------------------------------------------------------------
+Mon Nov 05 10:08:19 UTC 2018 - mwilck@suse.com
+
+- version 15.0 (git 6ce3011)
+- modsign-verify: support for parsing PKCS#7 signatures
+  (bsc#1111300, bsc#1105495)
+- Fix logic for unsupported modules (bsc#1111183) 
+  * SLES15: allow unsupported modules only if kernel-default-extra
+  from SLE-WE module is installed
+  * Always allow unsupported modules on Leap 15 and Factory
+  * No change for SLE12 / Leap 42.x and below
+  * 10-unsupported-modules.conf: improved comments
+  * fix %config(noreplace) logic for 10-unsupported-modules.conf
+- added udev rule 81-sg.rules to make sure the sg module is
+  always loaded (bsc#1036463)
+
+-------------------------------------------------------------------
+Wed Jul 26 08:07:29 UTC 2017 - tchvatal@suse.com
+
+- Use path dependency that is not parsed by obs to ensure we
+  are not pulling systemd everywhere
+
+-------------------------------------------------------------------
+Mon Jun 19 12:58:04 UTC 2017 - tchvatal@suse.com
+
+- Set url to github project and repack using obs service
+- Cleanup a bit with spec-cleaner
+- Grep os-release and not deprecated SuSE-release
+
+-------------------------------------------------------------------
+Thu Sep  8 08:55:50 UTC 2016 - dmueller@suse.com
+
+- blacklist efifb on aarch64 (bsc#996080)
+
+-------------------------------------------------------------------
+Fri May 27 13:14:36 UTC 2016 - mmarek@suse.cz
+
+- Run dos2unix on the modhash script.
+
+-------------------------------------------------------------------
+Thu May 26 07:36:58 UTC 2016 - jlee@suse.com
+
+- Add modhash tool to calculate hash of signed module.
+  It strips X.509 or PKCS#7 signature before hash kernel module.
+  (fate#319460) 
+
+-------------------------------------------------------------------
+Wed May 25 13:23:35 UTC 2016 - mmarek@suse.cz
+
+- Remove -x bit from 50-kernel-uname_r.conf (bsc#981291).
+
+-------------------------------------------------------------------
+Fri Apr 29 11:31:46 UTC 2016 - mmarek@suse.cz
+
+- Ignore failures when loading the kernel sysctl (bsc#977715).
+
+-------------------------------------------------------------------
+Thu Apr 28 20:15:31 UTC 2016 - mmarek@suse.com
+
+- Add a systemd service to load /boot/sysctl.conf-`uname -r`
+  (bsc#977715).
+
+-------------------------------------------------------------------
+Fri Apr  1 11:43:32 UTC 2016 - mmarek@suse.cz
+
+- Skip KMPs built from the kernel spec file directly (fate#319339)
+- Bump version number to 12.4
+
+-------------------------------------------------------------------
+Tue Feb 23 10:43:39 UTC 2016 - lnussel@suse.de
+
+- add missing requirements on module-init-tools, findutils and gzip,
+  mkinitrd (bnc#965830)
+
+-------------------------------------------------------------------
+Fri Jan 15 23:04:41 UTC 2016 - bpoirier@suse.com
+
+- Add module option ib_mthca.catas_reset_disable=1 on ppc64le (bsc#456389).
+
+-------------------------------------------------------------------
+Tue Oct 13 08:35:32 UTC 2015 - mmarek@suse.cz
+
+- Revert change for fate#319339, as some 3rd party KMPs are built
+  with a modified template (bsc#949862).
+
+-------------------------------------------------------------------
+Tue Sep  8 12:52:15 UTC 2015 - trenn@suse.de
+
+- Use /run instead of deprecated /var/run
+  This can have sever consequences if this package uses /var/run. It may
+  be installed before filesystem package generating the /run tmpfs and
+  predict it to generate the link /var/run -> /run. Later dracut convertfs
+  kicks in to generate it, but it has issues. bsc#922676 
+
+-------------------------------------------------------------------
+Thu Aug 13 13:30:17 UTC 2015 - mmarek@suse.cz
+
+- Only handle KMPs that are built using the %kernel_module_package
+  macro (preparatory work for fate#319339).
+
+-------------------------------------------------------------------
+Tue Jun 23 14:39:46 UTC 2015 - mmarek@suse.cz
+
+- Use absolute path to mkinitrd (bsc#935566)
+
+-------------------------------------------------------------------
+Fri May 16 08:36:15 UTC 2014 - mmarek@suse.cz
+
+- Add kgraft/ to the depmod search list (fate#313296)
+
+-------------------------------------------------------------------
+Mon May  5 17:15:37 UTC 2014 - tonyj@suse.com
+
+- Add support for ARM zImage to weak-modules2
+
+-------------------------------------------------------------------
+Tue Apr 15 14:32:55 UTC 2014 - mmarek@suse.cz
+
+- weak-modules2: Use lsinitrd to list the modules in an initrd, so
+  that initrds with early microcode work (bnc#873209, bnc#873113).
+
+-------------------------------------------------------------------
+Fri Apr  4 14:32:48 UTC 2014 - mmarek@suse.cz
+
+- weak-modules2: Run mkinitrd in posttrans if $INITRD_IN_POSTTRANS
+  is set (fate#313506)
+
+-------------------------------------------------------------------
+Fri Apr  4 13:34:09 UTC 2014 - mmarek@suse.cz
+
+- regenerate-initrd-posttrans: Run mkinitrd_setup
+
+-------------------------------------------------------------------
+Fri Apr  4 12:13:18 UTC 2014 - mmarek@suse.cz
+
+- Add macros for regenerating the initrd in %posttrans
+  (fate#313506).
+
+-------------------------------------------------------------------
+Mon Mar 31 09:11:16 UTC 2014 - mmarek@suse.cz
+
+- Use softdep to order {u,o,e}hci-hcd drivers.
+- Drop ia64 modprobe config.
+
+-------------------------------------------------------------------
+Fri Mar 28 14:25:25 UTC 2014 - mmarek@suse.cz
+
+- Add kmp-install tool for easier installation of SolidDriver KMPs
+  (fate#314581).
+
+-------------------------------------------------------------------
+Tue Mar 11 12:57:36 UTC 2014 - mmarek@suse.cz
+
+- Add modsign-verify tool to verify signatures of modules
+  (fate#314507).
+
+-------------------------------------------------------------------
+Tue Mar 11 12:38:39 UTC 2014 - mmarek@suse.cz
+
+- weak-modules2: Support XZ compressed initrds (bnc#778119,
+  bnc#867312)
+
+-------------------------------------------------------------------
+Mon Mar 10 15:08:15 UTC 2014 - mmarek@suse.cz
+
+- The package cannot be noarch, because it installs different
+  configs for different architectures.
+- Install 10-unsupported-modules.conf unconditionally, kmod has
+  been patched.
+
+-------------------------------------------------------------------
+Fri Feb  7 13:05:20 UTC 2014 - rsalevsky@suse.com
+
+- load the uas driver simulsimultaneously with the usb_storage driver and vice versa (bnc#862397)
+
+-------------------------------------------------------------------
+Wed May 29 12:44:00 UTC 2013 - schwab@suse.de
+
+- weak-modules{,2}: also look for Image-$krel for aarch64
+
+-------------------------------------------------------------------
+Sun Mar 17 20:04:12 UTC 2013 - crrodriguez@opensuse.org
+
+- The "allow_unsupported_modules" feature, does not belong too
+  openSUSE, kmod (and hence udev and systemd) do not understand
+  it in anyway. limit to SLE only.
+
+-------------------------------------------------------------------
+Wed Nov 14 18:31:35 UTC 2012 - jengelh@inai.de
+
+- New package. Split SUSE-specific scripts from module-init-tools,
+  so that we can actually get a system with kmod-compat running.

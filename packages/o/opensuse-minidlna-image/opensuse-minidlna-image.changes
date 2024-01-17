@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Mon Dec 14 18:37:03 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix parsing of environment variables (whitespaces in values)
+
+-------------------------------------------------------------------
+Mon Nov 30 10:56:39 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version 

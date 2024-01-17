@@ -1,0 +1,13 @@
+Index: maxima-5.47.0/share/draw/vtk.lisp
+===================================================================
+--- maxima-5.47.0.orig/share/draw/vtk.lisp
++++ maxima-5.47.0/share/draw/vtk.lisp
+@@ -3113,7 +3113,7 @@
+ 
+     ;; pull in required packages
+     (format cmdstorage "~a~%~a~%~%~a~%~a~%~%~a~%~%"
+-      "#!/usr/bin/env python"
++      "#!/usr/bin/python3"
+       "# -*- coding: UTF-8 -*-"
+       "import vtk"
+       "import sys"

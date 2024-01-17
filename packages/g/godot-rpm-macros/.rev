@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>073d20c0d109b75f8500481077e5c4ec</srcmd5>
+    <version>1</version>
+    <time>1556622336</time>
+    <user>dimstar_suse</user>
+    <comment>This package contains rpm macros useful for packaging Godot games. My intent is to make the packaging process as easy as possible in order to get most, if not all, Godot games into Factory.</comment>
+    <requestid>699088</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Sun Dec 31 02:59:46 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 2.11.10:
+  * remove or disable more set-but-unused variables
+- Add zlib build dependency, to support gzip'ed files at runtime.
+
+-------------------------------------------------------------------
+Sun Jul 16 18:38:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.11.9:
+  * fix for minor gzread bug
+  * notice free format mps earlier 
+  * Fix minor bug in workflow 
+  * fix for OBJSENSE and min/max on same card
+  * fix for multiple RHS
+  * various code improvements
+
+-------------------------------------------------------------------
+Thu Jan 26 23:27:22 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Minor spec file cleanup
+
+-------------------------------------------------------------------
+Thu Aug 18 00:15:08 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Initial package version (2.11.6)

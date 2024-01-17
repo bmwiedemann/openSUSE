@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="100">
+    <srcmd5>581864b4d013f7e270d1d49941461e40</srcmd5>
+    <version>1.3.0</version>
+    <time>1566291508</time>
+    <user>dimstar_suse</user>
+    <comment>Xfce 4.14 upgrade</comment>
+    <requestid>724088</requestid>
+  </revision>
+  <revision rev="2" vrev="101">
+    <srcmd5>b8fafff219b689c677d6a1750a37d0c5</srcmd5>
+    <version>1.3.0</version>
+    <time>1591654193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812629</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8f1b69c0081fc9e6fb675368dd628bb4</srcmd5>
+    <version>1.3.95</version>
+    <time>1610443770</time>
+    <user>dimstar_suse</user>
+    <comment>- Added libxfce4ui.patch to  require libxfce4ui-2 for devel package
+  instead of obsolete libxfce4ui-1 
+- Update to version 1.3.95
+  * make compatible with Xfce 4.16
+  * code cleanup
+  * translation updates
+</comment>
+    <requestid>862540</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d5fe8b4708df2f0ed2f86afcbd5d5dbc</srcmd5>
+    <version>1.4.1</version>
+    <time>1627898705</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.1
+  * Update hddtemp netcat support
+  * Check for libsensors if it is explicitly enabled
+  * Use a drawing area to display sensor data in text UI style
+  * Fix a use-after-free error when closing the main window
+  * Increase main window size from 400 to 800 pixels
+  * Fix a use-after-free error when disabling a tachometer
+  * Fix preliminary config memory leak
+  * Improved handling of denormal floating-point values
+  * Update automatic coloring of progress bars
+  * Update and sort the list of authors
+  * Corrections to the number of rows when displaying sensor data as text
+  * Remove support for lm-sensors 2.x (API &lt; 0x400)
+  * Center tachometers vertically
+  * Layout sensors when cover-all-rows is toggled
+  * Fix invalid &quot;size-changed&quot; callback function declaration
+  * Avoid interference of tachometer allocations with GtkBox child allocs
+  * configure: Remove nano version and update init arguments
+  * configure: Bump required glib to 2.50
+  * configure: Bump required Xfce libs to 4.14
+  * configure: Remove checks covered by C99
+  * configure: Remove UNIX variants check
+  * Ellipsize labels only when needed
+  * Remove support for libnotify 0.4
+  * Enable automatic switching of colors based on light or dark UI theme
+  * Move text inside the tachometer
+  * Remove unused options.dialog files
+  * Use capital letters when spelling NVIDIA
+  * Code cleanup: Shorten all variable names to speedup readability
+  * Use a single bit to store boolean values
+  * Prevent memset2() from compiling because of a double-increment bug
+  * Fix fgets() compiler warning
+  * Code cleanup: Remove all TRACE() lines
+  * Fix invalid order of widgets after changing panel orientation
+  * Fix accesses to destroyed widgets when changing the panel orientation
+  * Increase icon size in about dialog from 32 to 48 pixels
+  * Update copyright year in about dialog
+  * Fix invalid state flag
+  * Include X11 headers before NVCtrl headers
+  * Translation Updates
+</comment>
+    <requestid>909639</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ebd08c8d9601acd27b461820454ac14b</srcmd5>
+    <version>1.4.2</version>
+    <time>1637618650</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.2
+  * Migrate Source from C to C++
+  * Prevent overlap of tachometer titles
+  * Improved standalone app layout
+  * Fix crash in hddtemp codepath with a SATA SSD drive
+  * Increase default temperature ranges of HDDs and NVIDIA GPUs by 10℃
+  * Remove default values from RC configuration files
+  * Suppress title after the user adds the 1st sensor
+  * Remove hard-coded limits restricting the maximum number of sensors
+  * Test all possible build configurations using brute-force search
+  * Use xfce4::connect instead of the less safe g_signal_connect
+  * Enable lm_sensors in GitLab distcheck
+  * Fix memory leaks
+  * Translation Updates
+</comment>
+    <requestid>932925</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a03736fe55a659244436cae771c8ea63</srcmd5>
+    <version>1.4.3</version>
+    <time>1644007769</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.3
+  * Fix translations not showing in the GUI
+  * Use locale-independent floats in configuration files
+  * Translation Updates
+</comment>
+    <requestid>951632</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>42e923801b5a0491cefe3459b1dc7b6c</srcmd5>
+    <version>1.4.4</version>
+    <time>1671898676</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Xfce 4.18 (forwarded request 1045066 from mauriziogalli)</comment>
+    <requestid>1045213</requestid>
+  </revision>
+</revisionlist>

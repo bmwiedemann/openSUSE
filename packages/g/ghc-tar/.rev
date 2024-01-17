@@ -1,0 +1,223 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3780eaaa4eed4797d25f5fe308936b51</srcmd5>
+    <version>0.4.2.2</version>
+    <time>1448553794</time>
+    <user>dimstar_suse</user>
+    <comment>tar: Reading, writing and manipulating &quot;.tar&quot; archive files.</comment>
+    <requestid>345723</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>def0d9aab739e690a70cedbbe73096f7</srcmd5>
+    <version>0.5.0.1</version>
+    <time>1453998247</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.0.1
+* Change type of Index.serialise to be simply strict bytestring.
+* Preserve file timestamps on unpack
+
+- update to 0.4.5.0
+* revert accidental minor API change in 0.4.x series (the type of the owner and 
+	group name strings). The 0.4.3.0 and 0.4.4.0 releases contained the accidental
+	 API change.
+* Add a handy foldlEntries function
+* Build and warning fixes for GHC 7.10 and 8.0
+* New Index module function toList to get all index entries
+* New Index function unfinalise to extend existing index
+	+ 9x faster reading
+	+ 9x faster index construction
+	+ 24x faster index extension
+* More compact entry types, using ByteStrings
+* More Eq and Show instances
+* Greater QC test coverage
+* Fix minor bug in reading non-standard v7 format entries (forwarded request 355995 from mimi_vx)</comment>
+    <requestid>355996</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>653a71148b80ccbbaa74821c29e5f5d2</srcmd5>
+    <version>0.5.0.2</version>
+    <time>1462261037</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.0.2 
+* Fix compatability when using ghc-7.4.x and directory &amp;gt;= 1.2.3 (forwarded request 393194 from mimi_vx)</comment>
+    <requestid>393195</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4ce5372da4c406bd9a15ef1427e476ee</srcmd5>
+    <version>0.5.0.3</version>
+    <time>1463498088</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.0.3
+* Fix tarbomb logic to ignore special PAX entries. Was breaking many valid tarballs. (forwarded request 394902 from mimi_vx)</comment>
+    <requestid>394904</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e4c5f31588de469ac0b03f6f75c7a0e6</srcmd5>
+    <version>0.5.0.3</version>
+    <time>1469628674</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412001</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ea4c6ea1a9d4f65ef2ec417fedd99dee</srcmd5>
+    <version>0.5.0.3</version>
+    <time>1505506573</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525472</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f2866200b5b5669622e86181a8ed019c</srcmd5>
+    <version>0.5.1.0</version>
+    <time>1527675262</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-tar to the latest version.</comment>
+    <requestid>607897</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>964e4160b85db0db93e26916d3c42b42</srcmd5>
+    <version>0.5.1.0</version>
+    <time>1532161403</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 0.5.0.2
+* revert accidental minor API change in 0.4.x series (the type of the owner and
+        group name strings). The 0.4.3.0 and 0.4.4.0 releases contained the accidental
+         API change.
+        + 9x faster reading
+        + 9x faster index construction
+        + 24x faster index extension</comment>
+    <requestid>623866</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>ce0a4fa7146a3803252a6a9773d6431b</srcmd5>
+    <version>0.5.1.0</version>
+    <time>1540448482</time>
+    <user>dimstar_suse</user>
+    <comment>trivial version update</comment>
+    <requestid>643201</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8d65c38fd253382d56c5168f27c6abcd</srcmd5>
+    <version>0.5.1.1</version>
+    <time>1567092197</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>726818</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>c8f5954eea43c21451c2279132216811</srcmd5>
+    <version>0.5.1.1</version>
+    <time>1577451484</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759524</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>76af14b87f15055b83d2bcca4b375e31</srcmd5>
+    <version>0.5.1.1</version>
+    <time>1589196982</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801055</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>d486ec3b5bd2136248a34bc2263c84f9</srcmd5>
+    <version>0.5.1.1</version>
+    <time>1592579964</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815187</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>ebc55ef5ee34be11de6f5bcd7f03f2e7</srcmd5>
+    <version>0.5.1.1</version>
+    <time>1598643532</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829436</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>7db625640ef92470e7f7de05631e12c3</srcmd5>
+    <version>0.5.1.1</version>
+    <time>1599509037</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>832325</requestid>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>a1d87a28923db0b728f93290b6f3430d</srcmd5>
+    <version>0.5.1.1</version>
+    <time>1608634015</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857585</requestid>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>565970cb6320ccda101be960fb76fa6d</srcmd5>
+    <version>0.5.1.1</version>
+    <time>1615362940</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>877676</requestid>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>3bd4f629d5b5adbc4871c4bb1fbfc3f5</srcmd5>
+    <version>0.5.1.1</version>
+    <time>1631310071</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>917495</requestid>
+  </revision>
+  <revision rev="19" vrev="10">
+    <srcmd5>139ca267e113170ddbffe69f4e40806d</srcmd5>
+    <version>0.5.1.1</version>
+    <time>1659382235</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>987094</requestid>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>607948b2cda903cbc9b829d341dfc633</srcmd5>
+    <version>0.5.1.1</version>
+    <time>1680636218</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076064</requestid>
+  </revision>
+  <revision rev="21" vrev="12">
+    <srcmd5>5ac0273b929ad0e237f5d1045563dc5a</srcmd5>
+    <version>0.5.1.1</version>
+    <time>1695327797</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1112766</requestid>
+  </revision>
+  <revision rev="22" vrev="13">
+    <srcmd5>26a7d575ef4e842a93dea58317f52b23</srcmd5>
+    <version>0.5.1.1</version>
+    <time>1696529047</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1115694</requestid>
+  </revision>
+  <revision rev="23" vrev="14">
+    <srcmd5>bd4062b50a95b61b326d236ca252a836</srcmd5>
+    <version>0.5.1.1</version>
+    <time>1700772043</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1128085</requestid>
+  </revision>
+  <revision rev="24" vrev="15">
+    <srcmd5>faac1a70e648aec9ea0f7412f38e0219</srcmd5>
+    <version>0.5.1.1</version>
+    <time>1703800985</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135400</requestid>
+  </revision>
+</revisionlist>

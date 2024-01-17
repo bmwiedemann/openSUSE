@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c8b93aacbbc1a6d750be89875309fe7a</srcmd5>
+    <version>1.8.9</version>
+    <time>1562843270</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>710991</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b7a1899a961f05228e1bb04ab89c6daa</srcmd5>
+    <version>1.8.9</version>
+    <time>1570800126</time>
+    <user>dimstar_suse</user>
+    <comment>Make actually work the compiler</comment>
+    <requestid>737423</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4b0a6519dce5a1b57838c13acd80315a</srcmd5>
+    <version>1.8.9</version>
+    <time>1575282925</time>
+    <user>dimstar_suse</user>
+    <comment>Allow building with jdk &gt;= 9</comment>
+    <requestid>752790</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>964aad2ca4043d548b9489b36ee0c2e3</srcmd5>
+    <version>1.8.9</version>
+    <time>1576506049</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid too many compatibility symlinks</comment>
+    <requestid>757282</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>592925ad51619fa719c90e373b59edb5</srcmd5>
+    <version>1.8.9</version>
+    <time>1647889995</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with jdk17 + remove asm3 dependency</comment>
+    <requestid>963732</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>b2e760874c39823aa02af01d9715dd8c</srcmd5>
+    <version>1.8.9</version>
+    <time>1647981411</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on JDK 17</comment>
+    <requestid>964087</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>ba62ac9d625c50befa8670fd1252d48f</srcmd5>
+    <version>1.8.9</version>
+    <time>1652801051</time>
+    <user>dimstar_suse</user>
+    <comment>maven 3.8.5 / jansi 2.4.0 and fixes for building with them</comment>
+    <requestid>977560</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>c27ce858247dcf1b22fbdb61e4ba75f5</srcmd5>
+    <version>1.8.9</version>
+    <time>1695209388</time>
+    <user>dimstar_suse</user>
+    <comment>reproducibility improvements</comment>
+    <requestid>1112264</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,496 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>22ad57cded87016be935bde37c3277f5</srcmd5>
+    <version>1.14.0</version>
+    <time>1541865319</time>
+    <user>dimstar_suse</user>
+    <comment>AsyncSSH - python asyncio ssh client/server
+- initial commit version 1.14.0 
+</comment>
+    <requestid>644638</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8ea636a245eca149164b88c5465dd67a</srcmd5>
+    <version>1.15.1</version>
+    <time>1549140570</time>
+    <user>coolo</user>
+    <comment>- update to 1.15.1
+ * Added callback-based host validation in SSHClient, allowing callers to decide
+    programmatically whether to trust server host keys and certificates rather
+    than having to provide a list of trusted values in advance.
+ * Changed SSH client code to only load the default known hosts file if if exists.
+    Previously an error was returned if a known_hosts value wasn't specified
+    and the default known_hosts file didn't exist. For host validate to work in
+    this case, verification callbacks must be implemented or other forms
+    of validation such as X.509 trusted CAs or GSS-based key exchange must be used.
+ * Fixed known hosts validation to completely disable certificate checks when
+    known_hosts is set to None.
+ * Switched curve25519 key exchange to use the PyCA implementation
+ * Added get_fingerprint() method to return a fingerprint of an SSHKey.
+ * Added the ability to pass keyword arguments provided in the scp() command
+    through to asyncssh.connect() calls it makes, allowing things like custom
+    credentials to be specified.
+ * Added support for a reuse_port argument in create_server().
+ * Added support for &quot;soft&quot; EOF when line editing in enabled
+ * Added support for the Windows 10 OpenSSH ssh-agent.
+ * Reworked scoped link-local IPv6 address normalization to work better on Linux systems.
+ * Fixed a problem preserving directory structure in recursive scp().
+ * Fixed SFTP chmod tests to avoid attempting to set the sticky bit on a plain file
+ * Updated note in SSHClientChannel's send_signal() documentation to reflect
+    that OpenSSH 7.9 and later should now support processing of signal messages. (forwarded request 670363 from mimi_vx)</comment>
+    <requestid>670364</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>eeeb65be76ae41c4f9853f9ab1768d76</srcmd5>
+    <version>1.15.1</version>
+    <time>1550402498</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676645</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>460f1b07fecdc8b5eb733a526aa4a693</srcmd5>
+    <version>1.16.0</version>
+    <time>1553263254</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python-nacl from builddeps
+- add 194.patch to fix testsuite
+
+- Update to 1.16.0:
+  * Added support for Ed448 host/client keys and certificates and rewrote Ed25519 support to use the PyCA implementation, reducing the dependency on libnacl and libsodium to only be needed to support the chacha20-poly1305 cipher.
+  * Added support for PKCS#8 format Ed25519 and Ed448 private and public keys (in addition to the OpenSSH format previously supported).
+  * Added support for multiple delimiters in SSHReader’s readuntil() function, causing it to return data as soon as any of the specified delimiters are matched.
+  * Added the ability to register custom key handlers in the line editor which can modify the input line, extending the built-in editing functionality.
+  * Added SSHSubprocessProtocol and SSHSubprocessTransport classes to provide compatibility with asyncio.SubprocessProtocol and asyncio.SubprocessTransport. Code which is designed to call BaseEventLoop.subprocess_shell() or BaseEventLoop.subprocess_exec() can be easily adapted to work against a remote process by calling SSHClientConnection.create_subprocess().
+  * Added support for sending keepalive messages when the SSH connection is idle, with an option to automatically disconnect the connection if the remote system doesn’t respond to these keepalives.
+  * Changed AsyncSSH to ignore errors when loading unsupported key types from the default file locations.
+  * Changed the reuse_port option to only be available on Python releases which support it (3.4.4 and later).
+  * Fixed an issue where MSG_IGNORE packets could sometimes be sent between MSG_NEWKEYS and MSG_EXT_INFO, which caused some SSH implementations to fail to properly parse the MSG_EXT_INFO.
+  * Fixed a couple of errors in the handling of disconnects occurring prior to authentication completing.
+  * Renamed “session_encoding” and “session_errors” arguments in asyncssh.create_server() to “encoding” and “errors”, to match the names used for these arguments in other AsyncSSH APIs. The old names are still supported for now, but they are marked as deprecated and will be removed in a future release.</comment>
+    <requestid>682202</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6e581c8e08075718f8aba33627ae267f</srcmd5>
+    <version>1.16.1</version>
+    <time>1554189766</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.16.1
+- drop 194.patch
+* Added channel, connection, and env properties to SFTPServer instances,
+  so connection and channel information can be used to influence the
+  SFTP server's behavior. Previously, connection information was made
+  avaiable through the constructor, but channel and environment
+  information was not. Now, all of these are available as properties
+  on the SFTPServer instance without the need to explicitly store anything
+  in a custom constructor.
+* Optimized SFTP glob matching when the glob pattern contains directory
+  names without glob characters in them. Thanks go to Mikhail Terekhov
+  for contributing this improvement!
+* Added support for PurePath in a few places that were missed when this
+  support was originally added. Once again, thanks go to Mikhail Terehkov
+  for these fixes.
+* Fixed bug in SFTP parallel I/O file reader where it sometimes returned
+  EOF prematurely. Thanks go to David G for reporting this problem and
+  providing a reproducible test case.
+* Fixed test failures seen on Fedora Rawhide. Thanks go to Georg Sauthof
+  for reporting this issue and providing a test environment to help debug
+  it.
+* Updated Ed25519/448 and Curve25519/448 tests to only run when these
+  algorithms are available.</comment>
+    <requestid>690377</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1cd10330cddde788eafaa0ede79a6168</srcmd5>
+    <version>1.16.1</version>
+    <time>1556023130</time>
+    <user>maxlin_factory</user>
+    <comment>- add old_openssl.patch - return support for ed25519/448 via libnacl
+  on systems with older openSSL</comment>
+    <requestid>697004</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f012f800b5b0f1ea15a995c88f5dc842</srcmd5>
+    <version>1.17.0</version>
+    <time>1562247877</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.17.0
+- drop old_openssl.patch
+ * Added support for “reverse direction” SSH connections, useful to support
+   applications like NETCONF Call Home, described in RFC 8071.
+ * Added support for the PyCA implementation of Chacha20-Poly1305, eliminating
+   the dependency on libnacl/libsodium to provide this functionality,
+   as long as OpenSSL 1.1.1b or later is installed.
+ * Restored libnacl support for Curve25519/Ed25519 on systems which have
+   an older version of OpenSSL that doesn’t have that support.
+   This fallback also applies to Chacha20-Poly1305.
+ * Disabled the use of RSA SHA-2 signatures when using the Pageant or Windows 10
+   OpenSSH agent on Windows, since neither of those support the signature
+   flags options to request them.
+ * Fixed a regression where a callable was no longer usable in the
+   sftp_factory argument of create_server.</comment>
+    <requestid>713406</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dc00447dbfaeb871b9238c5bf186e894</srcmd5>
+    <version>1.17.1</version>
+    <time>1565362430</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.17.1
+ * Improved construction of file paths in SFTP to better handle native Windows
+     source paths containing backslashes or drive letters.
+ * Improved SFTP parallel I/O for large reads and file copies to better handle
+     the case where a read returns less data than what was requested when not
+     at the end of the file, allowing AsyncSSH to get back the right result even
+     if the requested block size is larger than the SFTP server can handle.
+ * Fixed an issue where the requested SFTP block_size wasn’t used in the get,
+     copy, mget, and mcopy functions if it was larger than the default size of 16 KB.
+ * Fixed a problem where the list of client keys provided in
+     an SSHClientConnectionOptions object wasn’t always preserved properly across
+     the opening of multiple SSH connections.
+ * Made AsyncSSH tolerant of unexpected authentication success/failure messages
+     sent after authentication completes. AsyncSSH previously treated this as
+     a protocol error and dropped the connection, while most other SSH implementations
+     ignored these messages and allowed the connection to continue.
+ * Made AsyncSSH tolerant of SFTP status responses which are missing error message
+     and language tag fields, improving interoperability with servers that omit
+     these fields. When missing, AsyncSSH treats these fields as if they were
+     set to empty strings.</comment>
+    <requestid>721769</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>369bbff95c8bb223bbbf7ffb29c6279f</srcmd5>
+    <version>1.18.0</version>
+    <time>1568623838</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.18.0:
+  * Added support for GSSAPI ECDH and Edwards DH key exchange algorithms.
+  * Fixed gssapi-with-mic authentication to work with GSS key exchanges, in cases where gssapi-keyex is not supported.
+  * Made connect_ssh and connect_reverse_ssh methods into async context managers, simplifying the syntax needed to use them to create tunneled SSH connections.
+  * Fixed a couple of issues with known hosts matching on tunneled SSH connections.
+  * Improved flexibility of key/certificate parser automatic format detection to properly recognize PEM even when other arbitrary text is present at the beginning of the file. With this change, the parser can also now handle mixing of multiple key formats in a single file.
+  * Added support for OpenSSL “TRUSTED” PEM certificates. For now, no enforcement is done of the additional trust restrictions, but such certificates can be loaded and used by AsyncSSH without converting them back to regular PEM format.
+  * Fixed some additional SFTP and SCP issues related to parsing of Windows paths with drive letters and paths with multiple colons.
+  * Made AsyncSSH tolerant of a client which sends multiple service requests for the “ssh-userauth” service. This is needed by the Paramiko client when it tries more than one form of authentication on a connection.</comment>
+    <requestid>730694</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c63bf33210ca4f6999fe484bfe719d3d</srcmd5>
+    <version>2.1.0</version>
+    <time>1579195381</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0
+ * Added support in the SSHProcess redirect mechanism to accept asyncio StreamReader and StreamWriter objects, allowing asyncio streams to be plugged in as stdin/stdout/stderr in an SSHProcess.
+ * Added support for key handlers in the AsyncSSH line editor to trigger signals being delivered when certain “hot keys” are hit while reading input.
+ * Improved cleanup of unreturned connection objects when an error occurs or the connection request is canceled or times out.
+ * Improved cleanup of SSH agent client objects to avoid triggering a false positive warning in Python 3.8.
+ * Added an example to the documentation for how to create reverse-direction SSH client and server connections.
+ * Made check of session objects against None explicit to avoid confusion on user-defined sessions that implement __len__ or __bool__. Thanks go to Lars-Dominik Braun for contributing this improvement!
+ * Some API changes which should have been included in the 2.0.0 release were missed. This release corrects that, but means that additional changes may be needed in applications moving to 2.0.1. This should hopefully be the last of such changes, but if any other issues are discovered, additional changes will be limited to 2.0.x patch releases and the API will stabilize again in the AsyncSSH 2.1 release. See the next bullet for details about the additional incompatible change.
+ * To be consistent with other connect and listen functions, all methods on SSHClientConnection which previously returned None on listen failures have been changed to raise an exception instead. A new ChannelListenError exception will now be raised when an SSH server returns failure on a request to open a remote listener. This change affects the following SSHClientConnection methods: create_server, create_unix_server, start_server, start_unix_server, forward_remote_port, and forward_remote_path.
+ * Restored the ability for SSHListener objects to be used as async context managers. This previously worked in AsyncSSH 1.x and was unintentionally broken in AsyncSSH 2.0.0.
+ * Added support for a number of additional functions to be called from within an “async with” statement. These functions already returned objects capable of being async context managers, but were not decorated to allow them to be directly called from within “async with”. This change applies to the top level functions create_server, listen, and listen_reverse and the SSHClientConnection methods create_server, create_unix_server, start_server, start_unix_server, forward_local_port, forward_local_path, forward_remote_port, forward_remote_path, listen_ssh, and listen_reverse_ssh,
+ * Fixed a couple of issues in loading OpenSSH-format certificates which were missing a trailing newline.
+ * Changed load_certificates() to allow multiple certificates to be loaded from a single byte string argument, making it more consistent with how load_certificates() works when reading from a file.
+ * Updated AsyncSSH to use the modern async/await syntax internally, now requiring Python 3.6 or later. Those wishing to use AsyncSSH on Python 3.4 or 3.5 should stick to the AsyncSSH 1.x releases.
+ * Changed first argument of SFTPServer constructor from an SSHServerConnection (conn) to an SSHServerChannel (chan) to allow custom SFTP server implementations to access environment variables set on the channel that SFTP is run over. Applications which subclass the SFTPServer class and implement an __init__ method will need to be updated to account for this change and pass the new argument through to the SFTPServer parent class. If the subclass has no __init__ and just uses the connection, channel, and env properties of SFTPServer to access this information, no changes should be required.
+ * Removed deprecated “session_encoding” and “session_errors” arguments from create_server() and listen() functions. These arguments were renamed to “encoding” and “errors” back in version 1.16.0 to be consistent with other AsyncSSH APIs.
+ * Removed get_environment(), get_command(), and get_subsystem() methods on SSHServerProcess class. This information was made available as “env”, “command”, and “subsystem” properties of SSHServerProcess in AsyncSSH 1.11.0.
+ * Removed optional loop argument from all public AsyncSSH APIs, consistent with the deprecation of this argument in the asyncio package in Python 3.8. Calls will now always use the event loop which is active at the time of the call.
+ * Removed support for non-async context managers on AsyncSSH connections and processes and SFTP client connections and file objects. Callers should use “async with” to invoke the async the context managers on these objects.
+ * Added support for SSHAgentClient being an async context manager. To be consistent with other connect calls, connect_agent() will now raise an exception when no agent is found or a connection failure occurs, rather than logging a warning and returning None. Callers should catch OSError or ChannelOpenError exceptions rather than looking for a return value of None when calling this function.
+ * Added set_input() and clear_input() methods on SSHLineEditorChannel to change the value of the current input line when line editing is enabled.
+ * Added is_closing() method to the SSHChannel, SSHProcess, SSHWriter, and SSHSubprocessTransport classes. mirroring the asyncio BaseTransport and StreamWriter methods added in Python 3.7.
+ * Added wait_closed() async method to the SSHWriter class, mirroring the asyncio StreamWriter method added in Python 3.7.</comment>
+    <requestid>764958</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>aabdc89485149effde3abc1583f4dc96</srcmd5>
+    <version>2.2.0</version>
+    <time>1583227114</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0
+- add gss_test.patch to avoid segfault in kerberos
+ * Added support for U2F/FIDO2 security keys
+ * Added login timeout client option and limits on the length and number
+    of banner lines AsyncSSH will accept prior to the SSH version header.
+ * Improved load_keypairs() to read public key files, confirming that they
+    are consistent with their associated private key when they are present.
+ * Fixed issues in the SCP server related to handling filenames with spaces.
+ * Fixed an issue with resuming reading after readuntil() returns an incomplete read.
+ * Fixed a potential issue related to asyncio not reporting sockname/peername
+    when a connection is closed immediately after it is opened.
+ * Made SSHConnection a subclass of asyncio.Protocol to please type checkers.</comment>
+    <requestid>780986</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3d3ec6fea7abada9c41ab32afb85313a</srcmd5>
+    <version>2.2.1</version>
+    <time>1594383194</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.1
+ * Added optional timeout parameter to SSHClientProcess.wait()
+    and SSHClientConnection.run() methods.
+ * Created subclasses for SFTPError exceptions, allowing applications
+    to more easily have distinct exception handling for different errors.
+ * Fixed an issue in SFTP parallel I/O related to handling low-level
+    connection failures
+ * Fixed an issue with SFTP file copy where a local file could sometimes
+    be left open if an attempt to close a remote file failed.
+ * Fixed an issue in the handling of boolean return values when
+    SSHServer.server_requested() returns a coroutine
+ * Fixed an issue with passing tuples to the SFTP copy functions.</comment>
+    <requestid>819833</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>519da3df620ce6b0989fb126451a9a96</srcmd5>
+    <version>2.3.0</version>
+    <time>1596035999</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0
+ * Added initial support for reading configuration from OpenSSH-compatible
+   config files, when present. Both client and server configuration files are
+   supported, but not all config options are supported.
+ * Added support for the concept of only a subset of supported algorithms being
+   enabled by default, and for the ability to use wildcards when specifying
+   algorithm names. Also, OpenSSH’s syntax of prefixing the list with
+   ‘^’, ‘+’, or ‘-‘ is supported for incrementally adjusting the list
+   of algorithms starting from the default set.
+ * Added support for specifying a preferred list of client authentication
+   methods, in order of preference.
+ * Added the ability to use AsyncSSH’s “password” argument on servers which
+   are using keyboard-interactive authentication to prompt for a “passcode”.
+ * Added support for providing separate lists of private keys and certificates,
+   rather than requiring them to be specifying together as a tuple.
+   When this new option is used, AsyncSSH will automatically associate
+   the private keys with their corresponding certificates if matching
+   certificates are present in the list.
+ * Added support for the “known_hosts” argument to accept a list of known host
+   files, rather than just a single file. Known hosts can also be specified
+   using the GlobalKnownHostFile and UserKnownHostFile config file options,
+   each of which can take multiple filenames.
+ * Added new “request_tty” option to provide finer grained control over whether
+   AsyncSSH will request a TTY when opening new sessions. The default is to
+   still tie this to whether a “term_type” is specified, but now that can be
+   overridden. Supported options of “yes”, “no”, “force”, and “auto” match
+   the values supported by OpenSSH.
+ * Added new “rdns_lookup” option to control whether the server does a reverse
+   DNS of client addresses to allow matching of clients based on hostname
+   in authorized keys and config files. When this option is disabled (the default),</comment>
+    <requestid>823202</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a5f7b8398facc5f2949e4ee61e225e8b</srcmd5>
+    <version>2.5.0</version>
+    <time>1614274023</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874533</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0ce2dd8f012aef266ef8f42e12a276a1</srcmd5>
+    <version>2.5.0</version>
+    <time>1631913968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919752</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>40dc7e70c6238c3f6852de256b237dcc</srcmd5>
+    <version>2.8.1</version>
+    <time>1639855815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941337</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a03ccccd313decad8a01eefb8360217a</srcmd5>
+    <version>2.9.0</version>
+    <time>1643926569</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip more tests that are unstable. 
+
+- Update to 2.9.0:
+  - Added mypy-compatible type annotations to all AsyncSSH
+    modules, and a &quot;py.typed&quot; file to signal that annotations are
+    now available for this package.
+  - Added experimental support for SFTP versions 4-6. While
+    AsyncSSH still defaults to only advertising version 3 when
+    acting as both a client and a server, applications can
+    explicitly enable support for later versions, which will be
+    used if both ends of the connection agree. Not all features
+    are fully supported, but a number of useful enhancements are
+    now available, including as users and groups specified by
+    name, higher resolution timestamps, and more granular error
+    reporting.
+  - Updated documentation to make it clear that keys from
+    a PKCS11 provider or ssh-agent will be used even when
+    client_keys is specified, unless those sources are explicitly
+    disabled.
+  - Improved handling of task cancellation in AsyncSSH to
+    avoid triggering an error of &quot;Future exception was never
+    retrieved&quot;. Thanks go to Krzysztof Kotlenga for reporting
+    this issue and providing test code to reliably reproduce it.
+  - Changed implementation of OpenSSH keepalive handler to
+    improve interoperability with servers which don't expect a
+    &quot;success&quot; response when this message is sent.</comment>
+    <requestid>950066</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>feba71bfceb2073d83f37efdd4f1c28d</srcmd5>
+    <version>2.11.0</version>
+    <time>1659816497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993141</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>658591ec2bb28b0a28e8b2eb7cc010a9</srcmd5>
+    <version>2.12.0</version>
+    <time>1664112891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005610</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6a38e01039940622fb6a4b20e554850a</srcmd5>
+    <version>2.13.0</version>
+    <time>1673021147</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.13.0:
+  * Updated testing and coverage to drop Python 3.6 and add Python 3.11.
+  * Added new &quot;recv_eof&quot; option to not pass an EOF from a channel to a
+    redirected target, allowing output from multiple SSH sessions to be
+    sent and mixed with other direct output to that target.
+  * Added new methods to make it easy to perform forwarding between TCP
+    ports and UNIX domain sockets.
+  * Added a workaround for a problem seen on a Huawei SFTP server where
+    it sends an invalid combination of file attribute flags.
+  * Fixed an issue with copying files to SFTP servers that don't support
+    random access I/O.
+  * Fixed an issue when requesting remote port forwarding on a dynamically
+    allocated port.
+  * Fixed an issue where readexactly could block indefinitely when a signal
+    is delivered in the stream before the requested number of bytes are
+    available.
+  * Fixed an interoperability issue with OpenSSH when using SSH certificates
+    with RSA keys with a SHA-2 signature.
+  * Fixed an issue with handling &quot;None&quot; in ProxyCommand, GlobalKnownHostsFile,
+    and UserKnownHostsFile config file options.</comment>
+    <requestid>1056282</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>cc3f0aa4180f1549a24e6da87043be4c</srcmd5>
+    <version>2.13.0</version>
+    <time>1674665063</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove-sha1.patch to make it compatible with latests versions of
+  cryptography gh#ronf/asyncssh@fae5a9e8baad
+</comment>
+    <requestid>1060882</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>905df1a499815500a728250127fcd63b</srcmd5>
+    <version>2.13.1</version>
+    <time>1678204207</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.13.1:
+  * Updated type definitions for mypy 1.0.0, removing a
+    dependency on implicit Optional types, and working around an
+    issue that could trigger a mypy internal error.
+  * Updated unit tests to avoid calculation of SHA-1 signatures,
+    which are no longer allowed in cryptography 39.0.0.
+- drop remove-sha1.patch (upstream)</comment>
+    <requestid>1069757</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d0c65b57a8a2b37b27f5fd930f6ac5d1</srcmd5>
+    <version>2.13.2</version>
+    <time>1688398934</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.13.2:
+  * Fixed an issue with host-based authentication when using
+    proxy_command, allowing it to be used if the caller 
+    explicitly specifies client_host.
+  * Improved handling of signature algorithms for OpenSSH
+    certificates so that RSA SHA-2 signatures will work with
+    both older and newer versions of OpenSSH.
+  * Worked around an issue with some Cisco SSH implementations
+    generating invalid &quot;ignore&quot; packets.
+  * Fixed unit tests to avoid errors when cryptography's version
+    of * OpenSSL disables support for SHA-1 signatures.
+  * Fixed unit tests to avoid errors when the filesystem enforces
+    that filenames be valid UTF-8 strings.
+  * Added documentation about which config options apply when
+    passing a string as a tunnel argument.</comment>
+    <requestid>1096323</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cb7dd1e0518c0c4e2b02cb4aac23049c</srcmd5>
+    <version>2.14.0</version>
+    <time>1696529098</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.14.0:
+  * Added support for a new accept_handler argument when setting
+    up local port forwarding, allowing the client host and port to
+    be validated and/or logged for each new forwarded connection.
+  * Added an option to disable expensive RSA private key checks
+    when using OpenSSL 3.x. Functions that read private keys have
+    been modified to include a new unsafe_skip_rsa_key_validation
+    argument which can be used to avoid these additional checks,
+    if you are loading keys from a trusted source.
+  * Added host information into AsyncSSH exceptions when host key
+    validation fails, and a few other improvements related to
+    X.509 certificate validation errors.
+  * Fixed a regression which prevented keys loaded into an SSH
+    agent with a certificate from working correctly beginning in
+    AsyncSSH after version 2.5.0.
+  * Fixed an issue which was triggering an internal exception
+    when shutting down server sessions with the line editor enabled
+    which could cause some output to be lost on exit, especially when
+    running on Windows.
+  * Fixed a documentation error in SSHClientConnectionOptions and
+    SSHServerConnectionOptions.
+
+    proxy_command, allowing it to be used if the caller
+- Update to 2.12.0
+- Skip more tests that are unstable.</comment>
+    <requestid>1115789</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ce2c27fef348f354a0785a307726382a</srcmd5>
+    <version>2.14.1</version>
+    <time>1699910285</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.14.1 (bsc#1217028, CVE-2023-46445):
+  * Hardened AsyncSSH state machine against potential message
+    injection attacks, described in more detail in
+    `CVE-2023-46445 and CVE-2023-46446
+  * Added support for passing in a regex in readuntil in
+    SSHReader,
+  * Added support for get_addresses() and get_port() methods on
+  * SSHAcceptor.
+  * Fixed an issue with AsyncFileWriter potentially writing data
+  * out of order.
+  * Updated testing to include Python 3.12.
+  * Updated readthedocs integration to use YAML config file.</comment>
+    <requestid>1124972</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9d644c32f9aecab1482cd930cee3e628</srcmd5>
+    <version>2.14.2</version>
+    <time>1702936641</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.14.2 (bsc#1218165, CVE-2023-48795):
+  * Implemented &quot;strict kex&quot; support and other countermeasures to
+  * protect against the Terrapin Attack described in
+    CVE-2023-48795
+  * Fixed config parser to properly an optional equals delimiter
+    in all config arguments.
+  * Fixed TCP send error handling to avoid race condition when
+    receiving incoming disconnect message.
+  * Improved type signature in SSHConnection async context
+    manager.</comment>
+    <requestid>1133889</requestid>
+  </revision>
+</revisionlist>

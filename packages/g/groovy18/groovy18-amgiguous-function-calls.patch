@@ -1,0 +1,38 @@
+--- groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/runtime/DefaultGroovyMethods.java	2013-02-15 09:42:29.000000000 +0100
++++ groovy-core-GROOVY_1_8_9/src/main/org/codehaus/groovy/runtime/DefaultGroovyMethods.java	2022-03-21 09:20:24.640511870 +0100
+@@ -7425,7 +7425,7 @@
+      */
+     @SuppressWarnings("unchecked")
+     public static <T> T[] plus(T[] left, T[] right) {
+-        return (T[]) plus(toList(left), toList(right)).toArray();
++        return (T[]) plus((Collection<T>)toList(left), (Collection<T>)toList(right)).toArray();
+     }
+ 
+     /**
+@@ -7443,7 +7443,7 @@
+      */
+     @SuppressWarnings("unchecked")
+     public static <T> T[] plus(T[] left, T right) {
+-        return (T[]) plus(toList(left), right).toArray();
++        return (T[]) plus((Collection<T>)toList(left), right).toArray();
+     }
+ 
+     /**
+@@ -7461,7 +7461,7 @@
+      */
+     @SuppressWarnings("unchecked")
+     public static <T> T[] plus(T[] left, Collection<T> right) {
+-        return (T[]) plus(toList(left), right).toArray();
++        return (T[]) plus((Collection<T>)toList(left), right).toArray();
+     }
+ 
+     /**
+@@ -7483,7 +7483,7 @@
+      */
+     @SuppressWarnings("unchecked")
+     public static <T> T[] plus(T[] left, Iterable<T> right) {
+-        return (T[]) plus(toList(left), toList(right)).toArray();
++        return (T[]) plus((Collection<T>)toList(left), toList(right)).toArray();
+     }
+ 
+     /**

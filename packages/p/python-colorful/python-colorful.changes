@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Mon Jan  8 20:42:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.6:
+  * Fix PEP420 Implicit name space thanks @MocioF
+  * Test Python 3.12 support
+
+-------------------------------------------------------------------
+Wed Jan  4 14:25:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.5:
+  * Fix `setup(colormode=NO_COLORS)`
+  * Fix correctnes of `__str__` to return always a str
+  * Drop Python 2 support
+  * Test Python 3.5 - Python 3.11
+
+-------------------------------------------------------------------
+Mon Oct 10 03:57:10 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Initial release of 0.5.4 
+

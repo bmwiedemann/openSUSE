@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>36334b3a95dcebcb720ca4be67e56e3a</srcmd5>
+    <version>3.3</version>
+    <time>1535122882</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package for version 3.3
+</comment>
+    <requestid>628362</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9c6b466e1868a6cbd7fd9881dde6cf8c</srcmd5>
+    <version>3.4</version>
+    <time>1584531618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785940</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>81e694904f381829ea7c7e02c99c470d</srcmd5>
+    <version>3.4</version>
+    <time>1587581476</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not generate docu, fails with new sphinx and till now used
+  py2 version for that</comment>
+    <requestid>795733</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b200ffc62a79d9bb42a4c2c15acf4dad</srcmd5>
+    <version>3.4</version>
+    <time>1591862879</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>813196</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>55d226a0863032081066680ed406997b</srcmd5>
+    <version>3.4</version>
+    <time>1610558659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862890</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>d65a042779567c0131f4e8c9cdf9ca60</srcmd5>
+    <version>3.4</version>
+    <time>1636388685</time>
+    <user>dimstar_suse</user>
+    <comment>- add missing six dependency declaration</comment>
+    <requestid>930147</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>7f71c387ee8efc8457f314f8bcee5c5f</srcmd5>
+    <version>3.4</version>
+    <time>1639515743</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>940572</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ef093f9c703a96678a78077fc5c4f328</srcmd5>
+    <version>3.4.1</version>
+    <time>1668271273</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035278</requestid>
+  </revision>
+</revisionlist>

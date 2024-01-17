@@ -1,0 +1,11 @@
+--- groovy-core-GROOVY_1_8_9/src/main/groovy/ui/text/StructuredSyntaxResources.java	2018-12-18 11:32:31.868127812 +0100
++++ groovy-core-GROOVY_1_8_9/src/main/groovy/ui/text/StructuredSyntaxResources.java	2018-12-18 11:25:13.541924343 +0100
+@@ -41,7 +41,7 @@
+             // a security exception
+             SecurityManager mgr = System.getSecurityManager();
+             if (mgr != null) {
+-                mgr.checkSystemClipboardAccess();
++                mgr.checkPermission(new java.awt.AWTPermission("accessClipboard"));
+             }
+             systemClipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+         }

@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>091e2049439de0fc8c897ab3b6c19bf4</srcmd5>
+    <version>1.75c</version>
+    <time>1579557485</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission of the json utility jtc.</comment>
+    <requestid>765904</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>19b04301313ce3d26bfe0e85297681e7</srcmd5>
+    <version>1.75d</version>
+    <time>1579636902</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 1.75d
+</comment>
+    <requestid>765993</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d66e4277163c32d7e95e83b631c2010e</srcmd5>
+    <version>1.76d</version>
+    <time>1590247648</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807810</requestid>
+  </revision>
+</revisionlist>

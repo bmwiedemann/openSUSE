@@ -1,0 +1,6 @@
+<package name="gcolor3" project="openSUSE:Factory">
+  <title>A simple color chooser written in GTK3 (like gcolor2)</title>
+  <description>A simple color chooser written in GTK3 (like gcolor2)
+https://hjdskes.github.io/projects/gcolor3/</description>
+  <devel project="X11:Utilities" package="gcolor3"/>
+</package>

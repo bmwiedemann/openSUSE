@@ -1,0 +1,389 @@
+-------------------------------------------------------------------
+Tue Dec 12 20:24:21 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.11:
+  * Resolve cgi module deprecation warnings. (#330)
+- remove python_module definition: provided by python-rpm-macros
+- drop python-xml requirement: not needed anymore
+
+-------------------------------------------------------------------
+Tue Jun 27 13:08:16 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Sun May 22 16:48:02 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.10:
+  * Populate <summary> correctly if it comes after <content> (#260)
+
+-------------------------------------------------------------------
+Fri May 20 09:28:16 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add 304_python310-crash.patch fixing crash of test test_001741
+  on Python 3.10 (gh#kurtmckee/feedparser#304).
+
+-------------------------------------------------------------------
+Thu May 19 19:30:30 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.9:
+  * Fix a crash that can occur with GeoRSS feeds that lack a 
+    <where> tag. (#305)
+
+-------------------------------------------------------------------
+Mon Feb  7 21:02:35 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Revert previous skip, because we have now working sgmllib3k.
+- Remove test tests/wellformed/sanitize/xml_declaration_unexpected_character.xml
+  (gh#kurtmckee/feedparser#304)
+
+-------------------------------------------------------------------
+Sat Feb  5 16:51:47 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip python310 because there is no sgmllib3k and upstream is not
+  willing to move away from it gh#kurtmckee/feedparser#279
+
+-------------------------------------------------------------------
+Wed Jun 23 18:24:35 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.8:
+  * Fix the name and link to the chardet module in the
+    documentation. (#280)
+- additional changes from version 6.0.7:
+  * Catch urllib.error.URLError to prevent crashes. (#239)
+
+-------------------------------------------------------------------
+Wed Jun 16 19:22:23 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.6:
+  * Prevent an AttributeError that occurs when a server returns
+    HTTP 3xx but doesn't include a Location header as well. (#267)
+
+-------------------------------------------------------------------
+Mon Jun 14 16:04:31 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.5:
+  * Prevent a TypeError crash that may occur when including a
+    username and password in the feed URL. (#276)
+
+-------------------------------------------------------------------
+Sun Jun 13 19:01:57 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.4:
+  * Prevent a UnicodeDecodeError crash that may occur when the
+    title element's type attribute exists but is empty. (#277)
+  * Prevent a UnicodeEncodeError crash that may occur if the URL
+    contains Unicode characters in the path. (#273)
+- additional changes from version 6.0.3:
+  * Fix an issue with the HTTP request status on Python >= 3.9.
+- drop numerical_return_status.patch: fixed upstream
+
+-------------------------------------------------------------------
+Thu Apr 29 14:39:29 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- add numerical_return_status.patch for 3.9 python version
+  (change of return status to None)
+
+-------------------------------------------------------------------
+Sun Oct 25 17:59:36 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.2:
+  * Stop building Python wheels with universal=1 set. (#251)
+  * Fix a bug that put a trailing quote in the documentation
+    version. (#232)
+  * Update the documentation URL to point to ReadTheDocs.
+
+-------------------------------------------------------------------
+Mon Sep 28 11:20:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 6.0.1:
+  * Remove all Python 2 compatibility code (#228)
+  * Add *python_requires* to ``setup.py`` (#2 
+
+-------------------------------------------------------------------
+Mon Sep 14 20:10:18 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.0:
+  * Support Python 3.6, 3.7, 3.8 and 3.9
+  * Drop support for Python 2.4 through 2.7, and Python 3.0 through
+    3.5 (#169)
+  * Convert feedparser from a monolithic file to a package
+  * feedparser.parse(sanitize_html=bool) argument replaces the
+    feedparser.SANITIZE_HTML global
+  * feedparser.parse(resolve_relative_uris=bool) replaces the
+    feedparser.RESOLVE_RELATIVE_URIS global
+  * Unify the codebase so that 2to3 conversion is no longer
+    required
+  * Remove references to iconv_codecs
+  * Update the Creative Commons namespace URI's
+  * Update the default User-Agent name and URL
+  * Support Middle European (Summer) Time timezones (#20)
+  * Pass data to lazy_chardet_encoding() (#50)
+  * Document that datetimes are returned in UTC (#51)
+  * Remove cjkpython references in the documentation (#57)
+  * Resolve ResourceWarnings thrown during unit tests (#170)
+  * Fix tox build failures (#213)
+  * Use base64.decodebytes() directly to support Python 3.9 (#201)
+  * Fix Python 3.8 urllib.parse.splittype() deprecation warning
+    (#211)
+  * Support parsing colons in RFC822 timezones (#144)
+  * Add `chardet` as an optional tox environment dependency
+  * Fix the Big5 unit test that fails when chardet is installed
+    (#184)
+- build the package only for python3
+- drop py37.patch: fixed upstream
+- drop non-ascii-entity-hiding.patch: fixed upstream
+- drop catch-gzip-error.patch: fixed upstream
+- fix build requires for chardet and sgmllib3k
+- remove chmod on all source files: fixed upstream
+- drop moving around source files: reworked upstream
+- run the tests as described by upstream
+- fix the list of packaged files
+
+-------------------------------------------------------------------
+Sat Mar 30 22:06:01 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Add Requires sgmllib3k to fix exception in Python 3 when
+  using the loose parser:
+  UnboundLocalError: local variable 'feedparser' referenced before assignment
+  and less clear but similarly broken result with the strict
+  parser.
+- Add catch-gzip-error.patch to fix fetch crash in Python 3
+- Add non-ascii-entity-hiding.patch to workaround failure
+  to properly parse non-ASCII based encodings on Python 3.5+
+- Add py37.patch to fix parsing crash on Python 3.7
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:57 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Apr 26 16:57:56 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 5.2.1
+  * Bumpy version number to avoid unnecessary pip reinstalls.
+- Implement single-spec version.
+- Fix source URL.
+
+-------------------------------------------------------------------
+Wed Apr 22 18:13:50 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 5.2.0:
+  * Support PyPy
+  * Remove the HTTP Status 9001 test that caused unit test
+    tracebacks
+  * Remove the completely-untested HTML tidy code
+  * Remove BeautifulSoup as a dependency
+  * Remove the XFN microformat parsing code
+  * Remove the rel_enclosure microformat parsing code
+  * Remove the rel_hcard microformat parsing code
+  * Remove the rel_tag microformat parsing code
+  * Replace the regex-based RFC 822 date parser with a procedural
+    one
+  * Replace the Python-licensed W3DTF date parser
+  * Support HTML5 audio/source/video element relative URL's
+  * Remove the unparsed itunes_keywords key from the result
+    dictionary
+  * Fix issue 321 just a little more (yet another code path was
+    missed)
+  * Issue 62 (support georss and gml namespaces)
+  * Issue 296 (GUID's are always treated like relative URI's)
+  * Issue 334 (media:restriction element content is not returned)
+  * Issue 335 (sub-elements of media:group are not parsed and
+    returned)
+  * Issue 342 (support multiple dc:creator elements)
+  * Issue 357 (loose parser breaks ampersands in link element
+    URL's)
+  * Issue 374 (support the Podlove Simple Chapters namespace)
+  * Issue 380 (support media:rating element)
+  * Issue 384 (fix chardet support in Python 3)
+  * Issue 389 (elements in unknown uppercase namespaces are
+    ignored)
+  * Issue 392 (tags element subverts 'tags' key in result
+    dictionary)
+  * Issue 396 (Podlove Simple Chapters version 1.0 causes a
+    KeyError)
+  * Issue 399 (docs call `request_headers` parameter
+    `extra_headers`)
+  * Issue 401 (support additional dcterms and media namespaces
+    elements)
+  * Issue 404 (support asctime datetime strings with timezone
+    information)
+  * Issue 407 (decode forward slashes encoded as character
+    entities)
+  * Issue 421 (delay chardet invocation as long as possible)
+  * Issue 422 (add return types docstrings)
+  * Issue 433 (update the list of allowed MathML elements and
+    attributes)
+- update URL to project homepage
+- point the source URL to pypi and take care of archive naming
+- change README to README.rst on package documentation
+
+-------------------------------------------------------------------
+Thu Oct 24 11:05:37 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Sun Mar  3 05:01:07 UTC 2013 - arun@gmx.de
+
+- Update to 5.1.3 (taken from google code webpage:
+  * feedparser 5.1.3 (December 9, 2012)
+  * Consolidated and simplified the character encoding detection code
+  *   Issue 346  (the gb2312 encoding isn't always upgraded to gb18030)
+  *   Issue 350  (HTTP Last-Modified example is incorrect in documentation)
+  *   Issue 352  (importing lxml.etree changes what exceptions libxml2 throws)
+  *   Issue 356  (add support for the HTML5 attributes poster and preload)
+  *   Issue 364  (enclosure-sniffing microformat code can throw ValueError)
+  *   Issue 373  (support RFC822-ish dates with swapped days and months)
+  *   Issue 376  (uppercase 'X' in hex character references cause ValueError)
+  *   Issue 382  (don't strip inline user:password credentials from FTP URL's)  
+
+-------------------------------------------------------------------
+Sat Jun  9 23:56:05 UTC 2012 - os-dev@jacraig.com
+
+- Update to 5.1.2:
+  * Minor changes to the documentation
+  * Strip potentially dangerous ENTITY declarations in encoded feeds
+  * feedparser will now try to continue parsing despite compression errors
+  * Fix issue 321 a little more (the initial fix missed a code path)
+  * Issue 337 (`_parse_date_rfc822()` returns None on single-digit days)
+  * Issue 343 (add magnet links to the ACCEPTABLE_URI_SCHEMES)
+  * Issue 344 (handle deflated data with no headers nor checksums)
+  * Issue 347 (support `itunes:image` elements with a `url` attribute)
+- Remove now-unneeded chmod of README
+
+-------------------------------------------------------------------
+Tue Mar 20 19:18:36 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 5.1.1:
+  * Fix mistakes, typos, and bugs in the unit test code
+  * Fix crash in Python 2.4 and 2.5 if the feed has a UTF_32 byte order mark
+  * Replace the RFC822 date parser for more extensibility
+  * Issue 304  (handle RFC822 dates with timezones like GMT+00:00)
+  * Issue 309  (itunes:keywords should be split by commas, not whitespace)
+  * Issue 310  (pubDate should map to published, not updated)
+  * Issue 313  (include the compression test files in MANIFEST.in)
+  * Issue 314  (far-flung RFC822 dates don't throw OverflowError on x64)
+  * Issue 315  (HTTP server for unit tests runs on 0.0.0.0)
+  * Issue 321  (malformed URIs can cause ValueError to be thrown)
+  * Issue 322  (HTTP redirect to HTTP 304 causes SAXParseException)
+  * Issue 323  (installing chardet causes 11 unit test failures)
+  * Issue 325  (map description_detail to summary_detail)
+  * Issue 326  (Unicode filename causes UnicodeEncodeError if locale is ASCII)
+  * Issue 327  (handle RFC822 dates with extraneous commas)
+  * Issue 328  (temporarily map updated to published due to  issue 310 )
+  * Issue 329  (escape backslashes in Windows path in docs/introduction.rst)
+  * Issue 331  (don't escape backslashes that are in raw strings in the docs)
+- Re-enabled tests now that the broken ones are fixed
+
+-------------------------------------------------------------------
+Tue Feb 21 12:48:33 UTC 2012 - saschpe@suse.de
+
+- Fix feedparser.py syntax error
+
+-------------------------------------------------------------------
+Sun Feb 19 20:37:04 UTC 2012 - saschpe@gmx.de
+
+- Remove outdated %clean section, no CFLAGS for noarch package
+
+-------------------------------------------------------------------
+Thu Jan 12 19:34:06 UTC 2012 - jfunk@funktronics.ca
+
+- Temporarily disabled tests due to false failures. Should be re-enabled in
+  5.1.1
+- Update to 5.1:
+  * Extensive, extensive unit test refactoring
+  * Convert the Docbook documentation to ReST
+  * Include the documentation in the source distribution
+  * Consolidate the disparate README files into one
+  * Support Jython somewhat (almost all unit tests pass)
+  * Support Python 3.2
+  * Fix Python 3 issues exposed by improved unit tests
+  * Fix international domain name issues exposed by improved unit tests
+  * Issue 148 (loose parser doesn't always return unicode strings)
+  * Issue 204 (FeedParserDict behavior should not be controlled by `assert`)
+  * Issue 247 (mssql date parser uses hardcoded tokyo timezone)
+  * Issue 249 (KeyboardInterrupt and SystemExit exceptions being caught)
+  * Issue 250 (`updated` can be a 9-tuple or a string, depending on context)
+  * Issue 252 (running setup.py in Python 3 fails due to missing sgmllib)
+  * Issue 253 (document that text/plain content isn't sanitized)
+  * Issue 260 (Python 3 doesn't decompress gzip'ed or deflate'd content)
+  * Issue 261 (popping from empty tag list)
+  * Issue 262 (docs are missing from distribution files)
+  * Issue 264 (vcard parser crashes on non-ascii characters)
+  * Issue 265 (http header comparisons are case sensitive)
+  * Issue 271 (monkey-patching sgmllib breaks other libraries)
+  * Issue 272 (can't pass bytes or str to `parse()` in Python 3)
+  * Issue 275 (`_parse_date()` doesn't catch OverflowError)
+  * Issue 276 (mutable types used as default values in `parse()`)
+  * Issue 277 (`python3 setup.py install` fails)
+  * Issue 281 (`_parse_date()` doesn't catch ValueError)
+  * Issue 282 (`_parse_date()` crashes when passed `None`)
+  * Issue 285 (crash on empty xmlns attribute)
+  * Issue 286 ('apos' character entity not handled properly)
+  * Issue 289 (add an option to disable microformat parsing)
+  * Issue 290 (Blogger's invalid img tags are unparseable)
+  * Issue 292 (atom id element not explicitly supported)
+  * Issue 294 ('categories' key exists but raises KeyError)
+  * Issue 297 (unresolvable external doctype causes crash)
+  * Issue 298 (nested nodes clobber actual values)
+  * Issue 300 (performance improvements)
+  * Issue 303 (unicode characters cause crash during relative uri resolution)
+  * Remove "Hot RSS" support since the format doesn't actually exist
+  * Remove the old feedparser.org website files from the source
+  * Remove the feedparser command line interface
+  * Remove the Zope interoperability hack
+  * Remove extraneous whitespace
+
+-------------------------------------------------------------------
+Thu Dec  8 13:54:33 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Thu Jun  9 10:31:45 UTC 2011 - saschpe@suse.de
+
+- * Moved chmod 0644 README back to %prep section
+
+-------------------------------------------------------------------
+Tue May 31 12:46:05 UTC 2011 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Moved unittests to %check section
+  * Removed authors from description
+  * Don't test on SLES_9, fixes build
+
+-------------------------------------------------------------------
+Mon May 30 18:22:09 UTC 2011 - jfunk@funktronics.ca
+
+- Update to 5.0.1
+  - Fix issue 91 (invalid text in XML declaration causes sanitizer to crash)
+  - Fix issue 254 (sanitization can be bypassed by malformed XML comments)
+  - Fix issue 255 (sanitizer doesn't strip unsafe URI schemes)
+- Previous release: 5.0 - January 25, 2011
+  - Improved MathML support
+  - Support microformats (rel-tag, rel-enclosure, xfn, hcard)
+  - Support IRIs
+  - Allow safe CSS through sanitization
+  - Allow safe HTML5 through sanitization
+  - Support SVG
+  - Support inline XML entity declarations
+  - Support unescaped quotes and angle brackets in attributes
+  - Support additional date formats
+  - Added the request_headers argument to parse()
+  - Added the response_headers argument to parse()
+  - Support multiple entry, feed, and source authors
+  - Officially make Python 2.4 the earliest supported version
+  - Support Python 3
+  - Bug fixes, bug fixes, bug fixes
+
+-------------------------------------------------------------------
+Thu Sep  3 15:54:31 CEST 2009 - matejcik@suse.cz
+
+- build as noarch
+- import from OBS, original changelog follows:
+* Sun Feb 15 2009 - James Oakley <jfunk@funktronics.ca> - 4.1-1
+- initial release

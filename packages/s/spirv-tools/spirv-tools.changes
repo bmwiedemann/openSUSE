@@ -1,0 +1,472 @@
+-------------------------------------------------------------------
+Fri Dec 22 20:14:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.6~rc1
+  * spirv-val: Loosen restriction on base type of
+    DebugTypePointer and DebugTypeQualifier
+  * spirv-val: Add WorkgroupMemoryExplicitLayoutKHR check for Block
+  * opt: Add ComputeDerivativeGroup*NV capabilities to trim
+    capabilities pass
+  * opt: Do not crash when tryingto fold unsupported spec constant
+  * opt: support 64-bit OpAccessChain index in FixStorageClass
+  * opt: add StorageImageReadWithoutFormat to cap trim
+  * opt: add PhysicalStorageBufferAddresses to trim
+
+-------------------------------------------------------------------
+Fri Oct 27 04:03:44 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.5~rc1
+  * opt: add new trim passes
+  * SPV_QCOM_image_processing support
+  * Add SPV_EXT_fragment_shader_interlock and
+    SPV_KHR_physical_storage_buffer to allow lists
+  * Add a new legalization pass to dedupe invocation interlock
+    instructions
+
+-------------------------------------------------------------------
+Tue Aug 22 10:04:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.4~rc2
+  * Add SPV_NV_bindless_texture to spirv optimizations
+  * Add folding rule for OpTranspose
+  * spirv-diff: Leave undefined ids unpaired
+  * SPV_KHR_cooperative_matrix
+  * Validate GroupNonUniform instructions
+  * Add support for LiteralFloat type
+  * Add SPV_EXT_shader_atomic_float_add to allow lists
+
+-------------------------------------------------------------------
+Tue May 30 22:01:25 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.3~rc1
+  * Add spirv-dump tool
+  * Implement source extraction logic for spirv-objdump
+  * Add Vulkan memory model to allow lists
+  * Add default case for spv::Dim for TileImageEXT
+  * Add support for SPV_EXT_shader_tile_image
+  * opt: Fix null deref in OpMatrixTimesVector and OpVectorTimesMatrix
+  * Apply scalar replacement on vars with Pointer decorations
+
+-------------------------------------------------------------------
+Thu Mar 30 07:42:40 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.2
+  * spirv-val: Initial SPV_EXT_mesh_shader builtins
+  * Add C interface for Optimizer
+
+-------------------------------------------------------------------
+Wed Mar 29 18:42:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update buildrequires to match published dependency list
+
+-------------------------------------------------------------------
+Wed Jan 18 22:23:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.1
+  * Validate version 5 of clspv reflection
+  * Fix undef behaviour in hex float parsing
+
+-------------------------------------------------------------------
+Fri Dec 23 08:06:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.4+sdk236
+  * Only validate full layout in Vulkan environments
+  * Prevent eliminating case constructs in block merging
+  * Add pass to eliminate dead output components
+  * Add support for tesc, tese and geom to EliminateDead*Components
+  * Add option to ADCE to remove output variables from interface
+
+-------------------------------------------------------------------
+Mon Oct 24 19:46:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.4 (SDK-1.3.231.0)
+  * Add structs to eliminate dead input components
+  * spirv-val: Add SPV_KHR_ray_tracing storage class
+  * Improve algorithm to reorder blocks in a function
+  * spirv-val: Add initial SPV_EXT_mesh_shader validation
+  * spirv-val: Add SPV_ARM_core_builtins validation
+  * Support Narrow Types in BitCast Folding Rule
+- Drop gcc48.diff, that compiler is long past its time.
+- Drop 0001-Fix-array-copy-propagation-4890.patch (merged).
+
+-------------------------------------------------------------------
+Mon Aug 22 23:12:02 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.3~sdk224 (SDK-1.3.224.0)
+  * spirv-val: Add support for SPV_AMD_shader_early_and_late_fragment_tests
+  * Avoid replacing access chain with OOB access
+  * Avoid undefined divide-by-0
+  * Fixed crash unrolling loops with residual iterations
+  * Fix segfault in `SpirvTools::Disassemble` when printing
+  * Avoid undefined behaviour when getting debug opcode
+  * spirv-val: Add Vulkan decoration interface
+  * Implement SPV_NV_bindless_texture related changes
+- Update to release 2022.3
+  * spirv-val: Add SPV_KHR_ray_tracing instructions
+- Add 0001-Fix-array-copy-propagation-4890.patch
+
+-------------------------------------------------------------------
+Wed Jun 15 16:51:34 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 2022.3~sdk216 (SDK-1.3.216.0)
+  * Add folding rule to generate Fma instructions
+  * Add support for SPV_KHR_subgroup_rotate
+  * spirv-val: Add CullMaskKHR support
+  * Add SPV_KHR_fragment_shader_barycentric support
+  * Add more folding for composite instructions
+  * spirv-val: Add PerVertexKHR
+  * Fold multiply and subtraction into FMA with negation
+
+-------------------------------------------------------------------
+Mon Apr 18 23:33:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 2022.2 (SDK-1.3.211.0)
+  * Handle propagation of arrays with decorations
+  * spirv-opt: Add OpExecutionModeId support
+  * Support SPV_KHR_uniform_group_instructions
+  * Introduce spirv-diff
+
+-------------------------------------------------------------------
+Sat Feb 19 17:29:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 2022.2~sdk204 (SDK-1.3.204.0)
+  * Complete handling of RayQueryKHR type
+
+-------------------------------------------------------------------
+Wed Jan 26 20:39:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.1
+  * Basic support for SPIR-V 1.6
+  * spirv-opt: add pass to Spread Volatile semantics
+- Drop spirv-tools-big-endian.patch (merged)
+
+-------------------------------------------------------------------
+Thu Dec  9 19:09:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix issues on big endian platforms
+  (Needed to fix https://bugreports.qt.io/browse/QTBUG-93101)
+  * spirv-tools-big-endian.patch
+
+-------------------------------------------------------------------
+Thu Nov 11 19:40:52 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.4
+  * Improve decoration validation
+  * Add spirv-opt pass to replace descriptor accesses based on
+    variable indices
+  * Do not fold snegate feeding sdiv
+
+-------------------------------------------------------------------
+Mon Sep  6 05:13:36 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.3
+  * Support Intel extensions for fixed point and hls-float
+  * Add SPV_KHR_vulkan_memory_model to aggressive_dead_code_elim
+  * spirv-val: Vulkan Storage Class for Execution Model
+  * Support SPV_KHR_subgroup_uniform_control_flow
+  * Initial support for SPV_KHR_integer_dot_product
+  * Add validation for SPV_EXT_shader_atomic_float16_add
+  * Add non-semantic vulkan extended instruction set
+  * Don't fold unsigned divides of an constant and a negation
+
+-------------------------------------------------------------------
+Wed May  5 09:30:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.1
+  * Support SPV_KHR_linkonce_odr, SPV_KHR_expect_assume
+  * Fixes for the vscode language server extension
+  * Validator:
+  * Add validation for SPV_EXT_shader_atomic_float_min_max
+  * Add Vulkan Execution Scope checks
+  * Vulkan 64-bit OpAtomicStore check
+
+-------------------------------------------------------------------
+Thu Mar 18 14:20:22 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add -Wno-error
+
+-------------------------------------------------------------------
+Thu Mar 11 14:00:16 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Bump SONAME because of ABI change underneath [boo#1183350].
+  This I had missed in the 2020.7 update.
+
+-------------------------------------------------------------------
+Mon Mar  1 06:56:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.7
+  * Support pending Intel extensions
+  * Remove WebGPU support
+  * Validator: add Vulkan EXT builtins
+  * Optimizer: Run DCE when SPV_KHR_shader_clock is used
+
+-------------------------------------------------------------------
+Tue Dec  8 12:30:46 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.6
+  * Take new (raytracing) termination instructions into account.
+  * Do run DCE if SPV_KHR_ray_query is used.
+  * Support SPV_KHR_fragment_shading_rate.
+  * Add validation support for the ray tracing built-in variables.
+
+-------------------------------------------------------------------
+Tue Aug 11 22:43:40 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.4
+   * Memory model support for SPIR-V 1.4
+   * Add new spirv-fuzz tool
+   * Instrument: Add version 2 of record formats
+
+-------------------------------------------------------------------
+Fri May 29 17:21:04 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.3
+  * spirv-fuzz: Add validator options
+  * Add unrolling to performance passes
+  * spirv-fuzz: Support bit width argument for int and float types
+
+-------------------------------------------------------------------
+Wed Apr  8 11:21:33 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.2
+  * Support extended instructions in the vscode language server.
+  * Make spvOpcodeString part of the public API.
+  * Add support for KHR_ray_{query,tracing} extensions.
+  * Add validation support for SPV_AMD_shader_image_load_store_lod.
+
+-------------------------------------------------------------------
+Thu Feb 20 10:10:56 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.1
+  * Add spvParseVulkanEnv
+  * Handle TimeAMD in AmdExtensionToKhrPass
+
+-------------------------------------------------------------------
+Sun Jan 19 11:04:32 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 2020.1~git24 (323a81fc)
+  * Added basic Vulkan 1.2 support and validation of 1.2.
+  * spirv-fuzz: added fuzzer pass to perform module donation.
+  * Supports OpenCL.DebugInfo.100 extended instruction set.
+  * Added support for SPV_KHR_non_semantic_info.
+  * spirv-fuzz: Transformations to add types, constants and
+    variables, and to add a new function to a module.
+  * Made instrumentation format version 2 the default.
+
+-------------------------------------------------------------------
+Thu Dec 12 21:20:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2019.5
+  * Re-enable OpReadClockKHR validation
+  * spirv-fuzz: simplify transformation for replacing an id with
+    a synonym
+  * spirv-fuzz: Eliminate spurious semicolons
+  * Update Offset to ConstOffset bitmask if operand is constant
+  * Validate array stride does not cause overlap
+  * Fix operand access of composite in upgrade memory model
+  * Kill the id-to-func map after wrap-opkill
+  * Handle OpPhi with no in operands in value numbering
+  * Handle unreachable block when computing register pressure
+  * spirv-fuzz: Improve debugging facilities
+  * Validate nested constructs
+  * spirv-fuzz: Use validator to check break/continue dominance
+    conditions
+  * spirv-fuzz: function outlining fuzzer pass
+
+-------------------------------------------------------------------
+Thu Nov  7 09:03:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 2019.5~git157
+  * Extend reducer to remove relaxed precision decorations
+  * SPIRV-Tools support for SPIR-V 1.5
+  * Add SPV_KHR_shader_clock validation
+  * Add fuzzer for spirv-dis call path
+
+-------------------------------------------------------------------
+Wed Aug 21 07:56:49 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new snapshot 2019.5~git11
+  * Add builtin validation for SPV_NV_shader_sm_builtins
+  * Add transformation to replace a boolean constant with a
+    numeric comparison
+  * Add validation for Subgroup builtins
+  * Add replayer tool for spirv-fuzz
+  * Validate Volatile memory semantics bit
+  * Add validation for SPV_EXT_demote_to_helper_invocation
+  * Add 'copy object' transformation
+  * Add SPV_EXT_physical_storage_buffer to opt whitelists
+  * Add descriptor array scalar replacement
+
+-------------------------------------------------------------------
+Tue Jun  4 12:23:07 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new snapshot 2019.4~git33
+  * Support SPIR-V 1.4
+  * Add library for spirv-fuzz
+  * Add spirv-fuzz tool.
+  * Add "split block" transformation.
+  * Add validation for SPV_EXT_fragment_shader_interlock
+
+-------------------------------------------------------------------
+Sun Mar 17 13:25:59 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new snapshot 2019.2.git25 (2ac348b5) to be in line
+  with current spirv-headers.
+  * Add --strip-atomic-counter-memory
+  * Add validation of storage classes for WebGPU
+  * Add validation for ExecutionMode in WebGPU
+  * Implement WebGPU specific CFG validation
+  * Allow NonWritable to target struct members
+  * Add validation for SPV_NV_cooperative_matrix
+
+-------------------------------------------------------------------
+Wed Feb 20 20:06:31 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2019.2
+  * General:
+  * Support SPV_EXT_physical_storage_buffer
+  * Optimizer:
+  * Upgrade memory model improvments for modf and frexp.
+  * Add a new pass to move loads closer to their uses: code sinking.
+  * Invalidating the type manager now invalidates the constant
+    manager.
+  * Expand instrumentation pass for bindless bounds checking to
+    runtime-sized descriptor arrays.
+  * Add a new dead struct member elimination pass
+  * Validator:
+  * Support SPV_KHR_no_integer_wrap and related decorations.
+  * Validate Vulkan rules for OpTypeRuntimeArray.
+  * Validate NonWritable decoration.
+  * Many WebGPU specific validation rules were added.
+  * Validate variable pointer related function call rules.
+
+-------------------------------------------------------------------
+Mon Jan  7 21:33:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2019.1
+  * Created a new tool called spirv-reduce.
+  * New optimization pass to update the memory model from GLSL450
+    to VulkanKHR.
+  * Recognize OpTypeAccelerationStructureNV as a type instruction
+    and ray tracing storage classes.
+  * Add --target-env flag to spirv-opt.
+  * Add --webgpu-mode flag to run optimizations for webgpu.
+  * Outupt disassembled line number instead of byte offset in
+    validation errors.
+
+-------------------------------------------------------------------
+Sat Nov 10 12:24:41 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2018.6
+  * Added support for the Nvidia Turing and ray tracing extensions.
+
+-------------------------------------------------------------------
+Fri Aug 24 19:05:26 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2018.4
+  * Added missing SPV extension strings.
+  * Taught DecorationManager about OpDecorateStringGOOGLE.
+  * Added recent Google extensions to optimizer whitelists.
+  * Added a loop peeling utility.
+  * Added Vulkan validation rules for BuiltIn variables and
+    Vulkan specific atomic result type restriction.
+  * New spirv-1.3 rules for control barrier.
+  * Added OpPhi validation rules.
+  * Use standard SPIR-V version scheme for version requirement.
+  * ZIV and SIV loop dependence analysis.
+  * Added a loop peeling pass, register liveness analysis,
+    a loop fusion pass, and the --strip-reflect pass.
+  * Support for SPV_KHR_8bit_storage.
+
+-------------------------------------------------------------------
+Wed Mar 28 10:20:48 UTC 2018 - meissner@suse.com
+
+- add spirv-tools-devel for baselibs, for wine usage.
+
+-------------------------------------------------------------------
+Thu Mar  8 00:14:25 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2018.2
+  * SubgroupBallotKHR can enable SubgroupSize & SubgroupLocalInvocationId
+  * Support SPIR-V 1.3 and Vulkan 1.1
+
+-------------------------------------------------------------------
+Wed Feb  7 22:22:02 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 2018.0
+  * Added OpenCL ExtInst validation rules
+  * Add adjacency validation pass
+  * Add memory semantics checks to validate atomics
+  * Allow relaxing validation of pointers in logical
+    addressing mode
+
+-------------------------------------------------------------------
+Thu Jan  4 15:47:38 UTC 2018 - tchvatal@suse.com
+
+- Make sure to build just with python3
+- Remove needles buildroot variable and default defattrs
+- Use autopatch to apply patches
+
+-------------------------------------------------------------------
+Fri Nov 17 13:32:51 UTC 2017 - jengelh@inai.de
+
+- Update to new snapshot 2017.0.g103
+  * Update MARK-V to version 1.01
+  * Add new checks to validate arithmetics pass
+  * Recognize SPV_AMD_shader_fragment_mask
+  * Add validate logicals pass to the validator
+  * Detach MARK-V from the validator
+
+-------------------------------------------------------------------
+Tue Jul 18 09:01:25 UTC 2017 - jengelh@inai.de
+
+- Update to new snapshot 2016.7~g145
+  * Validation of type decls for SPV_KHR_16bit_storage
+  * Allow using FPRoundingMode when see VK_KHR_16bit_storage
+  * Validator parses and registers OpExtension
+  * Validator checks if operands require extension
+  * Validator dissallows unsupported Vulkan capability
+  * Update capability tests for SPV_KHR_16bit_storage rev 7
+  * Support SPV_AMD_gcn_shader
+  * Add FlattenDecoration transform
+  * Validator support for Variable Pointer extension.
+  * Support SPV_KHR_storage_buffer_storage_class
+  * Add SPIR-V 1.2 support, for OpenCL 2.2
+  * Added extension SPV_VALIDATOR_ignore_type_decl_unique
+  * Add support for SPV AMD extensions
+  * MARK-V decoder supports extended instructions
+  * DeadBranchElim: Improve algorithm to only remove blocks with
+    no predecessors
+  * Opt: Add new size-reduction passes to usage message.
+  * Add multi-sequence move-to-front implementation.
+  * Add MemPass, move all shared functions to it.
+  * Add CommonUniformElim pass.
+  * Mem2Reg: Allow Image and Sampler types as base target types.
+
+-------------------------------------------------------------------
+Mon Feb 20 15:48:52 UTC 2017 - jengelh@inai.de
+
+- Update to new snapshot 2016.7~g28
+  * The Signedness in OpTypeInt must always be 0.
+- Add baselibs.conf [needed by libvulkan1, needed by libgtk4-0]
+
+-------------------------------------------------------------------
+Thu Feb  2 10:35:57 UTC 2017 - jengelh@inai.de
+
+- Update to new snapshot 2016.7~g24
+  * Add classes for representing SPIR-V language constructs in memory.
+  * Add an option to spvBinaryToText() to ignore header output.
+  * Add IrBuilder for constructing SPIR-V in-memory representation.
+  * Add Pass, PassManager, and StripDebugInfoPass.
+  * Add the spirv-opt command line tool.
+  * Fixes segfault for loops without back-edges
+  * Allow missing memory model instructions in modules.
+  * Add spirv-lesspipe.sh
+  * Add spirv-dis/spirv-as support for emacs when loading .spv binaries
+- Add gcc48.diff
+
+-------------------------------------------------------------------
+Mon Jun 13 09:46:37 UTC 2016 - jengelh@inai.de
+
+- Initial package (version 1.1) for build.opensuse.org
+- Add ver.diff

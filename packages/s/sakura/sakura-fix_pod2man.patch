@@ -1,0 +1,11 @@
+Index: sakura-3.8.7/CMakeLists.txt
+===================================================================
+--- sakura-3.8.7.orig/CMakeLists.txt
++++ sakura-3.8.7/CMakeLists.txt
+@@ -72,5 +72,5 @@ ADD_CUSTOM_TARGET (distclean
+ 
+ IF (POD2MAN)
+ ADD_CUSTOM_TARGET(man ALL
+-	COMMAND ${POD2MAN} -u --section=1 --release=${VERSION} --center '' ${sakura_SOURCE_DIR}/sakura.pod sakura.1)
++	COMMAND ${POD2MAN} --section=1 --release=${VERSION} --center '' ${sakura_SOURCE_DIR}/sakura.pod sakura.1)
+ ENDIF (POD2MAN)

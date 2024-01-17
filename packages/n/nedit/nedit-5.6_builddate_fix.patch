@@ -1,0 +1,77 @@
+Index: nedit-5.7/source/help.c
+===================================================================
+--- nedit-5.7.orig/source/help.c
++++ nedit-5.7/source/help.c
+@@ -229,8 +229,7 @@ static const char *getBuildInfo(void)
+ {
+     static const char *bldFormat =
+         "%s\n"
+-        "     Built on: %s, %s, %s\n"
+-        "     Built at: %s, %s\n"
++        "     Built on: openSUSE BuildService\n"
+         "   With Motif: %s%d.%d.%d [%s]\n"
+         "Running Motif: %d.%d [%s]\n"
+         "       Server: %s %d\n"
+@@ -269,8 +268,6 @@ static const char *getBuildInfo(void)
+ 
+         sprintf(bldInfoString, bldFormat,
+              NEditVersion,
+-             COMPILE_OS, COMPILE_MACHINE, COMPILE_COMPILER,
+-             linkdate, linktime,
+              stabilities[stab], XmVERSION, XmREVISION, XmUPDATE_LEVEL,
+              XmVERSION_STRING, 
+              xmUseVersion/1000, xmUseVersion%1000,
+Index: nedit-5.7/source/linkdate.c
+===================================================================
+--- nedit-5.7.orig/source/linkdate.c
++++ nedit-5.7/source/linkdate.c
+@@ -33,6 +33,3 @@
+ #ifdef HAVE_DEBUG_H
+ #include "../debug.h"
+ #endif
+-
+-const char linkdate[] = __DATE__;
+-const char linktime[] = __TIME__;
+Index: nedit-5.7/source/nc.c
+===================================================================
+--- nedit-5.7.orig/source/nc.c
++++ nedit-5.7/source/nc.c
+@@ -1002,10 +1002,6 @@ static void copyCommandLineArg(CommandLi
+ static void printNcVersion(void ) {
+    static const char *const ncHelpText = \
+    "nc (NEdit) Version 5.7 (January 2017)\n\n\
+-     Built on: %s, %s, %s\n\
+-     Built at: %s, %s\n";
+-     
+-    fprintf(stdout, ncHelpText,
+-                  COMPILE_OS, COMPILE_MACHINE, COMPILE_COMPILER,
+-                  __DATE__, __TIME__);
++     Built on: openSUSE BuildService\n";
++    fprintf(stdout, ncHelpText);
+ }
+Index: nedit-5.7/doc/setext
+===================================================================
+--- nedit-5.7.orig/doc/setext
++++ nedit-5.7/doc/setext
+@@ -711,7 +711,7 @@ sub date
+ {
+     $format = $_[0];
+     
+-    ( $sec,$min,$hour,$mday,$mon,$year,@ignore ) = localtime( time );
++    ( $sec,$min,$hour,$mday,$mon,$year,@ignore ) = localtime( $ENV{SOURCE_DATE_EPOCH} || time );
+     $month = (January,February,March,April,May,June,July,
+               August,September,October,November,December)[$mon];
+     $year  = $year + 1900;
+Index: nedit-5.7/doc/Makefile
+===================================================================
+--- nedit-5.7.orig/doc/Makefile
++++ nedit-5.7/doc/Makefile
+@@ -39,7 +39,7 @@ instructions:
+ 	
+ .version:
+ 	@ if [ "$(VERSION)" = "" ]; then \
+-	      echo "NEdit release of `date +'%b %e, %Y'`" > .version; \
++	      echo "NEdit release of `date --date="@$${SOURCE_DATE_EPOCH:-$$(date +%s)}" +'%b %e, %Y'`" > .version; \
+ 	  else \
+ 	      echo "$(VERSION)" > .version; \
+ 	  fi

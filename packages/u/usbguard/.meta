@@ -1,0 +1,5 @@
+<package name="usbguard" project="openSUSE:Factory">
+  <title>usbguard</title>
+  <description>usbguard</description>
+  <devel project="hardware" package="usbguard"/>
+</package>

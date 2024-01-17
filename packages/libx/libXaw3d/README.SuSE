@@ -1,0 +1,25 @@
+Note:
+
+  This /usr/lib/Xaw3d/libXaw8.so.8.0 is a real
+  libXaw3d.so.8.0 linked with  `-soname libXaw8.so.8'.
+
+  Therfore do _NOT_ replace  /usr/lib/libXaw8.so.8.0.0
+  by /usr/lib/Xaw3d/libXaw.so.8.0
+
+  On any problem starting X11 programs please remove the
+  package xaw3dd.
+
+Achtung:
+
+  Die Bibliothek /usr/lib/Xaw3d/libXaw8.so.8.0 ist
+  in Wirklichkeit eine libXaw3d.so.8.0, die mit der
+  Option `-soname libXaw8.so.8' gelinkt wurde.
+
+  Darum ersetzten Sie auf KEINEN Fall /usr/lib/libXaw8.so.8.0.0
+  durch /usr/lib/Xaw3d/libXaw8.so.8.0.
+
+  Falls Sie irgendwelche Probleme mit X11-Programmen haben,
+  deinstallieren Sie das Paket xaw3dd.
+
+
+Werner Fink                  <feedback@suse.de>

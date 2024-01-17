@@ -1,0 +1,141 @@
+-------------------------------------------------------------------
+Mon May 23 13:10:12 UTC 2016 - coolo@suse.com
+
+- updated to 0.27
+   see /usr/share/doc/packages/perl-namespace-clean/Changes
+
+  0.27  2016-05-18 02:24 (UTC)
+          - Allow packages to be cleaned multiple times
+          - Ensure the debugger workarounds are applied only when
+            DB::sub is actively used (they are superfluous otherwise)
+          - Work around P5#72210, resulting in fails on 5.8.8 -Duselongdouble
+          - Fix incorrect name in META (RT#107813)
+
+-------------------------------------------------------------------
+Sat Oct 10 09:37:59 UTC 2015 - coolo@suse.com
+
+- updated to 0.26
+   see /usr/share/doc/packages/perl-namespace-clean/Changes
+
+-------------------------------------------------------------------
+Sat Mar 15 13:00:41 UTC 2014 - coolo@suse.com
+
+- updated to 0.25
+        - Fix incorrect ExtUtils::CBuilder detection routine leading to
+          Makefile.PL crashes when EU::CB is not available
+
+-------------------------------------------------------------------
+Wed May 15 15:20:27 UTC 2013 - coolo@suse.com
+
+- updated to 0.24
+    - Properly skip debugger test when optional deps not available
+    - Make sure pure-perl tests pass correctly on space-containing
+      paths (RT#77528)
+    - Remove all the pure-perl fallback code and depend on PP-capable
+      B::H::EOS 0.12
+
+-------------------------------------------------------------------
+Fri Mar 16 08:09:28 UTC 2012 - lars@linux-schulserver.de
+
+- update to 0.23:
+  + Rely on B::Hooks::EndOfScope version 0.10 to fix issues with
+    new Module::Runtime versions (>= 0.012) on perl 5.10 due
+    to incorrect hook firing due to %^H localisation.
+  + Fix failures on 5.13.6 due to incorrect version number threshold
+    (RT#74683)
+
+-------------------------------------------------------------------
+Fri Mar  2 01:01:37 CET 2012 - ro@suse.de
+
+- remove perl-namespace-clean-use_lib.patch and use sed statement
+  instead (less likely to break with every package update) 
+
+-------------------------------------------------------------------
+Thu Mar  1 01:27:28 CET 2012 - ro@suse.de
+
+- update perl-namespace-clean-use_lib.patch 
+
+-------------------------------------------------------------------
+Sat Feb 11 07:00:52 UTC 2012 - coolo@suse.com
+
+- updated to 0.22
+    - Simplify the >= 5.10 PP variant even more - move the hook from
+      DESTROY into DELETE
+    - Force explicit callback invocation order on 5.8 PP
+    - Replace the %^H tie approach with fieldhashes, fixes all known
+      corner cases and caveats on supported perls >= 5.8.1 (FC)
+    - Compile away the debugger fixup on perls >= 5.15.5 (FC)
+    - More robust handling of the tied %^H in pure perl mode (RT#73402)
+    - Limit the debugger workarounds to perls between 5.8.8 and 5.14,
+      extend debugger support to all perl versions (FC) (RT#69862)
+    - If possible, automatically install (but not load) the debugger
+      workaround libraries on perls between 5.8.8 and 5.14 (RT#72368)
+    - Add back dropped NAME section (RT#70259)
+
+-------------------------------------------------------------------
+Thu Nov 17 12:33:28 UTC 2011 - coolo@suse.com
+
+- update to 0.21
+    - When using the tie() fallback ensure we do not obliterate a
+      foreign tie()
+    - Better document how to disable the tie() fallback
+    - Only invoke the deleted sub stashing if we run udner a debugger
+      (avoid runtime penalty of Sub::Name/Sub::Identify)
+    - Spellfixes (RT#54388)
+    - When B::Hooks::EndOfScope is not available, switch to a simple
+      tie() of %^H. While it can not 100% replace B::H::EOS, it does
+      everything n::c needs
+
+-------------------------------------------------------------------
+Sat Jun  4 20:50:41 UTC 2011 - lars@linux-schulserver.de
+
+- fix build on distributions with old Test::More module
+  ( perl-namespace-clean-use_lib.patch )
+
+-------------------------------------------------------------------
+Thu Mar 31 08:09:45 UTC 2011 - coolo@novell.com
+
+- update to 0.20
+   - Bump Package::Stash dependency to 0.22 to pull in a bugfix in
+     Package::Stash::XS 0.19.
+   - Port to the new Package::Stash 0.18 API and depend on it.
+   - Don't rely on package::stash's remove_package_symbol implementation
+     (doy).
+
+-------------------------------------------------------------------
+Wed Dec  1 13:34:02 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Jul 12 13:24:40 UTC 2010 - chris@computersalat.de
+
+- update to 0.18
+  - Make sure we continue working on future Package::Stash
+    versions (doy).
+- [0.17]
+  - Make sure the debugger author test is skipped for
+    non-authors before the debugger is even loaded.
+- [0.16]
+  - Release all changes of 0.15 as part of a stable release.
+  - Convert from Module::Install to Dist::Zilla.
+- [0.15] TRIAL release
+  - Use Package::Stash for the stash manipulation bits (doy).
+- [0.14] Thu Mar 18 11:15:38 CET 2010
+  - Disable auto_install.
+  - Turn the error prone debugger test into an author test.
+- recreated by cpanspec 1.78
+- noarch pkg
+- added Build_n_Test patch
+  o otherwise Test::More >= 0.88 would be needed
+
+-------------------------------------------------------------------
+Tue Feb  9 13:11:34 CET 2010 - nine@detonation.org
+
+- Upgraded to version 0.13
+
+-------------------------------------------------------------------
+Tue Jan 12 13:26:57 CET 2010 - nine@detonation.org
+
+- Specfile autogenerated by cpanspec 1.78.
+

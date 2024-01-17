@@ -1,0 +1,6 @@
+<package name="caja-terminal" project="openSUSE:Factory">
+  <title>Caja extension to enable an embedded terminal</title>
+  <description>Caja Terminal is an embedded terminal for Caja, the MATE file manager.
+It embeds a terminal pane into Caja that is accessible by a hotkey (Ctrl+Shift+T) and automatically follows the currently active directory in Caja.</description>
+  <devel project="X11:MATE:Factory" package="caja-terminal"/>
+</package>

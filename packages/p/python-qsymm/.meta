@@ -1,0 +1,10 @@
+<package name="python-qsymm" project="openSUSE:Factory">
+  <title>Symmetry finder and symmetric Hamiltonian generator</title>
+  <description>qsymm is a Python library that automatically generates model
+Hamiltonians from symmetry constraints and finds the full symmetry
+group of your Hamiltonian.
+
+</description>
+  <devel project="devel:languages:python:numeric" package="python-qsymm"/>
+  <url>https://gitlab.kwant-project.org/qt/qsymm</url>
+</package>

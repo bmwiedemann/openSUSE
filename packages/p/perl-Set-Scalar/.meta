@@ -1,0 +1,5 @@
+<package name="perl-Set-Scalar" project="openSUSE:Factory">
+  <title>Set of scalars</title>
+  <description>This module implements a Set of scalars.</description>
+  <devel project="devel:languages:perl" package="perl-Set-Scalar"/>
+</package>

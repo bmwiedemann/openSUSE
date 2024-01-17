@@ -1,0 +1,7 @@
+<package name="arprec" project="openSUSE:Factory">
+  <title>ARbitrary PRECision Computation Package</title>
+  <description>ARPREC is a software package for performing arbitrary precision arithmetic. It consists of a revision and extension of Bailey's earlier MPFUN package, enhanced with special IEEE numerical techniques.
+
+This package supports a flexible, arbitrarily high level of numeric precision -- the equivalent of hundreds or even thousands of decimal digits (up to approximately ten million digits if needed). Special routines are provided for extra-high precision (above 1000 digits). The entire library is written in C++. High-precision real, integer and complex datatypes are supported.</description>
+  <devel project="science" package="arprec"/>
+</package>

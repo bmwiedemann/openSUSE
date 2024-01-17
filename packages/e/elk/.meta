@@ -1,0 +1,11 @@
+<package name="elk" project="openSUSE:Factory">
+  <title>An all-electron full-potential linearised augmented-planewave code</title>
+  <description>An all-electron full-potential linearised augmented-plane wave
+(FP-LAPW) code with many features. The code is designed to be as
+simple as possible so that new developments in the field of density
+functional theory (DFT) can be added quickly and reliably.
+
+</description>
+  <devel project="science" package="elk"/>
+  <url>https://elk.sourceforge.net</url>
+</package>

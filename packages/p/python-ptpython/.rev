@@ -1,0 +1,113 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57da4e48004fdbb696a505ec2c3d8fdb</srcmd5>
+    <version>0.41</version>
+    <time>1527933770</time>
+    <user>dimstar_suse</user>
+    <comment>Python REPL build on top of prompt_toolkit</comment>
+    <requestid>612060</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>68ca80d9c8bd18b8aa13dc2ce5c62553</srcmd5>
+    <version>2.0.3</version>
+    <time>1540819319</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644905</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e7b165465b7cbf435b774023f1669311</srcmd5>
+    <version>2.0.3</version>
+    <time>1545648089</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659566</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0ff85449b6daeb3f8a03565de8a15f0a</srcmd5>
+    <version>2.0.3</version>
+    <time>1549361938</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671248</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eee2e8589dc7417983d4800f78bcbabc</srcmd5>
+    <version>2.0.4</version>
+    <time>1559643133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707269</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c0d78c72faf5d69e5197c5d4aee3c647</srcmd5>
+    <version>3.0.1</version>
+    <time>1587467089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787715</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3dcd866aa62cba1233f028419afdbab3</srcmd5>
+    <version>3.0.20</version>
+    <time>1665034935</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008172</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>004ebf1ac45475ab9ca3fad831ee2878</srcmd5>
+    <version>3.0.21</version>
+    <time>1670430896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040747</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>00e48ddd75137b3321fd74104598c903</srcmd5>
+    <version>3.0.22</version>
+    <time>1671128692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042873</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b4602ee21baadac7eb1899eb72bd3a6f</srcmd5>
+    <version>3.0.23</version>
+    <time>1702327874</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.23:
+  * Don't print exception messages twice for unhandled
+    exceptions.
+  * Added cursor shape support.
+  * Drop Python 3.6 support.
+
+- Update to version 3.0.22
+- Update to version 3.0.21:
+  - Allow usage of `await` in assignment expressions or for-loops.</comment>
+    <requestid>1132418</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4428d810c072ac4fa54f28e369f682d6</srcmd5>
+    <version>3.0.25</version>
+    <time>1703800922</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.25:
+  * Fix handling of 'config file does not exist' when embedding
+    ptpython.
+  * Don't show &quot;Impossible to read config file&quot; warnings when no
+    config file was passed to `run_config()`.
+  * Output printing fixes:
+    * Paginate exceptions if pagination is enabled.
+    * Handle big outputs without running out of memory.
+  * Asyncio REPL improvements:
+    * From now on, passing `--asyncio` is required to activate the
+      asyncio-REPL.
+    * This will ensure that an event loop is created at the
+      start in which we can run top-level await statements.
+  * Use `get_running_loop()` instead of `get_event_loop()`.
+  * Better handling of `SystemExit` and control-c in the async
+    REPL.</comment>
+    <requestid>1135315</requestid>
+  </revision>
+</revisionlist>

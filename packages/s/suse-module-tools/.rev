@@ -1,0 +1,762 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>413e9cf4969cea8b2b437a8444e97711</srcmd5>
+    <version>12.3</version>
+    <time>1354118357</time>
+    <user>coolo</user>
+    <comment>split from module-init-tools</comment>
+    <requestid>142606</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>413e9cf4969cea8b2b437a8444e97711</srcmd5>
+    <version>12.3</version>
+    <time>1359110449</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>112c624ff5c89143e43756c7a4f07cd6</srcmd5>
+    <version>12.3</version>
+    <time>1364310154</time>
+    <user>coolo</user>
+    <comment>- The &quot;allow_unsupported_modules&quot; feature, does not belong too
+  openSUSE, kmod (and hence udev and systemd) do not understand
+  it in anyway. limit to SLE only. (forwarded request 159735 from elvigia)</comment>
+    <requestid>161107</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e66ca5bbda26b923af7e194152192d93</srcmd5>
+    <version>12.3</version>
+    <time>1370430966</time>
+    <user>coolo</user>
+    <comment>- weak-modules{,2}: also look for Image-$krel for aarch64 (forwarded request 176947 from Andreas_Schwab)</comment>
+    <requestid>176955</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>e66ca5bbda26b923af7e194152192d93</srcmd5>
+    <version>12.3</version>
+    <time>1379664745</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>344740bf9a32ea0d190d5b368df51540</srcmd5>
+    <version>12.3</version>
+    <time>1394631939</time>
+    <user>coolo</user>
+    <comment>- The package cannot be noarch, because it installs different
+  configs for different architectures.
+- Install 10-unsupported-modules.conf unconditionally, kmod has
+  been patched. (forwarded request 225484 from michal-m)</comment>
+    <requestid>225541</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>8085044e38fb6d3cfea36fc587366919</srcmd5>
+    <version>12.3</version>
+    <time>1395146290</time>
+    <user>coolo</user>
+    <comment>- Add modsign-verify tool to verify signatures of modules
+  (fate#314507).
+
+- weak-modules2: Support XZ compressed initrds (bnc#778119,
+  bnc#867312)</comment>
+    <requestid>225697</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>708698b28d73c2e12a6bb8946656c2de</srcmd5>
+    <version>12.3</version>
+    <time>1396709398</time>
+    <user>coolo</user>
+    <comment>- Use softdep to order {u,o,e}hci-hcd drivers.
+- Drop ia64 modprobe config.
+
+- Add kmp-install tool for easier installation of SolidDriver KMPs
+  (fate#314581).
+
+- load the uas driver simulsimultaneously with the usb_storage driver and vice versa (bnc#862397) (forwarded request 228277 from michal-m)</comment>
+    <requestid>228362</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>b668d1e75ac5b12f2312bc47a31178e7</srcmd5>
+    <version>12.3</version>
+    <time>1397220026</time>
+    <user>coolo</user>
+    <comment>- weak-modules2: Run mkinitrd in posttrans if $INITRD_IN_POSTTRANS
+  is set (fate#313506)
+
+- regenerate-initrd-posttrans: Run mkinitrd_setup
+
+- Add macros for regenerating the initrd in %posttrans
+  (fate#313506). (forwarded request 229365 from michal-m)</comment>
+    <requestid>229466</requestid>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>7b9a594adc5cb07b78b904356c05f1da</srcmd5>
+    <version>12.3</version>
+    <time>1398178796</time>
+    <user>coolo</user>
+    <comment>- weak-modules2: Use lsinitrd to list the modules in an initrd, so
+  that initrds with early microcode work (bnc#873209, bnc#873113). (forwarded request 230213 from michal-m)</comment>
+    <requestid>230736</requestid>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>ddd0a93e9200f2e946d42ca7a7450497</srcmd5>
+    <version>12.3</version>
+    <time>1399703503</time>
+    <user>coolo</user>
+    <comment> (forwarded request 232773 from jones_tony)</comment>
+    <requestid>232795</requestid>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>ddd0a93e9200f2e946d42ca7a7450497</srcmd5>
+    <version>12.3</version>
+    <time>1409303428</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="16">
+    <srcmd5>bb25579380be3d02a74e9d6b2bbbca35</srcmd5>
+    <version>12.3</version>
+    <time>1410281986</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247484</requestid>
+  </revision>
+  <revision rev="14" vrev="17">
+    <srcmd5>23a65546008e2639c7b96664e5ad0648</srcmd5>
+    <version>12.3</version>
+    <time>1435652066</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313589</requestid>
+  </revision>
+  <revision rev="15" vrev="18">
+    <srcmd5>d8382c1438fe276f88f1f07c929dc2b4</srcmd5>
+    <version>12.3</version>
+    <time>1442638321</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>323876</requestid>
+  </revision>
+  <revision rev="16" vrev="19">
+    <srcmd5>b9807a84665d7cb6717a3e989af53a57</srcmd5>
+    <version>12.3</version>
+    <time>1443694833</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>332069</requestid>
+  </revision>
+  <revision rev="17" vrev="20">
+    <srcmd5>811c25abe54916bafdda37f5e174fd32</srcmd5>
+    <version>12.3</version>
+    <time>1445285632</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>338814</requestid>
+  </revision>
+  <revision rev="18" vrev="21">
+    <srcmd5>0b1b59856dc9e162137ec22ed96b2512</srcmd5>
+    <version>12.3</version>
+    <time>1456829822</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361127</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8c07647b3aad9e9ed8435e09183331e8</srcmd5>
+    <version>12.4</version>
+    <time>1461854949</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391132</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>d5688aa33ad0afc2d12f0e5f479856a1</srcmd5>
+    <version>12.4</version>
+    <time>1463652150</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394309</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>a578080e99331e6afac7247d2381f307</srcmd5>
+    <version>12.4</version>
+    <time>1465750216</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400389</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>d012180b3b5927d1959fbaa8d0267549</srcmd5>
+    <version>12.4</version>
+    <time>1473679310</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>426129</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>323dab4ab645885aef72d80952a2ad0b</srcmd5>
+    <version>15.0.1</version>
+    <time>1542666473</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.0.1 (git 5c63319):
+- Use /etc/modules-load.d/sg.conf for sg driver autoloading
+  (bsc#1036463)
+  * added /etc/modules-load.d/sg.conf (forwarded request 647025 from mwilck)</comment>
+    <requestid>647026</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>bdc875d26b60d00ab029be3e405b904c</srcmd5>
+    <version>15.1.0</version>
+    <time>1549458319</time>
+    <user>coolo</user>
+    <comment>- Update to version 15.1.0 (git 6b07b88):
+  * 50-blacklist.conf is not added in Leap before 15.1.
+  fix conditionals and bump version accordingly.
+
+- Update to version 15.0.20 (git 1396df5):
+- Fix driver-check.sh (boo#1123697, boo#1123704)
+- add /etc/modprobe.d/50-blacklist.conf from sysconfig package
+  (boo#1107611)
+- Remove hard dependency on mkinitrd (boo#1123721)
+- Make sure code works also without kmod-compat
+- Replace file dependency on /sbin/depmod by weak package dependency
+
+- Move &quot;weak-modules&quot; script to -legacy subpackage to avoid
+  dependency on binutils (bsc#1116665)
+
+- Require mkinitrd (provided also by dracut) directly instead of
+  file requires. This is fixing image build failures</comment>
+    <requestid>670473</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f0c7358a7d88a94a66cacf983969a230</srcmd5>
+    <version>15.1.10</version>
+    <time>1550580882</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>674668</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c088e3f0b755b720e750c7932cfd91a7</srcmd5>
+    <version>15.1.11</version>
+    <time>1551023596</time>
+    <user>coolo</user>
+    <comment>- Update to version 15.1.11 (git 54df192):
+  * spec file: use more gentle wording in blacklist files
+  * spec file: drop jffs2 and ubifs from blacklist (forwarded request 677419 from mwilck)</comment>
+    <requestid>677421</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>93ad7e07847fd3722d8e7d1fe18a7867</srcmd5>
+    <version>15.1.13</version>
+    <time>1553435692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.1.13:
+  * spec file: add conflicts for dracut &amp;lt; 44.2 (bsc#1127891)
+
+- Update to version 15.1.12 (git 1ab0b84):
+  * modprobe.conf.common: add csiostor-&amp;gt;cxgb4 dependency
+    (bsc#1100989)
+  * Load fbcon together with virtio_gpu on s390 (bsc#1121996,
+    fate#327159) (forwarded request 685078 from mwilck)</comment>
+    <requestid>685081</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>1392ba5240328656bfdcc530495ff906</srcmd5>
+    <version>15.1.13</version>
+    <time>1558128938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703662</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0158bc1678deca36b809378fc610be38</srcmd5>
+    <version>15.2.3</version>
+    <time>1563017647</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.2.3:
+  * softdep of bridge on br_netfilter (bsc#937216, bsc#1134819) (forwarded request 712918 from mwilck)</comment>
+    <requestid>712919</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fc29b58a7760a0d9d5f0f90739f8ef5c</srcmd5>
+    <version>15.2.4</version>
+    <time>1563701315</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.2.4:
+  * sg.conf: avoid file conflict with system-tuning-common-SUSE (forwarded request 715468 from mwilck)</comment>
+    <requestid>715471</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>edbc2069b6dbb2e49fdd32d4c2c6ebf8</srcmd5>
+    <version>15.2.5</version>
+    <time>1566899992</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.2.5:
+  * remove 'modhash' - moved to mokutil package (jsc#SLE-6094) (forwarded request 723939 from mwilck)</comment>
+    <requestid>723940</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a109abdbb91b15b265ece1f3533f7a11</srcmd5>
+    <version>15.2.7</version>
+    <time>1573647163</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.2.7:
+  * spec file: avoid %{_libexecdir}
+
+- Update to version 15.2.6:
+  * modprobe.conf: add dependency of papr_scm on libnvdimm
+    (bsc#1142152, ltc#176292, FATE#327775). (forwarded request 746406 from mwilck)</comment>
+    <requestid>746407</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>fcd18af733d4e9519eb9ec0a430e619d</srcmd5>
+    <version>15.2.9</version>
+    <time>1579346082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764809</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0de5b836a7ba2e06dee1c913fff44d66</srcmd5>
+    <version>15.2.10</version>
+    <time>1579954979</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.2.10:
+  * ppc64le: fix dependency of papr_scm
+    (bsc#1142152, ltc#176292, FATE#327775).</comment>
+    <requestid>765872</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>77321f8442338e9437e1921a12c55a1c</srcmd5>
+    <version>15.3.2</version>
+    <time>1587580974</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.3.2:
+  * modprobe.conf.common: eliminate circular uas/usb-storage dependency
+  (bsc#1168661)</comment>
+    <requestid>794962</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a09bae022fcd214ad9849cc0fa7f45f1</srcmd5>
+    <version>15.3.3</version>
+    <time>1591879298</time>
+    <user>dimstar_suse</user>
+    <comment>- Reverted back to tar_scm source service
+  (obs_scm doesn't work well for Ring0 packages) (forwarded request 811878 from mwilck)</comment>
+    <requestid>811879</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>dd7a59a09a07314be6000e4a05aceaba</srcmd5>
+    <version>15.3.4</version>
+    <time>1598885244</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.3.4:
+  * spec: rework dependencies</comment>
+    <requestid>829944</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>942b2182677845459d8aed704d22744c</srcmd5>
+    <version>15.3.5</version>
+    <time>1605011905</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.3.5:
+  * Skip coldplug for memory devices on ppc64le, using generator
+
+- Update to version 15.3.4:
+  * rework dependencies to reduce system size for small OS (forwarded request 846083 from mwilck)</comment>
+    <requestid>846084</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>0912236a2795f8e7b16f9f0c9e2dbea9</srcmd5>
+    <version>15.3.5</version>
+    <time>1606428737</time>
+    <user>dimstar_suse</user>
+    <comment>Moved missing bugrefs down to 15.3.5, as requested in review
+of sr#849755</comment>
+    <requestid>850918</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>66c75b7fb9db3d2b7b989b8cc747b5df</srcmd5>
+    <version>15.4.0</version>
+    <time>1618775110</time>
+    <user>dimstar_suse</user>
+    <comment>e-adding the obs_scm and extract_files services in manual mode
+(had been deleted by &quot;osc service merge&quot;)
+
+- Update to version 15.4.0:
+  * Enable f2fs (bsc#1184415)</comment>
+    <requestid>885744</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>fea7ab6da057fd968525a709c60b8564</srcmd5>
+    <version>15.4.1</version>
+    <time>1619447924</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.4.1:
+  * dm-crypt requires essiv in SLE15 SP3 (boo#1183063 bsc#1184134 ltc#192244).</comment>
+    <requestid>887862</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>38a16c6e95161c9ee5567adb55fb8f1c</srcmd5>
+    <version>16.0.4</version>
+    <time>1624300502</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.4:
+  * re-add legacy subpackage with &quot;weak-modules&quot;, and add a
+    &quot;Supplements&quot; dependency on dkms, which needs it (forwarded request 900613 from mwilck)</comment>
+    <requestid>900614</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>0e04fb2cd183d3282edf8f998a7edeba</srcmd5>
+    <version>16.0.5</version>
+    <time>1625429439</time>
+    <user>dimstar_suse</user>
+    <comment>Sorry for the previous broken request. It was caused by a broken
+source service setup which messed up my spec file.
+
+- Update to version 16.0.5
+  * moved config files to /usr/lib/modprobe.d and /usr/lib/depmod.d
+  * &quot;modprobe $FS&quot; for a blacklisted file system now offers to 
+    unblacklist the module permanently  
+  * disabled automatic un-blacklisting of filesystem modules loaded
+    at installation time
+  * added faster substitute for lsinitrd to speed up weak-modules2
+  * added README.md
+  * modprobe.conf cleanup</comment>
+    <requestid>903663</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>e9c264e71ef497e4d64fbd3f40c99ccc</srcmd5>
+    <version>16.0.6</version>
+    <time>1626208607</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.6:
+  * modprobe.d: Remove dma=none setting for parport_pc
+    (bsc#1177695) (forwarded request 904234 from mwilck)</comment>
+    <requestid>904235</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0a179406890602a34503dc8685ccdfb8</srcmd5>
+    <version>16.0.8+1</version>
+    <time>1629795255</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.8+1:
+  * spec file: fix BuildRequires (forwarded request 913286 from mwilck)</comment>
+    <requestid>913288</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>c3c6836dda92b09688a942f2039175e7</srcmd5>
+    <version>16.0.9</version>
+    <time>1630697164</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.9:
+  * weak_modules2: fix &quot;warning: %post(kernel-...) scriptlet failed, 
+    exit status 1&quot; message from rpm (boo#1189881)
+  * weak-modules2: add logging at verbose level 2
+  * weak-modules2: control logging with environment variables
+    WM2_VERBOSE, WM2_DEBUG, WM2_LOGFILE
+  * regenerate-initrd-posttrans: friendly notice if dracut not found
+    (boo#1123721) (forwarded request 915046 from mwilck)</comment>
+    <requestid>915051</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>5c13619f7566a5f370617d01aae7baff</srcmd5>
+    <version>16.0.10+7</version>
+    <time>1632173514</time>
+    <user>dimstar_suse</user>
+    <comment>Removed bogus old .obscpio file
+
+- Update to version 16.0.10+7:
+  * rpm-script: link config also into /boot (boo#1189879)
+  * weak-modules2: accept modules under /usr/lib/modules on stdin
+    (for support of usr-merged KMPs)
+  * fix scriptlet path (bsc#1189441)
+- Update to version 16.0.10:
+  * Import kernel scriptlets from kernel-source (bsc#1189441)
+  * README.md: document environment variables for weak-modules2
+</comment>
+    <requestid>919089</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8ffc9577a1d6dfde1bd6b8d2883dedde</srcmd5>
+    <version>16.0.11</version>
+    <time>1633644344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.11:
+  * inkmp-script(postun): don't pass  existing files to weak-modules2
+    (boo#1191200)
+  * kernel-scriptlets: skip cert scriptlet on non-UEFI systems
+    (boo#1191260)</comment>
+    <requestid>923052</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>787d3aa5097574a4497561a6a500a0e9</srcmd5>
+    <version>16.0.13</version>
+    <time>1635272008</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.13:
+  * fixup &quot;rpm-script: fix bad exit status in OpenQA (bsc#1191922)&quot; (forwarded request 927056 from mwilck)</comment>
+    <requestid>927057</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>2546eabc506f316614155c279413c7b9</srcmd5>
+    <version>16.0.14+2</version>
+    <time>1636840086</time>
+    <user>dimstar_suse</user>
+    <comment>Use _udevrulesdir, fix log msg (forwarded request 930464 from mwilck)</comment>
+    <requestid>930465</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>ac2450788d9f5e07493d0ad1cbea4bb7</srcmd5>
+    <version>16.0.16</version>
+    <time>1638997710</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.16:
+  * modprobe.d: split conf files (jsc#SLE-21626, boo#1193059)
+    - Rather than shipping two large files with modprobe.d options
+      (00-system.conf and 50-blacklist.conf), ship multiple small
+      per-module files. This makes it easier for users to override
+      distribution defaults.
+  * blacklist isst_if_mbox_msr (bsc#1187196)
+  * boot-sysctl: make sure file exists (fix for containers)
+  * remove blacklist entry for snd_bt87x (bsc#1192974, bsc#51718) (forwarded request 935937 from mwilck)</comment>
+    <requestid>935939</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>f4025270e7a2f52695945d883cfea4e4</srcmd5>
+    <version>16.0.17</version>
+    <time>1640108420</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.17:
+  * 60-io-scheduler.rules: add rules for virtual devices
+    (boo#1193759)
+  * 60-io-scheduler.rules: enforce &quot;none&quot; for loop devices
+    (boo#1193759)
+  * install some modprobe.d files only for relevant architectures
+    (apm_bios, sonypi, toshiba, legacy rtc) (bsc#1192974) (forwarded request 941662 from mwilck)</comment>
+    <requestid>941664</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>e107775b12ca235281dc8232163a41b8</srcmd5>
+    <version>16.0.18</version>
+    <time>1641386380</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.18:
+  * cdrom: Disable autoclose by default (boo#1165047).
+  * Make regenerate-initrd-posttrans compatible with Dracut's 
+    UEFI mode (unified kernel image) (forwarded request 943765 from mwilck)</comment>
+    <requestid>943766</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>cec542937076fcc8b840e1981cd6a103</srcmd5>
+    <version>16.0.19</version>
+    <time>1643720558</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.19:
+  * Add /etc/modprobe.d/README on SLE/Leap (bsc#1195051)
+  * rpm-script: force-copy kernel to /boot (boo#1194501) (forwarded request 949774 from mwilck)</comment>
+    <requestid>949775</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>fd510ff073b4fd6b6c0ee36b3fcce329</srcmd5>
+    <version>16.0.20</version>
+    <time>1654258602</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.20:
+  * Bump version to 16.0.20
+  * driver-check.sh: avoid false positive error messages (boo#1200107)
+  * don't hardcode /boot for kernel-related files (boo#1199873)
+  * spec file: use &quot;install -p&quot; consistently (forwarded request 980500 from mwilck)</comment>
+    <requestid>980502</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>3aeabf763f0ce525ff0a382e769bc5ed</srcmd5>
+    <version>16.0.21</version>
+    <time>1657712688</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.21:
+  * kernel-scriptlets: don't pass flags to weak-modules2 (bsc#1195391)</comment>
+    <requestid>988728</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>9e58efeb994d238bb511970b4d2772e3</srcmd5>
+    <version>16.0.22</version>
+    <time>1658161973</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 16.0.22:
+  * weak-modules2: only use kernel version under /run/regenerate-initrd
+  (boo#1201387) (forwarded request 989122 from mwilck)</comment>
+    <requestid>989123</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>86e4de55c7081b53a977f4026ca7e0cb</srcmd5>
+    <version>16.0.23</version>
+    <time>1663074480</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.23:
+  * cert-script: skip cert handling if efivarfs is not writable
+    (bsc#1201066)
+  * driver-check.sh, unblacklist: convert egrep to grep -E (bsc#1203092) (forwarded request 1003009 from mwilck)</comment>
+    <requestid>1003010</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>453f7535a85c03798551e92efa96b49a</srcmd5>
+    <version>16.0.26</version>
+    <time>1667656004</time>
+    <user>dimstar_suse</user>
+    <comment>* Revert &quot;Split kernel scriptlets into separate sub-package&quot;
+   (that change broke some package builds on OBS) (forwarded request 1033596 from mwilck)</comment>
+    <requestid>1033597</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>f5983fc000dcc3790cfcdcf054eca137</srcmd5>
+    <version>16.0.27</version>
+    <time>1669129793</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.27:
+  * 80-hotplug-cpu-mem.rules: use CONST{arch} (bsc#1204423) (forwarded request 1037141 from mwilck)</comment>
+    <requestid>1037142</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>0499fdef6e7cdfa65d17f638b028b03c</srcmd5>
+    <version>16.0.28</version>
+    <time>1669910317</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.28:
+  * Split kernel scriptlets into separate sub-package, again
+    (boo#1202353, boo#1205149) (forwarded request 1038931 from mwilck)</comment>
+    <requestid>1038933</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>ad3cc1586e3566da8a5bf7b406c48390</srcmd5>
+    <version>16.0.29</version>
+    <time>1675458280</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.29:
+  * modprobe.conf: s390x: remove softdep on fbcon (boo#1207853) (forwarded request 1062627 from mwilck)</comment>
+    <requestid>1062630</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>a3dcaa1b116ca793daaca072190869f8</srcmd5>
+    <version>16.0.30</version>
+    <time>1679068945</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.30:
+  * get rid of weak-modules (bsc#1202353)
+  * Remove last mentions of mkinitrd (forwarded request 1072148 from mwilck)</comment>
+    <requestid>1072149</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>7972b9f49dbc93e4ccf6886a3511e950</srcmd5>
+    <version>16.0.31</version>
+    <time>1686171983</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.31:
+  * rpm-script: skip run_bootloader check (boo#1208117) (forwarded request 1091089 from mwilck)</comment>
+    <requestid>1091090</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>1a332e4bcb75867ffc104ef92df0d79e</srcmd5>
+    <version>16.0.32</version>
+    <time>1688563821</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.32:
+  * rpm-script: check for regenerate-initrd-posttrans in %posttrans
+    (boo#1212957) (forwarded request 1096641 from mwilck)</comment>
+    <requestid>1096642</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>8ec69be989cd447bf10770ef5d2a6f6c</srcmd5>
+    <version>16.0.33</version>
+    <time>1692188198</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 16.0.33:
+  * change wording in filesystem blacklist files
+    (gh#openSUSE/suse-module-tools#71)
+  * rpm-script: update bootloader after creating initramfs
+    (boo#1213822)
+  * usrmerge: Drop support for non-usrmerged (boo#1206798) (forwarded request 1104072 from mwilck)</comment>
+    <requestid>1104074</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>5f29a3ab22b0a973e0885532f706adaa</srcmd5>
+    <version>16.0.34</version>
+    <time>1693685226</time>
+    <user>dimstar_suse</user>
+    <comment>* support old-style markers under /run/regenerate-initrd
+    (bsc#1214877)
+  * Fix comment in regenerate-initrd-posttrans (forwarded request 1108485 from mwilck)</comment>
+    <requestid>1108486</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>3bf0f87a8845a6807ad8c8354734752f</srcmd5>
+    <version>16.0.35</version>
+    <time>1694019387</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 16.0.35:
+  * split off regenerate-initrd-posttrans in the kernel-scriptlets package
+    (boo#1213459)
+  * wm2: Update for usrmerge (boo#1214428) (forwarded request 1109138 from mwilck)</comment>
+    <requestid>1109139</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>bdd3b865f9093967b2b127c73ee2aefb</srcmd5>
+    <version>16.0.36</version>
+    <time>1696188105</time>
+    <user>anag+factory</user>
+    <comment>* modprobe.d: Blacklist cls_tcindex module (bsc#1210335, CVE-2023-1829) (forwarded request 1114420 from mwilck)</comment>
+    <requestid>1114421</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>ba54a667b606302b9db885202f471a79</srcmd5>
+    <version>16.0.36</version>
+    <time>1697567089</time>
+    <user>anag+factory</user>
+    <comment>Added a CVE ref to the changelog
+
+* blacklist RNDIS modules (bsc#1205767, jsc#PED-5731, CVE-2023-23559) (forwarded request 1118227 from mwilck)</comment>
+    <requestid>1118229</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>45e47c0c0105ea30959187d279eb26f4</srcmd5>
+    <version>16.0.37</version>
+    <time>1698438431</time>
+    <user>anag+factory</user>
+    <comment>* weak-modules2: ignore INITRD_MODULES (jsc#PED-1915), obtain
+    list of modules from dracut.conf.d instead (forwarded request 1120369 from mwilck)</comment>
+    <requestid>1120370</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>a7626679984c268ec447d9049a63f37a</srcmd5>
+    <version>16.0.38</version>
+    <time>1698780310</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 16.0.38:
+  * modprobe.d: use softdep to load sd_mod and sg (boo#1216070)</comment>
+    <requestid>1121300</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>409d923465e47c1e6fed1bd7e75bd231</srcmd5>
+    <version>16.0.39</version>
+    <time>1702673233</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 16.0.39:
+  * Add more modules to file system blacklist (jsc#PED-6167)
+    Blacklisted filesystem modules that aren't officially supported
+    by SUSE: f2fs, hfsplus, jfss2, kafs, ntfs3, orangefs, pstore, romfs, zonefs.
+    As usual, the blacklist entries can be removed by running an
+    explicit &quot;modrobe $FS_MODULE&quot; command. (forwarded request 1133179 from mwilck)</comment>
+    <requestid>1133180</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>81c439d38b1a0d89572d688db593b6c8</srcmd5>
+    <version>16.0.42</version>
+    <time>1704380226</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.42:
+  * 60-io-scheduler.rules: test for &quot;scheduler&quot; sysfs attribute (boo#1216717) (forwarded request 1136444 from mwilck)</comment>
+    <requestid>1136446</requestid>
+  </revision>
+</revisionlist>

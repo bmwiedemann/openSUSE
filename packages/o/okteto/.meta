@@ -1,0 +1,6 @@
+<package name="okteto" project="openSUSE:Factory">
+  <title>okteto</title>
+  <description>Develop your applications directly in your Kubernetes Cluster</description>
+  <devel project="devel:kubic" package="okteto"/>
+  <url>https://github.com/okteto/okteto</url>
+</package>

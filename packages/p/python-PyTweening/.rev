@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e3dc9eebf2f9f3d038cb29c14799d718</srcmd5>
+    <version>1.0.3</version>
+    <time>1520415376</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-PyTweening, required by mycroft-core</comment>
+    <requestid>583115</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>212a542518f18b3810573c204c7041de</srcmd5>
+    <version>1.0.3</version>
+    <time>1545648454</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>660688</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c6b75fee84e8ed389508ddcf4dbafe38</srcmd5>
+    <version>1.0.3</version>
+    <time>1573223144</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746325</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>500899d641c2c98468f53ef6289261e9</srcmd5>
+    <version>1.0.4</version>
+    <time>1662322306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001089</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5f7d6cadf1e16e5260f13993d6abf05e</srcmd5>
+    <version>1.0.7</version>
+    <time>1704560963</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.7:
+  * no upstream changelog available
+- use packaged LICENSE.txt
+
+- update to 1.0.4
+- Initial release of python-PyTweening 1.0.3</comment>
+    <requestid>1137139</requestid>
+  </revision>
+</revisionlist>

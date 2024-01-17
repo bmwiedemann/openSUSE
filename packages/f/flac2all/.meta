@@ -1,0 +1,10 @@
+<package name="flac2all" project="openSUSE:Factory">
+  <title>A multithreaded FLAC to MP3/OGG/FLAC batch converter</title>
+  <description>Flac2All is a multi-threaded script that will convert your collection of
+FLAC files into either Ogg Vorbis, MP3 (with the Lame encoder), or FLAC,
+complete with any tags and identical file/folder structure.
+
+</description>
+  <devel project="multimedia:apps" package="flac2all"/>
+  <url>https://github.com/ZivaVatra/flac2all</url>
+</package>

@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Mon Apr 13 16:52:38 UTC 2015 - coolo@suse.com
+
+- updated to 0.09
+   see /usr/share/doc/packages/perl-Module-Implementation/Changes
+
+  0.09     2014-08-24
+  
+  - Backed out the Sub::Name change in 0.08. It was pointed out to me by Graham
+    Knop that adding an XS dependency for a module that's often used to pick
+    between XS and non-XS implementations doesn't work so well.
+  
+  
+  0.08     2014-08-24
+  
+  - Subroutines copied from an implementation package into the loading package
+    are now renamed using Sub::Name. This causes them to be considered part of
+    the loading package, which is important for things like
+    namespace::autoclean. Reported by Karen Etheridge. RT #98097.
+
+-------------------------------------------------------------------
+Thu Jun 26 06:54:25 UTC 2014 - lchiquitto@suse.com
+
+- really remove old old_test_more.patch from package sources 
+
+-------------------------------------------------------------------
+Fri Jul 26 05:28:35 UTC 2013 - coolo@suse.com
+
+- updated to 0.07
+  - Require Test::Fatal 0.006+ to avoid test failures. Reported by Salve
+    Nilsen. RT #76809.
+- remove old old_test_more.patch
+
+-------------------------------------------------------------------
+Sun Jun  9 15:11:01 UTC 2013 - coolo@suse.com
+
+- updated to 0.06
+ - Require Module::Runtime 0.012 which has a number of useful bug fixes.
+
+-------------------------------------------------------------------
+Wed Feb 29 18:55:38 CET 2012 - ro@suse.de
+
+- fix build with old Test::More for sle11 
+
+-------------------------------------------------------------------
+Fri Feb 10 12:58:44 UTC 2012 - vcizek@suse.com
+
+- update to 0.05 
+  - Make Test::Taint an optional dependency. This module requires XS, and
+    requiring a compiler for Module::Implementation defeats its
+    purpose. Reported by Peter Rabbitson. RT #74817.
+  - This module no longer installs an _implementation() subroutine in
+    callers. Instead, you can call
+    Module::Implementation::implementation_for($package) to get the
+    implementation used for a given package.
+
+-------------------------------------------------------------------
+Wed Feb  8 15:39:02 UTC 2012 - vcizek@suse.com
+
+- version 0.03 (initial package )
+

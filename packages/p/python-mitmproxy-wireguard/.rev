@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a869616948b26e30db91f6b86770f22</srcmd5>
+    <version>0.1.19</version>
+    <time>1671455276</time>
+    <user>dimstar_suse</user>
+    <comment>Required by the latest version of python-mitmproxy</comment>
+    <requestid>1043191</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dae1bc9335e2765ac3a2e3887df1da27</srcmd5>
+    <version>0.1.23</version>
+    <time>1683403757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085093</requestid>
+  </revision>
+</revisionlist>

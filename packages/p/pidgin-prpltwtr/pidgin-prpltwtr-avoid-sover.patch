@@ -1,0 +1,11 @@
+--- a/src/prpltwtr/Makefile.am
++++ b/src/prpltwtr/Makefile.am
+@@ -53,6 +53,8 @@ PRPLTWTR_SOURCES = \
+ AM_CFLAGS = \
+ 	$(st)
+ 
++libprpltwtr_la_LDFLAGS = -avoid-version $(PURPLE_LIBS) $(JSON_LIBS)
++
+ libprpltwtr_twitter_la_LDFLAGS = -module -avoid-version $(PURPLE_LIBS) $(JSON_LIBS)
+ 
+ libprpltwtr_statusnet_la_LDFLAGS = -module -avoid-version $(PURPLE_LIBS) $(JSON_LIBS)

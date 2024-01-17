@@ -1,0 +1,34 @@
+[Unit]
+Description=Erlang Port Mapper Daemon
+After=network.target
+Requires=epmd.socket
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+ExecStart=/usr/bin/epmd -systemd
+#ExecStop=/usr/bin/epmd -kill
+Type=simple
+StandardOutput=journal
+StandardError=journal
+Restart=always
+LimitNPROC=1
+LimitFSIZE=0
+User=epmd
+Group=epmd
+
+[Install]
+Also=epmd.socket
+WantedBy=multi-user.target
+

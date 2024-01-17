@@ -1,0 +1,13 @@
+<package name="perl-DateTime-Format-Flexible" project="openSUSE:Factory">
+  <title>Flexibly parse strings and turn them into DateTime objects</title>
+  <description>If you have ever had to use a program that made you type in the date a certain
+way and thought &quot;Why can't the computer just figure out what date I wanted?&quot;,
+this module is for you.
+
+DateTime::Format::Flexible attempts to take any string you give it and parse it
+into a DateTime object.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-DateTime-Format-Flexible"/>
+  <url>https://metacpan.org/release/DateTime-Format-Flexible</url>
+</package>

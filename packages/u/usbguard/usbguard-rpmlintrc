@@ -1,0 +1,2 @@
+# usbguard ships zero length rules.conf by default
+addFilter("zero-length /etc/usbguard/rules.conf")

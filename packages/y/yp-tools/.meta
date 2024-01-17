@@ -1,0 +1,6 @@
+<package name="yp-tools" project="openSUSE:Factory">
+  <title>Network Information Service (YP) client utilities</title>
+  <description>This packages contains some useful tools for accessing NIS maps or to
+test NIS configurations.</description>
+  <devel project="network:NIS" package="yp-tools"/>
+</package>

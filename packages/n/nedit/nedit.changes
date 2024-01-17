@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Thu Jun 29 05:31:30 UTC 2017 - bwiedemann@suse.com
+
+- Extend nedit-5.6_builddate_fix.patch to fix dates in nedit.doc
+
+-------------------------------------------------------------------
+Thu May 11 12:44:50 UTC 2017 - mpluskal@suse.com
+
+- Use desktop scriplets
+
+-------------------------------------------------------------------
+Thu May 11 12:03:48 UTC 2017 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Use tagged 5.7 release:
+  * few fixes over the git version from bellow
+- Refresh patch nedit-5.6_builddate_fix.patch
+- Do not compress manpages manualy but rely on brp services
+
+-------------------------------------------------------------------
+Fri Oct 30 07:41:30 UTC 2015 - opensuse@dstoecker.de
+
+- update to recent GIT (5.7 early release, still mainly tagged as 5.6)
+- drop obsolete patches (included upstream):
+  * nedit-5.5CVS-motif.patch
+  * nedit-5.6-malloc-return-pointers.patch
+
+-------------------------------------------------------------------
+Fri Apr 10 09:31:57 UTC 2015 - drahn@suse.com
+
+- nedit-5.6-malloc-return-pointers.patch: Return correct pointers.
+
+-------------------------------------------------------------------
+Fri Apr 10 08:19:18 UTC 2015 - drahn@suse.com
+
+- Move to git releases. 
+
+-------------------------------------------------------------------
+Thu Apr  9 16:25:47 UTC 2015 - drahn@suse.com
+
+- rebase release version to 5.6 
+
+-------------------------------------------------------------------
+Thu Apr  9 16:14:18 UTC 2015 - drahn@suse.com
+
+- update to current CVS CVS20150409
+- Refactored rbTree and reference-counted strings into util
+- Fix compiler warnings from gcc (all false positives) 
+
+-------------------------------------------------------------------
+Tue Oct 28 12:44:25 UTC 2014 - opensuse@dstoecker.de
+
+- update to current CVS
+
+-------------------------------------------------------------------
+Wed Aug 21 04:38:42 UTC 2013 - opensuse@dstoecker.de
+
+- update to CVS from 2013-08-21, fixed compiling with motif 2.3.4
+
+-------------------------------------------------------------------
+Thu Jan 10 12:05:37 UTC 2013 - opensuse@dstoecker.de
+
+- reintroduce UTF-8 patch which changes default locale to non-UTF-8 (setting LANG=en_US.utf-8 in commandline still works)
+
+-------------------------------------------------------------------
+Fri Oct 26 19:30:58 UTC 2012 - opensuse@dstoecker.de
+
+- update to use new OpenMotif 2.3.3
+
+-------------------------------------------------------------------
+Fri Sep 17 15:43:01 CEST 2010 - jdelvare@suse.de
+
+- nedit-5.5-visfix.patch: Use default visual, to prevent crashes
+  when running under compiz. Patch from Mandriva.
+
+-------------------------------------------------------------------
+Tue Jan 27 12:00:00 UTC 2009 - opensuse@dstoecker.de
+- cleanup
+
+-------------------------------------------------------------------
+Wed Dec 24 09:50:00 CEST 2008 - drahn@suse.de
+
+- sync with editors project
+- fix NULL pointers
+
+-------------------------------------------------------------------
+Fri Jun 29 14:44:56 CEST 2007 - drahn@suse.de
+
+- initial BS version

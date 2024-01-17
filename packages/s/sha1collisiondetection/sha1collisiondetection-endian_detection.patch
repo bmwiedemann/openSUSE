@@ -1,0 +1,10 @@
+--- lib/sha1.c
++++ lib/sha1.c
+@@ -9,6 +9,7 @@
+ #include <memory.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <endian.h>
+ 
+ #include "sha1.h"
+ #include "ubc_check.h"

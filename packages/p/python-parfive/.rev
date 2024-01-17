@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50905d51bf3d8e402a5ff37fb31aeabd</srcmd5>
+    <version>1.0.0</version>
+    <time>1563993249</time>
+    <user>dimstar_suse</user>
+    <comment>A HTTP and FTP parallel file downloader</comment>
+    <requestid>717965</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>755cc38c7714600509c814b5500db50c</srcmd5>
+    <version>1.0.0</version>
+    <time>1566894154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726053</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0f23b89b43fafa48435da026c1bc943f</srcmd5>
+    <version>1.1.0</version>
+    <time>1592939175</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Features
+    + Add concurent requests to parfive. This feature splits the download of a single file into multiple parts if the server the file is being downloaded from supports ranged requests. This should improve the performance of all downloads under these circumstances, and also make parfive useful even if downloading a single file. No changes are needed to use this feature, files will be downloaded using 12 concurrent requests by default. To change the number of concurrent requests you can pass max_splits to parfive.Downloader.enqueue_file. (#15)
+    + Added CLI interface to Parfive. (#16)
+    + Parfive now only supports Python 3.6+. (#22)
+    + Support for specifying headers to be used for all requests to parfive.Downloader has been added. (#32)
+    + Support for HTTP_PROXY and HTTPS_PROXY environment variables have been added. (#32)
+  * Bugfixes
+    + Fix a bug where running parfive in the notebook would error if ipywidgets was not installed. (#25)
+    + Remove use of the deprecated loop= keyword argument to aiohttp.ClientSession. (#30)
+    + Update the notebook detection function due to changes in tqdm (#36)
+    + Reduce the number of parallel connections to 25 (5 parallel files, 5 parallel downloads per file). (#37)
+- Sprinkle in update-alternatives for parfive wrapper.</comment>
+    <requestid>816513</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>147c8e99d49bba4c47e8deed6e182b31</srcmd5>
+    <version>1.3.0</version>
+    <time>1618223853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884569</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>de44bad72249d1db235f868730191457</srcmd5>
+    <version>2.0.2</version>
+    <time>1690987802</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.2:
+  * Vendor parse_header out of the deprecated cgi module for Python 3.11
+    compatibility
+  * Fix a bug where an asyncio.CancelledError was not properly caught
+  * The file_progress, notebook, use_aiofiles, and header keyword arguments
+    to parfive.Downloader have been removed and moved into the
+    parfive.SessionConfig object.
+  * The timeouts keyword argument has been removed from the run_download()
+    and download() methods and replaced by an option in SessionConfig.
+  * Add a new SessionConfig object to allow advanced configuration of the
+    Downloader
+  * Improve the CLI with more options
+  * Use tqdm's auto notebook detection
+  * Fix issue with small files where the size of a chunk would round down to
+    0 bytes
+  * Remove the default download timeout of 5 minutes for a single file
+  * Cast timeout environment variables to numbers
+  * Add a Downloader.simple_download method to easily download a list of
+    URLs to a single directory
+  * Add support for optionally using aiofiles to write files to disk.
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1101876</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d4a7a6b494e9b9f0dca0f091b5cb005f</srcmd5>
+    <version>1.04</version>
+    <time>1499754287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>507848</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>54bc343a69abf4b7b0bd6441bc81cecf</srcmd5>
+    <version>1.04</version>
+    <time>1512433840</time>
+    <user>dimstar_suse</user>
+    <comment>- Use openssl 1.0.0 for build
+  Temporary. Will have to sit down and work out how to port this
+  thing.
+</comment>
+    <requestid>548108</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f1e07e188fdf9b8cbb4cb2b807b284ea</srcmd5>
+    <version>1.04</version>
+    <time>1512547181</time>
+    <user>dimstar_suse</user>
+    <comment>- Add openssl-1_1-compat.patch for OpenSSL 1.1 compatibility,
+  build with default openssl version
+- Package license and documentation</comment>
+    <requestid>548516</requestid>
+  </revision>
+</revisionlist>

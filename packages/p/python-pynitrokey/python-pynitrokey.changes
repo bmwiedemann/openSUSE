@@ -1,0 +1,132 @@
+-------------------------------------------------------------------
+Fri Jan  5 16:01:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.44:
+  * This release updates the `nk3 set-config` command for the
+    upcoming Nitrokey 3 test firmware release.
+  * nk3 set-config: Add support for opcard.use_se050_backend
+  * **Full Changelog**: https://github.com/Nitrokey/pynitrokey/co
+    mpare/v0.4.43...v0.4.44
+
+-------------------------------------------------------------------
+Thu Nov 30 13:34:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.4.43:
+  This release improves the UI of some NetHSM commands, introduces
+  the experimental `nk3 factory-reset` command and adds a warning
+  to nk3 set-config when used with unknown config keys.
+  * Changelog
+    -  nethsm: Fix table formatting in list-keys by @robin-nitrokey
+       in https://github.com/Nitrokey/pynitrokey/pull/476
+    -  Display value for type and mechanism on NetHSM get_key by
+       @mmerklinger in
+       https://github.com/Nitrokey/pynitrokey/pull/478
+    -  Update nethsm to v1.0.0 by @robin-nitrokey in
+       https://github.com/Nitrokey/pynitrokey/pull/477
+    -  Add support for full device factory reset command by
+       @sosthene-nitrokey in
+       https://github.com/Nitrokey/pynitrokey/pull/472
+    -  nk3 set-config: Add warning and confirmation prompt by
+       @robin-nitrokey in
+       https://github.com/Nitrokey/pynitrokey/pull/479
+
+-------------------------------------------------------------------
+Mon Nov 27 05:41:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.4.42:
+  * fido2 make-credential: Clenaup and add rk and uv options by
+    @robin-nitrokey in
+    https://github.com/Nitrokey/pynitrokey/pull/464
+  * Remove frozendict dependency by @mmerklinger in
+    https://github.com/Nitrokey/pynitrokey/pull/466
+  * nk3: Support build component in version string by
+    @robin-nitrokey in
+    https://github.com/Nitrokey/pynitrokey/pull/474
+  * Update nethsm dependency by @robin-nitrokey in
+    https://github.com/Nitrokey/pynitrokey/pull/469
+
+-------------------------------------------------------------------
+Wed Nov  8 10:24:04 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Fix a bad Requires: with %{python_module construct.
+
+-------------------------------------------------------------------
+Thu Nov  2 13:53:51 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- clarify licensing, as this is dual-licensed with MIT and
+  Apache-2.0
+- Marcus added both licenses
+
+-------------------------------------------------------------------
+Mon Oct 30 07:28:30 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.4.41:
+  * nk3
+    - Add the `SE50_ERROR` flag to the init status
+      (https://github.com/Nitrokey/pynitrokey/pull/436)
+    - Add the SE050 tests to `nk3 test` if supported
+      (https://github.com/Nitrokey/pynitrokey/pull/423)
+    - Add `get-config` and `set-config` commands
+      (https://github.com/Nitrokey/pynitrokey/pull/448)
+  * nethsm
+    - Move the NetHSM API into a separate `nethsm` package, see
+      https://github.com/Nitrokey/nethsm-sdk-py
+      (https://github.com/Nitrokey/pynitrokey/pull/450)
+    - Validate the backup file in `backup` and `restore` and add
+      the `validate-backup` and `restore-backup` commands
+      (https://github.com/Nitrokey/pynitrokey/pull/457)
+  * maintenance
+    - Update fido2, cryptography, spsdk dependencies
+      (https://github.com/Nitrokey/pynitrokey/pull/449)
+- include LICENSE-MIT and LICENSE-APACHE files from older release,
+  as these were removed.
+
+-------------------------------------------------------------------
+Wed Sep 27 10:16:45 UTC 2023 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 0.4.40:
+  * nethsm: Various updates and improvements (#435, #437, #439,
+    #445)
+  * nk3: Fix "generator didn't stop" update error for LPC55 devices
+    (#394)
+  * nk3 secrets: Add support for updating credentials (#424, #425,
+    #428)
+  * nk3 test: Don’t show touch prompt if PIN is missing (#411)
+  * Update urllib3 (#426)
+- update to 0.4.39:
+  * Improved logging (#399, @Laborratte5)
+  * Cleanup, refactoring and fixes of the fido2 module (#337, #410)
+  * Check pynitrokey version on firmware update (#416,
+    @Laborratte5)
+  * Update dependencies to fix vulnerabilities and installation
+    problems (#364)
+- update to 0.4.38:
+  Secrets App updates: add Password Safe, challenge-response, and
+  improve UI
+  * Implemented enhancements:
+    - Secrets App Password Safe support for Nitrokey 3 #380
+      (szszszsz)
+  * Fixed bugs:
+    - Firmware 1.3.1 update failed for nk3 #368
+  * Closed issues:
+    - nitropy list errors out due to deepmerge not being found (in
+      a version recent enough) #396
+    - Secrets App: improve UI/UX for Password Safe support #392
+- update to 0.4.37:
+  * Features
+    - nk3 status: Add variant (#376)
+    - nk3 secrets: Update Secrets App API (#377)
+    - Add py.typed file (#387)
+  * Bugfixes
+    - nk3 test: Fix provisioner test (#367)
+    - fido2 list-credentials: Handle missing RP name (#359)
+    - fido2 list-credentials: Skip enumerating RPs when empty
+      (#360)
+- remove outdated dependency to deepmerge
+- explicitly require click-aliases and semver
+- build as noarch, as suggested by rpmlint
+
+-------------------------------------------------------------------
+Mon Jul  3 05:13:34 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package python-pynitrokey: Python client for managing Nitrokey devices

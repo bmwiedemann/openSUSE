@@ -1,0 +1,8 @@
+<package name="python-remoto" project="openSUSE:Factory">
+  <title>Remote command executor using ssh and Python in the remote end</title>
+  <description>This package is primarily built to support the ceph-deploy project.
+python-remoto is built upon python-execnet which manages the 
+connections and processes.
+</description>
+  <devel project="devel:languages:python" package="python-remoto"/>
+</package>

@@ -1,0 +1,16 @@
+<package name="cflow" project="openSUSE:Factory">
+  <title>Tool to generate flowcharts for C sources</title>
+  <description>GNU cflow analyzes a collection of C source files and prints a graph, charting
+control flow within the program. GNU cflow is able to produce both direct and
+inverted flowgraphs for C sources. Optionally a cross-reference listing can be
+generated. Two output formats are implemented: POSIX and GNU (extended). Input
+files can optionally be preprocessed before analyzing.
+
+Authors:
+--------
+        Sergey Poznyakoff       &lt;gray@gnu.org&gt;
+
+</description>
+  <devel project="devel:tools" package="cflow"/>
+  <url>http://www.gnu.org/software/cflow</url>
+</package>

@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Sat Nov 20 16:57:19 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.0.2:
+  * Fix a regression that the app don't launch if you create a
+    repeated alarm, close the app, and try to reopen it
+  * AlarmView: Organize displayed information
+- This release contains small bug fixes and improvements:
+  * Strict on sandbox permission
+  * Rounded window corners and flat titlebar
+  * NewAlarmDialog: Add placeholder text for title entry
+  * Set shorter summary text in appdata
+  * Use palette of elementary for branding color
+  * Make sure to select an alarm on removing/adding/editing it
+    and startup
+  * Clean code
+
+-------------------------------------------------------------------
+Thu Sep  9 22:29:43 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.0.0:
+  * This release comes with numerous bug fixes &amp;
+    improvements!
+- Changes in Alarm:
+  * Refresh weekday toggle activity when opening popover
+  * Notify on every 0 second
+  * Keep repeated alarms on and turn off one-time alarms after
+    ringing
+  * Now alarm date is optional; if you don't specify date of the
+    alarm, it will be notified at that time of today
+  * Remove unused "update-frequency" gsettings key
+  * Fix repeating alarms can't be disabled
+  * Explicitly set the year
+- Changes in Timer:
+  * Add Reset button
+  * Support setting purpose of a timer
+  * Lessen damages to your storage
+  * Restore started time on end
+  * Make sure to iconify always when the timer is active
+- Other changes:
+  * Fix a regression that any key input no longer accepted
+  * Lessen window width by default
+  * Fix the app exits if the window has been iconified
+  * Code refactoring
+  * Update translations
+  * Publish the app to the new AppCenter on elementary OS 6 with
+    the Flatpak manifest
+  * Respect an elementary OS-wide dark preference
+  * Now you can close the window with the shortcut key Ctrl+Q,
+    while the daemon stays running in the background
+  * Fix unreadable font size in the Alarm view
+  * Fix wrong OARS data
+  * Move the delete button in the action bar
+  * Redesign app icons (big thanks to @Fatih20)
+  * Update Brazilian Portuguese translation (by @gfavaro)
+
+-------------------------------------------------------------------
+Sun Oct 11 07:29:30 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.2.3:
+  * StopWatch: Rewrite for efficiency and visibility
+  * Add :disabled pseudo-class to the .round-button class
+  * Fix a fatal regression that timer does not stop on 00:00:00
+  * Use icons for add/remove buttons
+  * Update .desktop comment to be consistent with HIG (by
+    @aljelly)
+  * Change shortened format of weekdays (by @NathanBnm)
+  * Improve look of create/edit alarm dialog
+  * Don't reset repeat setting on closing popover
+  * Fix DBus error at the first launch
+  * Fix notification icon is not set
+  * Fix left time shows unexpected values if set time is too big
+  * Improve saving window state
+  * Add French translation (by @NathanBnm)
+  * Update Spanish translation (by @CCaroV)
+  * Add Japanese translation
+  * Add Portuguese-Portugal translation (by @rottenpants466)
+  * Various l10n and coding improvements to the project thanks to
+    @NathanBnm
+
+-------------------------------------------------------------------
+Thu Apr 30 07:33:14 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.2.1:
+  * Merge pull request #58 from ryonakano/add-meson
+  * Remove no longer used config data element
+  * Use GResource to load CSS
+  * README: Add installation instruction
+  * Tweak line breaks
+  * DRY meson project name
+  * Remove unnecessary files
+  * Remove overkilling or unnecessary configs/files
+  * Complete RDNN
+  * Revert unwanted change
+  * Tab to 4 spaces
+  * Add meson
+  * fixed the notification going off again when you open the app
+  * Merge branch 'master' of github.com:sgpthomas/hourglass
+  * fixed what happens when the app closes and there is a timer
+    running
+  * Merge pull request #45 from danrabbit/patch-1
+  * Remove "." from appdata summary
+  * Merge pull request #41 from Allen-B1/patch-1
+  * Add the Get it on AppCenter button
+  * hourglass finally knows how to keep time, closes #34
+  * Merge pull request #39 from welaq/master
+  * Added Lithuanian to .desktop
+  * Added Lithuanian comment
+  * fixed #35 by disallowing multiple windows
+- Switch to meson
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Fri Nov 10 04:08:14 UTC 2017 - avvissu@yandex.by
+
+- Update to 1.1.1:
+  * Made the alarm noise persist until you close the notification
+  * Added some margin to the repeat day label
+- Switch from bzr to git
+- Add AppData file
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Tue Jun 13 14:41:50 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Wed May 10 07:57:45 UTC 2017 - avvissu@yandex.by
+
+- Update to stable release 1.0.1 
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Sun Mar  6 17:47:10 UTC 2016 - and.november@opensuse.org
+
+- initial package (version 1.0.1) for openSUSE
+

@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Fri Apr 21 12:25:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:41:34 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Mon Dec 14 00:46:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix condition around BuildRequirement
+
+-------------------------------------------------------------------
+Sun Dec 13 19:33:37 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- We don't need to break Python 2.7
+
+-------------------------------------------------------------------
+Tue Dec  8 07:55:53 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_mock.patch to remove dependency on the external mock package.
+
+-------------------------------------------------------------------
+Thu Mar 14 21:04:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Mar 12 15:27:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove conditional for tests
+
+-------------------------------------------------------------------
+Fri Oct 20 16:15:09 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

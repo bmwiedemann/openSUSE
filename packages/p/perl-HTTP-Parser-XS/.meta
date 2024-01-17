@@ -1,0 +1,9 @@
+<package name="perl-HTTP-Parser-XS" project="openSUSE:Factory">
+  <title>Fast, primitive HTTP request parser</title>
+  <description>HTTP::Parser::XS is a fast, primitive HTTP request parser that can be used
+either for writing a synchronous HTTP server or a event-driven server.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-HTTP-Parser-XS"/>
+  <url>http://search.cpan.org/dist/HTTP-Parser-XS</url>
+</package>

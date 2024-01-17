@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f51688b7a9ef4b15712f42b057d18ba8</srcmd5>
+    <version>3.5.0</version>
+    <time>1512378105</time>
+    <user>dimstar_suse</user>
+    <comment>sakura - terminal emulator</comment>
+    <requestid>546829</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5467b9e8853a2d9c44dfa17bdda90d37</srcmd5>
+    <version>3.5.0</version>
+    <time>1513677434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557635</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>66bcb3f4f5392d9c61e7705c2aa5da47</srcmd5>
+    <version>3.6.0</version>
+    <time>1535963653</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.6.0
+- rebase sakura-icon.patch
+- no upstream changelog (forwarded request 632368 from mimi_vx)</comment>
+    <requestid>632369</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>73e98dcdef083dd4daac2bd5b4ba1dad</srcmd5>
+    <version>3.7.0</version>
+    <time>1573045612</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.7.0
+- fix dependencies</comment>
+    <requestid>745462</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6878a086dfadde686818e673897da7d7</srcmd5>
+    <version>3.7.1</version>
+    <time>1598642536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829132</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6b612ea1766de1abb632c97e53167720</srcmd5>
+    <version>3.8.2</version>
+    <time>1619729172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889145</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cc884ace7353c2d0e3869d965f68824b</srcmd5>
+    <version>3.8.4</version>
+    <time>1642112458</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946058</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>55fb5a6d7eb19b52e55e45f555493231</srcmd5>
+    <version>3.8.5</version>
+    <time>1660485336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>995023</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5ce38b4b82da23830cf95dcb555e2c50</srcmd5>
+    <version>3.8.7</version>
+    <time>1688928069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1097834</requestid>
+  </revision>
+</revisionlist>

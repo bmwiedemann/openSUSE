@@ -1,0 +1,7 @@
+<package name="cracklib-dict-full" project="openSUSE:Factory">
+  <title>A Password-Checking Library</title>
+  <description>CrackLib tests passwords to determine whether they match certain
+security-oriented characteristics. You can use CrackLib to stop users
+from choosing passwords that are easy to guess.</description>
+  <devel project="Base:System" package="cracklib-dict-full"/>
+</package>

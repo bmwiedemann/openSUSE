@@ -1,0 +1,24 @@
+From 35041f4d9f06f94e4e408a3a12be237d4aa9ef44 Mon Sep 17 00:00:00 2001
+From: Sebastian Freundt <freundt@ga-group.nl>
+Date: Mon, 12 Dec 2022 08:01:42 +0000
+Subject: [PATCH] test, revert, do not use Singapore for testing previous
+ transitions
+
+---
+ test/dzone.008.ctst | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/dzone.008.ctst b/test/dzone.008.ctst
+index 758401b5..c8c9daa9 100644
+--- a/test/dzone.008.ctst
++++ b/test/dzone.008.ctst
+@@ -1,7 +1,7 @@
+ #!/usr/bin/clitosis  ## -*- shell-script -*-
+ 
+-$ dzone --prev Asia/Singapore 2014-02-22
+-1981-12-31T23:30:00+07:30 <- 1982-01-01T00:00:00+08:00	Asia/Singapore
++$ dzone --prev Asia/Jakarta
++1964-01-01T00:00:00+07:30 <- 1963-12-31T23:30:00+07:00	Asia/Jakarta
+ $
+ 
+ ## dzone.008.ctst ends here

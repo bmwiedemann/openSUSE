@@ -1,0 +1,10 @@
+<package name="perl-Class-Date" project="openSUSE:Factory">
+  <title>Class for easy date and time manipulation</title>
+  <description>This module is intended to provide a general-purpose date and datetime
+type for perl. You have a Class::Date class for absolute date and
+datetime and have a Class::Date::Rel class for relative dates.
+
+You can use &quot;+&quot;, &quot;-&quot;, &quot;&lt;&quot; and &quot;&gt;&quot; operators as with native perl data
+types.</description>
+  <devel project="devel:languages:perl" package="perl-Class-Date"/>
+</package>

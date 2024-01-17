@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu Mar 23 09:38:19 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-sd_opl2alsa-Don-t-include-x86-specific-headers.patch,
+  unbreak compilation on non-x86.
+
+-------------------------------------------------------------------
+Tue Feb 21 20:37:27 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.1+git20230213

@@ -1,0 +1,6 @@
+<package name="rubygem-sassc-rails" project="openSUSE:Factory">
+  <title>sassc-rails</title>
+  <description>Integrate SassC-Ruby into Rails.</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-sassc-rails"/>
+  <url>https://github.com/sass/sassc-rails/</url>
+</package>

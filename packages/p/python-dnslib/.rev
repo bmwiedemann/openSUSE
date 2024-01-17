@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>384d338a55ad74bb6b3a64ca06672340</srcmd5>
+    <version>0.9.14</version>
+    <time>1598726464</time>
+    <user>dimstar_suse</user>
+    <comment>  </comment>
+    <requestid>830079</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>121a1b9b534fd63a002370b4f70cfc3a</srcmd5>
+    <version>0.9.16</version>
+    <time>1629269783</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912720</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>252657721973a1548a53f7c6aa92c3ca</srcmd5>
+    <version>0.9.18</version>
+    <time>1642273516</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.18:
+  * Validate TXID in client.py</comment>
+    <requestid>946643</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>98119af8137553844d5587d772ea44bc</srcmd5>
+    <version>0.9.19</version>
+    <time>1642959525</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.19:
+  * Allow custom log function (logf) in  DNSLogger</comment>
+    <requestid>948249</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>df781562f9502e09358d53223f9b62c2</srcmd5>
+    <version>0.9.20</version>
+    <time>1664467927</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006507</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d079c2a1f76277379083aca664bc9774</srcmd5>
+    <version>0.9.23</version>
+    <time>1672851232</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.23:
+  * Minor clean-up / add wheels to distro
+  * Issue #43 (0.9.21 Raises TypeError instead of DNSError when failing to parse HTTPS records)
+    Note that we just fix the exception - there still seems to be a problem with parsing HTTPS records
+  * Issue #43: HTTPS reads after RD end (thanks to @robinlandstrom for pull request)
+  * Issue #45: Dnslib fails to handle unknown RR types in NSEC RD type bitmap
+  * Bimap now supports a function to map unknown types which we use to
+    dynamically map from rtype &lt;-&gt; TYPExxxx for unknown record types
+  * RR zone representation updated to match RFC3597
+  * Pull Request #47: Add support for DS, SSHFP, and TLSA records (thanks to @rmbolger)</comment>
+    <requestid>1055878</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>618865c4e586c8fba526833587971881</srcmd5>
+    <version>0.9.24</version>
+    <time>1704659962</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.24:
+  * #49 - Generate README.md (via symlink)
+  * #51 - Update Github CI checkout &amp; setup-python actions (and
+    remove Python 2.7 CI support)
+  * #54 - Support for RP records
+  * #57 - Support for LOC record
+
+- update to 0.9.21:
+  * Validate TXID in client.py</comment>
+    <requestid>1137272</requestid>
+  </revision>
+</revisionlist>

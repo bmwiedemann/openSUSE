@@ -1,0 +1,5 @@
+<package name="perl-String-Flogger" project="openSUSE:Factory">
+  <title>string munging for loggers</title>
+  <description>sorry, no description found</description>
+  <devel project="devel:languages:perl" package="perl-String-Flogger"/>
+</package>

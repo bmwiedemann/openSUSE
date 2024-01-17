@@ -1,0 +1,6 @@
+<package name="libpqxx" project="openSUSE:Factory">
+  <title>C++ Client Library for PostgreSQL</title>
+  <description>This is the standard library for C++ programs that connect to a
+PostgreSQL database server.</description>
+  <devel project="server:database:postgresql" package="libpqxx"/>
+</package>

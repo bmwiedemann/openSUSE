@@ -1,0 +1,10 @@
+<package name="python-ssdeep" project="openSUSE:Factory">
+  <title>Python wrapper for the ssdeep library</title>
+  <description>A Python wrapper for ssdeep, which is a library for computing context triggered piecewise hashes (CTPH). Also called fuzzy hashes, CTPH can match inputs that have homologies. Such inputs
+have sequences of identical bytes in the same order, although bytes in between these sequences may be different in both
+content and length.
+
+</description>
+  <devel project="devel:languages:python" package="python-ssdeep"/>
+  <url>http://github.com/DinoTools/python-ssdeep</url>
+</package>

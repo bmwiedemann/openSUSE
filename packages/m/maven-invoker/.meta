@@ -1,0 +1,5 @@
+<package name="maven-invoker" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="maven-invoker"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="perl-Mail-Sendmail" project="openSUSE:Factory">
+  <title>Simple platform independent mailer</title>
+  <description>Simple platform independent e-mail from your perl script.</description>
+  <devel project="devel:languages:perl" package="perl-Mail-Sendmail"/>
+</package>

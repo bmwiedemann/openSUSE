@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>48d7b1e947b3842d4f098ef708e7ecbb</srcmd5>
+    <version>0.7.08</version>
+    <time>1620239996</time>
+    <user>dimstar_suse</user>
+    <comment>rmw (ReMove to Waste) is a safe-remove utility for the command line</comment>
+    <requestid>890473</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>76bdd8adff92bd093572328b20239af2</srcmd5>
+    <version>0.7.09</version>
+    <time>1620653922</time>
+    <user>dimstar_suse</user>
+    <comment>rmw 0.7.09</comment>
+    <requestid>891824</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>899d653ea495db85dc9da65c483cd549</srcmd5>
+    <version>0.8.0</version>
+    <time>1625115932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903084</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3b934dbb0d638b9228be555ae8efc1cb</srcmd5>
+    <version>0.8.1</version>
+    <time>1643321815</time>
+    <user>dimstar_suse</user>
+    <comment>rmw 0.8.1</comment>
+    <requestid>949398</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>bb21435ea79b07fcd3587a9ac3971755</srcmd5>
+    <version>0.8.1</version>
+    <time>1644099788</time>
+    <user>dimstar_suse</user>
+    <comment>- disable tests on 32 bit</comment>
+    <requestid>951713</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>38efbaca1f84a2299db43b9db8f7fe7f</srcmd5>
+    <version>0.8.1</version>
+    <time>1666780281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031139</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2e78e16bf1f337b5d9f91d5c62ee5ff3</srcmd5>
+    <version>0.9.0</version>
+    <time>1676648719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066279</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f44f0b7a0a5c6168769eeca27cc52d09</srcmd5>
+    <version>0.9.1</version>
+    <time>1684415974</time>
+    <user>dimstar_suse</user>
+    <comment>rmw 0.9.1</comment>
+    <requestid>1087709</requestid>
+  </revision>
+</revisionlist>

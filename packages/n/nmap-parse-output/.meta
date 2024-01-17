@@ -1,0 +1,8 @@
+<package name="nmap-parse-output" project="openSUSE:Factory">
+  <title>A tool for analyzing Nmap scans</title>
+  <description>Converts/manipulates/extracts data from a Nmap scan output.
+
+</description>
+  <devel project="network:utilities" package="nmap-parse-output"/>
+  <url>https://github.com/ernw/nmap-parse-output/</url>
+</package>

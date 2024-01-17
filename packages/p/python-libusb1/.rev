@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5ceed7d9978f8917c6021a72c7082a8c</srcmd5>
+    <version>1.7</version>
+    <time>1556022931</time>
+    <user>maxlin_factory</user>
+    <comment>- Activate test suite
+- Remove unnecessary build dependencies, and add BuildArch: noarch
+- Remove GPL license as it was relicensed to LGPL2.1+ in May 2015
+- Update to version 1.7:
+  * Bump to 1.7 .
+  * setup: Simplify.
+  * Bump copyright year.
+  * usb1: Expose transferred byte count and received bytes on synchronous API
+  * usb1: Fix docstring interruptRead refering to itself.
+  * Specify that it is compatible with python 3 in setup.py
+  * README: libusb.org seems dead, switch to the fork.
+  * usb1: Move getManufacturer, getProduct ,getSerialNumber to USBDeviceHandle.
+  * usb1: get{,ASCII}StringDescriptor now return None for descriptor 0.
+  * Bump to 1.6.6 .
+- Update to version 1.6.6:
+  * Bump to 1.6.6 .
+  * usb1: Expose string descriptors on USBDevice.
+  * Bump to 1.6.5 .
+  * usb1: Bind &quot;cast&quot; to USBContext class.
+  * Cast libusb pollfd callbacks from null pointer to proper type.
+  * examples: Make hotplug and listdev examples python3-friendly.
+  * setup.py: Tell setuptools to run 2to3 when running on python3
+  * usb1: Document hotplug handler limitations.
+  * Bump to 1.6.4 .
+  * usb1: Fix asynchronous control transfer buffer.
+- Update to version 1.6.5:
+  * Bump to 1.6.5 .
+  * usb1: Bind &quot;cast&quot; to USBContext class.
+  * Cast libusb pollfd callbacks from null pointer to proper type.
+  * examples: Make hotplug and listdev examples python3-friendly.
+  * setup.py: Tell setuptools to run 2to3 when running on python3
+  * usb1: Document hotplug handler limitations.
+  * Bump to 1.6.4 .
+  * usb1: Fix asynchronous control transfer buffer.
+  * Bump to 1.6.3 .
+  * Deprecate USBPollerThread.
+- initial package build
+</comment>
+    <requestid>695463</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c75262905f2331249a3bd2f5c4f453cb</srcmd5>
+    <version>1.7.1</version>
+    <time>1558037385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703274</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>45424fdde1a83bac1ef5e1f12d633d96</srcmd5>
+    <version>1.9.1</version>
+    <time>1611163697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864626</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>20066785116ddbd2f467888bb3be1661</srcmd5>
+    <version>3.0.0</version>
+    <time>1646349442</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0:
+  * Add support for pyinstaller.
+  * Fix support for python 3.10.
+  * Drop python &lt;3.4 support.
+  * Do not load the C library on import. Allows applications to customise
+    the lookup logic (see usb1.loadLibrary).
+  * Add LIBUSB_SPEED_SUPER_PLUS.
+  * Better control device iterator end of life.
+  * Fix objects escaping control from their parent.
+  * Fix a TypeError exception in USBContext.handleEvents.
+  * Fix an AttributeError exception in USBContext.hotplugRegisterCallback.
+  * Fix segfault in pypy3 when finalizing USBDevice objects.
+  * Source only: convert examples to python3.
+  * Release process: also run some examples scripts.
+  * Update versioneer to be compatible with 3.11.
+  * Drop python &lt;3.6 support.</comment>
+    <requestid>958558</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8ef01f40de9b93e4e169cba39c9cad62</srcmd5>
+    <version>3.1.0</version>
+    <time>1702071191</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.0:
+  * Fix bug preventing use of setPollFDNotifiers.
+  * Wrap libusb_interrupt_event_handler, available since libusb
+    1.0.21, to help applications wake an event handling thread (ex:
+    durring exit).
+
+    segfault when closing a transfer from inside its callback function.</comment>
+    <requestid>1132044</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Fri Jan 12 10:49:37 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.5
+  * Janitorial changes
+
+-------------------------------------------------------------------
+Sun Feb 12 11:10:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.4
+  * Only package metadata updates
+
+-------------------------------------------------------------------
+Thu Nov 15 00:16:32 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.0.3
+  * Fixed a bug in functions OneSubgroupInWhichSubnormalNotNormal,
+    Permutable, SPermutable that gave incorrect results because of
+    an incorrect treatment of the relation with the parent group.
+  * Modified banner, improved PrimesDividingSize, deleted obsolete
+    code and other minor changes.
+
+-------------------------------------------------------------------
+Tue Dec  8 16:13:23 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.03
+* Added CSS and LAB files to tarfile
+
+-------------------------------------------------------------------
+Fri Dec 12 12:48:36 UTC 2014 - jengelh@inai.de
+
+- Initial package (version 1.01) for build.opensuse.org

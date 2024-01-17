@@ -1,0 +1,207 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dfa7c9ef9b4a1728270a75d381ba9d59</srcmd5>
+    <version>0.14.3</version>
+    <time>1663694613</time>
+    <user>dimstar_suse</user>
+    <comment>New package (with libtool archives removed)</comment>
+    <requestid>1004762</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b3729c2156fa973974f1554da6710415</srcmd5>
+    <version>0.14.4</version>
+    <time>1667734933</time>
+    <user>dimstar_suse</user>
+    <comment>update: 0.14.3 -&gt; 0.14.4
+- Features
+ * packages: Add boolean noleadingzeros option to counter formatter
+ * packages: Add new command \set-multilevel-counter
+- Bug Fixes
+ * classes: Always break out of hmode before processing \chapter headings
+ * core: A typo in a variable prevents using -u with a class
+ * languages: Make 'und' an exception to language name canonicalization 
+ * math: Fix insertion order of MathML children
+ * packages: Account for depth when calculating rotation center
+ * packages: Avoid forcing mirrored masters in twoside package
+ * packages: Combine \unichar'ed chars with same font only
+ * packages: Correct rotation origin calculation back to pre v0.10.0
+ * packages: Don't inhibit page breaking after switching masters mid-page
+ * packages: Make sure PDF initialized before rotate package directly calls it
+ * packages: Rework simple and multilevel counters
+ * packages: Textcase package name typo preventing using methods from code
+- Reverts
+ * Revert &quot;docs(packages): Fixup unichar documentation, work around known bug (#1549)&quot; (forwarded request 1033699 from Pi-Cla)</comment>
+    <requestid>1033700</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e9d2bc6c352003973146cfdde9c07d41</srcmd5>
+    <version>0.14.5</version>
+    <time>1668970020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036836</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1adeb6a813ebccfb274532da9a0bdc3a</srcmd5>
+    <version>0.14.6</version>
+    <time>1671128734</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14.6:
+  * chore(release): 0.14.6
+  * fix(tooling): Exempt LuaJIT from external bit32 library requirement (#1654)
+  * fix(shapers): Apply tracking settings even in font-fallback shaper
+  * refactor(shapers): Move fallback shaper to dedicated module
+  * fix(packages): Use casting to restore shaper state after fallbacks
+  * docs(manual): Fix grid docs by actually loading the module for use
+  * chore(tooling): Update commitlint rules for current module types
+  * test(typesetters): Update expectations for bugs squashed during refactor
+  * refactor(typesetters): Move tate typesetter functions to class
+  * fix(packages): Fix \cite{key} in bibtex package (#1655)
+  * fix(debug): Correct filename in debug info after includes (#1652)</comment>
+    <requestid>1043025</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4b07327595bb2cb418e687e74b8df044</srcmd5>
+    <version>0.14.7</version>
+    <time>1673021156</time>
+    <user>dimstar_suse</user>
+    <comment>update: 0.14.6 -&gt; 0.14.7
+- Features
+ * build: Allow easy skip of font checks with FCMATCH=true
+- Bug Fixes
+ * build: Only check tooling to bulid manual if really needed
+ * inputters: Rework SIL input to handle both junk outside of document tag and fragments
+ * outputters: Patch up error message when failing to load font
+ * shaper: Correct font-variants using opsz axis
+ * shaper: Respect variations when shaping
+ * tooling: Keep all Lua packages in same env for Nix
+ * utilities: Tweak breadcrumbs to work under LuaJIT limitations</comment>
+    <requestid>1056335</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>00be80b8897d6c2f7128bca985a62477</srcmd5>
+    <version>0.14.8</version>
+    <time>1674927913</time>
+    <user>dimstar_suse</user>
+    <comment>update: 0.14.7 -&gt; 0.14.8
+- Features
+ * build: Pass build time configuration into Lua environment
+ * core: Add variations support to font command
+ * shapers: Instanciate variable fonts
+ * shapers: Support named instances with FontConfig
+ * shapers: Support named instances with macfonts
+- Bug Fixes
+ * build: Package license file for vendored lunamark fork
+ * classes: Coerce option values to booleans
+ * packages: Absolutize parskip heights on use
+ * packages: Pass style &amp; weight values to the math font loader
+ * packages: Quote option values in documentation when necessary
+ * tooling: Use luaEnv properly (forwarded request 1061682 from Pi-Cla)</comment>
+    <requestid>1061683</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eb06c5eac3056ee1fdb95bc0678a95c5</srcmd5>
+    <version>0.14.9</version>
+    <time>1681296729</time>
+    <user>dimstar_suse</user>
+    <comment>update: 0.14.8 -&gt; 0.14.9
+- Features
+ * classes: Add Picas unit to cover all units speced in Docbook
+ * classes: Implement the\code command in the plain class
+ * cli: Add -q / --quiet flag to reduce output to essential errors
+ * core: Support initializing fill glues with a width
+ * packages: Introduce urlstyle hook in the url package
+ * packages: New scalebox package for arbitrary box re-scaling
+ * packages: Support migrating content in re-wrapped hboxes
+ * typesetters: Implement hbox building logic in the typesetter
+- Bug Fixes
+ * build: Distribute SVG and FTL source files in packages
+ * classes: Avoid justification issues with relative parindent
+ * classes: Make sure un-numbered chapters make it in the ToC
+ * classes: Parse bare number and percentage units in docbook images
+ * classes: Setting current.hangIndent is a measurement
+ * cli: Return success if --help explicitly requested
+ * core,typesetter: Discretionary nodes are incorrectly handled
+ * core: Ensure restoring settings top-level state does not error
+ * outputters: Update Cairo/Podofo hbox debug API to match libtexpdf
+* packages: Correct image aspect preservation logic
+* packages: Fix output of debug breaks in infonode package
+* packages: Make sure pullquotes start in block mode
+* packages: Strip content position in ToC entries
+* etc. https://github.com/sile-typesetter/sile/releases/tag/v0.14.9</comment>
+    <requestid>1078548</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ecfd86af1bb61172b4b5d7c8e8714d3f</srcmd5>
+    <version>0.14.10</version>
+    <time>1689175660</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.10
+ * Features
+  - cli: Allow more than one input document
+  - i18n: Add localized strings for Cantonese and Chinese
+  - packages: Add document class styling in autodoc
+  - packages: Provide API for registering raw handlers linked to packages
+ * Bug Fixes:
+  - build: Avoid build artifacts being listed for installation
+  - core: Avoid stack overflow in Harfbuzz module
+  - outputters: Setup --makedeps to play along without explicit --output
+  - packages: Converters package no longer worked after 0.13.0
+  - packages: Correct chord line height and chord font use (forwarded request 1098263 from Pi-Cla)</comment>
+    <requestid>1098264</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ccdcf3083cd797ce233e2c97e1603abf</srcmd5>
+    <version>0.14.11</version>
+    <time>1692795515</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.11
+ * Bug Fixes:
+  - core: Leave legacy masterFilename alone but use first input filename internally
+  - core: Make masterFilename actually a filename
+  - packages: Avoid mix-and-matching indents in fixed-width specimin blocks
+  - utilities: Use real semver parser for deprecation warnings</comment>
+    <requestid>1105339</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bf1e3b7577e1c5dc06d8771d42a311e7</srcmd5>
+    <version>0.14.12</version>
+    <time>1697146855</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.12
+ * Features
+  - i18n: Add Portuguese localizations for bibtex package
+  - utilities: Add utility function for console messages without trace info
+ * Bug Fixes
+  - build: Make sure vendored luarocks isn't a phony target that runs repeatedly
+  - core: Allocate exactly what we use, not a guess with an extra just in case
+  - core: Correct usage of HarfBuzz when passing a filtered list of shapers
+  - core: Fixup class loader so cache is all Lua module specs
+  - packages: Don't warn on TOC content change if not actually used</comment>
+    <requestid>1117057</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>14b2bf5f40221772cd628b4c3b4e01af</srcmd5>
+    <version>0.14.13</version>
+    <time>1698872984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1121478</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ab697ec23acc96ed2eb2bb64b908c1ce</srcmd5>
+    <version>0.14.14</version>
+    <time>1703527550</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.14
+ * Features
+  - cli: Change module load error to suggestion for how to install 3rd party modules
+  - languages: U+00A0 non-breaking space must be stretchable by default
+  - typesetters: Support U+00AD soft hyphen as discretionary break
+ * Bug Fixes
+  - cli: Stop outputting error messages twice on failure to process main file
+  - core: Use nil-safe and Lua-version-robust table utils
+  - packages: Adjust dropcap logic for letters with a depth</comment>
+    <requestid>1134957</requestid>
+  </revision>
+</revisionlist>

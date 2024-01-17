@@ -1,0 +1,2070 @@
+-------------------------------------------------------------------
+Tue Jan 09 20:14:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.24.0:
+  * fix: panic in okteto build caused by nil oc.Store (#4113)
+    (#4114)
+  * fix: panic in okteto up caused by already closed readyChan
+    (#4111) (#4112)
+  * fix: wrap error while creating secrets (#4107) (#4109)
+  * Add feature flag `OKTETO_COMPOSE_VOLUME_AFFINITY_ENABLED` env
+    var to disable node affinity for volumes (#4101)
+  * feat: use build context for isClean (#4089)
+  * Lax Codecov threshold on project delta (#4105)
+  * Fix preview URL to not use hash pathname (#4102)
+  * Fix Golang version in contributing guide
+  * fix: do not fail if error retrieving envs from image (#4099)
+  * Update k8s client to `v0.28.4` (#4087)
+  * Revert "refactor: set deploy image tag as buildopt in deploy
+    pkg (#4093)" (#4097)
+  * Fix panic when parsing empty service sections (dev & build)
+    (#4090)
+  * update kubectl helm and kustomize versions (#4095)
+  * improve err response for expired tokens (#4091)
+  * feat: use git commit instead of git tree hash (#4083)
+  * build(deps): Bump golang.org/x/crypto from 0.14.0 to 0.17.0
+    (#4094)
+  * build(deps): Bump github.com/docker/docker from
+    23.0.0-rc.1+incompatible to 24.0.7+incompatible (#4092)
+  * refactor: set deploy image tag as buildopt in deploy pkg
+    (#4093)
+  * chore: update syncthing version to 1.27.1 (#4088)
+  * update builkit client to v0.11.6 (#4086)
+  * refactor: remove okteto context global var use in okteto build
+    command (#4070)
+  * Fix: detect top level git rep dir to set `OKTETO_GIT_BRANCH`
+    and `OKTETO_GIT_COMMIT` properly when service is nested (#4080)
+  * build(deps): Bump actions/stale from 8 to 9 (#4084)
+  * Fix panic in `okteto init --deploy` (#4078)
+  * remove okteto cloud as context option (#4073)
+  * Fix codespell in comments (#4079)
+  * makefile: add lint-fix (#4077)
+  * fix external resource markdown able to generate in dinamycally
+    using deploy section (#4076)
+  * Fix connection issues to dev containers using vscode remote ssh
+    (#4074)
+  * refactor: logger for build command (#4014)
+  * Fix panic on okteto up with plain output (#4069)
+  * fix: ssh remote deploy tests (#4071)
+  * Add `make lint-fix-fieldalignment`  (#4058)
+  * CLI Quality - Lint - gomnd (#4061)
+  * CLI Quality - Lint-  musttag (#4064)
+  * feat: add feature flag to enable context build (#4051)
+  * CLI Quality - Lint - bodyclose (#4057)
+  * chore: enable durationcheck and fix (#4062)
+  * Fix builds for ARM (#4065)
+
+-------------------------------------------------------------------
+Sun Jan 07 18:08:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.23.2:
+  * fix: do not fail if error retrieving envs from image (#4099)
+    (#4100)
+
+-------------------------------------------------------------------
+Tue Dec 12 17:02:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.23.1:
+  * [Backport release-2.23] Fix: detect top level git rep dir to
+    set `OKTETO_GIT_BRANCH` and `OKT… (#4085)
+  * [Backport release-2.23] Fix panic in `okteto init --deploy`
+    (#4082)
+  * remove okteto cloud as context option (#4073) (#4081)
+
+-------------------------------------------------------------------
+Mon Dec 04 14:17:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.23.0:
+  * Fix connection issues to dev containers using vscode remote ssh
+    (#4074) (#4075)
+  * Fix panic on okteto up with plain output (#4069) (#4072)
+  * Fix builds for ARM (#4065) (#4067)
+  * CLI Quality - Lint-  exhaustive (#4063)
+  * fix linters (#4066)
+  * fix: use okteto api to retrieve dev env endpoints (#4052)
+  * Refactor: create `env` and `dependencies` pkg to reduce `model`
+    pkg and make testing easier (#4047)
+  * fix: linter (#4060)
+  * Refactor: remove `CheckIfRegularFile` in favour of
+    `filesystem.FileExistsAndNotDir` (#4049)
+  * fix: linter (#4059)
+  * chore: add and fix lint gci (#4053)
+  * CLI Quality - Lint - goheader (#4054)
+  * chore: implement and fix lint unconvert (#4055)
+  * chore: added additional lints (#4056)
+  * show hint to deploy using remote feature (#4048)
+  * Update Dockerfile to use kubectl 1.15.11 (#4050)
+  * add quotes for variables added in remote (#4045)
+  * Extract dev `secrets` and `envFiles`  validation from
+    serializer (#4043)
+  * Enable field alingment (#4031)
+  * fix:downgrade spinner module (#4041)
+  * Added OKTETO_GIT_BRANCH environment variable to remote
+    Dockerfile as argument to have it available in the commands
+    executed there (#4039)
+  * Adds add/delete to docker credentials helper (#4028)
+  * add feature flag to enable disable pull first approach (#4036)
+  * RAIN-51 and RAIN-52: Set right certificate in kubernetes client
+    and kubeconfig generated when working with
+    `--insecure-skip-tls-verify` (#4037)
+  * RAIN-31: Add extra hosts for internal communication to API and
+    BUildkit when executing deploy and destroy remotely (#4033)
+  * fix: panic on interrupt of deploy --remote (#4030)
+
+-------------------------------------------------------------------
+Fri Nov 17 05:46:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.22.3:
+  *  [Backport release-2.22] Extract dev `secrets` and `envFiles`
+     validation from serializer (#4043) (#4046)
+
+-------------------------------------------------------------------
+Thu Nov 09 14:48:22 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.22.2:
+  * Added OKTETO_GIT_BRANCH environment variable to remote
+    Dockerfile as argument to have it available in the commands
+    executed there (#4039) (#4040)
+
+-------------------------------------------------------------------
+Wed Nov 08 19:35:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.22.1:
+  * add feature flag to enable disable pull first approach (#4036)
+    (#4038)
+
+-------------------------------------------------------------------
+Tue Nov 07 11:30:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.22.0:
+  * fix: panic on interrupt of deploy --remote (#4030) (#4032)
+  * Fix panic when interrupt deploy (#4027)
+  * chore: rename "cluster" to "context" in logs (#4011)
+  * User Friendly Errors (#4009)
+  * initial work (#4007)
+  * add build service context generation to image build event
+    (#4023)
+  * Update analytics data (#4024)
+  * feat: add `--include-token` flag to `okteto ctx show` command
+    (#4010)
+  * Display a friendly error when the local proxy cannot start
+    (#4019)
+  * Implement new event ImageBuild (#4001)
+  * fix: e2e tests (#4021)
+  * [CLI Quality][Lint] add tparallel lint and fix errors (#4020)
+  * chore: fix an error message on deploying ingress with same name
+    (fix #3827) (#4012)
+  * ci: add tenv linter (#4018)
+  * build(deps): Bump golang.org/x/net from 0.7.0 to 0.17.0 (#4015)
+  * Deploy remote extra hosts (#4003)
+  * test: remove file after test (#4008)
+  * Jlopezbarb/kubetoken update (#3998)
+  * fix: show error when manifest not found using -f flag
+  * Add support for deleting multiple context (#3886)
+
+-------------------------------------------------------------------
+Tue Oct 10 13:55:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.21.0:
+  * Jlopezbarb/kubetoken update (#3998) (#4006)
+  * Panic secret not valid (#3982)
+  * New option `--reuse-params` at `okteto pipeline deploy` (#3985)
+  * fix: kubeconfig duplicate log (#3981)
+  * fix: high resources panic (#3984)
+  * fix panic deploying dependencies in vanilla (#3995)
+  * link kubetoken docs when using static tokens (#3943)
+  * Uncomment defer delete namespace (#3975)
+  * feat: add pipeline list cmd (#3971)
+  * [golangci-lint] Enable lint unused unparam (#3976)
+  * feat: add remote field in okteto manifest (#3853)
+  * build(deps): Bump docker/setup-buildx-action from 2 to 3
+    (#3978)
+  * build(deps): Bump docker/setup-qemu-action from 2 to 3 (#3979)
+  * Fix preview list output (#3970)
+  * [golangci-lint] enable govet ineffassign staticcheck (#3972)
+  * feat: add support for labels when deploying a pipeline (#3964)
+  * Generic invalid license error (#3977)
+  * build(deps): Bump actions/checkout from 3 to 4 (#3962)
+  * chore: update syncthing to 1.24.0 (#3969)
+  * chore: remove PR annotations (#3974)
+  * expand branch value if comes from variable (#3956)
+  * [golangci-lint] Enable gosimple (#3966)
+  * [golangci-lint] Enable errcheck (#3965)
+  * Basic golangci lint (#3961)
+  * chore: update codecov (#3960)
+  * build(deps): Bump
+    CircleCI-Public/trigger-circleci-pipeline-action (#3868)
+  * docs: update PR template (#3957)
+
+-------------------------------------------------------------------
+Tue Sep 12 08:04:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.20.0:
+  * expand branch value if comes from variable (#3956) (#3973)
+  * add e2e using static token (#3953)
+  * fix: remove context init from rch install cmd (#3954)
+  * handle 423 api error a trial license expiration (#3929)
+  * tests: add kubetoken unit tests (#3939)
+  * feat: clone from global to dev reg already built images (#3950)
+  * Tag with global and dev when pushing to global registry (#3940)
+  * chore: add rch install / uninstall cmds (#3949)
+  * fix: registrytoken cmd output processing (#3946)
+  * fix: registrytoken cmd notfound error (#3945)
+  * fix(hybrid): read secrets from kubernetes (#3931)
+  * fix: type mismatch oktetoClientProvider (#3938)
+  * feat: add kubetoken pre-reqs validation (#3909)
+  * Fix kubetoken remote deploy (#3928)
+  * restore previewLabels at default view of preview list (#3919)
+  * Extend help from kubeconfig command to mention that the
+    generated kub…econfig requires to have Okteto CLI in the path
+    (#3917)
+  * Adding syncthing api unittests. (#3899)
+  * fix kubeconfig for non okteto contexts (#3920)
+  *  Feature Flag to Opt-In to Static Tokens/Existing Flow (#3893)
+  * Add cache to registry credentials (#3910)
+  * fix: wait until build stops logs to return (#3908)
+  * Use dynamic kube token for k8s requests  (#3891)
+  * Add exec to kubeconfig when okteto context init (#3887)
+  * fix panic when displayer has no cancel function (#3880)
+  * fix: if repo is not clean always return err (#3895)
+  * Add new props to up event (#3876)
+  * Up event refactor (#3875)
+
+-------------------------------------------------------------------
+Wed Sep 06 15:37:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.19.2:
+  * fix: remove context init from rch install cmd (#3954) (#3955)
+  * chore: add rch install / uninstall cmds (#3949) (#3952)
+  * fix: registrytoken cmd output processing (#3946) (#3951)
+  * fix: registrytoken cmd notfound error (#3945) (#3948)
+
+-------------------------------------------------------------------
+Wed Sep 06 15:34:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.19.1:
+  * restore previewLabels at default view of preview list (#3919)
+    (#3933)
+
+-------------------------------------------------------------------
+Wed Sep 06 15:32:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.19.0:
+  * Add cache to registry credentials (#3910) (#3913)
+  * fix: wait until build stops logs to return (#3908) (#3912)
+  * fix: if repo is not clean always return err (#3895) (#3898)
+  * fix: compose not getting image expansion from build (#3890)
+  * Wrap kubetoken client into OktetoClient (#3888)
+  * Add CA to kubeconfig in insecure mode (#3845)
+  * track deploy destroy on remote (#3873)
+  * fix: compute build envs in local (#3874)
+  * Revert "add logs for image digest getter (#3870)" (#3877)
+  * [Hybrid] add e2e to test support of additional dev fields
+    (#3808)
+  * revert: track deploy and destroy (#3872)
+  * track deploy and destroy on remote (#3848)
+  * add logs for image digest getter (#3870)
+  * fix: preview output json (#3861)
+  * Run e2e tests from PR labels (#3852)
+  * Fix hybrid interactive terminal and processes (#3811)
+  * Add .git to .dockerignore (#3846)
+  * fix: build args flags populated into buildkit (#3843)
+  * Fix context cancelled with reading git status operation (#3704)
+  * Update info messages for hybrid `okteto up` (#3815)
+  * Added gracefull fail in case of malformed docker-compose.yml
+    (#3844)
+  * fix: command unmarshal wrapping command (#3832)
+  * fix:infer name with default okteto manifest (#3822)
+  * fix: show context message on okteto build (#3831)
+  * feat: add `--output` flag for `okteto preview list` (#3804)
+  * chore: use buildkit v0.9.2-okteto3.systemcerts-2 (#3813)
+  * Add dockerconfig in remote commands (#3819)
+  * Add docker-credential-okteto to cli image (#3818)
+  * fix(up): skip deploy properly if deploy and depencencies are
+    empty (#3814)
+  * Add cluster private credentials to build and deploy remote
+    (#3799)
+  * fix publish okteto release for windows (#3802)
+  * ci: add env for OKTETO_PATH (#3809)
+  * fix: fail if dev mode is not valid (#3806)
+
+-------------------------------------------------------------------
+Wed Sep 06 15:30:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.18.3:
+  * fix: if repo is not clean always return err (#3895) (#3897)
+
+-------------------------------------------------------------------
+Tue Aug 08 14:08:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.18.2:
+  * fix: compose not getting image expansion from build (#3890)
+    (#3892)
+
+-------------------------------------------------------------------
+Sun Aug 06 07:54:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.18.1:
+  * [Backport release-2.18] fix: compute build envs in local
+    (#3883)
+
+-------------------------------------------------------------------
+Tue Jul 18 11:16:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.18.0:
+  * fix(up): skip deploy properly if deploy and depencencies are
+    empty (#3814) (#3817)
+  * feat: add `--wait` flag for `okteto preview destroy` (#3776)
+  * fix: context switch regression (#3798)
+  * feat: add okteto preview `sleep|wake` command (#3570)
+  * Execute `okteto destroy --remote` successfully when there is no
+    okteto manifest found (#3721)
+  * Mount ssh agent in remote deploy (#3755)
+  * add dev mode annotation (sync or hybrid) (#3771)
+  * reduce namespace name (#3790)
+  * Compute hash for divert annotation to limit the size of the
+    annotation (#3787)
+  * feat(build): expand image before build (#3784)
+  * add implementation to retrieve cmap variables when running in
+    remote (#3766)
+  * [Hybrid] Warn on unused fields but don't fail (#3764)
+  * Update go to 1.20 (#3779)
+  * Always sync okteto manifest (#3753)
+  * add envs from manifest to local process (#3754)
+  * Add "scope" to the `okteto preview deploy` command metric
+    (#3765)
+  * Jlopezbarb/fix-security-issues (#3762)
+  * chore: improve create pid error msg (#3757)
+  * Remove git credentials from debug logs (#3747)
+  * fix: wrong registry hostname parse as url (#3743)
+
+-------------------------------------------------------------------
+Wed Jul 05 14:39:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.17.0:
+  * Compute hash for divert annotation to limit the size of the
+    annotation (#3787) (#3789)
+  * Jlopezbarb/fix-security-issues (#3762) (#3763)
+  * fix: wrong registry hostname parse as url (#3743) (#3759)
+  * Fix kubetoken usage message (#3606)
+  * Fix integration hybrid (#3749)
+  * fix: search first in dev registry (#3750)
+  * Update the log message when no endpoints are available (#3722)
+  * Update hybrid analytics (#3742)
+  * fix: no optional locks on git read only commands (#3707)
+  * Fix silent error when build images as part of "okteto deploy"
+    (#3736)
+  * build(deps): Bump mheap/github-action-required-labels from 4 to
+    5 (#3702)
+  * docs(helper): improve description of label flag (#3740)
+  * chore: make labels errors explicit (#3718)
+  * Removed feature for automatically export/import the build cache
+    (#3729)
+  * gracefull shutdown for hybrid process (#3683)
+  * Propagate "--wait" and "--timeout" flags to "okteto deploy
+    --remote" (#3732)
+  * Always create ".dockerignore" for "okteto destroy" (#3726)
+  * Use ARG instead of ENV to pass metadata for "--remote" (#3725)
+  * Remove dependency on okteto installer image (#3724)
+  * Create "/etc/ssl/certs/" if it doesn't exist in the image
+    (#3733)
+  * Don't copy ca-certs on deploy image (#3723)
+  * Fix depends on when loading stack from file (#3703)
+  * Revert "update config with new builder and version of golang-ci
+    (#3715)" (#3716)
+  * feat: add label flag to preview list cmd (#3711)
+  * update config with new builder and version of golang-ci (#3715)
+  * Revert "update golang-ci at circleci config (#3712)" (#3714)
+  * update golang-ci at circleci config (#3712)
+  * feat: add label flag to deploy preview command (#3611)
+  * Revert "Show error if deploying services with PV as disabled
+    (#3706)"
+  * Show error if deploying services with PV as disabled (#3706)
+  * Set the stage for deploy command with no output (#3701)
+  * Fix PersistentPreRun at context command (#3705)
+  * chore: make git logs debug lvl (#3680)
+  * Revert "Restore "Okteto kubeconfig will use kubetoken client
+    auth if available on okteto server"" (#3515)" (#3693)
+  * Support for node selector in the docker-compose spec (#3695)
+  * Fix variables deploy installer (#3696)
+  * Revert "Fix variables deploy installer (#3688)" (#3694)
+  * fix: variable expansion on buildargs that only have one env
+    (#3689)
+  * Fix variables deploy installer (#3688)
+  * fix: endpoints should only return the json if the flag specify
+    it (#3682)
+  * Modified okteto ns create command to select new ns as current
+    ns when flag is provided (#3595)
+  * fix send on closed channel panic in isClean (#3677)
+  * Add os environ to RunOktetoEndpoints (#3675)
+  * Restore "Okteto kubeconfig will use kubetoken client auth if
+    available on okteto server"" (#3515)
+  * Mask variables at destroy (#3667)
+  * changes applied (#3584)
+  * fix: performance issues on `git status` (#3648)
+  * add local envs for hybrid command (#3666)
+  * remove secret content from build hash (#3635)
+  * fix windows e2e hybrid development (#3669)
+  * Fix RC in divert (weaver) when the cache has outdated
+    information (#3655)
+  * fix: vanilla up with compose (#3664)
+  * fix(build): vanilla cluster should not reach out to okteto
+    registry (#3658)
+  * fix: buil args expansion (#3657)
+  * Add destinationURL.Host to request Host at proxy handler
+    (#3639)
+  * support hybrid development (#3571)
+  * Use chart runner and installer images for remote deploy/destroy
+    (#3626)
+  * feat: include system cert pool in withCredentials (#3629)
+  * fix(build): expand build args (#3633)
+  * fix: panic on e2e tests (#3631)
+  * Update .gitignore (#3624)
+  * Pass --server-name to okteto remote deploy (#3620)
+  * fix endpoints retrieval e2e (#3615)
+  * deploy command works if only dependencies are specified in
+    manifest (#3614)
+  * feat: add test cases for `namespace sleep|wake` (#3605)
+  * modify .gitignore (#3610)
+
+-------------------------------------------------------------------
+Thu Jun 29 10:13:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.16.5:
+  * fix: wrong registry hostname parse as url (#3743) (#3758)
+
+-------------------------------------------------------------------
+Tue Jun 27 04:50:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.16.4:
+  * fix: search first in dev registry (#3750) (#3752)
+
+-------------------------------------------------------------------
+Mon Jun 12 20:14:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.16.3:
+  * [Backport release-2.16] fix: variable expansion on buildargs
+    that only have one env (#3691)
+  * Fix variables deploy installer (#3696) (#3697)
+  * fix: endpoints should only return the json if the flag specify
+    it (#3682) (#3687)
+
+-------------------------------------------------------------------
+Wed May 31 10:12:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.16.2:
+  * fix send on closed channel panic in isClean (#3677) (#3679)
+
+-------------------------------------------------------------------
+Tue May 30 13:49:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.16.1:
+  * Mask variables at destroy (#3667) (#3674)
+  * fix: performance issues on `git status` (#3648) (#3672)
+  * backport ffe503b9cb00f4f5a816b8e5b25109d4e8cdce35 to 2.16
+    (#3671)
+  * fix: vanilla up with compose (#3664) (#3665)
+  * fix(build): vanilla cluster should not reach out to okteto
+    registry (#3658) (#3662)
+  * fix: buil args expansion (#3657) (#3661)
+
+-------------------------------------------------------------------
+Thu May 25 12:26:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.16.0:
+  * fix(build): expand build args (#3633) (#3638)
+  * fix: panic on e2e tests (#3631) (#3634)
+  * fix endpoints retrieval e2e (#3615) (#3623)
+  * Pass --server-name to okteto remote deploy (#3620) (#3625)
+  * remove server-name shorthand (#3619)
+  * build(deps): Bump github.com/docker/distribution (#3613)
+  * feat: add server name flag (#3618)
+  * Add okteto certificates in remote deploy (#3601)
+  * Modify okteto namespace delete command to delete current
+    namespace if no argument is passed (#3598)
+  * Handle defaults in okteto kubetoken (#3602)
+  * Remove behaviour of setting service replicas one, if deployment
+    replicas is zero (#3600)
+  * Add replicas field in Services to specify the required replicas
+    for services and scale back the original deployment after
+    okteto down (#3556)
+  * doc: add more context on errors (#3591)
+  * Add external resources to preview endpoints (#3586)
+  * default OKTETO_NAMESPACE to space param in credentials query
+    (#3343)
+  * fix git pull approach (#3580)
+  * Set the sleep and wake command to perform actions on current
+    namespace (#3574)
+  * fix device resource parsing (#3566)
+  * Remove preview from deployPreview mutation response (#3568)
+  * Remove trailing whitespace on converted JSON log line (#3577)
+  * load envs in cmap when deploy (#3561)
+  * Modified the spinner text to mention about destroying dev env
+    (#3573)
+  * build empty `.dockerignore` in tmp dir for remote build if no
+    `.oktetodeployignore` provided (#3539)
+  * build(deps): Bump github.com/docker/docker (#3531)
+  * Added new commands for okteto namespace - sleep and wake
+    (#3479)
+  * Recreating pods in error state (#3360)
+  * Automatically create a namespace if needed while doing okteto
+    up (#3559)
+  * feat: deactivate git pull approach (#3565)
+
+-------------------------------------------------------------------
+Mon May 22 05:45:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.15.3:
+  * fix(build): expand build args (#3633) (#3637)
+  * fix: release-2.15 (#3636)
+  * fix: endpoints command (#3630)
+  * doc: add more context on errors (#3591) (#3592)
+
+-------------------------------------------------------------------
+Fri May 05 05:06:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.15.2:
+  * fix git pull approach (#3580) (#3587)
+
+-------------------------------------------------------------------
+Wed Apr 26 09:07:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.15.1:
+  * Remove trailing whitespace on converted JSON log line (#3577)
+    (#3578)
+
+-------------------------------------------------------------------
+Mon Apr 24 10:48:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.15.0:
+  * Added dev.okteto.com/namespace label to external resource
+    objects when they are being created (#3551)
+  * build(deps): Bump mheap/github-action-required-labels from 3 to
+    4 (#3528)
+  * fix: e2e test for remote deploy (#3557)
+  * Fixes the remove of '' when no dev env is specified for okteto
+    destroy (#3491)
+  * Always use baggage header name for istio divert driver (#3555)
+  * Apply divert transformation in the local deploy proxy (#3543)
+  * fix(translate): use selector name if available (#3550)
+  * remote output fixes (#3529)
+  * feat: always pull & export default cache when building an image
+    (#3478)
+  * feat(build): improve missing cache error message (#3541)
+  * fix: adding .git folder to the folder should propagate okteto
+    git commit (#3533)
+  * remove sensitive data in git url displayed (#3535)
+  * fix .env removal locally (#3534)
+  * fix: duplicated logs on same stage (#3521)
+  * Added Platform to BuildOptions return of OptsFromBuildInfo
+    (#3508)
+  * fix: remote deploy/destroy with no pull access image (#3526)
+  * fix: deploy with invalid image on remote
+  * fix: destroy with multiple words (#3523)
+  * infer dev name before create remote image (#3513)
+  * fix: e2e test for cmd output (#3518)
+  * fix: extra step internal server error on remote (#3507)
+  * fix: e2e test (#3514)
+  * fix external resource deploy without belonging to an env
+    (#3496)
+  * fix destroy remote when adding envs with blank values (#3504)
+  * fix: add remote build image building (#3493)
+  * chore(destroy): better error message when image not accessible
+    (#3494)
+  * build(deps): Bump github.com/opencontainers/runc from 1.1.2 to
+    1.1.5 (#3492)
+  * Added instructions to creating alias for running okteto binary
+    locally (#3497)
+  * inject OKTETO_ACTION_NAME in remote (#3489)
+  * don't initialize okteto client if not using okteto cloud
+    (#3475)
+  * Revert "Okteto kubeconfig will use kubetoken client auth if
+    available on okteto server (#3409)" (#3490)
+  * Okteto kubeconfig will use kubetoken client auth if available
+    on okteto server (#3409)
+  * Fixed issue where okteto doesnt accept 'Y' as option (#3480)
+  * tests: add auth unit test (#3473)
+  * build(deps): Bump actions/stale from 7 to 8 (#3474)
+  * fix: destroy command should expand env vars (#3477)
+  * tests: add ns gql test (#3472)
+  * add pipeline gql tests (#3471)
+  * chore(deploy): better err on dev deployment fail (#3462)
+  * Add golang style guidelines (#3469)
+  * Jlopezbarb/add preview graphql tests (#3463)
+  * Implement `kubetoken` command for k8s client authentication
+    (#3404)
+  * tests: remove unused file credential.go (#3468)
+  * Update dependencies and add spinner to check whether images
+    needs to be built (#3441)
+  * fix(deploy): wait if dependency is being deployed (#3455)
+  * add secrets graphql tests (#3464)
+  * fix: remote deploy with name multiple words (#3465)
+  * Jlopezbarb/add actions graphql tests (#3458)
+
+-------------------------------------------------------------------
+Wed Apr 19 13:29:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.14.3:
+  * feat: deactivate git pull approach (#3565) (#3567)
+
+-------------------------------------------------------------------
+Thu Apr 06 03:26:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.14.2:
+  * remove sensitive data in git url displayed (#3535) (#3537)
+  * fix: adding .git folder to the folder should propagate okteto
+    git commit (#3533) (#3538)
+  * fix .env removal locally (#3534) (#3536)
+
+-------------------------------------------------------------------
+Mon Apr 03 12:08:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.14.1:
+  * fix: remote deploy/destroy with no pull access image (#3526)
+    (#3527)
+  * fix: deploy with invalid image on remote (#3525)
+  * fix: destroy with multiple words (#3523) (#3524)
+  * infer dev name before create remote image (#3513) (#3522)
+  * fix: e2e test for cmd output (#3518) (#3519)
+  * fix: extra step internal server error on remote (#3507) (#3517)
+  * fix: e2e test (#3514) (#3516)
+  * fix external resource deploy without belonging to an env
+    (#3496) (#3512)
+  * fix: add remote build image building (#3493) (#3509)
+  * chore(destroy): better error message when image not accessible
+    (#3494) (#3505)
+  * fix: destroy command should expand env vars (#3477) (#3500)
+  * solve conflicts (#3511)
+  * inject OKTETO_ACTION_NAME in remote (#3489) (#3499)
+  * don't initialize okteto client if not using okteto cloud
+    (#3475) (#3498)
+
+-------------------------------------------------------------------
+Tue Mar 28 04:59:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.14.0:
+  * fix: remote deploy with name multiple words (#3465) (#3466)
+  * add global push (#3439)
+  * Jlopezbar/fix e2e tests (#3454)
+  * Jlopezbar/fix e2e tests (#3449)
+  * Ignore OKTETO_TOKEN warning if OKTETO_TOKEN is the one in the
+    current context (#3438)
+  * interface defaults to localhost (#3447)
+  * fix destroy image envsub (#3432)
+  * refactor registry package (#3435)
+  * fix(down): avoid panic when removing a deployment that does not
+    exist (#3436)
+  * Remove weaver CRD dependency from Okteto CLI (#3423)
+  * feat: add env vars on external resources (#3430)
+  * fix(cli): broken docs urls (#3418)
+  * e2e: fix naming convention (#3427)
+  * Jlopezbarb/add remote deploy unit test (#3421)
+  * fixes remote feature (#3412)
+  * fix issues from manual testing and remote deploy (#3411)
+  * remove context from success log (#3380)
+  * build(deps): Bump github.com/containerd/containerd from 1.5.16
+    to 1.5.18 (#3389)
+
+-------------------------------------------------------------------
+Wed Mar 01 11:37:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.13.0:
+  * fixes remote feature (#3412) (#3414)
+  * fix issues from manual testing and remote deploy
+    (#3411) (#3413)
+  * feat: merge remote deploy branch (#3400)
+  * Support for divert with Istio (#3384)
+  * Revert "feat: update to golang to 1.19.5 (#3397)" (#3399)
+  * Fix vulnerabilities (#3396)
+  * feat: update to golang to 1.19.5 (#3397)
+  * log a warning instead of prompting to ignore .git (#3370)
+  * trigger a new context store write (#3390)
+  * Don't delete volume snapshot on DestroyWithLabel if -v flag is
+    not set (#3375)
+  * Fixed bug of memory requests/reservations (#3385)
+  * Jlopezbarb/upgrade syncthing to 1.23.1 (#3386)
+  * fix: omit auth error on build (#3374)
+  * Make okteto up wait until original resource is awaken before
+    starting dev container (#3368)
+  * switch to personal namespace if previous namespace is missing
+    (#3365)
+  * chore: rename NamespaceInterface SleepNamespace (#3371)
+  * Adding error handling (#3278)
+  * Added HasRevese property on the metadata we send to metrics on
+    okteto up command (#3369)
+  * add external url to okteto env file (#3354)
+  * Removed dependency from github.com/rancher/wrangler library. It
+    was being only used to create a noop rate limiter in a specific
+    case and the library was reporting a vulnerability, so I
+    created a local noop rate limiter satisfying the needed
+    interface to be able to remove that dep (#3361)
+  * build(deps): Bump github.com/opencontainers/runc from 1.0.2 to
+    1.1.2 (#3345)
+  * fix zero value for external icon field (#3356)
+  * add possible values for icon for external resource (#3350)
+  * Wait for cronjobs to finish the execution of their jobs (#3351)
+  * build(deps): Bump github.com/containerd/containerd from 1.5.8
+    to 1.5.16 (#3346)
+
+-------------------------------------------------------------------
+Sun Feb 12 06:31:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.12.1:
+  * Wait for cronjobs to finish the execution of their jobs
+    (#3351) (#3352)
+
+-------------------------------------------------------------------
+Tue Jan 31 15:04:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.12.0:
+  * fix deploy when field notes not given to external (#3347)
+  * Added labelSelector to configmap lists at waitForNamespaceD… (#3329)
+  * build(deps): Bump mheap/github-action-required-labels from 2 to 3 (#3319)
+  * build(deps): Bump actions/stale from 6 to 7 (#3306)
+  * Add parameter for pass thru of allowPrivilegeEscalation (#3291) (#3292)
+  * fix: add markdown reading (#3332)
+  * Check deployed dev environments when inferring the name (#3300)
+  * feat: add support for custom commands in `okteto up` (#3215)
+  * feat: update copyright to 2023 (#3324)
+  * Filled up an incomplete comment (#3318)
+  * Solves okteto/app#5180. Destroy preview calls Okteto API to destroy the preview and stream logs (#3308)
+
+-------------------------------------------------------------------
+Fri Jan 13 10:28:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.11.1:
+  * fix: add markdown reading (#3332) (#3333)
+
+-------------------------------------------------------------------
+Wed Jan 04 15:47:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.11.0:
+  * feat: add external endpoints when retrieving endpoints (#3314)
+  * fix e2e when call deploy from up cmd e2e (#3316)
+  * refactor: use client provider instead of get client (#3315)
+  * add deploy external resource with okteto deploy cmd (#3303)
+  * refactor: remove force param from delete mutation (#3312)
+  * remove temporarily failing test (#3309)
+  * Okteto namespace delete use destroy all job (#3301)
+  * Fix endpoints name in compose (#3304)
+  * okteto destroy --all option with log stream (#3256)
+  * add external resource parsing (#3298)
+  * Log stream refactor (#3249)
+  * Default to watch for logs (#3299)
+  * update file permission for bin image (#3297)
+  * Refactor divert weaver implementation (#3288)
+  * feat: add namespace to dependencies (#3248)
+  * Fix sanitize name (#3263)
+  * Jlopezbarb/fix last updated not being updated (#3259)
+  * test: add e2e test regarding export cache (#3270)
+  * Ignore concurrent errors when setting divert (#3285)
+  * Add "unable to upgrade connection" to retry logic (#3280)
+  * Don't apply divert transformation if old service was autocreate/headless (#3279)
+  * Set "Ingress.Value" to properly initialize the HeaderID based on the … (#3275)
+  * Fix infer name for "okteto logs" (#3264)
+  * Create a single divert CRD and modify ingress on the client side (#3271)
+  * Add namespace for ctxOptions in UseContext() method (#3195)
+  * Fix inline export when image tag and cache tag are the same (#3261)
+  * Include 'destroy-error' status as a failure in WaitForActionToFinish function. This was provoking that if the pipeline fails, we don't indicate the error in the CLI (#3258)
+  * feat: add dependencies stage (#3251)
+  * Made changes for better readability (#3255)
+  * refactor: added ExportCache to build options (#3252)
+
+-------------------------------------------------------------------
+Wed Dec 21 09:49:29 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.10.3:
+  * Fix endpoints name in compose (#3304) (#3305)
+
+-------------------------------------------------------------------
+Fri Dec 16 12:37:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.10.2:
+  * Fix sanitize name (#3263) (#3295)
+  * Fix infer name for "okteto logs" (#3264) (#3274)
+
+-------------------------------------------------------------------
+Thu Dec 01 19:48:54 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.10.1:
+  * Fix inline export when image tag and cache tag are the same (#3261) (#3262)
+  * Include 'destroy-error' status as a failure in WaitForActionToFinish function. This was provoking that if the pipeline fails, we don't indicate the error in the CLI (#3258) (#3260)
+
+-------------------------------------------------------------------
+Wed Nov 30 14:55:31 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.10.0:
+  * refactor: added ExportCache to build options (#3252) (#3254)
+  * fix: e2e test (#3246)
+  * Sanitize name for deploy and destroy name (#3214)
+  * fix: show info if context is initialized by env vars (#3244)
+  * fix: show self signed warning when insecure flag (#3236)
+  * Check last stage instead of last line in the output tests to know if the log has finished (#3245)
+  * Alternative 1: Fix missing error messages in the installer (#3231)
+  * fix: private ingress annotations (#3224)
+  * Revert "update init container logs (#3127)" (#3239)
+  * feat: add platform flag to build command (#3234)
+  * Documentation grammar fixes (#3216)
+  * Empty cfgmap repository if not valid repo schema (#3230)
+  * Add logs command (#2120)
+  * Add errors related to EOF to our retry logic (#3227)
+  * Revert "Changes to print error message in main.go when the error is returned by the command executed and avoid duplicated messages (#3219)" (#3225)
+  * Fix clone http (#3222)
+  * Changes to print error message in main.go when the error is returned by the command executed and avoid duplicated messages (#3219)
+  * Jlopezbarb/syncthing removing console instead of okteto process e2e (#3202)
+  * Remove "github.com/ibuildthecloud/finalizers" as dependency (#3206)
+  * upload static files (#3208)
+
+-------------------------------------------------------------------
+Wed Nov 23 07:14:31 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.9.1:
+  * Revert "update init container logs (#3127)" (#3239) (#3243)
+
+-------------------------------------------------------------------
+Tue Nov 15 09:25:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.9.0:
+  * Hold "okteto up" if the cluster is scaling up (#3207)
+  * Fix error logging crash on context load failure (#3193)
+  * Fix divert at scale (#3198)
+  * Make AskYesNo function support default answers (#3192)
+  * Code cleanup in pkg/okteto/context.go (#3199)
+  * Make the channel setting configurable with an environment variable (#3201)
+  * fix: add error on init container volume full (#3189)
+  * Module refactor (#3130)
+  * feat: add specific timeout to dependencies (#3190)
+  * Support both string and sequence of string in a manifest's `cache_from` property (#3162)
+  * Updated error messaging when ctx use/update is used for vanilla clusters (#3191)
+  * logs: add logs to syncthing terminating process (#3184)
+  * [StepSecurity] ci: Harden GitHub Actions (#3143)
+  * Revert "fix: volumes not being deleted (#2955)" (#3176)
+  * fix: use the correct param on the API call (#3172)
+  * fix: panic on pipeline fallback to preview (#3169)
+  * Add option to display message if build section is not defined in okte… (#3159)
+  * fix patch in release-branch (#2961) (#3164)
+  * fix build when is buildv1 but dockerfile need to be inferred (#3158)
+  * Update message for untrusted certificates (#3154)
+  * Removing the docker version pin for setup_remote_docker in ci. (#3153)
+
+-------------------------------------------------------------------
+Fri Oct 21 10:55:46 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.8.2:
+  * logs: add logs to syncthing terminating process (#3184) (#3185)
+  * Revert "fix: volumes not being deleted (#2955)" (#3176) (#3181)
+
+-------------------------------------------------------------------
+Wed Oct 19 13:04:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.8.1:
+  * fix: use the correct param on the API call (#3172) (#3173)
+
+-------------------------------------------------------------------
+Tue Oct 18 18:20:19 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.8.0:
+  * fix: panic on pipeline fallback to preview (#3169) (#3170)
+  * release-branch fix (#3166)
+  * fix build when is buildv1 but dockerfile need to be inferred (#3158) (#3163)
+  * feat: add insecure skip tls verify (#3075)
+  * add okteto healthchecks to compose (#3140)
+  * added error status when destroying to the manifest (#3142)
+  * Add "okteto@" as a prefix in OKTETO_BUILD_XXX_SHA (#3144)
+  * If insecure-skip-tls-verify set in context, don't put certificate-authority-data in temporal kubeconfig (#3125)
+  * Inject OKTETO_TOKEN in okteto deploy (#3139)
+  * add build variables as env vars for buildArgs (#3115)
+  * Review info messages shown at the beginning of each command (#3133)
+  * update init container logs (#3127)
+  * add e2e test to check if build cmd replace secrets properly (#3106)
+  * Followup unit test for secrets (#3128)
+  * Fix wrong arguments passed to `checkpvcvalues` (#3117)
+  * Different PV default sizes between cloud/staging and others (#3096)
+  * Interrupt command deploy (#3126)
+  * Deepsource bug risk (#3122)
+  * refactor: rewrite error message (#3121)
+  * Fix secret copy (#3119)
+  * Update direct dependencies (#3120)
+  * build(deps): Bump actions/stale from 5 to 6 (#3118)
+  * redeploy stack with 0 downtime (#3109)
+  * Add pr merge docs (#3110)
+  * Check context store exists on a context list command first. (#3108)
+  * Deepsource style doc (#3114)
+  * fix: improve tokern error message inside non ctx cmd (#3071)
+  * deprecate manifestv1 (#3085)
+  * Fix security issues deep source (#3095)
+  * fix antipatterns deepsource (#3099)
+  * Fix deploy build with compose: extra touches (#3100)
+  * fix: deploy with build flag (#3098)
+  * Return clear error when docker compose doesn't have dev section (#3092)
+  * Add test coverage to preview deploy cmd (#3084)
+  * Show `preview deploy` logs when running the command with `--wait` flag (#3081)
+  * Change logic for which images to build when deploying (#3057)
+  * Show pipeline deploy and destroy logs when running the command with `--wait` flag (#3073)
+  * feat: add keep annotation (#3088)
+  * Added BuildSecrets to build manifest (#3090)
+  * Fix static analysis style issues (#3087)
+  * fix: show warning only when secret value is different (#3079)
+  * feat: update syncthing to 1.21.0 (#3072)
+
+-------------------------------------------------------------------
+Tue Oct 18 18:18:23 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.7.1:
+  * fix patch in release-branch (#2961) (#3164) (#3165)
+  * fix build when is buildv1 but dockerfile need to be inferred (#3158) (#3161)
+  * fix: deploy with build flag (#3098) (#3104)
+  * Change logic for which images to build when deploying (#3057) (#3093)
+  * fix: show warning only when secret value is different (#3079) (#3080)
+  * fix: use specific terminal (#3019)
+  * Fix TestListDevModeOn (#3070)
+  * Okteto down and exec selector only active options (#3053)
+  * fix: visual bug (#3069)
+  * add build depends on okteto manifest v2  (#3064)
+
+-------------------------------------------------------------------
+Fri Sep 16 11:57:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.7.0:
+  * fix: deploy with build flag (#3098) (#3104)
+  * Change logic for which images to build when deploying (#3057) (#3093)
+  * fix: show warning only when secret value is different (#3079) (#3080)
+  * fix: use specific terminal (#3019)
+  * Fix TestListDevModeOn (#3070)
+  * Okteto down and exec selector only active options (#3053)
+  * fix: visual bug (#3069)
+  * add build depends on okteto manifest v2  (#3064)
+  * Sanitize uppercase srv names (#3055)
+  * fix secrets replacement when okteto build (#3051)
+  * allow okteto destroy on deploy cmd (#3037)
+  * TrackReconnect new param to track dev pod recreation (#3050)
+  * chore: fix template for pull request (#3054)
+  * Audit workflows (#3036)
+  * Refactor selector (#3034)
+  * Fix dev selector typo (#3033)
+  * fix: warn when a secret is being overridden by local-env (#3032)
+  * Log syncthing api error before return (#3040)
+  * fix: show warning msg when sanitize dev (#3021)
+  * fix: delete te wrong folder (#3028)
+  * added link to blog for using okteto cli with vanilla clusters (#3027)
+  * Add okteto context to dockerfile build args (#2996)
+  * Add PreUpdate hook to newSpinner (#3023)
+  * Upgrade go to 1.18 (#3016)
+  * fix context checking when no manifest found (#3008)
+  * golang-ci-lint-fixes (#2952)
+
+-------------------------------------------------------------------
+Wed Sep 07 07:01:21 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.6.0:
+  * Add PreUpdate hook to newSpinner (#3023) (#3024)
+  * fix: add error message deploying compose (#3002)
+  * fix: backoff limit message (#3013)
+  * Fix resolve previous tags in release-branch (#3004)
+  * Fix race conditions at unit tests (#2994)
+  * Update help for deploy command to indicate that the execution of commands is locally and also removed the hidden flag for the pipeline. I think we added it when we were thinking on deprecating the command but we didn't remove the flag (#2998)
+  * Jlopezbarb/link how to tests from contribution guide (#2986)
+  * fix: if image is set, we should return the image (#2997)
+  * Handle bad equal quantity (#2992)
+  * fix: redeploy tests e2e (#2989)
+  * fix: redeploy service with different name (#2943)
+  * Fix spelling (#2971)
+  * docs: pull request scope (#2981)
+  * fix: check if resources been destroyed after destroy command (#2979)
+  * feat: ResourceEphemeralStorage (#2902)
+  * build(deps): Bump github/super-linter from 4.9.5 to 4.9.6 (#2980)
+  * Add docs for stable release process (#2982)
+  * fix: use a different random seed generator (#2978)
+  * fix: volumes not being deleted (#2955)
+  * fix: panic on non existen svc (#2956)
+  * Enable endpoints at okteto manifest (#2918)
+  * Fix okteto destroy manifest not found with k8s.yml (#2969)
+  * build(deps): Bump github/super-linter from 4.9.4 to 4.9.5 (#2958)
+  * Fix release-branch workflow (#2962)
+  * consider the context when calculating the path of the Dockerfile (#2875)
+  * Remove paragraph in error template (#2959)
+  * Account for previous versions in release-branch (#2940) (#2941)
+  * Fallback to Preview endpoint for waiting for dependencies (#2954)
+  * Fix release notes (#2942) (#2944)
+  * fix: vanilla clusters (#2949)
+
+-------------------------------------------------------------------
+Wed Sep 07 07:00:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.5.3:
+  * fix: if image is set, we should return the image (#2997) (#3003)
+
+-------------------------------------------------------------------
+Mon Aug 01 11:06:14 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.5.2:
+  * Fix okteto destroy manifest not found with k8s.yml (#2969) (#2972)
+
+-------------------------------------------------------------------
+Wed Jul 27 16:17:35 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.5.1:
+  * Fix release-branch workflow (#2962) (#2965)
+  * fix patch in release-branch (#2961)
+  * Remove paragraph in error template (#2959) (#2960)
+
+-------------------------------------------------------------------
+Wed Jul 20 14:57:09 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.5.0:
+  * fix: vanilla clusters (#2949) (#2950)
+  * Fix release notes (#2942)
+  * Account for previous versions in release-branch (#2940)
+  * fix: manifest deploying a compose (#2939)
+  * added condition to avoid dockerfile with "." (#2937)
+  * add error auth page (#2938)
+  * fix: exec dev selector (#2930)
+  * login error page (#2923)
+  * fix: wrong behaviour when okteto down --all (#2911)
+  * fix: url too large (#2927)
+  * fix: build images on up cmd (#2919)
+  * docs: add code review guidelines (#2892)
+  * Load context resource only instead of the whole file while loading ctx (#2910)
+  * Fix env parsing at stack expander (#2894)
+  * fix: pipeline test (#2922)
+  * fix: panic on destroy with wait flag (#2898)
+  * Use GetKubernetesTimeout to configure our k8s proxy timeouts (#2915)
+  * fix: forward request to cluster if invalid resource spec (#2897)
+  * feat: run windows unit tests on every commit (#2899)
+  * Fix to show endpoints after "okteto deploy" (#2904)
+  * Retry "okteto build" if buildkit restarts in the middle of the build process (#2905)
+  * Fix github actions latest release (#2906)
+  * Fix typo in RELEASE.md (#2901)
+  * Warning two dockerfiles fixed (#2883)
+  * fix configmap filename file path (#2864)
+  * Jlopezbarb/refactor tests e2e (#2755)
+  * Jlopezbarb/fix up file flag compose (#2893)
+  * Replace to underscore on manifest header comment (#2895)
+  * Update possible k8s manifest names (#2879)
+  * Revert "Jlopezbarb/fix up file flag compose (#2814)" (#2891)
+  * Jlopezbarb/fix up file flag compose (#2814)
+  * Use multi-platform okteto/bin image to support ARM clusters (#2878)
+  * Fix condition to force autocreate to false (#2882)
+  * Adding information on PR labels to the contibution guide. (#2881)
+  * Check more status in the `--wait` flag (#2880)
+  * Release fixes (#2866)
+  * Add debug logs to help troubleshoot "--wait" flag (#2848)
+  * Handle jobs "completed" status properly for the "--wait" flag (#2862)
+  * added file closure to delete it with windows (#2842)
+  * fix: remove parallel test when writing in map (#2844)
+  * Github action release (#2833)
+  * Update .DEREK.yml (#2838)
+  * build context default (#2707)
+  * Rephrase "managed by Okteto" with "Okteto installed" (#2836)
+  * Clearer patters for remote stignore (#2831)
+  * feat: support global forwarding (#2771)
+  * build(deps): Bump mheap/github-action-required-labels from 1 to 2 (#2822)
+  * Fix condition to force autocreate (#2817)
+  * Run windows tests in staging (#2784)
+  * Use seconds instead of miliseconds to build the test name for the autowake, this is a quick fix to fix the tests (#2818)
+  * creating manifest if deploy fails (#2764)
+  * fix beta release sorting (#2815)
+  * Revert "fix: compose flag on okteto up (#2804)" (#2813)
+  * fix: compose flag on okteto up (#2804)
+  * Run release after pushing the docker image (#2806)
+  * Automatically backport  Pull Requests (#2800)
+  * Update build retry conditions (#2802)
+  * update release.sh (#2787)
+  * Update kubectl and helm binaries in okteto/okteto image (#2785)
+  * Run e2e tests in staging (#2779)
+  * Release minor fixes (#2780)
+
+-------------------------------------------------------------------
+Thu Jul 07 07:08:21 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.4.2:
+  * fix configmap filename file path (#2864) (#2900)
+  * fix github actions release script (#2865)
+
+-------------------------------------------------------------------
+Fri Jul 01 10:54:47 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.4.1:
+  * Handle jobs "completed" status properly for the "--wait" flag (#2862) (#2863)
+  * Run windows tests in staging (#2784) (#2859)
+  * Use seconds instead of miliseconds to build the test name for the autowake, this is a quick fix to fix the tests (#2818) (#2860)
+  * Run e2e tests in staging (#2779) (#2858)
+  * use master branch from movies (#2850)
+  * use main branch for github actions (#2845)
+  * Github action release (#2833) (#2840)
+  * Update .DEREK.yml (#2838) (#2839)
+  * Clearer patters for remote stignore (#2831) (#2837)
+  * fix beta release sorting (#2815) (#2816)
+
+-------------------------------------------------------------------
+Wed Jun 22 12:42:46 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.4.0:
+  * Revert "fix: compose flag on okteto up (#2804)" (#2812)
+  * fix: compose flag on okteto up (#2804) (#2808)
+  * [2.4] Release fixes (#2796)
+  * fix: integration tests (#2782)
+  * fix: could not detect manifest error (#2781)
+  * test: use `T.TempDir` to create temporary test directory (#2763)
+  * Fix stack name when manifest at .okteto folder (#2742)
+  * Replace imageref in Okteto Registry by their sha to enforce redeployments if the image is updated (#2777)
+  * Update bad link to installation guide (#2776)
+  * use OKTETO_VERSION in get-okteto.sh if provided (#2769)
+  * build(deps): Bump actions/setup-python from 3 to 4 (#2766)
+  * Release docs (#2743)
+  * use default temp dir in tests (#2760)
+  * Add release channels to CI (#2727)
+  * feat: upgrade syncthing to 1.20.1 (#2756)
+  * Added condition to skip lines starting with exclamation (#2751)
+  * fix: fallback buildv1 when no okteto file detected (#2754)
+  * fix: translate stacks to compose ports when unmarshalling (#2748)
+  * fix: not fallback buildv1 if error unmarshalling manifest (#2711)
+  * build(deps): Bump github.com/hashicorp/go-getter from 1.5.11 to 1.6.1 (#2746)
+  * fix: main branch stack endpoints generation (#2736)
+  * refactor: added resize window signal to update while ssh (#2731)
+  * build(deps): Bump github/super-linter from 4.9.3 to 4.9.4 (#2733)
+  * fix: not show two times same error (#2695)
+  * Remove global optimisation e2e (#2726)
+  * Remove warning when failing to add dev annotations (#2721)
+  * Revert "Jlopezbarb/refactor unit test folders and envs (#2713)" (#2725)
+  * Jlopezbarb/refactor unit test folders and envs (#2713)
+  * Fix "okteto up" metrics for vanilla clusters (#2718)
+  * build(deps): Bump github/super-linter from 4.9.2 to 4.9.3 (#2714)
+  * Remove dead code handling old Okteto API < 0.10 (#2717)
+  * fix: build okteto with volumes tag per commit (#2710)
+  * fix: check if has access to namespace when working with vanilla cluster (#2697)
+  * Only create readiness probes for docker-compose health checks (#2699)
+  * Add codecov to makefile (#2708)
+  * feat: disable 'build' flag when 'okteto up' (#2698)
+  * fix: omit init volume initialization logs (#2701)
+  * fix: update error message. Use devPath in '-f' arg only if present (#2691)
+
+-------------------------------------------------------------------
+Mon Jun 06 18:34:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.3.3:
+  * fix: translate stacks to compose ports when unmarshalling (#2748)
+
+-------------------------------------------------------------------
+Wed Jun 01 11:12:23 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.3.2:
+  * fix: stack reference not making public ports (#2735)
+
+-------------------------------------------------------------------
+Mon May 30 14:31:10 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.3.1:
+  * Revert "Remove warning when failing to add dev annotations (#2719)"
+  * Remove warning when failing to add dev annotations (#2721)
+  * Fix "okteto up" metrics for vanilla clusters (#2718)
+  * fix: build okteto with volumes tag per commit (#2710)
+
+-------------------------------------------------------------------
+Wed May 18 09:07:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.3.0:
+  * fix: remove docker-desktop feature (#2648)
+  * fix: stack on the ui should not been expanded (#2688)
+  * refactor: point main branch in e2e test when work with voting-app (#2687)
+  * fix: avoid use compose files if manifest is v1 (#2656)
+  * feat: add e2e test for okteto deploy [svc] (#2682)
+  * Support multile envs at stack (#2652)
+  * Fix "okteto pipeline deploy --wait" condition (#2681)
+  * Add check for prereleases (#2668)
+  * refactor: added new Build Option to check if image is autogen or not (#2667)
+  * build(deps): Bump docker/setup-qemu-action from 1 to 2 (#2650)
+  * Fix: error message missing filename (#2657)
+  * build(deps): Bump docker/setup-buildx-action from 1 to 2 (#2651)
+  * Jlopezbarb/fix env vars not getting inyected into stack (#2662)
+  * fix: avoid expand env if are created on a deployment pipeline (#2653)
+  * fix: compose test e2e (#2654)
+  * Support for divert in the deploy section of the okteto manifest (#2622)
+  * fix: nil pointer when okteto manifest is created (#2649)
+  * feat: support debug on compose up detach (#2631)
+  * refactor: add clearer logs when the image name cannot be obtained (#2638)
+  * fix: load env files from stack directory (#2632)
+  * fix: remove warning symbols on stderr (#2643)
+  * refactor: remove dettach and use docker extension (#2644)
+  * fix: e2e test on compose (#2640)
+  * build(deps): Bump github.com/hashicorp/go-getter from 1.5.8 to 1.5.11 (#2633)
+  * fix: manifestv1 was not passing ctx and ns to v2 (#2601)
+  * fix: paths on win (#2618)
+  * feat: deploy dependencies before building the images (#2629)
+  * Fix tests for map non deterministic order (#2624)
+  * added --all flag in okteto down (#2515)
+  * Remove divert test + current implementation (#2620)
+  * fix: deploying compose on different path (#2617)
+  * fix: deploy a subset of svcs was building everything (#2610)
+  * Fix compose extended notation (#2612)
+  * fix: avoid nil pointer when cannot load manifest (#2614)
+  * feat: show options to the user if failure (#2602)
+  * feat: start auth flow automatically if required when refresh okteto cloud token (#2588)
+  * Fix global optimization when okteto deploy --build (#2590)
+  * feat: add test on release-x.x (#2608)
+  * fix: debugger ports not creating services (#2606)
+  * Fix CTRL + C when using "--detach" (#2604)
+  * Add http traceTransport utility (#2545)
+  * feat: add support envvars when okteto up (#2578)
+  * refactor: build command (#2503)
+  * Adrian/deploy app first before activate dev container (#2591)
+
+-------------------------------------------------------------------
+Thu May 05 15:11:41 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.2.2:
+  * fix: only skip ports if svc is public (#2646)
+
+-------------------------------------------------------------------
+Thu Apr 28 13:44:28 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.2.1:
+  * fix: debugger ports not creating services (#2606)
+
+-------------------------------------------------------------------
+Wed Apr 27 12:40:40 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.2.0:
+  * fix: check gh releases e2e test (#2594)
+  * refactor: rewrite deprecation message (#2593)
+  * feat: add initv2 autocreate feature (#2579)
+  * Jlopezbarb/fix secrets on windows (#2584)
+  * fix: use 'okteto.dev' registry when image tagging to avoid authorization error (#2570)
+  * Fix #2505. Fix okteto deploy command within other okteto deploy execution (#2563)
+  * fix: paths on windows test (#2576)
+  * Added pod name check at okteto up integration (#2572)
+  * fix: deploy from file not found error (#2574)
+  * feat: if its docker extension enable detach mode (#2546)
+  * Jlopezbarb/fix variable expansion (#2564)
+  * fix: fail if port is already in use in local machine (#2565)
+  * Track restart cli command (#2560)
+  * fix: fix e2e flaky tests (#2562)
+  * fix: stream logs after up (#2561)
+  * fix: use busybox as dev image (#2559)
+  * Update broken links to follow the new docs layout (#2556)
+  * Remove "okteto manifest" command (#2557)
+  * Handle empty labels when adding "deployed-by" label (#2553)
+  * fix: check build section (#2549)
+  * Check okteto name env when manifest is compose (#2535)
+  * fix: syncthing was killing parent process (#2539)
+  * fix: dettached paths on windows (#2541)
+  * Have 2 separate context flows for different manifest versions (#2542)
+  * Only deploy endpoints and volumes specified in servicesToDeploy (#2528)
+  * feat: add dettached mode (#2538)
+  * Build with context (#2526)
+  * Update okteto logo in login static page (#2527)
+  * fix: remove previous running proccess (#2496)
+  * feat: add show ctx json (#2522)
+  * fix: windows e2e test (#2518)
+  * Fix envs from envfile (#2513)
+  * Support for export cache when build (#2499)
+  * build(deps): Bump actions/stale from 4 to 5 (#2520)
+  * fix: remote e2e tests (#2517)
+  * Agustin/2500-support-to-deploy-a-subset-of-docker-compose-services-in-the-okteto-manifest (#2512)
+  * fix: compose ports on dev manifest (#2510)
+  * Custom login html (and redirect) for "okteto context use" (#2508)
+  * test: add tests checking deploy output (#2400)
+  * Remove DinD sidecard support (#2484)
+
+-------------------------------------------------------------------
+Thu Apr 14 19:46:00 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.1.0:
+  * Add env value when empty (#2498)
+  * Add a DinD deprecation message (#2504)
+  * Support for "okteto endpoints" with absolute paths (#2497)
+  * fix: ascii logs (#2493)
+  * fix: make json endpoints not interactive (#2488)
+  * fix: test e2e (#2491)
+  * Add the "deployed-by" label for every pod created by `okteto deploy` (#2485)
+  * fix: destroy was not init the manifest (#2489)
+  * fix:build okteto dev images (#2490)
+  * build(deps): Bump github/super-linter from 4.9.1 to 4.9.2 (#2481)
+  * fix: windows tests failing because of paths (#2480)
+  * feat: add endpoints command (#2479)
+  * refactor: undo deprecation of pipeline commands (#2477)
+  * fix: file was not taking in count directory (#2475)
+  * Clean up the `pre-commit` config (#2478)
+  * fix: change to new log-level flag (#2476)
+  * refactor: test okteto stack deploy on win and deploy on linux (#2440)
+  * fix: destroy spinner (#2455)
+  * Remove `.vscode` folder from Git (#2469)
+  * Enable `markdownlint` rules MD007,MD022,MD032 (#2467)
+  * pre-commit autoupdate (#2468)
+  * docs: fix grammar in `how-to-install-okteto-cli.md` (#2471)
+  * docs: use direct link to https://go.dev/doc/go1.17 (#2472)
+  * add json/yaml outputs for okteto ctx list (#2398)
+  * test: check indentation with `yamllint` (#2473)
+  * Fix Markdown link in `contributing.md` (#2470)
+  * Jlopezbarb/fix destroy different name (#2448)
+  * feat: add okteto autogenerate stignore env var (#2454)
+  * fix: selector label length larger than width (#2461)
+  * fix: skip ingress with no rule.host defined (#2466)
+  * fix: ca-data-override (#2460)
+  * fix: inject secrets on manifest (#2457)
+  * Fix divert test (#2458)
+  * fix: init image on default (#2447)
+  * fix: filename only injected on cfmap if flag is used (#2446)
+
+-------------------------------------------------------------------
+Tue Apr 05 08:42:43 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.0.3:
+  * fix: test e2e (#2491)
+
+-------------------------------------------------------------------
+Mon Mar 28 18:05:43 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.0.2:
+  * fix: deploy commands not using screenbuff (#2441)
+  * fix: auth error on stack (#2439)
+  * fix: fail if depending svc has been restarted 3 times (#2402)
+  * fix: apply optimisation on compose deploys (#2434)
+  * Partially restore #2427. Update only the configmap for a running installer if it is a git deploy (#2437)
+  * build(deps): Bump github/super-linter from 4.9.0 to 4.9.1 (#2438)
+  * Reduce "Information" messages about images not built (#2436)
+  * Update help message of the "okteto build -f"  flag (#2432)
+  * Include the filename in the configmap for destroy command (#2433)
+  * fix: skip non existant folder on volume mounts (#2426)
+  * Jlopezbarb/fix manifest init image (#2431)
+  * Don't bypass "not-found-error" when destroying preview (#2387)
+  * Allow to update an existing configmap even if it is managed by an installer (#2427)
+  * Remove warning if "deploy" doesn't deploy anything (#2429)
+  * fix: volume mounts not pushing into global (#2425)
+  * Make option to destroy "dependencies" on "okteto destroy" (#2428)
+  * feat: add services to deploy on deploy command (#2424)
+  * fix: remove unused comments
+  * Jlopezbarb/fix init  (#2417)
+  * feat: add test checking env var expansion (#2418)
+  * Jlopezbarb/add deploy labels and annotations (#2421)
+  * fix: add manifest field to cfgmap in infered manifest (#2423)
+  * Update messages about global registry (#2415)
+  * fix: integration test (#2414)
+  * Tag image with manifest name (#2413)
+  * Update installation links (#2407)
+
+-------------------------------------------------------------------
+Tue Mar 22 16:23:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.0.1:
+  * fix: remove trailing whitespaces on build (#2404)
+  * fix: stack ctx pointing to kubecfg (#2403)
+  * fix: up retrocompatibility issue (#2399)
+  * fix: use sha on stack images (#2401)
+  * build(deps): Bump actions/cache from 2.1.7 to 3 (#2397)
+
+-------------------------------------------------------------------
+Mon Mar 21 20:29:46 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.0.0:
+  * fix: set proxy name label after start (#2396)
+  * fix: image expansion on up (#2394)
+  * feat: send logs in plain while building in tty (#2395)
+  * fix: several bugs with the UI and the logs (#2391)
+  * fix: e2e tests (#2389)
+  * Jlopezbarb/fix logs on UI (#2388)
+  * fix manifest init (#2357)
+  * fix: add deploy flag to support compose file (#2383)
+  * fix: update not existing image error message (#2376)
+  * fix: ignore image if build exists and is okteto registry (#2379)
+  * fix: set stage not only on failures (#2371)
+  * fix: show the correct url on UI (#2382)
+  * fix: down unmarshall error (#2377)
+  * fix: up expand variables from build section into dev (#2372)
+  * fix: nil exception when deploy does not have manifest (#2375)
+  * fix: deduplicate information about running command (#2374)
+  * fix: build error on stack command (#2373)
+  * fix: command name displayed incorrectly (#2370)
+  * fix: error while building only volume mounts (#2369)
+  * Rename "Read manifest" to "Load manifest" (#2360)
+  * removing duplicate code for okteto ns and ctx (#2336)
+  * Warning if a service/volume in a stack already belongs to a different stack (#2353)
+  * Update deprecation messages to refer to 2.2.0 instead of 1.16.x (#2355)
+  * Update links to docs v2 (#2350)
+  * Retry build errors if i/o timeout (#2351)
+  * Revert "fix: stop other okteto for the same app #2299" (#2352)
+  * fix: e2e tests (#2347)
+  * Persist Bash History Between Iterations of a Dev Container (#2284)
+  * BUG: Added identitiesOnly key to SSH configuration (#2349)
+  * Metrics Fixes (#2319)
+  * feat: tty without collapsing (#2340)
+  * deploy stack should propagate same build name (#2346)
+  * feat: skip deploying a svc if its already deployed (#2341)
+  * feat: set vars as options as env vars (#2342)
+  * feat: add stages to destroy command (#2339)
+  * GitHub login email error (#2325)
+  * Fix a few meesages for Okteto CLI 2.0 (#2337)
+  * deprecating okteto update and adding okteto version (#2331)
+  * fix: forward fails on stack depends (#2334)
+  * feat: add build svc stage for every build (#2332)
+  * fix: windows build tests (#2333)
+  * fix: check if image extended after serialisation (#2329)
+  * fix: validate dev only when you have selected which one you want to develop in (#2330)
+  * fix: deploy fails without reason (#2328)
+  * Remove code to delete deprecated volume (#2327)
+  * fix: show complete error trace on tty (#2320)
+  * fix: infer stack was overriding dev and build (#2324)
+  * fix compose build integration (#2305)
+  * feat: Add deprecation message to okteto push command (#2268)
+  * deprecate extended images on dev in favour of build section (#2269)
+  * feat: hide rethinkdb port from endpoints (#2322)
+  * fix: wait until all the stdout is displayed (#2317)
+  * feat: upgrade syncthing to 1.19.1 (#2321)
+  * fix: infer manifest order (#2315)
+  * Discard reverse port if collision detected (#2304)
+  * fix: writes several lines for long commands (#2313)
+  * fix: up selector move correctly (#2314)
+  * fix: hide k8s warnings (#2316)
+  * Check metadata if err is nil (#2312)
+  * fix: stack deploy is showing endpoints when fail (#2310)
+  * fix: manifest v2 compose unmarshall (#2309)
+  * switch git clone from ssh to https because they are public (#2311)
+  * fix: add more descriptive selection after selector (#2308)
+  * fix: deploy indentation (#2307)
+  * build(deps): Bump actions/checkout from 2.4.0 to 3 (#2301)
+  * fix: okteto down cause nil pointer exception (#2303)
+  * Fix: UI not showing unmarshal errors (#2296)
+  * fix: stop other okteto for the same app (#2299)
+  * build(deps): Bump actions/setup-python from 2.3.2 to 3 (#2297)
+  * Review messages and help info (#2287)
+  * A general pass to the output of "okteto build", "okteto deploy" and "okteto destroy" commands (#2281)
+  * Add build from compose (#2282)
+  * Fix condition for using build v2 and max args at v1 (#2275)
+  * updating the contributing doc (#2240)
+  * Add init v2 (#2265)
+  * adding deprecation warning for okteto pipeline subcommands (#2266)
+  * deprecate stack in favour of deploy (#2267)
+  * Check "skip-if-exists" by accessing the configmap (#2270)
+  * Add CTA after deploy (#2262)
+  * skip showing deleting namespaces in okteto namespace command (#2181)
+  * build(deps): Bump github/super-linter from 4.8.7 to 4.9.0 (#2261)
+  * integrate compose with manifestv2 (#2252)
+  * Fix deploy not using context (#2260)
+  * fix: up was not working with args (#2259)
+  * build(deps): Bump github.com/docker/distribution (#2253)
+  * fix err with manifest v2 build (#2251)
+  * Remove manifest_v2 flag (#2244)
+  * refactor: reverted debug logs to check content at integration (#2249)
+  * Deploy build parallel (#2241)
+  * e2e tests get release from helm instead of using output (#2248)
+  * Improve tty output (#2208)
+  * autodeploy on up if app doesn't exists (#2242)
+  * Fix indentation error in info messages (#2247)
+  * fix: nil pointer on err (#2246)
+  * Jlopezbarb/add metrics (#2226)
+  * stderr send warnings instead of errors (#2238)
+  * refactor: fix pipeline opts.Branchs check (#2245)
+  * test: fix e2e (#2243)
+  * Git dependencies from manifest (#2215)
+  * Hide secrets and deploy vars in output (#2216)
+  * Add configmap to deploy commands (#2179)
+  * Fix build tag on deploy (#2235)
+  * Fix env vars expansion (#2234)
+  * add docker stage target to buildkit dockerBuildOptions.Target (#2230)
+  * build(deps): Bump actions/setup-python from 2.3.1 to 2.3.2 (#2232)
+  * Jlopezbarb/fix tests e2e (#2231)
+  * Add name to deploy command (#2087)
+  * Jlopezbarb/manifestv2 refactor (#2191)
+  * Add up deploy flag (#2036)
+  * Support multiple args okteto build (#2224)
+  * Update issue templates (#2223)
+  * Add repo and branch flags in deploy command (#2193)
+  * Fix waiting for the display to finish before running other commands (#2218)
+  * Add okteto-compose as a valid stack path (#2220)
+  * build(deps): Bump github/super-linter from 4.8.6 to 4.8.7 (#2210)
+  * Support for build global (#2197)
+  * Adds release name to ghr (#2199)
+  * Build global opt buildargs (#2189)
+  * Global registry optimisation (#2184)
+  * build(deps): Bump github/super-linter from 4.8.5 to 4.8.6 (#2200)
+
+-------------------------------------------------------------------
+Wed Mar 16 18:05:35 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.15.8:
+  * Retry build errors if i/o timeout (#2351)
+
+-------------------------------------------------------------------
+Sat Mar 12 20:33:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.15.7:
+  * Remove code to delete deprecated volume #2327
+  * Warning if a service/volume in a stack already belongs to a different stack
+
+-------------------------------------------------------------------
+Wed Mar 02 14:06:15 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.15.6:
+  * fix: okteto down cause nil pointer exception (#2303)
+  * fix: stop other okteto for the same app (#2299)
+  * Fix: UI not showing unmarshal errors (#2296)
+  * check if there is an error after start (#2302)
+
+-------------------------------------------------------------------
+Fri Feb 18 07:38:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.15.5:
+  * Fix skip-if-exists by checking if the configmap exists (#2271)
+
+-------------------------------------------------------------------
+Thu Feb 10 10:10:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.15.4:
+  * fix: nil pointer on err (#2246)
+  * fix merge
+  * Jlopezbarb/add metrics (#2226)
+  * stderr send warnings instead of errors (#2238)
+
+-------------------------------------------------------------------
+Thu Feb 03 07:20:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.15.3:
+  * Fix waiting for the display to finish before running other commands (#2218) (#2221)
+  * Add okteto-compose as a valid stack path (#2220) (#2222)
+
+-------------------------------------------------------------------
+Wed Jan 26 14:06:36 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.15.2:
+  * Fix init overwrite shorthand (#2198)
+  * refactor: Update copyright to 2022 (#2194)
+  * Updgrading buildkit to 0.9.2-okteto2 (#2192)
+
+-------------------------------------------------------------------
+Tue Jan 25 16:31:40 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.15.1:
+  * Revert init data on deployment (#2188)
+  * fix: second retry causing nil pointer exception (#2178)
+  * test: change deployment update verification and remove waitForDeployment and content check (#2187)
+  * Update "okteto kubeconfig" help message (#2185)
+  * Jlopezbarb/fix json output (#2090)
+  * Integration okteto deploy build e2e (#2158)
+  * Build integration e2e (#2156)
+
+-------------------------------------------------------------------
+Mon Jan 24 08:34:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.15.0:
+  * refactor: move registry ref to clientOptions (#2152)
+  * Dockerignore not working as expected (#2150)
+  * refactor: add unauthorized condition to registry error (#2149)
+  * fix: volume mount translation (#2130)
+  * Fix script to create latest release of actions (#2148)
+  * feat: add buildkit error (#2147)
+  * refactor: return nil if build is successful (#2146)
+  * refactor: check metadata after build if there image has been tagged and pushed to registry (#2145)
+  * Fix tests e2e (#2143)
+  * Remove extra information (#2142)
+  * Add security context to stack (#2141)
+  * New registry client (#2128)
+  * Rename prerelease job (#2139)
+  * Fix tag not trigering release candidate workflow (#2138)
+  * Add logs warning (#2137)
+  * Youngestdev/compose env (#2044)
+  * fix: use "go test -c" at "make build-integration" (#2136)
+  * Docs fixes and refactor hidden option (#2133)
+  * Jlopezbarb/fix test e2e (#2134)
+  * Jlopezbarb/create beta channel (#2073)
+  * Add namespace v2 (#2076)
+  * Expand sync folders env vars (#2131)
+  * Okteto build variables setting (#2118)
+  * fix: fail if ctx show does not have ctx set (#2123)
+  * Skip build if volume mount is already mounted (#2125)
+  * fix: ctx create nil pointer exception (#2122)
+  * fix: skip env file if it does not exists (#2124)
+  * Okteto deploy build flag (#2114)
+  * update stale.yml (#2121)
+  * fix: check if it comes from a autocreate dev (#2115)
+  * autocreate fail if app with the same name exists (#2088)
+  * Add context improvement (#2093)
+  * Fix deepsource errors (#2113)
+  * ManifestV2 context/namespace fixes (#2110)
+  * test: fix filepath (#2109)
+  * Refactor build command (#2072)
+  * Add okteto sample annotation to resources created from a git repo owned by okteto (#2081)
+  * Don't show okteto logs location for user command errors (#2106)
+
+-------------------------------------------------------------------
+Mon Jan 10 16:23:06 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go 1.17 or higher to avoid the following error:
+  [ 88s] # github.com/okteto/okteto/pkg/okteto
+  [ 88s] pkg/okteto/context.go:440:18: ipAddress.IsPrivate undefined (type "net".IP has no field or method IsPrivate)
+  [ 88s] note: module requires Go 1.17
+
+-------------------------------------------------------------------
+Mon Jan 10 16:16:08 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.14.10:
+  * Show stderr on deploy cmd (#2089)
+  * Bump github/super-linter from 4.8.4 to 4.8.5 (#2101)
+  * style: rewrite pipeline error (#2091)
+  * Fix nil error on dev exit (#2092)
+  * Add namespace and context to manifest serialiser (#2080)
+  * Local env var is preferred over secrets (#2077)
+  * Check if ns exists and create it if not (#2078)
+  * feat: Add context field to stack (#2079)
+  * test: fix test (#2070)
+  * Read build from manifest (#2052)
+
+-------------------------------------------------------------------
+Mon Jan 10 16:14:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.14.9:
+  * Fix release (#2069)
+  * Rewrite docker daemon not running error (#2016)
+  * Show endpoints at the end of deploy (#2008)
+  * Return user friendly error if secret file is not found (#2068)
+  * Jlopezbarb/fix env parsing error (#2065)
+  * Add OKTETO_DISABLE_SPINNER=true on okteto image (#2066)
+  * Replace okteto path (#2067)
+  * Okteto login depreciation message (#1935)
+  * Go format (#2061)
+  * mentioning logs' location when okteto up fails (#2035)
+  * Support for markdown syntax to show preview endpoints (#2063)
+  * fix actions tests (#2064)
+  * Add helm dependency (#2060)
+  * Jlopezbarb/add deploy destroy e2e (#2049)
+  * Upgrade syncthing to 1.18.5 (#2059)
+  * pre-commit autoupdate (#2058)
+  * Fix empty env vars from env files not being injected (#2054)
+  * Run e2e test for events API refactor (#2056)
+  * Add env_file on dev (#2055)
+  * Revert "Revert "Revert "Check syncthing status using the "rest/events" API (#2027)"""
+  * Revert "Revert "Check syncthing status using the "rest/events" API (#2027)""
+  * Fix annotations restore original (#2048)
+  * fix linting issues (#2034)
+  * Fix fluxCD annotations (#2037)
+  * Deploy with different outputs (#2009)
+  * Revert "Check syncthing status using the "rest/events" API (#2027)"
+  * Check syncthing status using the "rest/events" API (#2027)
+  * Bump actions/setup-python from 2.3.0 to 2.3.1 (#2032)
+  * Fix push action (#2031)
+  * Use https://contrib.rocks to keep track of contributors (#2000)
+  * Fix main build tests (#2030)
+  * unify okteto manifest and pipeline manifest (#1969)
+  * Enable syncthing compression by default (#2026)
+  * Redesign list namespace command (#2023)
+
+-------------------------------------------------------------------
+Mon Jan 10 16:11:40 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.14.8:
+  * Fix okteto dev registry replacement (#2020)
+  * Adds the possibility to point a ctx to a preview (#2018)
+  * Move envvar to constants (#2013)
+  * Fix stack order env files (#2015)
+
+-------------------------------------------------------------------
+Mon Jan 10 16:10:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.14.7:
+  * Add wake and autocreate e2e (#1987)
+  * Solves #2003. Add specific code to delete volumes created by statefulsets when an okteto destroy is executed (#2006)
+  * Bump actions/cache from 2.1.6 to 2.1.7 (#2011)
+  * Fix containerports recreation issue (#2007)
+  * Fix filename on older OE (#1994)
+  * add comman to generate fig descriptor (#1999)
+  * add new contributors (#1997)
+  * Improved error message for invalid sync path (#1957)
+  * test: revert #1972 (f5de696) (#1993)
+  * add make BuildArgs map in dockerBuildOptions (#1979)
+  * Bump actions/setup-python from 2.2.2 to 2.3.0 (#1988)
+  * Add "no route to host" to reconnection errors (#1986)
+  * Bump github/super-linter from 4.8.3 to 4.8.4 (#1981)
+
+-------------------------------------------------------------------
+Mon Jan 10 16:05:14 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.14.6:
+  * Upgrade latest action (#1980)
+  * Jlopezbarb/fix depends on error (#1928)
+  * Fix stack volumes with underscores (#1956)
+  * Jdm/stack healthcheck marshaling (#1975)
+  * Fix master build (#1977)
+  * Add context unit tests (#1905)
+  * rollback actions (#1940)
+  * Add check for namespace access (#1946)
+  * Add user id to context config (#1962)
+  * Fix namespace not changing namespace on ctx (#1963)
+  * Fix "operation was canceled" retriable error (#1976)
+  * Solves #1966. Disable HTTP/2 when a SPDY request is detected in the okteto deploy proxy (#1967)
+  * Skip divert test (#1972)
+  * Bump github/super-linter from 4.8.2 to 4.8.3 (#1973)
+  * Bump github/super-linter from 4.8.1 to 4.8.2 (#1968)
+  * Jlopezbarb/fix stack endpoints (#1961)
+  * Revert pipeline skipifexists okteto global (#1958)
+  * Add a HostKeyAlgorithms key to our SSH configuration (#1960)
+  * Add stack endpoints (#1866)
+  * Update action branches (#1955)
+  * Merge kubeconfig files for config (#1883)
+  * Fix okteto error message (#1951)
+  * Make preview destroy no op if no namespace found (#1952)
+  * Adds support for private endpoint annotation (#1953)
+  * NoCache check at build (#1950)
+  * Make the OKTETO_URL configurable in integration tests (#1947)
+  * Fix windows tests (#1949)
+  * Add make integration-actions command (#1948)
+
+-------------------------------------------------------------------
+Mon Jan 10 16:03:53 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.14.5:
+  * Fix ctx with deprecated login (#1945)
+  * feat: add support for multi line env files (#1944)
+  * Fix action release (#1943)
+  * Update the output of "create namespace" and "delete namespace" (#1942)
+  * fix compat issue with Okteto Enterprise (#1939)
+
+-------------------------------------------------------------------
+Mon Jan 10 15:59:29 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.14.4:
+  * fingerprint updated (#1938)
+  * Apply changes made to "okteto context create" into "okteto login"
+  * Add token to login command
+  * Init login from env vars
+  * Fix "login" command when context doesn't exist (#1937)
+  * Fix ctx action (#1936)
+
+-------------------------------------------------------------------
+Mon Jan 10 15:59:11 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go 1.16 or higher
+
+-------------------------------------------------------------------
+Mon Jan 10 15:56:59 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.14.3:
+  * Get okteto k8s contexts
+
+-------------------------------------------------------------------
+Mon Jan 10 15:55:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.14.2:
+  * Youngestdev/stack progress display (#1929)
+  * Save only on ctx commands (#1934)
+  * Adds username to ctx (#1933)
+  * homebrew fingerprint updated (#1932)
+  * "okteto init" fixes (#1931)
+  * Revert "Check if has access to namespace on okteto ctx (#1925)"
+  * Force redeploy on "okteto up" if sync folders change (#1923)
+  * Don't show login/namespace command in help messages (#1919)
+  * Jlopezbarb/fix duplicate log (#1906)
+  * Add change ctx namespace command (#1924)
+  * Check if has access to namespace on okteto ctx (#1925)
+  * update the  "how it works" doc (#1915)
+  * Add "withArg" to the `okteto namespace` track event (#1920)
+  * update context help (#1914)
+  * No need to create okteto cloud before using it (#1912)
+  * Disable fsync on remore to improve disk performance (#1899)
+  * Bump actions/checkout from 2.3.5 to 2.4.0 (#1913)
+  * Add extra space when asking for Okteto URL
+  * Eliminate okteto replicas annotation on "okteto down" (#1901)
+  * Clean unused errors (#1900)
+  * Incorporate feedback about "okteto context" (#1894)
+  * Update context command messages and help long descriptions (#1893)
+  * Fix ctx e2e tests (#1892)
+  * typos on context help (#1888)
+  * Jlopezbarb/fix ctx bugs (#1886)
+  * Remove "dev.okteto.com/state-before-sleeping" on "okteto up" (#1885)
+  * Add ctx commands (#1882)
+  * Redesign selector (#1880)
+  * Add additional validation during manifest parsing for service field (#1873)
+  * Show registry and buildkit on ctx list (#1881)
+  * Add condition to check global registry and skip build (#1837)
+  * Add stack volume pod affinity (#1849)
+  * Added check of telemetry enabled from cluster config (#1876)
+  * Translate k8s context to okteto urls if needed (#1877)
+  * Track term type on analytics (#1869)
+  * Revert "Refer a master deployment/statefulset by name (#1875)"
+  * Preselect current okteto context (#1867)
+  * fix splitted information (#1864)
+  * Refer a master deployment/statefulset by name (#1875)
+  * Indentation on Log message (#1874)
+  * Jlopezbarb/apply env var interpolation at file level (#1859)
+  * Retry API calls if is transient error (#1815)
+  * Merge context list (#1868)
+  * Check pull only if image is at okteto registy (#1865)
+  * Add local metrics for k8s (#1854)
+  * Fix initFromEnvVars to check first if OKTETO_URL or OKTETO_CONTEXT are set before setting the default value (#1858)
+  * Fix okteto init default to / (#1856)
+  * Jlopezbarb/add okteto ctx release (#1848)
+  * Jlopezbarb/add selector (#1824)
+  * Fix logic to recreate deployment/statefulset watcher (#1852)
+  * Ignore evicted pods when getting the dev pod (#1851)
+  * Deprecate filename flag in favour of file flag (#1842)
+  * Changed pre-commit config to exclude new file (#1850)
+  * Initial implementation for deploy and destroy commands (#1809)
+  * Add override stack file (#1839)
+  * Jlopezbarb/fix stignore (#1741)
+  * Jlopezbarb/fix-selector-display (#1844)
+  * Update ErrOktetoContextNotFound message
+  * Bump actions/checkout from 2.3.4 to 2.3.5 (#1845)
+  * Read okteto manifest before initializing the context. Several "okteto context" fixes (#1832)
+  * Fix empty en vars being injected (#1840)
+  * Fix e2e tests (#1841)
+  * Add multiple stack files (#1838)
+  * Add pull check and rebuild if fails (#1836)
+  * Update --skip-if-exists to check commit being deployed (#1827)
+  * Ignore "shutdown" pods when getting the dev pod (#1833)
+  * Load k8s client from context instead of writing it to a file (#1829)
+  * Stream okteto stack deploy command output on integration tests (#1826)
+  * Fix default container/image for "services" (#1825)
+  * Sync Analytics with Telemetry Param (#1805)
+  * Support for building using local docker daemon (#1730)
+  * Refactor okteto down messages (#1806)
+  * Jlopezbarb/update selector style (#1818)
+  * "okteto up" translation using a mirror deployment/statefulset (#1807)
+  * Fix spinner bug (#1819)
+  * Fix update command (#1816)
+  * Always get SSH port when running exec with remote enabled (#1814)
+  * Fixes #1633. Look for stack manifest into .okteto folder (#1810)
+  * Bump github/super-linter from 4.8.0 to 4.8.1 (#1804)
+  * Bump actions/stale from 3 to 4 (#1803)
+  * Jlopezbarb/fix divert e2e (#1795)
+  * Jlopezbarb/fix-ctx-e2e (#1800)
+  * Translate okteto registry at Dockerfiles (#1788)
+  * refactor: move from io/ioutil to io and os package (#1799)
+  * Create stale.yml (#1798)
+  * Format okteto context help message
+  * Add context command (#1757)
+  * jlopezbarb/update-graphql-library (#1747)
+  * Fix divert e2e test (#1794)
+
+-------------------------------------------------------------------
+Mon Jan 10 15:52:33 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.14.1:
+  * Fix "okteto down" with divert exiting before cleaning all resources
+  * Okteto registry check (#1790)
+  * Return interrupt signal error and set cfg to error (#1768)
+  * Increase tests timeout (#1793)
+  * Bump github/super-linter from 4.7.3 to 4.8.0 (#1792)
+  * Fix stack service redeploy with another type (#1791)
+  * Jlopezbarb/fix divert and test e2e (#1780)
+  * Fix GetRunningPod race conditions when Kubernetes is slow (#1789)
+  * Add deployment has changed event (#1786)
+  * Fix down nil pointer exception (#1784)
+  * Get global namespace (#1778)
+  * Remove several methods from App interface (#1783)
+  * Fix bug with stack and absolute paths (#1781)
+  * Fix cache error (#1779)
+  * Enable build to global namespace (#1775)
+  * Update kubectl dependency (#1774)
+  * Eliminate App interface getter/setter methods for labels and annotations (#1776)
+  * Refactor to use App interface (#1765)
+  * Add functionality to set runAsNonRoot without securityContext defaults (#1764)
+  * Set dockerfile path to work as compose do (#1769)
+  * Fix tags on README.md file (#1773)
+  * update contributors list (#1772)
+  * Deploy dependant services not running (#1766)
+
+-------------------------------------------------------------------
+Mon Jan 10 15:46:15 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.14.0:
+  * Add extension to compose (#1756)
+  * Remove helm dependency from CLI (#1762)
+  * Add stack deploy svc... (#1763)
+  * Fix wrong init container added for jobs without volumes (#1761)
+  * Upgrade to syncthing 1.18.2 (#1760)
+  * Show build error to the user when retrying (#1753)
+  * Fix display pulling events (#1759)
+
+-------------------------------------------------------------------
+Mon Jan 10 15:41:40 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.13.11:
+  * Add latest release to all actions (#1749)
+  * Bump github/super-linter from 4.7.2 to 4.7.3 (#1754)
+  * Fix pipeline not returning (#1752)
+  * Bump github/super-linter from 4.7.1 to 4.7.2 (#1751)
+
+-------------------------------------------------------------------
+Mon Jan 10 15:37:45 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.13.10:
+  * Remove namespace validation (#1748)
+
+-------------------------------------------------------------------
+Mon Jan 10 15:33:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.13.9:
+  * Fail CI if go.sum changes (#1745)
+  * Fix decode eof response (#1742)
+  * Support for new "deploy" endpoints that return an action object to follow the action progress (#1746)
+  * Fix failure in clusters that forbid running as root (#1744)
+  * Validate preview name and show user friendly error (#1743)
+
+-------------------------------------------------------------------
+Mon Jan 10 15:30:34 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.13.8:
+  * Skip windows actions tests (#1740)
+  * Handle new/old Okteto API on pipeline/preview deploy/destroy commands (#1739)
+  * Jlopezbarb/autoupdate actions e2e (#1659)
+  * Fix destroy pipeline command (#1736)
+  * Fix spinner not erasing when stop (#1738)
+  * Show link to space after deploying pipeline or preview (#1729)
+  * Retry build when bad requests failure (#1737)
+  * Upgrade to Golang 1.17 (#1734)
+  * Upgrading dependencies. (#1733)
+  * jlopezbarb/add-translate-test-services (#1726)
+  * jlopezbarb/return-proper-error-when-no-kubeconfig (#1735)
+  * Set pipeline name from git config (#1725)
+  * Bump github/super-linter from 4.6.2 to 4.7.1 (#1727)
+
+-------------------------------------------------------------------
+Mon Jan 10 15:27:32 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.13.7:
+  * Fix send result to exit channel in pipeline deploy (#1722)
+  * Bump github/super-linter from 4.6.1 to 4.6.2 (#1721)
+
+-------------------------------------------------------------------
+Mon Jan 10 15:24:30 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.13.6:
+  * Fix error translating "services" (#1719)
+
+-------------------------------------------------------------------
+Mon Jan 10 15:14:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.13.5:
+  * Ignore pod cache issues (#1717)
+  * Set update revision after getDevPod (#1715)
+  * Add node selector and affinity to manifest (#1711)
+  * fix missconfigured terminal after ctrl +c (#1641)
+  * Fix forward indentation (#1714)
+  * Set to lower resource type (#1713)
+  * Fix check moun path on second (#1712)
+  * Return user error if duplicates volume mounts (#1710)
+  * Adds better error management on pipeline/preview (#1693)
+  * Add preview endpoints command (#1697)
+  * Interpolate "OKTETO_USERNAME" in preview cmd (#1694)
+  * Return user friendly error preview name conflict (#1698)
+  * Jlopezbarb/fix e2e win (#1707)
+  * Set the syncthing verbosity based on the "--loglevel" flag (#1708)
+  * Remove auto-refresh of credentials (#1705)
+  * Revert "Deprecate environment in favour of variables (#1684)" (#1704)
+  * Bump github/super-linter from 4.5.1 to 4.6.1 (#1692)
+  * Return to previous namespace after finishing test
+  * Fix depends on with sanitized services (#1696)
+  * jlopezbarb/fail-quickly-e2e (#1699)
+  * Track initial sync duration (#1700)
+  * Make https default protocol in login (#1695)
+  * Deprecate environment in favour of variables (#1684)
+  * Fix spinner errors (#1686)
+  * Jlopezbarb/developer level file (#1627)
+  * Increase e2e test timeout (#1685)
+  * Add support for sfs dev mode (#1631)
+
+-------------------------------------------------------------------
+Mon Jan 10 15:04:07 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.13.4:
+  * Update derek curators (#1683)
+  * accept 0 args (#1682)
+
+-------------------------------------------------------------------
+Mon Jan 10 15:01:40 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.13.3:
+  * add contributors (#1677)
+  * Wait for resources to be running (#1670)
+  * Fix windows path unmarshalling (#1667)
+  * Fix arg length comprobation (#1666)
+  * Bump github/super-linter from 4.5.0 to 4.5.1 (#1668)
+  * Add sourceUrl to preview without args (#1663)
+
+-------------------------------------------------------------------
+Mon Jan 10 14:59:31 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.13.2:
+  * Add preview commands (#1644)
+  * Update codeowners based in github teams (#1661)
+  * Fix ci e2e tests (#1660)
+  * Create only token if already set user id (#1649)
+  * when initing from image container don't log every file copied just log (#1657)
+  * Track elapsed time on up command (#1654)
+  * Propagate hints on build errors (#1642)
+  * Bump github/super-linter from 4.3.0 to 4.5.0 (#1656)
+  * Add login url confirmation (#1651)
+  * Update documentation urls (#1652)
+  * Bump github/super-linter from 4.2.2 to 4.3.0 (#1653)
+  * Return error if no browser found (#1648)
+  * Fix volumes not expanding variables (#1650)
+  * Return error if no browser found
+  * Validate number of args in command (#1632)
+  * Increase default timeout
+  * Jlopezbarb/wait for autoescaler creating new nodes (#1645)
+  * Add update command (#1623)
+  * Update copyright to 2021 (#1647)
+  * Upgrade to Syncthing 1.18.0 (#1646)
+  * Increase default kubernetes timeout from 10s to 30s
+  * Ignore build argument on up if there is nothing to build (#1638)
+  * Add support for healthchecks (#1613)
+  * Remove golang.org/x/crypto vulnerability
+  * Update timeout on windows e2e tests (#1640)
+
+-------------------------------------------------------------------
+Mon Jan 10 14:47:41 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.13.1:
+  * Check if port is open on tcp protocol instead of path (#1636)
+  * Fix missconfigured terminal after Ctrl+C (#1626)
+  * Initialize okteto volume from image only if it is empty (#1639)
+  * Support replicas set to 0 in stacks (#1637)
+  * Fix windows build e2e tests (#1635)
+  * Check if url is properly formatted (#1634)
+  * Support builds for contexts that points to url (#1624)
+  * Updating divert service modification handling. (#1625)
+  * Add prettier pre-commit hook (#1621)
+  * Added an option -f parameter to okteto pipeline command to specify the location of okteto pipeline file (#1599)
+
+-------------------------------------------------------------------
+Mon Jan 10 14:39:33 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.13.0:
+  * Fix first character lost when reconnect on ssh (#1617)
+  * Trim long messages while spinning (#1618)
+  * Fix integration tests (#1616)
+  * Update okteto/bin image
+  * Fix databases created as jobs (#1614)
+  * Adds support for depends on field (#1578)
+  * Update integration tests timeout to 15 min (#1611)
+  * Add support for port ranges (#1600)
+  * Bump github/super-linter from 4.2.1 to 4.2.2 (#1609)
+  * Bump github/super-linter from 4.2.0 to 4.2.1 (#1606)
+  * Bump github/super-linter from 4.1.0 to 4.2.0 (#1605)
+
+-------------------------------------------------------------------
+Mon Jan 10 14:34:05 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.12.15:
+  * Fix empty endpoint name (#1603)
+  * Fix bug when repo url finish with slash (#1602)
+  * Update stack recreate policy (#1590)
+  * Handle two more reconnection errors (#1601)
+  * Fix okteto up recreation error (#1592)
+  * Bump github/super-linter from 4.0.2 to 4.1.0 (#1597)
+  * Move constants from labels to model (#1594)
+  * Fix CI test (#1593)
+  * Support flexible port mapping (#1585)
+  * Set update strategy to Recreate in dev mode (#1589)
+  * Add a minimum of retries before timing out "okteto up" loops (#1588)
+  * Upgrade to Syncthing 1.17.0 (#1587)
+  * Support for update persistent volume size without destroying the volume (#1586)
+  * Jlopezbarb/add expandable vars to other fields (#1583)
+  * Fix destroy service always on deploy (#1580)
+  * Jlopezbarb/add sfs unit test (#1581)
+  * Check if file does not exist (#1582)
+  * Move quotes at the end as we do for other paths (#1579)
+  * Add support for restart field (#1570)
+
+-------------------------------------------------------------------
+Tue Jun  1 07:28:54 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- initial version of package okteto

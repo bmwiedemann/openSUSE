@@ -1,0 +1,124 @@
+-------------------------------------------------------------------
+Thu Jun 15 16:55:41 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2017.08+git.20230412:
+  * kms: Use VK_EXT_external_memory_dmabuf to create dmabuf-backed Vulkan images
+  * core,ws: Allow WSI backends to request device extensions
+  * core: Improve log message consistency
+  * github: Build with both ubuntu-20.04 and ubuntu-22.04 in CI
+  * vkutil: transition image to eShaderReadOnlyOptimal
+  * Fix missing <cstdint> include
+- Drop no longer needed vkmark-cstdint-include.patch
+
+-------------------------------------------------------------------
+Tue Mar 28 00:53:01 UTC 2023 - malcolmlewis@opensuse.org
+
+- Add vkmark-cstdint-include.patch: Add missing cstdint include in
+  scene.h, (gh#vkmark/vkmark#51).
+
+-------------------------------------------------------------------
+Thu Feb  2 01:32:52 UTC 2023 - malcolmlewis@opensuse.org
+
+- Drop build requires on deprecated Mesa-libVulkan-devel.
+
+-------------------------------------------------------------------
+Thu Nov 24 13:55:41 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2017.08+git.20220909:
+  * Fix missing <memory> includes
+- Drop vkmark-fix-missing-include.patch
+
+-------------------------------------------------------------------
+Fri Sep  9 02:29:34 UTC 2022 - malcolmlewis@opensuse.org
+
+- Add vkmark-fix-missing-include.patch: Add missing memory include
+  to fix building.
+
+-------------------------------------------------------------------
+Tue Jun 28 16:32:42 UTC 2022 - malcolmlewis@opensuse.org
+
+- Update to version 2017.08+git.20220516:
+  * vkutil: Fix compilation with older vulkan-hpp versions
+  * vkutil: Avoid deprecated vk::ResultValue implicit cast
+  * tests: Update catch.hpp to v2.13.9
+- Drop vkmark-sigstksz-not-constant.patch as this is upstreamed.
+
+-------------------------------------------------------------------
+Mon Dec 20 13:32:45 UTC 2021 - malcolmlewis@opensuse.org
+
+- Add vkmark-sigstksz-not-constant.patch: Temporary fix for glibc
+  changes, (gh#vkmark/vkmark#37).
+
+-------------------------------------------------------------------
+Wed Oct 20 07:40:41 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2017.08+git.20211008:
+  * meson: check all deps, when enabling wayland winsys
+  * meson: error out when no winsys is available
+
+-------------------------------------------------------------------
+Thu Apr 22 07:23:53 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2017.08+git.20210312:
+  * wayland: Reply to ping message
+
+-------------------------------------------------------------------
+Thu Mar  4 08:14:49 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2017.08+git.20210301:
+  * doc: Document new Vulkan device related flags in man page
+  * core: Allow selecting the Vulkan device to run on
+
+-------------------------------------------------------------------
+Fri May 22 07:09:01 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2017.08+git.20200521:
+  * core: Use generated map of pixel formats to handle --pixel-format option
+  * core: Fix crash with newer vulkan-hpp
+  * doc: Update README.md with new wayland dependencies
+  * ci: Update packages dependencies for wayland
+  * wayland: Port to xdg-shell
+  * wayland: Mark the whole surface as opaque
+  * wayland: Retain native size in hidpi scaled outputs
+  * ci: Add build and test github workflow
+  * Fix build against glm-0.9.9.6
+  * build: Specify meson version as 0.45
+
+-------------------------------------------------------------------
+Thu Dec 19 15:31:23 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update dependencies (add Mesa-libVulkan-devel)
+
+-------------------------------------------------------------------
+Sun Nov 24 22:53:15 UTC 2019 - malcolmlewis@opensuse.org
+
+- Update to version 2017.08+git.20191115:
+  * ci: Add build and test github workflow.
+  * Fix build against glm-0.9.9.6.
+  * build: Specify meson version as 0.45.
+  * kms: Check the result of the vkCreateDmaBufImageINTEL call.
+  * kms: Add kms-atomic window system option.
+  * kms: Add atomic modesetting support.
+  * kms: Simplify creation of ManagedResource objects.
+  * scenes: Use vkutil::map_memory.
+  * vkutil: Add map_memory helper function.
+  * scenes: Use vkutil::SemaphoreBuilder.
+- Drop vkmark-skip-glm-dep-check.patch as this has been upstreamed.
+
+-------------------------------------------------------------------
+Tue Nov  5 07:48:56 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Do not try to build on 32 bit architectures
+
+-------------------------------------------------------------------
+Wed Nov 14 15:47:47 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Small packaging cleanups
+
+-------------------------------------------------------------------
+Tue Nov 13 14:12:00 UTC 2018 - malcolmlewis@opensuse.org
+
+- Initial build at version 2017.08 up to commit
+  1ebd493 (2018-05-30).
+- Add vkmark-skip-glm-dep-check.patch: No glm-devel pc file
+  present in development package, so check fails.

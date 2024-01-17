@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>66a3db754dbbf49f4b4b3d938f38948e</srcmd5>
+    <version>0.6.2</version>
+    <time>1505416616</time>
+    <user>dimstar_suse</user>
+    <comment>add usbguard to factory</comment>
+    <requestid>525975</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>910e3d6edf5ac336fcddb2bab867713a</srcmd5>
+    <version>0.7.4</version>
+    <time>1539251750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640850</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>17cdb3d44855975892d78bb4aa13c412</srcmd5>
+    <version>0.7.4</version>
+    <time>1539342713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641406</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b697932661688bb817378952cf81435d</srcmd5>
+    <version>0.7.4</version>
+    <time>1541746473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647226</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>a3a1c7fac2b8c5228095b0eb5eff701f</srcmd5>
+    <version>0.7.4</version>
+    <time>1548064591</time>
+    <user>dimstar_suse</user>
+    <comment>use upstream usbguard.service instead of hardcoded version (bsc#1120969) (forwarded request 666303 from rfrohl)</comment>
+    <requestid>666304</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>b12093b3fb959717f54a46a78dce7bca</srcmd5>
+    <version>0.7.4</version>
+    <time>1558690369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705009</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>6263da5267ffdd10271b4deab114188d</srcmd5>
+    <version>0.7.4</version>
+    <time>1563808735</time>
+    <user>dimstar_suse</user>
+    <comment>- link against libpthread to make it build (bsc#1141377)
+- added usbguard-pthread.patch</comment>
+    <requestid>717525</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b67301225986653ab06203d6c76b1864</srcmd5>
+    <version>0.7.6</version>
+    <time>1580511452</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768992</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d2e28fe40ac80d4cf58e592299d5eb71</srcmd5>
+    <version>0.7.8</version>
+    <time>1592398139</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815249</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>b2bcaf7f39614935660dd50a7fb81206</srcmd5>
+    <version>0.7.8</version>
+    <time>1594387812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819800</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>e230084277a14e5196beddbbadceb338</srcmd5>
+    <version>0.7.8</version>
+    <time>1602073071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839828</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6152e460c242d6c1644659742dc25190</srcmd5>
+    <version>1.0.0</version>
+    <time>1611262475</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>865062</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>96e4526e726f60e1cee8769a02bfe64b</srcmd5>
+    <version>1.0.0</version>
+    <time>1628282691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>910442</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>10b14424efbf8969f02291323de8de3b</srcmd5>
+    <version>1.1.0</version>
+    <time>1645723280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957400</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>297c223ece2172ae74f9262fd3b5983e</srcmd5>
+    <version>1.1.0</version>
+    <time>1645820716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957613</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7139ef96046d933dfa878f8d17e13632</srcmd5>
+    <version>1.1.1</version>
+    <time>1648570459</time>
+    <user>dimstar_suse</user>
+    <comment>needs the following changes: 964852</comment>
+    <requestid>964868</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>1ae29eef55f3e0cda3175e4840eacee4</srcmd5>
+    <version>1.1.1</version>
+    <time>1649370500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967513</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0cc23952e1e7fb77eb055879231e4a72</srcmd5>
+    <version>1.1.2</version>
+    <time>1662405725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001233</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>81533765daabd6abf59a258aadbbc120</srcmd5>
+    <version>1.1.2</version>
+    <time>1680018671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074919</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>ecc73200fd1130328518a44e10bde1a3</srcmd5>
+    <version>1.1.2</version>
+    <time>1683037121</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1083228</requestid>
+  </revision>
+</revisionlist>

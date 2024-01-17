@@ -1,0 +1,5 @@
+<package name="jtc" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="utilities" package="jtc"/>
+</package>

@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Dec  5 03:46:14 UTC 2017 - 9@cirno.systems
+
+- Add openssl-1_1-compat.patch for OpenSSL 1.1 compatibility,
+  build with default openssl version
+- Package license and documentation
+
+-------------------------------------------------------------------
+Mon Dec  4 14:23:25 UTC 2017 - 9@cirno.systems
+
+- Use openssl 1.0.0 for build
+  Temporary. Will have to sit down and work out how to port this
+  thing.
+
+-------------------------------------------------------------------
+Mon Aug 18 15:15:15 UTC 2014 - 9@cirno.systems
+
+- init
+

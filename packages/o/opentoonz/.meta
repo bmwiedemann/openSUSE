@@ -1,0 +1,5 @@
+<package name="opentoonz" project="openSUSE:Factory">
+  <title>OpenToonz</title>
+  <description>2D animation software previously known as Toonz.</description>
+  <devel project="graphics" package="opentoonz"/>
+</package>

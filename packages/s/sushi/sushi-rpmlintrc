@@ -1,0 +1,4 @@
+# Filter out warning about devel-file in non devel package.
+# There is no need for a devel package for a single gir file
+addFilter("devel-file-in-non-devel-package .*/usr/share/sushi/gir-1.0/Sushi-1.0.gir");
+

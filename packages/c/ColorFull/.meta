@@ -1,0 +1,15 @@
+<package name="ColorFull" project="openSUSE:Factory">
+  <title>ColorFull: A C++ library for calculations in QCD (SU(Nc)) color space</title>
+  <description>ColorFull is a C++ code for calculations in QCD (SU(Nc)) color space. It can
+
+* Square any QCD color amplitude and calculate any interference.
+* Create a trace type basis for any number of quarks and gluons.
+* Read in and write out color bases.
+* Calculate scalar product matrices, i.e., the matrices of scalar products between the basis vectors.
+* Describe the effect of gluon exchange, including calculating the color soft anomalous dimension matrices.
+* Describe the effect of gluon emission.
+* Be interfaced to Herwig++ (&gt;= 2.7) via Matchbox.
+</description>
+  <devel project="science" package="ColorFull"/>
+  <url>http://colorfull.hepforge.org/</url>
+</package>

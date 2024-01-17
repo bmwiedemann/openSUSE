@@ -1,0 +1,9 @@
+<package name="thunarx-python" project="openSUSE:Factory">
+  <title>Python Bindings for the Thunar Extension Framework</title>
+  <description>This package provides the Python bindings for the Thunar Extension framework
+which allow one to create Python plugins for Thunar.
+
+</description>
+  <devel project="X11:xfce" package="thunarx-python"/>
+  <url>http://goodies.xfce.org/projects/bindings/thunarx-python</url>
+</package>

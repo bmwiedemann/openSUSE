@@ -1,0 +1,6 @@
+<package name="dianara" project="openSUSE:Factory">
+  <title>A pump.io application for the desktop</title>
+  <description>This is a pump.io client. With it, you can access your pump.io account without using a web browser.
+You can read your timelines, post messages and pictures, and manage your contacts.</description>
+  <devel project="network" package="dianara"/>
+</package>

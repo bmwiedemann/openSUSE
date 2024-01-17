@@ -1,0 +1,26 @@
+# Erlang in openSUSE
+## Erlang Port-mapper Daemon and systemd
+
+Erlang Port-mapper Daemon in openSUSE uses systemd socket-activation. In order to fulfill security considerations, EPMd listens on loop-back interface by default. This is enough to run rabbitmq-server, ejabberd and user-started beam processes.
+
+For clustering, please, use ```/etc/systemd/system/epmd.socket.d/``` to configure interfaces to listen on. See man systemd.unit(5) for details.
+
+### Upgrading from sysvinit
+```/etc/sysconfig/erlang``` has no effect now, to configure EPMd use systemd capabilities instead.
+
+### Example 1: change port
+Create ```/etc/systemd/system/epmd.socket.d/port.conf``` with following content:
+```
+[Socket]
+ListenStream=
+ListenStream=127.0.0.1:4444
+```
+The first line is to discard vendor configuration. The second line will change the port number to listen on to 4444.
+
+### Example 2: enable external interface
+To enable accepting external connections to EPMd, create ```/etc/systemd/system/epmd.socket.d/port.conf``` with following content:
+```
+[Socket]
+ListenStream=
+ListenStream=0.0.0.0:4369
+```
