@@ -1200,4 +1200,32 @@ New upstream release</comment>
   * revert more C++20 features (forwarded request 1125778 from yudaike)</comment>
     <requestid>1126606</requestid>
   </revision>
+  <revision rev="152" vrev="3">
+    <srcmd5>b7f893f4b99b7182bd3d3066858fb54d</srcmd5>
+    <version>0.74.1</version>
+    <time>1701289161</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129586</requestid>
+  </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>73a287da22f0b9710da081ca2c837d61</srcmd5>
+    <version>0.74.2</version>
+    <time>1703102455</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.74.2:
+  * lib,bidi: Work on the heap rather than the stack
+  * stream: Fix a rare corruption when advancing the tail
+  * widget: Fix initial cursor blink state
+  * build: Post release version bump (forwarded request 1134007 from dimstar)</comment>
+    <requestid>1134010</requestid>
+  </revision>
+  <revision rev="154" vrev="2">
+    <srcmd5>abd62d3dc61fc3e18d245ac5b3ce7ab3</srcmd5>
+    <version>0.74.2</version>
+    <time>1705353308</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138768</requestid>
+  </revision>
 </revisionlist>

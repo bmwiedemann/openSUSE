@@ -1,7 +1,7 @@
 #
 # spec file for package vte
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with     glade_support
 
 Name:           vte
-Version:        0.74.1
+Version:        0.74.2
 Release:        0
 Summary:        Terminal Emulator Library
 License:        CC-BY-4.0 AND LGPL-3.0-or-later AND GPL-3.0-or-later AND MIT
@@ -91,6 +91,8 @@ emulation settings.
 Summary:        Introspection bindings for the VTE terminal emulator library
 License:        LGPL-2.0-only
 Group:          System/Libraries
+Provides:       typelib-1_0-Vte-%{_apiver} = %{version}
+Obsoletes:      typelib-1_0-Vte-%{_apiver} < %{version}
 
 %description -n typelib-1_0-Vte-%{?_binver}
 VTE is a terminal emulator library that provides a terminal widget for
@@ -176,9 +178,9 @@ widgets in Glade.
 
 %prep
 %autosetup -n %{_name}-%{version} -N
-%patch0 -p1
+%patch -P 0 -p1
 %if 0%{?sle_version}
-%patch100 -p1
+%patch -P 100 -p1
 %endif
 
 %build
