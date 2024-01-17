@@ -41,6 +41,8 @@ Patch2:         disable_randomly_failing_tests.patch
 # PATCH-FIX-OPENSUSE make-leap15-compat.patch mcepl@suse.com
 # Make tests passing with Leap 15.2
 Patch3:         make-leap15-compat.patch
+# PATCH-FIX-OPENSUSE xfail a test around pause/unpause not behaving
+Patch4:         pause-unpause-xfail.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

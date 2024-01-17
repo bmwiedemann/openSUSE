@@ -420,4 +420,13 @@
   test_request_with_verifypeer (gh#pycurl/pycurl#822).</comment>
     <requestid>1117519</requestid>
   </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>6976d42aee9a3028bbd73a3e6b3d7a70</srcmd5>
+    <version>7.45.2</version>
+    <time>1702673168</time>
+    <user>anag+factory</user>
+    <comment>- Add patch pause-unpause-xfail.patch:
+  * XFAIL a test due to gh#pycurl/pycurl#729 (bsc#1218062)</comment>
+    <requestid>1133226</requestid>
+  </revision>
 </revisionlist>
