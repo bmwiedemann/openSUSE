@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-socks
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-socks
-Version:        2.1.1
+Version:        2.4.4
 Release:        0
 Summary:        Core proxy client functionality for Python
 License:        Apache-2.0
 URL:            https://github.com/romis2012/python-socks
 Source:         https://files.pythonhosted.org/packages/source/p/python-socks/python-socks-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,6 +56,6 @@ directly. It is used internally by aiohttp-socks and httpx-socks packages.
 %doc README.md
 %license LICENSE.txt
 %{python_sitelib}/python_socks
-%{python_sitelib}/python_socks-%{version}*-info
+%{python_sitelib}/python_socks-%{version}.dist-info
 
 %changelog
