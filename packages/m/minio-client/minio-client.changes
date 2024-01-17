@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 17 07:25:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240116T160634Z:
+  * Making cli pager optional + better visual indicators for
+    scrolling (#4819)
+
+-------------------------------------------------------------------
 Mon Jan 15 20:40:43 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240113T084448Z:
