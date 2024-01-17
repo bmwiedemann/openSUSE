@@ -1,6 +1,0 @@
-<package name="krius" project="openSUSE:Factory">
-  <title>krius</title>
-  <description>A tool to setup Prometheus, Thanos and friends across multiple clusters easily for scale</description>
-  <devel project="devel:kubic" package="krius"/>
-  <url>https://github.com/infracloudio/krius</url>
-</package>

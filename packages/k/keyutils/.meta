@@ -1,7 +1,0 @@
-<package name="keyutils" project="openSUSE:Factory">
-  <title>Linux Key Management Utilities</title>
-  <description>Utilities to control the kernel key management facility and to provide
-a mechanism by which the kernel can call back to user space to get a
-key instantiated.</description>
-  <devel project="security" package="keyutils"/>
-</package>

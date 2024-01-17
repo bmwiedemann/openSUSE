@@ -1,6 +1,0 @@
-<package name="konstraint" project="openSUSE:Factory">
-  <title>konstraint</title>
-  <description>A policy management tool for interacting with Gatekeeper</description>
-  <devel project="devel:kubic" package="konstraint"/>
-  <url>https://github.com/plexsystems/konstraint</url>
-</package>

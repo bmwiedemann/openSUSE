@@ -1,8 +1,0 @@
-<multibuild>
-  <flavor>kvm-and-xen-sdboot</flavor>
-  <flavor>kvm-and-xen</flavor>
-  <flavor>VMware</flavor>
-  <flavor>MS-HyperV</flavor>
-  <flavor>Cloud</flavor>
-  <flavor>RaspberryPi</flavor>
-</multibuild>

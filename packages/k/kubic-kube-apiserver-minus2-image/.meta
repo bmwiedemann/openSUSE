@@ -1,5 +1,0 @@
-<package name="kubic-kube-apiserver-minus2-image" project="openSUSE:Factory">
-  <title>kubic-kube-apiserver-minus2-image</title>
-  <description></description>
-  <devel project="devel:kubic:containers" package="kubic-kube-apiserver-minus2-image"/>
-</package>

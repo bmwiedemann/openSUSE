@@ -1,5 +1,0 @@
-<package name="kdoctools" project="openSUSE:Factory">
-  <title>kdoctools</title>
-  <description>KDocTools</description>
-  <devel project="KDE:Frameworks5" package="kdoctools"/>
-</package>

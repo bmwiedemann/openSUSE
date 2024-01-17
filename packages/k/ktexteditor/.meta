@@ -1,5 +1,0 @@
-<package name="ktexteditor" project="openSUSE:Factory">
-  <title>ktexteditor</title>
-  <description>KTextEditor</description>
-  <devel project="KDE:Frameworks5" package="ktexteditor"/>
-</package>

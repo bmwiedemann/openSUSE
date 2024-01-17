@@ -1,5 +1,0 @@
-<package name="kcodecs" project="openSUSE:Factory">
-  <title>kcodecs</title>
-  <description>Plugins allowing Qt applications to access further types of images</description>
-  <devel project="KDE:Frameworks5" package="kcodecs"/>
-</package>

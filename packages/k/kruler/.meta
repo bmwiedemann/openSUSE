@@ -1,5 +1,0 @@
-<package name="kruler" project="openSUSE:Factory">
-  <title>Screen Ruler</title>
-  <description>A screen ruler for the K Desktop Environment</description>
-  <devel project="KDE:Applications" package="kruler"/>
-</package>

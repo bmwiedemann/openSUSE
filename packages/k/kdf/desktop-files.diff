@@ -1,7 +1,0 @@
---- desktop/org.kde.kwikdisk.desktop
-+++ desktop/org.kde.kwikdisk.desktop
-@@ -1,3 +1,4 @@
- [Desktop Entry]
-+OnlyShowIn=KDE;
- Name=KwikDisk
- Name[af]=Kwikdisk

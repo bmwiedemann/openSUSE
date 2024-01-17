@@ -1,9 +1,0 @@
-<package name="konkretcmpi" project="openSUSE:Factory">
-  <title>An open-source library/tool for rapidly developing CMPI providers in the C programming language</title>
-  <description>An open-source tool for rapidly developing CMPI providers in the C
-programming language. KonkretCMPI makes CMPI provider development
-easier by generating type-safe concrete CIM interfaces from MOF
-definitions and by providing default implementations for many of the
-provider operations.</description>
-  <devel project="systemsmanagement:wbem" package="konkretcmpi"/>
-</package>

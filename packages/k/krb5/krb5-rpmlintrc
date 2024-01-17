@@ -1,8 +1,0 @@
-addFilter("devel-file-in-non-devel-package .*libgssapi_krb5.so")
-addFilter("hidden-file-or-dir .*/usr/share/man/man5/.k5login.5.gz")
-addFilter("hidden-file-or-dir .*/usr/share/man/man5/.k5identity.5.gz")
-addFilter("files-duplicate .*css")
-addFilter("files-duplicate .*img.*png")
-addFilter("devel-file-in-non-devel-package .*libkdb_ldap.so")
-addFilter("shlib-policy-missing-suffix")
-addFilter("non-etc-or-var-file-marked-as-conffile")

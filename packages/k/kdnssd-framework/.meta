@@ -1,5 +1,0 @@
-<package name="kdnssd-framework" project="openSUSE:Factory">
-  <title>kdnssd-framework</title>
-  <description>KDNSSD Framework</description>
-  <devel project="KDE:Frameworks5" package="kdnssd-framework"/>
-</package>

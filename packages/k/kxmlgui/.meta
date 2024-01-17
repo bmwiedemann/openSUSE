@@ -1,5 +1,0 @@
-<package name="kxmlgui" project="openSUSE:Factory">
-  <title>kxmlgui</title>
-  <description>KXMLGUI</description>
-  <devel project="KDE:Frameworks5" package="kxmlgui"/>
-</package>

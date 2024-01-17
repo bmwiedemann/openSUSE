@@ -1,5 +1,0 @@
-<package name="kross" project="openSUSE:Factory">
-  <title>kross</title>
-  <description>Kross</description>
-  <devel project="KDE:Frameworks5" package="kross"/>
-</package>

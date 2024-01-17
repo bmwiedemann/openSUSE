@@ -1,5 +1,0 @@
-<package name="klee-uclibc" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="devel:tools:statica" package="klee-uclibc"/>
-</package>

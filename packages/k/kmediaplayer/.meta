@@ -1,5 +1,0 @@
-<package name="kmediaplayer" project="openSUSE:Factory">
-  <title>kmediaplayer</title>
-  <description>KMediaPlayer</description>
-  <devel project="KDE:Frameworks5" package="kmediaplayer"/>
-</package>

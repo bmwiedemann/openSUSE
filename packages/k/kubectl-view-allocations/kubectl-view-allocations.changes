@@ -1,6 +1,0 @@
--------------------------------------------------------------------
-Mon Nov 27 05:53:44 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
-
-- new package kubectl-view-allocations: kubectl plugin to list
-  allocations (cpu, memory, gpu,... X utilization, requested,
-  limit, allocatable,...)

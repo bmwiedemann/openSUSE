@@ -1,5 +1,0 @@
-<package name="kdesignerplugin" project="openSUSE:Factory">
-  <title>kdesignerplugin</title>
-  <description>KDesignerPlugin</description>
-  <devel project="KDE:Frameworks5" package="kdesignerplugin"/>
-</package>
