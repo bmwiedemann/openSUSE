@@ -1,0 +1,37 @@
+---
+ mk/sys/Linux.mk |   10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+--- a/mk/sys/Linux.mk
++++ b/mk/sys/Linux.mk
+@@ -21,7 +21,7 @@ ARFLAGS ?=	r
+ RANLIB ?=		ranlib
+ 
+ AS ?=		as
+-AFLAGS=
++AFLAGS ?=
+ COMPILE.s ?=	${AS} ${AFLAGS}
+ LINK.s ?=		${CC} ${AFLAGS} ${LDFLAGS}
+ COMPILE.S ?=	${CC} ${AFLAGS} ${CPPFLAGS} -c
+@@ -79,6 +79,12 @@ YACC ?=		yacc
+ YFLAGS ?=		-d
+ YACC.y ?=		${YACC} ${YFLAGS}
+ 
++# At least Ubuntu 8.1 sets __attribute__((warn_unused_result)) on fwrite()
++# http://gcc.gnu.org/bugzilla/show_bug.cgi?id=25509
++.if !defined(NOGCCERROR)
++CFLAGS+= -Wno-error
++.endif
++
+ # C
+ .c:
+ 	${LINK.c} -o ${.TARGET} ${.IMPSRC} ${LDLIBS}
+@@ -88,6 +94,8 @@ YACC.y ?=		${YACC} ${YFLAGS}
+ 	${COMPILE.c} ${.IMPSRC}
+ 	${AR} ${ARFLAGS} $@ $*.o
+ 	rm -f $*.o
++.c.ln:
++	${LINT} ${LINTFLAGS} ${CPPFLAGS:M-[IDU]*} -i ${.IMPSRC}
+ 
+ # C++
+ ${CXX_SUFFIXES}:

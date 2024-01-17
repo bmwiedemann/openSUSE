@@ -1,0 +1,38 @@
+diff -Naur drbd-utils-8.9.9.orig/scripts/drbd drbd-utils-8.9.9/scripts/drbd
+--- drbd-utils-8.9.9.orig/scripts/drbd	2016-10-24 17:37:12.893292307 +0800
++++ drbd-utils-8.9.9/scripts/drbd	2016-10-24 17:38:56.728938286 +0800
+@@ -9,14 +9,14 @@
+ #
+ ### BEGIN INIT INFO
+ # Provides: drbd
+-# Required-Start: $local_fs $network $syslog
+-# Required-Stop:  $local_fs $network $syslog
++# Required-Start: $remote_fs $network $syslog
++# Required-Stop:  $remote_fs $network $syslog
+ # Should-Start:   sshd multipathd
+ # Should-Stop:    sshd multipathd
+ # Default-Start:
+ # Default-Stop:   0 1 6
+-# X-Start-Before: heartbeat corosync
+-# X-Stop-After:   heartbeat corosync
++# X-Start-Before: pacemaker corosync
++# X-Stop-After:   pacemaker corosync
+ # X-Interactive:  true
+ # Short-Description:    Control DRBD resources.
+ # Description:    Control all DRBD resources.
+@@ -184,7 +184,6 @@
+ 	    done
+ 	done
+ 
+-	[ -d /var/lock/subsys ] && touch /var/lock/subsys/drbd	# for RedHat
+ 	run_hook start_before-wait
+ 	$DRBDADM wait-con-int # User interruptible version of wait-connect all
+ 	run_hook start
+@@ -256,7 +255,6 @@
+ 	    fi
+ 	done
+ 	run_hook stop
+-	[ -f /var/lock/subsys/drbd ] && rm /var/lock/subsys/drbd
+ 	log_end_msg 0
+ 	;;
+     status)

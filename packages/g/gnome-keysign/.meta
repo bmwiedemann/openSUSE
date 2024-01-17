@@ -1,0 +1,12 @@
+<package name="gnome-keysign" project="openSUSE:Factory">
+  <title>GNOME OpenGPG key signing helper</title>
+  <description>Its purpose is to ease signing other peoples' keys. It is similar
+to caff, PIUS, or monkeysign. In fact, it is influenced a lot by
+these tools and either reimplements ideas or reuses code.
+Consider either of the aboved mentioned tools when you need a much
+more mature codebase.
+
+</description>
+  <devel project="GNOME:Apps" package="gnome-keysign"/>
+  <url>https://github.com/muelli/geysigning</url>
+</package>

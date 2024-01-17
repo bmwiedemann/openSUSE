@@ -1,0 +1,25 @@
+diff -Naur drbd-utils-9.0.0.orig/scripts/global_common.conf drbd-utils-9.0.0/scripts/global_common.conf
+--- drbd-utils-9.0.0.orig/scripts/global_common.conf	2017-10-16 17:02:55.715528259 +0800
++++ drbd-utils-9.0.0/scripts/global_common.conf	2017-10-16 17:07:49.755636558 +0800
+@@ -47,10 +47,10 @@
+ 	}
+ 
+ 	disk {
+-		# size on-io-error fencing disk-barrier disk-flushes
++		# on-io-error disk-barrier disk-flushes
+ 		# disk-drain md-flushes resync-rate resync-after al-extents
+-                # c-plan-ahead c-delay-target c-fill-target c-max-rate
+-                # c-min-rate disk-timeout
++		# c-plan-ahead c-delay-target c-fill-target c-max-rate
++		# c-min-rate disk-timeout
+ 	}
+ 
+ 	net {
+@@ -60,6 +60,6 @@
+ 		# after-sb-1pri after-sb-2pri always-asbp rr-conflict
+ 		# ping-timeout data-integrity-alg tcp-cork on-congestion
+ 		# congestion-fill congestion-extents csums-alg verify-alg
+-		# use-rle
++		# use-rle fencing
+ 	}
+ }

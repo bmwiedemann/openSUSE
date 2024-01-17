@@ -1,0 +1,989 @@
+-------------------------------------------------------------------
+Sat Sep 23 17:14:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.1:
+  * Fix some clang complaints
+  * scaling: MMX asm scaling causes segv, disable for now
+  * loading: Call module exit function also when not
+    dlclosing module on unload
+  * loaders: Fix build with -m32 --enable-debug
+  * test_load_2: Add forgotten xeyes.png
+  * test_save: Fix for jxl loader on ix86
+  * test_scale: MMX scaling is disabled
+  * RAW loader: Don't unload loader
+  * loaders: Fix CPPFLAGS order
+  * imlib2_grab, imlib2_view: Unset context colormap
+  * x11_grab: Use correct depth when grabbing
+
+-------------------------------------------------------------------
+Thu Aug 31 13:05:14 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Disable MMX code, it's broken in 1.12.0 (boo#1214528)
+
+-------------------------------------------------------------------
+Thu Aug 17 18:02:04 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to 1.12.0:
+  * test_load2: make error messages more descriptive
+  * Y4M loader: fix support for 420 colorspaces
+  * Y4M loader: add support for images with unexpected aspects
+  * imlib2_view: Avoid potential use of uninitialized data
+  * GIF loader: Enable showing animated images even if truncated
+  * Introduce __imlib_perror() to produce error messages
+  * loaders: Use common function to print error messages
+  * imlib2_load: Move time_us() to separate file
+  * imlib2_conv: Add option to time save operations
+  * test: Fix pr_info() when not printing to stdout
+  * loading: Enable calling function on loader load/unload
+  * HEIF loader: Call heif_[de]init() on loader load/unload
+  * autofoo: Don't check for freetype if we are building without text
+  * QOI loader: Add progress calback, indent, cosmetics
+  * Loaders: Static constify some data that may as well be
+  * TGA loader: Fix TGA v2.0 signature check
+  * test: Add basic qoi checks
+  * test_scale: Test scaling some more
+  * scaling: Unifdef OLD_SCALE_DOWN
+  * scaling: Correct scaleinfo array length
+  * scaling: Move scaling function call sequence into common __imlib_Scale()
+  * scaling: Cosmetics (comments)
+  * scaling: Simplify scaling points calculation (eliminate j)
+  * scaling: Change ypoints[] from pointers to indices
+  * scaling: Cosmetics
+  * scaling: Minor refactoring
+  * scaling: Correct scaling up
+  * test_scale: Update for new scaling
+  * image: Fix missing munmap() when using imlib_load_image_fd()
+  * image: Fix potentially using incorrect file size
+  * file: Remove a couple of unused functions
+  * image: Fix potentially using incorrect file size - fixup
+  * test: Bypass wrappers when running tests
+  * test_load: Minor fix in debug message
+  * Add new raw loader
+  * TIFF loader: Slightly more strict signature check
+  * image: Use sub-second time info when available
+  * image: Fix preservation of alpha chanel flag in imlib_clone_image()
+  * image cache: Avoid negative refcounts
+  * image cache: Drop redundant cleanup
+  * image cache: Rework cleanup
+  * Revert "scaling: Correct scaling up"
+  * Revert "test_scale: Update for new scaling"
+  * scaling: Various trivial changes
+  * scaling: Improve non-AA scale-up case
+  * scaling: Correct scaling up - take 2
+  * test_scale: Update for new scaling (re-applied)
+  * test_scale: Exercise non-AA path too
+  * WEBP saver: allow lossless and respect compression tag
+  * add a new QOI decoder
+  * QOI loader: fix build on non-gnu compilers
+  * QOI loader: use memcmp for magic and endmarker check
+  * Y4M loader: check file size before magic check
+  * loading: add some debug logs
+  * loading: check for alloc failure
+  * Y4M loader: use custom y4m parser
+  * test_load: allow y4m memory loading
+  * file: Remove unused functions some more
+  * introduce imlib_image_decache_file()
+
+-------------------------------------------------------------------
+Mon Jun 19 10:28:47 UTC 2023 - Simon Lees <sflees@suse.de>
+
+- Changelog update only
+- integer overflow (with resultant invalid memory allocations and
+  out-of-bounds reads) via an icon with many colors in its color
+  map was fixed in 1.7.0 (bsc#1171472, CVE-2020-12761)
+
+-------------------------------------------------------------------
+Mon May 29 01:50:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.1:
+  * imlib2: added loader for y4m files (uses liby4m and
+    libyuv)
+  * imlib2: add y4m test examples
+  * Y4M loader: Various minor changes
+  * autofoo: Tweak PACKAGE_DATA_DIR definition
+  * XPM loader: Add rgb.txt
+  * loaders: Fix loaders potentially being loaded more than
+    once
+  * loaders: Change method used to not unload loaders
+  * Add JXL saver
+  * loaders: Cosmetics
+
+-------------------------------------------------------------------
+Fri Mar 10 08:26:46 UTC 2023 - Enrico Belleri <idesmi@protonmail.com>
+
+- update to 1.11.0:
+  * remove bad unused function
+  * test: Add a few tests for obscure pnm formats
+  * test: Add some pam tests
+  * Avoid some more undefined behaviors with shifts
+  * api: Fix code duplication around some __imlib_BlendImageToImage() calls
+  * api: Change some parameter names
+  * api: Tweak/correct error handling in drawable grabbing functions
+  * image: Let __imlib_CreateImage() allocate pixel data buffer
+  * Drop some redundant calls to __imlib_LoadImageData()
+  * api: Remember error on deferred image data loads
+  * imlib2_load: Show error on deferred data load problem
+  * imlib2_view: Be more verbose about load errors
+  * PNM loader: Speedups
+  * test: Introduce image_get_crc32()
+  * test: test_save: Trivial changes
+  * test: test_save: Check that files are written and ok
+  * PNM saver: Write images with alpha as P7 PAM RGB_ALPHA type
+  * x11_rgba: Add missing const
+  * x11_grab: Avoid cast-align warnings with -Wcast-align=strict
+  * x11_rgba: Avoid cast-align warnings with -Wcast-align=strict
+  * Loaders: Debug macro cleanups
+  * ANI loader: Use struct to access chunk data
+  * Loaders: Avoid cast-align warnings with -Wcast-align=strict
+  * autofoo: Add __PACKED__ for optional struct packing
+  * ANI, PNG, TGA loaders: Enable handling of unaligned data
+  * __imlib_FileDir(): Fix missing closedir() on OOM
+  * Loaders: decompress_load() is not part of the loader API
+  * Loaders: Debug tweaks
+  * Savers: Centralize file open/close
+  * JPG saver: Avoid potential clobber warning
+  * PNG saver: Avoid potential clobber warning
+  * Loaders, savers: Handle EINTR during fopen()
+  * api: Remove pointless statement
+  * api: Update documentation for imlib_get_error()
+  * api: Cosmetics around image save functions
+  * api: Minor simplification in error handling in save functions
+  * Add imlib_save_image_fd()
+  * api: Oops - debug--
+  * test_grab: Rearrange code
+  * x11_grab: Let __imlib_Grab..() return error instead of ok
+  * x11_grab: Eliminate unnecessary pixmap copy
+  * imlib_create_scaled_image_from_drawable(): Simplify call path
+  * x11_grab: Drop now unused 1:1 scaling path in __imlib_GrabDrawableScaledToRGBA()
+  * imlib2_view: Add option to set background checkerboard field size
+  * test_grab: Update
+  * test_grab: Add some tests for imlib_copy_drawable_to_image()
+  * test_grab: Check get-mask-from-shape too
+  * x11: Pass X11 context around by struct
+  * x11_grab: Move window/pixmap checking to separate function
+  * x11_grab: Rework clipping
+  * x11_grab: Clear image pixels not actually grabbed
+  * x11_grab: Various fixes in __imlib_GrabDrawableScaledToRGBA()
+  * x11_grab: Eliminate some overhead in scaled grabbing
+  * test_grab: Debug tweak
+  * PNM loader: avoid some undefined behavior
+  * PNM loader: add read support for PAM
+
+-------------------------------------------------------------------
+Mon Dec 19 20:09:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * Introduce imlib_load_image_fde
+      imlib2_load: Tweak load mode handling
+      Introduce Imlib2_Loader.h - all that is needed by loaders
+      image: Change has alpha flag to separate byte
+      loading: Don't look for cached image when not caching
+      loading: New loader infrastructure
+  * loading: Introduce __imlib_ImageFileContextPush/Pop
+      loading: Centralize mmap handling
+  * Introduce imlib_load_image_mem
+  * imlib2_load: Add option to use imlib_load_image_mem
+      api: Remove cast previously dropped everywhere else
+      Hide imlib_get/set_color_usage() if no X11
+      api: Move X11 related functions to separate file
+      api: Move filter functions to separate file
+      Enable disabling filter functions
+      api: Move text functions to separate file
+      Enable disabling text functions
+      J2K loader: Drop showing deprecated item in debug message
+      image: Fix memory leak when cloning images
+      Unify basic X11 functionality in test programs
+      Includes tweaks
+      test: Re-generate test images with recent tool/library versions
+      image: Hide internal ImlibImageFileInfo struct
+      image: Don't munmap external memory
+  * Introduce imlib_get_error
+      api: error_return adjustments
+      imlib2_load: Add option to enable image caching
+      image: Fix potential use of uninitialized time stamps
+      PNG loader: Correct frame delay in zero denominator case
+      PNG loader: Cosmetics
+      PNG loader: Improved handling of animated PNGs
+      multiframe: Support loop count
+      PNG loader: Fix animated PNG loading some more
+      autofoo: Fix trouble with test subdirectory in distributed source
+      autofoo: Rework git tag/release stuff
+      test: test_load: Quit when loading primary image fails
+      SVG loader: Don't reference multiframe stuff
+  * ICO loader: Eliminate ico_load
+      autofoo: Use AC_USE_SYSTEM_EXTENSIONS
+      imlib2_view: Fix single frame update rendering
+      test: test_load_2: Check frame 0/1 loading too
+      PNG loader: Cosmetics
+      PS loader: Cosmetics
+      multiframe: Tweaks around frame number handling
+      multiframe: Centralize handling of frame update offsets
+      multiframe: Move frame info to allocated record
+      multiframe: Allocate frame info only when needed
+      PNG loader: Quit scan when target fdAT is seen
+      PNG loader: Quit after loading first frame
+      PNG loader: Simplify update callback handling
+      imlib2_view: Fix multiframe rendering detail
+      multiframe: Remove frame offset from updates
+      imlib2_view: Fix multiframe after update coordinate change
+      imlib2_view: Deal with all pending X events at once
+      imlib2_view: Properly handle caching vs progress callbacks
+      imlib2_view: Don't load bad images twice if first or last in argument list
+      image: Cosmetics
+  * image: Introduce __imlib_LoadEmbeddedMem
+      Add new ani loader
+  * image: Cosmetics
+      ANI loader: Disable progress in embed loader
+      ANI loader: Multiframe suport
+      v1.10.0
+      Introduce imlib_load_image_frame_mem
+      imlib_load_image_frame_mem(): set nocache
+      TGA loader: fix indexing in tgaflip
+
+-------------------------------------------------------------------
+Mon Aug 22 09:06:37 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- enable loaders for JPEG2000, HEIF, Postscript, SVG, JPEG-XL
+
+-------------------------------------------------------------------
+Fri Aug 19 16:03:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.1:
+  * x11_color: Simplify and fix error paths
+  * JPEG loader: Use mmap'ed file access
+  * modules: Eliminate __imlib_TrimLoaderList()
+  * Introduce strsplit()
+  * modules: Cosmetics, mostly
+  * modules: Enable setting multiple loader/filter paths
+  * test: Add test_misc
+  * modules: Fix signdness warning
+  * TIFF loader: Change default save compression type
+  * imlib2_load: Remove unused macro
+  * imlib2_conv: Cosmetic changes
+  * imlib2_conv: Drop obsolete .db stuff, simplify
+  * imlib2_conv: Enable passing attached data to saver
+  * check for some alloc failures
+  * check for alloc failures some more
+  * modules: check for filepath truncation
+  * Remove some deprecation comments
+  * Move API documentation to header file
+  * WEBP saver: Fix return code on success
+  * api.c: Cosmetics
+  * Refactor some image loading functions
+  * Refactor some image saving functions
+  * Image load: Change error code on zero file size
+  * Tweak __imlib_LoadImageData()
+  * Error code rework: Use errnos/new imlib2 error codes internally
+  * Add imlib_load/save_image_with_errno_return() and imlib_strerror()
+  * Switch to imlib_load/save_image_with_errno_return()
+  * Deprecate imlib_load/save_image_with_error_return()
+  * imlib2_load: Tweak verbose output
+  * Rename files with line etc. drawing functions
+  * Use stdint types instead of DATA32 etc.
+  * test_load: Check deferred loading too
+  * imlib2_load: Show load time per load too
+  * image.c: Correct loader probe loop
+  * image.c: Cosmetics (move function)
+  * GZ loader: Fix uncompressor exit code
+  * GIF loader: Use mmap'ed file access
+  * image.c: Loading tweaks
+  * imlib2_view: Verbose and debug message tweaks
+  * Loaders: Some trivial cosmetics
+  * Loaders: Remove unnecessary calls to __imlib_FreeData()
+  * debug: Enable using hex values in IMLIB2_DEBUG
+  * SVG loader: Requires librsvg-2.46
+  * TIFF loader: Use mmap'ed file access
+  * Add jxl loader
+  * test: Add basic jxl test
+  * test_save: Updates
+  * loaders: Ensure that found loader is ok for load/save
+  * image: Fix undesired change of format
+  * Drop deprecation noise from using the old DATA types
+  * Drop deprecation noise from using imlib_load/save_image_with_error_return()
+  * API doc corrections and tweaks for doxygen
+  * Revert a couple of unintended changes
+  * API doc updates
+  * doc: Drop most old doc stuff
+  * doc: New documentation build setup (doxygen)
+  * doc: Assorted documentation intro updates
+  * loaders: Fix typo, fix order
+  * SVG loader: Faster signature check
+  * build: Tweaks
+  * Add J2K (JPEG 2000) loader using openjpeg2 library
+  * test: Add some of JPEG 2000 tests
+  * Add PS/EPS loader using libspectre
+  * debug: Export __imlib_time_us()
+  * JXL loader: Multiframe support
+  * SVG loader: Avoid some warnings in rsvg.h
+  * SVG loader: Fix size when unit is percent
+  * SVG loader: Fix size when unit is percent some more
+  * v1.9.0
+  * PNM, XPM loaders: Fix trouble with non-ascii characters
+  * XPM loader: Reduce signature window size some more
+  * Refactor image flags stuff
+  * Remove some unused image flags and deprecate functions referencing them
+  * JPEG, XBM loaders: Drop pointless clearing of flag
+  * Deal consistently with including Imlib2.h
+  * Merge x11_draw.c/h into x11_pixmap.c/h
+  * x11_rgba.c: Add some missing static qualifiers
+  * x11_color.c: Make most __imlib_AllocColors*() functions static
+  * x11_...: Introduce palette type enum
+  * Loader includes tweaks
+  * Move some loader related function prototypes to loaders.h
+  * common.h: Drop round() macro
+  * debug.c/h: Move __EXPORT__ to .c file
+  * Remove system includes from common.h
+  * Move x_VAL() macros to common.h
+  * Introduce types.h
+  * Remove some unnecessary headers
+  * grad.c: Refactor __imlib_DrawGradient() and __imlib_DrawHsvaGradient()
+  * Only have one CLIP macro
+  * Mostly cosmetic tweaks around clipping checks
+  * test: Command line options tweak
+  * test_grab: Enable testing depths other than 24 and 32
+  * x11_grab.c: Correct 16 and 15 bit depth grabbing
+  * TIFF loader: Remove obsolete comment
+  * ID3 loader: Drop inline and likely stuff
+  * ID3 loader: Disable tags stuff
+  * Introduce __imlib_GetKey()
+  * Merge __imlib_FindBestLoader...() functions
+  * test: Properly include test.h in test SOURCES
+  * test: Exclude from tarball
+  * v1.8.1
+  * imlib2: saving progressive JPEG
+  * XPM Loader: limit signature check to first 4KiB
+  * imlib2: allow compilation without x headers
+  * imlib2_load: fix typo
+  * fix: possible memleak in rgba save on big endian systems
+  * test: Add context test
+  * Drop context image save/restore around __imlib_Load/SaveImage() calls
+  * Make initial context static
+  * Drop context check/init in API functions
+  * Use __func__ instead of open coded function names
+  * Pass parameters to __imlib_LoadImage() by struct
+  * Trivial cleanups
+  * imlib2_view: Cosmetics (if -> switch)
+  * imlib2_view: Add 'r' command to refresh
+  * imlib2_view: Move window background image init to separate function
+  * imlib2_view: Refactor pixmap rendering
+  * imlib2_view: Remove some pointless function calls
+  * imlib2_view: Tweaks around timeout
+  * debug: Add some image caching debug
+  * imlib2_view: Fix caching option
+  * Add support for multiframe (animated) images
+  * Enable caching for multiframe images
+  * imlib2_load: Add support for multiframe images
+  * imlib2_view: Add support for multiframe images
+  * debug: Add DL macro for additional loader debug
+  * WEBP loader: Multiframe support
+  * ICO loader: Multiframe support
+  * GIF loader: Some refactoring, add debug
+  * GIF loader: Multiframe support
+  * ICO loader: Debug tweaks
+  * Indent
+  * debug: Avoid use of uninitialized data
+  * Loader loading: Avoid access to uninitialized load() item
+  * updates: Reduce memory usage
+  * Drop some intermediate type definitions
+  * autofoo/loader cosmetics
+  * configure.ac: Simplify loader setup
+  * Updates for animated image handling
+  * imlib2_view: Fix(?) animated image frame dispose handling
+  * test: Add a couple of ico depth test images
+  * ICO loader: Minor optimization
+  * ICO loader: Mostly cosmetic changes (inline ico_read())
+  * GIF loader: Always set BLEND flag
+  * imlib2_view: Rework display of animated images
+  * Introduce more loader return codes
+  * BZ2, ZLIB loaders: Move duplicated code to separate file
+  * Add lzma loader
+  * imlib2_grab: Print error message if saving fails
+  * imlib2_view: Verbosity twaeks
+  * imlib2_load: Verbosity twaeks
+  * LZMA loader: Fix potential warning
+  * configure.ac: Correct simplification changes
+  * configure.ac: Correct simplification changes some more
+  * XBM loader: Correct load2() result when no header is found
+  * Add svg loader
+  * SVG loader: Avoid problems when loading the module more than once
+  * imlib2_load: Add no-data option
+  * Add dispose-to-previous frame handling
+  * PNG loader: Disable Imlib2-Comment stuff
+  * PNG loader: Rewrite to use callback API
+  * PNG loader: Add multiframe support
+  * test: Check __imlib_FileKey()
+  * Simplify __imlib_FileKey()
+  * Avoid redundant operations when non-existing file has no "key"
+  * Drop change log from before first version tag
+  * test: Move generated image files out of source dir
+  * test: Add makefile to generate test images
+  * PNM loader: Fix P1 when spaces are omitted
+  * PNM loader: Fix "XV thumbnail" (P7 332) loading
+  * test: Add some more PNM type loading tests
+  * image.c: Avoid potential compile error
+  * imlib2_view: Avoid clang error
+  * Drop/adjust a few comments
+  * Move some code as suggested in source
+  * HEIF loader: A couple of cleanups and fixes
+  * loaders.c: Add heif to known loaders
+  * autofoo: Sort loaders
+  * SVG loader: Fix memory leak on error
+  * HEIF loader: Avoid memory leak when module is loaded more than once
+  * Mark obsolete TTF encoding functions as deprecated
+  * test: Add basic heif loader check
+  * Refactoring around font glyph lookup
+  * imlib2.spec.in: Introduce acflags for configuration of rpmbuilds
+  * Add some missing const qualifiers
+  * Fix gcc12 warning in __imlib_ConsumeImage()
+  * Fix gcc12 warning in __imlib_stripwhitespace()
+  * TGA loader: Make function order same as in other loaders
+  * HEIF loader: Header cleanups
+  * Add imlib_version()
+  * test: Merge common stuff
+  * imlib2: added loader for HEIF files (uses libheif), implemented just `load2` for now
+  * ICO loader: Fix compilation on big endian architectures
+- drop bigendian.patch (upstream)
+
+-------------------------------------------------------------------
+Mon May 16 13:33:19 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
+
+- declare counter in for loop for big endian to unsignedint (loader_ico.c)
+  bigendian.patch
+
+-------------------------------------------------------------------
+Sat Dec 18 19:14:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.5:
+  * Build .xz instead of .bz2 release tarball
+  * Drop imlib2-config (use pkg-config)
+  * Test: Add some minimal regression testing
+  * Test: Fix dist
+  * imlib2_load: Add option to use imlib_load_image_immediately()
+  * JPEG loader: Cosmetics
+  * JPEG loader: Parse EXIF data and handle orientation
+  * autofoo: Drop support for libungif
+  * Imlib.h: Add version macros
+  * imlib2_load: Add verbose option
+  * Fix build (Imlib2.h is now built)
+  * test: Add icon-64.pbm
+  * test: Add test_load_2
+  * imlib2_view: If verbose show error message on failure
+  * imlib2_load: Use clock_gettime() when available
+  * debug: Infrastructure
+  * debug: Add some debug related to file access and image loading
+  * Introduce im->fsize
+  * PNG loader: Cosmetics
+  * PNG loader: Use mmap() during signature check
+  * TIFF loader: Use mmap() during signature check
+  * TGA loader: Use im->fsize, cosmetics, debug
+  * WEBP loader: Cosmetics
+  * WEBP loader: Use mmap() for loading
+  * FF loader: Cosmetics
+  * FF loader: Use mmap() for loading
+  * ARGB loader: Cosmetics
+  * ARGB loader: Use mmap() for loading
+  * BMP loader: Cosmetics
+  * BMP loader: Use mmap() for loading
+  * ICO loader: Cosmetics
+  * ICO loader: Use mmap() for loading
+  * LBM loader: Cleanups
+  * LBM loader: Use mmap() for loading
+  * PNM loader: Use mmap() for loading
+  * XBM loader: Fix potential buffer overrun
+  * XBM loader: Cosmetics
+  * XBM loader: Use mmap() for loading
+  * XBM loader: Ignore comments and other stuff in header
+  * XPM loader: Use mmap() for loading
+  * test: test_load improvements
+  * imlib2_view: Add option to cache images
+  * Introduce UPDATE_FLAG()
+  * Introduce ARRAY_SIZE()
+  * Loader cosmetics
+  * Loader loading: Tweaks
+  * Loader loading: Move to __imlib_FindBestLoaderForFormat()
+  * Loader loading: Move __imlib_GetLoaderList()
+  * Loader loading: Minor loader lookup refactoring
+  * Loader loading: Avoid always loading all loaders
+  * Loader loading: Don't bother looking up load() if we have load2()
+  * WEBP loader: Enable loading animated images (first frame by default)
+  * configure.ac: Fixup after recent change
+  * Drop unnecessary free() NULL argument checks
+  * Remove some unneeded headers
+  * Rename X11 related files for clarity
+  * Move ImlibImagePixmap population to __imlib_AddImagePixmapToCache()
+  * test: Add X11 drawable grabbing test
+  * Move pixmap stuff to x11_pixmap.c/h
+  * Trivial changes in __imlib_Grab...() function prototypes
+  * Refactor imlib_create_scaled_image_from_drawable()
+  * Revert "Refactor imlib_create_scaled_image_from_drawable()"
+  * Refactor imlib_create_scaled_image_from_drawable() - take 2
+  * x11_grab.c: Rename source/destination variables for clarity
+  * Fix y-upscaling in imlib_create_scaled_image_from_drawable()
+  * test_grab: Cleanups, cosmetics
+  * test_grab: Add scale-down tests
+  * Only set MAINTAINERCLEANFILES in top-level Makefile.am
+  * imlib2_view: Enable grabbing/viewing drawables
+  * x11_grab.c: Cosmetics
+  * x11_grab.c: Introduce function to get shape mask
+  * Speedup in imlib_create_scaled_image_from_drawable()
+  * Avoid signedness warning
+  * Avoid "exceeds maximum object size" warning
+  * blend.c: Tweaks, cleanups
+  * Simplify build wrt. asm files
+
+-------------------------------------------------------------------
+Sat Oct 16 15:18:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.4:
+  * imlib2_view: Move property stuff to separate file
+  * imlib2_view: Cleanups
+  * imlib2_view: By default scale large images to fit on screen
+  * imlib2_view: Add some debug
+  * imlib2_view: Fix issue with new default scaling
+  * WEBP loader: Remove forgotten debug printout
+  * WEBP loader: Rename fd variable to be same as everywhere else
+  * LBM loader: Fix potential out-of-bounds memory access
+  * GIF, TIFF, WEBP loaders: Fix loading if filename does not have usual suffix
+  * Revert "GIF, TIFF, WEBP loaders: Fix loading if filename does not have usual suffix"
+  * GIF, TIFF, WEBP loaders: Fix loading if filename does not have usual suffix - take 2
+  * Add script to generate Changelog
+  * Update Changelog to new format
+  * image.c: Use the LOAD_... macros to check loader return values
+  * autofoo: Resurrect non-pkg check for bzip2
+  * Remove some unnecessary X_DISPLAY_MISSING stuff
+  * rend.c: Remove some pointless lines
+  * Add XBM loader
+  * Add imlib2_load and /build to .gitignore
+  * Remove obsolete and unused AC_HEADER_STDC
+  * Restore file:key functionality
+  * ICO loader: Fix (disabled) debug stuff
+  * ICO loader: Enable specifying ico image index by key
+  * Remove unused Context functions
+  * context.c: Fix potential segv
+  * LBM loader: Fix handling of missing RLE data
+  * Fix clang-analyzer warnings - bin (trivial)
+  * Fix clang-analyzer warnings - loaders (trivial)
+  * Fix clang-analyzer warnings - loaders (suppress bogus)
+  * Fix clang-analyzer warnings - lib (mostly trivial)
+  * Fix clang-analyzer warnings - lib (less trivial)
+  * autofoo: Move more to pkg-config
+  * TIFF loader: Drop use of libtiff defined types deprecated in libtiff-4.3.0
+  * TGA loader: Fix loading small images without footer
+  * Spec file: Add git tag to rpm file name (if built from git checkout)
+  * Cleanups: while->for loops (loaders list)
+  * Cleanups: while->for loops (context list)
+  * Cleanups: while->for loops (im->tags list)
+  * Cleanups: while->for loops (images list)
+  * Cleanups: while->for loops (pixmaps list)
+  * Drop unused Imlib_Object_List:last
+  * Add feature to build with ASAN (--enable-gcc-asan)
+  * Correct (disabled) debug printouts
+  * Loaders: Remove unnecessary headers
+  * WEBP saver: Use fopen() etc. like all other savers
+
+-------------------------------------------------------------------
+Mon Dec 14 07:43:47 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.7.1:
+  * Fix big endian build
+  * rend.c: Fix __imlib_generic_render() when jump != 0
+  * grab.c: Support 30bpp display in __imlib_GrabXImageToRGBA()
+  * WEBP loader: Add initial signature check
+  * XPM loader: Get transparency right when doing header-only loading
+  * Silence a couple of sign-compare warnings
+- Enable support for webp
+- Drop autotools build dependencies
+
+-------------------------------------------------------------------
+Sun Aug 16 02:02:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * huge list of changes, see included ChangeLog
+- remove imlib2-bswap.patch: obsolete
+
+-------------------------------------------------------------------
+Fri Oct  5 00:56:21 UTC 2017 - sflees@suse.de
+
+- Update to 1.5.1
+  * Fix build without HAVE_X11_SHM_FD (T6752)
+  * XPM loader: Fix potential use of uninitialized value (T6746)
+  * BMP loader: Fix infinite loop with invalid bmp images (T6749)
+  * PNM loader: Simplify (fixing ASCII format parsing issues T6751)
+  * Maximum image dimension should be 32767, not 32766
+  * PNG loader: Correct various error handling cases
+  * Cleanups, maintenance.
+- imlib2 1.5.0:
+  * XPM loader: Fix incorrect image invalidation.
+  * Add support for MIT-SHM FD-passing (Alexander Volkov)
+  * Fix potential OOB memory access if border elements are negative
+    or sizes exceed image dimensions
+  * Expose XImage cache control functions
+  * Various enhancements, maintenance.
+
+-------------------------------------------------------------------
+Wed May 10 00:56:21 UTC 2017   * sflees@suse.de
+
+- Update to 1.4.10
+  * PNM, TGA, XPM, and general loader fixes.
+
+-------------------------------------------------------------------
+Sun May  1 17:27:34 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.4.9
+  * Fix cross-endianness for masks (1-bit depth images)
+  * gif: fix oob reads w/bad colormaps
+  * Fix "assuming signed overflow does not occur" warning.
+  * Fix some "variable set but not used" warnings.
+  * Fix some "variable might be clobbered" warnings.
+  * Fix off-by-one OOB read in __imlib_MergeUpdate().
+  * Revert "gif: fix oob reads w/bad colormaps"
+  * GIF loader: Fix out-of-bound reads from colormap.
+  * GIF loader: Remove check made redundant by previous commit.
+  * GIF loader: Reduce progress checks from per-pixel to per-row.
+  * GIF loader: Indent.
+  * Fix potential divide-by-zero in imlib_image_draw_ellipse().
+  * Make a number of functions static.
+  * Eliminate pImlibExternalFilter type.
+  * Trivial file function cleanups.
+  * Move __imlib_ItemInList() to file.c.
+  * Fix various potential OOM crashes.
+  * Fix integer overflow resulting in insufficient heap allocation
+  * loader_xpm: remove nonsense/impossible/broken condition
+  * Harden API and internals against overly large images
+
+-------------------------------------------------------------------
+Tue Mar 15 11:52:25 UTC 2016 - sflees@suse.de
+
+- Spec cleaner run
+
+-------------------------------------------------------------------
+Tue Mar 15 11:06:36 UTC 2016 - sflees@suse.de
+
+- Update to 1.4.8
+  * Add a Farbfeld loader (FRIGN).
+  * Fix zlib and bz2 loader filename check.
+  * Miscellaneous maintenance.
+
+-------------------------------------------------------------------
+Tue May 12 11:11:13 UTC 2015 - olaf@aepfle.de
+
+- run autoreconf unconditional. PMBS got a fixed version for SLE_11
+
+-------------------------------------------------------------------
+Mon Apr 27 17:59:10 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.4.7
+  * Prevent division-by-zero crashes
+  * imlib_conv: Use proper buffer size to prevent invalid write of
+    size one
+  * loader_gif: Don't read uninitilized memory in case of invalid
+    input
+  * loader_gif(): Abort gif parsing if DGifGetLine() fails
+  * Fix segfault when opening input/queue/id:000007,src:000000,
+    op:flip1,pos:51 with feh
+  * Make IMAGE_DIMENSIONS_OK() more restrictive
+  * load_pnm: Deal with fread() errors consistently
+  * __imlib_LoadImage(): Additionally check loader_ret to detect
+    loader failures
+  * loader_tga: Abort file loading if the file obviously isn't
+    large enough
+  * imlib_save_image(): Check loader return code for errors
+  * loader_tga.c: Properly signal if decoding uncompressed BGRA
+    data failed
+  * loader_tga.c: Properly signal if decoding RLE compressed data
+    failed
+  * imlib_save_image_with_error_return(): Check loader return code
+    to prevent use of unitialized memor
+  * load_gif: Make sure rows isn't used partly unitialized
+- Drop imlib2-giflib5.patch
+
+-------------------------------------------------------------------
+Sat Feb 28 08:29:42 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Update to 1.4.6
+  * TGA loader: Fix for corrupt RLE format.
+  * Fix drawing of closed polygons in certain situations.
+  * Set warning options when using gcc.
+  * Silence compiler warnings.
+  * Don't set -std=gnu99.
+  * XPM loader: Simplify and fix certain case of cpp > 2.
+
+-------------------------------------------------------------------
+Mon Nov  3 11:01:20 UTC 2014 - olaf@aepfle.de
+
+- disable autoreconf in SLE11, it is too old and causes syntax errors
+
+-------------------------------------------------------------------
+Mon Sep  1 08:23:18 UTC 2014 - jengelh@inai.de
+
+- Edit imlib2-giflib5.patch and change a bogus >= to a >
+
+-------------------------------------------------------------------
+Sun Jun  1 09:25:29 UTC 2014 - jengelh@inai.de
+
+- Edit imlib2-giflib5.patch to support giflib7-5.1
+
+-------------------------------------------------------------------
+Thu Mar 28 09:40:53 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Tue Jan  8 01:37:43 UTC 2013 - crrodriguez@opensuse.org
+
+- imlib2-bswap.patch -> USe byteswap.h instead of custom code
+- imlib2-giflib5.patch  --> Fix build failure with new giflib
+
+-------------------------------------------------------------------
+Tue Jan 10 03:00:01 UTC 2012 - crrodriguez@opensuse.org
+
+- Cleanup total dependency madness here:
+ * Add explicit BuildRequires on libjpeg-devel,zlib-devel,
+  libid3tag-devel.
+  * Do not use catch-all xorg-x11-devel, but only
+    xorg-x11-libX11-devel, xorg-x11-libXext-devel
+  * imlib2-devel only requires xorg-x11-libX11-devel
+  * Axe all "la" files, there is no libltdl usage.
+  * cleanup imlib-config script at build time.
+  * This will certainly break build of  dependenant packages
+    with broken BuildRequires, drop me a note if you find
+    any problem.
+
+-------------------------------------------------------------------
+Mon Nov 21 18:38:47 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Employ shlib policy
+
+-------------------------------------------------------------------
+Sat Oct 15 04:47:09 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Tue Aug 16 16:29:39 CEST 2011 - meissner@suse.de
+
+- Updated to 1.4.5
+	- lots of code cleanup, typo fixes, reindentation
+	- some malloc replaced by calloc to avoid integer issues
+	- bugfixes, especially in the PNM loader
+
+-------------------------------------------------------------------
+Wed Nov 17 17:29:40 CET 2010 - meissner@suse.de
+
+- Updated to 1.4.4
+       - upstream merged our fix
+
+-------------------------------------------------------------------
+Wed Jun 16 13:12:42 UTC 2010 - lnussel@suse.de
+
+- Recommend imlib2-loaders to actually get them installed as imlib2
+  is rather useles without them in most cases (bnc#299389).
+
+-------------------------------------------------------------------
+Thu Apr 29 17:05:34 CEST 2010 - meissner@suse.de
+
+- fixed incorrect overflow checking (CVE-2010-0991, bnc#598935)
+
+-------------------------------------------------------------------
+Thu Apr 15 11:57:10 CEST 2010 - meissner@suse.de
+
+- updated to 1.4.3 upstream
+	- upstreamed our fixes
+	- more bugfixes and width adjustments
+
+-------------------------------------------------------------------
+Thu Dec 31 13:10:25 CET 2009 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Jul 13 15:54:19 CEST 2009 - meissner@suse.de
+
+- align AMD64 assembler tables bnc#521020
+
+-------------------------------------------------------------------
+Fri Nov 21 15:04:38 CET 2008 - meissner@suse.de
+
+- fixed a pointer arithmetic problem in the XPM loader
+  CVE-2008-5187/bnc#447093
+
+-------------------------------------------------------------------
+Tue Oct 21 11:02:11 CEST 2008 - meissner@suse.de
+
+- upgraded to 1.4.2 upstream
+	- our upstream fixes mostly
+	- small bugfixes
+- removed upstream fixes
+
+-------------------------------------------------------------------
+Tue Jun 17 18:40:13 CEST 2008 - meissner@suse.de
+
+- upgraded to 1.4.1 upstream
+	- security fixes, some bugfixes
+- removed non-executable stack patch
+- redone Xorg rgb.txt patch
+
+-------------------------------------------------------------------
+Mon Jun  2 15:01:59 CEST 2008 - mweckbecker@suse.de
+
+- Fix xpm buffer overflow (bnc#394703, CVE-2008-2426)
+
+-------------------------------------------------------------------
+Fri Oct 26 13:52:56 CEST 2007 - meissner@suse.de
+
+- upgraded to 1.4.0 upstream
+	- mostly merged security fixes
+- cleaned up and redid patches were necessary
+- enabled visibility hiding option
+
+-------------------------------------------------------------------
+Tue Aug 21 16:38:34 CEST 2007 - meissner@suse.de
+
+- moved provides to the right subpackage.
+- suggests: imlib2-loaders in the mainpackage. #299389
+
+-------------------------------------------------------------------
+Sun Jul 22 19:19:52 CEST 2007 - aj@suse.de
+
+- Reduce BuildRequires.
+
+-------------------------------------------------------------------
+Mon Dec 11 21:30:51 CET 2006 - jw@suse.de
+
+- uninitialized variable bug
+  patched and sent upstream.
+
+-------------------------------------------------------------------
+Tue Nov 14 08:48:38 CET 2006 - meissner@suse.de
+
+- Removed the incorrect loader_jpeg hunk of fix
+  for #214313. #220671
+
+-------------------------------------------------------------------
+Wed Nov  8 13:01:26 CET 2006 - meissner@suse.de
+
+- Upgraded to 1.3.0:
+  - several bug fixes
+  - lots of symbols marked as hidden
+
+-------------------------------------------------------------------
+Wed Nov  8 10:36:46 CET 2006 - meissner@suse.de
+
+- Added an additional JPEG fix.
+- Also added a fix for TIFF images on 64bit systems.
+
+-------------------------------------------------------------------
+Wed Oct 25 12:14:29 CEST 2006 - meissner@suse.de
+
+- fixed various buffer and integer overflows
+  in various loaders and decoders. #214313
+
+-------------------------------------------------------------------
+Wed Sep 20 15:24:26 CEST 2006 - schwab@suse.de
+
+- Use AM_PROG_AS.
+
+-------------------------------------------------------------------
+Fri Aug 11 16:05:28 CEST 2006 - jw@suse.de
+
+- RGB_TXT_PATH added to loader_xpm.c
+  defined now as /usr/share/X11/rgb.txt
+
+-------------------------------------------------------------------
+Tue Feb  7 00:35:39 CET 2006 - ro@suse.de
+
+- fix build for < 10.1
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:36 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 11 19:20:30 CET 2006 - jw@suse.de
+
+- $RPM_OPT_FLAGS + -fstack-protector added.
+
+-------------------------------------------------------------------
+Mon Jan  2 15:46:06 CET 2006 - aj@suse.de
+
+- Fix filelist.
+
+-------------------------------------------------------------------
+Thu Dec 22 16:19:14 CET 2005 - jw@suse.de
+
+- upgraded to 1.2.1, removed upstreamed patches
+
+-------------------------------------------------------------------
+Wed Sep 21 02:17:27 CEST 2005 - ro@suse.de
+
+- only remove .la files for plugins
+- add requires to devel package
+
+-------------------------------------------------------------------
+Tue Sep 20 22:22:32 CEST 2005 - jw@suse.de
+
+- offending \*.la files removed.
+
+-------------------------------------------------------------------
+Tue Mar  8 15:43:44 CET 2005 - jw@suse.de
+
+- Provides for all the loaders added
+  to satisfy building e.g. eterm [#64296]
+
+-------------------------------------------------------------------
+Tue Feb  1 09:34:53 CET 2005 - coolo@suse.de
+
+- put devel files in -devel subpackage
+
+-------------------------------------------------------------------
+Wed Jan  5 13:35:40 CET 2005 - meissner@suse.de
+
+- Added missing security fixes to BMP and XPM loader #49562.
+- Added libstdc++-devel and libtiff-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Thu Aug 26 12:01:27 CEST 2004 - meissner@suse.de
+
+- Upgraded to 1.1.1.
+- Fixed buffer overflow in BMP loader.
+
+-------------------------------------------------------------------
+Sun Jan 18 23:35:56 CET 2004 - meissner@suse.de
+
+- fixed "label at end of compound statement" errors in gcc 3.4
+
+-------------------------------------------------------------------
+Mon Jan 12 11:52:06 CET 2004 - adrian@suse.de
+
+- revert last change (%run_ldconfig already exist before)
+
+-------------------------------------------------------------------
+Sun Jan 11 10:30:01 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Sat Aug 16 09:42:22 CEST 2003 - mmj@suse.de
+
+- Update to 1.1.0
+
+-------------------------------------------------------------------
+Fri Jun 13 10:11:04 CEST 2003 - kukuk@suse.de
+
+- Add missing directories to filelist
+
+-------------------------------------------------------------------
+Wed May 28 15:28:32 CEST 2003 - ro@suse.de
+
+- fix build even without archprefix
+
+-------------------------------------------------------------------
+Fri Mar 14 00:08:04 CET 2003 - mmj@suse.de
+
+- Initial package of imlib2-1.0.6
+
+-------------------------------------------------------------------

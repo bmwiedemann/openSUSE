@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>10261d771204f76d5fef06c9ef54d66e</srcmd5>
+    <version>0.0+git.20161214</version>
+    <time>1574945465</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>751533</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fa5bc5f15a8313b055b8b719db151fe4</srcmd5>
+    <version>0.0+git.20191111</version>
+    <time>1687380020</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git.20191111:
+  * Add license information so it can be safely reused</comment>
+    <requestid>1094371</requestid>
+  </revision>
+</revisionlist>

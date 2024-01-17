@@ -1,0 +1,533 @@
+-------------------------------------------------------------------
+Sun Dec  3 20:44:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.30:
+  * Use the same model loading code in all renderers.
+  * Remove the unused `msg` cvar and the corresponding server
+    side infrastructure. The cvar was never implemented in Quake II,
+    but existing bits could be used for attacks against the client.
+  * Add `cl_audiopaused`. When set to `1` the audio stops when
+    the game is paused.
+  * Add `ogg_pausewithgame`. When set to `1` the background music
+    stops when the game is paused. (by apartfromtime)
+  * New logo files, matching the original Quake II logo.
+  * Support for RISCV64 (by David Carlier)
+  * Fix resetting Mods back to baseq2 when running with
+    `-portable`.
+  * Alternative playback modes for OGG/Vorbis background music:
+    once, sequential, random. (by apartfromtime)
+  * Support gyro aiming for Switch controllers with SDL < 2.0.14.
+    (by protocultor)
+  * Fixed stand-ground gladiators not attacking within a certain
+    range.
+  * Fixed monsters seeing players during intermissions.
+  * Several fixes to Makron. (by BjossiAlfreds)
+  * Optional high dpi awareness when running under Wayland.
+    Requires a Wayland compositor supporting fractional-scale-v1
+    and at least SDL 2.26. Set `vid_highdpiawareness 1` to enable.
+  * Fix lava surfaces not glowing.
+  * Add a cheat protected cvar `g_swap_speed`. Allows to skip
+    frames of "putting down weapon" and "raising weapon" animations,
+    speeding them up.
+  * Support of RGBA png/jpg image with r_retexturing as
+    cinematic.
+
+-------------------------------------------------------------------
+Sat Dec 10 19:55:57 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.20
+  - Various improvements to the menu. This includes updates to the
+    menu framework itself, to the game controller menu, the
+    savegame menu and the video menus.
+    0lvin)
+  - A lot of fixes and improvements to the controller support.
+    Support for gyro aiming, more precise stick handling and rumble
+    improvements.
+  - Implement faster weapon switching with the new 'cycleweap'
+    command.
+  - Fixes pusher delta yaw manipulation. This fixes the infamous
+    bug were a player standing on a blocked elevator gets turned
+    around
+  - Add a command 'spawnentity' to spawn entities at the given
+    coordinates. Can be used for debugging.
+  - Ported monster footstep sounds from SkacikPLs Q2RTX fork. Needs
+    a pak file with assets to work, see the documentation for
+    details.
+  - Ported reverb effects from SkacikPLs Q2RTX fork.
+  - Fix several coop related bugs with the powercubes.
+  - A way better fix for dead bodys obstructing elevators or
+    falling through the worldmodel.
+  - Fix items already in water playing a splash sound at level
+    start.
+  - Pause the game when getting minimized or hidden.
+  - Fix Bugs related to 'ogg_ignoretrack0'.
+  - Share model loading code between renderers.
+  - Restore stair step smoothing for step sizes other than 16.
+  - Fix playback of long audio samples (>10 seconds) through
+    OpenAL.
+
+-------------------------------------------------------------------
+Wed Nov  9 05:52:13 UTC 2022 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- BuildRequre sdl2 stuff via pkgconfig(*).
+
+-------------------------------------------------------------------
+Sun May 29 13:20:53 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.10
+  * The OpenGL 3.2 renderer now supports the classic underwater
+    effect.  Until now it was only available in the Software
+    renderer.
+  * Add 'ref_gles3', an OpenGL ES 3.0 renderer lib. This is an
+    variant of the OpenGL 3.2 renderer, using OpenGL ES instead of
+    desktop OpenGL.  It greatly enhances support for embedded GPUs
+    like the RaspberryPI 4.
+  * The Software renderer now supports colored lightning. It can
+    be enabled through `sw_colorlight`.
+  * Another round of timing fixes. Implement `cl_maxfps -1` (the
+    new default, existing configs are not altered) to
+    automatically select a known to be good packet framerate
+    depending on the current renderer framerate. This solves some
+    subtile problems with stuttering entities.
+  * Greatly improved support for joysticks and controllers. Devices
+    can now be hotplugged at runtime, binding should be portable
+    between differend controllers and there's a new menu for
+    controller bindings.
+  * Add the `r_2D_unfiltered` and `r_videos_unfiltered` cvars. When
+    enabled 2D elements like the HUD and videos are not filtered,
+    they appear pixeled.
+  * Add 'prefweap' command to select weapon by priority.
+  * Several game code fixes, mostly for stuck mechanics in fact2.
+  * Fix two stuck monsters in hangar1 and jail5.
+  * Fix the `viewsize` cvar.
+
+-------------------------------------------------------------------
+Sun Jan 23 22:18:33 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.01
+  * Fix the game not starting when nonexistent dirs in the search
+    path.
+  - Sync haptic joystick effects to the sound.
+  - Move several map bug fixes to entity files, add some more map
+    bug fixes. Without entity files the maps are the same as in
+    Vanilla Quake II.
+  - Play the correct demo loop after changing the current mod.
+  - `g_footsteps 2` now only generate footstep sound when the
+    player is on the ground entity and no longer when in water or
+    air.
+  - Add a cvar `g_machinegun_norecoil' which disables the
+    machinegun recoil effect. This is cheat protected.
+  - Scale 8 bit textures when `r_scale8bittextures` is set.
+  - The game is no longer limited to 1000 FPS when running in
+    timedemo mode.
+  - Optimise command line parser and fix several subtle bugs.
+  - Add `r_2D_unfiltered`, when set to `1` 2D elements aren't
+    filtered.
+  - Fix soldiers never chowing their pain skin as long as they're
+    alive.
+  - Fix relative paths in ZIP files not being found.
+  - Add `gamemode` command for changing between singleplayer,
+    deathmach and coop.
+  - Show a download progress bar when `cl_http_show_dw_progress`
+    is set to `1`.
+
+-------------------------------------------------------------------
+Sun Aug 22 12:28:26 UTC 2021 - Imo Hester <vortex@z-ray.de>
+
+- patched systemwide support (systemwide.patch)
+
+-------------------------------------------------------------------
+Mon Jun 14 16:00:04 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.00
+  * Client side support for the optional Vulkan renderer library.
+  * Non existent renderer libraries are now skipped over by the
+    menu.
+  * Fix several bugs when loading autosaves.
+  * Bump the maximal number of OGG/Vorbis files to 128.
+  * Several fixes to the Barracuda Shark.
+  * 'vid_fullscreen' and 'r_mode' are no longer special, they
+    require an explicit 'vid_restart' like every other cvar.
+  * Remove hardcoded map fixes and replace them by optional entity
+    files.  Add several newly discovered map fixes.
+  * Send the network protocol version to the server. This can be
+    used by the server to support clients with different network
+    protocol version.
+  * Switch the semantics of the 'vid_fullscreen' cvar. '1' is now
+    native fullscreen, like it was in Vanilla Quake II. '2' is
+    desktop fullscreen. When desktop fullscreen is selected through
+    the menu, 'r_mode' is forced to '-2'.
+  * Add 'g_footsteps' to control the generation of footstep sound.
+    This cvar is cheat protected. '1' is Vanilla Quake II behavior
+    and the default. '0' never generates footstep sound, '2' always
+    generates them.
+  * Support stereo wave files.
+  * Add 'cl_r1q2_lighstyle'. When set to '1' Yamagi Quake II uses
+    the Vanilla Quake II light styles (for example yellow light for
+    the Hyperblaster) instead of the default r1q2 light styles.
+  * Add a submenu to configure gamepad and joystick sensitivities.
+  * Ensure that the config file is written before changing the
+    active mod.  This prevents config changes from getting lost.
+  * Overhaul the search path logic. Make sure that each directory
+    is added only once.
+
+-------------------------------------------------------------------
+Sun Feb 28 18:51:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.45:
+  * Fix some input option not getting saved.
+  * Limit busywaits to the full client. This lowers the cpu consumption of
+    q2ded considerably.
+  * Rework the build system to be more distribution friendly.
+  * Fix some corner cases of broken IPv6 connectivity.
+  * Fix qport colliding between several Yamagi Quake II clients.
+  * Keyboard keys unknown to Yamagi Quake II can now be bound.
+  * Adaptive vsync is now supported by setting r_vsync to 1.
+  * Implement coop_pickup_weapons. When set to 1, a weapon may be picked up by
+    coop players if the player doesn`t have the weapon in their inventory or no
+    other player has already picked it up.
+  * In coop elevators wait for coop_elevator_delay seconds.
+  * If cl_anglekick is set 1 angle kicks are ignored. This breaks the gameplay
+    a little bit, but helps against motion sickness. This cvar is cheat
+    protected.
+  * Add listmaps command and autocompletion for maps. (by JBerg)
+  * Make wait in scripts wait for 17 ms. This fixes some movement makros.
+  * Support for Haiku. (by David Carlier)
+  * Add a mods submenu. (by earth-metal)
+  * Add the vstr command and nextdemo cvar. Ported from ioquake3. (by Denis Pauk)
+
+-------------------------------------------------------------------
+Fri Oct 16 20:49:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.44
+  * Fix some input option not getting saved.
+  * Limit busywaits to the full client. This lowers the cpu
+    consumption of q2ded considerably.
+  * Rework the build system to be more distribution friendly.
+    The base CFLAGS and LDFLAGS can now be overridden by the
+    environment and by options passed to make.
+  * Fix some corner cases of broken IPv6 connectivity.
+  * Fix qport colliding between several Yamagi Quake II clients.
+  * Keyboard keys unknown to Yamagi Quake II can now be bound.
+  * Adaptive vsync is now supported by setting 'r_vsync' to '1'.
+  * Implement 'coop_pickup_weapons'. When set to '1', a weapon may
+    be picked up by coop players if the player doesn't have the
+    weapon in their inventory or no other player has already picked
+    it up.
+  * In coop elevators wait for 'coop_elevator_delay' seconds.
+  * If 'cl_anglekick' is set '1' angle kicks are ignored. This
+    breaks the gameplay a little bit, but helps against motion
+    sickness. This cvar is cheat protected.
+  * Add 'listmaps' command and autocompletion for maps.
+  * Make 'wait' in scripts wait for 17 ms. This fixes some movement
+    makros.
+  * Add a 'mods' submenu.
+  * Add the 'vstr' command and 'nextdemo' cvar.
+- Drop legacy ifdefs
+
+-------------------------------------------------------------------
+Wed Feb 26 11:59:54 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.43
+  * Recover from a lost sound device, do not crash of no sound
+    device is available. This fixes several problem with
+    DisplayPort and HDMI audio.
+  * Several small game logic fixes. This includes a fix for a
+    potential progress blocker in 'The Torture Chambers' introduced
+    in the last release.
+  * Add the 'gl1_particle_square' cvar, it forces square particles
+    in the GL1 renderer.
+  * The software renderer is no longer experimental.
+  * Add an option to configure the gun Z offset in the software
+    renderer.
+
+-------------------------------------------------------------------
+Sun Dec  1 09:10:29 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.42
+  * The console can now be scrolled with the mouse wheel.
+  * Fix entities on non-horizontal surfaces rendered in full black.
+  * Add an option to choose the display Quake II runs on.
+  * Add an option to specify the display refresh rate used in
+    fullscreen.
+  * Allow mouse 'sensitivity' to be set to non-integral values.
+  * Port cvar operations from q2pro. These allow the manipulation of
+    cvar values, supported are: dec, inc, reset, resetall and toggle
+  * Put the client into pause mode during savegame load. This
+    prevents the world getting forwarded about 100 frames during
+    load, time in which the player might be hurt by monsters or the
+    environment.
+  * New commands:
+    + 'listentities' allows listing of entities.
+    + 'teleport' teleports the player to the given coordinates.
+  * Fix loading of config files not ending in newlines.
+  * A lot of fixes for subtle, long standing AI and game play bugs.
+  * Quicksaves can now be loaded and saved throught the savegame
+    menus.
+  * The software renderer now skips frames with no changes. This
+    improves performance quite a bit, especially on slow CPUs.
+
+-------------------------------------------------------------------
+Sun May 26 15:03:51 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.41
+  * Some bugfixes to HTTP downloads introduced in 7.40.
+  * Fix several crashes when loading savegames in coop.
+  * Fix some out of memory aborts when loading maps with a lot
+    surfaces.
+  * Allow autodetection of the desktop resolution. Set 'r_mode' to
+    '-2' to enable that.
+  * Several fixes to the OpenGL 3.2 renderer. Some dynamic lights
+    were missing, for example for most explosions. Stencil shadows
+    were broken under some conditions. Intel Ivy Bridge didn't work.
+    Under some conditions lights were too bright.
+  * Add an optional fix for lighting problems in maps that misuse
+    sky surfaces for interior lighting. Set 'gl_fixsurfsky' to '1'
+    to enable it.
+  * Another bunch of timing fixes. The game should now hold the
+    framerate under all conditions.
+
+-------------------------------------------------------------------
+Thu Feb  7 21:19:42 UTC 2019 - mardnh@gmx.de
+
+- Update to version 7.40
+  * Add support for HTTP downloads. Both the r1q2 and q2pro URL schemes
+    are supported, if a file is unavailable over HTTP the download code
+    falls back to UDP.
+  * Savegames can be removed through the menu by pressing 'del' on the
+    selected savegame.
+  * Support external entity files.
+  * Some fixes to OGG/Vorbis music playback. The music keeps playing after
+    s_restart and ogg_shuffle is handled correctly by the menu.
+  * Another round of timing fixes. Average frame times are now taken into
+    account when taking an educated guess on the next frames render time.
+    And the display refresh rate detection no longer cripple working GPU
+    drivers in an efford to work around bugs in older version of AMDs.
+  * A lot of fixes to the internal memory management. The game is now
+    much more memory efficient, this allows playing of extremly big maps
+    without crashes. This is largly based upon work done by Denis Pauk.
+  * New and much more detailed documentation.
+  * Enhancements to the software renderer. Retexturing packs are now
+    supported, general cleanup and bugfixes.
+
+-------------------------------------------------------------------
+Tue Oct  2 12:34:36 UTC 2018 - mardnh@gmx.de
+
+- Update to version 7.30
+  + Removed support for SDL 1.2.
+  + Removed static dependencies to libogg, libvorbis and libz.
+  + Fixed several bugs regarding render- and fullscreen switch.
+  + A lot of fixes and improvements to the software renderer. It's now
+    able to render the whole game without artifacts and much faster than
+    before.
+
+-------------------------------------------------------------------
+Sat Jul 14 18:19:50 UTC 2018 - mardnh@gmx.de
+
+- Update to version 7.21
+  + Fix some render glitches in the software renderer. (by Denis Pauk)
+  + Render the weapon independent of the current field of view, otherwise
+    the weapon distorts with very high FOV settings. The weapons FOV can
+    be set through r_gunfov, it defaults to 90.
+  + Rework the OGG/Vorbis backend. This fixes several annoying bugs, and
+    adds support for alternative track <=> file mappings. Use this to
+    implement support for the audio tracks supplied by the GOG.com version
+    of Quake II.
+
+-------------------------------------------------------------------
+Sun Mar 11 08:54:22 UTC 2018 - mardnh@gmx.de
+
+- Update to version 7.20
+  + Add the soft renderer back. This feature is considered experimental.
+    The porting of the old soft renderer code to SDL and it's cleanup
+    were done by Denis Pauk.
+  + Rename several cvars to be consistent across different renderers.
+    The configuration file will be converted at the first start, when an
+    old cvar name is used a message is printed.
+  + Make the client unicode compatible. Yamagi Quake II can now be
+    installed into pathes with unicode characters in it. On Windows the
+    user name of the current account may contain unicode characters.
+    As a side effect the game can run on ReFS volumes. While '+set
+    basedir' is still supported, the unicode compatible '-datadir'
+    should be used.
+  + Another round of timing fixes. The game is now capable of holding
+    the requestes or vsync framerate even on slow machines and with
+    problematic GL drivers.
+  + Fix server side mod handling, their configs are now saved to the
+    correct directories and the configs are reexeced at mod startup.
+
+-------------------------------------------------------------------
+Sun Dec 10 09:45:13 UTC 2017 - mardnh@gmx.de
+
+- Update to version 7.10
+  + Joystick support including haptic feedback. This fantastic work was
+    done by Denis Pauk. The dirty work is done by SDL, how good or bad
+    a joystick or gamepad is supported depends on SDLs support for it.
+  + Fix the old SDL sound backend, s_openal set to 0 is working again.
+  + Fix possible Vorbis buffer underruns if too many sound samples are
+    in flight. This occured only in large multi player games with at
+    least 6 custom models.
+  + Fix a possible crash on Windows if MSAA was set to a value not
+    supported by the driver.
+  + It's now possible to play through the whole game on a Raspberry PI
+    and other ARM boards. Please note that the RPIs hardware is really
+    limited. Only the OpenGL 1.4 renderer is supported and the framerate
+    is highly dependend on the screen resolution.
+
+-------------------------------------------------------------------
+Sun Oct  1 17:01:51 UTC 2017 - mardnh@gmx.de
+
+- Update to version 7.0.2
+  + Fix several corner cases regarding render library loading. The game
+    should now always fall back to the OpenGL 1.4 renderer if the new
+    OpenGL 3.2 renderer can't be initialized. Also the game aborts if no
+    useable OpenGL implementation exists.
+  + Refactor the search path code. This should fix several bugs with
+    Quake II writing to the wrong directories or being unable to find
+    some / all assets.
+  + Reimplement portable binaries. If called with the -portable command
+    line option Quake II saves all data (configs, savegames, screenshorts
+    etc.) into it's systemwide installation directory and not users home
+    directory. In contrast to the old implementation on Windows stdout.txt
+    contains all output, the first lines are no longer missing.
+  + vid_fullscreen set to 1 now keeps the desktops resolution. Set it to 2
+    to change the resolution.
+  + Instead of a list with precalculated FOV values the video menu now
+    shows a slider with possible values from 60 to 120. Horplus is now
+    always enabled, set the horplus cvar to 0 to disable it.
+  + The game is now able to hold the requested framerate (either by the
+    vsync or the gl_maxfps cvar) with an accuracy of about +/- 1% as long
+    as the hardware is fast enough.  The framecounter was reimplemented
+    to be much more precise.
+  + Fix misspredictions if an original client running on Win32 connects
+    to a Yamagi Quake II server running on Linux/i386.
+- Remove patch:
+  + yamagi-quake2-fix-OpenGL-linking.diff (fixed upstream)
+
+-------------------------------------------------------------------
+Tue Jun 27 23:23:58 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Fix broken appdata xml
+
+-------------------------------------------------------------------
+Sat Jun 24 18:56:57 UTC 2017 - mardnh@gmx.de
+
+- Update to version 7.0.1
+  + Fix build of GL3 for platforms without SSE.
+  + Fix Jennel Jaquays name in credits and quit screen.
+
+-------------------------------------------------------------------
+Tue Jun 20 16:50:13 UTC 2017 - bwiedemann@suse.com
+
+- fix reproducible builds again
+
+-------------------------------------------------------------------
+Fri Jun  9 13:43:49 UTC 2017 - mardnh@gmx.de
+
+- Update to version 7.0.0
+  + Remove the broken multitexturing render path from the OpenGL 1.4
+    renderer. It was switched off by default in 6.00.
+  + Reimplement the support for shared renderer libraries. Please note
+    the this is an incompatible implementation with an custom API. The
+    original renderer libraries will not work!
+  + Implement an OpenGL 3.2 renderer. This renderer has the same look
+    and feel as the old OpenGL 1.4 renderer but makes heavy use of
+    modern OpenGL and GPU features. An OpenGL 3.2 capable GPU (Intel
+    starting with Ivy Bridge on Windows or Sandy Bridge on Linux, Nvidia
+    staring with G80 and AMD starting with R600 / HD2000) is required.
+  + Fix OpenAL compatibility with modern openal-soft versions.
+  + Several fixes and optimizations to OpenAL, implement support for
+    doppler effects. (by xorw)
+- Add patch:
+  + yamagi-quake2-fix-OpenGL-linking.diff
+
+-------------------------------------------------------------------
+Tue May  2 05:27:58 UTC 2017 - bwiedemann@suse.com
+
+- use convert -strip to not have timestamps in png files
+  to make build fully reproducible
+
+-------------------------------------------------------------------
+Fri Feb 10 02:35:54 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Add appdata.xml
+
+-------------------------------------------------------------------
+Fri Dec 16 05:15:37 UTC 2016 - luke.nukem.jones@gmail.com
+
+Update to version 6.00
+
+- Make the client asynchronous. The old behaviour can be forced by
+  setting cl_async to 0. Please note that asynchronicity can lead
+  to problems if the old SDL 1.2 backend is used and vsync is
+  enabled.
+- Implement gl_overbrightbits in the non multitexturing case.  A
+  value of 1 just fixes lighting on water surfaces, higher values
+  increase the brightness of everything.
+- General renderer overhaul for better compatibility with modern GPU
+  OpenGL 1.4 is now required, older versions are no longer supported.
+  Multitexturing was deprecated and will be removed in a future
+  release.
+- Fix some longstanding AI problems.
+- Several general gameplay fixes.
+
+- patch allow-custom-cflags.patch has been removed due to the
+  package being forked in factory
+
+-------------------------------------------------------------------
+Mon Aug  1 22:24:08 UTC 2016 - rpm@fthiessen.de
+
+- Install into _libexecdir
+- Install icons into icon-theme directory (hicolor)
+
+-------------------------------------------------------------------
+Mon Aug  1 19:56:31 UTC 2016 - mardnh@gmx.de
+
+- remove patch: yamagi-quake2-allow-overriding-cflags.patch since
+  upstream now also have CMake support without this problem
+- install binaries and libs to /usr/lib/yamagi-quake2/ and use a
+  wrapper-script in /usr/bin/ to workaround rpath issues
+- fix source url
+
+-------------------------------------------------------------------
+Tue Jul 19 09:24:16 UTC 2016 - rpm@fthiessen.de
+
+- Fixed file-contains-date-and-time rpmlint error
+- Added allow-custom-cflags.patch to allow custom cflags for
+  openSUSE's optflags.
+- Compile with optflags
+
+-------------------------------------------------------------------
+Mon Jul 18 11:29:58 UTC 2016 - jengelh@inai.de
+
+- Update description to highlight the user-visible changes rather
+  than implementation details.
+
+-------------------------------------------------------------------
+Fri Jul 15 19:59:45 UTC 2016 - luke.nukem.jones@gmail.com
+
+- Cleanup and prepare for Factory submission
+
+-------------------------------------------------------------------
+Sun Jul 10 09:56:18 UTC 2016 - luke.nukem.jones@gmail.com
+
+- Update to version 5.34:
+  + Add support for stereo 3D (by Valery Guskov)
+  + Make gibt solid so they move with conveyor belts.
+  + Disable gl_ext_multitexturing by default.
+  + Switch from an arch whitelist to an "all archs are supported"
+    approach.
+  + Add a new README.
+
+-------------------------------------------------------------------
+Thu May 19 07:44:13 UTC 2016 - luke.nukem.jones@gmail.com
+
+- Update to version 5.33
+  + Add OGG volume slider in settings menu
+  + Fixed some bugs in volume settings
+- Remove unnessesary patch file
+
+-------------------------------------------------------------------
+Wed Jan  1 01:05:22 UTC 2014 - gber@opensuse.org
+
+- Initial packaging

@@ -1,0 +1,11 @@
+diff -Naur drbd-utils-9.0.0+git.98b6340c.orig/scripts/global_common.conf drbd-utils-9.0.0+git.98b6340c/scripts/global_common.conf
+--- drbd-utils-9.0.0+git.98b6340c.orig/scripts/global_common.conf	2017-06-07 16:04:14.063680274 +0800
++++ drbd-utils-9.0.0+git.98b6340c/scripts/global_common.conf	2017-06-07 16:04:45.519644428 +0800
+@@ -42,6 +42,7 @@
+ 
+ 		# RECOMMENDED for three or more storage nodes with DRBD 9:
+ 		# quorum majority;
++		quorum off;
+ 		# on-no-quorum suspend-io | io-error;
+ 	}
+ 

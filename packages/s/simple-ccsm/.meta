@@ -1,0 +1,5 @@
+<package name="simple-ccsm" project="openSUSE:Factory">
+  <title>Simple settings manager for Compiz</title>
+  <description>Compiz settings manager focused on simplicity for an end-user.</description>
+  <devel project="X11:Compiz" package="simple-ccsm"/>
+</package>

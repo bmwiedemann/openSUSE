@@ -1,0 +1,26 @@
+Set the cache location to /var/cache/apparmor/ (writeable) and
+/usr/share/apparmor/cache/ (packaged precompiled cache).
+
+See boo#1069906 and boo#1074429
+
+Note that Tumbleweed packages don't include precompiled profile cache on
+Tumbleweed as long as it's purely validated based on timestamps (boo#1205659)
+
+
+Signed-off by: Christian Boltz <apparmor@cboltz.de>
+
+Index: parser/parser.conf
+===================================================================
+--- parser/parser.conf_ORIG	2018-04-19 22:47:18.485179998 +0200
++++ parser/parser.conf	2018-04-19 22:51:12.084588654 +0200
+@@ -31,6 +31,9 @@
+ 
+ ## Turn creating/updating of the cache on by default
+ write-cache
++
++# cache location (cache writes go to the first directory in the list)
++cache-loc /var/cache/apparmor,/usr/share/apparmor/cache
+ 
+ ## Show cache hits
+ #show-cache
+

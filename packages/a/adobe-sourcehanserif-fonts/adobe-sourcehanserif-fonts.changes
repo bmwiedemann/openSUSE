@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Wed Dec 13 09:19:31 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add %reconfigure_fonts_prereq to the subpackages
+  * required by the presence of the macro:
+    %reconfigure_fonts_scriptlets -n <subpackage-name>
+
+-------------------------------------------------------------------
+Tue Nov 21 18:30:44 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove old specfile constructs, update descriptions
+
+-------------------------------------------------------------------
+Tue Nov 21 16:10:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- Update to 2.002R
+  * The copyright year was changed to “2017–2023.”
+  * Addition of ㋿ Square Era Name Reiwa uni32FF-JP was omitted in
+    previous release notes Issue #163.
+  * The following glyphs were added to support GB 18030 2022
+    Implementation Level 2: uni4DB6-CN, uni4DB7-CN, uni4DB8-CN,
+    uni4DBA-CN, uni4DBB-CN, uni4DBC-CN, uni4DBD-CN, uni4DBE-CN,
+    uni4DBF-CN, uni5CB8-JP, uni9FEB-CN, uni9FEB-TW, uni9FEC-CN,
+    uni9FED-CN, uni9FEE-JP, uni9FEF-JP, uni9FF0-CN, uni9FF1-CN,
+    uni9FF2-CN, uni9FF3-CN, uni9FF4-CN, uni9FF5-CN, uni9FF6-CN,
+    uni9FF7-CN, uni9FF8-CN, uni9FF9-CN, uni9FFA-CN, uni9FFB-CN,
+    uni9FFC-CN, uni9FFD-CN, uni9FFE-CN, and uni9FFF-CN.
+  * Fixed aj16-kanji.txt per Issue #125.
+  * Fixed position of uni309B-V and uni309C-V per Issue #157.
+  * Fixed HK mapping for U+752D 甭 per Issue #159.
+  * Fixed CN mapping for U+5141 允 and U+535A 博 per Issue #162.
+  * Remapped TW glyph for U+7239 爹 per Issue #167.
+  * Restored JP glyph for U+5CB8 岸 per Issue #169.
+  * Fixed mapping for U+F9DC 隆 per Issue #165.
+  * Fixed interpolation bug in uni2299 ⊙ per Issue #181.
+  * Fixed interpolation bugs in uni4B4C-CN 䭌 and uni4B55-CN 䭕 per
+    Issue #193.
+
+-------------------------------------------------------------------
+Sat Jun 18 02:41:01 UTC 2022 - Dingzhong Chen <wsxy162@gmail.com>
+
+- Update to 2.001R
+  * The copyright year was changed to “2017–2022.”
+  * Many glyphs changes (maps, fixes, additions, adjustments)
+- Changes from 2.000R
+  * The copyright year was changed to “2017–2021.”
+  * Added support for Hong Kong SCS-2016
+  * Updated Latin glyphs derived from Source Serif to align with version 4.0
+  * All fonts have been built as variable fonts
+  * Many glyphs changes (maps, fixes, additions, adjustments)
+- Add Hongkong specific subset fonts
+- Add variable fonts for all regions
+
+-------------------------------------------------------------------
+Mon Apr 29 17:51:04 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Add all region-specific fonts
+
+-------------------------------------------------------------------
+Mon Mar  5 12:43:00 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 1.001
+  * More glyphs were added
+
+-------------------------------------------------------------------
+Sun May  3 11:16:48 UTC 2015 - jengelh@inai.de
+
+- Feed through format_spec_file and spec-beautifier. Trim filelist,
+  it is not necessary to specify all files one by one.
+
+-------------------------------------------------------------------
+Sun May  3 10:40:43 UTC 2015 - mailaender@opensuse.org
+
+- update to 1.002
+- run spec-cleaner
+- fix description shorter than summary
+
+-------------------------------------------------------------------
+Wed Jul 16 12:04:15 UTC 2014 - i@marguerite.su
+
+- initial version
+  * initial public release
+

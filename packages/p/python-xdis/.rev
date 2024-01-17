@@ -1,0 +1,237 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2c077cc7f6427a81c888f2c9021534ca</srcmd5>
+    <version>4.0.2</version>
+    <time>1562159691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713049</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cd6ce4ca8ca8d4558b5ea08be6767a6a</srcmd5>
+    <version>4.0.3</version>
+    <time>1567679649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.3:
+  * Support 3.8.0beta2; Code38 type with posonlyargcount field
+  * Add Python versions 3.4.10, 3.7.4 and 3.6.9
+  * script no longer works to install pydisasm; entry_points still works
+  * Add pypy 3.6 opcode formatting for MAKE_FUNCTION and EXTENDED_ARG
+  * Add format_CALL_function and use it or pypy36
+  * Start using &quot;blacken&quot; to reformat Python files</comment>
+    <requestid>724511</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>77cc0719bd73c07792686cdcbd872dac</srcmd5>
+    <version>4.0.4</version>
+    <time>1570180950</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.4:
+  * Add most-recent 3.8 magic number
+  * Remove some 3.8 invalid escape warnings</comment>
+    <requestid>734940</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>494972443ca92f5fefe38718e2eaeb86</srcmd5>
+    <version>4.1.1</version>
+    <time>1572542291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.1:
+  * Fix unmarshaling 3.4+ object_ref bugs. A big thanks to Armin Rigo of the PyPy team.
+  * Add Pypy 3.6+ disassembly, e.g. pypy3.6-7.1.0 and pypy3.6-7.1.1
+  * Add Python 3.7.5, 2.7.16, 2.7.17rc1, and 2.7.15candidate1 as a valid releases
+  * convert unmarshal if .. elif code to a dictionary lookup with function entries
+  * Handle newer Python importlib - thanks to laike9m
+  * Add early bytecodes: 1.0, 1.1, 1.2, and 1.6. Going off of pycdc bytecode since this is the only bytecode for these versions I know of
+  * Fix bug in Python 3.x decompiling 2.x that contains strings with non-ascii characters
+  * More generally, better handling of non-ascii Python 2 strings in both input and output in Python 3
+  * pypy 3.6-7.1.0 tolerance</comment>
+    <requestid>744161</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b20aec402cb291ebfd8f0f66cf424ea1</srcmd5>
+    <version>4.1.3</version>
+    <time>1575464003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.3:
+  * Various dependency fixes
+
+- Update to 4.1.2:
+  * Python 3.8.0 magic changed
+  * More Pypy 3.6 tolerance
+  * Fixed DeprecationWarning; thanks to laike9m</comment>
+    <requestid>753274</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>84257c7e12cd698c40b722e94f883ee2</srcmd5>
+    <version>4.2.2</version>
+    <time>1581087221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770565</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b73031a2a6f925bc827593a0ddadca85</srcmd5>
+    <version>4.2.2</version>
+    <time>1583775270</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>783027</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>693adf6fa0d823bc97b0fdcfbdfad553</srcmd5>
+    <version>4.2.3</version>
+    <time>1585085855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787860</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d38ef9f0f2feb236aa6d8515b4c771b9</srcmd5>
+    <version>4.2.4</version>
+    <time>1587070998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.4:
+  * Add Instruction instance methods: #Instruction.is_jump() and #Instruction.jumps_forward()</comment>
+    <requestid>794470</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d07571d0967baba81573eac85e1b47ee</srcmd5>
+    <version>4.6.1</version>
+    <time>1591990641</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.6.1:
+  * A portable version of types.CodeType was rewritten.
+  * Python 3.8-ish `replace()` method has been added to the portable code types
+  * Portable code type classes `Code13`, `Code15` have been added to more precisely distinguish Python 1.3 and 1.5 code types. The other portable code classes are `Code2`, `Code3`, and `Code38`.
+  * the to_native() conversts a portable code type into a native code type
+  * the `decode_lineno_tab()` method on portable code types from Python 1.5 on decompresses the Python encode line number table into a dictionary mapping offset to line number.
+  * The module `xdis.code` has been remamed to `xdis.codetype`.
+  * `load_module()` and `load_module_from_file_object()` now return
+   a couple more parameters.
+  * --asm option fixes
+  * Show sip hash in 3.7+ when that is used
+  * Handle PEP 552 bytecode-file variations more properly
+  * Detect more intermediate Python versions in `load_code_from_file_object()`
+  * 3.8+ posonlyargcount in assembly...  rename Kw-only field to Keyword-only
+  * Add 3.5 canonic bytecode version Marshal `dumps()`
+  * convert from byte() to str() in dumps() when needed in 3.x
+  * to_native() convert to bytes from string when needed in 3.x.
+  * clean up loading code by using float version values rather than magic values
+  * `stack_effects()` checked against Python 3.4+ is now in place.
+  * Added `stack_effects()` function to `std.py` since this is part of the API
+  * `cross_xdis.py` file/module now has `dis.py` functions split off from `bytecod
+  e.py`
+  * `Instructions` class is in its own module too.
+  * Python 2.7.18 added into magics.
+  * Fix bug in marshal for 3.8+ (include posonlyargcount)
+  * Go over stack effects from 2.5 to 3.4 using and idea from Maynard
+  * Expand stack-effect testing
+  * 3.8.3 added as a valid 3.8 release
+  * command program `pydisasm` disassembles more Python source files now
+  * Add better arguemnt formatting on `CALL_FUNCTION` and `MAKE_FUNCTION`</comment>
+    <requestid>811038</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9ff027f0ac534fee488f14a7f6bfe462</srcmd5>
+    <version>5.0.1</version>
+    <time>1595577306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822103</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a942d6ffe3f14496881b8cb27ea92b12</srcmd5>
+    <version>5.0.4</version>
+    <time>1600347115</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 5.0.4:
+  * Add python versions 3.6.12, 3.7.9
+  * extended arg disassembly handling for {LOAD,STORE}_ATTR
+  * Add versions 3.8.5, 3.7.8, and 3.6.11
+  * Clarify changes to 3.8 `ROT_FOUR`
+  * Update 3.9 magics and opcodes
+  * Add Python 3.8.4 as a 3.8 release
+  * pydisasm.py Python 3.3 tolerance
+  * Make pydoc's version reporting show xdis's version</comment>
+    <requestid>835018</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>50c8948443aee64488fd93875fef8bae</srcmd5>
+    <version>5.0.6</version>
+    <time>1609783652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859979</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>2d1a4ff310824695567d30cdfab65ecb</srcmd5>
+    <version>5.0.6</version>
+    <time>1611668779</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to python_alternative for pydisasm script</comment>
+    <requestid>865547</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>32c2ec9434eae297054ec499aeea9ce0</srcmd5>
+    <version>6.0.3</version>
+    <time>1644007756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.3:
+  * xasm format fixes
+  * more Python version tuple compare conversions
+  * add version_str_to_tuple() to convert the other way. This is useful in xasm, for example.
+  * Reduce PYTHON_VERSION usage in xdis.
+  * Allow optional delimiter and start length in version_tuple_to_str()
+  * fix logic bug in setting MAGIC
+  * Add a little Python 3.8.5 Graal (Java VM) knowledge.
+  * Add PyPy 3.8 opcodes and disassembly
+  * Accept Python 3.8.12
+  * Fix some small lingering bugs introduced converting Python version number floats to tuples
+  * Reworked for Python 3.10.
+  * Add 3.10 opcodes.
+  * Add 3.9 and 3.10 testing.
+  * Some tolerance for running from 3.11
+  * Update magic numbers
+  * Expanding testing to include pyston and PyPy 3.7
+  * Added knowledge of Python versions 3.6.15 and 3.7.12.
+  * Restrict wheel packaging for Python 3 only.
+  * Use the wheel for only the 3.x and newer version of Python.
+  * Add Python version 3.9.7
+  * Document unmarshal better
+  * Correct stack information for IMPORT_NAME
+  * Fix bug in code type handling where bytes were showing up as strings
+  * More type annotations in master branch. Create more older variations without annotations
+  * Add Python versions 3.9.6, 3.7.11, 3.8.11, and 3.6.14
+  * Note Python versions 3.8.10 and 3.9.5
+  * Incorrect variable name in marshal dump (used in writting .pyc files). PR #77
+  * Improve 3.9 IS_OP and CONTAINS_OP operand formatting
+  * Correct disassembly of 3.9 bytecode from other bytecode</comment>
+    <requestid>951463</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a8b78005e47946b486ef2047c3cb0347</srcmd5>
+    <version>6.0.4</version>
+    <time>1665591868</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009875</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b535dd2a05d4cdaa26acfed0ad810262</srcmd5>
+    <version>6.0.5</version>
+    <time>1677166170</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python 3.11, not yet supported, gh#rocky/python-xdis#98
+- Update to version 6.0.5
+  * Detect versions pypy3.8.15, pypy-3.9.15
+  * Dectect Python 3.{7,8,9}.14 3.10.{5,6,7}
+  * correct 3.10+ pydisasm -F xasm label
+  * Revise marshal error handling (Issue #97)
+  * Improve PyPy 3.7 CALL_FUNCTION arg interpretation
+  * Fix 1.5-2.x bugs in line number encoding
+  * Fix showing MAKE_FUNCTION operand
+  * Miscellaneous lint, black, and isort changes</comment>
+    <requestid>1067290</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,11 @@
+--- apparmor-3.1.6/profiles/apparmor.d/abstractions/wutmp.orig	2023-06-21 23:13:41.000000000 +0200
++++ apparmor-3.1.6/profiles/apparmor.d/abstractions/wutmp	2023-11-08 14:45:19.882328152 +0100
+@@ -18,5 +18,8 @@
+   /var/log/btmp     rwk,
+   @{run}/utmp       rwk,
+ 
++  # Some read the list of sessions from systemd
++  /run/systemd/sessions/ r,
++
+   # Include additions to the abstraction
+   include if exists <abstractions/wutmp.d>

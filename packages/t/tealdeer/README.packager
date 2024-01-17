@@ -1,0 +1,18 @@
+# Heavily based on https://build.opensuse.org/package/view_file/devel:languages:rust/racer/README.packager (Thank you for this!)
+#
+# Generating `vendor.tar.xz`
+
+1. Install `cargo` from official repositories.
+
+    zypper install cargo
+
+2. Checkout version
+
+    git clone https://github.com/dbrgn/tealdeer ~/tmp/tealdeer
+    cd ~/tmp/tealdeer
+    git checkout v1.1.0 (or another version from `git tag --list`)
+
+3. Generate archive
+
+    cargo vendor
+    tar -cJf vendor.tar.xz vendor

@@ -1,0 +1,125 @@
+-------------------------------------------------------------------
+Tue Dec  5 14:20:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.4/
+- No code change since 23.08.3
+
+-------------------------------------------------------------------
+Tue Nov  7 17:05:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * Adapt to plasma-framework moving to Plasma
+  * CI: Comment out flatpak CI it uses some KF6 dependencies
+  * Add snapcraft file to reuse.
+  * snapcraft: initial import snapcraft files.
+
+-------------------------------------------------------------------
+Tue Oct 10 18:28:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- No code change since 23.08.1
+
+-------------------------------------------------------------------
+Tue Sep 12 11:56:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- No code change since 23.08.0
+
+-------------------------------------------------------------------
+Sun Aug 20 14:00:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:03:26 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * flatpak: update runtime to 22.08
+  * Fix syntax of dep5 copyright statements
+
+-------------------------------------------------------------------
+Tue Aug  1 10:14:23 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Fix binary stripping of APKs with Qt 5.15.10
+  * Fix includes
+  * Fix flat screenshot
+  * Update screenshots
+
+-------------------------------------------------------------------
+Tue Jul  4 10:20:26 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.3/
+- No code change since 23.04.2
+
+-------------------------------------------------------------------
+Sat Jun 17 13:06:26 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add runtime dep on QtCharts QML module (boo#1212470)
+
+-------------------------------------------------------------------
+Tue Jun  6 20:01:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- No code change since 23.04.1
+
+-------------------------------------------------------------------
+Tue May  9 10:47:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- No code change since 23.04.0
+
+-------------------------------------------------------------------
+Sat Apr 15 08:46:28 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.0/
+
+-------------------------------------------------------------------
+Fri Mar 31 16:42:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Mon Mar 20 12:58:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.80
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Feb 20 03:43:20 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
+
+- Added kweathercore as a requirement

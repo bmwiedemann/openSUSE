@@ -1,0 +1,12 @@
+---
+ mk/meta2deps.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/mk/meta2deps.py
++++ b/mk/meta2deps.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ from __future__ import print_function
+ 

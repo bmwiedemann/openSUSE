@@ -1,0 +1,7 @@
+# .features file for pre-compiled cache
+addFilter("hidden-file-or-dir /usr/share/apparmor/cache/[0-9a-f]*.0/.features")
+
+# warnings for the disabled tomcat_apparmor subpackage
+# addFilter("devel-file-in-non-devel-package.*/usr/lib63/libJNIChangeHat.so")
+# addFilter("devel-file-in-non-devel-package.*/usr/lib/libJNIChangeHat.so")
+# addFilter("shlib-policy-name-error.*libJNIChangeHat0")

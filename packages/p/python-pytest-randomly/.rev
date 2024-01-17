@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5bf73e859265abc1877e9f97f6397269</srcmd5>
+    <version>1.2.3</version>
+    <time>1549018106</time>
+    <user>dimstar_suse</user>
+    <comment>pytest plugin for handling randomness</comment>
+    <requestid>670429</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c02b3aac37d64dc1b3afba989a9000b5</srcmd5>
+    <version>1.2.3</version>
+    <time>1551113473</time>
+    <user>coolo</user>
+    <comment>- Make sure we execute tests</comment>
+    <requestid>676166</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8dd8e3b2e2dd8b56c9e1e4bfd8b42100</srcmd5>
+    <version>2.1.1</version>
+    <time>1553809723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689139</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>98e5c115aba73ca448c71eb42a3cbe12</srcmd5>
+    <version>3.0.0</version>
+    <time>1559581022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0:
+  * Handle CollectErrors and ImportErrors during collection when accessing item.module.</comment>
+    <requestid>707093</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>adf8be8a30ec94f09548950a7cf975e6</srcmd5>
+    <version>3.1.0</version>
+    <time>1568066594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * Add plugins via entry points pytest_randomly.random_seeder to allow
+    outside packages to register additional random generators to seed.
+    This has added a dependency on the entrypoints package.
+- Drop patch tests-restore-python2.7.patch</comment>
+    <requestid>729484</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a8281bffbc45d9e071d98fb8665343e6</srcmd5>
+    <version>3.2.0</version>
+    <time>1578320681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0:
+  * Converted setuptools metadata to configuration file
+  * Convert reading entrypoints to use importlib.metadata.
+    Depend on importlib-metadata on Python &lt; 3.8.
+  * Update Python support to 3.5-3.8.</comment>
+    <requestid>761147</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e4f1ae310f4705187c8a4a25ca891979</srcmd5>
+    <version>3.2.1</version>
+    <time>1582207073</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.1:
+  * Update MANIFEST.in so tests are included in the sdist tarball again.</comment>
+    <requestid>777569</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b0ec872c8e7eb890ac73661ffeef13f6</srcmd5>
+    <version>3.3.1</version>
+    <time>1588324138</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.1:
+  * Fix to work when pytest-xdist is not installed or active.
+  * Add pytest-xdist support.</comment>
+    <requestid>798133</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fc671cf48cc9d78818f84c9bb48b2a42</srcmd5>
+    <version>3.4.0</version>
+    <time>1591990764</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.0:
+  * Provide a faker_seed fixture to set the seed for tests using faker's pytest fixtures (as per its docs).</comment>
+    <requestid>812812</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>41237bd2997853e3ec5bdfbe48220e9c</srcmd5>
+    <version>3.4.1</version>
+    <time>1598725902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829136</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3cb23496a5e1bfb8a01e8bb199e32352</srcmd5>
+    <version>3.7.0</version>
+    <time>1618859153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886520</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9d6f7dccfc5c9d0b998b36c2fce24e7b</srcmd5>
+    <version>3.7.0</version>
+    <time>1682368291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082431</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>13e4aea8030a504ca1424d84a292be6c</srcmd5>
+    <version>3.12.0</version>
+    <time>1683916704</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1086642</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d6981a8abf01de50b0a51ba253832b7d</srcmd5>
+    <version>3.13.0</version>
+    <time>1690654247</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.13.0:
+  * Drop Python 3.7 support.
+- drop fix-tests-pytest-73.patch (upstream)</comment>
+    <requestid>1101314</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>86c02272070a3edacd787a365d9d7a42</srcmd5>
+    <version>3.15.0</version>
+    <time>1700078921</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1126456</requestid>
+  </revision>
+</revisionlist>

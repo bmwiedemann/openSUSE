@@ -1,0 +1,2 @@
+# rpmlint could be smarter
+addFilter("no-binary")

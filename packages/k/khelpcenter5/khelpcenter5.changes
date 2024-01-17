@@ -1,0 +1,1425 @@
+-------------------------------------------------------------------
+Tue Dec  5 14:19:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.4/
+- No code change since 23.08.3
+
+-------------------------------------------------------------------
+Tue Nov  7 17:04:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * snapcraft: Fix override. New content pack.
+  * snapcraft: Set version as appstream picks up non release service version.
+  * snapcraft: initial import snapcraft files.
+
+-------------------------------------------------------------------
+Tue Oct 10 18:27:27 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- No code change since 23.08.1
+
+-------------------------------------------------------------------
+Tue Sep 12 11:55:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- No code change since 23.08.0
+
+-------------------------------------------------------------------
+Sun Aug 20 13:59:30 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- No code change since 23.07.80
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * doc: do not use a few deprecated entities
+
+-------------------------------------------------------------------
+Tue Jul  4 10:19:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.3/
+- No code change since 23.04.2
+
+-------------------------------------------------------------------
+Tue Jun  6 20:01:04 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- No code change since 23.04.1
+
+-------------------------------------------------------------------
+Tue May  9 10:47:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- No code change since 23.04.0
+
+-------------------------------------------------------------------
+Sat Apr 15 08:45:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.0/
+
+-------------------------------------------------------------------
+Fri Mar 31 16:42:01 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Fri Mar 17 20:43:32 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Feb 28 09:46:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.3/
+
+-------------------------------------------------------------------
+Tue Jan 31 10:33:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.2/
+
+-------------------------------------------------------------------
+Tue Jan  3 10:20:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.1/
+
+-------------------------------------------------------------------
+Fri Dec  2 12:25:23 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.0/
+
+-------------------------------------------------------------------
+Sat Nov 26 16:45:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Nov 12 08:54:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Nov  1 11:20:31 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.3/
+
+-------------------------------------------------------------------
+Tue Oct 11 14:32:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.2/
+
+-------------------------------------------------------------------
+Tue Sep  6 15:19:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.1/
+
+-------------------------------------------------------------------
+Sun Aug 14 09:42:31 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.0/
+
+-------------------------------------------------------------------
+Fri Aug  5 12:10:53 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Jul 16 08:28:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Jul  5 17:03:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.3/
+
+-------------------------------------------------------------------
+Wed Jun  8 09:54:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.2/
+
+-------------------------------------------------------------------
+Tue May 10 16:30:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.1/
+
+-------------------------------------------------------------------
+Mon Apr 18 07:51:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:19:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Make KHelpCenter DBusActivatable
+  * Use org.kde.khelpcenter as desktop id (and appstream id)
+  * Add some keywords to desktop file to assist finding the app
+
+-------------------------------------------------------------------
+Mon Mar  7 10:50:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %_libdir/libexec with %_libexecdir (boo#1174075)
+
+-------------------------------------------------------------------
+Tue Mar  1 09:57:12 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Changes since 21.12.2:
+  * Mark as SingleMainWindow in desktop file
+
+-------------------------------------------------------------------
+Tue Feb  1 13:03:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- No code change since 21.12.1
+
+-------------------------------------------------------------------
+Tue Jan  4 10:25:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- No code change since 21.12.0
+
+-------------------------------------------------------------------
+Fri Dec  3 19:22:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:55:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Add FreeBSD CI
+  * [appstream] Fix app url
+  * Fix a cppcheck warning
+  * Enable Linux CI
+
+-------------------------------------------------------------------
+Tue Nov  2 21:33:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.3/
+- No code change since 21.08.2
+
+-------------------------------------------------------------------
+Tue Oct  5 16:28:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- No code change since 21.08.1
+
+-------------------------------------------------------------------
+Wed Sep  1 12:38:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- No code change since 21.08.0
+
+-------------------------------------------------------------------
+Fri Aug  6 09:38:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Define scheme handler for help, main and info URLs
+  * Remove references to "Without Confirmation" actions
+  * Add the full screen mode (kde#119582)
+  * Port away from kinit
+
+-------------------------------------------------------------------
+Wed Jul  7 08:57:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.3
+- No code change since 21.04.2
+
+-------------------------------------------------------------------
+Tue Jun  8 12:39:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.2
+- No code change since 21.04.1
+
+-------------------------------------------------------------------
+Wed May 12 06:07:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- No code change since 21.04.0
+
+-------------------------------------------------------------------
+Fri Apr 16 16:11:55 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- No code change since 21.03.90
+
+-------------------------------------------------------------------
+Fri Apr  9 17:40:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- No code change since 21.03.80
+
+-------------------------------------------------------------------
+Sun Mar 21 13:28:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Changes since 20.12.3:
+  * Update old visualdict images
+  * increase cmake version as for other kde apps
+  * operator+/- is disabled for QFlags in qt6
+
+-------------------------------------------------------------------
+Thu Mar  4 06:10:23 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.12.3
+- No code change since 20.12.2
+
+-------------------------------------------------------------------
+Wed Feb  3 08:28:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- No code change since 20.12.1
+
+-------------------------------------------------------------------
+Tue Jan  5 12:25:40 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- No code change since 20.12.0
+
+-------------------------------------------------------------------
+Sat Dec  5 23:16:20 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- No code change since 20.11.90
+
+-------------------------------------------------------------------
+Fri Nov 27 15:16:34 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- No code change since 20.11.80
+
+-------------------------------------------------------------------
+Sat Nov 14 00:01:31 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Thu Nov  5 22:46:22 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-11-apps-update
+- No code change since 20.08.2
+
+-------------------------------------------------------------------
+Fri Oct  9 05:43:53 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-10-apps-update
+- No code change since 20.08.1
+
+-------------------------------------------------------------------
+Tue Sep  1 20:49:56 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-09-apps-update
+- No code change since 20.08.0
+
+-------------------------------------------------------------------
+Sun Aug  9 09:09:11 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- No code change since 20.07.90
+
+-------------------------------------------------------------------
+Sun Aug  2 07:59:33 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- No code change since 20.07.80
+
+-------------------------------------------------------------------
+Sun Jul 19 10:04:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Changes since 20.04.3:
+  * doc: remove download/build instructions
+  * Fixed version of 'Contents tree: add fallback to URL without fragment' that does not crash
+  * avoid intermediate list and cleaner way to convert to QSet
+  * fix compilation for Qt > 5.14: QSet::fromList(QList) deprecated
+  * Ignore files
+
+-------------------------------------------------------------------
+Thu Jul  9 20:09:33 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-07-apps-update
+- No code change since 20.04.2
+
+-------------------------------------------------------------------
+Tue Jun  9 12:14:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-06-apps-update
+- Changes since 20.04.1:
+  * Revert 'Contents tree: add fallback to URL without fragment' (kde#422089)
+
+-------------------------------------------------------------------
+Fri May 15 15:41:29 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- No code change since 20.04.0
+
+-------------------------------------------------------------------
+Thu Apr 23 12:22:25 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Remove too strong Qt deprecation version, in case Qt evolves
+  * avoid intermediate list and cleaner way to convert to QSet
+  * fix compilation for Qt > 5.14: QSet::fromList(QList) deprecated
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:04 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+- No code change since 20.03.80
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:00 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+- Too many changes since 19.12.3, only listing bugfixes:
+  * Cover Meta as a shortcut for the application launcher (kde#379109)
+
+-------------------------------------------------------------------
+Thu Mar  5 20:36:07 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-03-apps-update
+- Changes since 19.12.2:
+  * Reload all kind of KHC addresses when the font size changed (kde#417222)
+
+-------------------------------------------------------------------
+Fri Feb  7 08:37:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Wed Feb  5 06:29:10 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-02-apps-update
+- Changes since 19.12.1:
+  * Reload the page after changing the font size (kde#415192)
+
+-------------------------------------------------------------------
+Tue Jan  7 10:00:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.1
+- Changes since 19.12.0:
+  * Update Appstream for new release
+
+-------------------------------------------------------------------
+Tue Dec 10 06:38:33 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12
+- Changes since 19.11.90:
+  * Update Appstream for new release
+
+-------------------------------------------------------------------
+Sat Nov 30 09:11:54 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Changes since 19.11.80:
+  * Increase KF5 dep since it's using KDEClangFormat
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:26 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Changes since 19.08.3:
+  * Port to non-deprecated KWindowSystem::setMainWindow(). Requires KF 5.62.
+  * Add KDEClangFormat cmake support
+  * It compiles fine without deprecated method
+  * Add an automatically managed "tweak" version number
+  * Bump the version number
+  * Remove unused includes
+
+-------------------------------------------------------------------
+Thu Nov  7 23:12:58 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.3.php
+- No code change since 19.08.2
+
+-------------------------------------------------------------------
+Fri Oct 11 18:20:03 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.2.php
+- Changes since 19.08.1:
+  * Define the application version in a more consistent way
+
+-------------------------------------------------------------------
+Thu Sep  5 14:00:32 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- No code change since 19.08.0
+
+-------------------------------------------------------------------
+Fri Aug  9 08:30:58 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- No code change since 19.07.90
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:49 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- No code changes since 19.07.80
+
+-------------------------------------------------------------------
+Tue Jul 23 11:59:00 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * Remove unused includes
+  * Install in new logging directory when we use kf5 5.59.0
+
+-------------------------------------------------------------------
+Thu Jul 18 21:47:27 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use kf5_debugdir macro for specifying the logging categories location
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:35 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- Changes since 19.04.2:
+  * No code changes since 19.04.2
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:53 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- No code changes since 19.04.1
+
+-------------------------------------------------------------------
+Fri May 10 05:37:14 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- No code changes since 19.04.0
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:55 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- Changes since 19.03.90:
+  * No code changes since 19.03.90
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:41 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * Bump version number
+  * Fix opening URL's to help files
+
+-------------------------------------------------------------------
+Wed Mar 27 06:41:02 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Follow kde hig for the search field
+  * Add <launchable> entry to appdata
+  * No need to duplicate work done by KAboutData::setupCommandLine()
+  * Remove no longer used version header includes
+  * Respect BUILD_TESTING
+  * Use more https in links
+  * Use <gui> instead of deprecated <kpartgui>
+  * Remove explicit use of ECM_KDE_MODULE_DIR, is part of ECM_MODULE_PATH
+  * Fix clazy warning
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:17 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * No code changes since 18.12.2
+
+-------------------------------------------------------------------
+Sat Feb 09 08:25:04 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * No code changes since 18.12.1
+
+-------------------------------------------------------------------
+Fri Jan 11 05:42:14 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * No code changes since 18.12.0
+
+-------------------------------------------------------------------
+Fri Dec 14 06:09:11 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * No code changes since 18.11.90
+
+-------------------------------------------------------------------
+Mon Dec 03 20:56:00 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * Contents items expanding issue (kde#399275)
+  * Remove duplicate submenus. (kde#399274)
+
+-------------------------------------------------------------------
+Tue Nov 20 06:22:21 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:57:03 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * Sort includes
+  * Get rid of the last cases of the old signal-slot syntax
+  * Convert to QOverload
+  * Port to new connect api
+  * Add donation url to appdata
+  * Use more nullptr
+  * Remove left-over condition for now older than min-kf-dep code
+  * Port away from deprecated setClearButtonShown
+  * Fix minor Appstreamercli issues
+  * Switch to the new signal-slot connection syntax in mainwindow.cpp
+  * Fix minor EBN issue
+  * It depends against 5.40
+  * Fix minor EBN issues [explicit] + [license] + [postfixop] + [normalize]
+  * Fix compile with strict flags
+  * Use QStringLiteral and co. + Add missing i18n
+  * Autogenerate debug category + create categories file
+  * Increase copyright
+  * Use nullptr/override
+  * Increase version
+- Removed patches, no longer necessary (handled by kdoctools):
+  * khelpcenter-fallback-to-kde4-docs.patch
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:37 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * No code changes since 18.08.2
+
+-------------------------------------------------------------------
+Thu Oct 11 20:06:52 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 06 18:43:01 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Aug 16 22:04:20 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * None
+
+-------------------------------------------------------------------
+Thu Jul 26 13:00:42 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * [Khelpcenter] Use HiDPI icons
+  * Proofread online help docbook
+  * Set desktop file name in KAboutData
+
+-------------------------------------------------------------------
+Fri Jul 13 04:49:58 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * None
+
+-------------------------------------------------------------------
+Fri Jun 08 05:06:47 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * None
+
+-------------------------------------------------------------------
+Fri May 11 05:17:55 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 18 07:49:20 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * None
+
+-------------------------------------------------------------------
+Fri Apr 06 07:09:27 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04-rc.php
+- Changes since 17.12.3:
+  * Grammar improvement by Leslie Satenstein
+  * Remove not necessary QtCore and co
+  * Remove obsolete reviewboardrc file
+
+-------------------------------------------------------------------
+Thu Mar 08 23:51:49 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.3.php
+- Changes since 17.12.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Feb 07 08:48:15 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 11 23:41:09 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:05 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:36 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * None
+
+-------------------------------------------------------------------
+Mon Nov 20 06:59:11 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * Enable the "Edit bookmarks" menu
+  * Fix minor typo
+
+-------------------------------------------------------------------
+Thu Nov 09 23:11:44 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 00:32:06 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 07 07:02:11 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * Adds missing dependency
+
+-------------------------------------------------------------------
+Fri Aug 11 22:45:31 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+  * Fix version comparison (unbreak compilation with 5.36)
+  * Optional usage of documentationDirs from KDocTools
+  * glossary: fix a sentence
+  * Increase the default number of search results
+  * Fix: look for dirs doc/HTML in the resource path
+  * Fix minor typo
+  * glossary: fix the definition of KDE
+  * Bump the minimum Frameworks to 5.20.0
+  * Use Q_DECL_OVERRIDE
+  * Use the newer ECM variable for the doc directory
+
+-------------------------------------------------------------------
+Sat Aug  5 18:17:49 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sat Jul 15 22:59:54 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * Call QCLP::parse rather than process in the slot connected to activateRequested
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:49 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * None
+
+-------------------------------------------------------------------
+Thu May 18 15:11:49 UTC 2017 - fabian@ritter-vogt.de
+
+- Remove khelpcenter-use-susehelp.patch and coinstall.patch
+  (boo#1039086)
+
+-------------------------------------------------------------------
+Wed May 17 20:36:18 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * Rename the translation catalog (avoid conflicts)
+
+-------------------------------------------------------------------
+Sun Apr 16 10:44:58 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:36 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * None
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:28 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+- Changes since 16.12.3:
+  * Fix sentence: remove spurious words
+  * Fix typo found by José Faustino
+  * fix wrong link find-replace
+  * Fix DocBook
+  * remove releaseinfo
+  * update fundamentals docbook
+
+-------------------------------------------------------------------
+Thu Mar  9 12:38:03 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * None
+
+-------------------------------------------------------------------
+Thu Feb  9 06:57:02 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Sat Jan 14 08:56:27 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Tue Dec 13 19:44:06 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Sat Dec  3 16:28:41 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:30:06 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+
+-------------------------------------------------------------------
+Tue Nov 22 14:22:50 UTC 2016 - wbauer@tmo.at
+
+- Require kdoctools which contains some images and stylesheets used
+  by khelpcenter5 (boo#1011094)
+
+-------------------------------------------------------------------
+Wed Nov  9 06:12:28 UTC 2016 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.08.3
+  * KDE Applications 16.08.3
+  * https://www.kde.org/announcements/announce-applications-16.08.3.php
+
+-------------------------------------------------------------------
+Tue Oct 11 20:49:21 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+-------------------------------------------------------------------
+Fri Sep  9 08:10:18 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.1
+   * KDE Applications 16.08.1
+   * https://www.kde.org/announcements/announce-applications-16.08.1.php
+
+
+-------------------------------------------------------------------
+Fri Aug 12 10:07:33 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.0
+   * KDE Applications 16.08.0
+   * https://www.kde.org/announcements/announce-applications-16.08.0.php
+
+
+-------------------------------------------------------------------
+Mon Aug  8 14:43:16 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.07.90
+   * KDE Applications 16.07.90 (16.08-RC)
+   * https://www.kde.org/announcements/announce-applications-16.08-rc.php
+
+
+-------------------------------------------------------------------
+Thu Jul  7 23:30:42 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.3
+   * KDE Applications 16.04.3
+   * https://www.kde.org/announcements/announce-applications-16.04.3.php
+
+
+-------------------------------------------------------------------
+Fri Jun 10 17:50:11 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.2
+   * KDE Applications 16.04.2
+   * https://www.kde.org/announcements/announce-applications-16.04.2.php
+
+
+-------------------------------------------------------------------
+Sat May  7 10:14:21 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.1
+   * KDE Applications 16.04.1
+   * https://www.kde.org/announcements/announce-applications-16.04.1.php
+
+
+-------------------------------------------------------------------
+Sun Apr 17 05:54:39 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.0
+   * KDE Applications 16.04.0
+   * https://www.kde.org/announcements/announce-applications-16.04.0.php
+
+
+-------------------------------------------------------------------
+Tue Apr 12 18:03:54 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.03.90
+   * KDE Applications 16.04.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.04-rc.php
+
+- Khelpcenter was moved upstream to be part of KDE Applications
+
+-------------------------------------------------------------------
+Tue Apr  5 15:53:45 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.2.php
+
+-------------------------------------------------------------------
+Tue Mar 29 16:20:44 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.1.php
+
+-------------------------------------------------------------------
+Sun Mar 20 09:19:49 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.0.php
+
+-------------------------------------------------------------------
+Tue Mar  1 17:31:53 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.5 (boo#968966)
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.5.php
+
+-------------------------------------------------------------------
+Tue Jan 26 22:20:07 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.4:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.4.php
+
+-------------------------------------------------------------------
+Wed Jan  6 14:12:05 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.3:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.3.php
+
+-------------------------------------------------------------------
+Tue Dec 22 22:35:05 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.2.php
+
+-------------------------------------------------------------------
+Tue Dec 15 17:49:50 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.1.php
+
+-------------------------------------------------------------------
+Sat Dec 12 17:31:24 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0:
+  * For more details please see:
+    https://dot.kde.org/2015/12/08/plasma-55-beautiful-new-artwork
+- Move to cmake(...) BuildRequires where possible
+
+-------------------------------------------------------------------
+Sun Nov  8 18:34:39 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.3 (boo#955068):
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.3.php
+
+-------------------------------------------------------------------
+Sun Oct  4 10:43:20 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.2:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.2.php
+
+-------------------------------------------------------------------
+Thu Sep 10 17:16:25 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.1:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.1.php
+
+-------------------------------------------------------------------
+Mon Aug 24 17:50:44 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.0.php
+
+-------------------------------------------------------------------
+Sun Aug 16 10:17:06 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.95 aka 5.4 beta:
+  This release of Plasma brings many nice touches for our users
+  such as much improved high DPI support, KRunner auto-completion
+  and many new beautiful Breeze icons. It also lays the ground for
+  the future with a tech preview of Wayland session available.
+  We're shipping a few new components such as an Audio Volume
+  Plasma Widget, monitor calibration tool and the User Manager
+  tool comes out beta.
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.95.php
+- Added kcoreaddons-devel, kdbusaddons-devel, ki18n-devel,
+  kservice-devel and pkgconfig(Qt5Xml) >= 5.4.0 BuildRequires
+
+-------------------------------------------------------------------
+Sun Jun 28 18:31:45 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.2.php
+
+-------------------------------------------------------------------
+Fri May 22 15:29:37 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.1.php
+
+-------------------------------------------------------------------
+Thu Apr 23 13:27:21 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.0.php
+
+-------------------------------------------------------------------
+Sun Apr 12 10:03:30 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Initial package
+
