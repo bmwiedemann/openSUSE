@@ -7,4 +7,12 @@
     <comment>Needed for some chipsets of which kernel support is still not in tree</comment>
     <requestid>1106071</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0dcdfb3bc5a08d568a734298e3c10e03</srcmd5>
+    <version>5.8.7.1+git20240108.476ef38</version>
+    <time>1705526331</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139474</requestid>
+  </revision>
 </revisionlist>

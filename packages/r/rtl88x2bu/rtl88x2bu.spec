@@ -1,7 +1,7 @@
 #
 # spec file for package rtl88x2bu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           rtl88x2bu
-Version:        5.8.7.1+git20230713.6789143
+Version:        5.8.7.1+git20240108.476ef38
 Release:        0
 Summary:        Kernel driver for Realtek 88x2bu wifi cards
 License:        GPL-2.0-only
@@ -30,9 +31,9 @@ Patch0:         rtl88x2bu_nodate_time.patch
 # PATCH-FIX-OPENSUSE fix-backported-update_mgmt_frame_registrations.patch
 Patch1:         fix-backported-update_mgmt_frame_registrations.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
+BuildRequires:  bc
 BuildRequires:  kernel-macros
 BuildRequires:  module-init-tools
-BuildRequires:  bc
 
 %{!?kernel_module_directory:%define kernel_module_directory /lib/modules}
 
