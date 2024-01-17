@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Thu Jun  2 05:44:00 UTC 2016 - coolo@suse.com
+
+- track the MIT license also in cpanspec.yml
+
+-------------------------------------------------------------------
+Tue Dec 22 09:59:51 UTC 2015 - coolo@suse.com
+
+- updated to 0.4
+   see /usr/share/doc/packages/perl-File-Mork/Changes
+
+  20 Dec 2015 - v0.4 UTF-16
+  
+    Fixes for UTF-16 conversion error from Rob O'Neale and James Wright
+
+-------------------------------------------------------------------
+Tue Mar 27 07:55:58 UTC 2012 - cfarrell@suse.com
+
+- license update: MIT
+  SPDX
+
+-------------------------------------------------------------------
+Mon Nov 21 09:57:55 UTC 2011 - coolo@suse.com
+
+- remove _service
+
+-------------------------------------------------------------------
+Mon Feb 21 02:43:16 UTC 2011 - Greg.Freemyer@gmail.com
+
+- initial package 0.3
+  * created by cpanspec 1.78.03
+

@@ -1,0 +1,29 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2020-09-19 12:12:08.719479245 +0200
+
+To resolve a previous uncertainty for projects like cddlib & gfan
+about the actual abstract path to use in include statements, cddlib
+0.94k has introduced new unique locations. Adjust sympow.
+
+---
+ sympol/raycomputationcdd.cpp |    7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+Index: sympol-0.1.8/sympol/raycomputationcdd.cpp
+===================================================================
+--- sympol-0.1.8.orig/sympol/raycomputationcdd.cpp
++++ sympol-0.1.8/sympol/raycomputationcdd.cpp
+@@ -24,11 +24,8 @@
+ #include "raycomputationcdd.h"
+ #include "polyhedron.h"
+ 
+-extern "C" {
+-	#include <setoper.h>
+-	#include <cdd.h>
+-}
+-
++#include <cddlib/setoper.h>
++#include <cddlib/cdd.h>
+ #include <ctime>
+ #include <cstdio>
+ 

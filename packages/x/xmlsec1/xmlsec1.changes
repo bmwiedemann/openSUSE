@@ -1,0 +1,246 @@
+-------------------------------------------------------------------
+Fri Dec 15 06:33:23 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 1.2.38
+  * Have a look at the changelog for the list of changes
+
+-------------------------------------------------------------------
+Thu Nov 30 14:49:16 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Make use of openSUSE build flags
+
+-------------------------------------------------------------------
+Tue Aug  8 15:41:15 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * xmlsec1-ui_null.patch
+    + fix build with older versions of openssl that don't have
+      UI_null() method
+
+-------------------------------------------------------------------
+Wed Feb  1 09:23:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- switch to pkgconfig(zlib) to allow alternative providers as well
+
+-------------------------------------------------------------------
+Sat Dec  3 17:03:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.37:
+  Fixed two regressions from 1.2.36 release 
+
+-------------------------------------------------------------------
+Fri Nov  4 15:33:42 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.2.36:
+  * Retired the XMLSec mailing list "xmlsec@aleksey.com" and the
+    XMLSec Online Signature Verifier.
+
+- Update to 1.2.35:
+  * Migration to OpenSSL 3.0 API (based on PR by @snargit). Note
+    that OpenSSL engines are disabled by default when XMLSec
+    library is compiled against OpenSSL 3.0. To re-enable OpenSSL
+    engines, use "--enable-openssl3-engines" configure flag (there
+    will be a lot of deprecation warnings).
+  * The OpenSSL before 1.1.0 and LibreSSL before 2.7.0 are now
+    deprecated and will be removed in the future versions of
+    XMLSec Library.
+  * Refactored all the integer casts to ensure cast-safety. Fixed
+    all warnings and enabled "-Werror" and "-pedantic" flags on
+    CI builds.
+  * Added configure flag to use size_t for xmlSecSize (currently
+    disabled by default for backward compatibility).
+  * Moved all CI builds to GitHub actions.
+
+-------------------------------------------------------------------
+Thu Sep  8 07:25:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add export CFLAGS/CXXFLAGS="-Wno-error=deprecated-declarations"
+  inbefore configure. We pass --enable-werror to configure, and
+  that leads to warnings about deprecations failing build. As
+  deprecations is mainly a consern for upstream, stop failing on
+  those.
+
+-------------------------------------------------------------------
+Mon May 23 09:49:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.34:
+  * Support for OpenSSL compiled with OPENSSL_NO_ERR.
+  * Full support for LibreSSL 3.5.0 and above
+  * Several other small fixes
+
+-------------------------------------------------------------------
+Sun Nov 28 18:53:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.33:
+  * Fix decrypting session key for two recipients 
+  * Added --privkey-openssl-engine option to enhance openssl engine support
+
+-------------------------------------------------------------------
+Sun May  9 19:54:21 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.2.32:
+  + Remove MD5 for NSS 3.59 and above
+  + Fix PKCS12_parse return code handling
+  + Fix OpenSSL lookup
+  + xmlSecX509DataGetNodeContent(): don't return 0 for non-empty
+    elements - fix for LibreOffice
+- add upstream signing key and validate source signature
+- put license text into all subpackages
+- treat all compiler warnings as errors
+
+-------------------------------------------------------------------
+Wed Feb 17 12:17:06 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Relax the crypto policies for the test-suite. This allows the
+  tests using certificates with small key lengths to pass.
+
+-------------------------------------------------------------------
+Thu Dec 17 09:16:49 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.31:
+  + Unload error strings in OpenSSL shutdown.
+  + Make userData available when executing preExecCallback
+    function.
+  + Add an option to use secure memset.
+- Pass --disable-md5 to configure: The cryptographic strength of
+  the MD5 algorithm is sufficiently doubtful that its use is
+  discouraged at this time. It is not listed as an algorithm in
+  [XMLDSIG-CORE1]
+  https://www.w3.org/TR/xmlsec-algorithms/#bib-XMLDSIG-CORE1
+
+-------------------------------------------------------------------
+Thu Jun 18 12:10:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.2.30:
+  * Enabled XML_PARSE_HUGE for all xml parsers.
+  * Various build and tests fixes and improvements.
+  * Move remaining private header files away from xmlsec/include/ folder.
+
+-------------------------------------------------------------------
+Thu Apr 25 09:13:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.2.28:
+  * Added BoringSSL support (chenbd).
+  * Added gnutls-3.6.x support (alonbl).
+  * Added DSA and ECDSA key size getter for MSCNG (vmiklos).
+  * Added --enable-mans configuration option (alonbl).
+  * Added coninuous build integration for MacOSX (vmiklos).
+  * Several other small fixes (more details).
+
+-------------------------------------------------------------------
+Fri Dec  7 11:01:44 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Make sure to recommend at least one backend when you install
+  just xmlsec1
+
+-------------------------------------------------------------------
+Wed Oct 31 13:21:31 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop the gnutls backend as based on the tests it is quite borked:
+  * We still have nss and openssl backend for people to use
+
+-------------------------------------------------------------------
+Wed Oct 31 12:00:28 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Version update to 1.2.27:
+  * Added AES-GCM support for OpenSSL and MSCNG (snargit).
+  * Added DSA-SHA256 and ECDSA-SHA384 support for NSS (vmiklos).
+  * Added RSA-OAEP support for MSCNG (vmiklos).
+  * Continuous build integration in Travis and Appveyor.
+  * Several other small fixes (more details).
+
+-------------------------------------------------------------------
+Thu Aug 16 10:22:09 UTC 2018 - tchvatal@suse.com
+
+- Add rplintrc to avoid bogus errors:
+  * xmlsec1-rpmlintrc
+
+-------------------------------------------------------------------
+Tue Aug 14 18:51:27 UTC 2018 - kallan@suse.com
+
+- Fixed (bsc#1104876).  Added: Requires: %{libname} = %{version} to each module
+  in the spec file. This will ensure that when one of the modules is installed
+  the corresponding version of libxmlsec1-1 will also be installed/upgraded.
+
+-------------------------------------------------------------------
+Tue Jun  5 20:10:17 UTC 2018 - vmiklos@collabora.co.uk
+
+- Version update to 1.2.26:
+  * Added xmlsec-mscng module based on Microsoft Cryptography API: Next
+    Generation
+  * Added support for GOST 2012 and fixed CryptoPro CSP provider for GOST R
+    34.10-2001 in xmlsec-mscrypto
+  * Added LibreSSL 2.7 support
+  * Upgraded documentation build process to support the latest gtk-doc
+
+-------------------------------------------------------------------
+Thu Nov 30 09:53:35 UTC 2017 - tchvatal@suse.com
+
+- Version update to 1.2.25:
+  * Various small fixes
+  * Coverity cleanups
+  * Removed support for old openssl
+
+-------------------------------------------------------------------
+Thu Apr 20 14:48:11 UTC 2017 - vmiklos@collabora.co.uk
+
+- Version update to 1.2.24:
+  * Added ECDSA-SHA1, ECDSA-SHA256, ECDSA-SHA512 support
+  for xmlsec-nss.
+
+  * Fixed XMLSEC_KEYINFO_FLAGS_X509DATA_DONT_VERIFY_CERTS
+  handling.
+
+  * Disabled external entities loading by xmlsec utility app by
+  default to prevent XXE attacks.
+
+  * Improved OpenSSL version and features detection.
+
+  * Cleaned up, simplified, and standardized internal error
+  reporting.
+
+  * Fixed a few Coverity-discovered bugs.
+
+  * Marked as deprecated all the functions in xmlsec/soap.h file
+  and a couple other functions no longer required by xmlsec.
+  These functions will be removed in the future releases.
+
+  * Several other small fixes (see commit log for more details).
+
+-------------------------------------------------------------------
+Thu Mar 23 12:19:26 UTC 2017 - pmonrealgonzalez@suse.com
+
+- Fixed dependencies with libraries (bsc#1012246):
+  * libxmlsec1-openssl.so
+  * libxmlsec1-gcrypt.so
+  * libxmlsec1-gnutls.so
+  * libxmlsec1-nss.so
+
+-------------------------------------------------------------------
+Mon Nov 28 09:29:03 UTC 2016 - tchvatal@suse.com
+
+- Version update to 1.2.23:
+  * Full support for OpenSSL 1.1.0
+  * Several other small fixes
+
+-------------------------------------------------------------------
+Wed May 25 10:49:08 UTC 2016 - tchvatal@suse.com
+
+- Version update to 1.2.22 (fate#320861):
+  * see the ChangeLog for most detailed output
+  * openssl 1.1 support
+  * Few features from libreoffice for integrated
+  * Run the testsuite
+
+-------------------------------------------------------------------
+Thu Sep  3 12:39:49 UTC 2015 - astieger@suse.com
+
+- update to 1.2.20:
+  * fix a number of miscellaneous bugs 
+  * update expired or soon-to-be-expired certificates in test suite
+
+-------------------------------------------------------------------
+Tue Jan  7 13:10:28 UTC 2014 - mvyskocil@suse.com
+
+- Initial packaging of xmlsec1 for SUSE 
+

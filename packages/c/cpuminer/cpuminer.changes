@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Tue Dec  8 15:58:22 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Enable json support
+- Install license
+
+-------------------------------------------------------------------
+Tue Dec  8 08:41:18 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Clean up and ensure compliance in .spec file
+
+-------------------------------------------------------------------
+Mon Dec  7 20:32:48 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Initial package build

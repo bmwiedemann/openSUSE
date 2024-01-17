@@ -1,0 +1,6 @@
+<package name="lua-cyrussasl" project="openSUSE:Factory">
+  <title>Cyrus SASL library for Lua 5.1+</title>
+  <description>Provides Lua bindings for Cyrus SASL authentication library.</description>
+  <devel project="devel:languages:lua" package="lua-cyrussasl"/>
+  <url>https://github.com/JorjBauer/lua-cyrussasl</url>
+</package>

@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Jan 25 11:52:07 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix missing dependency on lua-macros (boo#1205612)
+
+-------------------------------------------------------------------
+Tue Jun 21 10:04:57 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use no-as-needed (bsc#1181027)
+- Use own build system to prevent build cmds in %install
+
+-------------------------------------------------------------------
+Thu Jun 10 15:48:14 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for cyrussasl 1.1.0 (bsc#1181027).

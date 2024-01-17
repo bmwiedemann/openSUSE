@@ -1,0 +1,505 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>22f4d82b4bced4b02acef338a34adf5c</srcmd5>
+    <version>0.3.1</version>
+    <time>1306766646</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>67285</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e1c5637f72992e342846a2d2987ba710</srcmd5>
+    <version>0.3.1</version>
+    <time>1306766655</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67285
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>604cd10746d7ccf94ad527ef2a92ce50</srcmd5>
+    <version>0.3.1</version>
+    <time>1317024933</time>
+    <user>saschpe</user>
+    <comment>- Spec file cleanup:
+  * BuildRequire modern python-distribute instead of python-setuptools
+  * No need for changing executable bits for benchmarks
+  * Use SUSE version checks around specific macros
+  * Only require %{name} = %{version} in devel package</comment>
+    <requestid>84088</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>604cd10746d7ccf94ad527ef2a92ce50</srcmd5>
+    <version>0.3.1</version>
+    <time>1319182392</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>88cbcff3faf1eec3c47896b9fcde0e31</srcmd5>
+    <version>0.3.1</version>
+    <time>1325658629</time>
+    <user>coolo</user>
+    <comment>- Add upstream commits 25bf29f4d3b7 and 2d5b17472757 (bnc#738431) 
+- Implement %check (forwarded request 98402 from namtrac)</comment>
+    <requestid>98600</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>88cbcff3faf1eec3c47896b9fcde0e31</srcmd5>
+    <version>0.3.1</version>
+    <time>1340184058</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>3c18d46303430de6bcacee22277746b2</srcmd5>
+    <version>0.3.1</version>
+    <time>1341402986</time>
+    <user>coolo</user>
+    <comment>- add ppc64 platform support
+- fix ppc platform (forwarded request 126971 from k0da)</comment>
+    <requestid>127087</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>377f6e0647d19c1cf6ac7148dd6ac264</srcmd5>
+    <version>0.4.0</version>
+    <time>1353847236</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.4.0:
+  + Greenlet has an instance dictionary now, which means it can be
+    used for implementing greenlet local storage, etc. However, this
+    might introduce incompatibility if subclasses have __dict__ in their
+    __slots__. Classes like that will fail, because greenlet already
+    has __dict__ out of the box.
+  + Greenlet no longer leaks memory after thread termination, as long as
+    terminated thread has no running greenlets left at the time.
+  + Add support for debian sparc and openbsd5-sparc64
+  + Add support for ppc64 linux
+  + Don't allow greenlets to be copied with copy.copy/deepcopy
+  + Fix arm32/thumb support
+  + Restore greenlet's parent after kill
+  + Add experimental greenlet tracing
+- Changes from version 0.3.4:
+  + Use plain distutils for install command, this fixes installation of
+    the greenlet.h header.
+  + Enhanced arm32 support
+  + Fix support for Linux/S390 zSeries
+  + Workaround compiler bug on RHEL 3 / CentOS 3
+- Changes from version 0.3.3:
+  + Use sphinx to build documentation and publish it on greenlet.rtfd.org
+  + Prevent segfaults on openbsd 4/i386
+  + Workaround gcc-4.0 not allowing to clobber rbx
+  + Enhance test infrastructure
+  + Fix possible compilation problems when including greenlet.h in C++ mode
+  + Make the greenlet module work on x64 windows
+  + Add a test for greenlet C++ exceptions
+  + Fix compilation on Solaris with SunStudio
+- Changes from version 0.3.2:</comment>
+    <requestid>142579</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>fed951fddc834166cc4de890f9af14a6</srcmd5>
+    <version>0.4.0</version>
+    <time>1356731232</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146432</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>fed951fddc834166cc4de890f9af14a6</srcmd5>
+    <version>0.4.0</version>
+    <time>1359110041</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>1b494c7f63c5ae933928a604e20ea535</srcmd5>
+    <version>0.4.0</version>
+    <time>1362732200</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157724</requestid>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>853670ed0435ddcf92f6257f316b11dd</srcmd5>
+    <version>0.4.0</version>
+    <time>1368696362</time>
+    <user>coolo</user>
+    <comment>- Add python-greenlet-aarch64-support.diff, for, well, aarch64
+  support. (forwarded request 175017 from Andreas_Schwab)</comment>
+    <requestid>175247</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>06e8243135142543f8908a6fb5179d57</srcmd5>
+    <version>0.4.1</version>
+    <time>1371544581</time>
+    <user>coolo</user>
+    <comment>- update to 0.4.1:
+  * fix segfaults when using gcc 4.8 on amd64/x86 unix
+  * try to disable certain gcc 4.8 optimizations that make greenlet
+    crash
+  * Fix greenlet on aarch64 with gcc 4.8
+  * workaround segfault on SunOS/sun4v
+  * Add support for Aarch64
+  * Add support for x32 psABI on x86_64
+  * Changed memory constraints for assembly macro for PPC Linux
+  platforms.
+- remove python-greenlet-aarch64-support.diff (forwarded request 178868 from dirkmueller)</comment>
+    <requestid>178950</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>1cae7a3915ead1b6877b4dc64323ffee</srcmd5>
+    <version>0.4.1</version>
+    <time>1376392841</time>
+    <user>scarabeus_factory</user>
+    <comment>- run tests we optflags. Stuff got compiled in %check again. (forwarded request 186373 from k0da)</comment>
+    <requestid>186374</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>1cae7a3915ead1b6877b4dc64323ffee</srcmd5>
+    <version>0.4.1</version>
+    <time>1379664189</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>a7e206766d571e4b5685848d04b60ee8</srcmd5>
+    <version>0.4.1</version>
+    <time>1382692637</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204567</requestid>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>bb1fb631ef7d1102657dadf3674ff507</srcmd5>
+    <version>0.4.1</version>
+    <time>1387098565</time>
+    <user>coolo</user>
+    <comment>- ppc64le-support.patch: Support powerpc64le-linux (ELFv2 ABI).
+  Save/restore vector and floating-point registers as well on ppc. (forwarded request 210802 from k0da)</comment>
+    <requestid>210811</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9bd8e75979781537433d94f0b411ea9a</srcmd5>
+    <version>0.4.2</version>
+    <time>1390200923</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.4.2:
+  + Add .travis.yml
+  + Fix 'err' may be used uninitialized in this function
+  + Check _MSC_VER for msvc specific code
+  + Fix slp_switch on SPARC for multi-threaded environments
+  + Add support for m68k</comment>
+    <requestid>214243</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>df66491dd31e38f0b718cc5dcdcecebb</srcmd5>
+    <version>0.4.3</version>
+    <time>1408196275</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244826</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>df66491dd31e38f0b718cc5dcdcecebb</srcmd5>
+    <version>0.4.3</version>
+    <time>1409302881</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>62cac7e41aa001e8b4557de50feb663d</srcmd5>
+    <version>0.4.4</version>
+    <time>1410967524</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249313</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>00f70fe55fdde679cd0d68dd09af01f8</srcmd5>
+    <version>0.4.4</version>
+    <time>1415199303</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259676</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4d01bbda859aad3593b680eee1500eb8</srcmd5>
+    <version>0.4.5</version>
+    <time>1416425211</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262192</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>b281ae35991f5811af4adbaad6fbec70</srcmd5>
+    <version>0.4.5</version>
+    <time>1417643303</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263762</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>518ae1e68b3a8cbe518b1d935e570dc3</srcmd5>
+    <version>0.4.6</version>
+    <time>1431247588</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305747</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e5d47816ec43a4490b65679c26784eed</srcmd5>
+    <version>0.4.7</version>
+    <time>1435171826</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313186</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>42cd1c6752a8e4fdf227f2a89b735a7c</srcmd5>
+    <version>0.4.9</version>
+    <time>1461335134</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390472</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e080fdbb841d5f8761dff848b9764a9c</srcmd5>
+    <version>0.4.10</version>
+    <time>1474016427</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424619</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6a955973647cc6b4343dc7b33ad46669</srcmd5>
+    <version>0.4.12</version>
+    <time>1493384573</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489401</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d5cdbaaad4cd830b564136af3cdd260c</srcmd5>
+    <version>0.4.13</version>
+    <time>1517606606</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build on ppc64le to not clobber r2 register:
+  * greenlet-ppc64le.patch
+
+- Version update to 0.4.13:
+  * Support for Python 3.7
+  * Support for MinGW x64</comment>
+    <requestid>572027</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>649186eaedcf3d909fa59e16b17f6844</srcmd5>
+    <version>0.4.14</version>
+    <time>1533887230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627924</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>055b47eadf89529f7b130f8648e9fdda</srcmd5>
+    <version>0.4.15</version>
+    <time>1537970401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636119</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1b9e45c72beaf0dc6c09035d612764fc</srcmd5>
+    <version>0.4.16</version>
+    <time>1591879499</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.16:
+  - Support for DEC Alpha architecture
+  - Support for Python 3.9
+  - Support for Python 3.10a0</comment>
+    <requestid>812725</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>689274cb29e0a334eb6bee57394ce1f2</srcmd5>
+    <version>0.4.17</version>
+    <time>1603961160</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.17:
+  - Support for PEP 567 ContextVars</comment>
+    <requestid>838240</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b08771dfeca98a27bf078d2d2d448ca6</srcmd5>
+    <version>1.0.0</version>
+    <time>1613511224</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0:
+  * Require setuptools to build from source.
+  * Stop asking setuptools to build both .tar.gz and .zip
+    sdists. PyPI has standardized on .tar.gz for all platforms.
+  * Publish the change log to https://greenlet.readthedocs.io</comment>
+    <requestid>868479</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>02d0da22a62b3d8b5d463155c3ff8200</srcmd5>
+    <version>1.1.0</version>
+    <time>1623443419</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * Add support for Python 3.10. Pre-built binary wheels for 3.10 are
+    not currently available for all platforms. The greenlet ABI is
+    different on Python 3.10 from all previous versions, but as 3.10 was
+    never supported before, and the ABI has not changed on other Python
+    versions, this is not considered a reason to change greenlet's major
+    version.</comment>
+    <requestid>897851</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>ed2e1c9b710e4036490a78c3d25775c6</srcmd5>
+    <version>1.1.0</version>
+    <time>1630697162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915037</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>7bac3346e4b8ebff11b3ce8be4d0936c</srcmd5>
+    <version>1.1.2</version>
+    <time>1634754206</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.2:
+  - Fix a potential crash due to a reference counting error when Python
+    subclasses of ``greenlet.greenlet`` were deallocated. The crash
+    became more common on Python 3.10; on earlier versions, silent
+    memory corruption could result.
+  - Fix a leak of a list object when the last reference to a greenlet
+    was deleted from some other thread than the one to which it
+    belonged. For this to work correctly, you must call a greenlet API
+    like ``getcurrent()`` before the thread owning the greenlet exits:
+    this is a long-standing limitation that can also lead to the leak of
+    a thread's main greenlet if not called; we hope to lift this
+    limitation. Note that in some cases this may also fix leaks of
+    greenlet objects themselves. See `issue 251
+  - Python 3.10: Tracing or profiling into a spawned greenlet didn't
+    work as expected. See `issue 256</comment>
+    <requestid>925731</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>cb0449a6e5c0f9cba097f56808545ec9</srcmd5>
+    <version>1.1.3</version>
+    <time>1663275450</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.3:
+  * Add support for Python 3.11.</comment>
+    <requestid>1003047</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>3f1e8259d1daffa581e4a77cb6481fce</srcmd5>
+    <version>1.1.3</version>
+    <time>1673359131</time>
+    <user>dimstar_suse</user>
+    <comment>- Add sphinx-6.0.0.patch to make it work with new version of Sphinx.
+</comment>
+    <requestid>1056133</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>4dfad9e345302cdb83c11315e8d3a134</srcmd5>
+    <version>1.1.3</version>
+    <time>1682193455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081482</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>96b3bbac496ec34e69e27d40241c6579</srcmd5>
+    <version>2.0.2</version>
+    <time>1684490105</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.2:
+  * Fix calling ``greenlet.settrace()`` with the same tracer
+    object that was currently active.
+  * Various compilation and standards conformance fixes.
+   * Python 3.11: Fix a memory leak. See issue 328 and gevent issue 1924.
+- 2.0.0.post0 (2022-11-03)
+   * Add Programming Language :: Python :: 3.11 to the PyPI classifier
+     metadata.
+- 2.0.0rc5 (2022-10-31)
+   * Linux: Fix another group of rare crashes that could occur when shutting
+     down an interpeter running multiple threads. See issue 325.
+- 2.0.0rc4 (2022-10-30)
+   * Linux: Fix a rare crash that could occur when shutting down an interpreter
+     running multiple threads, when some of those threads are in greenlets
+     making calls to functions that release the GIL.
+- 2.0.0rc1 (2022-10-27)
+   * Deal gracefully with greenlet switches that occur while deferred
+     deallocation of objects is happening using CPython's &quot;trash can&quot;
+     mechanism. Previously, if a large nested container held items that
+     switched greenlets during delayed deallocation, and that second greenlet
+     also invoked the trash can, CPython's internal state could become corrupt.
+     This was visible as an assertion error in debug builds. Now, the relevant
+     internal state is saved and restored during greenlet switches. See also
+     gevent issue 1909.
+   * Rename the C API function PyGreenlet_GET_PARENT to PyGreenlet_GetParent
+     for consistency. The old name remains available as a deprecated alias.
+- 2.0.0a1 (2022-01-20)
+   * Drop support for very old versions of GCC and MSVC.
+     Compilation now requires a compiler that either supports C++11 or has some
+     other intrinsic way to create thread local variables; for older GCC, clang</comment>
+    <requestid>1084762</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e9f124a4aebefd379eae4571b325d1fd</srcmd5>
+    <version>3.0.0~rc3</version>
+    <time>1696014787</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1113760</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>a72cdfd2cc5b459304e8e89474807411</srcmd5>
+    <version>3.0.0</version>
+    <time>1696528967</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.0:
+  * No changes from 3.0rc3 aside from the version number.
+- Ignore some slow and flaky tests
+</comment>
+    <requestid>1115111</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>1f30408fda9f187a5b3c8b5cd276b221</srcmd5>
+    <version>3.0.1</version>
+    <time>1701206315</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.1:
+  * Fix a potential crash on Python 3.8 at interpreter shutdown
+    time.  This was a regression from earlier 3.0.x releases.</comment>
+    <requestid>1129185</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b76219671a58d0720dcc02275ceb6cc4</srcmd5>
+    <version>3.0.2</version>
+    <time>1702844947</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.2:
+  * Packaging: Add a minimal ``pyproject.toml`` to sdists.
+  * Packaging: Various updates to macOS wheels.
+  * Fix a test case on Arm32. Note that this is not a supported
+    platform (there is no CI for it) and support is best effort;</comment>
+    <requestid>1133678</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>673cfa48e0d25f263730c5bf6e7b8038</srcmd5>
+    <version>3.0.2</version>
+    <time>1704829707</time>
+    <user>anag+factory</user>
+    <comment>- require setuptools</comment>
+    <requestid>1136486</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>6810d60f9c30824030f0be0ffff967f0</srcmd5>
+    <version>3.0.3</version>
+    <time>1705099480</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138145</requestid>
+  </revision>
+</revisionlist>

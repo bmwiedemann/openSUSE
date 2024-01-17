@@ -1,0 +1,464 @@
+-------------------------------------------------------------------
+Sat Aug 21 16:26:33 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Revert building with EGL support, as it breaks mutliple apps
+  (boo#1189524).
+
+-------------------------------------------------------------------
+Sat Jul 31 21:16:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build with EGL support now that wxWidgets does so (since version
+  3.1.5), otherwise wxWidgets 3.1.x widgets that make use of glew
+  crash (see for example, boo#1188519); add BuildRequires:
+  pkgconfig(egl) as well as the same Requires for devel package.
+
+-------------------------------------------------------------------
+Mon Apr 27 17:15:03 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.2.0
+  Bug fixes:
+  * GL_EXT_semaphore constants
+  * Some const pointer fixups in OpenGL API
+  * Correction for GLEW_VERSION_4_5
+  New extensions:
+  * GL_AMD_framebuffer_multisample_advanced
+  * GL_AMD_gpu_shader_half_float_fetch
+  * GL_AMD_shader_image_load_store_lod
+  * GL_ARM_texture_unnormalized_coordinates
+  * GL_DMP_program_binary
+  * GL_DMP_shader_binary
+  * GL_EXT_EGL_image_external_wrap_modes
+  * GL_EXT_EGL_image_storage
+  * GL_EXT_EGL_sync
+  * GL_EXT_clip_control
+  * GL_EXT_depth_clamp
+  * GL_EXT_disjoint_timer_query
+  * GL_EXT_draw_transform_feedback
+  * GL_EXT_multiview_tessellation_geometry_shader
+  * GL_EXT_multiview_texture_multisample
+  * GL_EXT_multiview_timer_query
+  * GL_EXT_occlusion_query_boolean
+  * GL_EXT_primitive_bounding_box
+  * GL_EXT_protected_textures
+  * GL_EXT_robustness
+  * GL_EXT_shader_framebuffer_fetch_non_coherent
+  * GL_EXT_static_vertex_array
+  * GL_EXT_tessellation_point_size
+  * GL_EXT_tessellation_shader
+  * GL_EXT_texture_border_clamp
+  * GL_EXT_texture_buffer
+  * GL_EXT_texture_compression_s3tc_srgb
+  * GL_EXT_texture_format_sRGB_override
+  * GL_EXT_texture_mirror_clamp_to_edge
+  * GL_EXT_texture_query_lod
+  * GL_EXT_texture_shadow_lod
+  * GL_FJ_shader_binary_GCCSO
+  * GL_IMG_bindless_texture
+  * GL_IMG_framebuffer_downsample
+  * GL_IMG_multisampled_render_to_texture
+  * GL_IMG_program_binary
+  * GL_IMG_read_format
+  * GL_IMG_shader_binary
+  * GL_IMG_texture_compression_pvrtc
+  * GL_IMG_texture_compression_pvrtc2
+  * GL_IMG_texture_env_enhanced_fixed_function
+  * GL_IMG_texture_filter_cubic
+  * GL_INTEL_blackhole_render
+  * GL_INTEL_shader_integer_functions2
+  * GL_KHR_shader_subgroup
+  * GL_MESA_framebuffer_flip_y
+  * GL_MESA_program_binary_formats
+  * GL_MESA_tile_raster_order
+  * GL_NVX_gpu_multicast2
+  * GL_NVX_progress_fence
+  * GL_NV_compute_shader_derivatives
+  * GL_NV_conservative_raster_pre_snap
+  * GL_NV_conservative_raster_underestimation
+  * GL_NV_depth_nonlinear
+  * GL_NV_fragment_shader_barycentric
+  * GL_NV_memory_attachment
+  * GL_NV_mesh_shader
+  * GL_NV_query_resource_tag
+  * GL_NV_read_buffer
+  * GL_NV_read_buffer_front
+  * GL_NV_representative_fragment_test
+  * GL_NV_scissor_exclusive
+  * GL_NV_shader_subgroup_partitioned
+  * GL_NV_shader_texture_footprint
+  * GL_NV_shading_rate_image
+  * GL_NV_vdpau_interop2
+  * GL_OES_EGL_image
+  * GL_OES_EGL_image_external
+  * GL_OES_EGL_image_external_essl3
+  * GL_OES_blend_equation_separate
+  * GL_OES_blend_func_separate
+  * GL_OES_blend_subtract
+  * GL_OES_compressed_ETC1_RGB8_texture
+  * GL_OES_compressed_paletted_texture
+  * GL_OES_copy_image
+  * GL_OES_depth24
+  * GL_OES_depth32
+  * GL_OES_depth_texture
+  * GL_OES_depth_texture_cube_map
+  * GL_OES_draw_buffers_indexed
+  * GL_OES_draw_texture
+  * GL_OES_element_index_uint
+  * GL_OES_extended_matrix_palette
+  * GL_OES_fbo_render_mipmap
+  * GL_OES_fragment_precision_high
+  * GL_OES_framebuffer_object
+  * GL_OES_geometry_point_size
+  * GL_OES_geometry_shader
+  * GL_OES_get_program_binary
+  * GL_OES_gpu_shader5
+  * GL_OES_mapbuffer
+  * GL_OES_matrix_get
+  * GL_OES_matrix_palette
+  * GL_OES_packed_depth_stencil
+  * GL_OES_point_size_array
+  * GL_OES_point_sprite
+  * GL_OES_read_format
+  * GL_OES_required_internalformat
+  * GL_OES_rgb8_rgba8
+  * GL_OES_sample_shading
+  * GL_OES_sample_variables
+  * GL_OES_shader_image_atomic
+  * GL_OES_shader_io_blocks
+  * GL_OES_shader_multisample_interpolation
+  * GL_OES_single_precision
+  * GL_OES_standard_derivatives
+  * GL_OES_stencil1
+  * GL_OES_stencil4
+  * GL_OES_stencil8
+  * GL_OES_surfaceless_context
+  * GL_OES_tessellation_point_size
+  * GL_OES_tessellation_shader
+  * GL_OES_texture_3D
+  * GL_OES_texture_border_clamp
+  * GL_OES_texture_buffer
+  * GL_OES_texture_compression_astc
+  * GL_OES_texture_cube_map
+  * GL_OES_texture_cube_map_array
+  * GL_OES_texture_env_crossbar
+  * GL_OES_texture_mirrored_repeat
+  * GL_OES_texture_npot
+  * GL_OES_texture_stencil8
+  * GL_OES_texture_storage_multisample_2d_array
+  * GL_OES_texture_view
+  * GL_OES_vertex_array_object
+  * GL_OES_vertex_half_float
+  * GL_OES_vertex_type_10_10_10_2
+  * GL_QCOM_YUV_texture_gather
+  * GL_QCOM_shader_framebuffer_fetch_rate
+  * GL_QCOM_texture_foveated
+  * GL_QCOM_texture_foveated_subsampled_layout
+  * GL_VIV_shader_binary
+  * EGL_ANDROID_GLES_layers
+  * EGL_ANDROID_get_frame_timestamps
+  * EGL_ANDROID_get_native_client_buffer
+  * EGL_ARM_image_format
+  * EGL_EXT_bind_to_front
+  * EGL_EXT_client_sync
+  * EGL_EXT_compositor
+  * EGL_EXT_gl_colorspace_display_p3
+  * EGL_EXT_gl_colorspace_display_p3_linear
+  * EGL_EXT_gl_colorspace_display_p3_passthrough
+  * EGL_EXT_gl_colorspace_scrgb
+  * EGL_EXT_image_gl_colorspace
+  * EGL_EXT_image_implicit_sync_control
+  * EGL_EXT_surface_CTA861_3_metadata
+  * EGL_EXT_sync_reuse
+  * EGL_KHR_display_reference
+  * EGL_MESA_query_driver
+  * EGL_NV_context_priority_realtime
+  * EGL_NV_quadruple_buffer
+  * EGL_NV_stream_dma
+  * EGL_NV_stream_flush
+  * EGL_NV_stream_origin
+  * EGL_NV_triple_buffer
+  * EGL_WL_bind_wayland_display
+  * EGL_WL_create_wayland_buffer_from_image
+  * GLX_EXT_context_priority
+  * GLX_EXT_no_config_context
+  * GLX_NV_multigpu_context
+  * WGL_NV_multigpu_context
+- New so_ver
+- New source URL
+- Build executables with PIE
+- Spec cleanup
+
+-------------------------------------------------------------------
+Sat Nov 11 05:01:16 UTC 2017 - aavindraa@gmail.com
+
+- Update to 2.1.0
+  * Enhancements:
+    + OpenGL 4.6 support added
+    + Improved cmake build support
+    + Improved Mac OSX build support
+  * Bug fixes:
+    + Resovled crash when glXGetCurrentDisplay() is NULL
+    + CMake: only install PDB files with MSVC
+    + wglGetProcAddress crash with NOGDI defined
+    + Mac: using -Os rather than -O2
+  * 33 new extensions
+- move to github
+- new so_ver
+
+-------------------------------------------------------------------
+Wed Jul 12 11:15:21 UTC 2017 - jengelh@inai.de
+
+- RPM group fix.
+
+-------------------------------------------------------------------
+Wed Jul 12 09:01:07 UTC 2017 - tchvatal@suse.com
+
+- Version update to 2.0 release:
+  * EGL support added
+  * Bunch of new GL extensions
+  * Forward context support added
+  * OSMesa support added
+
+-------------------------------------------------------------------
+Tue Sep 22 18:47:35 UTC 2015 - jengelh@inai.de
+
+- Drop "glew" from baselibs.conf; there is nothing in this
+  subpackage that would be baselibbed by default.
+
+-------------------------------------------------------------------
+Wed Sep  2 12:09:50 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.13.0
+  * Enhancements:
+    + glxewInit, wglewInit
+    + glewinfo adds support for -version, -profile 
+      core|compatibility and -flag debug|forward parameters
+    + Improved cmake build support
+  * New extensions:
+    + GL_ARB_ES3_2_compatibility
+    + GL_ARB_fragment_shader_interlock
+    + GL_ARB_gpu_shader_int64
+    + GL_ARB_parallel_shader_compile
+    + GL_ARB_post_depth_coverage
+    + GL_ARB_sample_locations
+    + GL_ARB_shader_atomic_counter_ops
+    + GL_ARB_shader_ballot
+    + GL_ARB_shader_clock
+    + GL_ARB_shader_viewport_layer_array
+    + GL_ARB_sparse_texture2
+    + GL_ARB_sparse_texture_clamp
+    + GL_ARB_texture_filter_minmax
+    + GL_INTEL_framebuffer_CMAA
+    + GL_KHR_no_error
+    + GL_NV_conservative_raster_dilate
+    + GL_OVR_multiview
+    + GL_OVR_multiview2
+  * Bug fixes
+
+-------------------------------------------------------------------
+Sun Apr 12 18:58:12 UTC 2015 - mpluskal@suse.com
+
+- Remove devel package from baselibs.conf (discussed in boo#894331)
+
+-------------------------------------------------------------------
+Wed Jan 28 13:32:21 UTC 2015 - mimi.vx@gmail.com
+
+- update of baselibs.conf 
+
+-------------------------------------------------------------------
+Wed Jan 28 10:59:03 UTC 2015 - mimi.vx@gmail.com
+
+- Version bump to 1.12.0
+  * support for new extensions
+  *bugixes:
+    .pc -I flags inconsistent with *.h includes
+    Missing defines: GL_COPY_{READ|WRITE}_BUFFER_BINDING
+    multiple const GLchar *const* errors
+    PFNGLSHADERSOURCEPROC incorrect in 1.11.x
+    GL_GEOMETRY_SHADER & GL_FRAGMENT_SHADER
+
+-------------------------------------------------------------------
+Fri Dec  5 08:33:45 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 1.11.0:
+  * support for OpenGL 4.5
+- Removed patches no longer needed:
+  * glew-1.10.0-destdir.patch
+
+-------------------------------------------------------------------
+Sun Sep 28 09:27:59 UTC 2014 - jengelh@inai.de
+
+- glew-devel-32bit failed to pull in libGLEW1_10-32bit
+- own /usr/include/GL
+
+-------------------------------------------------------------------
+Mon Sep  1 13:34:02 CEST 2014 - sbrabec@suse.cz
+
+- Fix baselibs.conf (bnc#894331).
+
+-------------------------------------------------------------------
+Mon May 26 19:44:23 UTC 2014 - fstrba@suse.com
+
+- Upgrade to upstream 1.10.0
+- New patch:
+  * glew-1.10.0-destdir.patch: Sanitize Makefile
+    - Add DESTDIR option to avoid buildroot in .pc files
+
+-------------------------------------------------------------------
+Wed Oct 24 22:38:00 UTC 2012 - thorstenb@flightgear.org
+
+- Fixed dependencies for openSUSE <= 12.1
+
+-------------------------------------------------------------------
+Mon Sep 24 22:46:35 UTC 2012 - adam@mizerski.pl
+
+- update to latest stable 1.9.0
+  - removed 0001-Add-glew.c-glewinfo.c-and-includes.patch.bz2.
+    These files are included in tarball.
+- Changed explicit glu dependency, to recommendation. There is
+  GLEW_NO_GLU option.
+- added glew-devel to baselibs.conf
+- spec cleanup
+
+-------------------------------------------------------------------
+Tue Sep 18 13:40:47 UTC 2012 - idonmez@suse.com
+
+- Add explicit glu dependency 
+
+-------------------------------------------------------------------
+Tue Feb 21 18:38:08 UTC 2012 - johannesobermayr@gmx.de
+
+- Update to latest git version
+- Remove obsolete dont-strip.diff
+
+-------------------------------------------------------------------
+Mon Feb 20 17:28:12 CET 2012 - meissner@suse.de
+
+- buildrequire Xi and Xmu libs
+
+-------------------------------------------------------------------
+Wed Dec 28 17:51:57 UTC 2011 - johannesobermayr@gmx.de
+
+- Do not merge es branch for now
+  * Fixes bnc #732438, #738519
+  * Issue reported upstream
+
+-------------------------------------------------------------------
+Sun Nov 13 14:16:19 UTC 2011 - johannesobermayr@gmx.de
+
+- Update to 1.7.0 and latest git
+- Merge es branch
+
+-------------------------------------------------------------------
+Thu Sep 29 13:20:07 UTC 2011 - coolo@suse.com
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Thu Aug 18 17:52:07 UTC 2011 - crrodriguez@opensuse.org
+
+- Do not obsolete old library 
+
+-------------------------------------------------------------------
+Sat Aug 13 15:19:54 UTC 2011 - johannesobermayr@gmx.de
+
+- Update to 1.6.0 with two further commits
+- Don't strip libraries
+
+-------------------------------------------------------------------
+Fri May 27 13:30:13 UTC 2011 - coolo@novell.com
+
+- remove sublicenses
+
+-------------------------------------------------------------------
+Sun Apr 24 12:59:34 UTC 2011 - toddrme2178@gmail.com
+  
+- Add 32bit compatibility libraries
+  
+-------------------------------------------------------------------
+Sat Feb  5 01:32:40 UTC 2011 - davejplater@gmail.com
+
+- Update to version 1.5.8
+- Upstream changes:
+ *The latest release contains support for OpenGL 3.3, OpenGL 4.1
+  and the following extensions:
+  OpenGL extensions, WGL extensions and GLX extensions.
+ *fixes minor bugs and adds two new extensions.
+ *Version 1.5.7 fixes minor bugs and adds one new extension.
+  
+-------------------------------------------------------------------
+Thu Sep  9 17:54:40 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.5.6:
+  + Support for OpenGL 4.1
+  + Support many new extensions.
+- Changes from version 1.5.5:
+  + Support new extensions
+  + Bug fixes:
+    - Compilation issue with GLX_SGI_video_sync
+    - OpenGL 4.0 double-precision uniform functions added
+    - Constness of glPointParameterfvARB and glPointParameterfvEXT
+    - Added glVertexAttribDivisor
+    - Compilation issue with Nvidia GLX headers
+- Changes from version 1.5.4:
+  + Support for OpenGL 3.3 and 4.0
+  + Support new extensions
+  + Bug fixes:
+    - Parameter constness fix for glPointParameteriv and
+      glPointParameterfv
+- Changes from version 1.5.3:
+  + New extensions:
+    - GLX_INTEL_swap_event, GL_AMD_seamless_cubemap_per_texture &
+      GL_AMD_shader_stencil_export
+  + Bug fixes:
+    - Correct version detection for GL 3.1 and 3.2
+    - Missing 3.1 enumerants
+    - Add glew.pc
+- Changes from version 1.5.2:
+  + Support for OpenGL 3.1 and 3.2
+  + Many new extensions
+  + Bug fixes:
+    - DOS line endings for windows .zip archives only.
+    - glTransformFeedbackVaryings arguments.
+    - Resource leak in glewinfo and visualinfo tools.
+    - WIN32_LEAN_AND_MEAN preprocessor pollution.
+    - Fixed version detection for GLEW_VERSION_2_1 and
+      GLEW_VERSION_3_0.
+    - MesaGLUT glut.h GLAPIENTRY dependency.
+    - glFramebufferTextureLayer correction.
+    - OSX compiler warnings resolved.
+    - Cygwin linking to opengl32 by default, rather than X11 OpenGL
+    - SnowLeopard (OSX 10.6) gl.h detection.
+    - Use $(STRIP) consistently.
++ Add pkg-config BuildRequires.
+
+-------------------------------------------------------------------
+Wed Aug  5 18:03:04 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 1.5.1:
+  * support for OpenGL 3.0
+  * support for many new extensions
+  * bug fixes
+
+-------------------------------------------------------------------
+Wed Feb 25 00:51:46 CET 2009 - crrodriguez@suse.de
+
+- static libraries are not usable and now removed. 
+
+-------------------------------------------------------------------
+Thu Mar 20 19:20:54 CET 2008 - sbrabec@suse.cz
+
+- Removed bad dependencies from libGLEW1_5 (bnc#372722).
+
+-------------------------------------------------------------------
+Mon Jan 14 17:06:33 CET 2008 - sbrabec@suse.cz
+
+- Updated to version 1.5.0:
+  * less restrictive license
+  * minor fixes
+- Split package according to the shared library packaging policy.
+
+-------------------------------------------------------------------
+Thu Jul 12 17:35:17 CEST 2007 - sbrabec@suse.cz
+
+- New SuSE package, version 1.4.0.
+

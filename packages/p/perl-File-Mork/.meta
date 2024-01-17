@@ -1,0 +1,11 @@
+<package name="perl-File-Mork" project="openSUSE:Factory">
+  <title>a module to read Mozilla URL history files</title>
+  <description>This is a module that can read the Mozilla URL history file -- normally
+$HOME/.mozilla/default/*.slt/history.dat -- and extract the id, url, name,
+hostname, first visted dat, last visited date and visit count.
+
+To find your history file it might be worth using *Mozilla::Backup* which
+has some platform-independent code for finding the profiles of various
+Mozilla-isms (including Firefox, Camino, K-Meleon, etc.).</description>
+  <devel project="devel:languages:perl" package="perl-File-Mork"/>
+</package>

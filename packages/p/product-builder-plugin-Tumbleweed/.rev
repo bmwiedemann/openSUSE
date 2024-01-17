@@ -1,0 +1,209 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7036288d5c01b51509cfe0216069b9a4</srcmd5>
+    <version>1.0~pre.1492089529.4685cf8</version>
+    <time>1494088175</time>
+    <user>dimstar_suse</user>
+    <comment>new product builder for Leap 15</comment>
+    <requestid>491635</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>adea15f9fcec7a9d9f56b52fdb93e251</srcmd5>
+    <version>1.0~pre.1492089529.4685cf8</version>
+    <time>1495469381</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497151</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cc240e3acd6cacdf8bd75d5c313926f6</srcmd5>
+    <version>1.0~pre.1495630701.9f80a3d</version>
+    <time>1496327661</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>500173</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c008f3706ad0a3f576d91ae91c54f584</srcmd5>
+    <version>1.0~pre.1497944896.b201a36</version>
+    <time>1498485163</time>
+    <user>dimstar_suse</user>
+    <comment>bugfixes</comment>
+    <requestid>505846</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6d4f718caf90065db0e64d7d90a9df54</srcmd5>
+    <version>1.0~pre.1499787351.59487ac</version>
+    <time>1499788581</time>
+    <user>dimstar_suse</user>
+    <comment>add support for susedata tool
+</comment>
+    <requestid>509509</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b90c1bbf00fd5eb1d6109d40407fd3be</srcmd5>
+    <version>1.0~pre.1502701492.44addf1</version>
+    <time>1503060986</time>
+    <user>dimstar_suse</user>
+    <comment>- fix adding of license.tar.gz to repodata</comment>
+    <requestid>516779</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e45d112bb3b0e21dc7d92ae525e5451c</srcmd5>
+    <version>1.0~pre.1503061558.bf11442</version>
+    <time>1503392798</time>
+    <user>dimstar_suse</user>
+    <comment>- fix signing of CHECKSUMS file</comment>
+    <requestid>517572</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4c0217e7bd3ea887ac7dc5fa832a1185</srcmd5>
+    <version>1.0~pre.1503641982.ffb521b</version>
+    <time>1503929784</time>
+    <user>dimstar_suse</user>
+    <comment>create also pubkey file for repomd.xml</comment>
+    <requestid>518640</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1bfd8aa11286b0eb04efb42ccef9e228</srcmd5>
+    <version>1.0~pre.1505229734.e75d199</version>
+    <time>1505331490</time>
+    <user>dimstar_suse</user>
+    <comment>support multiple license files on multi product media</comment>
+    <requestid>523756</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>47023ce5e86579d48edc2ebb1ce9c971</srcmd5>
+    <version>1.0~pre.1505901051.22e279d</version>
+    <time>1506340365</time>
+    <user>dimstar_suse</user>
+    <comment>- fix product specific license cleanup and naming scheme</comment>
+    <requestid>527497</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1701a1d086f5a567b7b38873d8942e00</srcmd5>
+    <version>1.0~pre.1509619089.24f326a</version>
+    <time>1509820115</time>
+    <user>dimstar_suse</user>
+    <comment>- download instsys again on NET install media. Follow linuxrc
+  default now.
+- fix cleanup code for mini media</comment>
+    <requestid>538318</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>97a88bc401ff7796fab49b89f5247010</srcmd5>
+    <version>1.0~pre.1516716020.44dfdf4</version>
+    <time>1516803898</time>
+    <user>dimstar_suse</user>
+    <comment>- removed kexec line (bsc#990374)</comment>
+    <requestid>568586</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3444bb29d7f0e5216884d62fe57d44e6</srcmd5>
+    <version>1.1~pre.1548856050.054a6a1</version>
+    <time>1549623976</time>
+    <user>coolo</user>
+    <comment>- support multiple product repoid tags
+
+- add dependency to instsource-susedata for disk usage meta data</comment>
+    <requestid>670146</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ca80130ad502f8ca3b982335fa4dde1a</srcmd5>
+    <version>1.1~pre.1549882033.98140aa</version>
+    <time>1549882732</time>
+    <user>dimstar_suse</user>
+    <comment>- instsys comes from remote source again
+  (keep avoiding kexec call)</comment>
+    <requestid>673285</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>79e458fe92b99feff76b044ac8102f9b</srcmd5>
+    <version>1.2.1</version>
+    <time>1571057611</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.2.0
+  * adding content tags in repositories (SLE-7695)
+
+- update to version 1.1.0
+  * createrepo_c errors due to invalid data are handled as error now</comment>
+    <requestid>734951</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4b164ad5cba27eea0998f0ff96b028d0</srcmd5>
+    <version>1.3.0</version>
+    <time>1588022952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797198</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>91d3f4128ba2191b695dfeeda3760ed2</srcmd5>
+    <version>1.3.1</version>
+    <time>1618775109</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.3.1
+  * add option -g when calling add_product_susedata
+    to add gpg key ids as tags in repomd.xml (bsc#1184326)
+  * do not change the default install method in gfxboot.cfg
+    (bsc#1171018) Instead, just fill out the server &amp; path
+    components in case the user wants to switch. The repo
+    location is already stored in the initrd in the
+    skelcd-installer-net-* packages. (forwarded request 885723 from oertel)</comment>
+    <requestid>885724</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0dfbc11c50330bb0929ce1c5c774478e</srcmd5>
+    <version>1.4.3</version>
+    <time>1632173515</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.4.3
+  - comps meta data support
+
+- 1.4.0
+  - modulemd data support</comment>
+    <requestid>919730</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d80e14b1fd62fe14e806c1d8caad4b64</srcmd5>
+    <version>1.6.0</version>
+    <time>1633365573</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>922537</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>95384af590de756f709cbf60f9e17c85</srcmd5>
+    <version>1.7.0</version>
+    <time>1674585708</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>1059324</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6ba2dbf0a48536b575f2f30d443eab01</srcmd5>
+    <version>1.8.1</version>
+    <time>1676036038</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.8.1
+  * make use of SPDX SBOM generation tool</comment>
+    <requestid>1063829</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1baf0c35e64cc2bd0b4b5bb35078b25b</srcmd5>
+    <version>1.8.2</version>
+    <time>1676578196</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.8.2
+  * CycloneDX SBOM generation added</comment>
+    <requestid>1065966</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3708023f3d929e655ee36914b3fb51c8</srcmd5>
+    <version>1.8.3</version>
+    <time>1679238978</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072660</requestid>
+  </revision>
+</revisionlist>

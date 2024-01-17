@@ -1,0 +1,121 @@
+-------------------------------------------------------------------
+Wed Jan 25 10:15:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- spec-cleaner run
+- fix URL
+
+-------------------------------------------------------------------
+Thu Jan  5 07:33:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20220612:
+  * Fix character width setting (OS/2 table) of VL-Gothic
+  Force xAvgCharWidth of his OS/2 table by fontforge's
+  auto-setting to a fixed value that is not expected
+
+-------------------------------------------------------------------
+Sat May  7 15:14:29 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2020/07/20
+  * Fixed interchanged glyphs for U+23F4 and U+23F5
+  * Fixed wrong glyph for 🙃 U+1F643 UPSIDE-DOWN FACE
+  * Fixed wrong glyph for 🐿 U+1F43F CHIPMUNK
+  * Fixed incorrect character widths of several latin1 symbols
+  * Fixed wrong glyphs fror U+2BF2 and U+2BF3
+  * add/fix some Greek Letter
+    * Add Greek Capital Letter Yot (U+037F)
+    * Fix Greek Small Letter Digamma (U+03dd)
+    * Fix Small Digamma misplacing
+- Update to version 2020/07/19
+  * Fixed glyphs U+9304 and U+32FF
+- Update to version 2014/12/06
+  * Add Miscellaneous Symbols and Arrows U+2B60〜2BA7
+
+-------------------------------------------------------------------
+Thu Sep 17 08:11:04 UTC 2015 - pgajdos@suse.com
+
+- fix build for sle11
+
+-------------------------------------------------------------------
+Mon Sep  1 14:19:08 UTC 2014 - ftake@geeko.jp
+
+- updated to version 20140801
+  * new glyphs including Unicode emoji
+  * update M+ part to the latest CVS HEAD
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Fri Jun  1 17:44:37 UTC 2012 - ftake@geeko.jp
+
+- updated to version 20120325
+  * new glyphs
+
+-------------------------------------------------------------------
+Thu May 17 09:10:34 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Mon Apr  2 15:15:40 UTC 2012 - cfarrell@suse.com
+
+- license update: BSD-3-Clause and SUSE-mplus
+  See the LICENSE file
+
+-------------------------------------------------------------------
+Wed Dec 21 17:58:14 CET 2011 - tiwai@suse.de
+
+- Renamed vlgothic -> vlgothic-fonts according to
+  openSUSE packaging guidelines and FATE#313035
+  Adjusted Obsoletes and Provides accordingly
+- Add prereq macro
+
+-------------------------------------------------------------------
+Wed Sep 28 04:22:16 UTC 2011 - ftake@geeko.jp
+
+- updated to version 20110722
+  * imported a lot of glyphs from M+ fonts
+  * fixed glyphs and updated font metrics
+
+-------------------------------------------------------------------
+Tue Jul 27 16:49:29 CEST 2010 - tiwai@suse.de
+
+- updated to version 20100416
+  a few glyphs fixes
+
+-------------------------------------------------------------------
+Wed Mar 31 17:57:38 CEST 2010 - tiwai@suse.de
+
+- updated to version 20100126
+  Lots of glyph fixes; see Changelog file for details
+- removed unneeded dependency on xorg-x11-devel
+
+-------------------------------------------------------------------
+Tue Jul 21 15:40:26 CEST 2009 - tiwai@suse.de
+
+- updated to version 20090710
+ * update M+1C,IM part of VL-PGothic/VL-Gothic
+ * fix kanji glyphs of VL-PGothic/VL-Gothic
+
+-------------------------------------------------------------------
+Mon Jan 26 16:02:40 CET 2009 - mfabian@suse.de
+
+- copy Takashi Iwai’s package to Factory.
+
+-------------------------------------------------------------------  
+Fri Jan 16 11:28:47 CET 2009 - tiwai@suse.de  
+  
+- updated to version 20090108  
+  
+-------------------------------------------------------------------  
+Thu Nov 27 11:33:23 CET 2008 - tiwai@suse.de  
+  
+- own fontdir itself (11.1 caused a build error)  
+  
+-------------------------------------------------------------------  
+Fri Jun 27 17:20:48 CEST 2008 - tiwai@suse.de  
+  
+- initial version: 20080624  

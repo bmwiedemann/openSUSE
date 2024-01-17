@@ -1,0 +1,9 @@
+<package name="python-django-requests-debug-toolbar" project="openSUSE:Factory">
+  <title>A Django Debug Toolbar panel for Requests</title>
+  <description>Django Requests Debug Toolbar tracks all HTTP requests made with the popular
+requests library.
+
+</description>
+  <devel project="devel:languages:python:django" package="python-django-requests-debug-toolbar"/>
+  <url>https://github.com/marceltschoppch/django-requests-debug-toolbar</url>
+</package>

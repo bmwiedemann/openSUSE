@@ -1,0 +1,182 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2eea385c2e6506c4ce16335aa411861d</srcmd5>
+    <version>0~20130317</version>
+    <time>1366358379</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>172338</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0cc9089e5a10c7905bbab4c74e72bb67</srcmd5>
+    <version>0~20130529</version>
+    <time>1375364289</time>
+    <user>coolo</user>
+    <comment>update to 0~20130529
+part of summer 2013 libyal refresh for opensuse 2013</comment>
+    <requestid>185327</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1dd6db547b72988d452b624d422abdc9</srcmd5>
+    <version>0~20130806</version>
+    <time>1377629587</time>
+    <user>coolo</user>
+    <comment>update to 0~20130806 - uses more external libraries from factory</comment>
+    <requestid>196507</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>1dd6db547b72988d452b624d422abdc9</srcmd5>
+    <version>0~20130806</version>
+    <time>1379663011</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>42f1f0a9909aad482f78b19a57cf207a</srcmd5>
+    <version>0~20131015</version>
+    <time>1386156592</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>209356</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>69a0f69a1719bd2292a12f2628773ef6</srcmd5>
+    <version>0~20140731</version>
+    <time>1408353835</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244917</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>69a0f69a1719bd2292a12f2628773ef6</srcmd5>
+    <version>0~20140731</version>
+    <time>1409301627</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>3eeb3eb8908b2eeadf88bc224e712192</srcmd5>
+    <version>0~20140731</version>
+    <time>1409998677</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>247270</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>def285a6c9bb97fdb8c7bf6fd5d90417</srcmd5>
+    <version>0~20150106</version>
+    <time>1422626779</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282351</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0f3fc093d5323e4bbf423a463c333669</srcmd5>
+    <version>0~20150314</version>
+    <time>1439556417</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0~20150314</comment>
+    <requestid>322700</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d77c044344ee79a72ffb7ee2b159ada7</srcmd5>
+    <version>0~20181227</version>
+    <time>1560337798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>696095</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b511ef8821471ff057abe6e56d6e41d8</srcmd5>
+    <version>0~20191221</version>
+    <time>1586869776</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0~20191221
+        * changes for libcdata
+- rename python-msiecf to python2-msiecf
+- add python3-msiecf submodule
+</comment>
+    <requestid>793705</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>7f591cc07a90bb4be2014af5576473d4</srcmd5>
+    <version>0~20191221</version>
+    <time>1588324295</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python2 submodule
+</comment>
+    <requestid>799056</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4be9b2ad432260e279df05b5be14a66f</srcmd5>
+    <version>0~20200710</version>
+    <time>1609344808</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859346</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>34f62f6c17d037ceea2d3a5ff3518333</srcmd5>
+    <version>20210506</version>
+    <time>1623363497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898736</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>6bdd1c116e13902b672b195352a71a8f</srcmd5>
+    <version>20210506</version>
+    <time>1643062197</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable multipython builds.</comment>
+    <requestid>948360</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>b17a367a71db2764e2c983e76e8d2f05</srcmd5>
+    <version>20210506</version>
+    <time>1660051734</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>994015</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a7c3cb2102681d2aa326361be74b7a34</srcmd5>
+    <version>20221024</version>
+    <time>1666607578</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221024</comment>
+    <requestid>1030728</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>4672033b0abbacf5bb03beacb5891642</srcmd5>
+    <version>20221024</version>
+    <time>1669629997</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038483</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>89ec0f69973e060c87bc9de58fd8baf0</srcmd5>
+    <version>20221024</version>
+    <time>1672851111</time>
+    <user>dimstar_suse</user>
+    <comment>add missing libbfio-devel</comment>
+    <requestid>1046595</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>00d64293d94768cd7776abbaf36dc943</srcmd5>
+    <version>20221024</version>
+    <time>1691594716</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1102997</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fcf2f13650c31cf3c573c8ef7e347f8f</srcmd5>
+    <version>20231203</version>
+    <time>1701632991</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231203</comment>
+    <requestid>1130580</requestid>
+  </revision>
+</revisionlist>

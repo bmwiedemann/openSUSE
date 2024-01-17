@@ -1,0 +1,6 @@
+<package name="cpuminer" project="openSUSE:Factory">
+  <title>CPU Miner</title>
+  <description>A multi-threaded optimized CPU-based cryptocurrency miner.</description>
+  <devel project="network:cryptocurrencies" package="cpuminer"/>
+  <url>https://github.com/pooler/cpuminer</url>
+</package>

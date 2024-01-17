@@ -1,0 +1,185 @@
+-------------------------------------------------------------------
+Sun Feb  5 03:08:09 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.96
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.96    2023-02-04
+
+  - Add Devel::AssertOS::MacOSX::v13
+
+  - Add Devel::AssertOS::OSFeatures::Systemd
+
+-------------------------------------------------------------------
+Sun Oct 30 03:07:45 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.95
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.95    2022-10-29
+
+  - Add Devel::AssertOS::HWCapabilities::Int{32,64}
+
+-------------------------------------------------------------------
+Mon Jul 25 03:06:17 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.94
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.94    2022-07-27
+
+  - Add Mac OS 12 (Monterey)
+
+-------------------------------------------------------------------
+Tue Apr 26 03:06:24 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.93
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.93    2022-04-25
+  - No functional changes, just changes to where dependencies are declared
+    https://github.com/DrHyde/perl-modules-Devel-CheckOS/issues/27
+  1.92    2022-04-24
+  - Fix bugs in new alias and case-insensitivity features which meant everything
+    broke in taint-mode. The new features now no longer work in taint-mode but
+    everything else should.
+  1.91    2022-04-21
+  - Fix tests for platforms where the OS is detected as something that is
+    a family, but not as anything more specific, such as Fedora Linux
+  1.90    2022-04-20
+  - Matches are now case-insensitive
+  - Add support for OS aliases
+  - Deprecated the list_* functions being context sensitive, they now warn
+    when called inappropriately. They will stop being context-sensitive some
+    time after April 2024.
+
+-------------------------------------------------------------------
+Wed May 26 03:06:29 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.87
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.87    2021-05-25
+  - Add support for Devuan Linux
+  1.86    2021-05-20
+  - Belatedly add doco on Debian family to Families.pod
+  - Add Mac OS 11 (Big Sur)
+
+-------------------------------------------------------------------
+Fri Oct 16 03:07:14 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.85
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.85    2020-10-15      Add Linux::Raspbian and Linux::Ubuntu;
+                          Add Linux::RealDebian for *actual* Debian Linux;
+                          Add Linux::UnknownDebianLike for anything else that's like Debian;
+                          Linux::Debian has become a family that includes all the above
+
+-------------------------------------------------------------------
+Tue Oct  6 03:08:39 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.84
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.84    2020-10-05      Add some more versions of MacOS;
+                          Note change of name Mac OS X -> MacOS, but don't
+                            change the module name for backward compatibility;
+                          Add MSYS (reported by perl in MinGW environments)
+
+-------------------------------------------------------------------
+Sun Feb 16 03:09:04 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.83
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.83    2020-02-15      Remove dependency on Data::Compare, which in turn
+                            depends on non-pure-perl XS in CLone.pm
+  
+  1.82    2020-02-15      Fix build bug affecting perl 5.8 when AUTOMATED_TESTING
+                            is set (https://github.com/DrHyde/perl-modules-Devel-CheckOS/pull/23)
+
+-------------------------------------------------------------------
+Wed Feb  7 15:24:31 UTC 2018 - coolo@suse.com
+
+- updated to 1.81
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.81    2018-01-23      Restore 5.6 and 5.8 compatibility;
+                          Cope better in tests when @INC is humungous
+
+-------------------------------------------------------------------
+Thu May 25 07:53:37 UTC 2017 - coolo@suse.com
+
+- updated to 1.80
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.80    2017-05-24      Fix bug where tests would fail if
+                            AUTOMATED_TESTING=1 on perl 5.26 and higher;
+                          For some reason that made it break on 5.8.9,
+                            but I don't really care
+
+-------------------------------------------------------------------
+Mon Oct 31 06:19:03 UTC 2016 - coolo@suse.com
+
+- updated to 1.79
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.79    2016-10-30      Fix another minor bug
+                            (https://github.com/DrHyde/perl-modules-Devel-CheckOS/issues/17)
+  
+  1.78    2016-10-30      Fix an isue that made it uninstallable on some
+                            systems (https://github.com/DrHyde/perl-modules-Devel-CheckOS/issues/16)
+
+-------------------------------------------------------------------
+Sun Oct 23 05:18:58 UTC 2016 - coolo@suse.com
+
+- updated to 1.77
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.77    2016-10-21      Add MacOSX:v10_11 and ..._12
+
+-------------------------------------------------------------------
+Wed Apr 15 14:49:41 UTC 2015 - coolo@suse.com
+
+- updated to 1.76
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.76    2015-03-13      Add GNU Hurd
+  
+  1.75    2015-03-08      Add Minix and iOS;
+                          Correct ancient typo in Apple family that no-one
+                            has ever noticed because no-one uses 'classic'
+                            Mac OS;
+                          Various 'kwalitee' improvements from Dale Evans
+  
+  1.74    2015-03-04      Add Linux::Debian;
+                          Add MacOSX::v10_*;
+                          Add perl 5.6.2 support
+                            all the above thanks to Dale Evans
+  
+  1.73    2014-08-01      Add support for Android
+  
+  1.72    2014-04-16      Add support for Bitrig, an OpenBSD fork;
+                          Check $^O case-insensitively as some OSes
+                            aren't particularly consistent
+
+-------------------------------------------------------------------
+Tue Mar 18 07:54:44 UTC 2014 - coolo@suse.com
+
+- updated to 1.71
+      Bugfix, better tests for negative assertions
+      Add support for negative assertions in Devel::AssertOS
+
+-------------------------------------------------------------------
+Wed Apr 27 18:57:34 UTC 2011 - coolo@opensuse.org
+
+- updated to 1.64
+ * Add support for GNU/kFreeBSD
+
+-------------------------------------------------------------------
+Fri Jan 21 19:32:45 UTC 2011 - coolo@novell.com
+
+- initial package 1.63
+  * created by cpanspec 1.78.03
+

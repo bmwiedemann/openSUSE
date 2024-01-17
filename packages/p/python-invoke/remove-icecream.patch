@@ -1,0 +1,45 @@
+---
+ dev-requirements.txt |    2 --
+ pyproject.toml       |    4 ----
+ tests/conftest.py    |    6 ------
+ 3 files changed, 12 deletions(-)
+
+--- a/dev-requirements.txt
++++ b/dev-requirements.txt
+@@ -16,8 +16,6 @@ flake8>=4,<5
+ black>=22.8,<22.9
+ # Packaging
+ setuptools>56
+-# Debuggery
+-icecream>=2.1
+ # typing
+ mypy==0.971
+ types-PyYAML==6.0.12.4
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -40,10 +40,6 @@ module = "alabaster"
+ ignore_missing_imports = true
+ 
+ [[tool.mypy.overrides]]
+-module = "icecream"
+-ignore_missing_imports = true
+-
+-[[tool.mypy.overrides]]
+ module = "invocations"
+ ignore_missing_imports = true
+ 
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -8,12 +8,6 @@ from unittest.mock import patch
+ 
+ from _util import support
+ 
+-# Set up icecream globally for convenience.
+-from icecream import install
+-
+-install()
+-
+-
+ # pytest seems to tweak logging such that Invoke's debug logs go to stderr,
+ # which is then hella spammy if one is using --capture=no (which one must in
+ # order to test low level terminal IO stuff, as we do!)

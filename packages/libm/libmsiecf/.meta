@@ -1,0 +1,5 @@
+<package name="libmsiecf" project="openSUSE:Factory">
+  <title>Library to parse MS Internet Explorer Cache Files</title>
+  <description></description>
+  <devel project="security:forensics" package="libmsiecf"/>
+</package>

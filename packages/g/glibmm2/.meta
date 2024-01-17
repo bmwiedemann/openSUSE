@@ -1,0 +1,7 @@
+<package name="glibmm2" project="openSUSE:Factory">
+  <title>C++ Interface for Glib</title>
+  <description>Glibmm is the official C++ interface for the popular cross-platform
+library Glib. It provides non-UI API that is not available in standard
+C++ and makes it possible for gtkmm to wrap GObject-based APIs.</description>
+  <devel project="GNOME:Factory" package="glibmm2"/>
+</package>

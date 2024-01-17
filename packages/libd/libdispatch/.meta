@@ -1,0 +1,9 @@
+<package name="libdispatch" project="openSUSE:Factory">
+  <title>libdispatch</title>
+  <description>Grand Central Dispatch (GCD or libdispatch) provides
+comprehensive support for concurrent code execution on
+multicore hardware.
+</description>
+  <devel project="multimedia:apps" package="libdispatch"/>
+  <url>https://github.com/apple/swift-corelibs-libdispatch</url>
+</package>

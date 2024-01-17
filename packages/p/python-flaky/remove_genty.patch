@@ -1,0 +1,219 @@
+---
+ test/test_flaky_plugin.py           |   83 +++++++++++++++++-------------------
+ test/test_multiprocess_string_io.py |   51 +++++++++-------------
+ test/test_utils.py                  |   17 +++----
+ 3 files changed, 69 insertions(+), 82 deletions(-)
+
+--- a/test/test_flaky_plugin.py
++++ b/test/test_flaky_plugin.py
+@@ -2,17 +2,31 @@
+ 
+ from __future__ import unicode_literals
+ 
++from collections import namedtuple
+ from io import StringIO
+ from unittest import TestCase
+ 
+ from flaky._flaky_plugin import _FlakyPlugin
+ from flaky.names import FlakyNames
+ 
+-from genty import genty, genty_dataset
++TestCaseDataset = namedtuple("TestCaseDataset",
++    ['max_runs', 'min_passes', 'current_runs', 'current_passes', 'expect_fail'])
+ 
+-
+-@genty
+ class TestFlakyPlugin(TestCase):
++    _test_dataset = (
++        "default_not_started": TestCaseDataset(2, 1, 0, 0, False),
++        "default_one_failure": TestCaseDataset(2, 1, 1, 0, False),
++        "default_one_success": TestCaseDataset(2, 1, 1, 1, False),
++        "default_two_failures": TestCaseDataset(2, 1, 2, 0, True),
++        "default_one_failure_one_success": TestCaseDataset(2, 1, 2, 1, False),
++        "three_two_not_started": TestCaseDataset(3, 2, 0, 0, False),
++        "three_two_one_failure": TestCaseDataset(3, 2, 1, 0, False),
++        "three_two_one_success": TestCaseDataset(3, 2, 1, 1, False),
++        "three_two_two_failures": TestCaseDataset(3, 2, 2, 0, True),
++        "three_two_one_failure_one_success": TestCaseDataset(3, 2, 2, 1, False),
++        "three_two_two_successes": TestCaseDataset(3, 2, 2, 2, False),
++    )
++
+     def setUp(self):
+         super(TestFlakyPlugin, self).setUp()
+         self._flaky_plugin = _FlakyPlugin()
+@@ -28,43 +42,26 @@ class TestFlakyPlugin(TestCase):
+             mock_message,
+         )
+ 
+-    @genty_dataset(
+-        default_not_started=(2, 1, 0, 0, False),
+-        default_one_failure=(2, 1, 1, 0, False),
+-        default_one_success=(2, 1, 1, 1, False),
+-        default_two_failures=(2, 1, 2, 0, True),
+-        default_one_failure_one_success=(2, 1, 2, 1, False),
+-        three_two_not_started=(3, 2, 0, 0, False),
+-        three_two_one_failure=(3, 2, 1, 0, False),
+-        three_two_one_success=(3, 2, 1, 1, False),
+-        three_two_two_failures=(3, 2, 2, 0, True),
+-        three_two_one_failure_one_success=(3, 2, 2, 1, False),
+-        three_two_two_successes=(3, 2, 2, 2, False),
+-    )
+-    def test_flaky_plugin_identifies_failure(
+-            self,
+-            max_runs,
+-            min_passes,
+-            current_runs,
+-            current_passes,
+-            expect_fail,
+-    ):
+-        flaky = {
+-            FlakyNames.CURRENT_PASSES: current_passes,
+-            FlakyNames.CURRENT_RUNS: current_runs,
+-            FlakyNames.MAX_RUNS: max_runs,
+-            FlakyNames.MIN_PASSES: min_passes,
+-        }
+-        # pylint:disable=protected-access
+-        self.assertEqual(
+-            self._flaky_plugin._has_flaky_test_failed(flaky),
+-            expect_fail,
+-        )
+-
+-    @genty_dataset('ascii stuff', 'ńőń ȁŝćȉȉ ŝƭȕƒƒ')
+-    def test_write_unicode_to_stream(self, message):
+-        stream = StringIO()
+-        stream.write('ascii stuff')
+-        # pylint:disable=protected-access
+-        self._flaky_plugin._stream.write(message)
+-        self._flaky_plugin._add_flaky_report(stream)
++    def test_flaky_plugin_identifies_failure(self):
++        for test in _test_dataset:
++            with self.subTest(test):
++                flaky = {
++                    FlakyNames.CURRENT_PASSES: _test_dataset[test].current_passes,
++                    FlakyNames.CURRENT_RUNS: _test_dataset[test].current_runs,
++                    FlakyNames.MAX_RUNS: _test_dataset[test].max_runs,
++                    FlakyNames.MIN_PASSES: _test_dataset[test].min_passes,
++                }
++                # pylint:disable=protected-access
++                self.assertEqual(
++                    self._flaky_plugin._has_flaky_test_failed(flaky),
++                    _test_dataset[test].expect_fail,
++                )
++
++    def test_write_unicode_to_stream(self):
++        for message in ('ascii stuff', 'ńőń ȁŝćȉȉ ŝƭȕƒƒ'):
++            with self.subTest(message):
++                stream = StringIO()
++                stream.write('ascii stuff')
++                # pylint:disable=protected-access
++                self._flaky_plugin._stream.write(message)
++                self._flaky_plugin._add_flaky_report(stream)
+--- a/test/test_multiprocess_string_io.py
++++ b/test/test_multiprocess_string_io.py
+@@ -5,13 +5,18 @@ from __future__ import unicode_literals
+ from io import StringIO
+ from unittest import TestCase
+ 
+-from genty import genty, genty_dataset
+ 
+-
+-@genty
+ class TestMultiprocessStringIO(TestCase):
+     _unicode_string = 'Plain Hello'
+     _unicode_string_non_ascii = 'ńőń ȁŝćȉȉ ŝƭȕƒƒ'
++    _test_values = {
++      "no_writes": ([], ''),
++      "one_write": ([_unicode_string], _unicode_string),
++      "two_writes": (
++          [_unicode_string, _unicode_string_non_ascii],
++          '{}{}'.format(_unicode_string, _unicode_string_non_ascii),
++      )
++    }
+ 
+     def setUp(self):
+         super(TestMultiprocessStringIO, self).setUp()
+@@ -21,29 +26,17 @@ class TestMultiprocessStringIO(TestCase)
+         del self._mp_string_io.proxy[:]
+         self._string_ios = (self._string_io, self._mp_string_io)
+ 
+-    @genty_dataset(
+-        no_writes=([], ''),
+-        one_write=([_unicode_string], _unicode_string),
+-        two_writes=(
+-            [_unicode_string, _unicode_string_non_ascii],
+-            '{}{}'.format(_unicode_string, _unicode_string_non_ascii),
+-        )
+-    )
+-    def test_write_then_read(self, writes, expected_value):
+-        for string_io in self._string_ios:
+-            for item in writes:
+-                string_io.write(item)
+-            self.assertEqual(string_io.getvalue(), expected_value)
+-
+-    @genty_dataset(
+-        no_writes=([], ''),
+-        one_write=([_unicode_string], _unicode_string),
+-        two_writes=(
+-            [_unicode_string, _unicode_string_non_ascii],
+-            '{}{}'.format(_unicode_string, _unicode_string_non_ascii),
+-        )
+-    )
+-    def test_writelines_then_read(self, lines, expected_value):
+-        for string_io in self._string_ios:
+-            string_io.writelines(lines)
+-            self.assertEqual(string_io.getvalue(), expected_value)
++    def test_write_then_read(self):
++        for name in _test_values:
++            with self.subTest(name):
++                for string_io in self._string_ios:
++                    for item in _test_values[name][0]:
++                        string_io.write(item)
++                    self.assertEqual(string_io.getvalue(), _test_values[name][1])
++
++    def test_writelines_then_read(self):
++        for name in _test_values:
++            with self.subTest(name):
++                for string_io in self._string_ios:
++                    string_io.writelines(_test_values[name][0])
++                self.assertEqual(string_io.getvalue(), _test_values[name][1])
+--- a/test/test_utils.py
++++ b/test/test_utils.py
+@@ -7,10 +7,7 @@ from unittest import TestCase
+ 
+ from flaky.utils import ensure_unicode_string, unicode_type
+ 
+-from genty import genty, genty_dataset
+ 
+-
+-@genty
+ class TestEnsureUnicodeString(TestCase):
+     _unicode_string = 'Plain Hello'
+     _byte_string = b'Plain Hello'
+@@ -19,6 +16,13 @@ class TestEnsureUnicodeString(TestCase):
+     _hello = 'Hèllö'
+     _mangled_hello = 'H\ufffdll\ufffd'
+     _byte_string_windows_encoded = _hello.encode('windows-1252')
++    _test_dataset = (
++        (_unicode_string, _unicode_string),
++        (_byte_string, _unicode_string),
++        (_unicode_string_non_ascii, _unicode_string_non_ascii),
++        (_byte_string_non_ascii, _unicode_string_non_ascii),
++        (_byte_string_windows_encoded, _mangled_hello),
++    )
+ 
+     def test_ensure_unicode_string_handles_nonascii_exception_message(self):
+         message = '\u2013'
+@@ -30,13 +34,6 @@ class TestEnsureUnicodeString(TestCase):
+             message = unicode_type(encoded_message)
+         self.assertEqual(string, message)
+ 
+-    @genty_dataset(
+-        (_unicode_string, _unicode_string),
+-        (_byte_string, _unicode_string),
+-        (_unicode_string_non_ascii, _unicode_string_non_ascii),
+-        (_byte_string_non_ascii, _unicode_string_non_ascii),
+-        (_byte_string_windows_encoded, _mangled_hello),
+-    )
+     def test_ensure_unicode_string_handles_various_strings(
+             self,
+             string,

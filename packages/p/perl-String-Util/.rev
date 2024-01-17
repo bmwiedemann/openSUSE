@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a5ed78235ef04c4139d5389c1aea90d9</srcmd5>
+    <version>1.31</version>
+    <time>1603725610</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for https://build.opensuse.org/request/show/843870</comment>
+    <requestid>843871</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eb1f56d46ad2c729efeebfa28f70d626</srcmd5>
+    <version>1.32</version>
+    <time>1618223800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884097</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>be7e1dbcc69786ce6021eb76b1f90dd5</srcmd5>
+    <version>1.34</version>
+    <time>1676389635</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065567</requestid>
+  </revision>
+</revisionlist>

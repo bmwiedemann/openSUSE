@@ -1,0 +1,453 @@
+-------------------------------------------------------------------
+Sun Sep 17 10:51:15 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Make examples and doc packages noarch.
+
+-------------------------------------------------------------------
+Sun Sep 10 21:57:56 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.4.1:
+  * Update to fix issues with pybind11 and to avoid cmake
+    warnings.
+- Drop testing on 32-bit systems due to tolerance errors in a
+  test (gh#kpeeters/cadabra2#280).
+
+-------------------------------------------------------------------
+Wed Dec  7 08:00:00 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.3.2:
+  * Add missing canonicalisation of rationals when simplifying
+    powers.
+
+-------------------------------------------------------------------
+Tue Dec  6 12:54:33 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.2.4:
+  * Minor update to fix issues with Python 3.11.
+- Changes from version 2.4.2.0:
+  * Added package cdb.graphics.plot for easy plotting.
+  * Added package cdb.sympy.calculus for use of SymPy calculus
+    functions on Cadabra expressions.
+  * Expanded nevaluate to numerically evaluate more expressions.
+  * Various small bug fixes and enhancements.
+- For %check, set working dir as HOME to allow tests that try to
+  write config files to home dir to work without perm issues.
+
+-------------------------------------------------------------------
+Sun Oct  9 16:35:12 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.0.2:
+  * Release to accompany the "meld" paper.
+
+-------------------------------------------------------------------
+Mon Jul  4 14:23:29 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.3.9.3
+  * Several fixes to meld (Dominic).
+  * Make typesetting run in a separate thread to prevent the UI
+    from feeling sluggish.
+  * Some changes in the behaviour of list addition/multiplication,
+    to match Mathematica's behaviour.
+  * New nevaluate algorithm for fast numerical evaluation of
+    expressions (work-in-progress).
+  * Fix for Python 3.10.x.
+  * Fix for automatic cleanup of Diagonal objects.
+  * Fix crash with tab-completion.
+- Changes from version 2.3.8:
+  * Option to display negative powers as fractions (Dominic).
+  * New algorithm slot_asym to (anti-)symmetrise objects in
+    indices by giving index positions instead of names.
+  * New functionality to implement algorithms in Python (Dominic).
+  * Faster re-implementation of get_component using new C++
+    function modules (Dominic).
+  * New cdb.numeric.evaluate and cdb.numeric.integrate modules to
+    evaluate expressions numerically or integrate differential
+    equations numerically (Dominic).
+  * Updates to cdb.utils.indices and cdb.core.manip.
+  * Add warnings functionality to the kernel (Dominic).
+  * Add infrastructure to let algorithms display progress
+    information while running (Dominic).
+  * Add cell cursor position to status bar (Dominic).
+  * Fix bug in expand_delta when the delta occurs at top-level in
+    an expression.
+  * Many meld fixes and improvements (Dominic).
+  * Fix handling of auto-declare names (names with a '#'
+    character).
+  * Keep LaTeX log/aux files on error to aid debugging.
+  * Fix LaTeX code to avoid some global variable name clashes.
+  * Fix for compilation on Apple silicon.
+- Add cadabra2-link-python.patch: Link against python shared lib
+  where necessary to avoid linking failures.
+
+-------------------------------------------------------------------
+Sun Feb 14 01:09:07 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.3.6.8:
+  * Add forgotten file to sources.
+- Changes from version 2.3.6.4 and 2.3.6.6:
+  * Do not remove latex log/aux files on error.
+  * Fix glib linker error for cadabra-cli
+  * Fix meld error where terms with different names but same index
+    structure were melded.
+  * Add more functionality to cdb.core.node.
+  * Fix handling of auto-declare names ('A#'); these were not
+    matched correctly to numbered names ('A18').
+  * Fix vcpkg changing 'libintl' to 'intl'.
+  * Optimise AdjformEx to use int32_t instead of mpq_class.
+  * Handle Diagonal objects with symbolic (as opposed to numeric)
+    indices.
+  * Remove old-style gauge theory package.
+  * Disable mathematica support by default.
+- Require jupyter-jupyter_core-filesystem for openSUSE >= 1550 for
+  the appropriate rpm macros.
+
+-------------------------------------------------------------------
+Tue Jan  5 18:54:07 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.3.6.2:
+  * Fix a linker error for the xeus jupyter kernel.
+
+-------------------------------------------------------------------
+Thu Dec 31 15:34:53 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.3.6.1:
+  * Once further change to the installation path of cadabra2.so
+    module, to conform to Debian policies.
+  * Fix display of lists containing Ex objects.
+  * Fix import of Jupyter notebooks.
+  * Fix bug related to automatic dummy index relabelling.
+  * Fix tab-completion.
+- Exclude tests that try to write config files to home dir; since
+  the `%ctest` macro does not accept additional options, run ctest
+  manually.
+
+-------------------------------------------------------------------
+Tue Nov 17 13:09:12 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.3.5:
+  * Relocate cadabra module to python_sitelib instead of
+    python_sitearch.
+- Add cadabra2-disable-components-test.patch: Disable a test that
+  crashes in the buildroot env -- but not in a user session -- for
+  unknown reasons (gh#kpeeters/cadabra2#212).
+- Enable tests since gh#kpeeters/cadabra2#211 is now resolved.
+- Add python3 to Requires for cadabra2.
+
+-------------------------------------------------------------------
+Sun Nov  1 09:55:08 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.3.2:
+  * Fixed bug in pattern matching logic used in
+    integrate_by_parts.
+  * Fixed bug which would prevent assignment to node multiplier
+    from Python.
+  * Tab-completion on command line and in the notebook.
+  * Install the cadabra2 python module in a standard location.
+  * Fixes for the Mathematica scalar backend.
+  * Make expand_delta much faster when the Kronecker delta is
+    contracted with objects which have anti-symmetry.
+  * Make meld work correctly with non/anti-commuting objects.
+  * Make numbered indices like a1 display with a subscript
+    automatically a<sub>1</sub>.
+  * Provide pickle functionality for expressions.
+  * Fixes for compatibility with newer SymPy versions.
+  * Added a 'find' function in the notebook, to search input
+    cells.
+  * New Jupyter kernel (enabled by default) which does not require
+    Xeus.
+  * Various improvements and fixed for handling and display of
+    Young tableaux.
+  * Added ExNode::ex() to obtain an Ex object from an ExNode
+    iterator.
+- Drop patches incorporated upstream:
+  * cadabra2-python-modules-location.patch.
+  * Fix-linking-of-cadabra-module.patch.
+- Split out a separate package - jupyter-cadabra2-kernel - for the
+  new jupyter notebook kernel.
+- Fix typo in `ENABLE_SYSTEM_JSONCPP` option passed to `%cmake`.
+- Set up but disable building and running tests until issues with
+  the test-suite are sorted out [gh#kpeeters/cadabra2#211,
+  gh#kpeeters/cadabra2#212].
+
+-------------------------------------------------------------------
+Fri Aug 28 20:52:48 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Refresh Fix-linking-of-cadabra-module.patch with fix for same
+  issue committed upstream [gh#kpeeters/cadabra2#202].
+
+-------------------------------------------------------------------
+Thu Jul  9 22:19:27 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.3.0:
+  * Fix bug which would collect powers of objects with indices and
+    then report an error.
+  * Functionality to read Cadabra Cloud notebooks into the desktop
+    Cadabra.
+  * Use a better hash function for expression trees (avoiding a
+    bug in factor_in).
+  * Expose index symmetries through traces, so that canonicalise
+    and related algorithms work correctly. Introduced a new
+    property TableauInherit.
+  * More flexible LaTeXForm property, to enable more flexible
+    object display in the notebook.
+  * Various fixes for behaviour of unwrap with anti- or
+    non-commuting arguments.
+  * New meld algorithm for canonicalisation.
+- Drop cadabra2-add-pthread-to-cxxflags.patch: No longer required
+  for building.
+- Add cadabra2-python-modules-location.patch to fix location of
+  python libs and modules (gh#kpeeters/cadabra2#203).
+- Rebase Fix-linking-of-cadabra-module.patch for update; only
+  partially fixed by upstream (gh#kpeeters/cadabra2#202).
+- Remove a hashbang from a non-executable script.
+- Use %{name}-%{version} naming format for source.
+
+-------------------------------------------------------------------
+Sat Jan  4 01:21:06 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.2.8:
+  * More versatile handling of Trace, including sorting using
+    cyclic symmetry (Connor).
+  * Fixes for combine (Connor).
+  * Save command-line history (Connor).
+  * Make imported notebooks use the default post_process function.
+  * Make unwrap move scalars out of exterior (wedge) products, see
+    this Q&A post.
+  * Fix bug with indices with accents (github/166).
+  * Added a cadabra2latex command to convert notebooks to LaTeX.
+  * Fixed issue building with latest Homebrew on macOS.
+  * Fixed Windows build issues and add python path settings at
+    runtime.
+  * Fixed bug with multipliers not reducing to canonical form.
+- Add Fix-linking-of-cadabra-module.patch
+- Remove timestamps from Doxygen generated HTML files, drop
+  obsolete cadabra2-rpmlintrc
+- Use system jsoncpp
+- Drop conditionals for obsolete distro versions
+- Remove lots of unused/obsolete TeX BuildRequires.
+
+-------------------------------------------------------------------
+Tue Jun 25 09:24:38 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.2.7:
+  * Added cdb.utils.develop and cdb.relativity.abstract.
+  * Added authentication token to all client-server communication.
+  * Various extensions to the Trace property.
+  * Make property info available from Python (Dominic).
+  * Fixed integration by parts with index-less derivatives.
+  * Added eliminate_vielbein.
+  * Fixed display of lists of sympy expressions.
+  * Fixed (finally) UTF8 input for non-English symbols.
+
+- Update to 2.2.6
+  * Experimental notebook diff viewer (Dominic).
+  * Warn when about to overwrite an existing notebook.
+  * Improvements for HiDPI screens especially on macOS.
+  * Fix crash in sym/asym.
+  * Fix undo/redo crash in notebook when deleting cells.
+  * Improvements to the cdb.core.manip package (Dominic).
+  * Fix in young_project_tensor.
+  * Fix pattern matching for anti-commuting factors.
+  * Added explicit_indices to convert expressions with
+    implicit indices to their explicit form.
+  * Add option to build a Jupyter kernel.
+  * Fix bug in split_index (acted on wrong parts of expressions).
+  * Fix bug with substitute not checking constraints for
+    single-factor patterns.
+  * Add partial option to substitute to require that products or sums
+    match all terms, not just a partial sum or partial product.
+
+- Refresh cadabra2-add-pthread-to-cxxflags.patch for version
+  update, no effective changes.
+
+-------------------------------------------------------------------
+Fri Mar 15 14:17:41 UTC 2019 - Atri B <badshah400@gmail.com>
+
+- Update to version 2.2.5:
+  * Interim bug fix release with fixes for upcoming Debian as well
+    as the new explicit_indices algorithm.
+- Move man files to the correct _mandir.
+- Minor cleanups using spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jan 25 08:44:42 UTC 2019 - badshah400@gmail.com
+
+- Update to version 2.2.4:
+  * Minor bug fixes.
+- Rebase cadabra2-add-pthread-to-cxxflags.patch for minor changes
+  to source CMakeLists.txt file.
+- Use make doc instead of running doxygen directly.
+- Drop commented out commands to generate PDF documentation.
+
+-------------------------------------------------------------------
+Mon Apr 30 07:11:16 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Disable explicitly mathematica option (fix archs not supported by
+  Mathematica, such as AArch64)
+
+-------------------------------------------------------------------
+Mon Apr  9 01:46:11 UTC 2018 - badshah400@gmail.com
+
+- BuildRequires: libboost_date_time-devel instead of
+  BuildRequires: libboost_date_time1_66_0-devel, and only for
+  openSUSE > 1320; boost-devel in its entirety is already required
+  for older versions.
+- gcc-c++ >= 4.9 now required. 
+
+-------------------------------------------------------------------
+Fri Mar 30 10:21:17 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2.2.0:
+  * Experimental support for modifying the expression tree
+    directly from Python (see e.g. Fourier transforms).
+  * Fix for integration by parts (gh#kpeeters/cadabra2#71)
+  * Fix for incorrect conversion to sympy expressions.
+  * Optionally build with support for Mathematica scalar backend;
+    see map_mma.
+  * Many bugfixes for expression display and sympy conversion.
+  * Now using pybind instead of boost.python, in preparation for
+  * Windows port, and to enable building against Anaconda.
+  * Copy/paste of output cells added.
+  * New simplify command, which simplifies the scalar parts of
+    expressions, and can be switched to use either Sympy or
+    Mathematica.
+  * Fix to treat derivatives with respect to explicit coordinates
+    as scalars in evaluate; see this Q&A post.
+  * Fix for failure to flag errors for WeightInherit property.
+  * Fixed: vary on single-term expressions
+  * (gh#kpeeters/cadabra2#57)
+  * Fixed: evaluate with dense factors and no 'values' property on
+    indices (gh#kpeeters/cadabra2#68)
+- Rename and rebase cadabra2-2.1.7.patch to
+  cadabra2-add-pthread-to-cxxflags.patch.
+- Add BuildRequires: libboost_date_time1_66_0-devel, new
+  dependency with version 2.2.0.
+- All python bindings are now required to be installed in
+  _datadir.
+- New binary cadabra2cadabra.
+
+-------------------------------------------------------------------
+Fri Feb  2 21:21:57 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Add a memory _constraints, builds fail with less than 4 GByte
+
+-------------------------------------------------------------------
+Sat Jan 27 22:08:29 UTC 2018 - badshah400@gmail.com
+
+- Disable building LaTeX-based PDF documentation until build
+  failures are fixed.
+- For the -gui package use post(un) scriptlets only for openSUSE
+  <= 1320; for newer openSUSE, these are handled by rpm triggers
+  automatically.
+
+-------------------------------------------------------------------
+Fri Dec 29 08:33:37 UTC 2017 - kkaempf@suse.com
+
+- fix build, add -pthread to CMAKE_CXX_FLAGS
+  added cadabra2-2.1.7.patch
+
+-------------------------------------------------------------------
+Wed Nov 22 09:19:49 UTC 2017 - badshah400@gmail.com
+
+- Update to version 2.1.7:
+  * Another interim release to fix bugs and sort out the build
+    process on new distros.
+
+-------------------------------------------------------------------
+Thu Nov  2 09:19:33 UTC 2017 - badshah400@gmail.com
+
+- Update to version 2.1.5:
+  * Interim release to get a number of bug fixes out to everyone,
+    and to use as basis for binary packages for several new
+    distributions.
+- Drop cadabra2-cmake-error.patch; fixed upstream.
+- Fix Group for cadabra2-doc-pdf: Documentation/PDF doesn't exist,
+  use Documentation/Other
+- Change hashbang "/usr/bin/env python3" to "/usr/bn/python3".
+
+-------------------------------------------------------------------
+Wed Oct 11 12:04:47 UTC 2017 - badshah400@gmail.com
+
+- Refresh source tarball from upstream: upstream might have pushed
+  out a new tarball without changes to the versioning, making the
+  source validator service complain about the mismatch.
+
+-------------------------------------------------------------------
+Sun Aug  6 18:20:17 UTC 2017 - badshah400@gmail.com
+
+- Update to version 2.1.5:
+  * Interim release with as its main feature the map_sympy command
+    which makes it much easier to apply sympy algorithms to
+    component expressions.
+- Drop cadabra2-include-functional-header.patch; fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jul 20 22:52:55 UTC 2017 - badshah400@gmail.com
+
+- Add an appdata file and install it to /usr/share/metainfo;
+  BuildRequires on appstream-glib added.
+
+-------------------------------------------------------------------
+Sun Jun 25 11:26:09 UTC 2017 - badshah400@gmail.com
+
+- Add cadabra2-include-functional-header.patch: Explicitly include
+  the <functional> header in core/Functional.hh to fix building on
+  openSUSE > 1320; apply without conditionals as it doesn't hurt
+  to have this generally.
+
+-------------------------------------------------------------------
+Sun Apr 23 12:14:41 UTC 2017 - badshah400@gmail.com
+
+- BuildRequires: texlive-epstopdf instead of texlive-epstopdf-bin
+  to fix build failures on Leap 42.1.
+
+-------------------------------------------------------------------
+Sun Apr 23 07:24:59 UTC 2017 - badshah400@gmail.com
+
+- Update to version 2.1.4:
+  * Enable packages to be written using Cadabra notation, instead
+    of only pure Python (still experimental).
+  * Young tableaux properties Tableau and FilledTableau the
+    related algorithm lr_tensor are available again.
+  * Sorting Majorana spinors possible again using sort_spinors.
+  * Extended rename_dummies with capability to rename indices to
+    different set.
+  * Make vary work on powers of expressions with dummy indices.
+  * Substitution of sub-sums now available (e.g. substitute of
+    A+B=C in ex:=A+B+C+D).
+  * Improved LaTeX export to make printed notebooks look much
+    better.
+  * Many improvements to the component engine, in particular for
+    handling of derivatives and fractions involving tensors.
+  * Better line spacing for line-wrapped equations.
+  * Smarter scroll-to-cell behaviour of the notebook.
+  * Canonicalising expressions with component values for indices
+    now works again.
+  * The unwrap algorithm can now be guided about what to unwrap,
+    and also knows about spinors and Dirac bars.
+  * Experimental support to use Cadabra directly from C++ code, as
+    a library (see the c++lib directory).
+  * Fixes for using a custom post_process defined as a function
+    nested inside another.
+  * Rudimentary timing logic, try server.totals();
+  * Fixed: pasting text in the notebook sometimes double-pastes.
+  * Fixed: split_index does not work properly on left- and
+    right-hand side of equations.
+  * Fixed: sort_product does not always sort expressions.
+  * Fixed: eliminate_metric only acts at top level of an
+    expression, should have deep=True by default.
+  * Fixed: a bug which would lead to a segfault when using
+    deep=True. 
+- Rebase cadabra2-cmake-error.patch for version update.
+- Add %{name}-rpmlintrc file to suppress warnings about the
+  presence of "__DATE__" and/or "__TIME__" in generated html files
+  for documentation (%{name}-doc).
+
+-------------------------------------------------------------------
+Tue Jan 17 09:09:44 UTC 2017 - badshah400@gmail.com
+
+- Initial package.
+- Add cadabra2-cmake-error.patch to make sure CMakeLists.txt
+  invokes "execute_process" instead of "execute"; fixes build
+  failures.
+

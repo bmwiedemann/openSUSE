@@ -1,0 +1,12 @@
+<package name="perl-YAML" project="openSUSE:Factory">
+  <title>YAML Ain't Markup Language (tm)</title>
+  <description>The YAML.pm module implements a YAML Loader and Dumper based on the YAML
+1.0 specification. the http://www.yaml.org/spec/ manpage
+
+YAML is a generic data serialization language that is optimized for human
+readability. It can be used to express the data structures of most modern
+programming languages. (Including Perl!!!)
+
+For information on the YAML syntax, please refer to the YAML specification.</description>
+  <devel project="devel:languages:perl" package="perl-YAML"/>
+</package>

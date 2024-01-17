@@ -1,0 +1,149 @@
+-------------------------------------------------------------------
+Wed Dec 27 16:08:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.1:
+  * Remove deprecated code from vispy.color.get\_colormap
+  * Cache make_pattern on DashAtlas
+  * Add push/pop gl_state for visuals
+  * Add primitive picking filters for Mesh and Markers visuals
+  * Fix spherical markers depth buffer with scaling='visual'
+  * Fix mesh shading with flipped normals
+
+-------------------------------------------------------------------
+Wed Jul 19 04:42:21 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.13.0:
+  * Switch MarkersVisual scaling option to string "fixed", "scene", or
+    "visual"
+  * Add early-termination optimization to attenuated mip
+  * Add `InstancedMeshVisual` for faster and easier rendering of repeated
+    meshes
+  * Instanced mesh example
+  * Use QNativeEventGesture for touchpad gesture input
+  * Fix TypeError with pinch-to-zoom
+- Replace setuptools_scm_git_archive BuildRequires with setuptools_scm.
+
+-------------------------------------------------------------------
+Tue Mar 21 13:12:42 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- We don't need six module any more.
+- Enable tests again.
+
+-------------------------------------------------------------------
+Tue Mar 21 09:10:18 UTC 2023 - pgajdos@suse.com
+
+- version update to 0.12.2
+  * lot of changes, see
+    https://github.com/vispy/vispy/blob/main/CHANGELOG.md
+
+-------------------------------------------------------------------
+Sat Mar 20 12:41:30 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.6.6
+  * 0.6.6:
+    Patch release to create Python 3.8 wheels and future proof pyproject.toml
+  * 0.6.5:
+    Patch release with small styling fixes and other build related
+    fixes to work with Python 3.8 and future versions of Python.
+
+-------------------------------------------------------------------
+Fri Feb 12 15:01:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 from build
+
+-------------------------------------------------------------------
+Wed Feb  5 14:10:31 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.6.4
+  + Enhancements
+    * Filter unnecessary QSocketNotifier warning when using QtConsole
+    * FIX: Nest triangle and skimage imports
+    * Switch to setuptools_scm version.py usage to avoid import overhead
+  + Fixed bugs
+    * Skip bad font in test_font
+- Update to 0.6.3
+  + Enhancements
+    * Improve AxisVisual visual by providing property getters and setters
+    * Fix MarkerVisual scaling when rotating in 3D space
+  + Fixed bugs
+    * Fix string formatting of array shape
+    * Fix texture alignment to use data itemsize
+    * Fix shader version handling in webgl backend
+    * Fix 2D mesh bounds IndexError when viewed in 3D
+    * Fix xaxis labels being wrong initially in PlotWidget
+    * Various bug fixes related to AxisVisual
+    * Fixed a bug in linking two flycameras
+  + Merged pull requests
+    * Fix additional numpy warnings when dealing with dtypes of size 1
+
+-------------------------------------------------------------------
+Tue Nov 19 20:01:11 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.16.2
+  + Enhancements
+    * Switch to setuptools_scm for automatic version numbering
+    * Improve PanZoom camera performance when non-+z direction is used
+  + Fixed bugs
+    * Fix Python 3.8 compatibility in Canvas 'keys' update
+    * Fix VolumeVisual modifying user provided data in-place
+    * Fix depth buffer precision
+    * Volume visual has unset variable texture2D\_LUT
+    * Fix MarkersVisual.set_data crash when pos is None
+    * Fix numpy futurewarning in dtype creation
+
+-------------------------------------------------------------------
+Fri Aug  2 15:27:16 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.16.1
+  * Fix discrete colormap ordering (#1668)
+  * Fix various examples (#1671, #1676)
+  * Fix Jupyter extension zoom direction (#1679)
+
+-------------------------------------------------------------------
+Tue Jul 23 02:39:19 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.16.0
+  * Update PyQt5/PySide2 to use newer GL API
+  * Update to PyQt5 as default backend
+  * New Cython-based text rendering option
+  * New WindbarbVisual
+  * Improved JupyterLab/Notebook widget (experimental)
+  * Fix various memory leaks
+  * Various optimizations and bug fixes
+- Add jupyter subpackage
+
+-------------------------------------------------------------------
+Wed Apr 17 21:01:40 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Switch to the qt5 backend.
+
+-------------------------------------------------------------------
+Thu Nov  1 18:12:52 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.15.3
+  * Workaround matplotlib 2.2 dropping _cntr private module
+  * Try appveyor SSL settings for fixing https download
+  * Fix buffer due to unsupported numpy feature
+
+-------------------------------------------------------------------
+Sat Mar  3 16:22:59 UTC 2018 - jengelh@inai.de
+
+- Compact description.
+
+-------------------------------------------------------------------
+Thu Jan 18 19:01:27 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.15.2
+  * Fix PyPI packaging to include LICENSE.txt
+  * Fix initial axis limits in PlotWidget (#1386)
+  * Fix zoom event position in Pyglet backend (#1388)
+  * Fix camera importing (#1389, #1172)
+  * Refactor `EllipseVisual` and `RectangleVisual` (#1387, #1349)
+  * Fix `one_scene_four_cams.py` example (#1391, #1124)
+  * Add `two_qt_widgets.py` example (#1392, #1298)
+  * Fix order of alignment values for proper processing (#1395, #641)
+
+-------------------------------------------------------------------
+Fri Oct 20 16:19:26 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

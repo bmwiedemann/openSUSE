@@ -1,0 +1,24 @@
+diff -Naur swift-corelibs-libdispatch-swift-5.3.3-RELEASE/src/BlocksRuntime/CMakeLists.txt swift-corelibs-libdispatch-swift-5.3.3-RELEASE.new/src/BlocksRuntime/CMakeLists.txt
+--- swift-corelibs-libdispatch-swift-5.3.3-RELEASE/src/BlocksRuntime/CMakeLists.txt	2020-09-02 09:28:48.000000000 +0200
++++ swift-corelibs-libdispatch-swift-5.3.3-RELEASE.new/src/BlocksRuntime/CMakeLists.txt	2021-04-01 18:20:00.485889809 +0200
+@@ -20,7 +20,7 @@
+ endif()
+ 
+ set_target_properties(BlocksRuntime PROPERTIES
+-  POSITION_INDEPENDENT_CODE TRUE)
++    POSITION_INDEPENDENT_CODE TRUE VERSION 1.3 SOVERSION 1.3)
+ 
+ add_library(BlocksRuntime::BlocksRuntime ALIAS BlocksRuntime)
+ 
+diff -Naur swift-corelibs-libdispatch-swift-5.3.3-RELEASE/src/CMakeLists.txt swift-corelibs-libdispatch-swift-5.3.3-RELEASE.new/src/CMakeLists.txt
+--- swift-corelibs-libdispatch-swift-5.3.3-RELEASE/src/CMakeLists.txt	2020-09-02 09:28:48.000000000 +0200
++++ swift-corelibs-libdispatch-swift-5.3.3-RELEASE.new/src/CMakeLists.txt	2021-04-01 18:19:04.065960937 +0200
+@@ -93,7 +93,7 @@
+ 
+ 
+ set_target_properties(dispatch PROPERTIES
+-  POSITION_INDEPENDENT_CODE YES)
++    POSITION_INDEPENDENT_CODE YES VERSION 1.3 SOVERSION 1.3)
+ 
+ target_include_directories(dispatch PUBLIC
+   ${PROJECT_BINARY_DIR}

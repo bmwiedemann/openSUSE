@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Thu Jan  4 12:13:22 UTC 2024 - ecsosa <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Wed Dec 27 16:12:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 15.1.0:
+  * Updated to Unicode 15.1 and added support for Python 3.12
+
+-------------------------------------------------------------------
+Wed Nov  9 19:33:17 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 15.0.0
+  * Upgrade to Unicode 15.0.0
+
+-------------------------------------------------------------------
+Sun Jan 16 20:32:49 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 14.0.0
+  * Dropped support for EOL Python 2.7 and 3.5 (#47, #48)
+  * Added support for Python 3.9 and 3.10, and PyPy3
+  * Updated to Unicode 14.0 (#50)
+
+-------------------------------------------------------------------
+Wed Mar 25 14:37:21 UTC 2020 - pgajdos@suse.com
+
+- version update to 13.0.0
+  * Upgrade to Unicode 13.0.0 (#34).
+  * Build wheels for Python 3.8.
+
+-------------------------------------------------------------------
+Fri Feb  7 16:20:43 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 12.1.0
+  * Upgrade to Unicode 12.1.0
+  * Remove Python 3.4 support
+
+-------------------------------------------------------------------
+Wed Aug 28 06:00:17 AM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v12.0.0

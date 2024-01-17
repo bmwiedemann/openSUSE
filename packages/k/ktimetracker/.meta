@@ -1,0 +1,6 @@
+<package name="ktimetracker" project="openSUSE:Factory">
+  <title>Base package of kdepim</title>
+  <description>This package contains the core files of the kdepim module.
+</description>
+  <devel project="KDE:Extra" package="ktimetracker"/>
+</package>

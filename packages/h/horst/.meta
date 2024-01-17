@@ -1,0 +1,15 @@
+<package name="horst" project="openSUSE:Factory">
+  <title>Lightweight IEEE802.11 wireless LAN analyzer</title>
+  <description>horst is a small, lightweight IEEE802.11 WLAN analyzer with a text interface.
+Its basic function is similar to tcpdump, Wireshark or Kismet, but it's much
+smaller and shows different, aggregated information which is not easily
+available from other tools. It is made for debugging wireless LANs with a
+focus on getting a quick overview instead of deep packet inspection and has
+special features for Ad-hoc (IBSS) mode and mesh networks.
+It can be useful to get a quick overview of what's going on on all wireless
+LAN channels and to identify problems.
+
+</description>
+  <devel project="network:utilities" package="horst"/>
+  <url>http://br1.einfach.org/tech/horst/</url>
+</package>

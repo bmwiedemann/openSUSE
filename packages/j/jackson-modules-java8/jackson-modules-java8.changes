@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Wed Dec 20 19:29:17 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v2.16.0
+  * #263: Add `JavaTimeFeature.ALWAYS_ALLOW_STRINGIFIED_TIMESTAMPS`
+    to allow parsing quoted numbers when using a custom pattern
+    (DateTimeFormatter)
+  * #272: (datetime)
+    `JsonFormat.Feature.WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS` not
+    respected when deserialising `Instant`s
+  * #281: (datetime) Add
+    `JavaTimeFeature.NORMALIZE_DESERIALIZED_ZONE_ID` to allow
+    disabling ZoneId normalization on deserialization
+
+-------------------------------------------------------------------
+Wed Sep 13 15:53:17 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v2.15.2

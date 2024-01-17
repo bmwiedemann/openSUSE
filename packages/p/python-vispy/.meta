@@ -1,0 +1,5 @@
+<package name="python-vispy" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python:numeric" package="python-vispy"/>
+</package>

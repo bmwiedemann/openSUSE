@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Fri Oct 20 10:57:54 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Add remove_genty.patch to remove dependency on the external
+  genty package (gh#box/flaky!197).
+
+-------------------------------------------------------------------
+Fri Oct 20 10:26:48 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Fri Apr 21 12:25:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:41:16 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Mon Dec 14 00:48:47 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix condition around BuildRequirement
+
+-------------------------------------------------------------------
+Sun Dec 13 20:27:15 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- We don't need to break Python 2.7
+
+-------------------------------------------------------------------
+Fri Dec 11 15:14:53 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_mock.patch to remove dependency on the external mock package.
+
+-------------------------------------------------------------------
+Fri Dec 11 14:24:39 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_nose.patch to remove dependency on nose.
+
+-------------------------------------------------------------------
+Wed Jul 29 05:39:42 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.7.0:
+  * Flaky now retries tests which fail during setup.
+
+-------------------------------------------------------------------
+Fri Jan 31 01:54:06 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add required suffix to package name for test package. Although
+  no binary package is created, the OBS blocks any dependent
+  packages until also the test package has been built (Giveaway:
+  main and test flavor create the same .src.rpm)
+
+-------------------------------------------------------------------
+Thu Sep 12 12:33:03 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.6.1:
+  * Reraise KeyboardInterrupt when running tests under pytest.
+
+-------------------------------------------------------------------
+Fri Jul 26 10:48:12 UTC 2019 - pgajdos@suse.com
+
+- version update to 3.6.0
+  * Do not print an empty report if no tests marked 'flaky' were run at all (#116). NOTE: This change could be breaking if you relied on the flaky report being printed.
+- test via multibuild
+- added sources
+  + _multibuild
+
+-------------------------------------------------------------------
+Tue Mar 12 15:24:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.5.3:
+  * Bugfixes - Flaky is now compatible with pytest >= 4.1.
+  * Officially support and test on Python 3.6 and 3.7.
+  * Adds a pytest marker that can be used instead of `@flaky.
+  * Replaced references to 'slaveoutput', where possible with 'workeroutput', following the convention chosen by pytest.
+  * Prints formatted tracebacks in the flaky report when using nose.
+
+-------------------------------------------------------------------
+Thu Nov  9 06:10:34 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 3.4.0:
+  * Bugfixes - Flaky for pytest will no longer silently swallow errors
+    that occur during test setup.
+
+-------------------------------------------------------------------
+Tue Dec 20 17:37:08 UTC 2016 - jmatejek@suse.com
+
+- initial commit
+
