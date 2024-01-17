@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  5 13:41:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide user(%{uname}) and group(%{gname}): With RPM 4.19,
+  whenever a package installs files as specific user, explicit
+  dependency on those users are being added. This package takes
+  care of creating the user in its pre script.
+
+-------------------------------------------------------------------
 Thu Oct 13 16:06:59 UTC 2022 - varkoly@suse.com
 
 - Update to version 1.0.12+v1.git.1663933145.1619d044:
