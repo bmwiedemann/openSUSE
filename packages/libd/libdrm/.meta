@@ -1,0 +1,6 @@
+<package name="libdrm" project="openSUSE:Factory">
+  <title>Userspace Interface for Kernel DRM Services</title>
+  <description>The package contains the userspace interface to the kernel DRM
+services.</description>
+  <devel project="X11:XOrg" package="libdrm"/>
+</package>

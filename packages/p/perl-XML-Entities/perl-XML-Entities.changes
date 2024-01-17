@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Sat Jun 25 06:22:31 UTC 2016 - coolo@suse.com
+
+- update to 1.0002
+     - Replaced curly brackets with parentheses in variable expansion in
+       Makefile.PL.
+       Fixes RT106483; Credits: Daniel Macks <dmacks@netspace.org>
+     - make clean no longer wipes out entities data
+
+-------------------------------------------------------------------
+Tue Oct 16 20:32:13 UTC 2012 - Greg.Freemyer@gmail.com
+
+- update to 1.0001
+  * Added docs about encoding entities.
+
+-------------------------------------------------------------------
+Mon Nov 29 18:32:26 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Aug 31 22:28:43 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.0000:
+  * abandoned the download-on-build policy. Entities are now shipped with the module itself
+  * minor speed tweak: Using chomp instead of s/// in char2entity
+
+-------------------------------------------------------------------
+Fri Nov  6 15:26:34 UTC 2009 - pascal.bleser@opensuse.org
+
+- initial package: 0.0307
+

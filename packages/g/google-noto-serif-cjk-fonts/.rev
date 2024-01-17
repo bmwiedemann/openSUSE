@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e03c5539229acbff5ca9109b9c59feba</srcmd5>
+    <version>20170403</version>
+    <time>1496225771</time>
+    <user>dimstar_suse</user>
+    <comment>A new package set.  The packaging is as same as google-noto-sans-cjk-fonts.</comment>
+    <requestid>493673</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0ed13a3ac07440e1f58625d5135cb9d8</srcmd5>
+    <version>20170403</version>
+    <time>1587581336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2.001(20190410)
+- Update version to 2.001(20190410) (forwarded request 795504 from hillwood)</comment>
+    <requestid>795505</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d18edcf0b02f372a3a42057b93f16b7b</srcmd5>
+    <version>unknown</version>
+    <time>1587582020</time>
+    <user>dimstar_suse</user>
+    <comment>updated by OSRT tools (host ani)</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>21c9690dde7bce294988314c096f74d4</srcmd5>
+    <version>20170403</version>
+    <time>1658755831</time>
+    <user>coolo-factory</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>733dc8572c8dc37d80eb008f335d3b36</srcmd5>
+    <version>2.001</version>
+    <time>1659034679</time>
+    <user>RBrownFactory</user>
+    <comment>- Move google-noto-serif-cjk-fonts into its own repository again
+
+- Update version to 2.001
+- Follow upstream versioning: use version numbers instead of dates
+
+- Fix the source URL to be properly downloadable
+
+- Update version to 2.002(20201202)
+  * The copyright year was changed from “2014–2019” to “2014–2020.”
+  * Addressed Issue #207 including glyph changes to U+4E08 and U+5C83.
+    Extension G encodings were added for U+30729, U+30EDD, U+30EDE,
+    and U+3106C and the previous GSUB rules were removed.
+  * Updated Korean glyph for U+58C4 as reported in Source Han Serif Issue #87
+  * Addressed Issue #204 for U+50E7, U+89E6, U+8FD0, U+9EA4, U+25C4A
+  * Mapped HK U+5C13 尓 to JP glyph
+  * Fixed U+21B9 as reported in Issue #260
+  * Changed Korean mapping for U+51A4 as reported in Issue #202
+  * The weights for Kanbun glyphs U+3191–U+319F have been adjusted
+    as mentioned in the table at the beginning of Issue #205.
+  * Fixed Korean IVS mapping for U+8ACB as reported in Issue #276</comment>
+    <requestid>990775</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e8d12aea12880c07ef9e5a67d75b7924</srcmd5>
+    <version>2.001</version>
+    <time>1659470980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992339</requestid>
+  </revision>
+</revisionlist>

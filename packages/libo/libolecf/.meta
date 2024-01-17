@@ -1,0 +1,7 @@
+<package name="libolecf" project="openSUSE:Factory">
+  <title>Library and tools to access the OLE 2 Compound File (OLECF) format.</title>
+  <description>Library and tools to access the OLE 2 Compound File (OLECF) format. The OLE 2 Compound File format is used to store certain versions of Microsoft Office files, thumbs.db and other file formats.
+
+Part of the libyal family of c libraries.  The primary user are digital forensic applications.</description>
+  <devel project="security:forensics" package="libolecf"/>
+</package>

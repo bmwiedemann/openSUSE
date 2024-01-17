@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Sat Oct 21 03:33:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Unbreak Leap 15.x build
+
+-------------------------------------------------------------------
+Sun Sep 24 12:54:03 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4
+  * vfontas: add an -overstrike option
+  * palcomp: have the "ct" command exercise AIX color codes too
+  * palcomp: compute "cxl" and "cxr" tables for bright background
+    colors as well
+
+-------------------------------------------------------------------
+Mon Aug 14 19:16:21 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3
+  * palcomp: delete ``rgb`` and ``lch`` subcommands (make them implicit)
+  * palcomp: add ``ct`` and ``ct256`` subcommands to display the color table
+  * palcomp: add ``cxl`` and ``cxr`` subcommands for contrast analysis
+  * palcomp: add ``loeq`` subcommand for contrast adjustment
+
+-------------------------------------------------------------------
+Sun Jul 23 15:48:04 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2
+  * palcomp: support for tint via new "hsltint", "lchtint" or
+    "hueset" subcommands (this allows for generating Amber/Green
+    CRT looks and then some)
+  * palcomp: brightness manipulatino support with "litadd",
+    "litmul", "litset"
+  * palcomp: auxiliary helper commands: "b0", "fg", "bg", "stat"
+  * palcomp: new starting palette "win"
+- Drop libhx.patch
+
+-------------------------------------------------------------------
+Thu Dec  1 10:51:10 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add libhx.patch
+
+-------------------------------------------------------------------
+Mon Nov 21 11:08:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 1.1) for build.opensuse.org
+- It's a split from hxtools (20221119/20221120)

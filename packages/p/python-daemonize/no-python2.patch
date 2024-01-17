@@ -1,0 +1,84 @@
+Index: daemonize-2.5.0/tests/test.py
+===================================================================
+--- daemonize-2.5.0.orig/tests/test.py
++++ daemonize-2.5.0/tests/test.py
+@@ -3,6 +3,7 @@ import os
+ import pwd
+ import grp
+ import subprocess
++import sys
+ 
+ from tempfile import mkstemp
+ from time import sleep
+@@ -18,7 +19,7 @@ else:
+ class DaemonizeTest(unittest.TestCase):
+     def setUp(self):
+         self.pidfile = mkstemp()[1]
+-        os.system("python tests/daemon_sigterm.py %s" % self.pidfile)
++        os.system("%s tests/daemon_sigterm.py %s" % (sys.executable, self.pidfile))
+         sleep(.1)
+ 
+     def tearDown(self):
+@@ -43,7 +44,7 @@ class LockingTest(unittest.TestCase):
+     def setUp(self):
+         self.pidfile = mkstemp()[1]
+         print("First daemonize process started")
+-        os.system("python tests/daemon_sigterm.py %s" % self.pidfile)
++        os.system("%s tests/daemon_sigterm.py %s" % (sys.executable, self.pidfile))
+         sleep(.1)
+ 
+     def tearDown(self):
+@@ -53,7 +54,7 @@ class LockingTest(unittest.TestCase):
+     def test_locking(self):
+         sleep(10)
+         print("Attempting to start second daemonize process")
+-        proc = subprocess.call(["python", "tests/daemon_sigterm.py", self.pidfile])
++        proc = subprocess.call([sys.executable, "tests/daemon_sigterm.py", self.pidfile])
+         self.assertEqual(proc, 1)
+ 
+ 
+@@ -61,7 +62,7 @@ class KeepFDsTest(unittest.TestCase):
+     def setUp(self):
+         self.pidfile = mkstemp()[1]
+         self.logfile = mkstemp()[1]
+-        os.system("python tests/daemon_keep_fds.py %s %s" % (self.pidfile, self.logfile))
++        os.system("%s tests/daemon_keep_fds.py %s %s" % (sys.executable, self.pidfile, self.logfile))
+         sleep(1)
+ 
+     def tearDown(self):
+@@ -90,7 +91,7 @@ class UidGidTest(unittest.TestCase):
+ 
+         os.chown(self.logfile, NOBODY_UID, NOBODY_GID)
+ 
+-        os.system("python tests/daemon_uid_gid.py %s %s" % (self.pidfile, self.logfile))
++        os.system("%s tests/daemon_uid_gid.py %s %s" % (sys.executable, self.pidfile, self.logfile))
+         sleep(1)
+ 
+         with open(self.logfile, "r") as f:
+@@ -104,7 +105,7 @@ class UidGidTest(unittest.TestCase):
+ 
+         os.chown(self.pidfile, NOBODY_UID, NOBODY_GID)
+ 
+-        os.system("python tests/daemon_uid_gid_action.py %s %s" % (self.pidfile, self.logfile))
++        os.system("%s tests/daemon_uid_gid_action.py %s %s" % (sys.executable, self.pidfile, self.logfile))
+         sleep(1)
+ 
+         with open(self.logfile, "r") as f:
+@@ -120,7 +121,7 @@ Stopping daemon.
+ """
+         self.pidfile = mkstemp()[1]
+         self.logfile = mkstemp()[1]
+-        os.system("python tests/daemon_privileged_action.py %s %s" % (self.pidfile, self.logfile))
++        os.system("%s tests/daemon_privileged_action.py %s %s" % (sys.executable, self.pidfile, self.logfile))
+         sleep(.1)
+ 
+     def tearDown(self):
+@@ -139,7 +140,7 @@ class ChdirTest(unittest.TestCase):
+         self.target = mkstemp()[1]
+         base, file = split(self.target)
+ 
+-        os.system("python tests/daemon_chdir.py %s %s %s" % (self.pidfile, base, file))
++        os.system("%s tests/daemon_chdir.py %s %s %s" % (sys.executable, self.pidfile, base, file))
+         sleep(1)
+ 
+     def tearDown(self):

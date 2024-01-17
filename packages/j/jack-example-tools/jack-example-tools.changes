@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Tue Mar  1 17:17:07 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of jack-example-tools 1
+- Add patch to let meson find readline in Leap 15.4 which doesn't
+  provide a .pc file
+  * fix-readline-support-leap.patch
+

@@ -1,0 +1,11 @@
+<package name="replacer" project="openSUSE:Factory">
+  <title>Replacer Maven Mojo</title>
+  <description>Maven plugin to replace tokens in a given file with a value.
+
+This plugin is also used to automatically generating PackageVersion.java
+in the FasterXML.com project.
+
+</description>
+  <devel project="Java:packages" package="replacer"/>
+  <url>https://github.com/beiliubei/maven-replacer-plugin</url>
+</package>

@@ -1,0 +1,121 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f68b17c9a9f57b547434245279a1c495</srcmd5>
+    <version>0.12</version>
+    <time>1558516057</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0
+  * Drop support for Python 3.3.x
+  * Stop deprecation warnings from being raised when IPython &gt;= 5.1 is used.
+    Support for IPython &lt; 5.1 has been dropped.
+- Rename to to match python package naming guidelines.
+- Initial packaging effort for 0.11
+</comment>
+    <requestid>698408</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>21cb0f5e52a4d386f2fa76bd0f8fde4f</srcmd5>
+    <version>0.12.1</version>
+    <time>1564302186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719300</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>85e338be4e5cb9113d18d36d541a99f4</srcmd5>
+    <version>0.12.2</version>
+    <time>1565695229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722246</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>36b70cf742f50dfb8c4a808a95ae2b7e</srcmd5>
+    <version>0.12.2</version>
+    <time>1572443023</time>
+    <user>dimstar_suse</user>
+    <comment>- runtime dependency on python-ipython added
+- Skip the bin install commands if the flavor is not being built</comment>
+    <requestid>743635</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6521b242c3dff92f3a096b63d51f7297</srcmd5>
+    <version>0.12.3</version>
+    <time>1578069459</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.3
+  * Fix version in usage
+- Drop python2 support due to dependencies dropping python2
+</comment>
+    <requestid>760521</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5247706bcf4e143c29b45e4f8570e05d</srcmd5>
+    <version>0.13.2</version>
+    <time>1583311636</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781246</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c3ff54a553d6fdd801495a3ab8bd46e2</srcmd5>
+    <version>0.13.3</version>
+    <time>1593458319</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817731</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bbf1878a3658bc2ea668d186971656b1</srcmd5>
+    <version>0.13.4</version>
+    <time>1608112855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856024</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e376f9677fdf57cfb28d6e90f21dd37b</srcmd5>
+    <version>0.13.9</version>
+    <time>1632341583</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920993</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b239d4f8498a8c6fa34c4f206b10ffe3</srcmd5>
+    <version>0.13.11</version>
+    <time>1672093674</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.11
+  * Better exception handling when looking for config.
+    [bignose-debian]
+- Release 0.13.10
+  * Better toml support (use tomlib for 3.11, tomli for 3.6 to
+    3.10). [salty-horse, mgorny]
+  * Minimal PEP 517 support. [cpcloud]
+  * 3.11 support for run as module and run as script. [nphilipp,
+    gotcha]
+  * Based on OSV:PYSEC-2022-12 change ipython dependencies</comment>
+    <requestid>1045312</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>25ae217acb4a82897fcdc14123b8331d</srcmd5>
+    <version>0.13.13</version>
+    <time>1679416831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.13
+  * Use context manager for opening toml config
+- Release 0.13.12
+  * Modify tests to test 3.11 separately from earlier python
+    versions.</comment>
+    <requestid>1072954</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>b7a2033ce95c4c28722740db22feb680</srcmd5>
+    <version>0.13.13</version>
+    <time>1689786701</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099495</requestid>
+  </revision>
+</revisionlist>

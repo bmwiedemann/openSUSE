@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5cd845ffbb45212059b73619fecf3a01</srcmd5>
+    <version>0~20150104</version>
+    <time>1422626366</time>
+    <user>dimstar_suse</user>
+    <comment>New package in libyal.  May need to go to staging F.  </comment>
+    <requestid>280816</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ee99063da875e1dae3d5ab94c6226760</srcmd5>
+    <version>0~20170112</version>
+    <time>1507197452</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0~20170112
+	* applied 2017 updates
+	* worked on tests
+	* other improvements
+</comment>
+    <requestid>530569</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4ab82565056afd77afbbe1da71ad4929</srcmd5>
+    <version>0~20180714</version>
+    <time>1560337775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>696088</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>607699b0d8fa934a6726146ea9e3d88a</srcmd5>
+    <version>20210415</version>
+    <time>1623363488</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898704</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>52f18f9e3958739ccfeb83ad523a308d</srcmd5>
+    <version>20220114</version>
+    <time>1642198404</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220114</comment>
+    <requestid>946375</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>addffe9b03caa930c058f5b0e117afb8</srcmd5>
+    <version>20220114</version>
+    <time>1660051711</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993989</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>6863e7acfdeda8c31330352071c1ecd3</srcmd5>
+    <version>20220114</version>
+    <time>1669629975</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038460</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c25cc57873504c5d931dd74bf263f067</srcmd5>
+    <version>20230405</version>
+    <time>1680722914</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20230405</comment>
+    <requestid>1077495</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4af6eb53a24ea4ef98e9f5944d4591fd</srcmd5>
+    <version>20230408</version>
+    <time>1680968363</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20230408</comment>
+    <requestid>1077985</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Mon Feb 20 13:53:08 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Specfile cleanup
+- Introduce subpackage for versioned shared library
+
+-------------------------------------------------------------------
+Sat Feb 26 19:05:13 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Run spec-cleaner and modernize spec-file
+- Drop python module
+
+-------------------------------------------------------------------
+Fri Feb  1 12:03:02 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Tue Jan 31 17:09:32 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+
+-------------------------------------------------------------------
+Wed Sep 15 08:22:39 UTC 2010 - aj@suse.de
+
+- Split up devel package.
+- Fix strict aliasing warning with patch from Fedora 
+  (libieee1284-strict-aliasing.patch).
+- Minor spec file cleanup.
+
+-------------------------------------------------------------------
+Mon Feb  1 11:39:56 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Thu Jan  8 22:26:05 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries 
+
+-------------------------------------------------------------------
+Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Sat Jul  5 23:56:53 CEST 2008 - bwalle@suse.de
+
+- update to 0.2.11
+  o Don't require st_nlink > 2 for proc directories
+- remove libieee1284_procfs_nlink_0.diff: merged upstream
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Mon Sep 17 20:05:57 CEST 2007 - bwalle@suse.de
+
+- don't check for st_nlink in /proc/sys/dev/parport when using
+  ppdev (#325739)
+
+-------------------------------------------------------------------
+Sat Aug 11 21:22:51 CEST 2007 - meissner@suse.de
+
+- make it build.
+- some spec file cleanups according to rpmlint comments.
+
+-------------------------------------------------------------------
+Mon Mar 26 12:20:49 CEST 2007 - jsmeix@suse.de
+
+- remove .a and .la files (Suse Bugzilla bug #244452).
+
+-------------------------------------------------------------------
+Tue Nov  7 01:11:40 CET 2006 - ro@suse.de
+
+- fix docu permissions 
+
+-------------------------------------------------------------------
+Tue Oct 31 11:45:13 CET 2006 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Mon Sep 11 12:34:23 CEST 2006 - jsmeix@suse.de
+
+- using %{py_ver} instead of hardcoded Python version
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:30 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan  3 17:44:05 CET 2006 - jsmeix@suse.de
+
+- update to version 0.2.10
+
+-------------------------------------------------------------------
+Mon Jan 24 11:00:16 CET 2005 - jsmeix@suse.de
+
+- update to version 0.2.9 
+
+-------------------------------------------------------------------
+Thu Jul 15 13:47:47 CEST 2004 - jsmeix@suse.de
+
+- initial version
+

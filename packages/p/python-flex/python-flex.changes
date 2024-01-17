@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Fri Apr 21 12:25:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:41:19 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Wed Apr 27 13:41:23 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Remove pytest-pythonpath and fix build
+
+-------------------------------------------------------------------
+Sun Aug 29 22:33:20 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Problems with gh#pipermerriam/flex#234 are not isolated just to
+  Python 3.9.
+
+-------------------------------------------------------------------
+Sun May 16 13:32:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip a failing test on Python 3.9.5: request url with tabs
+  gh#pipermerriam/flex#234
+- Skip python2 because it fails on Leap: factory_boy does not
+  support Python 2 anymore
+
+-------------------------------------------------------------------
+Thu Sep 17 06:45:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 6.14.1:
+  * Fixed all warnings about importing from collections on Python 3
+
+-------------------------------------------------------------------
+Tue May 26 06:34:16 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Thu Mar 14 12:12:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, needed by flasgger

@@ -1,0 +1,5 @@
+<package name="patterns-wsl" project="openSUSE:Factory">
+  <title></title>
+  <description>Provides &quot;wsl_base&quot; and &quot;wsl_gui&quot; patterns for recommended WSL/WSLg related packages.</description>
+  <devel project="Virtualization:WSL" package="patterns-wsl"/>
+</package>

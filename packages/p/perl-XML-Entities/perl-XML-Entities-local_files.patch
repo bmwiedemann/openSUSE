@@ -1,0 +1,18 @@
+--- bin/download-entities.pl.orig	2009-11-06 16:17:54.000000000 +0100
++++ bin/download-entities.pl	2009-11-06 16:21:14.000000000 +0100
+@@ -86,6 +86,15 @@
+ sub download {
+     my ($url, $options) = @_;
+ 
++    my $filename = $url;
++    $filename =~ s|^.*/||;
++    print "filename=\"$filename\"\n";
++    open(my $filehandle, '<', $filename) or die "failed to open \"$filename\": $!";
++    my $filecontent = "";
++    while (<$filehandle>) { $filecontent .= $_; }
++    close($filehandle);
++    return $filecontent;
++
+     if ($OPTIONS{interactive}) {
+         print STDERR "About to download '$url'\n";
+         my $ignore_ok = ', enter whitespace to skip download';

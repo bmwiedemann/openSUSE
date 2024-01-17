@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Sun Jun 11 12:31:13 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Thu Jun  4 10:01:47 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't use nose, switch to pytest.
+
+-------------------------------------------------------------------
+Thu Apr 30 07:54:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix test running without python2:
+  * no-python2.patch
+
+-------------------------------------------------------------------
+Thu Mar  7 14:00:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.5.0:
+  * no changelog
+- Make sure tests are executed
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:06 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Jun 13 16:08:06 UTC 2017 - jengelh@inai.de
+
+- Trim redundant mentions from description.
+
+-------------------------------------------------------------------
+Fri Jun  2 19:40:08 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package

@@ -1,0 +1,22 @@
+Index: strongswan-5.9.5/init/systemd/strongswan.service.in
+===================================================================
+--- strongswan-5.9.5.orig/init/systemd/strongswan.service.in
++++ strongswan-5.9.5/init/systemd/strongswan.service.in
+@@ -3,6 +3,17 @@ Description=strongSwan IPsec IKEv1/IKEv2
+ After=network-online.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=notify
+ ExecStart=@SBINDIR@/charon-systemd
+ ExecStartPost=@SBINDIR@/swanctl --load-all --noprompt

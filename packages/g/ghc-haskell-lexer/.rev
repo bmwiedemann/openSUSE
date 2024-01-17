@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c4410f6b56dd125440749ba8809ac75a</srcmd5>
+    <version>1.1</version>
+    <time>1592578862</time>
+    <user>dimstar_suse</user>
+    <comment>initial version</comment>
+    <requestid>814931</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a4f7d3ef4969301ebf369ece10d2672a</srcmd5>
+    <version>1.1</version>
+    <time>1598643183</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829293</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e845bb699414be72cc4cae2c71f92255</srcmd5>
+    <version>1.1</version>
+    <time>1608633616</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857383</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c43c48752b1096cdc8f82791bda4274b</srcmd5>
+    <version>1.1.1</version>
+    <time>1674043795</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1059072</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>99b3541df85fad2702b5a88a5bf19397</srcmd5>
+    <version>1.1.1</version>
+    <time>1680636016</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075892</requestid>
+  </revision>
+</revisionlist>

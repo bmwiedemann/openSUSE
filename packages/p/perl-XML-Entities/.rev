@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40b8d0f3b0bb4d04acda7cb3d71fe4a5</srcmd5>
+    <version>1.0000</version>
+    <time>1311148523</time>
+    <user>saschpe</user>
+    <comment>Perl Package to decode XML Entities in multiple languages</comment>
+    <requestid>74928</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>899c3ec61339a0ef2456aa252e21fe7b</srcmd5>
+    <version>1.0000</version>
+    <time>1311148542</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74928
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>899c3ec61339a0ef2456aa252e21fe7b</srcmd5>
+    <version>1.0000</version>
+    <time>1319182322</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>07feca55d82bdc8bd795948e901b7291</srcmd5>
+    <version>1.0000</version>
+    <time>1323193784</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>07feca55d82bdc8bd795948e901b7291</srcmd5>
+    <version>1.0000</version>
+    <time>1340183952</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ccf506979385851f7e7dd20bcde770ce</srcmd5>
+    <version>1.0001</version>
+    <time>1350590531</time>
+    <user>coolo</user>
+    <comment>Update as per Coolo's reminder e-mail.
+Looking at the diffs, this looks to be exclusively a documentation update. (forwarded request 138428 from gregfreemyer)</comment>
+    <requestid>138429</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>ccf506979385851f7e7dd20bcde770ce</srcmd5>
+    <version>1.0001</version>
+    <time>1359109849</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>ccf506979385851f7e7dd20bcde770ce</srcmd5>
+    <version>1.0001</version>
+    <time>1379663917</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>ccf506979385851f7e7dd20bcde770ce</srcmd5>
+    <version>1.0001</version>
+    <time>1409302568</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d96b23a54b8bf97c73588f27270ac505</srcmd5>
+    <version>1.0002</version>
+    <time>1468360422</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0002
+     - Replaced curly brackets with parentheses in variable expansion in
+       Makefile.PL.
+       Fixes RT106483; Credits: Daniel Macks &lt;dmacks@netspace.org&gt;
+     - make clean no longer wipes out entities data</comment>
+    <requestid>407697</requestid>
+  </revision>
+</revisionlist>

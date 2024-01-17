@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b238d1a35c1838397f8ff0e78ebb04c5</srcmd5>
+    <version>0.1</version>
+    <time>1517516954</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for building kubic</comment>
+    <requestid>571482</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9167291f329ca0a70b6e0ac83d430bb9</srcmd5>
+    <version>1.0.0</version>
+    <time>1559375366</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705960</requestid>
+  </revision>
+</revisionlist>

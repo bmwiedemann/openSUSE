@@ -1,0 +1,149 @@
+-------------------------------------------------------------------
+Tue Apr 25 07:49:04 UTC 2023 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/dcantrell/pyparted/issues/98
+  + python-parted-no-six.patch
+
+-------------------------------------------------------------------
+Thu Jul 21 13:12:51 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+ - Rebase more-features-exposed.patch to catch another test failure.
+
+-------------------------------------------------------------------
+Mon May 30 09:50:41 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.12.0:
+  * Adjust how PED_PARTITION types are added to _ped
+  * Add support for PARTITION_LINUX_HOME
+  * Add units, devices, and partitions convenience dicts
+  * Update version number and required libparted version
+  * Correct PARTITION_* constant initialization
+  * setup.py: port to setuptools
+- Add patch more-features-exposed.patch:
+  * msdos and GPT seem to expose more features, include them when checking.
+
+-------------------------------------------------------------------
+Tue Jan 11 10:09:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11.7:
+  * Do not remove the generated tarballs. 
+  * Update the RELEASE file. 
+  * tests: Fix flag_get_name tests 
+  * Avoid potential NULL dereferences in pydisk.c and pytimer.c 
+  * New - example to query device capacity 
+  * correct spelling mistake 
+  * Make the partition name a property on parted.Partition objects 
+  * 'from collections' -> 'from collections.abc' 
+  * Add some more examples
+  * Small correction to the PED_EXCEPTION_FIX handling. 
+  * Restore returning None for get_name
+  * Handle PED_EXCEPTION_FIX 
+  * check for undefined flags
+  * added support for newer pyparted versions
+  * Support pypi.python.org for releases 
+  * Forgot the "/" in the path name 
+  * Remove assumption that temp devices get created in /tmp 
+  * Adjust test case numbers for GeometryWriteTestCase again
+  * Revert "Use copy.deepcopy() rather than .duplicate()"
+  * Remove another unnecessary os.close() from baseclass.py
+  * Remove rogue close() call in baseclass.py
+  * Ignore the 'const' and just use these values as 'char *'
+  * Use copy.deepcopy
+  * More file descriptor close statements.
+  * Fixes for the RequiresDeviceNode class
+  * Use a smaller length for GeometryWriteTestCase
+  * Close the RequiresDeviceNode file descriptor before removal.
+  * Fix writing NULL sectors using a Geometry object
+  * Use Decimal
+  * Fix reference to fedorahosted.org in README 
+  * Check for PartedException for upper disk and partition get flag ops.
+  * Only define PARTITION_ESP if libparted provides PED_PARTITION_ESP
+  * Only define PARTITION_IRST if libparted provides PED_PARTITION_IRST
+  * I did not remember, Debian spells it "libparted-dev".
+  * Add support for RISC-V
+  * Typo fix: mimimum -> minimum
+  * Replace 'iff' with 'if and only if' in pynatmath.h.
+  * Fix a type for the get_max_primary_partition_count() doc string.
+  * Remove *_LAST_FLAG checks
+  * Use Decimal for Device.getSize
+  * Update the 'twine upload' line in the Makefile
+  * Don't intentionally prohibit Python 2 usage 
+  * mips64 support 
+  * Require at least libparted 3.3 and python 3.7
+  * pedmodule.c: Fix partition enum flag handling
+  * Add support for chromeos_kernel and bls_boot partition flags
+  * Move exception declarations to _pedmodule.c
+  * Use preprocessor for the _ped module and what constants to include.
+  * Reduce libparted requirement to 3.2 
+  * Update the pypi target in the Makefile 
+  * Reduce minimum Python required to 3.5 
+  * Set PY_SSIZE_T_CLEAN for the build 
+  * add nvme support
+  * Update RELEASE file to make last step be "make pypi" 
+- drop no-last-flag-check.patch, python-parted-unittests.patch: obsolete
+- drop -fcommon, obsolete
+
+-------------------------------------------------------------------
+Tue Jun  2 12:08:22 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Enable -fcommon which is not default with GCC10.
+
+-------------------------------------------------------------------
+Thu May 24 15:26:23 UTC 2018 - tchvatal@suse.com
+
+- Add patch to tweak features detected in tests (parted changes
+  from suse):
+  * python-parted-featurestest.patch
+- Add patch python-parted-parted-binary.patch to run parted full
+  path as user does not see sbin binaries
+- Add patch no-last-flag-check.patch from debian
+- Add patch python-parted-unittests.patch from ubuntu to fix tests
+
+-------------------------------------------------------------------
+Thu May 24 14:49:05 UTC 2018 - tchvatal@suse.com
+
+- Implement singlespec version for python3
+- Refresh patch pyparted-3.10.patch to work with python3
+- Enable testsuite to validate it somehow
+
+-------------------------------------------------------------------
+Thu May 24 12:08:12 UTC 2018 - bwiedemann@suse.com
+
+- Update to 3.11.1
+  * make package build reproducible (boo#1041090)
+
+-------------------------------------------------------------------
+Fri Mar 31 09:32:09 UTC 2017 - cbosdonnat@suse.com
+
+- Update to 3.10.7
+
+-------------------------------------------------------------------
+Sun Sep  6 17:43:56 UTC 2015 - olaf@aepfle.de
+
+- pyparted requires Python version 2.7 or higher 
+
+-------------------------------------------------------------------
+Fri Jun 19 14:52:44 UTC 2015 - termim@gmail.com
+
+- Update to 3.10.5
+  * bug fixes
+- fix rpm group name
+
+-------------------------------------------------------------------
+Thu Nov  6 12:48:20 UTC 2014 - cbosdonnat@suse.com
+
+- Fixed indentation error in pyparted-3.10.patch
+
+-------------------------------------------------------------------
+Sun Feb  9 08:50:51 UTC 2014 - kkaempf@suse.com
+
+- catch 'unknown disk flag' exception
+  add pyparted-3.10.patch
+
+-------------------------------------------------------------------
+Sat Feb  8 15:56:34 UTC 2014 - kkaempf@suse.com
+
+- Initial version 3.10
+

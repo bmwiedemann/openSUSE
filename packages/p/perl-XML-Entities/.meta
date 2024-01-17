@@ -1,0 +1,6 @@
+<package name="perl-XML-Entities" project="openSUSE:Factory">
+  <title>Perl Module to decode Strings with XML Entities</title>
+  <description>This module deals with decoding of strings with XML character entities.</description>
+  <devel project="devel:languages:perl" package="perl-XML-Entities"/>
+  <url>http://search.cpan.org/dist/XML-Entities/</url>
+</package>

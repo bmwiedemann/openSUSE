@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>002588cd19eb3c5727c62a151fbddf63</srcmd5>
+    <version>2.2.1</version>
+    <time>1587581171</time>
+    <user>dimstar_suse</user>
+    <comment>Initial package</comment>
+    <requestid>793984</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4c89f961ae92992361806c50e8124290</srcmd5>
+    <version>2.2.1</version>
+    <time>1594228332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819319</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>72a22510eb9395497e858b022f00aed4</srcmd5>
+    <version>2.2.1</version>
+    <time>1698333262</time>
+    <user>anag+factory</user>
+    <comment>source/target 8 == build with jdk 21</comment>
+    <requestid>1120420</requestid>
+  </revision>
+</revisionlist>
