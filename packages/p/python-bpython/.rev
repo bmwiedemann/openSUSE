@@ -1,0 +1,141 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4ef1266f949ad52a158450b6e02a6016</srcmd5>
+    <version>0.16</version>
+    <time>1505334969</time>
+    <user>dimstar_suse</user>
+    <comment>singlespec version of python3-bpython</comment>
+    <requestid>523724</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2f7e28f6384c86535792b39073c4c473</srcmd5>
+    <version>0.17</version>
+    <time>1524838148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>601613</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d76a6345abd73c202a1774caa026a41c</srcmd5>
+    <version>0.17.1</version>
+    <time>1525779536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605128</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>455bd7c7a09b7a09915c1d02642dd9f0</srcmd5>
+    <version>0.17.1</version>
+    <time>1544726423</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653954</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>077d2544af35af8098cd622f87293d62</srcmd5>
+    <version>0.18</version>
+    <time>1557141686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693126</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>00b7d8f2e4f1f8ecef0b50e12209ee90</srcmd5>
+    <version>0.18</version>
+    <time>1574859086</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner</comment>
+    <requestid>745360</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1e79dca19594087e69c38aa67a7a0106</srcmd5>
+    <version>0.19</version>
+    <time>1586775189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793338</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1257ef2f2b24b10a3d10ead9b0127c13</srcmd5>
+    <version>0.20</version>
+    <time>1604412973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845468</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0d833f018e872fd776bafa61a1611540</srcmd5>
+    <version>0.21</version>
+    <time>1618061225</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883215</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5767c4d2d60594464839989551ec47b9</srcmd5>
+    <version>0.22.1</version>
+    <time>1643838121</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>950803</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b8ac3b48e2a6cff8e103bf51792fca40</srcmd5>
+    <version>0.22.1</version>
+    <time>1644188058</time>
+    <user>dimstar_suse</user>
+    <comment>- This version actually installs manpages on its own.
+- Fix failing tests:
+  - typing_extensions.patch (post Python 3.8 we don't need
+    typing_extensions package at all)
+  - syntaxerror_failing_test.patch (from
+    https://github.com/bpython/bpython/compare/fdd4ad9..4d33cc6).
+</comment>
+    <requestid>951802</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9cfdf0796f6a7a9692ee89f9b7300b2d</srcmd5>
+    <version>0.23</version>
+    <time>1663002501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002730</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>73436e2b2cd05b2bdfdb7328fa5b85a5</srcmd5>
+    <version>0.23</version>
+    <time>1667499297</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python-six not needed dependency
+- Remove python_module macro definition
+</comment>
+    <requestid>1033061</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b5159ada945dd4a608aa3d5ba7db8c40</srcmd5>
+    <version>0.24</version>
+    <time>1674585794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060526</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>cd2d58e5a147abfa5960bb447d91a5d0</srcmd5>
+    <version>0.24</version>
+    <time>1684846497</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop calling setup.py build_sphinx, switch to sphinx-build, and also
+  build manual pages.</comment>
+    <requestid>1088563</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>608059cae9006894c66b11ff0de9b442</srcmd5>
+    <version>0.24</version>
+    <time>1690469507</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1100750 from bmwiedemann
+
+Drop sphinx doctrees for reproducible builds</comment>
+    <requestid>1100877</requestid>
+  </revision>
+</revisionlist>

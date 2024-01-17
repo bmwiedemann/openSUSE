@@ -1,0 +1,2 @@
+# We don't want to split the package only because of one file.
+addFilter("E: devel-file-in-non-devel-package");

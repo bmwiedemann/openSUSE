@@ -1,0 +1,5 @@
+<package name="ghc-x509-store" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-x509-store"/>
+</package>

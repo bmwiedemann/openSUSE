@@ -1,0 +1,5 @@
+<package name="mate-desktop" project="openSUSE:Factory">
+  <title>Library with common API for various MATE modules</title>
+  <description>This package contain the library with common API for various MATE modules.</description>
+  <devel project="X11:MATE:Factory" package="mate-desktop"/>
+</package>

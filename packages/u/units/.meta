@@ -1,0 +1,10 @@
+<package name="units" project="openSUSE:Factory">
+  <title>Units Conversion Utility</title>
+  <description>The 'units' program converts quantities expressed in various scales to
+their equivalents in other scales.
+
+Units can also convert temperature values (Fahrenheit to Celsius, for
+example) but this needs a slightly different input syntax. See the man
+page for details.</description>
+  <devel project="Education" package="units"/>
+</package>

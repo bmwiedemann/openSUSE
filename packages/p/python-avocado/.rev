@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>acc86fc760e3cf0b305b66997a56b4bc</srcmd5>
+    <version>63.0</version>
+    <time>1543311628</time>
+    <user>dimstar_suse</user>
+    <comment>rename of already dropped avocado package</comment>
+    <requestid>650340</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>eab73aaa7482e13c76cca95d4bf4a967</srcmd5>
+    <version>63.0</version>
+    <time>1548335677</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim not needed dependencies
+</comment>
+    <requestid>667879</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5c860c7024deef6e4fd866ef13aaa507</srcmd5>
+    <version>69.0</version>
+    <time>1553611222</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 69
+  * No upsteam changelog available</comment>
+    <requestid>682834</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>49b0c0620e9b9133e5aea8ddac9112f1</srcmd5>
+    <version>69.0</version>
+    <time>1568805131</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731491</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>1422253db79df9778fbb9b4c07a6e5f9</srcmd5>
+    <version>69.0</version>
+    <time>1582299741</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777873</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>40cd8484722712e389fd5745fbcc15a2</srcmd5>
+    <version>69.0</version>
+    <time>1584745040</time>
+    <user>dimstar_suse</user>
+    <comment>- Add conflict with old avocado for migration</comment>
+    <requestid>786773</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>df74f21d3abe6bae40c9daadb72ea72d</srcmd5>
+    <version>69.0</version>
+    <time>1590508219</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808890</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>95fc81848ec96f1fbbfbd61e730c5a1c</srcmd5>
+    <version>69.0</version>
+    <time>1619729214</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889349</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,226 @@
+-------------------------------------------------------------------
+Wed Jul 26 06:58:24 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop sphinx doctrees for reproducible builds
+
+-------------------------------------------------------------------
+Tue May 23 08:55:21 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Stop calling setup.py build_sphinx, switch to sphinx-build, and also
+  build manual pages. 
+
+-------------------------------------------------------------------
+Mon Jan 23 14:39:42 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 0.24
+  * Support for Python 3.11 has been added.
+  * wheel is no required as part of pyproject.toml's build dependencies
+  * Improve inspection of builtin functions.
+  * Add more keywords to trigger auto-deindent.
+
+-------------------------------------------------------------------
+Thu Nov  3 12:15:02 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python-six not needed dependency
+- Remove python_module macro definition
+
+-------------------------------------------------------------------
+Sat Sep 10 15:32:53 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * skip python 3.6
+  * update requirement for curtsies
+  * removed patch  syntaxerror_failing_test.patch and typing_extensions.patch: included upstream
+
+- update to version 0.23:
+  * General information:
+    + More and more type annotations have been added to the bpython
+      code base.
+    + Some work has been performed to stop relying on blessings.
+  * New features:
+    + #905: Auto-closing brackets option added. To enable, add
+       brackets_completion = True in the bpython config Thanks to
+       samuelgregorovic
+  * Fixes:
+    + Improve handling of SyntaxErrors
+    + #948: Fix crash on Ctrl-Z
+    + #952: Fix tests for Python 3.10.1 and newer
+    + #955: Handle optional readline parameters in stdin emulation
+       Thanks to thevibingcat
+    + #959: Fix handling of __name__
+    + #966: Fix function signature completion for classmethod
+  * Changes to dependencies:
+    + curtsies 0.4 or newer is now required
+  * Support for Python 3.6 has been dropped.
+
+-------------------------------------------------------------------
+Sat Feb  5 21:57:02 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- This version actually installs manpages on its own.
+
+-------------------------------------------------------------------
+Wed Feb  2 20:04:24 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix failing tests:
+  - typing_extensions.patch (post Python 3.8 we don't need
+    typing_extensions package at all)
+  - syntaxerror_failing_test.patch (from
+    https://github.com/bpython/bpython/compare/fdd4ad9..4d33cc6).
+
+-------------------------------------------------------------------
+Sun Jan 23 17:31:17 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * update path for xml and desktop file
+
+- update to version 0.22.1:
+  * Fixes:
+    + #938: Fix missing dependency on typing_extensions. Thanks to
+       Dustin Rodrigues
+
+-------------------------------------------------------------------
+Mon Apr  5 01:02:36 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * AUTHORS and CHANGELOG are now .rst files
+
+- update to version 0.21:
+  * General information:
+    + Support for Python 2 has been dropped.
+  * New features:
+    + #643: Provide bpython._version if built from Github tarballs
+    + #849: Make import completion skip list configurable
+    + #876: Check spelling with codespell Thanks to Christian Clauss
+  * Fixes:
+    + #847: Fix import completion of modules
+    + #857: Replace remaining use of deprecated imp with importlib
+    + #862: Upgrade curtsies version requirements Thanks to Kelsey
+       Blair
+    + #863: State correct default config file directory Thanks to
+       niloct
+    + #866: Add more directories to the default import completion skip
+       list
+    + #873: Handle 'd' when mapping colors
+    + #874: Avoid breakage with six's importer
+  * Changes to dependencies:
+    + curtsies >= 0.3.5 is now required
+    + pyxdg is now required
+    + wcwidth has been replaced with cwcwidth
+
+-------------------------------------------------------------------
+Fri Oct 30 22:26:06 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.20:
+  * General information:
+    + The next release of bpython (0.20) will drop support for Python
+      2.
+    + Support for Python 3.9 has been added. Support for Python 3.5
+      has been dropped.
+  * New features:
+    + #802: Provide redo.  Thanks to Evan.
+    + #835: Add support for importing namespace packages.  Thanks to
+       Thomas Babej.
+  * Fixes:
+    + #622: Provide encoding attribute for FakeOutput.
+    + #806: Prevent symbolic link loops in import completion.  Thanks
+       to Etienne Richart.
+    + #807: Support packages using importlib.metadata API.  Thanks to
+       uriariel.
+    + #809: Fix support for Python 3.9's ast module.
+    + #817: Fix cursor position with full-width characters.  Thanks to
+       Jack Rybarczyk.
+    + #853: Fix invalid escape sequences.
+
+-------------------------------------------------------------------
+Sat Apr  4 17:46:05 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.19:
+  * General information:
+    + The bpython-cli and bpython-urwid rendering backends have been
+      deprecated and will show a warning that they'll be removed in a
+      future release when started.
+    + Usage in combination with Python 2 has been deprecated. This
+      does not mean that support is dropped instantly but rather that
+      at some point in the future we will stop running our testcases
+      against Python 2.
+    + The new pinnwand API is used for the pastebin functionality. We
+      have dropped two configuration options: `pastebin_show_url` and
+      `pastebin_removal_url`. If you have your bpython configured to
+      run against an old version of `pinnwand` please update it.
+  * Fixes:
+    + #765: Display correct signature for decorated functions.  Thanks
+       to Benedikt Rascher-Friesenhausen.
+    + #776: Protect get_args from user code exceptions
+    + Improve lock file handling on Windows
+    + #791: Use importlib instead of deprecated imp when running under
+       Python 3
+  * Support for Python 3.8 has been added. Support for Python 3.4 has
+    been dropped.
+
+-------------------------------------------------------------------
+Tue Nov  5 09:01:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Apr 10 15:39:43 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+  * changes appdata to appinfo directory for bpython.appdata.xml
+  * for appdata and desktop add org.bpython-interpreter. to file name
+  * added files for bpdb
+
+- update to version 0.18:
+  * New features:
+    + #713 expose globals in bpdb debugging.  Thanks to toejough.
+  * Fixes:
+    + Fix file locking on Windows.
+    + Exit gracefully if config file fails to be loaded due to
+      encoding errors.
+    + #744: Fix newline handling.  Thanks to Attila Szöllősi.
+    + #731: Fix exit code.  Thanks to benkrig.
+    + #767: Fix crash when matching certain lines in history.
+  * Support for Python 3.3 has been dropped.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:18 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun May  6 19:38:52 UTC 2018 - arun@gmx.de
+
+- update to version 0.17.1:
+  * Fixes:
+    + Reverted #670 temporarily due to performance impact on large
+      strings being output.
+
+-------------------------------------------------------------------
+Thu Apr 26 13:58:01 UTC 2018 - badshah400@gmail.com
+
+- Update to version 0.17:
+  * New features:
+    - gh#bpython/bpython#641: Implement Ctrl+O.
+    - Add default_autoreload config option.
+  * Fixes:
+    - Fix deprecation warnings.
+    - Do not call signal outside of main thread.
+    - Fix option-backspace behavior.
+    - gh#bpython/bpython#648: Fix paste helper.
+    - gh#bpython/bpython#653: Handle docstrings more carefully.
+    - gh#bpython/bpython#654: Do not modify history file during
+      tests.
+    - gh#bpython/bpython#658: Fix newline handling.
+    - gh#bpython/bpython#670: Fix handlign of ANSI escape codes.
+    - gh#bpython/bpython#687: Fix encoding of jedi completions.
+
+-------------------------------------------------------------------
+Thu Sep  7 22:41:01 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

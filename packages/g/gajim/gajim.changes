@@ -1,0 +1,1493 @@
+-------------------------------------------------------------------
+Tue Dec  5 19:28:42 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.8.4:
+  * Raise minimum nbxmpp version to 4.5.3.
+  * Add shortcuts for quoting previous messages.
+  * Raise nbxmpp log level.
+  * Passwords: Use JID as username instead of account.
+  * MUC: Allow nick change for IRC channels.
+  * HTTPUpload: Remove temporary files after transfer.
+  * MessageInput: Regain focus on common key presses.
+  * ShortcutWindow: Remove duplicated entry.
+  * SearchView: Fix displaying results for newly created group
+    chats.
+  * ChatList: Update mute state periodically.
+  * Icons: Register icon size to make it work for scale > 1.
+  * Message input: Don't allow text actions if input is disabled.
+  * Avatar: Draw status circle correctly for scale > 1.
+
+-------------------------------------------------------------------
+Wed Nov  8 22:12:26 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.8.3:
+  * Profile: Show error page on errors after saving.
+  * Close main window when pressing Escape key.
+  * GroupchatRoster: Display participants correctly on reveal.
+  * Filetransfer: Always focus confirm button.
+  * AccountWizard: Don’t allow multiple anonymous accounts for the
+    same domain.
+  * AccountPage: Show anonymous address.
+  * Accounts: Don’t try to save password for anonymous accounts.
+  * Message row menu: Show quote and copy actions only if there is
+    text.
+  * Audio/Video: Disable broken stun server code.
+  * Presence: Don’t fail on unknown MUC presences.
+  * Control: Add events with correct timestamp.
+  * Avatar: Send presence after changing avatar.
+  * ServerInfo: Use domain instead of hostname for queries.
+  * Emojis: Improve detection of shortcode start.
+  * DBusFileManager: Set self._proxy attribute on init.
+  * GroupchatRoster: Check for contact before trying to load
+    roster.
+
+-------------------------------------------------------------------
+Mon Oct 30 20:22:12 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.8.2:
+  * Raise minimum GLib version to 2.66.0.
+  * Avatar: Don’t use custom avatar for IRC group chats.
+  * Raise minimum nbxmpp version to 4.4.0.
+  * Depend on Pillow >= 9.1.0.
+  * Allow adjusting user interface font size via key bindings.
+  * Display composing participants in MUC chat banner.
+  * ChatBanner: Show contact tooltip when hovering the avatar.
+  * Hint that a contact is a bot in the chat banner.
+  * Support multiple item dataforms.
+  * Display gateway icon in avatars.
+  * RosterTooltip: Display BareContact presence.
+  * Display status message in banner.
+  * ChatMenu: Always show "Execute command" action.
+  * MUC features: Use better icons for public and anonymous
+    properties.
+  * Allow GroupChatInfoScrolled to be set with minimal information.
+  * Settings: Allow to set step size for spin settings; bind
+    setting value.
+  * StartChat: Better discover MUC services.
+  * StartChat: Allow to start chats with domain JIDs.
+  * ChatBanner: Don't show QR code for privated MUCs.
+  * Windows: Add gst-plugins-bad dependency for broader media
+    preview support.
+  * MUC: Raise rejoin timeout.
+  * Accounts: Be more consistent with chat state settings.
+  * GroupChatInfo: Improve scaling of subject text.
+  * View: Reset view faster.
+  * VideoPreview: Disable preview on destroy.
+  * GroupchatDetails: Depend on joined state for some elements.
+  * GroupChatInfo: Align max width of labels.
+  * SynchronizeAccounts: Adapt to connection state changes.
+  * Tooltip: Do not escape presence status text.
+  * Chatstates: Remove timeout id on remote timeout.
+  * NotificationManager: Update actions if online state changes.
+  * Caps: Add disco info to cache after query.
+  * MUC: Don’t show old join errors when disconnected from room.
+  * MUC: Always remove rejoin timer when closing chat.
+  * MUC: Update state correctly on disco info error.
+  * Switch phone icon to something more widely supported.
+  * ChatListStack: Handle missing last visible child.
+  * Observable: Fix race condition when removing handlers.
+  * PasswordDialog: Use verb instead of noun for log in button.
+  * AdHoc: Wrap notes label.
+  * Unpack string correctly while handling update error.
+  * CSSConfig: Quote font-family property correctly.
+  * File transfers: Don't fail when tryting to send non-existing
+    file.
+  * MusicTrackListener: Don't fail if playing track could not be
+    determined.
+  * Catch error if loading image with PIL fails due to
+    unidentifiable image.
+  * CSSConfig: Fix parsing float sizes for font description.
+  * Modules: Make sure BaseModule.cleanup() is always called on
+    destroy.
+  * Roster: Unregister all handlers on destroy.
+  * Observable: Don’t allow to register handler multiple times.
+  * View: Add newline after username when copying a message.
+  * Show notification on group chat mentions again.
+  * Make it impossible to connect without config.
+
+-------------------------------------------------------------------
+Mon Aug  7 23:17:29 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.8.1:
+  * Add setting for default encryption.
+  * XMLConsole: Enable browsing sent stanzas in message input.
+  * Sort cprofile output after total time.
+  * Moderation: Handle unknown moderator JID.
+  * Preview: Always show preview widget.
+  * Preview: Add loading placeholder.
+  * Account page: Show our XMPP address.
+  * Idle: Raise poll interval.
+  * Search: Don't fail while closing if no chat has been loaded
+    before.
+  * Dataform: Correctly serialise multi list fields.
+  * Profile: Respect avatar/nickname privacy setting on
+    consecutive changes.
+  * Don’t forget ignored TLS errors from previous connects.
+  * App menu: Add missing mnemonic for Accounts menu.
+  * Gateway: Fix roster method call.
+  * Contacts: Fix supports_{audio,video} property.
+  * AvatarSelector: Fix crash on reset.
+  * CertificateBox: Catch exception if cert does not offer
+    extension.
+  * CreateGroupchatWindow: Improve handling of MUC service
+    availability.
+  * Preview: Show error if file saving directory is not available.
+  * SecurityLabels: Display labels for messages received with MAM.
+  * DataForm: Handle destroy correctly.
+  * ChatListRow: Always update group chat name.
+  * Fix showing MAM synch errors and show error text.
+  * OMEMOTrustManager: React correctly to connection changes.
+  * Fix interaction of GroupchatRoster and SearchView.
+  * Init plugin translation module later.
+  * GroupchatManage: Improve checks for joined state.
+  * Search: Restore group chat participants list to previous state
+    when closing search.
+
+-------------------------------------------------------------------
+Sat May 27 13:15:22 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.8.0:
+  * XMLConsole: Add logging view.
+  * JID sharing: Include verified OMEMO fingerprints.
+  * Integrate OMEMO plugin.
+  * Redesign Group Chat actions.
+  * Audio preview: Support more mime types.
+  * ChatBanner: Add share instructions.
+  * ChatList: Clear row content when removing history.
+  * XMLConsole: Always use dark theme.
+  * AboutDialog: Show libsoup version.
+  * GroupchatState: Show MAM synchronisation.
+  * ChatList: Improve sorting.
+  * Make contact details/settings available when offline.
+  * ACE: Make descriptions selectable and copyable.
+  * Notifications: Withdraw all when a corresponding chat is read.
+  * ChatList: Show indicator if group chat is not connected.
+  * ChatList: Show indicator when joining group chat.
+  * StartChat: Don't filter for account labels.
+  * ChatStack: Only respond to supported drag-n-drop types while
+    dragging.
+  * App menu: Add menu entry for privacy policy.
+  * GroupchatRoster: Highlight own nick and sort it to the top.
+  * CertificateDialog: Add additional infos and remove org unit
+    field.
+  * GroupchatDetails: Hide OMEMO page in public MUCs.
+  * ChatBanner: Add QR code for sharing JIDs.
+  * Windows: Package pixbuf loaders for avif and webp.
+  * Remove "escape_key_closes" from ACE.
+  * Enable spell checker by default.
+  * OMEMO verification: Generate URIs with pedantically correct
+    query.
+  * Raise gajim when no cmdline options are provided.
+  * QR codes: Avoid roundtrip to PNG in storage and back.
+  * ProfileWindow: Don't fail when no vcard is set.
+  * ContactInfo: Don’t fail when no vcard is set.
+  * Message menu: Fix issue with chats not supplying correct ID.
+  * Exceptions: Fix sending reports via sentry in conjunction with
+    proxy settings.
+  * ChatActionProcessor: De-duplicate emojis.
+  * Fix encryption deadlock with changed MUC configurations.
+  * UI: Update avatar on muc-disco-update.
+  * AvatarSelector: Fix that images don't display after repeated
+    loading.
+  * SearchView: Don't change search context when switching chats.
+  * SearchView: Remove overlay.
+  * ChatActionProcessor: Allow to click items with mouse cursor.
+  * MessageWidget: Don't return truncated text for message actions
+    Fixes.
+  * Idle: Use default xa implementation for XSS backend.
+  * ConversationView: Fix loading messages going forward from
+    specific point.
+  * ACE: Handle invalid numeric values gracefully.
+  * XMLConsole: Select first account by default.
+  * Fix rendering of copied code blocks and quotes.
+  * ContactInfo: Improve behavior for connection changes.
+  * Escape JIDs for xmpp URIs everywhere.
+  * Ask for confirmation when leaving a MUC while offline.
+  * ContactInfo: Improve behaviour for connection changes.
+  * Make manually changing the pinned chat sort order work again.
+  * MessageActionsBox: Update send file button tooltip when
+    switching chats.
+  * GroupChatRoster: Make scrollbar the right-most widget.
+  * GroupChatInviter: Don't filter by account name.
+  * CertificateDialog: Display issued-to information correctly.
+  * AccountWizard: Respect global proxy.
+- Obsolete gajim-plugin-omemo.
+
+-------------------------------------------------------------------
+Wed Apr  5 10:01:07 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.7.3:
+  * Allow muting chat notifications.
+  * Make `gemini` URIs clickable.
+  * Workspace menu: Always show Mark as read action.
+  * Audio Preview: Set correct pos when clicking into visualiser.
+  * Audio Preview: Add delay before pausing on EOS.
+  * Flatpak: Fix drag and drop.
+  * GroupChatDetails: Adapt to changed icons.
+  * Message input: Fix height for single line messages.
+  * Update message merged state after deleting a message.
+  * ChatActionProcessor: Fix inserting emojis by click.
+  * Account preferences: Adapt to changed icons.
+
+-------------------------------------------------------------------
+Sun Mar 12 20:08:25 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.7.2:
+  * Add message menu entry for deleting messages locally.
+  * Proxies: Add "Tor (Browser)" default proxy setting.
+  * Select group chat after creating it.
+  * Don’t colour log timestamps.
+  * PEPConfig: Ask for confirmation when deleting nodes.
+  * Improve get_recent_muc_nicks query.
+  * Improve check for message highlight and add tests.
+  * Tests: Use in-memory settings database.
+  * Add audio/x-wav to default mime types.
+  * Audio preview: Allow skipping by clicking the visualisation.
+  * Migration: Don’t fail on colour setting migration.
+  * HTTPUpload: Respect infinite file size limit.
+  * Chatstates: Remove composing timeout correctly.
+  * Show chat notifications when chat page is not visible.
+  * Don't fail if contact name for MUC message is None.
+  * Notifications: Honour notification_preview_message setting.
+  * Fix nickname highlight in group chats.
+  * Profile: Don't allow saving profile when not connected.
+  * GetRelativeTimeTest: Fix comparison of translated strings and
+    off-by timezone errors.
+  * Don't highlight message if it's an URI containing our nick.
+  * Nickname completion: Make sure recent nicknames list does not
+    contain None.
+  * Plugins: Don't fail hard on uninstall errors.
+  * Start Chat: Fix wrong JID type in _start_new_chat.
+
+-------------------------------------------------------------------
+Wed Feb  8 23:30:42 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.7.1:
+  * Raise nbxmpp version to 4.2.0.
+  * Improve KeepassXC Integration.
+  * MUC: Enable archiving when creating MUCs on ejabberd.
+  * Apply SASLprep to passwords.
+  * Make switching status work again.
+- Drop gajim-1.7.0-fix-status-switching.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Feb  4 14:57:12 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.7.0:
+  * Port to pyproject.toml.
+  * Preferences: Add 0 and 25 MiB to preview size settings.
+  * Account wizard: Don't allow to add account twice.
+  * Fix loading localised emojis.
+  * HTTPUpload: Don’t cache temp path.
+  * JingleAudio: Always resample audio before processing with
+    webrtcdsp.
+  * Disable legacy ciphers in cryptography.
+- Add gajim-1.7.0-fix-status-switching.patch: Make switching status
+  work again (commit 3c2c6448).
+
+-------------------------------------------------------------------
+Sat Jan 14 17:11:58 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.6.1:
+  * Raise required nbxmpp version to 4.0.1.
+  * AdHocCommands: Refresh commands list after completing command.
+  * Limit message length and add FullMessageWindow.
+  * ChatList: Improve timedelta function.
+  * CreateGroupchatWindow: Add Advanced switch and always show
+    address entry.
+  * UX: Make more text labels selectable/enable can-focus for
+    copying.
+  * AccountPage: Add menu item to deny all subscription requests.
+  * Account menu: Add Execute Command… entry for convenience.
+  * AccountPage: Make all account menu items available.
+  * AccountPage: Add menu entry for adding contacts.
+  * Notifications: Fix rare case where Gajim displays notifications
+    for our own messages.
+  * ServiceDiscoveryWindow: Fix jumping when resizing window.
+  * Don't fail in mark_as_unread if there are no messages.
+  * Profile: Fix setting avatar.
+  * ChatStack DnD: Add workaround for mis-fired drag-motion signal.
+  * AudioPreview: Make visualisation fully RTL compatible again and
+    ensure graph is always drawn.
+  * Preview: Handle exceptions while decrypting.
+  * Audio Visualizer: Port deprecated methods.
+  * AudioPreview: Always format progress time as LTR.
+  * AppPage: Differentiate between updates (Gajim/Plugins).
+  * GroupChat: Display reason when group chat is destroyed.
+
+-------------------------------------------------------------------
+Sat Jan  7 10:32:56 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.6.0:
+  * Raise required nbxmpp version to 4.0.0.
+  * Depend on Python 3.10.
+  * Port to libsoup3.
+  * Allow sending files by copy-pasting them from file managers.
+  * Preview: Add audio preview controls and visualisation.
+  * Resurrect URI-specific context menus.
+  * Highlight the file when opening containing directory.
+  * BaseAvatarChooserDialog: Allow all image types.
+  * Timestamps: Use date/time format preference in more places.
+  * AppPage: Show date for last update check.
+  * Add dedicated context menu for non-specific URI types.
+  * Restore ability to manually disambiguate JID-like addresses.
+  * Use the unified Start/Join Chat flow for "?join" links.
+  * CertificateBox: Format serial number in hex.
+  * MessageActionsBox: Restore emoji button behaviour.
+  * Settings: Add migration for global MUC search api endpoint.
+  * AccountWizard: Remove subscriptions after successful login.
+  * Audio Preview: Fix visuals on EOS while seeking.
+  * Audio Preview: Don't let seekbar handle jump to end on EOS when
+    user is seeking.
+  * Commands: Attempt to parse only if message can have a command.
+  * Notifications: Use correct nickname for /me messages.
+  * AvatarSelector: Set default crop scale to 1.0.
+  * Menus: Don’t use GLib variant text format parsing.
+  * Remember last folder correctly after sending file.
+  * Preview: Don't treat multi-line message body as previewable
+    URL.
+
+-------------------------------------------------------------------
+Sat Dec  3 15:11:47 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.5.4:
+  * DataFormWidget: Set min width on right box.
+  * MUC: Add method for aborting join.
+  * Message selection: Improve wording for deselecting messages.
+  * Message selection: Improve styling.
+  * Features: Add entry for Audio Preview.
+  * Styling: Introduce URI scheme whitelisting.
+  * Message selection: Use date_time_format instead of time_format.
+  * Settings: Unify timestamp settings.
+  * Prettify display of geographical locations.
+  * ChatList: Scroll to top when switching workspace.
+  * Preferences: Improve preview settings.
+  * Chatstates: Add a timeout for the "composing" animation.
+  * Accounts window: Use equal widths for account switch label.
+  * VCardGrid: Linkify all URI-type fields iff they are valid URIs.
+  * URI parsing: Detect invalid file URIs earlier.
+  * Styling: Validate link syntax deeper and *after* parenthesis
+    correction.
+  * Add msg_log_id to live message events.
+  * Dependencies: Remove pyOpenSSL, add python-cryptography.
+  * Jingle: Remove XTLS support.
+  * Add FileTransferSelector as a central page for sending files.
+  * Block opening file:/ links by default.
+  * Control: Request history more efficiently.
+  * Preview: Handle multiple simultaneous certificate verification
+    errors.
+  * Styling: Linkify URIs only if at the start of a word.
+  * MessageInputTextView: Reintroduce gui_extension_point.
+  * GUI tests: Adapt GUI tests to Gajim changes.
+  * SSLErrorDialog: Fix test, remove OpenSSL usage.
+  * ChatFunctionPage: Don't close control on cancelling join error.
+  * SearchView: Set chat type correctly for ResultRows.
+  * Chatstates: Switch to Chatstate.ACTIVE after timeout.
+  * GroupchatRoster: Set visibility when hiding.
+  * MessageActionsBox: Reintroduce gui_extension_point.
+  * Preview: Respect MUC context for PMs.
+  * ConversationView: Fix scrollbar not being the right-most
+    widget.
+  * Preview: Stop further processing if decompression bomb
+    detected.
+  * URI parsing: More robustness with geo URIs.
+  * URI parsing: Properly unescape mailto URIs.
+  * URI parsing: Properly unescape XMPP URIs and handle unknown
+    query types.
+  * MessageInputTextView: Handle is_correcting if no contact is
+    set.
+  * Fix various issues with chat markers.
+  * Plugins: Replace usage of gui_extention_point().
+  * CSS: Fix settings related inconsistencies.
+  * CSS: Move overriding rules to bottom.
+  * Message selection: Don’t fail hard if log_line_id is None.
+  * Don’t fail when trying to reset last message id.
+
+-------------------------------------------------------------------
+Mon Oct 31 11:23:23 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.5.3:
+  * Allow to copy multiple messages.
+  * Accounts: Add setting for default workspace.
+  * Preferences: Add send_on_ctrl_enter setting.
+  * Add actions menu to Start Chat button.
+  * ExceptionDialog: Close dialog with ESC.
+  * ChatList: Show drafts.
+  * StartChat: Recognise input of xmpp uris.
+  * Workspaces: Add "Mark as read" menu item.
+  * Improve emoji completion.
+  * ACE: Enable reset button only for changed values.
+  * Avatar: Follow modernxmpps suggestions for color generation.
+  * Preferences: Add escape_key_closes to "Chat" section.
+  * Preferences: Reorder "Chat" settings and add a "General"
+    section.
+  * Preferences: Move show_chatstate_in_banner to ACE settings.
+  * Remove confirm_paste_image setting.
+  * Remove setting to hide the chat banner.
+  * GroupchatRoster: Don’t load roster when its hidden.
+  * Emoji completion: Abort early if max menu entry count reached.
+  * Disable loading of GUPnPIgd library.
+  * Remote: Make get_status() return correct status when offline.
+  * Plugins: Use correct gettext import.
+  * Make strings translatable.
+  * Enable emoji chooser action.
+  * AvatarBox: Only react to clicks for GroupchatContacts.
+  * Remote: Return True for change_status.
+  * ChatActionProcessor: Popdown on focus out event.
+  * Avatar placeholders: Correctly use the first grapheme as the
+    "letter".
+  * Fix quoting /me messages.
+  * StartChat: Don’t use jid argument for global dialogue.
+  * Try leaving group chat only if account is online.
+  * AccountPage: Disable profile button when not connected.
+  * MUC: Allow changing subject if there is none.
+  * PluginsWindow: Fix typo in plugin tooltip.
+  * PluginManager: Block plugins which have been integrated into
+    Gajim.
+  * MessageInputTextView: Fix correction mode when switching chats.
+  * AdHoc: Make MultiLineLabel selectable.
+  * Settings: Check if account is connected before trying to get
+    context.
+  * Styling: Various link parsing issues.
+  * Send message icon: Increase line width and make icon symbolic.
+  * Accounts: Use account label for disable confirmation.
+  * AccountBadge: Update colours correctly.
+  * Update account label when changing label setting.
+  * SearchView: Scroll to to when resetting.
+  * Notification: Draw avatar correctly on scale > 1.
+  * Preview: Don’t fail hard when parsing fragments.
+  * PreviewAudio: Increase update rate for seek bar.
+  * AccountPage: Disable Excute Command button by default.
+  * Client: Load trusted certificates on connect().
+  * ChatList: Don’t increase in width while drag and drop.
+  * Roster: Always show workspace when starting chat.
+  * WorkspaceSidebar: Don't increase in width while drag and drop.
+  * ChatFunctionPage: React to connection changes.
+  * Preview: Set user-agent for session.
+  * SearchView: Limit displayed results to account_id of contact.
+  * Don’t fail when disabling accounts.
+- Drop 0001-remove-upnp.patch: applied upstream.
+
+-------------------------------------------------------------------
+Thu Oct 27 22:08:06 UTC 2022 - I. Petrov <ico@dante.tk>
+
+- Bump python-nbxmpp version requirement to 3.2.4.
+
+-------------------------------------------------------------------
+Sat Oct  8 16:00:32 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.5.2:
+  * PEPConfig: Add PEP item view.
+  * Add shortcut to restore chats after closing.
+  * ServerInfo: Add TLS version and cipher suite.
+  * XMLConsole: Apply account filter to all visible stanzas.
+  * MessageRow: Set text direction for RTL text.
+  * AvatarSelector: Add border to mark drag and drop zone.
+  * Drag and drop: Highlight target areas.
+  * GroupChatNickCompletion: Simplify suggestions.
+  * MUC: Add participant menu to avatar.
+  * StartChat: Add timeout when requesting MUC disco info.
+  * StartChat: Pass message body from XMPP URI.
+  * Windows: Ellipsise body text in notifications.
+  * Emojis: Improve shortcode usability.
+  * Avatars: Use PangoCairo for generate_avatar.
+  * Emojis: Extract codepoints for all emoji variants.
+  * Raise nbxmpp version to 3.2.4.
+  * Show account colour bar only when multiple accounts are active.
+  * Remove queue_resize leftover from MessageTextView.
+  * SearchView: Update calendar only if widget is visible.
+  * SearchView: Speed up clearing of search results.
+  * Styling: Parse emojis for Darwin only.
+  * Control: Load events before messages.
+  * Fix disabling accounts while reconnecting.
+  * Use custom icon for "Send Message" action.
+  * MessageActionsBox: Don’t fail if no contact is set while
+    updating file actions.
+  * Scroll to end after sending message.
+  * Update chat actions when account state changes.
+  * StatusIcon: Reset unread state correctly when using Flatpak.
+  * Notifications: Show correct message sender for MUC
+    notifications.
+  * Discovery: Don’t allow to join top level components.
+  * ChatList: Show context menu in correct position.
+  * Styling: Allow dots in local part of email addresses.
+  * ChatList: Set message_id correctly.
+  * Notifications: React to incoming group chat messages.
+  * When removing a chat, clear view only if it's currently loaded.
+  * AccountPage: Disable Ad-Hoc Commands button when offline.
+  * CreateGroupchatWindow: Fix Create button state when switching
+    MUC type.
+  * React correctly to UserAvatar updates.
+  * GajimRemote: Remove not needed shebang.
+
+-------------------------------------------------------------------
+Wed Oct  5 14:46:54 UTC 2022 - Fritz Reichwald <reichwald@b1-systems.de>
+
+- Add 0001-remove-upnp.patch to (temporarily) remove the code in
+  app.py that is going to use GUPnP-IGD since the prior fix from
+  Luciaon is not working here.
+- Add missing libpcre BuildDep that made the build fail locally
+
+-------------------------------------------------------------------
+Wed Sep 28 04:17:52 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Temporarily remove auto generated requirement on GUPnPIgd GI
+  bindings to address fatal error caused by requirement on both
+  LibSoup2 and LibSoup3 thus making the app unlaunchable. This is
+  caused because Gajim itself depends on LibSoup 2.4 while the
+  GUPnPIgd GI bindings pulls in UPnP which in turns depends on
+  LibSoup 3.0 (boo#1203676).
+- Add missing GSSAPI Python module runtime requirement.
+
+-------------------------------------------------------------------
+Tue Sep 20 09:59:33 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version  1.5.1:
+ - Bug Fixes
+  - ChatBanner: Format markup string correctly
+- update to version  1.5.0:
+ - CVE-2022-39835
+ - This release fixes a vulnerability which allowed attackers to craft a XML
+ - stanza in a way, so Gajim would accept it as message correction for messages
+ - not originating from the attacker.
+ - New
+  - Add drag and drop support for pinned chats
+  - Workspaces: Add shortcuts for switching
+  - Refactor ChatWidgets so they are only created once (#10987, #11038, #10973, #10119, #11052, #10945)
+ - Improvements
+  - Preview: Improve mime type detection (#11150)
+  - SearchView: Add hint for search filters (#11136)
+  - Preview: Show left click action tooltip on icon (#11138)
+  - ACE: Highlight non-default values (#11120)
+  - XMLConsole: Use SourceView for XML input (#11121)
+  - Migration: Make archive migation more resilient
+  - Workspaces: Move chats when removing workspace (#11098)
+  - ChatList: Always show when switching workspace (#11108)
+  - MessageActionsBox: Disable encryption button if MUC is public (#10959)
+  - Increase contrast for message row meta elements
+  - StatusIcon: Use new icon for pending events
+  - WorkspaceSidebar: Allow removing workspace from context menu
+  - AccountPage: Add button for Ad-Hoc commands
+  - Don’t try to query avatars in MUCs which don’t allow it (#10937)
+  - Don’t disco MUC participants on presence
+  - Chatstate: Don’t make too many assumptions
+  - Windows: Increase default font size
+  - CSS: Use relative sizes for fonts
+  - ChatControl: Show error if encryption plugin is missing
+  - Store and restore running HTTP File Transfer uploads
+  - Add button for toggling chat list (#11035)
+  - ContactInfo/GroupchatDetails: Toggle icon when editing name
+ - Change
+  - Raise nbxmpp version
+  - Raise PyGObject version (#11132)
+  - Add requirement for min sqlite version
+  - ChatBanner: Add button for managing voice requests
+  - Remove IPython support
+  - Rework ChatCommands
+  - Shortcuts: Use Ctrl+F for opening the search bar (#11073)
+  - Remove clear-chat action (Ctrl+L)
+  - Raise required nbxmpp version to 3.2.2
+ - Performance
+  - Use Task Queue to request avatars on MUC join
+ - Bug Fixes
+  - GroupchatState: Hide when we are offline
+  - Corrections: Don’t correct message if text has not changed (#11146)
+  - Make plugin usable check work on all unix/linux systems (#11134)
+  - MUC: Don’t ignore MUC invites when ignore_unknown_contacts is set (#11107)
+  - Make shortcuts more discoverable (#11122, #11127)
+  - Better validate message corrections
+  - MUC: Improve automatically adding members on invite
+  - Preview: Sanitize filename from disallowed chars (#11105#10752)
+  - Chatstates: Don’t sent chatstate delayed to ourself
+  - Don’t reset setting when closing single chat
+  - Preview: Don’t fail if thumb file already exists (#11091)
+  - MessageInputTextView: Account for having multiple blocks when applying style (#11015)
+  - ActionMenu: Correctly execute text actions if text contains underscore
+  - InfoMessage: Don’t escape text
+  - MUC: Send password and reason correctly on invite
+  - Preview: Reset received size before cancelling or downloading
+  - BlockingList: Don’t fail with placeholder address (#11084)
+  - ChatList: Update status for private chats correctly
+  - ChatList: Update avatar for all chats correctly
+  - GroupChat: Handle nickname changes correctly
+  - Roster: Add missing contact-info action
+  - Make switch-next-unread-tab action work
+  - ChatBanner: Use correct scaling for chatstates
+  - FileTransferRow: Don’t cancel transfer when switching chat
+  - ChatBanner: Don’t show phone icon for group chats
+  - Don’t handle message-sent even for groupchats
+  - ChatBanner: Display account badge again
+  - Make nick completion test pass
+  - Preview: Store last_save_dir with Save As
+  - Preview: Make sure the widget is not being destroyed while updating (#10920)
+  - Fix handling of URLs without scheme (#11059)
+  - GroupchatState: Call correct page for not-joined
+  - ChatControl: Don’t assume messages always have a resource (#11042)
+ - Notes
+  - ChatCommands have been reworked. Only following commands are now available
+ -   - status
+ -   - invite
+ -   - ban
+ -   - affiliate
+ -   - kick
+ -   - role
+  - Ctrl+H for opening the search bar has been removed, please use the
+ -   commonly used Ctrl+F (find). The shortcut for starting a file transfer
+ -   has been dropped.
+
+-------------------------------------------------------------------
+Sun Jul 24 18:16:35 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.4.7:
+  * Startup: Show hint in console if Gajim is already running.
+  * Preview: Add a setting to disable file preview.
+  * Roster: Display show value in tooltip.
+  * ChatActionProcessor: Improve detection of emoji shortcode
+    start.
+  * Roster: Don’t invalidate filter on contact update.
+  * Roster: Sort more efficiently.
+  * Settings migration: Don’t fail on missing proxies key.
+  * Chat Markers: Don’t send marker for outgoing messages.
+  * Main Window: Move to stored position on startup.
+  * Preview: Allow manual download for all mime types.
+  * GroupchatInfo: Don’t set subject when loading from disco info.
+  * Preview: Hide download hint if we sent the file.
+  * Remote: Console scripts need a method as entry point.
+  * CodeWidget: Don’t default to python for highlighting.
+  * ContactInfo: Preserve groups when changing contact name.
+  * CodeWidget: Don't highlight matching brackets.
+  * StatusIcon: Don’t lose new message icon on state change.
+  * GtkStatusIcon: Always show when Gajim has not toplevel focus.
+  * GroupChatNickCompletion: Only process Tab press.
+  * MessageRow: Align name label correctly.
+  * StatusIcon: Fix logic error on activate.
+
+-------------------------------------------------------------------
+Thu Jul  7 19:19:21 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.4.6:
+  * Roster: Display show value in tooltip.
+  * ChatActionProcessor: Improve detection of emoji shortcode
+    start.
+  * Remote: Console scripts need a method as entry point.
+  * CodeWidget: Don’t default to python for highlighting.
+  * ContactInfo: Preserve groups when changing contact name.
+  * CodeWidget: Don't highlight matching brackets.
+  * StatusIcon: Don’t lose new message icon on state change.
+  * GtkStatusIcon: Always show when Gajim has not toplevel focus.
+  * GroupChatNickCompletion: Only process Tab press.
+  * Row name: Align label correctly.
+  * StatusIcon: Logic error on activate.
+
+-------------------------------------------------------------------
+Tue Jun 21 20:06:05 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.4.5:
+  * Add new Shortcut for toggling the chat list.
+  * Preferences: Add setting for emoji shortcodes.
+  * Disable plugin updates by Gajim on flatpak.
+  * Use nickname provided in subscription requests everywhere.
+  * GroupchatOutcasts: Make removing users work.
+  * Chat: Display corrections for /me messages correctly.
+  * Styling: Process URIs when using /me command.
+  * Preview: Align link button correctly.
+  * MUC: Don’t fail on presence from unknown occupants.
+  * SystemStyleListener: Fix handling of colour scheme states.
+  * Styling: Improve address regex.
+  * Styling: Improve uri regex.
+  * Styling: Parse text correctly which contains uris and
+    addresses.
+  * Main: Process window shortcuts when no chat is open.
+  * Restore minimal AdHoc module.
+
+-------------------------------------------------------------------
+Sat Jun 18 09:14:11 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.4.4:
+  * Add support for inputing emoji short codes.
+  * Add freedesktop colorscheme preference support.
+  * Add new CLI command --show.
+  * Add new CLI command --cprofile.
+  * Preferences: Add `Action on Close Button` setting.
+  * Preferences: Add `Show in Taskbar` setting.
+  * Preferences: Add D-Bus Interface setting.
+  * Rewrite gajim-remote.
+  * Logind: Listen to system shutdown and quit Gajim gracefully.
+  * CreateGroupchatWindow: Enable emoji completion for description.
+  * CreateGroupchatWindow: Produce valid addresses from name.
+  * Gateways: Use avatar if published.
+  * History: Add Keep History "Until Gajim is Closed" option.
+  * MUC: Base invitation type on MUC type and affiliation.
+  * Rework DBus Remote Interface.
+  * StatusMessageSelector: Enable emoji completion.
+  * Group chats: Ask for confirmation before leaving.
+  * Preview: Improve layout and display errors.
+  * #10828 Limit message size for styling.
+  * Remove remote AdHocCommands feature.
+  * Remove ask for status settings.
+  * Chat banner: Show phone image if last message came from a
+    phone.
+  * Flatpak: Determine notification backend caps with dbus.
+  * Groupchat: Prevent automatic roster revealer toggling on join.
+  * Make plugins_repository_enabled available via ACE.
+  * MucJoinLeft: Align timestamp correctly.
+  * NotificationManager: Make displaying an invitation more robust.
+  * StatusIcon: Reliably raise/hide window.
+  * Groupchat: Don't steal active msg textbox focus.
+  * Groupchat: Load GroupChatState widget early.
+  * DBus: Unify presence signals.
+  * JingleAudio: Check if webrtcdsp is available.
+  * Groupchat: Show correct icon when toggling roster revealer.
+  * WorkspaceDialog: Show correct settings for workspace if there
+    is only one.
+  * Status messages: Check for correct setting.
+  * MessageInputTextView: Don’t remove tags for spell checking.
+  * Workspaces: Fix image scaling.
+  * AvatarSelector: Add fail-safes for loading images.
+  * Limit max quote recursion.
+  * Make drag & drop more reliable.
+  * Preview: Don’t fail on invalid IPV6 urls.
+  * Remote: Don’t fail on list_contacts.
+  * Preview: Catch PIL errors while generating preview.
+
+-------------------------------------------------------------------
+Mon Jun  6 15:38:25 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update dependency on typelib(GtkSource) to version 4 (boo#1199959)
+
+-------------------------------------------------------------------
+Wed Jun  1 20:44:55 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.4.3:
+  * AppPage: Show plugin update notifications.
+  * ChatList: Add middle mouse click for closing a chat.
+  * DirectorySearch: Use Gio.Menu, add Start Chat item.
+  * Group chat roster: Store visibility.
+  * Smaller Jingle file transfer widget.
+  * Unify ContactInfo and GroupchatDetails elements width.
+  * Workspaces: Add Move to new workspace functionality.
+  * Workspaces: Enable emoji picker.
+  * Avatars: Render emojis correctly.
+  * AddContact: Fix opening AdHocCommands window.
+  * ContactInfo: Fix copying name and JID by Ctrl+C.
+  * DirectorySearch: Correctly connect form validation.
+  * Don’t fail on GajimPlugin equality test.
+  * History: Don’t remove JID IDs from database.
+  * InfoBar: Add style rule for anchors in dark mode.
+  * Make GStreamer an optional dependency again.
+  * Plugins: Unregister modules after calling deactivate().
+  * Replace user-visible strings of "Groupchat" with "Group Chat".
+  * WorkspaceDialog: Disable Remove button for last workspace.
+  * AccountsWindow: Use get_app_window to reliably access window's
+    methods.
+  * VCardGrid: Request minimum width.
+  * ChatControl: Don't update AV actions for PMs.
+  * Search: Add fail-safe for incomplete JID ID tables.
+  * StartChat: Allow transport JIDs without successful discovery.
+
+-------------------------------------------------------------------
+Mon May 30 14:07:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix download url: upstream only publishes a .tar.gz, so let's use
+  that.
+
+-------------------------------------------------------------------
+Sat May 28 20:17:01 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.4.2:
+  * SearchView: Add calendar for browsing history.
+  * MUC: Enable history when creating rooms.
+  * Preferences: Bind show_send_message_button to
+    send_on_ctrl_enter.
+  * MessageInputTextView: Limit chars when applying styles.
+  * Accounts: Fix accessing disabled accounts.
+  * MUC: Display moderated messages again.
+  * MUC: Ignore gateway services for room creation.
+  * Preferences: Hide non-functional xhtml setting.
+  * Remove `Save conversation` setting.
+  * Reset conversation view when switching chat.
+  * Socks5: Catch specific exception.
+  * Status: Restore last status correctly.
+  * Jingle: Stop early if no transport is available.
+  * Roster: Filter list on contact update.
+  * Roster: Sort DND last.
+  * Don't set read marker when receiving own carbons.
+
+-------------------------------------------------------------------
+Sat May 21 15:49:23 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.4.1:
+  * Add "Join Support Chat" help item.
+  * ConversationView: Add date for timestamps older than current
+    date.
+  * SearchView: Add margins and border-radius to ResultRow.
+  * ConversationView: Move timestamp widget to the left.
+  * Bug fixes:
+    See https://dev.gajim.org/gajim/gajim/-/blob/gajim-1.4.1/ChangeLog#L13
+
+-------------------------------------------------------------------
+Sat May 14 21:39:58 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.4.0:
+  * Rework GUI (Main Window and Chat).
+  * Integrate Plugin Installer.
+  * Integrate Image Preview Plugin.
+  * Integrate Syntax Highlight Plugin.
+  * Integrate AppIndicator Plugin.
+  * Allow customising Shortcuts.
+  * Support Message Moderation in Group Chats.
+  * Allow administrators to define setting overrides.
+  * Drop zeroconf support.
+  * Remove History Manager.
+  * Remove Single Message Dialogue.
+  * Group Chat: Move many menu options into details dialogue.
+  * Bug fixes:
+    See https://dev.gajim.org/gajim/gajim/-/blob/gajim-1.4.0/ChangeLog#L23
+
+-------------------------------------------------------------------
+Tue Jan 18 08:50:42 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Plugins sub-folder must be owned by a package
+
+-------------------------------------------------------------------
+Sat Dec 18 18:15:48 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.3.3:
+  * Profile: Add NOTE entry.
+  * Port AdHocCommand window to new Assistant.
+  * Update API JID for search.jabber.network integration.
+  * Provider list: Remove blabber.im.
+  * Depend on nbxmpp>=2.0.4 (CVE-2021-41055).
+  * HTTPUpload: Raise FileError if path is not accessible.
+  * Fix spell checking.
+  * Check for gstreamer GTK plugin for AV support.
+  * Jingle: Fix UnboundLocalError for transports variable.
+  * Fix test_gui_interface testsuite.
+  * Reload CSS after switching dark/light theme.
+  * Dead key improvements.
+  * Fix starting History Manager in standalone mode.
+
+-------------------------------------------------------------------
+Tue Oct 26 08:49:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add typelib(Soup) = 2.4 requires: the way the dep is encoded in
+  the .py file is not supported by the dep scanner.
+- Drop the -lang Recommends: the -lang packages have automatically
+  added supplements already.
+
+-------------------------------------------------------------------
+Mon May 17 15:56:03 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.3.2
+  * New
+    * Setting for automatic history cleanup
+    * Chat-specific ‘Group Chat Settings’ page
+    * ‘Mark as Read’ button for message notifications
+    * ‘Send Message’ button in chat windows
+    * Support for vCard4 (XEP-0292)
+    * Added a preview when pasting images from the clipboard
+    * Added setting to explicitly enable GSSAPI authentication
+    * Added account switch description (On/Off) for better
+      accessability
+  * Changes
+    * MessageInput: Removed custom placeholder (‘Type a message…')
+    * MessageInput: Added focus borders for better accessability
+    * Gajim will use direct messages in non-anonymous group chats
+      instead of PMs (this is configurable)
+    * Message styling: removed _underline_ style and added ~strikethrough~
+      style, making Gajim standard compliant
+    * Removed notification for contact sign in/out
+    * Removed ‘Auto copy’ workaround for Ctrl+C usage in the chat window
+    * If Gajim fails to join a group chat, it now offers a Retry button
+    * Emoji button now opens GTK’s native Emoji chooser
+    * Improved A/V codec selection
+    * Fixed some regressions with non-english keyboard layouts
+    * Fixed command for opening the Start Chat window
+    * A/V menu entries are now updated (enabled/disabled) correctly
+      when receiving the contact’s capabilities
+    * Fixed GSSAPI support
+    * Some shortcuts now use Primary (Ctrl/Cmd) instead of Alt
+    * Fixed a bug where dropping selected text on a chat window
+      would fail
+    * Fixed ‘Show status changes’ setting being ignored for group
+      chats
+    * Fixed a bug where removing a plugin would fail
+    * And much more: Have a look at the full changelog
+
+
+-------------------------------------------------------------------
+Fri Jan  8 08:08:08 UTC 2021 - olaf@aepfle.de
+
+- Gajim needs Python 3.7+
+
+-------------------------------------------------------------------
+Mon Sep  7 07:57:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update from cssutils to css-parser (bsc#1176101)
+
+-------------------------------------------------------------------
+Thu Sep  3 07:54:28 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- tighten requirements (bsc#1176101) 
+
+-------------------------------------------------------------------
+Wed Aug 26 19:53:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.2.2:
+  * Rewritten network code
+  * Support for WebSocket (RFC 7395)
+  * Improved proxy handling
+  * Group chat pages (invite, information, nickname, subject, etc.)
+  * Group chat creation window
+  * Updated account creation assistant
+  * Updated assistants for password changing and account removal
+  * Updated server info window (connection details)
+  * Updated theme manager
+  * Default avatars (XEP-0392)
+  * Paste images from clipboard
+  * Contrast and color improvements for both light and dark themes
+  * Removed 'Invisible' status
+  * Removed FuzzyClock feature
+  * ServerInfo: Display status address
+  * Add block and spam reporting in various places
+  * Roster: Allow to add contacts from `Not in contact list` group via DND
+  * Roster: Allow sending message to serveral groups
+  * Groupchat/Chat: Rework DND
+  * Groupchat: Display recent history from the database
+  * Status Selector was reworked
+  * Status Change dialog was reworked
+  * Preferences: Added Setting to toggle the use of a keyring
+  * Windows/Mac: Gajim notifys now about new updates
+  * ServerInfo: Show more details about the current connection
+  * bugfixes
+- remove ssl_use_system_certs.patch (obsolete)
+
+-------------------------------------------------------------------
+Sun Jan  5 14:46:17 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- add ssl_use_system_certs.patch (boo#1159017):
+  always use the system certificates and remove the provided one,
+  fix build with newer ca-certificates bundle
+
+-------------------------------------------------------------------
+Thu May 23 05:14:14 UTC 2019 - mvetter@suse.com
+
+- Update to 1.1.3:
+  New:
+  * Add a mobile phone indicator to the chat window
+  * Rework HTTPUpload dialog
+  * Add a "paste as quote" option to the message input
+  Bug fixes:
+  * #8822 Fix memory leak when using spell checker
+  * #9514 Fix jingle filetransfers not working in some circumstances
+  * #9573 Dont leak DNS query when connecting over proxy
+  * #9578 Determine Windows version more reliably
+  * #9622 Fix an error while quitting Gajim
+  * #9633 Fix an error while sending a file
+  * #9637 Restore window size correctly on wayland
+  * #9660 GPG Agent setting is ignored
+  * #9645 Make zeroconf IPV6 compatible
+  * Improve dark theme colors
+  * Fix access to GnuPG keys
+  * Use UUID4 item ids for pubsub posts
+  * Dont send invalid show values
+  * Various smaller improvements
+
+-------------------------------------------------------------------
+Thu Jan 31 08:19:56 UTC 2019 - mvetter@suse.com
+
+- Require python3-nbxmpp >= 0.6.9 (boo#1123247)
+
+-------------------------------------------------------------------
+Tue Jan 22 12:28:58 UTC 2019 - liedke@rz.uni-mannheim.de
+
+- Update to 1.1.2:
+  * #9518 Windows: Pressing "^" yields "^^"
+  * #9522 Windows: Switching keyboard layouts leads to a crash
+  * #9525 Windows/Mac: Links are not clickable in the About dialog
+  * #9535 Jingle Audio: Update codecs
+  * #9537 DiscoveryWindow: Fix bookmarking a group chat
+  * DBus: Correctly raise NewMessage signal
+  * Clicking on tray notifications does not open the chat
+ 
+-------------------------------------------------------------------
+Wed Jan  2 13:11:56 UTC 2019 - liedke@rz.uni-mannheim.de
+
+- Update to 1.1.1:
+  * 8362 DBus: Incorrect unread message count
+  * 9427 Placeholder not cleared if pasting text into message input
+  * 9444 Determine the delay timestamp correctly when using mam:1
+  * 9453 Fix opening links inside the group chat subject (MacOS/Windows)
+  * 9465 Allow the full range of possible nicknames in group chats
+  * 9067 Gajim crashes when receiving xhtml messages
+  * 9096 Error when clicking on a subscription notification
+  * 9446 Chatstate error in MUC conversation
+  * 9471 Conversation Textview: Error on key press
+  * 9472 Handle presences without from attr correctly
+  * 9473 Error when creating a new group chat
+  * 9491 Identify group chat subject changes correctly
+  * 9496 Error on MUC roster selection change
+  * Determine soundplayer correctly on unix systems
+  * In some circumstances plugins could not be deleted
+  * Show correct contact status on tabs
+  * Dont answer group chat receipt requests
+  * Fix receipts for private messages
+  * Pressing the back button in the Accounts window leads to an error
+  * Better handle not available keyring backends
+  * Dont show incorrect contact on private messages
+  * Join group chat menu is disabled when there are no bookmarks
+  * Error on start chat menu action
+  * Error when opening sign-in/out notification
+  * Copying text does not work with different keyboard layouts
+
+-------------------------------------------------------------------
+Mon Nov 19 12:42:07 UTC 2018 - opensuse_buildservice@ojkastl.de
+
+- Add Requires for python3-precis-i18n (boo#1116161).
+
+-------------------------------------------------------------------
+Fri Nov  9 11:42:21 UTC 2018 - frede@b1-systems.de
+
+- Add Recomment python3-axolotl for OMEMO Encryption
+
+-------------------------------------------------------------------
+Thu Nov  8 08:35:54 UTC 2018 - mvetter@suse.com
+
+- Update to 1.1.0:
+  * Remove support for XEP-0091
+  * 8968 Windows: Gajim loads DLLs from wrong location
+  * 9322 Error when adding contact
+  * 9357 Acquire sleep inhibtor correctly after sleep
+  * 9385 Ignore invalid bookmarks
+  * 9386 Discovery: Browsing nodes without identity
+  * 9393 Error when parsing invalid timestamps
+  * 9398 Error on jingle file transfer
+- For complete ChangeLog from 1.0.99 and 1.0.99.1 please see
+  installed ChaneLog file
+- Remove dependency: python3-avahi
+- Add dependency: python3-cssutils >= 1.0.2
+
+-------------------------------------------------------------------
+Mon Sep 24 12:12:16 UTC 2018 - sor.alexei@meowr.ru
+
+- Add some missing dependencies (boo#1109355).
+
+-------------------------------------------------------------------
+Wed May 23 14:42:41 UTC 2018 - sor.alexei@meowr.ru
+
+- Symlink the system PEM certfiicate to the path where
+  Plugin Installer expects it to be instead of patching
+  Plugin Installer as it can be updated locally unpatched and thus
+  fail to work (boo#1094343).
+- Remove gajim-do_not_ship_certificate.patch.in: no longer needed.
+
+-------------------------------------------------------------------
+Sat May 19 14:32:00 UTC 2018 - mvetter@suse.com
+
+- Update to 1.0.3:
+  * bug 8296 Fix errors on roster updates after stream management resume
+  * bug 9106 Convert font weight from pango to css values
+  * bug 9124 Bring ChatControl to front when notification is clicked
+  * Set no-store hint on groupchat chatstates
+  * Dont show OOB uri if message body is the same
+  * Add missing bybonjour dependency for Windows zeroconf
+- Remove Require for pyasn1: not needed anymore
+
+-------------------------------------------------------------------
+Mon May 14 17:28:28 UTC 2018 - frede@b1-systems.de
+
+- Fixed dependency in spec file on python3 >= 3.5.0:
+  * since Leap 42.3 and SLES 12 have only 3.4.6 they will not work
+- Fixed dependency in spec file on python3-nbxmpp 0.6.5:
+  * changed the also the required not only build-required
+  
+-------------------------------------------------------------------
+Sat May 12 11:06:44 UTC 2018 - tbro@opensuse.org
+
+- Fixed dependency in spec file on python3-nbxmpp 0.6.5:
+  * With python3-nbxmpp 0.6.4 the newest version of gajim broke
+
+-------------------------------------------------------------------
+Thu May  3 12:04:00 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.0.2:
+  * Server name was rejected for group chat bookmarks.
+  * setup.py install missed some files if used with "--skip-build".
+  * Password was sometimes stored in plaintext.
+  * Do not show an error when receiving invalid avatars.
+  * Fix no Licence in the About dialogue.
+  * Encode filenames before sending.
+  * Catch invalid IQ stanzas and log them.
+  * XMPP logo in "Add New Contact" window instead Gajim logo.
+  * Mark some strings as translatable.
+  * Fix an error on file send completion.
+  * Removing a bookmark caused an error.
+  * Avatar is deleted when updating vCard.
+  * Account label didn't change in tooltip of notification area
+    icon.
+  * Placeholder text didn't disappear.
+  * Fix History Manager search.
+  * Proxy comobobox in accounts/connections didn't get updated
+    after ManageProxies.
+  * Fix a problem receiving files.
+  * Notification never autohides in gnome.
+  * Correctly reload Plugins.
+  * Save history export with utf8 encoding.
+  * Dont allow plain BOSH by default.
+
+-------------------------------------------------------------------
+Sun Apr  8 11:54:24 UTC 2018 - dev@stellardeath.org
+
+- Add the python3-axolotl package to recommends to make OMEMO work
+  out of the box.
+
+-------------------------------------------------------------------
+Mon Apr  2 10:10:39 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.0.1:
+  * Improve MAM support.
+  * Image preview in the file chooser dialogue.
+  * Groupchat: Set minimise on auto join default to true.
+  * Delete a bookmark when we destroy a room.
+  * Fix account deletion.
+  * Fix custom font handling.
+  * Fix OpenPGP message decryption.
+  * Fix window position restore on multi-head setups.
+  * Fix scrolling in message window.
+
+-------------------------------------------------------------------
+Mon Mar 17 19:32:02 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.0.0:
+  * Ported to GTK+3 / Python3.
+  * Integrate HTTPUpload.
+  * Add Navigation buttons in History Window.
+  * Improvements for HiDPI Screens.
+  * Depend on the python keyring package for password storage.
+  * Lots of refactoring.
+  * New Emoji support.
+  * New Chat Window design.
+  * New StartChat Window (Ctrl+N).
+  * New ServerInfo Window.
+  * AccountWindow Redesign.
+  * Move some encryption code out into Plugins (see PGP Plugin,
+    Esessions Plugin).
+  * Add mam:1 and mam:2 support (mam:0 was removed).
+  * Add MAM for MUCs support.
+  * Add support for showing XEP-0084 Avatars.
+  * Add support for geo: URIs.
+  * Add xmpp URI handling directly in Gajim.
+  * Remove Gajim-Remote.
+  * Remove XEP-0012 (Last Activity).
+  * Remove XEP-0136 (Message Archiving).
+  * Add XEP-0156 (Discovering Alternative XMPP Connection Methods).
+  * Add XEP-0319 (Last User Interaction in Presence).
+  * Add XEP-0368 (SRV records for XMPP over TLS).
+  * Add XEP-0380 (Explicit Message Encryption).
+  * Add Jingle FT:5 support.
+  * Lots of other small bugfixes.
+- Rebase gajim-do_not_ship_certificate.patch.in.
+- Update requirements and recommendations:
+  also require things that are not strictly required if they are
+  harmless and definitely available.
+
+-------------------------------------------------------------------
+Wed Dec 13 08:38:47 UTC 2017 - frede@b1-systems.de
+
+- Add Requires:       python-nbxmpp >= 0.6.1
+
+-------------------------------------------------------------------
+Tue Dec  5 10:53:35 UTC 2017 - mvetter@suse.com
+
+- Update to 0.16.9:
+  * Improve Zeroconf behavior
+  * Fix showing normal message event
+  * remove usage of OpenSSL.rand
+  * a few minor bugfixes
+- Update of icon cache and desktop file only in case of older
+  distribution
+
+-------------------------------------------------------------------
+Mon Jul 10 21:58:11 UTC 2017 - jengelh@inai.de
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Tue Jul  4 18:39:06 UTC 2017 - vilene@posteo.net
+
+- Update to version 0.16.8:
+  * Fix rejoining MUCs after connection loss
+  * Fix Groupchat invites
+  * Fix encoding problems with newer GnuPG versions
+  * Fix old messages randomly reappearing in the chat window
+  * Fix some problems with IBB filetransfer
+  * Make XEP-0146 Commands opt-in
+  * Improve sending messages to your own resources
+  * Improve reliability of delivery recipes
+  * Many minor bugfixes
+- Add gajim-do_not_ship_certificate.patch.in: Do not package
+  bundled PEM certificate, use one provided by package
+  `ca-certificates-mozilla' instead.
+- Remove gajim-0.16.7-default-disable-xep-0146.patch: Not needed
+  anymore, patch applied upstream.
+
+-------------------------------------------------------------------
+Mon May 29 10:40:52 UTC 2017 - sor.alexei@meowr.ru
+
+- Add gajim-0.16.7-default-disable-xep-0146.patch by
+  Philipp Hörist: Add a config option to activate XEP-0146 commands
+  (commit cb65cfc, CVE-2016-10376, bsc#1041163).
+
+-------------------------------------------------------------------
+Tue May  9 16:45:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.16.7:
+  * Better compatibility with XEP-0191: Blocking Command.
+  * Gajim now depends on python-gnupg for PGP encryption.
+  * Remove usage of demandimport.
+  * Many minor bugfixes.
+- Move python-farstream-0_1 to Suggests.
+- Correct the licence to GPL-3.0.
+
+-------------------------------------------------------------------
+Thu Oct 13 12:02:32 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.16.6:
+  * Fix using gpg2.
+  * Improve message receips usage.
+  * Improve roster filtering.
+  * Fix several minor bugs.
+- Remove gajim-remote-dont-show.patch: merged upstream.
+
+-------------------------------------------------------------------
+Tue May 24 10:28:37 UTC 2016 - mvetter@suse.com
+
+- Add gajim-remote-dont-show.patch:
+  gajim-remote is cli only. Dont list it in menus.
+- If python-gstreamer-0_10 is installed the error message 
+  'ImportError: could not import gst' is not shown.
+  See: https://trac.gajim.org/ticket/7836
+
+-------------------------------------------------------------------
+Tue Dec 29 05:32:40 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.16.5:
+  * Improve MAM implementation.
+  * Improve security on connexion and for roster managment
+    (rh#1295475, bsc#960668, CVE-2015-8688)
+  * Ability for emoticons to be sorted in menu.
+
+-------------------------------------------------------------------
+Sun Sep 27 15:37:48 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.16.4:
+  * Fix trusting GPG keys.
+  * Ability to disable synchronisation of logs with server.
+  * Improve MAM usage.
+
+-------------------------------------------------------------------
+Sun Aug  2 09:32:36 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.16.3:
+  * Fix reading secret file.
+  * Fix reconnection after suspend.
+  * Fix sending GPG-encrypted file to non-trusted key.
+
+-------------------------------------------------------------------
+Sat Jul 25 22:12:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.16.2:
+  * Improve Zeroconf (Avahi) with IPv6.
+  * Fix errors with GnuPG.
+  * Minor fixes and improvements.
+
+-------------------------------------------------------------------
+Sun Mar  1 23:17:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.16.1:
+  * Fix sending Zeroconf messages.
+  * Make ipython compatible to version >= 1.0.
+  * Support XEP-0313 MAM.
+  * Minor fixes and improvements.
+
+-------------------------------------------------------------------
+Tue Feb 10 21:52:04 UTC 2015 - sor.alexei@meowr.ru
+
+- Add python-farstream-0_1 optional dependency.
+
+-------------------------------------------------------------------
+Sat Oct 11 09:44:06 UTC 2014 - sor.alexei@meowr.ru
+
+- Update to 0.16:
+  * Improve File transfer support by adding Jingle file transfer.
+  * Use external python-nbxmpp library.
+  * improve security.
+  * Improve audio / Video calls and add screensharing feature.
+  * Support audio under windows.
+  * Support systemd-logind.
+  * Support XEP-0308 Last message correction.
+  * Support XEP-0224 Attention.
+  * Support XEP-0191 Blocking command.
+  * Support XEP-0249 Direct Invitation.
+  * Better RTL languages support.
+  * Use host command to resolve SRV records if it is available.
+- Completely review dependencies.
+- Spec cleanup.
+- Separate gajim-lang package.
+- Purge --enable-{remote ,gtkspell,idle,trayicon} from configure
+  options and trust the defaults.
+- Replace Python bytecode generation script with a more verbose one.
+- Generate icon cache after package installation.
+- Enable Python site packages.
+
+-------------------------------------------------------------------
+Mon May 27 16:03:47 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.15.4:
+  * Fix usage of OTR plugin
+  * Fix connection to non-SSL server
+  * Fix receiving GPG-encrypted messages while offline.
+- Changes from version 0.15.3:
+  * Better handling of SSL errors
+  * Better handling of canceling file transfer
+  * Improve farstream calls
+  * Minor fixes and improvements
+- Changes from version 0.15.2:
+  * Show punycode encoded urls if they contain non-ascii chars
+  * Fix crash when pressing Esc in chat window
+  * Support Network Manager 0.9
+  * decrypt GPG messages in the correct order
+- Changes from version 0.15.1:
+  * Switch from python-farsight to python-farstream
+  * improve performances
+  * Fix roster filter with unicode chars
+  * Fix connection to msn jabber server
+  * Fix some GPG issues
+  * Fix other small issues
+- Drop gajim-CVE-2012-2093-fix_insecure_temp_file_for_latex.patch,
+  fixed upstream.
+- Add python-farstream Recommends, fixes bnc#821233.
+
+-------------------------------------------------------------------
+Thu May 24 18:10:59 UTC 2012 - pascal.bleser@opensuse.org
+
+- add gajim-CVE-2012-2093-fix_insecure_temp_file_for_latex.patch
+  (CVE#2012-2093) which fixes insecure usage of temporary files for rendering
+  LaTeX markup, see also bnc#763452
+
+-------------------------------------------------------------------
+Wed May 23 15:16:54 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 0.15
+
+-------------------------------------------------------------------
+Sat Sep 10 16:11:07 UTC 2011 - pascal.bleser@opensuse.org
+
+- changed Requires:python-gstreamer to python-gstreamer-0_10, thanks to Peter
+  von Arx for reporting
+
+-------------------------------------------------------------------
+Sat Sep  3 18:32:48 UTC 2011 - prusnak@opensuse.org
+
+- updated to 0.14.4
+  * Fix translation issue
+  * other minor fixes
+- updated to 0.14.3
+  * Fix history viewer
+  * Fix closing roster window
+  * Prevent some erros with metacontacts
+- updated to 0.14.2
+  * Fix CPU usage when testing file transfer proxies
+  * Fix invalid XML char regex
+  * Fix subscription request window handling
+  * Fix URL display in chat message banner
+  * Other minor bugfixes
+- updated to 0.14.1
+  * Fix changing account name
+  * Fix sending XHTML
+  * Fix GnomeKayring usage
+  * Fix some GPG bugs
+  * Minor bugfixes
+- updated to 0.14
+  * Jingle audio / video chat
+  * Improve Startup time
+  * Copy emoticons, LaTeX expressions when they are selected
+  * Fix status icon transparency by using gtk.statusicon
+  * Groupchat auto-rejoin
+  * geolocation (with geoclue)
+  * use XDG standards
+  * SCRAM-SHA-1 and SASL EXTERNAL authentication
+  * MUC captcha
+  * Lots of refactoring
+- spec cleanup
+
+-------------------------------------------------------------------
+Sun May 16 13:45:57 CEST 2010 - bernhard@bwalle.de
+
+- update to 0.13.4
+  * Fix some TLS connection
+  * Don't raise a lot of "DB Error" dialog
+  * Fix contact synchronisation
+  * Add japanese translation
+  * Minor fixes
+  * Fix facebook xmpp server connection
+  * Fix copy / paste with Ctrl+C on non-latin keyboard
+  * Fix sending PEP information when connecting
+  * Fix parsing HTML messages that have ascii markup
+  * Fix some translations
+  * Fix string comparison according to locales
+  * Fix some gnomekeyring glitches
+  * Copy emoticons when we copy / paste in conversations
+- convert changelog to SUSE-style changes file
+
+-------------------------------------------------------------------
+Sun May 16 00:00:00 CEST 2010 - pascal.bleser@opensuse.org
+
+- update to 0.13.1:
+  * adds BOSH connection
+  * adds roster versioning
+  * adds the ability to send contacts
+  * adds a GUI to send XHTML messages
+  * adds pubsub storage (for bookmarks)
+
+-------------------------------------------------------------------
+Sun May 16 00:00:00 CEST 2010 - pascal.bleser@opensuse.org
+
+- add patch to fix #4788: Error receiving OpenPGP encrypted messages with
+  utf-8 characters
+
+-------------------------------------------------------------------
+Sun May 16 00:00:00 CEST 2010 - pascal.bleser@opensuse.org
+
+- update to 0.12.1:
+  * fix filetransfer
+  * updated german translation
+  * fix click on notifications when text string is empty
+  * improve systray popup menu
+
+-------------------------------------------------------------------
+Sun May 16 00:00:00 CEST 2010 - pascal.bleser@opensuse.org
+
+- license changed to GPL version 3
+- scrapped old %%changelog entries
+- moved to OBS
+- update to 0.12:
+  * support for End-To-End encryption and SSL certificate verification for security
+  * support for transforming a one-to-one chat into a group chat
+  * ability to minimize group chats in the roster for group chat management
+  * single window mode
+  * support for PEP (Personal Eventing Protocol)
+  * support for Latex for the GUI
+  * security improvements: Kerberos (GSSAPI) SASL Authentication mechanism
+  * improve GUI of some windows
+  * fix handling of invalid XML
+  * fix freeze on connection
+  * security improvements: End-to-End encryption, SSL certificate verification
+  * ability to minimize groupchats in roster
+  * block/Unblock contacts directly from roster
+  * much faster contact list 
+
+-------------------------------------------------------------------
+Sun May 16 00:00:00 CEST 2010 - pascal.bleser@opensuse.org
+
+- new upstream version

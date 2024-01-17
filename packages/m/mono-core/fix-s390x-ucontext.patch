@@ -1,0 +1,12 @@
+diff -urp mono-6.8.0.123.orig/mono/utils/mono-context.h mono-6.8.0.123/mono/utils/mono-context.h
+--- mono-6.8.0.123.orig/mono/utils/mono-context.h	2020-05-11 12:58:14.000000000 -0500
++++ mono-6.8.0.123/mono/utils/mono-context.h	2020-05-21 15:10:03.209484526 -0500
+@@ -879,7 +879,7 @@ typedef struct {
+ 
+ #include <sys/ucontext.h>
+ 
+-#if __GLIBC_PREREQ(2, 27)
++#if __GLIBC_PREREQ(2, 26)
+ typedef ucontext_t MonoContext;
+ #else
+ typedef struct ucontext MonoContext;

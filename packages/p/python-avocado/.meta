@@ -1,0 +1,9 @@
+<package name="python-avocado" project="openSUSE:Factory">
+  <title>Avocado Test Framework</title>
+  <description>Avocado is a set of tools and libraries (what people call these days a
+framework) to perform automated testing.
+
+</description>
+  <devel project="devel:languages:python:avocado" package="python-avocado"/>
+  <url>http://avocado-framework.github.io/</url>
+</package>

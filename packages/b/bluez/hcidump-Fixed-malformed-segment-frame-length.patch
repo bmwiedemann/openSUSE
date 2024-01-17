@@ -1,0 +1,26 @@
+From da04ba5e6b3f151c1644a17ac0fa2317ebc81edd Mon Sep 17 00:00:00 2001
+From: "Cho, Yu-Chen" <acho@suse.com>
+Date: Tue, 15 Oct 2019 15:45:43 +0800
+Subject: [PATCH] hcidump: Fixed malformed segment frame length
+
+Ensure the L2CAP SDUs whose length field match the actual frame length.
+---
+ tools/parser/l2cap.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+Index: bluez-5.60/tools/parser/l2cap.c
+===================================================================
+--- bluez-5.60.orig/tools/parser/l2cap.c
++++ bluez-5.60/tools/parser/l2cap.c
+@@ -759,6 +759,11 @@ static inline void conf_rsp(int level, l
+ 			scid, btohs(h->flags), result, clen);
+ 
+ 	if (clen > 0) {
++	        if (clen != (btohs(frm->len) - L2CAP_CONF_RSP_SIZE)) {
++			fprintf(stderr, "Not match the actual frame length\n");
++			clen = btohs(frm->len) - L2CAP_CONF_RSP_SIZE;
++		}
++
+ 		if (result) {
+ 			p_indent(level + 1, frm);
+ 			printf("%s\n", confresult2str(result));

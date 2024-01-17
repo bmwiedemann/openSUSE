@@ -1,0 +1,193 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d58dd76d9188ddc3faf2cd3d42317474</srcmd5>
+    <version>0.95</version>
+    <time>1339705566</time>
+    <user>coolo</user>
+    <comment>I think we should have this in Factory so that it becomes more visible and more people can use it.</comment>
+    <requestid>124647</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>d58dd76d9188ddc3faf2cd3d42317474</srcmd5>
+    <version>0.95</version>
+    <time>1340183769</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1c53163680bb81ac48ab0be9e4086574</srcmd5>
+    <version>0.96</version>
+    <time>1357652414</time>
+    <user>coolo</user>
+    <comment>Update to 0.96 (forwarded request 147414 from vuntz)</comment>
+    <requestid>147416</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4f1075a138715ebc21beba45a89f90f0</srcmd5>
+    <version>0.96</version>
+    <time>1357822089</time>
+    <user>coolo</user>
+    <comment>Make noarch + fix build on Fedora &amp; friends (forwarded request 147862 from vuntz)</comment>
+    <requestid>147863</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>4f1075a138715ebc21beba45a89f90f0</srcmd5>
+    <version>0.96</version>
+    <time>1359109558</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>9aeca08eb05a847ae12a70cca30276bf</srcmd5>
+    <version>0.96</version>
+    <time>1372687132</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.97:
+  + Adapt code to osc's new plugin mechanism</comment>
+    <requestid>181559</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f1d6f379b2624534d33c8ce9ab62efa7</srcmd5>
+    <version>0.98</version>
+    <time>1374417274</time>
+    <user>coolo</user>
+    <comment>Update to 0.98</comment>
+    <requestid>183874</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f1d6f379b2624534d33c8ce9ab62efa7</srcmd5>
+    <version>0.98</version>
+    <time>1379663457</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>f1d6f379b2624534d33c8ce9ab62efa7</srcmd5>
+    <version>0.98</version>
+    <time>1409302084</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e81196fcbeb1c1838e927cfff1c42e53</srcmd5>
+    <version>0.99</version>
+    <time>1511193922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542924</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>785fa02b82eb773970a7fdd815ed292f</srcmd5>
+    <version>0.100</version>
+    <time>1553263756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.100:
+  + Support new location for oscrc in ~/.config/osc/</comment>
+    <requestid>687309</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8748345b3dcd4b63e258218d6cb65038</srcmd5>
+    <version>0.101</version>
+    <time>1556916478</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.101:
+  + Port to python3
+  + Use https on the server</comment>
+    <requestid>700399</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>46b8d76e573d30da20fecb5d78ffb943</srcmd5>
+    <version>0.102</version>
+    <time>1568983900</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>731760</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4b6d550f6bea7097444a104e30c06e34</srcmd5>
+    <version>0.103</version>
+    <time>1570448810</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.103:
+  + Call time.tzset() after changing the timezone (#53)
+  + Fix python2 compatibility (#49)
+- Fix packaging for new versions of Fedora that don't include
+  .pyc/.pyo files</comment>
+    <requestid>735539</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cc4dac82c77dc5f4c5fbc2d35147442d</srcmd5>
+    <version>0.104+9</version>
+    <time>1610965779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863903</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3d76f47e860889c4bd8e05625b1e43f1</srcmd5>
+    <version>0.104+11</version>
+    <time>1612901844</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.104+11:
+  * osc-collab: Do not crash if we encounter a (broken) package (version unknown)
+  * gnome-versions: fix crash in new GNOME version scheme code (forwarded request 870503 from dimstar)</comment>
+    <requestid>870504</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9ccf8a64661cca6ec77c5a9d35acedb2</srcmd5>
+    <version>0.104+14</version>
+    <time>1621626604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894743</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>05f31b527ba8b234ba85f940a6b599cf</srcmd5>
+    <version>0.104+15</version>
+    <time>1630617609</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.104+15:
+  * [upstream] track some more gnome packages</comment>
+    <requestid>915509</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d0ef7d388c926aeecb2a47fd7ef27fab</srcmd5>
+    <version>0.104+17</version>
+    <time>1632849412</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.104+17:
+  * [upstream] track some more gnome packages</comment>
+    <requestid>922019</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fb60c4a4ff33f8cad64b3434d4fa3862</srcmd5>
+    <version>0.104+20</version>
+    <time>1641932426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945644</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>915ffefb0642ac80499b3120f3d84b80</srcmd5>
+    <version>0.104+26</version>
+    <time>1677075715</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.104+26:
+  * Re-implement filedir_to_pac as this was dropped in osc 1.0
+
+- Update to version 0.104+24:
+  * No longer support being calles as 'osc gnome'
+  * Track GNOME 41 for Leap 15.4 and SLE15SP4</comment>
+    <requestid>1067139</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d7d5eb2ecf918978f6040c50fe78b643</srcmd5>
+    <version>0.104+30</version>
+    <time>1699478244</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.104+30:
+  * Fix definition of APIURL with newer osc
+  * Track more base packages, mostly filesystem related (forwarded request 1123872 from dimstar)</comment>
+    <requestid>1123873</requestid>
+  </revision>
+</revisionlist>

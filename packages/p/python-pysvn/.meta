@@ -1,0 +1,22 @@
+<package name="python-pysvn" project="openSUSE:Factory">
+  <title>Highlevel Subversion Python Bindings</title>
+  <description>pysvn is a highlevel and easy to use Python bindings to Subversion.
+The pysvn project's goal is to enable Tools to be written in Python
+that use Subversion. Windows, Mac OS X, Linux and other unix
+platforms are supported.
+
+Features:
+* Supports all svn client features
+
+* Supports svn transaction features required to write svn pre-commit
+   hooks
+
+* Easy to learn and use
+
+* Python like interface
+
+* Good Documentation and examples
+
+* No need to understand the Subversion C API</description>
+  <devel project="devel:languages:python" package="python-pysvn"/>
+</package>

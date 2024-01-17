@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=MATE Desktop user folders update
+Comment=Update MATE common folders names to match the current locale
+Type=Application
+Icon=system
+Terminal=false
+Exec=xdg-user-dirs-gtk-update
+OnlyShowIn=MATE;
+StartupNotify=false
+OnlyShowIn=MATE;
+Encoding=UTF-8

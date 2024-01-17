@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Thu Sep 20 06:02:43 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.018
+   see /usr/share/doc/packages/perl-Test-TempDir-Tiny/Changes
+
+  0.018     2018-07-12 08:21:56-04:00 America/New_York
+  
+      - Bumped required version of File::Temp to 0.2308
+
+-------------------------------------------------------------------
+Thu May  3 06:03:32 UTC 2018 - coolo@suse.com
+
+- updated to 0.017
+   see /usr/share/doc/packages/perl-Test-TempDir-Tiny/Changes
+
+  0.017     2018-05-02 16:31:12-04:00 America/New_York
+  
+      - Bumped required version of File::Path to 2.07
+
+-------------------------------------------------------------------
+Thu Jun  2 04:56:02 UTC 2016 - coolo@suse.com
+
+- initial package 0.016
+ * created by cpanspec 1.78.08
+

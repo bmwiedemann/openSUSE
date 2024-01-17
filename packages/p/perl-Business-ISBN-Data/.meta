@@ -1,0 +1,15 @@
+<package name="perl-Business-ISBN-Data" project="openSUSE:Factory">
+  <title>Data pack for Business::ISBN</title>
+  <description>This data is current as of the date in the module version. At that time,
+the publisher codes 9990000-9999999 or 999000-999999 had not been fixed,
+although they had been proposed. I do not include them in the data. Some
+regions, including India (93), Gabon (99902), and Congo (99951) have
+country codes but no publisher codes. They still have entries even though
+you won't be able to validate any ISBNs assigned in those regions.
+
+Business::ISBN uses this &quot;data pack&quot; to do its work. You can update
+Business::ISBN::Data independently of the main module as the various
+ISBN organizations assign new publisher codes. The ISBN agency lists
+these data at http://www.isbn-international.org/converter/ranges.htm .</description>
+  <devel project="devel:languages:perl" package="perl-Business-ISBN-Data"/>
+</package>

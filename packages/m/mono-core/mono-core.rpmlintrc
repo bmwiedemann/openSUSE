@@ -1,0 +1,2 @@
+addFilter("useless-provides mono")
+addFilter("hidden-file-or-dir /usr/lib/mono/xbuild-frameworks/.NETFramework")

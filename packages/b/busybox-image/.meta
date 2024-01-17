@@ -1,0 +1,5 @@
+<package name="busybox-image" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:BCI:Tumbleweed" package="busybox-image"/>
+</package>
