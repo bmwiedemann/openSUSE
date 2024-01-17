@@ -1,0 +1,6 @@
+<package name="meanwhile" project="openSUSE:Factory">
+  <title>Lotus Sametime Community Client Library</title>
+  <description>Library to establish instant messaging connections to the Lotus
+Sametime IM server.</description>
+  <devel project="devel:libraries:c_c++" package="meanwhile"/>
+</package>

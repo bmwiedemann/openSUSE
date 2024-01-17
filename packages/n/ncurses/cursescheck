@@ -1,0 +1,462 @@
+#!/bin/bash
+#
+# cursescheck	    Test ACS/UTF-8 Line Graphics and REP capability
+#		    of a terminal line described by variable TERM.
+#
+# Written in bash code to show and test capabilities of an terminal
+# or terminal emulator without the `magic' of a binary program using
+# libncurses(w) as many users do belive that ncurses defines the
+# behaviour of a terminal.  Here we show that the terminfo database
+# given by the TERM variable simply describes the capabilities of
+# a terminal. For this `infocmp(1)' and `tput(1)' is used as well
+# the helpers `tty(1)', `grep(1), and `od(1)' are used herein.
+#
+# Author: Werner Fink <werner@suse.de>
+# 
+
+typeset -i rep=0 line=0 color=0 hpa=0 ech=0
+for s in 0 1 2
+do
+    test -c /proc/$$/fd/$s || { echo "Missing /proc/$$/fd/$s" 1>&2; exit 1; }
+done
+for d in null tty
+do
+    test -c /dev/$d || { echo "Missing /dev/$d" 1>&2; exit 1; }
+done
+for d in pts fd
+do
+    test -d /dev/$d || { echo "Missing /dev/$d/" 1>&2; exit 1; }
+done
+for p in tput infocmp tty grep od
+do
+    type -p $p 1> /dev/null 2>&1 || { echo "Missing $p in path" 1>&2; exit 1; }
+done
+
+typeset -r tty=$(tty) || { echo "Not on a terminal line" 1>&2; exit 1; }
+typeset -i width=$(tput cols) || { echo "No terminal size" 1>&2; exit 1; }
+typeset -i height=$(tput lines) || { echo "No terminal size" 1>&2; exit 1; }
+
+#
+# There are terminal type which uses non printable characters for
+# Line Graphic. Therefore store them as numbers or sequences within
+# arrays used later on.
+#
+typeset -i c
+typeset -A acsc acsn
+typeset -a tmp="($(tput acsc | od -A none -tx1))"
+for ((c=0;c<${#tmp[@]};c+=2))
+do
+    acsc[0x${tmp[c]}]="0x${tmp[c+1]}"
+    acsn[0x${tmp[c]}]=\\x${tmp[c+1]}
+done
+unset tmp c
+
+#
+# Init terminal
+#
+tput init || { echo "Not a terminal" 1>&2; exit 1; }
+
+if test -n "$(infocmp -T $TERM -1 | grep "colors#")"
+then
+    let color++
+fi
+if test -n "$(infocmp -T $TERM -1 | grep "hpa=")"
+then
+    let hpa++
+fi
+if test -n "$(infocmp -T $TERM -1 | grep "ech=")"
+then
+    let ech++
+fi
+
+#
+# Restore screen at exit
+#
+trap 'tput cup 0 0; tput sgr0; tput cvvis; tput rmcup; exit' EXIT HUP INT TERM
+
+#
+# Save screen, make curse invisible, and goto upper left
+#
+tput smcup
+tput civis
+tput cup 0 0
+if ((color > 0))
+then
+    tput -S <<-!
+	setab 4
+	setaf 7
+	!
+fi
+tput ed
+
+echo Checking for Line Graphics on $tty with TERM=$TERM
+let line++
+
+echo Found ${#acsc[@]} ACSC characters, check used Font and its Mapping
+let line++
+
+tput cup $((line + 2)) 0
+typeset -i row=$((line+2)) col=4
+typeset smacs=$(tput enacs; tput smacs)
+typeset rmacs=$(tput rmacs)
+for sub in ${!acsc[@]}
+do
+    tput cup $row $col
+    printf "$sub\t\x${sub//0x/}\t${smacs}${acsn[$sub]}${rmacs}"
+    if ((row++ > height-4))
+    then
+	let col=width/2-4
+	let row=line+2
+    fi
+done
+unset sub smacs rmacs
+
+tput cup $line 0
+tput cvvis
+echo -n "OK> "
+read -t 5 yesno
+
+#
+# Could use clear
+#
+tput -S <<-!
+	civis
+	cup 0 0
+	ed
+	!
+let line=0
+
+echo Checking for UTF-8 Line Graphics on $tty with TERM=$TERM
+let line++
+
+echo Use U+2500 upto U+25FF glyps, check used Font and its Mapping
+let line++
+
+tput cup $((line+2)) 0
+typeset -i row=$((line+2)) col=4
+for x in 94 95 96 97
+do
+    x=\\x$x
+    for ((c=128;c<=191;c++))
+    do
+	y=\\x$(printf '%x\n' $c)
+	tput cup $row $col
+	printf "\xe2${x}${y}"
+	if ((row++ > height-4))
+	then
+	    let col+=2
+	    let row=line+2
+	fi
+    done
+done
+unset sub smacs rmacs
+
+tput cup $line 0
+tput cvvis
+echo -n "OK> "
+read -t 5 yesno
+tput civis
+
+#
+# Could use clear
+#
+tput -S <<-!
+	civis
+	cup 0 0
+	ed
+	!
+let line=0
+
+if ((${#acsc[@]} > 0))
+then
+    typeset -i cx=20
+    echo Terminal TERM=$TERM has ASC Line Graphics
+    let line++
+    echo Use them to draw a simple box
+    let line++
+    let row=height/2-4
+    let col=8
+    tput cup $row $col
+    tput -S <<-!
+	enacs
+	civis
+	smacs
+	!
+    if ((color > 0))
+    then
+	tput -S <<-!
+		setab 7
+		setaf 0
+		!
+    fi
+    echo -ne ${acsn[0x6c]}
+    for ((c=0;c<cx;c++)); do echo -ne ${acsn[0x71]}; done
+    echo -ne ${acsn[0x6b]}
+    for ((c=1;c<4;c++))
+    do
+	tput cup $((row+c)) $col
+	echo -ne ${acsn[0x78]}
+	((color > 0 && ech > 0)) && tput ech $cx
+	((hpa > 0)) && tput hpa $((col+cx+1)) || tput cup $((row+c)) $((col+cx+1))
+	echo -ne ${acsn[0x78]}
+    done
+    tput cup $((row+c)) $col
+    echo -ne ${acsn[0x6d]}
+    for ((c=0;c<cx;c++)); do echo -ne ${acsn[0x71]}; done
+    echo -ne ${acsn[0x6a]}
+    if ((color > 0 && ech > 0))
+    then
+	tput -S <<-!
+		setab 0
+		setaf 0
+		cup $((row+1)) $((col+cx+2))
+		ech 2
+		cup $((row+2)) $((col+cx+2))
+		ech 2
+		cup $((row+3)) $((col+cx+2))
+		ech 2
+		cup $((row+4)) $((col+cx+2))
+		ech 2
+		cup $((row+5)) $((col+2))
+		ech $((cx+2))
+		setab 4
+		setaf 7
+		!
+    else
+	tput rev
+	for ((c=1;c<5;c++))
+	do
+	    tput cup $((row+c)) $((col+cx+2))
+	    echo -n "  "
+	done
+	tput cup $((row+c)) $((col+2))
+	printf ' %.0s' $(eval echo {1..$((cx+2))})
+	tput sgr0
+    fi
+    tput -S <<-!
+	rmacs
+	!
+    tput cup $((row+2)) $((col+4))
+    echo -n "<ACS BOX>"
+
+    tput cup $line 0
+    tput cvvis
+    echo -n "OK> "
+    read -t 5 yesno
+    tput civis
+else
+    echo Terminal TERM=$TERM has no ASC Line Graphics.
+    tput cvvis
+    echo -n "OK> "
+    read -t 5 yesno
+    tput civis
+fi
+
+#
+# Could use clear
+#
+tput -S <<-!
+	civis
+	cup 0 0
+	ed
+	!
+let line=0
+
+if ((1))
+then
+
+    #
+    # UTF-8 wide character line glyphs
+    #
+    ul=\\xe2\\x94\\x8c
+    ur=\\xe2\\x94\\x90
+    hl=\\xe2\\x94\\x80
+    vl=\\xe2\\x94\\x82
+    dl=\\xe2\\x94\\x94
+    dr=\\xe2\\x94\\x98
+
+    typeset -i cx=20
+    echo Terminal TERM=$TERM with UTF-8 Line Graphics
+    let line++
+    echo Use them to draw a simple box
+    let line++
+    let row=height/2-4
+    let col=8
+    tput cup $row $col
+    if ((color > 0))
+    then
+	tput -S <<-!
+		setab 7
+		setaf 0
+		!
+    fi
+    tput enacs
+    tput civis
+    echo -ne ${ul}
+    for ((c=0;c<$cx;c++)); do echo -ne ${hl}; done
+    echo -ne ${ur}
+    for ((c=1;c<4;c++))
+    do
+	tput cup $((row+c)) $col
+	echo -ne ${vl}
+	((color > 0 && ech > 0)) && tput ech $cx
+	((hpa > 0)) && tput hpa $((col+cx+1)) || tput cup $((row+c)) $((col+cx+1))
+	echo -ne ${vl}
+    done
+    tput cup $((row+c)) $col
+    echo -ne ${dl}
+    for ((c=0;c<$cx;c++)); do echo -ne ${hl}; done
+    echo -ne ${dr}
+    if ((color > 0 && ech > 0))
+    then
+	tput -S <<-!
+		setab 0
+		setaf 0
+		cup $((row+1)) $((col+cx+2))
+		ech 2
+		cup $((row+2)) $((col+cx+2))
+		ech 2
+		cup $((row+3)) $((col+cx+2))
+		ech 2
+		cup $((row+4)) $((col+cx+2))
+		ech 2
+		cup $((row+5)) $((col+2))
+		ech $((cx+2))
+		setab 4
+		setaf 7
+		!
+    else
+	tput rev
+	for ((c=1;c<5;c++))
+	do
+	    tput cup $((row+c)) $((col+cx+2))
+	    echo -n "  "
+	done
+	tput cup $((row+c)) $((col+2))
+	printf ' %.0s' $(eval echo {1..$((cx+2))})
+	tput sgr0
+    fi
+    tput cup $((row+2)) $((col+4))
+    echo -n "<UTF-8 BOX>"
+
+    tput cup $line 0
+    tput cvvis
+    echo -n "OK> "
+    read -t 5 yesno
+    tput civis
+else
+    echo Terminal TERM=$TERM has no UTF-8 Line Graphics.
+    tput cvvis
+    echo -n "OK> "
+    read -t 5 yesno
+    tput civis
+fi
+
+#
+# Could use clear
+#
+tput -S <<-!
+	civis
+	cup 0 0
+	ed
+	!
+let line=0
+if test -n "$(infocmp -T $TERM -1 | grep rep=)"
+then
+    echo Found rep capability in terminfo database for TERM=$TERM
+    let rep++
+    let line++
+else
+    echo No rep capability given in terminfo database for TERM=$TERM
+    tput cvvis
+    echo -n "OK> "
+    read -t 5 yesno
+    tput -S <<-!
+	cup 0 0
+	sgr0
+	ed
+	rmcup
+	!
+    exit 0
+fi
+
+if ((${#acsc[@]} > 0 && rep > 0))
+then
+    typeset -i cx=20
+    echo Testing rep capability of TERM=$TERM 
+    let line++
+    let row=height/2-4
+    let col=8
+    if ((color > 0))
+    then
+	tput -S <<-!
+		setab 7
+		setaf 0
+		!
+    fi
+    tput -S <<-!
+	enacs
+	civis
+	smacs
+	cup $row $col
+	!
+    echo -ne ${acsn[0x6c]}
+    tput rep ${acsc[0x71]} $cx
+    echo -ne ${acsn[0x6b]}
+    for ((c=1;c<4;c++))
+    do
+	tput cup $((row+c)) $col
+	echo -ne ${acsn[0x78]}
+	((hpa > 0)) && tput hpa $((col+cx+1)) || tput cup $((row+c)) $((col+cx+1))
+	echo -ne ${acsn[0x78]}
+    done
+    tput cup $((row+c)) $col
+    echo -ne ${acsn[0x6d]}
+    tput rep ${acsc[0x71]} $cx
+    echo -ne ${acsn[0x6a]}
+    tput -S <<-!
+	rmacs
+	!
+    if ((color > 0 && ech > 0))
+    then
+	tput -S <<-!
+		cup $((row+1)) $((col+1))
+		ech $cx
+		cup $((row+2)) $((col+1))
+		ech $cx
+		cup $((row+3)) $((col+1))
+		ech $cx
+		setab 0
+		setaf 0
+		cup $((row+1)) $((col+cx+2))
+		ech 2
+		cup $((row+2)) $((col+cx+2))
+		ech 2
+		cup $((row+3)) $((col+cx+2))
+		ech 2
+		cup $((row+4)) $((col+cx+2))
+		ech 2
+		cup $((row+5)) $((col+2))
+		ech $((cx+2))
+		setab 4
+		setaf 7
+		!
+    else
+	tput rev
+	for ((c=1;c<5;c++))
+	do
+	    tput cup $((row+c)) $((col+cx+2))
+	    echo -n "  "
+	done
+	tput cup $((row+c)) $((col+2))
+	printf ' %.0s' $(eval echo {1..$((cx+2))})
+	tput sgr0
+    fi
+    tput cup $((row+2)) $((col+4))
+    echo -n "<ACS BOX (REP)>"
+
+    tput cup $line 0
+    tput cvvis
+    echo -n "OK> "
+    read -t 5 yesno
+fi

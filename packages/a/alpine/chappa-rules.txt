@@ -1,0 +1,16 @@
+From: http://alpine.x10host.com/alpine/info/rules.html
+Upstream: constitutes upstream source, delivered in non-tarball form
+
+This patch allows you to create specific hooks, so that operations that would normally be global in nature can be customized on a per message/folder/person
+basis.
+
+[...]
+
+[For example:]
+
+  * Compose Rules
+    This option can be used to generate signatures in cases when setting up a
+    role does not work. Examples are
+
+        _TO_ >> {Peter Flinstones} => _SIGNATURE_{~/.petersignature}
+        _COLLECTION_ >> {Mail} => _SIGNATURE_{~/ll} 

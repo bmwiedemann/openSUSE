@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Sat Oct 14 22:54:22 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.25:
+  * Fix bug when iotop busy loops after pressing ESC key
+  * Change the condition of displaying processes in only mode
+
+-------------------------------------------------------------------
+Sun Oct  1 10:14:59 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.24:
+  * Fix a bug with graphs in ASCII mode
+  * Show the status of the configuration in the help window
+  * Support ancient compilers #52
+
+-------------------------------------------------------------------
+Tue Jan 24 05:09:40 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.23:
+  * Changes by @bbonev in #43
+  * Fix some issues reported by lintian by @debian-janitor in #42
+  * Revert syscall count stuff by @bbonev in #44
+  * fix empty archlinux package by @bokunodev in #46
+
+-------------------------------------------------------------------
+Mon Oct 24 16:33:24 UTC 2022 - mvetter@suse.com
+
+- Update to version 1.22:
+  * view_curses: do not force black background #29
+  * fixed scroller logic #30
+  * fixed corner case of full scroller #32
+  * Update README.md #35
+  * Add regex search
+  * Better checking and error handling in netlink code
+  * More graceful signal handling
+  * Fix bug with a missing check if a process exited
+  * New option to hide exited processes
+  * Add color to % values and option to disable color at all
+  * Implement the suggestion from https://no-color.org
+  * Fix bug with cursor displayed in unusual places
+
+-------------------------------------------------------------------
+Wed Feb 02 23:28:14 UTC 2022 - jonathan@jontech.app
+
+- Update to version 1.21:
+    * Better support for disabled task_delayacct sysctl
+    * Add history and graph for all data
+    * Restore simple inline help
+- Fix debuginfo generation
+
+-------------------------------------------------------------------
+Mon Dec 13 23:09:03 UTC 2021 - Jonathan Papineau <jonathan@jontech.app>
+
+- Initial packaging of iotop-c 1.20

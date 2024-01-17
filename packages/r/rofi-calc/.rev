@@ -1,0 +1,149 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>de00e22852143cc0a524e7468fe17a75</srcmd5>
+    <version>1.0</version>
+    <time>1552572055</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0:
+  * Better dependency form 
+  * Check for cairo 
+  * Add qalculate version warning
+  * Use pluginsdir for installation 
+  * Do not hardcode rofi path
+- Import 0.1+20180729.f24ac5e from home:siegel
+</comment>
+    <requestid>684710</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5a13122ba51426b4611f2f6c8b44def6</srcmd5>
+    <version>1.0</version>
+    <time>1552643534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685154</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2578d6b10e21ad9439c2ae9d9123e614</srcmd5>
+    <version>1.1</version>
+    <time>1554115229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1:
+  * Add -calc-command to specify a shell command (#3)
+  * Execute with last_result from qalc when Ctrl+Enter is pressed (#3)</comment>
+    <requestid>690267</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3b9f8c301244856ed5716a3dc2bec406</srcmd5>
+    <version>1.3</version>
+    <time>1554276482</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3:
+  * Add -no-bold flag to disable bold results
+  * Implement -terse option</comment>
+    <requestid>690622</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>191fcdaa19b506f8fe112eb22b17b524</srcmd5>
+    <version>1.4</version>
+    <time>1556023018</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.4:
+  * Fix parsing result with -terse 
+  * Add history feature (#6)</comment>
+    <requestid>696928</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4e9b34b1a69913f835c4205e76c25907</srcmd5>
+    <version>1.5</version>
+    <time>1556622010</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5:
+  * Fix invalid free in case rofi dir didn't already exist
+
+  * Fix parsing result with -terse
+  * Add history feature (#6)</comment>
+    <requestid>697393</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>697c326d8202b762691ba2d1bec270a0</srcmd5>
+    <version>1.6</version>
+    <time>1579867970</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6:
+  * Add option -qalc-binary to specify the name or path to the qalc binary
+  * Document comma &amp; space seperator options in README
+  * Delete items from history file (#34) 
+  * Added version check in configure.ac (#28)</comment>
+    <requestid>766761</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>274d5ab3beee3e140b34dfccec8115d6</srcmd5>
+    <version>1.7</version>
+    <time>1588610375</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7:
+  * Fix file descriptor leak (#42)
+  * Add a note about saving the result to clipboard (#43)
+  * Document how to change decimal separator (#44)
+  * Use echo -n for clipboard</comment>
+    <requestid>799966</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>79f9e187bf81fcefd3e3364567cfe6f5</srcmd5>
+    <version>1.8</version>
+    <time>1597390351</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8:
+  * Enable qalc's Unicode mode by default
+  * Add -no-unicode option to disable aforementioned unicode support</comment>
+    <requestid>826195</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>07995c275111ced66dded9ef441d2f98</srcmd5>
+    <version>1.9</version>
+    <time>1600956889</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9:
+  * Add options to specify output hints (#59)</comment>
+    <requestid>836452</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>458056752829a136b9812582258ef6d1</srcmd5>
+    <version>2.0.0</version>
+    <time>1605644653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  * Add option to completely disable history #63</comment>
+    <requestid>848801</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ae6ff0d4779c00fbe89545b2db29e75b</srcmd5>
+    <version>2.1.0</version>
+    <time>1644617263</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0:
+  * Correctly handle ≈ signs emitted by qalc #78
+  * Add -calc-command-history to add result to history when using -calc-command #79
+  * Correctly handle multiple equals signs emitted by qalc #80</comment>
+    <requestid>953375</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d754f8083f16241a6fa9e60048ff6c24</srcmd5>
+    <version>2.1.0</version>
+    <time>1667734926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033523</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>de0bcfd5675cec21088bfcd665529478</srcmd5>
+    <version>2.2.0</version>
+    <time>1682782109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0:
+  * qcalc spawning behavior change
+  * Add --automatic-save-to-history option
+  * Fix memory leak from #66</comment>
+    <requestid>1083618</requestid>
+  </revision>
+</revisionlist>

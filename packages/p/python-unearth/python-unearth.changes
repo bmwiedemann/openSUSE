@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Mon Dec  4 10:43:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.1:
+  * Match index url with the same netloc
+
+-------------------------------------------------------------------
+Mon Oct 23 11:10:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.0 (bsc#1216480, CVE-2023-45805):
+  * Add callback to report download status
+  * Respect :all: in prefer_binary config
+  * security: Validate the package name extracted from the part
+    before the last hyphen
+  * Also fallback on "token" username for KeyringCliProvider
+  * Revert the handling of 403 and 404
+  * Handle 403 same as 401, and look for credentials on 404 error
+  * Close response files correctly
+  * Change FormatControl to respect the priority of only_binary
+    over no_binary
+  * Include useful message if VCS command not found
+  * Postpone the validation of hashes
+  * Migrate from deprecated pdm.pep517 to pdm.backend
+  * Tolerate invalid python requires
+  * Fix the dist info link evaluation
+  * PEP 714: rename the dist-info-metadata field to core-metadata
+
+-------------------------------------------------------------------
+Thu Jun 15 12:46:34 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.9.1
+  * cli: Exposing requires-python, platform and abi interface for cli tools.  -
+    by @frostming in #52 (b9935)
+  * Evaluation issue when the requirement has no version specifier Close #50  -
+    by @frostming in #50 (0a813)
+  * Typo on json response field  -  by @frostming (3e767)
+  * Update pdm.lock  -  by @github-actions[bot] and frostming in #44 (e4572)
+  * Update pdm.lock  -  by @github-actions[bot] in #45 (a98b9)
+  * Update pdm.lock  -  by @github-actions[bot] in #47 (e0ea7)
+  * Update pdm.lock  -  by @github-actions[bot] and frostming in #49 (fc994)
+  * Allow to order the index urls and find links together for PackageFinder  -
+    by @frostming in #43 (dbe85)
+  * Allow to set prefer_binary for individual packages.
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Thu Dec 15 23:14:43 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Update to version 0.7.0
+  * Features
+    + Suppress warnings for insecure requests  -  by @frostming (419df)
+    + Support PEP 691: JSON simple API and PEP 658: static metadata in API  -  by @frostming in #28 (6dadc)
+  * Bug Fixes
+    + Fix the logger name to be zipapp friendly  -  by @frostming in #29 (5d930)
+- Version 0.6.3
+  * Bug Fixes
+    + Skip invalid versions rejected by packaging 22.0  -  by @pdm-project in #26 (8fc2a)
+  * Documentation
+    + Update the version in docs  -  by @pdm-project (f2a02)
+
+-------------------------------------------------------------------
+Tue Dec  6 17:07:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.6.2
+   * Features
+   Log the file size when downloading  -  by @frostming in #22 (9514a)
+   Use token as the username if not specified Close #18  -  by @frostming in #18 (6d2a6)
+   Add more logs about the caches  -  by @frostming (e0000)
+   * Bug Fixes
+   Cache the index fetch result in memory  -  by @frostming (eacc0)
+   * Chores
+   Add python 3.11 to the test matrix  -  by @frostming (25338)
+
+-------------------------------------------------------------------
+Mon Aug 15 15:43:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v0.6.1
+- Required by python-pdm v2

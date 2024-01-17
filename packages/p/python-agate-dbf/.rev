@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3889c877da4f0dc2a11d163075f5e833</srcmd5>
+    <version>0.2.0</version>
+    <time>1527605263</time>
+    <user>dimstar_suse</user>
+    <comment>DBF file plugin for agate</comment>
+    <requestid>605896</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>13da241f29f790499ccbbcaf87b30ac2</srcmd5>
+    <version>0.2.1</version>
+    <time>1555574199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695100</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>112027d58e6aff871266856e87373ceb</srcmd5>
+    <version>0.2.1</version>
+    <time>1587071228</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from using nosetest runner to pytest</comment>
+    <requestid>794646</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4b030cb8cb54b980484e84709a4e2a05</srcmd5>
+    <version>0.2.2</version>
+    <time>1605017336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847491</requestid>
+  </revision>
+</revisionlist>

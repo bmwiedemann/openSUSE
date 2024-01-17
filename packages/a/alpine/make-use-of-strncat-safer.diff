@@ -1,0 +1,12 @@
+Index: alpine-2.00/pith/charconv/utf8.c
+===================================================================
+--- alpine-2.00.orig/pith/charconv/utf8.c
++++ alpine-2.00/pith/charconv/utf8.c
+@@ -38,6 +38,7 @@ static char rcsid[] = "$Id: utf8.c 1019
+ #include "utf8.h"
+ 
+ #include <stdarg.h>
++#include <wchar.h>
+ 
+ 
+ unsigned single_width_chars_a_to_b(UCS *, int, int);

@@ -1,0 +1,5 @@
+<package name="k3s-install" project="openSUSE:Factory">
+  <title>k3s Installer for openSUSE MicroOS</title>
+  <description>Based on the official upstream k3s install.sh, this k3s-install package provides a curated, MicroOS-optimised, securely delivered alternative to running a script directly from the internet.</description>
+  <devel project="devel:kubic" package="k3s-install"/>
+</package>

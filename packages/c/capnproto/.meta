@@ -1,0 +1,11 @@
+<package name="capnproto" project="openSUSE:Factory">
+  <title>Cap'n Proto - Insanely Fast Data Serialization Format</title>
+  <description>Cap'n Proto is an insanely fast data interchange format and capability-based
+RPC system.  Think JSON, except binary.  Or think of Google's Protocol Buffers
+(http://protobuf.googlecode.com), except faster.  In fact, in benchmarks,
+Cap'n Proto is INFINITY TIMES faster than Protocol Buffers.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="capnproto"/>
+  <url>https://capnproto.org</url>
+</package>

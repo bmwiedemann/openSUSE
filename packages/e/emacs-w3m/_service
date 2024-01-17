@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/emacs-w3m/emacs-w3m</param>
+    <param name="scm">git</param>
+    <param name="versionformat">1.4.632+@TAG_OFFSET@+g%h</param>
+    <param name="parent-tag">7a81b230</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

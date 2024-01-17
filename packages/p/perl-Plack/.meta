@@ -1,0 +1,13 @@
+<package name="perl-Plack" project="openSUSE:Factory">
+  <title>Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)</title>
+  <description>Plack is a set of tools for using the PSGI stack. It contains middleware
+components, a reference server and utilities for Web application
+frameworks. Plack is like Ruby's Rack or Python's Paste for WSGI.
+
+See the PSGI manpage for the PSGI specification and the PSGI::FAQ manpage
+to know what PSGI and Plack are and why we need them.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Plack"/>
+  <url>http://search.cpan.org/dist/Plack/</url>
+</package>

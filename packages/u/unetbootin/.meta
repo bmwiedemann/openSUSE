@@ -1,0 +1,11 @@
+<package name="unetbootin" project="openSUSE:Factory">
+  <title>Universal Netboot Installer</title>
+  <description>UNetbootin allows for the installation of various Linux/BSD distributions
+to a partition or USB drive, so it's no different from a standard install,
+only it doesn't need a CD. It can create a dual-boot install,
+or replace the existing OS entirely.
+
+</description>
+  <devel project="filesystems" package="unetbootin"/>
+  <url>https://sourceforge.net/projects/unetbootin/</url>
+</package>

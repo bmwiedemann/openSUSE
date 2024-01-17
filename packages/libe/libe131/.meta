@@ -1,0 +1,9 @@
+<package name="libe131" project="openSUSE:Factory">
+  <title>libe131</title>
+  <description>A C/C++ library that provides an API for packet, client and server programming
+to be used for communicating with devices implementing the E1.31 (sACN)
+protocol.
+</description>
+  <devel project="hardware" package="libe131"/>
+  <url>https://github.com/hhromic/libe131</url>
+</package>

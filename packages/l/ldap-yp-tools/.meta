@@ -1,0 +1,13 @@
+<package name="ldap-yp-tools" project="openSUSE:Factory">
+  <title>ldap-yp-tools</title>
+  <description>Many enviroments are switching from the Network Information Service (NIS) system over to the Lightweight Directory Access Protocol (LDAP) for sharing
+their network information (login names, passwords, home directories, group
+information) to all of the machines on the network.  NIS was formerly known as Sun Yellow Pages (YP).
+
+This package implements several utilites that provide functional equivalents
+to utilities from the yp-tools and util-linux-ng package.
+
+Currently this includes: ldapcat, ldapmatch and ldapchsh.
+</description>
+  <devel project="network:ldap" package="ldap-yp-tools"/>
+</package>

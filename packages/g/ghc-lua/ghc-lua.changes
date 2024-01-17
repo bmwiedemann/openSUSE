@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Thu Apr 13 17:23:25 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update lua to version 2.3.1.
+  ## lua-2.3.1
+
+  Released 2023-03-17.
+
+  -   New module *Lua.Debug*: the module provides bindings to a
+      subset of functions of the Lua debug interface. Currently the
+      module only binds `lua_getupvalue` and `lua_setupvalue`.
+
+  ## lua-2.3.0
+
+  Released 2023-03-13.
+
+  -   New function `hslua_setwarnf`: The function allows to set a
+      C function as a hook that is called on all complete warning
+      messages. It is intended as a simple way to set a custom
+      warning function.
+
+  -   Export version and copyright info from Lua.Constants: the
+      following patterns are made available, with content identical
+      to that of the respective C functions: `LUA_VERSION`,
+      `LUA_RELEASE`, and `LUA_COPYRIGHT`.
+
+  -   Added a new flag `cross-compile`. When enabled, the code is
+      setup in a way that allows cross-compilation of the package,
+      but some of the string constants will be hard-coded and may
+      not match the Lua version against which the library is
+      compiled.
+
+  -   `Type` is now an instance of `Read`.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:07:26 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Jun 19 11:30:55 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update lua to version 2.2.1.
+  ## lua-2.2.1
+
+  Released 2022-06-19.
+
+  -   Make string-peeking independent of the current foreign
+      encoding: always use char8 encoding to retrieve values of
+      `LUA_PRELOAD_TABLE` and `LUA_LOADED_TABLE`.
+
+-------------------------------------------------------------------
+Sat Feb 19 14:38:08 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update lua to version 2.2.0.
+  ## lua-2.2.0
+
+  Released 2022-02-19.
+
+  -   Update to Lua 5.4, include Lua 5.4.4 by default.
+
+  -   Removed `hardcode-reg-keys` flag: this is no longer required
+      for Lua 5.4.
+
+  -   Support arbitrary number of uservalues: Lua 5.4 allows an
+      arbitrary number of uservalues to be associated with userdata
+      objects. The functions `lua_newuserdata`, `lua_getuservalue`,
+      and `lua_setuservalue` are replaced with the new functions
+      `lua_newuserdatauv`, `lua_getiuservalue`, and
+      `lua_setiuservalue`, respectively.
+
+      The function `hslua_newhsuserdata` is renamed to
+      `hslua_newhsuserdatauv` and takes the number of associated
+      uservalues as an additional argument.
+
+  -   Support for the new warnings system: export binding to
+      `lua_warning`.
+
+  -   The function `lua_gc` now takes three data arguments of type
+      CInt. This is a workaround for the fact that the C function
+      has become variadic.
+
+  -   The new patterns `LUA_GCGEN` and `LUA_GCINC` are usable with
+      `lua_gc` to switch to generational and incremental garbage
+      collection, respectively.
+
+-------------------------------------------------------------------
+Sat Jan 29 10:07:46 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update lua to version 2.1.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/lua-2.1.0/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Nov  4 12:10:04 UTC 2021 - psimons@suse.com
+
+- Update lua to version 2.0.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/lua-2.0.1/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Nov  1 08:37:01 UTC 2021 - psimons@suse.com
+
+- Add lua at version 2.0.0.1.
+

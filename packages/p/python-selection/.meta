@@ -1,0 +1,5 @@
+<package name="python-selection" project="openSUSE:Factory">
+  <title>python-selection</title>
+  <description>API to extract content from HTML and XML documents.</description>
+  <devel project="devel:languages:python" package="python-selection"/>
+</package>

@@ -1,0 +1,20 @@
+Index: src/core/flameshotdaemon.cpp
+===================================================================
+--- src/core/flameshotdaemon.cpp.orig	2022-07-03 13:42:21.000000000 +0000
++++ src/core/flameshotdaemon.cpp	2023-05-16 09:20:48.878903358 +0000
+@@ -180,6 +180,7 @@ void FlameshotDaemon::showUpdateNotifica
+ 
+ void FlameshotDaemon::getLatestAvailableVersion()
+ {
++#if 0
+     // This features is required for MacOS and Windows user and for Linux users
+     // who installed Flameshot not from the repository.
+     m_networkCheckUpdates = new QNetworkAccessManager(this);
+@@ -196,6 +197,7 @@ void FlameshotDaemon::getLatestAvailable
+             this->getLatestAvailableVersion();
+         }
+     });
++#endif
+ }
+ 
+ void FlameshotDaemon::checkForUpdates()

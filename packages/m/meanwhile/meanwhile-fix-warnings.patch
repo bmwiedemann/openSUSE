@@ -1,0 +1,93 @@
+--- a/src/cipher.c
++++ b/src/cipher.c
+@@ -331,7 +331,8 @@ void mwEncryptExpanded(const int *ekey,
+   guchar *o;
+   gsize o_len;
+ 
+-  int x, y;
++  gsize x;
++  int y;
+ 
+   /* pad upwards to a multiple of 8 */
+   /* o_len = (i_len & -8) + 8; */
+--- a/src/common.c
++++ b/src/common.c
+@@ -28,28 +28,33 @@
+     structures in the event of failure, to prevent memory leaks */
+ 
+ 
+-#define MW16_PUT(b, val) \
++#define MW16_PUT(b, val) do { \
+   *(b)++ = ((val) >> 0x08) & 0xff; \
+-  *(b)++ = (val) & 0xff;
++  *(b)++ = (val) & 0xff; \
++  } while(FALSE)
+ 
+ 
+-#define MW16_GET(b, val) \
++#define MW16_GET(b, val) do { \
+   val = (*(b)++ & 0xff) << 8; \
+-  val = val | (*(b)++ & 0xff);
++  val = val | (*(b)++ & 0xff); \
++  } while(FALSE)
+ 
+ 
+-#define MW32_PUT(b, val) \
++#define MW32_PUT(b, val) do { \
+   *(b)++ = ((val) >> 0x18) & 0xff; \
+   *(b)++ = ((val) >> 0x10) & 0xff; \
+   *(b)++ = ((val) >> 0x08) & 0xff; \
+-  *(b)++ = (val) & 0xff;
++  *(b)++ = (val) & 0xff; \
++  } while(FALSE)
+ 
+ 
+-#define MW32_GET(b, val) \
++#define MW32_GET(b, val) do { \
+   val = (*(b)++ & 0xff) << 0x18; \
+   val = val | (*(b)++ & 0xff) << 0x10; \
+   val = val | (*(b)++ & 0xff) << 0x08; \
+-  val = val | (*(b)++ & 0xff);
++  val = val | (*(b)++ & 0xff); \
++  } while(FALSE)
++
+ 
+ 
+ struct mwPutBuffer {
+--- a/src/mw_debug.c
++++ b/src/mw_debug.c
+@@ -149,7 +149,7 @@ void mw_mailme_datav(const guchar *buf,
+ 
+   g_string_append(str, MW_MAILME_CUT_STOP);
+ 
+-  g_debug(str->str);
++  g_debug("%s", str->str);
+   g_string_free(str, TRUE);
+ 
+ #else
+--- a/src/session.c
++++ b/src/session.c
+@@ -240,7 +240,7 @@ static void state(struct mwSession *s, e
+ 
+   case mwSession_LOGIN_REDIR:
+     g_message("session state: %s (%s)", state_str(state),
+-	      (char *)info);
++              NSTR((char *) info));
+     break;
+ 
+   default:
+--- a/src/srvc_aware.c
++++ b/src/srvc_aware.c
+@@ -866,9 +866,9 @@ guint32 mwAwareAttribute_getKey(const st
+ 
+ gboolean mwAwareAttribute_asBoolean(const struct mwAwareAttribute *attrib) {
+   struct mwGetBuffer *b;
+-  gboolean ret;
+-  
+-  if(! attrib) return FALSE;
++  gboolean ret = FALSE;
++
++  g_return_val_if_fail(attrib != NULL, FALSE);
+ 
+   b = mwGetBuffer_wrap(&attrib->data);
+   if(attrib->data.len >= 4) {

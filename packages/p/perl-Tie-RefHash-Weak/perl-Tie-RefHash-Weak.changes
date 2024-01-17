@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Tue May 31 14:51:14 UTC 2011 - coolo@novell.com
+
+- updated to 0.09
+      - Filter dead refs from the magic data storage to avoid uninitialized
+        warnings.
+
+-------------------------------------------------------------------
+Tue Jul 15 16:07:50 CEST 2008 - jw@suse.de
+
+- initial check in version 0.08
+

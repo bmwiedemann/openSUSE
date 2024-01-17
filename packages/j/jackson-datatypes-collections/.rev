@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>74f8262e93154c203d5ab4f59e7fcc9e</srcmd5>
+    <version>2.10.3</version>
+    <time>1595773168</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>822676</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c6c6eba5a1bde90de40f71b43deacc7b</srcmd5>
+    <version>2.10.3</version>
+    <time>1620840747</time>
+    <user>dimstar_suse</user>
+    <comment>Build with guava 30.1.1</comment>
+    <requestid>892411</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>604c600f089e2f756bb2dbc1f01bce16</srcmd5>
+    <version>2.13.0</version>
+    <time>1634853318</time>
+    <user>dimstar_suse</user>
+    <comment>Version upgrade</comment>
+    <requestid>926594</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>26ea46bdf0c9d1631b9476addcba2092</srcmd5>
+    <version>2.13.3</version>
+    <time>1655665858</time>
+    <user>dimstar_suse</user>
+    <comment>2.13.3</comment>
+    <requestid>983610</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a7025f0c57f531798171f935272bc7e9</srcmd5>
+    <version>2.15.2</version>
+    <time>1692795431</time>
+    <user>anag+factory</user>
+    <comment>2.15.2</comment>
+    <requestid>1105105</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b895b8866398ba936fc496b864f5401e</srcmd5>
+    <version>2.15.2</version>
+    <time>1694344233</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109958</requestid>
+  </revision>
+</revisionlist>

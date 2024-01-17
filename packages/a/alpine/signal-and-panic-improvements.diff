@@ -1,0 +1,68 @@
+##########################################################################
+# This patch generates a backtrace on abort and if core file dumping is
+# enabled, it also write the backtrace to a temporary file. 
+##########################################################################
+
+#
+# Manual page of the used glibc backtrace function:
+#
+http://www.gnu.org/software/libc/manual/html_node/Backtraces.html
+
+--- alpine-0.999/alpine/alpine.c
++++ alpine-0.999/alpine/alpine.c
+@@ -15,6 +15,8 @@ static char rcsid[] = "$Id: alpine.c 615
+  * ========================================================================
+  */
+ 
++#include <execinfo.h>
++#include <sys/resource.h>
+ #include "headers.h"
+ 
+ #include "../pith/newmail.h"
+@@ -3274,6 +3275,46 @@ panic(char *message)
+     fprintf(stderr, "\n\n%s\n", buf);
+ #endif
+ 
++    {
++	void *array[40];
++	size_t size, i;
++	char **strings;
++	struct rlimit rlim;
++
++	size = backtrace (array, sizeof(array));
++	strings = backtrace_symbols (array, size);
++
++	fprintf(stderr, "Backtrace (%zd stack frames):\n", size);
++	for (i = 0; i < size; i++)
++		fprintf(stderr, "%s\n", strings[i]);
++
++	if (getrlimit(RLIMIT_CORE, &rlim))
++		perror("getrlimit(RLIMIT_CORE)");
++	else {
++		if (rlim.rlim_cur != 0) {
++			umask(S_IRGRP|S_IWGRP|S_IROTH|S_IWOTH);
++			char filename[] = "/tmp/alpine-backtrace.XXXXXX";
++			int fd = mkstemp(filename);
++			if (fd == -1)
++				perror("mkstemp for backtrace");
++			else {
++				FILE* btf = fdopen(fd, "w");
++				if (!btf)
++					perror("fdopen for backtrace");
++				else {
++					fprintf(btf, "%s\n", buf);
++					fprintf(btf, "Backtrace (%zd stack frames):\n", size);
++					for (i = 0; i < size; i++)
++						fprintf(btf, "%s\n", strings[i]);
++					fclose(btf);
++					fprintf(stderr, "Saved backtrace in: %s\n", filename);
++				}
++				close(fd);
++			}
++		}
++	}
++    }
++
+ #ifdef DEBUG
+     if(debugfile){
+ 	save_debug_on_crash(debugfile, recent_keystroke);

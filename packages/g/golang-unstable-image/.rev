@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eb56b86975874465c16d25e98718bc52</srcmd5>
+    <version>unknown</version>
+    <time>1690278668</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1100394</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a8a837a00ade73d4197bc2f2953795bb</srcmd5>
+    <version>unknown</version>
+    <time>1691502919</time>
+    <user>dimstar_suse</user>
+    <comment>- Add go-doc and go-race subpackages for developer convenience</comment>
+    <requestid>1102823</requestid>
+  </revision>
+</revisionlist>

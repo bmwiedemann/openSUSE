@@ -1,0 +1,838 @@
+---
+ aclocal.m4                  |   37 +++++++-------
+ configure                   |   45 +++++++++--------
+ include/curses.h.in         |    5 +
+ include/termcap.h.in        |    2 
+ include/tic.h               |    4 -
+ man/man_db.renames.in       |    1 
+ man/ncurses.3x              |    6 +-
+ misc/gen-pkgconfig.in       |   25 +++++++++
+ misc/terminfo.src           |  111 ++++++++++++++++++++++++++++++++++++--------
+ ncurses/Makefile.in         |    2 
+ ncurses/run_cmd.sh          |   11 ++++
+ ncurses/tinfo/MKfallback.sh |   14 ++++-
+ ncurses/tinfo/lib_setup.c   |    3 +
+ progs/Makefile.in           |    4 -
+ test/test.priv.h            |    4 -
+ test/tracemunch             |    2 
+ 16 files changed, 203 insertions(+), 73 deletions(-)
+
+--- aclocal.m4
++++ aclocal.m4	2024-01-08 12:23:15.657598181 +0000
+@@ -6087,12 +6087,12 @@ cat >>$cf_edit_man <<CF_EOF
+ 		echo "? missing rename for \$cf_source"
+ 		cf_target="\$cf_source"
+ 	fi
+-	cf_target="\$cf_subdir\${section}/\${cf_target}"
+-
+ CF_EOF
+ fi
+ 
+ cat >>$cf_edit_man <<CF_EOF
++for t in \$cf_target; do
++	t="\$cf_subdir\${section}/\${t}"
+ 	sed	-f "$cf_man_alias" \\
+ CF_EOF
+ 
+@@ -6102,7 +6102,7 @@ cat >>$cf_edit_man <<CF_EOF
+ CF_EOF
+ else
+ cat >>$cf_edit_man <<CF_EOF
+-		< "\$i" >\$TMP
++		< "\$i" | sed -f $srcdir/edit_man.sed >\$TMP
+ CF_EOF
+ fi
+ 
+@@ -6142,7 +6142,7 @@ cat >>$cf_edit_man <<CF_EOF
+ 		mv \$TMP.$cf_manpage_so_strip \$TMP
+ 	fi
+ 	fi
+-	cf_target="\$cf_target.$cf_manpage_so_strip"
++	t="\$t.$cf_manpage_so_strip"
+ CF_EOF
+ fi
+ 
+@@ -6151,31 +6151,31 @@ case "$MANPAGE_FORMAT" in
+ cat >>$cf_edit_man <<CF_EOF
+ 	if test "\$form" = format ; then
+ 		# BSDI installs only .0 suffixes in the cat directories
+-		cf_target="\`echo \$cf_target|sed -e 's/\\.[[1-9]]\\+[[a-z]]*/.0/'\`"
++		t="\`echo \$t|sed -e 's/\\.[[1-9]]\\+[[a-z]]*/.0/'\`"
+ 	fi
+ CF_EOF
+   ;;
+ esac
+ 
+ cat >>$cf_edit_man <<CF_EOF
+-	suffix=\`basename "\$cf_target" | sed -e 's%^[[^.]]*%%'\`
++	suffix=\`basename "\$t" | sed -e 's%^[[^.]]*%%'\`
+ 	extra_suffix=
+ 	if test -n "$EXTRA_SUFFIX" ; then
+-		case \$cf_target in
++		case \$t in
+ 		(*${EXTRA_SUFFIX}\$suffix)
+ 			extra_suffix="$EXTRA_SUFFIX"
+ 			;;
+ 		esac
+ 	fi
+ 	if test "\$verb" = installing ; then
+-		echo "\$verb \$cf_target"
+-		\$INSTALL_DATA \$TMP "\$cf_target"
++		echo "\$verb \$t"
++		\$INSTALL_DATA \$TMP "\$t"
+ 		test -d "\$cf_subdir\${section}" &&
+ 		test -n "\$aliases" && (
+ 			cd "\$cf_subdir\${section}" && (
+-				cf_source=\`echo "\$cf_target" |sed -e 's%^.*/\\([[^/]][[^/]]*/[[^/]][[^/]]*$\\)%\\1%'\`
++				cf_source=\`echo "\$t" |sed -e 's%^.*/\\([[^/]][[^/]]*/[[^/]][[^/]]*$\\)%\\1%'\`
+ 				test -n "$cf_manpage_so_strip" && cf_source=\`echo "\$cf_source" |sed -e 's%\\.$cf_manpage_so_strip\$%%'\`
+-				cf_target=\`basename "\$cf_target"\`
++				t=\`basename "\$t"\`
+ 				for cf_alias in \$aliases
+ 				do
+ 					if test "\$section" = 1 ; then
+@@ -6185,7 +6185,7 @@ cat >>$cf_edit_man <<CF_EOF
+ 
+ 					if test "$MANPAGE_SYMLINKS" = yes ; then
+ 						if test -f "\$cf_alias\${suffix}" ; then
+-							if ( cmp -s "\$cf_target" "\$cf_alias\${suffix}" )
++							if ( cmp -s "\$t" "\$cf_alias\${suffix}" )
+ 							then
+ 								continue
+ 							fi
+@@ -6195,18 +6195,18 @@ CF_EOF
+ case "x$LN_S" in
+ (*-f)
+ cat >>$cf_edit_man <<CF_EOF
+-						$LN_S "\$cf_target" "\$cf_alias\${suffix}"
++						$LN_S "\$t" "\$cf_alias\${suffix}"
+ CF_EOF
+ 	;;
+ (*)
+ cat >>$cf_edit_man <<CF_EOF
+ 						rm -f "\$cf_alias\${suffix}"
+-						$LN_S "\$cf_target" "\$cf_alias\${suffix}"
++						$LN_S "\$t" "\$cf_alias\${suffix}"
+ CF_EOF
+ 	;;
+ esac
+ cat >>$cf_edit_man <<CF_EOF
+-					elif test "\$cf_target" != "\$cf_alias\${suffix}" ; then
++					elif test "\$t" != "\$cf_alias\${suffix}" ; then
+ 						echo ".so \$cf_source" >\$TMP
+ CF_EOF
+ if test -n "$cf_manpage_compress" ; then
+@@ -6226,9 +6226,9 @@ cat >>$cf_edit_man <<CF_EOF
+ 			)
+ 		)
+ 	elif test "\$verb" = removing ; then
+-		test -f "\$cf_target" && (
+-			echo "\$verb \$cf_target"
+-			rm -f "\$cf_target"
++		test -f "\$t" && (
++			echo "\$verb \$t"
++			rm -f "\$t"
+ 		)
+ 		test -d "\$cf_subdir\${section}" &&
+ 		test -n "\$aliases" && (
+@@ -6249,6 +6249,7 @@ cat >>$cf_edit_man <<CF_EOF
+ #		echo ".hy 0"
+ 		cat \$TMP
+ 	fi
++done
+ 	;;
+ esac
+ done
+--- configure
++++ configure	2024-01-08 12:23:15.661598107 +0000
+@@ -6443,7 +6443,7 @@ echo $ECHO_N "checking for an rpath opti
+ 		fi
+ 		;;
+ 	(linux*|gnu*|k*bsd*-gnu|freebsd*)
+-		LD_RPATH_OPT="-Wl,-rpath,"
++		LD_RPATH_OPT="-Wl,-rpath-link,"
+ 		;;
+ 	(openbsd[2-9].*|mirbsd*)
+ 		LD_RPATH_OPT="-Wl,-rpath,"
+@@ -6816,8 +6816,8 @@ echo "${ECHO_T}$cf_cv_ldflags_search_pat
+ 	else
+ 		cf_cv_shared_soname='`basename $@`'
+ 	fi
+-
+-		MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -Wl,-soname,'$cf_cv_shared_soname',-stats,-lc -o $@'
++		CC_SHARED_OPTS="${CFLAGS_SHARED} ${CC_SHARED_OPTS}"
++		MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} ${CC_SHARED_OPTS} -shared -Wl,-soname,'$cf_cv_shared_soname',-stats,-lc -o $@'
+ 		;;
+ 	(mingw*msvc*)
+ 		cf_cv_shlib_version=msvcdll
+@@ -8056,7 +8056,7 @@ echo "${ECHO_T}$with_pcre2" >&6
+ 
+ if test "x$with_pcre2" != xno ; then
+ 	cf_with_pcre2_ok=no
+-	for cf_with_pcre2 in libpcre2 libpcre2-posix libpcre
++	for cf_with_pcre2 in libpcre2 libpcre2-8 libpcre2-posix libpcre
+ 	do
+ 
+ if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists "$cf_with_pcre2"; then
+@@ -15290,12 +15290,12 @@ cat >>$cf_edit_man <<CF_EOF
+ 		echo "? missing rename for \$cf_source"
+ 		cf_target="\$cf_source"
+ 	fi
+-	cf_target="\$cf_subdir\${section}/\${cf_target}"
+-
+ CF_EOF
+ fi
+ 
+ cat >>$cf_edit_man <<CF_EOF
++for t in \$cf_target; do
++	t="\$cf_subdir\${section}/\${t}"
+ 	sed	-f "$cf_man_alias" \\
+ CF_EOF
+ 
+@@ -15305,7 +15305,7 @@ cat >>$cf_edit_man <<CF_EOF
+ CF_EOF
+ else
+ cat >>$cf_edit_man <<CF_EOF
+-		< "\$i" >\$TMP
++		< "\$i" | sed -f $srcdir/edit_man.sed >\$TMP
+ CF_EOF
+ fi
+ 
+@@ -15345,7 +15345,7 @@ cat >>$cf_edit_man <<CF_EOF
+ 		mv \$TMP.$cf_manpage_so_strip \$TMP
+ 	fi
+ 	fi
+-	cf_target="\$cf_target.$cf_manpage_so_strip"
++	t="\$t.$cf_manpage_so_strip"
+ CF_EOF
+ fi
+ 
+@@ -15354,31 +15354,31 @@ case "$MANPAGE_FORMAT" in
+ cat >>$cf_edit_man <<CF_EOF
+ 	if test "\$form" = format ; then
+ 		# BSDI installs only .0 suffixes in the cat directories
+-		cf_target="\`echo \$cf_target|sed -e 's/\\.[1-9]\\+[a-z]*/.0/'\`"
++		t="\`echo \$t|sed -e 's/\\.[1-9]\\+[a-z]*/.0/'\`"
+ 	fi
+ CF_EOF
+   ;;
+ esac
+ 
+ cat >>$cf_edit_man <<CF_EOF
+-	suffix=\`basename "\$cf_target" | sed -e 's%^[^.]*%%'\`
++	suffix=\`basename "\$t" | sed -e 's%^[^.]*%%'\`
+ 	extra_suffix=
+ 	if test -n "$EXTRA_SUFFIX" ; then
+-		case \$cf_target in
++		case \$t in
+ 		(*${EXTRA_SUFFIX}\$suffix)
+ 			extra_suffix="$EXTRA_SUFFIX"
+ 			;;
+ 		esac
+ 	fi
+ 	if test "\$verb" = installing ; then
+-		echo "\$verb \$cf_target"
+-		\$INSTALL_DATA \$TMP "\$cf_target"
++		echo "\$verb \$t"
++		\$INSTALL_DATA \$TMP "\$t"
+ 		test -d "\$cf_subdir\${section}" &&
+ 		test -n "\$aliases" && (
+ 			cd "\$cf_subdir\${section}" && (
+-				cf_source=\`echo "\$cf_target" |sed -e 's%^.*/\\([^/][^/]*/[^/][^/]*$\\)%\\1%'\`
++				cf_source=\`echo "\$t" |sed -e 's%^.*/\\([^/][^/]*/[^/][^/]*$\\)%\\1%'\`
+ 				test -n "$cf_manpage_so_strip" && cf_source=\`echo "\$cf_source" |sed -e 's%\\.$cf_manpage_so_strip\$%%'\`
+-				cf_target=\`basename "\$cf_target"\`
++				t=\`basename "\$t"\`
+ 				for cf_alias in \$aliases
+ 				do
+ 					if test "\$section" = 1 ; then
+@@ -15388,7 +15388,7 @@ cat >>$cf_edit_man <<CF_EOF
+ 
+ 					if test "$MANPAGE_SYMLINKS" = yes ; then
+ 						if test -f "\$cf_alias\${suffix}" ; then
+-							if ( cmp -s "\$cf_target" "\$cf_alias\${suffix}" )
++							if ( cmp -s "\$t" "\$cf_alias\${suffix}" )
+ 							then
+ 								continue
+ 							fi
+@@ -15398,18 +15398,18 @@ CF_EOF
+ case "x$LN_S" in
+ (*-f)
+ cat >>$cf_edit_man <<CF_EOF
+-						$LN_S "\$cf_target" "\$cf_alias\${suffix}"
++						$LN_S "\$t" "\$cf_alias\${suffix}"
+ CF_EOF
+ 	;;
+ (*)
+ cat >>$cf_edit_man <<CF_EOF
+ 						rm -f "\$cf_alias\${suffix}"
+-						$LN_S "\$cf_target" "\$cf_alias\${suffix}"
++						$LN_S "\$t" "\$cf_alias\${suffix}"
+ CF_EOF
+ 	;;
+ esac
+ cat >>$cf_edit_man <<CF_EOF
+-					elif test "\$cf_target" != "\$cf_alias\${suffix}" ; then
++					elif test "\$t" != "\$cf_alias\${suffix}" ; then
+ 						echo ".so \$cf_source" >\$TMP
+ CF_EOF
+ if test -n "$cf_manpage_compress" ; then
+@@ -15429,9 +15429,9 @@ cat >>$cf_edit_man <<CF_EOF
+ 			)
+ 		)
+ 	elif test "\$verb" = removing ; then
+-		test -f "\$cf_target" && (
+-			echo "\$verb \$cf_target"
+-			rm -f "\$cf_target"
++		test -f "\$t" && (
++			echo "\$verb \$t"
++			rm -f "\$t"
+ 		)
+ 		test -d "\$cf_subdir\${section}" &&
+ 		test -n "\$aliases" && (
+@@ -15452,6 +15452,7 @@ cat >>$cf_edit_man <<CF_EOF
+ #		echo ".hy 0"
+ 		cat \$TMP
+ 	fi
++done
+ 	;;
+ esac
+ done
+--- include/curses.h.in
++++ include/curses.h.in	2024-01-08 12:23:15.661598107 +0000
+@@ -97,7 +97,7 @@
+ 
+ #ifdef __cplusplus
+ #else
+-#if @HAVE_STDNORETURN_H@
++#if 0
+ #include <stdnoreturn.h>
+ #undef GCC_NORETURN
+ #define GCC_NORETURN _Noreturn
+@@ -226,6 +226,9 @@ typedef @cf_cv_typeof_chtype@ chtype;
+ typedef @cf_cv_typeof_mmask_t@ mmask_t;
+ #endif
+ 
++#include <features.h>
++#include <sys/types.h>
++
+ /*
+  * We need FILE, etc.  Include this before checking any feature symbols.
+  */
+--- include/termcap.h.in
++++ include/termcap.h.in	2024-01-08 12:23:15.661598107 +0000
+@@ -47,6 +47,8 @@ extern "C"
+ {
+ #endif /* __cplusplus */
+ 
++#include <features.h>
++#include <termios.h>
+ #include <sys/types.h>
+ 
+ #undef  NCURSES_OSPEED
+--- include/tic.h
++++ include/tic.h	2024-01-08 12:23:15.661598107 +0000
+@@ -236,12 +236,12 @@ struct user_table_entry
+  */
+ 
+ /* out-of-band values for representing absent capabilities */
+-#define ABSENT_BOOLEAN		((signed char)-1)	/* 255 */
++#define ABSENT_BOOLEAN		(-1)			/* 255 */
+ #define ABSENT_NUMERIC		(-1)
+ #define ABSENT_STRING		(char *)0
+ 
+ /* out-of-band values for representing cancels */
+-#define CANCELLED_BOOLEAN	((signed char)-2)	/* 254 */
++#define CANCELLED_BOOLEAN	(-2)			/* 254 */
+ #define CANCELLED_NUMERIC	(-2)
+ #define CANCELLED_STRING	(char *)(-1)
+ 
+--- man/man_db.renames.in
++++ man/man_db.renames.in	2024-01-08 12:25:15.355376927 +0000
+@@ -266,6 +266,7 @@ wsetscrreg.3x			wsetscrreg.3ncurses
+ wtimeout.3x			wtimeout.3ncurses
+ #
+ # Other:
++tack.1				tack.1
+ getty.8				getty.8
+ scanf.3				scanf.3
+ ttys.5				ttys.4
+--- man/ncurses.3x
++++ man/ncurses.3x	2024-01-08 12:35:28.107996289 +0000
+@@ -295,7 +295,11 @@ translates these into unique
+ .I "key codes."
+ See \fB\%getch\fP(3X).
+ .SS "Effects of GUIs and Environment Variables"
+-The selection of an approprate value of
++Beware: the terminal your program is running may or may not have
++the features you expect. Ncurses makes no attempt to check available
++features in advance. This is upon the user.
++.PP
++The selection of an appropriate value of
+ .I TERM
+ in the process environment is essential to correct
+ .I curses
+--- misc/gen-pkgconfig.in
++++ misc/gen-pkgconfig.in	2024-01-08 12:23:15.665598033 +0000
+@@ -83,6 +83,8 @@ if [ "$includedir" != "/usr/include" ];
+ fi
+ 
+ lib_flags=
++push=
++pop=
+ for opt in -L$libdir @EXTRA_PKG_LDFLAGS@ @LIBS@
+ do
+ 	case $opt in
+@@ -92,13 +94,27 @@ do
+ 	-specs*) # ignore linker specs-files which were used to build library
+ 		continue
+ 		;;
++	-Wl,--hash-size=*) # ignore hash as gold linker can not do
++		continue
++		;;
+ 	-Wl,-z,*) # ignore flags used to manipulate shared image
+ 		continue
+ 		;;
+ 	-Wl,--dynamic-linker*) # ignore ELF interpreter
+ 		continue
+ 		;;
+-	-Wl,--as-needed|-Wl,--build-id=*|-Wl,-dT,*|-Wl,-T,*)
++	-Wl,-Bsymbolic-functions*) # affect symbol resolution
++		continue
++		;;
++	-Wl,-O*) # ignore linker how optimizes
++		continue
++		;;
++	-Wl,--as-needed)
++		push="-Wl,--push-state,--as-needed "
++		pop=" -Wl,--pop-state"
++		continue
++		;;
++	-Wl,--build-id=*|-Wl,-dT,*|-Wl,-T,*)
+ 		continue
+ 		;;
+ 	-L*)
+@@ -193,19 +209,22 @@ do
+ 	LIBS="-l$name"
+ 
+ 	desc="ncurses @NCURSES_MAJOR@.@NCURSES_MINOR@"
++	deps=
+ 	reqs=
+ 
+ 	if [ $name = $MAIN_LIBRARY ]; then
+ 		desc="$desc library"
+-		[ $NEED_TINFO = yes ] && LIBS="$LIBS -l$TINFO_ARG_SUFFIX"
++		[ $NEED_TINFO = yes ] && LIBS="$LIBS ${push}-l$TINFO_ARG_SUFFIX${pop}"
+ 		[ -n "@LIBS@" ] && LIBS="$LIBS @LIBS@"
+ 	elif [ $name = $SUB_LIBRARY ]; then
+ 		desc="$desc terminal interface library"
+ 	elif expr $name : ".*${CXX_NAME}.*" >/dev/null ; then
+ 		reqs="$PANEL_LIBRARY${suffix}, $MENU_LIBRARY${suffix}, $FORM_LIBRARY${suffix}, $MAIN_LIBRARY${suffix}"
++		deps="-l$PANEL_LIBRARY -l$MENU_LIBRARY -l$FORM_LIBRARY -l$MAIN_LIBRARY"
+ 		desc="$desc add-on library"
+ 	else
+ 		reqs="$MAIN_LIBRARY${suffix}"
++		deps="-l$MAIN_LIBRARY"
+ 		desc="$desc add-on library"
+ 	fi
+ 
+@@ -215,6 +234,8 @@ do
+ 	   [ $NEED_TINFO != yes ] ; then
+ 		[ -n "$reqs" ] && reqs="$reqs, "
+ 		reqs="${reqs}${SUB_LIBRARY}${suffix}"
++		[ -n "$deps" ] && deps="$deps "
++		deps="${deps}-l${SUB_LIBRARY}"
+ 	fi
+ 
+ 	if [ $name = $MAIN_LIBRARY ]
+--- misc/terminfo.src
++++ misc/terminfo.src	2024-01-08 12:43:33.690969798 +0000
+@@ -305,7 +305,9 @@ dumb|80-column dumb tty,
+ 	am,
+ 	cols#80,
+ 	bel=^G, cr=\r, cud1=\n, ind=\n,
+-unknown|unknown terminal type,
++unknown|switch|patch|unknown terminal type,
++	gn, use=dumb,
++net|network|arpanet|dialup|unknown network terminal type,
+ 	gn, use=dumb,
+ lpr|printer|line printer,
+ 	OTbs, hc, os,
+@@ -1053,9 +1055,15 @@ linux-c|Linux console 1.3.6+ for older n
+ # The 2.2.x kernels add a private mode that sets the cursor type; use that to
+ # get a block cursor for cvvis.
+ # reported by Frank Heckenbach <frank@g-n-u.de>.
++#
++# Do not use a block cursor, <werner@suse.de>
++# This because many programs do have a workaround for the long time
++# missed cvvis entry. A `\E[?1c' in civis will cause a visible but
++# zero high cusor ... re-add it for kernels 2.6.11+
++#
+ linux2.2|Linux 2.2.x console,
+ 	civis=\E[?25l\E[?1c, cnorm=\E[?25h\E[?0c,
+-	cvvis=\E[?25h\E[?8c, use=linux-c-nc,
++	cvvis=\E[?25h\E[?0c, use=linux-c-nc,
+ 
+ # release 2.6: 2003/12 - 2004/12
+ #
+@@ -1090,6 +1098,7 @@ linux2.6|Linux 2.6.x console,
+ 	acsc=++\,\,--..00``aaffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxy
+ 	     yzz{{||}}~~,
+ 	enacs=\E)0, rmacs=^O,
++	cvvis=\E[?25h\E[?0c,
+ 	sgr=\E[0;10%?%p1%t;7%;%?%p2%t;4%;%?%p3%t;7%;%?%p4%t;5%;%?%p5
+ 	    %t;2%;%?%p6%t;1%;m%?%p9%t\016%e\017%;,
+ 	sgr0=\E[m\017, smacs=^N, use=linux2.2,
+@@ -5048,7 +5057,7 @@ xterm-new|modern xterm terminal emulator
+ # set it to BS (standard) or DEL (Linux's notion of "vt220").  xterm provides
+ # either, depending on how the pseudoterminals are configured.
+ xterm+kbs|fragment for backspace key,
+-	kbs=^H,
++	kbs=^?,
+ 
+ # Use this fragment for terminals that always use DEL for "backspace".
+ linux+kbs|fragment for "backspace" key,
+@@ -5431,7 +5440,7 @@ xterm+88color2|xterm 88-color feature,
+ 
+ # These variants of XFree86 3.9.16 xterm are built as a configure option.
+ xterm-256color|xterm with 256 colors,
+-	use=xterm+osc104, use=xterm+256color, use=xterm-new,
++	use=xterm+osc104, use=xterm+256color, use=xterm-suse,
+ xterm-88color|xterm with 88 colors,
+ 	use=xterm+osc104, use=xterm+88color,
+ 	use=xterm-256color,
+@@ -5706,9 +5715,25 @@ xterm-noapp|xterm with cursor keys in no
+ xterm-24|vs100|xterms|xterm terminal emulator 24-line (X Window System),
+ 	lines#24, use=xterm-old,
+ 
++# For SUSE Linux: Werner Fink <werner@suse.de>
++# Note that the modern xterm does not use escape sequences
++# for the numbers on the numpad keys in case of switched
++# into application mode and with numlock enabled.
++# To test this, use `tput smkx' and `Ctrl-V + key stroke'
++xterm-suse|xterm terminal emulator (X.Org X11R7.7 Window System with SuSE LINUX), 
++	kdch1=\E[3~,
++	use=xterm-new, use=xterm+kbs,
++
+ # This is xterm for ncurses.
+ xterm|xterm terminal emulator (X Window System),
+-	use=xterm-new,
++	use=xterm-suse,
++
++# xterm-debian is identical to xterm-new with the addition of a small
++# VT220-ism regarding the backspace and delete keys; this is mandated by
++# the keyboard configuration section of the Debian Policy Manual.
++xterm-debian|Debian xterm (backspace and delete changed), 
++	kdch1=\E[3~,
++	use=xterm-new, use=xterm+kbs,
+ 
+ # This entry assumes that xterm's handling of VT100 SI/SO is disabled by
+ # setting the vt100Graphics resource to false.
+@@ -6159,7 +6184,7 @@ xterms-sun|small (80x24) xterm with sunF
+ 
+ #### GNOME (VTE)
+ # this describes the alpha-version of GNOME terminal shipped with Redhat 6.0
+-gnome-rh62|GNOME terminal,
++gnome-rh62|GNOME terminal on Red Hat,
+ 	bce,
+ 	kdch1=^?, kf1=\EOP, kf2=\EOQ, kf3=\EOR, kf4=\EOS,
+ 	use=linux+kbs, use=xterm-color,
+@@ -6444,11 +6469,15 @@ mgt|Multi GNOME Terminal,
+ #### KDE
+ # This is kvt 0-18.7, shipped with Redhat 6.0 (though whether it supports bce
+ # or not is debatable).
+-kvt|KDE terminal,
++kvt-rh|KDE terminal on Red Hat,
+ 	bce, km@,
+ 	kdch1=^?, kend=\E[F, khome=\E[H, use=linux+kbs,
+ 	use=xterm-color,
+ 
++# This is kvt for SuSE because we do not support BrokenByDesign[tm].
++kvt|KDE terminal,
++	kdch1=\E[3~, use=kvt-rh,
++
+ # Konsole 1.0.1 (2001/11/25)
+ # (formerly known as kvt)
+ #
+@@ -6702,7 +6731,7 @@ mlterm3|multi lingual terminal emulator
+ mlterm2|multi lingual terminal emulator 2.x,
+ 	am, eslok, km, mc5i, mir, msgr, npc, xenl, XT,
+ 	colors#8, cols#80, lines#24, pairs#64,
+-	acsc=00``aaffgghhjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
++	acsc=++\,\,--..00II``aaffgghhjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
+ 	bel=^G, bold=\E[1m, clear=\E[H\E[2J, cr=\r, cub=\E[%p1%dD,
+ 	cub1=^H, cud=\E[%p1%dB, cud1=\n, cuf=\E[%p1%dC, cuf1=\E[C,
+ 	cup=\E[%i%p1%d;%p2%dH, cuu=\E[%p1%dA, cuu1=\E[A,
+@@ -6775,7 +6804,7 @@ rxvt-basic|rxvt terminal base (X Window
+ 	enacs=\E(B\E)0, flash=\E[?5h$<100/>\E[?5l, home=\E[H,
+ 	ht=^I, hts=\EH, ich=\E[%p1%d@, ind=\n,
+ 	is1=\E[?47l\E=\E[?1l,
+-	is2=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;3;4;6l\E[4l, kbs=^H,
++	is2=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;3;4;6l\E[4l, kbs=^?,
+ 	kcbt=\E[Z, kmous=\E[M, rev=\E[7m, ri=\EM, rmacs=^O,
+ 	rmir=\E[4l, rmkx=\E>, rmso=\E[27m, rmul=\E[24m,
+ 	rs1=\E>\E[1;3;4;5;6l\E[?7h\E[m\E[r\E[2J\E[H,
+@@ -6870,8 +6899,8 @@ rxvt-basic|rxvt terminal base (X Window
+ # Removed kDN6, etc (control+shift) since rxvt does not implement this -TD
+ rxvt+pcfkeys|rxvt fragment for PC-style fkeys,
+ 	kDC=\E[3$, kEND=\E[8$, kHOM=\E[7$, kIC=\E[2$, kLFT=\E[d,
+-	kNXT=\E[6$, kPRV=\E[5$, kRIT=\E[c, kcub1=\E[D, kcud1=\E[B,
+-	kcuf1=\E[C, kcuu1=\E[A, kel=\E[8\^, kend=\E[8~, kf1=\E[11~,
++	kNXT=\E[6$, kPRV=\E[5$, kRIT=\E[c, kcub1=\EOD, kcud1=\EOB,
++	kcuf1=\EOC, kcuu1=\EOA, kel=\E[8\^, kend=\E[8~, kf1=\E[11~,
+ 	kf10=\E[21~, kf11=\E[23~, kf12=\E[24~, kf13=\E[25~,
+ 	kf14=\E[26~, kf15=\E[28~, kf16=\E[29~, kf17=\E[31~,
+ 	kf18=\E[32~, kf19=\E[33~, kf2=\E[12~, kf20=\E[34~,
+@@ -6959,6 +6988,38 @@ rxvt-cygwin-native|rxvt terminal emulato
+ 	     \302x\263y\363z\362{\343|\330~\376,
+ 	use=rxvt-cygwin,
+ 
++# From: Thomas Dickey <dickey@clark.net> 04 Oct 1997
++# Updated: Özgür Kesim <kesim@math.fu-berlin.de> 02 Nov 1997
++# Updated: Marc Lehmann <pcg@goof.com>, 17 Feb 2005
++# Updated: Marc Lehmann <schmorp@schmorp.de>, 04 Nov 2008: change init/reset sequences
++#
++rxvt-unicode|rxvt-unicode terminal (X Window System), 
++	bw, ccc, hs, mc5i, npc, btns#5, colors#88, lm#0, ncv#0, pairs#256, 
++	acsc=+C\,D-A.B0E``aaffgghFiGjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~, 
++	dsl=\E]2;\007, ech=\E[%p1%dX, enacs=, flash=\E[?5h$<20/>\E[?5l, 
++	fsl=^G, indn=\E[%p1%dS, 
++	initc=\E]4;%p1%d;rgb\:%p2%{65535}%*%{1000}%/%4.4X/%p3%{65535}%*%{1000}%/%4.4X/%p4%{65535}%*%{1000}%/%4.4X\E\\, 
++	is1=\E[!p, 
++	is2=\E[r\E[m\E[2J\E[?7;25h\E[?1;3;4;5;6;9;66;1000;1001;1049l\E[4l, 
++	kIC=\E2$, mc0=\E[i, mc4=\E[4i, mc5=\E[5i, op=\E[39;49m, 
++	rin=\E[%p1%dT, ritm=\E[23m, rmacs=\E(B, rmam=\E[?7l, 
++	rmcup=\E[r\E[?1049l, rmkx=\E[?1l\E>, rs1=\Ec, 
++	rs2=\E[r\E[m\E[?7;25h\E[?1;3;4;5;6;9;66;1000;1001;1049l\E[4l, 
++	s2ds=\E*B, s3ds=\E+B, 
++	setab=\E[48;5;%p1%dm, setaf=\E[38;5;%p1%dm, 
++	setb=%?%p1%{7}%>%t\E[48;5;%p1%dm%e\E[4%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m%;, 
++	setf=%?%p1%{7}%>%t\E[38;5;%p1%dm%e\E[3%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m%;, 
++	sgr=\E[0%?%p6%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;%?%p7%t;8%;m%?%p9%t\E(0%e\E(B%;, 
++	sgr0=\E[m\E(B, sitm=\E[3m, smacs=\E(0, smam=\E[?7h, 
++	smcup=\E[?1049h, smkx=\E[?1h\E=, 
++	tsl=\E]2;, u6=\E[%i%d;%dR, u7=\E[6n, u8=\E[?1;2c, u9=\E[c, 
++	use=rxvt-basic, 
++
++rxvt-unicode-256color|rxvt-unicode terminal with 256 colors (X Window System),
++	colors#256, 
++	pairs#32767, 
++	use=rxvt-unicode, 
++
+ # This variant is supposed to work with rxvt 2.7.7 when compiled with
+ # NO_BRIGHTCOLOR defined.  rxvt needs more work...
+ rxvt-16color|rxvt with 16 colors like aixterm,
+@@ -7021,7 +7082,7 @@ Eterm|Eterm-color|Eterm with xterm-style
+ 	home=\E[H, hpa=\E[%i%p1%dG, ht=^I, hts=\EH, ich=\E[%p1%d@,
+ 	ind=\n, is1=\E[?47l\E>\E[?1l,
+ 	is2=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;3;4;6l\E[4l, kNXT@,
+-	kPRV@, ka1=\E[7~, ka3=\E[5~, kb2=\EOu, kbeg=\EOu, kbs=^H,
++	kPRV@, ka1=\E[7~, ka3=\E[5~, kb2=\EOu, kbeg=\EOu, kbs=^?,
+ 	kc1=\E[8~, kc3=\E[6~, kent=\EOM, khlp=\E[28~, kmous=\E[M,
+ 	mc4=\E[4i, mc5=\E[5i, rev=\E[7m, ri=\EM, rmacs=^O,
+ 	rmam=\E[?7l, rmir=\E[4l, rmkx=, rmso=\E[27m, rmul=\E[24m,
+@@ -8263,7 +8324,7 @@ pty|4bsd pseudo teletype,
+ # https://github.com/emacs-mirror/emacs/blob/master/lisp/term.el
+ #
+ # The codes supported by the term.el terminal emulation in GNU Emacs 19.30
+-eterm|GNU Emacs term.el terminal emulation,
++eterm-19|GNU Emacs term.el terminal emulation,
+ 	am, mir, xenl,
+ 	cols#80, lines#24,
+ 	bel=^G, bold=\E[1m, cr=\r, csr=\E[%i%p1%d;%p2%dr,
+@@ -8274,6 +8335,13 @@ eterm|GNU Emacs term.el terminal emulati
+ 	rev=\E[7m, rmir=\E[4l, rmso=\E[m, rmul=\E[m, sgr0=\E[m,
+ 	smir=\E[4h, smso=\E[7m, smul=\E[4m, use=ansi+cpr,
+ 	use=ansi+erase, use=ansi+idl, use=xterm+alt47,
++eterm|emacs|GNU Emacs term.el terminal emulation,
++	colors#8, pairs#64,
++	invis=\E[8m, kcub1=\EOD, kcud1=\EOB,
++	kcuf1=\EOC, kcuu1=\EOA, kend=\E[4~,
++	khome=\E[1~, knp=\E[6~, kpp=\E[5~,
++	setab=\E[%p1%{40}%+%dm, setaf=\E[%p1%{30}%+%dm,
++	use=eterm-19,
+ 
+ # The codes supported by the term.el terminal emulation in GNU Emacs 22.2
+ eterm-color|Emacs term.el terminal emulator term-protocol-version 0.96,
+@@ -8519,11 +8587,18 @@ screen.xterm-xfree86|screen.xterm-new|sc
+ 	E3@, use=screen+italics, use=screen+fkeys,
+ 	use=xterm+x11mouse, use=ecma+index, use=ansi+rep,
+ 	use=ecma+strikeout, use=xterm+pcfkeys,
+-	use=xterm+nofkeys,
++	use=xterm+nofkeys, use=xterm-suse,
+ 
+ # Don't use this, because not everyone has "screen.xterm-new":
+ #:screen.xterm|screen for modern xterm,
+ #:	use=screen.xterm-new,
+++screen.xterm|screen customized for modern xterm,
++	bce@, bw,
++	invis@, kIC@, kNXT@, kPRV@, meml@, memu@, rep@,
++	sgr=%?%p9%t\E(0%e\E(B%;\E[0%?%p6%t;1%;%?%p2%t;4%;%?%p1%p3%|
++	    %t;7%;%?%p4%t;5%;%?%p5%t;2%;m,
++	E3@, use=screen+italics, use=screen+fkeys,
++	use=xterm+x11mouse, use=xterm-suse,
+ 
+ # xterm-r6 does not really support khome/kend unless it is propped up by
+ # the translations resource.
+@@ -8610,7 +8685,7 @@ screen2|VT 100/ANSI X3.64 virtual termin
+ 	clear=\E[2J\E[H, cr=\r, cub=\E[%p1%dD, cub1=^H,
+ 	cud=\E[%p1%dB, cud1=\E[B, cuf=\E[%p1%dC, cuf1=\E[C,
+ 	cup=\E[%i%p1%d;%p2%dH, cuu=\E[%p1%dA, cuu1=\E[A, ed=\E[J,
+-	el=\E[K, ich1=, ind=\n, kbs=^H, kcub1=\ED, kcud1=\EB,
++	el=\E[K, ich1=, ind=\n, kbs=^?, kcub1=\ED, kcud1=\EB,
+ 	kcuf1=\EC, kcuu1=\EA, kf0=\E~, kf1=\ES, kf2=\ET, kf3=\EU,
+ 	kf4=\EV, kf5=\EW, kf6=\EP, kf7=\EQ, kf8=\ER, kf9=\E0I,
+ 	khome=\EH, nel=\r\n, rc=\E8, ri=\EM, rmso=\E[23m,
+@@ -10562,7 +10637,7 @@ hp700-wy|HP 700/41 emulating Wyse30,
+ 	ri=\Ej, rmir=\Er, rmso=\EG0$<10/>, rmul=\EG0$<10/>,
+ 	sgr0=\EG0$<10/>, smir=\Eq, smso=\EG4$<10/>,
+ 	smul=\EG8$<10/>, tbc=\E0, vpa=\E[%p1%{32}%+%c,
+-hp70092|hp70092a|hp70092A|HP 700/92,
++hp70092|hp70092a|hp70092A|70092|HP 700/92,
+ 	am, da, db, xhp,
+ 	cols#80, lh#2, lines#24, lm#0, lw#8, nlab#8,
+ 	acsc=0cjgktlrmfn/q\,t5u6v8w7x., bel=^G, blink=\E&dA,
+@@ -18149,7 +18224,7 @@ ibm3101|i3101|IBM 3101-10,
+ 	cup=\EY%p1%{32}%+%c%p2%{32}%+%c, cuu1=\EA, ed=\EJ,
+ 	el=\EI, home=\EH, hts=\E0, ind=\n, kcub1=\ED, kcud1=\EB,
+ 	kcuf1=\EC, kcuu1=\EA, nel=\r\n, tbc=\EH,
+-ibm3151|IBM 3151 display,
++ibm3151|i3151|IBM 3151 display,
+ 	is2=\E S, rmacs=\E>B, rs2=\E S,
+ 	sgr=\E4%{64}%?%p1%t%{65}%|%;%?%p2%t%{66}%|%;%?%p3%t%{65}%|%;
+ 	    %?%p4%t%{68}%|%;%?%p5%t%{64}%|%;%?%p6%t%{72}%|%;%?%p7%t
+@@ -18389,7 +18464,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
+ 
+ # "Megapel" refers to the display adapter, which was used with the IBM RT
+ # aka IBM 6150.
+-ibm5081|hft|IBM Megapel Color display,
++ibm5081|ibmmpel|hft|IBM Megapel Color display,
+ 	acsc=jjkkllmmnnqqttuuvvwwxx, blink@, bold@, s0ds=\E(B,
+ 	s1ds=\E(0, sgr0=\E[0m\E(B, use=ibm5154,
+ ibm5081-c|ibmmpel-c|IBM 5081 1024x1024 256/4096 Megapel enhanced color display,
+--- ncurses/Makefile.in
++++ ncurses/Makefile.in	2024-01-08 12:23:15.681597736 +0000
+@@ -242,7 +242,7 @@ $(DESTDIR)$(libdir) :
+ ../lib : ; mkdir $@
+ 
+ ./fallback.c : $(tinfo)/MKfallback.sh
+-	$(SHELL) -e $(tinfo)/MKfallback.sh $(TERMINFO) $(TERMINFO_SRC) "$(TIC_PATH)" "$(INFOCMP_PATH)" $(FALLBACK_LIST) >$@
++	$(SHELL) $(srcdir)/run_cmd.sh $(SHELL) -e $(tinfo)/MKfallback.sh $(TERMINFO) $(TERMINFO_SRC) "$(TIC_PATH)" "$(INFOCMP_PATH)" $(FALLBACK_LIST) >$@
+ 
+ ./lib_gen.c : $(base)/MKlib_gen.sh ../include/curses.h
+ 	FGREP="@FGREP@" $(SHELL) -e $(base)/MKlib_gen.sh "$(CPP) $(CPPFLAGS)" "$(AWK)" generated <../include/curses.h >$@
+--- ncurses/run_cmd.sh
++++ ncurses/run_cmd.sh	2024-01-08 12:23:15.685597662 +0000
+@@ -0,0 +1,11 @@
++#!/bin/sh
++
++PATH=$PWD/../progs:$PATH
++if test -n "$LD_LIBRARY_PATH"; then
++    LD_LIBRARY_PATH="$PWD/../lib:$LD_LIBRARY_PATH"
++else
++    LD_LIBRARY_PATH="$PWD/../lib"
++fi
++export PATH LD_LIBRARY_PATH
++
++exec ${1+"$@"}
+--- ncurses/tinfo/MKfallback.sh
++++ ncurses/tinfo/MKfallback.sh	2024-01-08 12:23:15.685597662 +0000
+@@ -66,14 +66,22 @@ if test $# != 0 ; then
+ 	TERMINFO=`pwd`/$tmp_info
+ 	export TERMINFO
+ 
++	test -d "$TERMINFO" || mkdir -p "$TERMINFO"
++
+ 	TERMINFO_DIRS=$TERMINFO:$terminfo_dir
+ 	export TERMINFO_DIRS
+ 
+-	"$tic_path" -x "$terminfo_src" >&2
++	"$tic_path" -o "$TERMINFO" -x "$terminfo_src" >&2
+ else
+ 	tmp_info=
+ fi
+ 
++if test -n "$TERMINFO" -a -d "$TERMINFO" ; then
++	infocmp_args="-v1 -A $TERMINFO"
++else
++	infocmp_args="-v1"
++fi
++
+ cat <<EOF
+ /* This file was generated by $0 */
+ 
+@@ -95,7 +103,7 @@ EOF
+ 	for x in "$@"
+ 	do
+ 		echo "/* $x */"
+-		"$infocmp_path" -E "$x" | sed -e 's/\<short\>/NCURSES_INT2/g'
++		"$infocmp_path" $infocmp_args -E "$x" | sed -e 's/\<short\>/NCURSES_INT2/g'
+ 	done
+ 
+ 	cat <<EOF
+@@ -106,7 +114,7 @@ EOF
+ 	for x in "$@"
+ 	do
+ 		echo "$comma /* $x */"
+-		"$infocmp_path" -e "$x"
++		"$infocmp_path" $infocmp_args -e "$x"
+ 		comma=","
+ 	done
+ 
+--- ncurses/tinfo/lib_setup.c
++++ ncurses/tinfo/lib_setup.c	2024-01-08 12:23:15.685597662 +0000
+@@ -747,6 +747,9 @@ _nc_locale_breaks_acs(TERMINAL *termp)
+     } else if ((value = tigetnum("U8")) >= 0) {
+ 	result = value;		/* use extension feature */
+     } else if ((env = getenv("TERM")) != 0) {
++	char *yast = getenv("YAST_DOES_ACS");
++	if (yast != 0)
++	    return 0;		/* YaST uses always correct font mappings */
+ 	if (strstr(env, "linux")) {
+ 	    result = 1;		/* always broken */
+ 	} else if (strstr(env, "screen") != 0
+--- progs/Makefile.in
++++ progs/Makefile.in	2024-01-08 12:23:15.685597662 +0000
+@@ -101,7 +101,7 @@ CFLAGS_LIBTOOL	= $(CCFLAGS)
+ CFLAGS_NORMAL	= $(CCFLAGS) -DNCURSES_STATIC
+ CFLAGS_DEBUG	= $(CCFLAGS) -DNCURSES_STATIC @CC_G_OPT@ -DTRACE
+ CFLAGS_PROFILE	= $(CCFLAGS) -DNCURSES_STATIC -pg
+-CFLAGS_SHARED	= $(CCFLAGS) @CC_SHARED_OPTS@
++CFLAGS_SHARED	= $(CCFLAGS) -fPIE
+ 
+ CFLAGS_DEFAULT	= $(CFLAGS_@DFT_UPR_MODEL@)
+ 
+@@ -118,7 +118,7 @@ LDFLAGS_LIBTOOL	= $(LDFLAGS) $(CFLAGS_LI
+ LDFLAGS_NORMAL	= $(LDFLAGS) $(CFLAGS_NORMAL)
+ LDFLAGS_DEBUG	= $(LDFLAGS) $(CFLAGS_DEBUG)
+ LDFLAGS_PROFILE	= $(LDFLAGS) $(CFLAGS_PROFILE)
+-LDFLAGS_SHARED	= $(LDFLAGS) $(CFLAGS_SHARED) @LD_SHARED_OPTS@
++LDFLAGS_SHARED	= $(LDFLAGS) $(CFLAGS_SHARED) -pie
+ 
+ LDFLAGS_DEFAULT	= $(LDFLAGS_@DFT_UPR_MODEL@)
+ 
+--- test/test.priv.h
++++ test/test.priv.h	2024-01-08 12:23:15.685597662 +0000
+@@ -1154,12 +1154,12 @@ extern char *_nc_strstr(const char *, co
+ #endif
+ 
+ /* out-of-band values for representing absent capabilities */
+-#define ABSENT_BOOLEAN		((signed char)-1)	/* 255 */
++#define ABSENT_BOOLEAN		((char)-1)		/* 255 */
+ #define ABSENT_NUMERIC		(-1)
+ #define ABSENT_STRING		(char *)0
+ 
+ /* out-of-band values for representing cancels */
+-#define CANCELLED_BOOLEAN	((signed char)-2)	/* 254 */
++#define CANCELLED_BOOLEAN	(-2)			/* 254 */
+ #define CANCELLED_NUMERIC	(-2)
+ #define CANCELLED_STRING	(char *)(-1)
+ 
+--- test/tracemunch
++++ test/tracemunch	2024-01-08 12:23:15.685597662 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ # $Id: tracemunch,v 1.41 2021/09/04 10:31:03 tom Exp $
+ ##############################################################################
+ # Copyright 2018-2020,2021 Thomas E. Dickey                                  #

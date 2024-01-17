@@ -1,0 +1,13 @@
+--- ClanLib-4.1.0/configure.ac.orig	2021-06-16 14:04:48.744184558 +0200
++++ ClanLib-4.1.0/configure.ac	2021-06-16 14:09:15.738679727 +0200
+@@ -118,6 +118,10 @@ case $target in
+ 		CXXFLAGS="$CXXFLAGS -DARM_PLATFORM"
+ 		CFLAGS="$CXXFLAGS -DARM_PLATFORM"
+ 		;;
++	aarch64* )
++		CXXFLAGS="$CXXFLAGS -DARM_PLATFORM"
++		CFLAGS="$CXXFLAGS -DARM_PLATFORM"
++		;;
+ esac
+ 
+ dnl Extra flags that are needed to compile (for pkg-config)

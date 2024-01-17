@@ -1,0 +1,263 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>735a489721e478b048b76316ce6d2cca</srcmd5>
+    <version>0.5.0</version>
+    <time>1516359042</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove filler wording from description.
+- Bump to 0.5.0
+  * Features
+    - Blur tool
+    - Bash completion
+    - Add --raw flag: prints the raw bytes of the png after the capture
+    - Catalan translation
+    - Preview draw size on mouse pointer after tool selection
+    - App Launcher tool: choose an app to open the capture
+    - Configuration import, export and reset
+    - Experimental Wayland support (Plasma &amp; Gnome)
+    - Debian package configuration
+  * Accessibility
+    - Capture selection resizable from any edge
+  * Fixes
+    - App version shown properly
+    - cli wont break if you prepend gui, full and config arguments
+      with a dash
+    - Fix rare crash when creating a selection during a graphical
+      capture
+- Build cleanup:
+  * Remove unneeded service file
+  * Use Qt macros for building and installing
+  * Remove now unneeded .deskop file handling macros
+- Package bash completions
+- Bump to 0.4.2 (hotfix release)
+- hotfix: persistent configuration wasn't handled correctly for new
+  users, failing to set a &quot;initiated&quot; status flag in the
+  configuration. That is used to let the program know if a new
+  process of Flameshot is the first launch of the program.
+- 0.4.0 release (https://github.com/lupoDharkael/flameshot/releases/tag/v0.4.0)
+- lint .spec file
+- Package for the first time (with v0.3.0)
+</comment>
+    <requestid>560421</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d0949c29c010aaf52ff62e902846a451</srcmd5>
+    <version>0.5.1</version>
+    <time>1519555628</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to 0.5.1
+  * Modal widgets doesn't prevent the start of a new capture
+  * Better hidpi support
+  * Tool buttons now don't go out of the screen
+  * Use of native file dialog
+  * Configurable opacity of the dark area outside the selection
+  * Autostart app as a configuration option
+  * Polish, french, georgian, chinese, turkish and rusian
+    translations
+  * Minor fixes
+- rebase desktop-files.patch
+</comment>
+    <requestid>579815</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>896048660b0b78d0d5f0a25705acb125</srcmd5>
+    <version>0.6.0</version>
+    <time>1535705085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632030</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4ba196a251449b20609b408335620ae4</srcmd5>
+    <version>0.6.0</version>
+    <time>1554712822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692145</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4260d8fdf0a6dd064aac47696208de98</srcmd5>
+    <version>0.6.0</version>
+    <time>1583948860</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783184</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>ef4043fc7c477a80dd1833a1597d1120</srcmd5>
+    <version>0.6.0</version>
+    <time>1591479589</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811982</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a069225d93f6dc85f73d1c8300f17b3f</srcmd5>
+    <version>0.8.1</version>
+    <time>1601399044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838416</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e2ac685be5a6c3f1acc15832032b3962</srcmd5>
+    <version>0.8.3</version>
+    <time>1601653256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839113</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a17204dd657c7fa19f992761499b0a93</srcmd5>
+    <version>0.8.4</version>
+    <time>1602596708</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841358</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7760b3fb33e50d135a20f8a9489bbee4</srcmd5>
+    <version>0.8.5</version>
+    <time>1603031499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842206</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>37f3b0325ee2f3be732cff7b21b290a6</srcmd5>
+    <version>0.9.0</version>
+    <time>1617131339</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update description with features and flameshot-org
+- Update to version 0.9.0
+  Known Issues
+  * Fractional scaling issues are not resolved. We are working with
+    Qt upstream on this issue.
+  * KDE Wayland requires modification to the Desktop file.
+  New Features
+  * Improved Wayland support on Gnome
+    + Behind the scenes we configure flameshot to automatically run
+      on xcb. This significantly improves the wayland experience.
+      This resolves issues with multimonitor setups and copying to
+      the clipboard
+  * Ability to run flameshot on Sway
+  * New option to allow the the clipboard image to be a jpeg
+    instead of a png. This may reduce bandwidth when pasting the
+    image into chat or email clients.
+  * New global shortcut menu. All actions hotkeys are fully
+    customizable.
+  * Ability to take &quot;symmetric&quot; selections by holding down the
+    Shift key while resizing the selection.
+  * The rectangle tool will now round the corners of the rectangles
+    based on the current thickness.
+  * All imgur uploads are now tracked in the &quot;Upload History&quot; menu.
+    This makes it much easier to delete of images off imgur or find
+    the upload link later.
+  * New option for setting a &quot;fixed save path&quot;. When this is
+    enabled a user will no longer need to set the path for images
+    that are saved.
+  Fixes
+  * Under certain circumstance the circle count could get set to
+    the wrong number with large numbers of undo / redo. This has
+    been fixed.
+  * Close after capture has been removed. This feature was not well
+    implemented and lead to numerous bugs.
+</comment>
+    <requestid>879359</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d8d55aca895f83988eab1dba100dd2ef</srcmd5>
+    <version>0.10.0</version>
+    <time>1626986603</time>
+    <user>dimstar_suse</user>
+    <comment>Re-opening,  0.10.0 release was finally tagged 3 days ago
+
+- Update to version 0.10.0
+  * known issue: fractional scaling issues We are working with Qt
+    upstream on this issue.
+  * known issue: KDE Wayland requires modification to the Desktop file.
+  * change: close after capture removed due to lack of maintenance
+  * feat: automatically run on xcb. This improves compatibility with
+    Wayland, multimonitor setups and copy to clipboard
+  * feat: save clipboard as jpeg instead of a png. May reduce
+    bandwidth when pasting the image into chat or email clients.
+  * feat: global shortcut menu. All actions hotkeys are fully
+    customizable.
+  * feat: &quot;Symmetric&quot; selections by holding Shift when resizing
+  * feat: The rectangle tool will now round the corners of the
+    rectangles based on the current thickness.
+  * feat: All imgur uploads are now tracked in the &quot;Upload History&quot;
+    menu. This makes it much easier to delete of images off imgur
+    or find the upload link later.
+  * feat: New option for setting a &quot;fixed save path&quot;. When this is
+    enabled a user will no longer need to set the path for images
+    that are saved.
+  * fix: Under certain circumstance the circle count could get set to
+    the wrong number with large numbers of undo / redo. This has
+    been fixed.
+</comment>
+    <requestid>907605</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>663f29e8ff8e39abecc374af80105850</srcmd5>
+    <version>0.10.1</version>
+    <time>1627313898</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.1
+   * The ability to upload to imgur via a hotkey has been removed.
+     - Many users accidentally hit the hotkey and uploaded sensitive data
+     - Users could accidentally upload the entire desktop by hitting the
+       upload key before a region was selection
+   * Fixed segfault when parsing invalid config file
+</comment>
+    <requestid>908403</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>06b8ceb3a91befcc522845ead816fa22</srcmd5>
+    <version>0.10.2</version>
+    <time>1637108046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931664</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1009e412d6df5112e37bade477987cd7</srcmd5>
+    <version>11.0.0</version>
+    <time>1642835905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948019</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c0c91bb5be4b66d267aa6c415f8cf8d8</srcmd5>
+    <version>12.0.0</version>
+    <time>1655972693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984554</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>216f45dbf062905b4236beef31beaac5</srcmd5>
+    <version>12.1.0</version>
+    <time>1659470933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992086</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>525e1ae28ae79b42c1267e2d1cd9a48d</srcmd5>
+    <version>12.1.0</version>
+    <time>1684313603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087460</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>325e1ef70affc487fa8f51077e0d2be0</srcmd5>
+    <version>12.1.0</version>
+    <time>1704380375</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136734</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,457 @@
+-------------------------------------------------------------------
+Wed Dec 27 14:00:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.10.1:
+  * Rebuilt with QPDF 11.6.4.
+  * Replaced use of a custom C++ logger with sharing QPDF's.
+    It is still relayed to the Python logger.
+  * Added a simpler API for adding attachments from bytes data.
+  * Deprecated use of Object.parse(str) in favor of
+    Object.parse(bytes).
+
+-------------------------------------------------------------------
+Wed Dec 13 14:43:49 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 8.9.0
+  - Overhauled documentation. Previously the documentation could only
+    be generated in an environment where pikepdf was compiled and installed,
+    since generating the final result depended on executing pikepdf.
+    Now, these dynamic features are removed and the documentation is static.
+    All documentation that was defined in C++ has been pulled out and defined
+    in Python stub files instead, which means compiled binaries are no longer
+    needed to access documentation. This change simplifies the generation of
+    documentation and makes it easier for IDEs to look up function signatures.
+  - Similarly, typing is now defined only in Python stub files.
+- Update to 8.8.0
+  - Added new pikepdf.canvas module with rudimentary content stream creation functions.
+- Update to 8.7.1
+  - Fixed pikepdf.Matrix.rotated() so it now rotates in the advertised direction.
+- Update to 8.7.0
+  - pikepdf.PdfMatrix is now deprecated, in favor of pikepdf.Matrix.
+    The former, unfortunately, implemented some operations backwards
+    compared to the PDF reference manual. The new class fixes these issues,
+    and adds more functionality, promoting transformation matrix to first class objects.
+    PdfMatrix is now deprecated and will be removed in the next major release.
+  - Improve behavior around truthiness of pikepdf.Name.
+- Update to 8.6.0
+  - Implemented Page.artbox and Page.bleedbox to access these page dimension boxes.
+- Update to 8.5.3
+  - Fixed exception on certain PdfImage.__repr__ when the image's mode was invalid.
+  - Fixed some minor issues that caused code coverage to miss some covered lines.
+  - Removed some unused code.
+
+-------------------------------------------------------------------
+Mon Dec 11 17:29:49 UTC 2023 - Jonathan Papineau <jonathan@jontech.app>
+
+- update to 8.9.0
+  * Overhauled documentation
+  * Added new pikepdf.canvas module with rudimentary content stream creation functions
+  * Fixed pikepdf.Matrix.rotated() so it now rotates in the advertised direction
+  * pikepdf.PdfMatrix is now deprecated, in favor of pikepdf.Matrix
+  * Improve behavior around truthiness of pikepdf.Name
+  * Implemented Page.artbox and Page.bleedbox to access these page dimension boxes
+  * Fixed exception on certain PdfImage.__repr__ when the image’s mode was invalid
+  * Fixed some minor issues that caused code coverage to miss some covered lines
+
+-------------------------------------------------------------------
+Sat Oct 21 23:05:48 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- update to 8.5.2:
+  * Fix incorrect usage of sys_platform
+  * Don't install psutil on Windows and update other test dependencies
+  * Move psutil-needing tests to their own script
+  * Raise hypothesis deadlines
+  * Fix a few type hints
+  * Fix return values of global set/get fns and add get_access_default_mmap to pyi
+  * Update binary wheel list
+  * Simplify atomic_overwrite exception handler
+  * Increase arm64 build coverage - add musl and cp312
+  * Stop building PyPy3.8 wheels due to lack of Pillow support
+  * Implementation AFRelationship for AttachedFileSpec
+  * docs: update info about creating PDFs
+  * Change to building against libqpdf v11.6.1
+  * Disable pp3.10 since numpy binary wheels aren't released yet
+  * Merge branch 'trusted-release'
+  * Try adding url to see if it suppresses legacy warning
+  * Merge branch 'm-holger-rect'
+  * rect: tidy and prepare for release
+  * Fixing use of typing | on Python 3.9
+  * Add Python 3.8 shim
+  * Improve CCITT tests
+  * Implement Decode array to better support weird CCITTs
+  * Fix another CCITT inversion issue
+  * Improve available version documentation
+  * Better documentation for atomic_overwrite
+  * Fix saving file opened from BytesIO on Windows
+  * Change atomic_overwite to use exclusive creation
+  * black doesn't support py312 yet
+  * Update documentation for 3.12 support
+  * Update note about needsappearances
+  * Allow Python 3.12 build to fail
+  * Test Python 3.12 pre-release
+  * Merge pull request #504 from m-holger/qm
+  * Fix link to QPDF manual
+  * Add docs back to sdist
+  * build: found a way to make RTD trigger again
+  * build: Replace deprecated "::set-output"
+  * Add Rectangle operators '<=' and '&'
+- Use pyproject
+
+-------------------------------------------------------------------
+Tue Jul 25 10:44:56 UTC 2023 - ecsos <ecsos@openssue.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Jul 24 07:47:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.2.1:
+  * Support for Python 3.7 is dropped.
+  * Added Page.form_xobjects, which returns all Form XObjects that
+    are used in a page
+  * Fixed an issue with extracting images that were compressed
+    with multiple compression filters
+  * Improved Object.repr() to avoid printing the entire contents
+    of large object trees such as those in PDFs with structural
+    element trees.
+  * Fixed error when attempting to convert XMP metadata to
+    DocumentInfo when the author was omitted.
+  * Added a method to add items to the document table of contents.
+  * Adjusted stream preview (with __repr__) so it does not attempt
+    to decompress very long
+  * Removed uses of deprecated function datetime.utcnow()
+  * Adjusted timeline of potentially flaky hypothesis test.
+  * PyPy 3.10 is now supported on some platforms.
+  * PyPy 3.8 support will be dropped in the next major release
+
+-------------------------------------------------------------------
+Wed May 10 06:39:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.8.post1:
+  * Drop PyPy3.7 from wheel builds, since dependencies (lxml, Pillow)
+    no longer provide it.
+  * Fixed some tests that randomly failed on Windows due to newline
+    handling issues.
+
+-------------------------------------------------------------------
+Mon Jan  2 19:06:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.7:
+  * Removed a debug message during mmap.
+  * Fixed errors when using AccessMode.mmap
+  * Fixed noisy log message.
+  * Made some flakey tests less flakey.
+  * Fixed deprecated information in setup.cfg. Thanks @mgorny.
+  * Rebuild binary wheels using zlib 1.2.13. Source build unchanged.
+
+-------------------------------------------------------------------
+Wed Oct 12 03:20:48 UTC 2022 - C J <c.j@tuta.io>
+
+- Update to version 6.2.0:
+  * Add new keyword argument Pdf.save
+- version 6.1.0: Rebuild wheels with qpdf 11.1.1.
+- version 6.0.2:
+  * Fixed large increase in binary wheel file size for linux wheels.
+  * Provide macOS and Linux wheels for Python 3.11.
+- version 6.0.1:
+  * Use qpdf 11.1.0
+- version 6.0.0:
+  * pikepdf 6.0.0 released to align with backward incompatible
+    changes in qpdf 11.
+  * Remove deprecated APIs
+- version 5.6.1:
+  * Made treatment of CCITT image photometry ignore BlackIs1.
+- version 5.6.0:
+  * Improved support for extracting the contents of inline images.
+  * Marked some "always should have been private" functions as deprecated
+    with removal planned for v6, mainly in pikepdf.models.image.
+  * Fixed all Python documentation style inconsistencies.
+- version 5.5.0:
+  * Fixed undefined behavior on creating NameTree on direct object.
+  * Fixed sdist with coverage build.
+  * Added support for specifying QPDF's library build directory, for
+    compatibility with QPDF's transition to cmake.
+  * QPDF_* environment variables will modify build paths even when CFLAGS
+    is defined.
+  * Fixed case where GIL was not held while discarding a certain exception.
+  * Now using cibuildwheel 2.9.0.
+  * Many typo fixes.
+- version 5.4.2:
+  * Fixed Pages.__eq__ not returning NotImplemented when it ought to.
+  * Fixed possible problems with NameTree and NumberTree.__eq__ operators.
+  * Changed to SPDX license headers throughout.
+- version 5.4.1:
+  * Fixed ReadTheDocs build, updated versions, fixed a test warning, improved
+    coverage, modernized type annotations.
+- version 5.4.0:
+  * New feature: pikepdf.Job bindings to QPDFJob API.
+  * New feature: pikepdf.NumberTree to support manipulation of number trees.
+  * Many improvements to pikepdf.NameTree including the ability to instantiate
+    a new name tree.
+  * Several memory leaks were fixed.
+  * Rebuilt against pybind11 2.10.0.
+- version 5.3.2: Build system requires changed to setuptools-scm 7.0.5.
+- version 5.3.1:
+  * Fixed issue with parsing inline images, causing loss of data after inline
+    images were encountered in a content stream. :issue:`299
+- version 5.3.0:
+  * Binary wheels for Linux aarch64 are now being rolled automatically.
+  * Refactor JBIG2 handling to make JBIG2 decoders more testable and pluggable.
+  * Fixed some typing issues around ObjectHelper.
+  * Exposed some pikepdf settings that were attached to the private _qpdf
+    module in a new pikepdf.settings module.
+- version 5.2.0:
+  * Avoid versions of setuptools_scm found to cause build issues. :issue:`359`
+  * Improved unhelpful error message when attemping to save a file with
+    invalid encryption settings. :issue:`341`
+  * Added workaround for XMP metadata blocks that are missing the expected
+    namespace tag. :issue:`349`
+  * Minor code improvements, removed some deprecated private methods.
+
+-------------------------------------------------------------------
+Fri Jun 17 00:45:31 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.1.5:
+  * Fixed removal of necessary package packaging. Needed for
+    import.
+- Drop some unnecessary comments.
+- Be more specific with file lists.
+
+-------------------------------------------------------------------
+Sun Mar 27 15:05:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * Rebuild against QPDF 10.6.3.
+  * Improvements to Makefile for Apple Silicon wheels.
+  * Fix issue where Pdf.check() would report a failure if JBIG2 decoder was not
+    installed and the PDF contains JBIG2 content.
+  * Some errors and inconsistencies are in the "pdfdoc" encoding provided by pikepdf
+    have been corrected, in conjunction with fixes in libqpdf.
+  * libqpdf 10.6.2 is required.
+  * Previously, looking up the number of a page, given the page, required a linear
+    search of all pages. We now use a newer QPDF API that allows quicker lookups.
+  * Fixed gcc linker error with linking to a source-compiled version of qpdf. Thanks @jerkenbilt.
+  * Fixed dead/obsolete link to old QPDF manual. Thanks @m-holger.
+  * Rebuild binary wheels against qpdf 10.5.0. Note 10.6.0 has been released but
+    requires further changes so does not work yet.
+  * Removed some workarounds to support now-unsupported versions of pybind11.
+  * Adjusted hypothesis test settings so it does not randomly fail on PyPy.
+  * Mention vector vs raster images in documentation.
+  * JBIG2 decoding is now more tightly integrated. In particular, we can now decode
+    more types of JBIG2 image and they can be decoded using either the object or
+    image interface.
+  * Switch to tomli for TOML parsing.
+  * Refactor image tests to use hypothesis more effectively and use more random issues,
+    fixing many errors along the way.
+  * Fixed two instances of a Python object being copied without the GIL held.
+    May have caused some instability. Thanks @rwgk.
+  * Further improvements to handling of 2- and 4-bit per component images. Major
+    refactoring of relevant code and improved testing.
+  * Mark pybind11 2.9 as supported. Thanks @QuLogic.
+  * Improved support for images with bits per component set to values between 2 and 7
+    inclusive.
+  * Additional types of runtime errors produced by libqpdf are now resolved to
+     ``DataDecodingError`` for improved error message clarity.
+  * Improved typing and documentation for several modules.
+  * Replaced all internal uses of deprecated standard library module distutils
+    with the third party packaging library. This was all for version number checking.
+  * Maintainers: python3-packaging is now required for installation.
+    Fixed incorrect default rectangle handling in ``Page.add_overlay`` and
+     ``Page.add_underlay``. Thanks @sjahu. :issue:`277`.
+  * Fixed ``Page.add_overlay`` not scaling to larger target sizes automatically.
+  * ``pikepdf._qpdf.ObjectHelper`` is now registered as a base class from which other
+     helper classes are derived such as ``pikepdf.Page``.
+  * Prevented implicit conversion of ObjectHelper to Object through their inclusion
+    as for example, parameters to a ``pikepdf.Array``. This functionality was never
+    intended, and was a side effect of certain ObjectHelper subclasses defining an
+    iterable interface that made their conversion possible. :issue:`282`
+  * Declared support for pybind11 2.8.x.
+  * Wheels are now built against libqpdf 10.4.0.
+  * Wheels are now built for macOS Apple Silicon and Python 3.10.
+  * Fixed equality and copy operators for ``pikepdf.Page``. :issue:`271`
+  * Fixed equality test on ``pikepdf.Stream`` objects - objects that are not identical
+    but have equal data now compare as equal.
+  * Deprecated the use of ``copy_foreign`` for copying ``pikepdf.Page``.
+  * Fixed documentation build reproducibility. (Thanks to Chris Lamb and Sean Whitton.)
+  * Fixed issue where file attachments not located in the current working directory
+  * Removed some references to Python 3.6.
+  * Added some fixes to typing hints from @cherryblossom000.
+  * Python 3.10 is supported.
+  * Dropped support for Python 3.6, since it is reaching end of life soon. We will
+    backport critical fixes to pikepdf 3.x until Python 3.6 reaches end of life in
+    December 2021.
+  * We now require C++17 and generate wheels for manylinux2014 Linux targets. We had
+    to drop support for manylinux2010, our previous target, since some of our
+    dependencies like Pillow are no longer supporting manylinux2010.
+  * libqpdf 10.3.1 is now required and other requirements were adjusted.
+  * pybind11 2.7.1 is now required.
+
+-------------------------------------------------------------------
+Fri Jan 21 07:15:11 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Add versions to build requieres so Leap 15.3 can build.
+
+-------------------------------------------------------------------
+Wed Nov 17 09:25:21 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.12.2
+  - Rebuild wheels against libqpdf 10.3.2.
+  - Enabled building Linux PyPy x86_64 wheels.
+  - Fixed a minor issue where the inline images would have their
+    abbreviations expanded when unparsed. While unlikely to be
+    problematic, inline images usually use abbreviations in their
+    metadata and should be kept that way.
+  - Added notes to documentation about loading PDFs through Python
+    file streams and cases that can lead to poor performance.
+- Fix build error for Leap and Tumblweed.
+
+-------------------------------------------------------------------
+Sat Jun  5 20:02:00 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.12.1
+  * Fixed documentation typo and updated precommit settings.
+  * Ongoing improvements to code coverage: now related to image
+    handling.
+- Update to version 2.12.0
+  * Complete bindings for ``pikepdf.Annotation`` (useful for
+    interpreting PDF form widgets, comments, etc.)
+  * Ongoing improvements to code coverage: minor bug fixes,
+    unreachable code removal, more coverage.
+- Update to version 2.11.4
+  * Fix issue #160, 'Tried to call pure virtual function
+    "TokenFilter::handle_token"'; this was a Python/C++
+    reference counting problem.
+- Update to version 2.11.3
+  * Check for versions of jbig2dec that are too old to be
+    supported (lacking the necessary command line arguments to
+    extract an image from a PDF).
+  * Fix setup.py typo: cmd_class changed to cmdclass.
+
+-------------------------------------------------------------------
+Fri Apr 23 06:29:22 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.11.2
+  * Added missing documentation for ``Pdf.is_encrypted``.
+- Update to version 2.11.1
+  * Fixed an issue with ``Object.emplace()`` not retaining the
+    original object's /Parent.
+
+-------------------------------------------------------------------
+Wed Apr  7 15:49:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.11.0
+  * Add new functions: Pdf.generate_appearance_streams and
+    Pdf.flatten_annotations, to support common work with PDF forms.
+- Update to version 2.10.0
+  * Fixed a XML External Entity (XXE) processing vulnerability in
+    PDF XMP metadata parsing (CVE-2021-29421)
+  * Bind new functions to check, when a PDF is opened, whether
+    the password used to open the PDF matched the owner password,
+    user password, or both: Pdf.user_password_matched and
+    Pdf.owner_password_matched.
+- Update to version 2.9.2
+  * Further expansion of test coverage of several functions, and
+    minor bug fixes along the way.
+  * Improve parameter validation for some outline-related functions.
+  * Fixed overloaded __repr__ functions in _methods.py not being
+    applied.
+- Update to version 2.9.1
+  * Fixed function signatures for _repr_mimebundle_ functions to
+    match IPython's spec.
+  * Fixed some error messages regarding attempts to do strange
+    things with pikepdf.Name, like pikepdf.Name.Foo = 3.
+  * Eliminated code to handle an exception that provably does not
+    occur.
+- Update to version 2.9.0
+  * We now issue a warning when attempting to use pikepdf.open
+    on a bytes object where it could be either a PDF loaded into
+    memory or a filename.
+  * pikepdf.Page.label will now return the "ordinary" page number
+    if no special rules for pages are defined.
+  * Many improvements to tests and test coverage.
+  * An obsolete private function Object._roundtrip was removed.
+
+-------------------------------------------------------------------
+Thu Mar  4 19:17:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8.0
+  * Fixed an issue with extracting data from images that had their
+    DecodeParms structured as a list of dictionaries.
+  * Fixed an issue where a dangling stream object is created if we
+    fail to create the requested stream dictionary.
+  * Calling Dictionary() and Array() on objects which are already
+    of that type returns a shallow copy rather than throwing an
+    exception, in keeping with Python semantics.
+- Update to version 2.7.0
+  * Added an option to tell Pdf.save to recompress flate streams,
+    and a global option to set the flate compression level. This
+    option can be use to force the recompression of flate streams
+    if they are not well compressed.
+  * Fixed "TypeError: only pages can be inserted" when attempting
+    to an insert an unowned page using QPDF 10.2.0 or later.
+- Update to version 2.6.0
+  * Rebuild wheels against QPDF 10.2.0.
+
+-------------------------------------------------------------------
+Sun Feb  7 13:18:33 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add docs/*/*.rst to package contents
+- Update to v2.5.2
+  * See https://github.com/pikepdf/pikepdf/blob/master/docs/release_notes.rst
+
+-------------------------------------------------------------------
+Fri Jul 31 03:37:38 UTC 2020 - Karl Cheng <qantas94heavy@gmail.com>
+
+- Update pikepdf to 1.17.3
+- Allow test_object.py to run in package spec
+
+-------------------------------------------------------------------
+Thu Apr 23 09:57:59 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in python2 package on py3 only software
+
+-------------------------------------------------------------------
+Sun Apr 19 20:10:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.11.1
+  * We now avoid creating an empty XMP metadata entry when files
+    are saved.
+  * Updated documentation to describe how to delete the document
+    information dictionary.
+- Update to version 1.11.0
+  * Prevent creation of dictionaries with invalid names (not
+    beginning with /).
+  * Allow pikepdf's build to specify a qpdf source tree, allowing
+    one to compile pikepdf against an unreleased/modified version
+    of qpdf.
+  * Improved behavior of pages.p() and pages.remove() when
+    invalid parameters were given.
+  * Fixed compatibility with libqpdf version 10.0.1, and build
+    official wheels against this version.
+  * Fixed compatibility with pytest 5.x.
+  * Fixed the documentation build.
+  * Fixed an issue with running tests in a non-Unicode locale.
+  * Fixed a test that randomly failed due to a "deadline error".
+  * Removed a possibly nonfree test file.
+- Update to version 1.10.4
+  * Rebuild Python wheels with newer version of libqpdf. Fixes
+    problems with opening certain password-protected files (#87)
+-------------------------------------------------------------------
+Tue Mar 24 11:58:35 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.10.3
+  * Fixed ``isinstance(obj, pikepdf.Operator)`` not working. (#86)
+  * Documentation updates.
+
+-------------------------------------------------------------------
+Mon Mar 16 09:39:13 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.10.2
+  * Fixed an issue where pages added from a foreign PDF were added as references
+    rather than copies.
+  * Documentation updates.
+
+-------------------------------------------------------------------
+Fri Feb 14 07:50:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.10.1

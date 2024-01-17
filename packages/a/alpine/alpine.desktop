@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=ConsoleOnly;Email
+Encoding=UTF-8
+Exec=alpine
+Icon=alpine
+Type=Application
+Name=Alpine
+GenericName=Mail Client
+Terminal=true

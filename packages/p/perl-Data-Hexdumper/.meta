@@ -1,0 +1,13 @@
+<package name="perl-Data-Hexdumper" project="openSUSE:Factory">
+  <title>Make binary data human-readable</title>
+  <description>'Data::Hexdumper' provides a simple way to format arbitrary binary data
+into a nice human-readable format, somewhat similar to the Unix 'hexdump'
+utility.
+
+It gives the programmer a considerable degree of flexibility in how the
+data is formatted, with sensible defaults. It is envisaged that it will
+primarily be of use for those wrestling alligators in the swamp of binary
+file formats, which is why it was written in the first place.</description>
+  <devel project="devel:languages:perl" package="perl-Data-Hexdumper"/>
+  <url>https://metacpan.org/pod/Data::Hexdumper</url>
+</package>

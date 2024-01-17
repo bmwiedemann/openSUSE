@@ -1,0 +1,9 @@
+<package name="ncurses" project="openSUSE:Factory">
+  <title>New curses Libraries</title>
+  <description>As soon as a text application needs to directly control its output to
+the screen (if it wants to place the cursor at location (x,y) then
+write text), ncurses is used. The panel and the forms libraries are
+included in this package. These new libraries support color, special
+characters, and panels.</description>
+  <devel project="Base:System" package="ncurses"/>
+</package>

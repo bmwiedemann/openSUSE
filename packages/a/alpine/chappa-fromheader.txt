@@ -1,0 +1,5 @@
+From: http://alpine.x10host.com/alpine/info/fromheader.html
+Upstream: constitutes upstream source, delivered in non-tarball form
+
+This patch allows you to change the From header without you having to configure
+anything. The From header will always be available to you.

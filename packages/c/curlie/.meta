@@ -1,0 +1,6 @@
+<package name="curlie" project="openSUSE:Factory">
+  <title>A frontend to curl that adds the ease of use of httpie</title>
+  <description>If you like the interface of HTTPie but miss the features of curl, curlie is what you are searching for. Curlie is a frontend to curl that adds the ease of use of httpie, without compromising on features and performance. All curl options are exposed with syntax sugar and output formatting inspired from httpie.</description>
+  <devel project="network:utilities" package="curlie"/>
+  <url>https://github.com/rs/curlie</url>
+</package>

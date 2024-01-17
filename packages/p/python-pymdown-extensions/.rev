@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>56db0ba1aeb7e9dc1dd041904801f134</srcmd5>
+    <version>9.10</version>
+    <time>1680722846</time>
+    <user>dimstar_suse</user>
+    <comment>dependency for python-mkdocs-material</comment>
+    <requestid>1077386</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fc5b4c94bebbe47b800386c81c4ffddf</srcmd5>
+    <version>9.11</version>
+    <time>1682433779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082741</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e493c2bfd0ddaf18bcceac9ce4a00625</srcmd5>
+    <version>10.3</version>
+    <time>1694114025</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109488</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>53a4f8da82224af2ac7e322cfbac4b72</srcmd5>
+    <version>10.5</version>
+    <time>1702587830</time>
+    <user>anag+factory</user>
+    <comment>update to 10.5</comment>
+    <requestid>1133071</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7e810ae330dd686b93fe1f7aafecec63</srcmd5>
+    <version>10.7</version>
+    <time>1704281229</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.7:
+  * NEW: Emoji: Update Twemoji and Gemoji data to latest.
+  * NEW: Emoji: Due to recent Gemoji update, non-standard emoji
+    are no longer indexed. So emoji such as :octocat: are no
+    longer resolved.
+  * NEW: Highlight: Added new option default_lang which will
+    cause code blocks with no language specifier to be
+    highlighted with the specified default language instead of
+    plain text. This affects indented code blocks and code blocks
+    defined with SuperFences.
+  * NEW: InlineHilite: style_plain_text can be specified with a
+    language string (in addition to its previous boolean
+    requirement) to treat inline code blocks with no explicit
+    language specifier with a specific default language.
+  * NEW: MagicLink: Allow configuring custom
+    repository providers based off the existing providers.</comment>
+    <requestid>1135879</requestid>
+  </revision>
+</revisionlist>

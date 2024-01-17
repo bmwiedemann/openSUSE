@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5c7496920e28180696b16e04f0a4aeba</srcmd5>
+    <version>1.20</version>
+    <time>1641480675</time>
+    <user>dimstar_suse</user>
+    <comment>Request to add the package iotop-c to Factory</comment>
+    <requestid>944135</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9e3d9bad72a41ee2ecca1b842d43580a</srcmd5>
+    <version>1.21</version>
+    <time>1643926601</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.21:
+    * Better support for disabled task_delayacct sysctl
+    * Add history and graph for all data
+    * Restore simple inline help
+- Fix debuginfo generation
+</comment>
+    <requestid>950831</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8da42b5a206eb41838397f46ef1e53dc</srcmd5>
+    <version>1.22</version>
+    <time>1666796731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031365</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ac24b4c0059aa4bdc36812c364fad5ae</srcmd5>
+    <version>1.23</version>
+    <time>1674585807</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.23:
+  * Changes by @bbonev in #43
+  * Fix some issues reported by lintian by @debian-janitor in #42
+  * Revert syscall count stuff by @bbonev in #44
+  * fix empty archlinux package by @bokunodev in #46</comment>
+    <requestid>1060546</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>31170856b72b8b2cc68afc065e944188</srcmd5>
+    <version>1.24</version>
+    <time>1696269865</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.24:
+  * Fix a bug with graphs in ASCII mode
+  * Show the status of the configuration in the help window
+  * Support ancient compilers #52</comment>
+    <requestid>1114600</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4ef1335c1d46c36599ab32192281cace</srcmd5>
+    <version>1.25</version>
+    <time>1697390880</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.25:
+  * Fix bug when iotop busy loops after pressing ESC key
+  * Change the condition of displaying processes in only mode</comment>
+    <requestid>1117832</requestid>
+  </revision>
+</revisionlist>

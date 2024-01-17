@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Fri Dec  8 16:22:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.23:
+  * Raise minimum Python version to 3.6.
+  * Handle FileNotFoundError when using subprocess on Python >=
+    3.8.
+
+-------------------------------------------------------------------
+Fri Jun 24 21:05:41 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- initial specfile for 0.3.22
+- required by locket test suite

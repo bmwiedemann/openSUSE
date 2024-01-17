@@ -1,0 +1,269 @@
+-------------------------------------------------------------------
+Sat Aug 26 04:56:10 UTC 2023 - munix9@googlemail.com
+
+- Fix undefined reference to symbol 'WebPMemoryWriterClear'
+
+-------------------------------------------------------------------
+Thu Jan  5 08:00:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.1:
+  * Improve closing of v4l2 devices
+  * Fix creation of pid_file
+  * Add header check for mmal
+  * Fix pause when used as command line option
+  * Fix json pages when multiple cameras used
+  * Fix codec for movie_codec for mpeg4
+  * Fix rotation for v4l2 devices
+
+-------------------------------------------------------------------
+Sun Dec  4 14:20:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.0:
+  * Do not translate the ignoring IP alert message
+  * Fix processing for native_language config option
+  * Add additional sleep time for images to web stream
+  * Revise log level for some messages
+  * Update translations
+  * Update for new MariaDB pkg-config name
+  * Fix cleanup when v4l2 open fails
+  * Remove unused include module.
+  * Remove unused H264 palette code
+  * Fix sending of stale images to stream
+  * Revise path when checking headers
+  * Fix double free when using extpipe.
+  * Revise issue template
+  * Eliminate shared handle for sqlite3
+  * Fix setting of controls for v4l2 devices
+  * Fix processing for v4l2 devices when stride is not width
+  * Replace dbeventid with eventid
+  * Fix parsing of PGM files
+  * Fix scale of text when in debug mode
+  * Fix processing when camera is not initially available
+  * Fix double free when camera is lost frequently.
+  * Fix close on exec methods
+  * Fix processing for preferred codec with new ffmpeg versions
+  * Fix snapshots when using netcam high
+  * Enhance netcam processing for single jpg pages
+  * Update instructions on using libcamerify for pi camera
+  * Update instructions on maximum number of cameras shown on web control page.
+  * Expand buffer for log messages
+  * Update japanese translations.
+  * Fix extra event triggered upon quit
+
+-------------------------------------------------------------------
+Sun Nov 28 13:15:58 UTC 2021 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to 4.4.0:
+  * Fixes
+    + Use default for non ASCII characters in drawing
+    + Maximum movie time
+    + Guide updates
+  * Enhancements
+    + Updated translations
+    + Lockout on failed authentications
+    + Hardware decoding for some network cameras
+    + User specification of ffmpeg options for network cameras
+    + Change default processing for http cameras.
+  * New Configuration Options
+    + watchdog_tmo
+    + watchdog_kill
+    + pause
+    + webcontrol_lock_minutes
+    + webcontrol_lock_attempts
+    + webcontrol_lock_max_ips
+  * Renamed Configuration Options
+    + vid_control_params -> video_params
+    + mmalcam_control_params -> mmalcam_params
+  * Changed Configuration Options
+    + v4l2_palette use video_params
+    + input use video_params
+    + norm use video_params
+    + frequency use video_params
+    + netcam_highres use netcam_high_params
+    + netcam_keepalive use netcam_params
+    + netcam_proxy use netcam_params
+    + netcam_tolerant_check use netcam_params
+    + netcam_use_tcp use netcam_params
+    + netcam_decoder use netcam_params
+    + webcontrol_cors_header use webcontrol_header_params
+    + stream_cors_header use stream_header_params
+
+-------------------------------------------------------------------
+Fri Oct 15 12:12:38 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop ProtectClock hardening, can cause issues if other device acceess is needed
+
+-------------------------------------------------------------------
+Wed Oct  6 15:21:55 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_motion.service.patch
+
+-------------------------------------------------------------------
+Tue Dec 22 10:16:33 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.2:
+   * Revise to use MHD function for url decode
+   * Update travis distribution testing
+   * Eliminate compiler warnings on unsigned comparisons
+   * Eliminate compiler warnings on MHD return codes 
+
+-------------------------------------------------------------------
+Thu Jul  9 10:29:34 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.3.1
+  * Fixes
+    + Compiler errors with GCC 10
+    + Overrides to CFLAGS
+    + Add maintainer mode
+    + Segfault when invalid camera directory specified
+    + MariaDB initializations
+    + Updated guide
+- Update to 4.3.0
+  * Fixes
+    + Use default for non ASCII characters in drawing
+    + Removed poll requirement for MHD
+    + Implement revised configure and automake
+    + Updated testing for travis
+    + Revise MMAL to handle revisions from upstream.
+    + Fix movie start times
+    + Set the FPS on v4l2 devices
+    + Consolidate the JPEG code processing
+    + Fix substream processing for non modulo 16
+    + Ignore invalid data sent from rtsp cameras.
+    + Adjust the netcam handler wait and processing
+    + Answer incorrect web requests.
+    + Implement a delay upon excessive reconnect attempts
+    + Fix filetype specified for snapshots
+    + Guide updates
+    + Fix vbr calculation for high frame rates
+  * Enhancements
+    + Updated translations
+    + Implement revised directory structure
+    + Implement optional decoder and encoders
+    + Allow for distros that use videoio.h
+    + Revise and enhance the sample service file
+    + Output to the log the resulting ext pipe command
+  * New Configuration Options
+    + netcam_decoder
+- Update to 4.2.2
+  * Fixes
+    + Webcontrol quit/end
+    + Add stream_motion option
+    + Generic tracking option
+    + Delay stream when starting
+    + Hostname for IPV6
+    + Multiple source streams when using passthrough
+    + Guide update
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Tue Feb 12 18:08:38 UTC 2019 - bjorn.lie@gmail.com
+
+- No longer force ffmpeg 3 versions of pkgconfig(libav*).
+
+-------------------------------------------------------------------
+Mon Jan 14 23:05:51 UTC 2019 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to 4.2.1
+  Fixes:
+  - Stream rate calculations
+  - Static library linking
+  - Eliminate updates to movie_passthrough via webcontrol
+  - Thread locking for movie_passthrough
+  - NULL terminator for EXIF
+  - Revised logging messages
+  - Guide update for mobile 
+
+-------------------------------------------------------------------
+Thu Nov  8 08:41:26 UTC 2018 - olaf@aepfle.de
+
+- Use ffmpeg3 versions of pkgconfig(libav*)
+
+-------------------------------------------------------------------
+Thu Jul 12 10:03:40 UTC 2018 - meissner@suse.com
+
+- explicitly require ffmpeg3-devel , as we currently
+  do not build against ffmpeg4.
+
+-------------------------------------------------------------------
+Wed Mar  7 10:05:53 UTC 2018 - mvetter@suse.com
+
+- Update to 4.1.1:
+  https://motion-project.github.io/motion_news.html
+
+  Fixes:
+  - Build on musl based systems
+  - jpeg decompression error processing
+  - image saving when using highres option
+  - filename for debug movie correction
+
+-------------------------------------------------------------------
+Fri Nov 24 16:33:16 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Fri Nov 24 11:00:57 UTC 2017 - olaf@aepfle.de
+
+- Use pkgconfig to refer to ffmpeg because ffmpeg-devel does not exist
+- Use pkgconfig to refer to webp
+- Remove unused zlib
+
+-------------------------------------------------------------------
+Wed Nov 15 13:44:27 UTC 2017 - meissner@suse.com
+
+- Merged things from packman.
+  - Use an own motion user, in group video
+  - sysconfig script for options in systemd service
+
+-------------------------------------------------------------------
+Tue Nov 14 16:55:34 UTC 2017 - meissner@suse.com
+
+- updated to 4.1 from github site.
+  https://github.com/Motion-Project/motion/wiki/News
+
+  - New or revised configuration options:
+    - flip_axis (mirrors the image)
+    - mask_privacy (blocks out areas of image)
+    - netcam_highres (dual stream processing)
+    - on_camera_found (script execution)
+    - substream_port (low resolution output stream)
+    - webcontrol_parms (Control what parameters are included on webcontrol)
+    - ffmpeg_timelapse renamed to timelapse_interval
+    - ffmpeg_timelapse_mode renamed to timelapse_mode
+    - timelapse_fps (fps for the resulting video)
+    - timelapse_codec (container/codec for timelapse)
+    - sdl_threadnr removed
+  - Revised functionality
+    - Removed v4l1 functionality
+    - Added support for RTMP and additional v4l2 palette options
+    - Added support for network cameras on macOSX
+    - Added additional conversion specifiers
+    - Added flood control for Motion log
+    - Revised INF/DBG message logging
+    - Log IP of failed authentication attempts
+  - Fixes
+    - Movie playback issues
+    - ffmpeg 3.1 warnings
+    - v4l2 mjpg image corruptions
+    - various other bug fixes/refactoring
+  - Known Issues:
+    - Recovery for sqlite from watchdog time out (#521)
+    - Timing on images for round-robin devices (#363)
+    - Unresponsive thread killing (#366)
+  - Updates to documentation
+    - Additional building instructions
+    - Links to configuration options at top of documentation
+    - Multiple rewrites for configuration options
+  - Updates to required libraries
+    - Added requirement for libavdevice
+    - Removed requirement for libsdl
+    - Removed requirement for libv4l
+
+-------------------------------------------------------------------
+Thu Dec  8 21:56:22 UTC 2011 - oliver.bengs@opensuse.org
+
+- imported from fedora specfile
+- some cleanups

@@ -1,0 +1,8 @@
+<package name="notify-osd" project="openSUSE:Factory">
+  <title>Streamlined Notification Daemon</title>
+  <description>This notification daemon is an alternative to the notification-daemon
+package. It follows the freedesktop notification specification and
+introduces some new policies for streamlining the user-experience by
+discouraging the use of actions and timeouts.</description>
+  <devel project="X11:Unity" package="notify-osd"/>
+</package>

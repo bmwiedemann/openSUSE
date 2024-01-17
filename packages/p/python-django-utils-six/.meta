@@ -1,0 +1,5 @@
+<package name="python-django-utils-six" project="openSUSE:Factory">
+  <title></title>
+  <description>Forward compatibility django.utils.six for Django 3</description>
+  <devel project="devel:languages:python:django" package="python-django-utils-six"/>
+</package>

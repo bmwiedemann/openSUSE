@@ -1,0 +1,19 @@
+From 2e50afd78909c2aa760466c29e385785daa89e06 Mon Sep 17 00:00:00 2001
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: Sun, 19 Jul 2020 13:39:01 +0200
+Subject: [PATCH] Match package version in soversion
+
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index f66a3f7..2f7beb9 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -9,4 +9,4 @@ libe131_la_LDFLAGS = -export-symbols-regex '^[eE]131_[^_]'
+ include_HEADERS = src/e131.h
+ 
+ # see: https://www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html
+-libe131_la_LDFLAGS += -version-info 1:4:0
++libe131_la_LDFLAGS += -version-info 5:0:4

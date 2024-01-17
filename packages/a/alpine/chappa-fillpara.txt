@@ -1,0 +1,10 @@
+From: http://alpine.x10host.com/alpine/info/fillpara.html
+Upstream: constitutes upstream source, delivered in non-tarball form
+
+When you reply to a message, which has been quoted by several people and you
+justify a paragraph, Alpine may not notice any other quote strings and justify
+the paragraph as if there was no other quote strings in it. This patch will
+help Alpine recognize extra levels of quoting, so that justifying will still
+make the text readable. This is important because the purpose of justification
+is to make the text more readable, and an incorrect justification may make the
+text impossible to read.

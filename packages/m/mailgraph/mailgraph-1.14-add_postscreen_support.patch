@@ -1,0 +1,13 @@
+Index: mailgraph-1.14/mailgraph.pl
+===================================================================
+--- mailgraph-1.14.orig/mailgraph.pl
++++ mailgraph-1.14/mailgraph.pl
+@@ -623,7 +623,7 @@ sub process_line($)
+ 				event($time, 'bounced');
+ 			}
+ 		}
+-		elsif($prog eq 'smtpd') {
++		elsif($prog eq 'smtpd' || $prog eq 'postscreen') {
+ 			if($text =~ /^[0-9A-Z]+: client=(\S+)/) {
+ 				my $client = $1;
+ 				return if $opt{'ignore-localhost'} and

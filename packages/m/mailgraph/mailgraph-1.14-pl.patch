@@ -1,0 +1,129 @@
+Index: mailgraph-1.14/mailgraph.pl
+===================================================================
+--- mailgraph-1.14.orig/mailgraph.pl
++++ mailgraph-1.14/mailgraph.pl
+@@ -287,6 +287,102 @@ sub _next_syslog($)
+     }
+     return undef;
+ }
++sub _next_rsyslog($)
++{
++    my ($self) = @_;
++    while($self->{_repeat}>0) {
++        $self->{_repeat}--;
++        return $self->{_repeat_data};
++    }
++    my $file = $self->{file};
++    line: while(defined (my $str = $self->_next_line)) {
++        # date, time and host
++        $str =~ /^
++            (\d+)-(\d+)-(\d+)    # date  -- 1, 2, 3 (YYYY-MM-DD)
++            T
++            (\d+):(\d+):(\d+)    # time  -- 4, 5, 6 (HH:MM:SS)
++            \.\d+(\+\d+:\d+)     # time  -- 7 nanoseconds (+HH:MM)
++            \s
++            ([-\w\.\@:]+)        # host  -- 8
++            \s+
++            (?:\[LOG_[A-Z]+\]\s+)?  # FreeBSD
++            (.*)                 # text  -- 9
++            $/x or do
++        {
++            warn "WARNING: line not in rsyslog format: $str";
++            next line;
++        };
++        # subtract 1 from month, cause month is an array from 0-11
++        # prevent 'Day '31' out of range 1..30' message
++        my $mon = $2 -1;
++        #defined $mon or croak "unknown month $1\n";
++        #$self->_year_increment($mon);
++        # convert to unix time
++        my $time = $self->str2time($6,$5,$4,$3,$mon,$1,$7);
++        if(not $self->{allow_future}) {
++            # accept maximum one day in the present future
++            if($time - time > 86400) {
++                warn "WARNING: ignoring future date in rsyslog line: $str";
++                next line;
++            }
++        }
++        my ($host, $text) = ($8, $9);
++        # last message repeated ... times
++        if($text =~ /^(?:last message repeated|above message repeats) (\d+) time/) {
++            next line if defined $self->{repeat} and not $self->{repeat};
++            next line if not defined $self->{_last_data}{$host};
++            $1 > 0 or do {
++                warn "WARNING: last message repeated 0 or less times??\n";
++                next line;
++            };
++            $self->{_repeat}=$1-1;
++            $self->{_repeat_data}=$self->{_last_data}{$host};
++            return $self->{_last_data}{$host};
++        }
++        # marks
++        next if $text eq '-- MARK --';
++        # some systems send over the network their
++        # hostname prefixed to the text. strip that.
++        $text =~ s/^$host\s+//;
++        # discard ':' in HP-UX 'su' entries like this:
++        # Apr 24 19:09:40 remedy : su : + tty?? root-oracle
++        $text =~ s/^:\s+//;
++        $text =~ /^
++            ([^:]+?)        # program   -- 1
++            (?:\[(\d+)\])?  # PID       -- 2
++            :\s+
++            (?:\[ID\ (\d+)\ ([a-z0-9]+)\.([a-z]+)\]\ )?   # Solaris 8 "message id" -- 3, 4, 5
++            (.*)            # text      -- 6
++            $/x or do
++        {
++            warn "WARNING: line not in rsyslog format: $str";
++            next line;
++        };
++        if($self->{arrayref}) {
++            $self->{_last_data}{$host} = [
++                $time,  # 0: timestamp
++                $host,  # 1: host
++                $1,     # 2: program
++                $2,     # 3: pid
++                $6,     # 4: text
++                ];
++        }
++        else {
++            $self->{_last_data}{$host} = {
++                timestamp => $time,
++                host      => $host,
++                program   => $1,
++                pid       => $2,
++                msgid     => $3,
++                facility  => $4,
++                level     => $5,
++                text      => $6,
++            };
++        }
++        return $self->{_last_data}{$host};
++    }
++    return undef;
++}
+ sub _next_metalog($)
+ {
+     my ($self) = @_;
+@@ -347,6 +443,9 @@ sub next($)
+     if($self->{type} eq 'syslog') {
+         return $self->_next_syslog();
+     }
++    elsif($self->{type} eq 'rsyslog') {
++        return $self->_next_rsyslog();
++    }
+     elsif($self->{type} eq 'metalog') {
+         return $self->_next_metalog();
+     }
+@@ -371,9 +470,9 @@ my $rrdstep = 60;
+ my $xpoints = 540;
+ my $points_per_sample = 3;
+ 
+-my $daemon_logfile = '/var/log/mailgraph.log';
++my $daemon_logfile = '/var/log/mailgraph/mailgraph.log';
+ my $daemon_pidfile = '/var/run/mailgraph.pid';
+-my $daemon_rrd_dir = '/var/log';
++my $daemon_rrd_dir = '/var/lib/mailgraph';
+ 
+ # global variables
+ my $logfile;

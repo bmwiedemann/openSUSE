@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e0e57bc0c07bdd5bb7706c3f0cdd2ebb</srcmd5>
+    <version>0.13.8.2</version>
+    <time>1674043765</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission</comment>
+    <requestid>1059037</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1c5eede69d78f3d20561ba8719aee5ab</srcmd5>
+    <version>0.13.8.2</version>
+    <time>1680635937</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075799</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2b435fc11afebd8a0630b15bf741b37a</srcmd5>
+    <version>0.13.10.0</version>
+    <time>1687469117</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1094422</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5293ff4ddc29d5e850c3e4c58c986a26</srcmd5>
+    <version>0.13.10.0</version>
+    <time>1704919874</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1137771</requestid>
+  </revision>
+</revisionlist>

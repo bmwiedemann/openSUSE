@@ -1,0 +1,17 @@
+Index: qjack-20131111/qjack/CMakeLists.txt
+===================================================================
+--- qjack-20131111.orig/qjack/CMakeLists.txt
++++ qjack-20131111/qjack/CMakeLists.txt
+@@ -51,8 +51,10 @@ endif()
+ 
+ #install
+ SET_TARGET_PROPERTIES(qjack_static PROPERTIES OUTPUT_NAME "qjack")
+-SET_TARGET_PROPERTIES(qjack_static PROPERTIES PREFIX "lib")
++SET_TARGET_PROPERTIES(qjack_static PROPERTIES PREFIX "${LIB}")
++SET_TARGET_PROPERTIES(qjack PROPERTIES VERSION "0.0.0" SOVERSION "0")
++
++install(TARGETS qjack DESTINATION "${LIB}")
+ 
+-install(TARGETS qjack DESTINATION lib)
+ file(GLOB headers "*.h")
+ install(FILES ${headers} DESTINATION include/qjack)

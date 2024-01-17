@@ -1,0 +1,47 @@
+diff --git a/unetbootin.cpp b/unetbootin.cpp
+index f7af26c..5551bc2 100644
+--- a/unetbootin.cpp
++++ b/unetbootin.cpp
+@@ -607,17 +607,12 @@ QStringList unetbootin::listsanedrives()
+ 		}
+ 		#endif
+ 				#ifdef Q_OS_LINUX
+-				QDir devlstdir("/dev/disk/by-id/");
++				QDir devlstdir("/dev/disk/by-path/");
+ 				QFileInfoList usbfileinfoL = devlstdir.entryInfoList(QDir::NoDotAndDotDot|QDir::Files);
+ 				for (int i = 0; i < usbfileinfoL.size(); ++i)
+ 				{
+-//                    if (usbfileinfoL.at(i).contains(QRegExp("^usb-\\S{1,}-part\\d{1,}$")))
+-//                    {
+-//                        fulldrivelist.append(usbfileinfoL.at(i).canonicalFilePath());
+-//                    }
+-                    if (usbfileinfoL.at(i).fileName().contains(QRegExp("^usb-\\S{1,}$")) ||
+-                        usbfileinfoL.at(i).fileName().contains(QRegExp("^mmc-\\S{1,}$")))
+-                    {
++				    if (usbfileinfoL.at(i).fileName().contains(QRegExp("-usb-")))
++					{
+ 						if (!volidcommand.isEmpty())
+ 						{
+ 							if (QString(callexternapp(volidcommand, QString("-t %2").arg(usbfileinfoL.at(i).canonicalFilePath()))).contains(QRegExp("(vfat|ext2|ext3|ext4)")))
+@@ -634,20 +629,7 @@ QStringList unetbootin::listsanedrives()
+ 						}
+ 					}
+ 				}
+-				/*
+-				QString fdisklusbdevsS = callexternapp(fdiskcommand, "-l");
+-				QStringList usbdevsL = QString(fdisklusbdevsS).split("\n").filter(QRegExp("\\.{0,}FAT|Disk\\.{0,}")).join("\n").split(" ").join("\n").split("\t").join("\n").split("\n").filter("/dev/");
+-		for (int i = 0; i < usbdevsL.size(); ++i)
+-		{
+-			if (usbdevsL.at(i).contains(":"))
+-			{
+-				if (!QString(callexternapp(volidcommand, QString("-t %2").arg(QString(usbdevsL.at(i)).remove(":")))).contains("vfat"))
+-					continue;
+-			}
+-			fulldrivelist.append(QString(usbdevsL.at(i)).remove(":"));
+-				}
+-				*/
+-		#endif
++				#endif
+ #ifdef Q_OS_MAC
+ QString systemprofilertext = callexternapp("system_profiler", "SPStorageDataType");
+ QRegExp filesystemregex("File System: (.+)\\n");

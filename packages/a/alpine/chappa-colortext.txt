@@ -1,0 +1,7 @@
+From: http://alpine.x10host.com/alpine/info/WrtAcc.html
+Upstream: constitutes upstream source, delivered in non-tarball form
+
+This patch allows you to define special custom text that will be seen in a
+different color than normal text. This can be used in different ways, one can
+use it to emphasize important keywords in a message, or to erase offensive
+language.

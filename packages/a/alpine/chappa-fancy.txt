@@ -1,0 +1,42 @@
+From: http://alpine.x10host.com/alpine/info/fancy.html
+Upstream: constitutes upstream source, delivered in non-tarball form
+
+You can use this patch to add functionality to the thread interface offered by
+Alpine. It adds commands and options that control several aspects of the way
+threads are presented.
+
+
+  * You can delete a thread, by pressing ^R (to remove), you can undelete it by
+    pressing ^U (without this patch, you would have to collapse the thread
+    before you can delete it).
+
+  * You can select and unselect a thread, by pressing ^T. This is useful if you
+    want to make aggregate operations on a thread, like saving it.
+
+  * You can collapse or expand a particular thread by pressing [ or ]
+    respectively. If you want to collapse or expand ALL threads, use the
+    commands { and } respectively. These last two commands work only if you
+    have selected any of the options (*)
+    regular-index-with-expanded/collapsed-threads.
+
+  * You can move to the next or previous thread by pressing ) or ( respectively.
+
+  * You can sort threads by arrival, in order to do this press k a. There are
+    other sorts for threads by Date and by Score. If you want to have threads
+    permanently sorted by arrival, say, then set the variable thread-sort-key
+    to be arrival. You can also start Alpine with the option -threadsort
+    arrival to accomplish the same.
+
+  * Similarly, you can sort threads by their length. In order to do this press
+    k z. Small threads appear at the beginning of the listing, while long
+    threads appear at the bottom. Threads of the same length are sorted
+    according to the date of their first message. In particular, single message
+    threads are sorted by date.
+
+  * A new configuration option was added:
+    [X] enhanced-fancy-thread-support
+    if you enable this configuration option, then all of the above commands
+    will act on loose threads, which are threads without parents.
+
+  * The SIZETHREAD index token was added, which tells you the size of a thread,
+    instead of the size of the individual messages in the thread.
