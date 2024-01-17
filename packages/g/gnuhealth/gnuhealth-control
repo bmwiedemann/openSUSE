@@ -1,0 +1,284 @@
+#!/bin/bash
+
+# gnuhealth-control
+# The GNU Health control center for openSUSE Installations 
+
+##############################################################################
+#
+#    GNU Health: The Free Health and Hospital Information System
+#    Copyright (C) 2008-2015 Luis Falcon <falcon@gnu.org>
+#    Adaption to openSUSE Axel Braun <axel.braun@gnuhealth.org>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+
+VERSION="3.8.0-openSUSE"
+
+TRANSLATE_URL="https://hosted.weblate.org"
+GNUHEALTH_DIR=$(rpm --eval '%python3_sitelib')/trytond/modules
+UPDATE_DOWNLOAD_DIR=$(mktemp -d)
+
+usage()
+{
+    cat << EOF
+
+This is GNU Health control center ${VERSION}
+
+usage: `basename $0` command [options]
+
+Command:
+ 
+  version : Show version
+  backup  : Backup the gnuhealth kernel, attach dir and database
+  update  : Download and install the patches
+  getlang : Get and install / update the language pack code
+  status  : Show environment and GNU Health Tryton server status
+
+Options:
+
+ --backdir  : destination directory for the backup file
+ --dry-run  : Check, download and preview, but don't actually update process
+ --database : database name to use with the backup command 
+
+EOF
+    exit 0
+}
+
+help()
+{
+    cat << EOF
+    The GNU Health Control Center (gnuhealth-control) is the main tool for 
+    administrative tasks of the GNU Health environment.
+    
+    It can perform backups and updates of the instance
+    
+    Updates
+    -------
+
+    Use the system tools to update GNU Health:
+    zypper up
+    will update all packages to the latest version. This includes Tryton Server
+    as well as GNU Health.
+    
+EOF
+    usage
+    exit 0
+}
+
+cli_msg()
+{
+    local UTC="$(date -u +'%Y-%m-%d %H:%M:%S')"
+    
+    case $1 in
+      ERROR ) echo -e "\e[00;31m${UTC} [ERROR] $2\e[00m";;
+      WARNING ) echo -e "\e[0;33m${UTC} [WARNING] $2\e[m" ;;
+      INFO ) echo -e "\e[0;36m${UTC} [INFO] $2\e[m" ;;
+    esac
+}
+
+get_current_values()
+{
+    
+    cli_msg "INFO" "Environment variables"
+    cli_msg "INFO" "PYTHONPATH = $PYTHONPATH"
+    
+}
+
+do_backup()
+{
+    
+    get_current_values
+    
+    local COMMAND=$1
+    local BACKDATE=`date -u +%Y-%m-%d_%H%M%S`
+# lockfile is moved to a location not writeable/predictable by user
+    local LOCKFILE="/var/run/gnuhealth_backup.lock"
+# Infofile is moved to a location not writeable by user    
+    local INFOFILE="/var/log/gnuhealth_backup.log"
+    local BACKDIR=""
+    local DB=""
+
+
+    shift # Remove the command and deal only with the options
+    
+    if [ $# -ne 4 ]; then
+        echo -e "Usage : gnuhealth-control backup --backdir <directory> --database <dbname>"
+        exit
+    fi
+
+    for option in "$@"
+    do
+      case $option in
+          --backdir ) BACKDIR=$2;;
+          --database ) DB=$2 ;;
+      esac
+      shift
+    done
+    
+    if [ -f $LOCKFILE ]
+    then
+        cli_msg "ERROR" "Backup in progress or stale lock file found ..." | tee -a $INFOFILE
+        exit 1
+    fi
+
+
+    if [ ! -e ${BACKDIR} ]
+    then
+        cli_msg "ERROR" "Backup directory ${BACKDIR} not found !"
+        exit 1
+    fi
+
+    echo $$ > $LOCKFILE
+    
+    # Backup start
+
+    cli_msg "INFO" "START Database Backup" | tee -a $INFOFILE
+    
+    pg_dump --username=tryton -w --role=tryton $DB > $BACKDIR/backup\_$DB\_$BACKDATE || bailout 
+
+    cli_msg "INFO" "Compressing Database Backup" | tee -a $INFOFILE
+
+    gzip "${BACKDIR}/backup_${DB}_${BACKDATE}" || bailout
+    
+    cli_msg "INFO" "Compressing GNU Health Attachment directory" | tee -a $INFOFILE
+#AB - start
+    BACKUP_NAME=gnuhealth_${DB}_fs_backup_${BACKDATE}.tar.gz
+#    tar -cvzf "${BACKDIR}/gnuhealth_${DB}_fs_backup_${BACKDATE}.tar.gz" /var/lib/tryton || bailout
+    tar -cvzf "${BACKDIR}/${BACKUP_NAME}" /var/lib/tryton || bailout
+
+    cli_msg "INFO" "Creating tarball with compressed DB and GNU Health Attachment directory" | tee -a $INFOFILE
+
+    tar -cvf "${BACKDIR}/gnuhealth_${DB}_with_fs_backup_${BACKDATE}.tar" \
+        ${BACKDIR}/backup_${DB}_${BACKDATE}.gz ${BACKDIR}/${BACKUP_NAME} \
+        || bailout
+     
+    cli_msg "INFO" "Backup successfully written to ${BACKDIR}/gnuhealth_${DB}_with_fs_backup_${BACKDATE}.tar" | tee -a $INFOFILE
+#AB - END
+#Remove lock file
+    rm $LOCKFILE
+
+}
+
+check_status()
+{
+
+    systemctl status gnuhealth
+
+}
+
+check_download_dir()
+{
+    if [ -d $UPDATE_DOWNLOAD_DIR ]; then
+        echo "Update download directory exists. Bailing out"
+        exit 1
+    fi
+}
+
+check_updates()
+{
+
+     cli_msg "INFO" "Running zypper to check for updates"
+     zypper lu | grep "trytond , gnuhealth"
+    
+}
+
+install_updates()
+{
+
+    if [ $2 == "--dry-run" ];then
+            zypper up -D -- "trytond*" "gnuhealth*"
+        exit 0
+    fi
+
+    sudo zypper up -- "trytond*" "gnuhealth*"
+
+}
+
+relink_mods()
+{
+        
+    sudo systemctl restart gnuhealth
+
+}
+    
+do_update()
+{
+    if [ $# -gt 1 ];then
+        if [ $2 != "--dry-run" ];then
+        cli_msg "ERROR" "Unrecognized update option"
+        exit 1
+        fi
+    fi
+
+    check_download_dir
+    get_current_values
+    check_updates
+    if [ $# -gt 1 ];then
+        if [ $2 == "--dry-run" ];then
+            exit 0
+        fi
+    fi
+    install_updates
+#    remove_old
+    relink_mods 
+}
+
+getlang() {
+    if [ $# -eq 1 ]; then
+        usage
+    fi
+    
+    local lang_to_install=$2
+    local lang_file=${lang_to_install}.zip
+    cli_msg "INFO" "Going to modules directory ${GNUHEALTH_DIR} "
+
+    cd ${GNUHEALTH_DIR} || exit 1
+    cli_msg "INFO" "Retrieving language pack file for ${lang_to_install}"
+    wget ${TRANSLATE_URL}/download-language/${lang_to_install}/gnu-health/?format=zip -O $UPDATE_DOWNLOAD_DIR/${lang_file} || exit 1
+    cli_msg "INFO" "Installing / Updating language files for ${lang_to_install} ..."
+    bsdtar --strip-components 3 -xzf $UPDATE_DOWNLOAD_DIR/${lang_file} || exit 1
+    cli_msg "INFO" "Language pack ${lang_to_install} sucessfully installed / updated"
+    chmod -R a+r ${GNUHEALTH_DIR}
+    cli_msg "INFO" "Read permissions set"
+    cli_msg "INFO" "You now need to update the database modules"
+
+}
+
+bailout() {
+    cli_msg "ERROR"  "Bailing out !"
+    cli_msg "ERROR"  "Removing backup lock file"
+    rm -f $LOCKFILE
+    rm -rf $UPDATE_DOWNLOAD_DIR
+    exit 1
+}
+
+parse_command_line()
+{
+    if [ $# -eq 0 ]; then
+        usage
+    fi
+    
+    case $1 in
+        version) echo $VERSION;;
+        backup) do_backup $@;;
+        update) do_update $@;;
+        status) check_status;;
+        getlang) getlang $@;;
+        help) help;;
+        *) echo $1: Unrecognized command; exit 1;;
+    esac
+}
+
+parse_command_line $@

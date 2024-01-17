@@ -1,0 +1,24 @@
+Index: libgcrypt-1.10.2/autogen.sh
+===================================================================
+--- libgcrypt-1.10.2.orig/autogen.sh
++++ libgcrypt-1.10.2/autogen.sh
+@@ -249,7 +249,7 @@ if [ "$myhost" = "find-version" ]; then
+     fi
+ 
+     beta=no
+-    if [ -e .git ]; then
++    if false; then
+       ingit=yes
+       tmp=$(git describe --match "${matchstr1}" --long 2>/dev/null)
+       tmp=$(echo "$tmp" | sed s/^"$package"//)
+@@ -265,8 +265,8 @@ if [ "$myhost" = "find-version" ]; then
+       rvd=$((0x$(echo ${rev} | dd bs=1 count=4 2>/dev/null)))
+     else
+       ingit=no
+-      beta=yes
+-      tmp="-unknown"
++      beta=no
++      tmp=""
+       rev="0000000"
+       rvd="0"
+     fi

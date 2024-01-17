@@ -1,0 +1,26 @@
+Index: gstreamermm-1.10.0/gstreamer/gstreamermm/register.h
+===================================================================
+--- gstreamermm-1.10.0.orig/gstreamer/gstreamermm/register.h
++++ gstreamermm-1.10.0/gstreamer/gstreamermm/register.h
+@@ -110,7 +110,7 @@ register_mm_type(const gchar * type_name
+     /* The typedef for GType may be gulong or gsize, depending on the
+      * system and whether the compiler is c++ or not. The g_once_init_*
+      * functions always take a gsize * though ... */
+-    static volatile gsize gonce_data = 0;
++    static gsize gonce_data = 0;
+     if (g_once_init_enter (&gonce_data)) {
+         GTypeInfo info;
+ 
+Index: gstreamermm-1.10.0/tests/integration/test-integration-seekonstartup.cc
+===================================================================
+--- gstreamermm-1.10.0.orig/tests/integration/test-integration-seekonstartup.cc
++++ gstreamermm-1.10.0/tests/integration/test-integration-seekonstartup.cc
+@@ -18,7 +18,7 @@ RefPtr<Glib::MainLoop> mainloop;
+ RefPtr<Bus> bus;
+ RefPtr<Pipeline> pipeline;
+ RefPtr<Pad> sink_pad;
+-static volatile gint counter;
++static gint counter;
+ bool prerolled = false;
+ gboolean was_check = 0;
+ 

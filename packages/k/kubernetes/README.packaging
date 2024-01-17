@@ -1,0 +1,14 @@
+========
+OVERVIEW
+
+This package is a dummy package that always depends on the
+version of corresponding kubernetes packages that openSUSE
+currently supports.
+
+There are up to three packages that need to be handled in a
+given update.  This package, the base "kubernetes" package, the
+current "kubernetesX" package (X is the major version numbers),
+and the next "kubernetesX" package if the major version has changed.
+
+NOTE: This package should always have the same "License"
+tag as the currently-supported version of the kubernetesX package.

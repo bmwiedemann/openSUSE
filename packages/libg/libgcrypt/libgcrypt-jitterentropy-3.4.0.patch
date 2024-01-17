@@ -1,0 +1,618 @@
+Index: libgcrypt-1.10.0/random/jitterentropy-base.c
+===================================================================
+--- libgcrypt-1.10.0.orig/random/jitterentropy-base.c
++++ libgcrypt-1.10.0/random/jitterentropy-base.c
+@@ -42,7 +42,7 @@
+ 		      * require consumer to be updated (as long as this number
+ 		      * is zero, the API is not considered stable and can
+ 		      * change without a bump of the major version) */
+-#define MINVERSION 3 /* API compatible, ABI may change, functional
++#define MINVERSION 4 /* API compatible, ABI may change, functional
+ 		      * enhancements only, consumer can be left unchanged if
+ 		      * enhancements are not considered */
+ #define PATCHLEVEL 0 /* API / ABI compatible, no functional changes, no
+@@ -200,29 +200,38 @@ ssize_t jent_read_entropy(struct rand_da
+ 			tocopy = (DATA_SIZE_BITS / 8);
+ 		else
+ 			tocopy = len;
+-		memcpy(p, &ec->data, tocopy);
++
++		jent_read_random_block(ec, p, tocopy);
+ 
+ 		len -= tocopy;
+ 		p += tocopy;
+ 	}
+ 
+ 	/*
+-	 * To be on the safe side, we generate one more round of entropy
+-	 * which we do not give out to the caller. That round shall ensure
+-	 * that in case the calling application crashes, memory dumps, pages
+-	 * out, or due to the CPU Jitter RNG lingering in memory for long
+-	 * time without being moved and an attacker cracks the application,
+-	 * all he reads in the entropy pool is a value that is NEVER EVER
+-	 * being used for anything. Thus, he does NOT see the previous value
+-	 * that was returned to the caller for cryptographic purposes.
++	 * Enhanced backtracking support: At this point, the hash state
++	 * contains the digest of the previous Jitter RNG collection round
++	 * which is inserted there by jent_read_random_block with the SHA
++	 * update operation. At the current code location we completed
++	 * one request for a caller and we do not know how long it will
++	 * take until a new request is sent to us. To guarantee enhanced
++	 * backtracking resistance at this point (i.e. ensure that an attacker
++	 * cannot obtain information about prior random numbers we generated),
++	 * but still stirring the hash state with old data the Jitter RNG
++	 * obtains a new message digest from its state and re-inserts it.
++	 * After this operation, the Jitter RNG state is still stirred with
++	 * the old data, but an attacker who gets access to the memory after
++	 * this point cannot deduce the random numbers produced by the
++	 * Jitter RNG prior to this point.
+ 	 */
+ 	/*
+-	 * If we use secured memory, do not use that precaution as the secure
+-	 * memory protects the entropy pool. Moreover, note that using this
+-	 * call reduces the speed of the RNG by up to half
++	 * If we use secured memory, where backtracking support may not be
++	 * needed because the state is protected in a different method,
++	 * it is permissible to drop this support. But strongly weigh the
++	 * pros and cons considering that the SHA3 operation is not that
++	 * expensive.
+ 	 */
+ #ifndef JENT_CPU_JITTERENTROPY_SECURE_MEMORY
+-	jent_random_data(ec);
++	jent_read_random_block(ec, NULL, 0);
+ #endif
+ 
+ err:
+@@ -379,6 +388,7 @@ static struct rand_data
+ *jent_entropy_collector_alloc_internal(unsigned int osr, unsigned int flags)
+ {
+ 	struct rand_data *entropy_collector;
++	uint32_t memsize = 0;
+ 
+ 	/*
+ 	 * Requesting disabling and forcing of internal timer
+@@ -405,7 +415,7 @@ static struct rand_data
+ 		return NULL;
+ 
+ 	if (!(flags & JENT_DISABLE_MEMORY_ACCESS)) {
+-		uint32_t memsize = jent_memsize(flags);
++		memsize = jent_memsize(flags);
+ 
+ 		entropy_collector->mem = _gcry_calloc (1, memsize);
+ 
+@@ -431,13 +441,19 @@ static struct rand_data
+ 		entropy_collector->memaccessloops = JENT_MEMORY_ACCESSLOOPS;
+ 	}
+ 
++	if (sha3_alloc(&entropy_collector->hash_state))
++		goto err;
++
++	/* Initialize the hash state */
++	sha3_256_init(entropy_collector->hash_state);
++
+ 	/* verify and set the oversampling rate */
+ 	if (osr < JENT_MIN_OSR)
+ 		osr = JENT_MIN_OSR;
+ 	entropy_collector->osr = osr;
+ 	entropy_collector->flags = flags;
+ 
+-	if (jent_fips_enabled() || (flags & JENT_FORCE_FIPS))
++	if ((flags & JENT_FORCE_FIPS) || jent_fips_enabled())
+ 		entropy_collector->fips_enabled = 1;
+ 
+ 	/* Initialize the APT */
+@@ -469,7 +485,7 @@ static struct rand_data
+ 
+ err:
+ 	if (entropy_collector->mem != NULL)
+-		jent_zfree(entropy_collector->mem, JENT_MEMORY_SIZE);
++		jent_zfree(entropy_collector->mem, memsize);
+ 	jent_zfree(entropy_collector, sizeof(struct rand_data));
+ 	return NULL;
+ }
+@@ -511,6 +527,7 @@ JENT_PRIVATE_STATIC
+ void jent_entropy_collector_free(struct rand_data *entropy_collector)
+ {
+ 	if (entropy_collector != NULL) {
++		sha3_dealloc(entropy_collector->hash_state);
+ 		jent_notime_disable(entropy_collector);
+ 		if (entropy_collector->mem != NULL) {
+ 			jent_zfree(entropy_collector->mem,
+@@ -664,6 +681,7 @@ static inline int jent_entropy_init_comm
+ 	int ret;
+ 
+ 	jent_notime_block_switch();
++	jent_health_cb_block_switch();
+ 
+ 	if (sha3_tester())
+ 		return EHASH;
+@@ -710,6 +728,8 @@ int jent_entropy_init_ex(unsigned int os
+ 	if (ret)
+ 		return ret;
+ 
++	ret = ENOTIME;
++
+ 	/* Test without internal timer unless caller does not want it */
+ 	if (!(flags & JENT_FORCE_INTERNAL_TIMER))
+ 		ret = jent_time_entropy_init(osr,
+@@ -732,3 +752,9 @@ int jent_entropy_switch_notime_impl(stru
+ 	return jent_notime_switch(new_thread);
+ }
+ #endif
++
++JENT_PRIVATE_STATIC
++int jent_set_fips_failure_callback(jent_fips_failure_cb cb)
++{
++	return jent_set_fips_failure_callback_internal(cb);
++}
+Index: libgcrypt-1.10.0/random/jitterentropy-gcd.c
+===================================================================
+--- libgcrypt-1.10.0.orig/random/jitterentropy-gcd.c
++++ libgcrypt-1.10.0/random/jitterentropy-gcd.c
+@@ -113,12 +113,8 @@ int jent_gcd_analyze(uint64_t *delta_his
+ 		goto out;
+ 	}
+ 
+-	/*
+-	 * Ensure that we have variations in the time stamp below 100 for at
+-	 * least 10% of all checks -- on some platforms, the counter increments
+-	 * in multiples of 100, but not always
+-	 */
+-	if (running_gcd >= 100) {
++	/* Set a sensible maximum value. */
++	if (running_gcd >= UINT32_MAX / 2) {
+ 		ret = ECOARSETIME;
+ 		goto out;
+ 	}
+Index: libgcrypt-1.10.0/random/jitterentropy-health.c
+===================================================================
+--- libgcrypt-1.10.0.orig/random/jitterentropy-health.c
++++ libgcrypt-1.10.0/random/jitterentropy-health.c
+@@ -19,9 +19,24 @@
+  * DAMAGE.
+  */
+ 
+-#include "jitterentropy.h"
+ #include "jitterentropy-health.h"
+ 
++static jent_fips_failure_cb fips_cb = NULL;
++static int jent_health_cb_switch_blocked = 0;
++
++void jent_health_cb_block_switch(void)
++{
++	jent_health_cb_switch_blocked = 1;
++}
++
++int jent_set_fips_failure_callback_internal(jent_fips_failure_cb cb)
++{
++	if (jent_health_cb_switch_blocked)
++		return -EAGAIN;
++	fips_cb = cb;
++	return 0;
++}
++
+ /***************************************************************************
+  * Lag Predictor Test
+  *
+@@ -434,5 +449,9 @@ unsigned int jent_health_failure(struct
+ 	if (!ec->fips_enabled)
+ 		return 0;
+ 
++	if (fips_cb && ec->health_failure) {
++		fips_cb(ec, ec->health_failure);
++	}
++
+ 	return ec->health_failure;
+ }
+Index: libgcrypt-1.10.0/random/jitterentropy-health.h
+===================================================================
+--- libgcrypt-1.10.0.orig/random/jitterentropy-health.h
++++ libgcrypt-1.10.0/random/jitterentropy-health.h
+@@ -20,11 +20,16 @@
+ #ifndef JITTERENTROPY_HEALTH_H
+ #define JITTERENTROPY_HEALTH_H
+ 
++#include "jitterentropy.h"
++
+ #ifdef __cplusplus
+ extern "C"
+ {
+ #endif
+ 
++void jent_health_cb_block_switch(void);
++int jent_set_fips_failure_callback_internal(jent_fips_failure_cb cb);
++
+ static inline uint64_t jent_delta(uint64_t prev, uint64_t next)
+ {
+ 	return (next - prev);
+Index: libgcrypt-1.10.0/random/jitterentropy-noise.c
+===================================================================
+--- libgcrypt-1.10.0.orig/random/jitterentropy-noise.c
++++ libgcrypt-1.10.0/random/jitterentropy-noise.c
+@@ -33,7 +33,7 @@
+  * Update of the loop count used for the next round of
+  * an entropy collection.
+  *
+- * @ec [in] entropy collector struct -- may be NULL
++ * @ec [in] entropy collector struct
+  * @bits [in] is the number of low bits of the timer to consider
+  * @min [in] is the number of bits we shift the timer value to the right at
+  *	     the end to make sure we have a guaranteed minimum value
+@@ -61,16 +61,13 @@ static uint64_t jent_loop_shuffle(struct
+ 	 * Mix the current state of the random number into the shuffle
+ 	 * calculation to balance that shuffle a bit more.
+ 	 */
+-	if (ec) {
+-		jent_get_nstime_internal(ec, &time);
+-		time ^= ec->data[0];
+-	}
++	jent_get_nstime_internal(ec, &time);
+ 
+ 	/*
+ 	 * We fold the time value as much as possible to ensure that as many
+ 	 * bits of the time stamp are included as possible.
+ 	 */
+-	for (i = 0; ((DATA_SIZE_BITS + bits - 1) / bits) > i; i++) {
++	for (i = 0; (((sizeof(time) << 3) + bits - 1) / bits) > i; i++) {
+ 		shuffle ^= time & mask;
+ 		time = time >> bits;
+ 	}
+@@ -91,11 +88,11 @@ static uint64_t jent_loop_shuffle(struct
+  * This function injects the individual bits of the time value into the
+  * entropy pool using a hash.
+  *
+- * @ec [in] entropy collector struct -- may be NULL
+- * @time [in] time stamp to be injected
++ * @ec [in] entropy collector struct
++ * @time [in] time delta to be injected
+  * @loop_cnt [in] if a value not equal to 0 is set, use the given value as
+  *		  number of loops to perform the hash operation
+- * @stuck [in] Is the time stamp identified as stuck?
++ * @stuck [in] Is the time delta identified as stuck?
+  *
+  * Output:
+  * updated hash context
+@@ -104,17 +101,19 @@ static void jent_hash_time(struct rand_d
+ 			   uint64_t loop_cnt, unsigned int stuck)
+ {
+ 	HASH_CTX_ON_STACK(ctx);
+-	uint8_t itermediary[SHA3_256_SIZE_DIGEST];
++	uint8_t intermediary[SHA3_256_SIZE_DIGEST];
+ 	uint64_t j = 0;
+-	uint64_t hash_loop_cnt;
+ #define MAX_HASH_LOOP 3
+ #define MIN_HASH_LOOP 0
+ 
+ 	/* Ensure that macros cannot overflow jent_loop_shuffle() */
+ 	BUILD_BUG_ON((MAX_HASH_LOOP + MIN_HASH_LOOP) > 63);
+-	hash_loop_cnt =
++	uint64_t hash_loop_cnt =
+ 		jent_loop_shuffle(ec, MAX_HASH_LOOP, MIN_HASH_LOOP);
+ 
++	/* Use the memset to shut up valgrind */
++	memset(intermediary, 0, sizeof(intermediary));
++
+ 	sha3_256_init(&ctx);
+ 
+ 	/*
+@@ -125,35 +124,54 @@ static void jent_hash_time(struct rand_d
+ 		hash_loop_cnt = loop_cnt;
+ 
+ 	/*
+-	 * This loop basically slows down the SHA-3 operation depending
+-	 * on the hash_loop_cnt. Each iteration of the loop generates the
+-	 * same result.
++	 * This loop fills a buffer which is injected into the entropy pool.
++	 * The main reason for this loop is to execute something over which we
++	 * can perform a timing measurement. The injection of the resulting
++	 * data into the pool is performed to ensure the result is used and
++	 * the compiler cannot optimize the loop away in case the result is not
++	 * used at all. Yet that data is considered "additional information"
++	 * considering the terminology from SP800-90A without any entropy.
++	 *
++	 * Note, it does not matter which or how much data you inject, we are
++	 * interested in one Keccack1600 compression operation performed with
++	 * the sha3_final.
+ 	 */
+ 	for (j = 0; j < hash_loop_cnt; j++) {
+-		sha3_update(&ctx, ec->data, SHA3_256_SIZE_DIGEST);
+-		sha3_update(&ctx, (uint8_t *)&time, sizeof(uint64_t));
++		sha3_update(&ctx, intermediary, sizeof(intermediary));
++		sha3_update(&ctx, (uint8_t *)&ec->rct_count,
++			    sizeof(ec->rct_count));
++		sha3_update(&ctx, (uint8_t *)&ec->apt_cutoff,
++			    sizeof(ec->apt_cutoff));
++		sha3_update(&ctx, (uint8_t *)&ec->apt_observations,
++			    sizeof(ec->apt_observations));
++		sha3_update(&ctx, (uint8_t *)&ec->apt_count,
++			    sizeof(ec->apt_count));
++		sha3_update(&ctx,(uint8_t *) &ec->apt_base,
++			    sizeof(ec->apt_base));
+ 		sha3_update(&ctx, (uint8_t *)&j, sizeof(uint64_t));
++		sha3_final(&ctx, intermediary);
++	}
+ 
+-		/*
+-		 * If the time stamp is stuck, do not finally insert the value
+-		 * into the entropy pool. Although this operation should not do
+-		 * any harm even when the time stamp has no entropy, SP800-90B
+-		 * requires that any conditioning operation to have an identical
+-		 * amount of input data according to section 3.1.5.
+-		 */
++	/*
++	 * Inject the data from the previous loop into the pool. This data is
++	 * not considered to contain any entropy, but it stirs the pool a bit.
++	 */
++	sha3_update(ec->hash_state, intermediary, sizeof(intermediary));
+ 
+-		/*
+-		 * The sha3_final operations re-initialize the context for the
+-		 * next loop iteration.
+-		 */
+-		if (stuck || (j < hash_loop_cnt - 1))
+-			sha3_final(&ctx, itermediary);
+-		else
+-			sha3_final(&ctx, ec->data);
+-	}
++	/*
++	 * Insert the time stamp into the hash context representing the pool.
++	 *
++	 * If the time stamp is stuck, do not finally insert the value into the
++	 * entropy pool. Although this operation should not do any harm even
++	 * when the time stamp has no entropy, SP800-90B requires that any
++	 * conditioning operation to have an identical amount of input data
++	 * according to section 3.1.5.
++	 */
++	if (!stuck)
++		sha3_update(ec->hash_state, (uint8_t *)&time, sizeof(uint64_t));
+ 
+ 	jent_memset_secure(&ctx, SHA_MAX_CTX_SIZE);
+-	jent_memset_secure(itermediary, sizeof(itermediary));
++	jent_memset_secure(intermediary, sizeof(intermediary));
+ }
+ 
+ #define MAX_ACC_LOOP_BIT 7
+@@ -184,13 +202,12 @@ static inline uint32_t xoshiro128starsta
+ 
+ static void jent_memaccess(struct rand_data *ec, uint64_t loop_cnt)
+ {
+-	uint64_t i = 0;
++	uint64_t i = 0, time = 0;
+ 	union {
+ 		uint32_t u[4];
+ 		uint8_t b[sizeof(uint32_t) * 4];
+ 	} prngState = { .u = {0x8e93eec0, 0xce65608a, 0xa8d46b46, 0xe83cef69} };
+ 	uint32_t addressMask;
+-        uint64_t acc_loop_cnt;
+ 
+ 	if (NULL == ec || NULL == ec->mem)
+ 		return;
+@@ -199,7 +216,7 @@ static void jent_memaccess(struct rand_d
+ 
+ 	/* Ensure that macros cannot overflow jent_loop_shuffle() */
+ 	BUILD_BUG_ON((MAX_ACC_LOOP_BIT + MIN_ACC_LOOP_BIT) > 63);
+-	acc_loop_cnt =
++	uint64_t acc_loop_cnt =
+ 		jent_loop_shuffle(ec, MAX_ACC_LOOP_BIT, MIN_ACC_LOOP_BIT);
+ 
+ 	/*
+@@ -213,8 +230,10 @@ static void jent_memaccess(struct rand_d
+ 	 * "per-update: timing, it gets you mostly independent "per-update"
+ 	 * timing, so we can now benefit from the Central Limit Theorem!
+ 	 */
+-	for (i = 0; i < sizeof(prngState); i++)
+-		prngState.b[i] ^= ec->data[i];
++	for (i = 0; i < sizeof(prngState); i++) {
++		jent_get_nstime_internal(ec, &time);
++		prngState.b[i] ^= (uint8_t)(time & 0xff);
++	}
+ 
+ 	/*
+ 	 * testing purposes -- allow test app to set the counter, not
+@@ -358,21 +377,21 @@ unsigned int jent_measure_jitter(struct
+ 
+ /**
+  * Generator of one 256 bit random number
+- * Function fills rand_data->data
++ * Function fills rand_data->hash_state
+  *
+  * @ec [in] Reference to entropy collector
+  */
+ void jent_random_data(struct rand_data *ec)
+ {
+-	unsigned int k = 0, safety_factor = ENTROPY_SAFETY_FACTOR;
++	unsigned int k = 0, safety_factor = 0;
+ 
+-	if (!ec->fips_enabled)
+-		safety_factor = 0;
++	if (ec->fips_enabled)
++		safety_factor = ENTROPY_SAFETY_FACTOR;
+ 
+ 	/* priming of the ->prev_time value */
+ 	jent_measure_jitter(ec, 0, NULL);
+ 
+-	while (1) {
++	while (!jent_health_failure(ec)) {
+ 		/* If a stuck measurement is received, repeat measurement */
+ 		if (jent_measure_jitter(ec, 0, NULL))
+ 			continue;
+@@ -385,3 +404,22 @@ void jent_random_data(struct rand_data *
+ 			break;
+ 	}
+ }
++
++void jent_read_random_block(struct rand_data *ec, char *dst, size_t dst_len)
++{
++	uint8_t jent_block[SHA3_256_SIZE_DIGEST];
++
++	BUILD_BUG_ON(SHA3_256_SIZE_DIGEST != (DATA_SIZE_BITS / 8));
++
++	/* The final operation automatically re-initializes the ->hash_state */
++	sha3_final(ec->hash_state, jent_block);
++	if (dst_len)
++		memcpy(dst, jent_block, dst_len);
++
++	/*
++	 * Stir the new state with the data from the old state - the digest
++	 * of the old data is not considered to have entropy.
++	 */
++	sha3_update(ec->hash_state, jent_block, sizeof(jent_block));
++	jent_memset_secure(jent_block, sizeof(jent_block));
++}
+Index: libgcrypt-1.10.0/random/jitterentropy-noise.h
+===================================================================
+--- libgcrypt-1.10.0.orig/random/jitterentropy-noise.h
++++ libgcrypt-1.10.0/random/jitterentropy-noise.h
+@@ -31,6 +31,7 @@ unsigned int jent_measure_jitter(struct
+ 				 uint64_t loop_cnt,
+ 				 uint64_t *ret_current_delta);
+ void jent_random_data(struct rand_data *ec);
++void jent_read_random_block(struct rand_data *ec, char *dst, size_t dst_len);
+ 
+ #ifdef __cplusplus
+ }
+Index: libgcrypt-1.10.0/random/jitterentropy-sha3.c
+===================================================================
+--- libgcrypt-1.10.0.orig/random/jitterentropy-sha3.c
++++ libgcrypt-1.10.0/random/jitterentropy-sha3.c
+@@ -19,6 +19,7 @@
+  */
+ 
+ #include "jitterentropy-sha3.h"
++#include "jitterentropy.h"
+ 
+ /***************************************************************************
+  * Message Digest Implementation
+@@ -380,3 +381,23 @@ int sha3_tester(void)
+ 
+ 	return 0;
+ }
++
++int sha3_alloc(void **hash_state)
++{
++	struct sha_ctx *tmp;
++
++	tmp = jent_zalloc(SHA_MAX_CTX_SIZE);
++	if (!tmp)
++		return 1;
++
++	*hash_state = tmp;
++
++	return 0;
++}
++
++void sha3_dealloc(void *hash_state)
++{
++	struct sha_ctx *ctx = (struct sha_ctx *)hash_state;
++
++	jent_zfree(ctx, SHA_MAX_CTX_SIZE);
++}
+Index: libgcrypt-1.10.0/random/jitterentropy-sha3.h
+===================================================================
+--- libgcrypt-1.10.0.orig/random/jitterentropy-sha3.h
++++ libgcrypt-1.10.0/random/jitterentropy-sha3.h
+@@ -47,6 +47,8 @@ struct sha_ctx {
+ void sha3_256_init(struct sha_ctx *ctx);
+ void sha3_update(struct sha_ctx *ctx, const uint8_t *in, size_t inlen);
+ void sha3_final(struct sha_ctx *ctx, uint8_t *digest);
++int sha3_alloc(void **hash_state);
++void sha3_dealloc(void *hash_state);
+ int sha3_tester(void);
+ 
+ #ifdef __cplusplus
+Index: libgcrypt-1.10.0/random/jitterentropy-timer.c
+===================================================================
+--- libgcrypt-1.10.0.orig/random/jitterentropy-timer.c
++++ libgcrypt-1.10.0/random/jitterentropy-timer.c
+@@ -202,8 +202,8 @@ int jent_notime_enable(struct rand_data
+ 	if (jent_force_internal_timer || (flags & JENT_FORCE_INTERNAL_TIMER)) {
+ 		/* Self test not run yet */
+ 		if (!jent_force_internal_timer &&
+-		    jent_time_entropy_init(flags | JENT_FORCE_INTERNAL_TIMER,
+-					   ec->osr))
++		    jent_time_entropy_init(ec->osr,
++					   flags | JENT_FORCE_INTERNAL_TIMER))
+ 			return EHEALTH;
+ 
+ 		ec->enable_notime = 1;
+Index: libgcrypt-1.10.0/random/jitterentropy.h
+===================================================================
+--- libgcrypt-1.10.0.orig/random/jitterentropy.h
++++ libgcrypt-1.10.0/random/jitterentropy.h
+@@ -49,7 +49,7 @@
+  ***************************************************************************/
+ 
+ /*
+- * Enable timer-less timer support
++ * Enable timer-less timer support with JENT_CONF_ENABLE_INTERNAL_TIMER
+  *
+  * In case the hardware is identified to not provide a high-resolution time
+  * stamp, this option enables a built-in high-resolution time stamp mechanism.
+@@ -166,7 +166,7 @@ struct rand_data
+ 	 * of the RNG are marked as SENSITIVE. A user must not
+ 	 * access that information while the RNG executes its loops to
+ 	 * calculate the next random value. */
+-	uint8_t data[SHA3_256_SIZE_DIGEST]; /* SENSITIVE Actual random number */
++	void *hash_state;		/* SENSITIVE hash state entropy pool */
+ 	uint64_t prev_time;		/* SENSITIVE Previous time stamp */
+ #define DATA_SIZE_BITS (SHA3_256_SIZE_DIGEST_BITS)
+ 
+@@ -378,28 +378,34 @@ int jent_entropy_init(void);
+ JENT_PRIVATE_STATIC
+ int jent_entropy_init_ex(unsigned int osr, unsigned int flags);
+ 
++/*
++ * Set a callback to run on health failure in FIPS mode.
++ * This function will take an action determined by the caller.
++ */
++typedef void (*jent_fips_failure_cb)(struct rand_data *ec,
++				     unsigned int health_failure);
++JENT_PRIVATE_STATIC
++int jent_set_fips_failure_callback(jent_fips_failure_cb cb);
++
+ /* return version number of core library */
+ JENT_PRIVATE_STATIC
+ unsigned int jent_version(void);
+ 
+-#ifdef JENT_CONF_ENABLE_INTERNAL_TIMER
+ /* Set a different thread handling logic for the notimer support */
+ JENT_PRIVATE_STATIC
+ int jent_entropy_switch_notime_impl(struct jent_notime_thread *new_thread);
+-#endif
+ 
+ /* -- END of Main interface functions -- */
+ 
+ /* -- BEGIN timer-less threading support functions to prevent code dupes -- */
+ 
+-struct jent_notime_ctx {
+ #ifdef JENT_CONF_ENABLE_INTERNAL_TIMER
++
++struct jent_notime_ctx {
+ 	pthread_attr_t notime_pthread_attr;	/* pthreads library */
+ 	pthread_t notime_thread_id;		/* pthreads thread ID */
+-#endif
+ };
+ 
+-#ifdef JENT_CONF_ENABLE_INTERNAL_TIMER
+ 
+ JENT_PRIVATE_STATIC
+ int jent_notime_init(void **ctx);
+Index: libgcrypt-1.10.0/random/jitterentropy-base-user.h
+===================================================================
+--- libgcrypt-1.10.0.orig/random/jitterentropy-base-user.h
++++ libgcrypt-1.10.0/random/jitterentropy-base-user.h
+@@ -213,12 +213,12 @@ static inline void jent_get_cachesize(lo
+ 		ext = strstr(buf, "K");
+ 		if (ext) {
+ 			shift = 10;
+-			ext = '\0';
++			*ext = '\0';
+ 		} else {
+ 			ext = strstr(buf, "M");
+ 			if (ext) {
+ 				shift = 20;
+-				ext = '\0';
++				*ext = '\0';
+ 			}
+ 		}
+ 

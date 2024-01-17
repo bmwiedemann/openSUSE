@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Sat Nov  4 21:57:54 UTC 2017 - aavindraa@gmail.com
+
+- Update to 1.0.10. For changes, see:
+  https://github.com/CSCsw/ColPack/compare/6fed3fdf83c36a19364c358e75575cb51f6200db...v1.0.10
+- Use new homepage and Github repo
+- Remove colpack-return-in-non-void.patch, fixed in commit:
+  5ebede191a2f005f9630b3f5989db248f6626d2f
+- Remove gcc6-fix-errors.patch, merged:
+  https://github.com/CSCsw/ColPack/pull/11
+- Clean with spec-cleaner
+
+-------------------------------------------------------------------
+Wed May 25 09:51:32 UTC 2016 - martin.liska@suse.com
+
+- Add gcc6-fix-errors.patch to remove errors seen by GCC6.
+
+-------------------------------------------------------------------
+Thu Oct 18 09:25:19 UTC 2012 - kkhere.geo@gmail.com
+
+- Update to 1.0.9: no changelog released upstream 
+
+-------------------------------------------------------------------
+Fri Sep 14 20:34:46 UTC 2012 - p.drouand@gmail.com
+
+- Update to 1.0.8:
+
+-------------------------------------------------------------------
+Mon Mar 26 14:35:20 UTC 2012 - kkhere.geo@gmail.com
+
+- correct source URL 
+
+-------------------------------------------------------------------
+Thu Mar 22 13:00:33 UTC 2012 - kkhere.geo@gmail.com
+
+- Create new package for ColPack with version 1.0.6 

@@ -1,0 +1,8 @@
+<package name="libinfinity" project="openSUSE:Factory">
+  <title>Implementation of the Infinote collaborative editing protocol</title>
+  <description>libinfinity is an implementation of the Infinote protocol written in
+GObject-based C. Infinote is a protocol for collaborative editing
+multiple documents and is portable to both Windows and Unix-like
+platforms.</description>
+  <devel project="GNOME:Apps" package="libinfinity"/>
+</package>

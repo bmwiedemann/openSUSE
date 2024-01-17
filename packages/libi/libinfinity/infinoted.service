@@ -1,0 +1,24 @@
+[Unit]
+Description=collaborative text editor service
+Documentation=man:infinoted(1)
+After=network.target
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+EnvironmentFile=-/etc/sysconfig/infinoted
+ExecStart=/usr/bin/infinoted ${INFINOTED_OPTIONS}
+
+[Install]
+WantedBy=multi-user.target
+

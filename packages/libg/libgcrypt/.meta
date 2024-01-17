@@ -1,0 +1,6 @@
+<package name="libgcrypt" project="openSUSE:Factory">
+  <title>The GNU Crypto Library</title>
+  <description>Libgcrypt is a general purpose crypto library based on the code used in
+GnuPG (alpha version).</description>
+  <devel project="devel:libraries:c_c++" package="libgcrypt"/>
+</package>

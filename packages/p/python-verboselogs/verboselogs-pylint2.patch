@@ -1,0 +1,9 @@
+--- verboselogs-1.7/verboselogs/pylint.py.old	2018-09-20 14:13:06.803001006 +0200
++++ verboselogs-1.7/verboselogs/pylint.py	2018-09-20 14:13:16.619173797 +0200
+@@ -32,5 +32,5 @@
+ 
+ 
+ # Register the above methods with Pylint.
+-MANAGER.register_transform(scoped_nodes.Class, verboselogs_class_transform)
++MANAGER.register_transform(scoped_nodes.ClassDef, verboselogs_class_transform)
+ MANAGER.register_transform(scoped_nodes.Module, verboselogs_module_transform)

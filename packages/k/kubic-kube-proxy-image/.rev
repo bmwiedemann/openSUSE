@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>09ca5ebfbd4f577446e14895f18d9051</srcmd5>
+    <version>1.0.0</version>
+    <time>1563456055</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial version 
+</comment>
+    <requestid>715988</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>167acc7047eec3c7bf8f5196b99bca0d</srcmd5>
+    <version>1.0.0</version>
+    <time>1564137371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>716631</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>34ba7f0910b952c1de6acae1772351ac</srcmd5>
+    <version>1.0.0</version>
+    <time>1588022895</time>
+    <user>dimstar_suse</user>
+    <comment>- Add LICENSE</comment>
+    <requestid>796534</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a45f0983f1d9013c864d5956dc9dc4c2</srcmd5>
+    <version>1.0.0</version>
+    <time>1591380539</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove &quot;--&quot; from the package list to separate pkgs from
+  arguments: kiwi does this implicit now. (forwarded request 811749 from dimstar)</comment>
+    <requestid>811760</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>1ba64387d1b71a93c673464f36603be8</srcmd5>
+    <version>1.0.0</version>
+    <time>1607196957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852617</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>bc9f02c88e1e137be731a1abfe9ed868</srcmd5>
+    <version>1.0.0</version>
+    <time>1659034727</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991414</requestid>
+  </revision>
+</revisionlist>

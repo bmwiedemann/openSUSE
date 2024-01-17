@@ -1,0 +1,5 @@
+<package name="lua-mediator_lua" project="openSUSE:Factory">
+  <title>Event handling through channels</title>
+  <description>mediator_lua allows you to subscribe and publish to a central object so you can decouple function calls in your application. It's as simple as mediator:subscribe(&quot;channel&quot;, function). Supports namespacing, predicates, and more.</description>
+  <devel project="devel:languages:lua" package="lua-mediator_lua"/>
+</package>

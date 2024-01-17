@@ -1,0 +1,34 @@
+[Unit]
+Description=WebDAV Server for GNU Health on Database %I
+After=syslog.target
+Requires=gnuhealth.service
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+Type=simple
+User=tryton
+Group=tryton
+PIDFile=/var/lib/trytond/gnuhealth-webdav.pid
+
+ExecStart=/usr/bin/gnuhealth-webdav-server -c /etc/tryton/trytond.conf -d %I -v
+
+# Give a reasonable amount of time for the server to start up/shut down
+TimeoutSec=300
+
+# We rely on systemd to restart WebDAV Server if it dies
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

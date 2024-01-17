@@ -1,0 +1,14 @@
+Index: CMakeLists.txt
+===================================================================
+--- CMakeLists.txt.orig	2017-04-13 10:18:48.656747496 +0200
++++ CMakeLists.txt	2017-04-13 13:10:55.648428778 +0200
+@@ -31,6 +31,9 @@ include( AsciidocHelpers )
+ # Add the common asciidoc options
+ add_adoc_option( -b html5 )
+ add_adoc_option( -a toc2 )
++add_adoc_option( -a footer-style=none )
++add_adoc_option( --verbose )
++add_a2x_option( --verbose )
+ add_adoc_option( --section-numbers )
+ if( NOT "${ADOC_TOOLCHAIN}" MATCHES "ASCIIDOCTOR" )
+     # --theme parameter not supported by asciidoctor

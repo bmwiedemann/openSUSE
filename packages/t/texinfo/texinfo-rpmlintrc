@@ -1,0 +1,4 @@
+addFilter(".*W:.*ghost-files-without-postin.*")
+addFilter(".*W:.*info-files-without-install-info-post.*")
+addFilter(".*W:.*name-repeated-in-summary.*")
+addFilter(".*W:.*no-binary.*")

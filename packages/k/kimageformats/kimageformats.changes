@@ -1,0 +1,1390 @@
+-------------------------------------------------------------------
+Sat Jan 13 11:21:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.114.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.114.0
+- Changes since 5.113.0:
+  * avif: new quality settings
+  * Update CI template
+  * HEIF plug-in extended to support HEJ2 format
+
+-------------------------------------------------------------------
+Tue Dec  5 11:17:45 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.113.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.113.0
+- No code change since 5.112.0
+
+-------------------------------------------------------------------
+Mon Nov  6 09:13:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.112.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.112.0
+- No code change since 5.111.0
+
+-------------------------------------------------------------------
+Mon Oct  9 20:20:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.111.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.111.0
+- Changes since 5.110.0:
+  * avif: support repetition count
+  * raw: fix multi image load
+  * hdr: fix oss-fuzz issue 62197
+  * hdr: fix crash (oss-fuzz)
+  * xcf: fix crash (oss-fuzz issue 62075)
+  * xcf: fix oss-fuzz issue
+
+-------------------------------------------------------------------
+Wed Sep  6 12:24:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.110.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.110.0
+- Changes since 5.109.0:
+  * QOI: Advertise write support in the desktop file
+  * qoi: write support backported from master
+  * xcf: format v12 support (kf5)
+  * Support libavif 1.0
+  * exr: multiple fixes (kf5)
+  * Fix missing qoi.desktop
+  * qoi: fix buffer overflow kf5
+  * Renamed qoi.h to qoi_p.h
+  * Minor improvements
+  * Add support for the QOI image format
+  * Set linear color space and round fix
+- Drop patch, merged upstream
+  * 0001-Support-libavif-1.0.patch
+
+-------------------------------------------------------------------
+Tue Aug 29 11:00:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to support avif 1.0:
+  * 0001-Support-libavif-1.0.patch
+
+-------------------------------------------------------------------
+Tue Aug  8 17:42:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.109.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.109.0
+- Changes since 5.108.0:
+  * psd: Fix UB type punning (kde#471829)
+  * Treat 3-channel MCH images as CMY images
+  * Add explicit moc includes to sources for moc-covered headers
+
+-------------------------------------------------------------------
+Mon Jul  3 07:01:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.108.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.108.0
+- Changes since 5.107.0:
+  * jxl: add support for libjxl v0.9, drop support for old 0.6.1
+  * Remove qt6 CI builds
+
+-------------------------------------------------------------------
+Mon Jun  5 07:44:01 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.107.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.107.0
+- Changes since 5.106.0:
+  * pcx: multiple fixes (2)
+  * Avoid unnecessary conversions
+  * RGB/SGI writer: fix alpha detection and image limit size
+  * TGA writer: fix alpha detection and performance improvements
+  * pcx: multiple fixes
+  * PCX: Fix reading of the extended palette (kde#463951)
+
+-------------------------------------------------------------------
+Sat May  6 14:01:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- Changes since 5.105.0:
+  * Fix wrong alpha conversion (kde#468288)
+
+-------------------------------------------------------------------
+Wed Apr 12 10:34:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add support for RAW image formats
+
+-------------------------------------------------------------------
+Sat Apr  1 17:00:45 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.105.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.105.0
+- Changes since 5.104.0:
+  * psd: Fix alpha blending (KF5)
+
+-------------------------------------------------------------------
+Mon Mar  6 09:07:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.104.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.104.0
+- No code change since 5.103.0
+
+-------------------------------------------------------------------
+Wed Feb  8 09:12:55 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- Changes since 5.102.0:
+  * psd: conversion speed improvements (kf5)
+  * Fix writing TGA alpha depth flag
+  * HDR support removed from RAW plugin
+  * heif: reject invalid files with zero size
+
+-------------------------------------------------------------------
+Thu Jan 12 08:18:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * raw: tweak seek implementation
+  * heif: fix error handling
+  * heif: rewrite plugin to use only libheif C API
+
+-------------------------------------------------------------------
+Tue Dec  6 20:10:44 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.101.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.101.0
+- Changes since 5.100.0:
+  * Fix missing DCI-P3 color space set
+  * minor tweaks in HEIF and AVIF plugins
+  * raw: LibRaw_QIODevice::read: fixed possible partial reading of an item
+  * PSD multichannel testcases
+  * Support to MCH with 4+ channels (treat as CMYK)
+  * avif: Check if encoder/decoder is available in capabilities()
+  * Fix condition for installing desktop files
+
+-------------------------------------------------------------------
+Tue Nov  8 08:35:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.100.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.100.0
+- Changes since 5.99.0:
+  * Don't install desktop files for image formats when building against Qt6
+  * raw: Don't seek back if we were asked to read too much
+  * jxl: indicate when all frames have been read
+  * avif: minor fixes
+  * avif: indicate when all frames have been read
+  * avif: always indicate endless loop
+  * avif: return `false` in `canRead()` when `imageIndex >= imageCount` (kde#460085)
+  * Add JXL test files corresponding to 8 EXIF orientation values
+  * Add AVIF test files with rotation and mirror operations
+  * Auto-rotate input images in readtest
+  * jxl: remove C-style casts
+  * avif: Use reinterpret_cast instead C cast
+  * avif: revert 9ac923a commit
+  * heif: replace C cast with static_cast
+  * heif: use heif_init/heif_deinit with libheif 1.13.0+
+  * FindLibRaw: fix include dir, should not contain prefix libraw/ (kde#460105)
+  * Fix duplicated tests
+  * ANI partial test and PIC test added
+  * PSD: impreved support to sequential access device
+  * Fix messages
+  * CMakeLists: enable EXR test
+  * Added EXR test image
+  * Fixes for sequential devices
+- Drop patches, merged upstream:
+  * 0001-avif-return-false-in-canRead-when-imageIndex-imageCo.patch
+  * 0001-avif-always-indicate-endless-loop.patch
+  * 0001-avif-revert-9ac923ad09316dcca0fc11e0be6b3dfc6cce6ca0.patch
+
+-------------------------------------------------------------------
+Wed Oct 19 09:50:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream changes:
+  * 0001-avif-return-false-in-canRead-when-imageIndex-imageCo.patch (kde#460085)
+  * 0001-avif-always-indicate-endless-loop.patch
+  * 0001-avif-revert-9ac923ad09316dcca0fc11e0be6b3dfc6cce6ca0.patch
+
+-------------------------------------------------------------------
+Sun Oct  9 07:21:20 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Enable JPEG-XL plugin
+
+-------------------------------------------------------------------
+Sat Oct  1 15:55:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * Add Qt6 windows CI support
+  * pcx: Do not support sequential devices (kde#459541)
+  * Fix maximum number of channels (testcase added)
+  * LibRaw_QIODevice::seek() avoid seek on a sequential device
+  * LibRaw_QIODevice::seek() bounding checks
+  * Camera RAW images plugin
+  * .gitlab-ci.yml: enable static builds
+  * Enables opening of XCF files with Width and/or Height greater than 32K
+  * Replace C cast with reinterpret_cast
+  * avif: adjust for libavif breaking change in YUV<->RGB conversion
+  * Fix image allocation with Qt 6
+
+-------------------------------------------------------------------
+Tue Sep  6 07:17:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * Add FreeBSD Qt6 CI support
+  * Protect against too big resize for a QByteArray
+
+-------------------------------------------------------------------
+Sun Aug  7 22:27:28 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * Use right type on enums
+  * PSD: Improve alpha detection (kde#182496)
+  * PSD: LAB support
+
+-------------------------------------------------------------------
+Sun Jul  3 11:56:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- Changes since 5.95.0:
+  * PSD header checks according to specifications
+  * Improved detection of alpha channel on CMYK images
+  * Minor code optimization
+  * Minor code improvements (tested on all my MCYK PSD/PSB files)
+  * Fix Alpha + testcase images
+  * Fix regression
+  * Basic support to CMYK 8/16 bits (not fully tested)
+  * Require passing tests for the CI to pass
+  * jxl: support both old 0.6.1 and new 0.7.0 libjxl API
+  * Remove extra ';'
+  * avif: read performance improvements
+
+-------------------------------------------------------------------
+Mon Jun 13 13:18:42 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Enable AVIF plugin also on Leap 15.4
+
+-------------------------------------------------------------------
+Fri Jun 10 14:12:32 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * psd: Fix segfault on architectures where char is unsigned (like ARM)
+
+-------------------------------------------------------------------
+Tue May 10 08:17:59 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * avif: prepare for breaking change in libavif
+  * XCF: Support to QImageIOHandler::Size option
+  * Support to QImageIOHandler::Size option
+  * QByteArray resize removal
+  * psd: Fix crash on broken files
+  * psd: duotone read
+  * psd: Don't crash with broken images
+  * psd: Header depth has to be 8 for CM_INDEXED color_mode
+  * psd: Protect against broken images
+  * psd: Don't abort on broken images
+  * avif: lossless support
+  * psd: Don't assert on broken files
+  * Add windows CI
+  * PSD: Performance improvements and support to missing common formats
+
+-------------------------------------------------------------------
+Sun Apr  3 10:47:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * Fix XCF parasites metadata in QImage and support to ICC profile
+  * avif: encoder speed 7->6
+  * avif: fix jumpToImage
+  * avif: warn about non-recommended libavif configuration
+
+-------------------------------------------------------------------
+Mon Mar  7 09:26:59 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Add Qt6 Android CI
+  * Add write tests for heif/avif/jxl
+  * jxl: encoding improvements
+  * avif: adjust dimension and memory limits
+
+-------------------------------------------------------------------
+Sun Feb  6 10:17:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Check executables exist in PATH before passing them to QProcess
+  * Fix handling of null terminated ANI metadata with Qt6
+  * Add CI qt6 support
+
+-------------------------------------------------------------------
+Mon Jan  3 12:47:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Fix typo
+  * Make it compile against qt6
+
+-------------------------------------------------------------------
+Sat Dec  4 22:56:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * avif: limit scope of variables
+  * Add JXL to the list of supported formats
+  * Add plugin for JPEG XL (JXL)
+
+-------------------------------------------------------------------
+Sun Nov  7 09:13:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:08:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Changes since 5.87.0:
+  * Add FreeBSD CI
+  * Add Android CI
+
+-------------------------------------------------------------------
+Sun Oct  3 20:33:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.87.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.87.0
+- Changes since 5.86.0:
+  * Add Gitlab CI configuration
+  * avif: performance and quality improvements
+
+-------------------------------------------------------------------
+Mon Sep  6 06:22:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Changes since 5.85.0:
+  * Fix build with clang12 + libc++
+  * Clean up unneeded JSON parameter in kimageformats_add_plugin
+  * SGIImage::writeImage: Properly fail if the image is too big
+  * exr: Port to std::log/pow
+  * PCXHandler::write: Properly fail if the image is too big
+
+-------------------------------------------------------------------
+Fri Aug  6 12:12:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Changes since 5.84.0:
+  * exr: Repair compability with openexr2 (kde#440084)
+  * exr: Override the actual function signature (kde#439767)
+  * Fix build with older openEXR versions
+
+-------------------------------------------------------------------
+Sun Jul  4 07:45:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * avif: Disable all strict decoder checks
+
+-------------------------------------------------------------------
+Sat Jun  5 11:58:55 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.83.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.83.0
+- Changes since 5.82.0:
+  * avif: Adjust for libavif breaking change
+  * Bump required CMake version to 3.16
+  * Enable HEIC plugin to save all ICC profiles
+  * Color profile loading/saving fixes
+  * xcf: Make sure offsets are not negative
+  * xcf: Fix Stack-buffer-overflow WRITE on broken files
+
+-------------------------------------------------------------------
+Wed May 19 13:28:45 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Enable HEIF plugin also on Leap 15.3 now
+
+-------------------------------------------------------------------
+Fri May 14 05:15:36 UTC 2021 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Enable HEIF plugin build on openSUSE Tumbleweed (requires libheif)
+
+-------------------------------------------------------------------
+Sat May  1 16:40:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Changes since 5.81.0:
+  * Support building with OpenEXR 3
+  * test: imageconverter: add a way to list mimes instead of formats
+  * xcf: fix new[]/delete mismatch, as detected by ASAN
+  * ani: convert +1 to -1 so we don't do a potential integer overflow
+  * xcf: Fix Stack-buffer-overflow WRITE on broken files
+
+-------------------------------------------------------------------
+Mon Apr  5 07:12:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- No code change since 5.80.0
+
+-------------------------------------------------------------------
+Sun Mar  7 09:26:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.80.0
+- Changes since 5.79.0:
+  * Fix Non-square Radiance/RGBE/.hdr images failing to load (kde#433877)
+  * Check the input buffer before passing it to libheif
+  * Check primaries returned from libavif
+  * Add plugin for High Efficiency Image File Format (HEIF)
+  * Quality option can be returned without parsing input file.
+
+-------------------------------------------------------------------
+Mon Feb  8 08:46:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- Changes since 5.78.0:
+  * Simplify portion of NCLX color profile code
+  * [imagedump] Add "list MIME type" (-m) option
+  * Fix crash with malformed files
+  * ani: Make sure riffSizeData is of the correct size before doing the quint32_le cast dance
+  * Add missing includes
+  * Add plugin for animated Windows cursors (ANI)
+
+-------------------------------------------------------------------
+Mon Jan 11 18:18:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop baselibs.conf. Nothing requires the -32bit package
+  and the new libavif build dependency doesn't provide one.
+
+-------------------------------------------------------------------
+Wed Jan  6 10:47:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Changes since 5.77.0:
+  * Remove ifdefs, we require Qt 5.14 now
+  * Add AVIF to the list of supported formats
+  * Add plugin for AV1 Image File Format (AVIF)
+
+-------------------------------------------------------------------
+Sat Dec  5 18:56:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Changes since 5.76.0:
+  * test: don't convert image format if possible
+  * No longer descease color depth to 8 for 16 bit uncompressed PSD files
+  * tests: Remove qimage_format_enum_names and just use QMetaEnum
+
+-------------------------------------------------------------------
+Sat Nov  7 21:34:52 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.76.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.76.0
+- Changes since 5.75.0:
+  * Add test case for RLE compressed 16 bpc PSD files.
+  * Add support for RLE-compressed, 16 bits per channel PSD files.
+  * Return unsupported when reading 16bit RLE compressed PSD files
+  * feat: add psd color depth == 16 format support
+
+-------------------------------------------------------------------
+Mon Oct  5 08:33:17 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- No code change since 5.74.0
+
+-------------------------------------------------------------------
+Sun Sep  6 12:49:28 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Changes since 5.73.0:
+  * Remove obsolete COPYING files
+
+-------------------------------------------------------------------
+Sun Aug  2 07:13:29 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Changes since 5.72.0:
+  * Adapt license to LGPL-2.0-or-later
+  * Use KF-standardized Qt logging categories
+
+-------------------------------------------------------------------
+Sun Jul  5 07:55:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- No code change since 5.71.0
+
+-------------------------------------------------------------------
+Sun Jun  7 08:06:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * Add some sanity and bounds checking
+
+-------------------------------------------------------------------
+Sun May  3 09:40:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * Fix build on Windows.
+  * Add support for modern Gimp images/XCF files
+
+-------------------------------------------------------------------
+Sun Apr  5 19:45:37 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- Changes since 5.68.0:
+  * Port the HDR plugin from sscanf() to QRegularExpression. Fixes FreeBSD.
+  * autotests: print QImageReader::supportedImageFormats, to debug CI failures
+
+-------------------------------------------------------------------
+Sun Mar  8 09:17:49 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- No code change since 5.67.0
+
+-------------------------------------------------------------------
+Sun Feb  2 18:06:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:32:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- No code change since 5.66.0
+
+-------------------------------------------------------------------
+Sun Jan  5 09:02:11 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.66.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.66.0.php
+- Changes since 5.65.0:
+  * Update the obsolete projects.kde.org URL
+  * pic: Fix Invalid-enum-value undefined behaviour
+
+-------------------------------------------------------------------
+Sun Dec  8 11:18:37 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.65.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.65.0.php
+- No code change since 5.64.0
+
+-------------------------------------------------------------------
+Sun Nov  3 15:47:04 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.64.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.64.0.php
+- Changes since 5.63.0:
+  * Workaround crash in Qt due to -DQT_DISABLE_DEPRECATED_BEFORE=0x050d00
+
+-------------------------------------------------------------------
+Sun Oct  6 13:26:39 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.63.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.63.0.php
+- Changes since 5.62.0:
+  * Add files for testing bug411327
+  * xcf: Fix regression when reading files with "unsupported" properties (kde#411327)
+  * xcf: Properly read image resolution
+  * Port HDR (Radiance RGBE) image loader to Qt5
+
+-------------------------------------------------------------------
+Sat Sep  7 20:36:51 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Fix uninitialized memory read
+
+-------------------------------------------------------------------
+Wed Aug  7 17:51:29 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Remove unused pnm.desktop file
+
+-------------------------------------------------------------------
+Fri Jul 19 11:42:06 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:38 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * QImage::byteCount -> QImage::sizeInByes
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:12 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- No code changes since 5.58.0
+
+-------------------------------------------------------------------
+Wed May 15 18:16:17 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- Changes since 5.57.0:
+  * tga: don't try to read more than max_palette_size into palette
+  * tga: memset dst if read fails
+  * tga: memset the whole palette array, not only the palette_size
+  * Initialize the unread bits of _starttab
+  * xcf: Fix uninitialized memory use on broken documents
+  * ras: Don't overread input on malformed files
+  * xcf: layer is const in copy and merge, mark it as such
+  * No & is a bit faster here
+  * const & is a bit faster here
+  * QStringLiteral is a bit faster here
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:43 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Fix compilation
+  * ora:kra: qstrcmp -> memcmp
+  * autotests: Also exercise canRead
+  * Fix RGBHandler::canRead
+  * xcf: Don't crash with files with unsupported layer modes
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:36 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * ras: fix crash on broken files
+  * Use auto here too
+  * compile without foreach
+  * ras: protect the palette QVector too
+  * ras: tweak max file check
+  * xcf: Fix uninitialized memory use on broken documents
+  * add const, helps understand the function better
+  * ras: tweak max size that "fits" in a QVector
+  * ras: don't assert because we try to allicate a huge vector
+  * ras: Protect against divide by zero
+  * xcf: Don't divide by 0
+  * tga: fail gracefully if readRawData errors
+  * ras: fail gracefully on height*width*bpp > length
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:10 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * Too many changes to list here
+- Dropped patches, now upstream:
+  * 0001-Fix-various-OOB-reads-and-writes-in-kimg_tga-and-kim.patch
+
+-------------------------------------------------------------------
+Thu Jan 31 07:48:50 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add ghostscript requirement to the -eps subpackage
+
+-------------------------------------------------------------------
+Mon Jan 28 13:30:26 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix buffer overflows (boo#1123281):
+  * 0001-Fix-various-OOB-reads-and-writes-in-kimg_tga-and-kim.patch
+
+-------------------------------------------------------------------
+Wed Jan 23 17:47:54 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Split out the eps plugin into an independant subpackage (bsc#1117336)
+- Remove unnecessary ldconfig calls
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:47 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * No code changes since 5.53.0
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Use gimp to export simple-rgba-gimp-2.8.10.xcf to png again
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:05 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Fix minor EBN issues
+
+-------------------------------------------------------------------
+Tue Oct 16 08:02:17 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:50:35 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * kimg_rgb: optimize away QRegExp and QString::fromLocal8Bit.
+  * [EPS] qWarning -> qCWarning
+  * [EPS] Fix crash at app shutdown (being tried to persist clipboard image) (kde#397040)
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:45 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * None
+
+-------------------------------------------------------------------
+Sun Aug 19 09:19:09 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:41 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Use override
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:05 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Remove duplicated mime types from json files
+  * Use override
+
+-------------------------------------------------------------------
+Sun May 13 21:03:03 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * [XCF/GIMP loader] Raise maximimum allowed image size to 32767x32767 on 64 bit platforms (kde#391970)
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:04 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * We depend against 5.8.0 now
+  * Remove not necessary QtCore and co
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:41 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * kcoreaddons_add_plugin: remove effectless OBJECT_DEPENDS on json file
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:08 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:18 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * Set LIBRARY_OUTPUT_DIRECTORY so the autotests can run without the plugins installed
+  * Use brace-initializer instead of nullptr in returning 0-QFlags
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:48 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:14 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * Add .arcconfig
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:41 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:17 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:29 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * None
+
+-------------------------------------------------------------------
+Wed Jul 12 07:14:01 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * None
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:43 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * Use Q_FALLTHROUGH
+
+-------------------------------------------------------------------
+Mon May 15 13:53:15 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:50 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:39 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+
+-------------------------------------------------------------------
+Thu Feb  9 09:29:42 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:41:34 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 02:00:17 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 22:06:31 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * imageformats/kra.h - overrides for KraPlugin capabilities()
+    and create()
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 12:55:54 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:50:40 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:53:42 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:04:21 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:25:40 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:32:10 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:20:47 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 09:58:36 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 18:03:26 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * Add kra and ora imageio plugins (read-only)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+- Drop upstreamed fix-psd.patch
+- Add cmake(KF5Archive) BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan  8 20:35:13 UTC 2016 - wbauer@tmo.at
+
+- Add fix-psd.patch: fixes loading of RLE compressed PSD files
+  (kde#354413)
+
+-------------------------------------------------------------------
+Sat Jan  2 17:43:47 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:06:47 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 17:01:18 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * Recognize image/vnd.adobe.photoshop instead of image/x-psd
+  * Partially revert d7f457a to prevent crash on application exit
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:20 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:13:12 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * eps: fix includes related to Qt Caterogized Logging
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:30 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:45:10 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:41 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:47:12 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:47 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:48 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * Make PSD image reader endianess-agnostic.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:21 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:21 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:43 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:47:18 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:42 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:29 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * KImageFormats: disable the DDS and JPEG-2000 plugins when
+    Qt version is 5.3 or later
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:12 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+- Drop libjasper-devel, unused when kimageformats are building
+  against Qt 5.3
+- Harden required Qt5 libs versions
+
+-------------------------------------------------------------------
+Tue Jul  1 21:35:55 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:26 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sat May 17 23:14:10 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Recommend libqt5-qtimageformats
+
+-------------------------------------------------------------------
+Sun May  4 01:41:13 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:41 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+
+-------------------------------------------------------------------
+Tue Mar  4 16:39:21 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Sat Feb  8 02:18:46 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init kimageformats package
+
