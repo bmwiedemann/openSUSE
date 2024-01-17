@@ -672,4 +672,12 @@ New since previous SR: added patches to .changes file.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1030228</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>7e1a10f6cc3b4c5808b137a9a3903f46</srcmd5>
+    <version>1.0.12+v1.git.1663933145.1619d044</version>
+    <time>1705526056</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138101</requestid>
+  </revision>
 </revisionlist>

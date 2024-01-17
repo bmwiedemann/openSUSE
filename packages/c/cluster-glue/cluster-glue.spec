@@ -1,7 +1,7 @@
 #
 # spec file for package cluster-glue
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,6 +69,8 @@ Obsoletes:      heartbeat-common < 3.0.2
 Requires(pre):  group(nobody)
 Requires(pre):  user(nobody)
 %endif
+Provides:       group(%{gname})
+Provides:       user(%{uname})
 
 %description
 A collection of common tools that are useful for writing cluster managers
