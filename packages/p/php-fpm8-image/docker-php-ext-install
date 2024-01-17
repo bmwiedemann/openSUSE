@@ -1,0 +1,10 @@
+#!/bin/bash
+set -euo pipefail
+
+extensions=()
+
+for ext in $@; do
+    [[ "$ext" =~ ^- ]] || extensions+=("php8-$ext")
+done
+
+zypper -n in ${extensions[*]}

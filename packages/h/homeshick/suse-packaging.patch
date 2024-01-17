@@ -1,0 +1,58 @@
+--- homeshick-2.0.1/bin/homeshick.orig	2023-04-14 22:54:17.855182545 +0200
++++ homeshick-2.0.1/bin/homeshick	2023-04-14 22:55:01.868514856 +0200
+@@ -1,8 +1,8 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ repos="$HOME/.homesick/repos"
+ # Include all helper functions. We will include the required command function later on.
+-homeshick=${HOMESHICK_DIR:-$HOME/.homesick/repos/homeshick}
++homeshick=${HOMESHICK_DIR:-/usr/share/homeshick}
+ # shellcheck source=../lib/exit_status.sh
+ source "$homeshick/lib/exit_status.sh"
+ # shellcheck source=../lib/fs.sh
+--- homeshick-2.0.1/homeshick.csh.orig	2023-04-14 22:53:32.849717688 +0200
++++ homeshick-2.0.1/homeshick.csh	2023-04-14 22:54:03.522712974 +0200
+@@ -1,6 +1,6 @@
+ # This helper script should be sourced via an alias, e.g.
+ #
+-#   alias homeshick "source $HOME/.homesick/repos/homeshick/homeshick.csh"
++#   alias homeshick "source /usr/share/homeshick/homeshick.csh"
+ #
+ if ( "$1" == "cd" && "x$2" != "x" ) then
+     if ( -d "$HOME/.homesick/repos/$2/home" ) then
+@@ -12,6 +12,6 @@
+     if ( $?HOMESHICK_DIR ) then
+         $HOMESHICK_DIR/bin/homeshick $*
+     else
+-        $HOME/.homesick/repos/homeshick/bin/homeshick $*
++        /usr/share/homeshick/bin/homeshick $*
+     endif
+ endif
+--- homeshick-2.0.1/homeshick.fish.orig	2023-04-14 22:53:32.853717802 +0200
++++ homeshick-2.0.1/homeshick.fish	2023-04-14 22:54:03.522712974 +0200
+@@ -1,5 +1,5 @@
+ # This script should be sourced in the context of your shell like so:
+-# source $HOME/.homesick/repos/homeshick/homeshick.fish
++# source /usr/share/homeshick/homeshick.fish
+ # Alternatively, it can be installed into one of the directories
+ # that fish uses to autoload functions (e.g ~/.config/fish/functions)
+ # Once the homeshick() function is defined, you can type
+@@ -13,6 +13,6 @@
+   else if set homeshick (type -P homeshick 2> /dev/null)
+     eval $homeshick (string escape -- $argv)
+   else
+-    eval $HOME/.homesick/repos/homeshick/bin/homeshick (string escape -- $argv)
++    eval /usr/share/homeshick/bin/homeshick (string escape -- $argv)
+   end
+ end
+--- homeshick-2.0.1/homeshick.sh.orig	2023-04-14 22:53:32.853717802 +0200
++++ homeshick-2.0.1/homeshick.sh	2023-04-14 22:54:03.522712974 +0200
+@@ -10,6 +10,6 @@
+     # shellcheck disable=SC2164
+     cd "$HOME/.homesick/repos/$2"
+   else
+-    "${HOMESHICK_DIR:-$HOME/.homesick/repos/homeshick}/bin/homeshick" "$@"
++    "${HOMESHICK_DIR:-/usr/share/homeshick}/bin/homeshick" "$@"
+   fi
+ }

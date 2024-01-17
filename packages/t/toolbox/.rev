@@ -1,0 +1,265 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3c5930e50c94dad4c2025e5b3cd2f799</srcmd5>
+    <version>1.0+git20191007.e038337</version>
+    <time>1570448998</time>
+    <user>dimstar_suse</user>
+    <comment>Script to start a toolbox container on a Container Host OS</comment>
+    <requestid>735640</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6cb0325abe9ca9bcb710ac77ab370323</srcmd5>
+    <version>1.0+git20191014.3034fbc</version>
+    <time>1571307490</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20191014.3034fbc:
+  * Make default shell configureable, use /bin/bash as default</comment>
+    <requestid>738325</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aec0a10ef51ae5c11835f536bd2587b7</srcmd5>
+    <version>1.0+git20200217.cd18bfb</version>
+    <time>1582206816</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20200217.cd18bfb:
+  * Multiple toolboxes, with different names
+  * Configure `sudo` access for an user toolbox
+  * Correctly setup the user
+  * Add -u|--user parameter
+  * Handle arguments with 'getopt'</comment>
+    <requestid>774805</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ee142ce964b69c9d44405d7d23f2a614</srcmd5>
+    <version>1.0+git20200324.dd047bc</version>
+    <time>1585176291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20200324.dd047bc:
+  * fix entering a toolbox if something changed in /dev since creation</comment>
+    <requestid>788121</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c845267ce8eb61e025af472b70731c60</srcmd5>
+    <version>1.0+git20200803.7ff20b6</version>
+    <time>1596564990</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20200803.7ff20b6:
+  * Connect to the host's SSH agent in user toolboxes.
+  * Stay in current directory, even when entering a toolbox
+  * Use the toolbox name as the actual toolbox's hostname</comment>
+    <requestid>824140</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8447bd9de5e23bddab58a6695f97b055</srcmd5>
+    <version>1.0+git20200831.d2d2e5d</version>
+    <time>1599420999</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20200831.d2d2e5d:
+  * Allow graphical applications from inside a user toolbox to run</comment>
+    <requestid>831617</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>caf73ceb73a30f2b7ff4cb991342d8c3</srcmd5>
+    <version>1.0+git20201126.3d26283</version>
+    <time>1606648839</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20201126.3d26283:
+  * Make it easier to use custom images (#10)
+  * Update toolbox doc (#9)</comment>
+    <requestid>851003</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cd816cd0388bb8878c4f17a11d9fb8b5</srcmd5>
+    <version>1.0+git20210119.b5acdcf</version>
+    <time>1611348590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865034</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2e22627e0860b8470b0ddba67e39be46</srcmd5>
+    <version>2.0+git20210125.50611db</version>
+    <time>1612182302</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0+git20210125.50611db:
+  * Document configuration files, add /usr/etc/toolboxrc
+  * Update README to include commands
+  * Update the README
+  * Be even more compatible with Silverblue Toolbox
+  * Introduce commands, for compatibility with Silverblue's toolbox
+  * Mount /run/media and and /tmp inside a user toolbox
+  * Export more env variables inside (user) toolboxes</comment>
+    <requestid>866535</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c4c524c73368ec12f6949263893fba0f</srcmd5>
+    <version>2.1+git20210203.a669e3a</version>
+    <time>1612707403</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1+git20210203.a669e3a:
+  * Fix formatting
+  * Enhance alternate UI docu
+  * Ignore podman runlabel error if no RUN label exist
+  * Enhance documentation
+  * Check existence of volume directories (#15)</comment>
+    <requestid>868896</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a6a5ae50e406a1c3f219e6e49a418e0f</srcmd5>
+    <version>2.1+git20210226.daeb191</version>
+    <time>1614684388</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 2.1+git20210226.daeb191:
+  * Set trap only after option parsing (#22)
+
+- Update to version 2.1+git20210225.5c541c8:
+  * Check sub{u,g}id if rootless, and fail early if they're not setup
+  * Fix creating a container with a specific name with `-c`
+
+- Update to version 2.1+git20210208.a720b25:
+  * Alleviate the need for zypper in the user toolbox script
+  * Consolidate logging and help debugging of the user toolbox's script
+  * Export machine-id and IPC inside the toolbox (IPC, user only)
+  * Fix (more) formatting...</comment>
+    <requestid>875299</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>34707149fd02ededdb57ffcf7bf4dadc</srcmd5>
+    <version>2.1+git20210305.ca2bc53</version>
+    <time>1615362636</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1+git20210305.ca2bc53:
+  * Avoid copying the user setup script with 'podman cp'</comment>
+    <requestid>877276</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ceaa5f4ec59d5cbbdb626d4779759253</srcmd5>
+    <version>2.1+git20210311.15cb3ad</version>
+    <time>1616598544</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>879899</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8b43830703c9292f731870c4bc6776df</srcmd5>
+    <version>2.1+git20210329.d14ac82</version>
+    <time>1618061181</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 2.1+git20210329.d14ac82:
+  * Fix localtime and mount sys, e.g., for tracing
+  * Fix 'toolbox list' returning an error code even if working</comment>
+    <requestid>881827</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>913226dcee04aebe476a2b5f39a37d86</srcmd5>
+    <version>2.2+git20210823.dd0fff8</version>
+    <time>1629917793</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2+git20210823.dd0fff8:
+  * README mini-typo
+  * Docker: don't use unsupported --userns=keep-id
+  * Docker: also check for created status
+  * Try to use docker if installed and podman is not
+  * Properly share namespaces in non-user toolboxes
+  * Properly quote workdir</comment>
+    <requestid>913783</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>426677115e0286029d6f8dbe1d2940f4</srcmd5>
+    <version>2.2+git20210823.dd0fff8</version>
+    <time>1637227986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931744</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d9aaccb357505da4674f07f40e268bd8</srcmd5>
+    <version>2.2+git20211124.09791b1</version>
+    <time>1637970649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2+git20211124.09791b1:
+  * Introduce -n/--nostop switch so mutiple sessions can be run inside an existing toolbox</comment>
+    <requestid>933488</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5810bdb6cb84d43b4c37b97518ca8d49</srcmd5>
+    <version>2.3+git20220117.bd53c7c</version>
+    <time>1642633920</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3+git20220117.bd53c7c:
+  - Fixes error where if custom image is used toolbox will download
+    the default image before entering an existing container. (#40)</comment>
+    <requestid>946923</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>4a0a730842c4a09d9a625027d4ae7cf1</srcmd5>
+    <version>2.3+git20220117.bd53c7c</version>
+    <time>1643321792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949282</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>616bf73b342f8628af047dcd59782740</srcmd5>
+    <version>2.3+git20220117.bd53c7c</version>
+    <time>1647806104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962737</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5f4b8ac4b315cf1cb26b7d23d179ce77</srcmd5>
+    <version>2.3+git20220603.bbeda2e</version>
+    <time>1654378006</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3+git20220603.bbeda2e:
+  * Allow to choose runtime and try to retain the user's groups
+  * (Try to) Avoid problems when packages touching bind mounts are upgraded
+  * Try to make sure that (some) foreign distro images (kind of) work as toolboxes
+  * Do not stop a toolbox with something running inside
+  * Exit if neither podman or docker are usable
+  * Support passing just the name of the container to create and enter command
+  * Fix cleanup logic and make toolbox start a little less verbose
+  * Always pull when creating a new toolbox
+  * Add a &quot;more sandboxing&quot; mode</comment>
+    <requestid>980625</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e6ec929bb855e56f6bffed0179cf9522</srcmd5>
+    <version>2.3+git20220622.32785f7</version>
+    <time>1656053098</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3+git20220622.32785f7:
+  * Only set --userns=keep-id when running rootless</comment>
+    <requestid>984598</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>6059e20e7fec469fcea3baeff3344660</srcmd5>
+    <version>2.3+git20220622.32785f7</version>
+    <time>1656511227</time>
+    <user>dimstar_suse</user>
+    <comment>- Prefer podman as container runtime
+  (unrelated part of [bnc#1200976])</comment>
+    <requestid>985466</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>48b74f22643a4ed81d7d057032450fb7</srcmd5>
+    <version>2.3+git20220622.32785f7</version>
+    <time>1683630481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085507</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2d27519ae9cb1070e78242b77063b9f6</srcmd5>
+    <version>2.3+git20231030.3a6ef35</version>
+    <time>1698700194</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.3+git20231030.3a6ef35:
+  * Mount /dev/pts as mount type=devpts instead of --volume
+  * fix typo creat -&gt; create
+  * Remove trailing whitespace
+  * Fix bash error when container cannot be pulled</comment>
+    <requestid>1121193</requestid>
+  </revision>
+</revisionlist>

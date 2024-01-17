@@ -1,0 +1,16 @@
+diff --git a/configure.ac b/configure.ac
+index 2e4a0e8..81ac3bd 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -423,11 +423,7 @@ AC_ARG_ENABLE(systemd,
+ 
+ if [ test "$systemd_enabled" = "yes" ];then
+ AC_LIB_HAVE_LINKFLAGS(systemd,, [#include <systemd/sd-daemon.h>], [sd_listen_fds(0);])
+- if [ test -z "$LIBSYSTEMD" ];then
+-	systemd_enabled="no"
+- else
+ 	systemd_enabled="yes"
+- fi
+ fi
+ 
+ AC_ARG_ENABLE(namespaces,

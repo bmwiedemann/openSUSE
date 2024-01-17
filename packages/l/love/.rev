@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1518cb4358487ff246feda5cd3cefd77</srcmd5>
+    <version>0.10.1</version>
+    <time>1479150686</time>
+    <user>dimstar_suse</user>
+    <comment>devel project was removed</comment>
+    <requestid>415732</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6ed6c07fbd2ffc237c4929100549ddf3</srcmd5>
+    <version>0.10.2</version>
+    <time>1485769775</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>453161</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>654f9fd0d283d4f00897380e48aa14c1</srcmd5>
+    <version>0.10.2</version>
+    <time>1493363584</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490811</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b8e3582bffa67c257da716a34e169bda</srcmd5>
+    <version>0.10.2</version>
+    <time>1498485298</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506052</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6cbb9709142c5e9d9cf47f1c8d2001ea</srcmd5>
+    <version>11.2</version>
+    <time>1543953259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652569</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>70fd8b763a735d2e6c5409c0e65ca1bf</srcmd5>
+    <version>11.2</version>
+    <time>1588023122</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796686</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b90213ceedf87af7c6e56cb90cc0bb26</srcmd5>
+    <version>11.3</version>
+    <time>1598642497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829099</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>67de8e8876840d364b0ea0d5a9fe58b7</srcmd5>
+    <version>11.3</version>
+    <time>1627492811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908819</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e5b717dcbd2ea39d0173a560aa73a95f</srcmd5>
+    <version>11.4</version>
+    <time>1645462002</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 11.4</comment>
+    <requestid>956317</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>4a445bb1dccc399ce6f838362f463957</srcmd5>
+    <version>11.4</version>
+    <time>1656675897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986052</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ab399c412357250201dafa1a0fcca6e3</srcmd5>
+    <version>11.5</version>
+    <time>1703527511</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134738</requestid>
+  </revision>
+</revisionlist>

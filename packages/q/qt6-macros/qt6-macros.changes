@@ -1,0 +1,169 @@
+-------------------------------------------------------------------
+Wed Jun 28 16:20:06 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change %_qt6_libexecdir to %_libexecdir/qt6 (bsc#1174075)
+
+-------------------------------------------------------------------
+Mon Jun 19 09:34:04 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Use gcc12 by default on Leap 15
+
+-------------------------------------------------------------------
+Wed Nov 30 10:45:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the %_qt6_metatypesdir location to match upstream changes
+
+-------------------------------------------------------------------
+Tue Mar 29 16:42:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Set CMAKE_MESSAGE_LOG_LEVEL in %cmake_qt6.
+  The Qt 6.3 build system sets it to 'NOTICE' for non-developers
+  builds, which doesn't permit finding missing build dependencies.
+- Define %_qt6_pkgconfigdir. Qt 6.4 will install pkgconfig files.
+
+------------------------------------------------------------------
+Mon Feb  7 13:47:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Ensure PIE flags are passed to the linker on Leap to work around
+  an issue caused by GCC packaging (boo#1195628)
+
+-------------------------------------------------------------------
+Thu Sep 16 14:07:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0-rc
+
+-------------------------------------------------------------------
+Thu Jun 10 06:49:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Simplify the %cmake_qt6 macro.
+  QtBuildInternalsExtra.cmake, installed by qt6-base-common-devel
+  sets a couple variables and installation directories. We only
+  need to define those when building qt6-base. With this change,
+  CMake will stop reporting unused variables are defined when
+  building 3rd party packages (except QT_DISABLE_RPATH).
+- Remove extra escaping in macros.qt6.
+
+-------------------------------------------------------------------
+Sun Jun  6 13:22:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Work around QTBUG-93100 and use GCC 10 for Leap 15.2 and 15.3.
+
+-------------------------------------------------------------------
+Mon Mar  1 10:14:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the module name from the docs build targets.
+  The modules now have 'docs' and 'install_docs' build targets.
+
+-------------------------------------------------------------------
+Mon Jan 11 15:06:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add a %pre scriplet for QCH doc packages.
+ Starting with 6.0.1, the qch files are installed directly into %_qt6_docdir
+ instead of %_qt6_docdir/<qch doc>.qch/.
+ RPM can't upgrade packages if a directory is replaced by something
+ else, we need a %pre scriptlet that will remove existing folders.
+
+-------------------------------------------------------------------
+Sat Dec 12 18:09:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Doc update.
+
+-------------------------------------------------------------------
+Thu Dec 10 21:41:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Handle _multibuild for documentation packages.
+  It is now possible to replace -docs spec files with a
+  _multibuild file and the new macros:
+    * %qt6_flavor <flavor> in the spec header
+    * '%if %qt6_docs_flavor' and '%if !%qt6_docs_flavor' to
+      enable/disable spec file blocks.
+
+-------------------------------------------------------------------
+Tue Dec  8 08:06:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Change the executable symlinks suffix from '-qt6' to '6'
+  To allow coinstallation, upstream plans to append '6' to user
+  facing programs and move the other ones into %_qt6_libexecdir
+  (QTBUG-89170)
+
+-------------------------------------------------------------------
+Mon Dec  7 18:40:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Transfer folders ownership to qt6-base, qt6-declarative
+  and -docs subpackages.
+- Require cmake
+
+-------------------------------------------------------------------
+Thu Dec  3 22:21:48 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Rename a __builddir, __sourcedir and __builder to avoid
+  conflicts with the other RPM macros.
+- Add default linker flags to the %cmake_qt6 macro
+- Allow using extra parameters to the CMake and QMake build and
+  installation macros.
+
+-------------------------------------------------------------------
+Mon Nov 23 19:28:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the translations install location.
+
+-------------------------------------------------------------------
+Fri Nov 13 08:31:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use Ninja by default.
+  Only Ninja will be the supported upstream for Qt 6. Generating
+  makefiles is still possible with the %qt6_use_make command.
+
+-------------------------------------------------------------------
+Tue Oct 13 08:53:52 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Enable QT_DISABLE_RPATH.
+  Random build failures were observed when installing some binaries.
+
+-------------------------------------------------------------------
+Tue Oct  6 07:02:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Create a variable for the metatypes folder.
+
+-------------------------------------------------------------------
+Sat Aug 15 12:02:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Make qt6-macros 'own' a couple more directories used in almost
+  every module.
+
+-------------------------------------------------------------------
+Wed Jul  8 14:30:25 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use dashes instead of underscores for documentation package names.
+
+-------------------------------------------------------------------
+Tue May 12 08:23:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Don't use the verbose flag when building docs.
+
+-------------------------------------------------------------------
+Wed May  6 08:52:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Don't mention multibuild usage for docs generation. This wasn't such
+  a good idea. multibuild is powerful when only minor changes between
+  flavors are needed. For Qt packages, that implied commenting out
+  large chunks of code in the spec, which makes the maintenance
+  harder and affects the spec file clarity.
+
+-------------------------------------------------------------------
+Mon Feb 10 20:09:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Change the %_qt6_docdir path. Installing the developer documentation
+  in a folder meant to be used for package documentation doesn't
+  make sense.
+
+-------------------------------------------------------------------
+Sun Feb  9 16:43:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Export QT_QPA_PLUGIN_PATH and QT_PLUGIN_PATH for qch docs creation
+- Create a %_qt6_cmakedir variable
+
+-------------------------------------------------------------------
+Mon Feb  3 08:27:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add qt6-macros.

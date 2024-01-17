@@ -1,0 +1,5 @@
+<package name="love" project="openSUSE:Factory">
+  <title>LÖVE</title>
+  <description>latest 0.10 release</description>
+  <devel project="games" package="love"/>
+</package>

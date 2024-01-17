@@ -1,0 +1,8 @@
+<package name="python-sphinxcontrib-copybutton" project="openSUSE:Factory">
+  <title></title>
+  <description>A small sphinx extension to add a &quot;copy&quot; button to code blocks.
+
+See the sphinx-copybutton documentation (https://sphinx-copybutton.readthedocs.io/en/latest/) for more details!</description>
+  <devel project="devel:languages:python" package="python-sphinxcontrib-copybutton"/>
+  <url>https://pypi.org/project/sphinx-copybutton/</url>
+</package>

@@ -1,0 +1,9 @@
+diff --color -ur linode-cli-5.25.0.orig/linodecli/__init__.py linode-cli-5.25.0/linodecli/__init__.py
+--- linode-cli-5.25.0.orig/linodecli/__init__.py	2022-10-31 21:37:30.000000000 +0100
++++ linode-cli-5.25.0/linodecli/__init__.py	2022-11-14 15:09:51.404846258 +0100
+@@ -1,5 +1,3 @@
+-#!/usr/local/bin/python3
+-
+ import argparse
+ import os
+ from importlib import import_module

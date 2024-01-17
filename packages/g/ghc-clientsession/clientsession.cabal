@@ -1,0 +1,70 @@
+name:            clientsession
+version:         0.9.2.0
+x-revision:      1
+license:         MIT
+license-file:    LICENSE
+author:          Michael Snoyman <michael@snoyman.com>, Felipe Lessa <felipe.lessa@gmail.com>
+maintainer:      Michael Snoyman <michael@snoyman.com>
+synopsis:        Securely store session data in a client-side cookie.
+description:     Achieves security through AES-CTR encryption and
+                 Skein-MAC-512-256 authentication.  Uses Base64
+                 encoding to avoid any issues with characters.
+category:        Web
+stability:       stable
+cabal-version:   >= 1.10
+build-type:      Simple
+homepage:        http://github.com/yesodweb/clientsession/tree/master
+extra-source-files: tests/runtests.hs bench.hs ChangeLog.md README.md
+
+flag test
+  description: Build the executable to run unit tests
+  default: False
+
+executable clientsession-generate
+    default-language: Haskell2010
+    main-is: generate.hs
+    build-depends:   base
+                   , clientsession
+    ghc-options:     -Wall
+    hs-source-dirs: bin
+
+library
+    default-language: Haskell2010
+    build-depends:   base                >= 4.8          && < 5
+                       -- https://github.com/yesodweb/clientsession/commit/1221230770feff60f77ff676d52fc464cb77b2d9#r122087962
+                       -- Data.Bifunctor entered base in 4.8
+                   , bytestring          >= 0.9
+                   , cereal              >= 0.3
+                   , directory           >= 1
+                   , tagged              >= 0.1
+                   , crypto-api          >= 0.8
+                   , skein               == 1.0.*
+                   , base64-bytestring   >= 0.1.1.1
+                   , entropy             >= 0.2.1
+                   , cryptonite          >= 0.15
+                   , setenv
+    exposed-modules: Web.ClientSession
+    other-modules:   System.LookupEnv
+    ghc-options:     -Wall
+    hs-source-dirs:  src
+
+test-suite runtests
+    default-language: Haskell2010
+    type: exitcode-stdio-1.0
+    build-depends:   base
+                   , bytestring          >= 0.9
+                   , hspec               >= 1.3
+                   , QuickCheck          >= 2
+                   , HUnit
+                   , transformers
+                   , containers
+                   , cereal
+                   -- finally, our own package
+                   , clientsession
+    ghc-options:     -Wall
+    hs-source-dirs:  tests
+    main-is:         runtests.hs
+
+source-repository head
+  type:     git
+  location: https://github.com/yesodweb/clientsession.git

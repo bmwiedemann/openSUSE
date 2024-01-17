@@ -1,0 +1,5 @@
+<package name="git-lfs" project="openSUSE:Factory">
+  <title>Git extension for versioning large files</title>
+  <description>Git LFS is a command line extension and specification for managing large files with Git.</description>
+  <devel project="devel:tools:scm" package="git-lfs"/>
+</package>

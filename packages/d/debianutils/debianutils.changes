@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Tue Mar 14 20:58:02 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Move run-parts to /usr/bin, Run-parts runs just fast as regular user.
+
+-------------------------------------------------------------------
+Fri Sep 10 13:07:28 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 5.4:
+  * Added update-shells
+  * Dropped tempfile
+  * Various improvements
+
+-------------------------------------------------------------------
+Wed Aug 18 07:52:47 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Move system executables into /usr/sbin
+
+-------------------------------------------------------------------
+Tue Aug  3 10:09:13 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Initial package

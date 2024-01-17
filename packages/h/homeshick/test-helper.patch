@@ -1,0 +1,24 @@
+--- homeshick-2.0.1/test/helper.sh.orig	2023-05-13 19:53:54.462114112 +0200
++++ homeshick-2.0.1/test/helper.sh	2023-05-13 20:10:46.242708858 +0200
+@@ -16,8 +16,10 @@
+ }
+ 
+ determine_homeshick_dir() {
+-  HOMESHICK_DIR=$(cd "$BATS_TEST_DIRNAME/../.." && echo "$PWD")
+-  export HOMESHICK_DIR
++  if [ -z "$HOMESHICK_DIR" ]; then
++    HOMESHICK_DIR=$(cd "$BATS_TEST_DIRNAME/../.." && echo "$PWD")
++    export HOMESHICK_DIR
++  fi
+ }
+ 
+ create_test_dir() {
+@@ -67,7 +69,7 @@
+   local name=$1
+   if [[ ! -e "$REPO_FIXTURES/$name" ]]; then
+     # shellcheck disable=SC1090
+-    source "$HOMESHICK_DIR/test/fixtures/$name.sh"
++    source "$HOMESHICK_TEST_DIR/test/fixtures/$name.sh"
+   fi
+ }
+ 

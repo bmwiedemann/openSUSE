@@ -1,0 +1,88 @@
+From: Tony Jones <tonyj@suse.de>
+Subject: adjust build source dir for SuSE packaging
+References: bnc#796574
+
+kernel-$flavor:
+    /lib/modules/$version-$flavor
+
+kernel-$flavor-devel: requires kernel-source
+   /usr/src/linux-$version-obj/$arch/$flavor
+   /lib/modules/$version-$flavor/build -> /usr/src/linux-$version-obj/$arch/$flavor
+   /lib/modules/$version-$flavor/source -> /usr/src/linux-$version [kernel-source]
+
+kernel-flavor-debugsource:
+   /usr/src/debug/kernel-$flavor/
+      linux-obj/ {corresponds to /lib/modules/$version-$flavor/build}
+      linux-3.0/ {mirrors kernel-source}
+
+DW_AT_comp_dir points to debugsource/linux-obj directory but internal trace
+headers are only found in linux-3.0.  Regardless, we don't want to require
+debugsource as devel already requires kernel-source which provides the 
+necessary headers.
+
+---
+ session.cxx |   28 ++++++++++++++++++++++++----
+ 1 file changed, 24 insertions(+), 4 deletions(-)
+
+--- a/session.cxx
++++ b/session.cxx
+@@ -108,6 +108,7 @@ systemtap_session::systemtap_session ():
+   kernel_release = string (buf.release);
+   release = kernel_release;
+   kernel_build_tree = "/lib/modules/" + kernel_release + "/build";
++  kernel_source_tree = "/lib/modules/" + kernel_release + "/source";
+   architecture = machine = normalize_machine(buf.machine);
+ 
+   for (unsigned i=0; i<5; i++) perpass_verbose[i]=0;
+@@ -298,6 +299,7 @@ systemtap_session::systemtap_session (co
+ {
+   release = kernel_release = kern;
+   kernel_build_tree = "/lib/modules/" + kernel_release + "/build";
++  kernel_source_tree = "/lib/modules/" + kernel_release + "/source";
+   kernel_extra_cflags = other.kernel_extra_cflags;
+   architecture = machine = normalize_machine(arch);
+   setup_kernel_release(kern.c_str());
+@@ -2218,21 +2220,39 @@ systemtap_session::setup_kernel_release
+       // normal search in tapsets.cxx.  Without CONFIG_DEBUG_INFO, we'd
+       // need heuristics such as this one:
+ 
+-      string some_random_source_only_file = kernel_build_tree + "/COPYING";
++      // SUSE: if "build" link specified, attempt to determine "source" link
++      // N.B we won't match using above tapsets.cxx check
++      struct stat buf;
++      string source_tree = kernel_build_tree;
++
++      if (lstat(kernel_build_tree.c_str(), &buf) != -1 && S_ISLNK(buf.st_mode)) {
++	size_t pos = source_tree.find_last_of('/');
++	if (pos < source_tree.length() && source_tree.substr(pos+1, string::npos) == "build")
++	   source_tree.replace(pos+1, string::npos, "source");
++      }
++
++retry:
++      string some_random_source_only_file = source_tree + "/COPYING";
+       ifstream epic (some_random_source_only_file.c_str());
+       if (! epic.fail())
+         {
+-          kernel_source_tree = kernel_build_tree;
++          kernel_source_tree = source_tree;
+           if (verbose > 2)
+             clog << _F("Located kernel source tree (COPYING) at '%s'", kernel_source_tree.c_str()) << endl;
+-        }
++        } else if (source_tree != kernel_build_tree) {
++		// one last try using kernel_build_tree (local fs build)
++		source_tree = kernel_build_tree;
++		goto retry;
++	}
+     }
+   else
+     {
+       update_release_sysroot = true;
+       kernel_release = kstr;
+-      if (!kernel_release.empty())
++      if (!kernel_release.empty()) {
+         kernel_build_tree = "/lib/modules/" + kernel_release + "/build";
++        kernel_source_tree = "/lib/modules/" + kernel_release + "/source";
++      }
+ 
+       // PR10745
+       // Let's not look for the kernel_source_tree; it's definitely

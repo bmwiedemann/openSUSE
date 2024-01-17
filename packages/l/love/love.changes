@@ -1,0 +1,301 @@
+-------------------------------------------------------------------
+Sat Dec 23 08:32:34 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 11.5:
+  * Added "LÖVE Loader" launcher on Android for easier loading of
+    .love files.
+  * Changed iOS game selector to alphabetically sort the list of
+    .love files.
+  * Changed JIT compilation on macOS arm64 (Apple Silicon) to be
+    off by default, since performance and available JIT memory isn't reliable.
+  * Fixed inconsistent and buggy behaviour of 'pairs' by updating LuaJIT.
+  * Fixed "unexpected alignment" errors when running love on some 32 bit Linux systems.
+  * Fixed running fused games on Windows when the executable has been code-signed.
+  * Fixed undefined behaviour in love.data.hash's implementation.
+  * Fixed writing files when a symlink exists in the save directory's path.
+  * Fixed love.threaderror not being called if the error message is an empty string.
+  * Fixed a race condition when a Thread is destroyed immediately after Thread:start.
+  * Fixed unexpectedly slow first frames on macOS.
+  * Fixed love.joystick.setGamepadMapping when replacing an existing mapping.
+  * Fixed love.joystick.getGamepadMappingString.
+  * Fixed duplicate platform fields in love.joystick.saveGamepadMappings.
+  * Fixed DistanceJoint type information.
+  * Fixed time drift in Source:tell after a Source loops.
+  * Fixed audio not always pausing when the app is minimized on Android.
+  * Fixed RecordingDevice:start to return false instead of hard-crashing on iOS.
+  * Fixed identical frames in Ogg Theora videos being skipped.
+  * Fixed love.font.newBMFontRasterizer's single file parameter variant.
+  * Fixed the original window size not always being restored when exiting fullscreen on Linux.
+  * Fixed some cases of framerate hitches in Windows when vsync is enabled in windowed mode.
+  * Fixed colors appearing over-saturated on P3 displays in macOS.
+  * Fixed textures looking washed out when gamma-correct rendering is used on some Android devices.
+  * Fixed images with mipmaps when ANGLE is used with an AMD GPU.
+  * Fixed line rendering when duplicate points are used in the line.
+  * Fixed line rendering with miter and bevel line join modes when antiparallel lines are formed.
+  * Fixed a crash when calling Text:add with an empty string parameter.
+
+-------------------------------------------------------------------
+Sun Jun 26 13:35:34 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
+
+- HashFunction.cpp:25:9: error: #error Hashing not yet implemented for big endian
+  Disable s390x builds.
+
+-------------------------------------------------------------------
+Sat Feb 19 18:41:00 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to 11.4:
+   * Added a variant of love.filesystem.newFileData which accepts
+     a Data object.
+   * Added Body:getLocalPoints.
+   * Added Font:getKerning.
+   * Added support for r16, rg16, and rgba16 pixel formats in
+     Canvases.
+   * Added Shader:send(name, matrixlayout, data, ...) variant,
+     whose argument order is more consistent than
+     Shader:send(name, data, matrixlayout, ...).
+   * Changed all builds and platforms where LOVE provides LuaJIT
+     to use LuaJIT 2.1 instead of 2.0.
+   * Changed love.timer.getTime to start at 0 when the module is
+     first loaded.
+   * Changed certain out-of-Lua-memory situations to show a
+     message box instead of instantly crashing.
+   * Changed the naming scheme of LOVE's embedded Lua files for
+     improved integration with Lua chunkname APIs.
+   * Fixed build-time compatibility with Lua 5.4.
+   * Fixed code compatibility with math.mod and string.gfind when
+     LuaJIT 2.1 is used.
+   * Fixed errors on some systems related to > 53 bit pointer
+     addresses, when recent versions of LuaJIT 2.1 are used.
+   * Fixed File:isEOF when called on a dropped file.
+   * Fixed support for > 2GB dropped files on desktops.
+   * Fixed ByteData and DataView missing Data:clone
+     implementations.
+   * Fixed love.physics meter scale value persisting after
+     love.event.quit("restart").
+   * Fixed audio to resume properly after interruption on iOS.
+   * Fixed love.graphics.newVideo to error instead of crash when
+     an invalid video file is given.
+   * Fixed initial window creation to set the window's title
+     during creation instead of after.
+   * Fixed the window's screen position when exiting fullscreen
+     via love.window.setFullscreen.
+   * Fixed love.displayrotated being given a boolean instead of
+     an enum string.
+   * Fixed memory corruption and a crash when drawing smooth
+     lines.
+   * Fixed a crash in Canvas:newImageData when the pixel format's
+     pixel byte size multiplied by its width isn't a multiple of 4.
+   * Fixed love.graphics.newVolumeImage when explicit mipmaps
+     are provided.
+   * Fixed freezes and crashes in automatic batching when an
+     AMD GPU is used.
+   * Fixed love.graphics.print and Image:replacePixels on more
+     AMD/ATI GPUs.
+   * Fixed Font:setFallbacks to account for different DPI scales
+     in each fallback font.
+   * Fixed Font:getWrap to not remove trailing newlines.
+   * Fixed Text:getWidth when the Text's string only contains
+     spaces.
+   * Fixed a crash with some Intel graphics drivers on Linux.
+   * Fixed texture memory reported by love.graphics.getStats when
+     a volume or array Canvas is created.
+   * Fixed DXT1 textures which use 1 bit alpha-cutout.
+   * Fixed rare issues where textures were not sent to shaders
+     correctly.
+   * Fixed Shader:send(name, data, matrixlayout, ...).
+   * Fixed quad offsets in ParticleSystems when
+     ParticleSystem:setOffset is not used.
+   * Fixed a performance issue with setting a small subrange of
+     data in non-stream Meshes and SpriteBatches.
+   * Fixed rounded rectangles breaking if the rx or ry parameters
+     are negative.
+   * Fixed rounded rectangle automatic points calculation when
+     rx or ry are more than half the rectangle's size.
+
+-------------------------------------------------------------------
+Wed Jul 28 07:09:23 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Drop remove-duplicate-typedef.patch as it causes build failure for i586 now
+
+-------------------------------------------------------------------
+Mon Aug 24 20:12:35 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 11.3:
+  * Added support for FLAC audio files.
+  * Added support for microphone recording on Android.
+  * Added t.audio.mic (false by default). On Android, setting it to true requests microphone recording permission from the user.
+  * Added Decoder:clone.
+  * Added Data:getFFIPointer.
+  * Added Joystick:getDeviceInfo.
+  * Added Joystick:getGamepadMappingString and love.joystick.getGamepadMappingString(guid).
+  * Added love.math.colorToBytes and love.math.colorFromBytes.
+  * Added 'usedpiscale' boolean (true by default) to love.window.setMode and love.conf. Disables automatic DPI scaling when false.
+  * Added love.window.getDisplayOrientation and a love.displayrotated callback.
+  * Added love.window.get/setVSync, to allow setting vsync without recreating the window.
+  * Added love.window.getSafeArea.
+  * Added an optional vertex count parameter to Mesh:setVertices.
+  * Added support for rgba4, rgb5a1, rgb565, rgb10a2, rg11b10f, r8, rg8, r16, rg16, r16f, rg16f, r32f, and rg32f formats in ImageData and Images.
+  * Added support for loading .dds files that contain uncompressed pixel data.
+  * Changed audio file type detection, so it probes all supported backends for unrecognized extensions.
+  * Fixed "bad lightuserdata" errors when running love on some arm64 devices.
+  * Fixed boot.lua's line numbers in stack traces to match its source code.
+  * Fixed the deprecation system not fully restarting when love.event.quit("restart") is used.
+  * Fixed love.isVersionCompatible.
+  * Fixed named Channels persisting across love.event.quit("restart") occurrences.
+  * Fixed race conditions when different love.physics Worlds are used in different threads.
+  * Fixed World:getJoints to return the fully resolved type of the Joint, instead of the base type.
+  * Fixed love.timer.sleep(0) to return control to the OS scheduler instead of being a no-op.
+  * Fixed love.math.randomNormal incorrectly using cached state after love.math.setRandomSeed or setRandomState.
+  * Fixed love.data.hash returning an incorrect hash for certain input sizes.
+  * Fixed love.data.newByteData to cause a Lua error instead of crashing when invalid arguments are used.
+  * Fixed the Data-returning variant of love.filesystem.read and File:read to return the number of bytes that were read.
+  * Fixed love.filesystem's require loaders to error instead of crashing when no argument is given.
+  * Fixed love.filesystem.mount(Data).
+  * Fixed a memory leak when loading files in some situations.
+  * Fixed t.audio.mixwithsystem.
+  * Fixed audio clicks immediately after playing a Source on iOS.
+  * Fixed Source:play + Source:stop + Source:play looping the first few ms of sound for streaming Sources on iOS.
+  * Fixed Source:play + Source:seek looping the first few ms of sound for streaming Sources on iOS.
+  * Fixed occasional pops in streaming sources on iOS. 
+  * Fixed love.audio.play(sources) to use previously set playback positions on stopped Sources.
+  * Fixed Source:setEffect(name, true) and Source:getEffect(name) when the effect has no associated Filter.
+  * Fixed love.audio.newSource(filename, "queue") to cause a Lua error.
+  * Fixed Source:setPitch to error if the given pitch is <= 0, NaN, or infinity.
+  * Fixed video seeking and pausing in various scenarios.
+  * Fixed an audio Source memory leak when a Video gets garbage collected after playing it.
+  * Fixed video playback support on some Adreno-based Android devices.
+  * Fixed black fringes around text in some situations.
+  * Fixed extreme flickering when text moves along non-integer coordinates.
+  * Fixed the first character in a string sometimes not being processed during text vertex generation.
+  * Fixed Text:set(" ") not clearing any previously set text in a Text object.
+  * Fixed love.graphics.getTextureTypes to return a table with boolean values in its fields instead of number values.
+  * Fixed lines not rendering properly if a single line has more than 65,000 vertices.
+  * Fixed a pixel shader performance regression on some graphics drivers when OpenGL 3 or OpenGL ES 3 is used.
+  * Fixed text not showing up on Radeon HD 3000-series graphics cards on Windows.
+  * Fixed non-integer DPI scale values being truncated to integers in love.graphics.newCanvas.
+  * Fixed creating depth canvases on Windows systems when using an Intel HD 3000 GPU.
+  * Fixed automatic batching performance to be more consistent on all operating systems.
+  * Fixed gammaToLinearPrecise in shaders not being as precise as it should be.
+  * Fixed ImageData:paste and ImageData:setPixel to have more consistent clamping and rounding of color values when different formats are used. 
+- remove love-11.2-return.patch: upstream
+
+-------------------------------------------------------------------
+Thu Apr 23 14:44:59 UTC 2020 - Max Mitschke <maxmitschke@fastmail.com>
+
+- Added remove-duplicate-typedef.patch to fix i586 build 
+
+-------------------------------------------------------------------
+Wed Nov 28 10:04:42 UTC 2018 - mvetter@suse.com
+
+- Update to 11.2:
+  Additions:
+  * Added Source:setAirAbsorption and Source:getAirAbsorption.
+  * Added Body:setTransform and Body:getTransform.
+  Performance Improvements:
+  * Improved performance of love.graphics.draw slightly on iOS and Android.
+  Fixes:
+  * Fixed love.filesystem initialization on Windows 10 update 1809.
+  * Fixed various issues with running on macOS 10.14.
+  * Fixed compatibility with Lua 5.2 and 5.3.
+  * Fixed the explicit format + Data argument variant of love.data.decompress.
+  * Fixed love.joystick.setGamepadMapping not being able to change existing mappings.
+  * Fixed a crash on quit on Linux if a custom Cursor is active when quitting.
+  * Fixed a crash in the Data variant of Shader:send when it's called after love.window.setMode.
+  * Fixed a love.graphics.setCanvas error message to be less confusing.
+- Add love-11.2-return.patch: to make compiler happy
+- Remove love.mpg123.patch: don't see why needed anymore
+- Remove update-luasocket.patch: upstreamed
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sat Jun 24 18:04:51 UTC 2017 - rpm@fthiessen.de
+
+- Added update-luasocket.patch from upstream  to fix build with lua53
+
+-------------------------------------------------------------------
+Mon Apr 17 19:38:33 UTC 2017 - olaf@aepfle.de
+
+- Build with mpg123 unconditionally, add love.mpg123.patch
+- Run autoreconf
+- Add Requires(pre) as needed
+
+-------------------------------------------------------------------
+Sat Jan 21 12:22:55 UTC 2017 - prusnak@opensuse.org
+
+- Update to version 0.10.2
+
+-------------------------------------------------------------------
+Thu Jul 28 19:54:39 UTC 2016 - rpm@fthiessen.de
+
+- Dropped unneeded devel package
+- Removed now unneeded love-modplug.patch
+
+-------------------------------------------------------------------
+Thu Jul 28 18:47:08 UTC 2016 - rpm@fthiessen.de
+
+- Update to version 0.10.1
+
+-------------------------------------------------------------------
+Thu Mar  5 07:33:55 UTC 2015 - stefan@fam-elser.de
+
+- update to version 0.9.2
+
+-------------------------------------------------------------------
+Sun Sep 14 18:56:23 UTC 2014 - mailaender@opensuse.org
+
+- update to version 0.9.1
+- added -devel package to solve the rpmlint error
+- added post script macros for desktop, icon and mime
+
+-------------------------------------------------------------------
+Sun Dec 15 01:51:50 UTC 2013 - prusnak@opensuse.org
+
+- updated to 0.9.0
+  * Added three new modules: love.window, love.math, and love.system.
+  * Reworked the love.joystick and love.thread modules.
+  * Added new features to love.graphics, including polygon meshes and vertex shaders.
+  * Integrated the ENet networking library via lua-enet.
+  * Renamed many functions to be more consistent with the rest of the API.
+  * Improved the performance of several APIs in love.graphics.
+  * And a lot more!
+- dropped remove-mpg123.patch (applied upstream)
+
+-------------------------------------------------------------------
+Sun Feb 17 12:33:32 UTC 2013 - jengelh@inai.de
+
+- Sanitize description to not read like an ad. Use project's
+  actual name with diacritic marks.
+- Use more robust make install call.
+
+-------------------------------------------------------------------
+Sun Apr 15 12:55:08 UTC 2012 - prusnak@opensuse.org
+
+- updated to 0.8.0 release
+- removed unneeded_deps.patch (applied upstream)
+
+-------------------------------------------------------------------
+Thu Mar 22 14:51:39 UTC 2012 - reddwarf@opensuse.org
+
+- make MP3 support optional
+- change licence to follow SPDX
+- remove unneded libmng-devel and libtiff-devel build dependencies
+- use pkgconfig() style build dependencies
+- remove love-modplug.patch for >= 12.1
+- force lua 5.1 and add autotools BT to fix Factory build
+
+-------------------------------------------------------------------
+Sun Mar 11 11:38:09 UTC 2012 - prusnak@opensuse.org
+
+- update to mercurial tip (upcoming 0.8.0)
+
+-------------------------------------------------------------------
+Tue Sep 13 17:57:56 UTC 2011 - jmatejek@suse.com
+
+- build fix - added devel dependencies for DevIL
+- standard group name
+
+-------------------------------------------------------------------
+Wed Jun 22 20:08:34 UTC 2011 - prusnak@opensuse.org
+
+- created package (version 0.7.2)
+

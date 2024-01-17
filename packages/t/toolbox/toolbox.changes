@@ -1,0 +1,206 @@
+-------------------------------------------------------------------
+Mon Oct 30 13:38:45 UTC 2023 - kukuk@suse.com
+
+- Update to version 2.3+git20231030.3a6ef35:
+  * Mount /dev/pts as mount type=devpts instead of --volume
+  * fix typo creat -> create
+  * Remove trailing whitespace
+  * Fix bash error when container cannot be pulled
+
+-------------------------------------------------------------------
+Mon May  8 11:01:45 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Update EOL *-micro images to supported versions. (bsc#1211018)
+
+-------------------------------------------------------------------
+Tue Jun 28 08:11:34 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Prefer podman as container runtime
+  (unrelated part of [bnc#1200976])
+
+-------------------------------------------------------------------
+Wed Jun 22 19:48:29 UTC 2022 - kukuk@suse.com
+
+- Update to version 2.3+git20220622.32785f7:
+  * Only set --userns=keep-id when running rootless
+
+-------------------------------------------------------------------
+Fri Jun 03 11:13:15 UTC 2022 - kukuk@suse.com
+
+- Update to version 2.3+git20220603.bbeda2e:
+  * Allow to choose runtime and try to retain the user's groups
+  * (Try to) Avoid problems when packages touching bind mounts are upgraded
+  * Try to make sure that (some) foreign distro images (kind of) work as toolboxes
+  * Do not stop a toolbox with something running inside
+  * Exit if neither podman or docker are usable
+  * Support passing just the name of the container to create and enter command
+  * Fix cleanup logic and make toolbox start a little less verbose
+  * Always pull when creating a new toolbox
+  * Add a "more sandboxing" mode
+
+-------------------------------------------------------------------
+Mon Feb 21 13:16:41 UTC 2022 - jsrain@suse.com
+
+- adjusted the patch to the toolbox container in registry
+
+-------------------------------------------------------------------
+Wed Jan 26 13:48:14 UTC 2022 - Jan Zerebecki <jan.suse@zerebecki.de>
+
+- Allow docker as an alternative to podman in the package Requires. This was
+  supported since 2.2.
+
+-------------------------------------------------------------------
+Mon Jan 17 09:48:54 UTC 2022 - kukuk@suse.com
+
+- Update to version 2.3+git20220117.bd53c7c:
+  - Fixes error where if custom image is used toolbox will download
+    the default image before entering an existing container. (#40)
+
+-------------------------------------------------------------------
+Wed Nov 24 14:43:54 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.2+git20211124.09791b1:
+  * Introduce -n/--nostop switch so mutiple sessions can be run inside an existing toolbox
+
+-------------------------------------------------------------------
+Mon Nov  8 15:46:47 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Don't install config file in /etc in favor of a built-in default. Avoids
+  empty /etc pulling wrong image.
+- Handle Leap Micro (boo#1192474)
+
+-------------------------------------------------------------------
+Mon Aug 23 13:37:09 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.2+git20210823.dd0fff8:
+  * README mini-typo
+  * Docker: don't use unsupported --userns=keep-id
+  * Docker: also check for created status
+  * Try to use docker if installed and podman is not
+  * Properly share namespaces in non-user toolboxes
+  * Properly quote workdir
+
+-------------------------------------------------------------------
+Mon Mar 29 09:36:19 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.1+git20210329.d14ac82:
+  * Fix localtime and mount sys, e.g., for tracing
+  * Fix 'toolbox list' returning an error code even if working
+
+-------------------------------------------------------------------
+Thu Mar 11 13:49:05 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.1+git20210311.15cb3ad:
+  * Don't check for subuid if root calls toolbox [bsc#1183375]
+
+-------------------------------------------------------------------
+Fri Mar 05 16:52:01 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.1+git20210305.ca2bc53:
+  * Avoid copying the user setup script with 'podman cp'
+
+-------------------------------------------------------------------
+Fri Feb 26 08:29:43 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.1+git20210226.daeb191:
+  * Set trap only after option parsing (#22)
+
+-------------------------------------------------------------------
+Thu Feb 25 15:53:06 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.1+git20210225.5c541c8:
+  * Check sub{u,g}id if rootless, and fail early if they're not setup
+  * Fix creating a container with a specific name with `-c`
+
+-------------------------------------------------------------------
+Mon Feb 08 09:03:18 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.1+git20210208.a720b25:
+  * Alleviate the need for zypper in the user toolbox script
+  * Consolidate logging and help debugging of the user toolbox's script
+  * Export machine-id and IPC inside the toolbox (IPC, user only)
+  * Fix (more) formatting...
+
+-------------------------------------------------------------------
+Wed Feb 03 10:33:22 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.1+git20210203.a669e3a:
+  * Fix formatting
+  * Enhance alternate UI docu
+  * Ignore podman runlabel error if no RUN label exist
+  * Enhance documentation
+  * Check existence of volume directories (#15)
+
+-------------------------------------------------------------------
+Mon Jan 25 10:24:32 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.0+git20210125.50611db:
+  * Document configuration files, add /usr/etc/toolboxrc
+  * Update README to include commands
+  * Update the README
+  * Be even more compatible with Silverblue Toolbox
+  * Introduce commands, for compatibility with Silverblue's toolbox
+  * Mount /run/media and and /tmp inside a user toolbox
+  * Export more env variables inside (user) toolboxes
+
+-------------------------------------------------------------------
+Wed Jan 20 09:57:44 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add a group tag for SLE Micro
+- Mark toolboxrc as %config and add it is Source
+
+-------------------------------------------------------------------
+Tue Jan 19 13:12:13 UTC 2021 - bruno.leon@suse.com
+
+- Update to version 1.0+git20210119.b5acdcf:
+  * Dynamically set REGISTRY and IMAGE (#11)
+
+-------------------------------------------------------------------
+Thu Nov 26 10:48:21 UTC 2020 - kukuk@suse.com
+
+- Update to version 1.0+git20201126.3d26283:
+  * Make it easier to use custom images (#10)
+  * Update toolbox doc (#9)
+
+-------------------------------------------------------------------
+Wed Sep 02 16:44:06 UTC 2020 - kukuk@suse.com
+
+- Update to version 1.0+git20200831.d2d2e5d:
+  * Allow graphical applications from inside a user toolbox to run
+
+-------------------------------------------------------------------
+Mon Aug 03 12:49:28 UTC 2020 - kukuk@suse.com
+
+- Update to version 1.0+git20200803.7ff20b6:
+  * Connect to the host's SSH agent in user toolboxes.
+  * Stay in current directory, even when entering a toolbox
+  * Use the toolbox name as the actual toolbox's hostname
+
+-------------------------------------------------------------------
+Wed Mar 25 10:04:19 UTC 2020 - kukuk@suse.com
+
+- Update to version 1.0+git20200324.dd047bc:
+  * fix entering a toolbox if something changed in /dev since creation
+
+-------------------------------------------------------------------
+Mon Feb 17 09:07:33 UTC 2020 - kukuk@suse.com
+
+- Update to version 1.0+git20200217.cd18bfb:
+  * Multiple toolboxes, with different names
+  * Configure `sudo` access for an user toolbox
+  * Correctly setup the user
+  * Add -u|--user parameter
+  * Handle arguments with 'getopt'
+
+-------------------------------------------------------------------
+Mon Oct 14 12:40:00 UTC 2019 - kukuk@suse.com
+
+- Update to version 1.0+git20191014.3034fbc:
+  * Make default shell configureable, use /bin/bash as default
+
+-------------------------------------------------------------------
+Mon Oct 07 08:31:08 UTC 2019 - kukuk@suse.com
+
+- Update to version 1.0+git20191007.e038337:
+  * Initial version
+

@@ -1,0 +1,5 @@
+<package name="php-fpm8-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed BCI PHP-FPM 8</title>
+  <description>PHP-FPM 8 container based on the openSUSE Tumbleweed Base Container Image.</description>
+  <devel project="devel:BCI:Tumbleweed" package="php-fpm8-image"/>
+</package>

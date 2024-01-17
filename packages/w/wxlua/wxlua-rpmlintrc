@@ -1,0 +1,2 @@
+# Leap 15.4 complains about the library name, not the so version
+addFilter("shlib-policy-name-error .*")

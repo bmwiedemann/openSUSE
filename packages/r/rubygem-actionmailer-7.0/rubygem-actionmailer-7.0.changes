@@ -1,0 +1,146 @@
+-------------------------------------------------------------------
+Thu Nov  2 15:31:30 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## Rails 7.0.8 (September 09, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7.2 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7.1 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7 (August 09, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.6 (June 29, 2023) ##
+
+*   No changes.
+
+
+-------------------------------------------------------------------
+Tue Jun 27 19:31:00 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- updated to version 7.0.5.1
+  * https://rubyonrails.org/2023/6/26/Rails-Versions-7-0-5-1-6-1-7-4-have-been-released
+
+-------------------------------------------------------------------
+Mon Jun 26 19:08:20 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- updated to version 7.0.5
+  * https://rubyonrails.org/2023/5/24/Rails-7-0-5-has-been-released
+
+-------------------------------------------------------------------
+Fri Apr 21 11:21:00 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 7.0.4.3:
+  https://rubyonrails.org/2023/3/13/Rails-7-0-4-3-and-6-1-7-3-have-been-released
+  https://rubyonrails.org/2023/1/24/Rails-7-0-4-2-and-6-1-7-2-have-been-released
+  https://rubyonrails.org/2023/1/17/Rails-Versions-6-0-6-1-6-1-7-1-7-0-4-1-have-been-released
+
+-------------------------------------------------------------------
+Mon Oct 10 12:51:32 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.4
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.4 (September 09, 2022) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
+Thu Aug  4 12:49:34 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.3.1
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.3.1 (July 12, 2022) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
+Sun May 15 15:14:48 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 7.0.3
+
+  * no changes
+
+-------------------------------------------------------------------
+Thu Apr 28 05:08:02 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.2.4
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.2.4 (April 26, 2022) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
+Thu Mar 10 13:18:09 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 7.0.2.3
+
+  * no changes
+
+-------------------------------------------------------------------
+Tue Feb 15 07:06:14 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.2.2
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.2.2 (February 11, 2022) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 7.0.2.1 (February 11, 2022) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 7.0.2 (February 08, 2022) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
+Tue Jan 25 06:18:59 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.1
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.1 (January 06, 2022) ##
+  
+  *   Keep configuration of `smtp_settings` consistent between 6.1 and 7.0.
+  
+      *André Luis Leal Cardoso Junior*
+  
+  
+
+-------------------------------------------------------------------
+Mon Dec 27 11:22:15 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Don't limit building to specific ruby versions
+
+-------------------------------------------------------------------
+Tue Dec 21 22:05:48 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Rails 7.0 has been released
+
+  https://edgeguides.rubyonrails.org/7_0_release_notes.html
+
+-------------------------------------------------------------------
+Sun Dec 12 21:57:59 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

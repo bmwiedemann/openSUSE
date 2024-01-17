@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Thu Oct  5 12:12:01 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 0.1.18.7258568beb9c
+  - cmake cleanup
+  - add options parsing for help, device selection, raw output
+
+-------------------------------------------------------------------
+Wed Oct  4 17:19:41 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Initial import

@@ -1,0 +1,27 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/linode/linode-cli.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">5.19.0</param>
+    <param name="changesgenerate">enable</param>
+    <!-- ensure parity with `osc service runall download_file` -->
+    <param name="submodules">disable</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">linode-cli-*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">linode-cli</param>
+  </service>
+  <service name="download_url" mode="disabled">
+    <param name="protocol">https</param>
+    <param name="host">www.linode.com</param>
+    <param name="path">/docs/api/openapi.yaml</param>
+    <param name="filename">openapi.yaml</param>
+  </service>
+</services>
+

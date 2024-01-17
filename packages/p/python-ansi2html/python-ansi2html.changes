@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Wed Dec 13 08:54:07 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.9.1 (skipping non-existent release 1.9.0):
+  * Bugfixes
+    - Enable testing with py312 (#230) @ssbarnea
+    - Fix project description (#229) @ssbarnea
+    - Fix RTD builds (#228) @ssbarnea
+    - tests/test_ansi2html.py: use sys.executable instead of
+      hardcoded python3 (#214) @johanneskastl
+    - Replace optparse with argparse (#205) @ssbarnea
+    - Replace sphinx with mkdocs (#204) @ssbarnea
+- remove patch
+  0001-tests-test_ansi2html.py-use-sys.executable-instead-o.patch
+- change upstream to pycontribs/ansi2html
+
+-------------------------------------------------------------------
+Tue May  9 12:02:38 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add patch
+  0001-tests-test_ansi2html.py-use-sys.executable-instead-o.patch
+  to replace a hardcoded 'python3' in a test (which leads to errors
+  on SLES15 with python3.11)
+  https://github.com/pycontribs/ansi2html/issues/210
+
+-------------------------------------------------------------------
+Tue May  9 11:20:43 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Thu Aug  4 08:46:29 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 1.8.0:
+  * Fix for ANSI color codes that include blank values (#178)
+  * style.py: Drop unused CSS class .bold (#161)
+  * Added py.typed file (#176)
+  * style.py: Get CSS class .inv_foreground in sync with .body_foreground (#160)
+  * Fix --input-encoding=<encoding> regression added in PR #143 + related tests (alternative to PR #162) (#172)
+  * Migrate from mock to unittest.mock of Python >=3.3 (fixes #169) (#171)
+  * Add ability to also recognize colons in ANSI escapes (#167)
+  * Fixes to respect bright colors in palette (#126)
+  * CHANGELOG.rst: Fix misleading 1.6.0 entry and missing 1.7.0 entries (#159)
+  * Add comments to reduce reader research time (#158)
+
+-------------------------------------------------------------------
+Wed Apr 27 11:41:26 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.7.0
+  1.7.0
+  -----
+  Minor Changes
+  ^^^^^^^^^^^^^
+  * Replace recommendation of using system packages with pip3  @ssbarnea
+  * Add truecolor support  @miltolstoy
+  * Generate documentation with Sphinx and use Read the Docs  @tristanlatr
+  * Adds support for OSC hyperlink sequences.  @hakonhagland
+  Bugfixes
+  ^^^^^^^^
+  * Add test coverage  @ziegenberg
+  * Replace pkg_resources with importlib.metadata  @ziegenberg
+  * fix including of CHANGELOG.rst  @ziegenberg
+  * Update linting dependencies  @ziegenberg
+  * Upgrade the build process  @ziegenberg
+  * Add type hinting  @ziegenberg
+  * Update CI badges in readme  @ssbarnea
+  * Bump setuptools-scm version  @ssbarnea
+  1.6.0
+  -----
+  Changes
+  ^^^^^^^
+  * Switching from nosetest to unittest  @paolostivanin
+  * Add dracula colorscheme  @ahmubashshir
+  * Refactor packaging by replacing old setup.py based packaging with modern pep517 based one 
+  * Replace travis with github actions  @ssbarnea
+  Bugfixes
+  ^^^^^^^^
+  * Correct author metadata  @ssbarnea
+  Deprecations
+  ^^^^^^^^^^^^
+  * Officialy retire support for python <= 3.6  @ssbarnea
+- deleted patches
+  - remove_nose.patch (upstreamed)
+
+-------------------------------------------------------------------
+Thu Mar 26 07:34:53 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add remove_nose.patch
+
+-------------------------------------------------------------------
+Fri Feb 15 14:23:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in descriptions.
+
+-------------------------------------------------------------------
+Thu Feb 14 13:31:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.5.2 release:
+  * Many various drawing fixes
+  * Css parsing improvements
+- Sort out with spec-cleaner
+- Enable tests
+
+-------------------------------------------------------------------
+Tue Oct 24 15:13:53 UTC 2017 - rolf@rotkraut.de
+
+- Initial version
+

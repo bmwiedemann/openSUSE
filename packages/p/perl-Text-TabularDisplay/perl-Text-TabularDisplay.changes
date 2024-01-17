@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Fri Jul 25 09:32:03 UTC 2014 - coolo@suse.com
+
+- updated to 1.38, no changelog
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:25 UTC 2013 - coolo@suse.com
+
+- updated to 1.35, no cangelog
+
+-------------------------------------------------------------------
+Tue Jun  4 15:20:25 UTC 2013 - coolo@suse.com
+
+- updated to 1.34, no changelog
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:54 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Oct 12 16:37:38 UTC 2010 - jw@novell.com
+
+- initial package 1.22
+  * created by cpanspec 1.78.02
+  * needed by SQL::Translator
+

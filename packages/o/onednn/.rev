@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>66cc56fd77cd29d1b5b8ccb5c228e531</srcmd5>
+    <version>1.6.3</version>
+    <time>1603462150</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>839526</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1f28133a791c5e09911621f1225b078a</srcmd5>
+    <version>2.1</version>
+    <time>1617722995</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882580</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>db88a1d89c415cb4f69841a650fdc0a8</srcmd5>
+    <version>2.2.1</version>
+    <time>1618387860</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.1</comment>
+    <requestid>885001</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c2fd1878c1a27be5cf0cb27b025faae0</srcmd5>
+    <version>2.2.3</version>
+    <time>1622839393</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897415</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ab41e03896a9f13905ebe50ac5f829eb</srcmd5>
+    <version>2.2.4</version>
+    <time>1623767896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900151</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e95c545e2aebdddb473cf4799e43d1d0</srcmd5>
+    <version>2.2.4</version>
+    <time>1623868478</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on aarch64:
+  * onednn-xbyak-aarch64.patch
+</comment>
+    <requestid>900181</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ffb2aeb1fee148189ad7cf3bc51eab1b</srcmd5>
+    <version>2.6.2</version>
+    <time>1663155884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003336</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>bff911a004c79df28ed5a6824585d8fb</srcmd5>
+    <version>2.6.2</version>
+    <time>1663850986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005197</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cc664fbee707b951280ba46470e66b4a</srcmd5>
+    <version>3.0.1</version>
+    <time>1679417081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073553</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e106e506be967fd1a9cb32d79164a770</srcmd5>
+    <version>3.3</version>
+    <time>1696964454</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116623</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0b673a4276bc534176ac4b0b1c41dbb3</srcmd5>
+    <version>3.3.1</version>
+    <time>1701462367</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130165</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>25b85a829008a2d78ad0820955f30473</srcmd5>
+    <version>3.3.3</version>
+    <time>1704753931</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137488</requestid>
+  </revision>
+</revisionlist>

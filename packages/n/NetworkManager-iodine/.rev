@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7f98f04616fbac764aa24b5ae682cf1b</srcmd5>
+    <version>0.0.5</version>
+    <time>1430246874</time>
+    <user>coolo</user>
+    <comment>Some more VPN options for NM</comment>
+    <requestid>295159</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>278b499c9a89588ffee1b0f0a80949e0</srcmd5>
+    <version>1.2.0</version>
+    <time>1474623173</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>426699</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>884d24d38aa7e5025564e907434f4e12</srcmd5>
+    <version>1.2.0</version>
+    <time>1520588484</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581401 from dimstar)</comment>
+    <requestid>582892</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>16f1864525c0457d4dde6026f3dae9b9</srcmd5>
+    <version>1.2.0</version>
+    <time>1526463596</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 596953 from dimstar)</comment>
+    <requestid>607005</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>57f809a0f229c88266d77756321aa66e</srcmd5>
+    <version>1.2.0</version>
+    <time>1580204807</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767085 from dimstar)</comment>
+    <requestid>767324</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>06a8de1b595a60ace3777e59eb0f5404</srcmd5>
+    <version>1.2.0</version>
+    <time>1588450483</time>
+    <user>dimstar_suse</user>
+    <comment>- Set the path for the VPN service name file correctly to
+  %_vpnservicedir (provided by macros.NetworkManager). (forwarded request 799452 from dimstar)</comment>
+    <requestid>799489</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>4389f427ac9b146d602eb946717dd90e</srcmd5>
+    <version>1.2.0</version>
+    <time>1645561073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956512</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>864ad5e2dda7f04cdd4e5423767b5444</srcmd5>
+    <version>1.2.0</version>
+    <time>1673559860</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056393</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>31603fc2ace3fc2c5413ca9fc6e94d9f</srcmd5>
+    <version>1.2.0</version>
+    <time>1701792120</time>
+    <user>anag+factory</user>
+    <comment>- Rename gnome subpackage to NetworkManager-applet-iodine
+  to more accurately reflect its usage
+- Change supplements:
+  - NMA subpackage: only supplement if main package is installed (forwarded request 1130474 from gmbr3)</comment>
+    <requestid>1130772</requestid>
+  </revision>
+</revisionlist>

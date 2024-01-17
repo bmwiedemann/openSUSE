@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>242a6f95cbaa1ed68ad0ce2226831347</srcmd5>
+    <version>0</version>
+    <time>1431668572</time>
+    <user>coolo</user>
+    <comment>New package homeshick, see http://lists.opensuse.org/opensuse-factory/2015-05/msg00320.html</comment>
+    <requestid>305976</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8a0435f6d6c4f8c88636696b800e3f5b</srcmd5>
+    <version>1.0.0</version>
+    <time>1432723859</time>
+    <user>dimstar_suse</user>
+    <comment>Upstream introduced version numbers.</comment>
+    <requestid>308811</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3c19e678ef63db76997587deb6041bfb</srcmd5>
+    <version>1.1.0</version>
+    <time>1528492694</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 1.1.0:
+  * symlinks are now relative (useful when linking for a chrooted environment
+    or when renaming the home folder)
+  * fish shell completion (guide in wiki)
+  * homeshick.sh can now be sourced from dash as well
+  * the entire codebase is now linted with shellcheck
+  * loads of minor bugfixes
+- Rename default-location.patch to suse-packaging.patch
+</comment>
+    <requestid>615160</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c33ce4ac6d19ea1e59b367da4367c0d1</srcmd5>
+    <version>2.0.0</version>
+    <time>1589660889</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 2.0.0:
+  * Breaking: Moved ./bin/homeshick.csh to ./homeshick.csh
+  * Speed up refresh operation by reducing exec calls
+  * Fix some path quoting issues
+</comment>
+    <requestid>806020</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f1ec2e5bbe4e750513d0d8ee27c6efbe</srcmd5>
+    <version>2.0.0</version>
+    <time>1668271290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035324</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>7780f98543cb8a738f0538e95c2a1b71</srcmd5>
+    <version>2.0.0</version>
+    <time>1668702286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036294</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>01efbfdd7cea1f22387dc3d5de3a4a9b</srcmd5>
+    <version>2.0.1</version>
+    <time>1684239392</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087375</requestid>
+  </revision>
+</revisionlist>

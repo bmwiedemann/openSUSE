@@ -1,0 +1,5 @@
+<package name="ibdev2netdev" project="openSUSE:Factory">
+  <title> List netdevs with their associated RDMA interface (IPoIB, RoCE, iWarp)</title>
+  <description> List netdevs with their associated RDMA interface (IPoIB, RoCE, iWarp)</description>
+  <devel project="science:HPC" package="ibdev2netdev"/>
+</package>

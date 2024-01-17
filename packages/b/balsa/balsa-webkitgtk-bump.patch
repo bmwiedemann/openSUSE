@@ -1,0 +1,12 @@
+diff -Nur balsa-2.6.4-orig/configure.ac balsa-2.6.4/configure.ac
+--- balsa-2.6.4-orig/configure.ac	2022-09-20 20:43:44.000000000 +0200
++++ balsa-2.6.4/configure.ac	2023-03-12 14:15:58.190107563 +0100
+@@ -263,7 +263,7 @@
+     webkit2)
+         AC_MSG_RESULT([$use_html_widget])
+         # note: sqlite3 is needed to manage html vs. plain and image download preferences
+-        PKG_CHECK_MODULES(HTML, [ webkit2gtk-4.0 >= 2.28.0
++        PKG_CHECK_MODULES(HTML, [ webkit2gtk-4.1 >= 2.28.0
+                                   sqlite3 >= 3.24.0])
+         BALSA_WEB_EXTENSIONS="${libdir}/${PACKAGE}"
+         AC_SUBST(BALSA_WEB_EXTENSIONS)
