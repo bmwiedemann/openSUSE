@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 15 20:19:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add https://github.com/redis/redis-py/pull/3005 as
+  Close-various-objects-created-during-asyncio-tests.patch
+  to fix tests for python 3.12
+
+-------------------------------------------------------------------
 Tue Jan  2 11:21:25 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to increase timeouts in s390x where tests take longer
@@ -151,7 +158,7 @@ Tue Apr 18 03:37:06 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 - Update to 4.5.4:
   * Security
     + Cancelling an async future does not, properly trigger, leading to a
-      potential data leak in specific cases. (CVE-2023-28858, bsc#1209811) 
+      potential data leak in specific cases. (CVE-2023-28858, bsc#1209811)
     + Cancelling an async future does not, properly trigger, leading to a
       potential data leak in specific cases. (CVE-2023-28859, bsc#1209812)
   * New Features
@@ -1344,7 +1351,7 @@ Fri Apr 15 12:43:07 UTC 2011 - saschpe@suse.de
     now be useable on 2.4, but this hasn't actually been tested. Thanks
     Dan Colish for the patch.
   * Optimized some code using izip and islice.
-  * Better error handling 
+  * Better error handling
   * Subscription status is now reset after every (re)connection.
 - Added spec file license header
 

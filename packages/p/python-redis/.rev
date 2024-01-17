@@ -446,4 +446,17 @@
 </comment>
     <requestid>1136240</requestid>
   </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>7c39b203ee48adcd615798995e98986c</srcmd5>
+    <version>5.0.1</version>
+    <time>1705526080</time>
+    <user>anag+factory</user>
+    <comment>- add https://github.com/redis/redis-py/pull/3005 as
+  Close-various-objects-created-during-asyncio-tests.patch
+  to fix tests for python 3.12
+
+      potential data leak in specific cases. (CVE-2023-28858, bsc#1209811)
+  * Better error handling</comment>
+    <requestid>1139023</requestid>
+  </revision>
 </revisionlist>
