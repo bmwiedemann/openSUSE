@@ -1,0 +1,8 @@
+<package name="perl-Graphics-ColorUtils" project="openSUSE:Factory">
+  <title>perl-Graphics-ColorUtils</title>
+  <description>LONG DESCRIPTION
+GOES
+HERE
+  </description>
+  <devel project="devel:languages:perl" package="perl-Graphics-ColorUtils"/>
+</package>

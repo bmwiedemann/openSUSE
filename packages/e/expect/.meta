@@ -1,0 +1,9 @@
+<package name="expect" project="openSUSE:Factory">
+  <title>A Tool for Automating Interactive Programs</title>
+  <description>Expect is a tool primarily for automating interactive applications,
+such as telnet, ftp, passwd, fsck, rlogin, tip, and more.  Expect
+really makes this stuff trivial.  Expect is also useful for testing
+these applications.  It is described in many books, articles, papers,
+and FAQs.  There is an entire book on it available from O'Reilly.</description>
+  <devel project="devel:languages:tcl" package="expect"/>
+</package>

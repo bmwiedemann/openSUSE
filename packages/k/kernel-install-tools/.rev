@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b2fb8ea7e9d59c3cd5fa2d127bc4ebf4</srcmd5>
+    <version>0.2.8</version>
+    <time>1636577604</time>
+    <user>dimstar_suse</user>
+    <comment>needed for /sbin/installkernel</comment>
+    <requestid>930750</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b68815a5a9c635cde20f44b9cf2f6fe5</srcmd5>
+    <version>0.2.10</version>
+    <time>1641855239</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.10:
+  * Support non-x86 architectures. (forwarded request 945397 from jeff_mahoney)</comment>
+    <requestid>945398</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>701ab4e5bd56c4dcfac617b57eeff39c</srcmd5>
+    <version>0.3.0</version>
+    <time>1648575935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965727</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1d465912171b03b5d9ef15f1c83b2735</srcmd5>
+    <version>0.3.0</version>
+    <time>1673021132</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056242</requestid>
+  </revision>
+</revisionlist>

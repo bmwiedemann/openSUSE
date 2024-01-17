@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Mon Nov 25 07:38:54 UTC 2013 - coolo@suse.com
+
+- updated to 0.010
+         - Revert adding conventional [Test::CheckDeps] test, to avoid circular dependency
+         - Added Synopsis
+         - $Test::Builder::Level increased, so failing tests appear to come
+           from the .t file rather than Test/CheckDeps.pm
+         - also test 'develop' prereqs when AUTHOR_TESTING
+
+-------------------------------------------------------------------
+Fri Oct  4 09:15:17 UTC 2013 - coolo@suse.com
+
+- updated to 0.008
+          - Switch to MakeMaker to fix bootstrapping issues
+          - bump prereq on CPAN::Meta::Check to latest (0.007), for conflicts
+            fixes
+
+-------------------------------------------------------------------
+Sat Jul 27 09:14:11 UTC 2013 - coolo@suse.com
+
+- updated to 0.006
+          Explicitly require CPAN::Meta 2.120920
+          Switch to Module::Build::Tiny
+          Require CPAN::Meta::Check 0.004
+
+-------------------------------------------------------------------
+Tue Jun  4 14:59:24 UTC 2013 - coolo@suse.com
+
+- updated to 0.004
+        Reinstate loading of CPAN::Meta
+        Sort dependencies before displaying them
+        check_dependencies() can now optionally also test recommended and
+        suggested prerequisites
+
+-------------------------------------------------------------------
+Wed May 30 12:31:43 UTC 2012 - coolo@suse.com
+
+- initial package 0.002
+    * created by cpanspec 1.78.06
+

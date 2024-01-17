@@ -1,0 +1,20 @@
+--- exp_log.c
++++ exp_log.c
+@@ -374,7 +374,7 @@ expDiagChannelOpen(interp,filename)
+ 	Tcl_DStringAppend(&tsdPtr->diagFilename,filename,-1);
+     }
+ 
+-    tsdPtr->diagChannel = Tcl_OpenFileChannel(interp,newfilename,"a",0777);
++    tsdPtr->diagChannel = Tcl_OpenFileChannel(interp,newfilename,"a",0666);
+     if (!tsdPtr->diagChannel) {
+ 	Tcl_DStringFree(&tsdPtr->diagFilename);
+ 	return TCL_ERROR;
+@@ -499,7 +499,7 @@ expLogChannelOpen(interp,filename,append
+ 	Tcl_DStringAppend(&tsdPtr->logFilename,filename,-1);
+     }
+ 
+-    tsdPtr->logChannel = Tcl_OpenFileChannel(interp,newfilename,mode,0777);
++    tsdPtr->logChannel = Tcl_OpenFileChannel(interp,newfilename,mode,0666);
+     if (!tsdPtr->logChannel) {
+ 	Tcl_DStringFree(&tsdPtr->logFilename);
+ 	return TCL_ERROR;

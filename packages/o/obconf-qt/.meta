@@ -1,0 +1,6 @@
+<package name="obconf-qt" project="openSUSE:Factory">
+  <title>obconf-qt</title>
+  <description>Window Manager configuration for OpenBox
+(lxqt does not provide it's own window manager, but uses OpenBox)</description>
+  <devel project="X11:LXQt" package="obconf-qt"/>
+</package>

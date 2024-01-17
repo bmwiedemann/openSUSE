@@ -1,0 +1,2 @@
+# This package is noarch but it requires packages that vary by architecture
+addFilter("no-binary")

@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Sat Sep  9 13:27:49 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Wed Apr  1 08:21:39 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.1.16
+- Modified patch:
+  * osgi-metadata.patch -> 
+    0001-Use-import-package-instead-of-embedding-dependencies.patch
+	+ Don't embed dependencies, use import-package instead
+- Added patch:
+  * 0002-Drop-the-dependencies-on-kxml-xpp3.patch
+    + Drop dependencies on kxml and xpp, use the system SAX
+      implementation instead
+
+-------------------------------------------------------------------
+Sun Nov 24 12:17:23 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Specify maven.compiler.release to fix build with jdk9+ and newer
+  maven-javadoc-plugin
+
+-------------------------------------------------------------------
+Wed May  8 11:39:43 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of felix-scr 2.0.14

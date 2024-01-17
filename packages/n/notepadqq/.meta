@@ -1,0 +1,5 @@
+<package name="notepadqq" project="openSUSE:Factory">
+  <title>Notepad++-like editor</title>
+  <description>Text editor with support for multiple programming languages, multiple encodings, and plugins.</description>
+  <devel project="editors" package="notepadqq"/>
+</package>

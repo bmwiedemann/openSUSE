@@ -1,0 +1,62 @@
+Index: Makefile.in
+===================================================================
+--- Makefile.in.orig
++++ Makefile.in
+@@ -331,7 +331,7 @@ pkgIndex.tcl:
+ pkgIndex.tcl-hand:
+ 	(echo 'if {![package vsatisfies [package provide Tcl] @TCL_VERSION@]} {return}' ; \
+ 	 echo 'package ifneeded Expect $(PACKAGE_VERSION) \
+-	    [list load [file join $$dir $(PKG_LIB_FILE)]]'\
++	    [list load $(PKG_LIB_FILE)]'\
+ 	) > pkgIndex.tcl
+ 
+ #========================================================================
+@@ -524,29 +524,30 @@ distclean: clean
+ #========================================================================
+ 
+ install-lib-binaries:
+-	@mkdir -p $(DESTDIR)$(pkglibdir)
++	@mkdir -p $(DESTDIR)$(libdir)
+ 	@list='$(lib_BINARIES)'; for p in $$list; do \
+ 	  if test -f $$p; then \
+-	    echo " $(INSTALL_PROGRAM) $$p $(DESTDIR)$(pkglibdir)/$$p"; \
+-	    $(INSTALL_PROGRAM) $$p $(DESTDIR)$(pkglibdir)/$$p; \
++	    echo " $(INSTALL_PROGRAM) $$p $(DESTDIR)$(libdir)/$$p"; \
++	    $(INSTALL_PROGRAM) $$p $(DESTDIR)$(libdir)/$$p; \
+ 	    stub=`echo $$p|sed -e "s/.*\(stub\).*/\1/"`; \
+ 	    if test "x$$stub" = "xstub"; then \
+-		echo " $(RANLIB_STUB) $(DESTDIR)$(pkglibdir)/$$p"; \
+-		$(RANLIB_STUB) $(DESTDIR)$(pkglibdir)/$$p; \
++		echo " $(RANLIB_STUB) $(DESTDIR)$(libdir)/$$p"; \
++		$(RANLIB_STUB) $(DESTDIR)$(libdir)/$$p; \
+ 	    else \
+-		echo " $(RANLIB) $(DESTDIR)$(pkglibdir)/$$p"; \
+-		$(RANLIB) $(DESTDIR)$(pkglibdir)/$$p; \
++		echo " $(RANLIB) $(DESTDIR)$(libdir)/$$p"; \
++		$(RANLIB) $(DESTDIR)$(libdir)/$$p; \
+ 	    fi; \
+ 	    ext=`echo $$p|sed -e "s/.*\.//"`; \
+ 	    if test "x$$ext" = "xdll"; then \
+ 		lib=`basename $$p|sed -e 's/.[^.]*$$//'`.lib; \
+ 		if test -f $$lib; then \
+-		    echo " $(INSTALL_DATA) $$lib $(DESTDIR)$(pkglibdir)/$$lib"; \
+-	            $(INSTALL_DATA) $$lib $(DESTDIR)$(pkglibdir)/$$lib; \
++		    echo " $(INSTALL_DATA) $$lib $(DESTDIR)$(libdir)/$$lib"; \
++	            $(INSTALL_DATA) $$lib $(DESTDIR)$(libdir)/$$lib; \
+ 		fi; \
+ 	    fi; \
+ 	  fi; \
+ 	done
++	@mkdir -p $(DESTDIR)$(pkglibdir)
+ 	@list='$(PKG_TCL_SOURCES)'; for p in $$list; do \
+ 	  if test -f $(srcdir)/$$p; then \
+ 	    destp=`basename $$p`; \
+@@ -585,7 +586,7 @@ Makefile: $(srcdir)/Makefile.in  $(top_b
+ 
+ uninstall-binaries:
+ 	list='$(lib_BINARIES)'; for p in $$list; do \
+-	  rm -f $(DESTDIR)$(pkglibdir)/$$p; \
++	  rm -f $(DESTDIR)$(libdir)/$$p; \
+ 	done
+ 	list='$(PKG_TCL_SOURCES)'; for p in $$list; do \
+ 	  p=`basename $$p`; \

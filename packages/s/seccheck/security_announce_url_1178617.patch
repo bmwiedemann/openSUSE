@@ -1,0 +1,12 @@
+diff -ubr a/security-monthly.sh b/security-monthly.sh
+--- a/security-monthly.sh	2019-03-07 09:37:00.000000000 +0100
++++ b/security-monthly.sh	2020-12-13 21:03:07.092000000 +0100
+@@ -36,7 +36,7 @@
+ #done
+ 
+ echo '
+-NOTE: have you checked http://www.novell.com/products/security.html for security updates?!
++NOTE: have you checked https://www.suse.com/support/update/ for security updates?!
+ '
+ 
+ cat "$OLD1"

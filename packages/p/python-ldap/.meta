@@ -1,0 +1,8 @@
+<package name="python-ldap" project="openSUSE:Factory">
+  <title>Python LDAP interface</title>
+  <description>python-ldap provides an LDAP client API for Python in the spirit of
+RFC1823. It includes a Python module called _ldapmodule that wraps an
+LDAP C library, an object-oriented API for X.500 directories. See
+python-ldap pages on http://python-ldap.sourceforge.net/</description>
+  <devel project="devel:languages:python" package="python-ldap"/>
+</package>

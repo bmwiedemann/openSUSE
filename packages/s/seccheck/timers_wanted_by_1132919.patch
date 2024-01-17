@@ -1,0 +1,36 @@
+diff -ubr a/seccheck-autologout.timer b/seccheck-autologout.timer
+--- a/seccheck-autologout.timer	2019-03-07 09:37:00.000000000 +0100
++++ b/seccheck-autologout.timer	2019-09-08 17:48:38.712000000 +0200
+@@ -7,4 +7,4 @@
+ Persistent=true
+ 
+ [Install]
+-WantedBy=seccheck-autologout.service
++WantedBy=timers.target
+diff -ubr a/seccheck-daily.timer b/seccheck-daily.timer
+--- a/seccheck-daily.timer	2019-03-07 09:37:00.000000000 +0100
++++ b/seccheck-daily.timer	2019-09-08 17:48:50.512000000 +0200
+@@ -7,4 +7,4 @@
+ Persistent=true
+ 
+ [Install]
+-WantedBy=seccheck-daily.service
++WantedBy=timers.target
+diff -ubr a/seccheck-monthly.timer b/seccheck-monthly.timer
+--- a/seccheck-monthly.timer	2019-03-07 09:37:00.000000000 +0100
++++ b/seccheck-monthly.timer	2019-09-08 17:49:03.260000000 +0200
+@@ -7,4 +7,4 @@
+ Persistent=true
+ 
+ [Install]
+-WantedBy=seccheck-daily.service
++WantedBy=timers.target
+diff -ubr a/seccheck-weekly.timer b/seccheck-weekly.timer
+--- a/seccheck-weekly.timer	2019-03-07 09:37:00.000000000 +0100
++++ b/seccheck-weekly.timer	2019-09-08 17:49:12.892000000 +0200
+@@ -7,4 +7,4 @@
+ Persistent=true
+ 
+ [Install]
+-WantedBy=seccheck-weekly.service
++WantedBy=timers.target

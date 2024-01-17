@@ -1,0 +1,21 @@
+<package name="cln" project="openSUSE:Factory">
+  <title>Class Library for Numbers (C++)</title>
+  <description>CLN features a rich set of number classes: integer (unlimited
+precision), rational, short float, single float, double float, long
+float (unlimited precision), complex, modular integer, and univariate
+polynomial.  It implements elementary, logical, and transcendental
+functions.  C++ as the implementation language brings efficiency, type
+safety, and algebraic syntax.  Memory efficiency: small integers and
+short floats are immediate, not heap allocated. Automatic,
+noninterruptive garbage collection.  Speed efficiency: assembly
+language kernel for some CPUs, Karatsuba and Schoenhage-Strassen
+multiplication.  Interoperability: garbage collection with no burden on
+the main application, hooks for memory allocation and exceptions.
+
+The following C++ features are used: classes, member functions,
+overloading of functions and operators, constructors and destructors,
+inline, const, multiple inheritance, templates, and namespaces.  The
+following C++ features are not used: new, delete, virtual inheritance,
+and exceptions.</description>
+  <devel project="KDE:Extra" package="cln"/>
+</package>

@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Mon Apr 23 05:17:55 UTC 2018 - coolo@suse.com
+
+- updated to 1.07
+   see /usr/share/doc/packages/perl-DateTime-Tiny/Changes
+
+  1.07      2018-04-22 11:06:08+02:00 Europe/Oslo
+  
+      - Bugfix: only match ASCII digits in from_string() method.
+
+-------------------------------------------------------------------
+Fri Jun 24 05:42:04 UTC 2016 - coolo@suse.com
+
+- updated to 1.06
+   see /usr/share/doc/packages/perl-DateTime-Tiny/Changes
+
+-------------------------------------------------------------------
+Fri Jan 14 11:30:52 UTC 2011 - coolo@novell.com
+
+- initial package 1.04
+  * created by cpanspec 1.78.03
+

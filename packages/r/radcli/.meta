@@ -1,0 +1,11 @@
+<package name="radcli" project="openSUSE:Factory">
+  <title>A simple RADIUS client library</title>
+  <description>The radcli library is a library for writing RADIUS Clients. The library's
+approach is to allow writing RADIUS-aware application in less than 50 lines
+of C code. It was based originally on freeradius-client and is source compatible
+with it.
+
+</description>
+  <devel project="network" package="radcli"/>
+  <url>http://radcli.github.io/radcli/</url>
+</package>

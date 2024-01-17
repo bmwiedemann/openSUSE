@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Tue Dec 27 12:36:48 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
+Tue Mar 29 13:27:32 UTC 2022 - jeffm@suse.com
+
+- Update to version v0.3.0:
+  * specfile: accept OBS cleanups
+  * specfile: fix UsrMerge support
+  * specfile: silence OBS warning about no-binary
+  * specfile: fix license tag
+  * Makefile: install the installkernel script directly in /sbin
+  * installkernel: Don't force hostonly
+
+-------------------------------------------------------------------
+Tue Jan 11 14:45:52 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Integrate required spec file changes for non-x86.
+
+-------------------------------------------------------------------
+Mon Jan 10 18:49:15 UTC 2022 - jeffm@suse.com
+
+- Update to version 0.2.10:
+  * Support non-x86 architectures.
+
+-------------------------------------------------------------------
+Wed Nov 10 19:56:48 UTC 2021 - Jeff Mahoney <jeffm@suse.com>
+
+- Cleaned up rpmlint warnings and made usrmerge support cleaner.
+
+-------------------------------------------------------------------
+Wed Nov 10 19:47:37 UTC 2021 - jeffm@suse.com
+
+- Update to version 0.2.8:
+  * Makefile: create symlink to /sbin/installkernel if /sbin != /usr/sbin
+  * installkernel: remove 'function' bashism
+
+-------------------------------------------------------------------
+Wed Nov 10 19:20:24 UTC 2021 - Jeff Mahoney <jeffm@suse.com>
+
+- Changed set_version to manual and added usrmerge distinction.
+
+-------------------------------------------------------------------
+Wed Nov 10 18:33:12 UTC 2021 - Jeff Mahoney <jeffm@suse.com>
+
+- Changed obs_scm mode to manual and set_version mode to buildtime.
+
+-------------------------------------------------------------------
+Sun Aug 29 18:38:35 UTC 2021 - jeffm@suse.com
+
+- Update to version 0.2.6:
+  * scripts: move messages around to better handle skipped enrollment
+  * sbtool-sign-kernel: handle kernels without signing keys configured
+  * sbtool-enroll-key: handle non-UEFI systems more gracefully
+  * sbtool-sign-kernel: do not automatically enroll kernel-built certificates
+  * scripts: fix paths to other scripts
+  * packaging: fix up spec file after initial OBS builds
+
+-------------------------------------------------------------------
+Fri Aug 27 20:17:25 UTC 2021 - Jeff Mahoney <jeffm@suse.com>
+
+- Initial packaging.

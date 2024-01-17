@@ -1,0 +1,8 @@
+<package name="thunar-plugin-media-tags" project="openSUSE:Factory">
+  <title>Thunar Plugin for Editing Media File Metadata and Renaming Based on Metadata</title>
+  <description>The Thunar Media Tags Plugin enables editing media file metatdata from within
+the Thunar file properties dialog and allows for bulk renaming based on
+metadata.</description>
+  <devel project="X11:xfce" package="thunar-plugin-media-tags"/>
+  <url>http://thunar.xfce.org/plugins.html#thunar-media-tags-plugin</url>
+</package>

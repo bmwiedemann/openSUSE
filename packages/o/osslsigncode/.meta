@@ -1,0 +1,5 @@
+<package name="osslsigncode" project="openSUSE:Factory">
+  <title>osslsigncode</title>
+  <description>Set of programs using ssl to do signatures on microsoft cab files and executables</description>
+  <devel project="Base:System" package="osslsigncode"/>
+</package>

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42e4368fe36220ef38da666fdb19688c</srcmd5>
+    <version>20041208</version>
+    <time>1566479124</time>
+    <user>dimstar_suse</user>
+    <comment>Introducing package sunwait to Factory</comment>
+    <requestid>725251</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>127061d652a7dda13355a9bc889edf3d</srcmd5>
+    <version>20190321</version>
+    <time>1578437504</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 20190322
+	- sunwait-no-return-in-nonvoid-function.patch no longer needed
+	- sunwait-implicit-declaration.patch no longer needed</comment>
+    <requestid>761181</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>944bcc10fe857a5232bf10e257e17bf8</srcmd5>
+    <version>20201026</version>
+    <time>1612901802</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 20201026
+    - Fix error in print.cpp in displaying target time</comment>
+    <requestid>870307</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9a966473c1da29b8887dd4a377d364de</srcmd5>
+    <version>20220613</version>
+    <time>1659721860</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 20220613
+    - ADD standard(ish) unixy command line flags
+    - Fix unused variable warning during compile.
+    - Document use of an arbitrary date specification
+- add sunwait-fix-parentheses.patch
+</comment>
+    <requestid>993113</requestid>
+  </revision>
+</revisionlist>

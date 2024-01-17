@@ -1,0 +1,6 @@
+<package name="python-acme" project="openSUSE:Factory">
+  <title>Python library for the ACME protocol</title>
+  <description>Python library implementing the Automatic Certificate Management Environment (ACME) protocol. It is used by the Let's Encrypt project.</description>
+  <devel project="devel:languages:python:certbot" package="python-acme"/>
+  <url>https://github.com/letsencrypt/letsencrypt</url>
+</package>

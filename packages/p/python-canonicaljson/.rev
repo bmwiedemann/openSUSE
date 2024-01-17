@@ -1,0 +1,165 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e7ae703cd34a265494a5778ce7832ac0</srcmd5>
+    <version>1.0.0</version>
+    <time>1502186321</time>
+    <user>maxlin_factory</user>
+    <comment>Add LICENSE and README.rst</comment>
+    <requestid>510140</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>73043163ecc084cd838699b06085b59d</srcmd5>
+    <version>1.1.3</version>
+    <time>1524400830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599476</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>08a893285d4a0f8d6572efafca8e867c</srcmd5>
+    <version>1.1.3</version>
+    <time>1524576747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599793</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c47d02f096140ecf6ead82e8115e319a</srcmd5>
+    <version>1.1.3</version>
+    <time>1524643364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600741</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>492386d86d892714a875f936dc9d80a5</srcmd5>
+    <version>1.1.4</version>
+    <time>1551455294</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.4:
+  * Fix error when encoding non-BMP characters on UCS-2 python builds (fixes issue #12).
+- Use same syntax for test multibuild like in other pkgs</comment>
+    <requestid>680066</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>443f695713c080bae7c7c248366b8316</srcmd5>
+    <version>1.2.0</version>
+    <time>1597392255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826608</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>67143634778f4f35700cd4dcd1852b2c</srcmd5>
+    <version>1.4.0</version>
+    <time>1599667545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833178</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d6ddb20bb9e5d9fb014f2fc470e01936</srcmd5>
+    <version>1.4.0</version>
+    <time>1619729202</time>
+    <user>dimstar_suse</user>
+    <comment>Exclude tests on older SLE+Leap due to &quot;ImportError: cannot import name inf&quot;
+</comment>
+    <requestid>889399</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6fa1c85218d8d4d929b9f536e375db23</srcmd5>
+    <version>1.5.0</version>
+    <time>1642203609</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>946543</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6d5fd63fe8ae8c6e5384da0215034da2</srcmd5>
+    <version>1.5.0</version>
+    <time>1652389174</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump required version of frozendict to work with Python 3.10
+  (gh#matrix-org/python-canonicaljson#45).
+- Clean up SPEC.
+</comment>
+    <requestid>976275</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c582f974940cec89936ff58b5de7cb14</srcmd5>
+    <version>1.6.2</version>
+    <time>1654691095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981280</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>f6284dd2f77a0ecba06a907e5b2b4d34</srcmd5>
+    <version>1.6.2</version>
+    <time>1654776626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981336</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3a432d379bf8403cca180cba4e4e412e</srcmd5>
+    <version>1.6.4</version>
+    <time>1669193294</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037402</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3fdf30e8a7422de5bc4435345a6bb515</srcmd5>
+    <version>1.6.4</version>
+    <time>1676990211</time>
+    <user>dimstar_suse</user>
+    <comment>REQUIRES sr#1067009
+
+- Don't switch off tests completely just skip the failing ones.
+- And frozendict works on 3.11 (just slower).
+- disable python 3.11 until frozendict supports it
+</comment>
+    <requestid>1067013</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>86be822a60f42b0f076a1169109d1c5d</srcmd5>
+    <version>1.6.5</version>
+    <time>1677683666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068353</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>b2880f5c84f85471cc8024571da7288a</srcmd5>
+    <version>1.6.5</version>
+    <time>1684162456</time>
+    <user>dimstar_suse</user>
+    <comment>- remove redundant _service file</comment>
+    <requestid>1087239</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8f1493cee4d9fcce3a0f17d602ae33b9</srcmd5>
+    <version>2.0.0</version>
+    <time>1685476938</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0:
+  * Add a generic `register_preserialisation_callback` mechanism,
+    which allows users to teach canonicaljson how to JSON-encode custom
+    types.
+  * Remove support for serialising `frozendict` instances. Use
+    the new `register_preserialisation_callback` mechanism to replace
+    this functionality if needed.
+  * Remove support for `simplejson` and the
+    `set_json_library`alternative json libraries.</comment>
+    <requestid>1089612</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4b525b535a7d5513b904b407b723cce5</srcmd5>
+    <version>2.0.0</version>
+    <time>1686506150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092151</requestid>
+  </revision>
+</revisionlist>

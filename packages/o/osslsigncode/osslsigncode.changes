@@ -1,0 +1,98 @@
+-------------------------------------------------------------------
+Wed Dec 20 09:35:53 UTC 2023 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- update to 2.7.0
+  * fixed signing CAB files (by Michael Brown)
+  * fixed handling of unsupported commands (by Maxim Bagryantsev)
+  * fixed writing DIFAT sectors
+  * added APPX support (by Maciej Panek and Małgorzata Olszówka)
+  * added a built-in TSA response generation (-TSA-certs, -TSA-key
+    and -TSA-time options)
+  * added verification of CRLs specified in the signing certificate
+  * added MSI DIFAT sectors support (by Max Bagryantsev)
+  * added the "-h" option to set the cryptographic hash function for the
+    "attach -signature" and "add" commands
+  * set the default hash function to "sha256"
+  * added the "attach-signature" option to compute and compare the leaf
+    certificate hash for the "add" command
+  * renamed the "-st" option "-time"
+  * updated the "-time" option to also set explicit verification time
+  * added the "-ignore-timestamp" option
+  * removed the "-timestamp-expiration" option
+  * numerous bugfixes
+  * documentation updates
+- build system changed to cmake
+- use source code tag instead of release artifact for source
+- updated URL
+- removed gpg check, signature no longer available from upstream
+
+-------------------------------------------------------------------
+Sun Apr 10 15:30:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * This release fixes several critical memory corruption vulnerabilities.
+    A malicious attacker could create a file, which, when processed with
+    osslsigncode, triggers arbitrary code execution. Any previous version
+    of osslsigncode should be immediately upgraded if the tool is used for
+    processing of untrusted files.
+  * fixed non-interactive PVK (MSBLOB) key decryption
+  * added a bash completion script
+  * added CA bundle path auto-detection
+  * CAT files support (thanks to James McKenzie)
+  * MSI support rewritten without libgsf dependency, which allows
+  * for handling of all the needed MSI metadata, such as dates
+  * "-untrusted" option renamed to "-TSA-CAfile"
+  * "-CRLuntrusted" option renamed to "-TSA-CRLfile"
+  * numerous bug fixes and improvements
+  * certificate chain verification support
+  * timestamp verification support
+  * CRL verification support ("-CRLfile" option)
+  * improved CAB signature support
+  * nested signatures support
+  * user-specified signing time ("-st" option) by vszakats
+  * added more tests
+  * fixed numerous bugs
+  * dropped OpenSSL 1.1.0 support 
+  * orphaned project adopted by Michał Trojnara
+  * ported to OpenSSL 1.1.x
+  * ported to SoftHSM2
+  * add support for pkcs11-based hardware tokens
+  * improved error reporting of timestamping errors
+- drop 0001-Make-code-work-with-OpenSSL-1.1.patch (obsolete)
+- add gpg validation
+
+-------------------------------------------------------------------
+Mon Nov 12 09:25:56 UTC 2018 - meissner@suse.com
+
+- license is now GPL 3.0
+
+-------------------------------------------------------------------
+Wed Oct 24 13:33:21 UTC 2018 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- 0001-Make-code-work-with-OpenSSL-1.1.patch: Build against 
+  openssl 1.1.
+ 
+-------------------------------------------------------------------
+Wed Dec 20 14:28:54 UTC 2017 - fcrozat@suse.com
+
+- Adapt BuildRequires to libopenssl-1_0_0-devel for SLE15 / TW.
+
+-------------------------------------------------------------------
+Mon Oct  5 09:57:22 UTC 2015 - idonmez@suse.com
+
+- Add libgsf-devel dependency to enable MSI support. 
+
+-------------------------------------------------------------------
+Sun Mar  8 17:33:10 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.7.1
+  * MSI: added -add-msi-dse option
+  * MSI: fix build when GSF_CAN_READ_MSI_METADATA defined
+- Add autoconf, automake and pkg-config BuildRequire; new dependencies
+- Move to pkg-config depend style
+
+-------------------------------------------------------------------
+Wed Jan 23 10:16:39 UTC 2013 - fcrozat@suse.com
+
+- Initial package for openSUSE (based on James Bottomley package).
+
