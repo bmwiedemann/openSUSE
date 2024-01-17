@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1097937</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c62151cc2f9512621185a45469400334</srcmd5>
+    <version>1.1.9</version>
+    <time>1704290024</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools</comment>
+    <requestid>1136449</requestid>
+  </revision>
 </revisionlist>
