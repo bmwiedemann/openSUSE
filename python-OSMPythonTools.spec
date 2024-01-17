@@ -1,7 +1,7 @@
 #
 # spec file for package python-OSMPythonTools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define skip_python38 1
 %define modname OSMPythonTools
+%{?sle15_python_module_pythons}
 Name:           python-OSMPythonTools
 Version:        0.3.5
 Release:        0
@@ -25,7 +25,9 @@ Summary:        A library to access OpenStreetMap related services
 License:        GPL-3.0-only
 URL:            https://github.com/mocnik-science/osm-python-tools
 Source:         https://github.com/mocnik-science/osm-python-tools/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

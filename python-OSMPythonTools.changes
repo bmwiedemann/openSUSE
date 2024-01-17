@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  3 10:08:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+- spec cleanups
+
+-------------------------------------------------------------------
 Tue Apr  4 09:42:45 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip python38, python-xarray is not available there.
