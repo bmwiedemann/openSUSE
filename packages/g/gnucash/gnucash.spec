@@ -1,7 +1,7 @@
 #
 # spec file for package gnucash
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,14 +27,20 @@
 %endif
 %endif
 
+%if 0%{?suse_version} > 1600
+%bcond_without python
+%else
+%bcond_with python
+%endif
+
 Name:           gnucash
-Version:        5.4
+Version:        5.5
 Release:        0
 Summary:        Personal Finance Manager
 License:        SUSE-GPL-2.0-with-openssl-exception OR SUSE-GPL-3.0-with-openssl-exception
 Group:          Productivity/Office/Finance
 URL:            http://www.gnucash.org/
-Source:         https://github.com/Gnucash/gnucash/releases/download/%{version}/%{name}-%{version}-1.tar.bz2
+Source:         https://github.com/Gnucash/gnucash/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 ## Cpan-warning patch must always be applied.
 # PATCH-FIX-UPSTREAM gnucash-cpan-warning.patch -- Add a warning about the danger of using gnc-fq-update to update the perl modules used by GnuCash.
@@ -58,10 +64,13 @@ BuildRequires:  libboost_program_options-devel-impl >= 1.67.0
 BuildRequires:  libboost_regex-devel-impl >= 1.67.0
 BuildRequires:  libboost_system-devel-impl >= 1.67.0
 BuildRequires:  libdbi-drivers-dbd-sqlite3
+BuildRequires:  libicu-devel
 BuildRequires:  makeinfo
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
+%if %{with python}
+BuildRequires:  python3-devel >= 3.8
+%endif
 BuildRequires:  swig >= 3.0.12
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(aqbanking) >= 6.0.0
@@ -87,7 +96,9 @@ BuildRequires:  pkgconfig(webkit2gtk-4.1)
 Recommends:     %{name}-docs
 # For translation of currency names
 Recommends:     iso-codes
+%if %{with python}
 Recommends:     python3-gnucash = %{version}
+%endif
 # Optional perl modules for online price retrieval
 Recommends:     perl(Date::Manip)
 Recommends:     yelp
@@ -109,6 +120,7 @@ Feature Highlights:
  * Scheduled Transactions;
  * Financial Calculations.
 
+%if %{with python}
 %package -n python3-gnucash
 Summary:        Python bindings for GnuCash
 Group:          Development/Libraries/Python
@@ -117,6 +129,7 @@ Requires:       %{name} = %{version}
 %description -n python3-gnucash
 This package provides the Python 3 bindings for development of GnuCash,
 a personal finance manager.
+%endif
 
 %package devel
 Summary:        Development files for GnuCash
@@ -142,7 +155,11 @@ a personal finance manager.
     -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} \
     -DGMOCK_ROOT=%{_includedir}/gmock \
     -DGTEST_ROOT=%{_includedir}/gtest \
+%if %{with python}
     -DWITH_PYTHON=ON \
+%else
+    -DWITH_PYTHON=OFF \
+%endif
     -DCOMPILE_GSCHEMAS=OFF \
     -DCMAKE_CXX_FLAGS=-Wno-error
 %cmake_build
@@ -184,10 +201,12 @@ rm %{buildroot}%{_docdir}/%{name}/LICENSE
 %config %{_sysconfdir}/gnucash/environment
 %exclude %{_datadir}/gnucash/python
 
+%if %{with python}
 %files -n python3-gnucash
 %{_datadir}/gnucash/python
 %dir %{python3_sitearch}/gnucash
 %{python3_sitearch}/gnucash
+%endif
 
 %files devel
 %doc ChangeLog README
