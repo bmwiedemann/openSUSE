@@ -1,7 +1,7 @@
 #
 # spec file for package fetchmail
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,7 @@ Patch10:        fetchmail-oauth2-c-calculate-and-pass-in-correct-buffer-size-to-
 Patch11:        fetchmail-increase-max-password-length-to-handle-oauth-tokens.patch
 Patch12:        fetchmail-bump-max-passwordlen-to-1bytes.patch
 Patch13:        fetchmail-add-readme-oauth2-issue-27.patch
+Patch14:        fetchmailconf-no-more-future.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  fdupes
@@ -84,7 +85,6 @@ is included in the fetchmailconf package.
 Summary:        Fetchmail Configuration Utility
 Requires:       %{name} = %{version}
 Requires:       python3 >= 3.7
-Requires:       python3-future
 Requires:       python3-tk
 
 %description -n fetchmailconf

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 17 00:33:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch fetchmailconf-no-more-future.patch:
+  * Drop requirement for python-future from fetchmailconf.
+
+-------------------------------------------------------------------
 Wed Mar  1 17:15:06 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 6.4.37: 
