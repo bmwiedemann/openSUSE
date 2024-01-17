@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 16 10:02:43 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Rearrange requirements, run only basic testsuite in SLE-based projects
+
+-------------------------------------------------------------------
 Thu Jun  1 20:36:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - use python3 module python for sle15 

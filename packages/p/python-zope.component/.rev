@@ -102,4 +102,12 @@ New dependency of python-Pyramid</comment>
     <comment>- use python3 module python for sle15</comment>
     <requestid>1090390</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>b75a4374ce78de1d33d2e9ee82ca767b</srcmd5>
+    <version>6.0</version>
+    <time>1705526097</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139378</requestid>
+  </revision>
 </revisionlist>
