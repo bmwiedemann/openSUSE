@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Wed Jan 03 08:37:54 UTC 2024 - alarrosa@suse.com
+
+- Update to version 5.15.12+kde147:
+  * Http2: fix potential overflow in assemble_hpack_block()
+    (bsc#1218413, CVE-2023-51714)
+  * HPack: fix incorrect integer overflow check
+  * HPack: fix a Yoda Condition
+
+-------------------------------------------------------------------
+Fri Dec 29 13:12:23 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.12+kde144, rebased upstream:
+  * QMimeDatabase: handle buggy type definitions with circular inheritance
+  * xcb: only set base size when it's valid
+  * QPixmapCache: fix leaking of QStrings and Keys on clear()
+  * OpenFile portal: do not use O_PATH fds
+  * QSystemTrayIcon: properly disconnect old menu in setContextMenu()
+  * Guard QTabBar against nested event processing during moving tabs
+  * QDial: don't crash when min==max and setting a value != min & max
+  * QStandardItemModel: don't leak in mimeData()
+  * SQL/MySQL: properly initialize variable
+  * QWidgetTextControl: ignore invalid input method event
+  * Update the LGPL license header
+  * SQL/MySQL: fix handling of json column
+  * Remove QMAKE_RANLIB and QMAKE_LINK_SHLIB from android/default_pre.prf
+  * macOS: Fix less common writing systems on Catalina and later
+  * Blacklist 1 tests in tst_QFtp on ubuntu-20.04
+  * Update bundled libpng to version 1.6.39
+  * Android: Fix signing of APKs that are generated when an AAB is also built
+  * Update bundled zlib to version 1.2.13
+  * doc: update the limitation of QSystemTrayIcon on X11
+  * Blacklist 1 tests in tst_QTimer on ubuntu-20.04
+  * Add benchmarks for QLocale number parsing
+  * Add benchmarks for QString number parsing
+  * Android: Fix incorrect fullscreen dimensions
+  * Gtk3Theme: set XCURSOR_SIZE and XCURSOR_THEME for wayland sessions
+  * xcb: Flush Display when processing xcb events
+  * xcb: Add xlib wrapper for XFlush()
+  * QHostAddress: Fix incorrect comparison against 'Any'
+  * QSsl[OpenSSL/Android]: Fix hardcoded 1_1 suffix
+  * BLACKLIST: tst_QApplication::sendEventsOnProcessEvents for RHEL 9.0
+  * QMacStyle: do not set white color for grayed out button
+  * Work round macOS's omission of en_DE from its own uiLanguages()
+  * Suppress a deprecation warning in tst_QDateTime::toString_enumformat()
+  * QJsonValue: fix incorrect to{Array,Object} when the value is empty
+  * QGtk3Dialog: remove the #include for empty moc
+  * Remove unneeded QWindow from QGtk3Dialog
+  * tst_QSslSocket: Delete sslOptions
+  * tst_QSslServer: Make the in-process server use TLS1.2
+  * Android: fix Gradle warning about using enableUncompressedNativeLibs
+  * Mention  limitation of QDir::drives() on Windows
+  * QFileSystemEngine/Win: fix incorrect buffer size in currentPath()
+  * Android: properly retrieve mime type of uri to for openUrl()
+  * Android: Fix clipboard issue with urls
+  * Android: Add a way to disable accessibility via an environment var
+  * Update bundled libpng to version 1.6.38
+  * QIOSMessageDialog::exec - work around 'windowsless' exec
+  * QIosScreen: retain the right window
+  * tst_Q{BitArray,ContiguousCache}: check not only count(), but size(), too
+  * QIosTextResponder: stop using deprecated constants and type
+  * qcompilerdetection.h: detect Coverity
+  * Android: Fix Display.getRealMetrics deprecation
+  * Fix broken Text rendering when noantialiased NativeRendering is used
+  * forkfd: fix Clang 15 ATOMIC_VAR_INIT deprecation warning
+  * eglfs: Add env.var. to disable the dedicated drmHandleEvent thread
+  * doc: Don't put strings into QVector<double>
+  * Remove focusProxyAndInputMethods from tst_QWidget
+  * Bump version to 5.15.12
+  * Update documentation of qWaitForWindowActive / qWaitForWindowExposed
+  * QtHttp: Lower the severity of some log output
+  * StyleSheetStyle: Fix color of placeholder texts in text edits
+  * Android: Fix flickering on split screen mode
+  * Update url to IAccessible2 Specification
+
+-------------------------------------------------------------------
 Thu Oct 19 08:24:52 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.11+kde138:
@@ -146,7 +221,7 @@ Fri Oct  6 06:35:37 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 -------------------------------------------------------------------
 Thu Sep 28 11:49:39 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
-- Update to version 5.15.10+kde159:
+- Update to version 5.15.10+kde159 (bsc#1214327, CVE-2023-37369):
   * Fix CVE-2023-43114
   * QMimeDatabase: fix detection of pattern conflict in different prefixes
   * Fix highdpi conversion of QTabletEvent coordinates on xcb
@@ -2257,7 +2332,7 @@ Fri Mar  9 15:15:25 UTC 2018 - crrodriguez@opensuse.org
 - Further review of build dependencies:
   * pcre-devel is not required, only pcre2-devel, Remove
     from buildrequires
-  * add explicit buildrequires on pkgconfig(libdrm) and 
+  * add explicit buildrequires on pkgconfig(libdrm) and
     pkgconfig(pango)
   * sources do not use libtiff-devel at all, remove from
     buildrequires
@@ -2444,14 +2519,14 @@ Fri Dec 29 18:19:46 UTC 2017 - fabian@ritter-vogt.de
 Wed Dec 20 10:41:16 UTC 2017 - alarrosa@suse.com
 
 - Add 0001-Fix-custom-page-size-handling-in-the-Unix-print-dial.patch
-  to fix custom page size handling in the Unix print dialog (QTBUG-58733) 
+  to fix custom page size handling in the Unix print dialog (QTBUG-58733)
 
 -------------------------------------------------------------------
 Fri Dec 15 17:08:31 UTC 2017 - alarrosa@suse.com
 
 - Add patches from upstream to reintroduce the advanced tab in
   the Qt printer properties dialog:
-  0001-Remove-QPrintDialogPrivate-applyPrinterProperties-no.patch 
+  0001-Remove-QPrintDialogPrivate-applyPrinterProperties-no.patch
   0002-Remove-QUnixPrintWidgetPrivate-applyPrinterPropertie.patch
   0003-Remove-QPrintPropertiesDialog-applyPrinterProperties.patch
   0004-Remove-QCupsJobWidget-setPrinter.patch
@@ -2461,7 +2536,7 @@ Fri Dec 15 17:08:31 UTC 2017 - alarrosa@suse.com
   0008-Allow-access-to-ppd-file-and-ppdMarkOption-via-QPpdP.patch
   0009-QPlatformPrintDevice-use-QVector-not-QList-in-the-AP.patch
   0010-Reintroduce-the-Advanced-tab-in-the-QPrintProperties.patch
-  0011-QtPrintSupport-Fix-build.patch 
+  0011-QtPrintSupport-Fix-build.patch
 - Small change in 0001-Add-remote-print-queue-support.patch so
   0007-Allow-access-to-ppd-file-and-ppdMarkOption-via-QPpdP.patch
   applies cleanly.
@@ -2741,7 +2816,7 @@ Wed May 31 07:05:05 UTC 2017 - fabian@ritter-vogt.de
 Wed May 24 19:16:41 UTC 2017 - fabian@ritter-vogt.de
 
 - Update to 5.9.0 RC:
-  * For more details please see: 
+  * For more details please see:
     http://lists.qt-project.org/pipermail/announce/2017-May/000115.html
     and https://wiki.qt.io/New_Features_in_Qt_5.9
 - Remove patches, now upstream:
@@ -3748,7 +3823,7 @@ Thu May  8 17:50:59 UTC 2014 - hrvoje.senjan@gmail.com
 - Drop libqt5-add-better-support-for-keymap-update-handling.patch,
   libqt5-fix-build-failure-xcb.patch,
   libqt5-fix-regression-in-key-handling.patch,
-  libqt5-improve-keymap-error-handling.patch and 
+  libqt5-improve-keymap-error-handling.patch and
   libqt5-update-bundled-libxkbcommon-version-to-041.patch; merged upstream
 
 -------------------------------------------------------------------

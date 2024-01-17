@@ -29,15 +29,15 @@
 %bcond_without harfbuzz
 
 Name:           libqt5-qtbase
-Version:        5.15.11+kde138
+Version:        5.15.12+kde147
 Release:        0
 Summary:        C++ Program Library, Core Components
 License:        LGPL-3.0-only or GPL-3.0-with-Qt-Company-Qt-exception-1.1
 Group:          System/Libraries
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.11
-%define so_version 5.15.11
+%define real_version 5.15.12
+%define so_version 5.15.12
 %define tar_version qtbase-everywhere-src-%{version}
 Source:         %{tar_version}.tar.xz
 # to get mtime of file:
