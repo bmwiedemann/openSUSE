@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Thu Feb 16 21:07:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.2:
+  * Middleware to underscorize query params #123
+  * ORJSONRenderer #124
+
+-------------------------------------------------------------------
+Fri Feb 10 12:27:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * added ignore_keys
+
+-------------------------------------------------------------------
+Sun Dec 26 04:21:14 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove Source tests.py
+- Update to v1.3.0
+  * Fix ignore fields
+  * Add json_underscoreize to CamelCaseJSONRenderer
+  * Replace force_text with force_str to remove deprecation warnings
+
+-------------------------------------------------------------------
+Tue Nov  2 12:30:32 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
+Wed Jul  1 16:36:32 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.2.0
+
+-------------------------------------------------------------------
+Mon Jun  8 12:26:52 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.1.2

@@ -1,0 +1,20 @@
+<package name="muparser" project="openSUSE:Factory">
+  <title>A fast math parser library</title>
+  <description>This package is based on the package 'muparser' from project 'Education'.
+
+
+    Many applications require the parsing of mathematical expressions. The main
+    objective of this library is to provide a fast and easy way of doing this.
+    muParser is an extensible high performance math parser library written in
+    C++. It works by transforming a mathematical expression into bytecode and
+    precalculating constant parts of the expression.
+
+    The library is written in pure C++ and should compile on every standard
+    compliant compiler. The parser archive comes with projects for a variety of
+    platforms. The code runs on 32 bit and 64 bit architechture and has been
+    tested using MS VC++ V8.0 and GCC V4.2.4. It reportedly works on BCB too.
+    Code samples are provided in order to help you understand its usage. The
+    library is open source and distributed under the MIT license. 
+  </description>
+  <devel project="science" package="muparser"/>
+</package>

@@ -1,0 +1,5 @@
+# the base package needs to have Arch, otherwise we get no -source and
+# -debuginfo package (which we need for the chkstat sub package)
+addFilter("no-binary")
+# it's hard not to repeat "permissions" in the summary
+addFilter("name-repeated-in-summary")

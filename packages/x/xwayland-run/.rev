@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3a30fe3825fb850d9199ca2b4923407f</srcmd5>
+    <version>0.0.2</version>
+    <time>1702327894</time>
+    <user>anag+factory</user>
+    <comment>Initial package for openSUSE</comment>
+    <requestid>1132492</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d105930c1009b9ad43dfd2fe7d347de3</srcmd5>
+    <version>0.0.2</version>
+    <time>1705255396</time>
+    <user>anag+factory</user>
+    <comment>- Use the correct kwin package names
+
+- Refresh kwin support patch with final version</comment>
+    <requestid>1138470</requestid>
+  </revision>
+</revisionlist>

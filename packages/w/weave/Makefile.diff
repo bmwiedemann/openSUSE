@@ -1,0 +1,29 @@
+--- weave-2.6.0/Makefile.orig	2019-11-05 16:12:30.000000000 +0000
++++ weave-2.6.0/Makefile	2019-11-06 15:08:09.303969059 +0000
+@@ -3,7 +3,7 @@
+ 
+ # If you can use docker without being root, you can do "make SUDO="
+ SUDO=$(shell docker info >/dev/null 2>&1 || echo "sudo -E")
+-BUILD_IN_CONTAINER=true
++BUILD_IN_CONTAINER=false
+ RM=--rm
+ RUN_FLAGS=-ti
+ COVERAGE=
+@@ -142,7 +142,7 @@
+ NETWORKTESTER_EXE=test/images/network-tester/webserver
+ 
+ # All binaries together in a list
+-EXES=$(WEAVER_EXE) $(SIGPROXY_EXE) $(KUBEUTILS_EXE) $(WEAVENPC_EXE) $(WEAVEWAIT_EXE) $(WEAVEWAIT_NOOP_EXE) $(WEAVEWAIT_NOMCAST_EXE) $(WEAVEUTIL_EXE) $(RUNNER_EXE) $(TEST_TLS_EXE) $(NETWORKTESTER_EXE)
++EXES=$(WEAVER_EXE) $(SIGPROXY_EXE) $(KUBEUTILS_EXE) $(WEAVENPC_EXE) $(WEAVEWAIT_EXE) $(WEAVEWAIT_NOOP_EXE) $(WEAVEWAIT_NOMCAST_EXE) $(WEAVEUTIL_EXE)
+ 
+ # These stamp files are used to mark the current state of the build; whether an image has been built or not
+ BUILD_UPTODATE=.build.uptodate
+@@ -180,7 +180,7 @@
+ # -X main.version for telling the Go binary which version it is,
+ # -s -w drop symbol tables used by debuggers (not Go's internal symbol info)
+ # -tags "osusergo netgo" to use native Go UID and DNS implementations
+-BUILD_FLAGS=-ldflags "-extldflags -static -X main.version=$(WEAVE_VERSION) -s -w" -tags "osusergo netgo"
++BUILD_FLAGS=-mod vendor -v -buildmode=pie -ldflags "-X main.version=$(WEAVE_VERSION)" -tags "osusergo netgo"
+ 
+ PACKAGE_BASE=$(shell go list -e ./)
+ 

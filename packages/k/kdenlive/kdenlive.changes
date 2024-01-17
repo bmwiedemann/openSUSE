@@ -1,0 +1,2203 @@
+-------------------------------------------------------------------
+Tue Dec  5 14:19:27 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.4/
+- Changes since 23.08.3:
+  * Fix transparency lost on rendering nested sequences (kde#477771)
+  * Fix guides categories not applied on new document (kde#477617)
+  * Check MLT's render profiles for missing codecs.
+  * Fix crash on auto subtitle with subtitle track selected
+  * Fix qml warning (incorrect number of args)
+  * Fix audio stem export
+  * When pasting clips to another project, disable proxies Fixes #1785
+  * Don't allow creating profile with non standard and non integer fps from a clip Related to #476754
+  * Fix mix not always deleted when moving grouped clips on same track
+  * Fix remap crashes
+  * Ensure timeremap option is disabled when effect is deleted
+  * Time remap: fix changing speed broken / crashing
+
+-------------------------------------------------------------------
+Tue Nov  7 17:04:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * Fix remap crashes
+  * Ensure timeremap option is disabled when effect is deleted
+  * Time remap: fix changing speed broken / crashing
+  * Fix timeremap
+  * Fix replace clip keeping audio index from previous clip, sometimes breaking audio.
+  * Create sequence from selection: ensure we have enough audio tracks for AV groups
+  * Fix timeline duration incorrect after create sequence from timeline selection
+  * Fix project duration not updating when moving the last clip of a track to another non last position
+  * Don't lose subtitle styling when switching to another sequence (kde#476544)
+  * Fix crash dropping url to Library
+  * When dropping multiple files in project bin, improve import speed by not checking if every file is on a remote drive
+  * Fix titler shadow incorrectly pasted on selection. (kde#476393)
+  * Fix pasted effects not adjusted to track length
+  * Fix timeline preview ignored in temporary data dialog. (kde#475980)
+  * Speech to text: fix whisper install aborting after 30secs. Text based edit: allow creating a new timeline sequence with current edit
+  * Don't try to generate proxy clips for audio with clipart
+  * Clip loading: switch to Mlt::Producer probe() instead of fetching frame. (kde##475554)
+  * Multiple fixes for time remap losing keyframes
+  * Add png with alpha render profile
+  * Fix Mix not correctly deleted on group track move
+  * Fix rendering with alpha
+  * Rotoscoping: don't auto add a second kfr at cursor pos when creating the initial shape, don't auto add keyframes until there are 2 keyframes created
+  * Fix keyframe param not correctly enabled when selecting a clip
+  * Fix smooth keyframe path sometimes incorrectly drawn on monitor
+  * Properly adjust timeline clips on sequence resize
+  * Remove unused debug stuff
+  * Fix project duration not correctly updated on hide / show track
+  * Fix resize clip with mix test
+  * Fix resize clip start to frame 0 of timeline not correctly working in some zoom levels, Fix hanging test
+  * snapcraft: initial import snapcraft files.
+
+-------------------------------------------------------------------
+Tue Oct 10 18:27:18 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * Fix Fit Zoom (kde#472754)
+  * Fix cannot move clip to 0 in some cases. Fixes #1759
+  * Fix erratic behavior when requesting to add same track transitions (mixes) to several clips. Fixes #1761
+  * Redirect Settings > Configure Kdenlive > Help to the online documentation
+  * Fix multiple audio streams broken by MLT's new astream property (kde#474895)
+  * Fix dialogs not correctly deleted, e.g. add track dialog, causing crash on exit
+  * Ensure clips with audio (for exemple playlists) don't block audio when inserted on video track
+  * ensure translations cannot mess with file extensions
+  * Fix another case blocking separate track move
+  * Fix grabbed clips cannot be moved on upper track in some cases
+  * Fix move clip part of a group on another track not always working
+  * Fix playlist count not correctly updated, allowing to delete last sequence (kde#474988)
+  * Fix motion-tracker Nano file name and links to the documentation
+  * Stop installing kdenliveui.rc also as separate file, next to Qt resource
+  * Fix tests and possible corruption in recent mix fix
+  * Correctly highlight newly dropped files in library
+  * Fix threading issue crashing in resource widget. Fixes #1612
+  * Fix freeze on adding mix Related to #1751
+  * Make Lift work as expected by most users (kde#447948,kde#436762)
+  * Fix load task discarding kdenlive settings (caused timeline clips to miss the "proxy" icon
+  * Fix multiple issues with Lift/Gamma/Gain undo (kde#472865, kde#462406)
+  * Fix freeze / crash on project opening
+  * Optimize RAM usage by not storing producers on which we did a get_frame operation. Slows down thumbnail creation but saves some RAM.
+  * Fix guide multi-export adding an extra dot to the filename
+  * COrrectly update effect stack when switching timeline tab
+
+-------------------------------------------------------------------
+Tue Sep 12 11:55:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- Changes since 23.08.0:
+  * Fix audio channel setting breaking opening of existing project file
+  * Fix possible crash in audiolevel widget
+  * Fix default audio channels for project not correctly saved
+  * Fix guide/marker categories all black on some non english locales
+  * Ensure Media browser saves zoom level when using mouse wheel to zoom Fixes #1754
+  * Extract audio: export only active streams, merge all if requested
+  * Fix crash on subclip transcoding Fixes #1753
+  * Fix audio extract for multi stream clips
+  * When restoring audio or video component in timeline, first try target track, then mirror track Fixes #1749
+  * Fix multi guide export enabled by default Fixes #1750
+  * Fix guides categories all black when opening a project from a different locale
+  * Fix archiving crash on Windows caused by filesystem case sensitivity
+  * Project Bin: don't draw icon frame if icon size is null
+  * Fix zone rendering not remembered when reopening a project
+  * Fix detection/fixing when several clips in the project use the same file
+  * Correctly update guides list when switching timeline tab
+
+-------------------------------------------------------------------
+Sun Aug 20 13:59:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- Changes since 23.07.90:
+  * Allow speed effect on sequence/playlist items that already had it so it can be disabled in existing projects
+  * Disable speed change on playlist and sequence clips, as it is unstable in MLT.
+  * When an MLT playlist proxy is missing, it should be reverted to a producer, not stay in a chain
+  * Fix proxy clips not correctly recreated when missing on project open
+  * Fix no luma files for NTSC and other non HD formats
+  * Fix crash closing luma download dialog
+  * Ensure saved effect position is relative for fades (kde#473375)
+  * Fix Save As incorrectly triggering backup file.
+  * Fix layout file warning
+  * Fix path of LUT files on project opening, for appimage or imported projects
+  * Fix composition incorrectly selected after added through clip corner shortcut
+  * Fix crash closing project with mixes
+  * Fix timeline keyframe view broken afer remove keyframes or undo effect deletion
+  * Fix 'Save As' behaving like 'Save a Copy'
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Don't incorrectly update timeline duration on every clip move. Related to #1738
+  * Improve highly inefficient loop Related to #1422
+  * Fix warnings
+  * fix melt path config variable not renamed everywhere
+  * Fix timeline zone not correctly loaded on project open
+  * Fix timeline preview incorrectly connected when opening pre-nesting project file
+  * Fix crash tring to import DJI image stream (kde#467375)
+  * Fix crash dragging multistream clip outside timeline
+  * Fix play icon incorrectly active when playing from end, fix timeline not playing from start (kde#473087)
+  * Fix crash on audio record with multiple timeline sequences Related to #1731
+  * Ensure lines and dust effects have in/out defined
+  * Fix pasting keyframeble effect from one clip to another breaks if destination clip is shorter
+  * Fix timeline preview (and possible rendering) crash on title clips.
+  * Fix timeline preview not loaded on project opening
+  * Fix missing effects/compositions when rendering a project with several sequences
+  * Ensure Kdenlive's renderer path is always found or fixed
+  * Disable mediabrowser constantly checking for directory changes when widget is not visible
+  * Fix Render Widget url dialog not working properly (cannot choose another folder)
+  * Fix timeline focus when a drop quickly exits an existing timeline clip and that the  exit event is not triggered Related to #1704
+  * Fix freeze effect to select current playhead frame by default
+  * MLT does not support animated colors for avfilter. (kde#472722)
+  * Fix crash on project close introduced in last commit
+
+-------------------------------------------------------------------
+Tue Aug  1 10:21:26 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Jul  4 10:19:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.3/
+- Changes since 23.04.2:
+  * Fix crash loading project with an unknown transition
+  * Fix crash trying to open backup for moved project file.
+  * Switch vglobal_quality to vqp for nvenc (same as Shotcut)
+  * backport ASAN fix from master
+  * Fix ASAN use after freed
+  * Mixer: polish audio levels display, add scale for gain slider
+  * Fix audio levels gradient colors
+  * Mixes: ensure asset panel cleared on undo insert, fix mix
+    inserted at wrong clip end on drop
+  * Fix mixes incorrectly saved as luma
+  * Ensure Subtitle widget can fit on smaller screens.
+  * Fix crash pressing Home on subtitle track
+  * Fix effects disappearing from timeline sequence and other
+    sync issues
+  * Fix tests
+
+-------------------------------------------------------------------
+Tue Jun  6 20:00:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * Fix freeze on duplicate sequence
+  * Get rid of mocking in some more tests
+  * Re-enable timeline sequence thumbnails
+  * Fix tests
+  * Nesting: refactor timeline sequence open/close, add tests
+  * Display default folder for VOSK models in settings page when no custom folder is set.
+  * Fix closing sequence in reopened project losing all recent changes
+  * Fix crash pasting subtitle in a timeline sequence without subtitles
+  * Fix dragging clip in timeline can cause out of view scrolling
+  * Fix motion tracker not working on rotated clips or clip with distort effects
+  * Fix import clip on single click in Media Browser
+  * Fix focus issue after switching from fullscreen monitor
+  * Cleaner version of previous patch
+  * Fix multiple guides export. BUG: 469435 (kde#469435)
+  * Fix color wheel resetting color on mouse wheel.
+  * Minor UI adjustments to timeline ruler
+  * Use better option for Media Browser. Related to #1471
+  * Drop timeline zoom whatsthis (it interferes with zoom shortcut (Shift+Ctrl++)
+  * Merge !399 with a few fixes (whisper disable FP16 on GTX 16xx)
+  * Don't allow archiving unsaved project, show subtitle files in archive widget and project files list
+  * Fix scaled rendering
+  * Titler: shadow should include text outline. Fixes #1689 (requires latest MLT git)
+  * Thumbnailer: ensure producer is valid, don't seek past clip end
+  * Fix create sequence from selection resulting in incorrect clip length
+  * Don't trigger producer reinsert multiple times on change
+- Require knewstuff-imports at runtime
+
+-------------------------------------------------------------------
+Tue May  9 10:46:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Too many changes since 23.04.0, only listing bugfixes:
+  * Fix Defish range for recently introduced parameters (kde#469390)
+  * Fix animated color parameter alpha broken (kde#469155)
+  * Don't attempt to move external proxy clips (kde#468998)
+  * Fix crash on unconfigured speech engine (kde#469201)
+  * Fix VOSK model hidden from auto subtitle dialog. (kde#469230)
+- Drop patch, merged upstream:
+  * 0001-Fix-project-corruption-on-opening-add-test-to-preven.patch
+
+-------------------------------------------------------------------
+Mon May  1 07:31:41 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix for kde#468962:
+  * 0001-Fix-project-corruption-on-opening-add-test-to-preven.patch
+
+-------------------------------------------------------------------
+Sat Apr 15 08:45:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.0/
+
+-------------------------------------------------------------------
+Fri Mar 31 16:41:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Fri Mar 17 20:43:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Feb 28 09:45:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.3/
+
+-------------------------------------------------------------------
+Tue Jan 31 10:33:32 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.2/
+
+-------------------------------------------------------------------
+Tue Jan  3 10:19:55 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.1/
+- Drop patch, merged upstream:
+  * 0001-Fix-designer-plugin-crash.patch
+
+-------------------------------------------------------------------
+Thu Dec 29 19:13:15 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to prevent a designer-qt5 crash (boo#1206680):
+  * 0001-Fix-designer-plugin-crash.patch
+
+-------------------------------------------------------------------
+Fri Dec  2 12:25:10 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.0/
+
+-------------------------------------------------------------------
+Sat Nov 26 16:44:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Nov 12 08:53:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Nov  1 11:20:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.3/
+
+-------------------------------------------------------------------
+Tue Oct 11 14:32:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.2/
+
+-------------------------------------------------------------------
+Tue Sep  6 15:19:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.1/
+
+-------------------------------------------------------------------
+Sun Aug 28 09:04:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Recommend installation of the mediainfo executable (boo#1202848)
+
+-------------------------------------------------------------------
+Sun Aug 14 09:42:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.0/
+
+-------------------------------------------------------------------
+Fri Aug  5 12:10:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Jul 16 08:27:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Jul  5 17:03:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.3/
+
+-------------------------------------------------------------------
+Wed Jun  8 09:53:50 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.2/
+
+-------------------------------------------------------------------
+Tue May 10 16:29:53 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.1/
+
+-------------------------------------------------------------------
+Mon Apr 18 07:51:32 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:18:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:59 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Too many changes since 21.12.3, only listing bugfixes:
+  * [Render Widget] Refactoring and feature extension (kde#415610)
+  * "Add Marker/Guide quickly" allow shortcut * only on keypad
+    (otherwise * is ambigous with Shift++) (kde#434411)
+  * Fix action name: "Save Timeline Zone to Bin" is not what it does (kde#436386)
+  * Try to improve alpha render quality (kde#436879)
+  * Fix alpha render and add utvideo (kde#448010)
+  * [OTIO] Differentiate between read and write adapters (kde#448318)
+  * Add python interface (kde#423083)
+  * Don't attempt to create audio thumbs if thumbs are disabled. (kde#448304)
+  * Use a SPDX standard license identifier in Appstream data (kde#448134)
+  * Make it possible to enable/disable track with a shortcut (kde#440181)
+- Drop obsolete patch:
+  * 0001-Handle-the-melt-package-rename-nicely.patch
+
+-------------------------------------------------------------------
+Tue Mar  1 09:57:02 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Tue Feb  1 13:02:50 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * Fix sometimes cannot move grouped clip right when only 1 empty frame
+  * when saving effect, show it under its name, not id in effect list
+  * Fix fade effects not correctly saved or pasted.
+  * Fix clip monitor allowing seek past clip length with transparency background enabled
+  * Fix green tint on first image extract.
+  * minor cleanup of add marker ui
+  * Ensure thumbnail preview profile is not changed by clip resolution
+  * Fix alpha render and add utvideo (kde#448010)
+  * Fix freeze trying to drag a clip that was just added to Bin.
+  * Uptade frei0r.scale0tilt.xml with Scale X and Y parameters now animated
+  * Fix cherry-pick typo
+  * Fix timeline ruler not working after effect drop in some circumstances.
+  * Fix various bugs in timeremap (keyframes random move, crashes)
+  * Time Remap: don't allow keyframe after last frame of source clip
+  * Protect timeline preview list with mutex
+  * Fix slideshow duration not updated on profile change
+  * Fix detection of missing timeline preview chunks on opening
+  * Don't attempt to create audio thumbs if thumbs are disabled. (kde#448304)
+  * Speedup loading of projects with timeline preview.
+  * Add some default LUT files
+  * [Wizzard] Update link to troubleshooting docs
+  * Try to find mediainfo on windows automatically too
+  * [Setup Wizard] Show codes if there are only info messages, fix doc link
+  * Disable "Change Speed" and "Time Remap" actions if the other one is active (kde#443613)
+  * Check for mediainfo in setup wizard
+  * Fix extract frame on Windows (also used for Titler and scopes)
+  * Improve monitor zoom (kde#434404)
+  * Use a SPDX standard license identifier in Appstream data (kde#448134)
+  * Rename forgotten rgb24 and rgb24a after MLT 7 port
+
+-------------------------------------------------------------------
+Tue Jan  4 10:25:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.12.0:
+  * Fix multiple bins should always stay tabbed together.
+  * Fix shortcuts sometimes broken on fullscreen monitor.
+  * Enforce 29.97 fps when using a clip with 29.94 or 29.96 fps.
+  * Fix audio thumbs not created after profile change.
+  * Fix compilation warnings (function type compatibility)
+  * Ripple: fix strange behaviour on Windows and macOS
+  * Add xml ui for audiolevelgraph effect and other xml format fixes
+  * Improvements and fixes for the status bar message field
+  * Add ripple test for single track groups
+  * Fix ripple in several scenarios with groups
+  * Improve Keybind Info with compositions
+  * Fix crash on clip insert in ripple mode
+  * Fix archiving.
+  * Fix keyframe disappearing in timeline after moving the previous one in effect stack
+  * Don't allow undo when resizing clip/composition (fixes crash)
+  * Fix freeze on multiple title clip duplication. (kde#443507)
+  * Fix mistake in last commit
+  * Various fixes on project opening with missing proxies (playlist and timeremap broken)
+  * Add more ripple tests
+  * Fix ripple of groups after commit c1b0f275
+  * Restructure ripple code to make it possible to run more tests
+  * Fix mix corruption when moving a clip with start and end mixes to another track, add test
+  * Fix concurrency crash with autosave and multicam mode
+  * Fix crash on extract frame if image was already part of the project
+
+-------------------------------------------------------------------
+Fri Dec  3 19:21:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Don't allow typewriter effect on clip other than text (caused a freeze)
+  * After extract operation, seek cursor to in point
+  * Fix possible crash on rotoscoping edit
+  * Fix crash on misconfigured wipe composition. (kde#446203)
+  * keyframe import fixes: crash importing to effect rect without opacity,
+    fix motion tracker exporting with opacity=0, fix limiting keyframes
+    messing import
+  * Fix crash importing empty keyframes
+  * Update 21.12 splashscreen
+  * Fix keyframe selection on add
+  * Fix add keyframe does not selected
+  * Fix extract frame using monitor preview resolution
+  * Fix pasting items in timeline to use mouse / cursor position depending
+    on how it is called menu / shortcut
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Too many changes since 21.11.80, only listing bugfixes:
+  * Fix crash using spacer tool on grouped clips with a clip in
+    the group positioned before spacer start operation. (kde#443324)
+  * Track name edit: fix focus issue, enable F2 shortcut (kde#440185)
+  * "Go to clip start/end" should use clip under cursor if none is selected (kde#440024)
+  * Typewriter effect should not be blacklisted! (kde#445232)
+  * Fix "Select Transition" should select mixes too (kde#440023)
+  * Fix default project path ignored on creating new project (kde#444595)
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Too many changes since 21.08.3, only listing bugfixes:
+  * Make it possible to copy and import rotoscoping keyframes (kde#442372)
+  * Remove broken "duplicate bin clip with timeremap" stuff that caused crash
+    dropping playlists in timeline (kde#441777)
+  * Crop effect: use project resolution by default(solves proxy issue). (kde#408235)
+  * Add a tooltip to the track effects toggle button in the track header (kde#440218)
+  * Fix build with -DCRASH_AUTO_TEST=ON (kde#440414)
+- Drop obsolete patch:
+  * 0001-Handle-the-melt-package-rename-nicely.patch
+
+-------------------------------------------------------------------
+Tue Nov  2 21:33:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.3/
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Tue Oct  5 16:28:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Too many changes since 21.08.1, only listing bugfixes:
+  * Remove broken "duplicate bin clip with timeremap" stuff that caused crash
+    dropping playlists in timeline (kde#441777)
+  * Crop effect: use project resolution by default(solves proxy issue). (kde#408235)
+  * Fix crash on pasting grouped subtitle (kde#439524)
+  * Fix noise when setting producer (e.g. when opening a project) (kde#433847)
+
+-------------------------------------------------------------------
+Wed Sep  1 12:38:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Compile MLT with GCC 9 - fixes brightness effect corruption
+  * Fix mix crossfade sometimes using wrong order (starting at 100% and ending at 0%) instead of reverse
+  * Upgrade document version and fix custom affine effects for MLT 7 when opening older project file
+  * Make it possible to import mlt rect keyframes to frei0r.alphaspot
+
+-------------------------------------------------------------------
+Fri Aug  6 09:37:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Too many changes since 21.07.90, only listing bugfixes:
+  * Don't allow deleting items when a spacer move operation is running. (kde#408434)
+  * Fix crash moving clip with speed effect and mix. (kde#433579)
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Too many changes since 21.07.80, only listing bugfixes:
+  * Drop custom combobox stylesheet causing unreadable text. (kde#428755)
+  * Fix crash dragging multiple audio streams clip in timeline with locked
+    tracks (kde#439849)
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Too many changes since 21.04.3, only listing bugfixes:
+  * Dynamically update max number of concurrent proxy/transcode jobs,
+    don't show error message on job abort (kde#432365)
+  * Correctly display info on error with jobs, fix stablize add clip checkbox not working (kde#436805)
+  * Keyframes widget: add option to copy values at cursor pos to clipboard (kde#439284)
+  * Import keyframes dialog: make position alignment more customizable (kde#426316)
+  * Remove DVD Wizard (kde#403128)
+  * Implement check and transcoding for non seekable files. (kde#371062)
+  * Add option to go to start if playback started on timeline end (kde#353051)
+- Drop 0001-Handle-the-melt-package-rename-nicely.patch
+- Only install the license files once
+
+-------------------------------------------------------------------
+Wed Jul  7 08:57:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.3
+- Changes since 21.04.2:
+  * Fix crash closing project with a mix on a clip with keyframable effect.
+  * Fix speech to text after recent VOSK api change (kde#438306)
+  * Cleanup font setting for qml timeline
+  * Add webp mime type to clip creation dialog
+  * Fix startup crash on Wayland, thanks to login.kde@unrelenting.technology (kde#431505)
+  * Mix: Fix first clip out not correctly reset on second clip deletion
+  * Fix crash on exit when a mix is selected
+  * Resolved Bug 436895 - "Rotoscoping not working right"
+
+-------------------------------------------------------------------
+Tue Jun  8 12:39:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.2
+- Too many changes since 21.04.1, only listing bugfixes:
+  * Fix effect sliders on right to left (rtl) layouts (kde#434981)
+  * Fix alignment of statusbar message label (kde#437113)
+- Add patch to update kdenliverc automatically with the new melt
+  name: 0001-Handle-the-melt-package-rename-nicely.patch
+
+-------------------------------------------------------------------
+Tue May 25 10:15:47 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Remove unneeded libmlt-devel BuildRequires
+
+-------------------------------------------------------------------
+Wed May 12 06:07:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Too many changes since 21.04.0, only listing bugfixes:
+  * Invalidate preview render on subtitle actions (kde#435692)
+  * Improve naming of newely created profile (kde#385981)
+  * Fix several archiving issues with mlt files (kde#435882)
+
+-------------------------------------------------------------------
+Fri Apr 16 16:11:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- Too many changes since 21.03.90, only listing bugfixes:
+  * Fix in point calculation on speed revert. (kde#424582)
+- Stop owning directories provided by the filesystem package (boo#1184786)
+
+-------------------------------------------------------------------
+Fri Apr  9 17:40:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Sun Mar 21 13:27:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Thu Mar  4 06:10:10 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.12.3
+- Too many changes since 20.12.2, only listing bugfixes:
+  * Fix recursive search broken on cancel. (kde#433773)
+  * Titler: update tab order (kde#433590)
+  * Transcode job: don't silently overwrite exported files. (kde#433623)
+  * Do not allow zero for values of a project profile (framrate, framesize,…) (kde#432016)
+  * Fix invisible text cursor in title editor #165 and other minor tweaks (kde#403941)
+
+-------------------------------------------------------------------
+Wed Feb  3 08:28:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- Too many changes since 20.12.1, only listing bugfixes:
+  * Fix lift value incorrect on click (kde#431676)
+  * implement missing subtitle copy/paste. (kde#430843)
+
+-------------------------------------------------------------------
+Tue Jan  5 12:25:25 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- Too many changes since 20.12.0, only listing bugfixes:
+  * Fix crash when all audio streams of a clip were disabled. (kde#429997)
+  * Add "unused clip" filter in Project Bin.(kde#430035)
+
+-------------------------------------------------------------------
+Sat Dec  5 23:16:06 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- Too many changes since 20.11.90, only listing bugfixes:
+  * Fix image sequences broken on project opening. (kde#429798)
+  * Fix left part of a cut cannot be selected right after processing (kde#428544)
+  * Fix remove space not working until context menu called. (kde#429868)
+
+-------------------------------------------------------------------
+Fri Nov 27 15:16:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Sat Nov 14 00:01:16 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes since 20.08.3, only listing bugfixes:
+  * Fix crash on some projects opening (kde#409477)
+  * Fix crash removing a fade effect added twice. (kde#425175)
+
+-------------------------------------------------------------------
+Thu Nov  5 22:46:07 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-11-apps-update
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Fri Oct  9 05:43:38 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-10-apps-update
+- Too many changes since 20.08.1, only listing bugfixes:
+  * Fix crash on some projects opening (kde#409477)
+
+-------------------------------------------------------------------
+Tue Sep  1 20:49:42 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-09-apps-update
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Sun Aug  9 09:08:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- Changes since 20.07.90:
+  * Fix clip monitor zoom not reset when changing clip, and zone incorrect on zoom
+  * Missing fix for FreeBSD in last commit (fix broken localization)
+  * Attempt to fix UI translations broken. (kde#424967)
+
+-------------------------------------------------------------------
+Sun Aug  2 07:59:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Sun Jul 19 10:04:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Too many changes since 20.04.3, only listing bugfixes:
+  * Ensure auto-saved file is newer than project before proposing to recover data. (kde#424016)
+  * Archive project: fix clip with speed effect url not updated, resulting in missing clip message. (kde#422135)
+  * integrate clip rating with undo/redo. (kde#421552)
+  * Locate clip: select file in file manager (kde#421365)
+  * Fix glitch in bin item selection, causing some actions to be disabled (kde#420628)
+  * Fix freeze when changing bin selection (kde#419604)
+
+-------------------------------------------------------------------
+Thu Jul  9 20:09:18 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-07-apps-update
+- Changes since 20.04.2:
+  * Fix drop in timeline from clip monitor possible crash and disappearing clip (if mouse released above track headers)
+  * Fix working on project with proxy only
+  * Ensure we have a valid context before drawing keyframes
+  * Don't attempt activating a monitor if it is hidden.
+
+-------------------------------------------------------------------
+Tue Jun  9 12:14:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-06-apps-update
+- Too many changes since 20.04.1, only listing bugfixes:
+  * Archive project: fix clip with speed effect url not updated, resulting in missing clip message. (kde#422135)
+  * Fix set audio reference incorrectly disabled on AV grouped clips (kde#421669)
+  * Locate clip: select file in file manager (kde#421365)
+
+-------------------------------------------------------------------
+Fri May 15 15:41:21 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Too many changes since 20.04.0, only listing bugfixes:
+  * Fix template title clips in timeline resetting duration on project re-open (kde#420823)
+  * Fix aspect ratio not working on title images (kde#420676)
+  * Fix glitch in bin item selection, causing some actions to be disabled (kde#420628)
+
+-------------------------------------------------------------------
+Thu Apr 23 12:22:17 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Too many changes since 20.03.90, only listing bugfixes:
+  * Fix freeze when changing bin selection (kde#419604)
+  * Export frame should use source resolution instead of project resolution (kde#419824)
+  * Fix crash opening old project file (kde#419563)
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:57 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+- Too many changes since 20.03.80, only listing bugfixes:
+  * Ensure we cannot create a project with 0 tracks (kde#419019)
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:53 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+- Too many changes since 19.12.3, only listing bugfixes:
+  * Fix duplicate multiple clips only duplicating first item (kde#418379)
+  * Fix changing of title clip duration broken (kde#417505)
+  * Fix tile clips created with monitor preview res (kde#417368)
+  * Fix forward/rewind affecting wrong monitor (kde#416917)
+  * Enable clip jobs and convert/extract audio on subclips (kde#416616)
+
+-------------------------------------------------------------------
+Thu Mar  5 20:36:00 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-03-apps-update
+- Too many changes since 19.12.2, only listing bugfixes:
+  * Fix changing of title clip duration broken (kde#417505)
+
+-------------------------------------------------------------------
+Fri Feb  7 08:37:19 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Wed Feb  5 06:29:03 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-02-apps-update
+- Too many changes since 19.12.1, only listing bugfixes:
+  * Fix effect with long names prevent easy access to effect actions. (kde#416420)
+- Dropped patches, now upstream:
+  * 0001-Fix-crash-on-new-project-with-Qt-5.14.patch
+
+-------------------------------------------------------------------
+Sun Jan 26 16:55:53 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add 0001-Fix-crash-on-new-project-with-Qt-5.14.patch to fix a crash
+  when loading projects (kde#416766, boo#1161548)
+
+-------------------------------------------------------------------
+Tue Jan  7 10:00:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.1
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Tue Dec 10 06:38:26 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12
+- Too many changes since 19.11.90, only listing bugfixes:
+  * Fix video thumbnails from previous project showing up. (kde#414813)
+
+-------------------------------------------------------------------
+Sat Nov 30 09:11:47 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Too many changes since 19.11.80, only listing bugfixes:
+  * Fix disabled effect stack state. (kde#408242)
+  * Apply track effects on main playlist and not on tractor. (kde#414367)
+  * Fix zoom slider not updating after zoom-fit (kde#413469)
+  * We actually need Qt5.11, and so KF5.45 should be here too (kde#414165)
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:19 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Too many changes since 19.08.3, only listing bugfixes:
+  * Fix keyboard handling in monitor fullscreen mode,
+    thanks to Martin K. (kde#413644)
+  * Fix compositions disappear after reopening project with locked
+    track (kde#412369)
+
+-------------------------------------------------------------------
+Thu Nov  7 23:12:51 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.3.php
+- Too many changes since 19.08.2, only listing bugfixes:
+  * Try to make it compile with gcc 9 (kde#413416)
+  * Fix compositions disappear after reopening project with locked track. (kde#412369)
+
+-------------------------------------------------------------------
+Fri Oct 11 07:42:41 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.2.php
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Thu Sep  5 14:00:24 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- Changes since 19.08.0:
+  * Fix disabling clip only disable audio part of an AV clip. (kde#411466)
+  * Fix regression breaking timeline resize
+  * Fix timelinekeyboard focus on start and grab not correctly ended
+  * default effects to video
+  * Fix disabling autoscroll.
+  * Convert old custom effects to new customAudio/Video naming
+  * Fix group move sometimes moving clip very far from expected location.
+  * Ctrl resize in monitor effects keeps center position
+  * Shift resize in monitor effect keeps aspect ratio
+  * Update appdata version
+  * Fix effect/composition list filter working on untranslated strings
+  * Merge branch 'rgb_parade' into 'master'
+  * Fix custom effects not recognized as audio
+  * Fix encoder speed ignored (kde#411000)
+  * Late update of version in appdata..
+  * Use the parameter readable and translatable name instead of its formal name for the color edit widget
+
+-------------------------------------------------------------------
+Fri Aug  9 08:30:44 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- Changes since 19.07.90:
+  * Do not setToolTip() for the same tooltip twice
+  * Use translations for asset names in the Undo History
+  * Fix dropping clip in insert/overwrite mode
+  * Fix timeline drag in overwrite/edit mode
+  * Fix freeze when deleting a group with clips on locked tracks.
+  * Fix crash when dragging clip in insert mode. (kde#409577)
+  * Use the translated transition names in the 'Properties' header
+  * Fix freeze and fade ins allowed to go past last frame
+  * Fix revert speed clip reloading incorrectly
+  * Fix copy/paste of clip with negative speed
+  * Fix issues on clip reload: slideshow clips broken and title duration reset
+  * Fix slideshow effects disappearing.
+  * Fix track effect keyframes
+  * Fix track effects don't invalidate timeline preview
+  * Fix effect presets broken on comma locales, clear preset after resetting effect
+  * Fix crash in extract zone when no track is active.
+  * Fix reverting clip speed modifies in/out
+  * Fix audio overlay showing up randomly.
+  * Fix Find clip in bin not always scrolling to correct position.
+  * Fix possible crash changing profile when cache job was running
+  * Fix editing bin clip does not invalidate timeline preview.
+  * Fix audiobalance (MLT doesn't handle start param as stated)
+  * Fix target track inconsistencies: 3 state button, hide when shouldn't be available
+  * Make the strings in the settings dialog translatable
+  * Make effect names translatable in menus and in settings panel
+  * Remember last target track and restore when another clip is selected
+  * Dont' process insert when no track active, don't move cursor if no clip inserted
+  * Correctly place timeline toolbar after editing toolbars
+  * Lift/gamma/gain: make it possible to have finer adjustments with Shift modifier
+  * Fix MLT effects with float param and no xml description
+  * Cleanup timeline selection: rubber select works again when starting over a clip.
+  * Attempt to fix Windows build
+  * Various fixes for icon view: Fix long name breaking layout, fix seeking and subclip zone marker
+  * Fix some bugs in handling of NVidia HWaccel for proxies and timeline preview
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:48 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- Changes since 19.07.80:
+  * Add 19.08 screenshot to appdata
+  * Fix bug preventing sequential names when making serveral script renderings from same project
+  * Fix compilation with cmake < 3.5
+  * Fix extract frame retrieving wrong frame when clip fps != project fps (kde#409927)
+  * Don't attempt rendering an empty project
+  * Fix incorrect source frame size for transform effects.
+  * improve subclips visual info (display zone over thumbnail), minor cleanup
+  * Small cleanup of bin preview thumbnails job, automatically fetch 10 thumbs at insert to allow quick preview and fetch another 40 when seeking is requested
+  * Fix project clips have incorrect length after changing project fps
+  * Fix inconsistent behavior of advanced timeline operations.
+  * Fix "Find in timeline" option in bin context menu
+  * Support the new logging category directory with KF 5.59+
+
+-------------------------------------------------------------------
+Tue Jul 23 11:58:59 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Fri Jul 19 19:40:59 UTC 2019 - wbauer@tmo.at
+
+- Use kf5_debugdir macro for specifying the logging categories location
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:34 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- Changes since 19.04.2:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:53 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- Changes since 19.04.1:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Fri May 10 05:37:13 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- Changes since 19.04.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:54 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- Changes since 19.03.90:
+  * Too many changes to list here
+- Dropped patches, now upstream:
+  * fix-rttr-target-name.patch
+  * fix-rttr-target-typo.patch
+
+-------------------------------------------------------------------
+Fri Apr 12 13:47:38 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Require libqt5-qtquickcontrols2, needed on runtime by the new
+  timeline
+
+-------------------------------------------------------------------
+Wed Apr 10 09:45:12 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patches to fix building with rttr:
+  * fix-rttr-target-name.patch
+  * fix-rttr-target-typo.patch
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:40 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Wed Mar 27 06:41:00 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:15 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * No code changes since 18.12.2
+
+-------------------------------------------------------------------
+Sat Feb 09 08:25:00 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * Update copyright year also.
+
+-------------------------------------------------------------------
+Fri Jan 11 05:42:08 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * Fix empty warning dialog on missing font in project (kde#401903)
+  * Fix bin item description cannot be edited if it contains zone subclips (kde#402817)
+  * Fix screengrab with audio broken
+  * Move Gain effect to "Audio correction" category
+  * ci: enable freebsd build
+  * QtScript is not used anymore
+  * ci: add recipe for gitlab CI
+  * Fix incorrect color theme correction for AppImages
+  * Fix color theme lost on AppImage
+  * Update AppData app version
+  * Fix bin/melt.exe & libmlt* loading on Windows
+  * necessary OpenGL headers are provided by Qt
+  * Fix keyframes import
+
+-------------------------------------------------------------------
+Fri Dec 14 06:09:06 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * Fix crash on image sequence import
+  * Backport fix for titler text gradient
+
+-------------------------------------------------------------------
+Mon Dec 03 20:55:54 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * No code changes since 18.11.80
+
+-------------------------------------------------------------------
+Tue Nov 20 06:22:12 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:56:56 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * Add donation url to appdata
+  * Fix minor EBN issues and typos
+  * Fix play/pause on Windows
+  * Sync quickstart manual with UserBase
+  * Install doc files
+  * Make it compiles when we use QT_NO_NARROWING_CONVERSIONS_IN_CONNECT
+  * Fix minor EBN issues
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:34 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * Fix finding MLT data in build-time specified path
+  * Fix play/pause on Windows
+  * Try catching application initialization crashes
+  * Fix MinGW build script misses
+  * Backport some Shotcut GLwidget updates
+  * Fix MinGW build
+  * Install doc files
+  * build scripts for Linux & Windows
+  * Backport packaging scripts
+  * Fix MinGW build
+  * Backport fix for incorrect bin rename
+
+-------------------------------------------------------------------
+Thu Oct 11 20:06:50 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * Improve missing luma detection (region transition) - fixes project crash
+  * Home/End now also seek in clip monitor
+  * Update AppData for upcoming release
+  * Windows crash reports
+  * Update authors
+  * Fix double clicking a title clip in bin tries to rename instead of opening the title dialog
+
+-------------------------------------------------------------------
+Thu Sep 06 18:42:59 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * Fix proxy creation not restarting when changing a property while creating proxy
+  * Prepare AppData for next release
+  * Fix clip proxy on autorotate (kde#397762)
+  * Fix effects parameters parsing
+  * Give priority to local effects over system ones
+  * Access to MLT debug info (command line option)
+  * Fix OffScreenSurface creation in GUI thread
+  * Increase max unzoom level, uniform zoom factor
+
+-------------------------------------------------------------------
+Thu Aug 16 22:03:21 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * Fix custom lift/gamma/gain displaying wrong UI (kde#364127)
+  * Updated appdata
+  * Fix possible crash in monitor restart
+  * Reduce minimum profile widget height to make dialog fit in screen (kde#384511)
+
+-------------------------------------------------------------------
+Thu Jul 26 13:00:38 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * Require MLT 6.10 (to avoid the incompatible 6.8)
+  * Fix compile warning
+  * Backport KF5 Purpose share feature
+  * Backport fix for incorrect gap in texts
+  * Update readme with correct infos
+  * Scale TitleTemplateDialog preview with the window
+
+-------------------------------------------------------------------
+Fri Jul 13 04:49:55 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * None
+
+-------------------------------------------------------------------
+Fri Jun 08 05:06:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * Don't display Wizard on every AppImage startup
+  * Fix message extraction
+  * Prepare for 18.04.2 release
+  * Rename mime type file to make flatpak happy
+  * Fix crash with MLT 6.8.0 and some keyfameable parameters (box blur)
+  * Consistent behavior for mouse wheel: down goes forward, up goes backwards (kde#394341)
+  * Update readme with correct infos
+- Dropped patches, now upstream:
+  * fix-crash-with-mlt-6.8.0.patch
+
+-------------------------------------------------------------------
+Wed May 23 07:27:17 UTC 2018 - wbauer@tmo.at
+
+- Add fix-crash-with-mlt-6.8.0.patch to fix crashes with mlt>6.6.0
+  when using effects with some keyframeable parameters (kde#394275)
+
+-------------------------------------------------------------------
+Fri May 11 05:17:51 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * update monitor safezone overlay
+  * Update appdata version
+  * Improve titler default background color
+  * Fix build with Qt 5.11_beta3 (dropping qt5_use_modules)
+  * Only check color theme on first run, not each time the Wizard is called (kde#388274)
+
+-------------------------------------------------------------------
+Thu Apr 19 12:02:52 UTC 2018 - wbauer@tmo.at
+
+- Raise minimum mlt version to 6.6.0
+
+-------------------------------------------------------------------
+Wed Apr 18 07:49:03 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * Fix luma files lost when opening project with AppImage
+  * Stop looking for DVD related apps on startup
+  * Update AppData version for comming release
+  * Scale TitleTemplateDialog preview with the window
+  * Fix rendering using custom folder when not requested (kde#387135)
+  * Fix double separator in project/capture folder
+  * Fix possibly wrong message on moving project folder
+  * Fix regression breaking fades and other effects on resize
+
+-------------------------------------------------------------------
+Fri Apr 06 07:09:15 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04-rc.php
+- Changes since 17.12.3:
+  * Fix lowres icons on highdpi (kde#390104)
+  * Fix crash when initializing offscreen surface in GLWidget
+  * Move knsrc files in Qt resource so we find them without install (kde#392201)
+  * Fix build with Qt 5.11 (missing headers)
+  * Fix project settings vertical scrollbar on open
+  * Update minimum MLT version to latest release (fixes audio mix problem)
+  * Fix AppImage screenshot (kde#388676)
+
+-------------------------------------------------------------------
+Thu Mar 08 23:51:28 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.3.php
+- Changes since 17.12.2:
+  * Use KAboutData::setDesktopFileName instead of QGuiApplication version.
+
+-------------------------------------------------------------------
+Wed Feb 07 08:47:52 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * Fix compatibility with MLT >= 6.6.0
+  * Fix build with Qt 5.6
+  * Fix backwards seeking not stoping when reaching clip start
+  * Add release version number to AppData
+  * Don't query available widget styles on each startup
+  * Fix webM encoding (auto replace vorbis by libvorbis if installed) (kde#388503)
+- Dropped patches, now upstream:
+  * fix-build-with-Qt5.6.patch
+
+-------------------------------------------------------------------
+Wed Jan 17 17:00:51 UTC 2018 - wbauer@tmo.at
+
+- Escape the usage of %{NAME} when calling out to rpm.
+  RPM 4.14 has %{NAME} defined as 'the main package's name'.
+
+-------------------------------------------------------------------
+Thu Jan 11 23:41:05 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * Fix translation install
+
+-------------------------------------------------------------------
+Wed Jan  3 10:59:30 UTC 2018 - wbauer@tmo.at
+
+- Add fix-build-with-Qt5.6.patch to make it compile on standard
+  Leap 42.3
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:04 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * remove useless audio bitrate on pcm proxy encoding
+  * Update proxy profiles
+  * Make sure playlist proxies have an even height
+  * Fix crash on playlists concurrent jobs using library clips
+  * Timeline preview fixes: Don't invalidate on expand/collapse effect, invalidate on master clip edit
+  * Don't restart clip if trying to play backwards from clip monitor end
+  * Use smaller size for image proxies (kde#353577)
+  * Fix playing backwards forwards one second (kde#375634)
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:36 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * None
+
+-------------------------------------------------------------------
+Mon Nov 20 06:59:06 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * Fix extension in transcode file dialog
+  * Sort clip zones by position instead of name
+  * Set a proper desktop file name to fix an icon under Wayland.
+  * FreeBSD does not have sys/asm.h -- for what is this include needed on linux?
+  * doc: fix option (qwindowtitle instead of caption)
+  * Fix terminology: mimetype(s) -> MIME type(s)
+  * Fix UI string: Control Center -> System Settings
+  * Const'ify code
+  * fix import image sequence
+
+-------------------------------------------------------------------
+Thu Nov 09 23:11:23 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * Set a proper desktop file name to fix an icon under Wayland.
+  * Sort clip zones by position instead of name
+  * Fix melt.exe finding on windows
+  * Revert "Windows: terminate KDE session on window close"
+  * Make KCrash optional
+
+-------------------------------------------------------------------
+Tue Oct 17 00:31:50 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * Fix autosave : workaround KAutoSaveFile bug with non ascii chars
+  * Get ready for transform centered rotation
+  * Fix keyframes unseekable on bin effects
+  * Fix lift to handle negative values (requires latest MLT version)
+  * Prefer SDL2 to SDL1 (dropped by FFmpeg and so MLT)
+
+-------------------------------------------------------------------
+Thu Sep 07 07:01:56 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * Remember last selected title template
+  * Fix proxy error (height not multiple of 2) (kde#384345)
+  * Fix extract frame from bin exporting lower than source image
+  * Fix visibility check of tracks in multitrack-view
+  * Allow disabling autosave until we improve it (kde#384197)
+  * Windows: find Kdenlive lumas (kde#375337)
+  * Windows: terminate KDE session on window close (kde#380854)
+  * Windows: always use bundled MLT (kde#380036)
+  * Remove project profiles sharing (knsrc) (kde#383238)
+  * Gardening: fix GCC warnings (8)
+
+-------------------------------------------------------------------
+Fri Aug 11 22:45:19 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Aug  5 18:17:30 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sat Jul 15 22:59:41 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * Fix crash on importing multistream clip (kde#381584)
+  * Fix crash when creating proxies - real issue not yet fixed
+  * fix compile (gcc7) (kde#379688)
+  * show info on MLT found by CMake
+  * non-portable flag, let build system handle it
+  * Windows icons are delivered in icontheme.rcc
+  * Fix compilation
+  * Fix custom profile not found on creation
+  * Fix loop zone (kde#378813, kde#381146)
+- Remove patches, now upstream:
+  * gcc7-fixes.patch
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:47 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * Forgot this file in previous commit :(
+  * Fix crash changing title font for 2nd time (kde#379606)
+  * more Windows rendering fixes
+  * Fix init of geometryWidget
+
+-------------------------------------------------------------------
+Mon May 29 08:55:46 UTC 2017 - wbauer@tmo.at
+
+- Add gcc7-fixes.patch to fix build with gcc7 (boo#1041232)
+
+-------------------------------------------------------------------
+Tue May 23 13:21:38 UTC 2017 - wbauer@tmo.at
+
+- Only use the %kf5_find_htmldocs macro on Leap 42.3 and higher,
+  this should fix the build for 42.2 on Packman
+
+-------------------------------------------------------------------
+Wed May 17 20:36:08 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * Fix title clip duration cannot be changed (kde#379582)
+  * Allow passing pre-parameters using "-i" to specify where the input file name should go in ffmpeg parameters
+  * Fixed off-by-one errors in fft-based cross-correlation computations
+  * Don't show color theme configuration option unavailable on Windows (kde#375723)
+  * Fix temp path on Windows (kde#375717)
+  * Fix MLT doc link (kde#375316)
+  * Fix script export & QScript header left
+
+-------------------------------------------------------------------
+Sun Apr 16 10:44:55 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * Don't show color theme configuration option unavailable on Windows
+  * Fix temp path on Windows
+  * Fix MLT doc link
+  * Fix script export & QScript header left
+  * Fix glitch on pause and does not play last second of project (kde#371762)
+  * remove QScript dependency
+  * Fix render scripts on Windows: generate .bat files
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:30 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * Fix possible crash on rendering with "play after render" option
+  * Images also use qimage producer
+  * fix Windows build with C++ threads
+  * Fix some effects incorrectly initialized on tracks (kde#378071)
+  * Remove beta message in preparation of release
+  * Fix locked ratio scaling
+  * Fix archived project wrong path and missing images/slideshows
+  * More clever ratio locking in effect/transition
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:24 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+- Changes since 16.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Mar 23 15:00:42 UTC 2017 - wbauer@tmo.at
+
+- Don't generate the oxygen icon theme cache on (un)installation,
+  no oxygen icons are getting installed
+- Drop use-mlt_datadir.patch, no longer necessary since a while
+
+-------------------------------------------------------------------
+Thu Mar  9 12:36:56 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * Fix crash & corruption on dragging multiple clips in timeline, fix thread warning on monitor refresh
+  * Avoid possible profile corruption with xml producer
+  * Avoid relying on xml to clone a clip.
+  * src/dvdwizard/dvdwizardmenu.cpp: do not show "grid" in output (kde#377256)
+  * src/dvdwizard/dvdwizard.cpp: fix file loading in slotLoad (kde#377254)
+  * Fix Render Widget's file dialog not working correctly (requires KDE Frameworks >= 5.33) (kde#371685)
+  * Fix render job duration when past midnight (kde#372370)
+  * Fix Bin Effect reset (kde#376494)
+  * Fix unnecessary refresh of tools when selecting titler item
+  * Fix fadeouts re-appearing on clip cut+resize
+
+
+-------------------------------------------------------------------
+Thu Feb  9 06:51:39 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Mon Jan 30 14:01:48 UTC 2017 - guoyunhebrave@gmail.com
+
+- Add frei0r-plugins recommends
+
+-------------------------------------------------------------------
+Sat Jan 14 08:54:31 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Tue Dec 13 19:40:35 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+- Drop the full url for the source file. This is causing issues
+  when submitting non-released versions and causes false declines
+  from factory-auto
+
+-------------------------------------------------------------------
+Thu Dec  8 20:11:15 UTC 2016 - lbeltrame@kde.org
+
+- Fix source URL
+
+-------------------------------------------------------------------
+Sat Dec  3 16:21:33 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:27:11 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+
+-------------------------------------------------------------------
+Wed Nov  9 06:16:22 UTC 2016 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.08.3
+  * KDE Applications 16.08.3
+  * https://www.kde.org/announcements/announce-applications-16.08.3.php
+
+-------------------------------------------------------------------
+Tue Oct 11 20:54:35 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+-------------------------------------------------------------------
+Fri Sep  9 08:21:13 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.1
+   * KDE Applications 16.08.1
+   * https://www.kde.org/announcements/announce-applications-16.08.1.php
+
+
+-------------------------------------------------------------------
+Fri Aug 19 18:02:53 UTC 2016 - wbauer@tmo.at
+
+- Require libqt5-qtquickcontrols, it doesn't start without it (boo#994649)
+- Minimum required mlt version is 6.0.0 now
+
+-------------------------------------------------------------------
+Fri Aug 12 10:14:27 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.0
+   * KDE Applications 16.08.0
+   * https://www.kde.org/announcements/announce-applications-16.08.0.php
+
+
+-------------------------------------------------------------------
+Mon Aug  8 14:55:59 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.07.90
+   * KDE Applications 16.07.90 (16.08-RC)
+   * https://www.kde.org/announcements/announce-applications-16.08-rc.php
+
+
+-------------------------------------------------------------------
+Thu Jul  7 23:47:14 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.3
+   * KDE Applications 16.04.3
+   * https://www.kde.org/announcements/announce-applications-16.04.3.php
+
+
+-------------------------------------------------------------------
+Sat Jul  2 22:38:47 UTC 2016 - fvogt@suse.com
+
+- Update required MLT version to 0.9.8 to avoid failing builds
+
+-------------------------------------------------------------------
+Fri Jun 10 17:55:36 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.2
+   * KDE Applications 16.04.2
+   * https://www.kde.org/announcements/announce-applications-16.04.2.php
+
+
+-------------------------------------------------------------------
+Sat May  7 10:23:00 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.1
+   * KDE Applications 16.04.1
+   * https://www.kde.org/announcements/announce-applications-16.04.1.php
+
+
+-------------------------------------------------------------------
+Sun Apr 17 06:01:07 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.0
+   * KDE Applications 16.04.0
+   * https://www.kde.org/announcements/announce-applications-16.04.0.php
+
+
+-------------------------------------------------------------------
+Mon Apr 11 06:37:50 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.03.90
+   * KDE Applications 16.04.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.04-rc.php
+
+
+-------------------------------------------------------------------
+Sun Mar 13 15:41:17 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.3
+   * KDE Applications 15.12.3
+   * https://www.kde.org/announcements/announce-applications-15.12.3.php
+   * boo#970855
+
+
+-------------------------------------------------------------------
+Sat Feb 13 08:08:20 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.2
+   * KDE Applications 15.12.2
+   * https://www.kde.org/announcements/announce-applications-15.12.2.php
+   * boo#966605
+
+
+-------------------------------------------------------------------
+Sun Feb  7 01:47:06 UTC 2016 - wbauer@tmo.at
+
+- Add BuildRequires: pkgconfig(libv4l2) to fix boo#959174
+
+-------------------------------------------------------------------
+Sat Jan  9 18:17:04 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.1
+   * KDE Applications 15.12.1
+   * https://www.kde.org/announcements/announce-applications-15.12.1.php
+   * boo#961265
+
+
+-------------------------------------------------------------------
+Sun Dec 13 13:15:55 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.0
+   * KDE Applications 15.12.0
+   * https://www.kde.org/announcements/announce-applications-15.12.0.php
+   * boo#958887
+
+
+-------------------------------------------------------------------
+Tue Nov 10 20:05:44 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.3
+   * KDE Applications 15.08.3
+   * https://www.kde.org/announcements/announce-applications-15.08.3.php
+   * boo#954531
+
+
+-------------------------------------------------------------------
+Sun Oct 11 13:28:41 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.2
+   * KDE Applications 15.08.2
+   * https://www.kde.org/announcements/announce-applications-15.08.2.php
+
+
+-------------------------------------------------------------------
+Sun Sep 13 19:11:37 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.1
+   * KDE Applications 15.08.1
+   * https://www.kde.org/announcements/announce-applications-15.08.1.php
+
+
+-------------------------------------------------------------------
+Wed Aug 19 19:43:04 UTC 2015 - cgiboudeaux@gmx.com
+
+- Update to KDE Applications 15.08.0
+   * KDE Applications 15.08.0
+   * https://www.kde.org/announcements/announce-applications-15.08.0.php
+
+-------------------------------------------------------------------
+Fri Aug  7 07:09:17 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.07.90
+   * KDE Applications 15.08.0 RC1
+   * https://www.kde.org/announcements/announce-applications-15.08-rc.php
+
+
+-------------------------------------------------------------------
+Mon Jul  6 06:06:56 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.3
+   * KDE Applications 15.04.3
+   * https://www.kde.org/announcements/announce-applications-15.04.3.php
+
+
+-------------------------------------------------------------------
+Sat May 30 15:11:42 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.2
+   * KDE Applications 15.04.2
+   * https://www.kde.org/announcements/announce-applications-15.04.2.php
+
+
+-------------------------------------------------------------------
+Mon May 11 11:30:39 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.1
+   * KDE Applications 15.04.1
+   * https://www.kde.org/announcements/announce-applications-15.04.1.php
+
+
+-------------------------------------------------------------------
+Sat Apr 11 14:12:12 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.04.0
+   * KDE Applications 15.04.0
+   * https://www.kde.org/announcements/announce-applications-15.04.0.php
+
+- Drop upstreamed patches:
+   * kdenlive-0.9.10-no_avformat.patch
+
+- Renamed and adjusted patch
+   * use-mlt_datadir.patch
+
+-------------------------------------------------------------------
+Thu Oct 16 15:12:01 UTC 2014 - nico.kruber@gmail.com
+
+- Update to 0.9.10
+  + handle VBR encoding profiles, and use it!
+  + video stabilizer: added new "vid.stab", removed older ones
+  + environment variable MLT_PREFIX overrides profiles & melt path
+  + several fixes for high dpi screens
+  + change proxy profile, obsolete with libav
+  + add SVG to image formats for slideshows
+  + restore project render bitrate (#3326)
+  + show proxy name in clipproperties
+  + add link to MLT doc in render edit dialog (#3355)
+  + update maximum track height (#3241)
+  + resize render path box (#3300)
+  + change transition settings layout (#3336)
+  + heat colormap in spectrogram (#3142)
+  + fix clip monitor switch on proxy creation end (#3308)
+  + fix clip jobs (stabilize) operating on proxies (#3337)
+  + fix timeline corruption by clip resize end + zoom change
+  + fix title clip duration not taken into account (#3309)
+  + fix timeline thumbs flicker when fully zoomed (#3247)
+  + fix thumbnailer aspect ratio
+  + fix fades for split audio (#3323)
+  + fix transcoding (#3334)
+  + fix 'Clip in Timeline' when project monitor is inactive (#3261)
+  + fix audio analysis (use dynamic memory instead of stack)
+  + fix render end notification
+  + fix render timecode overlay (#3260)
+  + set tooltip for monitor pause button (#3256)
+  + fix slideshow clips adding 1 frame (#3289)
+  + fix archive project icon (#3325)
+  + fix compilation on armhf (#3345)
+  + don't allow creating keyframes for "fixed" filters (#2956)
+  + re-enable compilation on KDE < 4.5 (squeeze) (#3319)
+  + re-enable Clip menu (fix bug #3347)
+  + fix screen recording failure (#3358)
+  + fix crash detected with undo/redo (bug #3240)
+  + fix crash cutting group on a clip edge (#3312, #3350)
+  + fix crash on image sequence (#3331)
+  + fix crash in tracks config editor (#3367)
+  + fix crash on audiofiles
+  + fix crash on opening project file with images
+  + fix warnings from static analyzers (cppcheck, krazy)
+  + sort source files, easier to understand (for new developpers)
+- Update kdenlive-0.9.2-mlt_datadir.patch to
+  kdenlive-0.9.10-mlt_datadir.patch
+- Update kdenlive-0.9.2-no_avformat.patch to
+  kdenlive-0.9.10-no_avformat.patch
+
+-------------------------------------------------------------------
+Wed Jul  2 23:46:45 UTC 2014 - fisiu@opensuse.org
+
+- Build all translations.
+
+-------------------------------------------------------------------
+Wed May 21 19:37:22 UTC 2014 - dap.darkness@gmail.com
+
+- Update to 0.9.8
+  + Fades: timeline shortcut now applies to video on clips
+    containing video and audio;
+  + Copy proxies with 'move project';
+  + Remove the MLT processing threads option that never really
+    worked;
+  + Clean encoding profiles using MLT presets and profiles;
+  + Support a custom suffix for FFmpeg binaries (mostly for
+    packagers);
+  + Make audio align work asynchronously;
+  + Add support for JogShuttle on newer systems, make shuttle
+    device selection more straightforward, add ProV2 keys;
+  + Fix warnings from gcc, cppcheck, clang, scan-build: fixes
+    many crashs & leaks;
+  + Code cleanup (use const ref, fix includes, mem leaks,
+    optimize...);
+  + Fix keyframing messed up for some effects;
+  + Fix timeline corruption when trying to move clip before 0;
+  + Fix crash when closing title widget;
+  + Fix thumbnails for image clips in timeline;
+  + Fix crash on quick undo/redo (#3240);
+  + Fix multithreading (#3186);
+  + Fix some problems with transitions keyframes;
+  + Fix scopes (#3052).
+- Updated kdenlive-0.9.2-mlt_datadir.patch &
+  kdenlive-0.9.2-no_avformat.patch.
+
+-------------------------------------------------------------------
+Sun Apr  7 10:20:15 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 0.9.6
+  + Fix keyframes when cutting a clip / undoing a clip cut
+  + Warn before overwriting .mlt stabilized file
+  + Fix monitor confusion (clip monitor sometimes playing timeline)
+  + Fix the Mono to Stereo effect UI
+  + Fix proxy of playlist having wrong aspect ratio in some locales
+  + Fix transition widget not correctly updated when resizing a
+    transition
+  + Fix DVD chapters broken when using an intro movie
+  + Fix error message (No matching profile) poping up in render
+    widget when everything was ok
+  + Fix clip keyframes not showing on project load
+  + Fix bug when moving guide (was not moving to the correct place)
+  + Fix project corruption (wrong character) caused by some clip's
+    metadata
+  + Fix possible crash on track deletion
+  + Fix timeline corruption when using spacer tool or overwrite edit
+    mode
+  + Fix possible crash when editing speed effect
+  + Fix transition losing all its properties when moved
+  + Fix crash when pressing del when editing animation in title
+    widget
+  + Fix crash when doing quick clip resize
+  + Fix corruption when groups where overlapping
+  + Fix corruption when adding a title clip where a transition already
+    existed
+  + Fix timeline preview corruption with some transitions
+
+-------------------------------------------------------------------
+Tue Feb  5 14:51:21 UTC 2013 - reddwarf@opensuse.org
+
+- Add missing BR: pkgconfig(libv4l2)
+
+-------------------------------------------------------------------
+Wed Jan 30 13:05:05 UTC 2013 - reddwarf@opensuse.org
+
+- Do not recommend recordmydesktop. It's not used any more.
+- Update the minimum mlt version
+- Reenable V4L support. The legal problem has been fixed.
+
+-------------------------------------------------------------------
+Wed Jan 30 12:49:09 UTC 2013 - nico.kruber@gmail.com
+
+- Update to 0.9.4
+  + Rewritten DVD Wizard
+  + Improved clip markers
+  + Rewritten Screen Capture
+  + Support for multiple streams clips
+  + Clip analysis feature
+  + Stability and Performance improvements
+    - 8 features introduced
+    - 124 bugs fixed
+
+-------------------------------------------------------------------
+Fri Nov 30 10:32:21 UTC 2012 - reddwarf@opensuse.org
+
+- Make it work with versioned melt binaries
+- Add kdenlive-0.9.2-no_avformat.patch to support systems without
+  the avformat plugin
+
+-------------------------------------------------------------------
+Thu Aug 16 11:05:12 UTC 2012 - reddwarf@opensuse.org
+
+- Recommend a package with the avformat module
+
+-------------------------------------------------------------------
+Mon Aug 13 00:30:29 UTC 2012 - reddwarf@opensuse.org
+
+- Require libmltX-modules and libmltX-data
+
+-------------------------------------------------------------------
+Sun Aug 12 16:40:32 UTC 2012 - reddwarf@opensuse.org
+
+- Add kdenlive-0.9.2-mlt_datadir.patch to use the correct MLT data
+  dir by default
+
+-------------------------------------------------------------------
+Fri Jun  1 13:31:00 UTC 2012 - reddwarf@opensuse.org
+
+- Disable V4L support (bnc#765082). GPL-2.0 only, incompatible
+  with GPL-3.0+ parts.
+
+-------------------------------------------------------------------
+Thu May 31 12:01:52 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 0.9.2
+  + Fix freeze when reloading previously missing clip
+  + Fade effects lost when moving / resizing clip
+  + Undoing change in clip crop start breaking clip
+  + Make disabling of track effects possible
+  + Fix slideshow clips not working
+  + Fix crash on composite transition
+  + Fix crash when opening stop motion widget
+  + Fix rendering of projects created in another locale
+  + Fix Firewire capture
+
+-------------------------------------------------------------------
+Tue May 15 12:04:17 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 0.9
+  * Improved effects workflow
+  * Automatic audio alignment
+  * Easy import of online resources
+  * Usability improvements
+    - Recording can now be monitored through the audio and color
+      scopes, audio normalization can analyse audio for better
+      results
+    - Allow audio only recording
+    - Clips can be sorted by date
+    - New effects from MLT / frei0r: video stabilizers,
+      IIR Blur, etc
+    - Offline editing (Backup the project with proxy clips only to
+      work on less powerful computers)
+  * Read the ChangeLog file for a more complete list of changes
+- Add %icon_theme_cache_post and %desktop_database_post macros and
+  its dependencies as BuildRequires
+- Update the BuildRequires
+- Updates source tag with new URL
+- Recommend genisoimage instead of mkisofs
+
+-------------------------------------------------------------------
+Fri May  4 09:53:15 UTC 2012 - reddwarf@opensuse.org
+
+- Change license from GPL-2.0+ to GPL-2.0 (bnc#760651)
+
+-------------------------------------------------------------------
+Mon Feb 27 14:22:39 UTC 2012 - saschpe@suse.de
+
+- Set SPDX-style license
+
+-------------------------------------------------------------------
+Sun Aug 23 17:29:59 UTC 2009 - reddwarf@opensuse.org
+
+- Initial package
+

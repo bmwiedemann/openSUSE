@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>38b53ccee00a32ec2a231fcd1ef7d62c</srcmd5>
+    <version>1.10.0</version>
+    <time>1686665349</time>
+    <user>dimstar_suse</user>
+    <comment>New package gotestsum version 0.10.0 is a Go test runner with output optimized for humans, JUnit XML for CI integration, and a summary of the test results.</comment>
+    <requestid>1092620</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4d61dd16fe0e7962371773abe97ed03c</srcmd5>
+    <version>1.10.1</version>
+    <time>1691947072</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.10.1:
+  * Add test for accepting GODEBUG output
+  * Quote test names before they are used within the regex to rerun
+  * move TEAMCITY_VERSION version checkout outside of CI check
+  * Don't treat debug messages as errors
+  * Add support for zOS
+  * update fixture
+  * fix lint
+  * extract TEAMCITY_VERSION check because they don't set CI
+  * Detect CI environments by name
+  * Revert &quot;Enable color support by default on Drone CI&quot;
+  * Enable color support by default on Drone CI
+  * Update README.md
+  * Fix coverage detection for go1.20
+  * ci: update goreleaser 1.7.0 to 1.17.0 for windows/arm64
+  * Add prometheus to readme links
+  * Add list of projects that use gotestsum (forwarded request 1103623 from jfkw)</comment>
+    <requestid>1103624</requestid>
+  </revision>
+</revisionlist>

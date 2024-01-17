@@ -1,0 +1,8 @@
+<package name="android-tools" project="openSUSE:Factory">
+  <title>Android SDK Platform Tools</title>
+  <description>Android SDK Platform Tools is a component for the Android SDK. It includes tools that interface with the Android platform, such as adb, fastboot, and systrace. These tools are required for Android app development. They're also needed if you want to unlock your device bootloader and flash it with a new system image.
+
+Although some new features in these tools are available only for recent versions of Android, the tools are backward compatible, so you need only one version of the SDK Platform Tools.</description>
+  <devel project="hardware" package="android-tools"/>
+  <url>https://github.com/nmeum/android-tools</url>
+</package>

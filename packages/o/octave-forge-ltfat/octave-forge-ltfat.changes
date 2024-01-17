@@ -1,0 +1,167 @@
+-------------------------------------------------------------------
+Tue Oct 31 03:15:03 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add ltfat-fix-jar-bin-path.patch: Fix path pointing to jar
+  binary.
+- Drop an unnecessary hashbang.
+
+-------------------------------------------------------------------
+Mon Oct 30 16:00:32 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update URL to point to 'https://gnu-octave.github.io/packages/'
+
+-------------------------------------------------------------------
+Thu Oct 19 09:39:45 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.6.0:
+  * NEW: gabreassignreal, comp_gabreassignreal, gabphasederivreal,
+    demo_waveletfilters, lowdiscrepancy, thirdparty/im2double
+    (Octave function), ltfatruntests (continuous integration and
+    deployment functionality via github actions), fusionframe,
+    arg_fusionframe
+  * BUGFIX: comp_fblowpassfilters, audfilters, gabphasederiv,
+    freqwavelet, ltfat_mex_template_helper, -ct/comp_filterbank
+    (getting rid of octave buffer to reduce the number of
+    warnings), test_all_ltfat, test_dft, test_dgt_alg,
+    test_gabphasederiv, test_gabphasederivinterface,
+    test_gabphasederivreal, test_idft, test_ptpfun
+  * EXTENSIONS: filterbanktight and filterbankrealtight (force
+    painless option), frame (wavelet, auditory, warped, and gabor
+    filter bank), waveletfilters (help example)
+  * ADJUSTMENTS: gabfilters and waveletfilters output format (to
+    match that of the other filterbank generators)
+  * DOCUMENTATION: comp_dgt_real, comp_sepdgtreal,
+    comp_gabreassign, comp_transferfunction,
+    demo_auditoryfilterbank, demo_filterbanks,
+    filterbankconstphase, filterbankwin, framebounds
+  * DEPRECATED: comp_gdgt, test_dgt_fac, test_dgts, test_dwilts,
+    test_framemulappr, test_gabmul, test_gdgt, test_hermbasis,
+    test_ola, test_pherm, test_wfac
+- Drop upstreamed ltfat-sourcetarget.patch.
+
+-------------------------------------------------------------------
+Tue Nov  8 16:20:32 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.5.0:
+  * Improved precison of Daubechies wavelet filters for 'db1'-'db38'
+  * Added internal reset condition to 'multidgtrealmp'
+  * New filterbank-generating function 'waveletfilters'
+  * Extended filterbankdual and filterbankrealdual with an
+    'economize_filters' option
+  * Addition of 'comp_fblowpassfilters'
+  * Extended wavelet function generator (supported Morlet and
+    several others)
+    freqwavelet, determine_freqatheight, arg_freqwavelet,
+    wpghi_findalpha, helper_waveletgeneratorfunc
+    + New demo_dgt_parametrize
+  * rms accepts now 'dim' as an input
+  * frana accepts now row vectors as input signals
+  * expchirp optional fade-in and fade-out
+  * Bug fixes and minor changes:
+    + nsdgt
+    + normalize, filterbankrealbounds, cqtfilters, firkaiser,
+      gabwin, comp_frana_tensor
+  * Deprecated: normalize - replaced by setnorm
+- Drop upstream patch:
+  * ltfat-nsdgt_m-syntax-error.patch
+
+-------------------------------------------------------------------
+Fri Apr  8 14:01:35 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * ltfat-sourcetarget.patch
+    + build with java source and target levels 8
+    + fixes build in Factory
+
+-------------------------------------------------------------------
+Sat Jan  9 11:48:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add ltfat-nsdgt_m-syntax-error.patch: Fix syntax error in
+  nsdgt.m to build against octave >= 6; patch taken from upstream
+  git commit and rebased to apply with -p1 (gh#ltfat/ltfat#115).
+
+-------------------------------------------------------------------
+Tue Feb 25 19:52:22 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.4.0:
+  * Added universal filterbank phase reconstruction function:
+    + filterbankconstphase (Thanks to Nicki Holighaus)
+  * Added time-frequency jigsaw puzzle tonal-transinet-residual
+    separation:
+    tfjigsawsep, plottfjigsawsep, demo_tfjigsawsep
+    Thanks to Daniel Haider.
+  * Added coiflet filters up to K=17.  Thanks to KIMURA Masaru.
+  * Added wavelet function generator (supported Cauchy, Morse)
+    freqwavelet
+  * Function cqtfilters now accepts windows from freqwin.
+  * MEX files are now compatible with the new MATLAB 2018a API.
+  * Deprecated cqt, icqt, erblett ierblett. Replacements:
+    cqt: cqtfilters and filterbank
+    icqt: filterbankdual and ifilterbank or ifilterbankiter
+    erblett: audfilters with 'erb' and filterbank
+    ierblett: filterbankdual and ifilterbank or ifilterbankiter
+- Remove explicit blas build dependency, octave pulls in a BLAS
+  implementation (blas or openblas, dependent on archictecture)
+- Delete the blockproc.jar included in the sources and regenerate
+  it by running make before %octave_pkg_src.
+- Add RPM optflags to CFLAGS/CXXFLAGS, otherwise these are not
+  taken into account by the Makefiles.
+
+-------------------------------------------------------------------
+Wed Jul 18 08:51:11 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2.3.1:
+  * Two additional matching pursuit variants in multidgtrealmp
+- Use fdupes to clean up duplicate files.
+
+-------------------------------------------------------------------
+Wed Jun  6 08:30:33 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2.3.0:
+  * New function for computing matching pursuit in DGT:
+    multidgtrealmp
+  * Matching pursuit and orthogonal matching pursuit for general
+    frames (for small problems): franamp
+  * ltfat_inferno is now the default colormap.
+
+-------------------------------------------------------------------
+Sun Jan  1 11:43:34 UTC 2017 - dmitry_r@opensuse.org
+
+- Update to version 2.2.0
+  * New Gabor window generating functions: ptpfun, ptpfundual, pebfun, pebfundual
+  * Introduced Mulaclab, a GUI for editing time-frequency representations.
+  * Included new colormaps: ltfat_inferno, ltfat_magma, ltfat_plasma,
+    ltfat_viridis, ltfat_nicecolormap
+
+-------------------------------------------------------------------
+Fri Jun 10 16:26:07 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 2.1.2
+  * Improved functions for DGT and DGTREAL phase reconstruction:
+    constructphase, constructphasereal
+
+-------------------------------------------------------------------
+Tue Oct 27 15:10:02 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.1.1
+  * New function for computing higher order phase derivatives: gabphasederiv
+  * New function doing the adjustable reassignment: gabreassignadjust
+  * New function for the Gabor transform phase reconstruction: constructphase, constructphasereal
+  * New filterbank-generating function: audfilters
+  * New generic quadratic TF distribution function: quadtfdist
+  * New functions for reading and writing wav files: wavload, wavsave
+
+-------------------------------------------------------------------
+Tue May 12 17:26:37 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.1.0
+  * New general filterbank generating routine: warpedfilters
+  * New filterbank spectrogram reassignment function: filterbankreassign
+  * New quadratic time-frequency distributions
+  * Better alignment of wavelet filters.
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 2.0.1
+

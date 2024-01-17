@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1952b859c47fc521ebf6d519a51325ea</srcmd5>
+    <version>31.0.2</version>
+    <time>1628108937</time>
+    <user>dimstar_suse</user>
+    <comment>We finally agreed on the name and use of this git repository with @namtrac and @dimstar.</comment>
+    <requestid>910119</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8e77ce225dbce88072466255fbd82193</srcmd5>
+    <version>31.0.3</version>
+    <time>1635366065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927600</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8f70098d7d4e9f47d265188c733af5f9</srcmd5>
+    <version>31.0.3p1</version>
+    <time>1654869466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982013</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>eaa9a8281387067fb722bf4708851d4a</srcmd5>
+    <version>31.0.3p1</version>
+    <time>1656321945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985222</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bdd4799485b71c2fb6bad1b55aaf2592</srcmd5>
+    <version>33.0.3</version>
+    <time>1664210922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1006123</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b05f1b473c0a7754158394ab302ddd25</srcmd5>
+    <version>33.0.3</version>
+    <time>1665754959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010605</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>91271b68bd58bd7f8dcf1c5423246f84</srcmd5>
+    <version>33.0.3</version>
+    <time>1666011473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1011274</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6fa98b2f6dcbf89c56ce0acc33da48db</srcmd5>
+    <version>33.0.3p1</version>
+    <time>1667901299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034389</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>26cbcf4a410ec2aa7faa34c68eaa83a0</srcmd5>
+    <version>33.0.3p2</version>
+    <time>1671564072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043917</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a012eea07ee69aafce79601e2bec15bc</srcmd5>
+    <version>34.0.0</version>
+    <time>1678043290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069449</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3e1f2f184f2dd6a4ab6169958f94c4a3</srcmd5>
+    <version>34.0.1</version>
+    <time>1684688938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088115</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>46ee4a67760ee70c6cbf8d854fd3e704</srcmd5>
+    <version>34.0.1</version>
+    <time>1688563856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096825</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0ccf9ea84511ce4b340fa0efc725678c</srcmd5>
+    <version>34.0.4</version>
+    <time>1694019501</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109144</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>74680884d69e7af7b2cd189e4469b0de</srcmd5>
+    <version>34.0.4</version>
+    <time>1696269967</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114525</requestid>
+  </revision>
+</revisionlist>

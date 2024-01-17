@@ -1,0 +1,2 @@
+# using fdupes means looking for troubles
+addFilter("files-duplicate .*")

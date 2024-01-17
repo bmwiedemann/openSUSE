@@ -1,0 +1,164 @@
+From c5846bed1d01497c75f8347e4d5dd1077cf171e9 Mon Sep 17 00:00:00 2001
+From: Neal Gompa <neal@gompa.dev>
+Date: Tue, 2 Jan 2024 21:36:40 -0500
+Subject: [PATCH] wlheadless: Add support for kwin
+
+Even though kwin_wayland supports passing a command, it seems the actual
+arguments following the command get ignored, so this is not suitable for
+wlheadless.
+
+Instead, we spawn kwin_wayland and the clients separately like we do for
+weston.
+---
+ README.md                  |  5 +--
+ man/wlheadless-run.man     |  2 +-
+ meson_options.txt          |  2 +-
+ src/wlheadless/kwin.py     | 70 ++++++++++++++++++++++++++++++++++++++
+ src/wlheadless/meson.build |  1 +
+ 5 files changed, 76 insertions(+), 4 deletions(-)
+ create mode 100644 src/wlheadless/kwin.py
+
+diff --git a/README.md b/README.md
+index f4d4490..d37243e 100644
+--- a/README.md
++++ b/README.md
+@@ -26,6 +26,7 @@ and currently support the following compositors:
+ 
+  * [weston](https://gitlab.freedesktop.org/wayland/weston)
+  * [cage](https://github.com/cage-kiosk/cage)
++ * [kwin](https://invent.kde.org/plasma/kwin)
+  * [gnome-kiosk](https://gitlab.gnome.org/GNOME/gnome-kiosk)
+  * [mutter](https://gitlab.gnome.org/GNOME/mutter)
+ 
+@@ -81,7 +82,7 @@ usage: wlheadless-run [-c compositor] <compositor arguments> -- client <client a
+ ```
+ 
+ The compositor must be supported by `wlheadless-run`, which currently includes
+-the following compositors: `weston`, `cage`, `mutter`, `gnome-kiosk`.
++the following compositors: `weston`, `cage`, `kwin`, `mutter`, `gnome-kiosk`.
+ 
+ The given compositor arguments must be supported by the specified Wayland compositor
+ and will be added to the command line when starting the compositor. That allows for
+@@ -147,7 +148,7 @@ options:
+ ```
+ 
+ The compositor must be supported by `xwfb-run`, which currently includes the
+-following compositors: `weston`, `cage`, `mutter`, `gnome-kiosk`.
++following compositors: `weston`, `cage`, `kwin`, `mutter`, `gnome-kiosk`.
+ 
+ Optional arguments passed to the Xserver (using the `-s` or `--server-args` option)
+ must be escaped twice to prevent `xwfb-run` from trying to parse them, e.g. `-s \\-ac`
+diff --git a/man/wlheadless-run.man b/man/wlheadless-run.man
+index f1f5d3a..6c52db2 100644
+--- a/man/wlheadless-run.man
++++ b/man/wlheadless-run.man
+@@ -32,7 +32,7 @@ running headless.
+ .TP 8
+ .B \-c COMPOSITOR
+ Use the compositor class implementation. Currently supported compositor
+-classes are \fIweston\fP, \fImutter\fP, \fIgnome-kiosk\fP, \fIcage\fP.
++classes are \fIweston\fP, \fIkwin\fP, \fImutter\fP, \fIgnome-kiosk\fP, \fIcage\fP.
+ .SH FILES
+ .TP 8
+ .I wlheadless.conf
+diff --git a/meson_options.txt b/meson_options.txt
+index 97367ba..535da87 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,4 +1,4 @@
+ option('compositor',
+        type: 'combo',
+-       choices: ['cage', 'gnome-kiosk', 'mutter', 'weston'],
++       choices: ['cage', 'gnome-kiosk', 'kwin', 'mutter', 'weston'],
+        value: 'weston')
+diff --git a/src/wlheadless/kwin.py b/src/wlheadless/kwin.py
+new file mode 100644
+index 0000000..1721d1c
+--- /dev/null
++++ b/src/wlheadless/kwin.py
+@@ -0,0 +1,70 @@
++#
++# Copyright © 2024 Neal Gompa.
++#
++# This program is free software; you can redistribute it and/or
++# modify it under the terms of the GNU General Public License as
++# published by the Free Software Foundation; either version 2 of the
++# License, or (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful, but
++# WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++# General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software
++# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++# 02111-1307, USA.
++#
++
++""" Abstraction for running a Wayland client on kwin headless. """
++
++from os import environ, getpid
++from wlheadless.wlheadless_common import WlheadlessCommon
++from wlheadless.xwayland import Xwayland
++
++class Wlheadless:
++
++    """
++    Abstraction for running a Wayland client on kwin headless.
++    """
++
++    def __call__(self):
++        return self
++
++
++    def __init__(self):
++        self.compositor_args = []
++        self.compositor = [
++            'dbus-run-session',
++            'kwin_wayland',
++            '--virtual',
++        ]
++        self.wlheadless_common = WlheadlessCommon()
++        self.xwayland = Xwayland()
++
++
++    def spawn_client(self, command_args):
++        """Helper function to spawn the Wayland client."""
++        return self.wlheadless_common.run_command(command_args)
++
++
++    def spawn_xwayland(self, xserver_args = []):
++        """Helper function to spawn Xwayland."""
++        xserver_args.extend(['-fullscreen'])
++        return self.xwayland.spawn_xwayland(xserver_args)
++
++
++    def wait_compositor(self):
++        """Waits for the compositor to start."""
++        return self.wlheadless_common.wait_compositor()
++
++
++    def run_compositor(self, compositor_args = []):
++        """Helper function to spawn kwin."""
++        wayland_display = 'wayland-' + format(getpid())
++        environ['WAYLAND_DISPLAY'] = wayland_display
++        compositor = self.compositor
++        compositor.extend(self.compositor_args)
++        compositor.extend(['--socket', format(wayland_display)])
++        return self.wlheadless_common.run_compositor(compositor)
+diff --git a/src/wlheadless/meson.build b/src/wlheadless/meson.build
+index cdf650c..e6fbfce 100644
+--- a/src/wlheadless/meson.build
++++ b/src/wlheadless/meson.build
+@@ -2,6 +2,7 @@ python_sources = [
+     '__init__.py',
+     'cage.py',
+     'gnome-kiosk.py',
++    'kwin.py',
+     'mutter.py',
+     'weston.py',
+     'wlheadless_common.py',
+-- 
+2.43.0
+

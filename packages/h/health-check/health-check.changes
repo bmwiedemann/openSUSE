@@ -1,0 +1,153 @@
+-------------------------------------------------------------------
+Tue Aug  4 17:40:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.03.09:
+  * net: don't throw warning messages when /proc file can't be
+    opened
+
+-------------------------------------------------------------------
+Fri Apr 24 15:06:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.03.07
+  * net.c: move declaration of send_total recv_total fix build
+    failure
+
+-------------------------------------------------------------------
+Sun Mar  8 13:19:50 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Supplement against bash-completion, not bash
+
+-------------------------------------------------------------------
+Sun Mar  8 12:52:57 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Drop SLE12 compat ifdef
+
+-------------------------------------------------------------------
+Wed Feb 26 19:34:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.03.06
+  * Add bash completion script
+
+-------------------------------------------------------------------
+Mon Jan 13 21:17:54 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.03.05
+  * pid: sanity check for null return from basename call
+
+-------------------------------------------------------------------
+Tue Dec 17 19:35:34 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.03.04
+  * syscall: handle a null return from localtime
+  * set *inode to zero to clear up a static analysis false warning
+  * ignore return from proc_pids_add_proc
+  * net: pass size of link string in net_get_inode_by_path
+
+-------------------------------------------------------------------
+Tue Aug 27 09:47:44 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.03.03
+  * No functional changes
+
+-------------------------------------------------------------------
+Fri Jun 14 22:04:13 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.03.01
+  * Use safer strlcpy instead of strncpy
+  * Remove events.h and references to timer stats
+  * Fix buffer truncation warnings from gcc-9
+  * Specify trusty in travis file
+  * Add older package name for json c
+- Add BuildRequires: pkgconfig(libbsd)
+- Use https for Source and URL
+
+-------------------------------------------------------------------
+Sun Jun 17 15:05:21 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.03.00
+  * Makefile: bump version to 3.0
+  * debian/copyright: use secure URI
+  * debian/compat: update to 11
+  * debian/control: set debhelper version to >=11
+  * debian/control: remove empty last line
+  * remove event metrics since newer kernels don't support this API
+
+-------------------------------------------------------------------
+Fri Jan  5 21:34:00 UTC 2018 - mardnh@gmx.de
+
+- update to version 0.02.09
+  * Makefile: bump version
+  * debian/control: update Standards-Version to 4.1.2
+  * health-check: unconstify metadata to clean up build warning
+  * syscall: remove extraneous pid_size declaration
+  * fnotify: fix build warning, include <sys/sysmacros.h>
+  * Update copyright year
+
+-------------------------------------------------------------------
+Fri Oct 20 13:39:47 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.02.08
+  * Update to Standards-Version: 4.1.1
+
+-------------------------------------------------------------------
+Wed May 10 14:56:19 UTC 2017 - mardnh@gmx.de
+
+- update to version 0.02.06
+  * Makefile: bump version
+  * Manual: update copyright year and manual date
+  * Add variable pid size handling.
+  * syscall: cast pid to unsigned long to ensure hash does not overflow
+  * Remove duplicate check on fnotify_files.head
+
+- update to version 0.02.05
+  * Makefile: bump version
+  * Makefile: line break on OBJS line
+  * voidify returns from close, fclose, closedir, etc
+  * Update copyright year
+  * Remove alloc shim for debugging heap.
+  * syscall: fix inconsistent indenting
+
+- update to version 0.02.04
+  * Makefile: bump version
+  * json: fix comment
+  * syscall: fix shadowing warnings
+  * Move procs_traced declaration to after the header includes
+  * syscall: fix shadowing of string tmp
+  * Makefile: remove status.[cho], it's not required as yet
+  * fnotify: fix some shadowing on link pointer l
+  * fnotify: make helper function static
+  * fnotify: add some constifications
+  * event: use floating point FLOAT_CMP macro for zero compare
+  * event: add some more constifications
+  * cpustat: use floating point FLOAT_CMP macro for zero compare
+  * cpustat: add some constifications
+  * health-check.h: add math.h
+  * health-check: make helper function static
+  * syscall: use FLOAT_CMP for float compare != 0
+  * syscall: make helper functions static
+  * ctxt-switch: use FLOAT_CMP to compare float against zero
+  * ctxt-switch: add some constifications
+  * mem: use FLOAT_CMP for float comparison to zero
+  * mem: add some constifications
+  * syscall: use floating point FLOAT_CMP macro for zero compare
+  * syscall: more constifications
+  * syscall constify pointers
+  * compare floating point values with a little bit of slop
+  * Makefile: add PEDANTIC flags
+
+- update to version 0.02.03
+  * Makefile: bump version
+  * Debian/control: update Standards-Version to 3.9.8
+  * Use strtok instead of strtok_r
+
+-------------------------------------------------------------------
+Thu Feb 18 10:41:09 UTC 2016 - mardnh@gmx.de
+
+- update to version 0.02.02
+- upstream does not provide a changelog
+
+-------------------------------------------------------------------
+Wed Nov 11 20:40:09 UTC 2015 - mardnh@gmx.de
+
+- initial package
+

@@ -1,0 +1,12 @@
+<package name="fairymax" project="openSUSE:Factory">
+  <title>A xboard compatible chess and chess-variant engine</title>
+  <description>Fairymax is a program that plays chess and chess variants. It uses
+the xboard/winboard chess-engine protocol to communicate. Apart from
+'regular' chess (also known as the Mad-Queen variant), it can play
+Capablanca chess, gothic chess, knightmate, cylinder chess, berolina
+chess, superchess and courier chess.
+
+</description>
+  <devel project="games" package="fairymax"/>
+  <url>http://home.hccnet.nl/h.g.muller/CVfairy.html</url>
+</package>

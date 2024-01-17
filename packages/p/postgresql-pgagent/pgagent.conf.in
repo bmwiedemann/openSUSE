@@ -1,0 +1,5 @@
+DBNAME=postgres
+DBUSER=postgres
+DBHOST=127.0.0.1
+DBPORT=5432
+LOGFILE=/var/log/%{name}.log

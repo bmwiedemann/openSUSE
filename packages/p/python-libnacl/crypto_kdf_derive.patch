@@ -1,0 +1,12 @@
+diff -rub libnacl-1.7.2/libnacl/__init__.py libnacl-1.7.2-patched/libnacl/__init__.py
+--- libnacl-1.7.2/libnacl/__init__.py	2020-11-03 22:34:59.000000000 +0100
++++ libnacl-1.7.2-patched/libnacl/__init__.py	2021-06-12 00:31:42.133601308 +0200
+@@ -1180,7 +1180,7 @@
+     '''
+     size = int(subkey_size)
+     buf = ctypes.create_string_buffer(size)
+-    nacl.crypto_kdf_derive_from_key(buf, subkey_size, subkey_id, context, master_key)
++    nacl.crypto_kdf_derive_from_key(buf, subkey_size, ctypes.c_ulonglong(subkey_id), context, master_key)
+     return buf.raw
+ 
+ # Key Exchange API

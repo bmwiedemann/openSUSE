@@ -1,0 +1,344 @@
+-------------------------------------------------------------------
+Sat Sep 30 12:31:35 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update bifunctors to version 5.6.1 revision 2.
+  5.6.1 [2023.03.13]
+  ------------------
+  * Provide instances for the `Swap` and `Assoc` type classes from the `assoc`
+    package. (These instances were previously defined in `assoc` itself, but they
+    have been migrated over to `bifunctors` in tandem with the `assoc-1.1`
+    release.)
+  * Only depend on `bifunctor-classes-compat` if building with GHC 8.0.
+
+  5.6 [2023.03.12]
+  ----------------
+  * Drop support for GHC 7.10 and earlier.
+  * Move the `Data.Bifunctor`, `Data.Bifoldable`, and `Data.Bitraversable`
+    compatibility modules to the new `bifunctor-classes-compat` package. For
+    backwards compatibility, the `bifunctors` library re-exports
+    `Data.Bifoldable` and `Data.Bitraversable` modules from
+    `bifunctor-classes-compat` when building with GHC 8.0.
+
+    If your library depends on `bifunctors` and compiles with pre-8.2
+    versions of GHC, be warned that it may be possible to construct a
+    build plan involving a pre-`5.6` version of `bifunctors` where:
+
+    * Some of the `Bifunctor` instances come from
+      `bifunctor-classes-compat`'s compatibility classes, and
+    * Other `Bifunctor` instances come from `bifunctors`'s compatibility classes.
+
+    These compatibility classes are distinct, so this could lead to build errors
+    under certain conditions. Some possible ways to mitigate this risk include:
+
+    * Drop support for GHC 8.0 and older in your library.
+    * Require `bifunctors >= 5.6` in your library.
+    * If neither of the options above are viable, then you can temporarily
+      define instances for the old compatibility classes from `bifunctors` like
+      so:
+
+      ```hs
+      -- For Bifunctor instances
+      import qualified "bifunctor-classes-compat" Data.Bifunctor as BifunctorCompat
+      #if !MIN_VERSION_bifunctors(5,6,0) && !MIN_VERSION_base(4,8,0)
+      import qualified "bifunctors" Data.Bifunctor as Bifunctor
+      #endif
+
+      instance BifunctorCompat.Bifunctor MyType where ...
+
+      #if !MIN_VERSION_bifunctors(5,6,0) && !MIN_VERSION_base(4,8,0)
+      instance Bifunctor.Bifunctor MyType where ...
+      #endif
+      ```
+
+      ```hs
+      -- For Bifoldable and Bitraversable instances
+      import qualified "bifunctor-classes-compat" Data.Bifoldable as BifoldableCompat
+      import qualified "bifunctor-classes-compat" Data.Bitraversable as BitraversableCompat
+      #if !MIN_VERSION_bifunctors(5,6,0) && !MIN_VERSION_base(4,10,0)
+      import qualified "bifunctors" Data.Bifoldable as Bifoldable
+      import qualified "bifunctors" Data.Bitraversable as Bitraversable
+      #endif
+
+      instance BifoldableCompat.Bifoldable MyType where ...
+      instance BitraversableCompat.Bitraversable MyType where ...
+
+      #if !MIN_VERSION_bifunctors(5,6,0) && !MIN_VERSION_base(4,10,0)
+      instance Bifoldable.Bifoldable MyType where ...
+      instance Bitraversable.Bitraversable MyType where ...
+      #endif
+      ```
+
+    If your package does nothing but define instances of `Bifunctor` _et al._,
+    you may consider replacing your `bifunctors` dependency with
+    `bifunctor-classes-compat` to reduce your dependency footprint. If you do,
+    it is strongly recommended that you bump your package's major version number
+    so that your users are alerted to the details of the migration.
+  * Define a `Foldable1` instance for `Joker`, and define `Bifoldable1` instances
+    for `Biff`, `Clown`, `Flip`, `Join`, `Joker`, `Product`, `Tannen`, and
+    `WrappedBifunctor`. These instances were originally defined in the
+    `semigroupoids` library, and they have now been migrated to `bifunctors` as
+    a side effect of adapting to
+    [this Core Libraries Proposal](https://github.com/haskell/core-libraries-committee/issues/9),
+    which adds `Foldable1` and `Bifoldable1` to `base`.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:05:58 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Feb 27 12:31:40 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update bifunctors to version 5.5.15.
+  5.5.15 [2023.02.27]
+  -------------------
+  * Support `th-abstraction-0.5.*`.
+
+-------------------------------------------------------------------
+Thu Dec  8 00:21:20 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update bifunctors to version 5.5.14.
+  5.5.14 [2022.12.07]
+  -------------------
+  * Define `Functor`, `Foldable`, and `Traversable` instances for `Sum` and
+    `Product`.
+
+-------------------------------------------------------------------
+Mon Sep 12 23:34:21 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update bifunctors to version 5.5.13.
+  5.5.13 [2022.09.12]
+  -------------------
+  * Make the `Biapplicative` instances for tuples lazy, to match their `Bifunctor`
+    instances.
+
+-------------------------------------------------------------------
+Sat Jul 23 18:25:27 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update bifunctors to version 5.5.12 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun May  8 00:00:30 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update bifunctors to version 5.5.12.
+  5.5.12 [2022.05.07]
+  -------------------
+  * Backport an upstream GHC change which removes the default implementation of
+    `bitraverse`. Per the discussion in
+    https://github.com/haskell/core-libraries-committee/issues/47, this default
+    implementation was completely broken, as attempting to use it would always
+    result in an infinite loop.
+
+-------------------------------------------------------------------
+Wed Aug  4 08:17:55 UTC 2021 - psimons@suse.com
+
+- Update bifunctors to version 5.5.11 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Fri Apr 30 20:29:08 UTC 2021 - psimons@suse.com
+
+- Update bifunctors to version 5.5.11.
+  5.5.11 [2021.04.30]
+  -------------------
+  * Allow building with `template-haskell-2.18` (GHC 9.2).
+
+-------------------------------------------------------------------
+Sun Jan 24 16:09:29 UTC 2021 - psimons@suse.com
+
+- Update bifunctors to version 5.5.10.
+  5.5.10 [2021.01.21]
+  -------------------
+  * Fix a bug in which `deriveBifoldable` could generate code that triggers
+    `-Wunused-matches` warnings.
+
+-------------------------------------------------------------------
+Wed Dec 30 17:53:28 UTC 2020 - psimons@suse.com
+
+- Update bifunctors to version 5.5.9.
+  5.5.9 [2020.12.30]
+  ------------------
+  * Explicitly mark modules as Safe or Trustworthy.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Oct  6 08:56:02 UTC 2020 - psimons@suse.com
+
+- Update bifunctors to version 5.5.8.
+  5.5.8 [2020.10.01]
+  ------------------
+  * Fix a bug in which `deriveBifunctor` would fail on sufficiently complex uses
+    of rank-n types in constructor fields.
+  * Fix a bug in which `deriveBiunctor` and related functions would needlessly
+    reject data types whose two last type parameters appear as oversaturated
+    arguments to a type family.
+
+-------------------------------------------------------------------
+Mon Aug 31 09:34:30 UTC 2020 - psimons@suse.com
+
+- Update bifunctors to version 5.5.7 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:44:08 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun 16 11:13:48 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Feb  7 08:04:05 UTC 2020 - psimons@suse.com
+
+- Update bifunctors to version 5.5.7.
+  5.5.7 [2020.01.29]
+  ------------------
+  * Add `Data.Bifunctor.Biap`.
+
+-------------------------------------------------------------------
+Wed Nov 27 03:00:47 UTC 2019 - psimons@suse.com
+
+- Update bifunctors to version 5.5.6.
+  5.5.6 [2019.11.26]
+  ------------------
+  * Add `Category`, `Arrow`, `ArrowChoice`, `ArrowLoop`, `ArrowZero`, and
+    `ArrowPlus` instances for `Data.Bifunctor.Product`.
+
+-------------------------------------------------------------------
+Fri Nov  8 16:13:19 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Wed Aug 28 02:02:23 UTC 2019 - psimons@suse.com
+
+- Update bifunctors to version 5.5.5.
+  5.5.5 [2019.08.27]
+  ------------------
+  * Add `Eq{1,2}`, `Ord{1,2}`, `Read{1,2}`, and `Show{1,2}` instances for data
+    types in the `Data.Bifunctor.*` module namespace where possible. The
+    operative phrase is "where possible" since many of these instances require
+    the use of `Eq2`/`Ord2`/`Read2`/`Show2`, which are not avaiable when
+    built against `transformers-0.4.*`.
+
+-------------------------------------------------------------------
+Tue Jun 11 14:29:08 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Update Cabal file for more accurate build dependencies.
+
+-------------------------------------------------------------------
+Tue Apr 30 09:23:08 UTC 2019 - psimons@suse.com
+
+- Update bifunctors to version 5.5.4.
+  5.5.4 [2019.04.26]
+  ------------------
+  * Support `th-abstraction-0.3` or later.
+  * Don't incur a `semigroup` dependency on recent GHCs.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:31:13 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:15 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jul 13 14:31:33 UTC 2018 - psimons@suse.com
+
+- Update bifunctors to version 5.5.3.
+  5.5.3 [2018.07.04]
+  ------------------
+  * Make `biliftA2` a class method of `Biapplicative`.
+  * Add the `traverseBia`, `sequenceBia`, and `traverseBiaWith` functions for
+    traversing a `Traversable` container in a `Biapplicative`.
+  * Avoid incurring some dependencies when using recent GHCs.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update bifunctors to version 5.5.2 revision 2.
+  * `Data.Bifunctor.TH` now derives `bimap`/`bitraverse`
+    implementations for empty data types that are strict in the argument.
+  * `Data.Bifunctor.TH` no longer derives `bifoldr`/`bifoldMap` implementations
+    that error on empty data types. Instead, they simply return the folded state
+    (for `bifoldr`) or `mempty` (for `bifoldMap`).
+  * When using `Data.Bifunctor.TH` to derive `Bifunctor` or `Bitraversable`
+    instances for data types where the last two type variables are at phantom
+    roles, generated `bimap`/`bitraverse` implementations now use `coerce` for
+    efficiency.
+  * Add `Options` to `Data.Bifunctor.TH`, along with variants of existing
+    functions that take `Options` as an argument. For now, the only configurable
+    option is whether derived instances for empty data types should use the
+    `EmptyCase` extension (this is disabled by default).
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Mon Apr 24 12:26:43 UTC 2017 - psimons@suse.com
+
+- Update to version 5.4.2 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Dec  8 10:59:30 UTC 2016 - psimons@suse.com
+
+- Update to version 5.4.1 revision 1 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Sep 15 07:09:13 UTC 2016 - psimons@suse.com
+
+- Update to version 5.4.1 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:23:21 UTC 2016 - psimons@suse.com
+
+- Update to version 5.2 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Wed Jan 20 08:55:42 UTC 2016 - mimi.vx@gmail.com
+
+- update to 5.2
+* dded several Arrow-like instances for Tannen so we can use it as the Cayley
+    construction if needed.
+* Added Data.Bifunctor.Sum
+* Added BifunctorFunctor, BifunctorMonad and BifunctorComonad.
+
+-------------------------------------------------------------------
+Thu Dec 17 10:34:03 UTC 2015 - mimi.vx@gmail.com
+
+- update to 5.1
+* Added Data.Bifunctor.Fix
+* Added Data.Bifunctor.TH, which permits TemplateHaskell-based deriving
+    of Bifunctor, Bifoldable and Bitraversable instances.
+* Simplified Bitraversable.
+
+-------------------------------------------------------------------
+Thu Aug  6 19:08:19 UTC 2015 - mimi.vx@gmail.com
+
+- update to version 5
+* Inverted the dependency on semigroupoids. We can support a much wider array of base
+  versions than it can.
+* Added flags
+
+-------------------------------------------------------------------
+Thu May 21 06:33:23 UTC 2015 - mimi.vx@gmail.com
+
+- correct licence to BSD-2-Clause
+
+-------------------------------------------------------------------
+Sun Apr 26 17:31:01 UTC 2015 - mimi.vx@gmail.com
+
+- initial commit

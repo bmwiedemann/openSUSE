@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>933ee16dd960bbc3543e779dd1b73089</srcmd5>
+    <version>4.4.3</version>
+    <time>1327673844</time>
+    <user>coolo</user>
+    <comment>Prerequisite for LibreCAD</comment>
+    <requestid>101300</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1f3d071eaacbdea722ecba71b6cf719f</srcmd5>
+    <version>4.4.3</version>
+    <time>1332415932</time>
+    <user>coolo</user>
+    <comment>- enabled -DFP_SUPPORT_TR1_MATH_FUNCS -DFP_SUPPORT_COMPLEX_NUMBERS
+- patch to compile with gcc4.7 (gcc4.7.patch) (forwarded request 110358 from ealin) (forwarded request 110490 from dimstar)</comment>
+    <requestid>110491</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1f3d071eaacbdea722ecba71b6cf719f</srcmd5>
+    <version>4.4.3</version>
+    <time>1340183336</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>72e104a30340ff0dc7b03865576eb591</srcmd5>
+    <version>4.5.0</version>
+    <time>1346755440</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 4.5.0
+* Removed support for the &quot;eval()&quot; function from the supported
+  syntax. (This function was too dangerous, too difficult to maintain
+  internally, not very useful, and more or less a gimmick in the
+  first place.)
+* Removed several of the conditional compiling macro definitions,
+  namely FP_SUPPORT_TR1_MATH, FP_ENABLE_EVAL, FP_EVAL_MAX_REC_LEVEL,
+  FP_NO_EVALUATION_CHECKS and FP_EPSILON.
+* The epsilon value used in comparisons is now set with a member
+  function of FunctionParser (which allows setting different values
+  for different versions of the parser).
+* The math functions previously turned on with FP_SUPPORT_TR1_MATH
+  are now automatically used if __cplusplus indicates that C++11 is
+  in use.</comment>
+    <requestid>132455</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3729a622d4db8fc2c2cafd048310b0ea</srcmd5>
+    <version>4.5.1</version>
+    <time>1353133265</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 4.5.1
+* Reverted the automatic C++11 detection to a precompiler macro
+  setting (FP_SUPPORT_CPLUSPLUS11_MATH_FUNCS) because not all
+  compilers yet fully support the C++11 math functions.
+* Fixed a potential duplicate symbol problem that happens with
+  explicit template instantiations.</comment>
+    <requestid>141357</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>3729a622d4db8fc2c2cafd048310b0ea</srcmd5>
+    <version>4.5.1</version>
+    <time>1359108888</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>853d9faccefa8694b1e9fa1e287350c1</srcmd5>
+    <version>4.5.1</version>
+    <time>1362730176</time>
+    <user>coolo</user>
+    <comment>- Mark package as requiring mpfr &gt;= 2.4.0 due to use of mpfr_d_sub</comment>
+    <requestid>157941</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>853d9faccefa8694b1e9fa1e287350c1</srcmd5>
+    <version>4.5.1</version>
+    <time>1379662360</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>853d9faccefa8694b1e9fa1e287350c1</srcmd5>
+    <version>4.5.1</version>
+    <time>1409300896</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0bf480d2aae7f7f24d47c9ab06d05ee2</srcmd5>
+    <version>4.5.2</version>
+    <time>1442638527</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>331890</requestid>
+  </revision>
+</revisionlist>

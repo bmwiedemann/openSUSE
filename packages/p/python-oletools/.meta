@@ -1,0 +1,8 @@
+<package name="python-oletools" project="openSUSE:Factory">
+  <title>Tools to analyze security characteristics of MS Office and OLE files</title>
+  <description>Python tools to analyze security characteristics of MS Office and OLE files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), for Malware Analysis and Incident Response (DFIR)
+
+</description>
+  <devel project="devel:languages:python" package="python-oletools"/>
+  <url>http://www.decalage.info/python/oletools</url>
+</package>

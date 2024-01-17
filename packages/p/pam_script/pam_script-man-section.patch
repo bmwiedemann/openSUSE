@@ -1,0 +1,24 @@
+---
+ pam-script.7.in |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- pam-script.7.in
++++ pam-script.7.in	2017-07-13 13:13:24.983357610 +0000
+@@ -2,7 +2,7 @@
+ .\" First parameter, NAME, should be all caps
+ .\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+ .\" other parameters are allowed: see man(7), man(1)
+-.TH PAM-SCRIPT 7 "August 22, 2007"
++.TH PAM-SCRIPT 8 "August 22, 2007" "Linux-PAM Manual" "Linux-PAM Manual"
+ .\" Please adjust this date whenever revising the manpage.
+ .\"
+ .\" Some roff macros, for reference:
+@@ -100,7 +100,7 @@ which can be used to modify the script b
+ @PACKAGE_STRING@
+ 
+ .SH SEE ALSO
+-.BR PAM (7)
++.BR PAM (8)
+ and the PAM "The System Administrators' Guide"
+ .SH AUTHOR
+ .nf

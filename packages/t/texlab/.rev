@@ -1,0 +1,215 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>148c724be840a8289a8813e6c7fe9982</srcmd5>
+    <version>3.3.2</version>
+    <time>1648241682</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain this package in Factory</comment>
+    <requestid>964790</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>47ea417c4b41c3634e12ed5856ba27ee</srcmd5>
+    <version>4.0.0</version>
+    <time>1654097743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980346</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2859f7e6ff9d2244301098be404beb32</srcmd5>
+    <version>4.1.0</version>
+    <time>1656056721</time>
+    <user>dimstar_suse</user>
+    <comment>- removing cargo tests. not useful
+- Update to version 4.1.0:
+  * Bump version to v4.1.0
+  * Fix crates.io deployment job
+  * Enable incremental compilation for release builds
+  * Add missing env variables to deploy workflow
+  * Revert &quot;Switch to glassbench instead of criterion&quot;
+  * Improve the heuristic for finding artifacts
+  * Use thin LTO for release builds
+  * Remove unused dev dependencies
+  * Switch to glassbench instead of criterion
+  * Bump uuid from 1.1.0 to 1.1.2 (#646)
+</comment>
+    <requestid>984784</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>667609d3d3a5114c64ce51189fe3f0a3</srcmd5>
+    <version>4.2.0</version>
+    <time>1658857399</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>990701</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>94d489bb7ca22cf1c29b70f909a03400</srcmd5>
+    <version>4.2.1</version>
+    <time>1661593845</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>999518</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>68e422d67fbe33986a75ee0faa1f03e7</srcmd5>
+    <version>4.2.2</version>
+    <time>1662926249</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1002488</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a10adc2feaa7aa0dfcaa421d30022485</srcmd5>
+    <version>4.3.0</version>
+    <time>1666365760</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1030405</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>38ce30bad44ff56b0efbe105af0c5d72</srcmd5>
+    <version>4.3.1</version>
+    <time>1667901267</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034284</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4161204a951d7e49937b9ab4a7a3fbfb</srcmd5>
+    <version>4.3.2</version>
+    <time>1669715643</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1038782</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d9095a22cd1d3e72b1681ced3a14bd3e</srcmd5>
+    <version>5.1.0</version>
+    <time>1675516540</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1063086</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>91c73dbefe29e92d6e79020a5bb6dbde</srcmd5>
+    <version>5.2.0</version>
+    <time>1676567452</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1066184</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b37a63d4c92b863e449d4a9d555570ec</srcmd5>
+    <version>5.3.0</version>
+    <time>1678290616</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1070185</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f5ee25d3fb84912c62200526e4ec90fa</srcmd5>
+    <version>5.4.1</version>
+    <time>1681825974</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1080018</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5455959c07f5ca6d810e41440084a644</srcmd5>
+    <version>5.5.0</version>
+    <time>1682782118</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1083643</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bd21826c15cb93a41c77429e6df53b8b</srcmd5>
+    <version>5.5.1</version>
+    <time>1684162472</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1087142</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>436bdba05cd173967f6bb240724f4405</srcmd5>
+    <version>5.7.0</version>
+    <time>1689710054</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1098964</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3ff8d8308e1a734787d8ddc460fcb20e</srcmd5>
+    <version>5.9.1</version>
+    <time>1691947082</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable cargo test in %check.
+- Update to version 5.9.1:
+  * fixed: improved performance when completing BibTeX entries
+  * fixed: don't report unused entries for very large bibliographies
+  * fixed: avoid redundant reparses after saving documents
+- Changes from before 5.9.1 and after 5.7.0:
+  * Use bibliographies found in BIBINPUTS environment variable
+  * Add texlab.build.pdfDirectory setting
+  * Fix search path for aux files when using \include instead of \input
+  * Report diagnostics for unused and undefined labels
+  * Report diagnostics for unused BibTeX entries and undefined citations
+  * Report diagnostics for duplicate BibTeX entries
+  * Report diagnostics for duplicate labels
+  * Add texlab.build.auxDirectory and texlab.build.logDirectory settings
+  * Deprecate texlab.auxDirectory in favor of texlab.build.auxDirectory
+  * Fix parsing paths with |
+  * Fix parsing LaTeX identifiers with =
+  
+</comment>
+    <requestid>1103656</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>41f0dc5fa31c1e191be8787d591fed29</srcmd5>
+    <version>5.9.1</version>
+    <time>1692611071</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1104878</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fbb28ea26de5e9586645e98acc908380</srcmd5>
+    <version>5.9.2</version>
+    <time>1693235781</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1106226</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2ace13c70d3e6774f97312ff8067395b</srcmd5>
+    <version>5.10.0</version>
+    <time>1696451455</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114877</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3dd2f36e111032658f8eeb1bf0f44f6a</srcmd5>
+    <version>5.11.0</version>
+    <time>1701462338</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130111</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>89cf8aa054fb18a36d77116385f8f3ee</srcmd5>
+    <version>5.12.0</version>
+    <time>1702488953</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.12.0:
+  * Infer `texlab.build.auxDirectory`, `texlab.build.logDirectory` and 
+    `texlab.build.pdfDirectory` from `latexmkrc` if available
+  * Do not report `undefined reference` errors when using `\nocite{*}`
+  * Fix potential crash when parsing build log files 
+  * Set the final tab stop of the `\begin` snippet inside the environment
+- Remove cargo_config since vendored tarball includes it now
+</comment>
+    <requestid>1132815</requestid>
+  </revision>
+</revisionlist>

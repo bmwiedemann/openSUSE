@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Wed Jan 10 09:17:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not install test files: pass -Dtest=false to meson instead of
+  Dtest=true (aids with reproducible build, boo#1218715).
+- Add check section and run meson test.
+
+-------------------------------------------------------------------
+Thu Jan  4 16:39:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.2.0:
+  + New Features:
+    - Add support for verifying firmware transparency checkpoints
+    - Add various bitcounting functions for future use
+    - Allow creating and validating SHA512 checksums
+    - Allow verifying the checksum of a payload
+  + Bugfixes:
+    - Sprinkle attribute((nonnull)) to give a little more
+       compile-time safety
+
+-------------------------------------------------------------------
+Tue Jun 27 14:54:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.14:
+  * Fix header includes (Daisuke Fujimura)
+  * Fix prefix of LIBJCAT_CHECK_VERSION (Richard Hughes)
+  * Use project_source_root to fix building as a subproject
+
+-------------------------------------------------------------------
+Thu Apr 27 22:31:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.13:
+  * Add support for SHA512 checksums (Richard Hughes)
+  * Add the ability to add and remove support for blob types
+  * Fix header includes for clang-tidy (Richard Hughes)
+  * Show the expected SHA checksum in the error (Richard
+    Hughes)
+
+-------------------------------------------------------------------
+Fri Oct  7 12:16:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.12:
+  * Correctly export the AliasIds in all cases (Richard Hughes)
+  * Install installed-test firmware.bin.ed25519 (Jan Tojnar)
+  * Predate test cert activation date by 1 day (David Bonner)
+
+-------------------------------------------------------------------
+Thu Apr 21 07:25:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.11:
+  - Allow the user to get the runtime library version (Richard Hughes)
+  - Fix incorrect certtool being called on macOS (Richard Hughes)
+
+-------------------------------------------------------------------
+Sun Apr 10 13:27:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.10:
+  - Add ED25519 support (Richard Hughes)
+  - Define three more types used for the firmware transparency log (Richard Hughes)
+  - Include the pkgconfig variables in the subproject dependency (Richard Hughes)
+  - Drop the use of setuptools in the test script for regenerating ld version file (Eli Schwartz)
+  - Use the correct lookup method for the python3 script interpreter (Eli Schwartz)
+
+-------------------------------------------------------------------
+Mon Dec 20 22:03:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.9:
+  * Set which backends are supported in the pkgconfig file
+  * Use -Dcli=false to reduce the install size
+  * Return an error if we try to self-sign no bytes of data
+  * Show a more accurate output when not all engines are enabled
+
+-------------------------------------------------------------------
+Sat Nov 13 11:57:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.8:
+  * Fix a warning when used in a subproject
+  * Fix compilation on FreeBSD
+  * Do not use help2man to build manual pages
+  * Fall back to the AliasId for validation
+  * Fix jcat_context_verify_blob() to use self verify for checksums
+  * Allow verifying expired certificates with an additional argument
+  * Allow compiling json-glib as a subproject
+  * Export the old JCatEngine property to preserve internal ABI
+  * Do not fail verification if compiled without an engine
+
+-------------------------------------------------------------------
+Thu Jul 30 15:30:18 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.1.3:
+  * Export the JcatBlobKind and JcatBlobMethod on the result
+  * trivial: source the version header when including <jcat.h>
+
+-------------------------------------------------------------------
+Thu Jun 25 09:16:15 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- remove unreproducible signature file to make package build reproducible
+
+-------------------------------------------------------------------
+Tue Jun 09 15:08:08 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.1.2+3:
+  * Validate that gpgme_op_verify_result() returned at least one
+    signature (CVE-2020-10759).
+
+-------------------------------------------------------------------
+Wed Jun 03 15:43:21 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.1.2:
+  * Lower the meson dep version
+  * build: Check for Python modules explicitly
+- Update Build dependencies: use pkgconfig(gobject-introspection-1.0)
+  instead of gobject-introspection plus
+  gobject-introspection-devel.
+- Be more explicit in the files list for the typelib: if the file
+  name changes, we want to see a failure to ensure the package name
+  changes too.
+
+-------------------------------------------------------------------
+Wed Apr 22 08:07:20 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add the missing BuildRequires: gobject-introspection-devel
+
+-------------------------------------------------------------------
+Wed Apr 15 07:18:51 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Initial import 0.1.1

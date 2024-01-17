@@ -1,0 +1,85 @@
+Index: icewm-3.3.2/lib/menu.in
+===================================================================
+--- icewm-3.3.2.orig/lib/menu.in
++++ icewm-3.3.2/lib/menu.in
+@@ -11,5 +11,6 @@ prog Firefox mozilla firefox
+ prog Hexchat xchat hexchat
+ prog Gimp gimp gimp
+ includeprog icewm-menu-fdo --sep-before --no-sep-others
+-menufile Programs folder programs
++#menufile Programs folder programs
+ menufile Tool_bar folder toolbar
++menuprog SUSE folder xdg_menu --format icewm
+Index: icewm-3.3.2/src/wmmenu.cc
+===================================================================
+--- icewm-3.3.2.orig/src/wmmenu.cc
++++ icewm-3.3.2/src/wmmenu.cc
+@@ -294,6 +294,46 @@ char* MenuLoader::parseMenuProg(char *p,
+     return p;
+ }
+ 
++char* MenuLoader::parseSuseProg(char *p, ObjectContainer *container)
++{
++    Argument name;
++
++    p = YConfig::getArgument(&name, p);
++    if (p == nullptr) return p;
++
++    Argument icons;
++
++    p = YConfig::getArgument(&icons, p);
++    if (p == nullptr) return p;
++
++    Argument command;
++    YStringArray args;
++
++    p = getCommandArgs(p, &command, args);
++    if (p == nullptr) {
++        msg(_("Error at menuprog '%s'"), name.cstr());
++        return p;
++    }
++
++    ref<YIcon> icon;
++#ifndef LITE
++    if (icons[0] != '-')
++        icon = YIcon::getIcon(icons);
++#endif
++    MSG(("suseprog %s %s", name.cstr(), command.cstr()));
++
++    csmart path(path_lookup(command.cstr()));
++    if (path) {
++        ObjectMenu *progmenu = new MenuProgMenu(
++                app, smActionListener, wmActionListener,
++                name.cstr(), command.cstr(), args);
++        if (progmenu)
++            container->addContainer(name.cstr(), icon, progmenu);
++    }
++
++    return p;
++}
++
+ char* MenuLoader::parseMenuProgReload(char *p, ObjectContainer *container)
+ {
+     Argument name;
+@@ -395,6 +435,9 @@ char* MenuLoader::parseWord(char *word,
+         else if (!strcmp(word, "menuprogreload")) {
+             p = parseMenuProgReload(p, container);
+         }
++        else if (!strcmp(word, "suseprog")) {
++            p = parseSuseProg(p, container);
++        }
+         else if (!strcmp(word, "include")) {
+             p = parseIncludeStatement(p, container);
+         }
+Index: icewm-3.3.2/src/wmprog.h
+===================================================================
+--- icewm-3.3.2.orig/src/wmprog.h
++++ icewm-3.3.2/src/wmprog.h
+@@ -30,6 +30,7 @@ private:
+     char* parseAMenu(char *data, ObjectContainer *container);
+     char* parseMenuFile(char *data, ObjectContainer *container);
+     char* parseMenuProg(char *data, ObjectContainer *container);
++    char* parseSuseProg(char *p, ObjectContainer *container);
+     char* parseMenuProgReload(char *data, ObjectContainer *container);
+     char* parseKey(char *word, char *p);
+     char* parseProgram(char *word, char *p, ObjectContainer *container);

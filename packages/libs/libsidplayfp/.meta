@@ -1,0 +1,8 @@
+<package name="libsidplayfp" project="openSUSE:Factory">
+  <title>A library to play Commodore 64 music based on libsidplay2</title>
+  <description>A library to play Commodore 64 music based on libsidplay2.
+
+</description>
+  <devel project="multimedia:libs" package="libsidplayfp"/>
+  <url>http://sourceforge.net/projects/sidplay-residfp/</url>
+</package>

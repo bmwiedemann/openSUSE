@@ -1,0 +1,330 @@
+-------------------------------------------------------------------
+Thu Oct  5 12:35:57 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove dependency on /usr/bin/python3, making scripts to depends on
+  the real python3 binary, not the link. bsc#1212476
+
+-------------------------------------------------------------------
+Wed Sep 27 10:54:17 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- nss: Skip the NSS policy check if the mozilla-nss-tools package
+  is not installed. This avoids adding more dependencies in ring0.
+  * Add crypto-policies-nss.patch [bsc#1211301]
+
+-------------------------------------------------------------------
+Fri Sep 22 10:27:53 UTC 2023 -  Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20230920.570ea89:
+  * fips-mode-setup: more thorough --disable, still unsupported
+  * FIPS:OSPP: tighten beyond reason for OSPP 4.3
+  * krb5: sort enctypes mac-first, cipher-second, prioritize SHA-2 ones
+  * openssl: implement relaxing EMS in FIPS (NO-ENFORCE-EMS)
+  * gnutls: prepare for tls-session-hash option coming
+  * nss: prepare for TLS-REQUIRE-EMS option coming
+  * NO-ENFORCE-EMS: add subpolicy
+  * FIPS: set __ems = ENFORCE
+  * cryptopolicies: add enums and __ems tri-state
+  * docs: replace `FIPS 140-2` with just `FIPS 140`
+  * .gitlab-ci: remove forcing OPENSSH_MIN_RSA_SIZE
+  * cryptopolicies: add comments on dunder options
+  * nss: retire NSS_OLD and replace with NSS_LAX 3.80 check
+  * BSI: start a BSI TR 02102 policy [jsc#PED-4933]
+  * Rebase patches:
+    - crypto-policies-policygenerators.patch
+    - crypto-policies-revert-rh-allow-sha1-signatures.patch
+    - crypto-policies-FIPS.patch
+
+-------------------------------------------------------------------
+Fri Sep 15 11:23:06 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Conditionally recommend the crypto-policies-scripts package
+  when python is not installed in the system [bsc#1215201]
+
+-------------------------------------------------------------------
+Thu Aug 31 12:17:44 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Tests: Fix pylint versioning for TW and fix the parsing of the
+  policygenerators to account for the commented lines correctly.
+  * Add crypto-policies-pylint.patch
+  * Rebase crypto-policies-policygenerators.patch
+
+-------------------------------------------------------------------
+Tue Aug  1 12:23:33 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Adapt the fips-mode-setup script to use the pbl command
+  from the perl-Bootloader package to replace grubby. Add a note
+  for transactional systems [jsc#PED-5041].
+  * Rebase crypto-policies-FIPS.patch
+
+-------------------------------------------------------------------
+Fri Jul 14 14:59:06 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- BSI.pol: Added a new BSI policy for BSI TR 02102* (jsc#PED-4933)
+  derived from NEXT.pol
+
+-------------------------------------------------------------------
+Thu Jul 13 06:36:20 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20230614.5f3458e:
+  * policies: impose old OpenSSL groups order for all back-ends
+  * Rebase patches:
+    - crypto-policies-revert-rh-allow-sha1-signatures.patch
+    - crypto-policies-supported.patch
+
+-------------------------------------------------------------------
+Thu May 25 11:28:12 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Enable to set the kernel FIPS mode with fips-mode-setup
+  and fips-finish-install commands, add also the man pages. The
+  required FIPS modules are left to be installed by the user.
+  * Rebase crypto-policies-FIPS.patch
+
+-------------------------------------------------------------------
+Wed May 24 20:04:20 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Revert a breaking change that introduces the config option
+  rh-allow-sha1-signatures that is unkown to OpenSSL and fails
+  on startup. We will consider adding this option to openssl.
+  * https://gitlab.com/redhat-crypto/fedora-crypto-policies/-/commit/97fe4494
+  * Add crypto-policies-revert-rh-allow-sha1-signatures.patch
+
+-------------------------------------------------------------------
+Mon May  8 09:45:45 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update the update-crypto-policies(8) man pages and README.SUSE
+  to mention the supported back-end policies. [bsc#1209998]
+  * Add crypto-policies-supported.patch
+
+-------------------------------------------------------------------
+Mon May 08 06:32:49 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20230420.3d08ae7:
+  * openssl, alg_lists: add brainpool support
+  * openssl: set Groups explicitly
+  * codespell: ignore aNULL
+  * rpm-sequoia: allow 1024 bit DSA and SHA-1 per FeSCO decision 2960
+  * sequoia: add separate rpm-sequoia backend
+  * crypto-policies.7: state upfront that FUTURE is not so interoperable
+  * Makefile: update for asciidoc 10
+  * Skip not needed LibreswanGenerator and SequoiaGenerator:
+    - Add crypto-policies-policygenerators.patch
+  * Remove crypto-policies-test_supported_modules_only.patch
+  * Rebase crypto-policies-no-build-manpages.patch
+
+-------------------------------------------------------------------
+Fri Jan 20 09:25:22 UTC 2023  - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20221214.a4c31a3:
+  * bind: expand the list of disableable algorithms
+  * libssh: Add support for openssh fido keys
+  * .gitlab-ci.yml: install krb5-devel for krb5-config
+  * sequoia: check using sequoia-policy-config-check
+  * sequoia: introduce new back-end
+  * Makefile: support overriding asciidoc executable name
+  * openssh: make none and auto explicit and different
+  * openssh: autodetect and allow forcing RequiredRSASize presence/name
+  * openssh: remove _pre_8_5_ssh
+  * pylintrc: update
+  * Revert "disable SHA-1 further for a Fedora 38 Rawhide "jump scare"..."
+  * disable SHA-1 further for a Fedora 38 Rawhide "jump scare"...
+  * Makefile: exclude built manpages from codespell
+  * add openssh HostbasedAcceptedAlgorithms
+  * openssh: add RSAMinSize option following min_rsa_size
+  * Revert ".gitlab-ci.yml: skip pylint (bz2069837)"
+  * docs: add customization recommendation
+  * tests/java: fix java.security.disableSystemPropertiesFile=true
+  * policies: add FEDORA38 and TEST-FEDORA39
+  * bind: control ED25519/ED448
+  * openssl: disable SHA-1 signatures in FUTURE/NO-SHA1
+  * .gitlab-ci.yml: skip pylint (bz2069837)
+  * openssh: add support for sntrup761x25519-sha512@openssh.com
+  * fips-mode-setup: fix one unrelated check to intended state
+  * fips-mode-setup, fips-finish-install: abandon /etc/system-fips
+  * Makefile: fix alt-policy test of LEGACY:AD-SUPPORT
+  * fips-mode-setup: catch more inconsistencies, clarify --check
+  * fips-mode-setup: improve handling FIPS plus subpolicies
+  * .gitlab-ci.yml: use rawhide so that we get gnutls 3.7.3
+  * gnutls: enable SHAKE, needed for Ed448
+  * gnutls: use allowlisting
+  * openssl: add newlines at the end of the output
+  * FIPS:OSPP: relax -ECDSA-SHA2-512, -FFDHE-*
+  * fips-mode-setup, fips-finish-install: call zipl more often
+  * Add crypto-policies-rpmlintrc file to avoid files-duplicate,
+    zero-length and non-conffile-in-etc warnings.
+  * Rebase patches:
+    - crypto-policies-FIPS.patch
+    - crypto-policies-no-build-manpages.patch
+  * Update README.SUSE
+
+-------------------------------------------------------------------
+Fri Sep 24 11:30:21 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove the scripts and documentation regarding
+  fips-finish-install and test-fips-setup
+  * Add crypto-policies-FIPS.patch
+
+-------------------------------------------------------------------
+Fri Sep 24 09:34:03 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20210917.c9d86d1:
+  * openssl: fix disabling ChaCha20
+  * pacify pylint 2.11: use format strings
+  * pacify pylint 2.11: specify explicit encoding
+  * fix minor things found by new pylint
+  * update-crypto-policies: --check against regenerated
+  * update-crypto-policies: fix --check's walking order
+  * policygenerators/gnutls: revert disabling DTLS0.9...
+  * policygenerators/java: add javasystem backend
+  * LEGACY: bump 1023 key size to 1024
+  * cryptopolicies: fix 'and' in deprecation warnings
+  * *ssh: condition ecdh-sha2-nistp384 on SECP384R1
+  * nss: hopefully the last fix for nss sigalgs check
+  * cryptopolicies: Python 3.10 compatibility
+  * nss: postponing check + testing at least something
+  * Rename 'policy modules' to 'subpolicies'
+  * validation.rules: fix a missing word in error
+  * cryptopolicies: raise errors right after warnings
+  * update-crypto-policies: capitalize warnings
+  * cryptopolicies: syntax-precheck scope errors
+  * .gitlab-ci.yml, Makefile: enable codespell
+  * all: fix several typos
+  * docs: don't leave zero TLS/DTLS protocols on
+  * openssl: separate TLS/DTLS MinProtocol/MaxProtocol
+  * alg_lists: order protocols new-to-old for consistency
+  * alg_lists: max_{d,}tls_version
+  * update-crypto-policies: fix pregenerated + local.d
+  * openssh: allow validation with pre-8.5
+  * .gitlab-ci.yml: run commit-range against upstream
+  * openssh: Use the new name for PubkeyAcceptedKeyTypes
+  * sha1_in_dnssec: deprecate
+  * .gitlab-ci.yml: test commit ranges
+  * FIPS:OSPP: sign = -*-SHA2-224
+  * scoped policies: documentation update
+  * scoped policies: use new features to the fullest...
+  * scoped policies: rewrite + minimal policy changes
+  * scoped policies: rewrite preparations
+  * nss: postponing the version check again, to 3.64
+- Remove patches fixed upstream: crypto-policies-typos.patch
+- Rebase: crypto-policies-test_supported_modules_only.patch
+- Merge crypto-policies-asciidoc.patch into
+    crypto-policies-no-build-manpages.patch
+
+-------------------------------------------------------------------
+Thu Feb 25 12:05:39 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20210225.05203d2:
+  * Disable DTLS0.9 protocol in the DEFAULT policy.
+  * policies/FIPS: insignificant reformatting
+  * policygenerators/libssh: respect ssh_certs
+  * policies/modules/OSPP: tighten to follow RHEL 8
+  * crypto-policies(7): drop not-reenableable comment
+  * follow up on disabling RC4
+
+-------------------------------------------------------------------
+Thu Feb 25 11:59:44 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove not needed scripts: fips-finish-install fips-mode-setup
+
+-------------------------------------------------------------------
+Wed Feb 24 16:22:08 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Disable DTLS0.9 protocol in GnuTLS DEFAULT policy. [bsc#1180938]
+  * The minimum DTLS protocol version in the DEFAULT and FUTURE
+    policies is DTLS1.2.
+  * Fixed upstream: 05203d21f6d0ea9bbdb351e4600f1e273720bb8e
+
+-------------------------------------------------------------------
+Wed Feb 17 12:36:05 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20210213.5c710c0: [bsc#1180938]
+  * setup_directories(): perform safer creation of directories
+  * save_config(): avoid re-opening output file for each iteration
+  * save_config(): break after first match to avoid unnecessary stat() calls
+  * CryptoPolicy.parse(): actually stop parsing line on syntax error
+  * ProfileConfig.parse_string(): correctly extended subpolicies
+  * Exclude RC4 from LEGACY
+  * Introduce rc4_md5_in_krb5 to narrow AD_SUPPORT
+  * code style: fix 'not in' membership testing
+  * pylintrc: tighten up a bit
+  * formatting: avoid long lines
+  * formatting: use f-strings instead of format()
+  * formatting: reformat all python code with autopep8
+  * nss: postponing the version check again, to 3.61
+  * Revert "Unfortunately we have to keep ignoring the openssh check for sk-"
+
+-------------------------------------------------------------------
+Tue Feb  9 10:50:47 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use tar_scm service, not obs_scm: With crypto-policies entering
+  Ring0 (distro bootstrap) we want to be sure to keep the buildtime
+  deps as low as possible.
+- Add python3-base BuildRequires: previously, OBS' tar service
+  pulled this in for us.
+
+-------------------------------------------------------------------
+Mon Feb  8 11:45:38 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Add a BuildIgnore for crypto-policies
+
+-------------------------------------------------------------------
+Mon Feb  8 11:22:31 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Use gzip instead of xz in obscpio and sources
+
+-------------------------------------------------------------------
+Fri Feb  5 10:57:46 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Do not build the manpages to avoid build cycles
+- Add crypto-policies-no-build-manpages.patch
+
+-------------------------------------------------------------------
+Tue Feb  2 17:38:27 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert to use a proper git source _service:
+  + To update, one just needs to update the commit/revision in the
+    _service file and run `osc service dr`.
+  + The version of the package is defined by the commit date of the
+    revision, followed by the abbreviated git hash (The same
+    revision used before results thus in a downgrade to 20210118,
+    but as this is a alltime new package, this is acceptable.
+
+-------------------------------------------------------------------
+Tue Feb  2 12:33:19 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to git version 20210127
+  * Bump Python requirement to 3.6
+  * Output sigalgs required by nss >=3.59
+  * Do not require bind during build
+  * Break build cycles with openssl and gnutls
+
+-------------------------------------------------------------------
+Thu Jan 21 14:44:07 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to git version 20210118
+  * Output sigalgs required by nss >=3.59
+  * Bump Python requirement to 3.6
+  * Kerberos 5: Fix policy generator to account for macs
+  * Add AES-192 support (non-TLS scenarios)
+  * Add documentation of the --check option
+
+-------------------------------------------------------------------
+Thu Jan 21 14:42:13 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix the man pages generation
+- Add crypto-policies-asciidoc.patch
+
+-------------------------------------------------------------------
+Thu Jan 21 09:56:42 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Test only supported modules
+- Add crypto-policies-test_supported_modules_only.patch
+
+-------------------------------------------------------------------
+Tue Dec 22 10:50:36 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Add crypto-policies-typos.patch to fix some typos
+
+-------------------------------------------------------------------
+Thu Nov 12 08:20:19 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Initial packaging, git version 20200918 (jsc#SLE-15832)

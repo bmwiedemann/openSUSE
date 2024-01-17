@@ -1,0 +1,10 @@
+<package name="liquid-dsp" project="openSUSE:Factory">
+  <title>Digital signal processing library for software-defined radios</title>
+  <description>liquid-dsp is an open-source signal processing library for software-defined
+radios written in C. Its purpose is to provide a set of extensible DSP modules
+that do no rely on external dependencies or cumbersome frameworks.
+
+</description>
+  <devel project="hardware:sdr" package="liquid-dsp"/>
+  <url>http://liquidsdr.org</url>
+</package>

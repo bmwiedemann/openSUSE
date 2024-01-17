@@ -1,0 +1,17 @@
+--- texmf-dist/tex/jadetex/base/jadetex.ini
++++ texmf-dist/tex/jadetex/base/jadetex.ini	2010-01-11 14:35:48.065760000 +0100
+@@ -1,7 +1,13 @@
+ % public domain.
+ \let\primitivedump=\dump
+ \let\dump=\relax
+-\input latex.ini
++\ifx\pdfoutput\undefined \input latex.ini \else
++  \ifx\pdfoutput\relax \input latex.ini \else
++    \ifnum\pdfoutput<1 \input latex.ini \else
++      \input pdflatex.ini
++    \fi
++  \fi
++\fi
+ \let\dump=\primitivedump
+ 
+ \input jadetex.ltx

@@ -1,0 +1,153 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6600816b2c1e4de8a3d9ac8af5c16207</srcmd5>
+    <version>2.8.dev.16+git.1550844464.79f319b6b</version>
+    <time>1551113652</time>
+    <user>coolo</user>
+    <comment>yet another Factory candidate</comment>
+    <requestid>678242</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5a08e94d4eab93331d148b8940785971</srcmd5>
+    <version>2.8.dev.16+git.1550844464.79f319b6b</version>
+    <time>1551284975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>679796</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>be37189eaad6ab7264ef562127350662</srcmd5>
+    <version>2.8.dev.29+git.1557398426.e91b5c34d</version>
+    <time>1557472793</time>
+    <user>dimstar_suse</user>
+    <comment>M15 candidate (forwarded request 701818 from smithfarm)</comment>
+    <requestid>701819</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dc49b0dd44eacc28672f95995f5c6b12</srcmd5>
+    <version>2.8.dev.29+git.1557746732.251ace12d</version>
+    <time>1557834180</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1134302 (forwarded request 702636 from smithfarm)</comment>
+    <requestid>702637</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ccdd99289f17fed58e6c40f20f0b499d</srcmd5>
+    <version>2.8.dev.29+git.1557746732.251ace12d</version>
+    <time>1566893574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725264</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>26599e2c6a1c4c7c6bd3afa8a0a1a722</srcmd5>
+    <version>3.0.2+git0.eae6d6d35</version>
+    <time>1575728383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752370</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>00b792d8fa855286c7b7ddbc53b400cd</srcmd5>
+    <version>3.1+git0.4de09d665</version>
+    <time>1577137003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1+git0.4de09d665:
+  * V3.1
+  * Pullup ntirpc to 3.1
+- Update to version 3.0.3+git0.0c2a4da66:
+  * V3.0.3
+  * NFS uio setup calloc size incorrect
+  * cmake: Add support for Open Build Server
+    + remove sle_build_detect.patch as changes upstreamed
+  * RADOS - Log a message when requested backend isn't available
+  * Handle RPCSEC_GSS negotiation or wrong cred messages
+  * Protocol: add config option to force utf8 string scan
+  * Clean up UTF-8 checking in preparation for config option
+</comment>
+    <requestid>758112</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1f4dbefcb8408b7d9eeef193c2f1053f</srcmd5>
+    <version>3.1+git0.4de09d665</version>
+    <time>1578437439</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop -DCMAKE_BUILD_TYPE=Release in favour of %cmake macro default.
+
+- Use %cmake macros for build in order to respect $optflags.</comment>
+    <requestid>760717</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1c78ae5761e7f4c9e977bf9ed4de70ff</srcmd5>
+    <version>3.2+git0.8d07e25a7</version>
+    <time>1579346118</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename systemd cofig file for nfs-ganesha service to support
+  upstream service configuration script
+- Update to version 3.2+git0.8d07e25a7:
+  * V3.2
+  * Move async callback to svc_req and give it its own wpe
+  * Crash under duplicate request &quot;being processed&quot;
+  * nfs3_FhandleToExportId returns an int (not a short)
+  * Stats for all ops by a client
+- Update spec to support 3.2 and remove Obsoletes
+</comment>
+    <requestid>764593</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>93fd4ee15bb030908ae3304de2d56d7f</srcmd5>
+    <version>3.2+git0.8d07e25a7</version>
+    <time>1583007698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779338</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>1394b62257ee244a409e5620320ae386</srcmd5>
+    <version>3.2+git0.8d07e25a7</version>
+    <time>1585995596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790132</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>397be52d5cd8911a60e1b139304287a6</srcmd5>
+    <version>3.3+git0.39e0cf712</version>
+    <time>1595576858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821543</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>252d842dc9b5a508fcb6a53c0aaac034</srcmd5>
+    <version>3.3+git0.39e0cf712</version>
+    <time>1595949896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823005</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>b88a5b755dd54f0cded9c1df11a2f950</srcmd5>
+    <version>3.3+git0.39e0cf712</version>
+    <time>1612707420</time>
+    <user>dimstar_suse</user>
+    <comment>disable FSAL_RGW build</comment>
+    <requestid>869688</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>d128895dbe113d32d2787099bfc00ce8</srcmd5>
+    <version>3.3+git0.39e0cf712</version>
+    <time>1627680123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909326</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>6d0054877a126ba42b374fe7c23dd234</srcmd5>
+    <version>3.3+git0.39e0cf712</version>
+    <time>1636663083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930772</requestid>
+  </revision>
+</revisionlist>

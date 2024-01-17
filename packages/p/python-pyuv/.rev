@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6cb0b9de8867ad06b6d846786fab7243</srcmd5>
+    <version>1.4.0</version>
+    <time>1572542079</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>742002</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9b20d51f0a1e6fd0fc4d896abbeb9e12</srcmd5>
+    <version>1.4.0</version>
+    <time>1611595504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866614</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b5b9e4e698fba7607c685e1753e9bf1a</srcmd5>
+    <version>1.4.0</version>
+    <time>1643666252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950284</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>12ae3e5087a6af6c0ee8b6bf5bf37067</srcmd5>
+    <version>1.4.0</version>
+    <time>1655972701</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984614</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>1cb7e9fcb0400e485627fe6d74b3c353</srcmd5>
+    <version>1.4.0</version>
+    <time>1676990187</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip build for python 3.11, not supported yet
+</comment>
+    <requestid>1066943</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>dec4621411687dc2b4f8908d0cfcfdf5</srcmd5>
+    <version>1.4.0</version>
+    <time>1687272577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093956</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>7285ad146aac68f96957c3310187af0e</srcmd5>
+    <version>1.4.0</version>
+    <time>1693482338</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1107904 from mcalabkova
+
+- Add patch loop.patch to fix the test failure</comment>
+    <requestid>1108061</requestid>
+  </revision>
+</revisionlist>

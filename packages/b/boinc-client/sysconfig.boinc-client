@@ -1,0 +1,66 @@
+## Path:        Productivity/Clustering/Computing
+## Description: define BOINC user
+## Type:        string
+## Default:     "boinc"
+## Config:      BOINC
+#
+# An empty setting will point to boinc
+#
+BOINC_BOINC_USR="boinc"
+
+## Path:        Productivity/Clustering/Computing
+## Description: define BOINC group
+## Type:        string
+## Default:     "boinc"
+## Config:      BOINC
+#
+# An empty setting will point to boinc
+#
+BOINC_BOINC_GRP="boinc"
+
+## Path:        Productivity/Clustering/Computing
+## Description: define BOINC DIR
+## Type:        string
+## Default:     "/var/lib/boinc"
+## Config:      BOINC
+##
+## An empty setting will point to /var/lib/boinc (SysVinit)
+##
+BOINC_BOINC_DIR="/var/lib/boinc"
+
+## Path:        Productivity/Clustering/Computing
+## Description: define BOINC options
+## Type:        string
+## Default:     ""
+## Config:      BOINC
+#
+##  --allow_remote_gui_rpc 
+##    allow boinc manager connections from remote machines
+##
+##  --check_all_logins
+##    for idle detection, check remote logins too
+##     run only when no logins from anywhere are active
+##
+##  --gui_rpc_port <port>
+##    port for GUI RPCs
+##
+##  --gui_rpc_unix_domain
+##    use Unix domain for GUI RPCs
+##
+##  --no_gpus
+##    don't check for GPUs
+##
+##  --redirectio
+##    redirect stdout and stderr to log files
+##
+##  --no_gui_rpc
+##    don't allow GUI RPC, don't make socket
+##
+##  --run_cpu_benchmarks
+##    run the CPU benchmarks
+##
+##  --skip_cpu_benchmarks
+##    don't run CPU benchmarks
+##
+#
+BOINC_BOINC_OPTS=""

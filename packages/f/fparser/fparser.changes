@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Fri Sep 11 08:07:19 UTC 2015 - mpluskal@suse.com
+
+- Update to 4.5.2
+  * Fixed several optimizer bugs.
+  * Fixed compilation problems with Visual Studio 2013 and gcc.
+- Use url for source
+
+-------------------------------------------------------------------
+Sun Mar  3 20:37:51 UTC 2013 - jengelh@inai.de
+
+- Mark package as requiring mpfr >= 2.4.0 due to use of mpfr_d_sub
+
+-------------------------------------------------------------------
+Wed Nov 14 21:19:06 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 4.5.1
+* Reverted the automatic C++11 detection to a precompiler macro
+  setting (FP_SUPPORT_CPLUSPLUS11_MATH_FUNCS) because not all
+  compilers yet fully support the C++11 math functions.
+* Fixed a potential duplicate symbol problem that happens with
+  explicit template instantiations.
+
+-------------------------------------------------------------------
+Tue Sep  4 02:28:00 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 4.5.0
+* Removed support for the "eval()" function from the supported
+  syntax. (This function was too dangerous, too difficult to maintain
+  internally, not very useful, and more or less a gimmick in the
+  first place.)
+* Removed several of the conditional compiling macro definitions,
+  namely FP_SUPPORT_TR1_MATH, FP_ENABLE_EVAL, FP_EVAL_MAX_REC_LEVEL,
+  FP_NO_EVALUATION_CHECKS and FP_EPSILON.
+* The epsilon value used in comparisons is now set with a member
+  function of FunctionParser (which allows setting different values
+  for different versions of the parser).
+* The math functions previously turned on with FP_SUPPORT_TR1_MATH
+  are now automatically used if __cplusplus indicates that C++11 is
+  in use.
+
+-------------------------------------------------------------------
+Wed Mar 21 10:53:32 UTC 2012 - alinm.elena@gmail.com
+
+- enabled -DFP_SUPPORT_TR1_MATH_FUNCS -DFP_SUPPORT_COMPLEX_NUMBERS
+- patch to compile with gcc4.7 (gcc4.7.patch) 
+
+-------------------------------------------------------------------
+Tue Oct 18 01:01:59 UTC 2011 - jengelh@medozas.de
+
+- Initial package for build.opensuse.org

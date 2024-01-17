@@ -1,0 +1,11 @@
+<package name="espeak" project="openSUSE:Factory">
+  <title>Software speech synthesizer (text-to-speech)</title>
+  <description>eSpeak is a compact open source software speech synthesizer for English
+and other languages.
+
+eSpeak uses a &quot;formant synthesis&quot; method. This allows many languages to
+be provided in a small size. The speech is clear, and can be used at
+high speeds, but is not as natural or smooth as larger synthesizers
+which are based on human speech recordings.</description>
+  <devel project="Base:System" package="espeak"/>
+</package>

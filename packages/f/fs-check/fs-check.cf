@@ -1,0 +1,88 @@
+# Configuration file for fs-check
+#   This file tells the program fs-check
+#    1. what filesystems are checked/excluded. Included filesystems
+#       are specified with OWNER and excluded filesystems are
+#       specified with EXCLUDE or EXCLUDE_PAT with optionally a DEFAULT prefix.
+#    2. at what point to start to complain. A threshold is specified with
+#       LIMIT for filesystem space or ILIMIT for inode space with optionally
+#       a DEFAULT prefix.
+#    3. who to send mail when there is trouble. A mail contact is specified
+#       with OWNER with possibly a DEFAULT prefix.
+#    4. what program to run when there is trouble. A mail contact is specified
+#       with ACTION with possibly a DEFAULT prefix.
+#    5. the shortest interval between which we send notifications. 
+#       This is specified via MIN_INTERVAL with optionally a DEFAULT prefix.
+
+# Lines with # in column 1 or blank lines are ignored. Actually, any line
+# that doesn't match a valid line is ignored.
+
+# So what *isn't* ignored? Lines that begin in column 1 with
+# EXCLUDE <mount-point>
+# EXCLUDE_PAT <mount-point-regexp>
+# OWNER  <mount-point> <email-address> <amount full>
+# OWNER <mount-point>  <email-address>
+# LIMIT <mount-point> <amount full>
+# ILIMIT <mount-point> <amount_full>
+# ACTION <mount-point> <script>
+# MIN_INTERVAL <mount-point> seconds
+# DEFAULT OWNER <email-address>
+# DEFAULT OWNER <email-address> <amount full>
+# DEFAULT LIMIT <amount full>
+# DEFAULT ACTION <script>
+# DEFAULT MIN_INTERVAL seconds
+
+# Case is not significant. 
+# <amount full> is either the percentage of the disk full or the number of
+# bytes that need to be available. The way we distinguish the first 
+# case from the second is to add a K, KB, M, MB, G, or GB at the end. 
+# An optional % can be used to specify percent for more clarity, although
+# if just a number is used it is taken as a percentage.
+
+# For example "default 90" and "DEFAULT 90%" are the same thing and
+# mean that mail should be sent out on any disk that is 90% or more
+# full unless otherwise specified by a more specific LIMIT, ILIMIT or
+# OWNER (with amount) line.
+
+# In contrast, 4096KB, 4096k, or 4MB means that 4 megabytes must be
+# available on the disk. You may want to use this form for say the
+# root partition.
+#
+# If there are many lines which refer to the same disk, or change the default
+# (which can be done in a couple ways), the last one sticks. 
+
+# This is who gets mail when something's wrong and no further specification
+default owner root 90%
+
+# This is the program to run when no other program is specified...
+default action /usr/bin/fs-report
+
+# Limit at which to complain about i-nodes...
+default ilimit 90%
+
+# Don't sent out notifications if they occur less than 30 minutes
+# (1800 seconds) from the last notification
+default min_interval 1800
+
+# The limits for the directory which holds /tmp should not be 
+# too close to the maximum limit. The file system checker stores its 
+# temporary data there. So if this is too full, we won't get a useful
+# report back.
+limit    /      70%
+#limit   /var   90%
+#limit   /usr	95%
+#limit   /src   90%
+#limit   /home	90%
+
+action  /var /usr/bin/fs-report --fast
+
+# Don't check any filesystem starting /cdrom...
+exclude_pat ^/media/
+
+# Filesystems not listed, e.g /home, would be checked as they come 
+# under the default. If you want a disk exclude them, create/uncomment 
+# an exclude line such as the one below.
+#exclude /mnt/floppy
+#exclude /mnt/msfloppy
+#exclude /mnt/cdrom
+#exclude /mnt/cdrom2
+#exclude /mnt/dvd

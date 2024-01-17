@@ -1,0 +1,165 @@
+Date: Tue Jul 24 20:06:29 UTC 2018
+From: aaronpuchert@alice-dsl.net
+
+Build shared libraries for client and static libraries for science
+apps. Science apps are distributed as binaries over the BOINC
+network, so dynamic linking doesn't make sense. But we can use
+dynamic linking for the client.
+
+---
+ api/Makefile.am       |    6 +++---
+ apps/Makefile.am      |    6 +++---
+ client/Makefile.am    |    1 -
+ clientgui/Makefile.am |    1 -
+ clientscr/Makefile.am |    1 -
+ lib/Makefile.am       |    4 ++--
+ sched/Makefile.am     |    1 -
+ tools/Makefile.am     |    1 -
+ vda/Makefile.am       |    1 -
+ 9 files changed, 8 insertions(+), 14 deletions(-)
+
+Index: boinc-client_release-7.20-7.20.0/api/Makefile.am
+===================================================================
+--- boinc-client_release-7.20-7.20.0.orig/api/Makefile.am
++++ boinc-client_release-7.20-7.20.0/api/Makefile.am
+@@ -44,20 +44,20 @@ endif
+ lib_LTLIBRARIES = libboinc_api.la
+ pkgconfig_DATA = libboinc_api.pc
+ libboinc_api_la_SOURCES = $(api_files)
+-libboinc_api_la_LDFLAGS = -version-number $(LIBBOINC_VERSION)
++libboinc_api_la_LDFLAGS = -static -version-number $(LIBBOINC_VERSION)
+ 
+ if BUILD_GRAPHICS_API
+ lib_LTLIBRARIES += libboinc_graphics2.la
+ pkgconfig_DATA += libboinc_graphics2.pc
+ libboinc_graphics2_la_SOURCES = $(graphics2_files)
+ libboinc_graphics2_la_CPPFLAGS = -I$(top_srcdir) -I$(top_srcdir)/lib -I$(top_srcdir)/samples/image_libs
+-libboinc_graphics2_la_LDFLAGS = -version-number $(LIBBOINC_VERSION) -ljpeg
++libboinc_graphics2_la_LDFLAGS = -static -version-number $(LIBBOINC_VERSION) -ljpeg
+ endif #BUILD_GRAPHICS_API
+ 
+ lib_LTLIBRARIES += libboinc_opencl.la
+ pkgconfig_DATA += libboinc_opencl.pc
+ libboinc_opencl_la_SOURCES = $(opencl_files)
+-libboinc_opencl_la_LDFLAGS = -version-number $(LIBBOINC_VERSION)
++libboinc_opencl_la_LDFLAGS = -static -version-number $(LIBBOINC_VERSION)
+ 
+ if INSTALL_HEADERS
+ ## install only headers that are meant for exporting the API !!
+Index: boinc-client_release-7.20-7.20.0/apps/Makefile.am
+===================================================================
+--- boinc-client_release-7.20-7.20.0.orig/apps/Makefile.am
++++ boinc-client_release-7.20-7.20.0/apps/Makefile.am
+@@ -8,15 +8,15 @@ example_PROGRAMS = upper_case concat 1se
+ 
+ upper_case_SOURCES = upper_case.cpp
+ upper_case_CXXFLAGS = $(PTHREAD_CFLAGS)
+-upper_case_LDFLAGS = -static-libtool-libs $(PTHREAD_CFLAGS)
++upper_case_LDFLAGS = $(PTHREAD_CFLAGS)
+ upper_case_LDADD = $(APPLIBS)
+ 
+ concat_SOURCES = concat.cpp
+ concat_CXXFLAGS = $(PTHREAD_CFLAGS)
+-concat_LDFLAGS = -static-libtool-libs $(PTHREAD_CFLAGS)
++concat_LDFLAGS = $(PTHREAD_CFLAGS)
+ concat_LDADD = $(APPLIBS)
+ 
+ 1sec_SOURCES = 1sec.cpp
+ 1sec_CXXFLAGS = $(PTHREAD_CFLAGS)
+-1sec_LDFLAGS = -static-libtool-libs $(PTHREAD_CFLAGS)
++1sec_LDFLAGS = $(PTHREAD_CFLAGS)
+ 1sec_LDADD = $(APPLIBS)
+Index: boinc-client_release-7.20-7.20.0/client/Makefile.am
+===================================================================
+--- boinc-client_release-7.20-7.20.0.orig/client/Makefile.am
++++ boinc-client_release-7.20-7.20.0/client/Makefile.am
+@@ -6,7 +6,6 @@ CXXFLAGS := $(filter-out -mfpu=vfpv3-d16
+ include $(top_srcdir)/Makefile.incl
+ 
+ if ENABLE_CLIENT_RELEASE
+-  AM_LDFLAGS += -static-libtool-libs
+ ## for an entirely statically linked library, you may want to try
+ ## -all-static instead.  There's a good chance it won't work properly,
+ ## so we'll use the safer "-static-libtool-libs" by default.
+Index: boinc-client_release-7.20-7.20.0/clientgui/Makefile.am
+===================================================================
+--- boinc-client_release-7.20-7.20.0.orig/clientgui/Makefile.am
++++ boinc-client_release-7.20-7.20.0/clientgui/Makefile.am
+@@ -7,7 +7,6 @@
+ include $(top_srcdir)/Makefile.incl
+ 
+ if ENABLE_CLIENT_RELEASE
+-  AM_LDFLAGS += -static-libtool-libs
+ ## for an entirely statically linked library, you may want to try
+ ## -all-static instead.  There's a good chance it won't work properly,
+ ## so we'll use the safer "-static-libtool-libs" by default.
+Index: boinc-client_release-7.20-7.20.0/clientscr/Makefile.am
+===================================================================
+--- boinc-client_release-7.20-7.20.0.orig/clientscr/Makefile.am
++++ boinc-client_release-7.20-7.20.0/clientscr/Makefile.am
+@@ -5,7 +5,6 @@ include $(top_srcdir)/Makefile.incl
+ 
+ AM_LDFLAGS += -lpthread
+ if ENABLE_CLIENT_RELEASE
+-  AM_LDFLAGS += -static-libtool-libs
+ ## for an entirely statically linked library, you may want to try
+ ## -all-static instead.  There's a good chance it won't work properly,
+ ## so we'll use the safer "-static-libtool-libs" by default.
+Index: boinc-client_release-7.20-7.20.0/lib/Makefile.am
+===================================================================
+--- boinc-client_release-7.20-7.20.0.orig/lib/Makefile.am
++++ boinc-client_release-7.20-7.20.0/lib/Makefile.am
+@@ -186,7 +186,7 @@ pkgconfig_DATA = libboinc.pc
+ libboinc_la_SOURCES = $(generic_sources) $(mac_sources) $(win_sources)
+ libboinc_la_CFLAGS = $(AM_CFLAGS) $(PICFLAGS) $(PTHREAD_CFLAGS)
+ libboinc_la_CXXFLAGS = $(AM_CXXFLAGS) $(PICFLAGS) $(PTHREAD_CFLAGS)
+-libboinc_la_LDFLAGS = -static -version-number $(LIBBOINC_VERSION)
++libboinc_la_LDFLAGS = -version-number $(LIBBOINC_VERSION)
+ if OS_FREEBSD
+ libboinc_la_LDFLAGS += -lexecinfo
+ endif
+@@ -198,7 +198,7 @@ pkgconfig_DATA += libboinc_crypt.pc
+ libboinc_crypt_la_SOURCES = crypt.cpp
+ libboinc_crypt_la_CFLAGS = $(AM_CFLAGS) $(PICFLAGS) $(PTHREAD_CFLAGS) $(SSL_CFLAGS)
+ libboinc_crypt_la_CXXFLAGS = $(AM_CXXFLAGS) $(PICFLAGS) $(PTHREAD_CFLAGS) $(SSL_CXXFLAGS)
+-libboinc_crypt_la_LDFLAGS = -static -version-number $(LIBBOINC_VERSION)
++libboinc_crypt_la_LDFLAGS = -version-number $(LIBBOINC_VERSION)
+ libboinc_crypt_la_LIBADD =
+ endif
+ 
+Index: boinc-client_release-7.20-7.20.0/sched/Makefile.am
+===================================================================
+--- boinc-client_release-7.20-7.20.0.orig/sched/Makefile.am
++++ boinc-client_release-7.20-7.20.0/sched/Makefile.am
+@@ -4,7 +4,6 @@
+ include $(top_srcdir)/Makefile.incl
+ 
+ AM_CPPFLAGS += $(MYSQL_CFLAGS) $(PTHREAD_CFLAGS)
+-AM_LDFLAGS += -static
+ 
+ if ENABLE_LIBRARIES
+ 
+Index: boinc-client_release-7.20-7.20.0/tools/Makefile.am
+===================================================================
+--- boinc-client_release-7.20-7.20.0.orig/tools/Makefile.am
++++ boinc-client_release-7.20-7.20.0/tools/Makefile.am
+@@ -42,7 +42,6 @@ dist_tools_DATA = \
+     gui_urls.xml
+ 
+ AM_CXXFLAGS += $(MYSQL_CFLAGS)
+-AM_LDFLAGS += -static
+ 
+ cancel_jobs_SOURCES = cancel_jobs.cpp
+ cancel_jobs_LDADD = $(SERVERLIBS)
+Index: boinc-client_release-7.20-7.20.0/vda/Makefile.am
+===================================================================
+--- boinc-client_release-7.20-7.20.0.orig/vda/Makefile.am
++++ boinc-client_release-7.20-7.20.0/vda/Makefile.am
+@@ -4,7 +4,6 @@ vdadir=$(prefix)/lib/boinc-server-maker/
+ vda_PROGRAMS = vda vdad ssim
+ 
+ AM_CXXFLAGS += $(MYSQL_CFLAGS)
+-AM_LDFLAGS += -static
+ 
+ vda_SOURCES = vda.cpp vda_lib.cpp vda_lib2.cpp vda_policy.cpp stats.cpp
+ vda_LDADD = $(SERVERLIBS)

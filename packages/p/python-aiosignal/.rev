@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c1b910e1dad3aa3abdc197be7e586027</srcmd5>
+    <version>1.2.0</version>
+    <time>1640459793</time>
+    <user>dimstar_suse</user>
+    <comment>required by aiohttp 3.8</comment>
+    <requestid>941701</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>51ab7e475d41750b8ecb0f9fe9fb1268</srcmd5>
+    <version>1.2.0</version>
+    <time>1682193739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082011</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>33635e687d83c90965336f36e97f832e</srcmd5>
+    <version>1.3.1</version>
+    <time>1683630402</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.1:
+  * Removed stray quote and comma from setup.cfg preventing PyPI from
+    accepting a release. (#361)
+- 1.3.0:
+  * Switched to declarative package setup. #267
+  * Added support for Python 3.11. #360
+  * Dropped Python 3.6 support. #267
+</comment>
+    <requestid>1085033</requestid>
+  </revision>
+</revisionlist>

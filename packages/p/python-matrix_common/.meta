@@ -1,0 +1,5 @@
+<package name="python-matrix_common" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:messaging:matrix" package="python-matrix_common"/>
+</package>

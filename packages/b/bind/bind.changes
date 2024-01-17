@@ -1,0 +1,4447 @@
+-------------------------------------------------------------------
+Thu Jan  4 11:22:09 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.21
+  Removed Features:
+  * Support for using AES as the DNS COOKIE algorithm
+    (cookie-algorithm aes;) has been deprecated and will be removed
+    in a future release. Please use the current default,
+    SipHash-2-4, instead.
+  * The resolver-nonbackoff-tries and resolver-retry-interval
+    statements have been deprecated. Using them now causes a
+    warning to be logged.
+
+-------------------------------------------------------------------
+Wed Nov 15 16:16:29 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.20
+  Feature Changes:
+  * The IP addresses for B.ROOT-SERVERS.NET have been updated to
+    170.247.170.2 and 2801:1b8:10::b.
+
+  Bug Fixes:
+  * If the unsigned version of an inline-signed zone contained
+    DNSSEC records, it was incorrectly scheduled for resigning.
+    This has been fixed.
+  * Looking up stale data from the cache did not take local
+    authoritative data into account. This has been fixed. 
+  * An assertion failure was triggered when lock-file was used at
+    the same time as the named -X command-line option. This has
+    been fixed.
+  * The lock-file file was being removed when it should not have
+    been, making the statement ineffective when named was started
+    three or more times. This has been fixed.
+
+-------------------------------------------------------------------
+Fri Oct 13 08:18:24 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable SLP by default for Factory and ALP (bsc#1214884)
+
+-------------------------------------------------------------------
+Tue Sep 19 13:28:53 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.19
+  Security Fixes:
+  * Previously, sending a specially crafted message over the
+    control channel could cause the packet-parsing code to run out
+    of available stack memory, causing named to terminate
+    unexpectedly. This has been fixed. (CVE-2023-3341)
+    [bsc#1215472]
+  * A flaw in the networking code handling DNS-over-TLS queries
+    could cause named to terminate unexpectedly due to an assertion
+    failure under significant DNS-over-TLS query load. This has
+    been fixed. (CVE-2023-4236)
+    [bsc#1215471]
+
+  Removed Features:
+  * The dnssec-must-be-secure option has been deprecated and will
+    be removed in a future release.
+
+  Feature Changes:
+  * If the server command is specified, nsupdate now honors the
+    nsupdate -v option for SOA queries by sending both the UPDATE
+    request and the initial query over TCP.
+
+  Bug Fixes:
+  * The value of the If-Modified-Since header in the statistics
+    channel was not being correctly validated for its length,
+    potentially allowing an authorized user to trigger a buffer
+    overflow. Ensuring the statistics channel is configured
+    correctly to grant access exclusively to authorized users is
+    essential (see the statistics-channels block definition and
+    usage section).
+  * The Content-Length header in the statistics channel was lacking
+    proper bounds checking. A negative or excessively large value
+    could potentially trigger an integer overflow and result in an
+    assertion failure.
+  * Several memory leaks caused by not clearing the OpenSSL error
+    stack were fixed.
+  * The introduction of krb5-subdomain-self-rhs and
+    ms-subdomain-self-rhs UPDATE policies accidentally caused named
+    to return SERVFAIL responses to deletion requests for
+    non-existent PTR and SRV records. This has been fixed.
+  * The stale-refresh-time feature was mistakenly disabled when the
+    server cache was flushed by rndc flush. This has been fixed.
+  * BIND’s memory consumption has been improved by implementing
+    dedicated jemalloc memory arenas for sending buffers. This
+    optimization ensures that memory usage is more efficient and
+    better manages the return of memory pages to the operating
+    system.
+  * Previously, partial writes in the TLS DNS code were not
+    accounted for correctly, which could have led to DNS message
+    corruption. This has been fixed.
+
+-------------------------------------------------------------------
+Mon Sep 11 07:44:13 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Enable crypto-policies support: [bsc#1211301]
+  * Rebase vendor-files/config/named.conf
+
+-------------------------------------------------------------------
+Wed Aug 16 13:44:22 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.18
+  Feature Changes:
+  * When a primary server for a zone responds to an SOA query, but
+    the subsequent TCP connection required to transfer the zone is
+    refused, that server is marked as temporarily unreachable. This
+    now also happens if the TCP connection attempt times out,
+    preventing too many zones from queuing up on an unreachable
+    server and allowing the refresh process to move on to the next
+    configured primary more quickly.
+  * The dialup and heartbeat-interval options have been deprecated
+    and will be removed in a future BIND 9 release.
+
+  Bug Fixes:
+  * Processing already-queued queries received over TCP could cause
+    an assertion failure, when the server was reconfigured at the
+    same time or the cache was being flushed. This has been fixed.
+  * Setting dnssec-policy to insecure prevented zones containing
+    resource records with a TTL value larger than 86400 seconds (1
+    day) from being loaded. This has been fixed by ignoring the TTL
+    values in the zone and using a value of 604800 seconds (1 week)
+    as the maximum zone TTL in key rollover timing calculations.
+
+-------------------------------------------------------------------
+Wed Jul 19 10:34:30 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.17
+  Feature Changes:
+  * If a response from an authoritative server has its RCODE set to
+    FORMERR and contains an echoed EDNS COOKIE option that was
+    present in the query, named now retries sending the query to
+    the same server without an EDNS COOKIE option.
+  * The relaxed QNAME minimization mode now uses NS records. This
+    reduces the number of queries named makes when resolving, as it
+    allows the non-existence of NS RRsets at non-referral nodes to
+    be cached in addition to the normally cached referrals.
+
+  Bug Fixes:
+  * The ability to read HMAC-MD5 key files, which was accidentally
+    lost in BIND 9.18.8, has been restored.
+  * Several minor stability issues with the catalog zone
+    implementation have been fixed.
+
+-------------------------------------------------------------------
+Thu Jul 13 15:00:12 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Enable dnstap support
+
+-------------------------------------------------------------------
+Thu Jul  6 07:16:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- rebuild bind-utils on libuv updates (bsc#1212090) 
+
+-------------------------------------------------------------------
+Thu Jun 22 08:04:23 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.16
+  Security Fixes:
+  * The overmem cleaning process has been improved, to prevent the
+    cache from significantly exceeding the configured
+    max-cache-size limit. (CVE-2023-2828)
+  * A query that prioritizes stale data over lookup triggers a
+    fetch to refresh the stale data in cache. If the fetch is
+    aborted for exceeding the recursion quota, it was possible for
+    named to enter an infinite callback loop and crash due to stack
+    overflow. This has been fixed. (CVE-2023-2911)
+
+  New Features:
+  * The system test suite can now be executed with pytest (along
+    with pytest-xdist for parallel execution).
+
+  Removed Features:
+  * TKEY mode 2 (Diffie-Hellman Exchanged Keying) is now
+    deprecated, and will be removed in a future release. A warning
+    will be logged when the tkey-dhkey option is used in
+    named.conf.
+
+  Bug Fixes:
+  * BIND could get stuck on reconfiguration when a listen-on
+    statement for HTTP is removed from the configuration. That has
+    been fixed.
+  * Previously, it was possible for a delegation from cache to be
+    returned to the client after the stale-answer-client-timeout
+    duration. This has been fixed.
+  * BIND could allocate too big buffers when sending data via
+    stream-based DNS transports, leading to increased memory usage.
+    This has been fixed.
+  * When the stale-answer-enable option was enabled and the
+    stale-answer-client-timeout option was enabled and larger than
+    0, named previously allocated two slots from the
+    clients-per-query limit for each client and failed to gradually
+    auto-tune its value, as configured. This has been fixed.
+
+-------------------------------------------------------------------
+Wed May 17 09:39:55 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.15
+  Bug Fixes:
+  * The max-transfer-time-in and max-transfer-idle-in statements
+    have not had any effect since the BIND 9 networking stack was
+    refactored in version 9.16. The missing functionality has been
+    re-implemented and incoming zone transfers now time out
+    properly when not progressing.
+  * The read timeout in rndc is now 60 seconds, matching the
+    behavior in BIND 9.16 and earlier. It had previously been
+    lowered to 30 seconds by mistake.
+  * When the ISC_R_INVALIDPROTO (ENOPROTOOPT, EPROTONOSUPPORT)
+    error code is returned by libuv, it is now treated as a network
+    failure: the server for which that error code is returned gets
+    marked as broken and is not contacted again during a given
+    resolution process.
+  * When removing delegations from an opt-out range,
+    empty-non-terminal NSEC3 records generated by those delegations
+    were not cleaned up. This has been fixed.
+  * Log file rotation code did not clean up older versions of log
+    files when the logging channel had an absolute path configured
+    as a file destination. This has been fixed.
+
+  Known Issues:
+  * Sending NOTIFY messages silently fails when the source port
+    specified in the notify-source statement is already in use.
+    This can happen e.g. when multiple servers are configured as
+    NOTIFY targets for a zone and some of them are unresponsive.
+    This issue can be worked around by not specifying the source
+    port for NOTIFY messages in the notify-source statement; note
+    that source port configuration is already deprecated and will
+    be removed altogether in a future release.
+
+-------------------------------------------------------------------
+Fri Apr 21 13:08:03 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.14
+  Removed Features:
+  * Zone type delegation-only, and the delegation-only and
+    root-delegation-only statements, have been deprecated. A
+    warning is now logged when they are used.
+  * These statements were created to address the SiteFinder
+    controversy, in which certain top-level domains redirected
+    misspelled queries to other sites instead of returning NXDOMAIN
+    responses. Since top-level domains are now DNSSEC-signed, and
+    DNSSEC validation is active by default, the statements are no
+    longer needed.
+
+  Bug Fixes:
+  * Several bugs which could cause named to crash during catalog
+    zone processing have been fixed.
+  * Previously, downloading large zones over TLS (XoT) from a
+    primary could hang the transfer on the secondary, especially
+    when the connection was unstable. This has been fixed.
+  * Performance of DNSSEC validation in zones with many DNSKEY
+    records has been improved.
+
+-------------------------------------------------------------------
+Wed Mar 15 16:13:44 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.13
+  New Features:
+  * RPZ updates are now run on specialized “offload” threads to
+    reduce the amount of time they block query processing on the
+    main networking threads. This increases the responsiveness of
+    named when RPZ updates are being applied after an RPZ zone has
+    been successfully transferred.
+
+  Feature Changes:
+  * Catalog zone updates are now run on specialized “offload”
+    threads to reduce the amount of time they block query
+    processing on the main networking threads. This increases the
+    responsiveness of named when catalog zone updates are being
+    applied after a catalog zone has been successfully transferred.
+  * libuv support for receiving multiple UDP messages in a single
+    recvmmsg() system call has been tweaked several times between
+    libuv versions 1.35.0 and 1.40.0; the current recommended libuv
+    version is 1.40.0 or higher. New rules are now in effect for
+    running with a different version of libuv than the one used at
+    compilation time. These rules may trigger a fatal error at
+    startup:
+    - Building against or running with libuv versions 1.35.0 and
+      1.36.0 is now a fatal error.
+    - Running with libuv version higher than 1.34.2 is now a
+      fatal error when named is built against libuv version
+      1.34.2 or lower.
+    - Running with libuv version higher than 1.39.0 is now a
+      fatal error when named is built against libuv version
+      1.37.0, 1.38.0, 1.38.1, or 1.39.0.
+  * This prevents the use of libuv versions that may trigger an
+    assertion failure when receiving multiple UDP messages in a
+    single system call.
+
+  Bug Fixes:
+  * named could crash with an assertion failure when adding a new
+    zone into the configuration file for a name which was already
+    configured as a member zone for a catalog zone. This has been
+    fixed.
+  * When named starts up, it sends a query for the DNSSEC key for
+    each configured trust anchor to determine whether the key has
+    changed. In some unusual cases, the query might depend on a
+    zone for which the server is itself authoritative, and would
+    have failed if it were sent before the zone was fully loaded.
+    This has now been fixed by delaying the key queries until all
+    zones have finished loading.
+
+-------------------------------------------------------------------
+Thu Feb 16 14:36:14 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.12
+  Removed Features:
+  * Specifying a port when configuring source addresses (i.e., as
+    an argument to query-source, query-source-v6, transfer-source,
+    transfer-source-v6, notify-source, notify-source-v6,
+    parental-source, or parental-source-v6, or in the source or
+    source-v6 arguments to primaries, parental-agents, also-notify,
+    or catalog-zones) has been deprecated. In addition, the
+    use-v4-udp-ports, use-v6-udp-ports, avoid-v4-udp-ports, and
+    avoid-v6-udp-ports options have also been deprecated.
+    Warnings are now logged when any of these options are
+    encountered in named.conf. In a future release, they will be
+    made nonfunctional.
+
+  Bug Fixes:
+  * A constant stream of zone additions and deletions via rndc
+    reconfig could cause increased memory consumption due to
+    delayed cleaning of view memory. This has been fixed. 
+  * The speed of the message digest algorithms (MD5, SHA-1, SHA-2),
+    and of NSEC3 hashing, has been improved.
+  * Pointing parental-agents to a resolver did not work because the
+    RD bit was not set on DS requests. This has been fixed. 
+  * Building BIND 9 failed when the --enable-dnsrps switch for
+    ./configure was used. This has been fixed.
+
+- Updated keyring and signature
+
+-------------------------------------------------------------------
+Tue Jan 24 13:39:10 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.11
+  Security Fixes:
+  * An UPDATE message flood could cause named to exhaust all
+    available memory. This flaw was addressed by adding a new
+    update-quota option that controls the maximum number of
+    outstanding DNS UPDATE messages that named can hold in a queue
+    at any given time (default: 100). (CVE-2022-3094)
+  * named could crash with an assertion failure when an RRSIG query
+    was received and stale-answer-client-timeout was set to a
+    non-zero value. This has been fixed. (CVE-2022-3736)
+  * named running as a resolver with the
+    stale-answer-client-timeout option set to any value greater
+    than 0 could crash with an assertion failure, when the
+    recursive-clients soft quota was reached. This has been fixed.
+    (CVE-2022-3924)
+
+  New Features:
+  * The new update-quota option can be used to control the number
+    of simultaneous DNS UPDATE messages that can be processed to
+    update an authoritative zone on a primary server, or forwarded
+    to the primary server by a secondary server. The default is
+    100. A new statistics counter has also been added to record
+    events when this quota is exceeded, and the version numbers for
+    the XML and JSON statistics schemas have been updated.
+
+  Removed Features:
+  * The Differentiated Services Code Point (DSCP) feature in BIND
+    has been non-operational since the new Network Manager was
+    introduced in BIND 9.16. It is now marked as obsolete, and
+    vestigial code implementing it has been removed. Configuring
+    DSCP values in named.conf now causes a warning to be logged.
+
+  Feature Changes:
+  * The catalog zone implementation has been optimized to work with
+    hundreds of thousands of member zones.
+
+  Bug Fixes:
+  * A rare assertion failure was fixed in outgoing TCP DNS
+    connection handling.
+  * Large zone transfers over TLS (XoT) could fail. This has been
+    fixed.
+  * In addition to a previously fixed bug, another similar issue
+    was discovered where quotas could be erroneously reached for
+    servers, including any configured forwarders, resulting in
+    SERVFAIL answers being sent to clients. This has been fixed.
+  * In certain query resolution scenarios (e.g. when following
+    CNAME records), named configured to answer from stale cache
+    could return a SERVFAIL response despite a usable, non-stale
+    answer being present in the cache. This has been fixed.
+  * When an outgoing request timed out, named would retry up to
+    three times with the same server instead of trying the next
+    available name server. This has been fixed.
+  * Recently used ADB names and ADB entries (IP addresses) could
+    get cleaned when ADB was under memory pressure. To mitigate
+    this, only actual ADB names and ADB entries are now counted
+    (excluding internal memory structures used for “housekeeping”)
+    and recently used (<= 10 seconds) ADB names and entries are
+    excluded from the overmem memory cleaner.
+  * The “Prohibited” Extended DNS Error was inadvertently set in
+    some NOERROR responses. This has been fixed.
+  * Previously, TLS session resumption could have led to handshake
+    failures when client certificates were used for authentication
+    (Mutual TLS). This has been fixed.
+  [bsc#1207471, bsc#1207473, bsc#1207475]
+
+-------------------------------------------------------------------
+Wed Jan  4 16:42:37 UTC 2023 - Thiago Macieira <thiago@kde.org>
+
+- Declare that named.service depends on network-online.target, otherwise named
+  may start too early and thus fail (time out) when resolving some
+  domains. This happens easily in containers.
+
+-------------------------------------------------------------------
+Thu Dec 22 12:36:53 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.10
+  Feature Changes:
+  * To reduce unnecessary memory consumption in the cache, NXDOMAIN
+    records are no longer retained past the normal negative cache
+    TTL, even if stale-cache-enable is set to yes.
+  * The auto-dnssec option has been deprecated and will be removed
+    in a future BIND 9.19.x release. Please migrate to
+    dnssec-policy.
+  * The coresize, datasize, files, and stacksize options have been
+    deprecated. The limits these options set should be enforced
+    externally, either by manual configuration (e.g. using ulimit)
+    or via the process supervisor (e.g. systemd).
+  * Setting alternate local addresses for inbound zone transfers
+    has been deprecated. The relevant options (alt-transfer-source,
+    alt-transfer-source-v6, and use-alt-transfer-source) will be
+    removed in a future BIND 9.19.x release.
+  * The number of HTTP headers allowed in requests sent to named’s
+    statistics channel has been increased from 10 to 100, to
+    accommodate some browsers that send more than 10 headers by
+    default.
+
+  Bug Fixes:
+  * named could crash due to an assertion failure when an HTTP
+    connection to the statistics channel was closed prematurely
+    (due to a connection error, shutdown, etc.).
+  * When a catalog zone was removed from the configuration, in some
+    cases a dangling pointer could cause the named process to
+    crash.
+  * When a zone was deleted from a server, a key management object
+    related to that zone was inadvertently kept in memory and only
+    released upon shutdown. This could lead to constantly
+    increasing memory use on servers with a high rate of changes
+    affecting the set of zones being served.
+  * TLS configuration for primary servers was not applied for zones
+    that were members of a catalog zone.
+  * In certain cases, named waited for the resolution of
+    outstanding recursive queries to finish before shutting down.
+  * host and nslookup command-line options setting the custom
+    TCP/UDP port to use were ignored for ANY queries (which are
+    sent over TCP).
+  * The zone <name>/<class>: final reference detached log message
+    was moved from the INFO log level to the DEBUG(1) log level to
+    prevent the named-checkzone tool from superfluously logging
+    this message in non-debug mode.
+
+-------------------------------------------------------------------
+Mon Nov 21 15:03:35 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to bind release 9.18.9
+  Bug Fixes:
+  * A crash was fixed that happened when a dnssec-policy zone that
+    used NSEC3 was reconfigured to enable inline-signing.
+  * In certain resolution scenarios, quotas could be erroneously
+    reached for servers, including any configured forwarders,
+    resulting in SERVFAIL answers being sent to clients.
+  * rpz-ip rules in response-policy zones could be ineffective in
+    some cases if a query had the CD (Checking Disabled) bit set to
+    1.
+  * Previously, if Internet connectivity issues were experienced
+    during the initial startup of named, a BIND resolver with
+    dnssec-validation set to auto could enter into a state where it
+    would not recover without stopping named, manually deleting the
+    managed-keys.bind and managed-keys.bind.jnl files, and starting
+    named again.
+  * The statistics counter representing the current number of
+    clients awaiting recursive resolution results (RecursClients)
+    could overflow in certain resolution scenarios.
+  * Previously, the port in remote servers such as in primaries and
+    parental-agents could be wrongly configured because of an
+    inheritance bug.
+  * Previously, BIND failed to start on Solaris-based systems with
+    hundreds of CPUs.
+  * When a DNS resource record’s TTL value was equal to the
+    resolver’s configured prefetch “eligibility” value, the record
+    was erroneously not treated as eligible for prefetching.
+
+-------------------------------------------------------------------
+Mon Nov  7 14:17:22 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to bind release 9.18.8
+  New Features:
+  * Support for parsing and validating the dohpath service
+    parameter in SVCB records was added.
+  * named now logs the supported cryptographic algorithms during
+    startup and in the output of named -V.
+  * The recursion not available and query (cache) '...' denied log
+    messages were extended to include the name of the ACL that
+    caused a given query to be denied.
+
+  Bug Fixes:
+  * An assertion failure was fixed in named that was caused by
+    aborting the statistics channel connection while sending
+    statistics data to the client.
+  * Changing just the TSIG key names for primaries in catalog
+    zones’ member zones was not effective. This has been fixed.
+
+  Known Issues:
+  * Upgrading from BIND 9.16.32, 9.18.6, or any older version may
+    require a manual configuration change. The following
+    configurations are affected:
+    - type primary zones configured with dnssec-policy but without
+      either allow-update or update-policy,
+    - type secondary zones configured with dnssec-policy.
+    In these cases please add inline-signing yes; to the individual
+    zone configuration(s). Without applying this change, named will
+    fail to start. For more details, see
+    https://kb.isc.org/docs/dnssec-policy-requires-dynamic-dns-or-inline-signing
+  * BIND 9.18 does not support dynamic update forwarding (see
+    allow-update-forwarding) in conjuction with zone transfers over
+    TLS (XoT).
+
+  This obsoletes the following patch:
+  * fix_documentation-Sphinx.patch
+
+-------------------------------------------------------------------
+Wed Oct  5 20:01:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add fix_documentation-Sphinx.patch to fix building with the
+  current Sphinx
+  (https://gitlab.isc.org/isc-projects/bind9/-/issues/3572).
+- Reapply bind-ldapdump-use-valid-host.patch
+
+-------------------------------------------------------------------
+Wed Sep 21 11:49:07 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to bind release 9.18.7
+  Security Fixes:
+  * Previously, there was no limit to the number of database lookups
+    performed while processing large delegations, which could be
+    abused to severely impact the performance of named running as a
+    recursive resolver. This has been fixed. (CVE-2022-2795)
+  * When an HTTP connection was reused to request statistics from the
+    stats channel, the content length of successive responses could
+    grow in size past the end of the allocated buffer.
+    This has been fixed. (CVE-2022-2881)
+  * Memory leaks in code handling Diffie-Hellman (DH) keys were fixed
+    that could be externally triggered, when using TKEY records in DH
+    mode with OpenSSL 3.0.0 and later versions. (CVE-2022-2906)
+  * named running as a resolver with the stale-answer-client-timeout
+    option set to 0 could crash with an assertion failure, when there
+    was a stale CNAME in the cache for the incoming query.
+    This has been fixed. (CVE-2022-3080)
+  * Memory leaks were fixed that could be externally triggered in the
+    DNSSEC verification code for the EdDSA algorithm. (CVE-2022-38178)
+
+  Feature Changes:
+  * Response Rate Limiting (RRL) code now treats all QNAMEs that are
+    subject to wildcard processing within a given zone as the same
+    name, to prevent circumventing the limits enforced by RRL.
+  * Zones using dnssec-policy now require dynamic DNS or
+    inline-signing to be configured explicitly.
+  * When reconfiguring dnssec-policy from using NSEC with an NSEC-only
+    DNSKEY algorithm (e.g. RSASHA1) to a policy that uses NSEC3,
+    BIND 9 no longer fails to sign the zone; instead, it keeps using
+    NSEC until the offending DNSKEY records have been removed from the
+    zone, then switches to using NSEC3.
+  * A backward-compatible approach was implemented for encoding
+    internationalized domain names (IDN) in dig and converting the
+    domain to IDNA2008 form; if that fails, BIND tries an IDNA2003
+    conversion.
+
+  Bug Fixes:
+  * A serve-stale bug was fixed, where BIND would try to return stale
+    data from cache for lookups that received duplicate queries or
+    queries that would be dropped. This bug resulted in premature
+    SERVFAIL responses, and has now been resolved.
+
+  This obsoletes the following patch:
+  * bind-fix-mysql-bindings.patch
+  [bsc#1203614, bsc#1203615, bsc#1203616, bsc#1203618, bsc#1203620]
+
+-------------------------------------------------------------------
+Thu Aug 18 14:57:33 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Fix typo in contrib/dlz/modules/{mysql,mysqldyn} that references
+  LDAP_LIBS instead of MYSQL_LIBS.
+  [bsc#1202149, bind.spec, bind-fix-mysql-bindings.patch]
+
+-------------------------------------------------------------------
+Thu Aug 18 13:28:24 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to bind release 9.18.6
+  Bug Fixes:
+  * When running as a validating resolver forwarding all queries
+    to another resolver, named could crash with an assertion failure.
+    These crashes occurred when the configured forwarder sent
+    a broken DS response and named failed its attempts to find
+    a proper one instead. This has been fixed.
+  * Non-dynamic zones that inherit dnssec-policy from the view
+    or options blocks were not marked as inline-signed
+    and therefore never scheduled to be re-signed. This has been fixed.
+  * The old max-zone-ttl zone option was meant to be superseded
+    by the max-zone-ttl option in dnssec-policy; however,
+    the latter option was not fully effective. This has been corrected:
+    zones no longer load if they contain TTLs greater than the limit
+    configured in dnssec-policy. For zones with both the old
+    max-zone-ttl option and dnssec-policy configured,
+    the old option is ignored, and a warning is generated.
+  * rndc dumpdb -expired was fixed to include expired RRsets,
+    even if stale-cache-enable is set to no and the cache-cleaning
+    time window has passed.
+  For a complete list of changes, see
+  * Bind Release Notes
+    https://downloads.isc.org/isc/bind9/9.18.6/doc/arm/html/notes.html
+  * The CHANGES file in the source RPM
+  [bind.spec bind-9.18.6.tar.xz bind-9.18.6.tar.xz.sha512.asc]
+
+-------------------------------------------------------------------
+Wed Aug  3 13:14:32 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- When enabling query_logging by un-commenting an example in
+  bind.conf, named attempts to create a file in /var/log which
+  fails due to missing credentials. This also applies to the
+  "dump-file" and the "statistics-file".
+  This is solved by having systemd-tmpfiles create a subdirectory
+  "/var/log/named" owned by named:named and changing the file
+  paths accordingly:
+  /var/log/named_querylog -> /var/log/named/querylog
+  /var/log/named_dump.db -> /var/log/named/dump.db
+  /var/log/named.stats -> /var/log/named/stats
+  Also, in "named.service", the ReadWritePath was changed to
+  include "/var/log/named" rather than just "var/log".
+  [bsc#1200685, bind.conf, vendor-files/config/named.conf,
+   vendor-files/system/named.service]
+
+-------------------------------------------------------------------
+Mon Aug  1 11:15:42 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Add systemd drop-in directory for named service
+  [bsc#1201689, bind.spec]
+
+-------------------------------------------------------------------
+Thu Jul 21 06:51:58 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Update to bind release 9.18.5
+  Bugs fixed:
+  * When resolving a name, don't give up immediately if an
+    authoritative server returns FORMERR; try the other servers first.
+  * When synth-from-dnssec generated a response using records from a
+    higher zone, it could unexpectedly prove non-existance of
+    records in a subordinate grafted-on namespace.  
+  * Update HTTP listener settings on reconfiguration.
+  * Fix a crash in dig NS search mode when one of the NS server
+    queries fail.
+  * Changed dnssec-signzone -H default to 0 additional NSEC3
+    iterations.
+  * When processing a catalog zone member zone make sure that there
+    is no configured pre-existing forward-only forw]ard zone with
+    that name.
+  [bind-9.18.5.tar.xz bind-9.18.5.tar.xz.sha512.asc]
+
+-------------------------------------------------------------------
+Wed Jun 15 12:37:17 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to 9.18.4:
+  Bugs fixed:
+  * Only write key files if the dnssec-policy keymgr has
+    changed the metadata.
+  * When the fetches-per-server quota was adjusted
+    because of an authoritative server timing out more
+    or less frequently, it was incorrectly set to 1
+    rather than the intended value.
+  Notable functional changes:
+  * Key timing options for `dnssec-keygen` and
+    `dnssec-settime` now accept times as printed by
+    `dnssec-settime -p`.
+  * Key timing options for `dnssec-settime` and related
+    utilities now accept "UNSET" times as printed by
+    `dnssec-settime -p`.
+  This obsoletes the following patch:
+  bind-prevent-buffer-overflow.patch
+  [bind-9.18.4.tar.xz, bind-9.18.4.tar.xz.sha512.asc,
+  bind-prevent-buffer-overflow.patch]
+
+-------------------------------------------------------------------
+Thu May 19 07:32:31 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to 9.18.3:
+  Bugs fixed:
+  * Fix a crash in DNS-over-HTTPS (DoH) code caused by premature
+    TLS stream socket object deletion.
+  * RPZ NSIP and NSDNAME rule processing didn't handle stub and
+    static-stub zones at or above the query name. This has now
+    been addressed.
+  * Fixed a deadlock that could occur if an rndc connection arrived
+    during the shutdown of network interfaces.
+  * Refactor the fctx_done() function to set fctx to NULL after
+    detaching, so that reference counting errors will be easier to
+    avoid.
+  * udp_recv() in dispatch could trigger an INSIST when the
+    callback's result indicated success but the response was
+    canceled in the meantime.
+  * Work around a jemalloc quirk which could trigger an
+    out-of-memory condition in named over time.
+  * If there was a pending negative cache DS entry, validations
+    depending upon it could fail.
+  * dig returned a 0 exit status on UDP connection failure.
+  * Fix an assertion failure when using dig with +nssearch and
+    +tcp options by starting the next query in the send_done()
+    callback (like in the UDP mode) instead of doing that
+    recursively in start_tcp(). Also ensure that queries
+    interrupted while connecting are detached properly.
+  * Don't remove CDS/CDNSKEY DELETE records on zone sign when
+    using 'auto-dnssec maintain;'.
+  This obsoletes the following patch:
+  bind-define-local-instances-of-FALLTHROUGH-and-UNREACHABLE.patch
+  [CVE-2022-1183, bsc#1199619]
+
+-------------------------------------------------------------------
+Tue May 17 12:06:17 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- An assertion failure can be triggered if a TLS connection to a
+  configured http TLS listener with a defined endpoint is destroyed too
+  early.
+  [CVE-2022-1183, bsc#1199619, CVE-2022-1183.patch]
+
+-------------------------------------------------------------------
+Mon May 16 08:14:55 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add upstream patch bind-prevent-buffer-overflow.patch.
+
+-------------------------------------------------------------------
+Thu May 12 14:25:28 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- The named-checkconf had been moved from /usr/sbin to /usr/bin
+  but that had not been reflected in scripts that called this,
+  eg named.prep. So these scripts failed.
+  Some installations still have "createNamedConfInclude" in the
+  NAMED_INITIALIZE_SCRIPTS in /etc/sysconfig/named. The named.prep
+  will now report this but continue.
+  [bsc#1199044, vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
+Mon Apr 25 06:56:58 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to 9.18.2:
+  Most important bugs fixed:
+  * The "starting maxtime timer" message related to outgoing
+    zone transfers was incorrectly logged at the ERROR level
+    instead of DEBUG(1).
+  * Ensure that zone maintenance queries have a retry limit.
+  * When using both the `+qr` and `+y` options `dig` could
+    crash if the connection to the first server was not
+    successful.
+  * dig could hang in some cases involving multiple servers
+    in a lookup, when a request fails and the next one
+    refuses to start for some reason, for example if it was
+    an IPv4 mapped IPv6 address.
+  * dig +nssearch was hanging until manually interrupted.
+  * When an UPDATE targets a zone that is not configured,
+    the requested zone name is now logged in the "not
+    authoritative" error message, so that it is easier to
+    track down problematic update clients.
+  * Quote the dns64 prefix in error messages that complain
+    about problems with it, to avoid confusion with the
+    following dns64 ACLs.
+  * When encountering socket error while trying to initiate
+    a TCP connection to a server, dig could hang
+    indefinitely, when there were more servers to try.
+  * When timing-out or having other types of socket errors
+    during a query, dig wasn't trying to perform the lookup
+    using other servers, in case they exist.
+  * Resending a UDP request in the result of a timeout
+    could cause an assertion failure when the resent
+    query's result was SERVFAIL.
+  * Replace single TCP write timer with per-TCP write
+    timers.
+  * Invalid dnssec-policy definitions were being accepted
+    where the defined keys did not cover both KSK and ZSK
+    roles for a given algorithm.  This is now checked for
+    and the dnssec-policy is rejected if both roles are
+    not present for all algorithms in use.
+  * Fix query context management issues in the TCP part
+    of dig.
+
+  Noteworthy functional changes:
+  * Add new "reuseport" option to enable/disable load
+    balancing of sockets.
+  * Set the minimum MTU on UDPv6 and TCPv6 sockets and
+    limit TCP maximum segment size (TCP_MAXSEG) to (1220)
+    for both TCPv4 and TCPv6 sockets.
+  
+  Needed to define two macros in contrib code:
+  FALLTHOUGH is a copy of how it is defined in <isc/util.h>
+
+  UNREACHABLE follows the model used in MacOS /usr/include/c++/v1/cstdlib
+  to determine if __builtin_ureachable is available
+  [bind-9.18.2.tar.xz, bind-9.18.2.tar.xz.sha512.asc,
+  bind-define-local-instances-of-FALLTHROUGH-and-UNREACHABLE.patch]
+
+-------------------------------------------------------------------
+Thu Mar 17 07:28:25 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- * When using forwarders, bogus NS records supplied by, or via, those
+    forwarders may be cached and used by named if it needs to recurse
+    for any reason, causing it to obtain and pass on potentially
+    incorrect answers. [CVE-2021-25220]
+  * TCP connection slots may be consumed for an indefinite time frame
+    via a specifically crafted TCP stream sent from a client.
+    This issue can only be triggered on BIND servers which have
+    keep-response-order enabled, which is not the default configuration.
+    The keep-response-order option is an ACL block, and as such, any
+    hosts specified within it will be able to trigger this issue on
+    affected versions. [CVE-2022-0396]
+  * The RFC 8198 Aggressive Use of DNSSEC-Validated Cache feature
+    (synth-from-dnssec) had been refactored and the default has been
+    changed so that is now automatically enabled for dnssec-validating
+    resolvers. Subsequently it was found that repeated patterns of
+    specific queries to servers with this feature enabled could cause
+    an INSIST failure in query.c:query_dname which causes named to
+    terminate unexpectedly.
+    The vulnerability affects BIND resolvers running 9.18.0 that have
+    both dnssec-validation and synth-from-dnssec enabled. (Note that
+    dnssec-validation auto; is the default setting unless configured
+    otherwise in named.conf and that enabling dnssec-validation
+    automatically enables synth-from-dnssec unless explicitly disabled)
+    [CVE-2022-0635]
+  * The refactoring of the recursive client code introduced a
+    "backstop lifetime timer."
+    While BIND is processing a request for a DS record that needs to be
+    forwarded, it waits until this processing is complete or until the
+    backstop lifetime timer has timed out. When the resume_dslookup() function
+    is called as a result of such a timeout, the function does not test
+    whether the fetch has previously been shut down. This introduces the
+    possibility of triggering an assertion failure, which could cause the BIND
+    process to terminate. [CVE-2022-0667]
+  * Reset client TCP connection when data received cannot
+    be parsed as a valid DNS request.
+  For a complete list of changes, see
+  * Bind Release Notes
+    https://downloads.isc.org/isc/bind9/9.18.1/doc/arm/html/notes.html
+  * The CHANGES file in the source RPM
+  This obsoletes bind-define-missing-threads.patch
+  Also, removed bind-python3 from the spec file as it is not build
+  any longer.
+  [bind.spec, bind-9.18.1.tar.xz, bind-9.18.1.tar.xz.sha512.asc,
+   bind-define-missing-threads.patch]
+
+-------------------------------------------------------------------
+Mon Jan 31 13:49:51 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Update to new MAJOR VERSION 9.18.0.
+  This has many enhnancements, bug fixes and changes.
+  The spec file also has mechanisms to run the integrated test suite.
+
+  MAJOR CHANGES:
+  * Support for securing DNS traffic using Transport Layer Security (TLS).
+    TLS is used by both DNS-over-TLS (DoT) and DNS-over-HTTPS (DoH).
+  * Support for zone transfers over TLS (XFR-over-TLS, XoT) for both
+    incoming and outgoing zone transfers.
+  * The dig tool is now able to send DoT queries (+tls option).
+  * Support for OpenSSL 3.0 APIs was added. 
+
+  A number of utilities have been removed: dnssec-checkds,
+  dnssec-coverage, dnssec-keymgr, which have been deprecated in
+  favor of dnssec-policy feature, as well as python support
+  (package python3-bind). 
+  A number of utilities have been moved from (/usr)/sbin to (/usr)/bin
+  The DLZ modules have been put into seperate sub-packages
+  to keep unwanted dependencies out of the main package:
+  * bind-modules-perl: dlz_perl_driver.so
+  * bind-modules-mysql: dlz_mysql_dynamic.so, dlz_mysqldyn_mod.so
+  * bind-modules-ldap: dlz_ldap_dynamic.so
+  * bind-modules-bdbhpt: dlz_bdbhpt_dynamic.so
+  * bind-modules-sqlite3: dlz_sqlite3_dynamic.so
+  * bind-modules-generic: dlz_filesystem_dynamic.so, dlz_wildcard_dynamic.so
+  For a complete list of changes, see
+  * Bind Release Notes
+    https://downloads.isc.org/isc/bind9/9.18.0/doc/arm/html/notes.html
+  * The CHANGES file in the source RPM
+  [bind.spec, bind-9.18.0.tar.xz, bind-9.18.0.tar.xz.sha512.asc,
+   bind-avoid-fallthrough-warning-error.patch,
+   bind-contrib-pthread.patch, named-bootconf.diff, bind-define-missing-threads.patch]
+
+-------------------------------------------------------------------
+Mon Jan 24 13:18:35 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Old-style DLZ drivers have been deprecated in favor of
+  DLZ modules. The DLZ drivers configuration option will
+  be removed from the next major BIND 9 release.
+
+  The option to use the DLZ modules is already available
+  in BIND 9; please see the ARM section on DLZ modules.
+
+  The dynamically lodable driver modules are stored in
+  /usr/lib64/bind-plugins
+  Example configurations for ldap and mysql are provided in
+  named.conf.
+  [bind.spec, vendor-files/config/named.conf]
+
+-------------------------------------------------------------------
+Fri Jan 21 16:24:16 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add now working CONFIG parameter to sysusers generator
+
+-------------------------------------------------------------------
+Thu Jan 20 09:48:39 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to release 9.16.25
+  This upgrade fixes the following bugs:
+  * Enforce enqueuing TCP resumeread to prevent the next read
+    callback from being executed before the current read callback
+    has finished, and the worker receive buffer has been marked as
+    "freed".
+  * Allow replacing expired zone signatures with signatures created
+    by the KSK.
+  * An assertion could occur if a catalog zone event was scheduled
+    while the task manager was being shut down.
+  * Defer detaching from zone->raw in zone_shutdown() if the zone
+    is in the process of being dumped to disk, to ensure that the
+    unsigned serial number information is always written in the
+    raw-format header of the signed version on an inline-signed
+    zone.
+  * named could leak memory when two dnssec-policy clauses had the
+    same name. named failed to log this error.
+  * Add a missing isc_condition_destroy() for nmsocket condition
+    variable and add missing isc_mutex_destroy() for nmworker lock.
+  [bind-9.16.25.tar.xz, bind-9.16.25.tar.xz.sha512.asc]
+
+-------------------------------------------------------------------
+Wed Jan 19 08:38:11 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
+
+- Added /var/log to the ReadWritePaths as some log files are
+  written there:
+  * dump-file "/var/log/named_dump.db"
+  * statistics-file "/var/log/named.stats"
+  [bsc#1194721, vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
+Wed Dec 15 14:37:47 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to release 9.16.24
+  This upgrade fixes the following bugs:
+  * mdig now honors the operating system's preferred ephemeral port
+    range.
+  * Fix a "named" crash related to removing and restoring a
+    `catalog-zone` entry in the configuration file and running
+    `rndc reconfig`.
+  * dns_sdlz_putrr failed to process some valid resource records.
+  * dnssec-dsfromkey failed to omit revoked keys.
+  Functional change:
+  * Change the message when accepting TCP connection has failed to
+    say "Accepting TCP connection failed" and change the log level
+    for ISC_R_NOTCONNECTED, ISC_R_QUOTA and ISC_R_SOFTQUOTA results
+    codes from ERROR to INFO.
+    [bind-9.16.24.tar.xz]
+
+-------------------------------------------------------------------
+Fri Dec  3 07:52:38 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to 9.16.23
+  Security issues fixed:
+  The "lame-ttl" option is now forcibly set to 0. This
+  effectively disables the lame server cache, as it could
+  previously be abused by an attacker to significantly
+  degrade resolver performance. (CVE-2021-25219)
+
+  Bugs fixed:
+  In 9.16.21:
+  * When a dynamic zone was made available in another view
+    using the "in-view" statement, running "rndc freeze"
+    always reported an "already frozen" error even though
+    the zone was successfully frozen.
+  * Stale data in the cache could cause named to send
+    non-minimized queries despite QNAME minimization being
+    enabled.
+  * When a DNSSEC-signed zone which only has a single
+    signing key available is migrated to use KASP, that key
+    is now treated as a Combined Signing Key (CSK).
+  * When a member zone was removed from a catalog zone,
+    journal files for the former were not deleted.
+  * named-checkconf failed to detect syntactically invalid
+    values of the "key" and "tls" parameters used to define
+    members of remote server lists.
+  * Fixed a regression which caused the EDNS TCP Keepalive option to be
+    ignored inadvertently in client requests. It has now
+    been fixed and this option is handled properly again.
+  * Fixed a regression which altered the internal memory structure of
+    zone databases, but neglected to update the MAPAPI value
+    for zone files in "map" format. This caused named to
+    attempt to load incompatible map files, triggering an
+    assertion failure on startup. The MAPAPI value has now
+    been updated, so named rejects outdated files when
+    encountering them.
+  * The thread-local isc_tid_v variable was not properly
+    initialized when running BIND 9 as a Windows Service,
+    leading to a crash on startup.
+  * "map" files exceeding 2GB in size failed to load due to
+    a size comparison that incorrectly treated the file size
+    as a signed integer.
+  In 9.16.22:
+  * Remove the "adjust interface" mechanism which was
+    responsible for setting up listeners on interfaces when
+    the "*-source(-v6)" address and port were the same as
+    the "listen-on(-v6)" address and port. Such a
+    configuration is no longer supported; under certain
+    timing conditions, that mechanism could prevent named
+    from listening on some TCP ports. This has been fixed.
+  * Multiple library names were mistakenly passed to the
+    krb5-config utility when ./configure was invoked with
+    the --with-gssapi=[/path/to/]krb5-config option. This
+    has been fixed by invoking krb5-config separately for
+    each required library.
+  * Fixed a regression which broke backward compatibility for the 
+    "check-names master ..." and "check-names slave ..."
+    options. This has been fixed.
+  * Address a potential deadlock when checking zone content
+    consistency.
+  In 9.16.23:
+  * Address Coverity warning in lib/dns/dnssec.c.
+  * Fix a bug when comparing two RSA keys. There was a typo
+    which caused the "p" prime factors to not being
+    compared.
+  * Fix an assertion failure caused by missing member zones
+    during a reload of a catalog zone.
+  This obsoletes bind-CVE-2021-25219.patch and
+  bind-fix-build-with-older-sphinx.patch
+  Other issues:
+  A compile time waring about fall through in a switch statement
+  has been averted by marking the cases as FALLTHROUGH.
+  [bind-9.16.23.tar.xz, bind-9.16.23.tar.xz.sha512.asc,
+  bind-CVE-2021-25219.patch, bind-fix-build-with-older-sphinx.patch,
+  bind-avoid-fallthrough-warning-error.patch]
+
+-------------------------------------------------------------------
+Mon Nov  8 09:01:21 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Aligned SLE15-SP4 and Factory spec files.
+  [bind.spec]
+
+-------------------------------------------------------------------
+Thu Nov  4 08:28:45 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Fixed CVE-2021-25219:
+  The lame-ttl option controls how long named caches certain types
+  of broken responses from authoritative servers (see the security
+  advisory for details). This caching mechanism could be abused by
+  an attacker to significantly degrade resolver performance. The
+  vulnerability has been mitigated by changing the default value of
+  lame-ttl to 0 and overriding any explicitly set value with 0,
+  effectively disabling this mechanism altogether. ISC's testing has
+  determined that doing that has a negligible impact on resolver
+  performance while also preventing abuse.
+  Administrators may observe more traffic towards servers issuing
+  certain types of broken responses than in previous BIND 9 releases.
+  [bsc#1192146, CVE-2021-25219, bind-CVE-2021-25219.patch]
+
+-------------------------------------------------------------------
+Mon Oct 18 09:55:18 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Just specifying "geoip-directory;" in /etc/named.conf is not
+  correct syntax. Must either put a path name or the string
+  "none". Appended the work "none" to make it correct syntax.
+
+-------------------------------------------------------------------
+Fri Oct  8 13:02:17 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Added build requirement of libmaxminddb to the spec file
+  Also added an entry for "geoip-directory" with the default path
+  to /etc/named.conf.
+  [bsc#1190884, vendor-files/config/named.conf, bind.spec]
+
+-------------------------------------------------------------------
+Thu Aug 19 06:25:35 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to 9.16.20
+  Bugs fixed:
+  * An assertion failure occurred when named attempted to send a
+    UDP packet that exceeded the MTU size, if Response Rate
+    Limiting (RRL) was enabled.  (CVE-2021-25218)
+  * Zones using KASP and inline-signed zones failed to apply
+    changes from the unsigned zone to the signed zone under
+    certain circumstances.
+  * "rndc reload <zonename>" could trigger a redundant reload for
+    an inline-signed zone whose zone file was not modified since
+    the last "rndc reload".
+  * named failed to check the opcode of responses when performing
+    zone refreshes, stub zone updates, and UPDATE forwarding.
+  * Some changes to "zone-statistics" settings were not properly
+    processed by "rndc reconfig".
+  * The "check DS" code failed to release all resources upon
+    named shutdown when a refresh was in progress.
+  * Authentication of rndc messages could fail if a "controls"
+    statement was configured with multiple key algorithms for
+    the same listener.
+  More changes see CHANGES in the source package.
+  [bsc#1189460, CVE-2021-25218]
+
+-------------------------------------------------------------------
+Thu Jul 29 13:14:28 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 9.16.19
+  * A race condition could occur where two threads were
+    competing for the same set of key file locks, leading to
+    a deadlock. This has been fixed. [GL #2786]
+  * create_keydata() created an invalid placeholder keydata
+    record upon a refresh failure, which prevented the
+    database of managed keys from subsequently being read
+    back. This has been fixed. [GL #2686]
+  * KASP support was extended with the "check DS" feature.
+    Zones with "dnssec-policy" and "parental-agents"
+    configured now check for DS presence and can perform
+    automatic KSK rollovers. [GL #1126]
+  * Rescheduling a setnsec3param() task when a zone failed
+    to load on startup caused a hang on shutdown. This has
+    been fixed. [GL #2791]
+  * The configuration-checking code failed to account for
+    the inheritance rules of the "dnssec-policy" option.
+    This has been fixed. [GL #2780]
+  * If nsupdate sends an SOA request and receives a REFUSED
+    response, it now fails over to the next available
+    server. [GL #2758]
+  * For UDP messages larger than the path MTU, named now
+    sends an empty response with the TC (TrunCated) bit set.
+    In addition, setting the DF (Don't Fragment) flag on
+    outgoing UDP sockets was re-enabled. [GL #2790]
+  * Views with recursion disabled are now configured with a
+    default cache size of 2 MB unless "max-cache-size" is
+    explicitly set. This prevents cache RBT hash tables from
+    being needlessly preallocated for such views. [GL #2777]
+  * Change 5644 inadvertently introduced a deadlock: when
+    locking the key file mutex for each zone structure in a
+    different view, the "in-view" logic was not considered.
+    This has been fixed. [GL #2783]
+  * Increasing "max-cache-size" for a running named instance
+    (using "rndc reconfig") did not cause the hash tables
+    used by cache databases to be grown accordingly. This
+    has been fixed. [GL #2770]
+  * Signed, insecure delegation responses prepared by named
+    either lacked the necessary NSEC records or contained
+    duplicate NSEC records when both wildcard expansion and
+    CNAME chaining were required to prepare the response.
+    This has been fixed. [GL #2759]
+  * A bug that caused the NSEC3 salt to be changed on every
+    restart for zones using KASP has been fixed. [GL #2725]
+
+-------------------------------------------------------------------
+Wed Jul 21 09:34:15 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Since BIND 9.9, it has been easier to use tsig-keygen and
+  ddns-confgen to generare TSIG keys. In 9.13, TSIG support was
+  removed from dnssec-keygen, so now it is just for DNSKEY (and KEY
+  for obscure cases). tsig-keygen is now used to generate DDNS keys.
+  [bsc#1187921, vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
+Thu Jun 24 15:02:14 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add patch bind-fix-build-with-older-sphinx.patch and sed fix
+  in order to build with older distributions.
+
+-------------------------------------------------------------------
+Wed Jun 23 06:46:55 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to 9.16.18
+  * The configuration-checking code failed to account for the
+    inheritance rules of the "key-directory" option.
+  * When preparing DNS responses, named could replace the letters
+    'W' (uppercase) and 'w' (lowercase) with '\000'.
+    This has been fixed.
+    [bind-9.16.18.tar.xz, bind-9.16.18.tar.xz.sha512.asc]
+
+-------------------------------------------------------------------
+Sat Jun 19 13:11:07 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add now working CONFIG parameter to sysusers generator
+
+-------------------------------------------------------------------
+Thu Jun 17 09:01:18 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to 9.16.17
+  Major changes (bug fixes):
+  * A copy-and-paste error caused the IP_DONTFRAG socket option to
+    be enabled instead of disabled. This has been fixed.
+  * The calculation of the estimated IXFR transaction size in
+    dns_journal_iter_init() was invalid.
+  * Fix a race condition in reading and writing key files for zones
+    using KASP and configured in multiple views.
+  * Zones which are configured in multiple views with different
+    values set for "dnssec-policy" and with identical values set
+    for "key-directory" are now detected and treated as a
+    configuration error.
+  * Address a potential memory leak in dst_key_fromnamedfile().
+  * Check that the first and last SOA record of an AXFR are
+    consistent.
+  * Improvements related to network manager/task manager
+    integration
+  [bind-9.16.17.tar.xz, bind-9.16.17.tar.xz.sha512.asc]
+
+-------------------------------------------------------------------
+Fri May 21 07:23:04 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- vendor-files/system/named.prep was missing a $
+  [bsc#1186278, vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
+Thu May 20 06:21:17 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to bind 9.16.16
+  * Feature Changes
+    + DNSSEC responses containing NSEC3 records with iteration counts
+      greater than 150 are now treated as insecure. [GL #2445]
+    + The maximum supported number of NSEC3 iterations that can be
+      configured for a zone has been reduced to 150. [GL #2642]
+    + The default value of the max-ixfr-ratio option was changed to
+      unlimited, for better backwards compatibility in the stable
+      release series. [GL #2671]
+    + Zones that want to transition from secure to insecure mode
+      without becoming bogus in the process must now have their
+      dnssec-policy changed first to insecure, rather than none. After
+      the DNSSEC records have been removed from the zone, the
+      dnssec-policy can be set to none or removed from the
+      configuration. Setting the dnssec-policy to insecure causes CDS
+      and CDNSKEY DELETE records to be published. [GL #2645]
+    + The implementation of the ZONEMD RR type has been updated to
+      match RFC 8976. [GL #2658]
+    + The draft-vandijk-dnsop-nsec-ttl IETF draft was implemented:
+      NSEC(3) TTL values are now set to the minimum of the SOA MINIMUM
+      value or the SOA TTL. [GL #2347]
+  * Bug Fixes
+    + It was possible for corrupt journal files generated by an earlier
+      version of named to cause problems after an upgrade. This has been
+      fixed. [GL #2670]
+    + TTL values in cache dumps were reported incorrectly when
+      stale-cache-enable was set to yes. This has been fixed.
+      [GL #389] [GL #2289]
+    + A deadlock could occur when multiple rndc addzone, rndc delzone,
+      and/or rndc modzone commands were invoked simultaneously for
+      different zones. This has been fixed. [GL #2626]
+    + named and named-checkconf did not report an error when multiple
+      zones with the dnssec-policy option set were using the same zone
+      file. This has been fixed. [GL #2603]
+    + If dnssec-policy was active and a private key file was temporarily
+      offline during a rekey event, named could incorrectly introduce
+      replacement keys and break a signed zone. This has been fixed.
+      [GL #2596]
+    + When generating zone signing keys, KASP now also checks for key
+      ID conflicts among newly created keys, rather than just between
+      new and existing ones. [GL #2628]
+
+-------------------------------------------------------------------
+Tue May 18 06:57:16 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- In /usr/libexec/bind/named.prep the order of arguments for
+  "ln -s" was wrong.
+  [vendor-files/system/named.prep, bsc#1186057]
+
+-------------------------------------------------------------------
+Mon May 17 14:20:08 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- "systemctl reload named" does not work:
+  * the "kill" command is in /usr/bin, not in /sbin,
+  *  the order of the options/arguments was wrong, and
+  * the "-p" option is wrong (it's not like strace's "-p").
+  [bsc#1186046, vendor-files/system/named.service]
+
+-------------------------------------------------------------------
+Mon May 10 17:09:43 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- SPEC file: Fixed outdated URL and use secured SourceURLs
+
+-------------------------------------------------------------------
+Mon May  3 12:35:44 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to bind 9.16.15
+  Major changes:
+  * A specially crafted GSS-TSIG query could cause a buffer
+    overflow in the ISC implementation of SPNEGO.
+    (CVE-2021-25216)
+
+  * named crashed when a DNAME record placed in the ANSWER
+    section during DNAME chasing turned out to be the final
+    answer to a client query. (CVE-2021-25215)
+
+  * Insufficient IXFR checks could result in named serving a
+    zone without an SOA record at the apex, leading to a
+    RUNTIME_CHECK assertion failure when the zone was
+    subsequently refreshed. This has been fixed by adding an
+    owner name check for all SOA records which are included
+    in a zone transfer. (CVE-2021-25214)
+  More changes see CHANGES in the source package.
+
+  [bsc#1185345,CVE-2021-25214,CVE-2021-25215,CVE-2021-25216]
+
+-------------------------------------------------------------------
+Thu Apr  8 09:23:22 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Rewrite of named service handling to better cope with systemd
+  protection (see change from Thu Jan 21) by introducing a
+  separate script "named.prep" which runs without restrictions
+  prior to starting named.
+  Removed all references to "lwresd" as "The lightweight resolver
+  daemon and library (lwresd and liblwres) have been removed."
+  (See CHANGES, item 4707)
+  [bind.spec, vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
+Tue Mar 23 12:34:53 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile, and declare /bin/bash as required buildshell
+  (use of {a,b} style expansion).
+
+-------------------------------------------------------------------
+Fri Mar 12 15:03:21 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- pass PIE compiler and linker flags via environment variables to make
+  /usr/bin/delv in bind-tools also position independent (bsc#1183453).
+- drop pie_compile.diff: no longer needed, this patch is difficult to
+  maintain, the environment variable approach is less error prone.
+
+-------------------------------------------------------------------
+Thu Feb 18 08:44:47 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- *** MAJOR CHANGES ***
+  * The libraries shipped with bind are now named after the bind
+    version (eg libisc-9.16.10.so), not some kind of artificial
+    number (eg libisc.so.1608)!
+  * For the time being (ie until the next upgrade),
+    new BIND option "stale-answer-client-timeout"
+    will be disabled (in /etc/named.conf): "stale-answer-enable no;"
+  * All libraries are now in bind-utils as they are used by bind
+    and bind-utils only and bind requires bind-utils.
+    This affects libdns, libirs, libisc, libisccc, libisccfg,
+    libns
+  * Dropped the devel packages as the libraries are used
+    internally only.
+
+  * Update to 9.16.12
+    Bugs fixed:
+    - KASP incorrectly set signature validity to the value of
+      the DNSKEY signature validity.
+    - Fix off-by-one bug in ISC SPNEGO implementation.
+      (CVE-2020-8625)
+    - Dig now reports unknown dash options while pre-parsing
+      the options. This prevents "-multi" instead of "+multi"
+      from reporting memory usage before ending option parsing
+      with "Invalid option: -lti".
+    - Fixed a crash in "dnssec-keyfromlabel" when using ECDSA
+      keys.
+    - Emit useful error message when "rndc retransfer" is
+      applied to a zone of inappropriate type.
+    - Improve performance of the DNSSEC verification code by
+      reducing the number of repeated calls to
+      dns_dnssec_keyfromrdata().
+    - named failed to start when its configuration included a
+      zone with a non-builtin "allow-update" ACL attached.
+    - Address potential double free in generatexml().
+    - When migrating to KASP, BIND 9 considered keys with the
+      "Inactive" and/or "Delete" timing metadata to be 
+      possible active keys.
+    - Fix the "three is a crowd" key rollover bug in KASP by
+      correctly implementing Equation (2) of the "Flexible and
+      Robust Key Rollover" paper.
+
+  * dnssec-keygen can no longer generate HMAC keys.
+    Use tsig-keygen instead.
+    genDDNSkey script was modified to reflect this.
+  [vendor-files/tools/bind.genDDNSkey, bsc#1180933, CVE-2020-8625,
+   bsc#1182246, bsc#1182483]
+
+-------------------------------------------------------------------
+Thu Jan 21 08:00:03 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version 9.16.11
+  * Bug fixing (please check CHANGES file in the source RPM)
+  * Functional change:
+    policy none;", named now
+    permits a safe transition to insecure mode and publishes
+    the CDS and CDNSKEY DELETE records, as described in RFC 8078.
+
+  Remove useless Makefiles and Makefile skeleton files in
+  /usr/share/doc/packages/bind/contrib/
+  [bind.spec, bsc#1179040]
+
+  *** MAJOR CHANGE ***
+  Changed protection of/against "named" from chroot jail to
+  systemd protection. This obsoletes subpackage named-chrootenv.
+  Kudos to Matthias Gerstner <matthias.gerstner@suse.com>
+  [bind.spec, bind-chrootenv.conf, vendor-files.tar.bz2, bsc#1180294]
+
+-------------------------------------------------------------------
+Tue Dec 29 19:28:46 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.16.10:
+  New Features:
+  * NSEC3 support was added to KASP. A new option for dnssec-policy,
+  nsec3param, can be used to set the desired NSEC3 parameters. NSEC3 salt
+  collisions are automatically prevented during resalting. [GL #1620]
+
+  * A new configuration option, stale-refresh-time, has been introduced. It allows
+  a stale RRset to be served directly from cache for a period of time after a
+  failed lookup, before a new attempt to refresh it is made. [GL #2066]
+
+  Feature Changes:
+  * The default value of max-recursion-queries was increased from 75 to 100.
+  Since the queries sent towards root and TLD servers are now included in the
+  count (as a result of the fix for CVE-2020-8616), max-recursion-queries has
+  a higher chance of being exceeded by non-attack queries, which is the main
+  reason for increasing its default value. [GL #2305]
+
+  The default value of nocookie-udp-size was restored back to 4096 bytes. Since
+  max-udp-size is the upper bound for nocookie-udp-size, this change relieves the
+  operator from having to change nocookie-udp-size together with max-udp-size in
+  order to increase the default EDNS buffer size limit. nocookie-udp-size can
+  still be set to a value lower than max-udp-size, if desired. [GL #2250]
+
+  Bug Fixes:
+  Handling of missing DNS COOKIE responses over UDP was tightened by falling
+  back to TCP. [GL #2275]
+
+  The CNAME synthesized from a DNAME was incorrectly followed when the QTYPE was
+  CNAME or ANY. [GL #2280]
+
+  Building with native PKCS#11 support for AEP Keyper has been broken since BIND
+  9.16.6. This has been fixed. [GL #2315]
+
+  named could crash with an assertion failure if a TCP connection were closed
+  while a request was still being processed. [GL #2227]
+
+  named acting as a resolver could incorrectly treat signed zones with no DS
+  record at the parent as bogus. Such zones should be treated as insecure. This
+  has been fixed. [GL #2236]
+
+  After a Negative Trust Anchor (NTA) is added, BIND performs periodic checks
+  to see if it is still necessary. If BIND encountered a failure while creating a
+  query to perform such a check, it attempted to dereference a NULL pointer,
+  resulting in a crash. [GL #2244]
+
+  A problem obtaining glue records could prevent a stub zone from functioning
+  properly, if the authoritative server for the zone were configured for minimal
+  responses. [GL #1736]
+
+  UV_EOF is no longer treated as a TCP4RecvErr or a TCP6RecvErr. [GL #2208]
+
+-------------------------------------------------------------------
+Wed Nov 11 10:55:46 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Added special make instruction for the "Administrator Reference
+  Manual" which is built using python3-Sphinx
+  [bsc#1177983, bind.spec]
+- Removed "Before=nss-lookup.target" from named.service as that
+  leads to a systemd ordering cycle
+  [bsc#1177491, bsc#1178626, bsc#1177991, vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
+Wed Oct 28 12:50:56 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version 9.16.8
+  New Features:
+  * Add a new rndc command, "rndc dnssec -rollover", which triggers a
+    manual rollover for a specific key.
+  * Add a new rndc command, "rndc dumpdb -expired", which dumps the
+    cache database, including expired RRsets that are awaiting
+    cleanup, to the dump-file for diagnostic purposes.
+  Bug Fixes:
+  * named reported an invalid memory size when running in an environment
+    that did not properly report the number of available memory pages
+    and/or the size of each memory page.
+  * With multiple forwarders configured, named could fail the
+    REQUIRE(msg->state == (-1)) assertion in lib/dns/message.c,
+    causing it to crash. This has been fixed.
+  * named erroneously performed continuous key rollovers for KASP
+    policies that used algorithm Ed25519 or Ed448 due to a mismatch
+    between created key size and expected key size.
+  * Updating contents of an RPZ zone which contained names spelled
+    using varying letter case could cause some processing rules in
+    that RPZ zone to be erroneously ignored.
+  Local changes:
+  * Add /usr/lib64/named to the files and directories in
+    bind-chrootenv.conf. This directory contains plugins loaded
+    after the chroot().
+  [bsc#1177913,bsc#1178078,bsc#1177603,bind-chrootenv.conf]
+
+-------------------------------------------------------------------
+Fri Oct 23 11:29:25 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Removed "dnssec-enable" from named.conf as it has been obsoleted.
+  Added a comment for reference which should be removed
+  in the future.
+- Added a comment to the "dnssec-validation" in named.conf
+  with a reference to forwarders which do not return signed responses.
+- Replaced named's dependency on time-sync with a dependency on time-set
+  in named.service.
+  [bsc#1177790,bsc#1175894,bsc#1177915,vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
+Wed Oct 21 09:05:49 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version 9.16.7
+  * Fix (non-)publication of CDS and CDNSKEY records.
+  * 'dig +bufsize=0' failed to disable EDNS.
+  * Address a TSAN report by ensuring each rate limiter
+    object holds a reference to its task.
+  * With query minimization enabled, named failed to
+    resolve ip6.arpa. names that had extra labels to the
+    left of the IPv6 part.
+  * Silence the EPROTO syslog message on older systems.
+  * Fix off-by-one error when calculating new hash table size.
+  * Tighten LOC parsing to reject a period (".") and/or "m"
+    as a value. Fix handling of negative altitudes which are
+    not whole meters.
+  * rbtversion->glue_table_size could be read without the
+    appropriate lock being held.
+  * Named erroneously accepted certain invalid resource
+    records that were incorrectly processed after
+    subsequently being written to disk and loaded back, as
+    the wire format differed. Such records include: CERT,
+    IPSECKEY, NSEC3, NSEC3PARAM, NXT, SIG, TLSA, WKS, and X25.
+  * NTA code needed to have a weak reference on its
+    associated view to prevent the latter from being deleted
+    while NTA tests were being performed.
+  * replace an INSIST() (which calls abort()) with a check and
+    an error message.
+  [bsc#1177913, bind-9.16.7.tar.xz]
+
+-------------------------------------------------------------------
+Fri Sep 18 13:20:34 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Removed "-r /dev/urandom" from all invocations of rndc-confgen
+  (init/named system/lwresd.init system/named.init in vendor-files)
+  as this option is deprecated and causes rndc-confgen to fail.
+  [bsc#1173311, bsc#1176674, bsc#1170713, vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
+Tue Sep 15 13:54:05 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- /usr/bin/genDDNSkey: Removing the use of the -r option in the call
+  of /usr/sbin/dnssec-keygen as BIND now uses the random number
+  functions provided by the crypto library (i.e., OpenSSL or a
+  PKCS#11 provider) as a source of randomness rather than /dev/random.
+  Therefore the -r command line option no longer has any effect on
+  dnssec-keygen. Leaving the option in genDDNSkey as to not break
+  compatibility. Patch provided by Stefan Eisenwiener.
+  [bsc#1171313, vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
+Fri Sep  4 14:40:27 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Put libns into a separate subpackage to avoid file conflicts
+  in the libisc subpackage due to different sonums (bsc#1176092).
+
+-------------------------------------------------------------------
+Fri Aug 28 09:38:11 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require /sbin/start_daemon: both init scripts, the one used in
+  systemd context as well as legacy sysv, make use of start_daemon.
+
+-------------------------------------------------------------------
+Tue Aug 18 12:13:49 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version 9.16.6
+  Fixes five vilnerabilities:
+  5481.   [security]      "update-policy" rules of type "subdomain" were
+                          incorrectly treated as "zonesub" rules, which allowed
+                          keys used in "subdomain" rules to update names outside
+                          of the specified subdomains. The problem was fixed by
+                          making sure "subdomain" rules are again processed as
+                          described in the ARM. (CVE-2020-8624) [GL #2055]
+
+  5480.   [security]      When BIND 9 was compiled with native PKCS#11 support, it
+                          was possible to trigger an assertion failure in code 
+                          determining the number of bits in the PKCS#11 RSA public
+                          key with a specially crafted packet. (CVE-2020-8623)
+                          [GL #2037]
+
+  5479.   [security]      named could crash in certain query resolution scenarios
+                          where QNAME minimization and forwarding were both 
+                          enabled. (CVE-2020-8621) [GL #1997]
+
+  5478.   [security]      It was possible to trigger an assertion failure by
+                          sending a specially crafted large TCP DNS message.
+                          (CVE-2020-8620) [GL #1996]
+
+  5476.   [security]      It was possible to trigger an assertion failure when 
+                          verifying the response to a TSIG-signed request.
+                          (CVE-2020-8622) [GL #2028]
+  For the less severe bugs fixed, see the CHANGES file.
+  [bsc#1175443, CVE-2020-8624, CVE-2020-8623, CVE-2020-8621,
+   CVE-2020-8620, CVE-2020-8622]
+
+-------------------------------------------------------------------
+Thu Aug  6 12:35:10 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Added "/etc/bind.keys" to NAMED_CONF_INCLUDE_FILES in
+  /etc/sysconfig/named to suppress warning message re
+  missing file.
+  [vendor-files.tar.bz2, bsc#1173983]
+
+-------------------------------------------------------------------
+Tue Jul 21 14:06:51 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version bind-9.16.5
+  * The "primary" and "secondary" keywords, when used
+    as parameters for "check-names", were not
+    processed correctly and were being ignored.
+  * 'rndc dnstap -roll <value>' did not limit the number of
+    saved files to <value>.
+  * Add 'rndc dnssec -status' command.
+  * Addressed a couple of situations where named could crash
+  For the full list, see the CHANGES file in the source RPM.
+
+-------------------------------------------------------------------
+Tue Jun 30 08:32:21 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Changed /var/lib/named to owner root:named and perms rwxrwxr-t
+  so that named, being a/the only member of the "named" group
+  has full r/w access yet cannot change directories owned by root
+  in the case of a compromized named.
+  [bsc#1173307, bind-chrootenv.conf]
+
+-------------------------------------------------------------------
+Thu Jun 18 06:35:35 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version bind-9.16.4
+  Fixing two security problems: 
+  * It was possible to trigger an INSIST when determining
+    whether a record would fit into a TCP message buffer.
+    (CVE-2020-8618)
+  * It was possible to trigger an INSIST in
+    lib/dns/rbtdb.c:new_reference() with a particular zone
+    content and query patterns. (CVE-2020-8619)
+  Also the following functional changes:
+  * Reject DS records at the zone apex when loading
+    master files. Log but otherwise ignore attempts to
+    add DS records at the zone apex via UPDATE.
+  * The default value of "max-stale-ttl" has been changed
+    from 1 week to 12 hours.
+  * Zone timers are now exported via statistics channel.
+    Thanks to Paul Frieden, Verizon Media.
+  Added support for idn2 to spec file (Thanks to Holger Bruenjes
+  <holgerbruenjes@gmx.net>).
+  More internal changes see the CHANGES file in the source RPM
+  This update obsoletes Makefile.in.diff
+  [bsc#1172958, CVE-2020-8618, CVE-2020-8619, Makefile.in.diff
+   bind.spec]
+
+-------------------------------------------------------------------
+Fri May 15 13:43:46 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version bind-9.16.3
+  Fixing two security problems:
+  * Further limit the number of queries that can be triggered from
+    a request.  Root and TLD servers are no longer exempt
+    from max-recursion-queries.  Fetches for missing name server
+    address records are limited to 4 for any domain. (CVE-2020-8616)
+  * Replaying a TSIG BADTIME response as a request could trigger an
+    assertion failure. (CVE-2020-8617)
+  Also
+  * Add engine support to OpenSSL EdDSA implementation.
+  * Add engine support to OpenSSL ECDSA implementation.
+  * Update PKCS#11 EdDSA implementation to PKCS#11 v3.0.
+  * Warn about AXFR streams with inconsistent message IDs.
+  * Make ISC rwlock implementation the default again.
+  For more see CHANGS file in source RPM.
+  [CVE-2020-8616, CVE-2020-8617, bsc#1171740, bind-9.16.3.tar.xz]
+
+-------------------------------------------------------------------
+Fri May  8 12:07:50 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- bind needs an accurate clock, so wait for the time-sync.target
+  to be reached before starting bind.
+  [bsc#1170667, bsc#1170713, vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
+Sat Mar 21 08:56:28 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use sysusers.d to create named user
+- Have only one package creating the user
+
+-------------------------------------------------------------------
+Fri Mar 20 09:00:07 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- coreutils are not used in %post, remove Requires.
+- Use systemd_ordering instead of hard requiring systemd
+
+-------------------------------------------------------------------
+Fri Mar 20 08:04:19 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version 9.16.1
+  * UDP network ports used for listening can no longer simultaneously
+    be used for sending traffic.
+  * The system-provided POSIX Threads read-write lock implementation
+    is now used by default instead of the native BIND 9 implementation.
+  * Fixed re-signing issues with inline zones which resulted in records
+    being re-signed late or not at all. 
+  [bind-9.16.1.tar.xz]
+
+-------------------------------------------------------------------
+Sat Feb 22 07:42:08 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update download urls
+- Do not enable geoip on old distros, the geoip db was shut down
+  so we need to use geoip2 everywhere
+
+-------------------------------------------------------------------
+Thu Feb 20 09:33:45 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version 9.16.0
+  Major upgrade, see
+  https://downloads.isc.org/isc/bind9/9.16.0/RELEASE-NOTES-bind-9.16.0.html
+  and
+  CHANGES file in the source tree.
+  Major functional change:
+  * What was set with --with-tuning=large option in older BIND9
+    versions is now a default, and a --with-tuning=small option was
+    added for small (e.g. OpenWRT) systems.
+  * A new "dnssec-policy" option has been added to named.conf to
+    implement a key and signing policy (KASP) for zones.
+  * The command (and manpage) bind9-config have been dropped as the
+    BIND 9 libraries are now purely internal.
+  No patches became obsolete through the upgrade.
+  [bind-9.16.0.tar.xz]
+
+-------------------------------------------------------------------
+Wed Jan  8 13:54:03 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to bind-9.14.9
+  bug fixes and feature improvements
+
+-------------------------------------------------------------------
+Tue Nov 19 10:09:35 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version 9.14.8:
+  * Set a limit on the number of concurrently served pipelined TCP
+    queries.
+  * Some other bug fixing, see CHANGES file.
+  [CVE-2019-6477, bsc#1157051]
+
+-------------------------------------------------------------------
+Fri Nov  8 12:50:00 UTC 2019 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version 9.14.7
+  * removed dnsperf, idn, nslint, perftcpdns, query-loc-0.4.0,
+    queryperf, sdb, zkt from contrib as they are not supported
+    any more
+  * Added support for the GeoIP2 API from MaxMind
+  * See CHANGES file in the source RPM.
+  * obsoletes bind-CVE-2018-5745.patch (bsc#1126068)
+  * obsoletes bind-CVE-2019-6465.patch (bsc#1126069)
+  * obsoletes bind-CVE-2018-5743.patch (bsc#1133185)
+  * obsoletes bind-CVE-2019-6471.patch (bsc#1138687)
+  [bsc#1111722, bsc#1156205, bsc#1126068, bsc#1126069, bsc#1133185,
+  bsc#1138687, CVE-2019-6476, CVE-2019-6475,
+  CVE-2019-6471, CVE-2018-5743, CVE-2019-6467, CVE-2019-6465,
+  CVE-2018-5745, CVE-2018-5744, CVE-2018-5740, CVE-2018-5738,
+  CVE-2018-5737, CVE-2018-5736, CVE-2017-3145, CVE-2017-3136,
+  configure.in.diff, bind-99-libidn.patch, perl-path.diff,
+  bind-sdb-ldap.patch, bind-CVE-2017-3145.patch,
+  bug-4697-Restore-workaro]und-for-Microsoft-Windows-T.patch,
+  bind-fix-fips.patch, bind-CVE-2018-5745.patch,
+  bind-CVE-2019-6465.patch, bind-CVE-2018-5743.patch,
+  bind-CVE-2019-6471.patch, CVE-2016-6170, bsc#1018700,
+  bsc#1018701, bsc#1018702, bsc#1033466, bsc#1033467, bsc#1033468,
+  bsc#1040039, bsc#1047184, bsc#1104129, bsc#906079, bsc#918330,
+  bsc#936476, bsc#937028, bsc#939567, bsc#977657, bsc#983505,
+  bsc#987866, bsc#989528, fate#320694, fate#324357, bnc#1127583,
+  bnc#1127583, bnc#1109160]
+
+-------------------------------------------------------------------
+Fri Jul 12 08:43:29 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service from Factory, since SuSEfirewall2 has been
+  replaced by firewalld, see [1].
+
+  [1]: https://lists.opensuse.org/opensuse-factory/2019-01/msg00490.html
+
+-------------------------------------------------------------------
+Tue Apr 16 10:15:22 UTC 2019 - Navin Kukreja <navin.kukreja@suse.com>
+
+- Add FIPS patch back into bind (bsc#1128220)
+- File: bind-fix-fips.patch 
+
+-------------------------------------------------------------------
+Mon Dec 10 09:25:44 UTC 2018 - Franck Bui <fbui@suse.com>
+
+- Don't rely on /etc/insserv.conf anymore for proper dependencies
+  against nss-lookup.target in named.service and lwresd.service
+  (bsc#1118367 bsc#1118368)
+
+-------------------------------------------------------------------
+Tue Sep 25 08:13:33 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update named.root. One of the root servers IP has changed.
+- Install the LICENSE file.
+
+-------------------------------------------------------------------
+Fri Jul  6 11:09:23 CEST 2018 - kukuk@suse.de
+
+- Add bind.conf and bind-chrootenv.conf to install the default
+  files in /var/lib/named and create chroot environment on systems
+  using transactional-updates [bsc#1100369] [FATE#325524].
+
+-------------------------------------------------------------------
+Fri Jun 22 15:10:39 CEST 2018 - kukuk@suse.de
+
+- Cleanup pre/post install: remove all old code which was needed to
+  update to SLES8.
+
+-------------------------------------------------------------------
+Wed Jun  6 12:03:25 UTC 2018 - navin.kukreja@suse.com
+
+- Fix a patch error in dnszone-schema file (bsc#901577) 
+
+-------------------------------------------------------------------
+Tue Jun  5 10:47:22 UTC 2018 - navin.kukreja@suse.com
+
+- Add SPF records in dnszone-schema file (bsc#901577) 
+
+-------------------------------------------------------------------
+Tue Jun  5 09:01:52 UTC 2018 - navin.kukreja@suse.com
+
+- Fix the hostname in ldapdump to be valid (bsc#965748) 
+- Patch file - bind-ldapdump-use-valid-host.patch
+
+-------------------------------------------------------------------
+Mon May 21 11:57:47 UTC 2018 - scabrero@suse.de
+
+- Add bug-4697-Restore-workaround-for-Microsoft-Windows-T.patch
+  Fixes dynamic DNS updates against samba and Microsoft DNS servers
+  (bsc#1094236).
+
+-------------------------------------------------------------------
+Thu May 17 14:28:29 UTC 2018 - navin.kukreja@suse.com
+
+- Move chroot related files from bind to bind-chrootenv 
+  (bsc#1093338) 
+
+-------------------------------------------------------------------
+Wed May 16 10:22:25 UTC 2018 - navin.kukreja@suse.com
+
+- Remove rndc.key generation from bind.spec file because bind
+  should create it on first boot (bsc#1092283)
+- Add misisng rndc.key check and generation code is lwresd.init
+  script
+
+-------------------------------------------------------------------
+Mon Feb 26 19:26:17 UTC 2018 - sweet_f_a@gmx.de
+
+- build with --enable-filter-aaaa to make it possible to use
+  config option "filter-aaaa-on-v4 yes". Useful to workaround
+  broken websites like netflix which block traffic from certain
+  IPv6 tunnel providers. (bsc#1069633)
+
+-------------------------------------------------------------------
+Fri Feb 16 12:59:41 UTC 2018 - bwiedemann@suse.com
+
+- Add /dev/urandom to chroot env 
+
+-------------------------------------------------------------------
+Wed Feb  7 15:17:17 UTC 2018 - navin.kukreja@suse.com
+
+- Implement systemd init scripts for bind and lwresd (fate#323155) 
+
+-------------------------------------------------------------------
+Tue Jan 23 21:59:24 UTC 2018 - navin.kukreja@suse.com
+
+- Apply bind-CVE-2017-3145.patch to fix CVE-2017-3145 (bsc#1076118) 
+
+-------------------------------------------------------------------
+Wed Dec  6 13:35:59 UTC 2017 - vcizek@suse.com
+
+- Use getent when adding user/group
+- update changelog to mention removed options
+
+-------------------------------------------------------------------
+Sat Nov 25 15:31:18 UTC 2017 - meissner@suse.com
+
+- license changed to MPL-2.0 according to legal.
+
+-------------------------------------------------------------------
+Thu Nov 23 13:38:07 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Nov 22 13:13:26 UTC 2017 - vcizek@suse.com
+
+- Add back init scripts, systemd units aren't ready yet
+
+-------------------------------------------------------------------
+Thu Nov 21 14:30:52 UTC 2017 - tchvatal@suse.com
+
+- Add python3-bind subpackage to allow python bind interactions
+
+-------------------------------------------------------------------
+Thu Nov 21 13:41:38 UTC 2017 - tchvatal@suse.com
+
+- Sync configure options with RH package and remove unused ones
+  * Enable python3
+  * Enable gssapi
+  * Enable dnssec scripts
+  * Remove no longer recognized --enable-rrl
+
+-------------------------------------------------------------------
+Thu Nov 21 12:54:35 UTC 2017 - tchvatal@suse.com
+
+- Drop idnkit from the build, the bind uses libidn since 2007 to run
+  all the resolutions in dig/etc. bsc#1030306
+- Add patch to make sure we build against system idn:
+  * bind-99-libidn.patch
+- Refresh patch:
+  * pie_compile.diff
+- Remove patches that are unused due to above:
+  * idnkit-powerpc-ltconfig.patch
+  * runidn.diff
+
+-------------------------------------------------------------------
+Thu Nov 21 12:11:08 UTC 2017 - vcizek@suse.com
+
+- drop bind-openssl11.patch (merged upstream)
+
+-------------------------------------------------------------------
+Thu Nov 17 11:35:29 UTC 2017 - tchvatal@suse.com
+
+- Remove systemd conditionals as we are not building on sle11 anyway
+- Force the systemd to be base for the initscript deployment
+
+-------------------------------------------------------------------
+Tue Nov 15 08:43:05 UTC 2017 - vcizek@suse.com
+
+- Bump up version of most of the libraries
+- Rename the subpackages to match the version updates
+- Add macros for easier handling of the library package names
+- Drop more unneeded patches
+  * dns_dynamic_db.patch (upstream)
+
+-------------------------------------------------------------------
+Tue Nov 14 11:17:03 UTC 2017 - tchvatal@suse.com
+
+- Update to 9.11.2 release:
+  * Many changes compared to 9.10 see the README file for in-depth listing
+  * For detailed changes with issues see CHANGES file
+  * Fixes for CVE-2017-3141 CVE-2017-3140 CVE-2017-3138 CVE-2017-3137 
+    CVE-3136 CVE-2016-9778
+  * OpenSSL 1.1 support
+- Remove support for some old distributions and cleanup the spec file
+  to require only what is really needed
+- Switch to systemd (bsc#1053808)
+- Remove german from the postinst messages
+- Remove patches merged upstream:
+  * bind-CVE-2017-3135.patch
+  * bind-CVE-2017-3142-and-3143.patch
+- Refresh named.root with another update
+
+-------------------------------------------------------------------
+Mon Nov 13 14:20:43 UTC 2017 - mpluskal@suse.com
+
+- Use python3 by default (fate#323526)
+
+-------------------------------------------------------------------
+Mon Sep 11 15:43:38 UTC 2017 - meissner@suse.com
+
+- bind-openssl11.patch: add a patch for enabling
+  openssl 1.1 support (builds for 1.0 and 1.1 openssl).
+  (bsc#1042635)
+
+-------------------------------------------------------------------
+Tue Aug  1 12:59:39 UTC 2017 - jcnengel@gmail.com
+
+- Enable JSON statistics
+
+-------------------------------------------------------------------
+Fri Jul 14 12:01:43 UTC 2017 - meissner@suse.com
+
+- named.root: refreshed from internic to 2017060102 (bsc#1048729)
+
+-------------------------------------------------------------------
+Mon Jul  3 08:47:39 UTC 2017 - dimstar@opensuse.org
+
+- Run systemctl daemon-reload even when this is not build with
+  systemd support: if installing bind on a systemd service and not
+  reloading systemd daemon, then the service 'named' is not known
+  right after package installation, causing confusion.
+
+-------------------------------------------------------------------
+Fri Jun 30 07:12:50 UTC 2017 - sflees@suse.de
+
+- Added bind-CVE-2017-3142-and-3143.patch to fix a security issue
+  where an attacker with the ability to send and receive messages
+  to an authoritative DNS server was able to circumvent TSIG
+  authentication of AXFR requests. A server that relies solely on
+  TSIG keys for protection with no other ACL protection could be
+  manipulated into (1) providing an AXFR of a zone to an
+  unauthorized recipient and (2) accepting bogus Notify packets.
+  [bsc#1046554, CVE-2017-3142, bsc#1046555, CVE-2017-3143] 
+
+-------------------------------------------------------------------
+Sat May 20 11:46:44 UTC 2017 - dimstar@opensuse.org
+
+- Fix named init script to dynamically find the location of the
+   openssl engines (boo#1040027).
+
+-------------------------------------------------------------------
+Mon Mar 20 15:02:16 CET 2017 - kukuk@suse.de
+
+- Add with_systemd define with default off, since we still use init
+  scripts and no systemd units.
+
+-------------------------------------------------------------------
+Sat Feb 18 17:24:58 UTC 2017 - kukuk@suse.com
+
+- Don't require and call insserv if we use systemd
+
+-------------------------------------------------------------------
+Wed Feb 15 12:50:42 UTC 2017 - navin.kukreja@suse.com
+
+- Fix assertion failure or a NULL pointer read for configurations using both DNS64 and RPZ
+  * CVE-2017-3135, bsc#1024130
+  * bind-CVE-2017-3135.patch
+
+-------------------------------------------------------------------
+Thu Jan 12 04:43:56 UTC 2017 - sflees@suse.de
+
+- Update to latest release in the 9.10.X series
+  * Security fixes in 9.10.4 
+    * Duplicate EDNS COOKIE options in a response could trigger an assertion failure. 
+      CVE-2016-2088. [RT #41809]
+    * The resolver could abort with an assertion failure due to improper DNAME handling
+      when parsing fetch reply messages. CVE-2016-1286. [RT #41753]
+    * Malformed control messages can trigger assertions in named and rndc. 
+      CVE-2016-1285. [RT #41666]
+    * Certain errors that could be encountered when printing out or logging an OPT record containing 
+      a CLIENT-SUBNET option could be mishandled, resulting in an assertion failure. CVE-2015-8705. [RT #41397]
+    * Specific APL data could trigger an INSIST. CVE-2015-8704. [RT #41396]
+    * Incorrect reference counting could result in an INSIST failure if a socket error occurred while performing
+      a lookup. CVE-2015-8461. [RT#40945]
+    * Insufficient testing when parsing a message allowed records with an incorrect class to be be accepted, 
+      triggering a REQUIRE failure when those records were subsequently cached. CVE-2015-8000. [RT #40987]
+  * For Features and other fixes in 9.10.4 see https://kb.isc.org/article/AA-01380/0/BIND-9.10.4-Release-Notes.html
+  * Description of patch changes
+    * BIND 9.10.4-P5 addresses the security issues described in CVE-2016-9131, CVE-2016-9147 and CVE-2016-9444. [bsc#1018699]
+    * BIND 9.10.4-P4 addresses the security issue described in CVE-2016-8864.
+    * BIND 9.10.4-P3 addresses the security issue described in CVE-2016-2776 and addresses an interoperability issue with ECS clients.
+    * BIND 9.10.4-P2 addresses the security issue described in CVE-2016-2775.
+    * BIND 9.10.4-P1 addresses Windows installation issues, the %z modifier is not supported under Windows and 
+      a race condition in the rbt/rbtdb implementation resulting in named exiting due to assertion failures being detected. 
+  * Following patches removed, fixed upstream
+    * cve-2016-2776.patch
+    * cve-2016-8864.patch
+
+-------------------------------------------------------------------
+Tue Nov  1 21:24:31 UTC 2016 - psimons@suse.com
+
+- Apply cve-2016-8864.patch to fix CVE-2016-8864 (bsc#1007829).
+
+-------------------------------------------------------------------
+Tue Sep 27 16:29:19 UTC 2016 - psimons@suse.com
+
+- Apply cve-2016-2776.patch to fix CVE-2016-2776 (bsc#1000362).
+
+-------------------------------------------------------------------
+Thu Jun 16 09:57:29 UTC 2016 - max@suse.com
+
+- Remove the start/stop dependency of named and lwresd on remote-fs
+  to break a service dependency cycle (bsc#947483, bsc#963971).
+- Make /var/lib/named owned by the named user (bsc#908850,
+  bsc#875691).
+- Call systemd service macros with the full service name.
+
+-------------------------------------------------------------------
+Thu Apr 14 09:56:18 UTC 2016 - lnussel@suse.de
+
+- remove BuildRequire libcap. That is only a legacy library, not
+  actually used for building. libcap-devel pulls in the right one.
+
+-------------------------------------------------------------------
+Fri Mar 11 13:56:10 UTC 2016 - max@suse.com
+
+- Security update 9.10.3-P4:
+  * CVE-2016-1285, bsc#970072: assert failure on input parsing can
+    cause premature exit.
+  * CVE-2016-1286, bsc#970073: An error when parsing signature
+    records for DNAME can lead to named exiting due to an assertion
+    failure.
+  * CVE-2016-2088, bsc#970074: a deliberately misconstructed packet
+    containing multiple cookie options to cause named to terminate
+    with an assertion failure.
+
+-------------------------------------------------------------------
+Thu Feb 25 16:10:45 UTC 2016 - bwiedemann@suse.com
+
+- drop a changing timestamp making build reproducible
+
+-------------------------------------------------------------------
+Fri Feb 12 18:56:28 UTC 2016 - crrodriguez@opensuse.org
+
+- Build with --with-randomdev=/dev/urandom otherwise 
+  libisc will use /dev/random to gather entropy and that might
+  block, short read etc..
+
+-------------------------------------------------------------------
+Wed Jan 20 10:58:15 UTC 2016 - max@suse.com
+
+- Security update 9.10.3-P3:
+  * Specific APL data could trigger an INSIST (CVE-2015-8704,
+    bsc#962189).
+  * Certain errors that could be encountered when printing out or
+    logging an OPT record containing a CLIENT-SUBNET option could
+    be mishandled, resulting in an assertion failure
+    (CVE-2015-8705, bsc#962190).
+  * Authoritative servers that were marked as bogus (e.g.
+    blackholed in configuration or with invalid addresses) were
+    being queried anyway.
+
+-------------------------------------------------------------------
+Mon Dec 21 16:55:36 UTC 2015 - max@suse.com
+
+- Update to version 9.10.3-P2 to fix a remote denial of service by
+  misparsing incoming responses (CVE-2015-8000, bsc#958861).
+
+-------------------------------------------------------------------
+Sun Oct  4 16:57:28 UTC 2015 - jengelh@inai.de
+
+- Avoid double %setup, it confuses some versions of quilt.
+- Summary/description update
+
+-------------------------------------------------------------------
+Tue Sep 22 13:15:51 UTC 2015 - meissner@suse.com
+
+- Update to version 9.10.2-P4
+  * An incorrect boundary boundary check in the OPENPGPKEY
+    rdatatype could trigger an assertion failure.
+    (CVE-2015-5986) [RT #40286] (bsc#944107)
+  * A buffer accounting error could trigger an
+    assertion failure when parsing certain malformed 
+    DNSSEC keys. (CVE-2015-5722) [RT #40212] (bsc#944066)
+
+-------------------------------------------------------------------
+Wed Jul 29 19:24:40 UTC 2015 - lmuelle@suse.com
+
+- Update to version 9.10.2-P3
+  Security Fixes
+  * A specially crafted query could trigger an assertion failure in message.c.
+    This flaw was discovered by Jonathan Foote, and is disclosed in
+    CVE-2015-5477. [RT #39795]
+  * On servers configured to perform DNSSEC validation, an assertion failure
+    could be triggered on answers from a specially configured server.
+    This flaw was discovered by Breno Silveira Soares, and is disclosed
+    in CVE-2015-4620. [RT #39795]
+  Bug Fixes
+  * Asynchronous zone loads were not handled correctly when the zone load was
+    already in progress; this could trigger a crash in zt.c. [RT #37573]
+  * Several bugs have been fixed in the RPZ implementation:
+    + Policy zones that did not specifically require recursion could be treated
+      as if they did; consequently, setting qname-wait-recurse no; was
+      sometimes ineffective. This has been corrected. In most configurations,
+      behavioral changes due to this fix will not be noticeable. [RT #39229]
+    + The server could crash if policy zones were updated (e.g. via
+      rndc reload or an incoming zone transfer) while RPZ processing
+      was still ongoing for an active query. [RT #39415]
+    + On servers with one or more policy zones configured as slaves, if a
+      policy zone updated during regular operation (rather than at startup)
+      using a full zone reload, such as via AXFR, a bug could allow the RPZ
+      summary data to fall out of sync, potentially leading to an assertion
+      failure in rpz.c when further incremental updates were made to the zone,
+      such as via IXFR. [RT #39567]
+    + The server could match a shorter prefix than what was
+      available in CLIENT-IP policy triggers, and so, an unexpected
+      action could be taken. This has been corrected. [RT #39481]
+    + The server could crash if a reload of an RPZ zone was initiated while
+      another reload of the same zone was already in progress. [RT #39649]
+
+-------------------------------------------------------------------
+Fri Jul 10 18:02:41 UTC 2015 - lmuelle@suse.com
+
+- Update to version 9.10.2-P2
+  - An uninitialized value in validator.c could result in an assertion failure.
+    (CVE-2015-4620) [RT #39795]
+- Update to version 9.10.2-P1
+  - Include client-ip rules when logging the number of RPZ rules of each type.
+    [RT #39670]
+  - Addressed further problems with reloading RPZ zones. [RT #39649]
+  - Addressed a regression introduced in change #4121. [RT #39611]
+  - The server could match a shorter prefix than what was available in
+    CLIENT-IP policy triggers, and so, an unexpected action could be taken.
+    This has been corrected. [RT #39481]
+  - On servers with one or more policy zones configured as slaves, if a policy
+    zone updated during regular operation (rather than at startup) using a full
+    zone reload, such as via AXFR, a bug could allow the RPZ summary data to
+    fall out of sync, potentially leading to an assertion failure in rpz.c when
+    further incremental updates were made to the zone, such as via IXFR.
+    [RT #39567]
+  - A bug in RPZ could cause the server to crash if policy zones were updated
+    while recursion was pending for RPZ processing of an active query.
+    [RT #39415]
+  - Fix a bug in RPZ that could cause some policy zones that did not
+    specifically require recursion to be treated as if they did; consequently,
+    setting qname-wait-recurse no; was sometimes ineffective. [RT #39229]
+  - Asynchronous zone loads were not handled correctly when the zone load was
+    already in progress; this could trigger a crash in zt.c. [RT #37573]
+  - Fix an out-of-bounds read in RPZ code. If the read succeeded, it doesn't
+    result in a bug during operation. If the read failed, named could segfault.
+    [RT #38559]
+
+-------------------------------------------------------------------
+Wed May 13 09:35:40 UTC 2015 - hguo@suse.com
+
+- Fix inappropriate use of /var/lib/named for locating dynamic-DB plugins.
+  Dynamic-DB plugins are now loaded from %{_libexecdir}/bind, consistent with
+  openSUSE packaging guideline.
+- Install additional header files which are helpful to the development of
+  dynamic-DB plugins.
+
+-------------------------------------------------------------------
+Fri May  8 18:00:41 UTC 2015 - lmuelle@suse.com
+
+- Depend on systemd macros and sysvinit on post-12.3 only.
+- Create empty lwresd.conf at build time.
+- Reduce file list pre-13.1.
+
+-------------------------------------------------------------------
+Fri May  8 15:05:25 UTC 2015 - lmuelle@suse.com
+
+- Update to version 9.10.2
+  - Handle timeout in legacy system test. [RT #38573]
+  - dns_rdata_freestruct could be called on a uninitialised structure when
+    handling a error. [RT #38568]
+  - Addressed valgrind warnings. [RT #38549]
+  - UDP dispatches could use the wrong pseudorandom
+    number generator context. [RT #38578]
+  - Fixed several small bugs in automatic trust anchor management, including a
+    memory leak and a possible loss of key state information. [RT #38458]
+  - 'dnssec-dsfromkey -T 0' failed to add ttl field. [RT #38565]
+  - Revoking a managed trust anchor and supplying an untrusted replacement
+    could cause named to crash with an assertion failure.
+    (CVE-2015-1349) [RT #38344]
+  - Fix a leak of query fetchlock. [RT #38454]
+  - Fix a leak of pthread_mutexattr_t. [RT #38454]
+  - RPZ could send spurious SERVFAILs in response
+    to duplicate queries. [RT #38510]
+  - CDS and CDNSKEY had the wrong attributes. [RT #38491]
+  - adb hash table was not being grown. [RT #38470]
+- Update bind.keyring
+- Update baselibs.conf due to updates to libdns160 and libisc148
+
+-------------------------------------------------------------------
+Fri May  8 11:48:03 UTC 2015 - hguo@suse.com
+
+- Enable export libraries to support plugin development.
+  Install DNSSEC root key.
+  Expose new interface for developing dynamic zone database.
+  + dns_dynamic_db.patch
+
+-------------------------------------------------------------------
+Tue Feb 10 22:24:26 UTC 2015 - dvaleev@suse.com
+
+- PowerPC can build shared libraries for sure.
+  idnkit-powerpc-ltconfig.patch 
+
+-------------------------------------------------------------------
+Fri Dec 12 02:28:36 UTC 2014 - jengelh@inai.de
+
+- Explicitly BuildRequire systemd-rpm-macros since it is used
+  for lwresd %post etc. Then drop pre-12.x material.
+  Remove configure.in.diff2.
+
+-------------------------------------------------------------------
+Thu Dec 11 13:03:30 UTC 2014 - jengelh@inai.de
+
+- Corrections to baselibs.conf
+
+-------------------------------------------------------------------
+Tue Dec  9 21:45:10 UTC 2014 - lmuelle@suse.com
+
+- Update to version 9.10.1-P1
+  - A flaw in delegation handling could be exploited to put named into an
+    infinite loop.  This has been addressed by placing limits on the number of
+    levels of recursion named will allow (default 7), and the number of
+    iterative queries that it will send (default 50) before terminating a
+    recursive query (CVE-2014-8500); (bnc#908994).
+    The recursion depth limit is configured via the "max-recursion-depth"
+    option, and the query limit via the "max-recursion-queries" option.
+    [RT #37580]
+  - When geoip-directory was reconfigured during named run-time, the
+    previously loaded GeoIP data could remain, potentially causing wrong ACLs
+    to be used or wrong results to be served based on geolocation
+    (CVE-2014-8680). [RT #37720]; (bnc#908995).
+  - Lookups in GeoIP databases that were not loaded could cause an assertion
+    failure (CVE-2014-8680). [RT #37679]; (bnc#908995).
+  - The caching of GeoIP lookups did not always handle address families
+    correctly, potentially resulting in an assertion failure (CVE-2014-8680).
+    [RT #37672]; (bnc#908995).
+
+-------------------------------------------------------------------
+Sun Dec  7 16:54:03 UTC 2014 - jengelh@inai.de
+
+- Convert some hard PreReq to leaner Requires(pre).
+- Typographical and orthographic fixes to description texts.
+
+-------------------------------------------------------------------
+Fri Dec 05 19:35:00 UTC 2014 - Led <ledest@gmail.com>
+
+- Fix bashisms in the createNamedConfInclude script.
+- Post scripts: remove '-e' option of 'echo' that may be unsupported
+  in some POSIX-compliant shells.
+
+-------------------------------------------------------------------
+Fri Dec  5 14:54:53 UTC 2014 - lmuelle@suse.com
+
+- Add openssl engines to the lwresd chroot.
+- Add /etc/lwresd.conf with attribute ghost to the list of files.
+- Add /run/lwresd to the list of files of the lwresd package.
+- Shift /run/named from the chroot sub to the main bind package.
+- Drop /proc from the chroot as multi CPU systems work fine even without it.
+
+-------------------------------------------------------------------
+Thu Dec  4 18:36:41 UTC 2014 - lmuelle@suse.com
+
+- Add a versioned dependency when obsoleting packages.
+
+-------------------------------------------------------------------
+Thu Dec  4 18:15:01 UTC 2014 - lmuelle@suse.com
+
+- Remove superfluous obsoletes *-64bit in the ifarch ppc64 case; (bnc#437293).
+
+-------------------------------------------------------------------
+Wed Dec  3 16:58:24 UTC 2014 - lmuelle@suse.com
+
+- Fix gssapi_krb configure time header detection.
+
+-------------------------------------------------------------------
+Sun Nov 30 13:52:44 UTC 2014 - lmuelle@suse.com
+
+- Update root zone (dated Nov 5, 2014).
+
+-------------------------------------------------------------------
+Sat Nov 29 19:35:53 UTC 2014 - lmuelle@suse.com
+
+- Update to version 9.10.1
+  - This release addresses the security flaws described in CVE-2014-3214 and
+    CVE-2014-3859.
+- Update to version 9.10.0
+  - DNS Response-rate limiting (DNS RRL), which blunts the impact of
+    reflection and amplification attacks, is always compiled in and no longer
+    requires a compile-time option to enable it.
+  - An experimental "Source Identity Token" (SIT) EDNS option is now available.
+  - A new zone file format, "map", stores zone data in a
+    format that can be mapped directly into memory, allowing
+    significantly faster zone loading.
+  - "delv" (domain entity lookup and validation) is a new tool with dig-like
+    semantics for looking up DNS data and performing internal DNSSEC
+    validation.
+  - Improved EDNS(0) processing for better resolver performance
+    and reliability over slow or lossy connections.
+  - Substantial improvement in response-policy zone (RPZ) performance.  Up to
+    32 response-policy zones can be configured with minimal performance loss.
+  - To improve recursive resolver performance, cache records which are still
+    being requested by clients can now be automatically refreshed from the
+    authoritative server before they expire, reducing or eliminating the time
+    window in which no answer is available in the cache.
+  - New "rpz-client-ip" triggers and drop policies allowing
+    response policies based on the IP address of the client.
+  - ACLs can now be specified based on geographic location using the MaxMind
+    GeoIP databases.  Use "configure --with-geoip" to enable.
+  - Zone data can now be shared between views, allowing multiple views to serve
+    the same zones authoritatively without storing multiple copies in memory.
+  - New XML schema (version 3) for the statistics channel includes many new
+    statistics and uses a flattened XML tree for faster parsing. The older
+    schema is now deprecated.
+  - A new stylesheet, based on the Google Charts API, displays XML statistics
+    in charts and graphs on javascript-enabled browsers.
+  - The statistics channel can now provide data in JSON format as well as XML.
+  - New stats counters track TCP and UDP queries received
+    per zone, and EDNS options received in total.
+  - The internal and export versions of the BIND libraries (libisc, libdns,
+    etc) have been unified so that external library clients can use the same
+    libraries as BIND itself.
+  - A new compile-time option, "configure --enable-native-pkcs11", allows BIND
+    9 cryptography functions to use the PKCS#11 API natively, so that BIND can
+    drive a cryptographic hardware service module (HSM) directly instead of
+    using a modified OpenSSL as an intermediary.
+  - The new "max-zone-ttl" option enforces maximum TTLs for zones. This can
+    simplify the process of rolling DNSSEC keys by guaranteeing that cached
+    signatures will have expired within the specified amount of time.
+  - "dig +subnet" sends an EDNS CLIENT-SUBNET option when querying.
+  - "dig +expire" sends an EDNS EXPIRE option when querying.
+  - New "dnssec-coverage" tool to check DNSSEC key coverage for a zone and
+    report if a lapse in signing coverage has been inadvertently scheduled.
+  - Signing algorithm flexibility and other improvements
+    for the "rndc" control channel.
+  - "named-checkzone" and "named-compilezone" can now read
+    journal files, allowing them to process dynamic zones.
+  - Multiple DLZ databases can now be configured.  Individual zones can be
+    configured to be served from a specific DLZ database.  DLZ databases now
+    serve zones of type "master" and "redirect".
+  - "rndc zonestatus" reports information about a specified zone.
+  - "named" now listens on IPv6 as well as IPv4 interfaces by default.
+  - "named" now preserves the capitalization of names
+    when responding to queries.
+  - new "dnssec-importkey" command allows the use of offline
+    DNSSEC keys with automatic DNSKEY management.
+  - New "named-rrchecker" tool to verify the syntactic
+    correctness of individual resource records.
+  - When re-signing a zone, the new "dnssec-signzone -Q" option drops
+    signatures from keys that are still published but are no longer active.
+  - "named-checkconf -px" will print the contents of configuration files with
+    the shared secrets obscured, making it easier to share configuration (e.g.
+    when submitting a bug report) without revealing private information.
+  - "rndc scan" causes named to re-scan network interfaces for
+    changes in local addresses.
+  - On operating systems with support for routing sockets, network interfaces
+    are re-scanned automatically whenever they change.
+  - "tsig-keygen" is now available as an alternate command
+    name to use for "ddns-confgen".
+- Update to version 9.9.6
+  New Features
+  - Support for CAA record types, as described in RFC 6844 "DNS
+    Certification Authority Authorization (CAA) Resource Record",
+    was added. [RT#36625] [RT #36737]
+  - Disallow "request-ixfr" from being specified in zone statements where it
+    is not valid (it is only valid for slave and redirect zones) [RT #36608]
+  - Support for CDS and CDNSKEY resource record types was added. For
+    details see the proposed Informational Internet-Draft "Automating
+    DNSSEC Delegation Trust Maintenance" at
+    http://tools.ietf.org/html/draft-ietf-dnsop-delegation-trust-maintainance-14.
+    [RT #36333]
+  - Added version printing options to various BIND utilities. [RT #26057]
+    [RT #10686]
+  - Added a "no-case-compress" ACL, which causes named to use case-insensitive
+    compression (disabling change #3645) for specified clients. (This is useful
+    when dealing with broken client implementations that use case-sensitive
+    name comparisons, rejecting responses that fail to match the capitalization
+    of the query that was sent.) [RT #35300]
+  Feature Changes
+  - Adds RPZ SOA to the additional section of responses to clearly
+    indicate the use of RPZ in a manner that is intended to avoid
+    causing issues for downstream resolvers and forwarders [RT #36507]
+  - rndc now gives distinct error messages when an unqualified zone
+    name matches multiple views vs. matching no views [RT #36691]
+  - Improves the accuracy of dig's reported round trip times.  [RT #36611]
+  - When an SPF record exists in a zone but no equivalent TXT record
+    does, a warning will be issued.  The warning for the reverse
+    condition is no longer issued. See the check-spf option in the
+    documentation for details. [RT #36210]
+  - "named" will now log explicitly when using rndc.key to configure
+    command channel. [RT #35316]
+  - The default setting for the -U option (setting the number of UDP
+    listeners per interface) has been adjusted to improve performance.
+    [RT #35417]
+  - Aging of smoothed round-trip time measurements is now limited
+    to no more than once per second, to improve accuracy in selecting
+    the best name server. [RT #32909]
+  - DNSSEC keys that have been marked active but have no publication
+    date are no longer presumed to be publishable. [RT #35063]
+  Bug Fixes
+  - The Makefile in bin/python was changed to work around a bmake
+    bug in FreeBSD 10 and NetBSD 6. [RT #36993] (**)
+  - Corrected bugs in the handling of wildcard records by the DNSSEC
+    validator: invalid wildcard expansions could be treated as valid
+    if signed, and valid wildcard expansions in NSEC3 opt-out ranges
+    had the AD bit set incorrectly in responses. [RT #37093] [RT #37072]
+  - When resigning, dnssec-signzone was removing all signatures from
+    delegation nodes. It now retains DS and (if applicable) NSEC
+    signatures.  [RT #36946]
+  - The AD flag was being set inappopriately on RPZ responses. [RT #36833]
+  - Updates the URI record type to current draft standard,
+    draft-faltstrom-uri-08, and allows the value field to be zero
+    length [RT #36642] [RT #36737]
+  - RRSIG sets that were not loaded in a single transaction at start
+    up were not being correctly added to re-signing heaps.  [RT #36302]
+  - Setting '-t aaaa' in .digrc had unintended side-effects. [RT #36452]
+  - A race condition could cause a crash in isc_event_free during
+    shutdown.  [RT #36720]
+  - Addresses a race condition issue in dispatch. [RT #36731]
+  - acl elements could be miscounted, causing a crash while loading
+    a config [RT #36675]
+  - Corrects a deadlock between view.c and adb.c. [RT #36341]
+  - liblwres wasn't properly handling link-local addresses in
+    nameserver clauses in resolv.conf. [RT #36039]
+  - Buffers in isc_print_vsnprintf were not properly initialized
+    leading to potential overflows when printing out quad values.
+    [RT #36505]
+  - Don't call qsort() with a null pointer, and disable the GCC 4.9
+    "delete null pointer check" optimizer option. This fixes problems
+    when using GNU GCC 4.9.0 where its compiler code optimizations
+    may cause crashes in BIND. For more information, see the operational
+    advisory at https://kb.isc.org/article/AA-01167/. [RT #35968]
+  - Fixed a bug that could cause repeated resigning of records in
+    dynamically signed zones. [RT #35273]
+  - Fixed a bug that could cause an assertion failure after forwarding
+    was disabled. [RT #35979]
+  - Fixed a bug that caused SERVFAILs when using RPZ on a system
+    configured as a forwarder. [RT #36060]
+  - Worked around a limitation in Solaris's /dev/poll implementation
+    that could cause named to fail to start when configured to use
+    more sockets than the system could accomodate. [RT #35878]
+- Remove merged rpz2+rl-9.9.5.patch and obsoleted rpz2+rl-9.9.5.patch
+- Removed pid-path.diff patch as /run/{named,lwresd}/ are used by default.
+- Update baselibs.conf (added libirs and library interface version updates).
+
+-------------------------------------------------------------------
+Fri Nov 14 09:18:26 UTC 2014 - dimstar@opensuse.org
+
+- No longer perform gpg validation; osc source_validator does it
+  implicit:
+  + Drop gpg-offline BuildRequires.
+  + No longer execute gpg_verify.
+
+-------------------------------------------------------------------
+Wed Oct  1 15:26:40 UTC 2014 - jengelh@inai.de
+
+- Implement shlib packaging guidelines and give an improved
+  description on the library components
+- Put idnkit components in separate packages
+- Add runidn.diff to resolve runidn not working at all
+
+-------------------------------------------------------------------
+Mon Sep  8 21:10:50 UTC 2014 - werner@suse.de
+
+- Require systemd-rpm-macros at build
+
+-------------------------------------------------------------------
+Mon Sep  8 14:00:01 UTC 2014 - werner@suse.de
+
+- Use the systemd service macros to make sure init scripts are
+  registered properly (bnc#894627)
+
+-------------------------------------------------------------------
+Wed Sep  3 11:38:47 UTC 2014 - max@suse.com
+
+- Version 9.9.5P1 also fixes a problem with zone transfers on
+  multicore machines (bnc#882511).
+
+-------------------------------------------------------------------
+Thu Jul 31 21:40:49 UTC 2014 - lmuelle@suse.com
+
+- Package dnssec-checkds and dnssec-coverage binaries and man pages only on
+  post-11.1 systems.
+
+-------------------------------------------------------------------
+Thu Jul 31 17:20:38 UTC 2014 - lmuelle@suse.com
+
+- Update to version 9.9.5P1
+  Various bugfixes and some feature fixes. (see CHANGES files)
+  Security and maintenance issues:
+
+  - [bug] Don't call qsort with a null pointer. [RT #35968]
+  - [bug] Disable GCC 4.9 "delete null pointer check". [RT #35968]
+  - [port] linux: libcap support: declare curval at start of block. [RT #35387]
+
+- Update to version 9.9.5
+  - [bug] Address double dns_zone_detach when switching to using automatic
+    empty zones from regular zones. [RT #35177]
+  - [port] Use built-in versions of strptime() and timegm() on all platforms
+    to avoid portability issues. [RT #35183]
+  - [bug] Address a portentry locking issue in dispatch.c. [RT #35128]
+  - [bug] irs_resconf_load now returns ISC_R_FILENOTFOUND on a missing
+    resolv.conf file and initializes the structure as if it had been
+    configured with  nameserver ::1 nameserver 127.0.0.1  [RT #35194]
+  - [contrib] queryperf: Fixed a possible integer overflow when printing
+    results. [RT #35182]
+  - [protocol] Accept integer timestamps in RRSIG records. [RT #35185]
+  - [func] named-checkconf can now obscure shared secrets when printing by
+    specifying '-x'. [RT #34465]
+  - [bug] Improvements to statistics channel XSL stylesheet: the stylesheet can
+    now be cached by the browser; section headers are omitted from the stats
+    display when there is no data in those sections to be displayed; counters
+    are now right-justified for easier readability. (Only available with
+    configure --enable-newstats.) [RT #35117]
+  - [cleanup] Replaced all uses of memcpy() with memmove(). [RT #35120]
+  - [bug] Handle "." as a search list element when IDN support is enabled.
+    [RT #35133]
+  - [bug] dig failed to handle AXFR style IXFR responses which span multiple
+    messages. [RT #35137]
+  - [bug] Address a possible race in dispatch.c. [RT #35107]
+  - [bug] Warn when a key-directory is configured for a zone, but does not
+    exist or is not a directory. [RT #35108]
+  - [security] memcpy was incorrectly called with overlapping ranges resulting
+    in malformed names being generated on some platforms.  This could cause
+    INSIST failures when serving NSEC3 signed zones (CVE-2014-0591).
+    [RT #35120]
+  - [bug] Two calls to dns_db_getoriginnode were fatal if there was no data at
+    the node. [RT #35080]
+  - [bug] Iterative responses could be missed when the source port for an
+    upstream query was the same as the listener port (53). [RT #34925]
+  - [bug] Fixed a bug causing an insecure delegation from one static-stub zone
+    to another to fail with a broken trust chain. [RT #35081]
+  - [bug] loadnode could return a freed node on out of memory. [RT #35106]
+  - [bug] Address null pointer dereference in zone_xfrdone. [RT #35042]
+  - [func] "dnssec-signzone -Q" drops signatures from keys that are still
+    published but no longer active. [RT #34990]
+  - [bug] "rndc refresh" didn't work correctly with slave zones usingi
+    inline-signing. [RT #35105]
+  - [cleanup] Add a more detailed "not found" message to rndc commands which
+    specify a zone name. [RT #35059]
+  - [bug] Correct the behavior of rndc retransfer to allow inline-signing slave
+    zones to retain NSEC3 parameters instead of reverting to NSEC. [RT #34745]
+  - [port] Update the Windows build system to support feature selection and
+    WIN64 builds.  This is a work in progress. [RT #34160]
+  - [bug] dig could fail to clean up TCP sockets still waiting on connect().
+    [RT #35074]
+  - [port] Update config.guess and config.sub. [RT #35060]
+  - [bug] 'nsupdate' leaked memory if 'realm' was used multiple times.
+    [RT #35073]
+  - [bug] "named-checkconf -z" now checks zones of type hint and redirect as
+    well as master. [RT #35046]
+  - [misc] Provide a place for third parties to add version information for
+    their extensions in the version file by setting the EXTENSIONS variable.
+  - [bug] RPZ zeroed ttls if the query type was '*'. [RT #35026]
+  - [func] Local address can now be specified when using dns_client API.
+    [RT #34811]
+  - [bug] Don't allow dnssec-importkey overwrite a existing non-imported
+    private key.
+  - [bug] Address read after free in server side of lwres_getrrsetbyname.
+    [RT #29075]
+  - [bug] Fix cast in lex.c which could see 0xff treated as eof. [RT #34993]
+  - [bug] Failure to release lock on error in receive_secure_db. [RT #34944]
+  - [bug] Updated OpenSSL PKCS#11 patches to fix active list locking and other
+    bugs. [RT #34855]
+  - [bug] Address bugs in dns_rdata_fromstruct and dns_rdata_tostruct for WKS
+    and ISDN types. [RT #34910]
+  - [bug] 'host' could die if a UDP query timed out. [RT #34870]
+  - [bug] Address lock order reversal deadlock with inline zones. [RT #34856]
+  - [cleanup] Changed the name of "isc-config.sh" to "bind9-config".
+    [RT #23825]
+  - [port] linux: Address platform specific compilation issue when libcap-devel
+    is installed. [RT #34838]
+  - [port] Some readline clones don't accept NULL pointers when calling
+    add_history. [RT #34842]
+  - [cleanup] Simplify TCP message processing when requesting a zone transfer.
+    [RT #34825]
+  - [bug] Address race condition with manual notify requests. [RT #34806]
+  - [func] Create delegations for all "children" of empty zones except
+    "forward first". [RT #34826]
+  - [tuning] Adjust when a master server is deemed unreachable. [RT #27075]
+  - [tuning] Use separate rate limiting queues for refresh and notify
+    requests. [RT #30589]
+  - [cleanup] Include a comment in .nzf files, giving the name of the
+    associated view. [RT #34765]
+  - [bug] Address a race condition when shutting down a zone. [RT #34750]
+  - [bug] Journal filename string could be set incorrectly, causing garbage in
+    log messages. [RT #34738]
+  - [protocol] Use case sensitive compression when responding to queries.
+    [RT #34737]
+  - [protocol] Check that EDNS subnet client options are well formed.
+    [RT #34718]
+  - [func] Allow externally generated DNSKEY to be imported into the DNSKEY
+    management framework.  A new tool dnssec-importkey is used to do this.
+    [RT #34698]
+  - [bug] Handle changes to sig-validity-interval settings better. [RT #34625]
+  - [bug] ndots was not being checked when searching.  Only continue searching
+    on NXDOMAIN responses.  Add the ability to specify ndots to nslookup.
+    [RT #34711]
+  - [bug] Treat type 65533 (KEYDATA) as opaque except when used in a key zone.
+    [RT #34238]
+- Updated to current rpz patch from·http://ss.vix.su/~vjs/rrlrpz.html
+  - rpz2-9.9.4.patch
+  + rpz2+rl-9.9.5.patch
+
+-------------------------------------------------------------------
+Sun Jun  1 13:30:10 UTC 2014 - chris@computersalat.de
+
+- add stuff for DNSSEC validation to named.conf
+  * dnssec-enable, dnssec-validation
+
+-------------------------------------------------------------------
+Sun May 25 17:24:21 UTC 2014 - crrodriguez@opensuse.org
+
+- Build with LFS_CFLAGS in 32 bit systems.
+
+-------------------------------------------------------------------
+Thu May  8 11:23:47 CEST 2014 - ro@suse.de
+
+- use %_rundir macro
+
+-------------------------------------------------------------------
+Fri Mar 28 20:49:57 CET 2014 - lchiquitto@suse.de
+
+- Remove obsolete patch "workaround-compile-problem.diff"
+
+-------------------------------------------------------------------
+Fri Jan 24 10:12:56 UTC 2014 - max@suse.com
+
+- Add the sdb-ldap backend module (fate#313216).
+- Details can be found here:
+  * http://bind9-ldap.bayour.com/
+  * http://bind9-ldap.bayour.com/dnszonehowto.html
+
+-------------------------------------------------------------------
+Tue Jan 21 17:02:30 UTC 2014 - max@suse.com
+
+- Update to version 9.9.4P2
+  * Fixes named crash when handling malformed NSEC3-signed zones
+    (CVE-2014-0591, bnc#858639)
+  * Obsoletes workaround-compile-problem.diff
+- Replace rpz2+rl-9.9.3-P1.patch by rpz2-9.9.4.patch, rl is now
+  supported upstream (--enable-rrl).
+
+-------------------------------------------------------------------
+Mon Dec  9 12:16:42 UTC 2013 - max@suse.com
+
+- Fix generation of /etc/named.conf.include
+  (bnc#828678, bnc#848777, bnc#814978).
+
+-------------------------------------------------------------------
+Wed Aug  7 15:19:10 UTC 2013 - max@suse.com
+
+- Systemd doesn't set $TERM, and hence breaks tput (bnc#823175).
+
+-------------------------------------------------------------------
+Tue Aug  6 10:09:22 UTC 2013 - max@suse.com
+
+- Improve pie_compile.diff (bnc#828874).
+- dnssec-checkds and dnssec-coverage need python-base.
+- disable rpath in libtool.
+
+-------------------------------------------------------------------
+Mon Aug  5 14:50:20 UTC 2013 - max@suse.com
+
+- Update to 9.9.3P2 fixes CVE-2013-4854, bnc#831899.
+  * Incorrect bounds checking on private type 'keydata' can lead
+    to a remotely triggerable REQUIRE failure.
+
+-------------------------------------------------------------------
+Wed Jul 24 15:37:09 UTC 2013 - max@suse.com
+
+- Remove non-working apparmor profiles (bnc#740327).
+
+-------------------------------------------------------------------
+Wed Jul 17 14:09:02 CEST 2013 - mls@suse.de
+
+- the README file is not a directory, drop the dir attribute
+
+-------------------------------------------------------------------
+Mon Jun 24 13:17:11 UTC 2013 - meissner@suse.com
+
+- Updated to 9.9.3-P1
+  Various bugfixes and some feature fixes. (see CHANGES files)
+  Security and maintenance issues:
+
+  -	[security]	Caching data from an incompletely signed zone could
+			trigger an assertion failure in resolver.c [RT #33690]
+  -	[security]	Support NAPTR regular expression validation on
+			all platforms without using libregex, which
+			can be vulnerable to memory exhaustion attack
+			(CVE-2013-2266). [RT #32688]
+  -	[security]	RPZ rules to generate A records (but not AAAA records)
+			could trigger an assertion failure when used in
+			conjunction with DNS64 (CVE-2012-5689). [RT #32141]
+  -	[bug]		Fixed several Coverity warnings.
+			Note: This change includes a fix for a bug that
+			was subsequently determined to be an exploitable
+			security vulnerability, CVE-2012-5688: named could
+			die on specific queries with dns64 enabled.
+			[RT #30996]
+
+  -	[maint]		Added AAAA for D.ROOT-SERVERS.NET.
+  -	[maint]		D.ROOT-SERVERS.NET is now 199.7.91.13.
+- Updated to current rate limiting + rpz patch from
+  http://ss.vix.su/~vjs/rrlrpz.html
+- moved dnssec-* helpers to bind-utils package. bnc#813911
+
+-------------------------------------------------------------------
+Wed May  8 08:21:52 UTC 2013 - schwab@suse.de
+
+- Use updated config.guess/sub in the embedded idnkit sources
+
+-------------------------------------------------------------------
+Wed Mar 27 12:33:34 UTC 2013 - meissner@suse.com
+
+- Updated to 9.9.2-P2 (bnc#811876)
+  Fix for: https://kb.isc.org/article/AA-00871 CVE-2013-2266
+
+  * Security Fixes
+    Removed the check for regex.h in configure in order to disable regex
+    syntax checking, as it exposes BIND to a critical flaw in libregex
+    on some platforms. [RT #32688]
+
+- added gpg key source verification
+
+-------------------------------------------------------------------
+Thu Dec  6 08:00:31 UTC 2012 - meissner@suse.com
+
+- Updated to 9.9.2-P1 (bnc#792926)
+  https://kb.isc.org/article/AA-00828
+  * Security Fixes
+
+    Prevents named from aborting with a require assertion failure on
+    servers with DNS64 enabled.  These crashes might occur as a result of
+    specific queries that are received.  (Note that this fix is a subset
+    of a series of updates that will be included in full in BIND 9.8.5
+    and 9.9.3 as change #3388, RT #30996).  [CVE-2012-5688] [RT #30792]
+
+    A deliberately constructed combination of records could cause
+    named to hang while populating the additional section of a
+    response. [CVE-2012-5166] [RT #31090]
+
+    Prevents a named assert (crash) when queried for a record whose
+    RDATA exceeds 65535 bytes.  [CVE-2012-4244]  [RT #30416]
+
+    Prevents a named assert (crash) when validating caused by using
+    "Bad cache" data before it has been initialized. [CVE-2012-3817]
+    [RT #30025]
+
+    A condition has been corrected where improper handling of zero-length
+    RDATA could cause undesirable behavior, including termination of
+    the named process. [CVE-2012-1667]  [RT #29644]
+
+    ISC_QUEUE handling for recursive clients was updated to address a race
+    condition that could cause a memory leak. This rarely occurred with
+    UDP clients, but could be a significant problem for a server handling
+    a steady rate of TCP queries. [CVE-2012-3868]  [RT #29539 & #30233]
+
+New Features
+
+    Elliptic Curve Digital Signature Algorithm keys and signatures in
+    DNSSEC are now supported per RFC 6605. [RT #21918]
+
+    Introduces a new tool "dnssec-checkds" command that checks a zone to
+    determine which DS records should be published in the parent zone,
+    or which DLV records should be published in a DLV zone, and queries
+    the DNS to ensure that it exists. (Note: This tool depends on python;
+    it will not be built or installed on systems that do not have a
+    python interpreter.)  [RT #28099]
+
+    Introduces a new tool "dnssec-verify" that validates a signed zone,
+    checking for the correctness of signatures and NSEC/NSEC3 chains.
+    [RT #23673]
+
+    Adds configuration option "max-rsa-exponent-size <value>;" that
+    can be used to specify the maximum rsa exponent size that will be
+    accepted when validating [RT #29228]
+
+Feature Changes
+
+    Improves OpenSSL error logging [RT #29932]
+    nslookup now returns a nonzero exit code when it is unable to get
+    an answer.  [RT #29492]
+
+Bug Fixes
+
+    Uses binary mode to open raw files on Windows.  [RT #30944]
+    When using DNSSEC inline signing with "rndc signing -nsec3param", a
+    salt value of "-" can now be used to indicate 'no salt'.  [RT #30099]
+    Prevents race conditions (address use after free) that could be
+    encountered when named is shutting down and releasing structures
+    used to manage recursive clients.  [RT #30241]
+    Static-stub zones now accept "forward" and "fowarders" options
+    (often needed for subdomains of the zone referenced to override
+    global forwarding options).  These options are already available
+    with traditional stub zones and their omission from zones of type
+    "static-stub" was an inadvertent oversight. [RT #30482]
+    Limits the TTL of signed RRsets in cache when their RRSIGs are
+    approaching expiry. This prevents the persistence in cache of
+    invalid RRSIGs in order to assist recovery from a situation where
+    zone re-signing doesn't occur in a timely manner.   With this change,
+    named will attempt to obtain new RRSIGs from the authoritative server
+    once the original ones have expired, and even if the TTL of the old
+    records would in other circumstances cause them to be kept in cache
+    for longer.  [RT #26429]
+    Corrects the syntax of isc_atomic_xadd() and isc_atomic_cmpxchg()
+    which are employed on Itanium systems to speed up lock management
+    by making use of atomic operations.  Without the syntax correction
+    it is possible that concurrent access to the same structures could
+    accidentally occur with unpredictable results.  [RT #25181]
+    Improves OpenSSL error logging [RT #29932]
+    The configure script now supports and detects libxml2-2.8.x correctly
+    [RT #30440]
+    The host command should no longer assert on some architectures
+    and builds while handling the time values used with the -w (wait
+    forever) option.  [RT #18723]
+    Invalid zero settings for max-retry-time, min-retry-time,
+    max-refresh-time, min-refresh-time will now be detected during parsing
+    of named.conf and an error emitted instead of triggering an assertion
+    failure on startup.  [RT #27730]
+    Removes spurious newlines from log messages in zone.c [RT #30675]
+    When built with readline support (i.e. on a system with readline
+    installed) nsupdate no longer terminates unexpectedly in interactive
+    mode. [RT #29550]
+    All named tasks that perform task-exclusive operations now share the
+    same single task.  Prior to this change, there was the possibility of
+    a race condition between rndc operations and other functions such as
+    re-sizing the adb hash table.  If the race condition was encountered,
+    named would in most cases terminate unexpectedly with an assert.
+    [RT #29872]
+    Ensures that servers are expired from the ADB cache when the timeout
+    limit is reached so that their learned attributes can be refreshed.
+    Prior to this change, servers that were frequently queried might
+    never have their entries removed and reinitialized.  This is of
+    particular importance to DNSSEC-validating recursive servers that
+    might erroneously set "no-edns" for an authoritative server following
+    a period of intermittent connectivity. [RT #29856]
+    Adds additional resilience to a previous security change (3218) by
+    preventing RRSIG data from being added to cache when a pseudo-record
+    matching the covering type and proving non-existence exists at a
+    higher trust level. The earlier change prevented this inconsistent
+    data from being retrieved from cache in response to client queries  -
+    with this additional change, the RRSIG records are no longer inserted
+    into cache at all. [RT #26809]
+    dnssec-settime will now issue a warning when the writing of a new
+    private key file would cause a change in the permissions of the
+    existing file. [RT #27724]
+    Fixes the defect introduced by change #3314 that was causing failures
+    when saving stub zones to disk (resulting in excessive CPU usage in
+    some cases).  [RT #29952]
+    Address race condition in units tests: asyncload_zone and
+    asyncload_zt. [RT #26100]
+    It is now possible to using multiple control keys again - this
+    functionality was inadvertently broken by change #3924 (RT #28265)
+    which addressed a memory leak. [RT #29694]
+    Named now holds a zone table reference while performing an
+    asynchronous load of a zone.  This removes a race condition that
+    could cause named to crash when zones are added using rndc addzone
+    or by manually editing named's configuration file followed by rndc
+    reconfig/reload. [RT #28326]
+    Setting resolver-query-timeout too low could cause named problems
+    recovering after a loss of connectivity.  [RT #29623]
+    Reduces the potential build-up of stale RRsets in cache on a busy
+    recursive nameserver by re-using cached DS and RRSIG rrsets when
+    possible [RT #29446]
+    Corrects a failure to authenticate non-existence of resource records
+    in some circumstances when RPZ has been configured.  Also:
+        adds an optional "recursive-only yes|no" to the response-policy
+        statement
+        adds an optional "max-policy-ttl" to the response-policy statement
+        to limit the false data that "recursive-only no" can introduce
+        into resolvers' caches
+        introduces a predefined encoding of PASSTHRU policy by adding
+        "rpz-passthru" to be used as the target of CNAME policy records
+        (the old encoding is still accepted.)
+        adds a RPZ performance test to bin/tests/system/rpz when queryperf is available.  [RT #26172]
+    Upper-case/lower-case handling of RRSIG signer-names is now handled
+    consistently: RRSIG records are generated with the signer-name in
+    lower case. They are accepted with any case, but if they fail to
+    validate, we try again in lower case. [RT #27451]
+
+-------------------------------------------------------------------
+Sun Nov 18 18:12:08 UTC 2012 - meissner@suse.com
+
+- added a ratelimiting (draft RFC) patch from Paul Vixie.
+  see http://www.redbarn.org/dns/ratelimits
+  suggested by Stefan Schaefer <stefan@invis-server.org>
+
+-------------------------------------------------------------------
+Wed Nov 14 10:24:42 UTC 2012 - meissner@suse.com
+
+- updated to 9.9.2
+  https://kb.isc.org/article/AA-00798
+
+  Security:
+  * A deliberately constructed combination of records could cause
+    named to hang while populating the additional section of a
+    response. [CVE-2012-5166] [RT #31090]
+  * Prevents a named assert (crash) when queried for a record whose
+    RDATA exceeds 65535 bytes.  [CVE-2012-4244]  [RT #30416]
+  * Prevents a named assert (crash) when validating caused by using "Bad
+    cache" data before it has been initialized. [CVE-2012-3817]  [RT #30025]
+  * A condition has been corrected where improper handling of zero-length
+    RDATA could cause undesirable behavior, including termination of the
+    named process. [CVE-2012-1667]  [RT #29644]
+  * ISC_QUEUE handling for recursive clients was updated to address a race
+    condition that could cause a memory leak. This rarely occurred with
+    UDP clients, but could be a significant problem for a server handling
+    a steady rate of TCP queries. [CVE-2012-3868]  [RT #29539 & #30233]
+
+  New Features
+
+  * Elliptic Curve Digital Signature Algorithm keys and signatures in
+    DNSSEC are now supported per RFC 6605. [RT #21918]
+  * Introduces a new tool "dnssec-checkds" command that checks a zone
+    to determine which DS records should be published in the parent zone,
+    or which DLV records should be published in a DLV zone, and queries
+    the DNS to ensure that it exists. (Note: This tool depends on python;
+    it will not be built or installed on systems that do not have a python
+    interpreter.)  [RT #28099]
+  * Introduces a new tool "dnssec-verify" that validates a signed zone,
+    checking for the correctness of signatures and NSEC/NSEC3 chains.
+    [RT #23673]
+  * Adds configuration option "max-rsa-exponent-size <value>;" that can
+    be used to specify the maximum rsa exponent size that will be accepted
+    when validating [RT #29228]
+
+  Feature Changes
+
+  * Improves OpenSSL error logging [RT #29932]
+  * nslookup now returns a nonzero exit code when it is unable to get an answer.  [RT #29492]
+
+  Lots of bugfixes.
+- unfuzzed patches:
+  perl-path.diff
+  pie_compile.diff
+  workaround-compile-problem.diff
+
+
+-------------------------------------------------------------------
+Fri Oct 19 12:11:55 UTC 2012 - meissner@suse.com
+
+- Specially crafted DNS data can cause a lockup in named.
+  CVE-2012-5166, bnc#784602.
+- 9.9.1-P4
+
+-------------------------------------------------------------------
+Sat Sep 15 16:20:32 UTC 2012 - meissner@suse.com
+
+- Named could die on specially crafted record.
+  [RT #30416] (bnc#780157) CVE-2012-4244
+- 9.9.1-P3
+- updated dnszone-schema.txt from upstream.
+
+-------------------------------------------------------------------
+Thu Jul 26 11:08:11 CEST 2012 - ug@suse.de
+
+- Prevents a named assert (crash) when validating caused by using
+  "Bad cache" data before it has been initialized.  [RT #30025]
+  (bnc#772945)
+
+- ISC_QUEUE handling for recursive clients was updated to address a
+  race condition that could cause a memory leak.  This rarely occurred
+  with UDP clients, but could be a significant problem for a server
+  handling a steady rate of TCP queries.  [RT #29539 & #30233]
+
+- Under heavy incoming TCP query loads named could experience a
+  memory leak which could lead to significant reductions in query
+  response or cause the server to be terminated on systems with
+  "out of memory" killers. [RT #29539]
+  (bnc#772946)
+
+- A condition has been corrected where improper handling of zero-length
+  RDATA could cause undesirable behavior, including termination of
+  the named process.  [RT #29644]
+- 9.9.1-P2
+
+-------------------------------------------------------------------
+Thu Jul 12 07:34:11 UTC 2012 - cfarrell@suse.com
+
+- license update: ISC
+  ISC is generally seen as the correct license for bind
+
+-------------------------------------------------------------------
+Tue Jun  5 16:30:32 CEST 2012 - ug@suse.de
+
+- updated dnszone-schema.txt
+
+-------------------------------------------------------------------
+Mon Jun  4 17:25:27 CEST 2012 - ug@suse.de
+
+- VUL-0: bind remote DoS via zero length rdata field
+  CVE-2012-1667
+  bnc#765315
+- 9.9.1-P1
+
+-------------------------------------------------------------------
+Tue May 22 10:04:42 CEST 2012 - ug@suse.de
+
+- this version has no new features but only bugfixes
+- Addresses a race condition that can cause named to to crash when
+  the masters list for a zone is updated via rndc reload/reconfig
+- Fixes a race condition in zone.c that can cause named to crash
+  during the processing of rndc delzone
+- Prevents a named segfault from resolver.c due to procedure
+  fctx_finddone() not being thread-safe
+- SDB now handles unexpected errors from back-end database drivers
+  gracefully instead of exiting on an assert.
+- Prevents named crashes as a result of dereferencing a NULL pointer
+  in zmgr_start_xfrin_ifquota if the zone was being removed while
+  there were zone transfers still pending
+- Corrects a parser bug that could cause named to crash while
+  reading a malformed zone file
+- many more smaller fixes
+- version 9.9.1
+
+-------------------------------------------------------------------
+Thu May 10 13:44:54 CEST 2012 - ug@suse.de
+
+- added patch to fix an assertion failure
+
+-------------------------------------------------------------------
+Fri May  4 17:01:24 CEST 2012 - ug@suse.de
+
+- many dnssec fixes and features (too many to list them
+  here, check the changelog)
+- improved startup time
+- improved scalability
+- Added support for Uniform Resource Identifier (URI) resource
+  records
+- Local copies of slave zones are now saved in raw format by
+  default to improve startup performance
+  BIND 9.9 changes the default storage format for slave zone
+  files from text to raw.  Because named's behavior when a slave
+  server cannot read or parse a zone file is to move the offending
+  file out of the way and retransfer the zone, slave servers
+  that are updated from a pre-9.9.0 version of BIND and which
+  have existing copies of slave zone data may wind up with
+  extraneous copies of zone data stored, as the existing
+  text-format zone file copies will be moved aside to filenames
+  of the format db-###### and journal files to the format
+  jn-######  (where # represents a hexadecimal digit.)
+- many many bugfixes. Please read changelog for details
+- fixed handling of TXT records in ldapdump
+  (bnc#743758)
+- 9.9.0
+
+-------------------------------------------------------------------
+Mon Feb 13 10:44:33 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Wed Dec 21 22:16:02 UTC 2011 - lars@samba.org
+
+- Ensure to create the required dir or sym link in /var/run; (bnc#738156).
+
+-------------------------------------------------------------------
+Mon Dec  5 16:47:48 CET 2011 - ug@suse.de
+
+- root nameserver updated (root.hint file)
+
+-------------------------------------------------------------------
+Mon Dec  5 12:55:15 CET 2011 - ug@suse.de
+
+- added managed-keys-directory to named.conf
+
+-------------------------------------------------------------------
+Tue Nov 22 11:37:01 CET 2011 - ug@suse.de
+
+- fixed apparmor profile for lib and lib64 in chroot
+  (bnc#716745)
+
+-------------------------------------------------------------------
+Thu Nov 17 15:25:54 CET 2011 - fteodori@suse.de
+
+- Cache lookup could return RRSIG data associated with nonexistent
+  records, leading to an assertion failure. CVE-2011-4313; (bnc#730995).
+
+-------------------------------------------------------------------
+Wed Oct 26 11:14:43 CEST 2011 - ug@suse.de
+
+- on a 64bit system a chrooted bind failed to start if 32bit
+  libs were installed (bnc#716745)
+
+-------------------------------------------------------------------
+Fri Sep 30 20:07:45 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Sat Sep 17 19:36:58 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Sep 16 15:48:23 CEST 2011 - ug@suse.de
+
+- very first restart can create broken chroot
+  (bnc#718441)
+
+-------------------------------------------------------------------
+Mon Sep  5 11:41:49 CEST 2011 - ug@suse.de
+
+* fixed SSL in chroot environment (bnc#715881)
+
+-------------------------------------------------------------------
+Mon Sep  5 10:19:34 CEST 2011 - ug@suse.de
+
+* Added a new include file with function typedefs for the DLZ
+  "dlopen" driver. [RT #23629]
+* Added a tool able to generate malformed packets to allow testing of
+  how named handles them. [RT #24096]
+* The root key is now provided in the file bind.keys allowing DNSSEC
+  validation to be switched on at start up by adding
+  "dnssec-validation auto;" to named.conf. If the root key provided
+  has expired, named will log the expiration and validation will not
+  work. More information and the most current copy of bind.keys can
+  be found at http://www.isc.org/bind-keys. *Please note this feature
+  was actually added in 9.8.0 but was not included in the 9.8.0
+  release notes. [RT #21727]
+* If named is configured with a response policy zone (RPZ) and a
+  query of type RRSIG is received for a name configured for RRset
+  replacement in that RPZ, it will trigger an INSIST and crash the
+  server. RRSIG. [RT #24280]
+* named, set up to be a caching resolver, is vulnerable to a user
+  querying a domain with very large resource record sets (RRSets)
+  when trying to negatively cache the response. Due to an off-by-one
+  error, caching the response could cause named to crash. [RT #24650]
+  [CVE-2011-1910]
+* Using Response Policy Zone (RPZ) to query a wildcard CNAME label
+  with QUERY type SIG/RRSIG, it can cause named to crash. Fix is
+  query type independant. [RT #24715]
+* Using Response Policy Zone (RPZ) with DNAME records and querying
+  the subdomain of that label can cause named to crash. Now logs that
+  DNAME is not supported. [RT #24766]
+* Change #2912 populated the message section in replies to UPDATE
+  requests, which some Windows clients wanted. This exposed a latent
+  bug that allowed the response message to crash named. With this
+  fix, change 2912 has been reduced to copy only the zone section to
+  the reply. A more complete fix for the latent bug will be released
+  later. [RT #24777]
+* many bugfixes (see CHANGELOG)
+* 9.8.1
+
+-------------------------------------------------------------------
+Wed Aug 31 09:36:54 UTC 2011 - rhafer@suse.de
+
+- Fixed the ldapdump tool to also respect the "uri" setting in
+  /etc/openldap/ldap.conf (bnc#710430)
+
+-------------------------------------------------------------------
+Tue Jul  5 15:24:10 CEST 2011 - ug@suse.de
+
+* Using Response Policy Zone (RPZ) with DNAME records and querying
+  the subdomain of that label can cause named to crash. Now logs that
+  DNAME is not supported. [RT #24766]
+* If named is configured to be both authoritative and resursive and
+  receives a recursive query for a CNAME in a zone that it is
+  authoritative for, if that CNAME also points to a zone the server
+  is authoritative for, the recursive part of name will not follow
+  the CNAME change and the response will not be a complete CNAME
+  chain. [RT #24455]
+* Using Response Policy Zone (RPZ) to query a wildcard CNAME label
+  with QUERY type SIG/RRSIG, it can cause named to crash. Fix is
+  query type independant. [RT #24715] [CVE-2011-1907]
+* Change #2912 (see CHANGES) exposed a latent bug in the DNS message
+  processing code that could allow certain UPDATE requests to crash
+  named. This was fixed by disambiguating internal database
+  representation vs DNS wire format data. [RT #24777] [CVE-2011-2464]
+* 9.8.0-P4
+
+-------------------------------------------------------------------
+Tue Jun  7 16:37:56 CEST 2011 - ug@suse.de
+
+- A large RRSET from a remote authoritative server that results in
+  the recursive resolver trying to negatively cache the response can
+  hit an off by one code error in named, resulting in named crashing.
+  [RT #24650] [CVE-2011-1910]
+- Zones that have a DS record in the parent zone but are also listed
+  in a DLV and won't validate without DLV could fail to validate. [RT
+  #24631]
+
+-------------------------------------------------------------------
+Mon May 23 19:55:15 UTC 2011 - crrodriguez@opensuse.org
+
+- Build with -DNO_VERSION_DATE to avoid timestamps in binaries.
+
+-------------------------------------------------------------------
+Thu May 19 11:52:49 CEST 2011 - meissner@suse.de
+
+- buildreq update-desktop-files for newer rpms
+
+-------------------------------------------------------------------
+Thu May  5 16:59:49 CEST 2011 - ug@suse.de
+
+- The ADB hash table stores informations about which authoritative
+  servers to query about particular domains
+- BIND now supports a new zone type, static-stub
+- BIND now supports Response Policy Zones
+- BIND 9.8.0 now has DNS64 support
+- Dynamically Loadable Zones (DLZ) now support dynamic updates.
+- Added a "dlopen" DLZ driver, allowing the creation of external DLZ
+  drivers that can be loaded as shared objects at runtime rather than
+  having to be linked with named
+- named now retains GSS-TSIG keys across restarts
+- There is a new update-policy match type "external".
+- bugfixes
+- version to 9.8.0
+
+-------------------------------------------------------------------
+Thu Feb 24 11:14:09 CET 2011 - ug@suse.de
+
+- fixed security issue
+  VUL-0: bind: IXFR or DDNS update combined with high query rate
+  DoS vulnerability (CVE-2011-0414 bnc#674431)
+- version to 9.7.3
+
+-------------------------------------------------------------------
+Wed Jan  5 16:58:06 CET 2011 - meissner@suse.de
+
+- ifdef the sysvinit specific prereqs for openSUSE 11.4 and later
+
+-------------------------------------------------------------------
+Thu Dec  9 15:21:15 UTC 2010 - mvyskocil@suse.cz
+
+- fix bnc#656509 - direct mount of /proc in chroot
+
+-------------------------------------------------------------------
+Tue Dec  7 22:04:48 UTC 2010 - coolo@novell.com
+
+- prereq init scripts syslog and network
+
+-------------------------------------------------------------------
+Thu Dec  2 17:38:44 CET 2010 - ug@suse.de
+
+- fixed VUL-0: bind: Key algorithm rollover bug
+  bnc#657102, CVE-2010-3614
+- fixed VUL-0: bind: allow-query processed incorrectly
+  bnc#657120, CVE-2010-3615
+- fixed VUL-0: bind: cache incorrectly allows a ncache entry and a rrsig for the same type
+  bnc#657129, CVE-2010-3613
+
+-------------------------------------------------------------------
+Tue Nov 23 14:38:49 CET 2010 - ug@suse.de
+
+- fixed return code of "rcnamed status"
+- added gssapi support
+
+-------------------------------------------------------------------
+Tue Oct 12 13:53:16 CEST 2010 - ug@suse.de
+
+- Zones may be dynamically added and removed with the "rndc addzone"
+  and "rndc delzone" commands. These dynamically added zones are
+  written to a per-view configuration file. Do not rely on the
+  configuration file name nor contents as this will change in a
+  future release. This is an experimental feature at this time.
+- Added new "filter-aaaa-on-v4" access control list to select which
+  IPv4 clients have AAAA record filtering applied.
+- A new command "rndc secroots" was added to dump a combined summary
+  of the currently managed keys combined with statically configured
+  trust anchors.
+- Added support to load new keys into managed zones without signing
+  immediately with "rndc loadkeys". Added support to link keys with
+  "dnssec-keygen -S" and "dnssec-settime -S".
+- Documentation improvements
+- ORCHID prefixes were removed from the automatic empty zone list.
+- Improved handling of GSSAPI security contexts. Specifically, better
+  memory management of cached contexts, limited lifetime of a context
+  to 1 hour, and added a "realm" command to nsupdate to allow
+  selection of a non-default realm name.
+- The contributed tool "ztk" was updated to version 1.0.
+
+- version 9.7.1 to 9.7.2-P2
+
+-------------------------------------------------------------------
+Mon Jul 26 15:33:02 CEST 2010 - ug@suse.de
+
+- chrooted bind failed to start (bnc#625019)
+
+-------------------------------------------------------------------
+Mon Jun 21 12:43:15 CEST 2010 - ug@suse.de
+
+- genrandom: add support for the generation of multiple
+  files.
+- Update empty-zones list to match
+  draft-ietf-dnsop-default-local-zones-13.
+- Incrementally write the master file after performing
+  a AXFR.
+- Add AAAA address for L.ROOT-SERVERS.NET.
+- around 50 bugs fixed (see CHANGELOG for details)
+- version 9.7.1
+
+-------------------------------------------------------------------
+Thu May 20 10:10:13 CEST 2010 - ug@suse.de
+
+- Handle broken DNSSEC trust chains better. [RT #15619]
+- Named could return SERVFAIL for negative responses
+  from unsigned zones. [RT #21131
+- version 9.7.0-P2
+
+-------------------------------------------------------------------
+Sat May  1 12:18:57 UTC 2010 - aj@suse.de
+
+- Handle /var/run on tmpfs.
+- do not use run_ldconfig.
+
+-------------------------------------------------------------------
+Wed Feb 24 18:30:08 UTC 2010 - jengelh@medozas.de
+
+- Enable DLZ-LDAP (supersedes sdb_ldap) and add a patch
+
+-------------------------------------------------------------------
+Wed Feb 17 12:27:56 CET 2010 - ug@suse.de
+
+- Fully automatic signing of zones by "named".
+- Simplified configuration of DNSSEC Lookaside Validation (DLV).
+- Simplified configuration of Dynamic DNS, using the "ddns-confgen"
+  command line tool or the "local" update-policy option.  (As a side
+  effect, this also makes it easier to configure automatic zone
+  re-signing.)
+- New named option "attach-cache" that allows multiple views to
+  share a single cache.
+- DNS rebinding attack prevention.
+- New default values for dnssec-keygen parameters.
+- Support for RFC 5011 automated trust anchor maintenance
+- Smart signing: simplified tools for zone signing and key
+  maintenance.
+- The "statistics-channels" option is now available on Windows.
+- A new DNSSEC-aware libdns API for use by non-BIND9 applications
+- On some platforms, named and other binaries can now print out
+  a stack backtrace on assertion failure, to aid in debugging.
+- A "tools only" installation mode on Windows, which only installs
+  dig, host, nslookup and nsupdate.
+- Improved PKCS#11 support, including Keyper support and explicit
+  OpenSSL engine selection.
+- version 9.7.0
+
+-------------------------------------------------------------------
+Wed Jan 20 10:06:22 CET 2010 - ug@suse.de
+
+- [security]  Do not attempt to validate or cache
+              out-of-bailiwick data returned with a secure
+              answer; it must be re-fetched from its original
+              source and validated in that context. [RT #20819]
+
+- [security]  Cached CNAME or DNAME RR could be returned to clients
+              without DNSSEC validation. [RT #20737]
+
+- [security]  Bogus NXDOMAIN could be cached as if valid. [RT #20712]
+- version 9.6.1-P3
+
+-------------------------------------------------------------------
+Mon Jan  4 14:29:43 CET 2010 - ug@suse.de
+
+- removed the syntax check for include files (bnc#567593)
+
+-------------------------------------------------------------------
+Tue Dec 15 20:01:44 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+- enable parallel building
+- add baselibs for SPARC
+- package documentation as noarch
+
+-------------------------------------------------------------------
+Wed Nov 25 09:44:13 CET 2009 - ug@suse.de
+
+- Security fix
+  When validating, track whether pending data was from
+  the additional section or not and only return it if
+  validates as secure. [RT #20438]
+  CVE-2009-4022
+  bnc#558260
+- update from P1 to P2
+
+-------------------------------------------------------------------
+Fri Nov 20 10:08:50 CET 2009 - ug@suse.de
+
+- added localhost for ipv6 to default config (bnc#539529)
+
+-------------------------------------------------------------------
+Wed Nov 18 10:43:10 CET 2009 - ug@suse.de
+
+- fixed apparmor profile (bnc#544181)
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:08 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Wed Sep 30 15:44:32 CEST 2009 - ug@suse.de
+
+- using start_daemon instead of startproc (bnc#539532)
+
+-------------------------------------------------------------------
+Mon Aug 10 15:30:23 CEST 2009 - ug@suse.de
+
+- version update to 9.6.1-P1
+  (security fix CVE-2009-0696)
+  bnc#526185
+
+-------------------------------------------------------------------
+Tue Jun 30 12:49:37 CEST 2009 - ug@suse.de
+
+- enabled MySQL DLZ (Dynamically Loadable Zones)
+
+-------------------------------------------------------------------
+Tue Jun 16 11:13:40 CEST 2009 - ug@suse.de
+
+- around 50 bugfixes against 9.6.0p1
+  See changelog for details
+- version 9.6.1
+
+-------------------------------------------------------------------
+Thu Apr  9 11:27:57 CEST 2009 - ug@suse.de
+
+- not all include files were copied into chroot (bnc#466800)
+
+-------------------------------------------------------------------
+Tue Mar  3 11:08:59 CET 2009 - ug@suse.de
+
+- /etc/named.conf does not include /etc/named.d/forwarders.conf
+  by default (bnc#480334)
+
+-------------------------------------------------------------------
+Wed Feb 18 16:02:47 CET 2009 - ug@suse.de
+
+- mount /proc into chroot environment to support
+  multi CPU systems (bnc#470828)
+
+-------------------------------------------------------------------
+Wed Jan 28 10:53:30 CET 2009 - ug@suse.de
+
+- key names with spaces are allowed by genDDNSkey now
+  (bnc#459739)
+- a missing /etc/named.conf.include could lead to an
+  error while "restart" (bnc#455888)
+- version update to 9.6.0-P1
+- Full NSEC3 support
+- Automatic zone re-signing
+- New update-policy methods tcp-self and 6to4-self
+- The BIND 8 resolver library, libbind, has been removed from the
+  BIND 9 distribution
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Wed Nov 26 09:53:06 CET 2008 - ug@suse.de
+
+- fix for removed /etc/named.d directory (bnc#448995)
+
+-------------------------------------------------------------------
+Tue Nov 11 16:54:01 CET 2008 - ro@suse.de
+
+- SLE-11 uses PPC64 instead of PPC, adapt baselibs.conf
+
+-------------------------------------------------------------------
+Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Wed Oct  1 14:34:21 CEST 2008 - ug@suse.de
+
+- should start/stop fixed (bnc#430901)
+
+-------------------------------------------------------------------
+Fri Sep  5 15:33:27 CEST 2008 - mrueckert@suse.de
+
+- delete the static libraries aswell
+- added missiong requires to the baselibs.conf
+
+-------------------------------------------------------------------
+Mon Sep  1 14:49:33 CEST 2008 - sschober@suse.de
+
+- Create and copy /etc/named.conf.include to change root jail. Fix
+  by Frank Hollmann.
+
+-------------------------------------------------------------------
+Mon Aug 18 10:20:31 CEST 2008 - ug@suse.de
+
+- "should-stop" in lwresd init script fixed
+
+-------------------------------------------------------------------
+Wed Aug 13 15:46:00 CEST 2008 - sschober@suse.de
+
+- Copy complete /etc/named.d to change root jail (bnc#408145).
+
+-------------------------------------------------------------------
+Tue Aug 12 16:39:27 CEST 2008 - ug@suse.de
+
+- performance improvement over the P1 releases, namely
+   + significantly remedying the port allocation issues
+   + allowing TCP queries and zone transfers while issuing as many
+      outstanding UDP queries as possible
+   + additional security of port randomization at the same level as P1
+
+- also includes fixes for several bugs in the 9.5.0 base code
+- 9.5.0-P2
+
+-------------------------------------------------------------------
+Sun Jul 27 11:51:38 CEST 2008 - aj@suse.de
+
+- Remove .la files, they only introduce more problems and require
+  libxml2.la installation.
+
+-------------------------------------------------------------------
+Wed Jul 16 12:50:46 CEST 2008 - ug@suse.de
+
+- BIND 9.5 offers many new features, including many
+  behind-the-scenes improvements. For the most part, the non-visible
+  features help ISC's customers who have run into the upper-end of
+  what BIND 9.4 could handle.
+  See CHANGES for details
+- Statistics Counters / server
+- Cache cleaning enhancements
+- GSS TSIG
+- DHCID Resource Record (RR)
+- Handling EDNS timeouts
+- version 9.5.0
+
+-------------------------------------------------------------------
+Mon Jun  9 14:18:10 CEST 2008 - ug@suse.de
+
+- VUL-0: spoofing made easier due to non-random UDP
+  source port VU#800113 (bnc#396963)
+
+-------------------------------------------------------------------
+Tue May  6 13:46:43 CEST 2008 - ug@suse.de
+
+- capset support fixed (bnc#386653)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Tue Feb 26 16:51:13 CET 2008 - ug@suse.de
+
+- root.hint file updated (#361094)
+
+-------------------------------------------------------------------
+Thu Dec  6 17:05:39 CET 2007 - ug@suse.de
+
+- version 9.4.2 (more than 50 bugs fixed. See changelog. for details)
+- root.hint file updated
+
+-------------------------------------------------------------------
+Thu Jul 26 13:46:45 CEST 2007 - mt@suse.de
+
+- Bug #294403: updated to security release 9.4.1-P1 fixing:
+  CVE-2007-2926: cryptographically weak query ids [RT #16915].
+  CVE-2007-2925: allow-query-cache/allow-recursion default
+                 acls not set [RT #16987], [RT #16960].
+
+-------------------------------------------------------------------
+Sat May 26 23:43:35 CEST 2007 - ro@suse.de
+
+- added ldconfig to postinstall script for bind-libs
+
+-------------------------------------------------------------------
+Tue May 15 12:19:20 CEST 2007 - ug@suse.de
+
+- added apparmor profile
+
+-------------------------------------------------------------------
+Wed May  2 10:30:56 CEST 2007 - ug@suse.de
+
+- version 9.4.1
+- query_addsoa() was being called with a non zone db.
+  [RT #16834]
+
+-------------------------------------------------------------------
+Fri Mar 30 12:51:52 CEST 2007 - ug@suse.de
+
+- libidnkitres.la moved to bind-libs for runidn
+
+-------------------------------------------------------------------
+Thu Mar 29 12:06:57 CEST 2007 - rguenther@suse.de
+
+- Package .la files in -devel subpackage.
+- Do not package useless .la files.
+- Make -devel package depend on -libs package, not -utils package.
+
+-------------------------------------------------------------------
+Mon Mar  5 17:32:56 CET 2007 - ug@suse.de
+
+- SuSEFirewall service file added (#246920)
+  fate #300687
+
+-------------------------------------------------------------------
+Tue Feb 27 14:53:22 CET 2007 - ug@suse.de
+
+- version 9.3.4 to 9.4.0
+- too many changes to list them all here. Please see
+  the CHANGELOG for details
+- LDAP backend dropped
+
+-------------------------------------------------------------------
+Thu Jan 25 15:22:49 CET 2007 - ug@suse.de
+
+- Bug #238634
+- [security] Serialise validation of type ANY responses. [RT #16555]
+- [security] It was possible to dereference a freed fetch
+             context. [RT #16584]
+- version 9.3.3 to 9.3.4
+
+-------------------------------------------------------------------
+Fri Jan 19 10:38:46 CET 2007 - ug@suse.de
+
+- version 9.3.2 to 9.3.3
+- lots of bugfixes (see changelog for details)
+
+-------------------------------------------------------------------
+Tue Jan  2 15:50:59 CET 2007 - ug@suse.de
+
+- load of bind during boot fails if ip-up starts
+  modify_resolvconf at the same time (#221948)
+
+-------------------------------------------------------------------
+Fri Nov 10 12:07:56 CET 2006 - ug@suse.de
+
+- security fix (#218303)
+  workarounds OpenSSL's recently
+  discovered RSA signature verification issue (CVE-2006-4339) by using
+  the exponent 65537 (0x10001) instead of the widely used 3.
+
+-------------------------------------------------------------------
+Tue Oct 17 20:39:31 CEST 2006 - poeml@suse.de
+
+- there is no SuSEconfig.syslog script anymore, thus remove the
+  YaST hint from the sysconfig template
+
+-------------------------------------------------------------------
+Mon Oct 16 09:50:14 CEST 2006 - ug@suse.de
+
+- typo in sysconfig file fixed (#212337)
+
+-------------------------------------------------------------------
+Fri Sep  1 14:58:28 CEST 2006 - ug@suse.de
+
+- security fix
+  Bug #201424 VUL-0: bind: two denial-of-service attacks
+  VU#697164
+    BIND INSIST failure due to excessive recursive queries
+  VU#915404
+    BIND assertion failure during SIG query processing
+
+-------------------------------------------------------------------
+Tue Aug 15 14:28:09 CEST 2006 - ug@suse.de
+
+- update messages removed
+
+-------------------------------------------------------------------
+Fri Aug  4 13:48:56 CEST 2006 - ug@suse.de
+
+- moved the la files to bind-utils
+  (#182448)
+
+-------------------------------------------------------------------
+Thu Jul  6 12:11:11 CEST 2006 - ug@suse.de
+
+- fix for the nsupdate man page (#92730)
+  thanx to Werner
+
+-------------------------------------------------------------------
+Wed May 17 13:00:02 CEST 2006 - ug@suse.de
+
+- fix for ldapdump script (#175587)
+
+-------------------------------------------------------------------
+Mon Mar 13 16:57:01 CET 2006 - ug@suse.de
+
+- typos fixed (#157611)
+
+-------------------------------------------------------------------
+Wed Feb  8 14:59:58 CET 2006 - ug@suse.de
+
+- fixed #148527
+  a broken symlink in the chroot jail is in the way
+
+-------------------------------------------------------------------
+Fri Jan 27 00:49:18 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan 25 14:27:11 CET 2006 - ug@suse.de
+
+- fixed #145169
+  (follow symlinks during chroot jail creation)
+
+-------------------------------------------------------------------
+Sat Jan 14 22:13:30 CET 2006 - schwab@suse.de
+
+- Don't remove sources.
+
+-------------------------------------------------------------------
+Mon Jan  2 11:05:18 CET 2006 - ug@suse.de
+
+- version update from 9.3.1 to 9.3.2
+
+-------------------------------------------------------------------
+Mon Nov 21 12:16:32 CET 2005 - ug@suse.de
+
+- fixed an insecure tmp file bug in the
+  named-bootconf.sh contrib script
+
+-------------------------------------------------------------------
+Mon Sep 26 01:27:01 CEST 2005 - ro@suse.de
+
+- added LDAP_DEPRECATED to CFLAGS
+
+-------------------------------------------------------------------
+Fri Jul 22 16:50:27 CEST 2005 - lmuelle@suse.de
+
+- Copy the right default file if /etc/sysconfig/named is missing while
+  calling the lwresd init script; [#97187].
+
+-------------------------------------------------------------------
+Fri Jun 17 15:14:52 CEST 2005 - ug@suse.de
+
+- compilation with -fpie and -pie now
+  which makes it harder to use
+  exploits with fixed memory addresses.
+
+-------------------------------------------------------------------
+Wed Apr 13 14:06:42 CEST 2005 - mls@suse.de
+
+- fix SLP registration
+
+-------------------------------------------------------------------
+Fri Mar 25 18:29:09 CET 2005 - schwab@suse.de
+
+- Fix leak in lwres library [#74529].
+
+-------------------------------------------------------------------
+Fri Mar 11 18:28:37 CET 2005 - ug@suse.de
+
+- version update from 9.3.0 to 9.3.1
+- fixed bug #72153
+  lwresd doesn't notice if name server is
+  unreachable and times out
+
+-------------------------------------------------------------------
+Fri Mar 11 16:41:26 CET 2005 - ug@suse.de
+
+- rndc dropped from the lwresd init script
+  it conflicts with a running bind
+
+-------------------------------------------------------------------
+Mon Mar  7 14:34:28 CET 2005 - ug@suse.de
+
+- lwresd init script "status" changed.
+  rndc is not used anymore
+
+-------------------------------------------------------------------
+Wed Feb 16 11:16:40 CET 2005 - ug@suse.de
+
+- lwresd name string changed (just beautify)
+
+-------------------------------------------------------------------
+Fri Feb  4 11:23:14 CET 2005 - ug@suse.de
+
+- changed the "insserv" behaviour on updates
+- fixed empty lwresd.conf file in chroot env.
+
+-------------------------------------------------------------------
+Thu Feb  3 17:48:21 CET 2005 - ug@suse.de
+
+- empty lwresd.conf file fix (Bug #49081)
+- lwresd is on by default now during boot
+
+-------------------------------------------------------------------
+Fri Jan 21 14:46:24 CET 2005 - ug@suse.de
+
+- sdb-ldap activated (ldapdb.c version from 16.01.2005)
+- fixed security problem bug #49927 - remote denial-of-service
+  An incorrect assumption in the validator (authvalidated)
+  can result in a REQUIRE (internal consistancy) test failing
+  and named exiting.
+
+-------------------------------------------------------------------
+Tue Nov 30 11:39:04 CET 2004 - ug@suse.de
+
+- fixed #48659
+  "rclwresd status" answered with OKAY even if only bind was running
+  "rcnamed status" answered with OKAY even if only lwresd was running
+
+-------------------------------------------------------------------
+Fri Nov 19 14:41:32 CET 2004 - ug@suse.de
+
+- SLP support via /etc/slp.reg.d/bind.reg file added
+
+-------------------------------------------------------------------
+Thu Nov  4 14:52:17 CET 2004 - ug@suse.de
+
+- version update to 9.3.0
+- ldapdump script bug fixed (#44452)
+- dnssec-makekeyset and dnssec-signkey activated
+  in Makefile of bin/dnssec/
+
+-------------------------------------------------------------------
+Wed Oct 13 14:30:07 CEST 2004 - lmuelle@suse.de
+
+- Add condrestart to the named init script and use same code as in skeleton to
+  restart.
+- Enhance check if named or lwresd are still running if the init script is
+  called with stop.
+
+-------------------------------------------------------------------
+Mon Sep 27 17:03:38 CEST 2004 - lmuelle@suse.de
+
+- Update to version 9.2.4.
+- Use defines for named user and group settings.
+- Add PreReq groupadd and useradd to the chrootenv and lwresd package,
+  [#46050].
+- Ensure to remove temp sysconfig file in %post.
+- Remove warning from createNamedConfInclude script if a file is already
+  included in /etc/named.conf as we take care of such include statements in
+  the named init script anyway.
+- Remove NAMED_CONF_INCLUDE_FILES fillup from include statements of
+  /etc/named.conf in the %post of the bind package by the same reason.
+
+-------------------------------------------------------------------
+Sat Sep 18 18:29:40 CEST 2004 - lmuelle@suse.de
+
+- Add all filenames from include statements of named.conf to
+  NAMED_CONF_INCLUDE_FILES in the named init script, [#40610].
+
+-------------------------------------------------------------------
+Thu Sep 16 12:16:14 CEST 2004 - lmuelle@suse.de
+
+- Add $remote_fs to Required-Start and Required-Stop of lwresd init script.
+- Add Provides: dns_daemon to the lwresd package.
+- Remove $time from Should-Start and Should-Stop, [#45433].
+
+-------------------------------------------------------------------
+Wed Sep 15 14:14:53 CEST 2004 - lmuelle@suse.de
+
+- Remove conflicts from bind and bind-lwrewsd package, [#45335].
+- Use rndc in lwresd init script if rndc is available.
+
+-------------------------------------------------------------------
+Thu Sep  9 17:02:25 CEST 2004 - lmuelle@suse.de
+
+- Create /etc/rndc.key if bind-lwresd is installed and we install bind-utils
+  or if bind-utils is installed and we install bind-lwresd.
+- Use 0644 instead of 0640 for the named.conf file.
+- Split bind-doc from bind-utils.
+- Use one sysconfig file for lwresd and named.
+- Split common named and lwresd sysconfig settings from them unique to named.
+- Rename lwres to bind-lwresd and lwres-devel to bind-libs.
+- Ensure to create user and group 'named' in the %pre of bind-lwresd and
+  bind-chrootenv.
+
+-------------------------------------------------------------------
+Tue Sep  7 02:17:05 CEST 2004 - lmuelle@suse.de
+
+- Remove %run_ldconfig from %post of the bind package.
+- Move vendor files to an own tar ball.
+- Create new sub packages lwres, lwres-devel, and bind-chrootenv, [#44711].
+- Use new update message mechanism, [#44344].
+
+-------------------------------------------------------------------
+Sun Jun 20 10:21:37 CEST 2004 - lmuelle@suse.de
+
+- Quote definition of NOM_PATH_FILE in configure.in.
+
+-------------------------------------------------------------------
+Mon May 31 15:47:51 CEST 2004 - lmuelle@suse.de
+
+- Add BIND.desktop file for SuSEhelp.
+
+-------------------------------------------------------------------
+Wed May 19 14:30:07 CEST 2004 - lmuelle@suse.de
+
+- Add -d, directroy option to genDDNSkey [#40786].
+- Update ldapdump to version 1.1.  This Version has better keyfile checks and
+  throws an error message if a keyfile can't be found, instead of just barfing
+  perl errors.
+
+-------------------------------------------------------------------
+Wed May 12 12:43:37 CEST 2004 - lmuelle@suse.de
+
+- Update ldapdump; don't use .zone suffix for zone files.
+
+-------------------------------------------------------------------
+Wed Apr 28 15:18:40 CEST 2004 - lmuelle@suse.de
+
+- Add /etc/openldap/schema/dnszone.schema to the bind-utils package.
+- Add /usr/share/bind/ldapdump to the bind package.
+- Add idnkit programs and libraries.
+- Add idn patches for dig, host, and nslookup.
+- Ensure to call functions initializeNamed, checkAndCopyConfigFiles, and
+  namedCheckConf in the named init script only one time.
+  Let namedCheckConf check the configuration inside the chroot.
+- Check all configuration files in named init script while called with probe.
+- Add NAMED_INITIALIZE_SCRIPTS to sysconfig.named.  This allows to call
+  arbitrary scripts before named is started, restarted, or reloaded.
+  Therewith it's also possible to disable createNamedConfInclude entirely.
+- createNamedConfInclude always overwrite .SuSEconfig file [#33768].
+- Rename SuSEconfig.named to createNamedConfInclude and move it to
+  /usr/share/bind.
+
+-------------------------------------------------------------------
+Sat Mar 13 21:06:48 CET 2004 - schwab@suse.de
+
+- Fix path to docs in sample named.conf.
+
+-------------------------------------------------------------------
+Tue Feb 24 18:47:38 CET 2004 - poeml@suse.de
+
+- add genDDNSkey to bind-utils (formerly in dhcp-server package)
+- allow --keyfile and --keyname to be used with genDDNSkey, and
+  allow using /dev/urandom to avoid blocking
+- in the init script, use rndc (if possible) in order to shut down,
+  so named will flush pending changes to dynamical zones
+- when restarting named, make sure it is stopped before trying to
+  start it again [#34937]
+- update root zone (dated Jan 29, 2004)
+
+-------------------------------------------------------------------
+Thu Feb 12 09:32:30 CET 2004 - kukuk@suse.de
+
+- Fix group of named.conf.include in filelist
+- Build with -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Wed Oct 15 15:32:00 CEST 2003 - lmuelle@suse.de
+
+- update to version 9.2.3; includes the new zone type "delegation-only" to
+  foil Verisign's sitefinder games
+- move root.hint to an extra source file, named.root
+- use /etc/named.d and /var/lib/named/master directory in the example
+  configuration from the sample-config directory
+- supress superfluous warning in SuSEconfig.named if /etc/named.conf.include
+  is empty
+- create /etc/rndc.key in the init script if it's missing
+- call namedCheckConf after checkAndCopyConfigFiles to allow us to start named
+  after checkAndCopyConfigFiles fixed a problem
+- call SuSEconfig -module named not direct in the init script
+- add norootforbuild to the spec file
+- set owner of /etc/named.d and /etc/named.d/rndc-access.conf to root:
+- add additional x while testing strings in the init script
+- always include /etc/rndc.key in rndc-access.conf
+- remove absolet stdtime.diff
+- remove ip6rev.diff, as one part is included upstream and the other isn't
+  possible any longer
+
+-------------------------------------------------------------------
+Wed Oct  8 17:19:25 CEST 2003 - schwab@suse.de
+
+- Fix typo in last change.
+
+-------------------------------------------------------------------
+Mon Sep 29 15:37:35 CEST 2003 - kukuk@suse.de
+
+- Create named.conf.include if it does not exist [Bug #31683]
+- Don't add rndc-access.conf at update [Bug #31696]
+
+-------------------------------------------------------------------
+Fri Sep 19 13:01:53 CEST 2003 - kukuk@suse.de
+
+- Fix all useradd calls
+
+-------------------------------------------------------------------
+Mon Sep 15 08:35:06 CEST 2003 - kukuk@suse.de
+
+- Fix Requires and Provides [Bug #30717]
+
+-------------------------------------------------------------------
+Fri Aug 29 12:29:03 CEST 2003 - kukuk@suse.de
+
+- Call useradd with -r for system accounts [Bug #29611]
+
+-------------------------------------------------------------------
+Thu Aug 28 20:06:46 CEST 2003 - lmuelle@suse.de
+
+- call sbin/SuSEconfig --module named and not directly the script in the %post
+  section
+- check if rndc is accessible in the init script
+
+-------------------------------------------------------------------
+Tue Aug 26 17:35:10 CEST 2003 - lmuelle@suse.de
+
+- add Config: syslog-ng to sysconfig.syslog-named
+
+-------------------------------------------------------------------
+Sat Aug 23 01:29:39 CEST 2003 - lmuelle@suse.de
+
+- add NAMED_ARGS to sysconfig.named
+- use -r /dev/urandom while calling rndc-confgen in the post section
+
+-------------------------------------------------------------------
+Thu Aug 21 16:46:12 CEST 2003 - lmuelle@suse.de
+
+- rename package from bind9 to bind
+- add stop_on_removal and restart_on_update macros to preun and postun section
+  fix bug #29048
+- add default /etc/named.d/rndc-access.conf
+- add SuSEconfig.named
+- add all included files to NAMED_CONF_INCLUDE_FILES of /etc/sysconfig/named
+  while update if NAMED_CONF_INCLUDE_FILES is empty
+- add additional sysconfig meta data
+- remove -u from the copy in prepare_chroot() of the init script due to
+  the rist of a wrong system time
+- unify init scripts; add one space at the end to all echos
+- document new features in the README.{SuSE,UnitedLinux}
+- fix bug #28585
+
+-------------------------------------------------------------------
+Mon May 26 15:52:42 CEST 2003 - lmuelle@suse.de
+
+- add -u to copy in prepare_chroot() of the init script, #25687
+- fix output format in init script
+
+-------------------------------------------------------------------
+Fri Apr 11 15:01:00 CEST 2003 - mludvig@suse.cz
+
+- Make nibble queries instead of bitstring ones for IPv6 addresses.
+- Differentiate between 6bone (3ffe::/16, .ip6.int) and other
+  addresses (!3ffe::/16, ip6.arpa).
+
+-------------------------------------------------------------------
+Wed Mar 12 13:58:35 CET 2003 - lmuelle@suse.de
+
+- fix try-restart part of init skript
+- set PATH to "/sbin:/usr/sbin:/bin:/usr/bin", #21295
+
+-------------------------------------------------------------------
+Mon Mar 10 18:40:40 CET 2003 - lmuelle@suse.de
+
+- remove %ghost from /var/lib/named/var/log
+
+-------------------------------------------------------------------
+Mon Mar 10 18:03:36 CET 2003 - lmuelle@suse.de
+
+- add null logging for lame-servers to logging example in named.conf
+- fix file section
+- change /var/run/named to a sym link pointing to /var/lib/named/var/run/named,
+  #24768
+
+-------------------------------------------------------------------
+Wed Mar  5 17:09:20 CET 2003 - lmuelle@suse.de
+
+- remove empty.zone due to possibility of CIDR addressing
+- remove rndc.conf; rndc also uses rndc.key, fix bug #17751
+- create rndc.key with 512bit sized key in %post
+- remove %pre of utils package
+- create additional sub directories log, dyn and master in /var/lib/named
+- add a non active logging example to named.conf
+
+-------------------------------------------------------------------
+Tue Mar  4 17:50:58 CET 2003 - lmuelle@suse.de
+
+- update to version 9.2.2; maintenance/ bugfix release
+
+-------------------------------------------------------------------
+Sat Mar  1 17:41:47 CET 2003 - ro@suse.de
+
+- also create named user/group in utils preinstall
+
+-------------------------------------------------------------------
+Thu Feb 27 23:53:01 CET 2003 - ro@suse.de
+
+- create named user/group in preinstall and install
+
+-------------------------------------------------------------------
+Thu Feb 27 14:00:59 CET 2003 - lmuelle@suse.de
+
+- set /etc/named.conf to root:named and 0640
+- add an example to additional info mail for dynamic updates
+- add more information to the README
+- add sysconfig file for chroot jail; default is yes
+- add chroot features to init script for start and reload
+
+-------------------------------------------------------------------
+Mon Feb 24 16:56:17 CET 2003 - lmuelle@suse.de
+
+- add separate binaries to PreReq
+- add --localstatedir=/var to configure call
+- add and autocreate /etc/rndc.{conf,key}
+- move rndc binaries and man pages to utils package
+- fix %post in case of update
+- set ownership of /var/lib/named to root:
+- add a README
+- fix init script to return correspondig message to checkproc return code
+- remove umlauts from %post mail
+- add additional info mail about ownership of /var/lib/named if journal files
+  are used
+
+-------------------------------------------------------------------
+Mon Feb 17 22:48:21 CET 2003 - lmuelle@suse.de
+
+- update bind9 to version 9.2.1
+- move /var/named to /var/lib/named
+- remove obsolete patches (bison, ltconfig_ppc64, manpages, security)
+
+-------------------------------------------------------------------
+Wed Nov 13 01:43:18 CET 2002 - ro@suse.de
+
+- fix build with current bison (end all rules with ";")
+
+-------------------------------------------------------------------
+Sat Sep  7 16:31:04 CEST 2002 - kukuk@suse.de
+
+- Fix running bind9 as user named [Bug #18417]
+
+-------------------------------------------------------------------
+Mon Aug 19 15:22:43 CEST 2002 - ro@suse.de
+
+- added prereqs (#17807)
+
+-------------------------------------------------------------------
+Mon Aug 19 12:50:37 CEST 2002 - okir@suse.de
+
+- Added patch to make named run as non-root user
+- added "-u named" option to init script invocation of named
+
+-------------------------------------------------------------------
+Sun Jul 28 13:38:54 CEST 2002 - kukuk@suse.de
+
+- Remove yacc from neededforbuild
+
+-------------------------------------------------------------------
+Sat Jul 27 18:17:13 CEST 2002 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Mon Jul 22 09:57:32 CEST 2002 - kukuk@suse.de
+
+- Move .so symlinks to devel package
+- Move liblwres shared library to utils package
+- make lib64 clean
+
+-------------------------------------------------------------------
+Wed Jul 10 22:29:04 CEST 2002 - olh@suse.de
+
+- hack ltconfig for ppc64 to build shared libs
+
+-------------------------------------------------------------------
+Wed Jul 10 16:36:30 MEST 2002 - draht@suse.de
+
+- move /usr/bin/nsupdate to bindutil (#16944)
+
+-------------------------------------------------------------------
+Mon Jun  3 10:59:07 CEST 2002 - okir@suse.de
+
+- Applied security fix for remote DoS (CERT VU#739123)
+
+-------------------------------------------------------------------
+Fri Dec 14 17:55:36 CET 2001 - ro@suse.de
+
+- removed START_NAMED
+
+-------------------------------------------------------------------
+Wed Sep  5 20:32:15 CEST 2001 - pthomas@suse.de
+
+- Fix incorrect .so references in lwres manpages.
+
+-------------------------------------------------------------------
+Sun Aug 12 15:04:44 CEST 2001 - kukuk@suse.de
+
+- Fix path to perl interpreter
+
+-------------------------------------------------------------------
+Wed Jul  4 09:06:38 CEST 2001 - bodammer@suse.de
+
+- Update to bind-9.1.3 (release)
+- Config-files moved away from bind-9.1.3.dif
+
+-------------------------------------------------------------------
+Mon Jul  2 11:49:12 CEST 2001 - bodammer@suse.de
+
+- update to bind-9.1.3rc3
+- "Implicit declaration of function time" in context.c fixed
+
+-------------------------------------------------------------------
+Mon Jun 25 10:48:06 CEST 2001 - bodammer@suse.de
+
+- update to bind-9.1.3rc2
+
+-------------------------------------------------------------------
+Tue May 29 11:09:59 CEST 2001 - bodammer@suse.de
+
+- update to bind-9.1.3rc1
+
+-------------------------------------------------------------------
+Thu May 10 14:41:05 CEST 2001 - bodammer@suse.de
+
+- initscript fix: don't start bind in runlevel 2 [bug #7956]
+
+-------------------------------------------------------------------
+Tue May  8 15:53:04 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Tue May  8 10:03:00 CEST 2001 - bodammer@suse.de
+
+- install a new named.conf with comments
+
+-------------------------------------------------------------------
+Mon May  7 13:38:25 CEST 2001 - bodammer@suse.de
+
+- update to bind-9.1.2 (release)
+
+-------------------------------------------------------------------
+Tue Apr 24 12:18:01 CEST 2001 - bodammer@suse.de
+
+- little modification to named.conf
+
+-------------------------------------------------------------------
+Thu Mar 29 13:21:29 CEST 2001 - bodammer@suse.de
+
+- update to bind-9.1.1 (release)
+
+-------------------------------------------------------------------
+Tue Mar 27 10:50:55 CEST 2001 - bodammer@suse.de
+
+- update to bind-9.1.1rc7
+
+-------------------------------------------------------------------
+Fri Mar 23 10:39:53 CET 2001 - bodammer@suse.de
+
+- update to bind-9.1.1rc6
+
+-------------------------------------------------------------------
+Thu Mar 15 14:47:49 CET 2001 - bodammer@suse.de
+
+- update to bind-9.1.1rc5
+- new initscript more LSB conform
+
+-------------------------------------------------------------------
+Mon Mar 12 13:34:23 CET 2001 - bodammer@suse.de
+
+- update to bind-9.1.1rc4
+
+-------------------------------------------------------------------
+Tue Feb 27 17:05:04 CET 2001 - bodammer@suse.de
+
+- initscript fix: now checks for a running named
+
+-------------------------------------------------------------------
+Tue Feb 27 09:18:09 CET 2001 - bodammer@suse.de
+
+- update to bind-9.1.1rc3
+
+-------------------------------------------------------------------
+Thu Feb 15 15:04:08 CET 2001 - sf@suse.de
+
+- added suse_update_config
+
+-------------------------------------------------------------------
+Wed Feb 14 13:27:11 CET 2001 - bodammer@suse.de
+
+- update to bind-9.1.1rc2
+
+-------------------------------------------------------------------
+Mon Feb 12 18:04:03 CET 2001 - bodammer@suse.de
+
+- subpackages bind9-util and bind9-devel created
+
+-------------------------------------------------------------------
+Thu Feb  8 12:08:50 CET 2001 - bodammer@suse.de
+
+- update to bind-9.1.1rc1
+- missing headerfile included in stdtime.c
+
+-------------------------------------------------------------------
+Thu Jan 18 09:40:33 CET 2001 - bodammer@suse.de
+
+- update to bind-9.1.0
+
+-------------------------------------------------------------------
+Tue Nov 28 19:01:37 CET 2000 - bodammer@suse.de
+
+- Fix location of rcscript
+
+-------------------------------------------------------------------
+Thu Nov 23 23:46:02 CET 2000 - ro@suse.de
+
+- added insserv calls
+
+-------------------------------------------------------------------
+Thu Nov 23 22:40:37 CET 2000 - bodammer@suse.de
+
+- rcscript update
+
+-------------------------------------------------------------------
+Mon Nov 13 18:19:00 CET 2000 - bodammer@suse.de
+
+- update to bind-9.0.1
+
+-------------------------------------------------------------------
+Fri Oct  6 18:09:53 CEST 2000 - kukuk@suse.de
+
+- change group tag
+
+-------------------------------------------------------------------
+Mon Sep 18 11:07:47 CEST 2000 - bodammer@suse.de
+
+- update to bind-9.0.0  ( first release version )
+
+-------------------------------------------------------------------
+Wed Aug 30 13:19:52 CEST 2000 - bodammer@suse.de
+
+- update to bind-9.0.0rc5
+
+-------------------------------------------------------------------
+Wed Aug 16 09:30:11 CEST 2000 - bodammer@suse.de
+
+- update to bind-9.0.0rc3
+
+-------------------------------------------------------------------
+Thu Aug 10 19:50:49 CEST 2000 - bodammer@suse.de
+
+- update to bind-9.0.0rc2
+- nslookup renamed to nslookup9
+
+-------------------------------------------------------------------
+Thu Jul 13 09:53:58 CEST 2000 - bodammer@suse.de
+
+- update to bind-9.0.0rc1 (release candidate)
+
+-------------------------------------------------------------------
+Mon Jul  3 23:10:21 CEST 2000 - bodammer@suse.de
+
+- update to bind-9.0.0b5
+- host renamed to host9
+
+-------------------------------------------------------------------
+Fri Jun 16 10:55:41 CEST 2000 - bodammer@suse.de
+
+- update to bind-9.0.0b4
+
+-------------------------------------------------------------------
+Thu May 25 18:19:21 CEST 2000 - bodammer@suse.de
+
+- dig renamed to dig9 to avoid conflicts with dig from bindutil
+- libtool-fix added
+- option -f added to suse_update_config-macro
+
+-------------------------------------------------------------------
+Wed May 24 10:10:43 CEST 2000 - bodammer@suse.de
+
+- update to bind-9.0.0b3
+- configure option added to build shared libraries
+
+-------------------------------------------------------------------
+Mon May 15 15:49:35 CEST 2000 - schwab@suse.de
+
+- Update config files.
+- Fix 64-bit bug.
+
+-------------------------------------------------------------------
+Fri May 12 16:24:15 CEST 2000 - bodammer@suse.de
+
+- update to bind9-snap-20000510
+
+-------------------------------------------------------------------
+Tue May  2 09:44:15 CEST 2000 - bodammer@suse.de
+
+- update to bind9-snap-20000427a
+
+-------------------------------------------------------------------
+Wed Apr 19 10:27:15 CEST 2000 - bodammer@suse.de
+
+- update to bind9-snap-20000414
+
+-------------------------------------------------------------------
+Tue Mar 28 19:03:17 CEST 2000 - bodammer@suse.de
+
+- update to bind-9.0.0b2
+
+-------------------------------------------------------------------
+Mon Feb  7 21:26:09 CET 2000 - bodammer@suse.de
+
+- first public beta version bind-9.0.0b1
+

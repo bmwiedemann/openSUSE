@@ -1,0 +1,9 @@
+<package name="tio" project="openSUSE:Factory">
+  <title>Simple TTY terminal I/O application</title>
+  <description>Tio is a simple TTY terminal application which features a straightforward
+commandline interface to easily connect to TTY devices for basic input/output.
+
+</description>
+  <devel project="hardware" package="tio"/>
+  <url>https://tio.github.io/</url>
+</package>

@@ -1,0 +1,19 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+    <param name="versionrewrite-pattern">V(.*)</param>
+    <param name="url">git://github.com/nfs-ganesha/nfs-ganesha.git</param>
+    <param name="revision">V3.3</param>
+    <param name="filename">nfs-ganesha</param>
+    <param name="scm">git</param>
+    <param name="subdir">src</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">supriti.singh@suse.com</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">bz2</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

@@ -1,0 +1,32 @@
+diff --color -rub nfs-ganesha-3.3+git0.39e0cf712/FSAL/FSAL_RGW/internal.h nfs-ganesha-3.3+git0.39e0cf712-patched/FSAL/FSAL_RGW/internal.h
+--- nfs-ganesha-3.3+git0.39e0cf712/FSAL/FSAL_RGW/internal.h	2021-07-14 16:34:13.514620142 +0200
++++ nfs-ganesha-3.3+git0.39e0cf712-patched/FSAL/FSAL_RGW/internal.h	2021-07-14 16:33:47.554856218 +0200
+@@ -44,10 +44,9 @@
+ #include <include/rados/librgw.h>
+ #include <include/rados/rgw_file.h>
+ 
+-
+-#if ((LIBRGW_FILE_VER_MAJOR != 1) || (LIBRGW_FILE_VER_MINOR < 1) || \
+-	(LIBRGW_FILE_VER_EXTRA < 7))
+-#error rados/rgw_file.h version unsupported (require >= 1.1.1)
++#if (!GSH_CHECK_VERSION(1, 1, 7, LIBRGW_FILE_VER_MAJOR, LIBRGW_FILE_VER_MINOR, \
++			LIBRGW_FILE_VER_EXTRA))
++#error rados/rgw_file.h version unsupported (require >= 1.1.7)
+ #endif
+ 
+ /**
+diff --color -rub nfs-ganesha-3.3+git0.39e0cf712/include/config-h.in.cmake nfs-ganesha-3.3+git0.39e0cf712-patched/include/config-h.in.cmake
+--- nfs-ganesha-3.3+git0.39e0cf712/include/config-h.in.cmake	2021-07-14 16:34:13.682618615 +0200
++++ nfs-ganesha-3.3+git0.39e0cf712-patched/include/config-h.in.cmake	2021-07-14 16:33:47.554856218 +0200
+@@ -3,6 +3,11 @@
+ #ifndef CONFIG_H
+ #define CONFIG_H
+ 
++#define GSH_CHECK_VERSION(major,minor,micro,libmajor,libminor,libmicro) \
++	((libmajor) > (major) || \
++	((libmajor) == (major) && (libminor) > (minor)) || \
++	((libmajor) == (major) && (libminor) == (minor) && (libmicro) >= (micro)))
++
+ #define GANESHA_VERSION_MAJOR @GANESHA_MAJOR_VERSION@
+ #define GANESHA_VERSION_MINOR @GANESHA_MINOR_VERSION@
+ #define GANESHA_EXTRA_VERSION @GANESHA_EXTRA_VERSION@

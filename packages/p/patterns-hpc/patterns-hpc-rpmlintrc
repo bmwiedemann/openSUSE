@@ -1,0 +1,5 @@
+addFilter("W: no-binary");
+addFilter("W: unexpanded-macro");
+addFilter("W: devel-dependency");
+addFilter("W: explicit-lib-dependency");
+

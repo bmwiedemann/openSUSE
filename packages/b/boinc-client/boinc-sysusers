@@ -1,0 +1,4 @@
+g boinc -
+u boinc -:boinc "BOINC Client" /var/lib/boinc
+# Several BOINC applications want to use the GPU for computations.
+m boinc render

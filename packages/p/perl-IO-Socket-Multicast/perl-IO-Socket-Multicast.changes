@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Wed Feb 27 06:34:31 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Fri Nov 18 09:17:27 UTC 2011 - coolo@suse.com
+
+- use original tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:04 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Jul 19 15:43:31 CEST 2010 - anicka@suse.cz
+
+- update to 1.12
+ * Test adjustments thankyou Christian W. (BRAMBLE)
+ * Documentation updates and corrections (BRAMBLE)
+- removed t_03 patch (fixed in upstream)
+
+-------------------------------------------------------------------
+Tue Apr  6 13:01:03 UTC 2010 - chris@computersalat.de
+
+- cleanup spec
+  o TAGS, deps, macros
+  o added Build-/Req IO::Interface (Multicast)
+- added perl-macros
+- added t_03 patch
+  o fix testsuite for obs, no interface, no test
+
+-------------------------------------------------------------------
+Wed Jan 13 16:39:24 CET 2010 - anicka@suse.cz
+
+- update to 1.11
+ * More test adjustments /re Win32 (BRAMBLE)
+ * Refactored tests to prevent false negatives on Win32 (ADAMK)
+ * Test fixes and spelling corrections (BRAMBLE)
+ * Patches to run correctly on Windows platforms under Perl 5.10
+ * Regression test fixes.
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Tue Feb 26 13:58:23 CET 2007 - pkirsch@suse.de
+- initial package
+

@@ -1,0 +1,8 @@
+<package name="bind" project="openSUSE:Factory">
+  <title>Domain Name System (DNS) Server (named)</title>
+  <description>Berkeley Internet Name Domain (BIND) is an implementation of the Domain
+Name System (DNS) protocols and provides an openly redistributable
+reference implementation of the major components of the Domain Name
+System.  This package includes the components to operate a DNS server.</description>
+  <devel project="network" package="bind"/>
+</package>

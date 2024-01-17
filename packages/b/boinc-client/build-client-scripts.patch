@@ -1,0 +1,10 @@
+--- a/client/scripts/Makefile.am
++++ b/client/scripts/Makefile.am
+@@ -1,5 +1,7 @@
+ ## -*- mode: makefile; tab-width: 4 -*-
+ 
++all-local: boinc-client boinc-client.service
++
+ install-exec-hook:
+ 	chmod +x boinc-client
+ 	if [ -d /etc/init.d ] ; then \

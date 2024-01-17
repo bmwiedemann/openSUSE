@@ -1,0 +1,36 @@
+<package name="perl-Test-Simple" project="openSUSE:Factory">
+  <title>Basic utilities for writing tests</title>
+  <description>This is an extremely simple, extremely basic module for writing tests
+suitable for CPAN modules and other pursuits. If you wish to do more
+complicated testing, use the Test::More module (a drop-in replacement for
+this one).
+
+The basic unit of Perl testing is the ok. For each thing you want to test
+your program will print out an &quot;ok&quot; or &quot;not ok&quot; to indicate pass or fail.
+You do this with the ok() function (see below).
+
+The only other constraint is you must pre-declare how many tests you plan
+to run. This is in case something goes horribly wrong during the test and
+your test program aborts, or skips a test or whatever.
+
+Test::Simple will start by printing number of tests run in the form &quot;1..M&quot;
+(so &quot;1..5&quot; means you're going to run 5 tests). This strange format lets
+Test::Harness know how many tests you plan on running in case something
+goes horribly wrong.
+
+If all your tests passed, Test::Simple will exit with zero (which is
+normal). If anything failed it will exit with how many failed. If you run
+less (or more) tests than you planned, the missing (or extras) will be
+considered failures. If no tests were ever run Test::Simple will throw a
+warning and exit with 255. If the test died, even after having successfully
+completed all its tests, it will still be considered a failure and will
+exit with 255.
+
+This module is by no means trying to be a complete testing system. It's
+just to get you started. Once you're off the ground its recommended you
+look at the Test::More manpage.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Test-Simple"/>
+  <url>http://search.cpan.org/dist/Test-Simple/</url>
+</package>

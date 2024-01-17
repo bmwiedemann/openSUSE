@@ -1,0 +1,216 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>29d96660e5bca8bbd96a054986c86209</srcmd5>
+    <version>2.8.0</version>
+    <time>1453416154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>353916</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>24d3430d195a934bb441d15e5e2d6d93</srcmd5>
+    <version>3.0.0</version>
+    <time>1462051768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>391525</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c63354eb91799683790617d63175c2a2</srcmd5>
+    <version>3.0.0</version>
+    <time>1463498110</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>395035</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>1478751f0a8ec3a73eeb6d6a8d189749</srcmd5>
+    <version>3.0.0</version>
+    <time>1476109258</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>433503</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5f48081bd333e4f76cf0f9e22442101e</srcmd5>
+    <version>3.2.0</version>
+    <time>1479229242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>439964</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bd4f07a937f0cabf87b9a8ca067189f0</srcmd5>
+    <version>3.4.0</version>
+    <time>1495883684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>493339</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>eafd1bb52f9ed2fe447346d6913ab386</srcmd5>
+    <version>3.4.0</version>
+    <time>1505139769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>522904</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b4f6658c6604b7d84e22915d7f5ae1ce</srcmd5>
+    <version>3.6.0</version>
+    <time>1510322160</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538175</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>cdcf0514aa835eb34e4db1f0ba214851</srcmd5>
+    <version>3.6.0</version>
+    <time>1512734241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554660</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>7faa71f5a0bc75c6bac890735a79fe47</srcmd5>
+    <version>3.6.0</version>
+    <time>1514842261</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560890</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a9c7a7ec65301a44b72d1ab8845cda6f</srcmd5>
+    <version>3.8.0</version>
+    <time>1526022945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605840</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>f67156a5a26c7e01f11f30266466a914</srcmd5>
+    <version>3.8.0</version>
+    <time>1533627848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627732</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6cb0fb198196f6f93e8b7e6dc9fe901b</srcmd5>
+    <version>4.2.0</version>
+    <time>1563455957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713820</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2f6b1d7b175d4ab1a1fea168750cab06</srcmd5>
+    <version>4.4.0</version>
+    <time>1584050777</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to the version 4.4.0:
+  - nemo-share: Fix string which should not be translated
+  - nemo-python-object.c: Fix a memory leak PyObject_GetAttrString()
+  - bump-versions: Add support for meson
+  - nemo-image-converter: Fix wrong icon names
+  - nemo-dropbox: Minor README change (#333)
+  - l10n: update msgids in nemo-compare
+  - nemo-share: Make it explicit that firewall rules are added
+  - l10: Update POT
+  - nemo-fileroller.c: Remove check for obsolete settings key.
+- Do not support Python 2 anymore.
+</comment>
+    <requestid>784105</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c6901bdf73675da10da446f0b1de89b2</srcmd5>
+    <version>4.4.0</version>
+    <time>1591743184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813005</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8f312d62f437b5351285fc5be233c192</srcmd5>
+    <version>4.6.0</version>
+    <time>1601399017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838456</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>577a2533193ee3052a5a8c8b3064a26a</srcmd5>
+    <version>4.8.0</version>
+    <time>1607876999</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.8.0.
+  * support for tiff images
+  * Port to meson
+  * add PDF pages count column to nemo-media-columns 
+  * Update nemo-media-columns.py
+  * Update nemo-media-columns.py: Avoid a NameError 
+  * nemo-media-columns.py: Support favorite and recent uris by 
+    working 
+  * Add support for Zstandard archives
+  * Update the URL in README
+  * l10n: Update POT
+</comment>
+    <requestid>855379</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fce03956afec379e2d71d8ec72b0178d</srcmd5>
+    <version>5.0.0</version>
+    <time>1624387494</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>899823</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>3fb15e516779d6ef1895d957ae6ac211</srcmd5>
+    <version>5.0.0</version>
+    <time>1628189288</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>910343</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e07c2877a6121accac6fbb72416a00b9</srcmd5>
+    <version>5.2.0</version>
+    <time>1637970684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933954</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>0cdd2e4463def779b29857589c86637b</srcmd5>
+    <version>5.2.0</version>
+    <time>1653152776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978346</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>0c857a04ce9381b12f251a894ab3b7f6</srcmd5>
+    <version>5.2.0</version>
+    <time>1664797602</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1007601</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>36d075e771614c6b8b8eea50e7f3b1b0</srcmd5>
+    <version>5.2.0</version>
+    <time>1689455717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1098819</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>afb40090faa643b84ac30bbd6bb0ec64</srcmd5>
+    <version>6.0.0</version>
+    <time>1702405950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1132644</requestid>
+  </revision>
+</revisionlist>

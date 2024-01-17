@@ -1,0 +1,10 @@
+<package name="kalk" project="openSUSE:Factory">
+  <title>Convergent calculator</title>
+  <description>Kalk is a convergent calculator application built with the Kirigami framework.
+Although it is mainly targeted for mobile platforms, it can also be used on the
+desktop.
+
+</description>
+  <devel project="KDE:Applications" package="kalk"/>
+  <url>https://apps.kde.org/kalk</url>
+</package>

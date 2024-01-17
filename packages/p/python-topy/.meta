@@ -1,0 +1,6 @@
+<package name="python-topy" project="openSUSE:Factory">
+  <title></title>
+  <description>Fixes typos in text using regular expressions,
+based on RegExTypoFix from Wikipedia.</description>
+  <devel project="devel:languages:python" package="python-topy"/>
+</package>

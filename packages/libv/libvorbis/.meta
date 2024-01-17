@@ -1,0 +1,10 @@
+<package name="libvorbis" project="openSUSE:Factory">
+  <title>The Vorbis General Audio Compression Codec</title>
+  <description>Vorbis is a fully open, nonproprietary, patent-and-royalty-free, and
+general-purpose compressed audio format for audio and music at fixed
+and variable bit rates from 16 to 128 kbps/channel.
+
+The native bitstream format of Vorbis is libogg (Ogg). Alternatively,
+libmatroska (matroska) can also be used.</description>
+  <devel project="multimedia:libs" package="libvorbis"/>
+</package>

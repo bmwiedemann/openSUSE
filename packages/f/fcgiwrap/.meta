@@ -1,0 +1,5 @@
+<package name="fcgiwrap" project="openSUSE:Factory">
+  <title>fcgiwrap</title>
+  <description>fcgiwrap, a helper to run FastCGI scripts with nginx</description>
+  <devel project="server:http" package="fcgiwrap"/>
+</package>

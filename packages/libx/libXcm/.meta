@@ -1,0 +1,9 @@
+<package name="libXcm" project="openSUSE:Factory">
+  <title>X Color Management Library</title>
+  <description>The libXcm library is colour management helper for Xorg. It contains a 
+reference implementation of the net-color spec.
+It allows to attach colour regions to X windows to communicate with colour
+servers. A EDID parser and a observer tool are included.</description>
+  <devel project="multimedia:color_management" package="libXcm"/>
+  <url>http://www.oyranos.org</url>
+</package>

@@ -1,0 +1,23 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2017-09-03 00:10:38.255132582 +0200
+
+build: use locale.h instead of xlocale.h
+
+glibc-2.26 has dropped xlocale.h.
+---
+ clientgui/AsyncRPC.cpp | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+--- a/clientgui/AsyncRPC.cpp
++++ b/clientgui/AsyncRPC.cpp
+@@ -24,9 +24,7 @@
+ #endif
+ #include "config.h"
+ 
+-#if HAVE_XLOCALE_H
+-#include <xlocale.h>
+-#endif
++#include <locale.h>
+ 
+ #include "stdwx.h"
+ #include "BOINCGUIApp.h"

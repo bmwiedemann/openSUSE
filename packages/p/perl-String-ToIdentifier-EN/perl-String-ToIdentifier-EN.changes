@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Tue Feb 27 07:00:04 UTC 2018 - coolo@suse.com
+
+- updated to 0.12
+   see /usr/share/doc/packages/perl-String-ToIdentifier-EN/Changes
+
+  0.12 2018-02-26 04:04:09
+      - re-release dist with updated dist files gh#2
+
+-------------------------------------------------------------------
+Wed Jan 21 07:19:10 UTC 2015 - coolo@suse.com
+
+- install LICENSE too
+
+-------------------------------------------------------------------
+Wed May  7 16:06:22 UTC 2014 - stephan.barth@suse.com
+
+- update from version 0.07 to 0.11
+  Upstream changes:
+  0.11 2013-08-27 19:00:41
+    - POD typo fixes from dsteinbrunner #1
+
+  0.10 2013-06-10 00:22:12
+    - convert to dzil
+    - add =encoding UTF-8 to ::Unicode POD (RT#85981)
+
+  0.09  2012-11-05 02:47:53
+    - bump up Lingua::EN::Inflect::Phrase dep to 0.16 (latest) due to
+      unescaped braces in regex in Lingua::EN::Tagger
+
+  0.08  2012-09-24 03:59:43
+    - update for Lingua::EN::Inflect::Phrase 0.14
+    - change ascii 'acknowledge' to 'ack'
+
+-------------------------------------------------------------------
+Thu May 31 13:49:53 UTC 2012 - coolo@suse.com
+
+- initial package 0.07
+    * created by cpanspec 1.78.06
+

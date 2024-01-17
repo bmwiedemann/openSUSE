@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Sun Dec 10 10:13:43 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update wai to version 3.2.4.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/wai-3.2.4/src/ChangeLog.md
+
+-------------------------------------------------------------------
+Thu Mar 30 17:08:57 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Jan 19 09:01:12 UTC 2021 - psimons@suse.com
+
+- Update wai to version 3.2.3.
+  ## 3.2.3
+
+  * Add documentation recommending streaming request bodies. [#818](https://github.com/yesodweb/wai/pull/818)
+  * Add two functions, `consumeRequestBodyStrict` and `consumeRequestBodyLazy`,
+    that are synonyms for `strictRequestBody` and `lazyRequestBody`. [#818](https://github.com/yesodweb/wai/pull/818)
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Aug 18 10:46:35 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:20 UTC 2020 - psimons@suse.com
+
+- Add wai at version 3.2.2.1.
+

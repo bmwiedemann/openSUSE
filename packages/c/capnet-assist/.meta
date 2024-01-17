@@ -1,0 +1,10 @@
+<package name="capnet-assist" project="openSUSE:Factory">
+  <title>Captive Portal Assistant</title>
+  <description>Assists users in connective to Captive Portals such as those found on public
+access points in train stations, coffee shops, universities, etc.
+Upon detection, the assistant appears showing the captive portal. Once a
+connection is known to have been established, it dismisses itself.
+Written in Vala and using WebkitGtk+.
+  </description>
+  <devel project="X11:Pantheon" package="capnet-assist"/>
+</package>

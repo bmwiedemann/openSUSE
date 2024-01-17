@@ -1,0 +1,253 @@
+-------------------------------------------------------------------
+Thu Sep 21 14:22:40 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 2.7:
+  * Add xmodem and ymodem file send support
+  * fix: support --log-append in cli options
+
+-------------------------------------------------------------------
+Sat Jun 10 12:01:41 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 2.6:
+  * Remove warning when using pattern option
+  * Add --log-append option
+  * Fix line termination for response wait feature
+
+-------------------------------------------------------------------
+Wed Dec 28 12:38:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5:
+  * Update configuration file documentation
+    Rename .tiorc to .tioconfig, tiorc to config, etc.
+  * Add support for $HOME/.tioconfig
+    Replaces what used to be $HOME/.tiorc
+  * Fix double prefix key regression
+  * Better error checking in config file, rename the file
+    Accept "true", "enable", "on", "yes", "1" as true values, their
+    counterparts as false ones. Check integer values for errors and range.
+    Warn about ignored (e.g. misspelled) options.
+    Check getenv() return value for NULL.
+    Rename "tiorc" to "config", as it's a static INI file, not an executable
+    "run commands".
+
+-------------------------------------------------------------------
+Sun Dec  4 14:05:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4:
+  * Add threaded input handling
+  * Fix so that is it possible to quit tio in tio etc.
+  * Add key command to toggle log on/off
+
+-------------------------------------------------------------------
+Sun Nov  6 19:04:02 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3
+  * Add mute feature
+  * Deprecate tty config keyword but keep it around for now
+  * Update show config
+  * Update example tiorc
+
+-------------------------------------------------------------------
+Thu Oct 20 17:53:12 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2
+  * Add shell completion of sub-configuration names
+  * Does not work with sub configuration names that contains one
+    or more white spaces.
+
+-------------------------------------------------------------------
+Sat Oct 15 11:17:13 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1
+  * Fix output line delay
+  * Apply output line delay on lines ending with \n.
+  * On most systems lines ends with \n or \r\n.
+  * Do not print timestamps in hex mode
+  * Improve input mechanism in hex mode
+  * Add support for sending prefix character to serial device
+  * Update example tiorc
+
+-------------------------------------------------------------------
+Sun Sep 11 10:21:41 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0
+  * Handle stale unix socket file
+  * Add visual or audible alert support on connect/disconnect
+  * Add experimental RS-485 support
+  * Add line response feature
+  * Fix potential sscanf() overflow
+  * Only print version on '--version'
+  * Remove duplicate show config entry of DTR pulse duration
+- Update to version 1.47
+  * Enable log feature when using --log-filename
+  * Enable line buffering of log
+  * Avoid invalid hex character messages when switching hex mode
+  * Force flushing of log writes
+  * Renamed tty_flush() to tty_sync()
+  * Fix sync output to serial port
+  * Clean up tty_flush()
+  * Force frequent sync on tty_flush()
+  * Update example tiorc
+  * Quit from non-interactive mode using ctrl-c
+  * Make sure we flush output buffer to tty when piping to tio
+  * Do not return false read error when piping to tio
+  * Show error message when reading port settings fail
+- Update to version 1.46
+  * Rework toggle and pulse feature to support all lines
+  * Add example configuration file
+- Update to version 1.45
+  * Introduce bold color option
+  * Change 'ctrl-t T' to 'ctrl-t t' for timestamp toggle
+  * Add support for remapping prefix key
+  * Add plaintext man page
+- Update to version 1.44
+  * Simplify arbitrary baudrate code
+  * Cleanup error printing routines
+  * Clean up man page
+  * Add support for space parity
+  * Rename EOL delay to Output line delay
+  * Replace -U,--upcase with mapping flag OLTU
+  * Simplify tty_write()
+  * Additional commands: EOL delay, lower to upper translation,
+    added mark parity
+  * Added ability to set mark parity.
+- Update to version 1.43
+  * Add '24hour-delta' timestamp option
+  * Improve description of socket option
+  * Add Pulse DTR command
+
+-------------------------------------------------------------------
+Tue Jul  5 05:35:29 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.42
+  * Update man page
+  * Handle malloc failure
+  * Add missing 'string.h' include.
+
+-------------------------------------------------------------------
+Mon Jul  4 15:55:37 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.41
+  * Rename --hex-mode to --hexadecimal
+  * Enable buffered writing / reading
+
+-------------------------------------------------------------------
+Sat Jun 18 17:21:03 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.40
+  * Add config support for log-strip
+  * Add config support for hex-mode
+  * Rename --hex to --hex-mode
+  * Fix completion for -e, --local-echo
+  * Ignore newlines in hex output
+  * Fix newline in warning_printf()
+  * Fix ansi_printf_raw() in no color mode
+  * Enter non-interactive mode when piping to tio
+  * Also strip backspace from log
+  * Socket code cleanup
+  * Cleanup man page
+  * Rename --log-filename to --log-file
+  * Allow strip escape sequence characters from log file
+- Update to version 1.39
+  * Improve key command response for local echo and timestamp
+  * Fix invalid hex character error message
+  * Make sure only matched config section is parsed
+  * Add support for "disable" keyword in config file
+  * Unify error message formating
+  * Cleanup list devices code
+  * Fix command-line tty-device|config parsing
+  * Update bash completion
+  * Add support for IPv4 and IPv6 network sockets
+  * Fix tio deleting unix socket file
+  * Rework color option
+  * Remove print of hex mode status at startup
+  * Remove newline option in hex mode
+  * Fix configfile memory leaks
+  * Remove command-line option inconsistencies
+  * Replace '1' with 'enable' in config files
+  * Convert errors to warnings
+  * Extended hexadecimal mode.
+  * Added option -x, --hex to start in hexadecimal mode.
+
+-------------------------------------------------------------------
+Thu Jun  2 09:05:15 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.38
+  * Redirect error messages to stderr
+  * Improve help and man page
+  * Mention config file in --help
+  * Fix running without config file
+  * Fix config file error messages
+  * Redirect error messages to stderr
+  * Add repology packaging status
+  * Fix parsing of default settings
+  * Default configuration file settings were not parsed in case a
+    section was matched. Now we make sure that the default
+    (unnamed) settings are always parsed.
+  * Append to existing log file (no truncation)
+  * Add socket info to show configuration
+  * Print socket info at startup
+  * Fix socket option parsing
+  * Match user input against config section names if pattern
+    matching was unsuccessful.
+  * Add support for external control via a Unix domain socket.
+  * fix for using option 'log' without 'log-filename' in config
+    file.
+
+-------------------------------------------------------------------
+Wed Apr 13 16:13:57 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.37
+  * Make libinih a fallback dependency
+  * Fix timestamp parsing in INI conf
+  * Factorize timestamp parsing to be coherent with command line
+    format in configuration file.
+
+-------------------------------------------------------------------
+Wed Mar 23 14:46:45 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.36
+ * Add support for defaults in config file
+ * Handle SIGHUP
+ * Add color configuration support
+ * Force dependency on libinih
+ * Update man page
+ * Document configuration file options
+ * Add support for a configuration file
+- Update to version 1.35
+ * Add support for automatically generated log filename
+ * Add support for configurable timestamp format
+
+-------------------------------------------------------------------
+Tue Feb 15 20:32:53 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.34
+  * Add '-c, --color' option
+  * Reintroduce long timestamp format
+
+-------------------------------------------------------------------
+Sun Feb 13 17:19:52 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.33
+  * Replace autotools with meson
+  * Show auto connect status in show configuration
+  * Rename option -i to -L
+  * Shorten timestamp description
+  * Add list serial devices feature
+  * Add command to show version
+  * Add '-t' option description for time stamping
+  * Add description for time stamping.
+  * Show error when failing to open a tty
+  * Newline: handle booth NL and CR
+  * Flush every local echo char
+
+-------------------------------------------------------------------
+Tue Jan 11 22:14:41 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Run spec-cleaner
+- Create subpackage for bash-completion
+
+-------------------------------------------------------------------
+Fri Jan 01 00:00:00 UTC 2021 - Stefan Siegel <ssiegel@sdas.net>
+
+- Initial package

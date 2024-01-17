@@ -1,0 +1,65 @@
+diff -ur pyuv-1.4.0-orig/tests/test_async.py pyuv-1.4.0/tests/test_async.py
+--- pyuv-1.4.0-orig/tests/test_async.py	2014-12-02 03:59:46.000000000 +0700
++++ pyuv-1.4.0/tests/test_async.py	2019-10-20 19:47:32.605757346 +0700
+@@ -12,12 +12,12 @@
+     def test_async1(self):
+         self.async_cb_called = 0
+         self.prepare_cb_called = 0
+-        def async_cb(async):
++        def async_cb(async_):
+             with self.lock:
+                 self.async_cb_called += 1
+                 n = self.async_cb_called
+             if n == 3:
+-                self.async.close()
++                self.async_.close()
+                 self.prepare.close()
+         def prepare_cb(prepare):
+             if self.prepare_cb_called:
+@@ -31,8 +31,8 @@
+                     n = self.async_cb_called
+                     if n == 3:
+                         break
+-                    self.async.send()
+-        self.async = pyuv.Async(self.loop, async_cb)
++                    self.async_.send()
++        self.async_ = pyuv.Async(self.loop, async_cb)
+         self.prepare = pyuv.Prepare(self.loop)
+         self.prepare.start(prepare_cb)
+         self.lock = threading.Lock()
+@@ -52,8 +52,8 @@
+             self.loop.stop()
+         def thread_cb():
+             time.sleep(0.01)
+-            self.async.send()
+-        self.async = pyuv.Async(self.loop)
++            self.async_.send()
++        self.async_ = pyuv.Async(self.loop)
+         self.prepare = pyuv.Prepare(self.loop)
+         self.prepare.start(prepare_cb)
+         self.check = pyuv.Check(self.loop)
+diff -ur pyuv-1.4.0-orig/tests/test_signal.py pyuv-1.4.0/tests/test_signal.py
+--- pyuv-1.4.0-orig/tests/test_signal.py	2014-12-02 03:59:46.000000000 +0700
++++ pyuv-1.4.0/tests/test_signal.py	2019-10-20 20:00:39.561701185 +0700
+@@ -15,17 +15,17 @@
+     def signal_cb(self, handle, signum):
+         self.assertEqual(signum, signal.SIGUSR1)
+         self.signal_cb_called += 1
+-        self.async.send()
++        self.async_.send()
+ 
+-    def async_cb(self, async):
++    def async_cb(self, async_):
+         self.async_cb_called += 1
+-        self.async.close()
++        self.async_.close()
+         self.signal_h.close()
+ 
+     def test_signal1(self):
+         self.async_cb_called = 0
+         self.signal_cb_called = 0
+-        self.async = pyuv.Async(self.loop, self.async_cb)
++        self.async_ = pyuv.Async(self.loop, self.async_cb)
+         self.signal_h = pyuv.Signal(self.loop)
+         self.signal_h.start(self.signal_cb, signal.SIGUSR1)
+         thread = threading.Thread(target=self.loop.run)

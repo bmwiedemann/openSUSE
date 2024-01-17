@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e780518d181313ec57bda6ac13185edf</srcmd5>
+    <version>1.32</version>
+    <time>1643062208</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain tio in Factory</comment>
+    <requestid>948400</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f45f5ceefd05781fd09d7ee6de98a22d</srcmd5>
+    <version>1.33</version>
+    <time>1645462004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956321</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5c0a896deebcf3bd68f8477e7ac893d8</srcmd5>
+    <version>1.36</version>
+    <time>1648330271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965019</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0989615d08831b864eba9941a41e9c0e</srcmd5>
+    <version>1.37</version>
+    <time>1650657267</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971901</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>00a592a996e78a5546b2262fbe2c0eec</srcmd5>
+    <version>1.38</version>
+    <time>1654776717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981391</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fe6980e8aec3945339da89c05a0bee97</srcmd5>
+    <version>1.40</version>
+    <time>1655821947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984034</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>952cf99833cb0e87d5984348a035e84e</srcmd5>
+    <version>1.42</version>
+    <time>1657114942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987137</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>75c3295eb06a95164c0d70fcea12be98</srcmd5>
+    <version>2.0</version>
+    <time>1663935323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005521</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e3dd4bed408bbed81ecbb0dc8117c6a8</srcmd5>
+    <version>2.2</version>
+    <time>1666978286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031833</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>841a59a129229660f8e619f1ca7addc0</srcmd5>
+    <version>2.3</version>
+    <time>1668609811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035912</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8056234ff956d0be3f099ddc04d16dae</srcmd5>
+    <version>2.4</version>
+    <time>1670259651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040012</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>50a17101302530d52a393b32f0b91084</srcmd5>
+    <version>2.5</version>
+    <time>1672315774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045647</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>66cb9b3e53aef3ed8c403018add2ace2</srcmd5>
+    <version>2.6</version>
+    <time>1686665379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092667</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3b0e6a9e822c4067c3e31c28e07b19af</srcmd5>
+    <version>2.7</version>
+    <time>1695758499</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113517</requestid>
+  </revision>
+</revisionlist>

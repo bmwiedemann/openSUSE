@@ -1,0 +1,7 @@
+<package name="pinpoint" project="openSUSE:Factory">
+  <title>Simple Presentation Tool for Excellent Presentations</title>
+  <description>Pinpoint a simple presentation tool that hopes to avoid audience death
+by bullet point and instead encourage presentations containing beautiful
+images and small amounts of concise text in slides.</description>
+  <devel project="GNOME:Apps" package="pinpoint"/>
+</package>

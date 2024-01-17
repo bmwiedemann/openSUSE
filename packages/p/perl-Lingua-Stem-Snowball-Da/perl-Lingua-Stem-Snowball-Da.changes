@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Thu Jan 19 13:43:20 UTC 2012 - coolo@suse.com
+
+- fix license
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:25 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Jul 15 10:46:24 UTC 2010 - chris@computersalat.de
+
+- initial package 1.01
+  * created by cpanspec 1.78
+

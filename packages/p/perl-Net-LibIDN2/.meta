@@ -1,0 +1,8 @@
+<package name="perl-Net-LibIDN2" project="openSUSE:Factory">
+  <title>Perl bindings for GNU Libidn2</title>
+  <description>Provides bindings for GNU Libidn2, a C library for handling internationalized domain names based on IDNA 2008, Punycode and TR46.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Net-LibIDN2"/>
+  <url>https://metacpan.org/release/Net-LibIDN2</url>
+</package>

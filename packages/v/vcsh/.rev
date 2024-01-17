@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>00eed72b2be06472bcac7a88369215db</srcmd5>
+    <version>1.20151229</version>
+    <time>1493971167</time>
+    <user>dimstar_suse</user>
+    <comment>New package vcsh</comment>
+    <requestid>491006</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f73acb6fcc217a9843ccc879833c272c</srcmd5>
+    <version>1.20151229</version>
+    <time>1500975615</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512203</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7331122102d572e75d7096898f2b25ed</srcmd5>
+    <version>1.20151229</version>
+    <time>1519844589</time>
+    <user>dimstar_suse</user>
+    <comment>- Small spec file cleanup
+
+- Fix grammar error in %description.
+- Trim empty build sections.</comment>
+    <requestid>580936</requestid>
+  </revision>
+</revisionlist>

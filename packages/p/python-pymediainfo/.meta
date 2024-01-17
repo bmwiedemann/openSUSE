@@ -1,0 +1,7 @@
+<package name="python-pymediainfo" project="openSUSE:Factory">
+  <title>Python wrapper for the mediainfo library</title>
+  <description>A Python wrapper for the mediainfo library.
+
+</description>
+  <devel project="multimedia:libs" package="python-pymediainfo"/>
+</package>

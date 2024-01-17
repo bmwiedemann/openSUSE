@@ -1,0 +1,155 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e2873feb6a0230ae89cc2333bbf021e8</srcmd5>
+    <version>1.13.5</version>
+    <time>1576014389</time>
+    <user>dimstar_suse</user>
+    <comment>New package go1.13.5 (released 2019/12/04) includes fixes to
+the go command, the runtime, the linker, and the net/http package.
+
+go1.13.4 or greater is required by Kubernetes 1.17.0</comment>
+    <requestid>755648</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f4050a3e8a286d1e7f02be3c77797105</srcmd5>
+    <version>1.13.6</version>
+    <time>1578950148</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.13.6 (released 2020/01/09) includes fixes to the runtime and the net/http package
+
+- Update changelog with additional detail for go1.13.4 go1.13.5 (forwarded request 762906 from jfkw)</comment>
+    <requestid>762911</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ac5cdeed61b6df2bfbd66bb798ac5172</srcmd5>
+    <version>1.13.7</version>
+    <time>1580724706</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.13.7 (released 2020/01/28) includes two security fixes to
+  the crypto/x509 package.
+  * go#36838 crypto/x509, x/crypto/cryptobyte: panic in certificate parsing
+  * go#36835 crypto/x509: certificate validation bypass on Windows 10 (forwarded request 768364 from jfkw)</comment>
+    <requestid>768368</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4274c547738b64a6507af07da27af5dc</srcmd5>
+    <version>1.13.8</version>
+    <time>1582112386</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.13.8 (released 2020/02/12) includes fixes to the runtime, the
+  crypto/x509, and net/http packages.
+  Refs boo#1149259.
+  * go#37067 crypto/x509: MarshalPKCS8PrivateKey doc says RSA private key while it supports more than that
+  * go#36583 net/http: HTTP/2 with MaxConnsPerHost hangs or crashes
+  * go#36575 runtime: &quot;PowerRegisterSuspendResumeNotification failed with errno= 87&quot; when running in Windows docker containers
+  * Truncate changelog for versions older than go1.13
+
+  Refs boo#1149259. (forwarded request 774245 from jfkw)</comment>
+    <requestid>774247</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>21be1a80a5faa3a94fe73530c5b4bc19</srcmd5>
+    <version>1.13.9</version>
+    <time>1585085436</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.13.9 (released 2020/03/19) includes fixes to the go command,
+  tools, the runtime, the toolchain, and the crypto/cypher package.
+  Refs boo#1149259.
+- Packaging sync accumulated changes from go1.12
+- Use gcc9 by default by updating define gcc_go_version 9 (was 8)
+  * drop unneeded patch gcc8-go.patch
+- Fix broken go_api evaluation (1.12 &amp;lt; 1.5, when evaluated as floats),
+  let RPM evaluate the expression, drop no longer required bc.
+- Own the gdbinit.d directory, avoid the build dependency on gdb.
+- Add %ifarch %arm aarch64 BuildRequires: binutils-gold to fix
+  collect2: fatal error: cannot find 'ld'- (forwarded request 787029 from jfkw)</comment>
+    <requestid>787073</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a817a051cb941885caab940b32d6e404</srcmd5>
+    <version>1.13.10</version>
+    <time>1586973925</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.13.10 (released 2020/04/08) includes fixes to the go command,
+  the runtime, os/exec, and time packages.
+  Refs boo#1149259.
+  * go#38236 time: NewTicker will not emit ticks at a frequency greater than 1/sec on qemu user mode ppc64le
+  * go#38082 cmd/go/internal/test: data race in (*runCache).builderRunTest
+  * go#37901 cmd/compile/internal/syntax: TestStdLib verbosely broken on Windows
+  * go#37895 os: TestRemoveAllWithMoreErrorThanReqSize is failing on Plan 9 and Windows
+  * go#37892 net/http: TestCancelRequestWithChannelBeforeDo_Cancel failure on Windows long test
+  * go#37802 cmd/go: 'Access is denied' when renaming module cache directory
+  * go#37483 runtime: &quot;fatal error: unexpected signal&quot; 0xC0000005 on Windows for a small program with a large allocation
+  * go#37433 os/exec: environForSysProcAttr is never called as sysattr.Env is never nil
+  * go#37230 PowerRegisterSuspendResumeNotification error on Azure App Services with go 1.13.7 (forwarded request 792589 from jfkw)</comment>
+    <requestid>792590</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f0105de0c8c4d3e42f66e9146cde04a0</srcmd5>
+    <version>1.13.10</version>
+    <time>1588450421</time>
+    <user>dimstar_suse</user>
+    <comment>- Requires binutils-gold for %arm and aarch64 - boo#1170826 (forwarded request 798919 from Guillaume_G)</comment>
+    <requestid>799326</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>87f0fc4bb82684cde172b75f4a22fc64</srcmd5>
+    <version>1.13.11</version>
+    <time>1589660663</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.13.11 (released 2020/05/14) includes fixes to the compiler.
+  Refs boo#1149259.
+  * go#38442 cmd/compile: unexpected nil dereference on s390x (forwarded request 805917 from jfkw)</comment>
+    <requestid>805920</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>11eabb790e4904c212abcbffa1802f48</srcmd5>
+    <version>1.13.11</version>
+    <time>1591879461</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure ARM arch is set properly - boo#1169832 (forwarded request 813237 from Guillaume_G)</comment>
+    <requestid>813286</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>0e552c8bddeacf862f4a29f4b69a0689</srcmd5>
+    <version>1.13.11</version>
+    <time>1591990596</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Prefer-etc-hosts-over-DNS.patch to ensure /etc/hosts is used if /etc/nsswitch.conf is not present boo#1172868 gh#golang/go#35305 (forwarded request 814160 from RBrownSUSE)</comment>
+    <requestid>814162</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>aadfce871e57a3eb4e8ad02669f145f9</srcmd5>
+    <version>1.13.14</version>
+    <time>1595338979</time>
+    <user>dimstar_suse</user>
+    <comment>Update to go1.13.14 addressing security CVEs. Improve packaging with
+incrementing update-alternatives priority. Use %license tag. Rename
+go1.x-prefer-etc-hosts-over-dns.patch and add info per packaging guidelines in
+preparation for submit to SUSE. Remove %defattr(-,root,root,-) in %files</comment>
+    <requestid>821468</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3c4131a2d3df27f0d4a23759f624ede0</srcmd5>
+    <version>1.13.15</version>
+    <time>1597220343</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.13.15 (released 2020/08/06) includes security fixes to the
+  encoding/binary package.
+  CVE-2020-16845
+  Refs boo#1149259 go1.13 release tracking
+  * boo#1174977 CVE-2020-16845
+  * go#40620 encoding/binary: ReadUvarint and ReadVarint can read an unlimited number of bytes from invalid inputs (forwarded request 824738 from jfkw)</comment>
+    <requestid>824739</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e5404258c9b9905d64b4b04990934ddb</srcmd5>
+    <version>1.13.15</version>
+    <time>1600878966</time>
+    <user>dimstar_suse</user>
+    <comment>- Use go_api instead of version for update-alternatives priority
+
+- replace binutils-gold requires by recommends for aarch64 on SLE. (bsc#1170826) (forwarded request 834205 from jfkw)</comment>
+    <requestid>834214</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<package name="tslib" project="openSUSE:Factory">
+  <title>tslib - abstraction layer for touchscreen</title>
+  <description>Tslib is an abstraction layer for touchscreen panel events.
+
+Homepage: https://github.com/kergoth/tslib</description>
+  <devel project="hardware" package="tslib"/>
+</package>

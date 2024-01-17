@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>403c98e9ed48e1b348b8f38aa9a87ced</srcmd5>
+    <version>5.1.5</version>
+    <time>1613511393</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870531</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>54cedec607dcb8813bd83815d653f1c5</srcmd5>
+    <version>5.5.3</version>
+    <time>1629269736</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>911985</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5b00fb0a43cc8afc56c66352543430c8</srcmd5>
+    <version>5.5.17</version>
+    <time>1647458415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.5.17
+  * Set scrollbar visible
+  * Add selected checked indicator icon
+  * Fix bug
+- Drop fix-library-link.patch, Merged by upstream
+- Drop libdsvgicon.so to workaround crash bug
+
+- Update version to 5.5.8
+  * Fix bugs
+  * Update style (forwarded request 962063 from hillwood)</comment>
+    <requestid>962066</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7633ed863f26f22f444499db73033bb6</srcmd5>
+    <version>5.5.17</version>
+    <time>1647724851</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963071</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dfa7061b571ea879a7eda174b719d33e</srcmd5>
+    <version>5.5.24</version>
+    <time>1662063007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.5.24
+  * configurable proxy icon engine
+  * optimize ui
+  * Fix bugs 
+
+- Update version to 5.5.23.1
+  * Optimize performance
+  * Optimize ui
+  * Fix bugs</comment>
+    <requestid>1000240</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>11cae38c48efa11cc7ddae4588e1f575</srcmd5>
+    <version>5.5.24</version>
+    <time>1704487510</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire rpm_macro(_kf5_plugindir): ensure we have the
+  package providing the base kf5 macros. (forwarded request 1136905 from dimstar)</comment>
+    <requestid>1137049</requestid>
+  </revision>
+</revisionlist>

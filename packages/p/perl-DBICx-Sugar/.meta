@@ -1,0 +1,6 @@
+<package name="perl-DBICx-Sugar" project="openSUSE:Factory">
+  <title>perl-DBICx-Sugar - Just some syntax sugar for DBIx::Class</title>
+  <description>Just some syntax sugar for your DBIx::Class applications. This was originally created to remove code duplication between Dancer::Plugin::DBIC and Dancer2::Plugin::DBIC.</description>
+  <devel project="devel:languages:perl" package="perl-DBICx-Sugar"/>
+  <url>https://metacpan.org/release/DBICx-Sugar</url>
+</package>

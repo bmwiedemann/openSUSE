@@ -1,0 +1,17 @@
+<package name="c-toxcore" project="openSUSE:Factory">
+  <title>Secure decentralized instant messaging application</title>
+  <description>Project Tox, also known as Tox, is a FOSS instant messaging 
+application aimed to replace Skype.
+With the rise of government monitoring programs, 
+Tox provides an easy to use application that allows you to connect 
+with friends and family without anyone else listening in. 
+While other big-name services require you to pay for features, 
+Tox is totally free and comes without advertising
+
+
+    Source: https://github.com/TokTok/c-toxcore
+    
+</description>
+  <devel project="server:messaging" package="c-toxcore"/>
+  <url>https://tox.chat/</url>
+</package>

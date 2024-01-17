@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>276996154847770ea7c53411e45dec64</srcmd5>
+    <version>3.015</version>
+    <time>1537018490</time>
+    <user>maxlin_factory</user>
+    <comment>needed for perl-Sereal</comment>
+    <requestid>634230</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>50d9f3c313b4c93e9a0e62e9f195d35c</srcmd5>
+    <version>4.005</version>
+    <time>1539251575</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640414</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>47047cdf60a34da24691154fe168cf79</srcmd5>
+    <version>4.005</version>
+    <time>1541746424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647013</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f8833d93e6eb45bde7b7ff69c4a2dfb7</srcmd5>
+    <version>4.007</version>
+    <time>1567679661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727220</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>46ae2bbb5f55ee1e2555c23fd102ba4e</srcmd5>
+    <version>4.009</version>
+    <time>1580842495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769777</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8a831a935b3a063bb72eea2037962bc9</srcmd5>
+    <version>4.011</version>
+    <time>1581455833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770192</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>afe60d323e90b2aa270a3f05433262ab</srcmd5>
+    <version>4.017</version>
+    <time>1594805336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820832</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d65bc0ce7e933d9b5934bff9bac85e07</srcmd5>
+    <version>4.018</version>
+    <time>1596703221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824542</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a8791e404224579f8af15b9500ef8031</srcmd5>
+    <version>4.019</version>
+    <time>1644965861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955043</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>21de9ff4ebc162dd284befaf990db409</srcmd5>
+    <version>4.023</version>
+    <time>1645723273</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957389</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b4eeb0d21babd27f85e05af1d42f03e9</srcmd5>
+    <version>4.025</version>
+    <time>1660662507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>997340</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>72c3c85ca1e92e73ce8d2b0d7c9ea6d2</srcmd5>
+    <version>5.001</version>
+    <time>1662740869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002182</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d8639e440c4b408cef7724bb4a65517b</srcmd5>
+    <version>5.003</version>
+    <time>1676562967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066020</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a89d34e2e9be3c959889eef3ad464a76</srcmd5>
+    <version>5.004</version>
+    <time>1682000763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080877</requestid>
+  </revision>
+</revisionlist>

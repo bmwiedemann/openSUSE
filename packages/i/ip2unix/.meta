@@ -1,0 +1,6 @@
+<package name="ip2unix" project="openSUSE:Factory">
+  <title>Turn IP sockets into Unix domain sockets</title>
+  <description>Executes a program and converts IP to Unix domain sockets at runtime based on a list of rules, either given via short command line options or via a file with a list of rules. The first matching rule causes ip2unix to replace the current IP socket with a Unix domain socket based on the options given. For example if a socketPath is specified, the Unix domain socket will bind or listen to the given path.</description>
+  <devel project="network" package="ip2unix"/>
+  <url>https://github.com/nixcloud/ip2unix/</url>
+</package>

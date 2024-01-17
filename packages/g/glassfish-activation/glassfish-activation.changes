@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Wed Jul 13 14:11:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Avoid missing symlink %_javadir/jaf.jar, by recreating it when
+  gnu-jaf is uninstalled
+
+-------------------------------------------------------------------
+Tue Jul 12 09:28:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Add symlinks to jaf.jar and activation.jar which were part
+  of the obsoleted gnu-jaf
+
+-------------------------------------------------------------------
+Fri Mar 18 16:49:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source/target levels 8
+
+-------------------------------------------------------------------
+Fri Mar 18 05:48:14 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Rename package to glassfish-activation and split it into two,
+  the whole activation jar and the jar with only the apis
+
+-------------------------------------------------------------------
+Thu Mar 17 03:01:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Rewrite the build system so that it does not need maven
+
+-------------------------------------------------------------------
+Wed Dec 15 11:46:54 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Remove alias for the new jakarta name, since it will be provided
+  by a new package
+
+-------------------------------------------------------------------
+Tue Apr 14 08:00:37 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Add alias for the new jakarta name
+
+-------------------------------------------------------------------
+Fri Mar  6 10:59:10 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of JavaBeans Activation Framework 1.2.0

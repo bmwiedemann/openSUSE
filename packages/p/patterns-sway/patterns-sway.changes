@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Thu Jun  1 14:00:48 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Remove require on mako:
+  See https://github.com/openSUSE/openSUSEway/issues/103
+
+-------------------------------------------------------------------
+Sun Jul 10 08:56:59 UTC 2022 - Denys Kondratenko <stdden@opensuse.org>
+
+- adding fontawesome-fonts as we have waybar
+  See https://github.com/openSUSE/openSUSEway/issues/65
+
+-------------------------------------------------------------------
+Tue Jul  5 12:48:08 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use pipewire as default audio server in TW.
+
+-------------------------------------------------------------------
+Tue Sep 22 09:07:01 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Remove dmenu since wofi is already required
+  See https://github.com/openSUSE/openSUSEway/issues/30
+
+-------------------------------------------------------------------
+Sun Aug  2 10:45:27 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- upstream branding by default for pattern-sway
+  * for openSUSE branding there is openSUSEway pattern
+
+-------------------------------------------------------------------
+Thu Jun  19 20:55:10 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Add openSUSEway branding packages as Recomends
+- wofi has landed to the Factory, adding it
+
+-------------------------------------------------------------------
+Thu Jun  5 08:50:08 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Add dmenu requirement as it is default menu in sway config
+
+-------------------------------------------------------------------
+Thu Jun  4 14:36:08 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Add Mesa requirement to be able to run sway
+- Add alacritty requirement as it is default tty in sway config
+
+-------------------------------------------------------------------
+Tue May 26 07:37:28 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Initial package for sway pattern

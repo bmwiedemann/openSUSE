@@ -1,0 +1,14 @@
+--- pyuv-1.4.0-orig/tests/test_fs.py	2015-12-15 15:46:33.000000000 +0700
++++ pyuv-1.4.0/tests/test_fs.py	2019-10-20 20:01:57.978490880 +0700
+@@ -9,7 +9,10 @@
+ 
+ 
+ # Make stat return integers
+-os.stat_float_times(False)
++try:
++    os.stat_float_times(False)
++except AttributeError:
++    pass
+ pyuv.fs.stat_float_times(False)
+ 
+ 

@@ -1,0 +1,5 @@
+<package name="deepin-feature-enable" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Deepin" package="deepin-feature-enable"/>
+</package>

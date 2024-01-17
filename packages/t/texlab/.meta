@@ -1,0 +1,6 @@
+<package name="texlab" project="openSUSE:Factory">
+  <title>texlab</title>
+  <description>A cross-platform implementation of the Language Server Protocol providing rich cross-editing support for the LaTeX typesetting system. The server may be used with any editor that implements the Language Server Protocol.</description>
+  <devel project="Publishing:TeXLive" package="texlab"/>
+  <url>https://github.com/latex-lsp/texlab</url>
+</package>

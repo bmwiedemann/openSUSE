@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Wed Nov 29 23:09:03 UTC 2023 - Mikhail Paulyshka <me@mixaill.net>
+
+- add lzma-devel as build dependency
+
+- version 1.8.3
+  * Home: Device filtering reworked to download OS list eagerly
+  * OS List: Fixed 'Recommended' tag annotation
+  * i18n: Added zh-TW Traditional Chinese translation
+  * i18n: Updated Korean, German, Ukranian, translations
+  * build: Linux: Fix libdrm dependency requirement on non-embedded build.
+  * Common: Disable QML caching entirely
+  * OS customisation: Allow use if only cloudinit payload available
+  * OS customisation: Allow empty PSK for 'Open' WiFi networks.
+  * OS List: Use ImageList v4 URL
+
+- version 1.8.1
+  * Advanced options: Rename to OS customization
+  * OS customization: change to tabbed UI
+  * OS customization: make SSH public key field a textarea
+  * OS customization: add convenience button to run ssh-keygen
+  * OS customization: Enforce choice as part of write flow
+  * OS customization: Fixes for state consistency across UI
+  * Home: Add mechanism for selecting Raspberry Pi device
+  * Shared: Multiple keyboard focus fixes 
+
+-------------------------------------------------------------------
+Sun May 28 14:05:52 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.7.5
+  * 567.patch removed (included in src)
+  * various fixes for Windows
+  * No changes from v1.7.4.1 for Linux and Mac other than version number
+  
+  version 1.7.4.1
+  * Advanced settings: fix creating files on FAT partition that are an exact multiple of cluster size.
+  * Advanced settings: allow end-of-directory marker to be missing in FAT32 root directory (fixes customizing Homebridge image)
+  * Do you want to apply saved settings window: offer 'no' option, without clearing settings.
+  * Linux: eject storage properly through udisks2.
+  * Add Russian translation
+  
+-------------------------------------------------------------------
+Thu Apr  6 10:47:25 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 567.patch: Fix build using gcc13.
+
+-------------------------------------------------------------------
+Wed Mar  8 16:42:57 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.7.4
+  * Advanced settings: fix escaping single quotes ( ' ) in WLAN password
+  * Windows only: when auto-detecting the WLAN password used by the computer running Imager, it now processes passwords that contain < > ' " & correctly.
+  * Advanced settings: default to using username of logged-in user instead of 'pi'
+  * Now uses a different method to edit files on the FAT partition to apply advanced settings. Imager now understands the FAT16/FAT32 file system format and can edit files by itself using the raw disk device, without having to rely on the operating system to mount the partition first.
+  * French translation update
+
+-------------------------------------------------------------------
+Mon Oct 17 16:22:27 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- rpi-imager (1.7.3) 
+  * Linux: use GnuTLS instead of OpenSSL for computing SHA256
+  * Fix persistenting public key authentication setting
+  * Linux: prefill wlan PSK if Linux distro uses NetworkManager
+  * Add digital signage icon
+  * Fix ""Cannot send events to objects owned by a different thread" warning
+  * Update Slovan/Korean language files
+  * Allow selecting file names without extension
+  * Add possibility to outsource handling of custom settings to script at
+    /usr/lib/raspberrypi-sys-mods/imager_custom
+  * Advanced settings: disallow invalid characters in hostname field
+
+-------------------------------------------------------------------
+Thu Apr 14 13:52:55 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- fix for new autoconf
+
+-------------------------------------------------------------------
+Tue Mar 29 17:42:45 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.7.2
+- Advanced options: remove overscan option
+- Advanced options: remove first run wizard suppression option
+- gz/xz/zstd custom images: pad if image size is not dividable by 512 byte
+- Store saved wifi password hashed
+- Make buttons blue on focus, to ease keyboard navigation
+- Add Japan, Korean translations
+- rpi-imager-noupdates.diff removed (included in current version)
+
+-------------------------------------------------------------------
+Mon Feb 14 17:02:14 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 1.7.1
+- disable telemetry and auto updates (rpi-imager-noupdates.diff)
+
+-------------------------------------------------------------------
+Thu Sep  2 15:27:30 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop rpi-imager.yaml as it is not used in spec file
+- Fix Source URL
+
+-------------------------------------------------------------------
+Sun Aug  8 07:56:46 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Categories and Generic name added to desktop file
+
+-------------------------------------------------------------------
+Wed Jul 28 08:08:05 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.6.2
+  * specfile cleaned up
+  * switch to cmake
+  * desktop file fixed
+  * desktop-file install
+
+-------------------------------------------------------------------
+Sun Apr 18 12:17:46 UTC 2021 - eymeric dechelette <hatchchien@protonmail.com>
+
+-first packaging
+-see changelog at https://github.com/raspberrypi/rpi-imager/releases 

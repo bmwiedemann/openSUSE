@@ -1,0 +1,428 @@
+-------------------------------------------------------------------
+Sun Dec 17 23:01:33 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.24.0
+  * Add debconf-show command parser.
+  * Add iftop command parser.
+  * Add pkg-index-apk parser for Alpine Linux Package Index files.
+  * Add pkg-index-deb parser for Debian/Ubuntu Package Index files.
+  * Add proc-cmdline parser for /proc/cmdline file.
+  * Add swapon command parser.
+  * Add tune2fs command parser.
+  * Remove iso-datetime parser deprecated since v1.22.1.
+    (use datetime-iso instead).
+  * Refactor acpi command parser for code cleanup.
+  * Fix iptables parser for cases where the target field is blank
+    in a rule.
+  * Fix vmstat parsers for some cases where wide output is used.
+  * Fix mount parser for cases with spaces in the mount point name.
+  * Fix xrandr parser for infinite loop issues.
+
+-------------------------------------------------------------------
+Fri Nov 24 13:29:55 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.23.6
+  * Fix XML parser for xmltodict library versions < 0.13.0
+  * Fix who command parser for cases when the from field contains
+    spaces
+- Update to version 1.23.5
+  * Add host command parser
+  * Add nsd-control command parser
+  * Add lsb_release command parser
+  * Add /etc/os-release file parser
+  * Enhance env command parser to support multi-line values
+  * Enhance ping and ping-s parsers to add error and corrupted
+    support
+  * Enhance xml parser to include comments in the JSON output
+  * Fix pidstat command parser when using -T ALL
+  * Fix x509-cert parser to allow negative serial numbers
+  * Fix x509-cert parser for cases when bitstrings are larger
+    than standard
+  * Fix xrandr command parser for associated device issues
+  * Fix error when pygments library is not installed
+- Update to version 1.23.4
+  * Add /etc/resolve.conf file parser
+  * Add /proc/net/tcp and /proc/net/tcp6 file parser
+  * Add find command parser
+  * Add ip route command parser
+  * Fix certbot command parser to be more robust with different
+    line endings
+- Update to version 1.23.3
+  * Add lsattr command parser
+  * Add srt file parser
+  * Add veracrypt command parser
+  * Add X509 Certificate Request file parser
+  * Enhance X509 Certificate parser to allow non-compliant email
+    addresses with a warning
+  * Enhance dig command parser to support the +nsid option
+  * Enhance last and lastb command parser to support the -x option
+  * Enhance route command parser to add Windows support
+  * Enhnace netstat command parser to add Windows support
+  * Enhance ss command parser to support extended options
+  * Enhance the compatibility warning message
+  * Fix bluetoothctl command parser for some mouse devices
+  * Fix ping command parsers for output with missing hostname
+  * Fix stat command parser for older versions that may not contain
+    all fields
+  * Fix deprecated option in setup.cfg
+- Update to version 1.23.2
+  * Add bluetoothctl command parser
+  * Add certbot command parser for certificates and show_account
+    options
+  * Fix acpi command parser for "Not charging" battery status lines
+  * Fix iwconfig command parser for SSIDs with dashes in the name
+  * Fix crontab command parsers for incorrect variable parsing in
+    some cases
+  * Fix git-log and git-log-s command parsers for incorrect
+    insertion/deletion parsing
+  * Fix ufw-appinfo command parser for parsing errors on multiline
+    description fields
+  * Fix pytest warnings
+- Update to version 1.23.1
+  * Fix zpool-status command parser for lines that start with tab
+  * Fix timedatectl command parser when RTC set to local
+  * Fix to ensure py.typed file is included in the package wheel
+  * Fix lsusb command parser to support CDC MBIM and CDC MBIM
+    Extended fields
+  * Add support for the timesync-status for the timedatectl command
+    parser
+  * Fix to ignore non-parser-plugins in the parser plugin directory
+- Update to version 1.22.5
+  * Add input slicing as a jc command-line option
+  * Add ssh configuration file parser
+  * Add ver Version string parser
+  * Add zpool iostat command parser
+  * Add zpool status command parser
+  * Fix acpi command parser for "will never fully discharge"
+    battery state
+  * Fix crontab and crontab-u command and file parsers for cases
+    where only
+  * shortcut schedule items exist
+  * Fix ifconfig command parser for older-style linux output
+  * Fix xrandr command parser for proper is_current output
+  * Fix xrandr command parser for infinite loop with some device
+    configurations
+  * Add reflection key to xrandr parser schema
+  * Add display model info from EDID to xrandr parser
+  * Add MPX-specific VMA support for VM Flags in /proc/<pid>/smaps
+    parser
+
+-------------------------------------------------------------------
+Mon Jan  2 20:39:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.22.4:
+  * Add `iwconfig` command parser
+  * Add NeXTSTEP format support to the PLIST file parser
+  * Fix `proc` parser magic signature detection for `/proc/pid/stat` hacks
+  * Fix `x509-cert` parser for string serial numbers
+  * Add category tags to parser metadata: generic, standard, file, string,
+    binary, command
+  * Add "list parsers by category" view to help
+  * Fix python 3.6-related issues
+  * Add python 3.6 to automated tests
+
+-------------------------------------------------------------------
+Fri Dec 23 17:34:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.22.3:
+  * Add Common Log Format and Combined Log Format file parser (standard and
+    streaming)
+  * Add PostgreSQL password file parser
+  * Add openvpn-status.log file parser
+  * Add `cbt` command parser (Google Big Table)
+  * Enhance `ifconfig` parser with interface lane information on BSD
+  * Enhance `ifconfig` parser with additional IPv6 `scope_id` info for BSD
+  * Fix `ifconfig` parser to capture some IPv6 addresses missed on BSD
+  * Fix `git-log` and `git-log-s` parsers for failure on empty author name
+  * Update `os-prober` parser with split EFI partition fields
+  * Add ISO string attribute (`.iso`) to `jc.utils.timestamp()`
+  * Fix several documentation typos
+
+-------------------------------------------------------------------
+Sun Nov 13 09:09:25 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.22.2
+  * add sshd_conf parser for sshd configuration files and
+    sshd -T output.
+  * add findmnt command parser.
+  * add git ls-remote command parser.
+  * add os-prober command parser.
+  * add SemVer string parser.
+  * enhance the ifconfig parser so it can output multiple IPv4 and
+    IPv6 addresses.
+  * enhance xml parser with optional _ prefix for attributes
+    instead of * @ by using the --raw option. This can make it
+    easier to filter theJSON output in some tools.
+  * fix the xml parser to output a normal Dictionary instead of
+    OrderdDict.
+  * fix csv and csv-s parsers for UTF-8 encoded CSV files with
+    leading BOM bytes.
+  * fix exit code to be non-zero on interrupt.
+  * allow parser module objects to be used as arguments to
+    jc.get_help() and jc.parser_info()
+  * catch unexpected exceptions in the CLI
+  * add error message on interrupt to STDERR
+
+-------------------------------------------------------------------
+Mon Oct 24 19:53:26 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.22.1
+  * add udevadm command parser
+  * add lspci command parser
+  * add pci.ids file parser
+  * fix proc-pid-stat parser for command names with spaces and
+    newlines
+  * enhance ip-address parser to add ip_split field
+  * display until iso-datetime is removed in a future version.
+  * optimize performance of calculated timestamps
+
+-------------------------------------------------------------------
+Sat Jun 18 17:14:53 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.20.1
+  * Add postconf -M parser tested on linux
+  * Update asciitable and asciitable-m parsers to preserve case
+    in key names when using the -r or raw=True options.
+  * Add long options (e.g. --help, --about, --pretty, etc.)
+  * Fix id parser for cases where the user or group name is not
+    present
+- Update to version 1.20.0
+  * Add YAML output option with -y
+  * Add top -b standard and streaming parsers tested on linux
+  * Add plugin_parser_count, standard_parser_count, and
+    streaming_parser_count keys to jc -a output
+  * Add is_compatible function to the utils module
+  * Fix pip-show parser for packages with a multi-line license
+    field
+  * Fix ASCII Table parser for cases where centered headers cause
+    mis-aligned fields
+
+-------------------------------------------------------------------
+Sat May 14 08:16:14 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.19.0
+  * Add chage --list command parser tested on linux
+  * Add git log command streaming parser
+  * Fix git log standard parser for corner-cases where hash
+    values are in messages
+  * Fix df command parser for rare instances when a newline is
+    found at the end
+  * Fix asciitable-m parser to skip some rows that contain column
+    separator characters in cell data. A warning message will be
+    printed to STDOUT unless -q or quiet=True is used.
+
+-------------------------------------------------------------------
+Sat Jan 22 19:41:31 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.18.1
+  * Add high-level parse API for built-in and plugin parsers
+  * Add python module developer documentation
+  * Enhance magic syntax exception messages
+  * Enhance documentation formatting
+
+-------------------------------------------------------------------
+Sun Oct 31 10:09:19 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.17.1
+  * Fix file parser for gzip files
+  * Fix uname parser for cases where the 'processor' and/or
+    'hardware_platform' fields are missing on linux
+  * Fix uname parser on FreeBSD
+  * Add lsusb parser tested on linux
+  * Add CSV file streaming parser
+  * Add testing for Python 3.10.0
+
+-------------------------------------------------------------------
+Mon Sep 27 05:49:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.17.0
+  * Add wrapping of warning and error messages
+  * Add vmstat parser tested on linux
+  * Add support for streaming parsers
+  * Add ls -l command streaming parser
+  * Add ping and ping6 command streaming parser
+  * Add vmstat command streaming parser
+  * Add -u option to allow unbuffered output
+
+-------------------------------------------------------------------
+Thu Aug 19 19:08:12 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.16.1
+  * Fix issue with process substitution with the magic syntax.
+  * Fix issue with globs not including filenames with spaces with
+    magic syntax.
+
+-------------------------------------------------------------------
+Wed Jul 21 16:55:07 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.16.0
+  * Fix Man page location in source packages.
+  * Add sfdisk command parser tested on linux.
+  * Update unit test files to change the timezone when needed
+    (POSIX only).
+
+-------------------------------------------------------------------
+Fri Jan  8 10:04:14 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.14.1
+  * Add iw-scan parser tested on linux (beta)
+  * Update date parser for Ubuntu 20.04 support
+  * Update last parser for last -F support
+  * Update last parser to add convenience fields and augment data
+    for easier parsing
+  * Update man page
+  * Minor documentation updates
+
+-------------------------------------------------------------------
+Fri Jan  1 21:53:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.14.0
+  * Add hashsum parser
+  * Add hash parser
+  * Add cksum parser
+  * Add wc parser
+  * Add printenv
+  * Add vdir support under ls parser
+
+-------------------------------------------------------------------
+Thu Aug 13 19:54:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.13.4
+  * Update crontab and crontab-u parsers to tighten up variable
+    detection
+  * Update ping parser to tighten linux/bsd detection
+- Update to version 1.13.3
+  * Update ping parser for Raspberry Pi compatibility
+- Update to versino 1.13.2
+  * Add key/value file parser (wrapper for ini parser)
+  * Add date command parser
+  * Update traceroute parser to more gracefully handle missing
+    header row
+  * Update traceroute parser to handle annotations
+  * Update traceroute parser to only return successful probes
+- Update to versino 1.13.1
+  * Add route -6 tests
+- Update to version 1.13.0
+  * Add ping and ping6 command parser tested on linux
+  * Add traceroute and traceroute6 command parser tested on linux
+  * Add tracepath command parser tested on linux
+  * Update ini parser to support files only containing key/value
+    pairs
+  * Update uname parser exception with a hint to use "uname -a"
+  * Update route parser to support IPv6 tables
+- Update to version 1.12.1
+  * Fix tests when using older version of pygments library
+- Update to version 1.12.0
+  * Add sysctl command parser tested on linux
+  * Update the cli code to allow older versions of the pygments
+    library (2.3.0) for debian packaging
+  * Code cleanup on the cli
+  * Add tests for the cli
+  * Vendorize cgitb as tracebackplus for verbose debug messages
+- Update to version 1.11.8
+  * Add verbose debug option using -dd argument
+- Update to version 1.11.7
+  * Fix iptables parser issue which would not output the last
+    chain
+- Update to version 1.11.6
+  * Improve and standardize empty data check for all parsers
+- Update to version 1.11.5
+  * Update airport_s parser to fix error on parsing empty data
+  * Update arp parser to fix error on parsing empty data
+  * Update blkid parser to fix error on parsing empty data
+  * Update crontab parser to fix error on parsing empty data
+  * Update crontab_u parser to fix error on parsing empty data
+  * Update df parser to fix error on parsing empty data
+  * Update free parser to fix error on parsing empty data
+  * Update lsblk parser to fix error on parsing empty data
+  * Update lsmod parser to fix error on parsing empty data
+  * Update mount parser to fix error on parsing empty data
+  * Update netstat parser to fix error on parsing empty data
+  * Update ntpq parser to fix error on parsing empty data
+  * Update ps parser to fix error on parsing empty data
+  * Update route parser to fix error on parsing empty data
+  * Update systemctl parser to fix error on parsing empty data
+  * Update systemctl_lj parser to fix error on parsing empty data
+  * Update systemctl_ls parser to fix error on parsing empty data
+  * Update systemctl_luf parser to fix error on parsing empty data
+  * Update uptime parser to fix error on parsing empty data
+  * Update w parser to fix error on parsing empty data
+  * Update xml parser to fix error on parsing empty data
+  * Add tests to all parsers for no data condition
+  * Update ss parser to fix integer fields
+- Update to version 1.11.4
+  * Update ls parser to fix error on parsing an empty directory
+- Update to version 1.11.3
+  * Add local parser plugin feature
+- Update to version 1.11.2
+  * Update netstat parser to add route_flags_pretty field
+  * Update netstat parser to strip whitespace from state field
+  * Update route parser to add flags_pretty field
+  * Update w parser to strip whitespace from what field
+
+-------------------------------------------------------------------
+Tue May 26 19:29:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.11.1
+  * Update stat command parser to change osx_flags field to string
+  * Add dmidecode command parser
+  * Update stat command parser to add OSX support
+  * Update netstat command parser to add -r (route) functionality
+    for linux and OSX
+  * Update netstat command parser to add -i (interface)
+    functionality for linux and OSX
+  * Remove shebang from jc/cli.py for Fedora packaging
+  * Change file permissions for Fedora packaging
+  * Fix ls parser issue where the first file was skipped for
+    ls -R on some platforms
+  * Update last parser to handle 'gone - no logout' condition
+  * Update netstat parser to handle bluetooth section (ignore
+    gracefully for now)
+  * Add license info to vendorized ifconfig-parser class
+  * Add license file to dist for Fedora RPM packaging
+    requirements
+  * Remove tests from package to keep from polluting the global
+    site-packages
+  * Requirements modifications for Fedora RPM packaging
+    requirements
+  * Remove homebrew shim references from du osx tests
+  * Minor change of using sys.exit(0) instead of exit()
+  * Add color customization via JC_COLORS env variable
+  * Fix break on pipe error
+  * Change colors to ansi and match jello colors
+  * Code cleanup
+  * Add color output by default when not piping data to another
+    program
+  * Add -m option for monochrome output
+  * Add axfr support for dig command parser
+  * Updated arp parser to fix OSX detection for some edge cases
+  * Updated file command parser to make filename splitting more
+    robust
+  * Added ntpq command parser
+  * Added timedatectl status command parser
+  * Added airport -I and airport -s command parser
+  * Added file command parser
+  * Optimized history command parser by
+    https://github.com/philippeitis
+  * Magic syntax fix for certain edge cases
+  * CLI optimizations by https://github.com/philippeitis
+  * Refactored magic syntax function and added tests
+    (https://github.com/philippeitis)
+  * Updated ls parser to fix parsing error in OSX with -lR when
+    there are empty folders
+  * Added blkid command parser
+  * Added last and lastb command parser
+  * Added who command parser
+  * Added CSV file parser
+  * Added /etc/passwd file parser
+  * Added /etc/shadow file parser
+  * Added /etc/group file parser
+  * Added /etc/gshadow file parser
+  * Updated ls parser to support filenames with newline characters
+  * Updated ls parser to support multiple directories, globbing,
+    and -R (recursive)
+
+-------------------------------------------------------------------
+Sun Feb 16 20:24:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.7.3

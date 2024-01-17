@@ -1,0 +1,6 @@
+<package name="libskk" project="openSUSE:Factory">
+  <title>SSK is a statistical language model based Japanese</title>
+  <description>SKK is a statistical language model based Japanese input method engine. 
+to model the Japanese language, it use a backoff bigram and trigram </description>
+  <devel project="M17N" package="libskk"/>
+</package>

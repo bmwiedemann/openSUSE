@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90568c7a396ccb6cef3b7af8a042d982</srcmd5>
+    <version>0.1.1</version>
+    <time>1287155707</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/libfallocate based on submit request 50555 from user garloff
+</comment>
+    <requestid>50555</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>90568c7a396ccb6cef3b7af8a042d982</srcmd5>
+    <version>0.1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>90568c7a396ccb6cef3b7af8a042d982</srcmd5>
+    <version>0.1.1</version>
+    <time>1319182089</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>d4a0184aac2963efdce6747155be4309</srcmd5>
+    <version>0.1.1</version>
+    <time>1323192207</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>d4a0184aac2963efdce6747155be4309</srcmd5>
+    <version>0.1.1</version>
+    <time>1340183582</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>d4a0184aac2963efdce6747155be4309</srcmd5>
+    <version>0.1.1</version>
+    <time>1359109266</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>d4a0184aac2963efdce6747155be4309</srcmd5>
+    <version>0.1.1</version>
+    <time>1379662944</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="15">
+    <srcmd5>d4a0184aac2963efdce6747155be4309</srcmd5>
+    <version>0.1.1</version>
+    <time>1409301554</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>b5fc78ca048c21c330c887ec72354ba2</srcmd5>
+    <version>0.1.1</version>
+    <time>1450363933</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348401</requestid>
+  </revision>
+  <revision rev="10" vrev="17">
+    <srcmd5>ef73017d40e649d838784556ff629540</srcmd5>
+    <version>0.1.1</version>
+    <time>1567677984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720553</requestid>
+  </revision>
+</revisionlist>

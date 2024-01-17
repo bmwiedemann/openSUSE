@@ -1,0 +1,24 @@
+diff -urN weave-2.8.1.orig/prog/weave-kube/launch.sh weave-2.8.1/prog/weave-kube/launch.sh
+--- weave-2.8.1.orig/prog/weave-kube/launch.sh	2021-01-25 11:55:30.000000000 +0100
++++ weave-2.8.1/prog/weave-kube/launch.sh	2021-02-02 11:46:39.505699795 +0100
+@@ -34,7 +34,7 @@
+     fi
+ }
+ 
+-setup_iptables_backend
++#setup_iptables_backend
+ 
+ # Default if not supplied - same as weave net default
+ IPALLOC_RANGE=${IPALLOC_RANGE:-10.32.0.0/12}
+diff -urN weave-2.8.1.orig/prog/weave-npc/launch.sh weave-2.8.1/prog/weave-npc/launch.sh
+--- weave-2.8.1.orig/prog/weave-npc/launch.sh	2021-01-25 11:55:30.000000000 +0100
++++ weave-2.8.1/prog/weave-npc/launch.sh	2021-02-02 11:46:39.505699795 +0100
+@@ -30,7 +30,7 @@
+     fi
+ }
+ 
+-setup_iptables_backend
++#setup_iptables_backend
+ 
+ # Start weave-npc with any flags specified in $EXTRA_ARGS as well as any flags passed to this container (for backwards compatibility)
+ exec /usr/bin/weave-npc $EXTRA_ARGS $@

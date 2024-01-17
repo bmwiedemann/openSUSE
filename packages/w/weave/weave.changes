@@ -1,0 +1,129 @@
+-------------------------------------------------------------------
+Mon May  2 08:37:57 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Remove dependency on binutils-gold as the package will be removed
+  in the future. Gold linker is unmaintained by the upstream project.
+
+-------------------------------------------------------------------
+Tue Mar 29 13:29:13 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix compatibility with runtimes using cni >= 1.0.0
+  (boo#1197490, gh#weaveworks/weave#3936):
+  * 0001-cni-Add-cniVersion-to-Result.patch
+
+-------------------------------------------------------------------
+Thu Feb  4 16:16:13 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add init.sh for init container
+
+-------------------------------------------------------------------
+Tue Feb  2 10:53:41 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.8.1
+  - Kubernetes: move kernel and CNI setup to init container
+  - For K8s, stop running in host PID namespace
+  - NetworkPolicy: avoid logging dropped packets that were not actually dropped
+  - Use go 1.15
+
+-------------------------------------------------------------------
+Fri Aug 14 11:22:44 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.7.0
+  - https://github.com/weaveworks/weave/releases/tag/v2.7.0
+  - obsoletes vendor.tar.xz
+
+-------------------------------------------------------------------
+Tue Jun 30 12:54:05 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.6.5
+  - Fixes a bug that would leak memory every time a fast-datapath
+    connection was stopped.
+  - Avoid a crash when the machine has ipv6 disabled.
+- Refresh vendor.tar.xz
+
+-------------------------------------------------------------------
+Sat May 30 11:24:10 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.6.4
+  - Improve the iptables rule to block just the Weave Net control port,
+    and avoid blocking other uses of 127.0.0.1. #3811
+
+-------------------------------------------------------------------
+Thu May 28 13:51:32 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.6.3
+  - Block non-local traffic to the Weave control port #3805
+  - Tell Linux not to accept router advisory messages #3801
+  - NPC: add a metric to show errors while operating #3804
+  - NPC: don't treat named port as a fatal error #3790
+
+-------------------------------------------------------------------
+Mon Apr 20 08:32:37 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use file requires for modprobe (to be able to use busybox-kmod)
+
+-------------------------------------------------------------------
+Fri Mar 27 10:57:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.6.2
+  - Weave Net can not be used in fastdp mode and always falls back
+  - Restrict timeout value passed to pcap library
+- Refresh vendor.tar.xz
+
+-------------------------------------------------------------------
+Tue Mar 10 11:17:28 CET 2020 - kukuk@suse.de
+
+- Fix typo in url
+
+-------------------------------------------------------------------
+Mon Mar  9 15:17:01 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- weave-kubic needs modprobe
+
+-------------------------------------------------------------------
+Mon Mar  9 15:05:02 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update weave to 2.6.1
+  - Fix possible deadlock
+  - disable-iptables-setup.patch
+
+-------------------------------------------------------------------
+Wed Nov  6 15:35:00 UTC 2019 - kukuk@suse.de
+
+- Update weave to 2.6.0
+  - Fix a race condition in Kubernetes addon when reclaiming IP addresses after node deletion #3724, #3716
+  - Buffer events so Docker won't drop them, and Weave Net can clean up after dead containers #3432, #3705
+  - Weave reconnect occasionally fails after network interface disconnect #3666, #3669, #3676
+  - Ingress NetworkPolicy would accepts all traffic when specifying both IPBlock and port #3653, #3654
+  - Support both podSelector and namespaceSelector in NetworkPolicy #3312, #3647
+  - Only add default-drop egress rule if network policies are in use #3639
+  - Manifests use 'apps/v1' rather than deprecated 'apps/v1beta1' #3660
+  - Avoid Weave Net pods being evicted by setting priorityClassName: system-node-critical #3697
+  - Manifests use recommended DNS policy ClusterFirstWithHostNet #3692
+  - Weave Net now tolerates 'NoExecute' taint #3655
+  - Allow extra arguments to NetworkPolicy controller to be set in an environment variable #3683
+  - Stop reporting a failure to connect to self #3454, #3585
+  - Minor reduction in log noise when reclaiming IPs #3710
+
+-------------------------------------------------------------------
+Sat Nov  2 20:28:23 CET 2019 - kukuk@suse.de
+
+- Update weave.yaml for kubernetes 1.16
+
+-------------------------------------------------------------------
+Fri Jul 26 13:24:07 CEST 2019 - kukuk@suse.de
+
+- Adjust registry path to the official images
+
+-------------------------------------------------------------------
+Wed Jul 24 09:06:07 CEST 2019 - kukuk@suse.de
+
+- Add weave-rpmlintrc. This package contains the content of a 
+  container image, so yes, this includes the home directory and
+  a database.
+
+-------------------------------------------------------------------
+Wed Jul 24 09:00:47 CEST 2019 - kukuk@suse.de
+
+- Initial package
+

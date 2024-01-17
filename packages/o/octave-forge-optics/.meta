@@ -1,0 +1,6 @@
+<package name="octave-forge-optics" project="openSUSE:Factory">
+  <title></title>
+  <description>Functions covering various aspects of optics.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-optics"/>
+</package>

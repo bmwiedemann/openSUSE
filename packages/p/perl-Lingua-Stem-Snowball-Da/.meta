@@ -1,0 +1,15 @@
+<package name="perl-Lingua-Stem-Snowball-Da" project="openSUSE:Factory">
+  <title>Porters stemming algorithm for Denmark</title>
+  <description>The stem function takes a scalar as a parameter and stems the word
+according to Martin Porters Danish stemming algorithm, which can be found
+at the Snowball website: http://snowball.tartarus.org/.
+
+Authors:
+--------
+    Dennis Haney &lt;davh@davh.dk&gt;
+    Ask Solem Hoel, &lt;ask@unixmonks.net&gt; (Swedish version)
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Lingua-Stem-Snowball-Da"/>
+  <url>http://search.cpan.org/dist/Lingua-Stem-Snowball-Da/</url>
+</package>

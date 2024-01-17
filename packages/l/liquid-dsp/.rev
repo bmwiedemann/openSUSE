@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>25fda444364f08fb7bbd698f005e3e47</srcmd5>
+    <version>1.3.1.git1508199169.4c9a7514</version>
+    <time>1511346142</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain liquid-dsp in Factory</comment>
+    <requestid>544290</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b0c0290d29b1ce2faada3c1dd9e14ab4</srcmd5>
+    <version>1.3.1.git1508199169.4c9a7514</version>
+    <time>1534774774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630305</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bad6d62ad0daeb0980d4845e579c0605</srcmd5>
+    <version>1.3.2</version>
+    <time>1564994132</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720096</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8aa406469169f35c605206b82c3df1ef</srcmd5>
+    <version>1.3.2</version>
+    <time>1666780323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031292</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>752262e993a7ff1f05cc1b95b6232382</srcmd5>
+    <version>1.6.0</version>
+    <time>1693235545</time>
+    <user>anag+factory</user>
+    <comment>- Update to latest tagged release version 1.6.0
+  * build
+    - increased code coverage to 85% globally across entire
+      project. This is the single largest effort included in this
+      version and touches most modules in some way, most particularly
+      the framing objects cleaning build to remove compiler warnings
+      (e.g. unused variables) stripped version number off archive
+  * dotprod
+    - added support for AVX512-F (thanks, @vankxr!)
+  * framing
+    - added numerous tests to increase coverage to 84%
+    - framesync64: using new qdsync object for simplified operation
+    - qdsync: new frame detector and synchronizer to much more
+      easily       support frame processing. The object not only
+      detects the frame, but also provides an initial carrier
+      frequency, phase, and timign offset, and also corrects for
+      these impairments, passing the results to the user in a clean
+      callback function.
+  * modem
+    - cpfskmod: increasing phase stability for long runs
+  * multichannel
+    - added numerous tests to increase coverage to 88%
+  * optim
+    - added numerous tests to increase coverage to 92%
+  * sequence
+    - msequence: extended support for state variables up to m=31,
+      reversed order for generator polynomial and internal state
+      definition to be more consistent with literature and
+      readily-available genpolys
+- Update to release version 1.5.0</comment>
+    <requestid>1105571</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a7b1c9e649ed4a452a6f6ec7f111cb26</srcmd5>
+    <version>1.6.0</version>
+    <time>1693482333</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108042</requestid>
+  </revision>
+</revisionlist>
