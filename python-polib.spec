@@ -1,7 +1,7 @@
 #
 # spec file for package python-polib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-polib
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        A library to manipulate gettext files
 License:        MIT
