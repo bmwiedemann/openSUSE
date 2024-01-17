@@ -1,6 +1,0 @@
-<package name="kubeval" project="openSUSE:Factory">
-  <title>kubeval</title>
-  <description>Validate your Kubernetes configuration files, supports multiple Kubernetes versions </description>
-  <devel project="devel:kubic" package="kubeval"/>
-  <url>https://github.com/instrumenta/kubeval</url>
-</package>

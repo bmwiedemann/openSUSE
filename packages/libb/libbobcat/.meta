@@ -1,8 +1,0 @@
-<package name="libbobcat" project="openSUSE:Factory">
-  <title>libbobcat</title>
-  <description>Bobcat is an acronym of `Brokken's Own Base Classes And Templates'. It is a
-shared library implementing C++ classes that are frequently used in software
-developed by Frank Brokken. All of Frank's C++ programs hosted at GitLab
-depend on `bobcat'.</description>
-  <devel project="devel:tools:building" package="libbobcat"/>
-</package>

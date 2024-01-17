@@ -1,6 +1,0 @@
-[cmake.options]
-PyBGCode_LINK_SYSTEM_LIBBGCODE = "on"
-CMAKE_BUILD_TYPE = "RelWithDebInfo"
-CMAKE_MODULE_LINKER_FLAGS = "-flto=auto -Wl,--as-needed"
-CMAKE_C_FLAGS = "@optflags@"
-CMAKE_CXX_FLAGS = "@optflags@"

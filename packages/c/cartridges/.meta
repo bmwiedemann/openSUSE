@@ -1,7 +1,0 @@
-<package name="cartridges" project="openSUSE:Factory">
-  <title>A GTK4 + Libadwaita game launcher</title>
-  <description>Cartridges is a simple game launcher written in Python using GTK4 and
-Libadwaita.</description>
-  <devel project="games:tools" package="cartridges"/>
-  <url>https://github.com/kra-mo/cartridges</url>
-</package>

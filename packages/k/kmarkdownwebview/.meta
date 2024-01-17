@@ -1,5 +1,0 @@
-<package name="kmarkdownwebview" project="openSUSE:Factory">
-  <title>KPart for rendering Markdown content</title>
-  <description>This package allows KDE applications which use it to obtain a live preview of HTML-rendered Markdown content.</description>
-  <devel project="KDE:Extra" package="kmarkdownwebview"/>
-</package>

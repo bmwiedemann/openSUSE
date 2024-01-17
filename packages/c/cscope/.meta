@@ -1,6 +1,0 @@
-<package name="cscope" project="openSUSE:Factory">
-  <title>Interactive Tool for Browsing C Source Code</title>
-  <description>Cscope is an interactive, screen-oriented tool that allows the user to
-browse through C source code files for specified elements of code.</description>
-  <devel project="devel:tools" package="cscope"/>
-</package>

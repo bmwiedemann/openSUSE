@@ -1,8 +1,0 @@
-<package name="kronosnet" project="openSUSE:Factory">
-  <title>Kronosnet</title>
-  <description>Kronosnet, often referred to as knet, is a network abstraction layer designed for High Availability use cases, where redundancy, security, fault tolerance and fast fail-over are the core requirements of your application.
-
-It is under layer of corosync-3.0
-</description>
-  <devel project="network:ha-clustering:Factory" package="kronosnet"/>
-</package>

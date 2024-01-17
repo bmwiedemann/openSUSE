@@ -1,8 +1,0 @@
-<package name="libbeecrypt6" project="openSUSE:Factory">
-  <title>An open source cryptography library</title>
-  <description>BeeCrypt is an ongoing project to provide a strong and fast
-cryptography toolkit. Includes entropy sources, random generators,
-block ciphers, hash functions, message authentication codes,
-multiprecision integer routines, and public key primitives.</description>
-  <devel project="devel:libraries:c_c++" package="libbeecrypt6"/>
-</package>

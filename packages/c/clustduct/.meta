@@ -1,5 +1,0 @@
-<package name="clustduct" project="openSUSE:Factory">
-  <title>dhcp and dns management based in genders and dnsmasq</title>
-  <description></description>
-  <devel project="network:cluster" package="clustduct"/>
-</package>

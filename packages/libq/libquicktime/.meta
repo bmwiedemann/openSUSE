@@ -1,6 +1,0 @@
-<package name="libquicktime" project="openSUSE:Factory">
-  <title>Library for Reading and Writing Quicktime Movie Files</title>
-  <description>A library for reading and writing Quicktime movie files, based on and
-forked from quicktime4linux.</description>
-  <devel project="multimedia:libs" package="libquicktime"/>
-</package>

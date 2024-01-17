@@ -1,6 +1,0 @@
-<package name="cachefilesd" project="openSUSE:Factory">
-  <title>CacheFiles userspace management daemon</title>
-  <description>cachefilesd is a user-space management daemon for CacheFiles, a generic
-caching framework for mounted filesystems.</description>
-  <devel project="filesystems" package="cachefilesd"/>
-</package>

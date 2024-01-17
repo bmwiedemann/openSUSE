@@ -1,7 +1,0 @@
-<package name="ccache" project="openSUSE:Factory">
-  <title>A Fast C/C++ Compiler Cache</title>
-  <description>ccache is a compiler cache. It speeds up recompilation by caching the result of
-previous compilations and detecting when the same compilation is being done
-again. Supported languages are C, C++, Objective-C and Objective-C++.</description>
-  <devel project="devel:tools:building" package="ccache"/>
-</package>

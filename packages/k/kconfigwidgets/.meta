@@ -1,5 +1,0 @@
-<package name="kconfigwidgets" project="openSUSE:Factory">
-  <title>kconfigwidgets</title>
-  <description>Widgets for KConfig</description>
-  <devel project="KDE:Frameworks5" package="kconfigwidgets"/>
-</package>

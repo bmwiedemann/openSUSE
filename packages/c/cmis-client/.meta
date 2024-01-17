@@ -1,8 +1,0 @@
-<package name="cmis-client" project="openSUSE:Factory">
-  <title>Sample CMIS client</title>
-  <description>
-    Sample client to access CMIS-enabled repositories using libcmis.
-  </description>
-  <devel project="devel:libraries:c_c++" package="cmis-client"/>
-  <url>http://people.freedesktop.org/~cbosdo/libcmis/</url>
-</package>

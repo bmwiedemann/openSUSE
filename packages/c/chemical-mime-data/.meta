@@ -1,6 +1,0 @@
-<package name="chemical-mime-data" project="openSUSE:Factory">
-  <title>A collection of data files for various chemical MIME types</title>
-  <description>The chemical-mime-data package is a collection of data files to add support for various chemical MIME types on Linux/UNIX desktops, such as KDE and GNOME.</description>
-  <devel project="science" package="chemical-mime-data"/>
-  <url>http://chemical-mime.sourceforge.net/</url>
-</package>

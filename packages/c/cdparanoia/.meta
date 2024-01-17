@@ -1,9 +1,0 @@
-<package name="cdparanoia" project="openSUSE:Factory">
-  <title>A Program for Extracting, Verifying, and Fixing Audio Tracks from CDs</title>
-  <description>This CDDA reader distribution ('cdparanoia') reads audio from the
-CD-ROM directly as data and writes the data to a file or pipe as .wav,
-.aifc, or raw 16-bit linear PCM.
-
-This is a beta release. See http://www.xiph.org/paranoia/.</description>
-  <devel project="multimedia:libs" package="cdparanoia"/>
-</package>

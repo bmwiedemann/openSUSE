@@ -1,5 +1,0 @@
-<package name="kcoreaddons" project="openSUSE:Factory">
-  <title>kcoreaddons</title>
-  <description>KCoreAddons</description>
-  <devel project="KDE:Frameworks5" package="kcoreaddons"/>
-</package>
