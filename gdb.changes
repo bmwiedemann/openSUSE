@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 13 14:58:14 UTC 2023 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (backport from gdb-patches, swo#30728):
+  * gdb-symtab-refactor-condition-in-scan_attributes.patch
+  * gdb-symtab-factor-out-m_die_range_map-usage.patch
+  * gdb-symtab-handle-nullptr-parent-in-parent_map-set_p.patch
+  * gdb-symtab-factor-out-m_deferred_entries-usage.patch
+  * gdb-symtab-resolve-deferred-entries-inter-shard-case.patch
+  * gdb-symtab-keep-track-of-processed-dies-in-shard.patch
+  * gdb-symtab-resolve-deferred-entries-intra-shard-case.patch
+  * gdb-symtab-don-t-defer-backward-refs-inter-cu-intra-.patch
+  * gdb-symtab-recurse-into-c-dw_tag_subprogram-dies-for.patch
+  * gdb-symtab-keep-track-of-all-parents-for-cooked-inde.patch
+  * gdb-symtab-fix-dw_tag_inlined_subroutine-entries-in-.patch
+
+-------------------------------------------------------------------
 Mon Nov 13 14:08:08 UTC 2023 - Tom de Vries <tdevries@suse.com>
 
 - Maintenance script qa.sh:
