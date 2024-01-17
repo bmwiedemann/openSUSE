@@ -18,17 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-deepmerge
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 License:        MIT
 Summary:        A toolset to deeply merge python dictionaries
 URL:            https://github.com/toumorokoshi/deepmerge
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/d/deepmerge/deepmerge-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm > 5}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module vcver}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
