@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 17 13:12:21 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1705392855.dac4aee:
+  * video_stream: mark two functions as uncoverable
+  * generalhw: add GENERAL_HW_VIDEO_CMD_PREFIX
+  * Don't die on incomplete frame in video_stream
+  * Use named constant for serial_screen read buffer size
+  * Use properly named constant for "ssh serial read buffer size"
+  * Add FIDO2 support for qemu
+
+-------------------------------------------------------------------
 Mon Jan 15 05:02:17 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1705133214.b65c28f:
