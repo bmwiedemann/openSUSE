@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>901e8c51b6d10418874e2bfbcccf0043</srcmd5>
+    <version>0.7.2</version>
+    <time>1664302407</time>
+    <user>RBrownFactory</user>
+    <comment>Submit new package SwayNotificationCenter to Factory</comment>
+    <requestid>1006395</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>06d6c9eeedaa7dc28ce204357bdc644e</srcmd5>
+    <version>0.7.3</version>
+    <time>1669724611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038841</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>795c8a9a0196f530ce7ccbdf9458ffbb</srcmd5>
+    <version>0.8.0</version>
+    <time>1677258508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067605</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>53351ff6926882b9089a732c2d1101a8</srcmd5>
+    <version>0.9.0</version>
+    <time>1685476945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089660</requestid>
+  </revision>
+</revisionlist>

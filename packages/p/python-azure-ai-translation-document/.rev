@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5cd2c1c36d8d08635220b98805463973</srcmd5>
+    <version>1.0.0b4</version>
+    <time>1631913934</time>
+    <user>dimstar_suse</user>
+    <comment>- New package part of the Azure SDK</comment>
+    <requestid>917563</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ef690a63a149229bc2826bc9b61e0237</srcmd5>
+    <version>1.0.0b5</version>
+    <time>1632173567</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>919901</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6d774232ccceb7e151716ad30a6ee655</srcmd5>
+    <version>1.0.0b6</version>
+    <time>1644617240</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b6
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 952912 from glaubitz)</comment>
+    <requestid>953228</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8550132b5c579642c1b3eef4f7195570</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1654782101</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b6 (forwarded request 981254 from glaubitz)</comment>
+    <requestid>981502</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Fri Sep 16 20:54:55 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to 1.0.3
+  * Fix for compatibility with big-endian systems. #6
+
+-------------------------------------------------------------------
+Wed Feb 17 14:33:18 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Initial package release, 1.0.1.
+- Skip python2 because python 2 don't support encoding="utf8" in
+  setup.py

@@ -1,0 +1,7 @@
+<package name="suck" project="openSUSE:Factory">
+  <title>Reading News Offline</title>
+  <description>Suck is a program used to grab news from a remote NNTP news server and
+bring it to a local machine, without having the remote server do
+anything special.</description>
+  <devel project="server:mail" package="suck"/>
+</package>

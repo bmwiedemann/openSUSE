@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e00fc755ddc50fa62b1cf49204ad604</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1602596646</time>
+    <user>dimstar_suse</user>
+    <comment>- Another Azure SDK package</comment>
+    <requestid>841325</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d1c6291579fb6766845be5c1cf6d132d</srcmd5>
+    <version>1.0.0b4</version>
+    <time>1606649180</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b4
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 850427 from glaubitz)</comment>
+    <requestid>850515</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b9d715bd4ba9cd7db81678ca84632ee1</srcmd5>
+    <version>1.0.0b4</version>
+    <time>1607548504</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853861</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b9c289c57aebb680f3e75e78fbcf0b5e</srcmd5>
+    <version>1.0.0b6</version>
+    <time>1619822820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889555</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9b7cdc6f8cfeb8ef2a05de492030877c</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1620400503</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Temporarily override package version to 1.0.0.0 to allow
+  upgrades from the previous 1.0.0b6 version
+- Update Requires from setup.py (forwarded request 890382 from glaubitz)</comment>
+    <requestid>890742</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0cca4f5c7fc4ff74fcc1df29b7af8c2f</srcmd5>
+    <version>1.0.1</version>
+    <time>1625115944</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 903218 from glaubitz)</comment>
+    <requestid>903221</requestid>
+  </revision>
+</revisionlist>

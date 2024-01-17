@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="100">
+    <srcmd5>705742a007ecffa694801192fc56b47f</srcmd5>
+    <version>0.1</version>
+    <time>1455190625</time>
+    <user>dimstar_suse</user>
+    <comment>New package for openSUSE:Factory: check the IO of your systems</comment>
+    <requestid>341694</requestid>
+  </revision>
+  <revision rev="2" vrev="101">
+    <srcmd5>3cc0a83744d1d4384a4b2f6cabde1a59</srcmd5>
+    <version>0.1</version>
+    <time>1493708098</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>492303</requestid>
+  </revision>
+  <revision rev="3" vrev="102">
+    <srcmd5>61fc59fe3af78ee30b122514534b68d7</srcmd5>
+    <version>0.1</version>
+    <time>1511426651</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>544408</requestid>
+  </revision>
+  <revision rev="4" vrev="103">
+    <srcmd5>13cf480134ceb7a9412a16369ae6e468</srcmd5>
+    <version>0.1</version>
+    <time>1530866916</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621119</requestid>
+  </revision>
+  <revision rev="5" vrev="104">
+    <srcmd5>3689f5ee35a294842ba99bc9e64f18da</srcmd5>
+    <version>0.1</version>
+    <time>1555488473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694435</requestid>
+  </revision>
+  <revision rev="6" vrev="105">
+    <srcmd5>dc3ff4ee36795c975321d0450ff5fc26</srcmd5>
+    <version>0.1</version>
+    <time>1576927795</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>757911</requestid>
+  </revision>
+  <revision rev="7" vrev="106">
+    <srcmd5>d3d4272bdb0bd8d004e9ece5b562001d</srcmd5>
+    <version>0.1</version>
+    <time>1583526551</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>782144</requestid>
+  </revision>
+  <revision rev="8" vrev="107">
+    <srcmd5>0623e54cd21dd9573f3d75fc25e4a099</srcmd5>
+    <version>0.1</version>
+    <time>1584745113</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>786621</requestid>
+  </revision>
+  <revision rev="9" vrev="108">
+    <srcmd5>64d76f5a9efacc114e4af26db8eff4f5</srcmd5>
+    <version>0.1</version>
+    <time>1591209286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810954</requestid>
+  </revision>
+  <revision rev="10" vrev="109">
+    <srcmd5>450805db79571223bb7a4a18ebd32d92</srcmd5>
+    <version>0.1</version>
+    <time>1594894607</time>
+    <user>dimstar_suse</user>
+    <comment>-  update AppArmor profiles to include a comment why the check
+   needs to read nsswitch.conf and passwd
+</comment>
+    <requestid>820972</requestid>
+  </revision>
+  <revision rev="11" vrev="110">
+    <srcmd5>95e07ee8fd0003ac9b8c552f7da672ef</srcmd5>
+    <version>0.1</version>
+    <time>1596565535</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>824333</requestid>
+  </revision>
+  <revision rev="12" vrev="111">
+    <srcmd5>d298fe52e9d1372e4fa7219b120730eb</srcmd5>
+    <version>0.1</version>
+    <time>1619729217</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>889342</requestid>
+  </revision>
+</revisionlist>

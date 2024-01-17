@@ -1,0 +1,151 @@
+-------------------------------------------------------------------
+Thu Jan  5 19:36:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2:
+  * dmenu: use die() to print usage message
+  * remove workaround for a crash in emojis, fixed in Xft 2.3.5
+  * tab-complete: determine size before copying
+  * readstdin: use getline
+  * improve correctness and startup performance
+  * drw_text: account for fallback fonts in ellipsis width
+  * drw_text: don't segfault when called with 0 width
+  * fix UB with the function iscntrl()
+  * avoid redraw when there's no change
+  * inputw: improve correctness and startup performance
+  * signifcantly improve performance on large strings 
+
+-------------------------------------------------------------------
+Wed May 11 11:41:00 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.1
+  * inputw: improve correctness and startup performance
+  * drw_text: don't segfault when called with 0 width
+  * drw_text: improve performance when there's no match
+  * significantly improve performance on large strings
+  * improve performance of case-insensitive matching
+  * add support for more keypad keys
+
+-------------------------------------------------------------------
+Sun Sep 20 18:58:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.0:
+  * no change compared to 4.9 with the extra patches
+- remove   0001-Close-when-the-embedding-window-is-destroyed.patch
+  0002-fix-crash-when-XOpenIM-returns-NULL.patch
+  0003-make-dmenu_path-script-executable.patch
+  0004-improve-xopenim-error-message.patch
+  0005-revert-IME-support.patch
+  0006-Fix-memory-leaks-in-drw.patch (upstream)
+
+-------------------------------------------------------------------
+Mon Aug 31 16:11:30 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add input fixes from master branch at https://git.suckless.org/dmenu/ (bsc#1164650):
+  0001-Close-when-the-embedding-window-is-destroyed.patch
+  0002-fix-crash-when-XOpenIM-returns-NULL.patch
+  0003-make-dmenu_path-script-executable.patch
+  0004-improve-xopenim-error-message.patch
+  0005-revert-IME-support.patch
+  0006-Fix-memory-leaks-in-drw.patch
+
+-------------------------------------------------------------------
+Mon Aug 17 11:04:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.9 
+  * Use slow path if stdin is a tty
+  * Use bold for keyboard shortcuts in dmenu.1
+  * Fix cursor drawn position with wide glyphs
+
+-------------------------------------------------------------------
+Thu Mar  5 13:18:45 UTC 2020 - Tomas Cech <sleep_walker@opensuse.org>
+
+- revert back to 4.8
+  Based on bnc#1164650, fixes in GIT and personal experience - reverting.
+- refresh dmenu-optflags again
+- remove patches:
+    0001-Close-when-the-embedding-window-is-destroyed.patch
+    0002-fix-crash-when-XOpenIM-returns-NULL.patch
+
+-------------------------------------------------------------------
+Mon Feb 24 13:16:36 UTC 2020 - Tomas Cech <sleep_walker@opensuse.org>
+
+- add 0001-Close-when-the-embedding-window-is-destroyed.patch
+- add 0002-fix-crash-when-XOpenIM-returns-NULL.patch
+  - fix crash on input
+
+-------------------------------------------------------------------
+Mon Feb 24 12:50:05 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file
+- Install license and readme file
+
+-------------------------------------------------------------------
+Thu Jan 23 11:47:06 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- bump to 4.9
+  for complete list of changes see
+  see https://git.suckless.org/dmenu/log/?h=4.9&qt=range&q=4.8..4.9
+- dmenu-optflags.patch: Adapt patch to dmenu 4.9
+
+-------------------------------------------------------------------
+Sun Apr 15 00:12:26 UTC 2018 - gutaper@gmail.com
+
+- bump to 4.8
+  for complete list of changes see
+  see https://git.suckless.org/dmenu/log/?h=4.8&qt=range&q=4.7..4.8
+-------------------------------------------------------------------
+Fri Feb  9 13:52:15 UTC 2018 - crrodriguez@opensuse.org
+
+- dmenu-optflags.patch: Fix optflags handling
+- Fix BuildRequires not to use xorg-x11-devel  
+
+-------------------------------------------------------------------
+Wed Jul 26 10:12:54 UTC 2017 - sleep_walker@opensuse.org
+
+- bump to 4.7
+  for complete list of changes see
+  see http://git.suckless.org/dmenu/log/?h=4.7&qt=range&q=4.6..4.7
+
+-------------------------------------------------------------------
+Mon Nov  9 07:46:13 UTC 2015 - sleep_walker@opensuse.org
+
+- bump to 4.6
+  - no changelog generated for 4 years of development
+    so check http://git.suckless.org/dmenu/ by yourself
+- add Xft and freetype2 into dependencies to follow changes in this
+  new version
+
+-------------------------------------------------------------------
+Fri Jul  3 11:03:03 UTC 2015 - mimi.vx@gmail.com
+
+- spec cleaned with spec-cleaner 
+
+-------------------------------------------------------------------
+Tue May 15 13:11:38 UTC 2012 - seiler@b1-systems.de
+
+- added link to dmenu changelog in the *.changes file
+
+-------------------------------------------------------------------
+Mon Mar 19 12:20:42 UTC 2012 - seiler@b1-systems.de
+
+- updated to version 4.5
+Changelog:
+http://hg.suckless.org/dmenu/log
+- enhanced description
+- removed package name from summary
+- added new files to %file section
+
+-------------------------------------------------------------------
+Mon Oct 11 12:20:42 UTC 2007 - sschober@suse.de
+
+- incorporated latest changeset [231:9ab649b3b3e5]
+
+-------------------------------------------------------------------
+Mon Oct 03 12:20:42 UTC 2007 - sschober@suse.de
+
+- updated to version 3.4
+
+-------------------------------------------------------------------
+Mon Jul 27 12:20:42 UTC 2007 - sschober@suse.de
+
+- initial packaging.  

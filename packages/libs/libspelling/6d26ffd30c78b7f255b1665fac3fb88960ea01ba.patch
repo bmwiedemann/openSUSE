@@ -1,0 +1,50 @@
+From 6d26ffd30c78b7f255b1665fac3fb88960ea01ba Mon Sep 17 00:00:00 2001
+From: Christian Hergert <chergert@redhat.com>
+Date: Wed, 4 Oct 2023 12:24:46 -0700
+Subject: [PATCH] egg: fix license to be LGPLv2.1+
+
+Fixes #3
+---
+ lib/egg-action-group.h | 24 +++++++++++++-----------
+ 1 file changed, 13 insertions(+), 11 deletions(-)
+
+diff --git a/lib/egg-action-group.h b/lib/egg-action-group.h
+index 3d75edd..bcf6bcb 100644
+--- a/lib/egg-action-group.h
++++ b/lib/egg-action-group.h
+@@ -1,19 +1,21 @@
+ /* egg-action-group.h
+  *
+- * Copyright (C) 2017 Christian Hergert <chergert@redhat.com>
++ * Copyright 2017-2023 Christian Hergert <chergert@redhat.com>
+  *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation, either version 3 of the License, or
+- * (at your option) any later version.
++ * This library is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU Lesser General Public License as
++ * published by the Free Software Foundation; either version 2.1 of the
++ * License, or (at your option) any later version.
+  *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
++ * This library is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * Lesser General Public License for more details.
+  *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ * You should have received a copy of the GNU General Public License along
++ * with this program.  If not, see <http://www.gnu.org/licenses/>.
++ *
++ * SPDX-License-Identifier: LGPL-2.1-or-later
+  */
+ 
+ #pragma once
+-- 
+GitLab
+

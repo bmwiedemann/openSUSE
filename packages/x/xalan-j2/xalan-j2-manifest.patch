@@ -1,0 +1,111 @@
+diff -urEbwB xalan-j_2_7_3.orig/src/MANIFEST.MF xalan-j_2_7_3/src/MANIFEST.MF
+--- xalan-j_2_7_3.orig/src/MANIFEST.MF	2023-08-30 18:36:44.211105060 +0200
++++ xalan-j_2_7_3/src/MANIFEST.MF	2023-08-30 18:39:12.542098631 +0200
+@@ -1,7 +1,6 @@
+ Manifest-Version: 1.0
+ Created-By: @java.version@ (@java.vendor@)
+ Main-Class: org.apache.xalan.xslt.Process
+-Class-Path: xercesImpl.jar xml-apis.jar serializer.jar
+ 
+ 
+ Name: org/apache/xalan/
+@@ -38,33 +37,3 @@
+ Implementation-Vendor: Apache Software Foundation
+ Implementation-URL: https://xalan.apache.org/xalan-j/
+ 
+-Name: java_cup/runtime/ 
+-Comment: Runtime component of JCup 
+-Specification-Title: Runtime component of JCup
+-Specification-Vendor: Princeton University 
+-Specification-Version: 0.10k 
+-Implementation-Title: runtime 
+-Implementation-Version: @impl.version@
+-Implementation-Vendor: Princeton University  
+-Implementation-URL: http://www.cs.princeton.edu/~appel/modern/java/CUP/ 
+-
+-Name: org/apache/bcel/
+-Comment: Apache Commons Byte Code Engineering Library
+-Specification-Title: Apache Commons BCEL
+-Specification-Vendor: Apache Software Foundation
+-Specification-Version: 6.7.0
+-Implementation-Title: org.apache.bcel
+-Implementation-Version: @impl.version@
+-Implementation-Vendor: Apache Software Foundation
+-Implementation-URL: https://commons.apache.org/proper/commons-bcel
+-
+-Name: org/apache/regexp/
+-Comment: Java Regular Expression package 
+-Specification-Title: Java Regular Expression package 
+-Specification-Vendor: Apache Software Foundation 
+-Specification-Version: 1.2
+-Implementation-Title: org.apache.regexp
+-Implementation-Version: @impl.version@
+-Implementation-Vendor: Apache Software Foundation
+-Implementation-URL: http://jakarta.apache.org/regexp
+-
+diff -urEbwB xalan-j_2_7_3.orig/src/MANIFEST.SERIALIZER xalan-j_2_7_3/src/MANIFEST.SERIALIZER
+--- xalan-j_2_7_3.orig/src/MANIFEST.SERIALIZER	2023-08-30 18:36:44.211105060 +0200
++++ xalan-j_2_7_3/src/MANIFEST.SERIALIZER	2023-08-30 18:38:46.375256700 +0200
+@@ -1,7 +1,6 @@
+ Manifest-Version: 1.0
+ Created-By: @java.version@ (@java.vendor@)
+ Main-Class: org.apache.xml.serializer.Version
+-Class-Path: xml-apis.jar
+ 
+ Name: org/apache/xml/serializer/
+ Comment: Serializer to write out XML, HTML etc. as a stream of characters from an input DOM or from input SAX events.
+diff -urEbwB xalan-j_2_7_3.orig/src/manifest.xalan-interpretive xalan-j_2_7_3/src/manifest.xalan-interpretive
+--- xalan-j_2_7_3.orig/src/manifest.xalan-interpretive	2023-08-30 18:36:44.211105060 +0200
++++ xalan-j_2_7_3/src/manifest.xalan-interpretive	2023-08-30 18:38:46.375256700 +0200
+@@ -1,7 +1,6 @@
+ Manifest-Version: 1.0
+ Created-By: @java.version@ (@java.vendor@)
+ Main-Class: org.apache.xalan.xslt.Process
+-Class-Path: xercesImpl.jar xml-apis.jar serializer.jar
+ 
+ Name: org/apache/xalan/
+ Comment: Main Xalan engine implementing TrAX/JAXP
+diff -urEbwB xalan-j_2_7_3.orig/src/manifest.xsltc xalan-j_2_7_3/src/manifest.xsltc
+--- xalan-j_2_7_3.orig/src/manifest.xsltc	2023-08-30 18:36:44.211105060 +0200
++++ xalan-j_2_7_3/src/manifest.xsltc	2023-08-30 18:39:52.469032707 +0200
+@@ -1,6 +1,5 @@
+ Manifest-Version: 1.0
+ Created-By: @java.version@ (@java.vendor@)
+-Class-Path: xercesImpl.jar xml-apis.jar serializer.jar
+ 
+ Name: org/apache/xalan/xsltc/
+ Comment: Main XSLTC engine implementing TrAX/JAXP
+@@ -19,33 +18,3 @@
+ Implementation-Vendor: Apache Software Foundation
+ Implementation-URL: http://xml.apache.org/xalan-j/dist/
+ 
+-Name: java_cup/runtime/
+-Comment: Runtime component of JCup 
+-Specification-Title: Runtime component of JCup
+-Specification-Vendor: Princeton University 
+-Specification-Version: 0.10k 
+-Implementation-Title: runtime 
+-Implementation-Version: @impl.version@
+-Implementation-Vendor: Princeton University  
+-Implementation-URL: http://www.cs.princeton.edu/~appel/modern/java/CUP/ 
+-
+-Name: org/apache/bcel/
+-Comment: Byte Code Engineering Library 
+-Specification-Title: Byte Code Engineering Library 
+-Specification-Vendor: Markus Dahm 
+-Specification-Version: 6.6.0
+-Implementation-Title: org.apache.bcel
+-Implementation-Version: @impl.version@
+-Implementation-Vendor: Apache Software Foundation
+-Implementation-URL: http://jakarta.apache.org/bcel
+-
+-Name: org/apache/regexp/
+-Comment: Java Regular Expression package 
+-Specification-Title: Java Regular Expression package 
+-Specification-Vendor: Apache Software Foundation 
+-Specification-Version: 1.2
+-Implementation-Title: org.apache.regexp
+-Implementation-Version: @impl.version@
+-Implementation-Vendor: Apache Software Foundation
+-Implementation-URL: http://jakarta.apache.org/regexp
+-

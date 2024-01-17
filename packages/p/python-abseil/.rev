@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d10f46adb41ee186485f862eac31ae3f</srcmd5>
+    <version>0.5.0</version>
+    <time>1540200152</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642553</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>63dfd5e4e3aedc210859103042f739ba</srcmd5>
+    <version>0.5.0</version>
+    <time>1544632132</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>656804</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c54aeb20bfcb1c0bb05c62031b0852d8</srcmd5>
+    <version>0.7.1</version>
+    <time>1562247875</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1:
+  * Various fixes</comment>
+    <requestid>713399</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d6df7a2b6e021ababd10a13d282d5e7e</srcmd5>
+    <version>0.8.0</version>
+    <time>1569233188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  * absltest.expectedFailureIf: a variant of unittest.expectedFailure that allows a condition to be given.
+  * few bugfixes</comment>
+    <requestid>729894</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eb4455a759329c04aaaf3aeafc274c1e</srcmd5>
+    <version>0.9.0</version>
+    <time>1583750519</time>
+    <user>dimstar_suse</user>
+    <comment>py38</comment>
+    <requestid>782812</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>bdcf32e3d60b39ca011c5b79d0ef83cf</srcmd5>
+    <version>0.9.0</version>
+    <time>1587581923</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>796253</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8dd9a17400a5c12dc894577a0ed1550e</srcmd5>
+    <version>0.11.0</version>
+    <time>1604413016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845685</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>52c63dae3493517d2677676a678dfaf2</srcmd5>
+    <version>0.11.0</version>
+    <time>1605644787</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848974</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6872170a3b175f9fa482013f0c60c3e3</srcmd5>
+    <version>1.0.0</version>
+    <time>1639075562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>938246</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c2f63e66a93a105b43c81cc4f072b7eb</srcmd5>
+    <version>1.2.0</version>
+    <time>1663275597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003844</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2ac00f410d56e8ca080b097068783d3d</srcmd5>
+    <version>1.4.0</version>
+    <time>1685124934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089014</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>8bbd6b1c7fd555a2ca5c9054d1e5eb05</srcmd5>
+    <version>1.4.0</version>
+    <time>1696014770</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114076</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,310 @@
+-------------------------------------------------------------------
+Tue Dec 19 11:04:09 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.71 (jsc#ECO-3319)
+  - Add RHEL 9 STIG
+  - Add support for Debian 12
+  - Update PCI-DSS profile for RHEL
+  - lots of bugfixes and improvements for SLE
+- removed left over file
+  0001-Revert-fix-aide-remediations-add-crontabs.patch upstreamed in 0.1.69
+
+-------------------------------------------------------------------
+Wed Dec  6 12:21:53 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- ssg-fix-journald.patch: switch buggy journald plugindir remediation
+  to write into journald.conf. (bsc#1217832)
+
+-------------------------------------------------------------------
+Tue Oct 17 14:44:03 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.70 (jsc#ECO-3319)
+  - Add openembedded distro support (#10793)
+  - Remove DRAFT wording for OpenShift STIG (#11100)
+  - Remove test-function-check_playbook_file_removed_and_added test (#10982)
+  - scap-security-guide: Add Poky support (#11046)
+
+-------------------------------------------------------------------
+Wed Aug  2 13:49:20 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.69 (jsc#ECO-3319)
+  - Introduce a JSON build manifest (#10761)
+  - Introduce a script to compare ComplianceAsCode versions (#10768)
+  - Introduce CCN profiles for RHEL9 (#10860)
+  - Map rules to components (#10609)
+  - products/anolis23: supports Anolis OS 23 (#10548)
+  - Render components to HTML (#10709)
+  - Store rendered control files (#10656)
+  - Test and use rules to components mapping (#10693)
+  - Use distributed product properties (#10554)
+- 0001-Revert-fix-aide-remediations-add-crontabs.patch: removed, upstream
+
+-------------------------------------------------------------------
+Thu Jul 27 06:58:41 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- 0001-Revert-fix-aide-remediations-add-crontabs.patch:
+  revert patch that breaks the SLE hardening (bsc#1213691)
+
+-------------------------------------------------------------------
+Thu Jun 15 15:40:16 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.68 (jsc#ECO-3319)
+  - Bump OL8 STIG version to V1R6
+  - Introduce a Product class, make the project work with it
+  - Introduce Fedora and Firefox CaC profiles for common workstation users
+  - OL7 DISA STIG v2r11 update
+  - Publish rendered policy artifacts
+  - Update ANSSI BP-028 to version 2.0
+- updated to 0.1.67 (jsc#ECO-3319)
+  - Add utils/controlrefcheck.py
+  - RHEL 9 STIG Update Q1 2023
+  - Include warning for NetworkManager keyfiles in RHEL9
+  - OL7 stig v2r10 update
+  - Bump version of OL8 STIG to V1R5
+- various enhancements to SLE profiles
+- scap-security-guide-UnicodeEncodeError-character-fix.patch: fixed upstream
+
+-------------------------------------------------------------------
+Mon Feb  6 15:03:31 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.66 (jsc#ECO-3319)
+  - Ubuntu 22.04 CIS
+  - OL7 stig v2r9 update
+  - Bump OL8 STIG version to V1R4
+  - Update RHEL7 STIG to V3R10
+  - Update RHEL8 STIG to V1R9
+  - Introduce CIS RHEL9 profiles
+- also various SUSE profile fixes were done
+
+-------------------------------------------------------------------
+Mon Dec  5 10:44:15 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.65 (jsc#ECO-3319)
+   - Introduce cui profile for OL9
+   - Remove Support for OVAL 5.10
+   - Rename account_passwords_pam_faillock_audit
+   - CI ansible hardening and rename of existing Bash hardening
+   - Update contributors list for v0.1.65 release
+   - various SUSE profile specific fixes
+
+-------------------------------------------------------------------
+Fri Nov 25 13:16:15 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- require sudo, as remediations touch sudo config or use sudo.
+
+-------------------------------------------------------------------
+Wed Oct  5 09:21:53 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- enable ubuntu 2204 build
+
+-------------------------------------------------------------------
+Sat Oct  1 08:56:49 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.64 (jsc#ECO-3319)
+   - Introduce ol9 stig profile
+   - Introduce Ol9 anssi profiles
+   - Update RHEL8 STIG to V1R7
+   - Introduce e8 profile for OL9
+   - Update RHEL7 STIG to V3R8
+   - some SUSE profile fixes
+
+-------------------------------------------------------------------
+Wed Sep 21 08:24:30 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- Added several RPM requires that are needed by the SUSE remediation
+  scripts. (e.g. awk is not necessary installed)
+
+-------------------------------------------------------------------
+Sat Jul 30 13:59:29 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.63 (jsc#ECO-3319)
+   - multiple bugfixes in SUSE profiles
+   - Expand project guidelines 
+   - Add Draft OCP4 STIG profile 
+   - Add anssi_bp28_intermediary profile 
+   - add products/uos20 to support UnionTech OS Server 20
+   - products/alinux3: Add CIS Alibaba Cloud Linux 3 profiles
+   - Remove WRLinux Products
+   - Update CIS RHEL8 Benchmark for v2.0.0
+- removed fix-bash-template.patch: fixed upstream
+- Fixed: stig: /etc/shadow group owner should not be root but shadow (bsc#1200149)
+- Fixed: sles15_script-stig.sh: remediation_functions: No such file or directory (bsc#1200163)
+- Fixed: SLES-15-010130 - The SUSE operating system must initiate a session lock after a 15-minute period of inactivity (bsc#1200122)
+
+-------------------------------------------------------------------
+Fri Jul 15 11:57:43 UTC 2022 - Julio González Gil <jgonzalez@suse.com>
+
+- Fix the build for RHEL 7 and clones (python-setuptools is used) 
+
+-------------------------------------------------------------------
+Wed Jul  6 09:26:15 UTC 2022 - Julio González Gil <jgonzalez@suse.com>
+
+- Fix the build for RHEL 9 and clones
+
+-------------------------------------------------------------------
+Mon Jun 27 12:59:21 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- fix-bash-template.patch: convert one bash emitter to new jinja method.
+  (bsc#1200163)
+
+-------------------------------------------------------------------
+Thu Jun  9 15:31:50 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- add python3-setuptools for all builds (so it is also used on debian 
+  and centos flavors)
+
+-------------------------------------------------------------------
+Mon May 30 12:48:54 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.62 (jsc#ECO-3319)
+  - Update rhel8 stig to v1r6
+  - OL7 STIG v2r7 update
+  - Initial definition of ANSSI BP28 minmal profile for SLE
+
+-------------------------------------------------------------------
+Mon Apr  4 08:40:40 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.61 (jsc#ECO-3319)
+  - Stop building PCI-DSS-centric XCCDF benchmark for RHEL 7
+  - Introduce OL9 product
+  - Implement handling of logical expressions in platform definitions
+
+-------------------------------------------------------------------
+Tue Feb 22 15:19:07 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- bump disk size constraints to 7gb to avoid occasional disk fulls failures.
+
+-------------------------------------------------------------------
+Thu Jan 27 13:43:18 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.60 (jsc#ECO-3319)
+  - New draft stig profile v1r1 for OL8
+  - New product Amazon EKS platform and initial CIS profiles
+  - New product CentOS Stream 9, as a derivative from RHEL9 product
+
+-------------------------------------------------------------------
+Sat Nov 27 15:39:12 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.59 release (jsc#ECO-3319)
+  - Support for Debian 11
+  - NERC CIP profiles for OCP4 and RHCOS
+  - HIPAA profile for SLE15
+  - Delta Tailoring Files for STIG profiles
+
+-------------------------------------------------------------------
+Wed Oct  6 09:00:15 UTC 2021 - Alexander Bergmann <abergmann@suse.com>
+
+- Fix SLE-12 build issue caused by '\xb0' character (bsc#1191431).
+  - Add scap-security-guide-UnicodeEncodeError-character-fix.patch
+
+-------------------------------------------------------------------
+Fri Sep 24 15:16:30 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.58 release (jsc#ECO-3319)
+- Support for Script Checking Engine (SCE)
+- Split RHEL 8 CIS profile using new controls file format
+- CIS Profiles for SLE12
+- Initial Ubuntu 20.04 STIG Profiles
+- Addition of an automated CCE adder
+
+-------------------------------------------------------------------
+Tue Jul 13 14:41:16 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.57 release (jsc#ECO-3319)
+  - CIS profile for RHEL 7 is updated
+  - initial CIS profiles for Ubuntu 20.04
+  - Major improvement of RHEL 9 content
+  - new release process implemented using Github actions
+
+-------------------------------------------------------------------
+Wed Jun  2 15:03:42 UTC 2021 - Julio González Gil <jgonzalez@suse.com>
+
+- Specify the maintainer, for deb packages.
+
+-------------------------------------------------------------------
+Wed May 26 15:19:40 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.56 release (jsc#ECO-3319)
+  - Align ism_o profile with latest ISM SSP (#6878)
+  - Align RHEL 7 STIG profile with DISA STIG V3R3
+  - Creating new RHEL 7 STIG GUI profile (#6863)
+  - Creating new RHEL 8 STIG GUI profile (#6862)
+  - Add the RHEL9 product (#6801)
+  - Initial support for SUSE SLE-15 (#6666)
+  - add support for osbuild blueprint remediations (#6970)
+
+-------------------------------------------------------------------
+Wed Mar 24 13:25:26 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to a intermediate GIT snapshot of 20210323 (jsc#ECO-3319)
+  - initial SLES15 STIG added
+  - more SLES 12 STIG work
+  - correct tables and cross references for SLES 12 and 15 STIG
+
+-------------------------------------------------------------------
+Fri Mar 19 15:08:35 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.55 release (jsc#ECO-3319)
+  - big update of rules used in SLES-12 STIG profile
+  - Render policy to HTML (#6532)
+  - Add variable support to yamlfile_value template (#6563)
+  - Introduce new template for dconf configuration files (#6118)
+- avoid some non sles12 sp2 available macros.
+
+-------------------------------------------------------------------
+Fri Mar 12 14:14:10 UTC 2021 - Julio González Gil <jgonzalez@suse.com>
+
+- Add the redhat conflict for packages built on redhat clones
+  or Fedora
+
+-------------------------------------------------------------------
+Fri Feb 26 08:45:24 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- remove redhat conflict.
+
+-------------------------------------------------------------------
+Sun Feb  7 10:42:34 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- added Redhat, Debian, Ubuntu products, split off into seperate
+  packages for size.
+
+-------------------------------------------------------------------
+Wed Feb  3 23:55:30 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions, modernize specfile constructs.
+
+-------------------------------------------------------------------
+Wed Feb  3 14:07:22 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.54 version
+
+-------------------------------------------------------------------
+Wed Feb  3 10:23:50 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.53 version, adjusted some things.
+
+-------------------------------------------------------------------
+Tue May 14 11:55:47 UTC 2019 - Brice DEKANY <brice.dekany@suse.com>
+
+- New specfile
+- build for openSUSE + Backport
+
+-------------------------------------------------------------------
+Tue May 14 11:27:26 UTC 2019 - Brice DEKANY <brice.dekany@suse.com>
+
+- Switch to new formating from ComplianceAsCode
+- Project is now hosted by github.com/openSUSE
+
+-------------------------------------------------------------------
+Fri Mar 16 12:12:56 UTC 2018 - brice.dekany@suse.com
+
+- Add a first batch of SEVERITY CAT II Rules
+-------------------------------------------------------------------
+Wed Jan 17 10:14:09 UTC 2018 - brice.dekany@suse.com
+
+- Add fixes for SEVERITY CAT I 
+
+-------------------------------------------------------------------
+Thu Jan  4 21:05:16 UTC 2018 - brice.dekany@suse.com
+
+- Initial version of xccdf for Severty CAT I

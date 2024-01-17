@@ -1,0 +1,6 @@
+<package name="python-re-assert" project="openSUSE:Factory">
+  <title></title>
+  <description>Show Python regex match assertion failures
+</description>
+  <devel project="devel:languages:python" package="python-re-assert"/>
+</package>

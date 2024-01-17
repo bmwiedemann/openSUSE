@@ -1,0 +1,648 @@
+-------------------------------------------------------------------
+Wed Oct 12 06:54:45 UTC 2022 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
+Mon Jul  4 09:21:54 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- No need to fiddle with versions of PyYAML
+
+-------------------------------------------------------------------
+Wed Jun 29 18:51:12 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- adjust BuildRequires for python-PyYAML so this works on both Tumbleweed and Leap 15.x
+
+-------------------------------------------------------------------
+Wed Jun 29 18:07:30 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to 1.29.2
+
+
+1.29.2 (2021-05-10)
+  Miscellaneous
+      Remove prompt to use docker compose in the up command
+      Bump py to 1.10.0 in requirements-indirect.txt
+  
+  
+1.29.1 (2021-04-14)
+  Bugs
+      Fix for invalid handler warning on Windows builds
+      Fix config hash to trigger container recreation on IPC mode updates
+      Fix conversion map for placement.max_replicas_per_node
+      Remove extra scan suggestion on build
+  
+1.29.0 (2021-04-06)
+  Features
+      Add profile filter to docker-compose config
+      Add a depends_on condition to wait for successful service completion
+  Miscellaneous
+      Add image scan message on build
+      Update warning message for --no-ansi to mention --ansi never as alternative
+      Bump docker-py to 5.0.0
+      Bump PyYAML to 5.4.1
+      Bump python-dotenv to 0.17.0
+  
+1.28.6 (2021-03-21)
+  Bugs
+      Make --env-file relative to the current working directory and error out for invalid paths. Environment file paths set
+      with --env-file are relative to the current working directory while the default .env file is located in the project
+      directory which by default is the base directory of the Compose file.
+      Fix missing service property storage_opt by updating the compose schema
+      Fix build extra_hosts list format
+      Remove extra error message on exec
+  
+  Miscellaneous
+      Add compose.yml and compose.yaml to default filename list
+
+-------------------------------------------------------------------
+Fri Mar 12 16:23:17 UTC 2021 - Chris Coutinho <chrisbcoutinho@gmail.com>
+
+-  Update to 1.28.5
+
+1.28.5 (2021-02-25)
+	Bugs
+		Fix OpenSSL version mismatch error when shelling out to the ssh client (via bump to docker-py 4.4.4 which contains the fix)
+		Add missing build flags to the native builder: platform, isolation and extra_hosts
+		Remove info message on native build
+		Avoid fetching logs when service logging driver is set to 'none'
+1.28.4 (2021-02-18)
+	Bugs
+		Fix SSH port parsing by bumping docker-py to 4.4.3
+	Miscellaneous
+		Bump Python to 3.7.10
+1.28.3 (2021-02-17)
+	Bugs
+		Fix SSH hostname parsing when it contains leading s/h, and remove the quiet option that was hiding the error (via docker-py bump to 4.4.2)
+		Fix key error for '--no-log-prefix' option
+		Fix incorrect CLI environment variable name for service profiles: COMPOSE_PROFILES instead of COMPOSE_PROFILE
+		Fix fish completion
+	Miscellaneous
+		Bump cryptography to 3.3.2
+		Remove log driver filter
+1.28.2 (2021-01-26)
+	Miscellaneous
+		CI setup update
+1.28.1 (2021-01-25)
+	Bugs
+		Revert to Python 3.7 bump for Linux static builds
+		Add bash completion for docker-compose logs|up --no-log-prefix
+1.28.0 (2021-01-20)
+	Features
+		Support for Nvidia GPUs via device requests
+		Support for service profiles
+		Change the SSH connection approach to the Docker CLI's via shellout to the local SSH client (old behaviour enabled by setting COMPOSE_PARAMIKO_SSH environment variable)
+		Add flag to disable log prefix
+		Add flag for ansi output control
+	Bugs
+		Make parallel_pull=True by default
+		Bring back warning for configs in non-swarm mode
+		Take --file in account when defining project_dir
+		On compose up, attach only to services we read logs from
+	Miscellaneous
+		Make COMPOSE_DOCKER_CLI_BUILD=1 the default
+		Add usage metrics
+		Sync schema with COMPOSE specification
+		Improve failure report for missing mandatory environment variables
+		Bump attrs to 20.3.0
+		Bump more_itertools to 8.6.0
+		Bump cryptograhy to 3.2.1
+		Bump cffi to 1.14.4
+		Bump virtualenv to 20.2.2
+		Bump bcrypt to 3.2.0
+		Bump gitpython to 3.1.11
+		Bump docker-py to 4.4.1
+		Bump Python to 3.9
+		Linux: bump Debian base image from stretch to buster (required for Python 3.9)
+		macOS: OpenSSL 1.1.1g to 1.1.1h, Python 3.7.7 to 3.9.0
+		Bump pyinstaller 4.1
+		Loosen restriction on base images to latest minor
+		Updates of READMEs
+1.27.4 (2020-09-24)
+	Bugs
+		Remove path checks for bind mounts
+		Fix port rendering to output long form syntax for non-v1
+		Add protocol to the docker socket address
+1.27.3 (2020-09-16)
+	Bugs
+		Merge max_replicas_per_node on docker-compose config
+		Fix depends_on serialization on docker-compose config
+		Fix scaling when some containers are not running on docker-compose up
+		Enable relative paths for driver_opts.device for local driver
+		Allow strings for cpus fields
+1.27.2 (2020-09-10)
+	Bugs
+
+		Fix bug on docker-compose run container attach
+
+1.27.1 (2020-09-10)
+	Bugs
+		Fix docker-compose run when service.scale is specified
+		Allow driver property for external networks as temporary workaround for swarm network propagation issue
+		Pin new internal schema version to 3.9 as the default
+		Preserve the version when configured in the compose file
+1.27.0 (2020-09-07)
+	Features
+		Merge 2.x and 3.x compose formats and align with COMPOSE_SPEC schema
+		Implement service mode for ipc
+		Pass COMPOSE_PROJECT_NAME environment variable in container mode
+		Make run behave in the same way as up
+		Use docker build on docker-compose run when COMPOSE_DOCKER_CLI_BUILD environment variable is set
+		Use docker-py default API version for engine queries (auto)
+		Parse network_mode on build
+	Bugs
+		Ignore build context path validation when building is not required
+		Fix float to bytes conversion via docker-py bump to 4.3.1
+		Fix scale bug when deploy section is set
+		Fix docker-py bump in setup.py
+		Fix experimental build failure detection
+		Fix context propagation to docker cli
+	Miscellaneous
+		Drop support for Python 2.7
+		Bump docker-py to 4.3.1
+		Bump tox to 3.19.0
+		Bump virtualenv to 20.0.30
+		Add script for docs syncronization
+
+-------------------------------------------------------------------
+Thu Feb 25 10:32:51 UTC 2021 - Duncan Mac-Vicar <dmacvicar@suse.com>
+
+- Reintroduce container runtime requirement accepting both podman
+  and docker. 
+
+-------------------------------------------------------------------
+Wed Feb 24 12:34:31 UTC 2021 - Duncan Mac-Vicar <dmacvicar@suse.com>
+
+- Remove requirement on the docker package.
+  docker-compose uses the API and can use podman >= 3.0 compatible
+  API as well.
+
+-------------------------------------------------------------------
+Thu Jan 28 10:49:18 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Since we have alternatives for the docker-compose script, drop the
+  if python2 guard for Provides/Obsoletes docker-compose. (bsc#1181497)
+
+-------------------------------------------------------------------
+Tue Jan 19 22:57:10 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Skip over tests which are failing (gh#docker/compose#8044)
+
+-------------------------------------------------------------------
+Thu Aug 20 11:17:55 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.26.2:
+  - Enforce `docker-py` 4.2.2 as minimum version when installing with pip
+  - Bump `docker-py` from 4.2.1 to 4.2.2
+  - Fix context load for non-docker endpoints
+- remove no-restrict-upper.patch (just uncaping stuff downstream is
+  likely cause problems)
+
+-------------------------------------------------------------------
+Tue Jun 16 06:29:10 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.26.0: 
+  * Bugs
+    + Properly escape values coming from env_files
+    + Sync compose-schemas with upstream (docker/cli)
+    + Remove None entries on exec command
+    + Add python-dotenv to delegate .env file processing
+    + Don't adjust output on terminal width when piped into another command
+    + Show an error message when version attribute is malformed
+    + Fix HTTPS connection when DOCKER_HOST is remote
+  * Bugfixes
+    + Fix CI script to enforce the minimal MacOS version to 10.11
+    + Fix docker-compose exec for keys with no value
+    + Fix CI script to enforce the compilation with Python3
+    + Fix binary's sha256 in the release page
+    + Validate version format on formats 2+
+    + Assume infinite terminal width when not running in a terminal
+  * Features
+    + Add docker context support
+    + Add missing test dependency ddt to setup.py
+    + Add --attach-dependencies to command up for attaching to dependencies
+    + Allow compatibility option with COMPOSE_COMPATIBILITY environment variable
+    + Bump Pytest to 5.3.4 and add refactor compatibility with new version
+    + Bump OpenSSL from 1.1.1f to 1.1.1g
+    + Bump docker-py from 4.2.0 to 4.2.1
+    + Bump OpenSSL from 1.1.1d to 1.1.1f
+    + Add 3.8 compose version
+    + Allow compatibility option with COMPOSE_COMPATIBILITY environment variable
+    + Bump PyInstaller from 3.5 to 3.6
+    + Bump pysocks from 1.6.7 to 1.7.1
+    + Bump websocket-client from 0.32.0 to 0.57.0
+    + Bump urllib3 from 1.24.2 to 1.25.7
+    + Bump jsonschema from 3.0.1 to 3.2.0
+    + Bump PyYAML from 4.2b1 to 5.3
+    + Bump certifi from 2017.4.17 to 2019.11.28
+    + Bump coverage from 4.5.4 to 5.0.3
+    + Bump paramiko from 2.6.0 to 2.7.1
+    + Bump cached-property from 1.3.0 to 1.5.1
+    + Bump minor Linux and MacOSX dependencies
+
+-------------------------------------------------------------------
+Tue May 26 07:22:43 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Tue Apr 21 08:59:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not skip temporarily disabled tests as they work now with new
+  releases
+
+-------------------------------------------------------------------
+Tue Apr 21 08:53:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Don't pull dotenv package which does not exist on runtime
+
+-------------------------------------------------------------------
+Thu Apr  2 12:49:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.25.4
+  * Allow compatibility option with COMPOSE_COMPATIBILITY environment variable
+  * Fix v3.8 schema support for binaries
+  * few dependendy version bumps
+
+-------------------------------------------------------------------
+Fri Jan 10 14:56:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Properly conditionalize python2 build
+
+-------------------------------------------------------------------
+Thu Jan  9 18:28:21 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.25.1
+  + Features
+    * Bump `pytest-cov` 2.8.1
+    * Bump `flake8` 3.7.9
+    * Bump `coverage` 4.5.4
+  + Bugfixes
+    * Decode APIError explanation to unicode before usage on start and create of a container
+    * Reports when images that cannot be pulled and must be built
+    * Discard label `com.docker.compose.filepaths` having None as value. Typically, when coming from stdin
+    * Added OSX binary as a directory to solve slow start up time caused by MacOS Catalina binary scan
+    * Passed in HOME env-var in container mode (running with `script/run/run.sh`)
+    * Reverted behavior of "only pull images that we can't build" and replace by a warning informing the image we can't pull and must be built
+- Drop python2 subpackage due to dropping backports packages.
+
+-------------------------------------------------------------------
+Fri Dec 13 08:41:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch no-restrict-upper.patch to add back removal of upper
+  version checks and constraints
+
+-------------------------------------------------------------------
+Wed Dec 11 08:37:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.25.0:
+  * Various minor fixes
+- Remove no longer needed patch fix-requirements.patch
+
+-------------------------------------------------------------------
+Fri Aug  9 15:42:58 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.24.1
+  * Fixed acceptance tests
+- Fix tests
+- Supports jsonschema 3.
+
+-------------------------------------------------------------------
+Tue Aug  6 14:29:11 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- This package doesn't support jsonchema 3.
+  The next release should fix this.
+
+-------------------------------------------------------------------
+Mon Apr  1 22:51:32 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Mon Apr  1 08:24:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Rename source package to python-docker-compose to match up
+  the naming convenctions
+
+-------------------------------------------------------------------
+Mon Apr  1 08:12:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.24.0:
+  * Added support for connecting to the Docker Engine using the ssh protocol.
+  * Added a --all flag to docker-compose ps to include stopped one-off containers in the command's output.
+  * Add bash completion for ps --all|-a
+  * Support for credential_spec
+  * Add --parallel to docker build's options in bash and zsh completion
+- Rebase the fix-requirements.patch upstream is upper limiting stuff
+  for no aparent reason except the joy of it bsc#1131094
+
+-------------------------------------------------------------------
+Mon Jan 14 12:07:10 UTC 2019 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- Sync dependencies with requirements.txt as this version
+  requires python-docker 3.6.0 at least
+
+-------------------------------------------------------------------
+Sun Dec 23 18:00:45 UTC 2018 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to version 1.23.2:
+  * Compose format version 3.7
+  * Many other many changes from 1.21.2 read CHANGES.md file
+
+-------------------------------------------------------------------
+Tue May  8 14:05:20 UTC 2018 - tchvatal@suse.com
+
+- provide docker-compose only for the python3 variant to avoid
+  collisions, esp. since py2 version does not have the binary
+
+-------------------------------------------------------------------
+Tue May  8 10:25:48 UTC 2018 - tchvatal@suse.com
+
+- Fix typos in py2 requirements
+
+-------------------------------------------------------------------
+Tue May  8 09:11:37 UTC 2018 - tchvatal@suse.com
+
+- Execute the pytest testsuite, fixes bsc#1092148
+
+-------------------------------------------------------------------
+Tue May  8 09:02:46 UTC 2018 - tchvatal@suse.com
+
+- Add back patch fix-requirements.patch as it really was needed in
+  the end
+
+-------------------------------------------------------------------
+Mon May  7 17:51:24 UTC 2018 - tchvatal@suse.com
+
+- Update to version 1.21.2:
+  * Many many changes from 1.17.0 read CHANGES.md file
+- Drop README.SUSE pointing to same stuff like official readme
+- Drop patch fix-requirements.patch as it is not really needed
+- Switch to singlespec approach building both py2 and py3
+  * pick just py3 binary, no real reason to keep py2 variant
+
+-------------------------------------------------------------------
+Mon May  7 17:51:10 UTC 2018 - tchvatal@suse.com
+
+- Drop service, it is not really needed as we fetch from pypi
+
+-------------------------------------------------------------------
+Fri Dec 22 14:26:39 UTC 2017 - wolfgang.engel@suse.com
+
+- Fix requirement of python-texttable (boo#1072403)
+
+-------------------------------------------------------------------
+Fri Nov 03 16:18:29 UTC 2017 - cobexer@gmail.com
+
+- Update to version 1.17.0:
+  * Bump 1.17.0
+  * Miscellaneous test fixes
+  * Add flake8 to dev requirements
+  * flake8 error on master branch (fixes #5298)
+  * Add bash completion for `up --no-start`
+  * Bump 1.17.0-rc1
+  * flake8
+  * Add check_duplicate=True when creating network
+  * Add specific handling for pywintypes.error
+  * Config command generates invalid volumes (fixes #5176)
+
+-------------------------------------------------------------------
+Sun Oct 15 17:07:48 UTC 2017 - carmen@carmenbianca.eu
+
+- Rename python-docker-py requirement to python-docker. (bsc#1062084)
+
+-------------------------------------------------------------------
+Mon Oct 24 12:03:39 UTC 2016 - jmassaguerpla@suse.com
+
+- fix-requirements.patch: update this patch 
+
+-------------------------------------------------------------------
+Mon Oct 24 11:46:45 UTC 2016 - opensuse-packaging@opensuse.org
+
+- Update to version 1.8.1 to be in sync with latest docker (bsc#1004927):
+  * Remove surrounding quotes from TLS paths, if present
+  * Fix command hint in bundle to pull services instead of images
+  * Improve volumespec parsing on windows platforms
+  * Update docker-py dependency to latest release
+  * Catch APIError while printing container logs
+  * Only allow log streaming if logdriver is json-file or journald
+  * Fix integration test on Docker for Mac
+  * Force default host on windows to the default TCP host (instead of npipe)
+  * Bump docker-py dependency
+  * Bump 1.8.1
+
+-------------------------------------------------------------------
+Thu Sep 15 19:25:46 UTC 2016 - jmassaguerpla@suse.com
+
+- Remove the conflict with python-requests
+
+ I am tired of this kind of errors. I am relaxing this requirement.
+ fix bsc#997918: TW 20160901: unable to dup since docker-compose
+ conflicts with python-requests
+
+-------------------------------------------------------------------
+Wed Aug 10 09:42:55 UTC 2016 - jmassaguerpla@suse.com
+
+- add python as a requirement, otherwise python is not installed
+  and then you get the error
+
+    AttributeError: 'module' object has no attribute 'ssl'
+
+-------------------------------------------------------------------
+Mon Jul 25 07:38:06 UTC 2016 - tboerger@suse.com
+
+- Updated fix-requirements.patch for new code base
+- Update to version 1.7.1
+  * 1.7.1
+    + Fixed a bug where the output of docker-compose config for v1 files would
+      be an invalid configuration file.
+    + Fixed a bug where docker-compose config would not check the validity of
+      links.
+    + Fixed an issue where docker-compose help would not output a list of
+      available commands and generic options as expected.
+    + Fixed an issue where filtering by service when using docker-compose logs
+      would not apply for newly created services.
+    + Fixed a bug where unchanged services would sometimes be recreated in in
+      the up phase when using Compose with Python 3.
+    + Fixed an issue where API errors encountered during the up phase would not
+      be recognized as a failure state by Compose.
+    + Fixed a bug where Compose would raise a NameError because of an undefined
+      exception name on non-Windows platforms.
+    + Fixed a bug where the wrong version of docker-py would sometimes be
+      installed alongside Compose.
+    + Fixed a bug where the host value output by docker-machine config default
+      would not be recognized as valid options by the docker-compose command line.
+    + Fixed an issue where Compose would sometimes exit unexpectedly while
+      reading events broadcasted by a Swarm cluster.
+    + Corrected a statement in the docs about the location of the .env file,
+      which is indeed read from the current directory, instead of in the same location as the Compose file.
+  * 1.7.0
+    + docker-compose logs no longer follows log output by default. It now
+      matches the behaviour of docker logs and exits after the current logs are
+      printed. Use -f to get the old default behaviour.
+    + Booleans are no longer allows as values for mappings in the Compose file
+      (for keys environment, labels and extra_hosts). Previously this was a
+      warning. Boolean values should be quoted so they become string values.
+    + Compose now looks for a .env file in the directory where it's run and
+      reads any environment variables defined inside, if they're not already set
+      in the shell environment. This lets you easily set defaults for variables
+      used in the Compose file, or for any of the COMPOSE_* or DOCKER_*
+      variables.
+    + Added a --remove-orphans flag to both docker-compose up and docker-compose
+      down to remove containers for services that were removed from the Compose
+      file.
+    + Added a --all flag to docker-compose rm to include containers created by
+      docker-compose run. This will become the default behavior in the next
+      version of Compose.
+    + Added support for all the same TLS configuration flags used by the docker
+      client: --tls, --tlscert, --tlskey, etc.
+    + Compose files now support the tmpfs and shm_size options.
+    + Added the --workdir flag to docker-compose run
+    + docker-compose logs now shows logs for new containers that are created
+      after it starts.
+    + The COMPOSE_FILE environment variable can now contain multiple files,
+      separated by the host system's standard path separator (: on Mac/Linux, ;
+      on Windows).
+    + You can now specify a static IP address when connecting a service to a
+      network with the ipv4_address and ipv6_address options.
+    + Added --follow, --timestamp, and --tail flags to the docker-compose logs
+      command.
+    + docker-compose up, and docker-compose start will now start containers in
+      parallel where possible.
+    + docker-compose stop now stops containers in reverse dependency order
+      instead of all at once.
+    + Added the --build flag to docker-compose up to force it to build a new
+      image. It now shows a warning if an image is automatically built when the
+      flag is not used.
+    + Added the docker-compose exec command for executing a process in a running
+      container.
+    + docker-compose down now removes containers created by docker-compose run.
+    + A more appropriate error is shown when a timeout is hit during up when
+      using a tty.
+    + Fixed a bug in docker-compose down where it would abort if some resources
+      had already been removed.
+    + Fixed a bug where changes to network aliases would not trigger a service
+      to be recreated.
+    + Fix a bug where a log message was printed about creating a new volume when
+      it already existed.
+    + Fixed a bug where interrupting up would not always shut down containers.
+    + Fixed a bug where log_opt and log_driver were not properly carried over
+      when extending services in the v1 Compose file format.
+    + Fixed a bug where empty values for build args would cause file validation
+      to fail.
+
+-------------------------------------------------------------------
+Fri Jul 22 08:51:40 UTC 2016 - jmassaguerpla@suse.com
+
+- update python-request requirement to <= 1.11 because in Factory there is 1.10
+
+-------------------------------------------------------------------
+Thu Mar 17 16:48:03 UTC 2016 - opensuse-packaging@opensuse.org
+
+- Update to version 1.6.2:
+  + Add failing test for --abort-on-container-exit
+  + Stop other containers if the flag is set.
+  + Revert "Change special case from '_', None to ()"
+  + Make environment variables without a value the same as docker-cli.
+  + Updating Dockerfile
+  + Bump 1.6.1
+  + Update docker-py version in requirements to 1.7.2
+  + Bump 1.6.2
+- add cached-property requirement
+- review version requirements so we don't have surprises if python
+  packages are updated
+
+- fix fix-requirements.patch based on versions in Factory
+
+
+This fixes bsc#954145, docker-compose provided by tumbleweed does not run
+
+
+-------------------------------------------------------------------
+Mon Dec 21 16:30:48 UTC 2015 - fcastelli@suse.com
+
+- Update to version 1.5.2:
+  * Fixed a bug which broke the use of environment and env_file with extends,
+    and caused environment keys without values to have a None value, instead of
+    a value from the host environment.
+  * Fixed a regression in 1.5.1 that caused a warning about volumes to be
+    raised incorrectly when containers were recreated.
+  * Fixed a bug which prevented building a Dockerfile that used ADD <url>
+  * Fixed a bug with docker-compose restart which prevented it from starting
+    stopped containers.
+  * Fixed handling of SIGTERM and SIGINT to properly stop containers
+  * Add support for using a url as the value of build
+  * Improved the validation of the expose option
+
+-------------------------------------------------------------------
+Thu Nov 19 17:57:50 UTC 2015 - fcastelli@suse.com
+
+- Add fix-requirements.patch: require the version of python-enum34
+  shipped with SLE and openSUSE. The original version is not really
+  needed.
+- Downgraded python-enum34 requirement to suit what is already shipped
+  with SLE/openSUSE
+
+-------------------------------------------------------------------
+Sun Nov 15 20:31:33 UTC 2015 - jmassaguerpla@suse.com
+
+- Update to docker-compose 1.5.1
+
+  Remove fix_requires.patch because latest version requires different
+  versions of the previous packages
+
+  Changelog: https://github.com/docker/compose/blob/1.5.1/CHANGELOG.md
+
+-------------------------------------------------------------------
+Tue Jul 28 10:19:17 UTC 2015 - fcastelli@suse.com
+
+- Fix python-request requirement
+
+  Updated fix_requires.patch: required to fix docker-compose on Factory
+
+-------------------------------------------------------------------
+Mon Jul 27 11:49:36 UTC 2015 - hvogel@suse.com
+
+- Update to version 1.3.2
+
+-------------------------------------------------------------------
+Tue Jul 21 07:46:15 UTC 2015 - fcastelli@suse.com
+
+- Updated fix_requires.patch: required to fix docker-compose on Factory
+
+-------------------------------------------------------------------
+Fri Jul 10 16:05:12 UTC 2015 - fcastelli@suse.com
+
+- Added fix_requires.patch: required to have docker-compose running
+
+-------------------------------------------------------------------
+Fri May 29 11:25:52 UTC 2015 - fcastelli@suse.com
+
+- Add README.SUSE
+
+-------------------------------------------------------------------
+Fri Apr 17 14:10:36 UTC 2015 - fcastelli@suse.com
+
+- Update to version 1.2.0
+
+-------------------------------------------------------------------
+Fri Apr 10 11:50:37 UTC 2015 - fcastelli@suse.com
+
+- Removed python-backports.ssl_match_hostname from the runtime deps,
+  this belongs to python-requests
+
+-------------------------------------------------------------------
+Thu Apr  9 17:06:29 UTC 2015 - fcastelli@suse.com
+
+- Added missing runtime dependency python-backports.ssl_match_hostname
+
+-------------------------------------------------------------------
+Thu Apr  9 16:54:38 UTC 2015 - fcastelli@suse.com
+
+- Added missing runtime requirement python-setuptools
+
+-------------------------------------------------------------------
+Thu Apr  9 15:53:18 UTC 2015 - fcastelli@suse.com
+
+- Created initial package targeting v1.2.0rc3
+

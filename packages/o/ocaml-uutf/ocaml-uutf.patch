@@ -1,0 +1,13 @@
+--- /dev/null
++++ b/dune-project
+@@ -0,0 +1,2 @@
++(lang dune 1.0)
++(name uutf)
+--- /dev/null
++++ b/src/dune
+@@ -0,0 +1,5 @@
++(library
++ (name uutf)
++ (public_name uutf)
++ (flags (:standard -w -3-27))
++ (wrapped false))

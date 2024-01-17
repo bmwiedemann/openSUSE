@@ -1,0 +1,5 @@
+<package name="intel-hybrid-driver" project="openSUSE:Factory">
+  <title>libva-intel-hybrid-driver</title>
+  <description>VA driver for Intel G45 &amp; HD Graphics family</description>
+  <devel project="X11:XOrg" package="intel-hybrid-driver"/>
+</package>

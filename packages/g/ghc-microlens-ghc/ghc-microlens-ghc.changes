@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Thu Oct 12 07:06:25 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update microlens-ghc to version 0.4.14.2.
+  # 0.4.14.2
+
+  * [#171](https://github.com/stevenfontanella/microlens/pull/171) Support bytestring 0.12
+
+  # 0.4.14.1
+
+  * [#161](https://github.com/stevenfontanella/microlens/pull/161) Fix GHC 9.4 warning for using `~` without TypeOperators
+
+-------------------------------------------------------------------
+Wed Oct 11 19:28:18 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update microlens-ghc to version 0.4.14.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:07:31 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Dec 14 05:19:47 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update microlens-ghc to version 0.4.14.1.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Tue May 17 06:12:59 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update microlens-ghc to version 0.4.14.0.
+  # 0.4.14
+
+  * New minor release (microlens-0.4.13.0).
+
+-------------------------------------------------------------------
+Mon Nov  1 09:49:10 UTC 2021 - psimons@suse.com
+
+- Update microlens-ghc to version 0.4.13.1.
+  # 0.4.13.1
+
+  * New patch release (GHC 9.2.1).
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Nov 17 15:26:35 UTC 2020 - psimons@suse.com
+
+- Update microlens-ghc to version 0.4.13.
+  # 0.4.13
+
+  * New minor release (microlens-0.4.12.0).
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:26 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:21 UTC 2020 - psimons@suse.com
+
+- Add microlens-ghc at version 0.4.12.
+

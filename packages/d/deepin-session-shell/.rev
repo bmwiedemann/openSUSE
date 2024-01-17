@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>666220300a3f096c2b733fed945f4464</srcmd5>
+    <version>5.4.5</version>
+    <time>1619447949</time>
+    <user>dimstar_suse</user>
+    <comment>Bring Deepin Desktop Environment to openSUSE</comment>
+    <requestid>886025</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e905f6987a8ca87f1ca017137f556f6e</srcmd5>
+    <version>5.4.9</version>
+    <time>1622664655</time>
+    <user>dimstar_suse</user>
+    <comment>- Update verion to 5.4.9
+  * perf(LogoWidget): optimize code structure
+  * Add system configure
+  * Fix bugs</comment>
+    <requestid>891665</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fd033d3135e730f13f3b021b1514c466</srcmd5>
+    <version>5.4.112</version>
+    <time>1643666214</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop fix-return-type.patch, merged by upstream (forwarded request 950199 from hillwood)</comment>
+    <requestid>950200</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>69a66137ff926246e7088e8a219ee391</srcmd5>
+    <version>5.5.9</version>
+    <time>1647974457</time>
+    <user>dimstar_suse</user>
+    <comment>- drop fix-crash-bug.patch, merged by upstream (forwarded request 963977 from hillwood)</comment>
+    <requestid>963979</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9e4b75f8263cab1ac113757baa9ec24f</srcmd5>
+    <version>5.5.24</version>
+    <time>1650657233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971793</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ff8cb2ea2845cc6b355a7660875c1989</srcmd5>
+    <version>5.5.48</version>
+    <time>1662063003</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>999755</requestid>
+  </revision>
+</revisionlist>

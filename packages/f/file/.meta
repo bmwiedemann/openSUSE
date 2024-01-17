@@ -1,0 +1,8 @@
+<package name="file" project="openSUSE:Factory">
+  <title>A Tool to Determine File Types</title>
+  <description>With the file command, you can obtain information on the file type of a
+specified file. File type recognition is controlled by the file
+/etc/magic, which contains the classification criteria. This command is
+used by apsfilter to permit automatic printing of different file types.</description>
+  <devel project="Base:System" package="file"/>
+</package>

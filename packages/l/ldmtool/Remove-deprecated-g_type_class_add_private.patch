@@ -1,0 +1,216 @@
+From f97b057e70b66bcf502a4923f64d8b999b5814c3 Mon Sep 17 00:00:00 2001
+From: Liang Yan <lyan@suse.com>
+Date: Sat, 27 Oct 2018 11:07:10 -0400
+Subject: [PATCH] Remove deprecated g_type_class_add_private()
+
+The API has been deprecated, which causes build failures,
+use the G_DEFINE_TYPE_WITH_PRIVATE() macro instead.
+
+Signed-off-by: Liang Yan <lyan@suse.com>
+---
+--- a/src/ldm.c
++++ b/src/ldm.c
+@@ -267,15 +267,13 @@ ldm_ ## object ## _get_ ## property(cons
+ 
+ /* LDM */
+ 
+-#define LDM_GET_PRIVATE(obj)       (G_TYPE_INSTANCE_GET_PRIVATE \
+-        ((obj), LDM_TYPE, LDMPrivate))
+-
+ struct _LDMPrivate
+ {
+     GArray *disk_groups;
+ };
+ 
+-G_DEFINE_TYPE(LDM, ldm, G_TYPE_OBJECT)
++G_DEFINE_TYPE_WITH_PRIVATE(LDM, ldm, G_TYPE_OBJECT)
++
+ 
+ static void
+ ldm_dispose(GObject * const object)
+@@ -290,7 +288,7 @@ ldm_dispose(GObject * const object)
+ static void
+ ldm_init(LDM * const o)
+ {
+-    o->priv = LDM_GET_PRIVATE(o);
++    o->priv = ldm_get_instance_private(o);
+     bzero(o->priv, sizeof(*o->priv));
+ }
+ 
+@@ -300,14 +298,10 @@ ldm_class_init(LDMClass * const klass)
+     GObjectClass *object_class = G_OBJECT_CLASS(klass);
+     object_class->dispose = ldm_dispose;
+ 
+-    g_type_class_add_private(klass, sizeof(LDMPrivate));
+ }
+ 
+ /* LDMDiskGroup */
+ 
+-#define LDM_DISK_GROUP_GET_PRIVATE(obj)    (G_TYPE_INSTANCE_GET_PRIVATE \
+-        ((obj), LDM_TYPE_DISK_GROUP, LDMDiskGroupPrivate))
+-
+ struct _LDMDiskGroupPrivate
+ {
+     uuid_t guid;
+@@ -326,7 +320,7 @@ struct _LDMDiskGroupPrivate
+     GArray *comps;
+ };
+ 
+-G_DEFINE_TYPE(LDMDiskGroup, ldm_disk_group, G_TYPE_OBJECT)
++G_DEFINE_TYPE_WITH_PRIVATE(LDMDiskGroup, ldm_disk_group, G_TYPE_OBJECT)
+ 
+ enum {
+     PROP_LDM_DISK_GROUP_PROP0,
+@@ -396,7 +390,6 @@ ldm_disk_group_class_init(LDMDiskGroupCl
+     object_class->finalize = ldm_disk_group_finalize;
+     object_class->get_property = ldm_disk_group_get_property;
+ 
+-    g_type_class_add_private(klass, sizeof(LDMDiskGroupPrivate));
+ 
+     /**
+      * LDMDiskGroup:guid:
+@@ -431,7 +424,7 @@ ldm_disk_group_class_init(LDMDiskGroupCl
+ static void
+ ldm_disk_group_init(LDMDiskGroup * const o)
+ {
+-    o->priv = LDM_DISK_GROUP_GET_PRIVATE(o);
++    o->priv = ldm_disk_group_get_instance_private(o);
+     bzero(o->priv, sizeof(*o->priv));
+ }
+ 
+@@ -457,9 +450,6 @@ ldm_volume_type_get_type(void)
+ 
+ /* LDMVolume */
+ 
+-#define LDM_VOLUME_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE \
+-        ((obj), LDM_TYPE_VOLUME, LDMVolumePrivate))
+-
+ typedef enum {
+     _VOLUME_TYPE_GEN = 0x3,
+     _VOLUME_TYPE_RAID5 = 0x4
+@@ -491,7 +481,7 @@ struct _LDMVolumePrivate
+     guint32 _n_comps_i;
+ };
+ 
+-G_DEFINE_TYPE(LDMVolume, ldm_volume, G_TYPE_OBJECT)
++G_DEFINE_TYPE_WITH_PRIVATE(LDMVolume, ldm_volume, G_TYPE_OBJECT)
+ 
+ enum {
+     PROP_LDM_VOLUME_PROP0,
+@@ -577,7 +567,6 @@ ldm_volume_class_init(LDMVolumeClass * c
+     object_class->finalize = ldm_volume_finalize;
+     object_class->get_property = ldm_volume_get_property;
+ 
+-    g_type_class_add_private(klass, sizeof(LDMVolumePrivate));
+ 
+     /**
+      * LDMVolume:name:
+@@ -677,7 +666,7 @@ ldm_volume_class_init(LDMVolumeClass * c
+ static void
+ ldm_volume_init(LDMVolume * const o)
+ {
+-    o->priv = LDM_VOLUME_GET_PRIVATE(o);
++    o->priv = ldm_volume_get_instance_private(o);
+     bzero(o->priv, sizeof(*o->priv));
+ 
+     /* We don't have a trivial way to initialize this array to the correct size
+@@ -717,8 +706,6 @@ _cleanup_comp(gpointer const data)
+ 
+ /* LDMPartition */
+ 
+-#define LDM_PARTITION_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE \
+-        ((obj), LDM_TYPE_PARTITION, LDMPartitionPrivate))
+ 
+ struct _LDMPartitionPrivate
+ {
+@@ -735,7 +722,7 @@ struct _LDMPartitionPrivate
+     LDMDisk *disk;
+ };
+ 
+-G_DEFINE_TYPE(LDMPartition, ldm_partition, G_TYPE_OBJECT)
++G_DEFINE_TYPE_WITH_PRIVATE(LDMPartition, ldm_partition, G_TYPE_OBJECT)
+ 
+ enum {
+     PROP_LDM_PARTITION_PROP0,
+@@ -796,7 +783,6 @@ ldm_partition_class_init(LDMPartitionCla
+     object_class->finalize = ldm_partition_finalize;
+     object_class->get_property = ldm_partition_get_property;
+ 
+-    g_type_class_add_private(klass, sizeof(LDMPartitionPrivate));
+ 
+     /**
+      * LDMPartition:name:
+@@ -846,15 +832,12 @@ ldm_partition_class_init(LDMPartitionCla
+ static void
+ ldm_partition_init(LDMPartition * const o)
+ {
+-    o->priv = LDM_PARTITION_GET_PRIVATE(o);
++    o->priv = ldm_partition_get_instance_private(o);
+     bzero(o->priv, sizeof(*o->priv));
+ }
+ 
+ /* LDMDisk */
+ 
+-#define LDM_DISK_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE \
+-        ((obj), LDM_TYPE_DISK, LDMDiskPrivate))
+-
+ struct _LDMDiskPrivate
+ {
+     guint32 id;
+@@ -870,7 +853,7 @@ struct _LDMDiskPrivate
+     gchar *device; // NULL until device is found
+ };
+ 
+-G_DEFINE_TYPE(LDMDisk, ldm_disk, G_TYPE_OBJECT)
++G_DEFINE_TYPE_WITH_PRIVATE(LDMDisk, ldm_disk, G_TYPE_OBJECT)
+ 
+ enum {
+     PROP_LDM_DISK_PROP0,
+@@ -948,7 +931,6 @@ ldm_disk_class_init(LDMDiskClass * const
+     object_class->finalize = ldm_disk_finalize;
+     object_class->get_property = ldm_disk_get_property;
+ 
+-    g_type_class_add_private(klass, sizeof(LDMDiskPrivate));
+ 
+     /**
+      * LDMDisk:name:
+@@ -1062,7 +1044,7 @@ ldm_disk_class_init(LDMDiskClass * const
+ static void
+ ldm_disk_init(LDMDisk * const o)
+ {
+-    o->priv = LDM_DISK_GET_PRIVATE(o);
++    o->priv = ldm_disk_get_instance_private(o);
+     bzero(o->priv, sizeof(*o->priv));
+ }
+ 
+@@ -2301,7 +2283,7 @@ error:
+ }
+ 
+ LDM *
+-ldm_new()
++ldm_new(void)
+ {
+     LDM *ldm = LDM_CAST(g_object_new(LDM_TYPE, NULL));
+     ldm->priv->disk_groups = g_array_sized_new(FALSE, FALSE,
+--- a/src/ldm.h
++++ b/src/ldm.h
+@@ -254,7 +254,7 @@ GType ldm_disk_group_get_type(void);
+  *
+  * Returns: (transfer full): a new #LDM object
+  */
+-LDM *ldm_new();
++LDM *ldm_new(void);
+ 
+ /**
+  * ldm_add:
+--- a/src/ldmtool.c
++++ b/src/ldmtool.c
+@@ -783,7 +783,7 @@ main(int argc, char *argv[])
+     g_type_init();
+ #endif
+ 
+-    LDM * const ldm = ldm_new(&err);
++    LDM * const ldm = ldm_new();
+ 
+     int ret = 0;
+ 

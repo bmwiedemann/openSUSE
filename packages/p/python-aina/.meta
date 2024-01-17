@@ -1,0 +1,5 @@
+<package name="python-aina" project="openSUSE:Factory">
+  <title></title>
+  <description>aina is not AWK </description>
+  <devel project="devel:languages:python" package="python-aina"/>
+</package>

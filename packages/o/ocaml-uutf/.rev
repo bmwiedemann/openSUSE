@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fa13a34a71124c8e0d40c28970190779</srcmd5>
+    <version>1.0.1</version>
+    <time>1525121587</time>
+    <user>dimstar_suse</user>
+    <comment>Uutf is an non-blocking streaming Unicode codec for OCaml to decode and encode the UTF-8, UTF-16, UTF-16LE and UTF-16BE encoding schemes.
+
+It is part of the dependency tree of opam.</comment>
+    <requestid>599185</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>989019160aebfbb877518418885cb28f</srcmd5>
+    <version>1.0.2</version>
+    <time>1573504267</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>746715</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>272ec8a5b452bd62fc60d4eb5b39b1ac</srcmd5>
+    <version>1.0.2</version>
+    <time>1619653010</time>
+    <user>dimstar_suse</user>
+    <comment>- build with dune via ocaml-uutf.patch</comment>
+    <requestid>867948</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d9a24f541722981ecd5c2ec72e1b94ba</srcmd5>
+    <version>1.0.3</version>
+    <time>1649274690</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.3
+  See included CHANGES.md for details</comment>
+    <requestid>967084</requestid>
+  </revision>
+</revisionlist>

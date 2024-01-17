@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Sun Jul  2 15:02:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.4.3
+  * Make py3nvml installation for GPU info optional.
+    (replaces watermark-pr92-optional-py3nvml.patch)
+
+-------------------------------------------------------------------
+Fri Jun  2 13:14:54 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.4.2
+  * Adds a new --gpu flag to print out GPU information (currently
+    limited to NVIDIA devices) (#90, via contribution by
+    907Resident)
+  * (2.4.0 to 2.4.2: Packaging fixes)
+- Add watermark-pr92-optional-py3nvml.patch gh#rasbt/watermark#92
+
+-------------------------------------------------------------------
+Sun Jun  5 13:41:11 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * increase python version to 3.8
+
+- update to version 2.3.1:
+  * Upper limit on importlib-metadata caused trouble installing on
+    Python 3.7. Instead pin to minimum version with Python 3.8
+    functionality according to
+    https://github.com/python/importlib_metadata#compatibility (#86,
+    via contribution by James Myatt)
+
+-------------------------------------------------------------------
+Sat Feb 19 03:39:20 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * skip python 3.6
+
+- update to version 2.3.0:
+  * Added the following arguments: --github_username - for prints
+    author github username, --email - for prints author email,
+    --website - for prints author or project website. (#82, via
+    contribution by joschkazj)
+  * Added a --conda option to print the name of the current conda
+    environment. (#79, via contribution by Alexander Krasnikov)
+  * It is now possible to inject globals when used outside IPython
+    (#80, via contribution by Hugo Lapré). For example, version
+    numbers of imported packages can now be obtained as follows:
+        import numpy
+        import watermark.watermark as watermark
+
+        watermark(iversions=True, globals_=globals())
+
+- changes from version 2.2.0:
+  * Refactoring such that a watermark() function now also works
+    outside IPython and Jupyter. Now, the magic %watermark calls
+    watermark(). Calling %watermark via IPython and Juypter still
+    works as usual. However, in addition the watermark() function can
+    be used within regular Python for unit testing purposes etc. (#46,
+    via contribution by Tymoteusz Wołodźko)
+
+- changes from version 2.1.0:
+  * Adopt NEP 29 and require Python version 3.7 or newer. (#63, via
+    contribution by James Myatt)
+  * Add Python 3.8 and 3.9 to Travis CI builds. (#63, via contribution
+    by James Myatt)
+  * Fix: Allow setup.py to run without install_requires already
+    installed (#67, via contribution by James Myatt)
+  * Major refactoring to improve code readability (#64 and 65, via
+    contribution by Bahram Aghaei)
+  * Use importlib and importlib.metadata to determine package version
+    numbers. (#66, via contribution by James Myatt)
+
+-------------------------------------------------------------------
+Tue Dec 15 12:52:45 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Provide the old jupyter package name only for the primary
+  Python3 interpreter -- gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
+Fri Jan  3 01:26:01 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.0.2
+  * Support VERSION attributes, in addition to __version__ attributes.
+- Drop python2 support due to dependencies dropping python2
+
+-------------------------------------------------------------------
+Tue Nov 12 16:56:39 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.0.1
+  * Now uses pkg_resources as the default method for getting version numbers.
+  * Fixes a whitespace bug when printing the timezone.
+
+-------------------------------------------------------------------
+Sun Aug 11 04:35:21 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.8.2
+  * When no Python library was imported and the --iversion is used,
+    print an empty string instead of raising an error.
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.8.1
+  * Fixes string alignment issues when the -iv/--iversion flag is used.
+- Update to 1.8.0
+  * The -iv/--iversion flag now also shows package versions that were imported as from X import Y
+    and import X.Y as Y.
+- Rename to to match python package naming guidelines.
+- Split jupyter components into own subpackage.
+
+-------------------------------------------------------------------
+Sat Dec 22 07:17:53 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.7.0
+  * Show modules that are not installed
+  * include license file in wheels dist
+
+-------------------------------------------------------------------
+Fri Sep  7 15:52:58 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 1.6.1
+  * Include license file in wheels.
+
+-------------------------------------------------------------------
+Thu May  3 14:07:08 UTC 2018 - toddrme2178@gmail.com
+
+- Use %license tag
+
+-------------------------------------------------------------------
+Thu Apr 19 04:38:30 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 1.6.0
+  * Adds a new -b/--gitbranch parameter that prints the current Git branch.
+
+-------------------------------------------------------------------
+Wed Nov  8 16:50:46 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

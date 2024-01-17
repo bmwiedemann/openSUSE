@@ -1,0 +1,385 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>085418b759a60d5a6233ca7951982e7b</srcmd5>
+    <version>0.1.54</version>
+    <time>1614001193</time>
+    <user>RBrownSUSE</user>
+    <comment>add to factory
+
+(compared to last, build also other vendor flavors interesting for SUSE Manager / Uyuni)</comment>
+    <requestid>873460</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7f9791d36d5670e3da6a7caf4abdefeb</srcmd5>
+    <version>0.1.54</version>
+    <time>1614373206</time>
+    <user>dimstar_suse</user>
+    <comment>- remove redhat conflict.</comment>
+    <requestid>875317</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b2e497e0e402366220bdf7e249c49af2</srcmd5>
+    <version>0.1.54</version>
+    <time>1615802086</time>
+    <user>dimstar_suse</user>
+    <comment>- Add the redhat conflict for packages built on redhat clones
+  or Fedora (forwarded request 878585 from juliogonzalezgil)</comment>
+    <requestid>878597</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>29896dab723abb80ea9b3b4eac02a3cd</srcmd5>
+    <version>0.1.55</version>
+    <time>1616271959</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.55 release (jsc#ECO-3319)
+  - big update of rules used in SLES-12 STIG profile
+  - Render policy to HTML (#6532)
+  - Add variable support to yamlfile_value template (#6563)
+  - Introduce new template for dconf configuration files (#6118) (forwarded request 880137 from msmeissn)</comment>
+    <requestid>880138</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>78af04fd80b742b42d47ce4c20327897</srcmd5>
+    <version>0.1.55git20210323</version>
+    <time>1616680341</time>
+    <user>RBrownSUSE</user>
+    <comment>- updated to a intermediate GIT snapshot of 20210323 (jsc#ECO-3319)
+  - initial SLES15 STIG added
+  - more SLES 12 STIG work
+  - correct tables and cross references for SLES 12 and 15 STIG
+
+- avoid some non sles12 sp2 available macros. (forwarded request 881076 from msmeissn)</comment>
+    <requestid>881077</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5ad3679219a1432c1cbfe56225f4e39d</srcmd5>
+    <version>0.1.56</version>
+    <time>1622536642</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.56 release (jsc#ECO-3319)
+  - Align ism_o profile with latest ISM SSP (#6878)
+  - Align RHEL 7 STIG profile with DISA STIG V3R3
+  - Creating new RHEL 7 STIG GUI profile (#6863)
+  - Creating new RHEL 8 STIG GUI profile (#6862)
+  - Add the RHEL9 product (#6801)
+  - Initial support for SUSE SLE-15 (#6666)
+  - add support for osbuild blueprint remediations (#6970) (forwarded request 895669 from msmeissn)</comment>
+    <requestid>895670</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>82362c97f3ca30c8ecf5c6176cf1b8f6</srcmd5>
+    <version>0.1.56</version>
+    <time>1622759646</time>
+    <user>dimstar_suse</user>
+    <comment>- Specify the maintainer, for deb packages.
+
+Now dpkg does not show warnings:
+
+root@f0531c84f41d:/# dpkg -i scap-security-guide-debian_0.1.56-30.1_all.deb scap-security-guide-ubuntu_0.1.56-30.1_all.deb scap-security-guide-redhat_0.1.56-30.1_all.deb scap-security-guide_0.1.56-30.1_all.deb 
+Selecting previously unselected package scap-security-guide-debian.
+(Reading database ... 7079 files and directories currently installed.)
+Preparing to unpack scap-security-guide-debian_0.1.56-30.1_all.deb ...
+Unpacking scap-security-guide-debian (0.1.56-30.1) ...
+Selecting previously unselected package scap-security-guide-ubuntu.
+Preparing to unpack scap-security-guide-ubuntu_0.1.56-30.1_all.deb ...
+Unpacking scap-security-guide-ubuntu (0.1.56-30.1) ...
+Selecting previously unselected package scap-security-guide-redhat.
+Preparing to unpack scap-security-guide-redhat_0.1.56-30.1_all.deb ...
+Unpacking scap-security-guide-redhat (0.1.56-30.1) ...
+Selecting previously unselected package scap-security-guide.
+Preparing to unpack scap-security-guide_0.1.56-30.1_all.deb ...
+Unpacking scap-security-guide (0.1.56-30.1) ...
+Setting up scap-security-guide-debian (0.1.56-30.1) ...
+Setting up scap-security-guide-ubuntu (0.1.56-30.1) ...
+Setting up scap-security-guide-redhat (0.1.56-30.1) ...
+Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from juliogonzalezgil)</comment>
+    <requestid>897243</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>056d6daf491b5ca3f8c5838128a4b611</srcmd5>
+    <version>0.1.57</version>
+    <time>1627847510</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.57 release (jsc#ECO-3319)
+  - CIS profile for RHEL 7 is updated
+  - initial CIS profiles for Ubuntu 20.04
+  - Major improvement of RHEL 9 content
+  - new release process implemented using Github actions</comment>
+    <requestid>909618</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>01e2c16c9842d1264acb5cb38f3f851b</srcmd5>
+    <version>0.1.58</version>
+    <time>1632603090</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.58 release (jsc#ECO-3319)
+- Support for Script Checking Engine (SCE)
+- Split RHEL 8 CIS profile using new controls file format
+- CIS Profiles for SLE12
+- Initial Ubuntu 20.04 STIG Profiles
+- Addition of an automated CCE adder</comment>
+    <requestid>921417</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>e322c9544a3e475d1fa2e51a1ced1fa9</srcmd5>
+    <version>0.1.58</version>
+    <time>1633959070</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix SLE-12 build issue caused by '\xb0' character (bsc#1191431).
+  - Add scap-security-guide-UnicodeEncodeError-character-fix.patch</comment>
+    <requestid>924190</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8f13fa51d17140928f33a679ae91f48b</srcmd5>
+    <version>0.1.59</version>
+    <time>1638310552</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.59 release (jsc#ECO-3319)
+  - Support for Debian 11
+  - NERC CIP profiles for OCP4 and RHCOS
+  - HIPAA profile for SLE15
+  - Delta Tailoring Files for STIG profiles</comment>
+    <requestid>934677</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ad770bb6305b4f6efad2e495ef59edd2</srcmd5>
+    <version>0.1.60</version>
+    <time>1643486367</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.60 (jsc#ECO-3319)
+  - New draft stig profile v1r1 for OL8
+  - New product Amazon EKS platform and initial CIS profiles
+  - New product CentOS Stream 9, as a derivative from RHEL9 product (forwarded request 949738 from msmeissn)</comment>
+    <requestid>949739</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>663cf7213412d3d91611f26c6275668e</srcmd5>
+    <version>0.1.60</version>
+    <time>1645561110</time>
+    <user>dimstar_suse</user>
+    <comment>- bump disk size constraints to 7gb to avoid occasional disk fulls failures.</comment>
+    <requestid>956819</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ae54e02ddb59e692256d9223b6e5775b</srcmd5>
+    <version>0.1.61</version>
+    <time>1649713747</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>969149</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e939c17d3138ba6ad318e5a00ae735d0</srcmd5>
+    <version>0.1.62</version>
+    <time>1654004843</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.62 (jsc#ECO-3319)
+  - Update rhel8 stig to v1r6
+  - OL7 STIG v2r7 update
+  - Initial definition of ANSSI BP28 minmal profile for SLE</comment>
+    <requestid>979906</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>988f60ff674b2aeb6200f7713147a8b2</srcmd5>
+    <version>0.1.62</version>
+    <time>1654869460</time>
+    <user>dimstar_suse</user>
+    <comment>- add python3-setuptools for all builds (so it is also used on debian 
+  and centos flavors)</comment>
+    <requestid>981542</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>9adef50f57ee79213b19cb3db7edebde</srcmd5>
+    <version>0.1.62</version>
+    <time>1656422579</time>
+    <user>dimstar_suse</user>
+    <comment>- fix-bash-template.patch: convert one bash emitter to new jinja method.
+  (bsc#1200163)</comment>
+    <requestid>985543</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>18763e31850744acd6308755683f4298</srcmd5>
+    <version>0.1.62</version>
+    <time>1657114944</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the build for RHEL 9 and clones</comment>
+    <requestid>987136</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>88a13c5866492aa599d8690565b7c0f0</srcmd5>
+    <version>0.1.62</version>
+    <time>1658161990</time>
+    <user>RBrownFactory</user>
+    <comment>- Fix the build for RHEL 7 and clones (python-setuptools is used) (forwarded request 989423 from juliogonzalezgil)</comment>
+    <requestid>989425</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>461edfaa7de7eff118aca636009e1955</srcmd5>
+    <version>0.1.63</version>
+    <time>1659554193</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.63 (jsc#ECO-3319)
+   - multiple bugfixes in SUSE profiles
+   - Expand project guidelines 
+   - Add Draft OCP4 STIG profile 
+   - Add anssi_bp28_intermediary profile 
+   - add products/uos20 to support UnionTech OS Server 20
+   - products/alinux3: Add CIS Alibaba Cloud Linux 3 profiles
+   - Remove WRLinux Products
+   - Update CIS RHEL8 Benchmark for v2.0.0
+- removed fix-bash-template.patch: fixed upstream
+- Fixed: stig: /etc/shadow group owner should not be root but shadow (bsc#1200149)
+- Fixed: sles15_script-stig.sh: remediation_functions: No such file or directory (bsc#1200163)
+- Fixed: SLES-15-010130 - The SUSE operating system must initiate a session lock after a 15-minute period of inactivity (bsc#1200122)</comment>
+    <requestid>992448</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>077d6522116fcf0289c9c16a0ba9c4af</srcmd5>
+    <version>0.1.63</version>
+    <time>1663764188</time>
+    <user>dimstar_suse</user>
+    <comment>- Added several RPM requires that are needed by the SUSE remediation
+  scripts. (e.g. awk is not necessary installed)</comment>
+    <requestid>1005139</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ea19f9358eafc1e43f8628c646fbc544</srcmd5>
+    <version>0.1.64</version>
+    <time>1664639040</time>
+    <user>RBrownFactory</user>
+    <comment>- updated to 0.1.64 (jsc#ECO-3319)
+   - Introduce ol9 stig profile
+   - Introduce Ol9 anssi profiles
+   - Update RHEL8 STIG to V1R7
+   - Introduce e8 profile for OL9
+   - Update RHEL7 STIG to V3R8
+   - some SUSE profile fixes</comment>
+    <requestid>1007411</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>0954045a096719b0ecf2bbd642f368da</srcmd5>
+    <version>0.1.64</version>
+    <time>1665034943</time>
+    <user>RBrownFactory</user>
+    <comment>- enable ubuntu 2204 build</comment>
+    <requestid>1008181</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>72a511275659f099d04e1d7dc369da3e</srcmd5>
+    <version>0.1.64</version>
+    <time>1670058214</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1039608</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c55a754bc412d828521dc95b154117a1</srcmd5>
+    <version>0.1.65</version>
+    <time>1670863208</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1042353</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>176ae9e734311628026c48df8032f5f7</srcmd5>
+    <version>0.1.66</version>
+    <time>1675792130</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.66 (jsc#ECO-3319)
+  - Ubuntu 22.04 CIS
+  - OL7 stig v2r9 update
+  - Bump OL8 STIG version to V1R4
+  - Update RHEL7 STIG to V3R10
+  - Update RHEL8 STIG to V1R9
+  - Introduce CIS RHEL9 profiles
+- also various SUSE profile fixes were done</comment>
+    <requestid>1063457</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8d6bae77a9948e845b14990299c609d5</srcmd5>
+    <version>0.1.68</version>
+    <time>1686927337</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.68 (jsc#ECO-3319)
+  - Bump OL8 STIG version to V1R6
+  - Introduce a Product class, make the project work with it
+  - Introduce Fedora and Firefox CaC profiles for common workstation users
+  - OL7 DISA STIG v2r11 update
+  - Publish rendered policy artifacts
+  - Update ANSSI BP-028 to version 2.0
+- updated to 0.1.67 (jsc#ECO-3319)
+  - Add utils/controlrefcheck.py
+  - RHEL 9 STIG Update Q1 2023
+  - Include warning for NetworkManager keyfiles in RHEL9
+  - OL7 stig v2r10 update
+  - Bump version of OL8 STIG to V1R5
+- various enhancements to SLE profiles
+- scap-security-guide-UnicodeEncodeError-character-fix.patch: fixed upstream (forwarded request 1093440 from msmeissn)</comment>
+    <requestid>1093441</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>4d6bf4c0fd33d7ce7932f4a1cc333a93</srcmd5>
+    <version>0.1.68</version>
+    <time>1690469581</time>
+    <user>anag+factory</user>
+    <comment>- 0001-Revert-fix-aide-remediations-add-crontabs.patch:
+  revert patch that breaks the SLE hardening (bsc#1213691)</comment>
+    <requestid>1101012</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>05b93415c42bb710804449d1e0548ab3</srcmd5>
+    <version>0.1.69</version>
+    <time>1691076631</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.69 (jsc#ECO-3319)
+  - Introduce a JSON build manifest (#10761)
+  - Introduce a script to compare ComplianceAsCode versions (#10768)
+  - Introduce CCN profiles for RHEL9 (#10860)
+  - Map rules to components (#10609)
+  - products/anolis23: supports Anolis OS 23 (#10548)
+  - Render components to HTML (#10709)
+  - Store rendered control files (#10656)
+  - Test and use rules to components mapping (#10693)
+  - Use distributed product properties (#10554)
+- 0001-Revert-fix-aide-remediations-add-crontabs.patch: removed, upstream</comment>
+    <requestid>1102115</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>da4fadac157ea71a43f16e05f28ace69</srcmd5>
+    <version>0.1.70</version>
+    <time>1697748584</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118850</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>587f03f1b413c9aed56615606ca60f0e</srcmd5>
+    <version>0.1.71</version>
+    <time>1703102486</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.1.71 (jsc#ECO-3319)
+  - Add RHEL 9 STIG
+  - Add support for Debian 12
+  - Update PCI-DSS profile for RHEL
+  - lots of bugfixes and improvements for SLE (forwarded request 1134022 from msmeissn)</comment>
+    <requestid>1134063</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>cca5c5532756cb5837da8d6f952420ae</srcmd5>
+    <version>0.1.71</version>
+    <time>1703198359</time>
+    <user>anag+factory</user>
+    <comment>- ssg-fix-journald.patch: switch buggy journald plugindir remediation
+  to write into journald.conf. (bsc#1217832)</comment>
+    <requestid>1134450</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>43d59034dfd61f637713873d8606904e</srcmd5>
+    <version>0.1.71</version>
+    <time>1704920000</time>
+    <user>anag+factory</user>
+    <comment>- removed left over file
+  0001-Revert-fix-aide-remediations-add-crontabs.patch upstreamed in 0.1.69</comment>
+    <requestid>1137951</requestid>
+  </revision>
+</revisionlist>

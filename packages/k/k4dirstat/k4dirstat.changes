@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Fri Dec 15 22:02:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Require extra-cmake-modules at build time
+
+-------------------------------------------------------------------
+Tue Oct 24 09:27:14 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.4.3
+  * Fix a crash when right-clicking in the treeview not on an item
+  * Remove "KLocalizedString: Using an empty domain" flood
+- Drop patch:
+  * 0001-Add-the-missing-cassert-include.patch
+
+-------------------------------------------------------------------
+Wed Dec  7 16:23:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.2:
+  * Remove inode/directory MIME type (#47)
+  * Fix a floating point exception with go-mtpfs
+
+-------------------------------------------------------------------
+Thu Jan  6 11:05:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.4.0
+  * Refresh tree after deleting a file
+  * Count directory sizes as 0 if excluded
+  * Fix a crash when unfolding a empty <Files> folder
+  * Updated Dutch translation
+  * Always save the allocated size to cache files and correct
+    saved size of hard links
+  * Display size of over-allocated files properly
+  * Use allocated size to compute folder size recursively
+    (i.e. no longer under estimate folders with many small files).
+
+-------------------------------------------------------------------
+Wed Oct  6 17:30:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.3.0
+  * Show free space in the status bar
+  * Refresh tree after deleting a file
+  * Fix a crash when clicking on the name column
+  * Quote %-escapes strings in the .desktop Exec key
+  * Fix all compilation warnings with Qt 5.15 and KDE 5.85
+
+-------------------------------------------------------------------
+Thu Apr 22 08:08:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.2.2:
+  * Save "Show treemap" status
+  * Fix a segfault after reading a cache file
+
+-------------------------------------------------------------------
+Wed Jul  8 16:22:11 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.2.1 (boo#1173905):
+  * Fix crashes on startup in some certain KIO related circumstances
+
+-------------------------------------------------------------------
+Mon Jan 13 12:35:34 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.2.0:
+  * Rewrite the tree view to support navigation with keyboard and
+    multi-selection
+  * 'Open in terminal' now open Konsole in the selected folder
+  * Move from bitbucket to github
+- Add patch to fix build on Leap 15.1
+  * 0001-Add-the-missing-cassert-include.patch
+
+-------------------------------------------------------------------
+Tue Apr  2 15:30:22 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.1.4:
+  * No longer ignore files containing dot when reading cache file
+  * Remove trailing slash from command line argument
+
+-------------------------------------------------------------------
+Fri May 25 20:41:44 UTC 2018 - christophe@krop.fr
+
+- Update to 3.1.3. No changelog available.
+
+-------------------------------------------------------------------
+Sun Jan  8 10:09:49 UTC 2017 - axel.braun@gmx.de
+
+- make sure language packet gets installed as well
+
+-------------------------------------------------------------------
+Tue Nov 29 19:14:07 UTC 2016 - wbauer@tmo.at
+
+- Update to 3.1.2:
+  * Detailed changelog not available.
+
+-------------------------------------------------------------------
+Sat Sep 19 20:55:05 UTC 2015 - asterios.dramis@gmail.com
+
+- Update to 3.1:
+  * Package ported to KDE Framework 5.
+  * Detailed changelog not available.
+- Package ported to KF5. Updated build and runtime requirements to
+  the KF5 ones.
+
+-------------------------------------------------------------------
+Tue Nov 11 16:32:21 UTC 2014 - cgiboudeaux@gmx.com
+
+- Replace k4dirstat with the fork by Jerome Robert
+- Update to 2.7.8
+
+-------------------------------------------------------------------
+Fri Mar 25 22:11:50 UTC 2011 - asterios.dramis@gmail.com
+
+- Initial version (git.20101010)

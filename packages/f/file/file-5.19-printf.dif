@@ -1,0 +1,17 @@
+---
+ src/apprentice.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: src/apprentice.c
+===================================================================
+--- src/apprentice.c.orig
++++ src/apprentice.c
+@@ -2623,7 +2623,7 @@ check_format_type(const char *ptr, int t
+ 			}
+ 		} else
+ 			h = 0;
+-		while (*ptr && strchr("-.#", *ptr) != NULL)
++		while (*ptr && strchr("-.# +'", *ptr) != NULL)
+ 			ptr++;
+ #define CHECKLEN() do { \
+ 	for (len = cnt = 0; isdigit(CAST(unsigned char, *ptr)); ptr++, cnt++) \

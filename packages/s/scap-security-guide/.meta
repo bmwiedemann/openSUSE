@@ -1,0 +1,8 @@
+<package name="scap-security-guide" project="openSUSE:Factory">
+  <title>SSG for SLE12</title>
+  <description>/!\ ARCHIVED
+Package built based on https://github.com/openSUSE/ComplianceAsCode-content/tree/stig-sle12
+Official xml: ftp://ftp.suse.com/pub/projects/security/STIG/
+</description>
+  <devel project="security" package="scap-security-guide"/>
+</package>

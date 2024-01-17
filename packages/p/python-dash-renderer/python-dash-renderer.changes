@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Fri Apr  9 21:43:15 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.9.1
+  * see release notes of dash 1.20 
+
+-------------------------------------------------------------------
+Sun Jan  3 19:49:50 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v1.8.3 (prepared by @mmachova)
+
+-------------------------------------------------------------------
+Sat Apr 18 21:16:15 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfiles:
+  * be more specific in %files section
+
+- update to version 1.4.0:
+  * no changelog available
+
+-------------------------------------------------------------------
+Mon Mar 30 02:37:46 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.2.4

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>43ae84a364c931de06c7a4ecc65a8880</srcmd5>
+    <version>3.0.3</version>
+    <time>1485382765</time>
+    <user>dimstar_suse</user>
+    <comment>New package submission: libcsv can be used by tellico</comment>
+    <requestid>439938</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>453517248bfa124a96bff2927621e983</srcmd5>
+    <version>3.0.3</version>
+    <time>1486389914</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454218</requestid>
+  </revision>
+</revisionlist>

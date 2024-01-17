@@ -1,0 +1,126 @@
+diff -Nurp dde-session-shell-5.5.48/CMakeLists.txt dde-session-shell-5.5.48-new/CMakeLists.txt
+--- dde-session-shell-5.5.48/CMakeLists.txt	2022-06-09 13:30:20.000000000 +0800
++++ dde-session-shell-5.5.48-new/CMakeLists.txt	2022-06-29 16:08:16.802382355 +0800
+@@ -72,6 +72,22 @@ set(Qt_LIBS
+     Qt5::Svg
+ )
+ 
++try_compile(USE_DEEPIN_WAYLAND
++              ${CMAKE_CURRENT_BINARY_DIR}/try_compile
++            SOURCES
++              ${CMAKE_CURRENT_SOURCE_DIR}/tests/wayland_test.cc
++            LINK_LIBRARIES
++              ${Qt_LIBS}
++              ${Qt5Widgets_LIBRARIES}
++              KF5::WaylandClient
++)
++
++message(STATUS "USE_DEEPIN_WAYLAND ${USE_DEEPIN_WAYLAND}")
++
++if(USE_DEEPIN_WAYLAND)
++  add_definitions(-DUSE_DEEPIN_WAYLAND)
++endif()
++
+ function(generation_dbus_interface xml class_name class_file option)
+     execute_process(COMMAND qdbusxml2cpp ${option} -p ${class_file} -c ${class_name} ${xml}
+     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+@@ -109,10 +125,10 @@ include_directories(${PROJECT_SOURCE_DIR
+ 
+ aux_source_directory(${PROJECT_SOURCE_DIR}/src/global_util GLOBAL_UTILS)
+ aux_source_directory(${PROJECT_SOURCE_DIR}/src/global_util/dbus GLOBAL_UTILS_DBUS)
+-aux_source_directory(${PROJECT_SOURCE_DIR}/src/global_util/keyboardmonitor GLOBAL_UTILS_KEYBOARDMONITOR)
+ aux_source_directory(${PROJECT_SOURCE_DIR}/src/widgets WIDGETS)
+ aux_source_directory(${PROJECT_SOURCE_DIR}/src/session-widgets SESSION_WIDGETS)
+ aux_source_directory(${PROJECT_SOURCE_DIR}/src/libdde-auth AUTHENTICATE)
++aux_source_directory(${PROJECT_SOURCE_DIR}/src/global_util/keyboardmonitor GLOBAL_UTILS_KEYBOARDMONITOR)
+ aux_source_directory(${PROJECT_SOURCE_DIR}/interface INTERFACE)
+ 
+ set(QRCS
+diff -Nurp dde-session-shell-5.5.48/src/global_util/keyboardmonitor/keyboardmonitor.cpp dde-session-shell-5.5.48-new/src/global_util/keyboardmonitor/keyboardmonitor.cpp
+--- dde-session-shell-5.5.48/src/global_util/keyboardmonitor/keyboardmonitor.cpp	2022-06-09 13:30:20.000000000 +0800
++++ dde-session-shell-5.5.48-new/src/global_util/keyboardmonitor/keyboardmonitor.cpp	2022-06-29 16:08:16.802382355 +0800
+@@ -35,7 +35,9 @@ KeyboardMonitor::KeyboardMonitor() : QTh
+     if (DGuiApplicationHelper::isXWindowPlatform()) {
+         keyBoardPlatform = new KeyboardPlantformX11();
+     } else {
++#ifdef USE_DEEPIN_WAYLAND
+         keyBoardPlatform = new KeyboardPlantformWayland();
++#endif
+     }
+     connect(keyBoardPlatform, &KeyBoardPlatform::capslockStatusChanged, this, &KeyboardMonitor::capslockStatusChanged);
+     connect(keyBoardPlatform, &KeyBoardPlatform::numlockStatusChanged, this, &KeyboardMonitor::numlockStatusChanged);
+diff -Nurp dde-session-shell-5.5.48/src/global_util/keyboardmonitor/keyboardmonitor.h dde-session-shell-5.5.48-new/src/global_util/keyboardmonitor/keyboardmonitor.h
+--- dde-session-shell-5.5.48/src/global_util/keyboardmonitor/keyboardmonitor.h	2022-06-09 13:30:20.000000000 +0800
++++ dde-session-shell-5.5.48-new/src/global_util/keyboardmonitor/keyboardmonitor.h	2022-06-29 16:08:16.802382355 +0800
+@@ -30,7 +30,9 @@
+ 
+ #include <QThread>
+ #include "keyboardplantform_x11.h"
++#ifdef USE_DEEPIN_WAYLAND
+ #include "keyboardplantform_wayland.h"
++#endif
+ 
+ class KeyboardMonitor : public QThread
+ {
+diff -Nurp dde-session-shell-5.5.48/src/global_util/keyboardmonitor/keyboardplantform_wayland.cpp dde-session-shell-5.5.48-new/src/global_util/keyboardmonitor/keyboardplantform_wayland.cpp
+--- dde-session-shell-5.5.48/src/global_util/keyboardmonitor/keyboardplantform_wayland.cpp	2022-06-09 13:30:20.000000000 +0800
++++ dde-session-shell-5.5.48-new/src/global_util/keyboardmonitor/keyboardplantform_wayland.cpp	2022-06-29 16:08:16.802382355 +0800
+@@ -23,6 +23,7 @@
+  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#ifdef USE_DEEPIN_WAYLAND
+ #include "keyboardplantform_wayland.h"
+ 
+ #include <stdio.h>
+@@ -137,3 +138,4 @@ void KeyboardPlantformWayland::setupRegi
+     registry->create(m_connectionThreadObject);
+     registry->setup();
+ }
++#endif
+diff -Nurp dde-session-shell-5.5.48/src/global_util/keyboardmonitor/keyboardplantform_wayland.h dde-session-shell-5.5.48-new/src/global_util/keyboardmonitor/keyboardplantform_wayland.h
+--- dde-session-shell-5.5.48/src/global_util/keyboardmonitor/keyboardplantform_wayland.h	2022-06-09 13:30:20.000000000 +0800
++++ dde-session-shell-5.5.48-new/src/global_util/keyboardmonitor/keyboardplantform_wayland.h	2022-06-29 16:08:16.802382355 +0800
+@@ -22,6 +22,8 @@
+ #ifndef KEYBOARDPLANTFORM_WAYLAND_H
+ #define KEYBOARDPLANTFORM_WAYLAND_H
+ 
++#ifdef USE_DEEPIN_WAYLAND
++
+ #include "keyboardplatform.h"
+ 
+ class QThread;
+@@ -68,4 +70,6 @@ private:
+     bool m_numLockOn;
+ };
+ 
++#endif
++
+ #endif // KEYBOARDPLANTFORM_WAYLAND_H
+diff -Nurp dde-session-shell-5.5.48/tests/dde-lock/ut_keyboardplantformwayland.cpp dde-session-shell-5.5.48-new/tests/dde-lock/ut_keyboardplantformwayland.cpp
+--- dde-session-shell-5.5.48/tests/dde-lock/ut_keyboardplantformwayland.cpp	2022-06-09 13:30:20.000000000 +0800
++++ dde-session-shell-5.5.48-new/tests/dde-lock/ut_keyboardplantformwayland.cpp	2022-06-29 16:08:16.802382355 +0800
+@@ -2,6 +2,7 @@
+ 
+ #include <gtest/gtest.h>
+ 
++#ifdef USE_DEEPIN_WAYLAND
+ class UT_KeyboardPlantformWayland : public testing::Test
+ {
+ protected:
+@@ -27,3 +28,4 @@ TEST_F(UT_KeyboardPlantformWayland, basi
+     m_keyboard->isNumlockOn();
+     m_keyboard->setNumlockStatus(false);
+ }
++#endif
+diff -Nurp dde-session-shell-5.5.48/tests/wayland_test.cc dde-session-shell-5.5.48-new/tests/wayland_test.cc
+--- dde-session-shell-5.5.48/tests/wayland_test.cc	1970-01-01 08:00:00.000000000 +0800
++++ dde-session-shell-5.5.48-new/tests/wayland_test.cc	2022-06-29 16:43:22.360728930 +0800
+@@ -0,0 +1,7 @@
++#include <KF5/KWayland/KWayland/Client/ddeseat.h>
++
++int main(int argc, char *argv[])
++{
++
++  return 0;
++}

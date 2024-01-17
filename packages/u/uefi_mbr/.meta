@@ -1,0 +1,5 @@
+<package name="uefi_mbr" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="system:install:head" package="uefi_mbr"/>
+</package>
