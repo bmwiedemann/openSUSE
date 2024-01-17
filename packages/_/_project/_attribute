@@ -4,29 +4,30 @@
   <attribute namespace="OBS" name="ApprovedRequestSource"/>
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
-  boo#1207390: '20240115'
-  boo#1207940: '20240115'
-  boo#1209053: '20240115'
+  boo#1207390: '20240116'
+  boo#1207940: '20240116'
+  boo#1209053: '20240116'
   boo#1209728: '20240115'
-  boo#1216660: '20240115'
-  boo#1217029: '20240115'
-  boo#1217683: '20240115'
+  boo#1216660: '20240116'
+  boo#1217029: '20240116'
+  boo#1217683: '20240116'
   boo#1218131: '20240112'
-  boo#1218492: '20240115'
+  boo#1218492: '20240116'
   boo#1218565: '20240107'
+  gh#os-autoinst/os-autoinst-distri-opensuse#18471: '20240116'
   poo#120459: '20240110'
-  poo#132191: '20240115'
+  poo#132191: '20240116'
   poo#133691: '20240111'
-  poo#134078: '20240115'
-  poo#137423: '20240115'
-  poo#138743: '20240115'
-  poo#152320: '20240115'
-  poo#152551: '20240115'
+  poo#134078: '20240116'
+  poo#137423: '20240116'
+  poo#138743: '20240116'
+  poo#152320: '20240116'
+  poo#152551: '20240116'
   poo#152793: '20240109'
   poo#152829: '20240112'
   poo#153105: '20240114'
-  poo#153502: '20240115'
-  poo#153526: '20240115'
+  poo#153502: '20240116'
+  poo#153526: '20240116'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -77,7 +78,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20240116</value>
+    <value>20240117</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -481,8 +482,8 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20240115'
-publishing: '20240115'
+published: '20240116'
+publishing: '20240116'
 testing: '20240116'
 </value>
   </attribute>
