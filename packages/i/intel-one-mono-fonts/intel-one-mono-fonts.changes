@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Tue Aug 22 19:51:44 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to v1.3.0
+  * Improved language support through ccmp and mark features in
+    sources
+  * Added calt feature to raise colon for alignment with operators
+  * Update family name across fonts, sources and licence: Intel
+    One Mono
+  * Updated artwork and hinting for hyphen, endash, emdash, grave,
+    uni2011 and uni2015
+  * Improved linking of styles in sources and builds
+
+-------------------------------------------------------------------
+Thu Jun  8 11:38:59 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to v1.2.1
+  * README updates and typo fixes.
+  * Official zips now contain license file.
+  * Removal of MacOS metadata from zips.
+  * Specfile updated to adjust for above changes.
+
+-------------------------------------------------------------------
+Tue Jun  6 04:57:33 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Specfile cleanup and improvements.
+
+-------------------------------------------------------------------
+Wed May 31 09:36:06 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Wrap description, trim excess marketing.
+
+-------------------------------------------------------------------
+Wed May 31 01:14:55 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Initial package of Intel One Mono (1.2.0) for openSUSE.

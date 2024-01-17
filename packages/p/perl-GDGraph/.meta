@@ -1,0 +1,6 @@
+<package name="perl-GDGraph" project="openSUSE:Factory">
+  <title>Package to generate charts, using Lincoln Stein's GD.pm</title>
+  <description>This is GDGraph, a package to generate charts, using Lincoln Stein's
+GD.pm. See the documentation for some history and more information.</description>
+  <devel project="devel:languages:perl" package="perl-GDGraph"/>
+</package>

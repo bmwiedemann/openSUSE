@@ -1,0 +1,5 @@
+<package name="plexus-i18n" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="plexus-i18n"/>
+</package>

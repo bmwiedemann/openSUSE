@@ -1,0 +1,22 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/google/go-jsonnet.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="filename">golang-github-google-jsonnet</param>
+    <param name="revision">v0.20.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+    <param name="match-tag">v*</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">golang-github-google-jsonnet-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">golang-github-google-jsonnet</param>
+  </service>
+  <service name="go_modules" mode="disabled" />
+</services>

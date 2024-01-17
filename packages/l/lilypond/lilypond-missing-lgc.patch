@@ -1,0 +1,13 @@
+Index: b/lily/GNUmakefile
+===================================================================
+--- a/lily/GNUmakefile	2022-11-27 14:28:56.000000000 +0200
++++ b/lily/GNUmakefile	2022-12-04 15:24:29.435257154 +0200
+@@ -14,7 +14,7 @@ SUBDIRS = include
+ include $(depth)/make/lilypond.make
+ 
+ FLOWER_LIB = $(depth)/flower/$(outdir)/library.a
+-LDLIBS = $(FLOWER_LIB) $(CONFIG_LIBS)
++LDLIBS = $(FLOWER_LIB) $(CONFIG_LIBS) -lgc -lpthread -ldl
+ 
+ EXECUTABLE = $(outdir)/$(NAME)$(program_suffix)
+ 

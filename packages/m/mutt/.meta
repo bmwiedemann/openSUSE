@@ -1,0 +1,7 @@
+<package name="mutt" project="openSUSE:Factory">
+  <title>Mail Program</title>
+  <description>A very powerful mail user agent. It supports (among other nice things)
+highlighting, threading, and PGP. It takes some time to get used to,
+however.</description>
+  <devel project="server:mail" package="mutt"/>
+</package>

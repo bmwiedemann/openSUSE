@@ -1,0 +1,94 @@
+#!/bin/sh
+#
+# Wed May  7 14:36:35 2003  Mike FABIAN  <mfabian@suse.de>
+
+SIGFILE=$1
+
+if [ ! -e $SIGFILE ] ; then
+    # there is no such signature file, do nothing
+    exit 0
+fi
+
+guess_legacy_encoding () {
+    # Guess the legacy encoding used by the language/country
+    # found in the current LC_CTYPE value.
+
+    # First determine the LC_CTYPE locale category setting
+    ctype="en_US"
+    ctype=${LC_ALL-${LC_CTYPE-${LANG-${ctype}}}}
+
+    case $ctype in
+	  zh_TW*)
+             LEGACY_ENCODING=Big5
+	     ;;
+  	  zh_HK*)
+             LEGACY_ENCODING=Big5HKSCS
+	     ;;
+	  zh*)
+             LEGACY_ENCODING=GB2312
+	     ;;
+	  ja*)
+             LEGACY_ENCODING=EUC-JP
+	     ;;
+	  ko*)
+             LEGACY_ENCODING=EUC-KR
+	     ;;
+	  ru*)
+             LEGACY_ENCODING=KOI8-R
+	     ;;
+	  uk*)
+             LEGACY_ENCODING=KOI8-U
+	     ;;
+	  pl*|hr*|hu*|cs*|sk*|sl*)
+             LEGACY_ENCODING=ISO-8859-2
+	     ;;
+	  eo*|mt*)
+             LEGACY_ENCODING=ISO-8859-3
+	     ;;
+	  el*)
+             LEGACY_ENCODING=ISO-8859-7
+	     ;;
+	  he*)
+             LEGACY_ENCODING=ISO-8859-8
+	     ;;
+	  tr*)
+             LEGACY_ENCODING=ISO-8859-9
+	     ;;
+	  th*)
+             LEGACY_ENCODING=TIS-620      # or ISO-8859-11
+	     ;;
+	  lt*)
+             LEGACY_ENCODING=ISO-8859-13
+	     ;;
+	  cy*)
+             LEGACY_ENCODING=ISO-8859-14
+	     ;;
+	  ro*)
+             LEGACY_ENCODING=ISO-8859-14  # or ISO-8859-16
+	     ;;
+	  am*|vi*)
+             LEGACY_ENCODING=UTF-8
+	     ;;
+          *)
+             LEGACY_ENCODING=ISO-8859-1
+             ;;
+    esac
+}
+
+guess_legacy_encoding;
+
+LOCALE_CHARMAP=$(locale charmap)
+
+for encoding in UTF-8 $LOCALE_CHARMAP $LEGACY_ENCODING ISO-8859-1
+do
+    if iconv --from $encoding --to $LOCALE_CHARMAP < $SIGFILE > /dev/null  2>&1 ; then
+       iconv --from $encoding --to $LOCALE_CHARMAP < $SIGFILE
+       exit 0
+    fi
+done
+
+# unknown encoding in signature file, print it to stdout unchanged:
+# (should never happen because the conversion from ISO-8859-1 should
+# never return a failure).
+
+cat $SIGFILE

@@ -1,0 +1,60 @@
+ask when sending list message replies to author only - Armin Wolfermann (aw)
+
+---
+ init.h |    7 +++++++
+ mutt.h |    1 +
+ send.c |   17 +++++++++++++++++
+ 3 files changed, 25 insertions(+)
+
+--- init.h
++++ init.h	2022-04-19 10:39:30.991318589 +0000
+@@ -2005,6 +2005,13 @@ struct option_t MuttVars[] = {
+   ** your local timezone. If unset a UTC date will be used instead to avoid
+   ** leaking information about your current location.
+   */
++  { "list_reply",	DT_QUAD, R_NONE, {.l=OPT_LISTREPLY}, {.l=MUTT_NO} },
++  /*
++  ** .pp
++  ** When set, address replies to the mailing list the original message came
++  ** from (instead to the author only).  Setting this option to ``ask-yes'' or
++  ** ``ask-no'' will ask if you really intended to reply to the author only.
++  */
+   { "mail_check",	DT_NUM,  R_NONE, {.p=&BuffyTimeout}, {.l=5} },
+   /*
+   ** .pp
+--- mutt.h
++++ mutt.h	2022-04-19 10:35:01.556188378 +0000
+@@ -343,6 +343,7 @@ enum
+ #endif
+   OPT_SUBJECT,
+   OPT_VERIFYSIG,      /* verify PGP signatures */
++  OPT_LISTREPLY,
+ 
+   /* THIS MUST BE THE LAST VALUE. */
+   OPT_MAX
+--- send.c
++++ send.c	2022-04-19 10:35:01.556188378 +0000
+@@ -587,6 +587,23 @@ static int default_to (ADDRESS **to, ENV
+   if (flags & SENDLISTREPLY)
+     return 0;
+ 
++  /* If this message came from a mailing list, ask the user if he really
++   * intended to reply to the author only.
++   */
++  if (!(flags & (SENDGROUPREPLY|SENDGROUPCHATREPLY)) && mutt_is_list_cc (0, env->to, env->cc)) {
++    switch (query_quadoption (OPT_LISTREPLY,
++           _("Message came from a mailing list. Reply to author only?")))
++    {
++    case MUTT_NO:
++      default_addr = find_mailing_lists (env->to, env->cc);
++      rfc822_append (to, default_addr, 0);
++      rfc822_free_address (&default_addr);
++      return 0;
++    case -1:
++      return -1; /* abort */
++    }
++  }
++
+   if (!option(OPTREPLYSELF) && mutt_addr_is_user (env->from))
+   {
+     default_addr = env->to;

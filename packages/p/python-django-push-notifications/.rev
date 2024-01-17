@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0ccde1d33010f74c2ffe2aec454c5d02</srcmd5>
+    <version>2.0.0</version>
+    <time>1596703144</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824588</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>512ba6e2c0ec7f46ff63783cd944f967</srcmd5>
+    <version>2.0.0</version>
+    <time>1640530419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942636</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>168f207aaf2277e95dc17347c6fa3e07</srcmd5>
+    <version>3.0.0</version>
+    <time>1652389184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976289</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6872ee287fa8fa27810a22332864e96c</srcmd5>
+    <version>3.0.0</version>
+    <time>1673021151</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-new-apns2.patch:
+  * Support new apsn2 that no longer exports init_context.</comment>
+    <requestid>1056304</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b11a37890f3d9c8d71e6bc835242880c</srcmd5>
+    <version>3.0.2</version>
+    <time>1701378042</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.2:
+  * LegacyConfig.get_apns_use_alternative_port always return None
+  * Add django 4.1, remove master branch
+  * Update topic send_message docs in README
+  * Fix: HexadecimalField accepts non-hex values
+  * Expanded documentation for Web Push
+  * Allow APNS tokens of variable length.
+  * Add WebPush support for Safari
+
+  * Support new apsn2 that no longer exports init_context.</comment>
+    <requestid>1129794</requestid>
+  </revision>
+</revisionlist>

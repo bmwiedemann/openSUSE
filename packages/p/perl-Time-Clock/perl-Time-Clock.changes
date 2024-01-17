@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Mon Mar 10 07:13:07 UTC 2014 - coolo@suse.com
+
+- updated to 1.03
+ * Documented the return value of parse().
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:15 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Thu Feb 17 14:35:24 UTC 2011 - jw@novell.com
+
+- initial pull from CPAN with cpanspec_obs
+- needed by Rose::DB
+
+-------------------------------------------------------------------
+Thu Feb 17 14:35:11 UTC 2011 - jw@novell.com
+
+- initial package 1.02
+  * created by cpanspec 1.78.03
+

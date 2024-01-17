@@ -1,0 +1,23 @@
+---
+ browser.c |   10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+--- browser.c
++++ browser.c	2020-01-14 14:51:44.927127369 +0000
+@@ -1096,6 +1096,16 @@ void _mutt_buffer_select_file (BUFFER *f
+ 
+         mutt_buffer_strcpy (f, state.entry[menu->current].full_path);
+ 
++#ifdef USE_IMAP
++        if (buffy)
++        {
++          if (mx_is_imap (mutt_b2s (f)))
++          {
++            state.imap_browse = 1;
++            mutt_buffer_strcpy (LastDir, mutt_b2s (f));
++          }
++        }
++#endif
+ 	/* fall through */
+ 
+       case OP_EXIT:

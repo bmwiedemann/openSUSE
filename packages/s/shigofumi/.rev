@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>62d11d8ad7e71e066029561e67f5828b</srcmd5>
+    <version>0.6</version>
+    <time>1422959949</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for new datovka</comment>
+    <requestid>280890</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0bc5e0773adfb2b60ed6196dc87e403e</srcmd5>
+    <version>0.8</version>
+    <time>1497274130</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to latest version 0.8:
+  * Fixes build fail on Factory
+  * Various small fixes</comment>
+    <requestid>500912</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e6e909541a64df41aed4bad8c59e15de</srcmd5>
+    <version>0.8</version>
+    <time>1591558771</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with shigofumi.patch</comment>
+    <requestid>812271</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>340d458befdabe8bd5a490a9b9b0e0d9</srcmd5>
+    <version>0.9</version>
+    <time>1624887222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902731</requestid>
+  </revision>
+</revisionlist>

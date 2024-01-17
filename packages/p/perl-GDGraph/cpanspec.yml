@@ -1,0 +1,22 @@
+---
+#description_paragraphs: 3
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+patches:
+  perl-GDGraph-XBM-Magic.patch: -p1
+#preamble: |-
+# BuildRequires:  gcc-c++
+post_prep: |-
+  perl -pi -e 's/\r\n/\n/' samples/sample64.pl
+#post_install: |-
+# sed on %{name}.files
+# Dustismo font is GPL-2.0+ licensed
+license: (Artistic-1.0 or GPL-1.0+) and GPL-2.0+ 
+#skip_noarch: 1
+#custom_build: |-
+#./Build build flags=%{?_smp_mflags} --myflag
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module

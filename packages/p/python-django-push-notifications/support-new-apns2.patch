@@ -1,0 +1,108 @@
+Index: django-push-notifications-3.0.0/tests/test_apns_models.py
+===================================================================
+--- django-push-notifications-3.0.0.orig/tests/test_apns_models.py
++++ django-push-notifications-3.0.0/tests/test_apns_models.py
+@@ -1,3 +1,4 @@
++import ssl
+ from unittest import mock
+ 
+ from apns2.client import NotificationPriority
+@@ -24,7 +25,7 @@ class APNSModelTestCase(TestCase):
+ 			"APNS_CERTIFICATE": "/path/to/apns/certificate.pem"
+ 		})
+ 
+-		with mock.patch("apns2.credentials.init_context"):
++		with mock.patch("ssl.create_default_context"):
+ 			with mock.patch("apns2.client.APNsClient.connect"):
+ 				with mock.patch("apns2.client.APNsClient.send_notification_batch") as s:
+ 					APNSDevice.objects.all().send_message("Hello world", expiration=1)
+@@ -38,7 +39,7 @@ class APNSModelTestCase(TestCase):
+ 	def test_apns_send_message_extra(self):
+ 		self._create_devices(["abc"])
+ 
+-		with mock.patch("apns2.credentials.init_context"):
++		with mock.patch("ssl.create_default_context"):
+ 			with mock.patch("apns2.client.APNsClient.connect"):
+ 				with mock.patch("apns2.client.APNsClient.send_notification") as s:
+ 					APNSDevice.objects.get().send_message(
+@@ -53,7 +54,7 @@ class APNSModelTestCase(TestCase):
+ 	def test_apns_send_message(self):
+ 		self._create_devices(["abc"])
+ 
+-		with mock.patch("apns2.credentials.init_context"):
++		with mock.patch("ssl.create_default_context"):
+ 			with mock.patch("apns2.client.APNsClient.connect"):
+ 				with mock.patch("apns2.client.APNsClient.send_notification") as s:
+ 					APNSDevice.objects.get().send_message("Hello world", expiration=1)
+Index: django-push-notifications-3.0.0/tests/test_apns_push_payload.py
+===================================================================
+--- django-push-notifications-3.0.0.orig/tests/test_apns_push_payload.py
++++ django-push-notifications-3.0.0/tests/test_apns_push_payload.py
+@@ -1,3 +1,4 @@
++import ssl
+ from unittest import mock
+ 
+ from apns2.client import NotificationPriority
+@@ -10,7 +11,7 @@ from push_notifications.exceptions impor
+ class APNSPushPayloadTest(TestCase):
+ 
+ 	def test_push_payload(self):
+-		with mock.patch("apns2.credentials.init_context"):
++		with mock.patch("ssl.create_default_context"):
+ 			with mock.patch("apns2.client.APNsClient.connect"):
+ 				with mock.patch("apns2.client.APNsClient.send_notification") as s:
+ 					_apns_send(
+@@ -28,7 +29,7 @@ class APNSPushPayloadTest(TestCase):
+ 					self.assertEqual(kargs["expiration"], 3)
+ 
+ 	def test_push_payload_with_thread_id(self):
+-		with mock.patch("apns2.credentials.init_context"):
++		with mock.patch("ssl.create_default_context"):
+ 			with mock.patch("apns2.client.APNsClient.connect"):
+ 				with mock.patch("apns2.client.APNsClient.send_notification") as s:
+ 					_apns_send(
+@@ -44,7 +45,7 @@ class APNSPushPayloadTest(TestCase):
+ 				self.assertEqual(kargs["expiration"], 3)
+ 
+ 	def test_push_payload_with_alert_dict(self):
+-		with mock.patch("apns2.credentials.init_context"):
++		with mock.patch("ssl.create_default_context"):
+ 			with mock.patch("apns2.client.APNsClient.connect"):
+ 				with mock.patch("apns2.client.APNsClient.send_notification") as s:
+ 					_apns_send(
+@@ -60,7 +61,7 @@ class APNSPushPayloadTest(TestCase):
+ 					self.assertEqual(kargs["expiration"], 3)
+ 
+ 	def test_localised_push_with_empty_body(self):
+-		with mock.patch("apns2.credentials.init_context"):
++		with mock.patch("ssl.create_default_context"):
+ 			with mock.patch("apns2.client.APNsClient.connect"):
+ 				with mock.patch("apns2.client.APNsClient.send_notification") as s:
+ 					_apns_send("123", None, loc_key="TEST_LOC_KEY", expiration=3)
+@@ -70,7 +71,7 @@ class APNSPushPayloadTest(TestCase):
+ 					self.assertEqual(kargs["expiration"], 3)
+ 
+ 	def test_using_extra(self):
+-		with mock.patch("apns2.credentials.init_context"):
++		with mock.patch("ssl.create_default_context"):
+ 			with mock.patch("apns2.client.APNsClient.connect"):
+ 				with mock.patch("apns2.client.APNsClient.send_notification") as s:
+ 					_apns_send(
+@@ -85,7 +86,7 @@ class APNSPushPayloadTest(TestCase):
+ 					self.assertEqual(kargs["expiration"], 30)
+ 
+ 	def test_collapse_id(self):
+-		with mock.patch("apns2.credentials.init_context"):
++		with mock.patch("ssl.create_default_context"):
+ 			with mock.patch("apns2.client.APNsClient.connect"):
+ 				with mock.patch("apns2.client.APNsClient.send_notification") as s:
+ 					_apns_send(
+@@ -97,7 +98,7 @@ class APNSPushPayloadTest(TestCase):
+ 					self.assertEqual(kargs["collapse_id"], "456789")
+ 
+ 	def test_bad_priority(self):
+-		with mock.patch("apns2.credentials.init_context"):
++		with mock.patch("ssl.create_default_context"):
+ 			with mock.patch("apns2.client.APNsClient.connect"):
+ 				with mock.patch("apns2.client.APNsClient.send_notification") as s:
+ 					self.assertRaises(APNSUnsupportedPriority, _apns_send, "123", "_" * 2049, priority=24)

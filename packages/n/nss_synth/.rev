@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>be16ce13dc625e5255e7eb385e52da47</srcmd5>
+    <version>0.1.0~git0.7c23049</version>
+    <time>1642112452</time>
+    <user>dimstar_suse</user>
+    <comment>Submit new package nss_synth to factory</comment>
+    <requestid>945950</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ebdf9c1e93c6dae69efe5bd5d7246746</srcmd5>
+    <version>0.1.0~git2.ed6985d</version>
+    <time>1646349440</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958546</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a7685fb423f51cebfab5c8712caa7a14</srcmd5>
+    <version>0.1.0~git2.ed6985d</version>
+    <time>1662541580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001530</requestid>
+  </revision>
+</revisionlist>

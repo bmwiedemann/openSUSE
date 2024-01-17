@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Tue May 16 06:04:49 UTC 2023 - igonzalezsosa@suse.com
+
+- Update to version v0.20.0:
+  * Bump version to 0.20.0 (#688)
+  * Update cpp version (#687)
+  * increase go rules version to fix bazel build
+  * fix newline issue breaking test
+  * Add `std.round` function in standard library. (#683)
+  * fix tests
+  * Implement std.isEmpty for string (#678)
+  * Fixing test cases
+  * Add std.xor for 2 booleans
+  * Add support to return int based value from native functions golang implementations
+  * Updated test cases
+  * Fixed test cases
+  * Implement std.xor for booleans
+  * feat: implement std.sum
+
+-------------------------------------------------------------------
+Mon Apr 10 09:11:52 UTC 2023 - igonzalezsosa@suse.com
+
+- Initial package (version 0.19.2-pre2).

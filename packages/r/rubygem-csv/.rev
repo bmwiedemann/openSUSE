@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7382af4440626594515189c6dcda9119</srcmd5>
+    <version>3.2.5</version>
+    <time>1665591943</time>
+    <user>dimstar_suse</user>
+    <comment>needed by red-datasets (and sounds useful in general)</comment>
+    <requestid>1010112</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f6235f68c4f411a2f14b5f530831e1a</srcmd5>
+    <version>3.2.8</version>
+    <time>1700078852</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126251</requestid>
+  </revision>
+</revisionlist>

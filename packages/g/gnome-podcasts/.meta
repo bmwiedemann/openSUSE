@@ -1,0 +1,9 @@
+<package name="gnome-podcasts" project="openSUSE:Factory">
+  <title>Podcast app for GNOME</title>
+  <description>A Podcast application for GNOME.
+Listen to your favorite podcasts, right from your desktop.
+
+</description>
+  <devel project="GNOME:Apps" package="gnome-podcasts"/>
+  <url>https://gitlab.gnome.org/World/podcasts</url>
+</package>

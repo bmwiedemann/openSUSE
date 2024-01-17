@@ -1,0 +1,282 @@
+-------------------------------------------------------------------
+Wed Oct 25 06:16:21 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch(bsc#1216212,bsc#1214466)
+  * qclib-sys-kernel-security-lockdown-enabled.patch
+
+-------------------------------------------------------------------
+Mon Oct 16 11:13:48 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Reverted back the if condition (bsc#1216212)
+  * %if 0%{?suse_version} from "1500" to "1300" to avoid build error on IBS
+
+-------------------------------------------------------------------
+Tue May 30 06:23:30 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade to version 2.4.0 (jsc#PED-3284, jsc#PED-3285)
+  * Changes:
+  - Recognize single frame models and rackable models
+  - zname: Add support for option --json
+  - qc_dump: Add trace and JSON dump to .tgz
+- Amended the .spec file for the error "static-library-without-debuginfo"
+  * Removed the line: gzip -9 %{buildroot}/%{_mandir}/man8/*
+
+-------------------------------------------------------------------
+Tue Sep 20 18:29:40 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 2.3.2 (jsc#PED-585, jsc#PED-626)
+  * __v2.3.2 (2022-09-19)__
+    _Changes_:
+    - Recognize IBM LinuxONE Emperor 4
+  * __v2.3.1 (2022-04-05)__
+    _Changes_:
+    - Recognize IBM z16
+- Removed the following obsolete patches:
+  * qclib-sles15sp4-doc-fix-installing-README.patch.
+  * qclib-sles15sp4-Fix-version-info.patch
+- Updated spec file to eliminate rpmlint warnings about 
+  self-obsoleting.
+- Updated rpmlintrc file to suppress an inaccurate warning about
+  qclib-devel not depending on the correct package(s).
+
+-------------------------------------------------------------------
+Tue Sep 21 15:44:51 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 2.3.0 (jsc#SLE-18327)
+  * Changes:
+    - Only export symbols exposed in public header
+    - `config.doxygen`: Remove obsolete variables
+    - `zname`, `zhypinfo`: Add version switch
+- Updated the URL in the spec file to point to the github repository
+- Added the following patches from IBM's git repository
+  * qclib-sles15sp4-doc-fix-installing-README.patch
+  * qclib-sles15sp4-Fix-version-info.patch
+
+-------------------------------------------------------------------
+Mon Oct 19 17:58:26 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 2.2.1 (jsc#SLE-13711)
+  Bug fixes:
+  - zhypinfo: Fix memory leaks
+  - Makefile: Various fixes
+- Removed obsolete qclib.makefile.libdir.patch.
+- Removed obsolete qclib.fix.missing.makefile.if.statement.patch.
+- Updated qclib.makefile.libdir.patch to fit the current version.
+
+-------------------------------------------------------------------
+Wed Sep 16 18:27:21 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 2.2.0 (jsc#SLE-13711)
+  Changes:
+  - Add new tools zname and zhypinfo
+  Bug fixes:
+  - KVM hosts in mixed mode LPARs indicated both, CPs and IFLs, while only
+    CPs are actually used
+- Updated qclib.makefile.libdir.patch to apply against the current
+  version, and to make sure the two new man pages go to the right
+  directory.
+- Added qclib.fix.missing.makefile.if.statement.patch to correct a
+  problem in the Makefile.
+- Changed spec file from "make" to "%make_build" per spec-cleaner.
+- Updated the URL in the spec file to point to current location of
+  the package.
+
+-------------------------------------------------------------------
+Mon Apr 27 18:42:51 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 2.1.0 (bsc#1170410)
+  Changes:
+  - New attributes in support of secure boot in all final layers:
+     * qc_has_secure
+     * qc_secure
+    Note: Changed src column indicator from 'o' to 'F' to summarize
+          firmware-related data
+  - Recognize IBM z15 midrange models
+  Bug fixes:
+  - qc_open(): Memory leaks on errors
+- Removed obsolete qclib-2.0.1-add-support-for-secure-boot-related-attributes.patch.
+
+-------------------------------------------------------------------
+Tue Mar  3 19:38:58 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Added qclib-2.0.1-add-support-for-secure-boot-related-attributes.patch
+  Add an attribute in qclib so that we can programmatically detect
+  if secure boot is available and active in the current LPAR. (bsc#1165018).
+
+-------------------------------------------------------------------
+Wed Jan 22 16:01:05 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Make building more verbose
+
+-------------------------------------------------------------------
+Tue Jan 21 18:28:32 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 2.0.1 (bsc#1160745)
+  Changes:
+  - Retry up to three times when a live guest migration is detected
+  Bug fixes:
+  - Attribute qc_num_ziip_threads in CEC layer was not correctly set.
+  - Do not account zIIPs in layer QC_LAYER_TYPE_ZOS_ZCX_SERVER for
+    qc_num_cpu_* attributes.
+  - qc_dump: Handle non-writable /tmp
+
+-------------------------------------------------------------------
+Wed Nov 20 00:43:26 UTC 2019 - Mark Post <mpost@suse.com>
+
+- Upgraded to verson 2.0.0 (jsc#SLE-7867)
+  Changes:
+  * New attributes in layer CEC:
+       * qc_type_name
+       * qc_type_family
+       * qc_lic_identifier
+  * qc_test: Reworked output for subtle consistency improvements
+  * Replaced attribute qc_hardlimit_consumption with
+    qc_limithard_consumption. Use CONFIG_V1_COMPATIBILITY for previous
+    version.
+  * Require CONFIG_DUMP_READING in query_capacity.h to allow running from a
+    dump. Disabled by default.
+  * Disabled v1 compatibility functionality per default. To re-enable,
+    activate CONFIG_V1_COMPATIBILITY in query_capacity.h.
+
+-------------------------------------------------------------------
+Mon Apr 22 19:57:20 UTC 2019 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 1.4.1 (bsc#1135781, Fate#327836, jsc#SLE-5908)
+  Bug fixes:
+  * qc_dump: Don't abort the dump in case qc_test fails.
+  * Attributes qc_cp_weight_capping and qc_ifl_weight_capping were set even
+    when initial capping was not set in the LPAR's activation profile.
+  Version 1.4.0
+  Changes:
+  * Added SMT support by properly differentiating between cores and CPUs.
+    I.e. switched from qc_num_cpu_* to qc_num_core_* attributes in layers
+    CEC, LPAR, ZVM_HYPERVISOR and KVM_HYPERVISOR.
+    NOTE: qc_num_cpu_* attributes remain to be valid in these cases to
+          preserve backwards compatibility for now. This will be removed in
+          one of the next releases! It is recommended to switch to the new
+          attributes _now_ and test with CONFIG_V1_COMPATIBILITY disabled!
+  * Added new attributes qc_num_threads_cp and qc_num_threads_ifl to layers
+    CEC, LPAR and ZVM_HYPERVISOR.
+  * Deprecated attribute qc_mobility_eligible (remains valid for now) and
+    replaced with qc_mobility_enabled to match z/VM terminology. Likewise
+    switched QC_LAYER_TYPE_ZVM_CPU_POOL to QC_LAYER_TYPE_ZVM_RESOURCE_POOL.
+  * Moved build customization defines (e.g. CONFIG_V1_COMPATIBILITY) to
+    query_capacity.h.
+  * Don't build with textual hypfs per default anymore due to unrecoverable
+    issues (see section 'Bug fixes'). Since all Linux distributions ship
+    with debugfs (providing binary hypfs support), overriding textual hypfs,
+    for years, this change will hardly ever be noticable. Enable define
+    CONFIG_TEXTUAL_HYPFS in query_capacity.h to revert.
+    Note that textual hypfs support will be removed in a future release.
+  Bug fixes:
+  * Added an exception to consistency check to ignore inconsistencies between
+    textual hypfs and STHYI for attributes qc_num_cp_total and
+    qc_num_ifl_total in the LPAR layer.
+    Background: Textual hypfs cannot tell whether a core is configured or
+                not. It therefore reports all cores as configured, which can
+                be wrong.
+  Version 1.3.1
+  Bug fixes:
+  * Security: Fix PATH attack vulnerability when dumping (see QC_DEBUG=2)
+  * STHYI: Add fallback for pre-glibc 2.16 (not using getauxval())
+  * Handle mismatching STHYI and /proc/sysinfo layer counts
+  * On LPAR, fix incomplete dump of binary hypfs when textual hypfs is mounted
+- Dropped obsolete qclib-sles15-fix-mismatch-case-with-STHYI.patch.
+- Updated qclib.makefile.libdir.patch to apply cleanly to the new version.
+- Made numerous changes to the spec file based on the output from
+  spec-cleaner.
+- Updated qclib-rpmlintrc file to catch all duplicate file messages
+
+-------------------------------------------------------------------
+Fri Dec  8 22:07:04 UTC 2017 - mpost@suse.com
+
+- Added qclib-sles15-fix-mismatch-case-with-STHYI.patch
+  (bsc#1071687, bsc#1104304).
+
+-------------------------------------------------------------------
+Thu Nov  2 20:03:27 UTC 2017 - mpost@suse.com
+
+- Upgraded to version 1.3.0 (Fate#325039)
+  Changes:
+  * Added STHYI support in LPAR
+  * Added new env variable QC_DEBUG_FILE (see qc_open())
+    Note: Failure to open a file for logging is now treated as a fatal error
+  * Added script qc_dump to collect debug data in a standardized manner
+  * Added attributes qc_layer_uuid and qc_layer_extended_name to LPAR layer
+  * /proc/sysinfo parsing: Switch from "KVM/Linux" to the less strict "KVM"
+    to detect KVM systems
+  * Detect unregistered and closed handles
+  * Makefile: Compile SONAME into shared library
+  Bug fixes:
+  * STHYI: Properly support cc==3&&rc==4 as introduced in APAR VM65419
+  * Logs: Fix month in timestamp (was off by 1)
+  * qc_test: Fix flags for qc_layer_name in QC_LAYER_TYPE_ZVM_HYPERVISOR
+- Dropped obsolete patch qclib.correctly.interpret.sthyi.check.patch
+
+-------------------------------------------------------------------
+Mon Mar 27 16:58:14 UTC 2017 - mpost@suse.com
+
+- Added qclib.correctly.interpret.sthyi.check.patch (bsc#1028105).
+
+-------------------------------------------------------------------
+Mon Jun 13 19:56:59 UTC 2016 - mpost@suse.com
+
+- Upgraded to qclib 1.2 (bsc#984143)
+  - Removed source [S] for attributes qc_num_cpu_dedicated and
+    qc_num_cpu_shared in LPAR layer for consistency
+  - Retrieve qc_layer_name in CEC layer from OCF
+  - Extended hypfs usage to provide more CP, IFL and CPU counts for
+    CEC and LPAR layers, as well as capping information for LPAR
+    group and LPAR layers
+  - Added attributes for IFLs, CPs and CPUs for KVM hypervisor and
+    guest layers
+  - Added support for LPAR Groups
+  - Added new attribute qc_prorated_core_time
+  - Fill qc_num_cp_total and qc_num_ifl_total in LPAR layer from STHYI
+  - Consistency checks: Detect inconsistent values across data sources
+  - Documentation improvements
+
+  Bug fixes:
+  - Fixed crash when setting QC_USE_DUMP to an invalid directory and
+    QC_DEBUG=1
+  - Fixed reset of debug level when QC_CHECK_CONSISTENCY is invalid
+  - Display all values in attribute qc_partition_char in case of multiple
+  - Set qc_cp_dispatch_type in presence of CPs only
+
+-------------------------------------------------------------------
+Tue Feb 16 15:00:13 UTC 2016 - mpost@suse.com
+
+- Upgraded to qclib 1.1.0 (fate#320435)
+- Removed the following patches against version 1.0.0
+  qclib.makefile.patch
+  qclib.disable.consistency.checks.patch
+  qclib.handle.hostnames.with.less.than.8.characters.in.presence.of.hypfs.patch
+- Added a couple of comment lines to the header in the spec file.
+
+-------------------------------------------------------------------
+Fri Jan 15 18:44:56 UTC 2016 - mpost@suse.com
+
+- Added qclib.disable.consistency.checks.patch (bsc#961643).
+- Added qclib.handle.hostnames.with.less.than.8.characters.in.presence.of.hypfs.patch
+  (bsc#957607).
+
+-------------------------------------------------------------------
+Fri Oct 30 20:47:53 UTC 2015 - mpost@suse.com
+
+- Replaced qclib.makefile.patch with IBM's version of the patch.
+  (bsc#951518).
+- Modified the spec file to make use of the new "make install"
+  and "make installdoc" targets.
+- Modified the spec file to account for slightly different file
+  locations.
+- Added qclib.makefile.libdir.patch to enable building on both
+  s390x and s390 systems.
+- Added two new filters to the qclib-devel-rpmlintrc file to
+  mask two new duplicate files that arrived with IBM's patched
+  Makefile.
+
+-------------------------------------------------------------------
+Tue Oct 13 19:48:20 UTC 2015 - mpost@suse.com
+
+- Initial version
+

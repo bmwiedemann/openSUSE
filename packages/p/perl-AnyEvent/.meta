@@ -1,0 +1,11 @@
+<package name="perl-AnyEvent" project="openSUSE:Factory">
+  <title>DBI of event loop programming</title>
+  <description>the AnyEvent manpage provides a uniform interface to various event loops.
+This allows module authors to use event loop functionality without forcing
+module users to use a specific event loop implementation (since more than
+one event loop cannot coexist peacefully).
+
+The interface itself is vaguely similar, but not identical to the the Event
+manpage module.</description>
+  <devel project="devel:languages:perl" package="perl-AnyEvent"/>
+</package>

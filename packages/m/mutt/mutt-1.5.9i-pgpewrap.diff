@@ -1,0 +1,18 @@
+---
+ pgpewrap.c |    5 +++++
+ 1 file changed, 5 insertions(+)
+
+--- pgpewrap.c
++++ pgpewrap.c	2019-11-13 13:00:01.256398592 +0000
+@@ -57,6 +57,11 @@ int main(int argc, char **argv)
+   }
+   *opt = NULL;
+ 
++  if (opts[0] == NULL)
++  {
++    fprintf(stderr, "Command line usage: %s [flags] -- prefix [recipients]\n", argv[0]);
++    return 1;
++  }
+   execvp(opts[0], opts);
+   perror(argv[0]);
+   return 2;

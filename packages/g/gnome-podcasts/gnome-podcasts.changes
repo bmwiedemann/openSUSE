@@ -1,0 +1,209 @@
+-------------------------------------------------------------------
+Fri Oct 13 12:33:15 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.6.1:
+  * Added:
+    - Add translation and source code links
+    - Add escape as a universal go-back keybinding
+    - Add missing accessibility labels to lists and menus
+    - Add accessibility labels to the add feed popover
+    - Make the description and cover image accessible
+    - Episode description: make selectable, jump link titles,
+      plaintext fallback
+  * Changed:
+    - Port episode_description to gtk composite template
+    - Port home_view to gtk composite template
+    - Delete the cover directory when removing a podcast
+    - Downloader: raise the max-redirect-policy to 20 (from 5)
+    - Move to reqwest async and stop using hyper directly.
+    - Port episode_widget to gtk composite template
+    - Upgrade to gtk4 crate to 0.7
+    - Port home_episode to gtk composite template
+    - Skip hash links and empty links
+  * Fixed:
+    - MPRIS: connect seek instead of prev/next
+    - Simplify the whole view and make covers accessible
+    - Keep focus on the play button when toggling play/pause
+    - Use correct colons (U+003A instead of U+2236)
+    - Use correct IDs in the MPRIS player
+    - Set images role to presentation
+    - Don't handle 302 as a permanent redirect
+
+-------------------------------------------------------------------
+Tue Apr 11 15:30:53 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.5.1+99:
+  * aboutdialog: Do not allocate devs and designers
+  * cargo:
+    - Require GNOME 44 features
+    - Use 2021 edition
+  * headerbar:
+    - Improve hamburger button
+    - Stop using image-button
+  * player_dialog:
+    - Use gtk::Window
+    - Use image-button css class
+  * Stop using deprecated methods in gtk 4.10
+  * utils: Use gtk::FileDialog
+  * Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 24 22:10:41 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.5.1+75:
+  * empty_view:
+    - Use the non-symbolic color icon on the start screen
+    - Fix wrapping for long text translations
+  * content: Set progress bar in overlay
+  * css: Fix action bar style
+  * Fix clippy lints
+  * headerbar: Improve popover header
+  * meson: Delete custom cargo.sh script
+  * Port to gtk4.
+  * Updated translations.
+- Switch to cargo packaging and gitcheckout via source services.
+  Add cargo-packaging and drop cargo and rust BuildRequires.
+  Add needed cargo-packaging macros.
+- Add desktop-file-utils, pkgconfig(gtk4) and
+  pkgconfig(libadwaita-1), and drop pkgconfig(gtk+-3.0) and
+  pkgconfig(libhandy-1) BuildRequires following upstreams port.
+- Add a _constraints file.
+- Drop patch fixed upstream:
+  + 6614bb62ecbec7c3b18ea7fe44beb50fe7942b27.patch
+
+-------------------------------------------------------------------
+Wed Feb  2 15:16:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 6614bb62ecbec7c3b18ea7fe44beb50fe7942b27.patch: Fix build
+  with meson 0.60 and newer.
+- Add libxml2-tools BuildRequires, as the build requests
+  xml-stripblanks preprocessing.
+
+-------------------------------------------------------------------
+Wed Jan  5 18:40:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.5.1:
+  + Render lists in episode descriptions
+  + Pass a file uri to mpris for the cover art instead of http url
+  + Fix itunes tests
+  + Updated translations.
+- Changes from version 0.5.0:
+  + Description metadata for app stores
+  + Fix the wrong User-Agent header being sent
+  + Make newlines display in episode descritpions display correctly
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 14 09:23:01 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.5.0-beta:
+  + View the episode descriptions and show notes
+  + Pick up the pace of an episode from where you left off
+  + We now inhibit suspend during playback
+  + Detect Soundcloud playlists and correctly add them as feeds
+  + 0.75 and 0.9 playback rate options
+  + Device form factor and input metadata
+  + Fixed: HTTP authentication when the username might be an email
+  + Correctly set a user agent while downloading in more places
+  + Updated translations.
+- Enable LTO build, no longer fails during build.
+
+-------------------------------------------------------------------
+Sat Aug  7 14:20:42 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.9:
+  + Added:
+    - Automatically refresh Show artwork/covers
+    - Suggest a filename on the export opml dialog
+    - Extract RSS feeds from soundcloud links
+  + Changed:
+    - Upgrade dependencies
+    - Improve indexing pipeline
+    - Upgrade to libhandy-1.0
+    - Use glib channels and refactor actions handling
+    - Use libhandy styling for lists
+    - GTK 3 cleanups in preparation for the GTk 4 port
+  + Fixed:
+    - Fix date comparison with episodes from previous year
+    - Fix copying downloads across filesystems
+  + Removed: Remove static resources
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  9 23:06:14 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.8:
+  + Handy Header/Switcher
+  + Revealer for long show descriptions
+  + Adaptive player
+  + Add 1.75 and 2x playback options
+  + Use standard macros
+  + Use async functions and upgrade to futures 0.3
+  + Store window size
+  + Use monospace font for numbers
+  + Fix phantom window
+  + Prevent simultanious refreshes
+  + Fix buttons in speed menu
+  + Internationalisation fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 15 21:56:50 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.7:
+  + Improved appdata validation and meson tests
+  + The ability to export show subscriptions to opml files
+  + Support for feeds requiring authentication
+  + Episodes now have a checkmark to show whether or not they've
+    been played
+  + Changed to how errors are shown when adding podcasts
+  + Improved integration of cargo and meson
+  + Refactored some macros for error handling
+  + Refactored the handling of styling changes
+  + Updated the icon to better match the HIG guidlines
+  + Made Podcasts use a GtkApplication subclass
+  + Updated the MPRIS permissions in order to remove a sandbox hole
+  + Bumped gtk and libhandy minimum versions
+  + Rewind now works regardless if its the start or the end of the
+    episode
+  + Typos in the README and CONTRIBUTING docs
+  + Show cover is reset properly now if there isn't an image
+  + Query pairs are no longer stripped from URLs
+  + Pause MPRIS button now works on KDE Plasma
+  + The playback widget now properly reflects the playback state on
+    episode change
+  + Removed all preferences
+- Drop gnome-podcast-build-fix.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Sep  5 08:25:41 NZST 2019 - luke@ljones.dev
+
+- Remove BuildRequires: cargo-vendor, this is now included in the
+  base cargo install.
+
+-------------------------------------------------------------------
+Tue Jul  9 11:11:21 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable LTO, gnome-podcasts fails to build with it.
+
+-------------------------------------------------------------------
+Thu Jun 27 20:24:19 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop unneeded pkgconfig(gstreamer-bad-video-1.0) BuildRequires.
+
+-------------------------------------------------------------------
+Fri Jun  7 07:30:23 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add yet a upstream commit to gnome-podcast-build-fix.patch.
+
+-------------------------------------------------------------------
+Wed May 29 15:53:28 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gnome-podcast-build-fix.patch: Fix build, replace deprecated
+  method.
+
+-------------------------------------------------------------------
+Tue Jan  1 11:23:04 UTC 2019 - bjorn.lie@gmail.com
+
+- Inital build for openSUSE, version 0.4.6.
+

@@ -1,0 +1,122 @@
+-------------------------------------------------------------------
+Fri Dec 29 10:33:06 UTC 2023 - Adam Majer <adam.majer@suse.de> - 82
+
+- New version 82:
+  * Validate fields in "Create container" dialog
+  * Label Toolbox and Distrobox containers
+  * Performance and stability improvements
+
+-------------------------------------------------------------------
+Fri Sep  8 13:24:10 UTC 2023 - Adam Majer <adam.majer@suse.de> - 76
+
+- New version 76:
+  * performance and stability improvements
+- deps.patch: upstreamed, dropped
+
+-------------------------------------------------------------------
+Mon Aug 21 11:04:41 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- New version 74:
+  * Bug fixes and translation updates
+  * fixes for PatternFly 5
+- deps.patch: fix dependencies
+
+-------------------------------------------------------------------
+Thu Aug  3 12:01:39 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- New version 73. Changes since 70 include,
+  * show time of container's latest checkpoint
+  * Bug fixes and translation updates
+  * Add manifest condition for the Python bridge
+- 1299.patch: included in release and deleted here
+
+-------------------------------------------------------------------
+Fri Jun 16 10:18:09 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- New version 70. Changes since 53 include,
+  * Add ability to prune unused containers
+  * Translation updates
+  * Container list can be sorted
+  * Custom healthcheck actions
+  * Dark theme support
+  * Pod CPU, memory, port and volume details
+  * Create new pod group functionality
+  * Show all containers by default
+  * Stability and performance improvements
+
+- load-css-overrides.patch: refreshed
+- 1299.patch: fixes build with new PF5
+
+-------------------------------------------------------------------
+Tue Sep 20 10:11:52 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- new version 53. Changes since 49.1 include,
+  * Use NumberInput for Image Run Dialog
+  * Fix events with large number of containers
+  * Translation updates
+  * Add Volumes and Env Variables to container details
+  * Show volume permission in container integration tab
+  * Allow no system users to set restart policy
+  * Show image history
+  * Stability and performance improvements
+
+-------------------------------------------------------------------
+Fri Jun 17 10:11:13 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- load-css-overrides.patch: css overrides for better theming support 
+
+-------------------------------------------------------------------
+Fri Jun 10 13:34:10 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- new version 49.1
+  https://github.com/cockpit-project/cockpit-podman/releases/tag/49.1
+
+-------------------------------------------------------------------
+Fri Apr 22 11:49:35 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
+
+- Remove translate-toolkit which is not available in SLE
+
+-------------------------------------------------------------------
+Mon Dec 20 17:00:13 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Add source-offest to _service to fix build error in Leap.
+
+-------------------------------------------------------------------
+Fri Aug 13 08:11:02 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 33
+  https://github.com/cockpit-project/cockpit-podman/releases/tag/33
+- fix_dependencies.patch no longer needed
+
+-------------------------------------------------------------------
+Wed Feb 24 10:51:08 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- new version 28.1
+  https://github.com/cockpit-project/cockpit-podman/releases/tag/28.1
+- use upstream sources without bundled and pre-built dist since
+  we want to rebuild it
+- use local-npm-registry for building
+- fix_dependencies.patch: fix build dependencies
+
+-------------------------------------------------------------------
+Fri Jan 22 14:13:05 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 26
+  https://github.com/cockpit-project/cockpit-podman/releases/tag/26
+
+-------------------------------------------------------------------
+Thu Oct 15 08:20:56 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 25
+  https://cockpit-project.org/blog/cockpit-230.html
+
+-------------------------------------------------------------------
+Fri Oct  2 11:04:07 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 24
+  https://cockpit-project.org/blog/cockpit-228.html
+
+-------------------------------------------------------------------
+Fri Aug 14 12:16:08 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- initial package version 21
