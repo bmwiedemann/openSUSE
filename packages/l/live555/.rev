@@ -305,4 +305,41 @@
     <comment></comment>
     <requestid>1090929</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>fbfc3538d1e192b78aaa88159953e26d</srcmd5>
+    <version>2023.11.30</version>
+    <time>1705526072</time>
+    <user>anag+factory</user>
+    <comment>- update up to 2023.11.30:
+  * In the implementation of the &quot;MPEGVideoStreamFramer&quot; class, gave
+    &quot;TimeCode::operator==()&quot; the &quot;const&quot; qualifier, to make some
+    compilers happy.
+  * Performed the annual update of the copyright years near the start
+    of each file 
+- update to 2023.11.08:
+  * Changed the signature to the virtual function
+    &quot;getRTPSinkandRTCP()&quot; (in &quot;ServerMediaSubession&quot;, and its subclasses
+    &quot;OnDemandServerMediaSession&quot; and &quot;PassiveServerMediaSubsession&quot;)
+    to make its 'result' arguments &quot;rtpSink&quot; and &quot;rtcp&quot; no longer &quot;const *&quot;.
+    There was no real reason to make those &quot;const *&quot;.
+- update to 2023.11.07:
+  * In the class &quot;GenericMediaServer&quot;, made the variables
+    &quot;fServerMediaSessions&quot;, 
+    &quot;fClientConnections&quot;, and &quot;fClientSessions&quot; 'protected' rather
+    than 'private', to allow subclasses to access them if desired.
+- update to 2023.10.30:
+  * Fixed a bug in &quot;deleteEventTrigger()&quot; that had accidentally been
+    introduced during the change to 'event trigger' implementation
+    back in June.
+- update to 2023.07.24:
+  * Updated the event trigger implementation once again, to allow for
+    the possibility of developers redefining MAX_NUM_EVENT_TRIGGERS
+    (it must always be &lt;= the number of bits in an &quot;EventTriggerId&quot;,
+    though.
+- update to 2023.06.20:
+  * Updated the event trigger implementation again - in the case where
+    &quot;NO_STD_LIB&quot; is defined.  In this case,
+    &quot;fTriggersAwaitingHandling&quot; is implemented as an array of &quot;Boolean</comment>
+    <requestid>1139486</requestid>
+  </revision>
 </revisionlist>

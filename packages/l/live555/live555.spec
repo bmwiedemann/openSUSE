@@ -1,7 +1,7 @@
 #
 # spec file for package live555
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Dominique Leuenberger, Ramiswil, Switzerland
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define lmdmaj 107
+%define lmdmaj 112
 
 Name:           live555
-Version:        2023.05.10
+Version:        2023.11.30
 Release:        0
 Summary:        LIVE555 Streaming Media
 License:        LGPL-2.1-only
@@ -93,6 +93,11 @@ can be used to build streaming applications
 %setup -q -n live
 %patch0 -p1
 
+%if 0%{?suse_version} < 1550
+# workaround for build error with test variable w/ atomic_flag
+sed -i -e 's/^\(COMPILE_OPTS.*\)$/\1 -DNO_STD_LIB/' config.linux*
+%endif
+
 # Remove .orig files in source tree
 find . -name "*.orig" -delete
 
@@ -100,6 +105,10 @@ find . -name "*.orig" -delete
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags}"
 export CPPFLAGS="%{optflags}"
+%if 0%{?suse_version} >= 1550
+# workaround for build error with test variable w/ atomic_flag
+export CXXFLAGS="-std=c++20 %{optflags}"
+%endif
 ./genMakefiles linux-with-shared-libraries
 make %{?_smp_mflags}
 
