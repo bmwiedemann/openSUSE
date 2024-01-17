@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jan  5 09:11:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.33.2:
+  * publish package to PyPI using OIDC auth
+  * private object not exported in top level module
+
+-------------------------------------------------------------------
+Wed Dec 27 10:53:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.33.0:
+  * add metrics endpoint for load balancers and servers (#331)
+  * fallback to error code when message is unset (#328)
+
+-------------------------------------------------------------------
+Thu Dec  7 22:43:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.32.0:
+  * allow returning root_password in servers rebuild (#276)
+  * prepare for iso deprecated field removal (#320) (beae328)
+  * add deprecation field to Iso (#318) (036b52f)
+  * support python 3.12 (#311) (7e8cd1d)
+  * prevent api calls when printing bound models (#305) (c1de7ef)
+  * add domain attribute type hints to bound models (#300)
+  * load token from env in examples scripts (#302) (f18c9a6)
+
+-------------------------------------------------------------------
 Fri Sep  1 01:43:20 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.28.0:
@@ -36,7 +62,7 @@ Tue Aug  2 05:01:14 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 - Update to 1.17.0:
   * Add suport for primary IPs
 - Add patch remove-mock.patch:
-  * Use unittest.mock. 
+  * Use unittest.mock.
 
 -------------------------------------------------------------------
 Mon Mar 21 13:04:30 UTC 2022 - pgajdos@suse.com

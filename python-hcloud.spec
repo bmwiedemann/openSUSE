@@ -1,7 +1,7 @@
 #
 # spec file for package python-hcloud
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-hcloud
-Version:        1.28.0
+Version:        1.33.2
 Release:        0
 Summary:        Hetzner Cloud Python library
 License:        MIT
