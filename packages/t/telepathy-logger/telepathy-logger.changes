@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 16 16:02:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a
+  consequence cannot be held responsible to deliver that basic
+  directory structure.
+
+-------------------------------------------------------------------
 Thu Aug 10 11:12:26 UTC 2023 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - Split the gsettings schema to a separate package

@@ -1,7 +1,7 @@
 #
 # spec file for package telepathy-logger
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -175,7 +175,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libtelepathy-logger.so
 %{_libdir}/libtpl-extensions.so
 %{_libdir}/pkgconfig/tpl-extensions.pc
-%{_datadir}/gtk-doc/html/telepathy-logger/
+%{_datadir}/gtk-doc/
 %{_datadir}/gir-1.0/TelepathyLogger-0.2.gir
 
 %changelog
