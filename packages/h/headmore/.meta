@@ -1,0 +1,5 @@
+<package name="headmore" project="openSUSE:Factory">
+  <title>headmore</title>
+  <description>A fully functional VNC client that works in character (ncurses) terminal.</description>
+  <devel project="X11:XOrg" package="headmore"/>
+</package>

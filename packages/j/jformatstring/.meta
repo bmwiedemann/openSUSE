@@ -1,0 +1,20 @@
+<package name="jformatstring" project="openSUSE:Factory">
+  <title>Java library for format string checks</title>
+  <description>This project is derived from Sun's implementation of java.util.Formatter. It 
+is designed to allow compile time checks as to whether or not a use of format 
+string will be erronous when executed at runtime.
+
+This code is derived from the OpenJDK implementation, jdk1.7.0-b35. As such, 
+it is licensed under the same license as OpenJDK, GPL v2 + the Classpath 
+exception.
+
+This project is preliminary, and the API is subject to change. The library 
+produced by compiling this project is used by the FindBugs project. To avoid 
+any licensing questions due to incompatible licenses (FindBugs is licensed 
+under the LGPL), it is broken out as a separate project. While there may be 
+some confusion/discussion about the licenses, the FindBugs project does not 
+interpret the FindBugs LGPL license to be any stronger than GPL v2 + the 
+Classpath exception.</description>
+  <devel project="Java:packages" package="jformatstring"/>
+  <url>https://jformatstring.dev.java.net/</url>
+</package>

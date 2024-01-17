@@ -1,0 +1,26 @@
+--- jformatstring-0.10~20131207/build.xml	2013-12-09 01:34:10.000000000 +0100
++++ jformatstring-0.10~20131207/build.xml	2018-12-19 10:39:08.939945663 +0100
+@@ -15,10 +15,9 @@
+ 
+ 	<target name="classes">
+ 		<mkdir dir="build/classes" />
+-		<javac destdir="build/classes" source="1.5" target="1.5" debug="on"
++		<javac destdir="build/classes" debug="on"
+ 			includeantruntime="false">
+ 			<src path="src/java" />
+-			<src path="src/junit" />
+ 			<classpath>
+ 				<pathelement location="build/classes" />
+ 			</classpath>
+@@ -31,9 +30,6 @@
+ 			<fileset dir="build/classes">
+ 				<include name="**/*.class" />
+ 			</fileset>
+-			<fileset dir="src/java">
+-				<include name="**/*.java" />
+-			</fileset>
+ 		</jar>
+ 	</target>
+ 
+Only in jformatstring-0.10~20131207: build.xml.orig
+Only in jformatstring-0.10~20131207: build.xml.rej

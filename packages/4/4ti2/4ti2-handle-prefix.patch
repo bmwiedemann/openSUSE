@@ -1,0 +1,72 @@
+From 0d4518dbcf9321df4d8cad6e97e562f34f7d31f4 Mon Sep 17 00:00:00 2001
+From: Alois Wohlschlager <alois1@gmx-topmail.de>
+Date: Thu, 1 Jul 2021 14:37:06 +0000
+Subject: [PATCH] scripts: apply realpath for $0
+References: https://github.com/4ti2/4ti2/pull/31
+
+When $0 is a symlink, program execution would fail to find the right
+directory. Fix that up.
+
+The 4ti2 program names are quite generic (e.g. "output"), and hence
+openSUSE has relegated them to /usr/libexec/4ti2, offering instead
+prefixed symlinks in /usr/bin, e.g. /usr/bin/4ti2_groebner ->
+/usr/libexec/4ti2/groebner.
+---
+ src/groebner/script.template    |    2 +-
+ src/groebner/script.template.in |    2 +-
+ src/zsolve/graver.template      |    2 +-
+ src/zsolve/hilbert.template     |    2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+Index: 4ti2-1.6.9/src/groebner/script.template
+===================================================================
+--- 4ti2-1.6.9.orig/src/groebner/script.template
++++ 4ti2-1.6.9/src/groebner/script.template
+@@ -21,7 +21,7 @@
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. 
+ 
+ # We locate where this script is so we can call the executables.
+-SCRIPT=`which "$0"`
++SCRIPT=$(realpath $(which "$0"))
+ DIR=`dirname "$SCRIPT"`
+ FUNCTION=`basename "$SCRIPT"`
+ 
+Index: 4ti2-1.6.9/src/groebner/script.template.in
+===================================================================
+--- 4ti2-1.6.9.orig/src/groebner/script.template.in
++++ 4ti2-1.6.9/src/groebner/script.template.in
+@@ -21,7 +21,7 @@
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. 
+ 
+ # We locate where this script is so we can call the executables.
+-SCRIPT=`which "$0"`
++SCRIPT=$(realpath $(which "$0"))
+ DIR=`dirname "$SCRIPT"`
+ FUNCTION=`basename "$SCRIPT"`
+ 
+Index: 4ti2-1.6.9/src/zsolve/graver.template
+===================================================================
+--- 4ti2-1.6.9.orig/src/zsolve/graver.template
++++ 4ti2-1.6.9/src/zsolve/graver.template
+@@ -2,7 +2,7 @@
+ 
+ # We locate where this script is so we can call the executable zsolve which
+ # should be in the same directory as this script.
+-SCRIPT=`which "$0"`
++SCRIPT=$(realpath $(which "$0"))
+ SCRIPTDIR=`dirname "$SCRIPT"`
+ EXECUTABLE=zsolve
+ 
+Index: 4ti2-1.6.9/src/zsolve/hilbert.template
+===================================================================
+--- 4ti2-1.6.9.orig/src/zsolve/hilbert.template
++++ 4ti2-1.6.9/src/zsolve/hilbert.template
+@@ -2,7 +2,7 @@
+ 
+ # We locate where this script is so we can call the executable zsolve which
+ # should be in the same directory as this script.
+-SCRIPT=`which "$0"`
++SCRIPT=$(realpath $(which "$0"))
+ SCRIPTDIR=`dirname "$SCRIPT"`
+ EXECUTABLE=zsolve
+ 

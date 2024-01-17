@@ -1,0 +1,1861 @@
+-------------------------------------------------------------------
+Wed Nov 22 09:44:27 UTC 2023 - christophe@krop.fr
+
+- Update to version 5.15.16:
+  * Bump version to 5.15.16
+  * Add check for system ffmpeg compatibility
+  * Fix handling of external URLs in PDFs
+  * Update Chromium:
+  * [Backport] CVE-2023-5996: Use after free in WebAudio
+  * [Backport] CVE-2023-5482 and CVE-2023-5849
+  * [Backport] CVE-2023-45853: Buffer overflow in MiniZip
+  * [Backport] Security bug 1478470
+  * [Backport] Security bug 1472365 and 1472366
+  * [Backport] CVE-2023-5218: Use after free in Site Isolation
+  * [Backport] Security bug 1486316
+  * FIXUP: [Backport] [PA] Support 16kb pagesize on Linux+ARM64
+  * [Backport] Add Intel Meteorlake GPU series type
+  * [Backport] Add Intel Raptorlake GPU series type
+  * [Backport] Add a few missing IntelGpuSeriesTypes in
+    gpu_util.cc
+  * [Backport] Add Intel Alchemist GPU series type
+  * [Backport] Add Alderlake to intel_gpu_series field in gpu
+    control list.
+  * [Backport] Add missing Intel GPU series types.
+  * [Backport] Add Alderlake's GPU to list supporting two NV12
+    overlay planes.
+  * [Backport] CVE-2023-5217: Heap buffer overflow in vp8
+    encoding in libvpx
+  * [Backport] Security bug 1479104
+  * [Backport] [PA] Support 16kb pagesize on Linux+ARM64
+  * [Backport] Replace uses of re2::StringPiece::set().
+  * Fix build with GCC 13
+  * Fix errors and warnings for perfetto
+  * Remove nodiscard attribute from cpwl_combo_box.h
+  * Bump V8_PATCH_LEVEL
+  * [Backport] CVE-2023-4762: Type Confusion in V8
+  * [Backport] CVE-2023-4362: Heap buffer overflow in Mojom IDL
+  * [Backport] CVE-2023-4354: Heap buffer overflow in Skia
+  * [Backport] CVE-2023-4351: Use after free in Network
+  * Disable Windows IME for GPU thread
+  * [Backport] CVE-2023-4863: Heap buffer overflow in WebP
+  * [Backport] Security bug 1465224
+  * [Backport] Dependency for security bug 1465224
+  * [Backport] CVE-2023-4071: Heap buffer overflow in Visuals
+  * [Backport] CVE-2023-4076: Use after free in WebRTC
+  * [Backport] CVE-2023-4074: Use after free in Blink Task
+    Scheduling
+
+-------------------------------------------------------------------
+Fri Sep 01 08:27:14 UTC 2023 - christophe@krop.fr
+
+- Update to version 5.15.15:
+  * Update Chromium:
+  * [Backport] Security bug 1454860
+  * Further fixes for building with GCC 13
+  * Fixup [Backport] CVE-2023-2935: Type Confusion in V8
+  * [Backport] Security bug 1447430
+  * [Backport] CVE-2023-2930: Use after free in Extensions
+  * [Backport] CVE-2023-3079: Type Confusion in V8
+  * [Backport] CVE-2023-3216: Type Confusion in V8
+  * [Backport] CVE-2023-2933: Use after free in PDF
+  * [Backport] CVE-2023-2935: Type Confusion in V8
+  * [Backport] CVE-2023-2932: Use after free in PDF
+  * [Backport] CVE-2023-2931: Use after free in PDF
+  * [Backport] Security bug 1444195
+  * [Backport] Security bug 1428743
+  * [Backport] CVE-2023-2721: Use after free in Navigation
+
+-------------------------------------------------------------------
+Fri Jul 28 19:03:30 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- build with older re2 on Tumbleweed, the upcoming re2 2023-07-01
+  breaks qtwebengine 
+
+-------------------------------------------------------------------
+Thu May 25 15:01:57 UTC 2023 - christophe@krop.fr
+
+- Update to version 5.15.14:
+  * Blacklist TouchInputTest::touchTap for sles 15.4
+  * Blacklist tst_QWebEnginePage::mouseMovementProperties for SLES-15
+  * Do not allow universal with debug builds
+  * Enable accessibility by default on Linux
+  * Fix blacklisting of mouseMovementProperties for sles 15.4
+  * Fix build with GCC 13
+  * Fix initialization of QWebEngineDownloadItem::totalBytes for Widgets
+  * Fix memory management in QPdfDocument functions
+  * Update Chromium:
+  * Fixes for building with GCC-13
+  * [Backport] CVE-2023-1215: Type Confusion in CSS
+  * [Backport] CVE-2023-1217: Stack buffer overflow in Crash reporting
+  * [Backport] CVE-2023-1219: Heap buffer overflow in Metrics
+  * [Backport] CVE-2023-1220: Heap buffer overflow in UMA
+  * [Backport] CVE-2023-1222: Heap buffer overflow in Web Audio API
+  * [Backport] CVE-2023-1529: Out of bounds memory access in WebHID
+  * [Backport] CVE-2023-1530: Use after free in PDF
+  * [Backport] CVE-2023-1531: Use after free in ANGLE
+  * [Backport] CVE-2023-1534: Out of bounds read in ANGLE
+  * [Backport] CVE-2023-1810: Heap buffer overflow in Visuals
+  * [Backport] CVE-2023-1811: Use after free in Frames
+  * [Backport] CVE-2023-2033: Type Confusion in V8
+  * [Backport] CVE-2023-2137: Heap buffer overflow in sqlite
+  * [Backport] CVE-2023-29469 / Security bug 1433328
+  * [Backport] Security bug 1337747
+  * [Backport] Security bug 1417585
+  * [Backport] Security bug 1418734
+  * [Backport] Security bug 1423360
+  * [Backport] Security bug 1427388
+- Drop patch, merged upstream:
+  * 0001-Fixes-for-building-with-GCC-13.patch
+
+-------------------------------------------------------------------
+Fri Apr 28 21:20:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add python311-fixes.patch:
+  * Fix build when python3 is python 3.11+
+
+-------------------------------------------------------------------
+Tue Apr 11 19:28:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix build with GCC 13 (boo#1207469):
+  * 0001-Fixes-for-building-with-GCC-13.patch
+
+-------------------------------------------------------------------
+Thu Mar 09 10:11:11 UTC 2023 - christophe@krop.fr
+
+- Update to version 5.15.13:
+  * Force to disable IPC logging
+  * Move out GetInProcessGpuShareGroup form content browser client
+  * Fix probabilistic signature scheme
+  * Bump version to 5.15.13
+  * Recreate response head objects on multiple redirect
+  * Add checksum to mailbox name in Release build too
+  * Drop dependency on content/public/browser in content gpu
+  * FIXUP: Mark Node::opcode() and Operator::opcode()
+    as constexpr
+  * [Backport] Add missing include for std::begin and std::end
+    in SkParseColor.cpp
+  * [Backport] CVE-2022-4179: Use after free in Audio
+  * [Backport] CVE-2022-4437: Use after free in Mojo IPC
+  * [Backport] CVE-2022-4438: Use after free in Blink Frames
+  * [Backport] CVE-2023-0129: Heap buffer overflow in
+    Network Service
+  * [Backport] CVE-2023-0472: Use after free in WebRTC
+  * [Backport] CVE-2023-0698: Out of bounds read in WebRTC
+  * [Backport] CVE-2023-0931: Use after free in Video
+  * [Backport] CVE-2023-0933: Integer overflow in PDF
+  * [Backport] Disable ABSL_HAVE_STD_IS_TRIVIALLY_ASSIGNABLE
+    for clang-cl
+  * [Backport] Fix more clang deprecated builtins
+  * [Backport] Map the absl::is_trivially_* functions to their
+    std impl
+  * [Backport] Mark Node::opcode() and Operator::opcode()
+    as constexpr
+  * [Backport] Security bug 1393384
+  * [Backport] Security bug 1394382
+  * [Backport] Security bug 1399424
+  * [Backport] Security bug 1406115
+  * [Backport][Windows] Remove unused sidestep intercepts
+- Update 0001-skia-Some-includes-to-fix-build-with-GCC-12.patch
+
+-------------------------------------------------------------------
+Thu Mar  9 08:51:39 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Use gcc12 for openSUSE:Factory as workaround for boo#1207469.
+
+-------------------------------------------------------------------
+Thu Dec 29 15:26:07 UTC 2022 - christophe@krop.fr
+
+- Update to version 5.15.12:
+  * Bump version to 5.15.12
+  * Update Chromium:
+  * Bump V8_PATCH_LEVEL
+  * Fixup for patch for CVE-2022-3200 on OpenSuse 15.1
+  * Fixup the patch for CVE-2022-3200 on 87-based / 5.15
+  * [Backport] CVE-2022-3038: Use after free in Network Service
+  * [Backport] CVE-2022-3040: Use after free in Layout
+  * [Backport] CVE-2022-3041: Use after free in WebSQL
+  * [Backport] CVE-2022-3046: Use after free in Browser Tag
+  * [Backport] CVE-2022-3075: Insufficient data validation in Mojo
+  * [Backport] CVE-2022-3196: Use after free in PDF
+  * [Backport] CVE-2022-3197: Use after free in PDF
+  * [Backport] CVE-2022-3198: Use after free in PDF
+  * [Backport] CVE-2022-3199: Use after free in Frames.
+  * [Backport] CVE-2022-3200: Heap buffer overflow in Internals
+  * [Backport] CVE-2022-3201: Insufficient validation of untrusted
+    input in Developer Tools (1/2)
+  * [Backport] CVE-2022-3201: Insufficient validation of untrusted
+    input in Developer Tools (2/2)
+  * [Backport] CVE-2022-3304: Use after free in CSS
+  * [Backport] CVE-2022-3370: Use after free in Custom Elements
+  * [Backport] CVE-2022-3373: Out of bounds write in V8
+  * [Backport] CVE-2022-3445: Use after free in Skia.
+  * [Backport] CVE-2022-3446 and CVE-2022-35737
+  * [Backport] CVE-2022-3885: Use after free in V8
+  * [Backport] CVE-2022-3887: Use after free in Web Workers
+  * [Backport] CVE-2022-3889: Type Confusion in V8
+  * [Backport] CVE-2022-3890: Heap buffer overflow in Crashpad
+  * [Backport] CVE-2022-4174: Type Confusion in V8
+  * [Backport] CVE-2022-4180: Use after free in Mojo
+  * [Backport] CVE-2022-4181: Use after free in Forms
+  * [Backport] CVE-2022-4262: Type Confusion in V8
+  * [Backport] Security bug 1356308
+  * [Backport] Security bug 1378916
+  * [Backport] Security bugs 1346938 and 1338114
+
+-------------------------------------------------------------------
+Wed Oct 05 17:28:40 UTC 2022 - christophe@krop.fr
+
+- Update to version 5.15.11:
+  * Work-around GNOME bug misidentifying HTML content
+  * Fix busy waiting on streaming QIODevice's
+  * Add workaround for un-minimizing QWebEngineView under Gnome
+  * Build the QtDesigner plugin in all configurations
+  * Bump version to 5.15.11
+  * Fix method check
+  * Do not use the native dialog to show the color picker on macOS
+  * FIXUP: Add workaround for unstable gn on macOS in ci
+  * Fix top level build with no widget
+  * Fix touch input for widget's delegate for html popup
+  * Keep page's zoom level on loading new urls
+  * Fix leak if loader error is seen first
+  * Add workaround for unstable gn on macOS in ci
+  * Pass archiver to gn build
+  * Fix read-after-free on EGL extensions
+  * Update Chromium:
+  * FIXUP: Fix url_utils for QtWebEngine
+  * FIXUP: Workaround MSVC2022 ICE in constexpr functions
+  * Fixup: CVE-2022-0796: Use after free in Media
+  * [Backport] CVE-2022-0796: Use after free in Media
+  * [Backport] CVE-2022-1855: Use after free in Messaging
+  * [Backport] CVE-2022-1857: Insufficient policy enforcement in
+    File System API
+  * [Backport] CVE-2022-2008: Out of bounds memory access in WebGL
+  * [Backport] CVE-2022-2010: Out of bounds read in compositing
+  * [Backport] CVE-2022-2158: Type Confusion in V8
+  * [Backport] CVE-2022-2160: Insufficient policy enforcement
+    in DevTools
+  * [Backport] CVE-2022-2162: Insufficient policy enforcement in
+    File System API
+  * [Backport] CVE-2022-2294: Heap buffer overflow in WebRTC
+  * [Backport] CVE-2022-2295: Type Confusion in V8
+  * [Backport] CVE-2022-2477 : Use after free in Guest View
+  * [Backport] CVE-2022-2610: Insufficient policy enforcement
+    in Background Fetch
+  * [Backport] CVE-2022-27404
+  * [Backport] CVE-2022-27405
+  * [Backport] CVE-2022-27406
+  * [Backport] Linux sandbox: ENOSYS for some statx syscalls
+  * [Backport] Security bug 1287804
+  * [Backport] Security bug 1316578
+  * [Backport] Security bug 1343889
+- Replace sandbox-statx-futex_time64.patch with upstream change:
+  * sandbox_futex_time64.patch
+
+-------------------------------------------------------------------
+Mon Sep 26 14:35:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use python 3.9 to build qtwebengine on Leap 15.
+
+-------------------------------------------------------------------
+Fri Sep 23 18:01:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patches to build with python 3, ffmpeg 5 and pipewire 0.3:
+  * qtwebengine-ffmpeg5.patch
+  * qtwebengine-pipewire-0.3.patch
+  * qtwebengine-python3.patch
+- Use a newer catapult snapshot when building with python3
+
+-------------------------------------------------------------------
+Mon Aug  8 06:45:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Stop using 'pkgconfig(xxx)' BuildRequires for FFmpeg
+  dependencies. They will point to FFmpeg-5 soon.
+
+-------------------------------------------------------------------
+Wed Jun  8 14:36:14 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to version 5.15.10:
+  * Fix top level build with no widget
+  * Fix read-after-free on EGL extensions
+  * Update Chromium
+  * Add workaround for unstable gn on macOS in ci
+  * Pass archiver to gn build
+  * Fix navigation to non-local URLs
+  * Add support for universal builds for qtwebengine and qtpdf
+  *  Enable Apple Silicon support
+  *  Fix cross compilation x86_64->arm64 on mac
+  *  Bump version to 5.15.10
+  *  CustomDialogs: Make custom input fields readable in dark mode
+  *  CookieBrowser: Make alternating rows readable in dark mode
+  * Update Chromium:
+    * Bump V8_PATCH_LEVEL
+    * Fix clang set-but-unused-variable warning
+    * Fix mac toolchain python linker script call
+    * Fix missing dependency for gpu sources
+    * Fix python calls
+    * Fix undefined symbol for universal link
+    * Quick fix for regression in service workers by reverting
+      backports
+    * [Backport] CVE-2022-0797: Out of bounds memory access
+      in Mojo
+    * [Backport] CVE-2022-1125
+    * [Backport] CVE-2022-1138: Inappropriate implementation
+      in Web Cursor.
+    * [Backport] CVE-2022-1305: Use after free in storage
+    * [Backport] CVE-2022-1310: Use after free in regular
+      expressions
+    * [Backport] CVE-2022-1314: Type Confusion in V8
+    * [Backport] CVE-2022-1493: Use after free in Dev Tools
+    * [Backport] On arm64 hosts, set host_cpu to 'arm64', not 'arm'
+    * [Backport] Security Bug 1296876
+    * [Backport] Security bug 1269999
+    * [Backport] Security bug 1280852
+    * [Backport] Security bug 1292905
+    * [Backport] Security bug 1304659
+    * [Backport] Security bug 1306507
+
+-------------------------------------------------------------------
+Mon May  2 08:30:15 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Remove dependency on binutils-gold as the package will be removed
+  in the future. Gold linker is unmaintained by the upstream project.
+
+-------------------------------------------------------------------
+Wed Apr 27 07:34:23 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add libqt5-qtwebengine-rpmlintrc to silence the
+  'shlib-policy-name-error' rpmlint error
+
+-------------------------------------------------------------------
+Wed Apr 06 14:41:04 UTC 2022 - christophe@krop.fr
+
+- Update to version 5.15.9:
+  * QPdfView: scale page rendering according to devicePixelRatio
+  * Update documented Chromium version
+  * Use IsSameDocument() rather than IsLoadingToDifferentDocument()
+  * Update module-split for installer
+  * Fix printing PDF files
+  * Do not override signal handlers
+  * Avoid using xkbcommon in non-X11 builds
+  * Update documentation
+  * Update Chromium:
+    * Bump V8_PATCH_LEVEL
+    * Do not overwrite signal handlers in the browser process.
+    * Replace base::ranges::set_union with std::set_union to fix
+      MSVC2017 build
+    * [Backport] CVE-2022-0100: Heap buffer overflow in Media
+      streams API
+    * [Backport] CVE-2022-0102: Type Confusion in V8
+    * [Backport] CVE-2022-0103: Use after free in SwiftShader
+    * [Backport] CVE-2022-0104: Heap buffer overflow in ANGLE
+    * [Backport] CVE-2022-0108: Inappropriate implementation
+      in Navigation
+    * [Backport] CVE-2022-0109: Inappropriate implementation
+      in Autofill
+    * [Backport] CVE-2022-0111 and CVE-2022-0117
+    * [Backport] CVE-2022-0113: Inappropriate implementatio
+      n in Blink
+    * [Backport] CVE-2022-0116: Inappropriate implementation
+      in Compositing
+    * [Backport] CVE-2022-0289: Use after free in Safe browsing
+    * [Backport] CVE-2022-0291: Inappropriate implementation
+      in Storage
+    * [Backport] CVE-2022-0293: Use after free in Web packaging
+    * [Backport] CVE-2022-0298: Use after free in Scheduling
+    * [Backport] CVE-2022-0305: Inappropriate implementation in
+      Service Worker API
+    * [Backport] CVE-2022-0306: Heap buffer overflow in PDFium
+    * [Backport] CVE-2022-0310 and CVE-0311: Heap buffer overflow
+      in Task Manager
+    * [Backport] CVE-2022-0456: Use after free in Web Search
+    * [Backport] CVE-2022-0459: Use after free in Screen Capture
+    * [Backport] CVE-2022-0460: Use after free in Window Dialog
+    * [Backport] CVE-2022-0461: Policy bypass in COOP
+    * [Backport] CVE-2022-0606: Use after free in ANGLE
+    * [Backport] CVE-2022-0607: Use after free in GPU
+    * [Backport] CVE-2022-0608: Integer overflow in Mojo
+    * [Backport] CVE-2022-0609: Use after free in Animation
+    * [Backport] CVE-2022-0610: Inappropriate implementation
+      in Gamepad API
+    * [Backport] CVE-2022-0971 (boo#1197163)
+    * [Backport] CVE-2022-1096 (boo#1197552)
+    * [Backport] CVE-2022-23852
+    * [Backport] Copy 'name_' member during StyleRuleProperty::Copy
+    * [Backport] Security bug 1256885
+    * [Backport] Security bug 1258603
+    * [Backport] Security bug 1259557
+    * [Backport] Security bug 1261415
+    * [Backport] Security bug 1265570
+    * [Backport] Security bug 1268448
+    * [Backport] Security bug 1270014
+    * [Backport] Security bug 1274113
+    * [Backport] Security bug 1276331
+    * [Backport] Security bug 1280743
+    * [Backport] Security bug 1289394
+    * [Backport] Security bug 1292537
+    * [Backport] sandbox: build if glibc 2.34+ dynamic stack size
+      is enabled
+- Drop patches, now upstream:
+  * CVE-2022-0971-qtwebengine-5.15.patch
+  * CVE-2022-1096-qtwebengine-5.15.patch
+
+-------------------------------------------------------------------
+Mon Apr  4 19:25:12 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add security fixes:
+  * CVE-2022-0971-qtwebengine-5.15.patch (CVE-2022-0971, boo#1197163)
+  * CVE-2022-1096-qtwebengine-5.15.patch (CVE-2022-1096, boo#1197552)
+
+-------------------------------------------------------------------
+Fri Mar 25 14:31:28 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix build with GCC 12:
+  * 0001-skia-Some-includes-to-fix-build-with-GCC-12.patch
+
+-------------------------------------------------------------------
+Tue Jan 04 22:22:01 UTC 2022 - christophe@krop.fr
+
+- Update to version 5.15.8:
+  * Update Chromium:
+    [Backport] CVE-2021-3517: libxml2: Heap-based buffer overflow
+    in xmlEncodeEntitiesInternal() in entities.c
+    [Backport] CVE-2021-3541 libxml2: Exponential entity expansion
+    attack bypasses all existing protection mechanisms
+    [Backport] CVE-2021-37984 : Heap buffer overflow in PDFium
+    [Backport] CVE-2021-37987 : Use after free in Network APIs
+    [Backport] CVE-2021-37989 : Inappropriate implementation in Blink
+    [Backport] CVE-2021-37992 : Out of bounds read in WebAudio
+    [Backport] CVE-2021-37993 : Use after free in PDF Accessibility
+    [Backport] CVE-2021-37996 : Insufficient validation of untrusted
+    input in Downloads
+    [Backport] CVE-2021-38001 : Type Confusion in V8
+    [Backport] CVE-2021-38003 : Inappropriate implementation in V8
+    [Backport] CVE-2021-38005: Use after free in loader (1/3)
+    [Backport] CVE-2021-38005: Use after free in loader (2/3)
+    [Backport] CVE-2021-38005: Use after free in loader (3/3)
+    [Backport] CVE-2021-38007: Type Confusion in V8
+    [Backport] CVE-2021-38009: Inappropriate implementation in cache
+    [Backport] CVE-2021-38010: Inappropriate implementation in serviceworkers
+    [Backport] CVE-2021-38012: Type Confusion in V8
+    [Backport] CVE-2021-38015: Inappropriate implementation in input
+    [Backport] CVE-2021-38017: Insufficient policy enforcement in iframe
+    sandbox
+    [Backport] CVE-2021-38018: Inappropriate implementation in navigation
+    [Backport] CVE-2021-38019: Insufficient policy enforcement in CORS
+    [Backport] CVE-2021-38021: Inappropriate implementation in referrer
+    [Backport] CVE-2021-38022: Inappropriate implementation in WebAuthentication
+    [Backport] CVE-2021-4057: Use after free in file API
+    [Backport] CVE-2021-4058: Heap buffer overflow in ANGLE (1/2)
+    [Backport] CVE-2021-4058: Heap buffer overflow in ANGLE (2/2)
+    [Backport] CVE-2021-4059: Insufficient data validation in loader
+    [Backport] CVE-2021-4062: Heap buffer overflow in BFCache
+    [Backport] CVE-2021-4078: Type confusion in V8
+    [Backport] CVE-2021-4079: Out of bounds write in WebRTC
+    [Backport] CVE-2021-4098: Insufficient data validation in Mojo
+    [Backport] CVE-2021-4099: Use after free in Swiftshader
+    [Backport] CVE-2021-4101: Heap buffer overflow in Swiftshader.
+    [Backport] CVE-2021-4102: Use after free in V8
+    [Backport] Dependency for CVE-2021-37989
+    [Backport] Dependency for CVE-2021-38009
+    [Backport] Security bug 1245870
+    [Backport] Security bug 1252858
+    [Backport] Security bug 1259899
+    Bump V8_PATCH_LEVEL
+    Compile with GCC 11 -std=c++20
+    Fix stack overflow on gpu channel recreate with an error
+    Use wglSetPixelFormat directly only if in software mode
+    [Backport] Handle long SIGSTKSZ in glibc > 2.33
+    [Backport] abseil-cpp: Fixes build with latest glibc
+  * Handle qtpdf compilation with static runtime
+  * Add bitcode support for qtpdf on ios
+  * Do not access accessibility from qt post routines
+  * Blacklist javascriptClipboard test on ubuntu 20.04
+  * Re-enable network-service-in-process
+  * Bump version from 5.15.7 to 5.15.8
+  * Update patch level
+  * Fix pinch gesture
+  * Fix leak of properties after XkbRF_GetNamesProp
+  * Fix leak on getDefaultScreeenId
+- Drop patch:
+  * 0001-Fix-build-with-glibc-2.34.patch
+
+-------------------------------------------------------------------
+Fri Oct 29 09:53:05 UTC 2021 - christophe@krop.fr
+
+- Update to version 5.15.7:
+  * Update Chromium:
+    [Backport] Linux sandbox: update syscalls numbers on 32-bit platforms
+    [Backport] sandbox: linux: allow clock_nanosleep & gettime64
+    [Backport] Linux sandbox: update syscall numbers for all platforms.
+    [Backport] Ease HarfBuzz API change with feature detection
+    [Backport] Security bug 1248665
+    [Backport] CVE-2021-37975 : Use after free in V8
+    [Backport] CVE-2021-37980 : Inappropriate implementation in Sandbox
+    [Backport] CVE-2021-37979 : Heap buffer overflow in WebRTC (2/2)
+    [Backport] CVE-2021-37979 : Heap buffer overflow in WebRTC (1/2)
+    [Backport] CVE-2021-37978 : Heap buffer overflow in Blink
+    [Backport] CVE-2021-30616: Use after free in Media.
+    [Backport] CVE-2021-37962 : Use after free in Performance Manager (2/2)
+    [Backport] CVE-2021-37962 : Use after free in Performance Manager (1/2)
+    [Backport] CVE-2021-37973 : Use after free in Portals
+    [Backport] CVE-2021-37971 : Incorrect security UI in Web Browser UI.
+    [Backport] CVE-2021-37968 : Inappropriate implementation in Background Fetch API
+    [Backport] CVE-2021-37967 : Inappropriate implementation in Background Fetch API
+    [Backport] Linux sandbox: return ENOSYS for clone3
+    [Backport] Linux sandbox: fix fstatat() crash
+    [Backport] Reland "Reland "Linux sandbox syscall broker: use struct kernel_stat""
+    [Backport] Security bug 1238178 (2/2)
+    [Backport] Security bug 1238178 (1/2)
+    [Backport] CVE-2021-30633: Use after free in Indexed DB API (2/2)
+    [Backport] CVE-2021-30633: Use after free in Indexed DB API (1/2)
+    [Backport] CVE-2021-30630: Inappropriate implementation in Blink
+    [Backport] CVE-2021-30629: Use after free in Permissions
+    [Backport] CVE-2021-30628: Stack buffer overflow in ANGLE
+    [Backport] CVE-2021-30627: Type Confusion in Blink layout
+    [Backport] CVE-2021-30626: Out of bounds memory access in ANGLE
+    [Backport] CVE-2021-30625: Use after free in Selection API
+    [Backport] Security bug 1206289
+    [Backport] CVE-2021-30613: Use after free in Base internals
+    [Backport] Security bug 1227228
+    [Backport] CVE-2021-30618: Inappropriate implementation in DevTools
+  * Update patch level
+  * Blacklist certificate test until certicates have been renewed
+  * Block CORS from local URLs when remote access is not enabled
+  * Do not wait on weak_pointer for termination errors
+  * Support MSVC_VER 16.8
+  * Fix wrong save file filter for Markdown Editor example
+  * Add Chromium version source documentation
+  * Bump version from 5.15.6 to 5.15.7
+  * Fix crash when clicking on a link in PDF
+- Drop openSUSE patches:
+  * fix1163766.patch. Should be addressed with:
+    https://github.com/qt/qtwebengine-chromium/commit/652f834de
+    https://github.com/qt/qtwebengine-chromium/commit/faae106ed
+    https://github.com/qt/qtwebengine-chromium/commit/6b7b3f1bf
+  * chromium-glibc-2.33.patch. Should be addressed with the
+    [Backport] Linux sandbox: fix fstatat() crash and
+    Reland "Reland "Linux sandbox syscall broker: use struct kernel_stat""
+    changes.
+  * chromium-older-harfbuzz.patch
+- Drop upstream changes:
+  * 0001-return-ENOSYS-for-clone3.patch
+  * chromium-harfbuzz-3.0.0.patch
+  * skia-harfbuzz-3.0.0.patch
+- Rebase patches:
+  * sandbox-statx-futex_time64.patch
+
+-------------------------------------------------------------------
+Tue Sep 21 11:34:41 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add patches from Arch to fix build with HarfBuzz 3.0.0:
+  * chromium-harfbuzz-3.0.0.patch
+  * skia-harfbuzz-3.0.0.patch
+- ... but don't break with < 2.9.0:
+  * chromium-older-harfbuzz.patch
+
+-------------------------------------------------------------------
+Thu Sep 09 07:19:58 UTC 2021 - christophe@krop.fr
+
+- Update to version 5.15.6:
+  * Update Chromium:
+    + [Backport] CVE-2021-30560: Use after free in Blink XSLT
+    + [Backport] CVE-2021-30566: Stack buffer overflow in Printing
+    + [Backport] CVE-2021-30585: Use after free in sensor handling
+    + Bump V8_PATCH_LEVEL
+    + [Backport] Security bug 1228036
+    + [Backport] CVE-2021-30604: Use after free in ANGLE
+    + [Backport] CVE-2021-30603: Race in WebAudio
+    + [Backport] CVE-2021-30602: Use after free in WebRTC
+    + [Backport] CVE-2021-30599: Type Confusion in V8
+    + [Backport] CVE-2021-30598: Type Confusion in V8
+    + [Backport] Security bug 1227933
+    + [Backport] Security bug 1205059
+    + [Backport] Security bug 1184294
+    + [Backport] Security bug 1198385
+    + [Backport] CVE-2021-30588: Type Confusion in V8
+    + [Backport] CVE-2021-30587: Inappropriate implementation in Compositing on Windows
+    + [Backport] CVE-2021-30573: Use after free in GPU
+    + [Backport] CVE-2021-30569, security bugs 1198216 and 1204814
+    + [Backport] CVE-2021-30568: Heap buffer overflow in WebGL
+    + [Backport] CVE-2021-30541: Use after free in V8
+    + [Backport] Security bugs 1197786 and 1194330
+    + [Backport] Security bug 1194689
+    + [Backport] CVE-2021-30563: Type Confusion in V8
+    + [Backport] Security bug 1211215
+    + [Backport] Security bug 1209558
+    + [Backport] CVE-2021-30553: Use after free in Network service
+    + [Backport] CVE-2021-30548: Use after free in Loader
+    + [Backport] CVE-2021-30547: Out of bounds write in ANGLE
+    + [Backport] CVE-2021-30556: Use after free in WebAudio
+    + [Backport] CVE-2021-30559: Out of bounds write in ANGLE
+    + [Backport] CVE-2021-30533: Insufficient policy enforcement in PopupBlocker
+    + [Backport] Security bug 1202534
+    + [Backport] CVE-2021-30536: Out of bounds read in V8
+    + [Backport] CVE-2021-30522: Use after free in WebAudio
+    + [Backport] CVE-2021-30554 Use after free in WebGL
+    + [Backport] CVE-2021-30551: Type Confusion in V8
+    + [Backport] CVE-2021-30544: Use after free in BFCache
+    + [Backport] CVE-2021-30535: Double free in ICU
+    + [Backport] CVE-2021-30534: Insufficient policy enforcement in iFrameSandbox
+    + [Backport] CVE-2021-30530: Out of bounds memory access in WebAudio
+    + [Backport] CVE-2021-30523: Use after free in WebRTC
+    + Generate mojo bindings before compiling extension API registration
+  * Bump version from 5.15.5 to 5.15.6
+  * Always send phased wheel events beginning with Began
+- Import patch from the chromium package:
+  * 0001-return-ENOSYS-for-clone3.patch
+- Add changes from the chromium package to
+  0001-Fix-build-with-glibc-2.34.patch
+
+-------------------------------------------------------------------
+Wed Aug  4 15:23:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with glibc 2.34 (boo#1189095)
+  * 0001-Fix-build-with-glibc-2.34.patch
+
+-------------------------------------------------------------------
+Thu Jun 24 16:39:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the CMake version workaround to get qtbase's real version
+
+-------------------------------------------------------------------
+Tue Jun 22 09:00:44 UTC 2021 - christophe@krop.fr
+
+- Update to version 5.15.5:
+  * Abort findText also right on explicit navigation request
+  * Adapt to new Connections syntax
+  * Add devtools eyedropper support
+  * Add more tests to tst_loadsignals
+  * Add support for Keyboard.getLayoutMap()
+  * Add web-ui chrome://net-internals
+  * Allow leaving OCSP off
+  * Always send phased wheel events beginning with Began
+  * Avoid accessing profileAdapter when profile is shutting down
+  * Avoid unknownFunc messages in qmltests
+  * Blacklist CertificateError::test_error for macOS
+  * Blacklist NewViewRequest::test_loadNewViewRequest on macOS
+  * Blacklist handleError on macos until we merge the fix
+  * Blacklist numberOfStartedAndFinishedSignalsIsSame on b2q CIs
+  * Depend on QCoreApplication::startingUp() for checking
+    existence of app
+  * Do not allow WebBluetooth to continue
+  * Do not hide virtual keyboard if the focused node is editable
+  * Doc: Add a note about navigation within a page to a fragment
+  * Docs: Suggest to use higher DPI for printing
+  * Fix FilePickerController's path validation for windows and
+    corresponding tests
+  * Fix application locales again
+  * Fix embedded PDFs when plugins are disabled
+  * Fix first party url for cookie filter
+  * Fix inconsistent number of load signals and their order
+  * Fix normalization of app locales
+  * Fix not working certificates on mac > 10.14
+  * Fix prl files on ios
+  * Fix qmltests::WebEngineViewNavigationHistory auto tests
+  * Fix qtpdf static builds on windows
+  * Fix static build of qml qtpdf
+  * Follow InProcessGpuThread::Init() on thread priority
+  * Generate mojo bindings before compiling extension API
+    registration
+  * Implement PluginServiceFilterQt
+  * Load signals test: use focusProxy for link clicking test
+  * Make able to override disabled features from command line
+  * Notify canGoBack/canGoForward changes based on web actions
+  * Only disconnect QWebEnginePage signals that QWebEngineView
+    connected
+  * Package devtools inspector overlay
+  * Remove ResourceTypeSubFrame check after website update
+  * Remove obsolete loadSignals test
+    secondLoadForError_WhenErrorPageEnabled
+  * Remove qquickwebengineprofile test
+  * Remove tracking of frame which load error page
+  * Remove ui/snapshot overrides for aura
+  * Report server directs in navigation type
+  * Return to using the default devtools page
+  * Set enumaration root directory for File.webkitRelativePath API
+  * Set more Display properties
+  * Show PDF viewer in a guest view
+  * Support devtools close button in QuickNanoBrowser
+  * Support zoom-in, zoom-out and cell web cursors on macOS
+  * Unblacklist and fix load signals test for file download
+  * Update Chromium and adapt PermissionManagerQt
+  * Update platform notes
+  * View: test signal for deletion of external page set to view
+- Drop patches:
+  * 0001-Fix-normalization-of-app-locales.patch
+  * 0001-Fix-build-with-GCC-11.patch
+  * 0001-Fix-build-with-system-ICU-69.patch
+
+-------------------------------------------------------------------
+Thu May  6 11:45:34 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix build with ICU 69:
+  * 0001-Fix-build-with-system-ICU-69.patch
+
+-------------------------------------------------------------------
+Wed Apr 14 18:26:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with GCC 11:
+  * 0001-Fix-build-with-GCC-11.patch
+
+-------------------------------------------------------------------
+Wed Apr 14 16:35:17 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to avoid OOM
+
+-------------------------------------------------------------------
+Tue Apr 13 20:12:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add back missing part in fix1163766.patch (boo#1184610)
+
+-------------------------------------------------------------------
+Wed Mar 24 12:45:13 UTC 2021 - christophe@krop.fr
+
+- Update to version 5.15.3:
+  * Fix spelling and coding style
+  * Fix new view request handling (QTBUG-87378)
+  * Fix getDefaultScreenId on X11
+  * Fix flaky tst_QWebEngineView::textSelectionOutOfInputField test
+  * Move touch input tests to separate testcase
+  * Add touch input tests for scrolling and pinch zooming
+  * Fix rare duplicate ids forming in touch point id's mapping
+  * Use the module's version number for QtWebEngineProcess
+  * Touch handling: provide id mapping without modifying TouchPoint instance
+    (QTBUG-88001)
+  * Touch handling: fix mapped ids cleanup for TouchCancel event
+  * et custom headers from QWebEngineUrlRequestInfo before triggering redirect
+    (QTBUG-88861)
+  * Forward modifier flags for lock keys (QTBUG-89001)
+  * Fix handling of more than one finger for touch event (QTBUG-86389)
+  * Stabilize load signals emitting (QTBUG-65223, QTBUG-87089)
+  * Fix building against 5.12 on most CIs
+  * Update minimum HarfBuzz version to 2.4.0 (QTBUG-88976)
+  * Fix building against Qt 5.14
+  * Migrate user script IPC to mojo
+  * Fix crashes in user resource controller when single process
+  * Minor. Fix namespace for user resource controller
+  * Minor. RenderThreadObserverQt is really a RenderConfiguration
+  * Remove RenderViewObserverHelper from UserResourceController
+  * Cache mojo interface bindings to UserResourceControllerRenderFrame
+  * Cache mojo interface bindings for WebChannelIPCTransport
+  * Migrate render_view_observer_qt to mojo
+  * Fix crash on linkedin.com (QTBUG-89740)
+  * Suppress error pages also for http errors if they are disabled
+  * Fix leak in QQuickWebEngineViewPrivate::contextMenuRequested
+  * Register PerformanceNode early enough
+  * Quiet log on webrtc usage
+  * Remove configure option that doesn't work
+  * Remove Java build dependency
+  * Fix blank popups in qml (QTBUG-86034)
+  * Fix position of popup on qml (QTBUG-86034, QTBUG-89358)
+  * Enable hangout services extension (QTBUG-85731)
+  * Allow to fallback to default locale for non existent data packs (QTBUG-90490)
+  * Support devtools close button
+  * Do not extract download file names from certain url schemes (QTBUG-90355)
+  * Leave room for the null-termination byte when checking remote drive path
+    (QTBUG-90347)
+  * Do not set open files limit for linking if not necessary
+  * Remove even more remains of non network service code
+  * Add back prefers-color-scheme support (QTBUG-89753)
+  * Start supporting chrome.resourcesPrivate API (QTBUG-90035)
+  * Enable chrome://user-actions WebUI
+  * Remove remains of chrome://flash
+  * Fix loadFinished signal if page has content but server sends HTTP error
+    (QTBUG-90517)
+  * Fix devtools page resource loading as raw data instead of html string
+  * Remove frame metadata observer (RenderWidgetHostViewQt) on destroy
+  * Resolve installed interceptors right before interception point (QTBUG-86286)
+  * Update searches faster
+  * Remove more leftovers of the old compositor
+  * Enable webrtc logging and the corresponding WebUI
+  * Support mips64el platform CPU(loongson 3A4000)
+  * Add tracing UI resources
+  * Fix crash on meet.google.com
+  * Fix mad popup qquickwindows on wayland
+  * Fix crashes on BrowserContext destruction
+  * Fix crash on exit in quicknanobrowser when popup
+  * Remove QtPdf dependency on nss at build-time
+  * Avoid accessing profileAdapter when profile is shutting down (QTBUG-91187)
+  * Do not flush messages form profile destructor
+  * Ignore QQuickWebEngineNewViewRequest if it is unhandled
+  * Fix ScopedGLContextChecker with QTWEBENGINE_DISABLE_GPU_THREAD=1
+  * Don't send duplicate load progress values
+  * Fix neon support in libpng
+  * Do not call deprecated profile interceptor on ui thread (QTBUG-86267)
+  * Add certificate error message for ERR_SSL_OBSOLETE_VERSION
+  * Fix assert in WebContentsAdapter::devToolsFrontendDestroyed
+  * Avoid to reject a certificate error twice in Quick
+  * Fix PDF viewer plugin
+  * FIXUP: Fix swap condition in DisplayGLOutputSurface::updatePaintNode
+    (QTBUG-86599)
+  * Fix favicon engine under device pixel scaling
+  * Do not pass a native keycode matching the menu key when it is remapped
+    (QTBUG-86672)
+  * Optimize WebEngineSettings::testAttribute
+  * Warn about QtWebengineProcess launching from network share (QTBUG-84632)
+  * Handle non-ascii names for pulseaudio (QTBUG-85363)
+  * Do not set audio device for desktop capture if audio loopback is unsupported
+  * Fix new view request handling (QTBUG-87378)
+  * Fix getDefaultScreenId on X11
+  * Touch handling: provide id mapping without modifying TouchPoint instance
+    (QTBUG-88001)
+  * Set custom headers from QWebEngineUrlRequestInfo before triggering redirect
+    (QTBUG-88861)
+  * Stabilize load signals emitting (QTBUG-65223)
+
+- CVE fixes backported in chromium updates:
+  * CVE-2020-16044: Use after free in WebRTC
+  * CVE-2021-21118: Heap buffer overflow in Blink
+  * CVE-2021-21119: Use after free in Media
+  * CVE-2021-21120: Use after free in WebSQL
+  * CVE-2021-21121: Use after free in Omnibox
+  * CVE-2021-21122: Use after free in Blink
+  * CVE-2021-21123: Insufficient data validation in File System API
+  * CVE-2021-21125: Insufficient policy enforcement in File System API
+  * CVE-2021-21126: Insufficient policy enforcement in extensions
+  * CVE-2021-21127: Insufficient policy enforcement in extensions
+  * CVE-2021-21128: Heap buffer overflow in Blink
+  * CVE-2021-21129: Insufficient policy enforcement in File System API
+  * CVE-2021-21130: Insufficient policy enforcement in File System API
+  * CVE-2021-21131: Insufficient policy enforcement in File System API
+  * CVE-2021-21132: Inappropriate implementation in DevTools
+  * CVE-2021-21135: Inappropriate implementation in Performance API
+  * CVE-2021-21137: Inappropriate implementation in DevTools
+  * CVE-2021-21140: Uninitialized Use in USB
+  * CVE-2021-21141: Insufficient policy enforcement in File System API
+  * CVE-2021-21145: Use after free in Fonts
+  * CVE-2021-21146: Use after free in Navigation
+  * CVE-2021-21147: Inappropriate implementation in Skia
+  * CVE-2021-21148: Heap buffer overflow in V8
+  * CVE-2021-21149: Stack overflow in Data Transfer
+  * CVE-2021-21150: Use after free in Downloads
+  * CVE-2021-21152: Heap buffer overflow in Media
+  * CVE-2021-21153: Stack overflow in GPU Process
+  * CVE-2021-21156: Heap buffer overflow in V8
+  * CVE-2021-21157: Use after free in Web Sockets
+- Drop obsolete patches:
+  * icu-68.patch
+  * icu-68-2.patch
+- Rebase patches:
+  * fix1163766.patch
+  * sandbox-statx-futex_time64.patch
+  * rtc-dont-use-h264.patch
+  * chromium-glibc-2.33.patch
+- Add patch to fix crash with certain locales:
+  * 0001-Fix-normalization-of-app-locales.patch
+- Clean the spec file a bit
+
+-------------------------------------------------------------------
+Wed Mar 10 16:52:28 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Can't use system_vpx on Leap 15.3
+
+-------------------------------------------------------------------
+Wed Feb 17 13:19:20 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix sandbox with glibc 2.33 on 32bit:
+  * sandbox-statx-futex_time64.patch
+
+-------------------------------------------------------------------
+Tue Feb 16 09:52:13 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Relax constraints for armv6 and armv7
+
+-------------------------------------------------------------------
+Mon Feb 15 16:28:49 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix sandbox with glibc 2.33 (boo#1182233):
+  * chromium-glibc-2.33.patch
+
+-------------------------------------------------------------------
+Fri Jan 29 11:06:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Bump _constraints and %limit_build, hopefully avoid occasional
+  OOM and make the build quicker
+- Drop obsolete conditions
+
+-------------------------------------------------------------------
+Fri Jan  8 16:27:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop baselibs.conf, not needed after libksysguard5 got adjusted
+
+-------------------------------------------------------------------
+Tue Dec 15 08:59:07 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix build with ICU 68:
+  * Added icu-68.patch
+  * Added icu-68-2.patch
+
+-------------------------------------------------------------------
+Fri Nov 20 12:10:08 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.2:
+  * New bugfix release
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.15.2/?h=5.15.2
+
+-------------------------------------------------------------------
+Thu Sep 10 07:57:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.1:
+  * New bugfix release
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.15.1/?h=5.15.1
+- Drop patches, now upstream:
+  * icu-v67.patch
+  * 0001-fix-build-after-y2038-changes-in-glibc.patch
+- Refresh disable-gpu-when-using-nouveau-boo-1005323.diff
+- Update rtc-dont-use-h264.patch
+
+-------------------------------------------------------------------
+Thu May 28 10:28:37 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to not require openh264 and don't build the bundled version:
+  * rtc-dont-use-h264.patch
+
+-------------------------------------------------------------------
+Wed May 27 08:47:23 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Can't use system VPX on Leap 15.2
+
+-------------------------------------------------------------------
+Tue May 26 11:27:19 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 5.15.0:
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu May 21 10:35:41 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 5.15.0-rc2:
+  * No changelog available
+  * Removed some-more-includes-gcc10.patch: contained in upstream
+
+-------------------------------------------------------------------
+Wed May  6 11:43:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-rc:
+  * New bugfix release
+  * For the changes between 5.14.2 and 5.15.0 please see:
+    http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.15.0/?h=5.15.0
+- Drop patches, now upstream:
+  * QTBUG-82186.patch
+
+-------------------------------------------------------------------
+Fri Apr 24 10:19:13 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add icu-v67.patch to fix compilation with icu v67, this is a backport
+  of https://github.com/v8/v8/commit/3f8dc4b2e5baf77b463334c769af85b79d8c1463 
+- Rebase icu-v67.patch on 5.15.0-beta4
+
+-------------------------------------------------------------------
+Fri Apr 24 07:11:42 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta4:
+  * New bugfix release
+  * No changelog available
+- Refresh QTBUG-82186.patch
+
+-------------------------------------------------------------------
+Tue Apr 14 06:47:59 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta3:
+  * New bugfix release
+  * No changelog available
+- Refresh fix1163766.patch
+
+-------------------------------------------------------------------
+Thu Apr  9 08:21:02 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add fix1163766.patch to fix opensuse-welcome on i686 (boo#1163766)
+
+-------------------------------------------------------------------
+Mon Mar 30 13:49:40 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix build with GCC 10 (boo#1158516):
+  * some-more-includes-gcc10.patch
+
+-------------------------------------------------------------------
+Tue Mar 24 12:14:06 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Feb 28 09:59:24 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta1:
+  * New bugfix release
+  * No changelog available
+- Drop patches, now upstream:
+  * fix-missing-designerplugin.patch
+  * QTBUG-81574.patch
+
+-------------------------------------------------------------------
+Fri Feb 21 13:36:31 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix a deadlock causing audio/video playback to fail (boo#1163744):
+  * QTBUG-82186.patch
+
+-------------------------------------------------------------------
+Fri Feb 21 09:25:44 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix an issue with selections breaking replying in KMail:
+  * QTBUG-81574.patch
+
+-------------------------------------------------------------------
+Wed Feb 19 10:17:00 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-alpha:
+  * New feature release
+  * For more details please see:
+    https://wiki.qt.io/New_Features_in_Qt_5.15
+- Add patch to fix building the designer plugin:
+  * fix-missing-designerplugin.patch
+- Move designer plugin into -devel subpackage
+- Add packages for new Qt PDF module (which is technically separate
+  from WebEngine, but shares the source tarball)
+
+-------------------------------------------------------------------
+Mon Jan 27 13:14:47 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.1:
+  * New bugfix release
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.14.1/?h=v5.14.1
+
+-------------------------------------------------------------------
+Mon Jan 20 15:00:59 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable valgrind on %arm due to boo#1130395
+
+-------------------------------------------------------------------
+Thu Dec 12 12:59:01 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0:
+  * New bugfix release
+  * For the changes between 5.13.2 and 5.14.0 please see:
+    https://code.qt.io/cgit/qt/qtwebengine.git/tree/dist/changes-5.14.0?h=v5.14.0
+  * For the changes between 5.13.1 and 5.13.2 please see:
+    https://code.qt.io/cgit/qt/qtwebengine.git/tree/dist/changes-5.13.2?h=v5.14.0
+
+-------------------------------------------------------------------
+Wed Dec  4 14:38:17 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-rc:
+  * New bugfix release
+  * No changelog available
+  * For more details please see:
+  * For more details about Qt 5.14 please see:
+    https://wiki.qt.io/New_Features_in_Qt_5.14
+
+-------------------------------------------------------------------
+Tue Nov 12 13:03:47 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-beta3:
+  * New bugfix release
+  * No changelog available
+- Remove patches, now upstream:
+  * fix-system-icu.patch
+
+-------------------------------------------------------------------
+Thu Oct 24 13:23:15 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-beta2:
+  * New bugfix release
+  * No changelog available
+- Drop patch, not necessary anymore:
+  * harmony-fix.diff
+
+-------------------------------------------------------------------
+Tue Oct 15 12:35:01 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-beta1:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Mon Sep 30 13:30:50 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-alpha:
+  * New feature release
+  * No changelog available
+  * For more details about Qt 5.14 please see:
+    https://wiki.qt.io/New_Features_in_Qt_5.14
+- Drop chromium-non-void-return.patch, with newer post-build-checks
+  this is not necessary anymore
+- Add patch to fix build with system ICU (QTBUG-78911):
+  * fix-system-icu.patch
+
+-------------------------------------------------------------------
+Thu Sep 19 07:48:11 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add gn_args+=link_pulseaudio=true to work around incompatibility
+  with PA 13 headers (QTBUG-77037)
+- Enable kerberos support
+
+-------------------------------------------------------------------
+Fri Sep  6 08:04:49 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.13.1:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.13.1/?h=v5.13.1
+
+-------------------------------------------------------------------
+Tue Aug  6 20:17:28 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Increase disk constraints to 12G, TW needs 11.7G currently
+
+-------------------------------------------------------------------
+Fri Jul 12 07:26:17 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Increase assumed per-job memory use to 2.5GB
+
+-------------------------------------------------------------------
+Thu Jul 11 07:46:30 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- add 0001-fix-build-after-y2038-changes-in-glibc.patch
+
+-------------------------------------------------------------------
+Wed Jun 19 11:26:34 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0:
+  * New bugfix release
+  * No changelog available
+  * For more details about Qt 5.13 please see:
+  * http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.13.0/?h=5.13
+
+-------------------------------------------------------------------
+Sat Jun 15 14:37:48 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Replace open coded macro for parallel build limit by the one from the
+  memory-constraints package
+
+-------------------------------------------------------------------
+Tue Jun  4 07:25:38 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-rc:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Apr 30 12:50:05 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix system_vpx bcond
+
+-------------------------------------------------------------------
+Mon Apr 29 09:17:20 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-beta2:
+  * New bugfix release
+  * No changelog available
+- Refresh patches:
+  * harmony-fix.diff
+  * chromium-non-void-return.patch (sigh, again)
+- Fix system_vpx bcond
+- Disable using the system ICU on Leap < 16, too old
+
+-------------------------------------------------------------------
+Thu Apr 18 07:27:59 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.3:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.12.3/?h=v5.12.3
+- Refresh chromium-non-void-return.patch
+
+-------------------------------------------------------------------
+Thu Mar 21 10:26:45 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-beta1:
+  * New feature release
+  * For more details about Qt 5.13 please see:
+  * http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.13.0/?h=5.13
+- Refresh patches:
+  * disable-gpu-when-using-nouveau-boo-1005323.diff
+  * harmony-fix.diff
+  * chromium-non-void-return.patch (sigh)
+- Remote patches, now upstream:
+  * reproducible.patch
+
+-------------------------------------------------------------------
+Thu Mar 14 08:52:25 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.2:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.12.2/?h=5.12.2
+- Remove patches, now upstream:
+  * cve-2019-5786.patch
+
+-------------------------------------------------------------------
+Mon Mar 11 16:14:07 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Add cve-2019-5786.patch
+  Backport fix for CVE-2019-5786
+  https://bugreports.qt.io/browse/QTBUG-74254
+
+-------------------------------------------------------------------
+Mon Feb  4 14:16:08 UTC 2019 - wbauer@tmo.at
+
+- Fix build on Leap 42.3 by adding c++14 to QT_CONFIG
+
+-------------------------------------------------------------------
+Fri Feb  1 08:40:35 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.1:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.12.1/?h=v5.12.1
+- Refresh disable-gpu-when-using-nouveau-boo-1005323.diff
+- Remove patches, now upstream:
+  * gn-fix_arm.patch
+  * chromium-66.0.3359.170-gcc8-alignof.patch
+
+-------------------------------------------------------------------
+Mon Jan 21 14:14:56 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to override chromium build date
+  to make package build reproducible (boo#1047218)
+- Use openSUSE's ninja for the build so that we can apply fixes there
+  that are used by everyone (boo#1118619)
+
+-------------------------------------------------------------------
+Fri Dec 21 07:34:16 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport patch to fix %arm builds:
+  * gn-fix_arm.patch
+
+-------------------------------------------------------------------
+Thu Dec  6 13:37:44 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0:
+  * New feature release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.12.0/?h=v5.12.0
+
+-------------------------------------------------------------------
+Mon Dec  3 08:17:29 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-rc2:
+  * New bugfix release
+  * Only important bugfixes
+- Changelog for Qt 5.12.0:
+  * http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.12.0/?h=5.12.0
+
+-------------------------------------------------------------------
+Thu Nov 22 13:40:08 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-rc:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu Nov  8 15:25:48 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta4:
+  * New bugfix release
+  * No changelog available
+- Add yet another hunk to chromium-non-void-return.patch
+
+-------------------------------------------------------------------
+Fri Oct 26 07:21:23 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta3:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Oct 17 08:24:15 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Oct  5 19:35:36 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta1:
+  * New bugfix release
+  * No changelog available
+- Refresh patches:
+  * harmony-fix.diff
+  * chromium-66.0.3359.170-gcc8-alignof.patch
+- Replace no-return-in-nonvoid-function.diff with
+  with chromium-non-void-return.patch from the chromium package
+
+-------------------------------------------------------------------
+Tue Oct  2 07:34:48 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-alpha:
+  * New feature release
+  * For more details please see:
+  * http://wiki.qt.io/New_Features_in_Qt_5.12
+- Refresh disable-gpu-when-using-nouveau-boo-1005323.diff
+- Raise mem_per_process to 200M
+
+-------------------------------------------------------------------
+Fri Sep 21 07:59:57 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.11.2/?h=v5.11.2
+- Remove patches, now upstream:
+  * fix-build-with-ffmpeg4.patch
+
+-------------------------------------------------------------------
+Tue Aug 14 09:31:03 UTC 2018 - wbauer@tmo.at
+
+- Use pkgconfig() notation for the libav* BuildRequires
+
+-------------------------------------------------------------------
+Sat Jun 30 09:22:22 UTC 2018 - fabian@ritter-vogt.de
+
+- Enable building against the system ICU again
+- Add physicalmemory >= 5GiB to _constraints in the hope to speed up
+  builds
+
+-------------------------------------------------------------------
+Tue Jun 19 10:52:44 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.11.1/?h=v5.11.1
+- Remove patches, now upstream:
+  * fix-build-with-gcc-8.patch
+  * fix-build-with-gcc-8-for-real.patch
+  * fix-build-with-opengles2.patch
+- Add patch to fix build on 32-bit:
+  * chromium-66.0.3359.170-gcc8-alignof.patch
+
+-------------------------------------------------------------------
+Fri Jun  8 09:16:47 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Add a patch to fix build with opengles2 (means on ARM):
+  * fix-build-with-opengles2.patch
+
+-------------------------------------------------------------------
+Thu Jun  7 07:18:15 UTC 2018 - fvogt@suse.com
+
+- Add yet another upstream chromium patch to fix build with GCC 8.1:
+  * fix-build-with-gcc-8-for-real.patch
+
+-------------------------------------------------------------------
+Tue Jun  5 12:02:59 UTC 2018 - lbeltrame@kde.org
+
+- Add upstream Chromium patch to fix build with GCC 8.1:
+  * fix-build-with-gcc-8.patch
+- Add upstream Chromium patch to fix build with ffmpeg 4:
+  * fix-build-with-ffmpeg4.patch
+- Refresh patches:
+  * disable-gpu-when-using-nouveau-boo-1005323.diff
+  * harmony-fix.diff
+
+-------------------------------------------------------------------
+Wed May 30 07:54:28 UTC 2018 - fabian@ritter-vogt.de
+
+- Fix %postun: Comment in wrong section
+
+-------------------------------------------------------------------
+Tue May 22 16:59:28 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.11.0/?h=v5.11.0
+
+-------------------------------------------------------------------
+Thu May 17 15:21:39 UTC 2018 - fabian@ritter-vogt.de
+
+- Use %autopatch
+- Use %license
+
+-------------------------------------------------------------------
+Tue May  8 11:02:00 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-rc
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Mon May  7 12:13:15 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Fix armv6 by removing unneeded additionnal RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Mon Apr 23 08:59:37 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta4
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Apr 11 11:00:17 UTC 2018 - mliska@suse.cz
+
+- Add no-return-in-nonvoid-function.diff in order to fix boo#1087068.
+
+-------------------------------------------------------------------
+Wed Apr 11 09:15:40 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta3
+  * New bugfix release
+  * No changelog available
+- Refresh patches:
+  * no-return-in-nonvoid-function.diff
+
+-------------------------------------------------------------------
+Thu Mar 29 13:20:53 UTC 2018 - kamikazow@opensuse.org
+
+- Changed license header back to original template
+  * LGPL-2.1-or-later was wrong
+- Package license is LGPL-3.0-only, GPL-2.0-only, GPL-3.0-only
+  * incorporates 3rd party code (Chromium, WebKit, even some dating
+    back to KHTML), therefore no "with-Qt-Company-Qt-exception-1.1"
+    because those 3rd parties never granted them.
+
+-------------------------------------------------------------------
+Wed Mar 28 09:18:01 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta2
+  * New bugfix release
+  * No changelog available
+- Remove patches, now upstream:
+  * qtwebengine-everywhere-src-5.10.1-security-5.9.5.patch
+  * qtwebengine-everywhere-src-5.10.1-CVE-2018-6033.patch
+
+-------------------------------------------------------------------
+Tue Mar 27 15:34:51 UTC 2018 - wbauer@tmo.at
+
+- Only automatically convert dictionaries on Leap 15 or higher,
+  %filetriggerin is not supported in Leap 42.3 which caused the
+  build to fail
+
+-------------------------------------------------------------------
+Sun Mar 25 15:58:52 UTC 2018 - kamikazow@opensuse.org
+
+- Enable spell checking:
+  * Ported script snippet from Fedora package by Kevin Kofler
+  * Converts available Hunspell dictionaries locally during installation
+- Changed specfile header to reflect code coming from K. Kofler
+
+-------------------------------------------------------------------
+Fri Mar 23 08:14:18 UTC 2018 - wbauer@tmo.at
+
+- Also adjust the minimum versions of the private-headers-devel
+  subpackage's requirements
+
+-------------------------------------------------------------------
+Thu Mar 22 22:40:32 UTC 2018 - kamikazow@opensuse.org
+
+- Apply a fix to make QtWE-using applications actually compile against it
+
+-------------------------------------------------------------------
+Sun Mar 18 22:57:09 UTC 2018 - kamikazow@opensuse.org
+
+- Forward-port security backports from 5.9.5 LTS (up to Chromium 65.0.3325.146)
+  * qtwebengine-everywhere-src-5.10.1-security-5.9.5.patch from Fedora
+  * qtwebengine-everywhere-src-5.10.1-CVE-2018-6033.patch from Fedora
+
+-------------------------------------------------------------------
+Tue Mar 13 13:40:53 UTC 2018 - christophe@krop.fr
+
+- Fix the license tag.
+
+-------------------------------------------------------------------
+Thu Mar  1 09:56:21 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta1
+  * New feature release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.11.0-beta1/?h=v5.11.0-beta1
+
+-------------------------------------------------------------------
+Tue Feb 20 14:32:19 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-alpha
+  * New feature release
+  * For more details please see:
+  * https://wiki.qt.io/New_Features_in_Qt_5.11
+- Refresh patches:
+  * armv6-ffmpeg-no-thumb.patch
+
+-------------------------------------------------------------------
+Wed Feb 14 15:47:56 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtwebengine.git/plain/dist/changes-5.10.1/?h=v5.10.1
+
+-------------------------------------------------------------------
+Fri Feb  2 10:43:48 UTC 2018 - dimstar@opensuse.org
+
+- Eliminate build dependency on procps: we only used it to run
+  'free', in order to find out how much RAM we have available. We
+  can get this information directly from the kernel, from
+  /proc/meminfo.
+
+-------------------------------------------------------------------
+Fri Jan 12 19:10:53 UTC 2018 - fabian@ritter-vogt.de
+
+- Also work around crashes on wayland by disabling the GPU by default (boo#1060990):
+  * disable-gpu-when-using-nouveau-boo-1005323.diff
+
+-------------------------------------------------------------------
+Fri Dec  8 23:14:38 UTC 2017 - christophe@krop.fr
+
+- Update the license tag (boo#967696)
+
+-------------------------------------------------------------------
+Thu Dec  7 12:18:17 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 final
+  * New bugfix release
+
+-------------------------------------------------------------------
+Sun Dec  3 14:13:03 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 RC 2
+  * New bugfix release
+
+-------------------------------------------------------------------
+Thu Nov 30 09:47:21 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 RC 1
+  * New bugfix release
+
+-------------------------------------------------------------------
+Sat Nov 25 12:46:51 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+  * New bugfix release
+  * For more details, see:
+    http://code.qt.io/cgit/qt/qtwebengine.git/tree/dist/changes-5.9.3/?h=v5.9.3
+
+- Add patch to fix build on armv6:
+  spinlock-armv6.patch
+
+-------------------------------------------------------------------
+Wed Nov 15 11:41:56 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 4
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Thu Nov  2 08:53:34 UTC 2017 - tittiatcoke@gmail.com
+
+- Add some feature from the Chromium builds to determine the maximum
+  allowed parallel processes based on the available memory. Also
+  ensure that the ninja build follows this maximum
+
+-------------------------------------------------------------------
+Thu Nov  2 07:23:00 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 3
+- Contains bugfixes
+- Refresh patches:
+  * armv6-ffmpeg-no-thumb.patch
+  * disable-gpu-when-using-nouveau-boo-1005323.diff
+  * harmony-fix.diff
+
+-------------------------------------------------------------------
+Tue Oct 31 16:49:12 UTC 2017 - fabian@ritter-vogt.de
+
+- Restore working version of
+  disable-gpu-when-using-nouveau-boo-1005323.diff
+
+-------------------------------------------------------------------
+Mon Oct 30 16:19:45 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 2
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Mon Oct  9 16:17:45 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 1
+- For more information visit:
+    https://blog.qt.io/blog/2017/10/09/qt-5-10-beta-released/
+- Remove patches, now upstream:
+  * clip-ft-glyph.diff
+- Refresh patches:
+  * disable-gpu-when-using-nouveau-boo-1005323.diff
+  * harmony-fix.diff
+
+-------------------------------------------------------------------
+Sun Oct  8 14:12:31 UTC 2017 - lbeltrame@kde.org
+
+- Update to 5.9.2
+  * For more details please see:
+    https://blog.qt.io/blog/2017/10/06/qt-5-9-2-released/
+- Dropped patches, now upstream:
+  * clip-ft-glyph.diff
+
+-------------------------------------------------------------------
+Tue Oct  3 02:27:41 UTC 2017 - t.zell@gmx.de
+
+- Fixes to make fonts readable again with FreeType 2.8.1 (boo#1061344):
+   * clip-ft-glyph.diff
+   * harmony-fix.diff
+
+-------------------------------------------------------------------
+Tue Sep 26 15:03:00 UTC 2017 - fabian@ritter-vogt.de
+
+- Unbundle ffmpeg if possible, only support proprietary codecs
+  if the system ffmpeg does
+
+-------------------------------------------------------------------
+Mon Sep 25 14:42:37 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Alpha 1
+- For more information visit:
+    https://blog.qt.io/blog/2017/09/13/qt-5-10-alpha-released/
+
+-------------------------------------------------------------------
+Mon Jul 10 09:56:30 UTC 2017 - mlin@suse.com
+
+- Raise memory size to 9G and drop overwrite part of s390z build,
+  we didn't have build s390x at all. (bsc#1047896)
+- Make it -j4 for all archtectures: do not run too many parallel that
+  would costs more memory.
+
+-------------------------------------------------------------------
+Sat Jul  1 08:03:22 UTC 2017 - lbeltrame@kde.org
+
+- Update to 5.9.1
+  * For more details please see:
+    http://blog.qt.io/blog/2017/06/30/qt-5-9-1-released/
+- Drop upstreamed patches:
+  * arm64-linux.patch
+  * arm64-toolchain.patch
+
+-------------------------------------------------------------------
+Tue Jun 13 11:26:59 UTC 2017 - fvogt@suse.com
+
+- Backport patches to fix build on AArch64 and add workaround
+  (QTBUG-61128):
+  * arm64-linux.patch
+  * arm64-toolchain.patch
+- Use proprietary codecs if supported by system ffmpeg (boo#1043375)
+
+-------------------------------------------------------------------
+Thu Jun  1 07:58:09 UTC 2017 - fabian@ritter-vogt.de
+
+- Remove patch that is apparently not enough for aarch64:
+  * gn-add-aarch64.patch
+
+-------------------------------------------------------------------
+Thu Jun  1 07:49:42 UTC 2017 - jengelh@inai.de
+
+- Update descriptions.
+- Use find -exec's "+" strategy.
+
+-------------------------------------------------------------------
+Wed May 31 07:05:31 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0 final
+
+-------------------------------------------------------------------
+Tue May 30 14:32:33 UTC 2017 - fabian@ritter-vogt.de
+
+- Disable usage of system ICU on TW as ICU 59 is not supported
+  and patches do not apply
+
+-------------------------------------------------------------------
+Wed May 24 19:16:41 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0 RC:
+  * For more details please see:
+    http://lists.qt-project.org/pipermail/announce/2017-May/000115.html
+    and https://wiki.qt.io/New_Features_in_Qt_5.9
+- Remove patches, now upstream:
+  * fix-chromium-gcc7.patch
+  * use-fno-delete-null-pointer-checks-with-gcc-6.diff
+  * webrtc-build-with-neon.patch
+- Refresh patches:
+  * armv6-ffmpeg-no-thumb.patch
+  * disable-gpu-when-using-nouveau-boo-1005323.diff
+- Support new build system, which does not support manual unbundling
+  anymore
+- Add patch to allow building on aarch64:
+  * gn-add-aarch64.patch
+- Reorder rpm sections
+
+-------------------------------------------------------------------
+Mon May 15 14:07:24 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to fix build with gcc 7:
+  * fix-chromium-gcc7.patch
+
+-------------------------------------------------------------------
+Wed Dec 14 16:06:02 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * For more details please see:
+    https://blog.qt.io/blog/2016/12/14/qt-5-7-1-released/
+    and https://www.qt.io/qt5-7/
+- Drop upstreamed patches:
+  Do-not-depend-on-Linux-4.5.patch and
+  detect-gcc6-use-fno-delete-null-pointer-checks.diff
+
+-------------------------------------------------------------------
+Thu Nov  3 10:47:39 UTC 2016 - wbauer@tmo.at
+
+- Add -fno-delete-null-pointer-checks to CXXFLAGS instead to
+  really fix the gcc6 issues (boo#1003985)
+
+-------------------------------------------------------------------
+Tue Oct 25 13:40:49 UTC 2016 - alarrosa@suse.com
+
+- Add disable-gpu-when-using-nouveau-boo-1005323.diff. Disables the
+  use of the gpu by webengine when the nouveau opengl driver is
+  detected since nouveau doesn't support rendering from different
+  threads. Also, allows to use two environment variables
+  QT_WEBENGINE_DISABLE_GPU to force the disabling of the gpu and
+  QT_WEBENGINE_DISABLE_NOUVEAU_WORKAROUND to disable the detection
+  of nouveau, just in case someone wants to try with newer nouveau
+  releases (boo#1005323, boo#997171).
+
+-------------------------------------------------------------------
+Thu Oct  6 09:26:52 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Pass the -fno-delete-null-pointer-checks flag to avoid further
+  gcc6 issues
+
+-------------------------------------------------------------------
+Wed Oct  5 09:54:47 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added Do-not-depend-on-Linux-4.5.patch (boo#1002873)
+
+-------------------------------------------------------------------
+Wed Sep 28 07:32:47 UTC 2016 - schwab@suse.de
+
+- Ensure to build for armv6 on armv6
+- armv6-ffmpeg-no-thumb.patch: Fix ffmpeg configuration for armv6
+- webrtc-build-with-neon.patch: Properly configure webrtc for neon support
+
+-------------------------------------------------------------------
+Sat Sep 24 18:39:10 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * For more details please see:
+    https://www.qt.io/qt5-7/
+- Add detect-gcc6-use-fno-delete-null-pointer-checks.diff
+
+-------------------------------------------------------------------
+Thu Jun 23 08:10:46 UTC 2016 - lbeltrame@kde.org
+
+- Add use-fno-delete-null-pointer-checks-with-gcc-6.diff: fix
+  crashes with GCC 6 (https://codereview.qt-project.org/#/c/161965/)
+
+-------------------------------------------------------------------
+Wed Jun  8 14:15:23 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * For more details please see:
+    http://blog.qt.io/blog/2016/06/08/qt-5-6-1-released/
+- Drop obsolete gcc50-fixes.diff
+
+-------------------------------------------------------------------
+Fri Mar 18 19:03:33 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    http://blog.qt.io/blog/2016/03/16/qt-5-6-released/
+    and https://wiki.qt.io/New_Features_in_Qt_5.6
+- Drop upstreamed and/or obsolete patches:
+  gyp-arm64.patch, gyp_conf.patch, sandbox-linux-arm64.patch and
+  strip.diff
+
+-------------------------------------------------------------------
+Thu Dec  3 07:24:43 UTC 2015 - mlin@suse.com
+
+- Do not build on s390 and s390x, chromium have not ported to them
+
+-------------------------------------------------------------------
+Fri Oct 16 20:22:42 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.1
+  * For more details please see:
+    http://blog.qt.io/blog/2015/10/15/qt-5-5-1-released/
+
+-------------------------------------------------------------------
+Wed Sep 30 08:10:19 UTC 2015 - schwab@suse.de
+
+- gyp-arm64.patch: Update ffmpeg config
+- sandbox-linux-arm64.patch: fix chromium build for aarch64
+
+-------------------------------------------------------------------
+Sun Aug 16 08:32:10 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    http://blog.qt.io/blog/2015/07/01/qt-5-5-released/
+    and https://wiki.qt.io/New_Features_in_Qt_5.5
+- Enable jsoncpp support on Leap
+
+-------------------------------------------------------------------
+Fri Aug 14 13:33:36 UTC 2015 - normand@linux.vnet.ibm.com
+
+- ExcludeArch:    ppc ppc64 ppc64le
+  http://www.chromium.org/blink not ported to PowerPC
+
+-------------------------------------------------------------------
+Mon Jun 29 15:23:43 UTC 2015 - schwab@suse.de
+
+- gyp-arm64.patch: fix support for aarch64
+- gcc50-fixes.diff: also handle gcc < 5
+
+-------------------------------------------------------------------
+Mon Jun 22 11:56:10 UTC 2015 - tittiatcoke@gmail.com
+
+- Add patch gcc50-fixes.diff to fix the detection of the GCC 5.x
+  compiler. Patch is equal to the one used for Chromium
+
+-------------------------------------------------------------------
+Wed Jun  3 22:56:36 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.2
+  * Bugfix release, for more details please see:
+    http://blog.qt.io/blog/2015/06/02/qt-5-4-2-released/
+- Use correct names in baselibs.conf
+
+-------------------------------------------------------------------
+Wed May 27 10:24:39 UTC 2015 - aj@ajaissle.de
+
+- Fix summary, this is not an Qt 5 Nfc Addon
+
+-------------------------------------------------------------------
+Tue Feb 24 16:10:33 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.1
+  * For more details please see:
+    http://blog.qt.io/blog/2015/02/24/qt-5-4-1-released/
+- Add minimal requires on other Qt5 libraries
+
+-------------------------------------------------------------------
+Wed Dec 10 11:00:14 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4 Final
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/12/10/qt-5-4-released/
+    and http://qt-project.org/wiki/New-Features-in-Qt-5.4
+
+-------------------------------------------------------------------
+Thu Nov 27 15:58:50 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4 RC
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/11/27/qt-5-4-release-candidate-available/
+    and http://qt-project.org/wiki/New-Features-in-Qt-5.4
+
+-------------------------------------------------------------------
+Sat Aug  2 15:31:16 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Activate libqt5-qtwebengine package
+

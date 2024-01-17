@@ -1,0 +1,7 @@
+<package name="glib2" project="openSUSE:Factory">
+  <title>General-Purpose Utility Library</title>
+  <description>GLib is a general-purpose utility library, which provides many useful
+data types, macros, type conversions, string utilities, file utilities,
+a main loop abstraction, and so on.</description>
+  <devel project="GNOME:Factory" package="glib2"/>
+</package>

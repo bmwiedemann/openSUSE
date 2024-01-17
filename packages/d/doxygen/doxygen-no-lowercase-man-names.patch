@@ -1,0 +1,12 @@
+Index: doxygen-1.9.2/src/fortranscanner.l
+===================================================================
+--- doxygen-1.9.2.orig/src/fortranscanner.l
++++ doxygen-1.9.2/src/fortranscanner.l
+@@ -2314,7 +2314,6 @@ static void initEntry(yyscan_t yyscanner
+ static void addCurrentEntry(yyscan_t yyscanner,bool case_insens)
+ {
+   struct yyguts_t *yyg = (struct yyguts_t*)yyscanner;
+-  if (case_insens) yyextra->current->name = yyextra->current->name.lower();
+   //printf("===Adding entry %s to %s\n", qPrint(yyextra->current->name), qPrint(yyextra->current_root->name));
+   yyextra->last_entry = yyextra->current;
+   yyextra->current_root->moveToSubEntryAndRefresh(yyextra->current);

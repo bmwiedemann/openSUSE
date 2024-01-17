@@ -1,0 +1,14 @@
+diff --git a/llvm/include/llvm/Support/Casting.h b/llvm/include/llvm/Support/Casting.h
+index b6bbff8..1b68640 100644
+--- a/llvm/include/llvm/Support/Casting.h
++++ b/llvm/include/llvm/Support/Casting.h
+@@ -605,6 +605,9 @@ LLVM_NODISCARD inline decltype(auto) dyn_cast(From &Val) {
+ 
+ template <typename To, typename From>
+ LLVM_NODISCARD inline decltype(auto) dyn_cast(From *Val) {
++#if defined(__clang__) && defined(NDEBUG)
++  __builtin_assume(Val);
++#endif
+   return CastInfo<To, From *>::doCastIfPossible(Val);
+ }
+ 

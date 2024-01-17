@@ -1,0 +1,5 @@
+<package name="ansible-builder" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="systemsmanagement:ansible" package="ansible-builder"/>
+</package>

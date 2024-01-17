@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Thu Jun  4 17:26:15 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.5.5:
+  + Fixed build on GCC 10.
+  + Updated translations.
+- Run spec-cleaner, modernize spec.
+- Pkgconfigify spec, replace glib2-devel, gtk2-devel and
+  libpulse-devel BuildRequires with pkgconfig(gtk+-2.0),
+  pkgconfig(gthread-2.0) and pkgconfig(libpulse-simple).
+
+-------------------------------------------------------------------
+Thu Jan 30 11:13:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
+Thu Jan 15 21:40:59 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.5.4:
+  + Added Hungarian translation.
+  + Fixed Makefle.am: application -> applications directory name.
+- Changes from version 0.5.3:
+  + Added appdata file.
+  + Updated GNU build infrastructure files.
+  + glib and yacc API adjustments.
+  + Include and install desktop and icon files.
+  + Updated translations.
+- Split out translation files in a lang subpackage and recommend
+  it.
+- Remove gtick.desktop and gtick.png as they are now included in
+  tarball
+- Add fix-desktop-categories.patch: fix the categories and don't
+  use an abolute path for icon.
+
+-------------------------------------------------------------------
+Thu Jul  4 18:49:25 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 0.5.2:
+  + Building with new bison.
+  + Double free.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  6 19:25:03 UTC 2012 - dmitry_r@opensuse.org
+
+- Initial package
+- Version 0.5.1

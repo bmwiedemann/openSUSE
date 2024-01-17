@@ -1,0 +1,11 @@
+<package name="zug" project="openSUSE:Factory">
+  <title>Transducers for C++</title>
+  <description>zug is a C++ library providing transducers. Transducers are composable
+sequential transformations independent of the source. They can be used to
+express algorithms over pull-based sequences (iterators, files) but also push
+based sequences (signals, events, asynchronous streams) in a generic way.
+
+</description>
+  <devel project="KDE:Extra" package="zug"/>
+  <url>https://sinusoid.es/zug/</url>
+</package>

@@ -1,0 +1,4 @@
+# The OpenCL Kernel get compiled during darktable startup by the graphics
+# driver and are then cached. Those kernel require header files which need to
+# be part of the runtime.
+addFilter("devel-file-in-non-devel-package")

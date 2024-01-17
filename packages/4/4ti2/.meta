@@ -1,0 +1,5 @@
+<package name="4ti2" project="openSUSE:Factory">
+  <title></title>
+  <description>4ti2 is a collection of programs that compute and solve algebraic, geometric and combinational problems on linear spaces.</description>
+  <devel project="science" package="4ti2"/>
+</package>

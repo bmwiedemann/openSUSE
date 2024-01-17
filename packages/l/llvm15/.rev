@@ -1,0 +1,165 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3776fa0df610e013a264030244e0c18e</srcmd5>
+    <version>15.0.1</version>
+    <time>1664908643</time>
+    <user>RBrownFactory</user>
+    <comment>- Initial submit based on version 15.0.1.
+* For details, see the release notes:
+- https://releases.llvm.org/15.0.0/docs/ReleaseNotes.html
+- https://releases.llvm.org/15.0.0/tools/clang/docs/ReleaseNotes.html
+- https://releases.llvm.org/15.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+- https://releases.llvm.org/15.0.0/projects/libcxx/docs/ReleaseNotes.html
+- https://releases.llvm.org/15.0.0/tools/lld/docs/ReleaseNotes.html
+* New LLVM tools:
+- llvm-debuginfod: Provides debug info to remote hosts.
+- llvm-dwarfutil: Can copy and manipulate debug info.
+- llvm-remark-size-diff: Compute diff between remark files.
+* New Clang tools:
+- clang-offload-packager: Bundle multiple objects into single
+fat binaries including offload code.
+- clang-pseudo: Approximate heuristic parser for C++.
+- Rebase patches:
+* check-no-llvm-exegesis.patch
+* link-clang-tools-extra-shared.patch
+* lld-default-sha1.patch
+* llvm-do-not-install-static-libraries.patch
+* lto-disable-cache.patch
+- Drop patches that have landed upstream:
+* clang-repl-private-deps.patch
+* llvm-glibc-2-36.patch
+* llvm-scev-fix-isImpliedViaMerge.patch
+- Drop llvm-lifetime-for-rust.patch: this is now solved via
+attributes and LLVM doesn't need a hardcoded list of allocation
+functions anymore.
+- Add llvm-link-atomic.patch to fix build on ppc.
+- Add libcxx-test-library-path.patch to fix libc++ tests failing
+without RUNPATH on libc++.so.
+- Add libcxxabi-fix-armv7-test.patch to fix tests on armv7l.
+- Use correct LLVM_HOST_TRIPLE for riscv64.
+- Always drop -gnu from triple for consistency. Patch a test that
+  was looking for -linux- in clang-test-xfail-gnuless-triple.patch.</comment>
+    <requestid>1005588</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>10d027e8cb922e1a1763d9b20566a976</srcmd5>
+    <version>15.0.2</version>
+    <time>1665504102</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 15.0.2.
+  * This release contains bug-fixes for the LLVM 15.0.0 release.
+    This release is API and ABI compatible with 15.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.</comment>
+    <requestid>1008060</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8ff65aa50b22743c6248ddb54c83a5df</srcmd5>
+    <version>15.0.3</version>
+    <time>1667067304</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.0.3.
+  * This release contains bug-fixes for the LLVM 15.0.0 release.
+    This release is API and ABI compatible with 15.0.0.
+- Add llvm-armv7-fix-vector-compare-with-zero-lowering.patch: Fix
+  lowering of non-canonical vector comparison with zero on armv7,
+  preventing a crash (boo#1204267, gh#llvm/llvm-project#58514).
+- Add lldb-swig-4.1.0-build-fix.patch: Fix build with Swig 4.1.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+</comment>
+    <requestid>1031948</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e8e8c7dc0038c4944444792ec51ca300</srcmd5>
+    <version>15.0.4</version>
+    <time>1668514688</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1035533</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2e9097ac592ccecd64ef976ccbd00fee</srcmd5>
+    <version>15.0.5</version>
+    <time>1668782567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.0.5.
+  * This release contains bug-fixes for the LLVM 15.0.0 release.
+    This release is API and ABI compatible with 15.0.0.
+- Remove obsolete lldb-swig-4.1.0-build-fix.patch.
+- Rebase llvm-do-not-install-static-libraries.patch.
+</comment>
+    <requestid>1036301</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>768947b31f0aec2119d390f7143fda60</srcmd5>
+    <version>15.0.6</version>
+    <time>1670430798</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.0.6.
+  * This release contains bug-fixes for the LLVM 15.0.0 release.
+    This release is API and ABI compatible with 15.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+</comment>
+    <requestid>1040098</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3b0be4e2ab781ebe7261d57b72e7ac3f</srcmd5>
+    <version>15.0.7</version>
+    <time>1674324593</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.0.7.
+  * This release contains bug-fixes for the LLVM 15.0.0 release.
+    This release is API and ABI compatible with 15.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Build stage 2 with -fno-plt on x86_64: since building with
+  -Wl,-z,now the PLT stubs are basically dead code, so eliminating
+  the indirection reduces the number of branches and improves code
+  locality for the quite frequent cross-DSO calls.
+- Add llvm-workaround-superfluous-branches.patch: hints LLVM to
+  eliminate branches until gh#llvm/llvm-project#28804 is solved.
+</comment>
+    <requestid>1059871</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3baa7a5e9843bc73fa4fe00aa5bcc584</srcmd5>
+    <version>15.0.7</version>
+    <time>1678707595</time>
+    <user>dimstar_suse</user>
+    <comment>- Add llvm-suse-implicit-gnu.patch to recognize &lt;arch&gt;-suse-linux
+  as implicitly GNU. Without this we would get library calls for
+  fused-multiply-add even if it's available in hardware.
+- Add openmp-drop-rpath.patch: backport revert of adding RUNPATH
+  to openmp executables. (boo#1206837)
+- update constraints to exclude workers with very slow CPU
+</comment>
+    <requestid>1070944</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>a76ade8abfa86274817a7ddfd98ae4bb</srcmd5>
+    <version>15.0.7</version>
+    <time>1687033211</time>
+    <user>dimstar_suse</user>
+    <comment>- Make python3-clang noarch again and fix conflicts/provides to
+  point to %python3_sitelib instead of %python3_sitearch.
+</comment>
+    <requestid>1093401</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>be2be1bd5edbaf4bd3285df6490a5f22</srcmd5>
+    <version>15.0.7</version>
+    <time>1699615721</time>
+    <user>anag+factory</user>
+    <comment>- Disable zstd support for now regardless of whether libzstd-devel
+  is installed. (boo#1216121)
+</comment>
+    <requestid>1119116</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>adc00a15277ffdfa84dd943bf18a421c</srcmd5>
+    <version>15.0.7</version>
+    <time>1701632909</time>
+    <user>anag+factory</user>
+    <comment>- Manage clang-cpp with update-alternatives like other binaries.
+</comment>
+    <requestid>1130466</requestid>
+  </revision>
+</revisionlist>
