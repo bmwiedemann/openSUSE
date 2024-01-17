@@ -1,0 +1,43 @@
+Index: stripe-7.12.0/tests/conftest.py
+===================================================================
+--- stripe-7.12.0.orig/tests/conftest.py
++++ stripe-7.12.0/tests/conftest.py
+@@ -48,9 +48,9 @@ def pytest_addoption(parser):
+ 
+ 
+ def pytest_runtest_setup(item):
+-    if "http_client_mock" in item.fixturenames and item.config.getoption(
+-        "--nomock"
+-    ):
++    if (any([f in item.fixturenames
++        for f in ("http_client_mock", "http_client_mock_streaming")]) and
++        item.config.getoption("--nomock")):
+         pytest.skip(
+             "run stripe-mock locally and remove --nomock flag to run skipped tests"
+         )
+Index: stripe-7.12.0/tests/api_resources/test_invoice.py
+===================================================================
+--- stripe-7.12.0.orig/tests/api_resources/test_invoice.py
++++ stripe-7.12.0/tests/api_resources/test_invoice.py
+@@ -137,7 +137,7 @@ class TestInvoice(object):
+         )
+         assert isinstance(resource, stripe.Invoice)
+ 
+-    def test_can_iterate_lines(self):
++    def test_can_iterate_lines(self, http_client_mock):
+         resource = stripe.Invoice.retrieve(TEST_RESOURCE_ID)
+         assert isinstance(resource.lines.data, list)
+         assert isinstance(resource.lines.data[0], stripe.InvoiceLineItem)
+Index: stripe-7.12.0/tests/api_resources/test_invoice_line_item.py
+===================================================================
+--- stripe-7.12.0.orig/tests/api_resources/test_invoice_line_item.py
++++ stripe-7.12.0/tests/api_resources/test_invoice_line_item.py
+@@ -5,7 +5,7 @@ TEST_INVOICE_ID = "in_123"
+ 
+ 
+ class TestInvoiceLineItem(object):
+-    def test_deserialize(self):
++    def test_deserialize(self, http_client_mock):
+         invoice = stripe.Invoice.retrieve(TEST_INVOICE_ID)
+         assert isinstance(invoice.lines.data, list)
+         assert isinstance(invoice.lines.data[0], stripe.InvoiceLineItem)

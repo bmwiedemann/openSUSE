@@ -1,7 +1,7 @@
 #
 # spec file for package python-stripe
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-stripe
-Version:        2.63.0
+Version:        7.12.0
 Release:        0
 Summary:        Python bindings for the Stripe API
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/stripe/stripe-python
 Source:         https://files.pythonhosted.org/packages/source/s/stripe/stripe-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#stripe/stripe-python#1195
+Patch0:         use-sys-executable.patch
+# PATCH-FIX-OPENSUSE Skip tests that require mocked stripe service running
+Patch1:         also-skip-streaming.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6.0}
 BuildRequires:  %{python_module pytest-mock >= 2.0}
 BuildRequires:  %{python_module requests >= 2.20}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing_extensions >= 4.5.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.20
+Requires:       python-typing_extensions >= 4.5.0
 Conflicts:      python-stripe-api
 BuildArch:      noarch
 %python_subpackages
@@ -41,21 +46,22 @@ BuildArch:      noarch
 Python bindings for the Stripe API.
 
 %prep
-%setup -q -n stripe-%{version}
+%autosetup -p1 -n stripe-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -rs --nomock
+%pytest --nomock
 
 %files %{python_files}
 %doc CHANGELOG.md README.md examples/
 %license LICENSE
-%{python_sitelib}/stripe*
+%{python_sitelib}/stripe
+%{python_sitelib}/stripe-%{version}.dist-info
 
 %changelog
