@@ -1,0 +1,187 @@
+-------------------------------------------------------------------
+Sun Nov  5 22:40:37 UTC 2017 - vilene@posteo.net
+
+- Update to new upstream release 1.8.13:
+  * Made "-reduce" the default behavior.  Removed obsolete options
+    "-plte_len", "-cc", "-nocc", "-double_gamma", "-already_crushed",
+    and "-bit_depth".
+  * Added "-speed" option; it avoids using the AVG or PAETH filters
+    which are slower to decode.
+  * Made "-force" force output even when the IDAT is larger, and
+    added "-noforce" option; "-noforce" is now the default behavior.
+  * Added "-warn" option, to show only warnings.
+  * Changed default verbosity from 1 (normal) to 0 (quiet). Use "-v"
+    to get the previous default behavior and "-v -v" to get the
+    previous "verbose" behavior. The "-s" (silent) and "-q" (quiet)
+    options behave as before.
+- Remove pngcrush-systemlib.diff: not needed anymore.
+- Add package source verification.
+
+-------------------------------------------------------------------
+Mon Aug 22 17:42:57 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Add pngcrush-systemlib.diff
+  Allow building with system libpng where possible, this fixes
+  build errors on Aarch64 due to incomplete bundled libpng source
+- Drop pngcrush-makefile-add-optflags.diff
+  Supply optflags via CFLAGS, supported by current Makefile
+
+-------------------------------------------------------------------
+Sun Jan 17 15:04:31 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.7.92
+* Fixed segfault while writing a -loco MNG
+* Eliminated a potential overflow while adding iTXt chunk
+* Fixed a double-free bug (CVE-2015-7700). There was a "free" of
+  the sPLT chunk structure in pngcrush and then again in png.c.
+* Increased some buffer sizes in an attempt to prevent possible
+  overflows.
+* Increased maximum size of a text chunk input from 260 to 2048
+  (STR_BUF_SIZE) bytes, to agree with the help screen
+* Fixed bug that caused text chunks after IDAT to be written only
+  when the "-save" option is used.
+
+-------------------------------------------------------------------
+Wed Mar 25 13:52:26 UTC 2015 - meissner@suse.com
+
+- updated to 1.7.85
+  - Improved reporting of invalid chunk names. Does not try to put
+    non-printable characters in STDERR; displays hex numbers instead.
+  - Fixed include path for utime.h on MSVC (Louis McLaughlin).
+  - Eliminated "FAR" memory support (it was removed from libpng at version 1.6.0).
+  - Disabled the "-already_crushed" option which does not really work well.
+
+
+-------------------------------------------------------------------
+Mon Mar  2 09:29:10 UTC 2015 - meissner@suse.com
+
+- updated to 1.7.84
+  - pngcrush-1.7.84 fixes more Coverity-scan defects (none are reported
+    now), so it should be more resistant to crashes due to malformed
+    input files.
+- license adjusted to meet spdx.org, legal says "Zlib"
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Sat Oct 25 20:00:52 UTC 2014 - opensuse@dstoecker.de
+
+- update to 1.7.78
+
+-------------------------------------------------------------------
+Mon Sep  3 09:18:57 UTC 2012 - opensuse@dstoecker.de
+
+- update to version 1.7.37
+
+-------------------------------------------------------------------
+Mon Aug 20 17:25:34 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 1.7.35: performance optimizations
+
+-------------------------------------------------------------------
+Tue May 29 12:20:49 UTC 2012 - opensuse@dstoecker.de
+
+- update to version 1.7.28
+
+-------------------------------------------------------------------
+Mon Apr 23 15:22:44 UTC 2012 - opensuse@dstoecker.de
+
+- update to version 1.7.27
+
+-------------------------------------------------------------------
+Mon Feb 20 16:45:54 UTC 2012 - opensuse@dstoecker.de
+
+- update to version 1.7.25
+
+-------------------------------------------------------------------
+Tue Jan 31 13:53:17 UTC 2012 - opensuse@dstoecker.de
+
+- update to version 1.7.24
+
+-------------------------------------------------------------------
+Fri Jan  6 08:13:05 UTC 2012 - opensuse@dstoecker.de
+
+- update to new version 1.7.22
+
+-------------------------------------------------------------------
+Sat Nov 12 10:40:49 UTC 2011 - pascal.bleser@opensuse.org
+
+- rebase patches for 1.7.21
+- complete the license tag a bit
+- modernize spec file slightly
+
+-------------------------------------------------------------------
+Wed Nov  9 09:16:47 UTC 2011 - opensuse@dstoecker.de
+
+- update to new version 1.7.21
+
+-------------------------------------------------------------------
+Wed Sep 14 11:32:15 UTC 2011 - opensuse@dstoecker.de
+
+- update to 1.7.17
+
+-------------------------------------------------------------------
+Wed Jul 13 12:00:00 UTC 2011 - opensuse@dstoecker.de
+
+- update to 1.7.16
+
+-------------------------------------------------------------------
+Wed Mar 23 12:00:00 UTC 2011 - opensuse@dstoecker.de
+
+- update to 1.7.15
+
+-------------------------------------------------------------------
+Wed Jan 26 12:00:00 UTC 2011 - opensuse@dstoecker.de
+
+- update to 1.7.14
+
+-------------------------------------------------------------------
+Mon Aug  9 12:00:00 UTC 2010 - opensuse@dstoecker.de
+
+- update to 1.7.12
+
+-------------------------------------------------------------------
+Mon May 10 12:00:00 UTC 2010 - opensuse@dstoecker.de
+
+- update to 1.7.11
+
+-------------------------------------------------------------------
+Mon Mar 15 12:00:00 UTC 2010 - opensuse@dstoecker.de
+
+- update to 1.7.10
+
+-------------------------------------------------------------------
+Mon Mar  8 12:00:00 UTC 2010 - opensuse@dstoecker.de
+
+- update to 1.7.9
+
+-------------------------------------------------------------------
+Mon Jul 21 12:00:00 UTC 2008 - opensuse@dstoecker.de
+
+- update to 1.7.7
+
+-------------------------------------------------------------------
+Mon Jul 21 12:00:00 UTC 2008 - opensuse@dstoecker.de
+
+- copied to BuildService
+
+-------------------------------------------------------------------
+Fri Jun 13 12:00:00 UTC 2008 - Pascal Bleser
+
+- new upstream version
+
+-------------------------------------------------------------------
+Sun May 11 12:00:00 UTC 2008 - Pascal Bleser
+
+- moved to Packman
+- new upstream version
+
+-------------------------------------------------------------------
+Tue Aug 14 12:00:00 UTC 2007 - Pascal Bleser
+
+- use internal libpng macros, fixes build on 10.2
+- fixed all compiler warnings
+
+-------------------------------------------------------------------
+Sat Jun 10 12:00:00 UTC 2006 - Pascal Bleser
+
+- new package

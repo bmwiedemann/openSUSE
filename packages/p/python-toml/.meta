@@ -1,0 +1,5 @@
+<package name="python-toml" project="openSUSE:Factory">
+  <title>python-toml</title>
+  <description>A Python library for parsing and creating TOML.</description>
+  <devel project="devel:languages:python" package="python-toml"/>
+</package>

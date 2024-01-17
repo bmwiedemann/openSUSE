@@ -1,0 +1,26 @@
+%mozilla_mozillapath		%%_libdir/mozilla
+%mozilla_pluginsdir		%%_libdir/browser-plugins
+%mozilla_firefox_appid		\{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}
+%mozilla_thunderbird_appid	\{3550f703-e582-4d05-9a08-453d09bdfdc6\}
+%mozilla_seamonkey_appid	\{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a\}
+%mozilla_sunbird_appid		songbird@songbirdnest.com
+%mozilla_moduledir		%(if [ "%_target_cpu" = "noarch" ]; then echo "%_datadir/mozilla"; else echo "%_libdir/mozilla"; fi)
+%mozilla_addondir			%mozilla_moduledir/extensions
+
+%mozilla_addon_install() \
+	extid="$(mozaddondev-getappid '%1')"; \
+	extdir="%buildroot%mozilla_addondir/global/$extid"; \
+	mkdir -p "$extdir"; \
+	%__unzip -q -d "$extdir" "%1"; \
+	for i in "%mozilla_firefox_appid" "%mozilla_thunderbird_appid" "%mozilla_seamonkey_appid" "%mozilla_sunbird_appid"; do \
+		extdir="%buildroot%mozilla_addondir/$i"; \
+		mkdir -p "$extdir"; \
+		ln -s "%mozilla_addondir/global/$extid" "$extdir/"; \
+	done; \
+	find "%buildroot%mozilla_addondir" -type d -exec chmod a+rx "{}" "+"; \
+	find "%buildroot%mozilla_addondir" -type f -exec chmod a+r "{}" "+"; \
+	%nil
+
+%mozilla_unlock_addons() \
+	find "%buildroot%mozilla_addondir/global" -type f -name install.rdf -exec perl -i -pe 's[<em:maxVersion>.*?</em:maxVersion>][<em:maxVersion>*</em:maxVersion>]' '{}' '+'; \
+	%nil

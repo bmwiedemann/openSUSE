@@ -1,0 +1,10 @@
+<package name="conan" project="openSUSE:Factory">
+  <title>A C/C++ package manager</title>
+  <description>Conan is a package manager for C and C++ developers. It is specifically
+designed and optimized for accelerating the development and Continuous
+Integration of C and C++ projects.
+
+</description>
+  <devel project="devel:tools:building" package="conan"/>
+  <url>https://conan.io</url>
+</package>

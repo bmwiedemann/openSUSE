@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Thu Nov 24 06:48:43 UTC 2016 - coolo@suse.com
+
+- updated to 0.30
+   see /usr/share/doc/packages/perl-MooseX-Singleton/Changes
+
+  0.30      2016-11-23 04:46:06Z
+      - move repository to github Moose organization
+      - properly declare test prereqs
+
+-------------------------------------------------------------------
+Thu Dec 22 09:13:24 UTC 2011 - coolo@suse.de
+
+- updated to 0.29
+   - Fix warnings_once.t to not die if Test::NoWarnings isn't installed (Kaare)
+   - Fix RT Bug #46086, "name used only once" (Thanks chisel for the patch and
+     the test)
+
+-------------------------------------------------------------------
+Thu Dec 22 09:11:40 UTC 2011 - coolo@suse.com
+
+- update to 0.27
+   - Fix 006-cooperative.t - this test requires MooseX::StrictConstructor
+     0.16+ to pass with Moose 2.00+. Reported by Alexandr Ciornii. RT
+      #67965. (Dave Rolsky)
+
+-------------------------------------------------------------------
+Sat Apr 30 15:18:19 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.26
+   - This module will now work with Moose 1.9900+, but it still works with
+     older Moose as well. (Dave Rolsky)
+   - The test suite now uses Test::Fatal instead of Test::Exception. (Karen
+     Etheridge)
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:53 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:38 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Aug 31 23:36:06 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.25)
+

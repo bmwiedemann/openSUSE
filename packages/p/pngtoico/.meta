@@ -1,0 +1,7 @@
+<package name="pngtoico" project="openSUSE:Factory">
+  <title>Utility to convert PNG images to Microsoft ICO format</title>
+  <description>pngtoico is a small utility to convert a set of PNG images to Microsoft
+ICO format. Supports transparency.</description>
+  <devel project="graphics" package="pngtoico"/>
+  <url>http://www.kernel.org/pub/software/graphics/pngtoico/</url>
+</package>

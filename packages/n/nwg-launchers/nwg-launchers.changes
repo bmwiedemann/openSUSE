@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Tue Oct 25 06:50:55 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.1.1:
+  Fix missing version bump #210
+
+-------------------------------------------------------------------
+Tue Oct 25 06:50:06 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.1:
+  * Fix failing to start due to incorrect CSS property name in
+    default config #208
+
+-------------------------------------------------------------------
+Mon Oct 24 10:43:04 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.0:
+  * XDG Desktop Menu Categories #198
+  * Allow to define CSS classes in nwgbar JSON file #195
+  * Saturate icon size if it's off the allowed range (16-2048) #188
+  * Use /tmp if XDG_RUNTIME_DIR is not defined and /var/run/user/UID not exists #192
+  * Allow for ~ in the beginning of Exec= value #205
+- Add nwg-launchers-readme.patch: we already ship the readme
+
+-------------------------------------------------------------------
+Sun Sep 26 21:14:46 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.3:
+  * This release fixes builds with libc++ < 11 (#187)
+
+-------------------------------------------------------------------
+Sun Sep 26 21:13:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.2:
+  * nwgbar contents can be scrolled (#182);
+  * max icon size is increased up to 2048 (#180);
+  * fixed broken pins ordering (#176);
+  * fixed nwggrid spawning server with messed up arguments;
+  * launchers will no longer fail to start after being improperly closed
+    (e.g. SIGKILL) (#178);
+  * nwggrid prints an error if started with -p or -f and -d at the same
+    time;
+  * fixed potential data race when accessing pid file.
+
+-------------------------------------------------------------------
+Fri Sep 17 12:42:13 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.1:
+  * Fix incorrect path to icon-missing file (#174)
+
+-------------------------------------------------------------------
+Fri Sep 17 12:41:17 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  * This release brings server mode to nwggrid launcher.
+    It shoudln't break your setup as we provide transparent replacement
+    to the old nwggrid application. To use server mode, run nwggrid-server
+    in the background (e.g. using nohup or placing nwggrid-server in
+    autostart), use nwggrid -client to connect to the running server.
+    You shouldn't need to restart the server as nwggrid now tracks the
+    changes happening to desktop files in all directories, updating it's
+    inner representation when necessary.
+
+-------------------------------------------------------------------
+Tue Jul 20 07:54:40 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  * Support for wlr-layer-shell protocol
+
+-------------------------------------------------------------------
+Mon Feb  1 09:13:00 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.4:
+  * Fix desktop description line break (#151)
+  * Fix press entering (#152)
+  * Fix nwgdmenu error (#153)
+
+-------------------------------------------------------------------
+Wed Jan  6 08:33:22 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.3:
+  * use sway-ipc to connect to sway
+  * support for the foot terminal
+  * dmenu: use STDIN_FILENO instead of fileno(stdin)
+  * clean up pid file handling
+  * check for TERM_CMD when detecting term, support terminal
+    flags other than '-e' uniformly
+  * fixed keyboard-driven selection in dmenu #141
+
+-------------------------------------------------------------------
+Mon Nov  9 07:41:31 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.2:
+  * [nwggrid] forgotten field initialization added #132
+
+-------------------------------------------------------------------
+Thu Nov  5 07:29:03 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.1:
+  * bug breaking compilation with libstdc++ fixed #118
+  * [nwgbar] added support for mnemonics #120
+  * [nwggrid] added -d argument to force custom .desktop files
+    path(s) #122
+  * [nwggrid] support for running apps in the terminal emulator
+    (Terminal=true) added; see README for details on detection
+    changing the terminal #127
+  * [nwggrid] sorting names longer than 25 characters fixed #128
+
+-------------------------------------------------------------------
+Wed Sep 23 07:31:57 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.0:
+  * Respect NoDisplay=true setting in saner way
+  * Separate widgets from data
+  Breaking changes:
+  * Use desktop-id instead of exec to distinguish entries from each other.
+  This breaks existing pins/favs cache. Old caches will be overwritten after 
+  the first launch.
+
+-------------------------------------------------------------------
+Thu Sep 17 07:01:43 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.4:
+  * fixed Clang build broken in v0.3.3 #109
+  * [nwggrid] added /usr/share/pixmaps/ path to look for icons #111
+  * fixed crash on $LANG unset (regression in v0.3.3) #114
+
+-------------------------------------------------------------------
+Mon Sep 14 07:29:34 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.3:
+  * [nwggrid] support for applications installed with flatpak
+  * fixes to improper displays geometry detection on X11
+  * [nwggrid] new pin/unpin implementation
+  * code optimization
+
+-------------------------------------------------------------------
+Fri Aug 28 07:31:44 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of new-launchers 0.3.2 for openSUSE

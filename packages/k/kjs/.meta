@@ -1,0 +1,5 @@
+<package name="kjs" project="openSUSE:Factory">
+  <title>kjs</title>
+  <description>KJS</description>
+  <devel project="KDE:Frameworks5" package="kjs"/>
+</package>

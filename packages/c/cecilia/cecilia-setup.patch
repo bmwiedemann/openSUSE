@@ -1,0 +1,314 @@
+Description: creates a setup.py
+ Upstream doesn't provide a setup.py for linux systems
+Author: Tiago Bortoletto Vaz <tiago@debian.org>
+
+diff -Nur Cecilia5_5.4.1-src/Cecilia5.py new/Cecilia5.py
+--- Cecilia5_5.4.1-src/Cecilia5.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Cecilia5.py	2021-05-03 21:18:33.794182552 +0200
+@@ -21,11 +21,11 @@
+ """
+ import os, sys, random
+ import wx
+-from Resources.constants import *
+-from Resources.Variables import loadBitmaps
+-from Resources import audio, CeciliaMainFrame
+-from Resources.splash import CeciliaSplashScreen
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources.constants import *
++from cecilia.Resources.Variables import loadBitmaps
++from cecilia.Resources import audio, CeciliaMainFrame
++from cecilia.Resources.splash import CeciliaSplashScreen
++import cecilia.Resources.CeciliaLib as CeciliaLib
+ 
+ class CeciliaApp(wx.App):
+     def __init__(self, *args, **kwargs):
+diff -Nur Cecilia5_5.4.1-src/Resources/audio.py new/Resources/audio.py
+--- Cecilia5_5.4.1-src/Resources/audio.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Resources/audio.py	2021-05-03 21:13:46.976146944 +0200
+@@ -20,7 +20,7 @@
+ 
+ import wx
+ import os, math, copy, time, traceback
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ from .constants import *
+ from .API_interface import *
+ 
+diff -Nur Cecilia5_5.4.1-src/Resources/CeciliaInterface.py new/Resources/CeciliaInterface.py
+--- Cecilia5_5.4.1-src/Resources/CeciliaInterface.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Resources/CeciliaInterface.py	2021-05-03 21:13:46.972146916 +0200
+@@ -20,9 +20,9 @@
+ """
+ 
+ import wx
+-import Resources.CeciliaLib as CeciliaLib
+-import Resources.Control as Control
+-import Resources.Preset as Preset
++from cecilia.Resources import CeciliaLib
++from cecilia.Resources import Control
++from cecilia.Resources import Preset
+ from .constants import *
+ from .Sliders import buildHorizontalSlidersBox
+ from .Grapher import getGrapher, buildGrapher
+diff -Nur Cecilia5_5.4.1-src/Resources/CeciliaLib.py new/Resources/CeciliaLib.py
+--- Cecilia5_5.4.1-src/Resources/CeciliaLib.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Resources/CeciliaLib.py	2021-05-03 21:13:46.972146916 +0200
+@@ -24,7 +24,7 @@
+ from subprocess import Popen
+ from .constants import *
+ from .API_interface import *
+-import Resources.Variables as vars
++from cecilia.Resources import Variables as vars
+ import wx.lib.agw.supertooltip as STT
+ import xmlrpc.client as xmlrpclib
+ 
+diff -Nur Cecilia5_5.4.1-src/Resources/CeciliaMainFrame.py new/Resources/CeciliaMainFrame.py
+--- Cecilia5_5.4.1-src/Resources/CeciliaMainFrame.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Resources/CeciliaMainFrame.py	2021-05-03 21:13:46.972146916 +0200
+@@ -22,9 +22,9 @@
+ import os, time, random
+ import wx
+ from .constants import *
+-import Resources.CeciliaLib as CeciliaLib
+-import Resources.PreferencePanel as PreferencePanel
+-import Resources.CeciliaInterface as CeciliaInterface
++from cecilia.Resources import CeciliaLib
++from cecilia.Resources import PreferencePanel
++from cecilia.Resources import CeciliaInterface
+ from .menubar import InterfaceMenuBar
+ from .Widgets import *
+ from .DocFrame import ManualFrame
+diff -Nur Cecilia5_5.4.1-src/Resources/CeciliaPlot.py new/Resources/CeciliaPlot.py
+--- Cecilia5_5.4.1-src/Resources/CeciliaPlot.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Resources/CeciliaPlot.py	2021-05-03 21:13:46.972146916 +0200
+@@ -90,7 +90,7 @@
+ """
+ 
+ import wx
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ from .constants import *
+ 
+ try:
+diff -Nur Cecilia5_5.4.1-src/Resources/constants.py new/Resources/constants.py
+--- Cecilia5_5.4.1-src/Resources/constants.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Resources/constants.py	2021-05-03 21:13:46.976146944 +0200
+@@ -17,7 +17,7 @@
+ You should have received a copy of the GNU General Public License
+ along with Cecilia 5.  If not, see <http://www.gnu.org/licenses/>.
+ """
+-import os, sys
++import os, sys, cecilia
+ from .images import *
+ 
+ BUILD_RST = False
+@@ -38,7 +38,7 @@
+     RESOURCES_PATH = os.getcwd()
+     os.environ["LANG"] = "en_CA.UTF-8"
+ else:
+-    RESOURCES_PATH = os.path.join(os.getcwd(), 'Resources')
++    RESOURCES_PATH = cecilia.Resources.__path__[0]
+ 
+ if not os.path.isdir(RESOURCES_PATH) and sys.platform == "win32":
+     RESOURCES_PATH = os.path.join(os.getenv("ProgramFiles"), "Cecilia5", "Resources")
+@@ -745,4 +745,4 @@
+ Parameters appear on the left buttons. 
+ 
+ Signal routing is from top to bottom.
+-"""
+\ Kein Zeilenumbruch am Dateiende.
++"""
+diff -Nur Cecilia5_5.4.1-src/Resources/Control.py new/Resources/Control.py
+--- Cecilia5_5.4.1-src/Resources/Control.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Resources/Control.py	2021-05-03 21:13:46.972146916 +0200
+@@ -20,7 +20,7 @@
+ 
+ import wx, os, math, copy
+ import wx.lib.scrolledpanel as scrolled
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ from .constants import *
+ from .Widgets import *
+ from .TogglePopup import SamplerPopup, SamplerToggle
+diff -Nur Cecilia5_5.4.1-src/Resources/DocFrame.py new/Resources/DocFrame.py
+--- Cecilia5_5.4.1-src/Resources/DocFrame.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Resources/DocFrame.py	2021-05-03 21:21:49.587586984 +0200
+@@ -22,7 +22,7 @@
+ import wx.stc as stc
+ from .constants import *
+ from .API_interface import *
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ 
+ _INTRO_TEXT = """
+ "Cecilia5 API Documentation"
+@@ -1126,4 +1126,4 @@
+         if search != "":
+             self.search.SetValue("")
+         self.doc_panel.getPage("Intro")
+-        self.doc_panel.collapseAll()
+\ Kein Zeilenumbruch am Dateiende.
++        self.doc_panel.collapseAll()
+diff -Nur Cecilia5_5.4.1-src/Resources/Grapher.py new/Resources/Grapher.py
+--- Cecilia5_5.4.1-src/Resources/Grapher.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Resources/Grapher.py	2021-05-03 21:13:46.972146916 +0200
+@@ -21,8 +21,8 @@
+ import wx, random, bisect, math
+ from wx.lib.stattext import GenStaticText
+ from pyo import reducePoints, distanceToSegment, linToCosCurve
+-import Resources.CeciliaPlot as plot
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaPlot as plot
++from cecilia.Resources import CeciliaLib
+ from .constants import *
+ from .Grapher_parser import *
+ from .Widgets import *
+diff -Nur Cecilia5_5.4.1-src/Resources/menubar.py new/Resources/menubar.py
+--- Cecilia5_5.4.1-src/Resources/menubar.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Resources/menubar.py	2021-05-03 21:13:46.976146944 +0200
+@@ -20,7 +20,7 @@
+ 
+ import wx, os
+ from .constants import *
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ 
+ class InterfaceMenuBar(wx.MenuBar):
+     def __init__(self, frame, mainFrame=None):
+diff -Nur Cecilia5_5.4.1-src/Resources/Plugins.py new/Resources/Plugins.py
+--- Cecilia5_5.4.1-src/Resources/Plugins.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Resources/Plugins.py	2021-05-03 21:13:46.976146944 +0200
+@@ -19,7 +19,7 @@
+ """
+ 
+ import wx, math
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ from .constants import *
+ from .Widgets import *
+ 
+diff -Nur Cecilia5_5.4.1-src/Resources/PreferencePanel.py new/Resources/PreferencePanel.py
+--- Cecilia5_5.4.1-src/Resources/PreferencePanel.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Resources/PreferencePanel.py	2021-05-03 21:13:46.976146944 +0200
+@@ -19,7 +19,7 @@
+ """
+ 
+ import wx, os, sys
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ from .constants import *
+ from .Widgets import *
+ 
+diff -Nur Cecilia5_5.4.1-src/Resources/Preset.py new/Resources/Preset.py
+--- Cecilia5_5.4.1-src/Resources/Preset.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Resources/Preset.py	2021-05-03 21:22:29.055870445 +0200
+@@ -19,7 +19,7 @@
+ """
+ 
+ import wx, os
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ from .constants import *
+ from .Widgets import *
+ 
+diff -Nur Cecilia5_5.4.1-src/Resources/Sliders.py new/Resources/Sliders.py
+--- Cecilia5_5.4.1-src/Resources/Sliders.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Resources/Sliders.py	2021-05-03 21:13:46.976146944 +0200
+@@ -19,7 +19,7 @@
+ """
+ 
+ import wx, math
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ from .constants import *
+ from .Widgets import *
+ 
+diff -Nur Cecilia5_5.4.1-src/Resources/splash.py new/Resources/splash.py
+--- Cecilia5_5.4.1-src/Resources/splash.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Resources/splash.py	2021-05-03 21:20:45.595127385 +0200
+@@ -19,7 +19,7 @@
+ """
+ 
+ import wx, sys, os
+-from .constants import *
++from cecilia.Resources.constants import *
+ 
+ def GetRoundBitmap(w, h, r):
+     maskColour = wx.Colour(0, 0, 0)
+@@ -100,4 +100,4 @@
+ 
+     def OnClose(self):
+         self.callback()
+-        self.Destroy()
+\ Kein Zeilenumbruch am Dateiende.
++        self.Destroy()
+diff -Nur Cecilia5_5.4.1-src/Resources/TogglePopup.py new/Resources/TogglePopup.py
+--- Cecilia5_5.4.1-src/Resources/TogglePopup.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Resources/TogglePopup.py	2021-05-03 21:13:46.976146944 +0200
+@@ -21,7 +21,7 @@
+ import wx, random
+ from .Widgets import Label, CustomMenu, Toggle, Button, ListEntry
+ from .constants import *
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ 
+ class CECPopup:
+     def __init__(self, parent, label, values, init, rate, name, colour, tooltip=True, output=True):
+diff -Nur Cecilia5_5.4.1-src/Resources/Widgets.py new/Resources/Widgets.py
+--- Cecilia5_5.4.1-src/Resources/Widgets.py	2020-08-30 22:33:34.000000000 +0200
++++ new/Resources/Widgets.py	2021-05-03 21:13:46.976146944 +0200
+@@ -24,7 +24,7 @@
+ from pyo.lib._wxwidgets import ControlSlider, HRangeSlider
+ from .constants import *
+ from .Drunk import *
+-import Resources.CeciliaLib as CeciliaLib
++from cecilia.Resources import CeciliaLib
+ 
+ class MenuFrame(wx.Menu):
+     def __init__(self, parent, choice):
+diff -Nur Cecilia5_5.4.1-src/setup.py new/setup.py
+--- Cecilia5_5.4.1-src/setup.py	2020-08-30 22:33:34.000000000 +0200
++++ new/setup.py	2021-05-03 21:13:46.976146944 +0200
+@@ -1,24 +1,20 @@
+-"""
+-This is a setup.py script generated by py2applet
++# -*- coding: utf-8 -*-
+ 
+-Usage:
+-    python3.6 setup.py py2app
+-"""
++import os
++from distutils.core import setup
+ 
+-from setuptools import setup
+-
+-APP = ['Cecilia5.py']
+-APP_NAME = 'Cecilia5'
+-DATA_FILES = ['Resources/']
+-OPTIONS = {'argv_emulation': False,
+-           #'strip': False, # only for debugging purposes.
+-           'iconfile': 'Resources/Cecilia5.icns',
+-           'includes': 'wx.adv,wx.html,wx.xml'}
+-
+-setup(
+-    name=APP_NAME,
+-    app=APP,
+-    data_files=DATA_FILES,
+-    options={'py2app': OPTIONS},
+-    setup_requires=['py2app'],
+-)
++setup(  name = "cecilia",
++        author = "Jean Piche, Olivier Belanger, Jean-Michel Dumas",
++        author_email = "belangeo@gmail.com",
++        version = "5.4.1",
++        description = "Sound synthesis and audio signal processing environment",
++        url = "https://github.com/belangeo/cecilia5",
++        license = "GPLv3",
++        package_dir = { 'cecilia': '' },
++        packages = ['cecilia.Resources'],
++        py_modules = ['cecilia.__init__'], #workaround to have Resources under cecilia dir
++        scripts = ['Cecilia5.py'],
++        package_data={
++            'cecilia.Resources': ['modules/*/*', 'Cecilia5.icns', 'Cecilia5.ico', 'CeciliaFileIcon5.icns', 'CeciliaFileIcon5.ico', 'Cecilia_splash.png'],
++        }
++    )

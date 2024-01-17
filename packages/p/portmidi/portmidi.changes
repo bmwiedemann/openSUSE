@@ -1,0 +1,167 @@
+-------------------------------------------------------------------
+Fri Dec 30 10:50:46 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- If we don't build the java bindings, we can reduce the minimum 
+  cmake version to a level, that allows building for current Leaps
+
+-------------------------------------------------------------------
+Thu Oct 13 19:25:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.4:
+  This release adjusts the data rate limit imposed on MIDI through macOS IAC
+  bus to avoid losing data (this is a macOS limitation, not a PortMidi
+  limitation). Apparently, the limit was significantly dropped somewhere around
+  macOS 12. This release is tested on Apple M2 in addition to Linux, Win32, and
+  macOS Intel. It also includes a working but not complete port to Haiku. 
+- drop 0001-Add-missing-return-type.patch, 
+  0001-changing-path-to-pm_common-directory-in-file-pm_comm.patch
+  0001-Adding-missing-file-to-repo.patch: upstream
+
+-------------------------------------------------------------------
+Wed Aug 10 13:25:53 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Disable RPATH in the .spec 
+
+-------------------------------------------------------------------
+Mon May  9 18:20:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.0.3
+  * This version allows multiple hardware devices to have the same
+    name.
+- Add upstream changes:
+  * 0001-Adding-missing-file-to-repo.patch
+  * 0001-changing-path-to-pm_common-directory-in-file-pm_comm.patch
+  * 0001-Add-missing-return-type.patch
+
+-------------------------------------------------------------------
+Mon Jan  3 20:44:42 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.0.2
+  - build system fixes
+- drop 7ed4da65ff67fa2b22eccd88beb743bd2dff6bfb.patch
+- require cmake >= 3.21
+
+-------------------------------------------------------------------
+Fri Dec 31 02:26:55 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- restore the java package with the pmdefaults app
+  7ed4da65ff67fa2b22eccd88beb743bd2dff6bfb.patch
+- restore test tools again
+
+-------------------------------------------------------------------
+Thu Dec 30 05:57:14 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.0.1
+  PortMidi has a new extended API with Pm_CreateVirtualInput(),
+  Pm_CreateVirtualOutput(), and Pm_DeleteVirtualDevice() so we are
+  calling this major version 2. Other changes include:
+
+ - More careful rate limiting on macOS to allow faster IO to real
+   devices, while still limiting flow through IAC bus and virtual
+   ports that might cause macOS to drop messages.
+ - Many updates to CMake files, including install and package
+   functions.
+ - Elimination of scorealign, portsmf, and PortMidi support for
+   several other languages. (We'll try to maintain links to active
+   projects or host language support in separate repos within this
+   PortMidi project.)
+ - Only basic support for Java and PmDefaults program. Current plan
+   is to eliminate PmDefaults, Pm_GetDefaultInputDeviceID(), and
+   Pm_GetDefaultOutputDeviceID() at the end of 2022, moving
+   jportmidi and pmjni library to another repo unless users
+   complain. Unfortunately, operating systems never introduced
+   preferred MIDI devices analogous to preferred Audio devices.
+ - A few other bug fixes such as Unicode handling are now included.
+- drop patches from upstream:
+  portmidi-fix_build.patch
+  portmidi-fix_java_cmake.patch
+  portmidi-fix_pmdefaults_startup_script.patch
+- drop rpmlintrc as we no longer need it
+- modernize spec file
+- drop java subpackage for now
+
+-------------------------------------------------------------------
+Mon Aug 25 10:30:06 UTC 2014 - cornelis@solcon.nl
+
+- Correct license to MIT
+- Include license file in %doc
+- Weeaken timidity requires to recommends
+
+-------------------------------------------------------------------
+Fri Dec 14 22:15:28 UTC 2012 - joop.boonen@opensuse.org
+
+- Add Requirement for timidity as most sound cards don't
+  have a dedicated midi device anymore 
+- Build with libporttime.so fix needed for lenmus
+
+-------------------------------------------------------------------
+Wed Jun  6 14:43:33 UTC 2012 - prusnak@opensuse.org
+
+- imported from Packman to OBS
+- don't ship static library
+
+-------------------------------------------------------------------
+Tue Dec 27 00:00:00 UTC 2011 - pascal.bleser@opensuse.org
+
+- fix build on >= 12.1
+
+-------------------------------------------------------------------
+Sun Feb 27 00:00:00 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to version 217
+- complete spec file rewrite, moved to cmake
+
+-------------------------------------------------------------------
+Mon Nov 17 00:00:00 UTC 2008 - joop.boonen@opensuse.org
+
+- creating package in OBS
+
+-------------------------------------------------------------------
+Tue Apr  3 00:00:00 UTC 2007 - nando@ccrma.stanford.edu
+
+- add -fPIC flag for x86_64 build
+
+-------------------------------------------------------------------
+Sun Apr  1 00:00:00 UTC 2007 - nando@ccrma.stanford.edu
+
+- build on fc6
+
+-------------------------------------------------------------------
+Sat Nov 19 00:00:00 UTC 2005 - nando@ccrma.stanford.edu
+
+- added patch to link libporttime to the pthreads library, otherwise
+  it can't be loaded independently of libportmidi
+
+-------------------------------------------------------------------
+Thu Nov 10 00:00:00 UTC 2005 - nando@ccrma.stanford.edu
+
+- added Debian patches to build shared libraries neede by Common Music
+
+-------------------------------------------------------------------
+Mon Nov  7 00:00:00 UTC 2005 - nando@ccrma.stanford.edu
+
+- first build for Planet CCRMA, from Thac's spec file
+- just create "portmidi" (follow naming in Fedora for "portaudio")
+- probably should add test programs
+- todo: use Debian patches to make shared libraries...
+
+-------------------------------------------------------------------
+Wed Sep 28 00:00:00 UTC 2005 - tobbe@nyvalls.se
+
+- Fix spec
+
+-------------------------------------------------------------------
+Wed Sep  7 00:00:00 UTC 2005 - tobbe@nyvalls.se
+
+- Rebuilt for le2005
+
+-------------------------------------------------------------------
+Tue Aug 23 00:00:00 UTC 2005 - oc2pus@arcor.de
+
+- included patch from freecycle to avoid memory leak
+
+-------------------------------------------------------------------
+Wed Apr 20 00:00:00 UTC 2005 - oc2pus@arcor.de
+
+- initial build for SuSE
+

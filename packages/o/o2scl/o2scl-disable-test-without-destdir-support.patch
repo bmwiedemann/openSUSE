@@ -1,0 +1,44 @@
+Index: o2scl-0.926/src/nuclei/Makefile.am
+===================================================================
+--- o2scl-0.926.orig/src/nuclei/Makefile.am
++++ o2scl-0.926/src/nuclei/Makefile.am
+@@ -20,7 +20,7 @@ HEADER_VAR = nucmass.h nucdist.h nucleus
+ 	nucmass_densmat.h nucmass_gen.h nuclei_python.h
+ 
+ TEST_VAR = nucmass.scr nucdist.scr nucleus.scr nucmass_fit.scr \
+-	reaction_lib.scr hdf_nucmass_io.scr nucmass_frdm.scr \
++	reaction_lib.scr hdf_nucmass_io.scr \
+ 	nucmass_dz.scr nucmass_densmat.scr nucmass_gen.scr nucmass_ame.scr
+ 
+ else
+@@ -121,7 +121,7 @@ pkginclude_HEADERS = $(HEADER_VAR)
+ # ------------------------------------------------------------
+ 
+ check_PROGRAMS = nucmass_ts nucdist_ts nucleus_ts \
+-	nucmass_fit_ts reaction_lib_ts hdf_nucmass_io_ts nucmass_frdm_ts \
++	nucmass_fit_ts reaction_lib_ts hdf_nucmass_io_ts \
+ 	nucmass_dz_ts nucmass_densmat_ts nucmass_gen_ts nucmass_ame_ts
+ 
+ check_SCRIPTS = o2scl-test
+Index: o2scl-0.926/src/eos/Makefile.am
+===================================================================
+--- o2scl-0.926.orig/src/eos/Makefile.am
++++ o2scl-0.926/src/eos/Makefile.am
+@@ -38,7 +38,7 @@ TEST_VAR = eos_had_apr.scr eos_quark_bag
+ 	eos_crust.scr eos_had_ddc.scr eos_had_base.scr nucleus_rmf.scr \
+ 	eos_crust_virial.scr eos_had_gogny.scr tov_solve.scr \
+ 	eos_quark_cfl6.scr eos_quark_cfl.scr nucmass_ldrop_shell.scr \
+-	eos_nse_full.scr nstar_rot.scr tov_love.scr \
++	eos_nse_full.scr nstar_rot.scr \
+ 	eos_had_rmf_hyp.scr
+ 
+ else
+@@ -164,7 +164,7 @@ check_PROGRAMS = eos_had_apr_ts eos_quar
+ 	eos_had_rmf_delta_ts eos_crust_ts eos_had_ddc_ts eos_quark_cfl_ts \
+ 	nucleus_rmf_ts eos_nse_full_ts \
+ 	nucmass_ldrop_shell_ts eos_had_gogny_ts eos_crust_virial_ts \
+-	nstar_rot_ts tov_love_ts eos_cs2_poly_ts eos_had_rmf_hyp_ts
++	nstar_rot_ts eos_cs2_poly_ts eos_had_rmf_hyp_ts
+ 
+ check_SCRIPTS = o2scl-test
+ 

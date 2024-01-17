@@ -1,0 +1,13 @@
+Index: pngtoico-1.0.1/pngtoico.c
+===================================================================
+--- pngtoico-1.0.1.orig/pngtoico.c
++++ pngtoico-1.0.1/pngtoico.c
+@@ -188,7 +188,7 @@ read_png(const char *file)
+     goto perrexit;
+   }
+ 
+-  if ( setjmp(png_ptr->jmpbuf) ) {
++  if ( setjmp(png_jmpbuf(png_ptr)) ) {
+     fprintf(stderr, "%s: PNG format error\n", file);
+     goto errexit;
+   }

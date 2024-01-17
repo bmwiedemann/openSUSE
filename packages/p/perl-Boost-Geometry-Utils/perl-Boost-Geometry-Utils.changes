@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Wed Jul 23 12:58:25 CEST 2014 - mls@suse.de
+
+- do not call av_extend with a negative size
+  new patch: avextend.diff
+
+-------------------------------------------------------------------
+Sun Jun  8 10:40:01 UTC 2014 - coolo@suse.com
+
+- initial package 0.15
+    * created by cpanspec 1.78.08
+

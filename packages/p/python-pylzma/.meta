@@ -1,0 +1,5 @@
+<package name="python-pylzma" project="openSUSE:Factory">
+  <title>Python bindings for the LZMA compression library</title>
+  <description>Python bindings for the LZMA compression library.</description>
+  <devel project="devel:languages:python" package="python-pylzma"/>
+</package>

@@ -1,0 +1,22 @@
+--- Makefile
++++ Makefile
+@@ -15,15 +15,15 @@
+ ##
+ 
+ INSTALLROOT =
+-prefix      = /usr/local
++prefix      = /usr
+ bindir	    = $(prefix)/bin
+-mandir      = $(prefix)/man
++mandir      = $(prefix)/share/man
+ man1dir     = $(mandir)/man1
+ 
+ CC      = gcc -W -Wall
+ CFLAGS  = -O2 -fomit-frame-pointer
+-LDFLAGS = -s
+-LIBS    = -lpng
++LDFLAGS = 
++LIBS    = -lpng -lz -lm
+ INSTALL = install
+ INSTALL_EXEC = $(INSTALL) -c -m 755
+ INSTALL_DATA = $(INSTALL) -c -m 644

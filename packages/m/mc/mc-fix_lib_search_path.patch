@@ -1,0 +1,30 @@
+Index: m4.include/mc-with-screen-ncurses.m4
+===================================================================
+--- m4.include/mc-with-screen-ncurses.m4.orig	2010-07-05 21:12:51.000000000 +0200
++++ m4.include/mc-with-screen-ncurses.m4	2010-07-07 17:20:37.294701000 +0200
+@@ -9,7 +9,14 @@ AC_DEFUN([MC_CHECK_NCURSES_BY_PATH], [
+     fi
+ 
+     if test x"$ac_ncurses_lib_path" != x; then
+-        ac_ncurses_lib_path="-L"$ac_ncurses_lib_path
++        case $ac_ncurses_lib_path in
++        	/usr/lib*)
++        		ac_ncurses_lib_path=""
++        		;;
++        	*)
++        		ac_ncurses_lib_path="-L"$ac_ncurses_lib_path
++        		;;
++        esac
+     fi
+ 
+     saved_CPPFLAGS="$CPPFLAGS"
+@@ -32,9 +39,6 @@ AC_DEFUN([MC_CHECK_NCURSES_BY_PATH], [
+             if test x"$ac_ncurses_inc_path" = x; then
+                 ac_ncurses_inc_path="-I/usr/include"
+             fi
+-            if test x"$ac_ncurses_lib_path" = x; then
+-              ac_ncurses_lib_path="-L/usr/lib"
+-            fi
+             found_ncurses=yes
+             AC_DEFINE(HAVE_NCURSES_NCURSES_H, 1,
+                       [Define to 1 if you have the <ncurses/ncurses.h> header file.])

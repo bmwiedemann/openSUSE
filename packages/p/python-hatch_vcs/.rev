@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>67fa1c8ac6ca571a0033ac1073d85cb3</srcmd5>
+    <version>0.2.0</version>
+    <time>1658395995</time>
+    <user>RBrownFactory</user>
+    <comment>required by python-jsonschema</comment>
+    <requestid>990406</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d98e6cc1b5a625ed3ab16f658e6eb0dd</srcmd5>
+    <version>0.2.0</version>
+    <time>1668271214</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-tests-setuptools-scm7.patch upstream patch to support setuptools_scm
+  7 gh#ofek/hatch-vcs#9</comment>
+    <requestid>1035229</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c98bd4a22173ffd152beb26af870723a</srcmd5>
+    <version>0.2.1</version>
+    <time>1670514614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040885</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f952265f2d6224ea673fe1ac068b7478</srcmd5>
+    <version>0.3.0</version>
+    <time>1670863034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042089</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d3adcd8ebc52ea9f7ba9d918ac9a01cc</srcmd5>
+    <version>0.3.0</version>
+    <time>1677075663</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to _multibuild to avoid a build cycle with pytest.</comment>
+    <requestid>1066937</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>755a2e0746bc2a7d997e580bcd5145b5</srcmd5>
+    <version>0.3.0</version>
+    <time>1677584886</time>
+    <user>dimstar_suse</user>
+    <comment>- The test build branch MUST BR the package itself.</comment>
+    <requestid>1067918</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>241a35913c379a6a79136a1cbf62afbf</srcmd5>
+    <version>0.3.0</version>
+    <time>1682193457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081526</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>45236c46fbdef77f533c767afe8a1ebc</srcmd5>
+    <version>0.3.0</version>
+    <time>1684490128</time>
+    <user>dimstar_suse</user>
+    <comment>- add setuptools7x-tests.patch to fix tests with newer setuptools</comment>
+    <requestid>1087535</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>67e321fd43861cb556af2848029aec94</srcmd5>
+    <version>0.4.0</version>
+    <time>1699301618</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123601</requestid>
+  </revision>
+</revisionlist>

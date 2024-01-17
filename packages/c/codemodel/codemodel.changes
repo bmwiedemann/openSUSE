@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Mar 22 07:39:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8 (jsc#SLE-23217)
+
+-------------------------------------------------------------------
+Mon Mar  2 11:11:47 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of codemodel 2.6
+- Add: codemodel-remove-istack-commons-dependency.patch

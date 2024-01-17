@@ -1,0 +1,489 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7c37a1d17b29a8f9855d1e2d83543e94</srcmd5>
+    <version>1.2.7</version>
+    <time>1316618754</time>
+    <user>saschpe</user>
+    <comment>Resubmitted with the required changes for spec-file and changes</comment>
+    <requestid>84086</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e8fdd2a06fbc4ae6865a0b956b30f0e9</srcmd5>
+    <version>1.2.7</version>
+    <time>1316681581</time>
+    <user>saschpe</user>
+    <comment>- remove %debug_package macro</comment>
+    <requestid>84251</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e8fdd2a06fbc4ae6865a0b956b30f0e9</srcmd5>
+    <version>1.2.7</version>
+    <time>1319182577</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>7f3d6591a1dd5aae739115df96c0a0b0</srcmd5>
+    <version>1.2.7</version>
+    <time>1323195222</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d5b19eea5ea55dd313e269fb5de531b1</srcmd5>
+    <version>1.2.8</version>
+    <time>1325767819</time>
+    <user>coolo</user>
+    <comment>- update to 1.2.8:
+  * Wrap user-subclassable functor objects by allowing the user to pass a
+    Lua function where the functor object would be passed in the C++ API.
+  * Fix &quot;PHP Notice:  Undefined variable: r in xapian.php&quot;.  (Fixes bug#576)
+  * The PHP bindings will now work again with a version of PHP built with ZTS
+    enabled (which is the default on Microsoft Windows).  This was broken by
+    the changes to support subclassing in PHP in the version of SWIG used since
+    1.2.6.
+  * Add a module docstring.  (Fixes bug #573)
+  * The python testsuite now checks for object leaks during each testcase.
+  * In test_matchingterms_iter, run the code we're testing for leaks twice, and
+    only check for leaks the second time to avoid falsely reporting a leak when
+    some cached value gets initialised under Python 2.5.
+  * Wrap optional prefix parameter to Database::allterms. (forwarded request 98789 from dirkmueller)</comment>
+    <requestid>98791</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d5b19eea5ea55dd313e269fb5de531b1</srcmd5>
+    <version>1.2.8</version>
+    <time>1340184332</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>75c77a7b9e5cf8e0da2ac7436b709e0a</srcmd5>
+    <version>1.2.12</version>
+    <time>1357632889</time>
+    <user>coolo</user>
+    <comment>replaced-swig-zend-error-noreturn-flag.patch</comment>
+    <requestid>147311</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>75c77a7b9e5cf8e0da2ac7436b709e0a</srcmd5>
+    <version>1.2.12</version>
+    <time>1359110588</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a3bb62d4d3b9fced925368298d336a32</srcmd5>
+    <version>1.2.15</version>
+    <time>1370431434</time>
+    <user>coolo</user>
+    <comment>Update to version 1.2.15</comment>
+    <requestid>177012</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a3bb62d4d3b9fced925368298d336a32</srcmd5>
+    <version>1.2.15</version>
+    <time>1379664988</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b41fec62149e5ce9fff7da02e3fb0b1a</srcmd5>
+    <version>1.2.16</version>
+    <time>1387453096</time>
+    <user>coolo</user>
+    <comment>Update to version 1.2.16. This brings the bindings back in line again with the xapian-core package</comment>
+    <requestid>211402</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>93e0cc852effc40e8d9423cc00fb575c</srcmd5>
+    <version>1.2.17</version>
+    <time>1391082989</time>
+    <user>coolo</user>
+    <comment>Update to 1.2.17 (forwarded request 215583 from sumski)</comment>
+    <requestid>215596</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>93e0cc852effc40e8d9423cc00fb575c</srcmd5>
+    <version>1.2.17</version>
+    <time>1409303668</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>659d018f4c57d884e45af031fe5023ed</srcmd5>
+    <version>1.2.19</version>
+    <time>1413987764</time>
+    <user>coolo</user>
+    <comment>Update to Xapian 1.2.19</comment>
+    <requestid>257876</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>ad93cbb4e5ccbdd35a7e36ee3ec336d3</srcmd5>
+    <version>1.2.19</version>
+    <time>1424622388</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286984</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8c94963333cee8ca6fe847a4408ad4cc</srcmd5>
+    <version>1.2.20</version>
+    <time>1426174743</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290380</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>61b5d71091b54ceda6078259c0a9488b</srcmd5>
+    <version>1.2.20</version>
+    <time>1428064488</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294157</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>12075436dda9d93aa5ad4cceeee7cc6f</srcmd5>
+    <version>1.2.21</version>
+    <time>1432281274</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.2.21</comment>
+    <requestid>308203</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>06ca9f5dd5f0a0f8a5c5cf003c909a67</srcmd5>
+    <version>1.2.21</version>
+    <time>1437549595</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317794</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>aaebdbfe2191d9ff45b2254d13769138</srcmd5>
+    <version>1.2.23</version>
+    <time>1461335152</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>390764</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9ed8239e2e778dede4a8ad5132124c1e</srcmd5>
+    <version>1.4.0</version>
+    <time>1471688822</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.4.0</comment>
+    <requestid>407426</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c5e76cd8394bf946b63d0b82c7a154a4</srcmd5>
+    <version>1.4.1</version>
+    <time>1480952070</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443786</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2ad86341dd85f957d17e8ce852ba2353</srcmd5>
+    <version>1.4.3</version>
+    <time>1489345201</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>468645</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>f3271cc11544fa2018e8a12ee36926aa</srcmd5>
+    <version>1.4.3</version>
+    <time>1498638999</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506393</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4cc9844b161da42e6815ed31a6a672fd</srcmd5>
+    <version>1.4.4</version>
+    <time>1499168572</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507413</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>c36742ff363fe296c4f8213cfe76288b</srcmd5>
+    <version>1.4.4</version>
+    <time>1505239073</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523631</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0f6347fc554c6df60c58ae7992df0caf</srcmd5>
+    <version>1.4.5</version>
+    <time>1513762793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558313</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b5ebc09303c3b5ddc26ad0d0cc889f9e</srcmd5>
+    <version>1.4.6</version>
+    <time>1532681847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625433</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ecfb46e31b3fed6e07ff2c1ffaaa8fc8</srcmd5>
+    <version>1.4.7</version>
+    <time>1541666831</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644361</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1409b166c262838699b16b98d5f2839c</srcmd5>
+    <version>1.4.9</version>
+    <time>1543224425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651066</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>7eefc280ba59c739e20912fbce9ee274</srcmd5>
+    <version>1.4.9</version>
+    <time>1560459985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709676</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4720cc5a637fd0722c90e54afebcc2a8</srcmd5>
+    <version>1.4.14</version>
+    <time>1587324949</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.14:
+  * Python3:
+    + Remove broken replicationtest.py.  It's never worked reliably, and because
+      of that was disabled shortly after being added over a decade ago.
+      Unsurprisingly it's bit-rotted at least a bit since.  Nobody seems interested
+      in fixing it, so it's time to just get rid of it.
+- Remove the python2 bindings
+- Rebase patch:
+  * do-not-use-sphinx.diff
+- Update to 1.4.13:
+  * General:
+    + Omit SWIG exception handling for destructors.  Since C++11, destructors can't
+      throw by default and we don't override that default, so there's no point
+      adding exception handling code for them.
+    + Ensure doccomments.i is distributed.  If you unpacked a distribution tarball,
+      configured it and then ran &quot;make dist&quot; python/doccomments.i and
+      python3/doccomments.i would be missing unless you configured the tree with
+      --enable-maintainer-mode.
+  * PHP:
+    + Check for php-config5.6 and php-config5.5 in configure as these versioned
+      names are used in some packages (such as those from the ondrej/php PPA).
+  * PHP7:
+    + Work around build failure on Illuminos.  Fixes
+      https://trac.xapian.org/ticket/793, reported by Amitai Schleier.
+  * Ruby:
+    + smoketest.rb: Use #push not #append on Array to restore compatibility with
+      Ruby &lt; 2.5 (broken by changes in 1.4.12).
+    + Expand tabs in Ruby code since using spaces for indentation seems to be
+      preferred Ruby style.
+    + Remove trailing `;` from Ruby code.
+- Update to 1.4.12:
+  * Documentation:
+    + Update bindings HACKING document.  Reported as out of date by Niwesh Gupta.
+  * CSharp:
+    + Work around mono terminfo parsing bug - older cli-sn fails with e.g.
+      TERM=xterm-256color due to: https://github.com/mono/mono/issues/6752
+      Encountered on Kubuntu 18.10 and debugged by Tejasvi Tomar.  Seems to be
+      fixed in the mono version in Debian buster.
+  * Perl:
+    + Suppress warnings from older Perl headers due to use of constructs which look
+      like C++11 user-defined literals.  They're fixed in newer versions so they're
+      just noise in our build.  We were working around these in the CI build, so
+      drop that workaround as we want to make the build warning-clean for users
+      too.  Reported by daniel93 on #xapian.
+  * Python3:
+    + Fix build for changes in Sphinx 2.0 (which drops support for sphinx.main()).
+      Fixes #778, reported by karolyi.  Also reported by Gaurav Arora.
+    + We now throw UnicodeEncodeError for bad Unicode string input.  Previously
+      cases such as a lone surrogate would be handled by quietly skipping the bad
+      codepoints when converting to UTF-8 to pass to Xapian.
+    + We no longer use the deprecated old-style Py_UNICODE API, which currently
+      gives deprecation warnings and is slated to be removed in Python 4.0.
+  * Ruby:
+    + Add support for block iteration.  All the iterator methods in the Ruby API
+      now accept an optional block.  If no block is given an array is returned so
+      existing code will still work.  Partly based on a patch in
+      https://github.com/xapian/xapian/pull/232 from Cong Ding.
+    + Add missing wrappers for all the C++ methods returning iterators which
+      weren't wrapped for Ruby.  Fixes #777, reported by do.
+    + Suppress warnings from Ruby 2.3 headers due to use of register and
+      constructs which look like C++11 user-defined literals.  They're fixed in
+      newer versions so they're just noise in our build.  We were working around
+      these in the CI build, so drop that workaround as we want to make the build
+      warning-clean for users too.  Reported by daniel93 on #xapian.
+    + smoketest.rb: Don't leave temporary databases behind in /tmp.
+- Update to 1.4.11:
+  * CSharp:
+    + Make MatchAll and MatchNothing readonly.
+  * Java:
+    + Simplify load-time setup of Query.OP_OR, etc which are provided for
+      compatibility with the original hand-written JNI bindings.
+  * PHP:
+    + We now load the module for &quot;make check&quot; using -d extension=xapian which
+      avoids needing to turn off safe_mode and turn on enable_dl, and matches how
+      the module is usually loaded in production use.
+  * PHP7:
+    + Fix access to already released memory during PHP module shutdown, which often
+      didn't cause visible problems, but could result in segmentation faults, bus
+      errors, etc.
+    + Fix generated code to compile when using a ZTS-enabled build of PHP.
+    + We now load the module for &quot;make check&quot; using -d extension=xapian which
+      avoids needing to turn off safe_mode and turn on enable_dl, and matches how
+      the module is usually loaded in production use.
+- Update to 1.4.10:
+  * Documentation:
+    + Use https for URLs where supported.
+  * General:
+    + Wrap new DatabaseClosedError and DatabaseNotFoundError exceptions.
+      See #772 and #773.  Patches from Vaibhav Kansagara.
+    + Update expected query descriptions in tests for the xapian-core
+      change to produce flatter Query trees.
+    + Workaround Perl 5.28 -i quirk when postprocessing SWIG-generated code.
+      The commands in question are only run when maintainer-mode is enabled.
+  * CSharp:
+    + C++ constant Xapian::BAD_VALUENO is now wrapped without using a getter.
+      This shouldn't affect existing user code.
+  * Java:
+    + C++ constant Xapian::BAD_VALUENO is now wrapped as Java constant
+      Xapian.BAD_VALUENO.  The previous Java wrapping as function
+      Xapian.getBAD_VALUENO() is still supported for compatibility with
+      existing code.
+    + Remove redundant std::string initialisation.
+  * Lua:
+    + C++ constant Xapian::BAD_VALUENO is now wrapped as a constant rather than
+      an immutable attribute.  This shouldn't affect existing user code.
+  * Perl:
+    + C++ constant Xapian::BAD_VALUENO is now wrapped as Perl constant
+      Xapian::BAD_VALUENO.  The previous Perl wrapping as variable
+      $Xapian::BAD_VALUENO is still supported for compatibility with existing
+      code.
+    + Note in the POD documentation that the Error base classes which are abstract
+      in C++ don't have a new method in Perl.
+  * PHP:
+    + C++ constant Xapian::BAD_VALUENO is now wrapped as PHP constant
+      Xapian::BAD_VALUENO.  The previous PHP wrapping as function
+      Xapian::BAD_VALUENO_get() is still supported for compatibility with existing
+      code.
+    + Remove code to work around a SWIG bug which was fixed in 2006.
+  * PHP7:
+    + C++ constant Xapian::BAD_VALUENO is now wrapped as PHP constant
+      Xapian::BAD_VALUENO.  The previous PHP wrapping as function
+      Xapian::BAD_VALUENO_get() is still supported for compatibility with existing
+      code.
+    + configure: Check for php-config7.3 and php-config7.2 as well as
+      php-config7.1, php-config7.0 and php-config.
+    + Correct references to PHP5 in PHP7 script comments.
+    + Remove some C code which is no longer needed with PHP7.
+  * Ruby:
+    + C++ constant Xapian::BAD_VALUENO is now wrapped as Ruby constant
+      Xapian::BAD_VALUENO.  The previous Ruby wrapping as function
+      Xapian::BAD_VALUENO() is still supported for compatibility with existing
+      code.
+    + We now recommend using String#encode instead of the Iconv class, since the
+      latter is no longer included with Ruby.
+  * Tcl:
+    + C++ constant Xapian::BAD_VALUENO is now wrapped as a constant rather than
+      variable which can't be written to.  This shouldn't affect existing user
+      code.
+</comment>
+    <requestid>766613</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>08699336baefba8d892ecd147e79f3ab</srcmd5>
+    <version>1.4.15</version>
+    <time>1588697617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799126</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>1f7e91226fb68103663238b96902e02e</srcmd5>
+    <version>1.4.17</version>
+    <time>1598983594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829960</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>8ba522e1d323f2868949679224bd0992</srcmd5>
+    <version>1.4.17</version>
+    <time>1605216804</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847802</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>e9824c571206aa9e64154f6206e30c87</srcmd5>
+    <version>1.4.17</version>
+    <time>1609405108</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859284</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b8b04bc229a683c3febe20d21fdf4743</srcmd5>
+    <version>1.4.18</version>
+    <time>1612707405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868904</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>d15cb91511b95f3f525cf49e8ae501b1</srcmd5>
+    <version>1.4.19</version>
+    <time>1643486251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949639</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>03990db96956970e31eb35a72d42e920</srcmd5>
+    <version>1.4.20</version>
+    <time>1659941107</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh do-not-use-sphinx.diff
+
+- update to 1.4.20:
+  * Enable -fvisibility-inlines-hidden option if the compiler supports it.
+  * Add missing reference tracking. XapianEnquire now keeps a reference to the
+    current XapianSorter object (if any).  XapianQueryParser now keeps a
+    reference to any set XapianFieldProcessor objects.  Test coverage for keeping
+    references to set functor objects is now more comprehensive.
+  * smoketest.php: Remove bogus extra null parameters.  PHP ignores these extra
+    parameters, but it's more helpful to be testing valid usage.
+  * The configure probes for Python3 no longer use the deprecated distutils and
+    imp modules (both of which are slated for removal in Python 3.12).  We now
+    use sysconfig to get the directory to install the xapian module to, which may
+    result in it being installed in a different place (it should still work, but
+    if you're packaging the bindings you may need to update the list of files to
+    include in the package). (forwarded request 990268 from bnavigator)</comment>
+    <requestid>993353</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0d2ae019b423fce0648560607fa9f443</srcmd5>
+    <version>1.4.21</version>
+    <time>1664797465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1007288</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>f253bd84473d7cec0e2d3ef6da64706e</srcmd5>
+    <version>1.4.21</version>
+    <time>1674932391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061300</requestid>
+  </revision>
+</revisionlist>

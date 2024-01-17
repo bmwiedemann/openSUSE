@@ -1,0 +1,226 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0ec0d83140b96da43bb6889bf704e685</srcmd5>
+    <version>1.5.1</version>
+    <time>1533412330</time>
+    <user>dimstar_suse</user>
+    <comment>Required by python-PsychoPy</comment>
+    <requestid>627218</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2705a7379a6fb8479020589ed5be1594</srcmd5>
+    <version>1.5.1</version>
+    <time>1535122827</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628147</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3a4680fa96353366efb505bfcb1d6f68</srcmd5>
+    <version>1.7.0</version>
+    <time>1546946825</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.0:
+  * [docs] Fix the owned/starred usage documentation
+  * [docs] Add a warning about http to https redirects
+  * Fix the https redirection test
+  * [docs] Add a note about GroupProject limited API
+  * Add missing comma in ProjectIssueManager _create_attrs
+  * More flexible docker image
+  * Add project protected tags management
+  * [cli] Print help and usage without config file
+  * Rename MASTER_ACCESS to MAINTAINER_ACCESS
+  * [docs] Add docs build information
+  * Use docker image with current sources
+  * [docs] Add PyYAML requirement notice
+  * Add Gitter badge to README
+  * [docs] Add an example of pipeline schedule vars listing
+  * [cli] Exit on config parse error, instead of crashing
+  * Add support for resource label events
+  * [docs] Fix the milestone filetring doc (iid -&gt; iids)
+  * [docs] Fix typo in custom attributes example
+  * Improve error message handling in exceptions
+  * Add support for members all() method
+  * Add access control options to protected branch creation
+  * [docs] Don't use hardcoded values for ids
+  * [docs] Improve the snippets examples
+  * [cli] Output: handle bytes in API responses
+  * [cli] Fix the case where we have nothing to print
+  * Project import: fix the override_params parameter
+  * Support group and global MR listing
+  * Implement MR.pipelines()
+  * MR: add the squash attribute for create/update</comment>
+    <requestid>662197</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>272867dc8fe847ac6aa750da755916ac</srcmd5>
+    <version>1.8.0</version>
+    <time>1557751800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701750</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>af5be453f31e24e0c5c3892dfa8ef913</srcmd5>
+    <version>1.9.0</version>
+    <time>1563808811</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.0:
+  * implement artifacts deletion
+  * add endpoint to get the variables of a pipeline
+  * delete ProjectPipeline
+  * implement __eq__ and __hash__ methods
+  * Allow runpy invocation of CLI tool (python -m gitlab)
+  * add project releases api
+  * merged new release &amp; registry apis</comment>
+    <requestid>717593</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c0d6bcd23ce98a4dd65ca1036841ab07</srcmd5>
+    <version>1.11.0</version>
+    <time>1568190976</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.0:
+  * add methods to retrieve an individual project environment
+  * group labels with subscriptable mixin
+  * add mr rebase method bc4280c
+  * get artifact by ref and job cda1174
+  * add support for board update 908d79f, closes #801
+  * add support for issue.related_merge_requests 90a3631, closes #794</comment>
+    <requestid>729828</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4b54d5c3ad641ba4da671d2d8d737f36</srcmd5>
+    <version>2.1.2</version>
+    <time>1584964307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787370</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fb3064be81b765f6bf22fda6af513f1e</srcmd5>
+    <version>2.1.2</version>
+    <time>1587467320</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependencies for testing</comment>
+    <requestid>795759</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5f0313a01c837eccd13654ee46650271</srcmd5>
+    <version>2.2.0</version>
+    <time>1588622501</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use %python3_only command, but properly use alternatives.
+- Update to 2.2.0:
+  - add missing import_project param
+  - types: do not split single value string in ListAttribute
+  - add commit GPG signature API
+  - add create from template args to ProjectManager
+  - add remote mirrors API (#1056)
+  - add Gitlab Deploy Token API
+  - add Group Import/Export API (#1037)</comment>
+    <requestid>800150</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>95a9229e434ad471c5c8c5c3d98276a5</srcmd5>
+    <version>2.5.0</version>
+    <time>1610736376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863139</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8200d61cf81939bccb10c206c0afc116</srcmd5>
+    <version>3.4.0</version>
+    <time>1651669872</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974865</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4a1f214af8f014296ef3580854d10e2e</srcmd5>
+    <version>3.9.0</version>
+    <time>1665185128</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008711</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>eb1494dcac42aaa81676a2959ce23471</srcmd5>
+    <version>3.10.0</version>
+    <time>1667214917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032447</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>58f5d3ba31c407fdf1576d341ded9cb1</srcmd5>
+    <version>3.11.0</version>
+    <time>1668271265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035259</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bd9d2337960eca0a6b10fd669fdb075c</srcmd5>
+    <version>3.12.0</version>
+    <time>1670514736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041344</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>a5c8c64d58a94d9f19ee355b8f9ed5b2</srcmd5>
+    <version>3.12.0</version>
+    <time>1670954121</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042469</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>33f14b7db9bcdfe0a0b2537cb76a63b8</srcmd5>
+    <version>3.15.0</version>
+    <time>1697231702</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+- Update to 3.15.0
+- force urllib3 &lt; 2 for testsuite
+ * Add support for select=&quot;package_file&quot; in package upload (3a49f09)
+ * api: Add support for events scope parameter (348f56e
+ * Usernames support for MR approvals ()a2b8c8c)
+ * Remove exclusive EE about issue links (e0f6f18)
+ * projects: Allow importing additional items from GitHub (ce84f2e)
+ * objects: Support fetching PATs via id or self endpoint (19b38bd)
+ * Add resource_weight_event for ProjectIssue (6e5ef55)
+ * backends: Use PEP544 protocols for structural subtyping (#2442) (4afeaff)
+ * client: Add http_patch method (#2471) (f711d9e)
+ * cli: Add setting of allow_force_push for protected branch (929e07d)
+ * cli: Warn user when no fields are displayed (8bf53c8)
+ * client: Properly parse content-type when charset is present (76063c3)
+ * Support int for parent_id in import_group (90f96ac)
+ * cli: Add ability to escape at-prefixed parameter (#2513) (4f7c784)
+ * cli: Display items when iterator is returned (33a04e7)
+ * objects: Fix typo in pipeline schedules (3057f45)
+ * advanced: Clarify netrc, proxy behavior with requests (1da7c53)
+ * Fix update badge behaviour (3d7ca1c)
+ * advanced: Fix typo in Gitlab examples (1992790)
+ * group: Add support for group restore API (9322db6)
+ * client: Automatically retry on HTTP 409 Resource lock (dced76a)
+ * api: Add support for bulk imports API (043de2d)
+ * api: Add support for resource groups (5f8b8f5)
+ * api: Support listing pipelines triggered by pipeline schedules (865fa41)
+ * Allow filtering pipelines by source (b6c0872)
+ * client: Bootstrap the http backends concept (#2391) (91a665f)
+ * Add resource iteration events (see https://docs.gitlab.com/ee/api/resource_iteration_events.html)
+ * Allow passing kwargs to Gitlab class when instantiating with from_config (#2392) (e88d34e)
+ * Add keep_base_url when getting configuration from file (50a0301)
+ * client: Regression - do not automatically get_next if page=# and (585e3a8)
+ * Change return value to &quot;None&quot; in case getattr returns None to prevent error (3f86d36)
+ * deps: Bump requests-toolbelt to fix deprecation warning (faf842e)
+ * Use the ProjectIterationManager within the Project object (44f05dc)
+ * api: Make description optional for releases (5579750)
+ * faq: Describe and group common errors (4c9a072)
+</comment>
+    <requestid>1117526</requestid>
+  </revision>
+</revisionlist>

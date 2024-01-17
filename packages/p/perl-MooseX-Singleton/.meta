@@ -1,0 +1,14 @@
+<package name="perl-MooseX-Singleton" project="openSUSE:Factory">
+  <title>Turn your Moose class into a Singleton</title>
+  <description>A singleton is a class that has only one instance in an application.
+&quot;MooseX::Singleton&quot; lets you easily upgrade (or downgrade, as it were)
+your Moose class to a singleton.
+
+All you should need to do to transform your class is to change &quot;use Moose&quot;
+to &quot;use MooseX::Singleton&quot;. This module uses metaclass roles to do its
+magic, so it should cooperate with most other &quot;MooseX&quot; modules.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-MooseX-Singleton"/>
+  <url>http://search.cpan.org/dist/MooseX-Singleton</url>
+</package>

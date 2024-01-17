@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>581304676a05f1f9f69172fd25a1b1e1</srcmd5>
+    <version>0.4.2</version>
+    <time>1631913964</time>
+    <user>dimstar_suse</user>
+    <comment>Sphinx extension to generate OpenGraph metadata.
+This package is eventually going to be needed by Kitty, when someone manages to fix the new versions.</comment>
+    <requestid>919719</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>41c4c302f0f044410fd33d91af2c0924</srcmd5>
+    <version>0.6.3</version>
+    <time>1667306527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032480</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d77714d8164df6c7699c65157bda64ab</srcmd5>
+    <version>0.7.5</version>
+    <time>1673108396</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0.7.5:
+  * check for description length before subscripting
+  * Use Sphinx Builder method to get page url
+  * Fix field names in readme
+  * Allow dirhtml builder without ogp_site_url
+  * Take default og:site_name from sphinx project config value
+  * Do not append index with dirhtml
+  * Create wheel with version number not &quot;main&quot;
+  * Don't run CI on tag and push
+  * Fix option name in README.md.
+  * Test multiple Sphinx and OS versions
+  * Fix ci workflow syntax
+  * Tidy up whitespace
+  * ci: Pin PyPI publish action to v1
+  * Add support for meta description</comment>
+    <requestid>1056770</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3d235e0a6c6e7a3cb03ad31ef43652db</srcmd5>
+    <version>0.9.1</version>
+    <time>1702936594</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.1:
+  * Test Sphinx 7
+  * Fix default Roboto font not being found by the matplotlib
+    FontManager
+- update to 0.9.0:
+  * make matplotlib optional
+  * Drop EOL Python 3.7, Bump PyPy to 3.9
+- update to 0.8.2:
+  * Fix DeprecationWarning: The 'warn' method is deprecated, use
+    'warning' instead
+  * FIX: Social media twitter card tags
+- update to 0.8.1:
+  * Add exception for SVG images
+- update to V0.8.0:
+  * Format with Black 23.1.0
+
+- Update to version 0.6.3</comment>
+    <requestid>1133821</requestid>
+  </revision>
+</revisionlist>

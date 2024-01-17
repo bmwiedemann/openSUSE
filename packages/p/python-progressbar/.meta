@@ -1,0 +1,10 @@
+<package name="python-progressbar" project="openSUSE:Factory">
+  <title>Text Progressbar Library for Python</title>
+  <description>This library provides a text mode progressbar. This is tipically used to
+display the progress of a long running operation, providing a visual clue that
+processing is underway.
+
+</description>
+  <devel project="devel:languages:python" package="python-progressbar"/>
+  <url>http://code.google.com/p/python-progressbar/</url>
+</package>

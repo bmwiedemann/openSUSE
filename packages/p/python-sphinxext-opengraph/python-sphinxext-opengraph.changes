@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Mon Dec 18 09:32:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.1:
+  * Test Sphinx 7
+  * Fix default Roboto font not being found by the matplotlib
+    FontManager
+- update to 0.9.0:
+  * make matplotlib optional
+  * Drop EOL Python 3.7, Bump PyPy to 3.9
+- update to 0.8.2:
+  * Fix DeprecationWarning: The 'warn' method is deprecated, use
+    'warning' instead
+  * FIX: Social media twitter card tags
+- update to 0.8.1:
+  * Add exception for SVG images
+- update to V0.8.0:
+  * Format with Black 23.1.0
+
+-------------------------------------------------------------------
+Sat Jan  7 12:46:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v0.7.5:
+  * check for description length before subscripting
+  * Use Sphinx Builder method to get page url
+  * Fix field names in readme
+  * Allow dirhtml builder without ogp_site_url
+  * Take default og:site_name from sphinx project config value
+  * Do not append index with dirhtml
+  * Create wheel with version number not "main"
+  * Don't run CI on tag and push
+  * Fix option name in README.md.
+  * Test multiple Sphinx and OS versions
+  * Fix ci workflow syntax
+  * Tidy up whitespace
+  * ci: Pin PyPI publish action to v1
+  * Add support for meta description
+
+-------------------------------------------------------------------
+Tue Oct 11 15:31:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.6.3
+  Fix first_image not resolving correctly when in subdirectories and ogp_image is defined. by @ItayZiv in #63
+
+- Update to version 0.6.2
+  chore(README) Typo fix by @tony in #58
+  Fix first_image not resolving correctly in subdirectories by @ItayZiv in #61
+
+- Update to version 0.6.1
+  fix og:url for "dirhtml" builder by @ru-fu in #54
+
+- Update to version 0.6.0
+  Include license in setup.py by @sciencewhiz in #52
+  Add per-file overrides using field lists by @ItayZiv in #50
+
+- Update to version 0.5.1
+  Escape quotations in Open Graph description when smart quotes are disabled. by @ItayZiv in #49
+
+- Update to version 0.5.0
+  Skipping code blocks and fixing docs build. by @Robpol86 in #47
+  Convert relative paths to absolute in og:image. by @Robpol86 in #48
+
+-------------------------------------------------------------------
+Fri Sep 17 10:39:56 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Limit ownership of packages in sitelib.
+
+-------------------------------------------------------------------
+Thu Sep 16 20:40:04 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- initial package

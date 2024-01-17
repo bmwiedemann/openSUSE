@@ -1,0 +1,53 @@
+--- ./src/line2av.h.orig	2014-07-23 10:52:19.964887439 +0000
++++ ./src/line2av.h	2014-07-23 10:56:39.769646508 +0000
+@@ -9,7 +9,8 @@ linestring2perl(pTHX_ const linestring&
+ {
+   AV* av = newAV();
+   const unsigned int line_len = boost::geometry::num_points(ls);
+-  av_extend(av, line_len-1);
++  if (line_len)
++    av_extend(av, line_len-1);
+ 
+   for (int i = 0; i < line_len; i++) {
+     AV* pointav = newAV();
+--- ./src/mline2av.h.orig	2014-07-23 10:52:26.124858599 +0000
++++ ./src/mline2av.h	2014-07-23 10:56:50.273597010 +0000
+@@ -9,7 +9,8 @@ multi_linestring2perl(pTHX_ const multi_
+ {
+   AV* av = newAV();
+   const unsigned int size = mls.size();
+-  av_extend(av, size-1);
++  if (size)
++    av_extend(av, size-1);
+ 
+   for (int i = 0; i < size; i++) {
+     AV* lineav = newAV();
+--- ./src/poly2av.h.orig	2014-07-23 10:52:15.492908920 +0000
++++ ./src/poly2av.h	2014-07-23 10:56:28.513700510 +0000
+@@ -12,7 +12,8 @@ void add_ring_perl(AV* polygon_av, ring&
+     
+     // number of points in the ring
+     const unsigned int len = boost::geometry::num_points(theRing);
+-    av_extend(ring_av, len-1);
++    if (len)
++      av_extend(ring_av, len-1);
+     //fprintf(stderr, "Points in ring: len=%d\n", len);
+   
+     for(unsigned int i = 0; i < len; i++) {
+--- ./src/voronoi2perl.h.orig	2014-07-23 10:52:10.436933009 +0000
++++ ./src/voronoi2perl.h	2014-07-23 10:56:06.665805305 +0000
+@@ -54,9 +54,12 @@ medial_axis2perl(const VD &vd, const boo
+   }
+   
+   AV* edges_out = newAV();
+-  av_extend(edges_out, num_edges - 1);
++  if (num_edges)
++    av_extend(edges_out, num_edges - 1);
+   AV* vertices_out = newAV();
+-  av_extend(vertices_out, vd.num_vertices() - 1);
++  std::size_t num_vertices = vd.num_vertices();
++  if (num_vertices)
++    av_extend(vertices_out, num_vertices - 1);
+ 
+   // lookup tables used in recreating the medial axis data structure for perl
+   std::map<const VD::edge_type*, AV*> thisToThis;

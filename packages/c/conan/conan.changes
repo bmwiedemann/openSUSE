@@ -1,0 +1,224 @@
+-------------------------------------------------------------------
+Thu Jan 11 18:38:29 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.17:
+  * Fix: Automatically create folder if conan cache save
+    --file=subfolder/file.tgz subfolder doesn't exist
+    (gh#conan-io/conan#15409).
+  * Bugfix: Fix libcxx detection when using CC/CXX env vars
+    (gh#conan-io/conan#15418).
+  * Bugfix: Solve winsdk_version bug in CMakeToolchain generator
+    for cmake_minimum_required(3.27) (gh#conan-io/conan#15373).
+  * Bugfix: Fix visible trait propagation with build=True trait
+    (gh#conan-io/conan#15357).
+  * Bugfix: Fix package_id calculation when including conf values
+    thru tools.info.package_id:confs (gh#conan-io/conan#15356).
+  * Bugfix: Order conf items when dumping them to allow
+    reproducible package_id independent of the order the confs
+    were declared (gh#conan-io/conan#15356).
+
+-------------------------------------------------------------------
+Thu Dec 28 17:01:29 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.16:
+  * Bugfix: Revert the default of source_buildenv, make it False
+    by default [gh#conan-io/conan#15319].
+- Changes from version 2.0.15:
+  * Feature: New conan lock remove command to remove requires from
+    lockfiles [gh#conan-io/conan#15284].
+  * Feature: New CMake.ctest() helper method to launch directly
+    ctest instead of via cmake --target=RUN_TEST
+    [gh#conan-io/conan#15282].
+  * Feature: Add tracking syntax in <host_version> for different
+    references [gh#conan-io/conan#15274].
+  * Feature: Add pkglist formatter for conan export command
+    [gh#conan-io/conan#15266].
+  * Feature: Define CONAN_LOG_LEVEL env-var to be able to change
+    verbosity at a global level [gh#conan-io/conan#15263].
+  * Feature: conan cache path xxx --folder xxxx raises an error if
+    the folder requested does not exist [gh#conan-io/conan#15257].
+  * Feature: Add in operator support for ConanFile's
+    self.dependencies [gh#conan-io/conan#15221].
+  * Feature: Make CMakeDeps generator create a conandeps.cmake
+    that aggregates all direct dependencies in a cmake-like
+    generator style [gh#conan-io/conan#15207].
+  * Feature: Add build environment information to CMake configure
+    preset and run environment information to CMake test presets
+    [gh#conan-io/conan#15192].
+  * Feature: Removed a warning about a potential issue with conan
+    migration that would print every time a build failed
+    [gh#conan-io/conan#15174].
+  * Feature: New deploy() method in recipes for explicit
+    per-recipe deployment [gh#conan-io/conan#15172].
+  * Feature: Allow tool-requires to be used in source() method
+    injecting environment [gh#conan-io/conan#15153].
+  * Feature: Allow accessing the contents of settings.yml (and
+    settings_user!) from ConfigAPI [gh#conan-io/conan#15151].
+  * Feature: Add builtin conf access from ConfigAPI
+    [gh#conan-io/conan#15151].
+  * Feature: Add redirect_stdout to CMake integration methods
+    [gh#conan-io/conan#15150].
+  * Feature: Add core:warnings_as_errors configuration option to
+    make Conan raise on warnings and errors
+    [gh#conan-io/conan#15149].
+  * Feature: Added FTP_TLS option using secure argument in
+    ftp_download for secure communication
+    [gh#conan-io/conan#15137].
+  * Feature: New [replace_requires] and [replace_tool_requires] in
+    profile for redefining requires, useful for package
+    replacements like zlibng/zlib, to solve conflicts, and to
+    replace some dependencies by system alternatives wrapped in
+    another Conan package recipe [gh#conan-io/conan#15136].
+  * Feature: Add stderr capture argument to conanfile's run()
+    method [gh#conan-io/conan#15121].
+  * Feature: New [platform_requires] profile definition to be able
+    to replace Conan dependencies by platform-provided
+    dependencies [gh#conan-io/conan#14871].
+  * Feature: New conan graph explain command to search, compare
+    and explain missing binaries [gh#conan-io/conan#14694].
+  * Feature: Global cpp_info can be used to initialize components
+    values [gh#conan-io/conan#13994].
+  * Fix: Make core:warnings_as_errors accept a list
+    [gh#conan-io/conan#15297].
+  * Fix: Fix user confs package scoping when no separator was
+    given [gh#conan-io/conan#15296].
+  * Fix: Fix range escaping in conflict reports involving ranges
+    [gh#conan-io/conan#15222].
+  * Fix: Allow hard set_name() and set_version() to mutate name
+    and version provided in command line
+    [gh#conan-io/conan#15211].
+  * Fix: Make conan graph info --format=text print to stdout
+    [gh#conan-io/conan#15170].
+  * Fix: Avoid warning in CMake output due to
+    CMAKE_POLICY_DEFAULT_CMP0091 unused variable
+    [gh#conan-io/conan#15127].
+  * Fix: Deprecate [system_tools] in favor of
+    [platform_tool_requires] to align with [platform_requires] for
+    regular dependencies. Changed output from "System tool" to
+    "Platform" [gh#conan-io/conan#14871].
+  * Bugfix: Ensure user confs have at least 1 : separator
+    [gh#conan-io/conan#15296].
+  * Bugfix: Git.is_dirty() will use git status . -s to make sure
+    it only process the current path, not the whole repo,
+    similarly to other Git methods [gh#conan-io/conan#15289].
+  * Bugfix: Make self.info.clear() and header-only packages to
+    remove python_requires and tool_requires
+    [gh#conan-io/conan#15285].
+  * Bugfix: Make conan cache save/restore portable across Windows
+    and other OSs [gh#conan-io/conan#15253].
+  * Bugfix: Do not relativize absolute paths in deployers
+    [gh#conan-io/conan#15244].
+  * Bugfix: Add architecture to CMakePresets to avoid cmake
+    ignoring toolchain definitions when using presets
+    [gh#conan-io/conan#15215].
+  * Bugfix: Fix conan graph info --format=html reporting
+    misleading conflicting nodes [gh#conan-io/conan#15196].
+  * Bugfix: Fix serialization of tool_requires in conan profile
+    show --format=json [gh#conan-io/conan#15185].
+  * Bugfix: Fix NMakeDeps quoting issues
+    [gh#conan-io/conan#15140].
+  * Bugfix: Fix the 2.0.14 migration to add LRU data to the cache
+    when storage_path conf is defined [gh#conan-io/conan#15135].
+  * Bugfix: Fix definition of package_metadata_folder for conan
+    export-pkg command [gh#conan-io/conan#15126].
+  * Bugfix: pyinstaller.py was broken for Python 3.12 due to a
+    useless distutils import [gh#conan-io/conan#15116].
+  * Bugfix: Fix backup sources error when no
+    core.sources:download_cache is set [gh#conan-io/conan#15109].
+
+-------------------------------------------------------------------
+Sat Dec 16 13:41:20 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.14:
+  * Feature: Added riscv64, riscv32 architectures to default
+    settings.yml and management of them in Meson and Autotools
+    [gh#conan-io/conan#15053].
+  * Feature: Allow only one simultaneous database connection
+    [gh#conan-io/conan#15029].
+  * Feature: Add conan cache backup-upload to upload all the
+    backup sources in the cache, regardless of which references
+    they are from [gh#conan-io/conan#15013].
+  * Feature: New conan list --format=compact for better UX
+    [gh#conan-io/conan#15011].
+  * Feature: Ignore metadata upload by passing --metadata=""
+    [gh#conan-io/conan#15007].
+  * Feature: Better output messages in conan upload
+    [gh#conan-io/conan#14984].
+  * Feature: Add extra flags to CMakeToolchain
+    [gh#conan-io/conan#14966].
+  * Feature: Implement package load/restore from the cache, for CI
+    workflows and moving packages over air-gaps
+    [gh#conan-io/conan#14923].
+  * Feature: Compute version-ranges intersection to avoid graph
+    version conflicts for compatible ranges
+    [gh#conan-io/conan#14912].
+  * Feature: CMake helper can use multiple targets in target
+    argument [gh#conan-io/conan#14883].
+  * Feature: Add CMakeDeps and PkgConfigDeps generators listening
+    to system_package_version property [gh#conan-io/conan#14808].
+  * Feature: Add shorthand syntax in cli to specify host and build
+    in 1 argument [gh#conan-io/conan#14727].
+  * Feature: Implement cache LRU control for cleaning of unused
+    artifacts [gh#conan-io/conan#14054].
+  * Fix: Avoid CMakeToolchain overwriting user CMakePresets.json
+    when no layout nor output-folder is defined
+    [gh#conan-io/conan#15058].
+  * Fix: Add astra, elbrus and altlinux as distribution using apt
+    in SystemPackageManager [gh#conan-io/conan#15051].
+  * Fix: Default to apt-get package manager in Linux Mint
+    [gh#conan-io/conan#15026].
+  * Fix: Make Git() check commits in remote server even for
+    shallow clones [gh#conan-io/conan#15023].
+  * Fix: Fix AutotoolsToolchain extraflags priority
+    [gh#conan-io/conan#15005].
+  * Fix: Remove colors from conan --version output
+    [gh#conan-io/conan#15002].
+  * Fix: Add an error message if the sqlite3 version is
+    unsupported (less than 3.7.11 from 2012)
+    [gh#conan-io/conan#14950].
+  * Fix: Make cache DB always use forward slash for paths, to be
+    uniform across Windows and Linux [gh#conan-io/conan#14940].
+  * Fix: Solve re-build of an existing package revision (like
+    forcing rebuild of a an existing header-only package), while
+    previous folder was still used by other projects
+    [gh#conan-io/conan#14938].
+  * Fix: Avoid a recipe mutating a conf to affect other recipes
+    [gh#conan-io/conan#14932].
+  * Fix: The output of system packages via Apt.install() or
+    PkgConfig.fill_cpp_info, like xorg/system was very noisy to
+    the Conan output, making it more quiet
+    [gh#conan-io/conan#14924].
+  * Fix: Serialize the path information of python_requires,
+    necessary for computing buildinfo [gh#conan-io/conan#14886].
+  * Fix: Define remotes in conan source command in case recipe has
+    python_requires that need to be downloaded from remotes
+    [gh#conan-io/conan#14852].
+  * Fix: Fix min target flag for xros and xros-simulator
+    [gh#conan-io/conan#14776].
+  * Bugfix: --build=missing was doing unnecessary builds of
+    packages that were not needed and could be skipped, in the
+    case of tool_requires having transitive dependencies
+    [gh#conan-io/conan#15082].
+  * BugFix: Add package revision to format=json in 'conan
+    export-pkg' command [gh#conan-io/conan#15042].
+  * Bugfix: tools.build:download_source=True will not fail when
+    there are editable packages [gh#conan-io/conan#15004].
+  * Bugfix: Transitive dependencies were incorrectly added to
+    conandeps.xcconfig [gh#conan-io/conan#14898].
+  * Bugfix: Fix integrity-check (upload --check or cache
+    check-integrity) when the export_source has not been
+    downloaded [gh#conan-io/conan#14850].
+  * Bugfix: Properly lock release candidates of python requires
+    [gh#conan-io/conan#14846].
+  * BugFix: Version ranges ending with - do not automatically
+    activate pre-releases resolution in the full range
+    [gh#conan-io/conan#14814].
+  * BugFix: Fix version ranges so pre-releases are correctly
+    included in the lower bound and excluded in the upper bound
+    [gh#conan-io/conan#14814].
+- New Requires: python-distro.
+
+-------------------------------------------------------------------
+Fri Oct 27 04:55:52 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.

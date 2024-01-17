@@ -1,0 +1,11 @@
+<package name="codemodel" project="openSUSE:Factory">
+  <title>Java library for code generators</title>
+  <description>CodeModel is a Java library for code generators; it provides a way to
+generate Java programs in a way much nicer than PrintStream.println().
+This project is a spin-off from the JAXB RI for its schema compiler
+to generate Java source files.
+
+</description>
+  <devel project="Java:packages" package="codemodel"/>
+  <url>http://codemodel.java.net</url>
+</package>

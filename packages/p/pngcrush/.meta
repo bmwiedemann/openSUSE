@@ -1,0 +1,7 @@
+<package name="pngcrush" project="openSUSE:Factory">
+  <title>Optimizer for PNG Files that can also insert or delete specified Chunks</title>
+  <description>pngcrush is an excellent batch-mode compression utility for PNG images. Depending on the application that created the original PNGs, it can improve the file size anywhere from a few percent to 40% or more (completely losslessly). The utility also allows specified PNG chunks (e.g. text comments) to be inserted or deleted, and it can fix incorrect gamma info written by Photoshop 5.0 as well as the erroneous iCCP chunk written by Photoshop 5.5.
+</description>
+  <devel project="graphics" package="pngcrush"/>
+  <url>http://pmt.sourceforge.net/pngcrush/</url>
+</package>

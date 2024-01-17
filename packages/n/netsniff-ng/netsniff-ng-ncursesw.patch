@@ -1,0 +1,55 @@
+Index: netsniff-ng-0.6.4/flowtop/Makefile
+===================================================================
+--- netsniff-ng-0.6.4.orig/flowtop/Makefile
++++ netsniff-ng-0.6.4/flowtop/Makefile
+@@ -1,6 +1,6 @@
+ flowtop-libs =	-lurcu \
+ 		$(shell PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) $(PKG_CONFIG) --libs libnetfilter_conntrack 2> /dev/null ) \
+-		$(shell PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) $(PKG_CONFIG) --libs ncurses 2> /dev/null \
++		$(shell PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) $(PKG_CONFIG) --libs ncursesw 2> /dev/null \
+ 			|| echo '-lncurses') \
+ 		$(shell PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) $(PKG_CONFIG) --libs tinfo 2> /dev/null ) \
+ 		-lpthread
+@@ -30,7 +30,7 @@ flowtop-objs +=	geoip.o \
+ 		ioops.o
+ endif
+ 
+-flowtop-eflags = $(shell $(PKG_CONFIG) --cflags ncurses) \
++flowtop-eflags = $(shell $(PKG_CONFIG) --cflags ncursesw) \
+                  $(shell $(PKG_CONFIG) --cflags libnetfilter_conntrack)
+ 
+ flowtop-confs =	tcp.conf \
+Index: netsniff-ng-0.6.4/ifpps/Makefile
+===================================================================
+--- netsniff-ng-0.6.4.orig/ifpps/Makefile
++++ netsniff-ng-0.6.4/ifpps/Makefile
+@@ -1,4 +1,4 @@
+-ifpps-libs =	$(shell PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) $(PKG_CONFIG) --libs ncurses 2> /dev/null \
++ifpps-libs =	$(shell PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) $(PKG_CONFIG) --libs ncursesw 2> /dev/null \
+ 			|| echo '-lncurses') \
+ 		$(shell PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) $(PKG_CONFIG) --libs tinfo 2> /dev/null )
+ 
+@@ -14,6 +14,6 @@ ifpps-objs =	xmalloc.o \
+ 		sysctl.o \
+ 		ifpps.o
+ 
+-ifpps-eflags = $(shell PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) $(PKG_CONFIG) --cflags ncurses 2> /dev/null)
++ifpps-eflags = $(shell PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) $(PKG_CONFIG) --cflags ncursesw 2> /dev/null)
+ 
+ ifpps-confs =
+Index: netsniff-ng-0.6.4/configure
+===================================================================
+--- netsniff-ng-0.6.4.orig/configure
++++ netsniff-ng-0.6.4/configure
+@@ -428,9 +428,9 @@ int main(void)
+ EOF
+ 
+ 	$CC \
+-		$($PKG_CONFIG --cflags ncurses 2>> config.log) \
++		$($PKG_CONFIG --cflags ncursesw 2>> config.log) \
+ 		-o $TMPDIR/ncursestest $TMPDIR/ncursestest.c \
+-		$($PKG_CONFIG --libs ncurses 2>> config.log \
++		$($PKG_CONFIG --libs ncursesw 2>> config.log \
+ 	          || echo '-lncurses' ) \
+ 			>> config.log 2>&1
+ 	if [ ! -x $TMPDIR/ncursestest ] ; then

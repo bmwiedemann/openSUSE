@@ -1,0 +1,6 @@
+<package name="espeakedit" project="openSUSE:Factory">
+  <title>Multi-lingual software speech synthesizer - editor</title>
+  <description>eSpeak is a software speech synthesizer for English, and some other languages.
+eSpeakEdit provides a User Interface to edit the eSpeak voices.</description>
+  <devel project="Education" package="espeakedit"/>
+</package>

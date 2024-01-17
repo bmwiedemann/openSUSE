@@ -1,0 +1,13 @@
+Index: o2scl-0.926/src/eos/eos_quark_cfl6.cpp
+===================================================================
+--- o2scl-0.926.orig/src/eos/eos_quark_cfl6.cpp
++++ o2scl-0.926/src/eos/eos_quark_cfl6.cpp
+@@ -390,7 +390,7 @@ int eos_quark_cfl6::test_derivatives(dou
+     vector_sort<double[36],double>(36,tmpt);
+     for(size_t i=0;i<36;i++) {
+       if (fabs(d2[i])>1.0e-4) {
+-	t.test_rel(d2[i],tmpt[i],1.0e-4,"qqu");
++	t.test_rel(d2[i],tmpt[i],1.0e-3,"qqu");
+       }
+     }
+     up->qq-=h;

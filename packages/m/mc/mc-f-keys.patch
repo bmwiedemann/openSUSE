@@ -1,0 +1,16 @@
+Index: lib/tty/key.c
+===================================================================
+--- lib/tty/key.c.orig	2010-07-05 21:12:51.000000000 +0200
++++ lib/tty/key.c	2010-07-07 11:35:25.871011522 +0200
+@@ -300,6 +300,11 @@ static key_define_t xterm_key_defines[]
+     {KEY_F (9), ESC_STR "[20~", MCKEY_NOACTION},
+     {KEY_F (10), ESC_STR "[21~", MCKEY_NOACTION},
+ 
++    { KEY_M_SHIFT | KEY_F(1),   ESC_STR "[1;2P",   MCKEY_NOACTION },
++    { KEY_M_SHIFT | KEY_F(2),   ESC_STR "[1;2Q",   MCKEY_NOACTION },
++    { KEY_M_SHIFT | KEY_F(3),   ESC_STR "[1;2R",   MCKEY_NOACTION },
++    { KEY_M_SHIFT | KEY_F(4),   ESC_STR "[1;2S",   MCKEY_NOACTION },
++
+     /* old xterm Shift-arrows */
+     {KEY_M_SHIFT | KEY_UP, ESC_STR "O2A", MCKEY_NOACTION},
+     {KEY_M_SHIFT | KEY_DOWN, ESC_STR "O2B", MCKEY_NOACTION},

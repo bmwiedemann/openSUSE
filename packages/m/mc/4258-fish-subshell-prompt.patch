@@ -1,0 +1,15 @@
+---
+ src/subshell/common.c |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+--- a/src/subshell/common.c
++++ b/src/subshell/common.c
+@@ -713,7 +713,7 @@ parse_subshell_prompt_string (const char
+ 
+     /* Extract the prompt from the shell output */
+     for (i = 0; i < bytes; i++)
+-        if (buffer[i] == '\n' || buffer[i] == '\r')
++        if (buffer[i] == '\n')
+             g_string_set_size (subshell_prompt_temp_buffer, 0);
+         else if (buffer[i] != '\0')
+             g_string_append_c (subshell_prompt_temp_buffer, buffer[i]);

@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dada3234f29f650374afd4fa7f257e79</srcmd5>
+    <version>0.15</version>
+    <time>1403070638</time>
+    <user>coolo</user>
+    <comment>needed for slic3r</comment>
+    <requestid>237466</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>757e15833606c525a277761d42842b0b</srcmd5>
+    <version>0.15</version>
+    <time>1406146038</time>
+    <user>coolo</user>
+    <comment>do not call av_extend with a negative size</comment>
+    <requestid>242005</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>757e15833606c525a277761d42842b0b</srcmd5>
+    <version>0.15</version>
+    <time>1409302171</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>
