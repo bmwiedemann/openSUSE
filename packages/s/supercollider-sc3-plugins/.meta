@@ -1,0 +1,5 @@
+<package name="supercollider-sc3-plugins" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:apps" package="supercollider-sc3-plugins"/>
+</package>

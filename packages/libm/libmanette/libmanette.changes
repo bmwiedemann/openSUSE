@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Sun Mar 28 07:50:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add baselibs.conf: build libmanette-0_2-0. New dependency to
+  webkit2gtk3.
+
+-------------------------------------------------------------------
+Sat Nov 28 19:52:53 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.2.6:
+  + Project:
+    - Move the project to gitlab.gnome.org/GNOME/libmanette.
+    - Update the URLs accordingly.
+    - Give the project a minimal website:
+      https://gnome.pages.gitlab.gnome.org/libmanette/
+    - Update the project's description.
+  + Documentation:
+    - Add a documentation.
+    - Fix many documentation annotations.
+    - Document more symbols.
+  + Meson:
+    - Require Meson 0.53.0.
+    - Add the demos option.
+    - Add the build-tests and install-tests option.
+    - Various code style cleanups and updates.
+    - Add a build summary.
+ + ManetteDevice:
+   - Add a missing precondition check to ensure milliseconds is in
+     the right range in manette_device_rumble().
+   - Throw the full file error code rather than G_FILE_ERROR_FAILED
+     in manette_device_new().
+   - Throw G_FILE_ERROR_FAILED rather than G_FILE_ERROR_NXIO in
+     manette_device_new() if the device isn't a gamepad.
+  + ManetteMapping:
+    - Check mapping strings have at least a GUID field and a name
+      field.
+    - Use the debug log level for non-programming mapping parsing
+      errors.
+    - Make some parsing error messages more explicit.
+  + ManetteMappingManager: Use a race-free way to check the mapping
+    file deletion.
+  + Code cleanup:
+    - Make license headers have the LGPL footer, not the GPL one.
+    - Use #pragma once instead of manual header guards.
+    - Use g_auto(), g_autoptr() and g_autofree where possible.
+    - Use g_clear_pointer() and g_clear_object() where possible.
+    - Use assertions instead of g_return*_if_fail in static
+      functions.
+    - Add HACKING.md to document the code, documentation, and
+      commit message styles.
+    - Give better names to callback functions.
+    - Give the namespace_object_ prefix to the finalize functions
+      to match the code style.
+    - Clean up and simplify the code in many places.
+    - Drop platform:Linux from the internal gamepad database.
+- Changes from version 0.2.5:
+  + Fix the build with musl by using input_event_sec and
+    input_event_usec.
+- Run tests during build, add a check section and macro.
+- Update URL to new home.
+
+-------------------------------------------------------------------
+Sun Apr  5 17:10:44 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.2.4:
+  + Build system changes: Add the 'introspection' and 'vapi'
+    options, allowing to build without producing GObject
+    Introspection or Vala bindings.
+  + Support hot-plugging in the fallback backend.
+  + Update the game controller mapping database.
+  + Various code cleanups.
+
+-------------------------------------------------------------------
+Thu Sep 12 12:24:48 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.2.3:
+  + Build system changes: Add 'gudev' option, allowing to
+    explicitly build without gudev.
+
+-------------------------------------------------------------------
+Mon Mar 11 09:32:30 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.2.2:
+  + Device:
+    - Handle absolute axes with min > 0.
+    - Handle the axes' flat to support axes to d-pad mapping.
+  + Mapping:
+    - Support negative analog axis to button mappings.
+    - Support full-range axis to button mappings.
+
+-------------------------------------------------------------------
+Sun Sep 23 07:42:06 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 0.2.1:
+  + Defer the emission of input device events by putting them into
+    idle event sources.
+  + Update the game controller database.
+
+-------------------------------------------------------------------
+Tue Mar  6 17:48:22 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.2.0:
+  + Device: Add rumble support.
+  + Make the devices rumble in manette-test if they support it.
+  + Mapping:
+    - Initialize the bindings to 0 before using them, avoiding
+      improper values in non used fields.
+    - Ensures the binding value inversion is disabled by default,
+      avoiding an unexpected state.
+    - Clear errno before using it to avoid string to uint16
+      convertions to fail on valid inputs.
+    - Silently skip the 'platform' mapping key as it is neither
+      useful nor erroneous.
+  + Monitor:
+    - Fix the 'device-disconnected' signal marshaller.
+    - Fix the devices hash table hash and comparison functions.
+  + Build system change:
+    - Make manette-test properly depend on libmanette.
+    - Change the package name from libmanette to manette.
+    - Change the soname from liblibmanette.so to libmanette.so.
+    - Fix the soname version.
+  + Fix the license header of manette-version.h.in, which was
+    accidentaly not matching the one of the library.
+- Following upstream changes and fixes, rename liblibmanette-0_2
+  subpackage to libmanette-0_2-0, change where applicable, set
+  package_version define to 0_2-0.
+- Tweak spec, use autosetup macro.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:35:32 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Nov 20 08:11:28 UTC 2017 - adrien.plazas@suse.com
+
+- Initial package, libmanette, version 0.1.2.

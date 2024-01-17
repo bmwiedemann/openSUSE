@@ -1,0 +1,7 @@
+obs-service-replace_using_env
+=============================
+
+This service can be enabled to run during buildtime, when it will replace the
+specified placeholders in the given files with the values obtained from the
+build environment. Additionally it will eval all the bash commands that are
+provided before doing the substitution.

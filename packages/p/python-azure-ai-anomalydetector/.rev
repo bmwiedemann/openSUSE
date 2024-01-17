@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>16c171316104a27c7e23690f8fd4037b</srcmd5>
+    <version>3.0.0b2</version>
+    <time>1602349555</time>
+    <user>dimstar_suse</user>
+    <comment>- Another Azure SDK package</comment>
+    <requestid>840768</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c416fc69c53d2d4fe923b0c455d31ae1</srcmd5>
+    <version>3.0.0b2</version>
+    <time>1607548400</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853823</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8e27d4a23c5691c67de2b28624a47667</srcmd5>
+    <version>3.0.0b3</version>
+    <time>1620400506</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.0.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 890370 from glaubitz)</comment>
+    <requestid>890751</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1ac22eae6f6993f58df71443e7b39f24</srcmd5>
+    <version>3.0.0b5</version>
+    <time>1660586330</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.0.0b5
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 995170 from glaubitz)</comment>
+    <requestid>995200</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>43a125a5c3ab219719c2f577b88b9d46</srcmd5>
+    <version>3.0.0b6</version>
+    <time>1688476939</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.0.0b6
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1096585 from glaubitz)</comment>
+    <requestid>1096624</requestid>
+  </revision>
+</revisionlist>

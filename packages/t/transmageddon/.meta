@@ -1,0 +1,11 @@
+<package name="transmageddon" project="openSUSE:Factory">
+  <title>A Video Transcoder</title>
+  <description>Transmageddon is a video transcoder for Linux and Unix systems
+built using GStreamer. It supports almost any format as its input
+and can generate a very large host of output files. The goal of the
+application was to help people to create the files they need to be
+able to play on their mobile devices and for people not hugely
+experienced with multimedia to generate a multimedia file without
+having to resort to command line tools with ungainly syntaxes.</description>
+  <devel project="GNOME:Apps" package="transmageddon"/>
+</package>

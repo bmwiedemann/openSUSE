@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>da26e4e2240ae2b505fa0c0251f122ad</srcmd5>
+    <version>5.3.3</version>
+    <time>1573648126</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>747966</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cab807bacec8ee44680dad99a1d0de75</srcmd5>
+    <version>6.2.0</version>
+    <time>1575923783</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to 6.2.0</comment>
+    <requestid>755239</requestid>
+  </revision>
+</revisionlist>

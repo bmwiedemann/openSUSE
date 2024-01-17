@@ -1,0 +1,6 @@
+<package name="mercurial" project="openSUSE:Factory">
+  <title>Scalable Distributed SCM</title>
+  <description>Mercurial is a fast, lightweight source control management system
+designed for efficient handling of very large distributed projects.</description>
+  <devel project="devel:tools:scm" package="mercurial"/>
+</package>

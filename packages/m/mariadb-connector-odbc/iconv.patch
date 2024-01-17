@@ -1,0 +1,26 @@
+Index: mariadb-connector-odbc-3.1.10-ga-src/ma_conv_charset.c
+===================================================================
+--- mariadb-connector-odbc-3.1.10-ga-src.orig/ma_conv_charset.c
++++ mariadb-connector-odbc-3.1.10-ga-src/ma_conv_charset.c
+@@ -29,9 +29,10 @@
+ #include <string.h>
+ #endif
+ #include <ma_odbc.h>
+-#include "ma_global.h"
+ 
+-#define HAVE_ICONV
++#include <errno.h>
++#include <iconv.h>
++// #include "ma_global.h"
+ 
+ #ifdef HAVE_ICONV
+ /* {{{ MADB_MapCharsetName
+@@ -109,7 +110,7 @@ size_t STDCALL MADB_ConvertString(const
+     *errorcode= errno;
+     goto error;
+   }
+-  if ((rc= iconv(conv, IF_WIN(,IF_SOLARIS(,(char **)))&from, from_len, &to, to_len)) == (size_t)-1)
++  if ((rc= iconv(conv, (char **)&from, from_len, &to, to_len)) == (size_t)-1)
+   {
+     *errorcode= errno;
+     goto error;

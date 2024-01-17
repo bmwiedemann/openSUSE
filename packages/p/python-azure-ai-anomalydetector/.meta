@@ -1,0 +1,5 @@
+<package name="python-azure-ai-anomalydetector" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python:azure" package="python-azure-ai-anomalydetector"/>
+</package>

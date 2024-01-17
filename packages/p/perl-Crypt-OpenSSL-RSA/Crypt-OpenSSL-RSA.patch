@@ -1,0 +1,13 @@
+Index: Crypt-OpenSSL-RSA-0.32/RSA.xs
+===================================================================
+--- Crypt-OpenSSL-RSA-0.32.orig/RSA.xs
++++ Crypt-OpenSSL-RSA-0.32/RSA.xs
+@@ -40,7 +40,7 @@ void croakSsl(char* p_file, int p_line)
+ 
+ #define CHECK_OPEN_SSL(p_result) if (!(p_result)) croakSsl(__FILE__, __LINE__);
+ 
+-#define PACKAGE_CROAK(p_message) croak("%s", (p_message))
++#define PACKAGE_CROAK(p_message) croak("%s:%d: %s", __FILE__, __LINE__, (p_message))
+ #define CHECK_NEW(p_var, p_size, p_type) \
+   if (New(0, p_var, p_size, p_type) == NULL) \
+     { PACKAGE_CROAK("unable to alloc buffer"); }

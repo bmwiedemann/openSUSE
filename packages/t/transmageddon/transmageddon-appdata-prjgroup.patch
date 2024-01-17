@@ -1,0 +1,23 @@
+Change the project_group field from GStreamer to GNOME
+
+GStreamer is currently not a valid group and appstream-util validate
+chokes on it, declaring the repositories appstream where transmageddon
+lives in, as invalid.
+
+This only impact 3rd party repos (not the Distribution itself).
+The distribution (openSUSE Tumbleweed and Leap) make use of appstream-builder
+to produce a valid appstream metafile. as-builder happens to substitute
+GStreamer as well for GNOME, based on the findings in the .desktop file that
+the entire infrastructure used is GNOME.
+
+Index: transmageddon-1.5/appdata/transmageddon.appdata.xml.in
+===================================================================
+--- transmageddon-1.5.orig/appdata/transmageddon.appdata.xml.in
++++ transmageddon-1.5/appdata/transmageddon.appdata.xml.in
+@@ -29,5 +29,5 @@ You might want to install this applicati
+  </screenshots>
+  <url type="homepage">http://www.linuxrising.org/</url>
+  <updatecontact>uraeus@linuxrising.org</updatecontact>
+- <project_group>GStreamer</project_group>
++ <project_group>GNOME</project_group>
+ </application>

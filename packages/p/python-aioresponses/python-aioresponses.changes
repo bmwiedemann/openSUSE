@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Sat Nov 25 14:08:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.6:
+  * refactor: Make mock for writer compatible with 3.9.0b1 and
+    older
+  * fix: aiohttp 3.9 \_writer can't await
+
+-------------------------------------------------------------------
+Tue Nov 14 12:00:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.5:
+  * replaced pkg\_resources with packaging module
+  * Add Python 3.11 support
+
+-------------------------------------------------------------------
+Mon Jan  2 14:17:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.4:
+  * bump py36 to ubuntu 20.04
+  * restore 3.6
+  * Adjust github actions test workflow
+  * Fix python versions in env list
+  * Add documentation for repeat argument
+  * Add compat module
+  * fix long line by adding line breaks
+  * shorten comment to obey line length limit
+  * split typing and assignment to avoid long line
+  * Avoid type confusion by explicitly typing as \`ClientResponse\`
+  * ignore false positive mypy warning when \`url\_or\_pattern\` is a
+    \`Pattern\`
+  * add \`py.typed\` to MANIFEST.in
+  * add \`py.typed\` file to package data in setup.py
+  * fix version after release was tagged/released
+  * Extend  for arguments
+  * Init assert\_called
+  * Fix type annotations
+
+-------------------------------------------------------------------
+Sat Jan 15 16:37:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.3:
+  * Support binary bodies in responses
+  * fix flake8
+  * move RequestInfo to compat
+  * drop \`.travis.yml\`
+  * basic CI using github actions
+  * (feat) add unit tests
+  * (feat) allow for callbacks to be called before raising of exception
+  * add \`py.typed\` (PEP 561)
+  * Fix setuptools warnings by replacing dashes in keys with underscores
+  * fix version parsing
+  * version 0.7.2
+  * Update aioresponses/core.py
+  * adding catch to ignore ValueError when deepcopy is unsuccessful
+
+-------------------------------------------------------------------
+Mon Jan 18 08:31:48 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove unused patch pr_174.patch
+
+-------------------------------------------------------------------
+Sun Jan 17 22:29:26 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v0.7.1 
+  * Fix compatibility with aiohttp 3.7
+  * remove asynctest from compat.py
+  * Python 3.9 compatibility
+- drop pr_174.patch merged upstream
+- fix python version requirement, require asynctest for python36
+  again
+
+-------------------------------------------------------------------
+Wed Oct 28 14:43:39 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove no longer necessary aioresponses-replace-asynctest.patch
+- Add pr_174.patch to add compatibility with aiohttp 3.7.0
+- Update to v0.7.0
+  * fixes race condition while removing matchers
+  * drop support for py3.5 and aiohttp2.x
+  * replace asynctest with native Python 3.8 unittest
+
+-------------------------------------------------------------------
+Tue Aug 11 08:37:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- replace asynctest with native python 3.8 unittest async test class
+  * aioresponses-replace-asynctest.patch
+  * gh#pnuckowski/aioresponses#166 
+- drop disable-online-test.patch and deselect by pytest call
+
+-------------------------------------------------------------------
+Mon Jun  8 09:41:48 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.6.4
+ * Load response cookies from headers
+ * BaseException handling(in Pyhton 3.8 asyncio.CancelError, 
+     asyncio.TimeoutError are subclass of BaseException)
+ * exception can be as class or as object of exception(Exception or Exception())
+ * Change method to GET for redirect after POST request.
+ * set request_info on response rather than a mock
+ * Avoid failure in case one of the request arguments cannot be deep copied
+
+-------------------------------------------------------------------
+Thu Jan 16 16:49:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.6.2
+  * Save every received request. Even when no response is subscribed.
+  * Ensure that a copy of kwargs is stored in request
+  * remove overly verbose Exception
+  * assert the correct ClientConnectionError
+
+-------------------------------------------------------------------
+Wed Oct  9 08:42:16 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.6.1:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Thu Apr 11 12:14:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Lower the ddt requirement as it is not really needed
+
+-------------------------------------------------------------------
+Sun Mar  3 13:15:58 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- cleanup deps 
+
+-------------------------------------------------------------------
+Thu Feb 28 07:25:43 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove unnecessary build dependencies
+- Update to v0.6.0
+  * Move internal stuff and CallbackResult class to the core module
+  * Add CallbackResult class for returning responses from callbacks
+  * Expose build_response method
+  * Add Python 3.7 for tox
+  * Add callbacks to provide dynamic responses
+
+-------------------------------------------------------------------
+Fri Nov 23 21:30:45 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase / full sentences in summary / description.
+
+-------------------------------------------------------------------
+Thu Nov 22 08:50:32 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Nov 19 16:29:19 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.5.0
+- Include patch to disable online test
+  + disable-online-test.patch

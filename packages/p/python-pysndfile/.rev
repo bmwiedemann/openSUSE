@@ -1,0 +1,113 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>067aeed777b9bcd3b0dc6299cf942e24</srcmd5>
+    <version>1.1.0</version>
+    <time>1525960184</time>
+    <user>dimstar_suse</user>
+    <comment>reading/writing soundfiles in python</comment>
+    <requestid>605515</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b6297afbfd56063319c558a05b37105c</srcmd5>
+    <version>1.3.2</version>
+    <time>1534100137</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the test condition, run them always
+
+- Update to version 1.3.2
+  * No obvious changelog</comment>
+    <requestid>628717</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a2d2542a301641930fcce9d85f73b49f</srcmd5>
+    <version>1.3.2</version>
+    <time>1549624555</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672627</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>91cea62046a30cb791f181a03e60ab59</srcmd5>
+    <version>1.3.2</version>
+    <time>1552206857</time>
+    <user>coolo</user>
+    <comment>- Fix fdupes call</comment>
+    <requestid>682427</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d0788146db792996f407fdbef90b1467</srcmd5>
+    <version>1.4.3</version>
+    <time>1593904671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.3:
+  * changed sndio functions to all use PySndfile as context manager. This fixes the problem that the sndfile
+    remains open when an error occurs which may in turn lead to inconsistencies if the sndfile is tried to be rewritten
+    in an exception handler.
+  * fixed PySndfile.read_frames method to properly handle reading frames in parts (previous fix was incomplete)
+  * extended supported commands to change compression level when writing flac and ogg files
+  * fixed PySndfile.read_frames and sndio.read method to properly handle reading frames from the middle of a file
+  * Extended PySndfile class:
+     * support use as context manager
+     * added support for wve, ogg, MPC2000 sampler and RF64 wav files
+     * added support for forcing to return 2D arrays even for mono files
+     * added method to close the file and release all resources.
+     * support reading more frames than present in the file using the fill_value for all values positioned after the end of the file
+  * (no changes in functionality)
+  * added documentation to distributed files
+  * added missing licence file to distribution
+  * thanks @toddrme2178 for patches.
+  * removed cython (a build requirement) from requirements.txt
+  * avoid cython warning and fix language_level in the .pyx source code
+  * add and support pre-release tags in the version number
+  * use hashlib to calculate the README checksum.
+  * fixed support for use with python 2.7 that was broken since 1.3.4
+  * fixed potential but undesired build dependency of pandoc
+  * added link to explanation for using pysndfile under windows
+  * fixed pandoc problem that does produce non ASCII chars in rst output.
+  * fixed two copy paste bug introduced in 1.3.4
+  1.3.4 did in fact not work at all :-(
+  * added a check target to the makefile that performs a complete built/install/test cycle
+  to avoid problems as in 1.3.4
+  * added support for automatic installation of requirements
+  * remove precompiled cython source file and rely on pip requirements to provide cython
+    so that cython compilation will always be possible.
+  * added experimental support for installation on win32 (thanks
+    to Svein Seldal for the contributions). 
+  * use expanduser for replacing ~ in filenames
+  * adapted cython source code to avoid all compiler warnings due to deprecated numpy api 
+  * removed use of ez_setup.py that is no longer required.
+  * fixed missing command C\_SFC\_SET\_SCALE\_INT\_FLOAT\_WRITE (thanks
+    to Svein Seldal for the bug report and fix)
+  * better documentation of sf\_string-io in sndio.read and sndio.write
+  * limit size of strings to be written such that the written file can
+    always be read back with libsndfile 1.0.28 (which imposes different
+    constraints for different formats)
+  * better error handling when number of channels exceeds channel limit
+    imposed by libsndfile.
+  * sndio module now exposes the dicts: fileformat\_name\_to\_id
+    and fileformat\_id\_to\_name 
+  * extended sndio.read with force_2d argument that can be used to
+    force the returned data array to always have 2 dimensions even for
+    mono files.
+- Drop extra source files of COPYING.txt and COPYING.LESSER.txt, it is now
+  included.
+- Add patch fix-test-imports.patch to fix the test suite.</comment>
+    <requestid>818481</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d4fc4dc359609692e7e140a0a83988c0</srcmd5>
+    <version>1.4.3</version>
+    <time>1614792821</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875537</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d32ac00b55bc5613b3c5604df66d7f0d</srcmd5>
+    <version>1.4.4</version>
+    <time>1665185106</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008687</requestid>
+  </revision>
+</revisionlist>

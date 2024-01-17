@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>955fa5e88d3c203ac0a9e2740fe50b27</srcmd5>
+    <version>1.4</version>
+    <time>1336471165</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115384</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>955fa5e88d3c203ac0a9e2740fe50b27</srcmd5>
+    <version>1.4</version>
+    <time>1340184142</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>955fa5e88d3c203ac0a9e2740fe50b27</srcmd5>
+    <version>1.4</version>
+    <time>1359110284</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>955fa5e88d3c203ac0a9e2740fe50b27</srcmd5>
+    <version>1.4</version>
+    <time>1379664448</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>cd8df00d4b5ce82e30ec0f039279b61f</srcmd5>
+    <version>1.4</version>
+    <time>1391765358</time>
+    <user>scarabeus_factory</user>
+    <comment>- fixed license to HPND in specfile</comment>
+    <requestid>221108</requestid>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>cd8df00d4b5ce82e30ec0f039279b61f</srcmd5>
+    <version>1.4</version>
+    <time>1409303180</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7ecc9c0e722e1adeaa2276f5707bcf67</srcmd5>
+    <version>1.5</version>
+    <time>1434133908</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.5
+  With his gradient fixes in Dave Airlie thought it could do with a
+  release, since there was a bunch of other changes.</comment>
+    <requestid>311744</requestid>
+  </revision>
+</revisionlist>

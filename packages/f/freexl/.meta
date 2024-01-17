@@ -1,0 +1,5 @@
+<package name="freexl" project="openSUSE:Factory">
+  <title>freexl</title>
+  <description>FreeXL is an open source library to extract valid data from within an Excel (.xls) spreadsheet.</description>
+  <devel project="Application:Geo" package="freexl"/>
+</package>

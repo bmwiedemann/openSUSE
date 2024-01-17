@@ -1,0 +1,141 @@
+<revisionlist>
+  <revision rev="1" vrev="184">
+    <srcmd5>a79df56bde19a52dca69c4bfd2e70b53</srcmd5>
+    <version>0.30</version>
+    <time>1168903867</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="341">
+    <srcmd5>b7332e528e7e065173dd0e7b9ca3f727</srcmd5>
+    <version>0.30</version>
+    <time>1205410517</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="382">
+    <srcmd5>b7332e528e7e065173dd0e7b9ca3f727</srcmd5>
+    <version>0.30</version>
+    <time>1205410517</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="383">
+    <srcmd5>4eb82d77e4fb2c21a163b1595254a6dd</srcmd5>
+    <version>0.30</version>
+    <time>1245337721</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="385">
+    <srcmd5>4eb82d77e4fb2c21a163b1595254a6dd</srcmd5>
+    <version>0.30</version>
+    <time>1245337721</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="386">
+    <srcmd5>4ef4263214666c019390af4c96f64441</srcmd5>
+    <version>0.30</version>
+    <time>1263298719</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-MLDBM-Sync based on submit request 28977 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="387">
+    <srcmd5>58c858497f70cc5979ff977f8c4988f9</srcmd5>
+    <version>0.30</version>
+    <time>1268925523</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="389">
+    <srcmd5>58c858497f70cc5979ff977f8c4988f9</srcmd5>
+    <version>0.30</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="390">
+    <srcmd5>58c858497f70cc5979ff977f8c4988f9</srcmd5>
+    <version>0.30</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="391">
+    <srcmd5>e8be9125921bd1139a7e90c6ca483e0b</srcmd5>
+    <version>0.30</version>
+    <time>1291583011</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54593 from user coolo
+</comment>
+    <requestid>54593</requestid>
+  </revision>
+  <revision rev="11" vrev="392">
+    <srcmd5>0ba0581d30549c8d297fb083c0c79b72</srcmd5>
+    <version>0.30</version>
+    <time>1291583017</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54593
+</comment>
+  </revision>
+  <revision rev="12" vrev="395">
+    <srcmd5>0ba0581d30549c8d297fb083c0c79b72</srcmd5>
+    <version>0.30</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="397">
+    <srcmd5>0ba0581d30549c8d297fb083c0c79b72</srcmd5>
+    <version>0.30</version>
+    <time>1319182285</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="398">
+    <srcmd5>7bafd437c5edc11503c87112f8e3f463</srcmd5>
+    <version>0.30</version>
+    <time>1321875783</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92366</requestid>
+  </revision>
+  <revision rev="15" vrev="399">
+    <srcmd5>9e1145098ab7da954e614ad313463a2a</srcmd5>
+    <version>0.30</version>
+    <time>1323193467</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="401">
+    <srcmd5>9e1145098ab7da954e614ad313463a2a</srcmd5>
+    <version>0.30</version>
+    <time>1340183871</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="403">
+    <srcmd5>9e1145098ab7da954e614ad313463a2a</srcmd5>
+    <version>0.30</version>
+    <time>1359109731</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="405">
+    <srcmd5>9e1145098ab7da954e614ad313463a2a</srcmd5>
+    <version>0.30</version>
+    <time>1379663738</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="406">
+    <srcmd5>2ee4219e930590401884df23464a7895</srcmd5>
+    <version>0.30</version>
+    <time>1380112419</time>
+    <user>coolo</user>
+    <comment>- switch to perl-macros to fix build</comment>
+    <requestid>197988</requestid>
+  </revision>
+  <revision rev="20" vrev="408">
+    <srcmd5>2ee4219e930590401884df23464a7895</srcmd5>
+    <version>0.30</version>
+    <time>1409302367</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

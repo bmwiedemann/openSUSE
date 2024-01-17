@@ -1,0 +1,129 @@
+-------------------------------------------------------------------
+Tue Jul 17 05:25:44 UTC 2018 - coolo@suse.com
+
+- updated to 0.1634
+   see /usr/share/doc/packages/perl-FileHandle-Unget/CHANGES
+
+  Version 0.1634:
+  - Fix Makefile.PL warning
+  - Fix deleting of inc during release process
+  - Better fix for AutomatedTester warning
+  
+  Version 0.1632:
+  - Updating META.yml
+  
+  Version 0.1632:
+  - Switch to File::Slurper
+
+-------------------------------------------------------------------
+Sun Jul  8 05:26:24 UTC 2018 - coolo@suse.com
+
+- updated to 0.1631
+   see /usr/share/doc/packages/perl-FileHandle-Unget/CHANGES
+
+-------------------------------------------------------------------
+Fri Jul  6 05:23:48 UTC 2018 - coolo@suse.com
+
+- updated to 0.1629
+   see /usr/share/doc/packages/perl-FileHandle-Unget/CHANGES
+
+-------------------------------------------------------------------
+Tue Oct  3 07:26:25 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Sun May  3 08:28:02 UTC 2015 - coolo@suse.com
+
+- updated to 0.1628
+   see /usr/share/doc/packages/perl-FileHandle-Unget/CHANGES
+
+  Version 0.1628: Sat May 2 2015
+  - Prevent CPAN from indexing private-lib
+  
+  Version 0.1627: Mon Apr 20 2015
+  - Clarify licensing terms
+  - Move verbose testing to a private module, and implement it in a way that
+    doesn't require editing the Makefile after it is generated.
+  - Require File::Slurp instead of including it, to avoid potential problems 
+    like this: 
+    http://www.cpantesters.org/cpan/report/86a0145a-e52b-11e4-a1d1-8536eb4f9f07 
+  - Fix tests so that they don't prematurely delete the temp file
+    See for example:
+    http://www.cpantesters.org/cpan/report/3adcb600-6bf9-1014-8336-f8616735162a
+  - Fix tests on Windows.
+    http://www.cpantesters.org/cpan/report/482c4765-af8d-1014-8ca5-91062b825c07
+  
+  Version 0.1626: Sun Apr 12 2015
+  - Enable verbose testing for CPAN-testers
+  - Consolidate issue tracking at rt.cpan.org
+  
+  Version 0.1625: Sat Apr 4 2015
+  - Modify the memory leak test to check for <= 0 bytes. I'm not sure how this
+    scenario happens, but test failures like this indicate that it can:
+    http://www.cpantesters.org/cpan/report/bdd0e36c-d0dd-11e4-954f-5702e0bfc7aa
+  - Attempt to fix loss of lines when $/ is undef. Thanks to Nigel Horne for the
+    automated testing that found the failure.
+    http://www.cpantesters.org/cpan/report/60452d60-d3cc-11e4-b60b-c2157e3e1735
+  
+  Version 0.1624: Sun Mar 22 2015
+  - Moved code to github
+  - Added POD test
+  - Improve testability of binmode_bug.t, stdin_tell_bug.t
+  - Implement a potential fix for test failures where FileHandle::getline()
+  	seems to be reading a single line even though $/ is undef. Unfortunately I
+  	can't reproduce this failure, so I'll submit and check the CPAN Testers
+  	reports.
+  - Use "local $/" instead of reassigning global $/. Perhaps this is somehow
+  	related to the test failures above?
+  - Improve documentation for input_record_separator()
+
+-------------------------------------------------------------------
+Tue Jun  7 07:42:14 UTC 2011 - coolo@novell.com
+
+- regenerate with cpanspec
+
+-------------------------------------------------------------------
+Tue Jun  7 06:54:04 UTC 2011 - aj@suse.de
+
+- Add perl_requires so that it requires the right perl version.
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:57 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Sep  7 15:05:59 CEST 2009 - mls@suse.de
+
+- update to 0.1623 to make it build with perl-5.10.1
+
+-------------------------------------------------------------------
+Fri Jul 25 16:38:51 CEST 2008 - anicka@suse.cz
+
+- update to 0.1622 
+ * Updated to the latest version of Module::Install
+ * Removed auto-install for better compatibility with CPAN 
+   and others
+ * Moved hosting to Google Code
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:41 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jan  4 15:19:30 CET 2006 - anicka@suse.cz
+
+- update to 0.1621 
+
+-------------------------------------------------------------------
+Tue Jun 22 19:28:36 CEST 2004 - rommel@suse.de
+
+- initial checkin
+

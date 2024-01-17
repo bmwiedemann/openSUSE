@@ -1,0 +1,5 @@
+<service name="replace_using_env">
+    <summary>Replace placeholder variables</summary>
+    <description>Replaces placeholders %%VAR%% in specified files with the
+values from the build environment ${VAR}.</description>
+</service>

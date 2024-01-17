@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Fri Jun 12 08:36:31 UTC 2015 - sndirsch@suse.com
+
+- Update to release 1.5
+  With his gradient fixes in Dave Airlie thought it could do with a
+  release, since there was a bunch of other changes.
+
+-------------------------------------------------------------------
+Thu Feb  6 11:11:22 UTC 2014 - sndirsch@suse.com
+
+- fixed license to HPND in specfile 
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split rendercheck from xorg-x11. Initial version: 1.4.
+

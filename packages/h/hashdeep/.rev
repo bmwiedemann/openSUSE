@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>60984a69b80fb572ecce8c8c628b905b</srcmd5>
+    <version>4.4</version>
+    <time>1404459285</time>
+    <user>coolo</user>
+    <comment>package renamed (md5deep -&gt; hashdeep)</comment>
+    <requestid>239319</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>60984a69b80fb572ecce8c8c628b905b</srcmd5>
+    <version>4.4</version>
+    <time>1409301155</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>be0f5791acdcdd1489b47b6221e6f539</srcmd5>
+    <version>4.4</version>
+    <time>1585602473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789861</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>263cdb291b7eabc727f12017ff1448e2</srcmd5>
+    <version>4.4</version>
+    <time>1622664701</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896685</requestid>
+  </revision>
+</revisionlist>

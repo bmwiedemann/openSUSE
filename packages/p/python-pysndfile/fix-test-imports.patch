@@ -1,0 +1,45 @@
+Index: pysndfile-1.4.3/tests/pysndfile_test.py
+===================================================================
+--- pysndfile-1.4.3.orig/tests/pysndfile_test.py
++++ pysndfile-1.4.3/tests/pysndfile_test.py
+@@ -3,10 +3,7 @@ import os
+ import sys
+ import numpy as np
+ 
+-from pysndfile_inst_dir.pysndfile import get_sndfile_version
+-from pysndfile_inst_dir.pysndfile import *
+-import pysndfile_inst_dir.pysndfile as pysndfile
+-
++from pysndfile import *
+ 
+ mydir = os.path.dirname(__file__)
+ 
+@@ -73,9 +70,9 @@ else:
+     print("no errors detected for io with different sample encodings")
+ 
+ # check reading part of file
+-ss,_,_ =  pysndfile.sndio.read(os.path.join(mydir,'test.wav'), force_2d=True)
+-ssstart,_,_ =  pysndfile.sndio.read(os.path.join(mydir,'test.wav'), end=100, force_2d=True)
+-ssend,_,_ =  pysndfile.sndio.read(os.path.join(mydir,'test.wav'), start=100, force_2d=True)
++ss,_,_ =  sndio.read(os.path.join(mydir,'test.wav'), force_2d=True)
++ssstart,_,_ =  sndio.read(os.path.join(mydir,'test.wav'), end=100, force_2d=True)
++ssend,_,_ =  sndio.read(os.path.join(mydir,'test.wav'), start=100, force_2d=True)
+ 
+ if np.any(ss != np.concatenate((ssstart, ssend), axis=0)):
+     read_error = True
+@@ -92,13 +89,13 @@ if np.any(ss != np.concatenate((wwstart,
+ # check writing flac
+ if "flac" in majors:
+     print('test writing flac')
+-    ss, sr, enc = pysndfile.sndio.read(os.path.join(mydir,'test.wav'), force_2d=True)
++    ss, sr, enc = sndio.read(os.path.join(mydir,'test.wav'), force_2d=True)
+     flac_file = PySndfile(os.path.join(mydir,'test.flac'), "w", construct_format("flac", "pcm16"), ss.shape[1], sr)
+     flac_file.command("SFC_SET_COMPRESSION_LEVEL", 1.)
+     flac_file.write_frames(ss)
+     flac_file.close()
+ 
+-    ss_flac, sr_flac, enc_flac = pysndfile.sndio.read(os.path.join(mydir,'test.flac'), force_2d=True)
++    ss_flac, sr_flac, enc_flac = sndio.read(os.path.join(mydir,'test.flac'), force_2d=True)
+     if sr != sr_flac:
+         print('error::flac writing sample rate')
+         write_error = True

@@ -1,0 +1,9 @@
+<package name="python-python-mpv" project="openSUSE:Factory">
+  <title>Python interface to the mpv media player</title>
+  <description>A ctypes-based python interface to the mpv media player.
+It gives more or less full control of all features of the player,
+just like the lua interface does.
+
+</description>
+  <devel project="devel:languages:python" package="python-python-mpv"/>
+</package>

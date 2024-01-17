@@ -1,0 +1,2 @@
+# program wants openCL headers at runtime for some reason
+addFilter("devel-file-in-non-devel-package")

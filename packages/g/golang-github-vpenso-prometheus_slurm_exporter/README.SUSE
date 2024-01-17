@@ -1,0 +1,8 @@
+The Prometheus Slurm exporter currenly accepts two command line options:
+-gpus-acct
+    	Enable GPUs accounting
+-listen-address string
+    	The port to listen on for HTTP requests. (default ":8080")
+
+These can be set by changing the PROMETHEUS_SLURM_EXPORTER_ARGS setting
+in /etc/sysconfig/prometheus_slurm_exporter.

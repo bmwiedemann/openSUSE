@@ -1,0 +1,143 @@
+-------------------------------------------------------------------
+Sat Aug 17 21:07:07 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.0
+
+  * no changelog found
+
+-------------------------------------------------------------------
+Fri Nov 17 08:18:41 UTC 2017 - mschnitzer@suse.com
+
+- updated to version 5.0.7
+  * Remove ruby warnings
+
+-------------------------------------------------------------------
+Sat Jul 23 04:32:53 UTC 2016 - coolo@suse.com
+
+- updated to version 5.0.6
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Jul  1 04:35:24 UTC 2016 - coolo@suse.com
+
+- updated to version 5.0.5
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Sep  4 04:33:02 UTC 2015 - coolo@suse.com
+
+- updated to version 5.0.4
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Apr  9 05:49:26 UTC 2015 - coolo@suse.com
+
+- updated to version 5.0.3, changelog is gone
+
+-------------------------------------------------------------------
+Tue Feb 10 08:04:51 UTC 2015 - coolo@suse.com
+
+- updated to version 5.0.1
+ * Fixed @import glob related caching bug
+ 
+ ## 5.0.0 (Dec 12, 2014)
+ 
+ * Register scss and sass extensions for rake notes
+ * Make possible to use sprockes > 2.8 and < 4
+ * Make possible to use sass ~> 3.1
+ * Deprecate .css.scss and .css.sass extentions
+ * Limit `=require` to .css only files and `@import` to .scss files. Avoid mixing the two.
+ 
+ ## 4.0.5 (Nov 25, 2014)
+ 
+ * Make possible to use sprockets 2.12.
+ 
+ ## 4.0.4 (Oct 29, 2014)
+ 
+ * Make possible to use any sprockets version in the 2.11 series.
+ * Require at least sass 3.2.2.
+
+-------------------------------------------------------------------
+Tue Nov 11 12:55:10 UTC 2014 - tboerger@suse.com
+
+- Added last missing new macros pieces with gem2rpm call
+
+-------------------------------------------------------------------
+Mon Oct 13 06:40:17 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Sun Apr  6 05:38:50 UTC 2014 - coolo@suse.com
+
+- updated to version 4.0.3
+ * Make possible to use sprockets-rails 2.1
+
+-------------------------------------------------------------------
+Tue Mar 18 14:57:26 UTC 2014 - coolo@suse.com
+
+- updated to version 4.0.2
+ * Lock sprockets version to <= 2.11.0. Fixes #191.
+
+-------------------------------------------------------------------
+Wed Oct 16 13:04:05 UTC 2013 - coolo@suse.com
+
+- updated to version 4.0.1
+  * Remove Post Processors from asset evaluation.
+- remove sass-rails-4.0.0.diff again
+
+-------------------------------------------------------------------
+Wed Jun 26 20:28:45 UTC 2013 - coolo@suse.com
+
+- add sass-rails-4.0.0.diff to avoid beta dependencies
+
+-------------------------------------------------------------------
+Wed Jun 26 20:05:31 UTC 2013 - coolo@suse.com
+
+- updated to version 4.0.0
+  * Add support for importing ERB files.
+  * Remove `Sass::Rails::Compressor`. Use `Sprockets::SassCompressor` (`:sass` option) instead.
+  * Remove `tilt` dependency.
+  * Bump `sprockets-rails` to `2.0.0.rc4`.
+  
+  * Remove `compress` option from `config.assets`. Instead, turn on
+    compression for all environments except development.
+  * Deprecate `asset_path` and `asset_url` with two arguments.
+  * Add Rails 4 support.
+  * Drop Ruby 1.8 support.
+  
+-------------------------------------------------------------------
+Fri Jan 25 06:34:47 UTC 2013 - coolo@suse.com
+
+- updated to version 3.2.6
+
+-------------------------------------------------------------------
+Wed Aug  1 06:03:10 UTC 2012 - coolo@suse.com
+
+- updated to version 3.2.5
+
+-------------------------------------------------------------------
+Fri Nov 18 14:33:47 UTC 2011 - fcastelli@suse.com
+
+- update to version 3.1.5
+
+-------------------------------------------------------------------
+Mon Oct 17 12:34:15 UTC 2011 - fcastelli@suse.com
+
+- update to version 3.1.14
+
+-------------------------------------------------------------------
+Wed Aug 31 08:25:08 UTC 2011 - fcastelli@suse.com
+
+- update to version 3.1.0
+
+-------------------------------------------------------------------
+Mon Aug 22 12:43:05 UTC 2011 - fcastelli@novell.com
+
+- Package version 3.1.0.rc.6
+
+-------------------------------------------------------------------
+Wed Aug  3 12:04:46 UTC 2011 - fcastelli@novell.com
+
+- Package version 3.1.0.rc.5
+

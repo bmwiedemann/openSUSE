@@ -1,0 +1,5 @@
+<package name="python-validate_email" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-validate_email"/>
+</package>

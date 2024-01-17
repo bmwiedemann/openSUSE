@@ -1,0 +1,245 @@
+-------------------------------------------------------------------
+Thu Nov  2 15:31:52 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## Rails 7.0.8 (September 09, 2023) ##
+
+*   Fix `HostAuthorization` potentially displaying the value of the
+    X_FORWARDED_HOST header when the HTTP_HOST header is being blocked.
+
+    *Hartley McGuire*, *Daniel Schlosser*
+
+## Rails 7.0.7.2 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7.1 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7 (August 09, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.6 (June 29, 2023) ##
+
+*   No changes.
+
+
+-------------------------------------------------------------------
+Tue Jun 27 19:31:02 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- updated to version 7.0.5.1
+  * https://rubyonrails.org/2023/6/26/Rails-Versions-7-0-5-1-6-1-7-4-have-been-released
+
+-------------------------------------------------------------------
+Mon Jun 26 19:08:51 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- updated to version 7.0.5
+  * https://rubyonrails.org/2023/5/24/Rails-7-0-5-has-been-released
+
+-------------------------------------------------------------------
+Fri Apr 21 11:21:03 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 7.0.4.3:
+  https://rubyonrails.org/2023/3/13/Rails-7-0-4-3-and-6-1-7-3-have-been-released
+  https://rubyonrails.org/2023/1/24/Rails-7-0-4-2-and-6-1-7-2-have-been-released
+
+-------------------------------------------------------------------
+Fri Jan 27 13:44:49 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to version 7.0.4.1
+  see installed CHANGELOG.md
+  fix CVE-2023-22795 (bsc#1207451)
+  fix CVE-2023-22792 (bsc#1207455)
+
+  ## Rails 7.0.4.1 (January 17, 2023) ##
+  
+  *   Fix sec issue with _url_host_allowed?
+  
+      Disallow certain strings from `_url_host_allowed?` to avoid a redirect
+      to malicious sites.
+  
+      [CVE-2023-22797]
+  
+  *   Avoid regex backtracking on If-None-Match header
+  
+      [CVE-2023-22795]
+  
+  *   Use string#split instead of regex for domain parts
+  
+      [CVE-2023-22792] 
+
+-------------------------------------------------------------------
+Mon Oct 10 12:51:58 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.4
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.4 (September 09, 2022) ##
+  
+  *   Prevent `ActionDispatch::ServerTiming` from overwriting existing values in `Server-Timing`.
+  
+      Previously, if another middleware down the chain set `Server-Timing` header,
+      it would overwritten by `ActionDispatch::ServerTiming`.
+  
+      *Jakub Malinowski*
+  
+  
+
+-------------------------------------------------------------------
+Thu Aug  4 12:50:05 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.3.1
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.3.1 (July 12, 2022) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
+Sun May 15 15:15:37 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 7.0.3
+
+  *   Allow relative redirects when `raise_on_open_redirects` is enabled.
+
+      *Tom Hughes*
+
+  *   Fix `authenticate_with_http_basic` to allow for missing password.
+
+      Before Rails 7.0 it was possible to handle basic authentication with only a username.
+
+      ```ruby
+      authenticate_with_http_basic do |token, _|
+        ApiClient.authenticate(token)
+      end
+      ```
+
+      This ability is restored.
+
+      *Jean Boussier*
+
+  *   Fix `content_security_policy` returning invalid directives.
+
+      Directives such as `self`, `unsafe-eval` and few others were not
+      single quoted when the directive was the result of calling a lambda
+      returning an array.
+
+      ```ruby
+      content_security_policy do |policy|
+        policy.frame_ancestors lambda { [:self, "https://example.com"] }
+      end
+      ```
+
+      With this fix the policy generated from above will now be valid.
+
+      *Edouard Chin*
+
+  *   Fix `skip_forgery_protection` to run without raising an error if forgery
+      protection has not been enabled / `verify_authenticity_token` is not a
+      defined callback.
+
+      This fix prevents the Rails 7.0 Welcome Page (`/`) from raising an
+      `ArgumentError` if `default_protect_from_forgery` is false.
+
+      *Brad Trick*
+
+  *   Fix `ActionController::Live` to copy the IsolatedExecutionState in the ephemeral thread.
+
+      Since its inception `ActionController::Live` has been copying thread local variables
+      to keep things such as `CurrentAttributes` set from middlewares working in the controller action.
+
+      With the introduction of `IsolatedExecutionState` in 7.0, some of that global state was lost in
+      `ActionController::Live` controllers.
+
+      *Jean Boussier*
+
+  *   Fix setting `trailing_slash: true` in route definition.
+
+      ```ruby
+      get '/test' => "test#index", as: :test, trailing_slash: true
+
+      test_path() # => "/test/"
+      ```
+
+      *Jean Boussier*
+
+-------------------------------------------------------------------
+Thu Apr 28 05:09:00 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.2.4
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.2.4 (April 26, 2022) ##
+  
+  *   Allow Content Security Policy DSL to generate for API responses.
+  
+      *Tim Wade*
+  
+
+-------------------------------------------------------------------
+Thu Mar 10 13:19:05 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 7.0.2.3
+
+  * no changes
+
+-------------------------------------------------------------------
+Tue Feb 15 07:07:15 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.2.2
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.2.2 (February 11, 2022) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 7.0.2.1 (February 11, 2022) ##
+  
+  *   Under certain circumstances, the middleware isn't informed that the
+      response body has been fully closed which result in request state not
+      being fully reset before the next request
+  
+      [CVE-2022-23633]
+  
+  
+  ## Rails 7.0.2 (February 08, 2022) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
+Tue Jan 25 06:19:55 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.1
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.1 (January 06, 2022) ##
+  
+  *   Fix `ActionController::Parameters` methods to keep the original logger context when creating a new copy
+      of the original object.
+  
+      *Yutaka Kamei*
+  
+  
+
+-------------------------------------------------------------------
+Mon Dec 27 11:22:34 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Don't limit building to specific ruby versions
+
+-------------------------------------------------------------------
+Tue Dec 21 22:07:03 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Rails 7.0 has been released
+
+  https://edgeguides.rubyonrails.org/7_0_release_notes.html
+
+-------------------------------------------------------------------
+Sun Dec 12 21:58:29 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

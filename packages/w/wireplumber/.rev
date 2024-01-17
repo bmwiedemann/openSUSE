@@ -1,0 +1,280 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a6157890628459f3309d304babdbe6fb</srcmd5>
+    <version>0.4.5</version>
+    <time>1639340847</time>
+    <user>dimstar_suse</user>
+    <comment>New package wireplumber, replacing pipewire-media-session</comment>
+    <requestid>939142</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>47eb0f2904daa59f1adc2ae8f30c42a7</srcmd5>
+    <version>0.4.5</version>
+    <time>1639855775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940773</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>09618910bd98d4a0c9cda80143d9f9a8</srcmd5>
+    <version>0.4.6</version>
+    <time>1641855698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945250</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e85d1a295cface53ed724707edee5619</srcmd5>
+    <version>0.4.7</version>
+    <time>1643321781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949044</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d948d69b69a3d3507e18d2d4d3a14065</srcmd5>
+    <version>0.4.7</version>
+    <time>1643926589</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950277</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>48d8d0fd971b9c1667cac7a8a8b936fe</srcmd5>
+    <version>0.4.8</version>
+    <time>1644435518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952241</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1c2e680298179c3c5ead20e9213cd04d</srcmd5>
+    <version>0.4.8</version>
+    <time>1644617203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953378</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>b466f529e552efc551372076ac4b3c6e</srcmd5>
+    <version>0.4.8</version>
+    <time>1647101672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961011</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>44655bfd24b062759e3984ae85233bd6</srcmd5>
+    <version>0.4.9</version>
+    <time>1648159025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964075</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>8c6e355183b8f9d6ec89390cc5a3ac6b</srcmd5>
+    <version>0.4.9</version>
+    <time>1648479607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964784</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>cbf3e2d3337cd8e30760864a33f35286</srcmd5>
+    <version>0.4.9</version>
+    <time>1648916439</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966061</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8e40387541305071ec524899a0a8a745</srcmd5>
+    <version>0.4.10</version>
+    <time>1652561675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.10:
+  * Changes
+    - Add i18n support to be able to translate some user-visible
+      strings.
+    - wpctl now supports using
+      @DEFAULT_{AUDIO_,VIDEO_,}{SINK,SOURCE}@ as ID, almost like
+      pactl. Additionally, it supports a --pid flag for changing
+      volume and mute state by specifying a process ID, applying
+      the state to all nodes of a specific client process.
+    - The Lua engine now supports loading Lua libraries. These can
+      be placed either in the standard Lua libraries path or in
+      the &quot;lib&quot; subdirectory of WirePlumber's &quot;scripts&quot; directory
+      and can be loaded with ``require()``
+    - The Lua engine's sandbox has been relaxed to allow more
+      functionality in scripts (the debug &amp; coroutine libraries
+      and some other previously disabled functions)
+    - Lua scripts are now wrapped in special WpPlugin objects,
+      allowing them to load asynchronously and declare when they
+      have finished their loading
+    - Add a new script that provides the same functionality as
+      module-fallback-sink from PipeWire, but also takes endpoints
+      into account and can be customised more easily. Disabled by
+      default for now to avoid conflicts.
+  * Policy
+    - Add an optional experimental feature that allows filter-like
+      streams (like echo-cancel or filter-node) to match the
+      channel layout of the device they connect to, on both sides
+      of the filter; that means that if, for instance, a sink has
+      6 channels and the echo-cancel's source stream is linked to
+      that sink, then the virtual sink presented by echo-cancel</comment>
+    <requestid>976983</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d4c8bc60540bbbec83c4e47767c895e9</srcmd5>
+    <version>0.4.11</version>
+    <time>1657191394</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987251</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>27e9c1a4390d10da259159a06e8819c7</srcmd5>
+    <version>0.4.10</version>
+    <time>1657281729</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to 0.4.10</comment>
+    <requestid>987881</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>8aaac95cb80d1fe6f80436fd7870a38e</srcmd5>
+    <version>0.4.11</version>
+    <time>1657378748</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987913</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>6c7a79f519ceda91248977fe464067b2</srcmd5>
+    <version>0.4.11</version>
+    <time>1658161973</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>989117</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>197e21aecea0a17a2499fc89530c3aca</srcmd5>
+    <version>0.4.11</version>
+    <time>1660144386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994137</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b5b73622bb1a2a53c3f121083cd65041</srcmd5>
+    <version>0.4.12</version>
+    <time>1665504101</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007947</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>20e7efe2710288547027a5452c2b681d</srcmd5>
+    <version>0.4.12</version>
+    <time>1668609738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035774</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ea5a1ae645a2ae472e86adb76a75049c</srcmd5>
+    <version>0.4.13</version>
+    <time>1671023456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042743</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>af2336da0afa96252b7d4dcff5080b9f</srcmd5>
+    <version>0.4.13</version>
+    <time>1673650929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058203</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fdd24d81de9c2f4b0b1cf609eda529b8</srcmd5>
+    <version>0.4.14</version>
+    <time>1680789340</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.14:
+  * Additions
+    - Add support for managing Bluetooth-MIDI, complementing the
+      parts that were merged in PipeWire recently.
+    - Add a default volume configuration option for streams whose
+      volume has never been saved before; that allows starting new
+      streams at a lower volume than 100% by default, if desired.
+    - Add support for managing link errors and propagating them to
+      the client(s) involved. This allows better error handling on
+      the application side in case a format cannot be negotiated -
+      useful in video streams.
+    - snd_aloop devices are now described as being &quot;Loopback&quot;
+      devices.
+    - ALSA nodes in the pro audio profile now get increased graph
+      priority, so that they are more likely to become the driver
+      in the graph.
+    - Add support for disabling libcamera nodes &amp; devices with
+      node.disabled and device.disabled, like it works for ALSA
+      and V4L2.
+- Drop reduce-meson-required-version.patch: openSUSE Leap 15.3 is
+  no longer supported.
+- Drop patches already included upstream:
+  * 0001-alsa-monitor-handle-snd_aloop-devices-better.patch
+  * 0001-spa-json-make-sure-we-only-add-encoded-string-data.patch
+  * 0001-m-lua-scripting-ignore-string-integer-table-keys-when-constructing-a-JSON-Array-Object.patch</comment>
+    <requestid>1077110</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>8b82a407d253ad03ba7278bbeccafa71</srcmd5>
+    <version>0.4.14</version>
+    <time>1685476870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089544</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c2c4a8a46b1bd69c9c3611c7f1955249</srcmd5>
+    <version>0.4.15</version>
+    <time>1697231634</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117593</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>2798dc6ab83cbd407b356aba10837fc0</srcmd5>
+    <version>0.4.15</version>
+    <time>1698872975</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch from upstream that fixes too many matches for property
+  interest:
+  * 0001-object-manager-reduce-the-amount-of-globals-that-initially.patch
+- Add patch from upstream that fixes an odd failure of a test after
+  applying the previous patch:
+  * 0002-object-manager-use-an-idle-callback-to-expose-tmp-globals.patch
+- Add patch from upstream that adds ability to hide parent nodes,
+  which is useful to prevent hardware misuse or damage by poorly
+  behaved/configured clients:
+  * 0001-policy-dsp-add-ability-to-hide-parent-nodes.patch</comment>
+    <requestid>1121413</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f754950e678be72427e197b0e87378e1</srcmd5>
+    <version>0.4.16</version>
+    <time>1701121355</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128889</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3b5f9c8e32f7a95a51b27a5900a57c9c</srcmd5>
+    <version>0.4.17</version>
+    <time>1704487293</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137073</requestid>
+  </revision>
+</revisionlist>

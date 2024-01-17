@@ -1,0 +1,5 @@
+<package name="blackbox_exporter-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed Blackbox Exporter Container Image</title>
+  <description>Blackbox Exporter based on the openSUSE Tumbleweed Base Container Image.</description>
+  <devel project="devel:BCI:Tumbleweed" package="blackbox_exporter-image"/>
+</package>

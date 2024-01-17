@@ -1,0 +1,166 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>382b9ca71969922a837e0f20edd53eb9</srcmd5>
+    <version>0.5.0</version>
+    <time>1543528707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651662</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e3bb08d388c1cd44545fb0f2fa85a979</srcmd5>
+    <version>0.6.0</version>
+    <time>1551455268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680045</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>167150ea9666cb09fbdbee265d45d0a8</srcmd5>
+    <version>0.6.0</version>
+    <time>1551687828</time>
+    <user>dimstar_suse</user>
+    <comment>- cleanup deps</comment>
+    <requestid>681087</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>61d89bb7fd771fd0f5f7dd8ca4ea8acc</srcmd5>
+    <version>0.6.0</version>
+    <time>1555488445</time>
+    <user>dimstar_suse</user>
+    <comment>- Lower the ddt requirement as it is not really needed</comment>
+    <requestid>693229</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f10ba3e80774881e761a5b5d76833e10</srcmd5>
+    <version>0.6.1</version>
+    <time>1570627231</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1:
+  * no upstream changelog</comment>
+    <requestid>736423</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d6cbd6281e16c095cd6c689b9700b46d</srcmd5>
+    <version>0.6.2</version>
+    <time>1579273702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765075</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>57ca5c86bcc7c249c795b565cf4689ca</srcmd5>
+    <version>0.6.4</version>
+    <time>1591654011</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.4
+ * Load response cookies from headers
+ * BaseException handling(in Pyhton 3.8 asyncio.CancelError, 
+     asyncio.TimeoutError are subclass of BaseException)
+ * exception can be as class or as object of exception(Exception or Exception())
+ * Change method to GET for redirect after POST request.
+ * set request_info on response rather than a mock
+ * Avoid failure in case one of the request arguments cannot be deep copied</comment>
+    <requestid>812531</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b1753a47cdcc7ef079b9e07c26bf121b</srcmd5>
+    <version>0.6.4</version>
+    <time>1597221069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825738</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4eb03e621ab9e1f6ddd0d2f79367a53c</srcmd5>
+    <version>0.7.0</version>
+    <time>1604306345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844824</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ae7512cd8abc5950f4acd4c82ae44dbc</srcmd5>
+    <version>0.7.1</version>
+    <time>1610977147</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unused patch pr_174.patch
+
+- Update to v0.7.1 
+  * Fix compatibility with aiohttp 3.7
+  * remove asynctest from compat.py
+  * Python 3.9 compatibility
+- drop pr_174.patch merged upstream
+- fix python version requirement, require asynctest for python36
+  again</comment>
+    <requestid>864006</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4f5779902c50f28c15e508f78a1cf9fc</srcmd5>
+    <version>0.7.3</version>
+    <time>1642273525</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.3:
+  * Support binary bodies in responses
+  * fix flake8
+  * move RequestInfo to compat
+  * drop \`.travis.yml\`
+  * basic CI using github actions
+  * (feat) add unit tests
+  * (feat) allow for callbacks to be called before raising of exception
+  * add \`py.typed\` (PEP 561)
+  * Fix setuptools warnings by replacing dashes in keys with underscores
+  * fix version parsing
+  * version 0.7.2
+  * Update aioresponses/core.py
+  * adding catch to ignore ValueError when deepcopy is unsuccessful</comment>
+    <requestid>946669</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c4593953c09e9be913bc0708c793e2a1</srcmd5>
+    <version>0.7.4</version>
+    <time>1672673903</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.4:
+  * bump py36 to ubuntu 20.04
+  * restore 3.6
+  * Adjust github actions test workflow
+  * Fix python versions in env list
+  * Add documentation for repeat argument
+  * Add compat module
+  * fix long line by adding line breaks
+  * shorten comment to obey line length limit
+  * split typing and assignment to avoid long line
+  * Avoid type confusion by explicitly typing as \`ClientResponse\`
+  * ignore false positive mypy warning when \`url\_or\_pattern\` is a
+    \`Pattern\`
+  * add \`py.typed\` to MANIFEST.in
+  * add \`py.typed\` file to package data in setup.py
+  * fix version after release was tagged/released
+  * Extend  for arguments
+  * Init assert\_called
+  * Fix type annotations</comment>
+    <requestid>1046200</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>95d46d57b0471e6b179690bec88abcce</srcmd5>
+    <version>0.7.5</version>
+    <time>1699994611</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.5:
+  * replaced pkg\_resources with packaging module
+  * Add Python 3.11 support</comment>
+    <requestid>1125857</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>593696ec21bca3c8077dd48707bf06b7</srcmd5>
+    <version>0.7.6</version>
+    <time>1701023831</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.6:
+  * refactor: Make mock for writer compatible with 3.9.0b1 and
+    older
+  * fix: aiohttp 3.9 \_writer can't await</comment>
+    <requestid>1128741</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,159 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>00595bcd2a99103406fb9aa7a083b8af</srcmd5>
+    <version>3.0.2</version>
+    <time>1512140006</time>
+    <user>dimstar_suse</user>
+    <comment>mariadb-connector-odbc replaces the old MyODBC-unixODBC</comment>
+    <requestid>544612</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2aa6597863849fe03551ee175c53d0e5</srcmd5>
+    <version>3.0.2</version>
+    <time>1513015071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555981</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4e34e8ceed12eec2430f7178e1482a56</srcmd5>
+    <version>3.0.2</version>
+    <time>1513110246</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable openssl support
+- Honor optflags when building
+
+- Remove 'Provides', it is not a drop in replacement
+  for MyODBC-unixODBC. Users will have to change .so file.
+  Obsoletes is enough.</comment>
+    <requestid>556527</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a7e809abb7395776c3ab25c15475b808</srcmd5>
+    <version>3.0.2</version>
+    <time>1516092186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>564492</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5df2e3b082bbab3700a30615fb632f30</srcmd5>
+    <version>3.0.3</version>
+    <time>1519308228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578961</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4d428b9ba8367738ea21ffe45731eb7f</srcmd5>
+    <version>3.0.3</version>
+    <time>1534321994</time>
+    <user>dimstar_suse</user>
+    <comment>- Install license as %license instead of documentation
+
+- New upsream version 3.0.3 (bsc#1104480, fate#324398)</comment>
+    <requestid>628614</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>71ae1c0952829222e0379413b8bd02ca</srcmd5>
+    <version>3.1.1</version>
+    <time>1558532406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704663</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>96bc1c72c6e22a737d7e64b24434ecb4</srcmd5>
+    <version>3.1.6</version>
+    <time>1585995798</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream version 3.1.6. Fixes include,
+  * ODBC-269: BEGIN NOT ATOMIC returning error
+  Fixes since version 3.1.1 includes,
+  * ODBC-196 - Optimize ODBC-120 issue for the case of array fetch
+  * ODBC-267 - Setup library has some redundant dependencies
+  * ODBC-87 - When testing a DSN (new or config datasource)
+    the database name is missing after the test
+  * ODBC-240 - SSLFP and SSLFPLIST parameters appear unused
+  * ODBC-241 - Add parameter that corresponds to
+    MYSQL_SERVER_PUBLIC_KEY option from MariaDB Connector/C
+  * ODBC-226 - Driver doesn't cause an error when it should
+  * ODBC-261 - Connector deploys direct execution, even for
+    server versions, that do not support it
+  * ODBC-262 - MSI and PKG packages do not contain ed25519 plugin
+  * ODBC-210 - Fix compilation warnings on OS X
+  * ODBC-250 - Operations with Dynamic Lists are not thread-safe,
+    and need to be guarded with mutexes
+  * ODBC-252 - Build failed when executed the commands present in
+    &quot;BUILD.md&quot; file
+  * ODBC-253 - MADB_StmtExecDirect() crashes if StatementText is &quot;\0&quot;
+  * ODBC-254 - FTBFS: Cmake libdir misconfiguration
+  * ODBC-256 - Driver craches on empty statement
+  * ODBC-257 - Double-check CPack for a copy-paste error
+  * ODBC-258 - RFE: make documentation and license dirs configurable
+  * ODBC-260 - Remove all references to internals of MYSQL structure
+  * ODBC-255 - When C/ODBC is upgraded on Windows, allow existing
+    data sources to be moved
+  * ODBC-211 - SQLDescribeCol return precision=0 for field type decimal(1,0)
+- install_correct_path.patch: removed, upstreamed
+- package_name.patch: removed, no longer necessary
+
+- DSN_names.patch: refreshed. Added new options
+  TlsPeerFp =
+  TlsPeerFpList =
+  ServerKey =</comment>
+    <requestid>790965</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5f295f03f49930d0b791a2e4f31eb938</srcmd5>
+    <version>3.1.7</version>
+    <time>1586869935</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream version 3.1.7. Fixes include,
+  * ODBC-276 - Update of Binary data containing 0x00 does not work
+  * ODBC-277 - Memory Corruption from Incorrect Type for SQL_IDENTIFIER_CASE
+  * ODBC-274 - Support INSERT/REPLACE ... RETURNING (requires MariaDB 10.5)</comment>
+    <requestid>793816</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9eb5923136cf31cbe1e167596f32cb5d</srcmd5>
+    <version>3.1.9</version>
+    <time>1601044266</time>
+    <user>dimstar_suse</user>
+    <comment>** LOCATION CHANGE ** - the ODBC driver location has been changed to
+/usr/lib{,64}/mariadb/libmaodbc.so  Adjust your paths accordingly.
+- New upstream version 3.1.9. Fixes since 3.1.7 include,
+  * ODBC-214 - Mediumint(INT24) is always empty
+  * ODBC-284 - properly handle curly bracket escape in connection string
+  * ODBC-283 - Add support for passphrase protected private keys (TlsKeyPwd=)
+  * ODBC-280 - fixes multi-threaded issue when multiple connection are
+    established simultaneously from different threads.
+  * ODBC-279 - SQL_C_TIME binding type not working
+- missing_libs.patch: dropped
+- added patches forwarded upstream: fix_macros.patch, implicit_decleration.patch, wrong_types.patch
+- nosoname.patch: refreshed
+- DSN_names.patch: refreshed. Added new option,
+  TlsKeyPwd =</comment>
+    <requestid>833852</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>126e3fbc9f727793c43e1305a4ad7707</srcmd5>
+    <version>3.1.10</version>
+    <time>1605012007</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream version 3.1.10
+  * ODBC-288 - Connector misses &quot;interactive client&quot; option. Added
+    INTERACTIVE connection string option to tell server, that
+    the client application is interactive, and interactive_timeout
+    has to be used.
+  * ODBC-202 - Add charsets recoding function to C/ODBC. Iconv-based
+    conversion function has been moved and adapted from MariaDB Connector/C.
+  * ODBC-289 - Fixes a crash fetching from statement after closing and re-executing
+- remove upstreamed patches: fix_macros.patch,
+  implicit_decleration.patch, wrong_types.patch
+- iconv.patch: compilation fixes
+
+- Fix Driver in sample_odbc.ini</comment>
+    <requestid>846299</requestid>
+  </revision>
+</revisionlist>

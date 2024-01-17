@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd285f9054a320bfd6c2ea957faa5b26</srcmd5>
+    <version>5.0.1</version>
+    <time>1424117385</time>
+    <user>coolo</user>
+    <comment>needed for rails 4.2</comment>
+    <requestid>285026</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>49ee96888f07d3f678433b02f067a2dd</srcmd5>
+    <version>5.0.3</version>
+    <time>1428652438</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>295081</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f7f3c3985125079bdacf29d8c6aa4cee</srcmd5>
+    <version>5.0.4</version>
+    <time>1441726976</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329199</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>983b02987282cf540fa7ededcd799d98</srcmd5>
+    <version>5.0.5</version>
+    <time>1469080626</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406318</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>08b2b038f019a275b7dd6416f390a21d</srcmd5>
+    <version>5.0.6</version>
+    <time>1469831186</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>414834</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ce36b1baf3c50c8d47004241d6828ffc</srcmd5>
+    <version>5.0.7</version>
+    <time>1510960903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542644</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>45238f672bbc7ee16536665f1f3e0218</srcmd5>
+    <version>6.0.0</version>
+    <time>1566243664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724308</requestid>
+  </revision>
+</revisionlist>

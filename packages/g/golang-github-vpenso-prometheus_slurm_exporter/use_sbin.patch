@@ -1,0 +1,21 @@
+From: Ana Guerrero López <aguerrero@suse.com>
+Date: 2019-12-04 10:20:20 +0200
+Subject: Install the exporter under /usr/sbin
+Upstream: tbd
+
+Install the exporter binary under /usr/sbin/ to keep the same logic 
+than golang-github-prometheus-node_exporter and other exporters.
+
+
+diff -Nrua a/lib/systemd/prometheus-slurm-exporter.service b/lib/systemd/prometheus-slurm-exporter.service
+--- a/lib/systemd/prometheus-slurm-exporter.service
++++ b/lib/systemd/prometheus-slurm-exporter.service
+@@ -2,7 +2,7 @@
+ Description=Prometheus SLURM Exporter
+ 
+ [Service]
+-ExecStart=/usr/bin/prometheus-slurm-exporter
++ExecStart=/usr/sbin/prometheus-slurm-exporter
+ Restart=always
+ RestartSec=15
+ 

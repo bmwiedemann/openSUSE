@@ -1,0 +1,50 @@
+#!/bin/bash
+
+set -e
+
+VARS=()
+FILES=()
+VERBOSE=
+
+while [ -n "$1" ]; do
+    param="$1"
+    arg="$2"
+
+    case "${param}" in
+    --eval)
+        eval "${arg}"
+        shift 2
+        ;;
+    --var)
+        VARS+=(${arg})
+        shift 2
+        ;;
+    --file)
+        FILES+=(${arg})
+        shift 2
+        ;;
+    --verbose)
+        VERBOSE=1
+        shift 2
+        ;;
+    *)
+        echo "Ignoring unknown parameter: ${param}"
+        shift
+    esac
+done
+
+if [ ${#FILES[@]} -eq 0 ]; then
+    echo "No input files"
+    exit 0
+fi
+
+for var in ${VARS[@]}; do
+    echo "Replacing '${var}' with '${!var}'"
+    sed -i"" \
+        -e "s#%%${var}%%#${!var}#g" \
+        "${FILES[@]}"
+done
+
+if [ -n "${VERBOSE}" ]; then
+    cat ${FILES[@]}
+fi
