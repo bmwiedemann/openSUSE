@@ -1,7 +1,7 @@
 #
 # spec file for package python-Chameleon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Chameleon
-Version:        4.2.0
+Version:        4.4.3
 Release:        0
 Summary:        Fast HTML/XML Template Compiler
 License:        BSD-3-Clause AND BSD-4-Clause AND Python-2.0 AND ZPL-2.1
@@ -32,6 +32,9 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+%if %{python_version_nodots} < 310
+Requires:       python-importlib-metadata
+%endif
 BuildArch:      noarch
 %python_subpackages
 
