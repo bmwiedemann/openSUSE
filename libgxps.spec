@@ -1,7 +1,7 @@
 #
 # spec file for package libgxps
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           libgxps
-Version:        0.3.2
+Version:        0.3.2+5
 Release:        0
 Summary:        Library for rendering XPS documents
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://live.gnome.org/libgxps
-Source0:        https://download.gnome.org/sources/libgxps/0.3/%{name}-%{version}.tar.xz
-Source99:       %{name}-rpmlintrc
+URL:            https://wiki.gnome.org/Projects/libgxps
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
@@ -98,8 +97,7 @@ documents.
 %install
 %meson_install
 
-%post -n libgxps2 -p /sbin/ldconfig
-%postun -n libgxps2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgxps2
 
 %files -n libgxps2
 %license COPYING

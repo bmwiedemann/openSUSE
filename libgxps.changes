@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 12 08:15:39 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.3.2+5:
+  + DOAP: Fix 'bug-database' value to point to GNOME GitLab Issues
+  + images:
+    - For jpeg images try to get the image resolution from exif
+      first
+    - Add support for jpeg images with CMYK color space
+  + Fix compiler warnings
+  + Fix meson warnings
+- Switch to git checkout via source service, use explicit commit.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Update URL to new home.
+- Drop no longer needed libgxps-rpmlintrc.
+
+-------------------------------------------------------------------
 Sat Feb 27 08:54:23 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.3.2:
