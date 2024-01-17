@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Mon Jul 24 19:53:59 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Add epoch to make upgrades from 8.0 to 1.0.x easier
+
+-------------------------------------------------------------------
+Mon Jul 24 14:15:22 UTC 2023 - Gus Kenion <gkenion@suse.com>
+
+- Update upstream from abandoned sourceforge to actively maintained
+  github
+- bsc#1212404 (CVE-2023-34623): Prevent crash when parsing
+  documents with excessive nesting. (community fix, part of v1.0.4)
+
+-------------------------------------------------------------------
+Sun Mar 20 12:39:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+- Rewamp and simplify the build system
+
+-------------------------------------------------------------------
+Mon Oct 29 09:36:38 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Fix javadoc build
+- Package maven artifact
+
+-------------------------------------------------------------------
+Fri Sep  8 08:34:01 UTC 2017 - fstrba@suse.com
+
+- Modified file:
+  * maven-build.xml
+    + Specify java source and target level 1.6 in order to allow
+      building with jdk9
+
+-------------------------------------------------------------------
+Thu Dec  5 19:41:32 UTC 2013 - dvaleev@suse.com
+
+- increase stack size for ppc64le 
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:07 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Wed Dec 12 17:02:32 UTC 2012 - dvaleev@suse.com
+
+- increase stack size for ppc64 
+
+-------------------------------------------------------------------
+Fri Jun 15 13:39:06 UTC 2012 - mvyskocil@suse.cz
+
+- disable javadoc (workaround for jdk7 build) 
+
+-------------------------------------------------------------------
+Wed May 20 11:31:39 CEST 2009 - mvyskocil@suse.cz
+
+- 'fixed bnc#501764: removed clover.license from source tarball'
+
+-------------------------------------------------------------------
+Thu May  7 11:17:29 CEST 2009 - mvyskocil@suse.cz
+
+- Initial packaging of 8.0 in SUSE (from jpp 5.0) 
+

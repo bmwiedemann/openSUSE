@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>238c1bf0505827fb30602cb991b93642</srcmd5>
+    <version>2.1</version>
+    <time>1526371949</time>
+    <user>dimstar_suse</user>
+    <comment>Promises/A+ implementation for Python</comment>
+    <requestid>605977</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c93e0443044604013771222676d3cc0b</srcmd5>
+    <version>2.2.1</version>
+    <time>1550048480</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.1:
+  * support python3
+  * have license in tarball</comment>
+    <requestid>673322</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1ec602666661c777c76a92c3e243cbbb</srcmd5>
+    <version>2.3.0</version>
+    <time>1584643799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786242</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e726820009e3c09caa351141ed9c300c</srcmd5>
+    <version>2.3.0</version>
+    <time>1655732284</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove now broken bconds for python2/python3.
+- Add patch pytest-7-support.patch:
+  * Support pytest 7.0+ changes.</comment>
+    <requestid>983793</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e8d7709c17e68324c24f47ceaa8a3f09</srcmd5>
+    <version>2.3.0</version>
+    <time>1677498930</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-311.patch to support python 3.11
+  gh#syrusakbary/promise#99
+</comment>
+    <requestid>1067864</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>d9e1051b385085814a3f796df10667fb</srcmd5>
+    <version>2.3.0</version>
+    <time>1686172072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091247</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>34b776dc568cc8dd1e3fb3f70ce5f9bf</srcmd5>
+    <version>2.3.0</version>
+    <time>1689000043</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1097941</requestid>
+  </revision>
+</revisionlist>

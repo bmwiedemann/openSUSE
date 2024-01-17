@@ -1,0 +1,5 @@
+<package name="int10h-oldschoolpc-fonts" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="M17N:fonts" package="int10h-oldschoolpc-fonts"/>
+</package>

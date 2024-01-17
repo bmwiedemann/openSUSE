@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Wed Nov 29 12:05:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.5.1:
+  * Make ``CountryField`` queryset filters also work with country
+    codes in addition to names.
+  * Switch to ``pyproject.toml`` rather than ``setup.py`` to fix
+    installation issues with pip 23.0+.
+  * Rename Turkey to Türkiye.
+  * Improve translation fallback handling, fixing a threading
+    race condition that could cause odd translation issues.
+  * This also fixes translation issues with older Python 3.6/3.7
+    versions.
+  * Add Python 3.11, drop Python 3.6 and Django 2.2 support.
+  * Fix error when using ``USE_I18N = False``.
+  * Fix broken translations due to last common country names fix.
+  * Fixed Traditional Chinese translation (needed to be
+    ``locale/zh_Hant``).
+  * Update flag of Honduras.
+  * Add Django 4.0 and 4.1 to the test matrix, dropping 3.0 and
+    3.1
+  * Add Django Rest Framework 3.13 and 3.14, dropping 3.11.
+  * Multi-choice countries are now stored sorted and with
+    duplicates stripped.
+  * Fix common country names not being honoured in non-English
+    translations (only fixed for Python 3.8+).
+  * Fix slowdown introduced in v7.3 caused by always using
+    country name lookups for field comparisons.
+    ``filter(country="New Zealand")`` will no longer match now,
+    but instead new ``__name`` and ``__iname`` filters have
+    been added to achieve this.
+  * Typing compatibility fixes for Python <3.9.
+  * Make full English country names work in database lookups, for
+    example, ``Person.objects.filter(country__icontains="zealand")``.
+
+-------------------------------------------------------------------
+Tue May 11 23:20:32 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add optional dependency pyuca
+- Update to v7.2.1
+  * Fix Latin translations.
+- from v7.2
+  * Allow the character field to work with custom country codes that
+    are not 2 characters (such as "GB-WLS").
+  * Fix compatibility with django-migrations-ignore-attrs library.
+- from v7.1
+  * Allow customising the str_attr of Country objects returned from
+    a CountryField via a new countries_str_attr keyword argument
+  * Add pyuca as an extra dependency, so that it can be installed
+    like pip install django-countries[pyuca].
+  * Add Django 3.2 support.
+- from v7.0
+  * Add name_only as option to the DRF serializer field
+  * Add in Python typing.
+  * Add Python 3.9, Django 3.1, and Django Rest Framework 3.12 support
+  * Drop Python 3.5 support.
+  * Improve IOC code functionality, allowing them to be overridden in
+    COUNTRIES_OVERRIDE using the complex dictionary format.
+- from v6.1.3
+  * Update flag of Mauritania.
+  * Add flag for Kosovo (under its temporary code of XK)
+
+-------------------------------------------------------------------
+Sat Jun  6 06:50:19 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v6.1.2
+
+-------------------------------------------------------------------
+Thu Apr 18 23:15:50 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Convert to single spec, fdupes, tidy
+- Add Obsoletes/Provides for old Python 2 package name
+- Remove tests from runtime package, fix hashbangs
+- Use %license, add CHANGES.rst to %doc
+- Update to v5.3.3
+
+-------------------------------------------------------------------
+Fri Sep 27 16:39:07 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.5
+  + No changelog available
+- Replace python-distribute with python-setuptools BuildRequires
+
+-------------------------------------------------------------------
+Mon Oct 15 23:04:14 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 1.4:
+  * Added and updated translations
+  * Updated country list (Libya changed)
+- Run tests
+- Add LICENSE to %doc
+- README is now README.rst
+
+-------------------------------------------------------------------
+Sat Oct  8 18:25:21 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.1.1:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Thu Oct  6 02:14:48 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.1;
+- Regenerate spec file with p2pack.
+
+-------------------------------------------------------------------
+Fri Jan 23 00:10:48 CET 2009 - poeml@suse.de
+
+- initial package (0.1-r3)
+

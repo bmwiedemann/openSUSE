@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3480e23cd1014a91d92c87c73c0473ff</srcmd5>
+    <version>1.09</version>
+    <time>1305011962</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66732</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>616760b8d54d287e1844b210b81371b3</srcmd5>
+    <version>1.09</version>
+    <time>1305011973</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66732
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ef1a03a9451a518ab0272ea11d9b8009</srcmd5>
+    <version>1.12</version>
+    <time>1306853691</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>72092</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ef1a03a9451a518ab0272ea11d9b8009</srcmd5>
+    <version>1.12</version>
+    <time>1319182275</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>79e04d7efc5addf4687cafeb6d6df4d9</srcmd5>
+    <version>1.14</version>
+    <time>1321875675</time>
+    <user>coolo</user>
+    <comment>- update to 1.14
+  - removed benchmark test data and benchmark script for release</comment>
+    <requestid>92774</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>07c5493075106b49a364b9a0ff95ee9e</srcmd5>
+    <version>1.14</version>
+    <time>1323193361</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2ce6f76058dab664100720904cf2053c</srcmd5>
+    <version>1.15</version>
+    <time>1329383214</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>104259</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>2ce6f76058dab664100720904cf2053c</srcmd5>
+    <version>1.15</version>
+    <time>1340183854</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>2ce6f76058dab664100720904cf2053c</srcmd5>
+    <version>1.15</version>
+    <time>1359109694</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>65ef2d7a53ee55e35b0e8f8aa2b03063</srcmd5>
+    <version>1.17</version>
+    <time>1370514031</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 177648 from coolo)</comment>
+    <requestid>177679</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>65ef2d7a53ee55e35b0e8f8aa2b03063</srcmd5>
+    <version>1.17</version>
+    <time>1379663703</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>efe4dd7719e85d3cb1900520807797f9</srcmd5>
+    <version>1.19</version>
+    <time>1386757910</time>
+    <user>coolo</user>
+    <comment>- updated to 1.19 (includes also changelog for old releases)
+    - Release for cleanup of dzil
+    - Added configurable basename regexp, test added with fixed regexp for next release
+      (Torsten Raudssus [GETTY])
+    - Added .gitignore
+
+- updated to 1.17
+    - Added support for application/json (Gareth Kirwan [GBJK])
+- updated to 1.15
+   - Added missing requirement (Torsten Raudssus [GETTY])</comment>
+    <requestid>209944</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e6c3ddba58b27c7649b219962f361a7a</srcmd5>
+    <version>1.19</version>
+    <time>1394866053</time>
+    <user>coolo</user>
+    <comment>fix for bnc#844951 (CVE-2013-4407) (forwarded request 226017 from computersalat)</comment>
+    <requestid>226018</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>e6c3ddba58b27c7649b219962f361a7a</srcmd5>
+    <version>1.19</version>
+    <time>1409302323</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a1ee1773c9bc505a6c784cefaab6d1e6</srcmd5>
+    <version>1.22</version>
+    <time>1423596096</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>284748</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,20 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">git@github.com:jfriesse/omping.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="filename">omping</param>
+    <param name="versionformat">0.0.5</param>
+    <param name="revision">master</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">omping*.tar</param>
+    <param name="compression">bz2</param>
+  </service>
+
+  <service name="set_version" mode="disabled">
+    <param name="basename">omping</param>
+  </service>
+</services>

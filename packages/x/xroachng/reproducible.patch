@@ -1,0 +1,53 @@
+Date: 2023-06-09
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Subject: Allow to override build date
+
+Allow to override build date with SOURCE_DATE_EPOCH
+in order to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+This date call only works with GNU date.
+Also use UTC/gmtime to be independent of timezone.
+
+%B still causes variations with locales, so ISO 8601 date format is recommended.
+
+Index: xroachng-1.0.3/simplemake.sh
+===================================================================
+--- xroachng-1.0.3.orig/simplemake.sh
++++ xroachng-1.0.3/simplemake.sh
+@@ -66,7 +66,7 @@ $CC -o xroachng *.o $FLAGS || exit 1
+ cd ..
+ echo "creating man page xroachng.1 in directory $PWD:"
+ version=`src/xroachng -v|awk '{print $2}'`
+-sed "s'SYSTEMTHEMES'$PKGDATADIR/xroachng/themes/*';s/VERSION/$version/;s/DATE/`date +'%B %Y'`/" < xroachng.1.tmpl > xroachng.1
++sed "s'SYSTEMTHEMES'$PKGDATADIR/xroachng/themes/*';s/VERSION/$version/;s/DATE/`date -u -d @${SOURCE_DATE_EPOCH:-$(date +%s)} +'%B %Y'`/" < xroachng.1.tmpl > xroachng.1
+ 
+ echo
+ echo " ***********************************************************************"
+Index: xroachng-1.0.3/Makefile.am
+===================================================================
+--- xroachng-1.0.3.orig/Makefile.am
++++ xroachng-1.0.3/Makefile.am
+@@ -11,7 +11,7 @@ EXTRA_DIST = \
+ man_MANS = xroachng.1
+ 
+ xroachng.1: xroachng.1.tmpl
+-	sed "s/VERSION/$(VERSION)/;s/DATE/`date +'%B %Y'`/" < $< > $@
++	sed "s/VERSION/$(VERSION)/;s/DATE/`date -u -d @${SOURCE_DATE_EPOCH:-$(date +%s)} +'%B %Y'`/" < $< > $@
+ 
+ CLEANFILES = xroachng.1
+ 
+Index: xroachng-1.0.3/Makefile.in
+===================================================================
+--- xroachng-1.0.3.orig/Makefile.in
++++ xroachng-1.0.3/Makefile.in
+@@ -868,7 +868,7 @@ uninstall-man: uninstall-man1
+ 
+ 
+ xroachng.1: xroachng.1.tmpl
+-	sed "s/VERSION/$(VERSION)/;s/DATE/`date +'%B %Y'`/" < $< > $@
++	sed "s/VERSION/$(VERSION)/;s/DATE/`date -u -d @${SOURCE_DATE_EPOCH:-$(date +%s)} +'%B %Y'`/" < $< > $@
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

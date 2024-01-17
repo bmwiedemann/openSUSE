@@ -1,0 +1,25 @@
+Index: lpe-1.2.8/src/lpe.c
+===================================================================
+--- lpe-1.2.8.orig/src/lpe.c
++++ lpe-1.2.8/src/lpe.c
+@@ -25,6 +25,8 @@
+ #include "strfuncs.h"
+ #include "exports.h"
+ 
++char *LPE_CONFIG_FILE;
++
+ /* A flag indicating a desire to quit the editor.  This is set whenever a
+  * command should cause an exit.
+  */
+Index: lpe-1.2.8/src/options.h
+===================================================================
+--- lpe-1.2.8.orig/src/options.h
++++ lpe-1.2.8/src/options.h
+@@ -38,6 +38,6 @@
+ /*
+  * Other things that are used in some places...
+  */
+-char *LPE_CONFIG_FILE;
++extern char *LPE_CONFIG_FILE;
+ 
+ #endif /* LPE_OPTIONS_H */

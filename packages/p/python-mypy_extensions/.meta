@@ -1,0 +1,5 @@
+<package name="python-mypy_extensions" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-mypy_extensions"/>
+</package>

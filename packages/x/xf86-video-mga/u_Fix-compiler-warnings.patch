@@ -1,0 +1,27 @@
+From: Egbert Eich <eich@freedesktop.org>
+Date: Wed May 7 21:23:40 2014 +0200
+Subject: [PATCH]Fix compiler warnings
+Patch-mainline: to be upstreamed
+Git-commit: 9726dda8d50f6c79d0004ef254c500a8eed4c367
+Git-repo: ssh://git.freedesktop.org/git/xorg/driver/xf86-video-mga
+References: 
+Signed-off-by: Egbert Eich <eich@suse.com>
+
+Signed-off-by: Egbert Eich <eich@freedesktop.org>
+---
+ src/mga_driver.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+Index: xf86-video-mga-2.0.0/src/mga_driver.c
+===================================================================
+--- xf86-video-mga-2.0.0.orig/src/mga_driver.c
++++ xf86-video-mga-2.0.0/src/mga_driver.c
+@@ -2690,7 +2690,7 @@ MGAMapMem(ScrnInfoPtr pScrn)
+ 	    err = pci_device_map_range(dev,
+ 				       region->base_addr, region->size,
+ 				       PCI_DEV_MAP_FLAG_WRITABLE,
+-				       &pMga->IOBase);
++				       (void **)&pMga->IOBase);
+ 
+ 	    if (err) {
+ 	      xf86DrvMsg(pScrn->scrnIndex, X_ERROR,

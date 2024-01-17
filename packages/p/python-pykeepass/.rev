@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f071009f96e88e43d5c629f6e637551e</srcmd5>
+    <version>3.0.2</version>
+    <time>1542281900</time>
+    <user>dimstar_suse</user>
+    <comment>New package: python-pykeepass is a python library that allows you to write entries to a KeePass database (depends on sr#645673 and sr#645674)
+</comment>
+    <requestid>645675</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6f662228927d5e8d06173c15b4a981b8</srcmd5>
+    <version>3.0.3</version>
+    <time>1554276505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690678</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a945a5093577af4081079284931cc879</srcmd5>
+    <version>3.2.0</version>
+    <time>1588538775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799293</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2ea7297ac42a6b4d0dc2c96e83b5d5ab</srcmd5>
+    <version>3.2.1</version>
+    <time>1596652087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824365</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f24b5e94639a4d5afb7cdce0b2ae5c26</srcmd5>
+    <version>4.0.0</version>
+    <time>1613677283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873337</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2ed804629ec82e778b94573389d0b44b</srcmd5>
+    <version>4.0.1</version>
+    <time>1622536625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895543</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8276ae67bf276e9865b1939f3fc5bae9</srcmd5>
+    <version>4.0.2</version>
+    <time>1654258626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980605</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bdbf4c2ed54f4f7466d691104286c990</srcmd5>
+    <version>4.0.3</version>
+    <time>1656145467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984909</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>69642a2472cdf0ee8bb0531c03382172</srcmd5>
+    <version>4.0.4</version>
+    <time>1685562891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089961</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cbfeea1caf897817a3ce1122c6bf39a0</srcmd5>
+    <version>4.0.5</version>
+    <time>1686576441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092474</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d3b568dcf7632563b5b5fa6019e9e1f7</srcmd5>
+    <version>4.0.6</version>
+    <time>1694019422</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109013</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Thu Jul  6 10:22:05 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Thu Mar 24 04:44:38 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add pr_10.patch:
+  * Use stdlib unittest.mock.
+- Drop {Build,}Requires on mock. 
+
+-------------------------------------------------------------------
+Tue Sep  8 07:06:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Sep  7 04:12:02 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.0.1 using pr_6.patch from upstream

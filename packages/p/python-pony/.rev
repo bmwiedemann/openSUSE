@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4863bfa777b9c89287112e9ca2a592b0</srcmd5>
+    <version>0.7.6</version>
+    <time>1540819262</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-pony, required (indirectly) by pgadmin4</comment>
+    <requestid>644605</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c045aba08c97d7e2b7ecdeb1e66301e8</srcmd5>
+    <version>0.7.9</version>
+    <time>1551455419</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.9:
+  * Fix handling of empty arrays and empty lists in queries
+  * Fix reading optional nullable array columns from database
+  * Array type support for PostgreSQL and SQLite
+  * isinstance() support in queries
+  * Support of queries based on collections: select(x for x in y.items)
+- Drop merged patch 0001-Fix-tests-failing-with-python-3.6.patch</comment>
+    <requestid>680497</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8601fd072a047f96f2c8f08b07abeb26</srcmd5>
+    <version>0.7.10</version>
+    <time>1556622066</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697456</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>34af70073f39deb6ac18cf1444511afa</srcmd5>
+    <version>0.7.10</version>
+    <time>1576676787</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>757689</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5d6e3a8b6aedd9e2b377911adba84367</srcmd5>
+    <version>0.7.13</version>
+    <time>1583750553</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>782846</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f2b87ef2cdb5af8467612b6f9c8a58b8</srcmd5>
+    <version>0.7.14</version>
+    <time>1618859161</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886564</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>04dcb32d8bbcfcdf89513dc30d069da7</srcmd5>
+    <version>0.7.14</version>
+    <time>1631739088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919146</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9c88c3b85fb33ba0bf44a923da782791</srcmd5>
+    <version>0.7.16</version>
+    <time>1645137634</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.16:
+  * A long-awaited support of Python 3.10.
+  * A possibility to create shared-in memory SQLite databases that can be
+    accessed from multiple threads
+  * Fixes #628: DBAPIProvider.init() got multiple values for argument 'database' 
+- remove b6599465524c4b5c9624dfa30dd3c8a5624b515d.patch (upstream)</comment>
+    <requestid>955715</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e4cd225ec47501c7c46d59d3af01d648</srcmd5>
+    <version>0.7.16</version>
+    <time>1677258506</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-311.patch to support python 3.11,
+  gh#ponyorm/pony#671
+</comment>
+    <requestid>1067591</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,414 @@
+Index: pony-0.7.16/setup.py
+===================================================================
+--- pony-0.7.16.orig/setup.py
++++ pony-0.7.16/setup.py
+@@ -70,6 +70,7 @@ classifiers = [
+     'Programming Language :: Python :: 3.8',
+     'Programming Language :: Python :: 3.9',
+     'Programming Language :: Python :: 3.10',
++    'Programming Language :: Python :: 3.11',
+     'Programming Language :: Python :: Implementation :: PyPy',
+     'Topic :: Software Development :: Libraries',
+     'Topic :: Database'
+@@ -106,8 +107,8 @@ download_url = "http://pypi.python.org/p
+ 
+ if __name__ == "__main__":
+     pv = sys.version_info[:2]
+-    if pv not in ((3, 6), (3, 7), (3, 8), (3, 9), (3, 10)):
+-        s = "Sorry, but %s %s requires Python of one of the following versions: 3.6-3.10." \
++    if pv not in ((3, 6), (3, 7), (3, 8), (3, 9), (3, 10), (3, 11)):
++        s = "Sorry, but %s %s requires Python of one of the following versions: 3.6-3.11." \
+             " You have version %s"
+         print(s % (name, version, sys.version.split(' ', 1)[0]))
+         sys.exit(1)
+Index: pony-0.7.16/pony/orm/decompiling.py
+===================================================================
+--- pony-0.7.16.orig/pony/orm/decompiling.py
++++ pony-0.7.16/pony/orm/decompiling.py
+@@ -1,10 +1,14 @@
+ from __future__ import absolute_import, print_function, division
+-from pony.py23compat import PY37, PYPY, PY38, PY39, PY310
++from pony.py23compat import PY37, PYPY, PY38, PY39, PY310, PY311
+ 
+ import sys, types, inspect
+ from opcode import opname as opnames, HAVE_ARGUMENT, EXTENDED_ARG, cmp_op
+ from opcode import hasconst, hasname, hasjrel, haslocal, hascompare, hasfree, hasjabs
+ from collections import defaultdict
++try:
++    from opcode import _nb_ops as nb_ops
++except ImportError:
++    nb_ops = None
+ 
+ #from pony.thirdparty.compiler import ast, parse
+ import ast
+@@ -150,6 +154,7 @@ class Decompiler(object):
+         decompiler.conditions_end = 0
+         decompiler.instructions = []
+         decompiler.instructions_map = {}
++        decompiler.kw_names = None
+         decompiler.or_jumps = set()
+         decompiler.get_instructions()
+         decompiler.analyze_jumps()
+@@ -193,14 +198,24 @@ class Decompiler(object):
+                 if op in hasconst:
+                     arg = [code.co_consts[oparg]]
+                 elif op in hasname:
+-                    arg = [code.co_names[oparg]]
++                    if opname == 'LOAD_GLOBAL':
++                        push_null = False
++                        if PY311:
++                            push_null = oparg & 1
++                            oparg >>= 1
++                        arg = [code.co_names[oparg], push_null]
++                    else:
++                        arg = [code.co_names[oparg]]
+                 elif op in hasjrel:
+-                    arg = [i + oparg * (2 if PY310 else 1)]
++                    arg = [i + oparg * (2 if PY310 else 1)
++                           * (-1 if 'BACKWARD' in opname else 1)]
+                 elif op in haslocal:
+                     arg = [code.co_varnames[oparg]]
+                 elif op in hascompare:
+                     arg = [cmp_op[oparg]]
+                 elif op in hasfree:
++                    if PY311:
++                        oparg -= len(code.co_varnames)
+                     arg = [free[oparg]]
+                 elif op in hasjabs:
+                     arg = [oparg * (2 if PY310 else 1)]
+@@ -209,7 +224,8 @@ class Decompiler(object):
+             else: arg = []
+             if opname == 'FOR_ITER':
+                 decompiler.for_iter_pos = decompiler.pos
+-            if opname == 'JUMP_ABSOLUTE' and arg[0] == decompiler.for_iter_pos:
++            if (opname in ('JUMP_ABSOLUTE', 'JUMP_NO_INTERRUPT')
++                    and arg[0] == decompiler.for_iter_pos):
+                 decompiler.abs_jump_to_top = decompiler.pos
+ 
+             if before_yield:
+@@ -300,6 +316,34 @@ class Decompiler(object):
+     BINARY_TRUE_DIVIDE  = BINARY_DIVIDE
+     BINARY_MODULO       = binop(ast.Mod)
+ 
++    def BINARY_OP(decompiler, opcode):
++        opname, symbol = nb_ops[opcode]
++        inplace = opname.startswith('NB_INPLACE_')
++        opname = opname.split('_', 2 if inplace else 1)[-1]
++
++        op = {
++            "ADD": ast.Add,
++            "AND": ast.BitAnd,
++            "FLOOR_DIVIDE": ast.FloorDiv,
++            "LSHIFT": ast.LShift,
++            "MATRIX_MULTIPLY": ast.MatMult,
++            "MULTIPLY": ast.Mult,
++            "REMAINDER": ast.Mod,
++            "OR": ast.BitOr,
++            "POWER": ast.Pow,
++            "RSHIFT": ast.RShift,
++            "SUBTRACT": ast.Sub,
++            "TRUE_DIVIDE": ast.Div,
++            "XOR": ast.BitXor,
++        }[opname]
++
++        oper2 = decompiler.stack.pop()
++        oper1 = decompiler.stack.pop()
++        r = ast.BinOp(left=oper1, op=op(), right=oper2)
++        if inplace:
++            r = ast.Name(oper1, r)
++        return r
++
+     def BINARY_SUBSCR(decompiler):
+         node2 = decompiler.stack.pop()
+         node1 = decompiler.stack.pop()
+@@ -394,6 +438,30 @@ class Decompiler(object):
+             return genexpr
+         return ast.Call(tos, args, keywords)
+ 
++    def CACHE(decompiler):
++        pass
++
++    def CALL(decompiler, argc):
++        values = decompiler.pop_items(argc)
++
++        keys = decompiler.kw_names
++        decompiler.kw_names = None
++
++        args = values
++        keywords = []
++        if keys:
++            args = values[:-len(keys)]
++            keywords = [ast.keyword(k, v) for k, v in zip(keys, values[-len(keys):])]
++
++        self = decompiler.stack.pop()
++        callable_ = decompiler.stack.pop()
++        if callable_ is None:
++            callable_ = self
++        else:
++            args.insert(0, self)
++        decompiler.stack.append(callable_)
++        return decompiler._call_function(args, keywords)
++
+     def CALL_FUNCTION_VAR(decompiler, argc):
+         return decompiler.CALL_FUNCTION(argc, decompiler.stack.pop())
+ 
+@@ -455,6 +523,9 @@ class Decompiler(object):
+         op = operator_mapping[op]()
+         return ast.Compare(oper1, [op], [oper2])
+ 
++    def COPY_FREE_VARS(decompiler, n):
++        pass
++
+     def CONTAINS_OP(decompiler, invert):
+         return decompiler.COMPARE_OP('not in' if invert else 'in')
+ 
+@@ -543,6 +614,37 @@ class Decompiler(object):
+         decompiler.targets.setdefault(endpos, clause)
+         return clause
+ 
++    def conditional_jump_none_impl(decompiler, endpos, negate):
++        expr = decompiler.stack.pop()
++        op = ast.Is
++        if decompiler.pos >= decompiler.conditions_end:
++            clausetype = ast.And if negate else ast.Or
++        elif decompiler.pos in decompiler.or_jumps:
++            clausetype = ast.Or
++            if negate:
++                op = ast.IsNot
++        else:
++            clausetype = ast.And
++            if negate:
++                op = ast.IsNot
++        expr = ast.Compare(expr, [op()], [ast.Constant(None)])
++        decompiler.stack.append(expr)
++
++        if decompiler.next_pos in decompiler.targets:
++            decompiler.process_target(decompiler.next_pos)
++
++        expr = decompiler.stack.pop()
++        clause = ast.BoolOp(op=clausetype(), values=[expr])
++        clause.endpos = endpos
++        decompiler.targets.setdefault(endpos, clause)
++        return clause
++
++    def jump_if_none(decompiler, endpos):
++        return decompiler.conditional_jump_none_impl(endpos, True)
++
++    def jump_if_not_none(decompiler, endpos):
++        return decompiler.conditional_jump_none_impl(endpos, False)
++
+     def process_target(decompiler, pos, partial=False):
+         if pos is None:
+             limit = None
+@@ -559,6 +661,10 @@ class Decompiler(object):
+                 break
+             if not decompiler.stack:
+                 break
++            if decompiler.stack[-1] is None:
++                decompiler.stack.pop()
++                if not decompiler.stack:
++                    break
+             top2 = decompiler.stack[-1]
+             if isinstance(top2, ast.comprehension):
+                 break
+@@ -596,6 +702,10 @@ class Decompiler(object):
+             decompiler.targets[endpos] = if_exp
+         return if_exp
+ 
++    def KW_NAMES(decompiler, kw_names):
++        # Stash for CALL
++        decompiler.kw_names = kw_names
++
+     def IS_OP(decompiler, invert):
+         return decompiler.COMPARE_OP('is not' if invert else 'is')
+ 
+@@ -636,12 +746,17 @@ class Decompiler(object):
+         decompiler.names.add(varname)
+         return ast.Name(varname, ast.Load())
+ 
+-    def LOAD_GLOBAL(decompiler, varname):
++    def LOAD_GLOBAL(decompiler, varname, push_null):
++        if push_null:
++            decompiler.stack.append(None)
+         decompiler.names.add(varname)
+         return ast.Name(varname, ast.Load())
+ 
+     def LOAD_METHOD(decompiler, methname):
+-        return decompiler.LOAD_ATTR(methname)
++        result = decompiler.LOAD_ATTR(methname)
++        if PY311:
++            decompiler.stack.append(None)
++        return result
+ 
+     LOOKUP_METHOD = LOAD_METHOD  # For PyPy
+ 
+@@ -649,6 +764,9 @@ class Decompiler(object):
+         decompiler.names.add(varname)
+         return ast.Name(varname, ast.Load())
+ 
++    def MAKE_CELL(decompiler, freevar):
++        pass
++
+     def MAKE_CLOSURE(decompiler, argc):
+         decompiler.stack[-3:-2] = []  # ignore freevars
+         return decompiler.MAKE_FUNCTION(argc)
+@@ -656,7 +774,8 @@ class Decompiler(object):
+     def MAKE_FUNCTION(decompiler, argc):
+         defaults = []
+         if sys.version_info >= (3, 6):
+-            qualname = decompiler.stack.pop()
++            if not PY311:
++                qualname = decompiler.stack.pop()
+             tos = decompiler.stack.pop()
+             if argc & 0x08:
+                 func_closure = decompiler.stack.pop()
+@@ -692,18 +811,38 @@ class Decompiler(object):
+         )
+         return ast.Lambda(args, func_decompiler.ast)
+ 
++    POP_JUMP_BACKWARD_IF_FALSE = JUMP_IF_FALSE
++    POP_JUMP_BACKWARD_IF_TRUE = JUMP_IF_TRUE
++    POP_JUMP_FORWARD_IF_FALSE = JUMP_IF_FALSE
++    POP_JUMP_FORWARD_IF_TRUE = JUMP_IF_TRUE
+     POP_JUMP_IF_FALSE = JUMP_IF_FALSE
+     POP_JUMP_IF_TRUE = JUMP_IF_TRUE
++    POP_JUMP_BACKWARD_IF_NONE = jump_if_none
++    POP_JUMP_BACKWARD_IF_NOT_NONE = jump_if_not_none
++    POP_JUMP_FORWARD_IF_NONE = jump_if_none
++    POP_JUMP_FORWARD_IF_NOT_NONE = jump_if_not_none
+ 
+     def POP_TOP(decompiler):
+         pass
+ 
++    def PRECALL(decompiler, argc):
++        pass
++
++    def PUSH_NULL(decompiler):
++        decompiler.stack.append(None)
++
+     def RETURN_VALUE(decompiler):
+         if decompiler.next_pos != decompiler.end:
+             throw(DecompileError)
+         expr = decompiler.stack.pop()
+         return simplify(expr)
+ 
++    def RETURN_GENERATOR(decompiler):
++        pass
++
++    def RESUME(decompiler, where):
++        pass
++
+     def ROT_TWO(decompiler):
+         tos = decompiler.stack.pop()
+         tos1 = decompiler.stack.pop()
+Index: pony-0.7.16/pony/orm/tests/test_decompiler.py
+===================================================================
+--- pony-0.7.16.orig/pony/orm/tests/test_decompiler.py
++++ pony-0.7.16/pony/orm/tests/test_decompiler.py
+@@ -1,4 +1,7 @@
++import textwrap
+ import unittest
++import ast
++import sys
+ 
+ from pony.orm.decompiling import Decompiler
+ from pony.orm.asttranslation import ast2src
+@@ -93,7 +96,85 @@ def create_test(gen):
+ 
+ 
+ class TestDecompiler(unittest.TestCase):
+-    pass
++    def assertDecompilesTo(self, src, expected):
++        # skip test due to ast.dump has no indent parameter
++        if sys.version_info[:2] <= (3, 8):
++            return
++
++        code = compile(src, '<?>', 'eval').co_consts[0]
++        import dis
++        print(dis.dis(code))
++        dc = Decompiler(code)
++        expected = textwrap.dedent(expected).strip()
++        self.maxDiff = None
++        self.assertMultiLineEqual(expected, ast.dump(dc.ast, indent=2))
++
++    def test_ast1(self):
++        self.assertDecompilesTo(
++            '(a for a in [] if x and y and z and j)',
++            """
++            GeneratorExp(
++              elt=Name(id='a', ctx=Load()),
++              generators=[
++                comprehension(
++                  target=Name(id='a', ctx=Store()),
++                  iter=Name(id='.0', ctx=Load()),
++                  ifs=[
++                    BoolOp(
++                      op=And(),
++                      values=[
++                        Name(id='x', ctx=Load()),
++                        Name(id='y', ctx=Load()),
++                        Name(id='z', ctx=Load()),
++                        Name(id='j', ctx=Load())])],
++                  is_async=0)])
++            """)
++
++    def test_ast2(self):
++        self.assertDecompilesTo(
++            'lambda x, y, z, j: (x and y and z and j)',
++            """
++            BoolOp(
++              op=And(),
++              values=[
++                Name(id='x', ctx=Load()),
++                Name(id='y', ctx=Load()),
++                Name(id='z', ctx=Load()),
++                Name(id='j', ctx=Load())])
++            """)
++
++    def test_ast3(self):
++        self.assertDecompilesTo(
++            '(m for m in [] if x and y and z and j for n in [] if x and y and z and j)',
++            """
++            GeneratorExp(
++              elt=Name(id='m', ctx=Load()),
++              generators=[
++                comprehension(
++                  target=Name(id='m', ctx=Store()),
++                  iter=Name(id='.0', ctx=Load()),
++                  ifs=[
++                    BoolOp(
++                      op=And(),
++                      values=[
++                        Name(id='x', ctx=Load()),
++                        Name(id='y', ctx=Load()),
++                        Name(id='z', ctx=Load()),
++                        Name(id='j', ctx=Load())])],
++                  is_async=0),
++                comprehension(
++                  target=Name(id='n', ctx=Store()),
++                  iter=Constant(value=()),
++                  ifs=[
++                    BoolOp(
++                      op=And(),
++                      values=[
++                        Name(id='x', ctx=Load()),
++                        Name(id='y', ctx=Load()),
++                        Name(id='z', ctx=Load()),
++                        Name(id='j', ctx=Load())])],
++                  is_async=0)])
++            """)
+ 
+ 
+ for i, gen in enumerate(generate_gens()):
+Index: pony-0.7.16/pony/py23compat.py
+===================================================================
+--- pony-0.7.16.orig/pony/py23compat.py
++++ pony-0.7.16/pony/py23compat.py
+@@ -5,6 +5,7 @@ PY37 = sys.version_info[:2] >= (3, 7)
+ PY38 = sys.version_info[:2] >= (3, 8)
+ PY39 = sys.version_info[:2] >= (3, 9)
+ PY310 = sys.version_info[:2] >= (3, 10)
++PY311 = sys.version_info[:2] >= (3, 11)
+ 
+ unicode = str
+ buffer = bytes

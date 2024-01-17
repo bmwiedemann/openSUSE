@@ -1,0 +1,12 @@
+diff -Nur xroachng-1.0.3-orig/src/xroachng.desktop xroachng-1.0.3/src/xroachng.desktop
+--- xroachng-1.0.3-orig/src/xroachng.desktop	2021-05-08 14:26:35.000000000 +0200
++++ xroachng-1.0.3/src/xroachng.desktop	2023-04-27 19:23:11.882488218 +0200
+@@ -4,7 +4,7 @@
+ Exec=xroachng
+ Icon=xroachng
+ Type=Application
+-Categories=Game;
++Categories=Game;Simulation
+ Terminal=false
+ Name[en_US]=xroachng
+ Keywords=roach; xroach;

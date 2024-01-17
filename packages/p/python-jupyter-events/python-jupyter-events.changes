@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Sun Nov 26 16:05:33 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.0
+  * Clean up linting and fix a bug that was found #91 (@blink1073)
+- Release 0.8.0
+  * Allow for string annotations in listener signature #88
+    (@blink1073)
+
+-------------------------------------------------------------------
+Wed Aug 23 08:11:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7.0
+  * allow a 'message' field in an event schema #72 (@Zsailer)
+  * Improve usability of jp_read_emitted_events fixture #74
+    (@kevin-bates)
+- Fix libalternatives/update-alternatives
+- Drop jupyter_events-pr80-jsonschema-referencing.patch
+
+-------------------------------------------------------------------
+Wed Aug 23 07:36:24 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Sun Jul 30 15:30:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add jupyter_events-pr80-jsonschema-referencing.patch
+  * gh#jupyter/jupyter_events#80
+  * Avoid test suite errors in consuming packages because of
+    jsonschema DeprecationWarning
+- Remove workaround for rpmlint parser crash
+
+-------------------------------------------------------------------
+Wed Jul 19 20:47:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Unpin jsonschema: nbformat has been fixed, the jupyter ecosystem
+  can work with jsonschema 4.18 now (asdf-format is still blocked
+  but not on the dependency chain for jupyter packages).
+
+-------------------------------------------------------------------
+Thu Jul 13 12:53:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Restrict to jsonschema < 4.18 in order to resolve conflicts with
+  other jupyter packages
+
+-------------------------------------------------------------------
+Thu Mar 30 19:48:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Work around gh#rpm-software-management/rpmlint#1043
+  * This produces false positives for python-missing-require and
+    python-lefover-require but at least it does not crash rpmlint
+  * See also gh#pypa/hatch#801, gh#jupyter/jupyter_events#70
+
+-------------------------------------------------------------------
+Sun Jan 15 21:04:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.3
+  * Clean up typing #64 (@blink1073)
+- Release 0.6.2
+  * Decrease pyyaml dependency floor to increase compatibility #63
+    (@kevin-bates)
+- Release 0.6.1
+  * Remove artificial cap on jsonschema dependency #61
+    (@kevin-bates)
+  * Try dropping jsonschema dependency #59 (@bretttully)
+- Release 0.6.0
+  * Add typing file #60 (@blink1073)
+  * Use base setup dependency type #47 (@blink1073)
+  * (CI and lint cleanups in multiple PRs)
+- allow update-alternatives for backported 15.x packages
+
+---------------------------------------------------------
+Sun Dec 25 22:08:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v0.5
+- Required by jupyter-server 2

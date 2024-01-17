@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fd468291d847186a01d15d909bc2800e</srcmd5>
+    <version>0.5.0</version>
+    <time>1672668099</time>
+    <user>dimstar_suse</user>
+    <comment>required by jupyter-server 2</comment>
+    <requestid>1045950</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>de3081802fc6ee6caef02fe3f5560d8b</srcmd5>
+    <version>0.6.3</version>
+    <time>1673888349</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.3
+  * Clean up typing #64 (@blink1073)
+- Release 0.6.2
+  * Decrease pyyaml dependency floor to increase compatibility #63
+    (@kevin-bates)
+- Release 0.6.1
+  * Remove artificial cap on jsonschema dependency #61
+    (@kevin-bates)
+  * Try dropping jsonschema dependency #59 (@bretttully)
+- Release 0.6.0
+  * Add typing file #60 (@blink1073)
+  * Use base setup dependency type #47 (@blink1073)
+  * (CI and lint cleanups in multiple PRs)
+- allow update-alternatives for backported 15.x packages
+---------------------------------------------------------</comment>
+    <requestid>1058572</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>cf563e01f19b630b20cf1b3bdf73e102</srcmd5>
+    <version>0.6.3</version>
+    <time>1680536724</time>
+    <user>dimstar_suse</user>
+    <comment>- Work around gh#rpm-software-management/rpmlint#1043
+  * This produces false positives for python-missing-require and
+    python-lefover-require but at least it does not crash rpmlint
+  * See also gh#pypa/hatch#801, gh#jupyter/jupyter_events#70 (forwarded request 1075682 from bnavigator)</comment>
+    <requestid>1075683</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>82ca715988948c03d65c7312fffa5b90</srcmd5>
+    <version>0.6.3</version>
+    <time>1689261561</time>
+    <user>anag+factory</user>
+    <comment>- Restrict to jsonschema &lt; 4.18 in order to resolve conflicts with
+  other jupyter packages</comment>
+    <requestid>1098539</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>eb4bd3f974a2f7e6c536c48fab488f19</srcmd5>
+    <version>0.6.3</version>
+    <time>1690743505</time>
+    <user>dimstar_suse</user>
+    <comment>- Add jupyter_events-pr80-jsonschema-referencing.patch
+  * gh#jupyter/jupyter_events#80
+  * Avoid test suite errors in consuming packages because of
+    jsonschema DeprecationWarning
+- Remove workaround for rpmlint parser crash (forwarded request 1101393 from bnavigator)</comment>
+    <requestid>1101394</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>385f96a5039a30c3c48a7ff75868272c</srcmd5>
+    <version>0.7.0</version>
+    <time>1692795519</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.0
+  * allow a 'message' field in an event schema #72 (@Zsailer)
+  * Improve usability of jp_read_emitted_events fixture #74
+    (@kevin-bates)
+- Fix libalternatives/update-alternatives
+- Drop jupyter_events-pr80-jsonschema-referencing.patch
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1105431</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>24e0ef54e53ff15bbd1224d96f38bdad</srcmd5>
+    <version>0.9.0</version>
+    <time>1701121379</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.0
+  * Clean up linting and fix a bug that was found #91 (@blink1073)
+- Release 0.8.0
+  * Allow for string annotations in listener signature #88
+    (@blink1073)
+</comment>
+    <requestid>1128959</requestid>
+  </revision>
+</revisionlist>

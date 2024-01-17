@@ -1,0 +1,63 @@
+From cf3925148782c8c290692883d1215ae4d2c35c3c Mon Sep 17 00:00:00 2001
+From: rogal <rogalenetory@gmail.com>
+Date: Wed, 4 Sep 2019 16:49:59 +0200
+Subject: [PATCH] Moving to mock3 in python3
+
+---
+ before_after/tests/test_before_after.py | 2 +-
+ before_after/tests/test_functions.py    | 6 ++++--
+ setup.py                                | 4 ++--
+ 3 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/before_after/tests/test_before_after.py b/before_after/tests/test_before_after.py
+index 017df1e..d3b9b23 100644
+--- a/before_after/tests/test_before_after.py
++++ b/before_after/tests/test_before_after.py
+@@ -85,7 +85,7 @@ def after_fn(*a):
+     def test_before_method(self):
+         sample_instance = test_functions.Sample()
+ 
+-        def before_fn(self, *a):
++        def before_fn(s, *a):
+             sample_instance.instance_list.append(1)
+ 
+         with before('before_after.tests.test_functions.Sample.method', before_fn):
+diff --git a/before_after/tests/test_functions.py b/before_after/tests/test_functions.py
+index b4698cd..8f9ca8e 100644
+--- a/before_after/tests/test_functions.py
++++ b/before_after/tests/test_functions.py
+@@ -1,10 +1,12 @@
+ test_list = []
+ 
++
+ def reset_test_list():
+     del test_list[:]
+ 
++
+ def sample_fn(arg):
+-    print 'sample', arg
++    print('sample', arg)
+     test_list.append(arg)
+ 
+ 
+@@ -13,5 +15,5 @@ def __init__(self):
+         self.instance_list = []
+ 
+     def method(self, arg):
+-        print 'Sample.method', arg
++        print('Sample.method', arg)
+         self.instance_list.append(arg)
+diff --git a/setup.py b/setup.py
+index 69e3ad9..572470c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -32,7 +32,7 @@
+         'Operating System :: OS Independent',
+         'Programming Language :: Python :: 2.7',
+     ],
+-    keywords = ['testing', 'race conditions'],
++    keywords=['testing', 'race conditions'],
+ 
+-    install_requires=['mock==1.0.1'],
++    install_requires=['mock>=1.0.1'],
+ )

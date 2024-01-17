@@ -1,0 +1,5 @@
+<package name="google-noto-sans-cjk-fonts" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="M17N:fonts" package="google-noto-sans-cjk-fonts"/>
+</package>

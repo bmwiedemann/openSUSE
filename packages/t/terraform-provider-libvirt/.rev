@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e79e991f02497536959e9ae30c8202e7</srcmd5>
+    <version>0.6.3+git.1604843676.67f4f2aa</version>
+    <time>1610050990</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860755</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1059a3ded04fb296e92ff9352eec7616</srcmd5>
+    <version>0.6.3+git.1604843676.67f4f2aa</version>
+    <time>1613855569</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>873992</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eb702de16447ecb64be191746b29b745</srcmd5>
+    <version>0.6.11+git.1631460851.7074fe3c</version>
+    <time>1634417247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925707</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e9ee2b4be79cf848b2b25194bfcaa5ad</srcmd5>
+    <version>0.6.11+git.1631460851.7074fe3c</version>
+    <time>1649370496</time>
+    <user>dimstar_suse</user>
+    <comment>- exclude build for 32bit targets</comment>
+    <requestid>967499</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b52b94e01cadd264b8534816ba0d9beb</srcmd5>
+    <version>0.6.14+git.1643667786.ed8e2bbb</version>
+    <time>1656927171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986474</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9e7364cc9b89e33d4c97eaa445831fa1</srcmd5>
+    <version>0.7.0+git.1665231569.07cb1ec</version>
+    <time>1667825531</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034130</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6d76333ccaf19369326355c681f6b466</srcmd5>
+    <version>0.7.1</version>
+    <time>1672754736</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.1
+  * tls: fix typo, use clientCertSearchPath for clientcert.pem (#940)
+  * Fix IPv6 subnet size regression (#983)</comment>
+    <requestid>1046317</requestid>
+  </revision>
+</revisionlist>

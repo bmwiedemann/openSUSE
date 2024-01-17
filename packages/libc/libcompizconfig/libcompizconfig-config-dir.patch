@@ -1,0 +1,22 @@
+--- a/backend/ini.c
++++ b/backend/ini.c
+@@ -38,7 +38,7 @@
+ #include <X11/Xlib.h>
+ 
+ #define DEFAULTPROF "Default"
+-#define SETTINGPATH "compiz/compizconfig"
++#define SETTINGPATH "compiz/compizconfig-1"
+ 
+ typedef struct _IniPrivData
+ {
+--- a/src/config.c
++++ b/src/config.c
+@@ -26,7 +26,7 @@
+ 
+ #include "ccs-private.h"
+ 
+-#define SETTINGPATH "compiz/compizconfig"
++#define SETTINGPATH "compiz/compizconfig-1"
+ 
+ static char *
+ getConfigFileName (void)

@@ -1,0 +1,9 @@
+<package name="unshield" project="openSUSE:Factory">
+  <title>A Program to Extract InstallShield Cabinet Files</title>
+  <description>Cabinet (.CAB) files are a form of archive, which is used by the
+InstallShield installer software. The unshield program simply unpacks
+such files. This is the binary executable.
+
+See http://synce.sourceforge.net/ for more information.</description>
+  <devel project="Archiving" package="unshield"/>
+</package>

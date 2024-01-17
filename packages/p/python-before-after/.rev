@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63e62a9afc69e6706241a0cac3c532fe</srcmd5>
+    <version>1.0.1</version>
+    <time>1599598199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832906</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c0aecc203efd8e1a2ebb6956c585ff19</srcmd5>
+    <version>1.0.1</version>
+    <time>1648159092</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pr_10.patch:
+  * Use stdlib unittest.mock.
+- Drop {Build,}Requires on mock.</comment>
+    <requestid>964447</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>114c6de8ef681f9c458847f20f058b0c</srcmd5>
+    <version>1.0.1</version>
+    <time>1688661011</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097123</requestid>
+  </revision>
+</revisionlist>

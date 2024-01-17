@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2c6a035a794bf4b39c24e7df9b4d4bf8</srcmd5>
+    <version>3.1.7.1</version>
+    <time>1592579135</time>
+    <user>dimstar_suse</user>
+    <comment>initial version</comment>
+    <requestid>814987</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fb877871fd609a8bb144326d2f87e217</srcmd5>
+    <version>3.1.7.2</version>
+    <time>1598643665</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829488</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>cdb4686bedb2cdc1ac3c183f1cd53f50</srcmd5>
+    <version>3.1.7.2</version>
+    <time>1601488417</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>838496</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>83ecf38c967b1e8057c473d2b32b2105</srcmd5>
+    <version>3.1.7.2</version>
+    <time>1608634134</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857653</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>439de333142092aa02795f7881ee037a</srcmd5>
+    <version>3.1.7.4</version>
+    <time>1660144408</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>994052</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>70f25f2e03bd9a5cc94ec3b5c6ba392b</srcmd5>
+    <version>3.1.7.4</version>
+    <time>1680636277</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076118</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>18848005cbc3212736fd7f5a740a8389</srcmd5>
+    <version>3.1.8</version>
+    <time>1694630710</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1110769</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>cf1f73cebc1e077b475ff88d3d863587</srcmd5>
+    <version>3.1.8</version>
+    <time>1700772016</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1127131</requestid>
+  </revision>
+</revisionlist>

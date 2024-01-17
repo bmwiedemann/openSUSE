@@ -1,0 +1,8 @@
+<package name="ZArchive" project="openSUSE:Factory">
+  <title>Library and program for creating and reading .zar files</title>
+  <description>Program and library for handling ZArchive .zar files. ZArchive files are zstd-compressed file archives.
+
+</description>
+  <devel project="Archiving" package="ZArchive"/>
+  <url>https://github.com/Exzap/ZArchive</url>
+</package>
