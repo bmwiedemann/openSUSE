@@ -202,4 +202,20 @@ available, portable implementations are used.</comment>
     <comment>update for ghc-9.4.4</comment>
     <requestid>1076100</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8c29811602181551a6441e2f564736c6</srcmd5>
+    <version>0.7</version>
+    <time>1700772046</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1128089</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b69335c15837061668004eeea46ec301</srcmd5>
+    <version>0.7.1</version>
+    <time>1702587795</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1132957</requestid>
+  </revision>
 </revisionlist>
