@@ -22,7 +22,7 @@
 %define elspec 3.0
 %define major_version 9
 %define minor_version 0
-%define micro_version 82
+%define micro_version 85
 %define packdname apache-tomcat-%{version}-src
 # FHS 2.3 compliant tree structure - http://www.pathname.com/fhs/2.3/
 %global basedir /srv/%{name}
@@ -82,6 +82,7 @@ Patch5:         %{name}-%{major_version}.%{minor_version}-jdt.patch
 Patch6:         tomcat-9.0.75-secretRequired-default.patch
 Patch7:         tomcat-9.0-fix_catalina.patch
 Patch8:         tomcat-9.0-logrotate_everything.patch
+Patch9:         tomcat-9.0-build-with-java-11.patch
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr
 BuildRequires:  apache-commons-collections
@@ -101,7 +102,6 @@ BuildRequires:  jakarta-taglibs-standard >= 1.1
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  junit
-BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
@@ -116,6 +116,7 @@ Requires:       apache-commons-logging
 Requires:       apache-commons-pool2
 Requires:       java >= 1.8
 Requires(post): %fillup_prereq
+Requires(post): libxslt-tools
 Requires(pre):  shadow
 Recommends:     libtcnative-1-0 >= 1.1.24
 Recommends:     logrotate
@@ -133,6 +134,7 @@ ATTENTION: This tomcat is built with java 1.8.0.
 Summary:        The host manager and manager web applications for Apache Tomcat
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}-%{release}
+Requires(post): libxslt-tools
 
 %description admin-webapps
 The host manager and manager web-based applications for Apache Tomcat.
@@ -148,6 +150,7 @@ Embeddeding support (various libraries) for Apache Tomcat.
 Summary:        The "docs" web application for Apache Tomcat
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}-%{release}
+Requires(post): libxslt-tools
 
 %description docs-webapp
 The documentation of web application for Apache Tomcat.
@@ -236,6 +239,7 @@ Summary:        ROOT and examples web applications for Apache Tomcat
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}-%{release}
 Requires:       jakarta-taglibs-standard >= 1.1
+Requires(post): libxslt-tools
 
 %description webapps
 The ROOT and examples web applications for Apache Tomcat
@@ -556,6 +560,7 @@ getent passwd tomcat >/dev/null || %{_sbindir}/useradd -c "Apache Tomcat" \
 %post
 %service_add_post %{name}.service
 %{fillup_only %{name}}
+xsltproc  --output %{confdir}/server.xml %{confdir}/valve.xslt %{confdir}/server.xml
 
 %preun
 %service_del_preun %{name}.service
@@ -666,9 +671,6 @@ xsltproc --output %{tomcatappdir}/docs/META-INF/context.xml %{confdir}/allowLink
 if [ ! -e %{_datadir}/%{name}/webapps/docs ]; then
     ln -sf %{tomcatappdir}/docs %{_datadir}/%{name}/webapps/docs
 fi
-
-%posttrans
-xsltproc  --output %{confdir}/server.xml %{confdir}/valve.xslt %{confdir}/server.xml
 
 %files
 %doc {LICENSE,NOTICE,RELEASE*}
