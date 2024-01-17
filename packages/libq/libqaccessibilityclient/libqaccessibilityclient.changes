@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Thu Nov  9 10:19:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init libqaccessibilityclient. The package replaces
+  libqaccessibilityclient-qt5 and builds a -qt6 flavor.
+- Update to 0.5.0
+  * libqaccessibilityclient can now be built with Qt6
+
+-------------------------------------------------------------------
+Fri Jan 22 21:57:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Initial commit

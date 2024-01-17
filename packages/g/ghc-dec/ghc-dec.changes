@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Tue Oct 24 16:57:16 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update dec to version 0.0.5 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:06:34 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Mar 14 15:17:16 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update dec to version 0.0.5 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Aug 21 11:41:26 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update dec to version 0.0.5.
+  ## 0.0.5
+
+  - Add `boringYes` and `absurdNo`.
+  - Add `Decidable a => Boring (Dec a)` instance.
+  - Add `Decidable ()`, `Decidable Void`, `Decidable (a, b)` instances.
+
+-------------------------------------------------------------------
+Fri Dec 17 21:07:49 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update dec to version 0.0.4 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Feb 21 12:48:14 UTC 2021 - psimons@suse.com
+
+- Update dec to version 0.0.4.
+  ## 0.0.4
+
+  - Mark module as explicitly `Safe`.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Mon Aug 31 09:34:38 UTC 2020 - psimons@suse.com
+
+- Update dec to version 0.0.3 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Aug 26 18:14:09 UTC 2020 - psimons@suse.com
+
+- Add dec at version 0.0.3.
+

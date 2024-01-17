@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Fri Sep 16 08:18:08 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.15.0:
+  * Fix remove/up/down rows when lower selected first.
+  * Use Cal6 get_icons() so icon themes apply
+  * Add check for multiple toc.ncx files, use last to match Calibre viewer.
+  * Explicitly set --output-profile=tablet when doing epub3->epub2 autoconvert
+    in BG.
+  * Changes for upcoming Qt6 Calibre
+  * Do merging in a BG ground.
+  * Do merge in temp files instead of memory.
+  * Automatically convert input epub3s to epub2s before merging.
+  * Bump min Calibre version.
+  * Fix FFF one-chapter story check
+- Create package directory layout using find and cp so new setuptools no
+  longer dies horribly.
+
+-------------------------------------------------------------------
+Tue Apr 21 09:20:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use update-alternatives for the binary
+
+-------------------------------------------------------------------
+Mon Apr 20 16:57:11 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 2.9.0:
+  - Update translations.
+  - Set allowZip64=True when writing zip files. Should only
+    matter for files >2G.
+  - Update cover view as well as tags and library list on new
+    book create.
+  - Copy six.ensure_binary for Calibre v3.
+  - Reduce debug output.
+  - Changes for eventual Python3 migration of Calibre.
+  - Add 'current time' option to custom datetime columns.
+  - Add a check and error message for unsupported epub3.
+- Rewrite SPEC into the standard pythonish one.
+
+-------------------------------------------------------------------
+Tue Nov 13 09:53:05 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort to collect EpubMerge 2.3.0

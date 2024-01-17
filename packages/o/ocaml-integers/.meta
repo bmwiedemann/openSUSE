@@ -1,0 +1,10 @@
+<package name="ocaml-integers" project="openSUSE:Factory">
+  <title>Various signed and unsigned integer types for OCaml</title>
+  <description>The ocaml-integers library provides a number of 8-, 16-, 32- and 64-bit
+signed and unsigned integer types, together with aliases such as long
+and size_t whose sizes depend on the host platform.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-integers"/>
+  <url>https://github.com/ocamllabs/ocaml-integers</url>
+</package>

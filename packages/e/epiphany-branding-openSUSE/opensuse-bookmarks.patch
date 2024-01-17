@@ -1,0 +1,55 @@
+Index: epiphany-branding-openSUSE/test/default-bookmarks.rdf
+===================================================================
+--- default-bookmarks.rdf
++++ default-bookmarks.rdf
+@@ -6,6 +6,13 @@
+     <items>
+       <rdf:Seq>
+         <rdf:li rdf:resource="https://www.gnome.org/"/>
++        <rdf:li rdf:resource="http://www.opensuse.org"/>
++        <rdf:li rdf:resource="http://www.opensuse.org/documentation/"/>
++        <rdf:li rdf:resource="http://forums.opensuse.org"/>
++        <rdf:li rdf:resource="http://news.opensuse.org"/>
++        <rdf:li rdf:resource="http://software.opensuse.org"/>
++        <rdf:li rdf:resource="http://www.opensuse.org/How_to_Participate"/>
++        <rdf:li rdf:resource="http://planet.opensuse.org"/>
+       </rdf:Seq>
+     </items>
+   </channel>
+@@ -13,4 +20,36 @@
+     <title>GNOME</title>
+     <link>https://www.gnome.org/</link>
+   </item>
++<item rdf:about="http://www.opensuse.org">
++    <title>openSUSE</title>
++    <link>http://www.opensuse.org</link>
++  </item>
++  <item rdf:about="http://www.opensuse.org/documentation/">
++    <title>openSUSE Documentation</title>
++    <link>http://www.opensuse.org/documentation/</link>
++  </item>
++  <item rdf:about="http://forums.opensuse.org">
++    <title>openSUSE Forums</title>
++    <link>http://forums.opensuse.org</link>
++  </item>
++  <item rdf:about="http://news.opensuse.org">
++    <title>openSUSE News</title>
++    <link>http://news.opensuse.org</link>
++  </item>
++  <item rdf:about="http://software.opensuse.org">
++    <title>openSUSE Download</title>
++    <link>http://software.opensuse.org</link>
++  </item>
++  <item rdf:about="http://www.opensuse.org/How_to_Participate">
++    <title>How to participate in openSUSE</title>
++    <link>http://www.opensuse.org/How_to_Participate</link>
++  </item>
++  <item rdf:about="http://planet.opensuse.org">
++    <title>Planet openSUSE</title>
++    <link>http://planet.opensuse.org</link>
++  </item>
++  <item rdf:about="https://extensions.gnome.org">
++    <title>GNOME Shell Extensions</title>
++    <link>https://extensions.gnome.org</link>
++  </item>
+ </rdf:RDF>

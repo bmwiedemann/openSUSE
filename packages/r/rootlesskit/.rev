@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6271b6c5738b7d1588be97e2f8d3fab0</srcmd5>
+    <version>0.14.6</version>
+    <time>1637877935</time>
+    <user>dimstar_suse</user>
+    <comment>As used by Rancher Desktop</comment>
+    <requestid>933406</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>637de67693df0ea1c0e02a0c9b479661</srcmd5>
+    <version>1.0.0</version>
+    <time>1650657309</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972204</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eb83533cdc9ff6d4a0e884d919575279</srcmd5>
+    <version>1.1.0</version>
+    <time>1673281444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057014</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f39732042dc8d31866fccf4b1d4393af</srcmd5>
+    <version>1.1.0</version>
+    <time>1675689346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063398</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8714469136cd70338cba5bcc2ce00fed</srcmd5>
+    <version>1.1.1</version>
+    <time>1687796187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095354</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7ae8da7e4c31f149193785ec028e6561</srcmd5>
+    <version>1.1.1</version>
+    <time>1697061242</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116664</requestid>
+  </revision>
+</revisionlist>

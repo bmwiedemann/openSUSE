@@ -1,0 +1,160 @@
+-------------------------------------------------------------------
+Fri Mar  3 07:13:28 UTC 2023 - XinLiang <XLiang@suse.com>
+
+- Fix: manager: writer thread can only be started once (bsc#1208817)
+  Add patch 0001-Fix-manager-writer-thread-can-only-be-started-once-b.patch 
+
+-------------------------------------------------------------------
+Mon Nov  7 02:18:35 UTC 2022 - XinLiang <XLiang@suse.com>
+
+- Fix: manager: file descriptor leakage
+- Release 1.0.8 
+
+-------------------------------------------------------------------
+Thu Nov  3 02:16:52 UTC 2022 - XinLiang <XLiang@suse.com>
+
+- Release 1.0.7
+- Remove patches since already included:
+  Remove patch 0001-Add-ssh_key-option-used-by-i-option-of-ssh-scp.patch
+  Remove patch 0002-Change-format-of-scp-command-for-ipv6-compatible.patch
+  Remove patch 0003-Fix-task-Don-t-use-ssh-if-command-running-on-local-b.patch
+  Remove patch 0004-Fix-Error-inherit-from-Exception-instead-of-BaseExce.patch
+  Remove patch 0005-Dev-add-parallax.run-to-return-non-zero-rc-without-r.patch
+
+-------------------------------------------------------------------
+Wed Sep 28 02:34:51 UTC 2022 - Nicholas Yang <nicholas.yang@suse.com>
+
+- Dev: add parallax.run() to return non-zero rc without raising exceptions
+  Add patch 0005-Dev-add-parallax.run-to-return-non-zero-rc-without-r.patch
+- Fix: Error: inherit from Exception instead of BaseExceptin
+  Add patch 0004-Fix-Error-inherit-from-Exception-instead-of-BaseExce.patch
+
+-------------------------------------------------------------------
+Thu Jul 28 01:42:06 UTC 2022 - XinLiang <XLiang@suse.com>
+
+- Don't use ssh if command running on local (bsc#1200833)
+  Add patch 0003-Fix-task-Don-t-use-ssh-if-command-running-on-local-b.patch 
+
+-------------------------------------------------------------------
+Wed Aug  5 07:43:16 UTC 2020 - XinLiang <XLiang@suse.com>
+
+- Change format of scp command for ipv6 compatible(bsc#1174894)
+  Add patch 0002-Change-format-of-scp-command-for-ipv6-compatible.patch
+
+-------------------------------------------------------------------
+Tue May 19 02:32:03 UTC 2020 - XinLiang <XLiang@suse.com>
+
+- Add ssh_key option used by -i option of ssh and scp(bsc#1169581)
+  Add patch 0001-Add-ssh_key-option-used-by-i-option-of-ssh-scp.patch 
+
+-------------------------------------------------------------------
+Wed Apr  1 08:54:34 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Release 1.0.6
+- Replace preexec_fn as start_new_session
+- No need to mask signals for subprocess call
+
+-------------------------------------------------------------------
+Thu Aug 22 07:50:06 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Release 1.0.5
+- Surpress warning messages when needed (bsc#1146748)
+- Fix assert_ DeprecationWarning
+
+-------------------------------------------------------------------
+Tue May 28 07:12:30 UTC 2019 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Work around hidden python packaging magic (bsc#1131136) 
+
+-------------------------------------------------------------------
+Tue Dec 18 09:40:49 UTC 2018 - kgronlund@suse.com
+
+- Obsolete old python-parallax package (bsc#1103832) 
+
+-------------------------------------------------------------------
+Mon Dec 10 12:30:31 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix Source URL
+- Fix fdupes call
+
+-------------------------------------------------------------------
+Fri Jul 27 14:41:09 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Jun 28 14:32:46 UTC 2018 - kgronlund@suse.com
+
+- Release 1.0.4
+- Fix super call for python2 (bsc#1099514) 
+
+-------------------------------------------------------------------
+Fri Nov  3 08:14:07 UTC 2017 - kgronlund@suse.com
+
+- Release 1.0.3
+- Add to_ascii function to convert byte message to str (bsc#1066330) 
+
+-------------------------------------------------------------------
+Mon Aug 28 12:57:29 UTC 2017 - kgronlund@suse.com
+
+- Release 1.0.2
+- Switch to new singlespec packaging 
+
+-------------------------------------------------------------------
+Thu Dec  8 17:14:48 UTC 2016 - kgronlund@suse.com
+
+- Fix broken build for non-SUSE distributions (again) 
+
+-------------------------------------------------------------------
+Mon Aug 15 14:51:56 UTC 2016 - toddrme2178@gmail.com
+
+- Fix update-alternatives implementation.
+
+-------------------------------------------------------------------
+Wed Apr 27 08:49:44 UTC 2016 - kgronlund@suse.com
+
+- Fix broken package build for non-SUSE distributions 
+
+-------------------------------------------------------------------
+Mon Mar  7 08:48:52 UTC 2016 - kgronlund@suse.com
+
+- Add alternatives entry for parallax-askpass 
+
+-------------------------------------------------------------------
+Fri Jun 12 15:26:42 UTC 2015 - kgronlund@suse.com
+
+- Release 1.0.1
+  + The host list expander function was not unicode-safe (bsc#934594)
+  + Clean up and update documentation for Options.inline (#1)
+  + Fix python3 error using askpass option (krig/parallel-ssh#1)
+
+-------------------------------------------------------------------
+Thu Feb 12 16:47:44 UTC 2015 - kgronlund@suse.com
+
+- Release 1.0.0a3
+  - Be more accepting with format of limit argument
+  - Fix incorrect name of options attribute
+
+-------------------------------------------------------------------
+Sat Jan  3 12:54:21 UTC 2015 - p.drouand@gmail.com
+
+- Fix license to be SPDX compliant; applied license is BSD3 derived
+
+-------------------------------------------------------------------
+Thu Dec 25 17:29:27 UTC 2014 - kgronlund@suse.com
+
+- Release 1.0.0a2
+  - Prepend hostname on each line when -P is set (fate#318220)
+  - Fix quiet option after API patch
+
+-------------------------------------------------------------------
+Thu Nov 20 07:33:26 UTC 2014 - kgronlund@suse.com
+
+- Revised packaging
+- Removed dependency on xz
+
+-------------------------------------------------------------------
+Wed Oct 15 14:23:38 UTC 2014 - kgronlund@suse.com
+
+- Initial release. 
+

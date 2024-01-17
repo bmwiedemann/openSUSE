@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Sat Sep  9 09:15:46 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Mon Mar 21 15:38:27 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8 (jsc#SLE-23217)
+
+-------------------------------------------------------------------
+Tue Nov  3 11:56:57 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Fix javadoc build on some systems
+
+-------------------------------------------------------------------
+Mon Mar  2 11:31:02 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of apache-commons-ognl git checkout from
+  20191021 (hash 51cf8f4)

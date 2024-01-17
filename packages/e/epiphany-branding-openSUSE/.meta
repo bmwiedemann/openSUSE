@@ -1,0 +1,9 @@
+<package name="epiphany-branding-openSUSE" project="openSUSE:Factory">
+  <title>GNOME Web Browser -- openSUSE default bookmarks and user agent string</title>
+  <description>Epiphany is a Web Browser for the GNOME Desktop. Its principles are
+simplicity and standards compliance.
+
+This package provides the openSUSE default bookmarks and user
+agent string.</description>
+  <devel project="GNOME:Factory" package="epiphany-branding-openSUSE"/>
+</package>

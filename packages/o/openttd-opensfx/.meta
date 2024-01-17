@@ -1,0 +1,6 @@
+<package name="openttd-opensfx" project="openSUSE:Factory">
+  <title>OpenSFX</title>
+  <description>OpenSFX replacement sounds for OpenTTD. The last required step to make OpenTTD independent..  </description>
+  <devel project="games" package="openttd-opensfx"/>
+  <url>http://dev.openttdcoop.org/projects/opensfx</url>
+</package>

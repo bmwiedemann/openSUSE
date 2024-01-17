@@ -1,0 +1,6 @@
+<package name="tiff" project="openSUSE:Factory">
+  <title>Tools for Converting from and to the Tiff  Format</title>
+  <description>This package contains the library and support programs for the TIFF
+image format.</description>
+  <devel project="graphics" package="tiff"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-opcodes" project="openSUSE:Factory">
+  <title>python opcodes</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-opcodes"/>
+</package>

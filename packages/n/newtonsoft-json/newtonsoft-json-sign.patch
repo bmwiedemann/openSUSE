@@ -1,0 +1,8 @@
+--- Src.old/Newtonsoft.Json/Properties/AssemblyInfo.cs	2015-06-22 12:48:49.000000000 +0200
++++ Src/Newtonsoft.Json/Properties/AssemblyInfo.cs	2015-10-10 01:10:01.907315153 +0200
+@@ -94,3 +95,5 @@
+ [assembly: AssemblyVersion("7.0.0.0")]
+ [assembly: AssemblyFileVersion("7.0.1.18621")]
+ [assembly: CLSCompliant(true)]
++
++[assembly: AssemblyKeyFileAttribute("Dynamic.snk")]

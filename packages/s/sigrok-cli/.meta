@@ -1,0 +1,15 @@
+<package name="sigrok-cli" project="openSUSE:Factory">
+  <title>Logic Analyzer Command Line Tool</title>
+  <description>The sigrok project aims at creating a portable, cross-platform,
+Free/Libre/Open-Source logic analyzer software that supports various
+logic analyzer hardware products.
+
+sigrok-cli is a command-line tool written in C, which uses both
+libsigrok and libsigrokdecode to provide the basic sigrok
+functionality from the command-line. Among other things, it's useful
+for scripting purposes.
+
+</description>
+  <devel project="electronics" package="sigrok-cli"/>
+  <url>http://sigrok.org</url>
+</package>

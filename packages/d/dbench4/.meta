@@ -1,0 +1,5 @@
+<package name="dbench4" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="benchmark" package="dbench4"/>
+</package>

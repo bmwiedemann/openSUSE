@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a0c2a89efe8948571c94c0928eb9300a</srcmd5>
+    <version>0.1.7</version>
+    <time>1590780069</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808941</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6c9621777bb542c81744de4ce4114915</srcmd5>
+    <version>0.1.8</version>
+    <time>1626118832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905837</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>10781d368c4b1e0d6bad8044a7fe4b7f</srcmd5>
+    <version>0.2.2</version>
+    <time>1671209460</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043091</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a70971ffd68f00ef98fa84efffbbb0ab</srcmd5>
+    <version>0.2.2</version>
+    <time>1682193480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081714</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>352bdaa05c3fdaf60163f3bc0c3d085f</srcmd5>
+    <version>0.2.3</version>
+    <time>1696619551</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2.3:
+  * Dropped support for Python 3.7, added support for Python
+    3.12. No other code changes.</comment>
+    <requestid>1115777</requestid>
+  </revision>
+</revisionlist>

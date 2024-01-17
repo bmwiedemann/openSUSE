@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/antlarr/lua-dbus</param>
+    <param name="filename">lua-dbus</param>
+    <param name="versionformat">0.0+git%cd.%h</param>
+    <param name="scm">git</param>
+    <param name="revision">8fe38d0b3e8c93343abc5c9a276b018054f07459</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled" />
+</services>
+

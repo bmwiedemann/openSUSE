@@ -1,0 +1,8 @@
+<package name="python-parallax" project="openSUSE:Factory">
+  <title>Execute commands and copy files over SSH to multiple machines at once</title>
+  <description>Parallax SSH provides an interface to executing commands on multiple
+nodes at once using SSH. It also provides commands for sending and receiving files to
+multiple nodes using SCP.</description>
+  <devel project="devel:languages:python" package="python-parallax"/>
+  <url>http://code.google.com/p/parallel-ssh/</url>
+</package>

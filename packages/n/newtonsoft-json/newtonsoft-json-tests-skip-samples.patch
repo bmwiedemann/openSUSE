@@ -1,0 +1,33 @@
+--- Src/Newtonsoft.Json.Tests/Newtonsoft.Json.Tests.csproj.old	2015-10-10 12:47:39.121529899 +0200
++++ Src/Newtonsoft.Json.Tests/Newtonsoft.Json.Tests.csproj	2015-10-10 12:48:40.552456667 +0200
+@@ -153,7 +153,6 @@
+       <SubType>Code</SubType>
+     </Compile>
+     <Compile Include="Documentation\Samples\Serializer\DataContractAndDataMember.cs" />
+-    <Compile Include="Documentation\Samples\Serializer\DefaultSettings.cs" />
+     <Compile Include="Documentation\Samples\Serializer\DefaultValueAttributeIgnore.cs" />
+     <Compile Include="Documentation\Samples\Serializer\DefaultValueHandlingIgnore.cs" />
+     <Compile Include="Documentation\Samples\Serializer\DeserializeAnonymousType.cs" />
+@@ -163,12 +162,6 @@
+     <Compile Include="Documentation\Samples\Serializer\DeserializeExtensionData.cs">
+       <SubType>Code</SubType>
+     </Compile>
+-    <Compile Include="Documentation\Samples\Serializer\DeserializeImmutableCollections.cs">
+-      <SubType>Code</SubType>
+-    </Compile>
+-    <Compile Include="Documentation\Samples\Serializer\DeserializeWithDependencyInjection.cs">
+-      <SubType>Code</SubType>
+-    </Compile>
+     <Compile Include="Documentation\Samples\Serializer\DeserializeMetadataPropertyHandling.cs" />
+     <Compile Include="Documentation\Samples\Serializer\JsonConstructorAttribute.cs" />
+     <Compile Include="Documentation\Samples\Serializer\SerializeDateFormatString.cs" />
+@@ -209,9 +202,6 @@
+     <Compile Include="Documentation\Samples\Serializer\SerializeExtensionData.cs">
+       <SubType>Code</SubType>
+     </Compile>
+-    <Compile Include="Documentation\Samples\Serializer\SerializeImmutableCollections.cs">
+-      <SubType>Code</SubType>
+-    </Compile>
+     <Compile Include="Documentation\Samples\Serializer\SerializeObject.cs" />
+     <Compile Include="Documentation\Samples\Serializer\SerializeRawJson.cs" />
+     <Compile Include="Documentation\Samples\Serializer\SerializeSerializationBinder.cs" />

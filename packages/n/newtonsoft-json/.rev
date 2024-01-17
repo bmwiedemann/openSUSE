@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>78b2c3df4cfef15946e8402f968bf33e</srcmd5>
+    <version>7.0.1</version>
+    <time>1450955770</time>
+    <user>dimstar_suse</user>
+    <comment>required for MonoDevelop 5.10</comment>
+    <requestid>348645</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9c0e45883b6d2cfb93cbf718089f874f</srcmd5>
+    <version>7.0.1</version>
+    <time>1494938689</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494738</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c07bf59d68bbc4288a98a38c89504e3f</srcmd5>
+    <version>7.0.1</version>
+    <time>1495442808</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495597</requestid>
+  </revision>
+</revisionlist>

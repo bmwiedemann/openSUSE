@@ -1,0 +1,5 @@
+<package name="python-Babel" project="openSUSE:Factory">
+  <title>Internationalization utilities</title>
+  <description>A collection of tools for internationalizing Python applications.</description>
+  <devel project="devel:languages:python" package="python-Babel"/>
+</package>

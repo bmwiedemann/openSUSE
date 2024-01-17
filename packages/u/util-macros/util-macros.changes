@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Mon Feb 13 20:59:08 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to release 1.20.0
+  * This release fixes a deprecation warning when the macros are used with
+    autoconf 2.70 or later, and adds a new XORG_DEFAULT_NOCODE_OPTIONS
+    macro that can be used with packages that don't compile any code to
+    skip all the compiler checks done by XORG_DEFAULT_OPTIONS.  (Packages
+    will need to be updated to use this macro - that is in progress now.)
+
+-------------------------------------------------------------------
+Mon Jan 25 11:21:22 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to release 1.19.3
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * XORG_PROG_RAWCPP: Use AC_PATH_TOOL to find preprocessor
+
+-------------------------------------------------------------------
+Thu Aug  8 11:01:27 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own %{_datadir}/aclocal: when we might switch to pkgconf instead
+  of pkg-config, nothing in the build root is 'accidentally' owning
+  this directory for us.
+
+-------------------------------------------------------------------
+Mon Mar  5 14:30:29 UTC 2018 - sndirsch@suse.com
+
+- update to release 1.19.2
+  * Update check for manpage section numbers to not rely on Solaris version
+  * Rework CHANGELOG_CMD to touch/echo >&2 only as needed
+  * Rework INSTALL_CMD to touch/echo >&2 only as needed
+
+-------------------------------------------------------------------
+Wed Feb  1 13:24:35 UTC 2017 - sndirsch@suse.com
+
+- update to release 1.19.1
+  * XORG_MANPAGE_SECTIONS: limit SysV man page sections to Solaris 2.0-11
+  * Fix XORG_WITH_XMLTO to work with xmlto >= 0.0.27
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
+Tue Apr 29 13:12:41 UTC 2014 - sndirsch@suse.com
+
+- added COPYING to %doc
+
+-------------------------------------------------------------------
+Tue Apr 29 12:19:03 UTC 2014 - cfarrell@suse.com
+
+- license update: HPND
+  See COPYING
+
+-------------------------------------------------------------------
+Wed Apr 23 21:12:49 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
+
+- Created package util-macros with initial version 1.19.0
+

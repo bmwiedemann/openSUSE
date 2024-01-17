@@ -1,0 +1,6 @@
+<package name="newtonsoft-json" project="openSUSE:Factory">
+  <title>Popular high-performance JSON framework</title>
+  <description>aka Json.NET is a popular high-performance JSON framework</description>
+  <devel project="Mono:Factory" package="newtonsoft-json"/>
+  <url>http://www.newtonsoft.com/json</url>
+</package>

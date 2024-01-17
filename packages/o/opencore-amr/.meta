@@ -1,0 +1,9 @@
+<package name="opencore-amr" project="openSUSE:Factory">
+  <title>Adaptive Multi-Rate (AMR) Speech Codec</title>
+  <description>Library of OpenCORE Framework implementation of Adaptive Multi Rate
+Narrowband and Wideband speech codec.
+
+</description>
+  <devel project="multimedia:libs" package="opencore-amr"/>
+  <url>http://opencore-amr.sourceforge.net/</url>
+</package>

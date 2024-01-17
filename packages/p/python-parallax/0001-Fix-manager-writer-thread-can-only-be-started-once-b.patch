@@ -1,0 +1,26 @@
+From 4f8e3f0ef01a6a63deb51ff6adbd3ab0849d7903 Mon Sep 17 00:00:00 2001
+From: nicholasyang <nicholas.yang@suse.com>
+Date: Fri, 3 Mar 2023 14:33:27 +0800
+Subject: [PATCH] Fix: manager: writer thread can only be started once
+ (bsc#1208817)
+
+---
+ parallax/manager.py | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/parallax/manager.py b/parallax/manager.py
+index eb4df20..58b2398 100644
+--- a/parallax/manager.py
++++ b/parallax/manager.py
+@@ -98,8 +98,6 @@ class Manager(object):
+             writer = None
+ 
+         try:
+-            if writer:
+-                writer.start()
+             if self.askpass:
+                 pass_server = PasswordServer()
+                 pass_server.start(self.iomap, self.limit, warn=self.warn_message)
+-- 
+2.34.1
+

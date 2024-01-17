@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/rootless-containers/rootlesskit.git</param>
+              <param name="changesrevision">a2c596ff9b3fddc0c2becb38f2ef4004f15765b5</param></service></servicedata>
