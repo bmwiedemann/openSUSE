@@ -1,0 +1,2 @@
+addFilter(".*zero-length.*/usr/share/anjuta")
+addFilter(".*devel-file-in-non-devel-package.*/usr/share/anjuta")

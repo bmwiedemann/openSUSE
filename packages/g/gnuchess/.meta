@@ -1,0 +1,6 @@
+<package name="gnuchess" project="openSUSE:Factory">
+  <title>GNU Chess Program</title>
+  <description>A worthy chess opponent that runs in text mode. Find an X11 interface
+in the xboard package.</description>
+  <devel project="games" package="gnuchess"/>
+</package>

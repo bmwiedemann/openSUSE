@@ -1,0 +1,5 @@
+<package name="drm_info" project="openSUSE:Factory">
+  <title>drm_info</title>
+  <description>Small utility to dump info about DRM devices.</description>
+  <devel project="hardware" package="drm_info"/>
+</package>

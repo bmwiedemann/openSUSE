@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>309afd6c6055cec637cecb59d1060fa8</srcmd5>
+    <version>2.3.0</version>
+    <time>1639515719</time>
+    <user>dimstar_suse</user>
+    <comment>Small utility to dump info about DRM devices.
+
+drm_info output usually requested when reporting bugs about wayland and/or
+plasma, esp. when problem lays somewhere in DRM.</comment>
+    <requestid>940465</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ee0bf2aace6fce5fb2663b2e2210ab20</srcmd5>
+    <version>2.4.0</version>
+    <time>1674495124</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060325</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3b01abcc2f72068b879c381ff89f9f62</srcmd5>
+    <version>2.5.0</version>
+    <time>1679520663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073687</requestid>
+  </revision>
+</revisionlist>

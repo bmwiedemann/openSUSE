@@ -1,0 +1,8 @@
+<package name="perl-File-Copy-Recursive" project="openSUSE:Factory">
+  <title>Recursively copy files</title>
+  <description>Perl extension for recursively copying files and directories.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-File-Copy-Recursive"/>
+  <url>http://search.cpan.org/dist/File-Copy-Recursive</url>
+</package>

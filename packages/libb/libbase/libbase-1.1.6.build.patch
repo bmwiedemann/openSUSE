@@ -1,0 +1,18 @@
+Index: libbase-1.1.6/build.properties
+===================================================================
+--- libbase-1.1.6.orig/build.properties
++++ libbase-1.1.6/build.properties
+@@ -1,4 +1,4 @@
+-project.revision=1.1-SNAPSHOT
++project.revision=1.1.6
+ ivy.artifact.group=pentaho-library
+ ivy.artifact.id=libbase
+ impl.title=Libbase
+@@ -7,3 +7,7 @@ src.dir=${basedir}/source
+ testsrc.dir=${basedir}/testcases
+ 
+ java.awt.headless=true
++
++antcontrib.available=true
++
++build.cache.dir=lib

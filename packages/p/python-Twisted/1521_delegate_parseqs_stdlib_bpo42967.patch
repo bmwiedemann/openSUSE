@@ -1,0 +1,92 @@
+From df79d69adea5c819bb104861dccf1bbe25851644 Mon Sep 17 00:00:00 2001
+From: Thomas Grainger <tagrain@gmail.com>
+Date: Sun, 21 Feb 2021 11:54:25 +0000
+Subject: [PATCH 1/2] delegate to stdlib parse qs
+
+---
+ src/twisted/web/http.py                    |   26 +-------------------------
+ src/twisted/web/newsfragments/10096.bugfix |    1 +
+ src/twisted/web/server.py                  |    5 ++---
+ 3 files changed, 4 insertions(+), 28 deletions(-)
+ create mode 100644 src/twisted/web/newsfragments/10096.bugfix
+
+Index: Twisted-22.1.0/src/twisted/web/http.py
+===================================================================
+--- Twisted-22.1.0.orig/src/twisted/web/http.py
++++ Twisted-22.1.0/src/twisted/web/http.py
+@@ -113,6 +113,7 @@ from urllib.parse import (
+     ParseResultBytes,
+     unquote_to_bytes as unquote,
+     urlparse as _urlparse,
++    parse_qs,
+ )
+ 
+ from zope.interface import Attribute, Interface, implementer, provider
+@@ -263,31 +264,6 @@ def urlparse(url):
+     return ParseResultBytes(scheme, netloc, path, params, query, fragment)
+ 
+ 
+-def parse_qs(qs, keep_blank_values=0, strict_parsing=0):
+-    """
+-    Like C{cgi.parse_qs}, but with support for parsing byte strings on Python 3.
+-
+-    @type qs: C{bytes}
+-    """
+-    d = {}
+-    items = [s2 for s1 in qs.split(b"&") for s2 in s1.split(b";")]
+-    for item in items:
+-        try:
+-            k, v = item.split(b"=", 1)
+-        except ValueError:
+-            if strict_parsing:
+-                raise
+-            continue
+-        if v or keep_blank_values:
+-            k = unquote(k.replace(b"+", b" "))
+-            v = unquote(v.replace(b"+", b" "))
+-            if k in d:
+-                d[k].append(v)
+-            else:
+-                d[k] = [v]
+-    return d
+-
+-
+ def datetimeToString(msSinceEpoch=None):
+     """
+     Convert seconds since epoch to HTTP datetime string.
+Index: Twisted-22.1.0/src/twisted/web/newsfragments/10096.bugfix
+===================================================================
+--- /dev/null
++++ Twisted-22.1.0/src/twisted/web/newsfragments/10096.bugfix
+@@ -0,0 +1 @@
++delegate to urllib.parse:parse_qs in twisted.web.http:parse_qs to avoid CVE-2021-23336 and the associated CI failures
+Index: Twisted-22.1.0/src/twisted/web/server.py
+===================================================================
+--- Twisted-22.1.0.orig/src/twisted/web/server.py
++++ Twisted-22.1.0/src/twisted/web/server.py
+@@ -21,7 +21,7 @@ import zlib
+ from binascii import hexlify
+ from html import escape
+ from typing import List, Optional
+-from urllib.parse import quote as _quote
++from urllib.parse import quote as _quote, unquote_to_bytes as _unquote_to_bytes
+ 
+ from zope.interface import implementer
+ 
+@@ -37,7 +37,6 @@ from twisted.python.deprecate import dep
+ from twisted.spread.pb import Copyable, ViewPoint
+ from twisted.web import http, iweb, resource, util
+ from twisted.web.error import UnsupportedMethod
+-from twisted.web.http import unquote
+ 
+ NOT_DONE_YET = 1
+ 
+@@ -211,7 +210,7 @@ class Request(Copyable, http.Request, co
+ 
+         # Resource Identification
+         self.prepath = []
+-        self.postpath = list(map(unquote, self.path[1:].split(b"/")))
++        self.postpath = [_unquote_to_bytes(v) for v in self.path[1:].split(b"/")]
+ 
+         # Short-circuit for requests whose path is '*'.
+         if self.path == b"*":

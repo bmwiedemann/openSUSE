@@ -1,0 +1,160 @@
+-------------------------------------------------------------------
+Mon Feb  6 11:38:24 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 0.7.3
+  * Fixes issue #293 due to the C++ method Room::next_wall_hit not handling 2D
+    shoebox rooms, which cause a seg fault
+- 0.7.2 - 2022-11-15
+  * Appveyor builds for compiled wheels for win32/win64 x86
+  * Fixes missing import statement in room.plot for 3D rooms (PR #286)
+  * On win64, bss.fastmnmf would fail due to some singular matrix. 1) protect
+    solve with try/except and switch to pseudo-inverse if necessary, 2) change
+    eps 1e-7 -> 1e-6
+- 0.7.1 - 2022-11-11
+  * Fixed pypi upload for windows wheels
+- 0.7.0 - 2022-11-10
+  * Added the AnechoicRoom class.
+  * Added FastMNMF2 (Fast Multichannel Nonnegative Matrix Factorization 2) to
+    bss subpackage.
+  * Randomized image source method for removing sweeping echoes in shoebox
+    rooms.
+  * Adds the cart2spher method in pyroomacoustics.doa.utils to convert from
+    cartesian to spherical coordinates.
+  * Example room_complex_wall_materials.py
+  * CI for python 3.10
+  * Cleans up the plot_rir function in Room so that the labels are neater. It
+    also adds an extra option kind that can take values "ir", "tf", or "spec"
+    to plot the impulse responses, transfer functions, or spectrograms of the
+    RIR.
+  * Refactored the implementation of FastMNMF.
+  * Modified the document of __init__.py in doa subpackage.
+  * End of Python 3.6 support.
+  * Removed the deprecated realtime sub-module.
+  * Removed the deprecated functions pyroomacoustics.transform.analysis,
+    pyroomacoustics.transform.synthesis,
+    pyroomacoustics.transform.compute_synthesis_window. They are replaced by
+    the equivalent functions in pyroomacoustics.transform.stft sub-module.
+  * The minimum required version of numpy was changed to 1.13.0 (use of
+    np.linalg.multi_dot in doa sub-package see #271)
+  * Fixed most warnings in the tests
+  * Fixed bug in examples/adaptive_filter_stft_domain.py
+- 0.6.0 - 2021-11-29
+  * New DOA method: MUSIC with pseudo-spectra normalization. Thanks @4bian!
+    Normalizes MUSIC pseudo spectra before averaging across frequency axis.
+  * Issue 235: fails when set_ray_tracing is called, but no mic_array is set
+  * Issue 236: general ISM produces the wrong transmission coefficients
+  * Removes an unncessery warning for some rooms when ray tracing is not needed
+  * Unify code format by using Black
+  * Add code linting in continuous integration
+  * Drop CI support for python 3.5
+- 0.5.0 - 2021-09-06
+  * Adds tracking of reflection order with respect to x/y/z axis in the shoebox
+    image source model engine. The orders are available in source.orders_xyz
+    after running the image source model
+  * Support for microphone and source directivites for image source model.
+    Source directivities just for shoebox room. Available directivities are
+    frequency-independent (cardioid patterns), although the infrastructure is
+    there for frequency-dependent directivities: frequency-dependent usage in
+    Room.compute_rir and abstract Directivity class.
+  * Examples scripts and notebook for directivities.
+  * Fix wrong bracketing for negative values in is_inside (ShoeBox)
+- 0.4.3 - 2021-02-18
+  * Support for Python 3.8 and 3.9
+  * Fixes typo in a docstring
+  * Update docs to better reflect actual function parameters
+  * Fixes the computation of the cost function of SRP-PHAT doa algorithm (bug
+    reported in #PR197)
+  * Improve the computation of the auxiliary variables in AuxIVA and ILRMA.
+    Unnecessary division operations are reduced.
+
+-------------------------------------------------------------------
+Fri Feb 12 11:21:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.4.2
+  * Change the eps for geometry computations from 1e-4 to 1e-5 in 
+    ``libroom``
+  * Added a specialized ``is_inside`` routine for ``ShoeBox`` rooms
+- Changes in 0.4.1
+  * Issue #162 (crash with max_order>31 on windows), seems fixed by 
+    the new C++ simulator
+  * Added minimal `Dockerfile` example.
+- Changes in 0.4.0
+  * Improved Simulator with Ray Tracing
+    - Ray Tracing in the libroom module. The function compute_rir() 
+      of the Room object in python can now be executed using a pure 
+      ray tracing approach or a hybrid (ISM + RT) approach. That's 
+      why this function has now several default arguments to 
+      run ray tracing (number of rays, scattering coefficient, 
+      energy and time thresholds, microphone's radius).
+    - Bandpass filterbank construction in ``pyroomacoustics.
+      acoustics.bandpass_filterbank``
+    - Acoustic properties of different materials in 
+      ``pyroomacoustics.materials``
+    - Scattering from the wall is handled via ray tracing method, 
+      scattering coefficients are provided
+      in ``pyroomacoustics.materials.Material`` objects
+    - Function ``inverse_sabine`` allows to compute the 
+      ``absorption`` and ``max_order`` to use with
+      the image source model to achieve a given reverberation time
+    - The method ``rt60_theory`` in ``pyroomacoustics.room.Room`` 
+      allows to compute the theoretical
+      RT60 of the room according to Eyring or Sabine formula
+    - The method ``measure_rt60`` in ``pyroomacoustics.room.Room`` 
+      allows to measure the RT60 of the simulated RIRs
+  * Changes in the Room Class
+    - Deep refactor of Room class. The constructor arguments have 
+      changed
+    - No more ``sigma2_awgn``, noise is now handled in 
+      ``pyroomacoustics.Room.simulate`` method
+    - The way absorption is handled has changed. The scalar 
+      variables ``absorption`` are deprecated in favor of 
+      ``pyroomacoustics.materials.Material``
+    - Complete refactor of libroom, the compiled extension module 
+      responsible for the room simulation, into C++. The bindings 
+      to python are now done using pybind11.
+    - Removes the pure Python room simulator as it was really slow
+    - ``pyroomacoustics.transform.analysis``, ``pyroomacoustics.
+      transform.synthesis``, ``pyroomacoustics.transform.
+      compute_synthesis_window``, have been deprecated in favor of
+      ``pyroomacoustics.transform.stft.analysis``, 
+      ``pyroomacoustics.transform.stft.synthesis``,
+      ``pyroomacoustics.transform.stft.compute_synthesis_window``.
+    - ``pyroomacoustics.Room`` has a new method ``add`` that can be 
+      used to add either a ``SoundSource``, or a 
+      ``MicrophoneArray`` object.  Subsequent calls to the method 
+      will always add source/microphones. There exists also methods
+      ``add_source`` and ``add_microphone`` that can be used to add
+      source/microphone via coordinates. The method 
+      `add_microphone_array`` can be used to add a 
+      ``MicrophoneArray`` object, or a 2D array containing the
+      locations of several microphones in its columns.  While the
+      ``add_microphone_array`` method used to replace the existing 
+      array by the argument, the new behavior is to add in addition 
+      to other microphones already present.
+  * From Issue #150, increase max iterations to check if point is 
+    inside room
+  * Fixed normalization part in FastMNMF
+  * Added `room_isinside_max_iter` in `parameters.py`
+  * Default set to 20 rather than 5 as it was in `pyroomacoustics.
+    room.Room.isinside`
+  * Changed while loop to iterate up to `room_isinside_max_iter` in 
+    `pyroomacoustics.room.Room.isinside`
+  * Changed initialization of FastMNMF to accelerate convergence
+  * Fixed bug in doa/tops (float -> integer division)
+  * Added vectorised functions in MUSIC 
+  * Use the vectorised functions in _process of MUSIC
+- Skip python36 build, because NumPy in TW dropped it (NEP 29)
+- Use system eigen3 headers
+- Clean test rig setup
+  * Only test on x86_64: All other platforms fail because of
+    rounding errors vs. too tight precision requirements in tests.
+
+-------------------------------------------------------------------
+Thu Jul  2 09:38:03 UTC 2020 - pgajdos@suse.com
+
+- switch from nose to pytest
+
+-------------------------------------------------------------------
+Tue Jan  8 19:17:34 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- initial version

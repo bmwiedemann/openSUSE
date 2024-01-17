@@ -1,0 +1,14 @@
+Index: latex2rtf-2.3.10/doc/latex2rtf.texi
+===================================================================
+--- latex2rtf-2.3.10.orig/doc/latex2rtf.texi
++++ latex2rtf-2.3.10/doc/latex2rtf.texi
+@@ -9,6 +9,9 @@
+ @settitle LaTeX2rtf
+ @setchapternewpage odd
+ @dircategory Document Preparation
++@direntry
++* latex2rtf: (latex2rtf).          LaTeX to RTF converter.
++@end direntry
+ @c %**end of header
+ 
+ @ignore Permission is granted to process this file through TeX and print

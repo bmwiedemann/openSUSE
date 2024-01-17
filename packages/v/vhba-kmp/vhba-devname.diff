@@ -1,0 +1,41 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2015-11-23 23:33:05.117741396 +0100
+
+Facililtate automatic loading of the kernel module on openSUSE
+
+depmod scans the devname aliases and populates
+/lib/modules/X/modules.devname if there is also a
+{block,char}-major-* alias. udev uses this file then to prepopulate
+/dev so that a program can open a device node and thereby trigger
+autoloading.
+
+This patch adds the devname (requirement 1), and assigns
+a static number (requirement 2, for openSUSE only).
+
+---
+ vhba.c |    8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+Index: vhba-module-20140928/vhba.c
+===================================================================
+--- vhba-module-20140928.orig/vhba.c
++++ vhba-module-20140928/vhba.c
+@@ -954,7 +954,11 @@ static struct file_operations vhba_ctl_f
+ };
+ 
+ static struct miscdevice vhba_miscdev = {
+-    .minor = MISC_DYNAMIC_MINOR,
++	/* Facilitate autoload on openSUSE. The exact number does not matter,
++	 * and may change over time, e.g. if "170" gets used by upstream.
++	 * Of essence is that MISC_DYNAMIC_MINOR is to be avoided.
++	 */
++    .minor = 170,
+     .name = "vhba_ctl",
+     .fops = &vhba_ctl_fops,
+ };
+@@ -1069,3 +1073,5 @@ static void __exit vhba_exit(void)
+ module_init(vhba_init);
+ module_exit(vhba_exit);
+ 
++MODULE_ALIAS("devname:vhba_ctl");
++MODULE_ALIAS_MISCDEV(170);

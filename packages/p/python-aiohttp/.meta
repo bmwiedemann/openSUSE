@@ -1,0 +1,12 @@
+<package name="python-aiohttp" project="openSUSE:Factory">
+  <title>Async http client/server framework</title>
+  <description>Asyncronic HTTP client/server framework for Python.
+
+- Supports both client and server side of HTTP protocol.
+- Supports both client and server Web-Sockets out-of-the-box.
+- Web-server has middlewares and pluggable routing.
+
+</description>
+  <devel project="devel:languages:python" package="python-aiohttp"/>
+  <url>https://aiohttp.readthedocs.io/</url>
+</package>

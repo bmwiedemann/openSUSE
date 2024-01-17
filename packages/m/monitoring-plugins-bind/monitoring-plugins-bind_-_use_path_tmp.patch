@@ -1,0 +1,11 @@
+--- check_bind.sh.orig	2021-05-04 13:24:36.732856067 +0200
++++ check_bind.sh	2021-05-04 13:25:17.608843986 +0200
+@@ -26,7 +26,7 @@
+ name_pid="named.pid"
+ path_rndc="/usr/sbin"
+ path_stats="/var/bind"
+-path_tmp="/tmp"
++path_tmp="$(mktemp -d named.XXXXXX)"
+ version=9.4
+ pid_check=1
+ 

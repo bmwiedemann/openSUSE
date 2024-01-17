@@ -1,0 +1,11 @@
+--- file-roller-43.alpha-orig/data/packages.match	2022-08-18 22:17:26.000000000 +0200
++++ file-roller-43.alpha/data/packages.match	2022-08-20 15:08:13.767734154 +0200
+@@ -10,7 +10,7 @@
+ dpkg=
+ genisoimage=
+ gzip=
+-lha=
++lha=lhasa
+ lrzip=
+ lz4=
+ lzip=

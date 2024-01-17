@@ -1,0 +1,203 @@
+from http://sourceforge.net/mailarchive/message.php?msg_id=15504496
+
+[xine-devel] Library for mms protocol support
+From: Mathrick <mnews2@wp...> - 2003-12-26 21:04
+This was already sent once, but got swallowed waiting for moderator's approval:
+
+(CC'ing gstreamer-devel)
+
+Hi guys,
+I want to propose development of library for mms protocol support. Right
+now, each and every project that wants to support mms is required to
+implement all of SDP specs itself, due to lack of common library for
+that. To remedy that, I'd like to start project aimed at providing such
+a library. The benefits are as usual from using lib:
+
+- no code duplication
+- larger userbase, more extensive testing
+- possible larger developer base
+- better feature parity between projects
+- single fix benefits all users
+etc.
+
+Availability of such library would also benefit other projects, that may
+want to support mms, but cannot currently afford developing yet another
+proprietary implementation, like GStreamer or GnomeVFS, and possibly
+others.
+Technically, such a lib would be required to have been LGPL'd, because
+both GStreamer and Gnome projects are LGPL.
+It would be the coolest to turn existing xine implementation into
+library, as it is pretty good one, and also largely independent from
+xine itself, but I'm aware of your code being GPL, and that you may not
+want or be able to relicense it as LGPL. Thus, just your cooperation and
+support will be of great value.
+I'd like to discuss available possibilities for few days, and then open
+SF project in about a week or two. Unfortunately, I have finals coming
+in late January, that may severly limit amount of my free time, but I'll
+do my best. I look forward to your comments.
+
+Cheers,
+Maciej
+
+--
+"Tautologizm to coś tautologicznego"
+   Maciej Katafiasz <mnews2@...>
+       http://mathrick.blog.pl
+
+
+
+Re: [xine-devel] Library for mms protocol support
+From: Michael Roitzsch <mroi@us...> -   2003-12-27 11:25
+Hi,
+
+> Hi guys,
+> I want to propose development of library for mms protocol support.
+> Right now, each and every project that wants to support mms is
+> required to implement all of SDP specs itself, due to lack of common
+> library for that. To remedy that, I'd like to start project aimed at
+> providing such a library. The benefits are as usual from using lib:
+>
+> - no code duplication
+> - larger userbase, more extensive testing
+> - possible larger developer base
+> - better feature parity between projects
+> - single fix benefits all users
+> etc.
+>
+> Availability of such library would also benefit other projects, that
+> may want to support mms, but cannot currently afford developing yet
+> another proprietary implementation, like GStreamer or GnomeVFS, and
+> possibly others.
+
+Sounds like a good idea to me.
+
+> Technically, such a lib would be required to have been LGPL'd,
+> because both GStreamer and Gnome projects are LGPL.
+> It would be the coolest to turn existing xine implementation into
+> library, as it is pretty good one, and also largely independent from
+> xine itself, but I'm aware of your code being GPL, and that you may
+> not want or be able to relicense it as LGPL. Thus, just your
+> cooperation and support will be of great value.
+
+I guess you would have to write all people who committed changes to
+input_mms.c and ask for their permission. Fortunately, these are not
+too many.
+
+Michael
+
+--
+Zero Administration: There is nothing you can do to fix it.
+
+
+
+Re: [xine-devel] Library for mms protocol support
+From: Mathrick <mnews2@wp...> - 2003-12-27 19:38
+W liście z sob, 27-12-2003, godz. 12:24, Michael Roitzsch pisze:
+> >
+> > Availability of such library would also benefit other projects, that
+> > may want to support mms, but cannot currently afford developing yet
+> > another proprietary implementation, like GStreamer or GnomeVFS, and
+> > possibly others.
+>
+> Sounds like a good idea to me.
+
+Nice to hear :)
+
+> > Technically, such a lib would be required to have been LGPL'd,
+> > because both GStreamer and Gnome projects are LGPL.
+> > It would be the coolest to turn existing xine implementation into
+> > library, as it is pretty good one, and also largely independent from
+> > xine itself, but I'm aware of your code being GPL, and that you may
+> > not want or be able to relicense it as LGPL. Thus, just your
+> > cooperation and support will be of great value.
+>
+> I guess you would have to write all people who committed changes to
+> input_mms.c and ask for their permission. Fortunately, these are not
+> too many.
+
+OK, but copyright info contains "xine project" only. Will webcvs be
+enough to get all the contributors?
+
+Maciej
+
+--
+"Tautologizm to coś tautologicznego"
+   Maciej Katafiasz <mnews2@...>
+       http://mathrick.blog.pl
+
+
+
+Re: [xine-devel] Library for mms protocol support
+From: Miguel Freitas <miguel@ce...> -   2003-12-28 05:13
+On Sat, 2003-12-27 at 14:17, Mathrick wrote:
+> OK, but copyright info contains "xine project" only. Will webcvs be
+> enough to get all the contributors?
+
+you might need to ask "Major MMS" too ;-)
+
+regards,
+
+Miguel
+
+
+
+Re: [xine-devel] Library for mms protocol support
+From: Mathrick <mnews2@wp...> - 2003-12-28 11:12
+W liście z nie, 28-12-2003, godz. 04:49, Miguel Freitas pisze:
+> On Sat, 2003-12-27 at 14:17, Mathrick wrote:
+> > OK, but copyright info contains "xine project" only. Will webcvs be
+> > enough to get all the contributors?
+>
+> you might need to ask "Major MMS" too ;-)
+
+Heh, is there any way to contact him? He seems to be some sort of
+nameless hero, and that may complicate matters.
+
+I will send mails asking about relicensing to everyone found on CVS log,
+and also to the list, in case they don't read their sf mail accounts :).
+
+--
+"Tautologizm to coś tautologicznego"
+   Maciej Katafiasz <mnews2@...>
+       http://mathrick.blog.pl
+
+
+
+Re: [gst-devel] Re: [xine-devel] Library for mms protocol support
+From: Mathrick <mnews2@wp...> - 2003-12-28 11:43
+W liście z nie, 28-12-2003, godz. 12:12, Mathrick pisze:
+> W liście z nie, 28-12-2003, godz. 04:49, Miguel Freitas pisze:
+> > On Sat, 2003-12-27 at 14:17, Mathrick wrote:
+> > > OK, but copyright info contains "xine project" only. Will webcvs be
+> > > enough to get all the contributors?
+> >
+> > you might need to ask "Major MMS" too ;-)
+>
+> Heh, is there any way to contact him? He seems to be some sort of
+> nameless hero, and that may complicate matters.
+>
+> I will send mails asking about relicensing to everyone found on CVS log,
+> and also to the list, in case they don't read their sf mail accounts :).
+
+Sent mail asking for relicensing to the following people:
+
+Bastien Nocera
+Daniel Caujolle-Bert
+Ewald Snel
+Guenter Bartsch
+James Courtier-Dutton
+Michael Roitzsch
+Miguel Freitas
+Siggi Langauf
+Stephen Torri
+Thibaut Mattern
+
+In case I missed anybody, or it wasn't delivered properly, please inform
+me of that.
+
+Maciej
+
+--
+"Tautologizm to coś tautologicznego"
+   Maciej Katafiasz <mnews2@...>
+       http://mathrick.blog.pl

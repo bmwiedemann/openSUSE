@@ -1,0 +1,58 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2023-04-20 10:58:03.045935811 +0200
+
+Workaround failing VHBA compilation for the SLE 15.5 kernel API.
+
+---
+ vhba.c |   10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+Index: vhba-module-20211218/vhba.c
+===================================================================
+--- vhba-module-20211218.orig/vhba.c
++++ vhba-module-20211218/vhba.c
+@@ -203,7 +203,7 @@ int vhba_device_queue (struct vhba_devic
+     vcmd->cmd = cmd;
+ 
+     spin_lock_irqsave(&vdev->cmd_lock, flags);
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 0) || defined(SLE)
+     vcmd->metatag = scsi_cmd_to_rq(vcmd->cmd)->tag;
+ #else
+     vcmd->metatag = vcmd->cmd->request->tag;
+@@ -477,7 +477,7 @@ int vhba_queuecommand (struct Scsi_Host
+     int retval;
+     unsigned int devnum;
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 0) || defined(SLE)
+     scmd_dbg(cmd, "queue %p tag %i\n", cmd, scsi_cmd_to_rq(cmd)->tag);
+ #else
+     scmd_dbg(cmd, "queue %p tag %i\n", cmd, cmd->request->tag);
+@@ -489,7 +489,7 @@ int vhba_queuecommand (struct Scsi_Host
+         scmd_dbg(cmd, "no such device\n");
+ 
+         cmd->result = DID_NO_CONNECT << 16;
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 16, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 16, 0) || defined(SLE)
+         scsi_done(cmd);
+ #else
+         cmd->scsi_done(cmd);
+@@ -828,7 +828,7 @@ ssize_t vhba_ctl_write (struct file *fil
+ 
+     spin_lock_irqsave(&vdev->cmd_lock, flags);
+     if (ret >= 0) {
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 16, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 16, 0) || defined(SLE)
+         scsi_done(vcmd->cmd);
+ #else
+         vcmd->cmd->scsi_done(vcmd->cmd);
+@@ -958,7 +958,7 @@ int vhba_ctl_release (struct inode *inod
+ 
+         scmd_dbg(vcmd->cmd, "device released with command %lu (%p)\n", vcmd->metatag, vcmd->cmd);
+         vcmd->cmd->result = DID_NO_CONNECT << 16;
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 16, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 16, 0) || defined(SLE)
+         scsi_done(vcmd->cmd);
+ #else
+         vcmd->cmd->scsi_done(vcmd->cmd);

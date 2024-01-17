@@ -1,0 +1,6 @@
+<package name="haruna" project="openSUSE:Factory">
+  <title>haruna</title>
+  <description>Video player built with Qt/QML on top of libmpv.</description>
+  <devel project="multimedia:apps" package="haruna"/>
+  <url>https://github.com/g-fb/haruna</url>
+</package>

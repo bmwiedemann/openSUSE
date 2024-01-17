@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Tue Apr 12 10:07:37 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add kajaani-kombat-gcc11.patch: Fix build with gcc11.
+- No longer lock Tumbleweed to use gcc10, but use the distro
+  default compiler. Instead, inject -std=c++14 into CXXFLAGS.
+
+-------------------------------------------------------------------
+Sat Jun  5 19:41:51 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Use gcc10 for Tumbleweed to workaround build issues
+
+-------------------------------------------------------------------
+Mon Feb  4 18:54:10 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Fri Feb  1 19:59:55 UTC 2019 - mardnh@gmx.de
+
+- Initial package, version 0.7

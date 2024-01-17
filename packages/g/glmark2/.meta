@@ -1,0 +1,5 @@
+<package name="glmark2" project="openSUSE:Factory">
+  <title>glmark2</title>
+  <description></description>
+  <devel project="benchmark" package="glmark2"/>
+</package>

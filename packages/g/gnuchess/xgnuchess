@@ -1,0 +1,28 @@
+#! /bin/sh
+#
+# Run xboard with gnuchess as chess program.
+#
+# modified from "xcrafty" originally from:
+#
+# Steffen Winterfeldt <wfeldt@suse.de>
+#
+# Copyright (c) 1999 SuSE GmbH Nuernberg, Germany.  All rights reserved.
+#
+
+[ "$DISPLAY" ] || {
+  echo >&2 "This is not a text mode application!"
+  exit 63
+}
+
+emsg="You\'ll have to install package \'xboard\' first to run xgnuchess."
+
+which xboard >/dev/null 2>&1 || {
+  if tty -s ; then
+    sh -c "echo >&2 $emsg"
+  else
+    xterm +sb -T "xgnuchess error" -bg white -fg red -e sh -c "echo $emsg ; read"
+  fi
+  exit 42
+}
+
+exec xboard -size bulky -fcp gnuchessx -scp gnuchessx "$@" &

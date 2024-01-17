@@ -1,0 +1,5 @@
+<package name="purge-kernels-service" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Base:System" package="purge-kernels-service"/>
+</package>

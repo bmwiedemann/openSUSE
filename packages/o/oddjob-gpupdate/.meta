@@ -1,0 +1,6 @@
+<package name="oddjob-gpupdate" project="openSUSE:Factory">
+  <title></title>
+  <description>This package contains the oddjob helper which can be used by the
+pam_oddjob_gpupdate module to applies group policy objects at login-time.</description>
+  <devel project="security:idm" package="oddjob-gpupdate"/>
+</package>

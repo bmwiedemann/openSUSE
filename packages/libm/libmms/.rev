@@ -1,0 +1,120 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7acf5144a5663247b355a54027bdd0cc</srcmd5>
+    <version>0.6.2</version>
+    <time>1316504045</time>
+    <user>lrupp</user>
+    <comment>Resubmitting.  I added copies of the mailing list discussions and a note about the license change in the spec file.</comment>
+    <requestid>82339</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9514602547b498ef1ce255944f456010</srcmd5>
+    <version>0.6.2</version>
+    <time>1316516295</time>
+    <user>saschpe</user>
+    <comment>- Changed one remaining case of %{name}0 to %{name}%{soname}
+- Removed some extraneous spaces (forwarded request 83766 from TheBlackCat)</comment>
+    <requestid>83767</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>9514602547b498ef1ce255944f456010</srcmd5>
+    <version>0.6.2</version>
+    <time>1319182111</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e0c44d99b500f022b3abfece0938a6ce</srcmd5>
+    <version>0.6.2</version>
+    <time>1323192275</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>ad9cb76e4f38f717c585baf510dd8d84</srcmd5>
+    <version>0.6.2</version>
+    <time>1331037514</time>
+    <user>coolo</user>
+    <comment>- Added 32bit-compatibility package, needed by gstreamer-0_10-plugins-bad-32bit (forwarded request 107986 from TheBlackCat)</comment>
+    <requestid>107995</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>ad9cb76e4f38f717c585baf510dd8d84</srcmd5>
+    <version>0.6.2</version>
+    <time>1340183605</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>c6e070469eb1fae9761dd5023709c40d</srcmd5>
+    <version>0.6.2</version>
+    <time>1353952665</time>
+    <user>coolo</user>
+    <comment>- libmms-pkgconfig.patch: DO not inject bogus build
+  dependencies via pkgconfig files, in this case glib2 which
+  will pull pcre and so on... (forwarded request 142517 from elvigia)</comment>
+    <requestid>142732</requestid>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>c6e070469eb1fae9761dd5023709c40d</srcmd5>
+    <version>0.6.2</version>
+    <time>1359109305</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>d0444800e9d6119e0a38c1c8b162fdc3</srcmd5>
+    <version>0.6.2</version>
+    <time>1364303525</time>
+    <user>coolo</user>
+    <comment>- libmms-nognetexport.patch: libmms 
+  exports functions that belong to gnome's gnet
+  library, that will of course cause symbol clashes.
+  We cannot just link to the system's gnet because it uses
+  and slightly older API, just hide the symbols instead. (forwarded request 160728 from elvigia)</comment>
+    <requestid>161168</requestid>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>d0444800e9d6119e0a38c1c8b162fdc3</srcmd5>
+    <version>0.6.2</version>
+    <time>1379663008</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>629daaf6f7ff85187742341ac137d8da</srcmd5>
+    <version>0.6.4</version>
+    <time>1398499559</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.6.4:
+  * Fix a possible heap memory overrun (bnc#874723, CVE-2014-2892).
+  * Some changes for more recent automake versions.
+  * Remove glib dependency.
+  * Fix several issues that prevented seeking from working.
+  * Remove dependency on iconv.
+  * Fix connecting to certain mms streams. (forwarded request 231189 from sbrabec)</comment>
+    <requestid>231256</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>629daaf6f7ff85187742341ac137d8da</srcmd5>
+    <version>0.6.4</version>
+    <time>1409301622</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>f7ccb9816b19b33f4ccc12f0ab1dc83b</srcmd5>
+    <version>0.6.4</version>
+    <time>1451045153</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>350487</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>365bb349e31f39772991cb6c250da149</srcmd5>
+    <version>0.6.4</version>
+    <time>1487259837</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456707</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,105 @@
+Index: linssid-3.6/linssid-app/AboutBox.ui
+===================================================================
+--- linssid-3.6.orig/linssid-app/AboutBox.ui
++++ linssid-3.6/linssid-app/AboutBox.ui
+@@ -15,7 +15,7 @@
+   </property>
+   <property name="windowIcon">
+    <iconset>
+-    <normaloff>../../../../../../../usr/share/pixmaps/linssid.png</normaloff>../../../../../../../usr/share/pixmaps/linssid.png</iconset>
++    <normaloff>/usr/share/pixmaps/linssid.png</normaloff>/usr/share/pixmaps/linssid.png</iconset>
+   </property>
+   <property name="modal">
+    <bool>true</bool>
+@@ -75,7 +75,7 @@
+       <string notr="true"/>
+      </property>
+      <property name="pixmap">
+-      <pixmap>../../../../../../../usr/share/pixmaps/linssid.png</pixmap>
++      <pixmap>/usr/share/pixmaps/linssid.png</pixmap>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+Index: linssid-3.6/linssid-app/MainForm.ui
+===================================================================
+--- linssid-3.6.orig/linssid-app/MainForm.ui
++++ linssid-3.6/linssid-app/MainForm.ui
+@@ -21,7 +21,7 @@
+   </property>
+   <property name="windowIcon">
+    <iconset>
+-    <normaloff>../../../../../../../usr/share/pixmaps/linssid.png</normaloff>../../../../../../../usr/share/pixmaps/linssid.png</iconset>
++    <normaloff>/usr/share/pixmaps/linssid.png</normaloff>/usr/share/pixmaps/linssid.png</iconset>
+   </property>
+   <widget class="QWidget" name="centralwidget">
+    <property name="sizePolicy">
+@@ -228,8 +228,8 @@
+            </property>
+            <property name="icon">
+             <iconset>
+-             <normaloff>../../../../../../../usr/share/linssid/linssid-start.png</normaloff>
+-             <normalon>../../../../../../../usr/share/linssid/linssid-pause.png</normalon>../../../../../../../usr/share/linssid/linssid-start.png</iconset>
++             <normaloff>/usr/share/linssid/linssid-start.png</normaloff>
++             <normalon>/usr/share/linssid/linssid-pause.png</normalon>/usr/share/linssid/linssid-start.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+@@ -301,7 +301,7 @@
+             <string/>
+            </property>
+            <property name="pixmap">
+-            <pixmap>../../../../../../../usr/share/pixmaps/linssid.png</pixmap>
++            <pixmap>/usr/share/pixmaps/linssid.png</pixmap>
+            </property>
+           </widget>
+          </item>
+Index: linssid-3.6/linssid-app/linssid.desktop
+===================================================================
+--- linssid-3.6.orig/linssid-app/linssid.desktop
++++ linssid-3.6/linssid-app/linssid.desktop
+@@ -1,14 +1,13 @@
+-#!/usr/bin/env xdg-open
+-
+ [Desktop Entry]
+ Encoding=UTF-8
++Version=1.0
+ Name=LinSSID
+-GenericName=
++GenericName=WiFi monitor
+ Comment=Find local wireless attach points
+-Exec=linssid-pkexec
+-Icon=/usr/share/pixmaps/linssid48.png
++Exec=linssid_wrapper
++Icon=linssid
+ Terminal=false
+ Type=Application
+-Categories=Network
++Categories=Application;Network;Network;Monitor;
+ Name[en]=LinSSID
+ Name[en_US]=LinSSID
+Index: linssid-3.6/linssid-app/linssid-app.pro
+===================================================================
+--- linssid-3.6.orig/linssid-app/linssid-app.pro
++++ linssid-3.6/linssid-app/linssid-app.pro
+@@ -28,19 +28,13 @@ QMAKE_CXXFLAGS += -std=c++11
+ TARGET = linssid
+ target.path = /usr/sbin
+ INSTALLS += target
+-targetexec.path = /usr/bin
+-targetexec.files=linssid-pkexec
+-INSTALLS += targetexec
+ dtop.path = /usr/share/applications
+ dtop.files = linssid.desktop
+ INSTALLS += dtop
+ icons.path = /usr/share/pixmaps
+-icons.files = *.png *.svg
++icons.files = linssid.svg
+ INSTALLS += icons
+ data.path = /usr/share/linssid
+-data.files = oui.datc linssid-pause.png linssid-start.png
++data.files = oui.datc linssid-pause.png linssid-start.png linssid.png
+ INSTALLS += data
+-policy.path = /usr/share/polkit-1/actions
+-policy.files = com.warsev.pkexec.linssid.policy
+-INSTALLS += policy
+ 

@@ -1,0 +1,5 @@
+<package name="pass-otp" project="openSUSE:Factory">
+  <title>pass-otp</title>
+  <description>A pass extension for managing one-time-password (OTP) tokens</description>
+  <devel project="security:privacy" package="pass-otp"/>
+</package>

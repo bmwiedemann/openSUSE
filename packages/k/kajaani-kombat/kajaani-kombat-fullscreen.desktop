@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Kajaani Kombat - Fullscreen
+Comment=A remake of the classis arcade game Rampart
+Exec=kajaani-kombat -fs
+Terminal=false
+Type=Application
+Icon=kajaani-kombat
+Categories=Game;ArcadeGame;
+

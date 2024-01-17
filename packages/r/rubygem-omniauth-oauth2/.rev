@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>039949305212f2f4f114885537e6d322</srcmd5>
+    <version>1.5.0</version>
+    <time>1518697510</time>
+    <user>dimstar_suse</user>
+    <comment>needed by rubygem-omniauth-gitlab</comment>
+    <requestid>573117</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>04550e45394b72f4a47662a64a032c75</srcmd5>
+    <version>1.6.0</version>
+    <time>1551687639</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679530</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a0af38be2105f3fe9c74e8156038a857</srcmd5>
+    <version>1.7.0</version>
+    <time>1601919153</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838060</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c0099e97e66c45a885a45baa0c8802d7</srcmd5>
+    <version>1.7.1</version>
+    <time>1611262591</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.7.1
+  no changelog found
+</comment>
+    <requestid>865241</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c762726c2b03e89f8f937eb8fcebd957</srcmd5>
+    <version>1.7.2</version>
+    <time>1644273465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949090</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>436da559c1a0c6e38fdca3e3c7db209b</srcmd5>
+    <version>1.8.0</version>
+    <time>1660051605</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>993505</requestid>
+  </revision>
+</revisionlist>

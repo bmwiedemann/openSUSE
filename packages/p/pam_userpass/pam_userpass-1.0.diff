@@ -1,0 +1,11 @@
+--- Makefile
++++ Makefile
+@@ -9,7 +9,7 @@
+ CFLAGS = -Wall -O2 -fPIC
+ endif
+ CFLAGS += -Iinclude
+-LDFLAGS = -s
++LDFLAGS =
+ ARFLAGS = rv
+ LIBS = -lpam
+ LINK = $(LD) $(LDFLAGS)

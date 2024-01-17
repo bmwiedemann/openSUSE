@@ -1,0 +1,5 @@
+<package name="icingaweb2-module-reactbundle" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:monitoring" package="icingaweb2-module-reactbundle"/>
+</package>
