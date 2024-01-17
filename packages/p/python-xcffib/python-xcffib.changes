@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Wed Oct 18 15:09:53 UTC 2023 - Soc Virnyl Estela <contact@uncomfyhalomacro.pl>
+
+- update to 1.5.0:
+  * build against xcb-proto 1.16.0 (Tycho Andersen)
+  * add an automatic-github-releaser script
+  * use cffi's in-line mode
+  * build against xcb-proto 1.16.0
+- remove python-xcffib-ffi-import.patch
+
+-------------------------------------------------------------------
+Wed May 10 06:54:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * remove leftover six import
+  * module: expose additional xcb errors
+  * Fix List.to_string()
+- drop python-xcffib-six-leftover.patch (upstream)
+
+-------------------------------------------------------------------
+Fri Apr 21 12:39:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Mar 23 09:19:27 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.2.0
+  * no upstream changelog found
+- do not require six
+- added patches
+  fix https://github.com/tych0/xcffib/commit/8a488867d30464913706376ca3a9f4c98ca6c5cf
+  + python-xcffib-six-leftover.patch
+  fix ffi import [bsc#1209570c4]
+  + python-xcffib-ffi-import.patch
+
+-------------------------------------------------------------------
+Tue Sep 27 16:04:01 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.12.1
+  * Replace nose by pytest
+  * Allow the master xcb version to pass even if failing
+  * drop Python 3.6, support Python 3.10
+  * ci: test with new xcb 1.15 release
+
+-------------------------------------------------------------------
+Fri Jul 16 11:27:23 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Replace use of nose2 by pytest. There is no need to do anything
+  else.
+
+-------------------------------------------------------------------
+Thu Jul  8 13:19:04 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.11.1
+  * connection: don't automatically disconnect() on connection error
+  * drop support for python 3.5
+  * tests: switch to nose2
+  * travis: test python 3.9
+
+-------------------------------------------------------------------
+Mon Oct 26 13:01:07 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-activate tests
+- Update to 0.10.1
+  * testing: handle lock file open() failures gracefully 
+- from v0.10.0
+  * Drop support for Python 2.7
+  * testing: protect find_display() with flock()
+  * testing: don't leak discard FD
+
+-------------------------------------------------------------------
+Fri Feb 21 09:11:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable tests to avoid deadlock in xvfb
+
+-------------------------------------------------------------------
+Thu Feb  6 12:33:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.9.0
+  * add Python 3.8
+  * test: don't fail when there is no pre-existing display
+
+-------------------------------------------------------------------
+Mon Jun 17 12:07:45 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.8.1:
+  * Testsuite expansion mostly
+
+-------------------------------------------------------------------
+Mon May  6 10:35:38 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.8.0
+  * Fix few more instances of inefficient struct format 
+
+-------------------------------------------------------------------
+Mon Mar  4 11:54:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.0:
+  * Various updates and fixes for ghc/cabal
+  * Drop unnecessary imports
+- Enable tests
+
+-------------------------------------------------------------------
+Thu Jan 24 15:23:49 UTC 2019 - mvetter@suse.com
+
+- Update to 0.6.0:
+  * Depend on xcb-types 0.9.0
+  * Fix spelling mistakes
+  * Support the new eventstruct element
+  * Use xcb-types HEAD instead of a released version
+  * List: keep around the raw underlying represenation
+  * Fix linter errors
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:16 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Apr 19 19:44:53 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 0.5.1.
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Wed Nov 23 22:02:10 UTC 2016 - hpj@urpla.net
+
+- add python-cffi runtime dependency
+
+-------------------------------------------------------------------
+Mon Nov 21 10:51:53 UTC 2016 - hpj@urpla.net
+
+- version 0.4.2: initial build
+

@@ -1,0 +1,66 @@
+Index: tboot-1.9.12/tboot/20_linux_tboot
+===================================================================
+--- tboot-1.9.12.orig/tboot/20_linux_tboot
++++ tboot-1.9.12/tboot/20_linux_tboot
+@@ -34,6 +34,28 @@ if test -e ${sysconfdir}/default/grub-tb
+   .  ${sysconfdir}/default/grub-tboot
+ fi
+ 
++secureBootActive()
++{
++	for secboot_var in /sys/firmware/efi/efivars/SecureBoot-*; do
++		[ ! -e "$secboot_var" ] && continue
++
++		# this variable contains a '1' byte at the end if secure boot is enabled
++		local secboot_byte=`od --address-radix=n --format=u1 "$secboot_var" | tr -d ' \n' | tail -c 1`
++
++		[ "$secboot_byte" = "1" ] && return 0
++	done
++
++	return 1
++}
++
++if secureBootActive; then
++	cat >&2 << EOF
++Not generating tboot menu entries, because UEFI Secure Boot is active.
++tboot is not compatible with UEFI Secure Boot.
++EOF
++	exit 0
++fi
++
+ # Set the following variables in /etc/default/grub-tboot to customize command lines
+ # (empty values are treated as if the variables were unset).
+ [ -z "${GRUB_CMDLINE_TBOOT}" ] && unset GRUB_CMDLINE_TBOOT
+Index: tboot-1.9.12/tboot/20_linux_xen_tboot
+===================================================================
+--- tboot-1.9.12.orig/tboot/20_linux_xen_tboot
++++ tboot-1.9.12/tboot/20_linux_xen_tboot
+@@ -34,6 +34,28 @@ if test -e ${sysconfdir}/default/grub-tb
+   .  ${sysconfdir}/default/grub-tboot
+ fi
+ 
++secureBootActive()
++{
++	for secboot_var in /sys/firmware/efi/efivars/SecureBoot-*; do
++		[ ! -e "$secboot_var" ] && continue
++
++		# this variable contains a '1' byte at the end if secure boot is enabled
++		local secboot_byte=`od --address-radix=n --format=u1 "$secboot_var" | tr -d ' \n' | tail -c 1`
++
++		[ "$secboot_byte" = "1" ] && return 0
++	done
++
++	return 1
++}
++
++if secureBootActive; then
++	cat >&2 << EOF
++Not generating tboot menu entries, because UEFI Secure Boot is active.
++tboot is not compatible with UEFI Secure Boot.
++EOF
++	exit 0
++fi
++
+ # Set the following variables in /etc/default/grub-tboot to customize command lines
+ # (empty values are treated as if the variables were unset).
+ [ -z "${GRUB_CMDLINE_TBOOT}" ] && unset GRUB_CMDLINE_TBOOT

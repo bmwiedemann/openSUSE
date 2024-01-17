@@ -1,0 +1,14 @@
+Index: Perl-Critic-Pulp-96/lib/Perl/Critic/Policy/Compatibility/PerlMinimumVersionAndWhy.pm
+===================================================================
+--- Perl-Critic-Pulp-96.orig/lib/Perl/Critic/Policy/Compatibility/PerlMinimumVersionAndWhy.pm
++++ Perl-Critic-Pulp-96/lib/Perl/Critic/Policy/Compatibility/PerlMinimumVersionAndWhy.pm
+@@ -189,7 +189,8 @@ sub _setup_extra_checks {
+   # Perl::MinimumVersion prior to 1.28 had 'PPI::Token::Operator' and
+   # 'PPI::Token::Magic' swapped between the respective operator/magic tests
+ 
+-  package Perl::MinimumVersion;
++  package 
++    Perl::MinimumVersion;
+   use vars qw(%MATCHES);
+   sub _Pulp__5010_operators__fix {
+     shift->Document->find_first

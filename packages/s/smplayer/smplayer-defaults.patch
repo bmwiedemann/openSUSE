@@ -1,0 +1,48 @@
+Index: smplayer-23.6.0/src/preferences.cpp
+===================================================================
+--- smplayer-23.6.0.orig/src/preferences.cpp
++++ smplayer-23.6.0/src/preferences.cpp
+@@ -417,11 +417,7 @@ void Preferences::reset() {
+ 	resize_method = Never;
+ 
+ #if STYLE_SWITCHING
+-	#if QT_VERSION >= 0x050000
+-	style = "Fusion";
+-	#else
+ 	style="";
+-	#endif
+ #endif
+ 
+ 	center_window = false;
+@@ -494,7 +490,7 @@ void Preferences::reset() {
+ 	allow_video_movement = false;
+ 
+ 	gui = "DefaultGUI";
+-	iconset = "H2O";
++	iconset = "Papirus";
+ 
+ 
+ #if USE_MINIMUMSIZE
+@@ -664,7 +660,7 @@ void Preferences::reset() {
+ 
+ #ifdef CHECK_UPGRADED
+ 	smplayer_stable_version = "";
+-	check_if_upgraded = true;
++	check_if_upgraded = false;
+ #endif
+ #ifdef FONTCACHE_DIALOG
+ 	smplayer_version = "";
+Index: smplayer-23.6.0/src/prefgeneral.cpp
+===================================================================
+--- smplayer-23.6.0.orig/src/prefgeneral.cpp
++++ smplayer-23.6.0/src/prefgeneral.cpp
+@@ -664,6 +664,9 @@ void PrefGeneral::setVO( QString vo_driv
+ }
+ 
+ void PrefGeneral::setAO( QString ao_driver ) {
++	if (ao_driver.isEmpty())
++		ao_driver = "pulse";
++
+ 	int idx = ao_combo->findData( ao_driver );
+ 	if (idx != -1) {
+ 		ao_combo->setCurrentIndex(idx);

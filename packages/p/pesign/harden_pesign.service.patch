@@ -1,0 +1,24 @@
+Index: pesign-115/src/pesign.service.in
+===================================================================
+--- pesign-115.orig/src/pesign.service.in
++++ pesign-115/src/pesign.service.in
+@@ -3,6 +3,19 @@ Description=Pesign signing daemon
+ 
+ [Service]
+ PrivateTmp=true
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ PIDFile=@@RUNDIR@@/pesign.pid
+ ExecStart=/usr/bin/pesign --daemonize --nofork
+ ExecStartPost=@@LIBEXECDIR@@/pesign/pesign-authorize

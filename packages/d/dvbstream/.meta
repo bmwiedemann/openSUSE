@@ -1,0 +1,9 @@
+<package name="dvbstream" project="openSUSE:Factory">
+  <title>Broadcasts a DVB Stream over the Network</title>
+  <description>dvbstream can broadcast either a (subset of a) DVB transport stream or
+a DVB program stream over a LAN using the rtp protocol. It attempts to
+be compliant with RFCs 1889, 1890, 2038, and 2250. It can also dump the
+stream to stdout, for example, for local software decoding when using
+DVB cards without a hardware MPEG decoder.</description>
+  <devel project="multimedia:apps" package="dvbstream"/>
+</package>

@@ -1,0 +1,304 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c0dd78e48db93a5790a46aac360f1be</srcmd5>
+    <version>1.6.0</version>
+    <time>1494937726</time>
+    <user>dimstar_suse</user>
+    <comment>needed for new python-requests</comment>
+    <requestid>492870</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2d62a0d6ddcbe61bdff455da2c1a8dfd</srcmd5>
+    <version>1.6.0</version>
+    <time>1502707127</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516165</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7f989a2b626aa5ec4dd634726ddf11a7</srcmd5>
+    <version>1.6.3</version>
+    <time>1508610013</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533466</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>be0309fa9b9cded947474beb30e963d6</srcmd5>
+    <version>1.6.3</version>
+    <time>1516091859</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with python3 only available
+- Install properly license file/etc</comment>
+    <requestid>563590</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>28cb91110c695c8c9d3b727cca80b2d7</srcmd5>
+    <version>1.7.1</version>
+    <time>1520253363</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.1
+  * fix reading README.rst in setup.py
+
+- fix deps for setuptools
+
+- update to 1.7.0
+  * Drop support for python-2.6 and python-3.3</comment>
+    <requestid>582182</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>08270e5137aa6afa40061fb35ae628e8</srcmd5>
+    <version>1.9.0</version>
+    <time>1524742476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599637</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dfa1e551f65a2b4c260c19f7522617f6</srcmd5>
+    <version>1.10.0</version>
+    <time>1526030798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605130</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a4cb5e89e62bb2df123a0b9ea281ce78</srcmd5>
+    <version>1.10.1</version>
+    <time>1551024320</time>
+    <user>coolo</user>
+    <comment>- Update to 1.10.1:
+  * Fix broken links and update README. Also the code is now formatted using black.</comment>
+    <requestid>674447</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a7d196d8582a7e6fb29bb7ac6e9958f4</srcmd5>
+    <version>1.10.2</version>
+    <time>1553888261</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688629</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>81251b528386072016ed5f1333557cb2</srcmd5>
+    <version>1.10.3</version>
+    <time>1554372026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.3:
+  * Fix test suite in Python 3.8. Thanks @hroncok for the report and @blueyed for the PR (#140).</comment>
+    <requestid>690275</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fe6be2cdf4995c73890094b02767dffe</srcmd5>
+    <version>1.10.4</version>
+    <time>1556817227</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.4:
+  * Fix plugin when 'terminal' plugin is disabled</comment>
+    <requestid>699374</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>cc354589ab252f28deba4dd796fc2cd5</srcmd5>
+    <version>1.10.4</version>
+    <time>1564484783</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove mock30.patch for now as we are not able to upgrade
+  to mock3 yet
+
+- add upstream patch to test with pytest5 - fix_tests.patch 
+
+- Add patch from upstream to build with new mock:
+  * mock30.patch</comment>
+    <requestid>718868</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>74bb7d9b5a6d3bbdb8a2b55655760e13</srcmd5>
+    <version>1.10.4</version>
+    <time>1569233195</time>
+    <user>dimstar_suse</user>
+    <comment>- Add back the mock 3.0 patch as the mock is being integrated now:
+  * mock3.patch</comment>
+    <requestid>730055</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0bcda5cc08b601d9ff44cbb3fd199238</srcmd5>
+    <version>1.11.0</version>
+    <time>1570448378</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.0:
+  * The object returned by mocker.spy now also tracks the return
+    value of the spied method/function.
+- Drop merged patch mock3.patch and fix_tests.patch</comment>
+    <requestid>734062</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>766584d8058a25304d38b15e5e1be023</srcmd5>
+    <version>1.11.2</version>
+    <time>1574414744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749236</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2cf55e193733e13f8384355ccc12364a</srcmd5>
+    <version>1.12.1</version>
+    <time>1576061992</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.12.1:
+  * Fix error if mocker.patch is used in code where the source file
+    is not available, for example stale .pyc files
+  * Now all patch functions also raise a ValueError when used as a
+    context-manager</comment>
+    <requestid>753969</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d2b591f9766a5598deb77ba43f48df05</srcmd5>
+    <version>2.0.0</version>
+    <time>1579194819</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  * mocker.spy attributes for tracking returned values and raised
+    exceptions of its spied functions are now called spy_return
+    and spy_exception, instead of reusing the existing MagicMock
+    attributes return_value and side_effect.
+  * The deprecated mock alias to the mocker fixture has finally
+    been removed.</comment>
+    <requestid>761149</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>06f8d5e3056070f34e5981f5f55d7330</srcmd5>
+    <version>3.1.0</version>
+    <time>1588323962</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * Python 2.7 and 3.4 are no longer supported
+  * New mocker fixtures added that allow using mocking functionality
+    in other scopes</comment>
+    <requestid>798138</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>261ccf57931f2125d587079fc781998b</srcmd5>
+    <version>3.1.1</version>
+    <time>1591879528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.1:
+  * Fixed performance regression caused by the ValueError raised
+    when mocker is used as context manager (#191).</comment>
+    <requestid>812814</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6396bef1d39d7c102bcb6e3fc0ab1e82</srcmd5>
+    <version>3.6.1</version>
+    <time>1624136505</time>
+    <user>dimstar_suse</user>
+    <comment>poetry is now fixed with https://build.opensuse.org/request/show/900345
+
+- Update to 3.6.1:
+  * Fix mocker.resetall() when using mocker.spy() (#237)
+- Update to 3.6.0:
+  * pytest-mock no longer supports Python 3.5.
+  * Correct type annotations for mocker.patch.object to also
+    include the string form.
+  * reset_all now supports return_value and side_effect keyword
+    arguments.
+- Update to 3.5.1:
+  * Use inspect.getattr_static instead of resorting to
+    object.__getattribute__ magic. This should better comply with
+    objects which implement a custom descriptor protocol.
+- Update to 3.5.0:
+  * Now all patch functions will emit a warning instead of raising
+    a ValueError when used as a context-manager.
+  * Additionally, mocker.patch.context_manager is available when
+    the user intends to mock a context manager (for example
+    threading.Lock object), which will not emit that warning.
+- Update to 3.4.0:
+  * Add [mock.seal]{.title-ref} alias to the [mocker]{.title-ref}
+    fixture (#211).
+  * Fixed spying on exceptions not covered by the Exception
+    superclass (#215), like KeyboardInterrupt
+    Before the fix, both spy_return and spy_exception were always
+    assigned to None whenever such an exception happened. And
+    after this fix, spy_exception is set to a correct value of
+    an exception.
+- Update to 3.3.1:
+  * Introduce MockFixture as an alias to MockerFixture.
+    Before 3.3.0, the fixture class was named MockFixture, but was</comment>
+    <requestid>900347</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>727fd0184a69432ad3ed4a011c228e70</srcmd5>
+    <version>3.6.1</version>
+    <time>1642951541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948117</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>428dce152fdb239b56b12957a95e7091</srcmd5>
+    <version>3.10.0</version>
+    <time>1673021070</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition
+- Remove pytest-mock-issue272-asyncio.patch
+- Add python-py dependency
+- Update to 3.10.0:
+  * Added new mocker.stop(m) method to stop specific mocker.patch or mocker.spy
+    calls (#319).
+- 3.9.0:
+  * Expose NonCallableMagicMock via the mocker fixture (#318).
+- 3.8.2:
+  * Fixed AsyncMock support for Python 3.7+ in mocker.async_stub (#302).
+- 3.8.1:
+  * Fix regression caused by an explicit mock dependency in the code (#298).
+- 3.8.0:
+  * Add MockerFixture.async_mock method. Thanks @PerchunPak for the PR (#296).
+- 3.7.0:
+  * Python 3.10 now officially supported.
+  * Dropped support for Python 3.6.
+</comment>
+    <requestid>1039088</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>1b8656c46656e1e8bf37ac9f27f6090a</srcmd5>
+    <version>3.10.0</version>
+    <time>1682434410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082432</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>486d1a675aa062e478dc0b0bdc8b472a</srcmd5>
+    <version>3.11.1</version>
+    <time>1690370502</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.11.1:
+  * Fixed introspection for failed ``assert_has_calls``
+  * Updated type annotations for ``mocker.patch`` and
+    ``mocker.spy`` (`#364`_).</comment>
+    <requestid>1100451</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>87d9d29d8a2578d765313b103493ad07</srcmd5>
+    <version>3.12.0</version>
+    <time>1699478229</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.12.0:
+  * Added support for Python 3.12.
+  * Dropped support for EOL Python 3.7.
+  * ``mocker.resetall()`` now also resets mocks created by
+    ``mocker.create_autospec`` (`#390`_).
+
+- add upstream patch to test with pytest5 - fix_tests.patch</comment>
+    <requestid>1124082</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>64dc95f3b8a73f3ed84f7c566dcfbf3d</srcmd5>
+    <version>3.12.0</version>
+    <time>1703198241</time>
+    <user>anag+factory</user>
+    <comment>- Fix tests with python 3.11.7
+- Add patch fix-tests-python3117.patch gh#pytest-dev/pytest-mock#403
+</comment>
+    <requestid>1134209</requestid>
+  </revision>
+</revisionlist>

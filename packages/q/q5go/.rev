@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>476f4206c377b1adfe1f483c4fb6b1ae</srcmd5>
+    <version>0.9</version>
+    <time>1567849735</time>
+    <user>dimstar_suse</user>
+    <comment>A new Go application using Qt5.</comment>
+    <requestid>728455</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>eaa522c920bfa4ae56bbd40be12cc263</srcmd5>
+    <version>0.9</version>
+    <time>1568025362</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729238</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d8fe884e4cdf785f4626d872483e0b34</srcmd5>
+    <version>0.9</version>
+    <time>1568984104</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731975</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1a5c07e7e385a4a9a2c672c24f899434</srcmd5>
+    <version>0.9</version>
+    <time>1572278334</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>743354</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2a7e87101fbc35e67bf7ec22da55716e</srcmd5>
+    <version>1.0</version>
+    <time>1573045604</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0
+  * A greeter dialog was added, similar to the ones used by cgoban or gGo.
+  * There is now a &quot;Learn Go&quot; button that brings up beginner tutorials
+    in a slideshow view.
+  * Engine configuration in the preferences is a little more friendly.
+  * Edit mode works differently. Depending on the situation, an edited
+    position can be appended to or inserted before the current node,
+    or replace a previous edit.
+  * The board window now has menu items for undo/redo.
+  * When playing on IGS, the comments box now allows chatting even after
+    a match has completed, making it unnecessary to find the opponent's talk tab.
+  * Corrected a bug when parsing nmatch preferences on IGS.
+- Drop patches, now upstream:
+  * 0001-Disable-game-tree-header-with-Qt-5.10.patch
+  * 0001-Remove-PlaceholderText-colorroles-which-were-added-b.patch</comment>
+    <requestid>745456</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>56a083196613f06e33c7bfd380d526ad</srcmd5>
+    <version>1.1</version>
+    <time>1588023199</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1
+  * Performance improvements when loading and editing
+    very large SGF files.
+  * q5go can now detect when an observed game on IGS is
+    adjourned and restarted and follow it in the same window.
+    This requires the server to be set to non-quiet mode.
+  * When playing an engine, there is now a &quot;Play again&quot; button.
+  * In an online match with Canadian time, time warnings can
+    now be enabled for remaining average time, not just
+    remaining total time.
+  * In an online match, remaining seconds in low time situations
+    can now be shown on the opponent's last placed stone.
+  * Added a &quot;Go terminology&quot; SGF to the tutorials.
+  * The greeter window now has a hint to choose &quot;Play online&quot;
+    for a full set of menus.
+  * The program is more helpful when detecting a broken SGF
+    written by Jago.
+  * Added more helpful error messages when editing servers
+    in the preferences.
+  * Score evaluations are now shown in the board window when
+    analysis is on.
+  * Added a feature to visualize connected stones by drawing thick
+    lines between them. May be helpful for beginners.
+  * GTP support was extended to support board sizes &gt; 25, for KataGo.</comment>
+    <requestid>797596</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>014af7336f2ae49ad612aee16be009aa</srcmd5>
+    <version>1.1.1</version>
+    <time>1588538880</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1. Bugfix release:
+  * Fix loading and saving large board sizes
+  * There is now a tool to manage and remove the information
+    added by engine analysis from a given SGF file
+  * It is now possible to save all variations in a file
+    into separate files.
+  * It is possible to choose a path for autosaving online games.</comment>
+    <requestid>799841</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f9aa5d630742f5c48d3750a644a4aaad</srcmd5>
+    <version>2.0</version>
+    <time>1603726024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844093</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1e743fa2e22551900dbcb6f5fee55be1</srcmd5>
+    <version>2.1.1</version>
+    <time>1618235379</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.1
+  * A number of crashes in odd situations were fixed
+  * It is now possible to copy/paste positions in Edit mode.
+  * The batch analysis dialog has a new button to enqueue
+    an entire directory of SGF files.
+  * Engine games now allow board sizes up to 52. (forwarded request 884604 from cgiboudeaux)</comment>
+    <requestid>884605</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>24affdaba05a9933f61f7d4dac2096ce</srcmd5>
+    <version>2.1.2</version>
+    <time>1627076469</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.2
+  * fix an issue when saving SGF files in locales where a comma
+    is used instead of a decimal point. (forwarded request 907879 from cgiboudeaux)</comment>
+    <requestid>907880</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>be7a0d6a0c857af54771794f605c01d9</srcmd5>
+    <version>2.1.3</version>
+    <time>1652188320</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.3
+  * Added autoplay feature for viewing SGF files
+  * More support for KataGo's ruleset feature</comment>
+    <requestid>975944</requestid>
+  </revision>
+</revisionlist>

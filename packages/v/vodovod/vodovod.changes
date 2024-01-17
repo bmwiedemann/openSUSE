@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Wed Apr 12 08:17:21 UTC 2017 - jengelh@inai.de
+
+- Trim description
+
+-------------------------------------------------------------------
+Fri Apr  7 19:18:12 UTC 2017 - meissner@suse.com
+
+- own /var/games as filesystem no longer does
+
+-------------------------------------------------------------------
+Mon Dec  8 22:25:23 UTC 2014 - nemysis@gmx.ch
+
+- Use CXXFLAGS="%{optflags}" to fix
+  'File is compiled without RPM_OPT_FLAGS'
+- Install icon in %{_datadir}/icons/hicolor/-x-/apps/
+  instead of %{_datadir}/pixmaps/
+
+-------------------------------------------------------------------
+Fri Nov 28 21:13:32 UTC 2014 - nemysis@gmx.ch
+
+- Change license GPL-2.0 to GPL-2.0+
+
+-------------------------------------------------------------------
+Fri Oct 24 22:01:18 UTC 2014 - nemysis@gmx.ch
+
+- Initial package creation
+

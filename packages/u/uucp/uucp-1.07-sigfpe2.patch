@@ -1,0 +1,14 @@
+--- uucp-1.07/log.c.sigfpe2	2005-03-13 09:35:52.500596891 +0100
++++ uucp-1.07/log.c	2005-03-13 09:38:26.414639470 +0100
+@@ -671,8 +671,8 @@
+     }      
+ 
+   /* On a system which can determine microseconds we might very well
+-     have both csecs == 0 and cmicros == 0.  */
+-  if (csecs == 0 && cmicros < 1000)
++     have both csecs == 0 and cmicros == 0. */
++  if (csecs < 0 || (csecs == 0 && cmicros < 1000))
+     cbps = 0;
+   else
+     {
+

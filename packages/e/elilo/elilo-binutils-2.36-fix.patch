@@ -1,0 +1,26 @@
+diff --git a/ia32/Makefile b/ia32/Makefile
+index 46609c4..078efc9 100644
+--- a/ia32/Makefile
++++ b/ia32/Makefile
+@@ -43,7 +43,7 @@ system.o: rmswitch.h
+ 
+ rmswitch.h: bin_to_h.c rmswitch.S
+ 	$(CC) $(OPTIMFLAGS) -o bin_to_h $(SRCDIR)/bin_to_h.c
+-	$(AS) -o rmswitch.o $(SRCDIR)/rmswitch.S
++	$(AS) -mx86-used-note=no -o rmswitch.o $(SRCDIR)/rmswitch.S
+ 	$(LD) -Ttext 0x0 -s --oformat binary -o rmswitch rmswitch.o
+ 	./bin_to_h <rmswitch >rmswitch.h
+ 
+diff --git a/x86_64/Makefile b/x86_64/Makefile
+index e7c81f8..a3f2411 100644
+--- a/x86_64/Makefile
++++ b/x86_64/Makefile
+@@ -44,7 +44,7 @@ system.o: rmswitch.h
+ 
+ rmswitch.h: bin_to_h.c rmswitch.S
+ 	$(CC) $(OPTIMFLAGS) -o bin_to_h $(SRCDIR)/bin_to_h.c
+-	$(AS) -o rmswitch.o $(SRCDIR)/rmswitch.S
++	$(AS) -mx86-used-note=no -o rmswitch.o $(SRCDIR)/rmswitch.S
+ 	$(LD) -Ttext 0x0 -s --oformat binary -o rmswitch rmswitch.o
+ 	./bin_to_h <rmswitch >rmswitch.h
+ 

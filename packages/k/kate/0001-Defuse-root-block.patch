@@ -1,0 +1,46 @@
+From f1b20995d1fe309b32b090ef8667f2de2f1d9d02 Mon Sep 17 00:00:00 2001
+From: Luca Beltrame <lbeltrame@kde.org>
+Date: Sun, 26 Feb 2023 22:27:06 +0100
+Subject: [PATCH] Defuse root block
+
+While the main point is correct as any application running in the same
+X session (not sandboxed) can use kate's capability to open a console,
+we allow (even encourage) running YaST on X11 as root.
+That way it's only an impact on usability.
+---
+ apps/lib/kateapp.cpp | 19 ++-----------------
+ 1 file changed, 2 insertions(+), 17 deletions(-)
+
+diff --git a/apps/lib/kateapp.cpp b/apps/lib/kateapp.cpp
+index 2d1a66157..85079c356 100644
+--- a/apps/lib/kateapp.cpp
++++ b/apps/lib/kateapp.cpp
+@@ -87,23 +87,8 @@ void KateApp::initPreApplicationCreation()
+ #if !defined(Q_OS_WIN) && !defined(Q_OS_HAIKU)
+     // Prohibit using sudo or kdesu (but allow using the root user directly)
+     if (getuid() == 0) {
+-        setlocale(LC_ALL, "");
+-        bindtextdomain("kate", KDE_INSTALL_FULL_LOCALEDIR);
+-        if (!qEnvironmentVariableIsEmpty("SUDO_USER")) {
+-            auto message = kli18n(
+-                "Running this editor with sudo can cause bugs and expose you to security vulnerabilities. "
+-                "Instead use this editor normally and you will be prompted for elevated privileges when "
+-                "saving documents if needed.");
+-            std::cout << dgettext("kate", message.untranslatedText()) << std::endl;
+-            exit(EXIT_FAILURE);
+-        } else if (!qEnvironmentVariableIsEmpty("KDESU_USER")) {
+-            auto message = kli18n(
+-                "Running this editor with kdesu can cause bugs and expose you to security vulnerabilities. "
+-                "Instead use this editor normally and you will be prompted for elevated privileges when "
+-                "saving documents if needed.");
+-            std::cout << dgettext("kate", message.untranslatedText()) << std::endl;
+-            exit(EXIT_FAILURE);
+-        }
++        std::cout << "THIS IS POTENTIALLY INSECURE!\nTo edit files as root please use:" << std::endl;
++        std::cout << "SUDO_EDITOR=kwrite sudoedit <file>" << std::endl;
+     }
+ #endif
+ 
+-- 
+2.39.2
+

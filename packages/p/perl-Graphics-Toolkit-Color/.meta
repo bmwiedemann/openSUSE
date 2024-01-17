@@ -1,0 +1,6 @@
+<package name="perl-Graphics-Toolkit-Color" project="openSUSE:Factory">
+  <title>Color palette creation helper</title>
+  <description>Each object has 7 attributes, which are its RGB and HSL values and if possible a name. This is because humans access colors on hardware level (eye) in RGB, on cognition level in HSL (brain) and on cultural level (language) with names. Having easy access to all three and some color math should enable you to get the color palette you desire quickly and with no additional dependencies.</description>
+  <devel project="devel:languages:perl" package="perl-Graphics-Toolkit-Color"/>
+  <url>https://metacpan.org/pod/Graphics::Toolkit::Color</url>
+</package>

@@ -1,0 +1,105 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c550aface661dcfc8a9f1343e6ba49c1</srcmd5>
+    <version>3.2.1</version>
+    <time>1647367492</time>
+    <user>dimstar_suse</user>
+    <comment>Please find the postgis package which is well maintained by upstream, as contributor here in obs, and is much desired by end-user.
+
+I welcome any suggestion of improvement of this beast ;-)</comment>
+    <requestid>961846</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>20fa4e5b7a7a7481d2ed69c94e2f1683</srcmd5>
+    <version>3.2.1</version>
+    <time>1656511277</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985570</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>62c3b4597b228965249671ba3ee249df</srcmd5>
+    <version>3.2.2</version>
+    <time>1659941110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993630</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ddd843117cc0777117030faddbcb5b39</srcmd5>
+    <version>3.2.4</version>
+    <time>1669910343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039197</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1f888b7f829156ad7e786c313e708243</srcmd5>
+    <version>3.2.5</version>
+    <time>1690469504</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.5: Bug Fixes
+  - #5384, Fix crash in ST_AsGML when given id is longer than given prefix
+           (Sandro Santilli)
+  - #5380, Fix 2.5 upgrades with views using geography based ST_Distance
+           (Sandro Santilli)
+  - #5106, Fix segfault in ST_RemEdgeNewFace/ST_RemEdgeModFace
+           when no edge side-faces are found (Sandro Santilli)
+  - #5313, Fix memory access issue in ST_InterpolateRaster (Paul Ramsey)
+  - #5338, Dump/Restore of raster table fails on
+           enforce_coverage_tile_rast constraint (Regina Obe)
+  - #5315, #5318, #5319, #5320, #5342 crashes on infinite coordinates
+          (Regina Obe, Paul Ramsey)
+  - #5344, Include topology id sequence state in dumps (Sandro Santilli)
+  - #5288, ST_LineCrossingDirection multi-cross error (Paul Ramsey)
+  - #5347, _ST_BestSRID crashes on ARM with infinite geometries (Regina Obe)
+  - #5363, Make ST_ClusterDBScan interruptable (Paul Ramsey)
+  - #5378, ST_Buffer(geography) drops SRID (Paul Ramsey)
+  - #5331, [postgis_tiger_geocoder] reverse_geocode, prefer addressable ranges
+           (Regina Obe, Locance)
+</comment>
+    <requestid>1100862</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>de919aca94073ec960a954ada0599e92</srcmd5>
+    <version>3.3.4</version>
+    <time>1691674409</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.4
+  * Bug Fixes and Enhancements *
+  - #5450, Fix macro expansion recursion on powerpc architectures.
+           (Bas Couwenberg)
+  - #5395, [postgis_topology] Allow unprivileged user dump
+           of database with topology enabled
+  - #5394, [postgis_topology] Improve robustness of finding
+           distinct vertices in topology edges (Sandro Santilli)
+  - #5403, [postgis_topology] Fix ValidateTopology(bbox) without
+           topology in search_path (Sandro Santilli)
+  - #5410, [postgis_raster] ST_Value bilinear resample,
+           don't throw an error if Band has no NODATA value
+           (Regina Obe)
+  - #5385, Postgres malloc assertion fail when
+           using pg_cancel_backend with ST_AsMVT
+           (Regina Obe, Paul Ramsey)
+  - #5452, Updated README.postgis for apt-based systems
+           (Jelte Fennema)
+  * Breaking Changes *
+    - #5385, Take out interruptability of ST_AsMVT
+             as it causes backend crash under intense conditions
+            (Regina Obe, Paul Ramsey)
+  PostGIS 3.3.3
+  * Bug Fixes and Enhancements *
+  - #5303, Don't try removing closed edges endpoint from
+           RemoveUnusedPrimitives (Sandro Santilli)
+  - #5289, Fix misleading message in RemoveUnusedPrimitives about
+           doubly connected edges healing (Sandro Santilli)
+  - #5298, Fix CopyTopology exception with hierarchical layers (Sandro Santilli)
+  - #5299, Corrections to address_standardizer_data_us lex (Regina Obe)
+  - #5332, Keep proj errors from percolating into PgSQL log (Paul Ramsey)
+ This is a higher version upgrade, see
+ https://git.osgeo.org/gitea/postgis/postgis/raw/tag/3.3.4/NEWS
+ for the full log since 3.2 release.
+</comment>
+    <requestid>1103214</requestid>
+  </revision>
+</revisionlist>

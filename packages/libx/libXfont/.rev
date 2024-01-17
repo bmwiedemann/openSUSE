@@ -1,0 +1,225 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e0a003fd429eef59acbda8a543a7cc5</srcmd5>
+    <version>1.4.3</version>
+    <time>1329476611</time>
+    <user>coolo</user>
+    <comment>- Split xorg-x11-libs into separate packages</comment>
+    <requestid>105455</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c260e8955158562c354d81ded303131d</srcmd5>
+    <version>1.4.5</version>
+    <time>1336471055</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115352</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c260e8955158562c354d81ded303131d</srcmd5>
+    <version>1.4.5</version>
+    <time>1340183557</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>c260e8955158562c354d81ded303131d</srcmd5>
+    <version>1.4.5</version>
+    <time>1359109233</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>fb2f8c86a3e1ddc5e42e416f8b2d480e</srcmd5>
+    <version>1.4.5</version>
+    <time>1363949723</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160093</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>64ab1ea4cd5217a855de8a7fb35e07fc</srcmd5>
+    <version>1.4.6</version>
+    <time>1376911797</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to ver 1.4.6 (forwarded request 195521 from Zaitor)</comment>
+    <requestid>195566</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>64ab1ea4cd5217a855de8a7fb35e07fc</srcmd5>
+    <version>1.4.6</version>
+    <time>1379662884</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d26b6be5ac7f27814185f88c4559c6ab</srcmd5>
+    <version>1.4.7</version>
+    <time>1389209745</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.4.7
+  This release includes the fix for CVE-2013-6462, as well as
+  other security hardening and code cleanups, and makes libXfont
+  compatible with libXtrans 1.3 on Solaris. (bnc#854915)</comment>
+    <requestid>213116</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3a5d506a7ec4c832b3e055e7ecf29a57</srcmd5>
+    <version>1.4.7</version>
+    <time>1395513968</time>
+    <user>coolo</user>
+    <comment>- update to current git commit a96cc1f to match current fontsproto
+  git sources</comment>
+    <requestid>226605</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>d26bb3b4c047b10c56983aee5d427e43</srcmd5>
+    <version>1.4.7</version>
+    <time>1401685450</time>
+    <user>coolo</user>
+    <comment>- U_0001-CVE-2014-0209-integer-overflow-of-realloc-size-in-Fo.patch,
+  U_0002-CVE-2014-0209-integer-overflow-of-realloc-size-in-le.patch,
+  U_0003-CVE-2014-0210-unvalidated-length-in-_fs_recv_conn_se.patch,
+  U_0004-CVE-2014-0210-unvalidated-lengths-when-reading-repli.patch,
+  U_0005-CVE-2014-0211-Integer-overflow-in-fs_get_reply-_fs_s.patch,
+  U_0006-CVE-2014-0210-unvalidated-length-fields-in-fs_read_q.patch,
+  U_0007-CVE-2014-0211-integer-overflow-in-fs_read_extent_inf.patch,
+  U_0008-CVE-2014-0211-integer-overflow-in-fs_alloc_glyphs.patch,
+  U_0009-CVE-2014-0210-unvalidated-length-fields-in-fs_read_e.patch,
+  U_0010-CVE-2014-0210-unvalidated-length-fields-in-fs_read_g.patch,
+  U_0011-CVE-2014-0210-unvalidated-length-fields-in-fs_read_l.patch,
+  U_0012-CVE-2014-0210-unvalidated-length-fields-in-fs_read_l.patch
+  * Security fixes. (CVE-2014-0209, CVE-2014-0210, CVE-2014-0211,
+    bnc#857544) (forwarded request 234717 from michalsrb)</comment>
+    <requestid>234718</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e47f30e7e18375d499380cc8eba6245a</srcmd5>
+    <version>1.4.99.901</version>
+    <time>1405253160</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.4.99.901
+  * This is a release candidate of libXfont 1.5.0 - please test and
+    report any issues found, so we can have a final/stable release
+    soon to go with the xorg-server 1.16 release.
+  * *IMPORTANT* This release works with fontsproto 2.1.3 or later
+    and is for use with the upcoming release of xorg-server 1.16
+    and later.  It will *not* work with older versions of
+    fontsproto or xorg-server (prior to 1.15.99.901).
+  * This release includes all the security &amp; bug fixes from
+    libXfont 1.4.8, plus these additional significant changes:
+    - Support for SNF font format (deprecated since X11R5 in 1991)
+      is now disabled by default at build time.  For now, adding
+      --enable-snfformat to configure flags may re-enable it, but
+      support may be fully removed in future libXfont releases.
+    - Many compiler warnings cleaned up, including some which
+      required API changes around type declarations (const char *,
+      Pointer, etc.).
+    - README file expanded to explain all the different formats/
+      options.
+- supersedes patches:
+  * U_0001-CVE-2014-0209-integer-overflow-of-realloc-size-in-Fo.patch
+  * U_0002-CVE-2014-0209-integer-overflow-of-realloc-size-in-le.patch
+  * U_0003-CVE-2014-0210-unvalidated-length-in-_fs_recv_conn_se.patch
+  * U_0004-CVE-2014-0210-unvalidated-lengths-when-reading-repli.patch
+  * U_0005-CVE-2014-0211-Integer-overflow-in-fs_get_reply-_fs_s.patch
+  * U_0006-CVE-2014-0210-unvalidated-length-fields-in-fs_read_q.patch
+  * U_0007-CVE-2014-0211-integer-overflow-in-fs_read_extent_inf.patch
+  * U_0008-CVE-2014-0211-integer-overflow-in-fs_alloc_glyphs.patch
+  * U_0009-CVE-2014-0210-unvalidated-length-fields-in-fs_read_e.patch
+  * U_0010-CVE-2014-0210-unvalidated-length-fields-in-fs_read_g.patch
+  * U_0011-CVE-2014-0210-unvalidated-length-fields-in-fs_read_l.patch
+  * U_0012-CVE-2014-0210-unvalidated-length-fields-in-fs_read_l.patch
+- added baselibs.conf as source to spec file</comment>
+    <requestid>240141</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fad837a1d411d639b41471ecb1d28912</srcmd5>
+    <version>1.5.0</version>
+    <time>1406442342</time>
+    <user>coolo</user>
+    <comment>- Update to final release 1.5.0
+  * no changes since 1.4.99.901</comment>
+    <requestid>241752</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>fad837a1d411d639b41471ecb1d28912</srcmd5>
+    <version>1.5.0</version>
+    <time>1409301486</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2cbda850c6309aeca7364f399114770f</srcmd5>
+    <version>1.5.1</version>
+    <time>1426795362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.5.1
+  * This release of libXfont provides the fixes for the
+    security advisory about BDF font parsing bugs (CVE-2015-1802,
+    CVE-2015-1803, CVE-2015-1804)</comment>
+    <requestid>291264</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>f06bb5c3a63bc3d10345c378f170f5a0</srcmd5>
+    <version>1.5.1</version>
+    <time>1450363973</time>
+    <user>dimstar_suse</user>
+    <comment>- U_bdfReadCharacters-Allow-negative-DWIDTH-values.patch
+  Negative DWIDTH is legal. This was broken by the fix for
+  CVE-2015-1804. Fixed upstream with commit 1a73d6 (boo#958383).</comment>
+    <requestid>348015</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b064bc18d774010022750d1666d8c7b6</srcmd5>
+    <version>1.5.2</version>
+    <time>1474886048</time>
+    <user>dimstar_suse</user>
+    <comment>-  Update to release 1.5.2
+   Maintenance branch release, primarily for bdftopcf's benefit as it's
+   the only thing that really needs the Xfont1 API. (xfs uses it too, I
+   believe, but could be ported to Xfont2). If someone wanted to step up
+   and merge Xfont1 into bdtopcf directly, that'd be great.
+- supersedes U_bdfReadCharacters-Allow-negative-DWIDTH-values.patch</comment>
+    <requestid>429464</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>99a6e825a4f75c28afa26d3ca1ad114d</srcmd5>
+    <version>1.5.2</version>
+    <time>1496533600</time>
+    <user>dimstar_suse</user>
+    <comment>- includes everything needed for missing sle issue entries:
+  fate #320388 (bsc#1041641)
+  boo#958383, bnc#921978, bnc#857544 (bsc#1041641)
+  CVE-2015-1802, CVE-2015-1803, CVE-2015-1804 (bsc#1041641)
+  CVE-2014-0209, CVE-2014-0210, CVE-2014-0211 (bsc#1041641)</comment>
+    <requestid>499651</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3bafdc2398c17897c9b3c7a8d54f3e4a</srcmd5>
+    <version>1.5.3</version>
+    <time>1509193115</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.5.3
+  * Check for end of string in PatternMatch (CVE-2017-13720)
+  * pcfGetProperties: Check string boundaries (CVE-2017-13722)</comment>
+    <requestid>535492</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c2aa43da5b1581349d67f0598e81b4de</srcmd5>
+    <version>1.5.4</version>
+    <time>1512292131</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.5.4
+  * Open files with O_NOFOLLOW. (CVE-2017-16611)</comment>
+    <requestid>546295</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>313edaa801adfc00810e443a89f456ca</srcmd5>
+    <version>1.5.4</version>
+    <time>1512547128</time>
+    <user>dimstar_suse</user>
+    <comment>  * Open files with O_NOFOLLOW. (CVE-2017-16611, bsc#1050459)</comment>
+    <requestid>548189</requestid>
+  </revision>
+</revisionlist>

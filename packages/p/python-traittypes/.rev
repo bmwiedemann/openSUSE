@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ac57560323a3f198dac6308b8a2e2ec5</srcmd5>
+    <version>0.0.6</version>
+    <time>1526371507</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-jupyter_bqplot</comment>
+    <requestid>603487</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f85e3c90617daf4e3d71b97115a38a76</srcmd5>
+    <version>0.2.1</version>
+    <time>1533887317</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.1
+  * Add xarray DataArray
+  * Remove unused imports (pandas and xarray)
+  * Add xarray Dataset
+  * Allow Undefined as default
+  * Refactor commond pandas trait type (DRY)
+  * Add tests for SciType validators
+  * Only raise error for missing dependencies on use
+</comment>
+    <requestid>627752</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5f6c036de942b25f477e7ea201e04933</srcmd5>
+    <version>0.2.1</version>
+    <time>1551025016</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677762</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>19556e8ef48829ee95768a6b79ca3dcd</srcmd5>
+    <version>0.2.1</version>
+    <time>1558515854</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697961</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>d41065923de272cac046dc4315ce9830</srcmd5>
+    <version>0.2.1</version>
+    <time>1593904820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818559</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>5011b65bce17ffaa4bb54c2334c04faa</srcmd5>
+    <version>0.2.1</version>
+    <time>1594900815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821282</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>3bf4cb6ec01a4b178a9d7b2010548c7e</srcmd5>
+    <version>0.2.1</version>
+    <time>1608112864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856033</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>e833a7e4c42ccb9717dc6c3fdba96f10</srcmd5>
+    <version>0.2.1</version>
+    <time>1618240241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884603</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>22bbf40a708429dc219a19a6a7540b67</srcmd5>
+    <version>0.2.1</version>
+    <time>1673209532</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-fix-nptypes.patch gh#jupyter-widgets/traittypes#32
+- Clean specfile, no files catachall
+- Use PEP517 build (forwarded request 1056814 from bnavigator)</comment>
+    <requestid>1056815</requestid>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>2c13086856272f7243525b956c07cdfc</srcmd5>
+    <version>0.2.1</version>
+    <time>1679182331</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip testing xarray on Python 3.8</comment>
+    <requestid>1072838</requestid>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>8c614595f7c712b102f77ca40b704735</srcmd5>
+    <version>0.2.1</version>
+    <time>1705353582</time>
+    <user>anag+factory</user>
+    <comment>- Remove obsolete python38 skip
+</comment>
+    <requestid>1138729</requestid>
+  </revision>
+</revisionlist>

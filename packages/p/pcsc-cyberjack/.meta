@@ -1,0 +1,9 @@
+<package name="pcsc-cyberjack" project="openSUSE:Factory">
+  <title>PC/SC IFD Handler for the Reiner SCT Cyberjack USB-SmartCard Readers</title>
+  <description>This package includes the PC/SC IFD handler for the Reiner SCT
+Cyberjack pinpad/e-com/RFID USB chipcard readers.
+
+This driver is meant to be used with the PCSC-Lite daemon from the
+pcsc-lite package.</description>
+  <devel project="security:chipcard" package="pcsc-cyberjack"/>
+</package>

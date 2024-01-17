@@ -1,0 +1,13 @@
+<package name="q5go" project="openSUSE:Factory">
+  <title>A Go board including an editor and analysis frontend</title>
+  <description>q5Go is a tool for Go players which performs the following functions:
+    SGF editor
+    Analysis frontend for Leela Zero (or compatible engines)
+    GTP interface
+    IGS client
+    Export to a variety of formats
+
+</description>
+  <devel project="games" package="q5go"/>
+  <url>https://github.com/bernds/q5go</url>
+</package>

@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d02ad3333a8665b0bdf202ec0303feff</srcmd5>
+    <version>0.13</version>
+    <time>1601488384</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission, potential further dependency for openQA</comment>
+    <requestid>835321</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8da60049a84b552371854ee6be2aeed9</srcmd5>
+    <version>0.14</version>
+    <time>1609783792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860214</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1bf68be972e38a221989f6c323f8ba25</srcmd5>
+    <version>1.01</version>
+    <time>1622664707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896694</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ce891f1807775fc56ef49d89fe323589</srcmd5>
+    <version>1.02</version>
+    <time>1660662509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>997343</requestid>
+  </revision>
+</revisionlist>

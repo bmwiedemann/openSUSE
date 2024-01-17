@@ -1,0 +1,30 @@
+diff -ur read-edid-3.0.2/get-edid/classic.c read-edid-3.0.2.mod/get-edid/classic.c
+--- read-edid-3.0.2/get-edid/classic.c	2015-04-29 03:08:34.000000000 +0200
++++ read-edid-3.0.2.mod/get-edid/classic.c	2020-06-07 22:47:03.625342070 +0200
+@@ -26,7 +26,7 @@
+ #define dosmemput(buffer,length,offset) memcpy(offset,buffer,length)
+ 
+ #define display(...) if (quiet == 0) { fprintf(stderr, __VA_ARGS__); }
+-int quiet;
++static int quiet;
+ 
+ real_ptr far_ptr_to_real_ptr( uint32 farptr )
+ {
+diff -ur read-edid-3.0.2/get-edid/get-edid.c read-edid-3.0.2.mod/get-edid/get-edid.c
+--- read-edid-3.0.2/get-edid/get-edid.c	2014-11-21 12:50:55.000000000 +0100
++++ read-edid-3.0.2.mod/get-edid/get-edid.c	2020-06-07 22:47:49.829985294 +0200
+@@ -9,10 +9,10 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-int quiet=0;
+-int i2conly=0; //0=both, 1=i2conly, 2=classiconly
+-int i2cbus=-1;
+-int classmon=0;
++static int quiet=0;
++static int i2conly=0; //0=both, 1=i2conly, 2=classiconly
++static int i2cbus=-1;
++static int classmon=0;
+ 
+ #define display(...) if (quiet == 0) { fprintf(stderr, __VA_ARGS__); }
+ #define version "3.0.2"

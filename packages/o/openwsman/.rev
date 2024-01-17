@@ -1,0 +1,1403 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e33bc150b37a61d6effa7ee40d5ab136</srcmd5>
+    <version>1.1.0</version>
+    <time>1184985560</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>9372ae41fcdcc3e35567acab20133b84</srcmd5>
+    <version>1.1.0</version>
+    <time>1185321627</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>52c9eb992eab48d98e7660f5cc4ac36f</srcmd5>
+    <version>1.2.0</version>
+    <time>1186154399</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d94fee3358aed6c4105cb4c7dcd5322a</srcmd5>
+    <version>1.5.0</version>
+    <time>1194386540</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0d5dbf1fddb0c6ac11e71c7d02de050b</srcmd5>
+    <version>1.5.1</version>
+    <time>1194878058</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0e9765de5758fae5b8aa8a67c4bea5b0</srcmd5>
+    <version>1.5.9</version>
+    <time>1197649217</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ed11aafa27a784e71f9beaac9f786a6a</srcmd5>
+    <version>1.5.9</version>
+    <time>1198074093</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>2a210c5621c6f3bee7cf442ea454a97b</srcmd5>
+    <version>1.5.9</version>
+    <time>1201196059</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8cfb1a7a364a64a98663b9b1cbd1051b</srcmd5>
+    <version>2.0.0</version>
+    <time>1208909077</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>4a00e7d15cbf97877d274e27b2bff59a</srcmd5>
+    <version>2.0.0</version>
+    <time>1210373386</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bdd3de145c5cfa31303d15e6c041f04c</srcmd5>
+    <version>2.1.0</version>
+    <time>1222378912</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>bdd3de145c5cfa31303d15e6c041f04c</srcmd5>
+    <version>2.1.0</version>
+    <time>1222378912</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>578cdbe87afe3c88eec1b8690e9e5e97</srcmd5>
+    <version>2.1.0</version>
+    <time>1226006601</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>7e2f07cd1589e99834cbf9b8e375eb9f</srcmd5>
+    <version>2.1.0</version>
+    <time>1232717623</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>b0378f7d4971a66e17833ec3ed5b1b67</srcmd5>
+    <version>2.1.0</version>
+    <time>1247759195</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>0c4a9a0286cc154f6a3a27e5d4bf6b6c</srcmd5>
+    <version>2.1.0</version>
+    <time>1250869952</time>
+    <user>autobuild</user>
+    <comment>Copy from systemmanagement/openwsman based on submit request 18203 from user prusnak
+</comment>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>0c4a9a0286cc154f6a3a27e5d4bf6b6c</srcmd5>
+    <version>2.1.0</version>
+    <time>1250869952</time>
+    <user>autobuild</user>
+    <comment>Copy from systemmanagement/openwsman based on submit request 18203 from user prusnak
+</comment>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>5866e7a5328af50a8adb8e90d37c6de6</srcmd5>
+    <version>2.1.0</version>
+    <time>1256144929</time>
+    <user>autobuild</user>
+    <comment>Copy from systemmanagement/openwsman based on submit request 22649 from user -miska-
+</comment>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>0815bd4f2f81a3a8da2f230661d3b77b</srcmd5>
+    <version>2.1.0</version>
+    <time>1260965529</time>
+    <user>autobuild</user>
+    <comment>Copy from systemmanagement/openwsman based on submit request 26666 from user coolo
+</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dd82aefba5352cb10cbab5e7a78a83d8</srcmd5>
+    <version>2.2.3</version>
+    <time>1267463006</time>
+    <user>autobuild</user>
+    <comment>Copy from systemsmanagement:wbem/openwsman based on submit request 33650 from user kwk
+</comment>
+    <requestid>33650</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>16ccf31c252862ab74201b6ac4a26303</srcmd5>
+    <version>2.2.3</version>
+    <time>1268355168</time>
+    <user>autobuild</user>
+    <comment>Copy from systemsmanagement:wbem/openwsman based on submit request 34592 from user kwk
+</comment>
+    <requestid>34592</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>2f2ffb9f48acd9717973bcf7ca157649</srcmd5>
+    <version>2.2.3</version>
+    <time>1268925243</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>2f2ffb9f48acd9717973bcf7ca157649</srcmd5>
+    <version>2.2.3</version>
+    <time>1278667374</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>2f2ffb9f48acd9717973bcf7ca157649</srcmd5>
+    <version>2.2.3</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>2f2ffb9f48acd9717973bcf7ca157649</srcmd5>
+    <version>2.2.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>199858d0f2a6d7330e4b4caa0252f115</srcmd5>
+    <version>2.2.7</version>
+    <time>1316088168</time>
+    <user>saschpe</user>
+    <comment>- Update to 2.2.7
+  - Features
+    - Rename openwsman-client to libwsman_clientpp since it only
+      includes C++ bindings. Split off libwsman_clientpp-devel.
+      Move openwsman_client.conf to libwsman1.
+    - Performance improvements for Enum (optimized) and Pull requests
+      (Srinivas Thirumalaa)
+  - Bindings
+    - Fix all tests
+    - Enhance client function documentation
+    - Add max_elements, max_envelope_size, fragment, and timeout
+      to Options
+    - Use optimized enumeration in tests
+  - Bugfix (all by Matthias Bolte)
+    - Fix memory leaks in wsmc_action_enumerate_and_pull and wsmc_release
+    - Fix possible corruption in ws_serializer_free_mem
+  - Developer
+    - Enable client tests
+    - Improve Windows build (Matthias Bolte)
+    - Reduce libu exposure in the public API (Matthias Bolte)
+
+- Update to 2.2.6
+  - Features
+    - Add array support for indications (Suresh Sundriyal)
+    - Add indication_baseclass_namespace (Till Steinbach, Suresh Sundriyal)
+  - Bugfixes
+    - Correctly prefix /etc when CMAKE_INSTALL_PREFIX is not /usr (Chris Poblete)
+
+- Disable SSL callback on Fedora (curl-Bugs-1924441)</comment>
+    <requestid>82145</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>199858d0f2a6d7330e4b4caa0252f115</srcmd5>
+    <version>2.2.7</version>
+    <time>1319182220</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>2e6efcd0b6eebb98d702416a125381a0</srcmd5>
+    <version>2.2.7</version>
+    <time>1328201927</time>
+    <user>coolo</user>
+    <comment>- Corrected the license
+- Corrected the formating according to the openSUSE standard (forwarded request 101418 from worldcitizen)</comment>
+    <requestid>102297</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>10a0e82f46c3c759271b543dfa4e06c3</srcmd5>
+    <version>2.3.4</version>
+    <time>1338476858</time>
+    <user>coolo</user>
+    <comment>- Fix ruby(abi) require
+
+- Update to 2.3.4
+  * Adapt to Swig 2.0.7
+    - renamed construtors/destructors.
+    - SwigClass.. variables are static now
+------------------------------------------------------------------
+- Require ruby(abi) = 1.9.1 for openSUSE &gt; 12.1
+
+- Update to 2.3.3
+  - Bugfixes
+    - Fixed enumeration with selector filter returning only one
+      instance. (Zoltan Micskei)
+    - mark XPath filtering as not supported (in sfcc)
+  - Bindings
+    - Adapt to Ruby 1.9
+    - Disable RDoc for Ruby 1.9
+    - WsXmlDoc.to_xml - enforce utf-8 encoding
+    - Properly create AssociationInstances(CIM References) /
+      AssociatedInstances(CIM Associations) filter
+  
+- Update to 2.3.2
+  - Bugfixes
+    - Assume 'XPath' as default filter dialect, not 'WQL' (Zoltan Micskei)
+  - Bindings
+    - Add ClientOptions#flags() (read) and ClientOptions#reset_flags()
+    - Add Openwsman#uri_prefix
+    - Add Openwsman#create_doc_from_string
+    - Provide full EndPointReference handling
+- Update to 2.3.1</comment>
+    <requestid>122823</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4470461ce77f9e3acbafd224e41d4dc4</srcmd5>
+    <version>2.3.5</version>
+    <time>1338569634</time>
+    <user>coolo</user>
+    <comment>- Update to 2.3.5
+  - Release serializer lock only after use (satya.chittidi@emc.com)</comment>
+    <requestid>123165</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>4470461ce77f9e3acbafd224e41d4dc4</srcmd5>
+    <version>2.3.5</version>
+    <time>1340183766</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>a1827dde95db5d8757cc20d368ffcfa6</srcmd5>
+    <version>2.3.5</version>
+    <time>1340723363</time>
+    <user>coolo</user>
+    <comment>- removes explicit and unecessary -target argument for javac (forwarded request 125779 from mvyskocil)</comment>
+    <requestid>125923</requestid>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>f0aa569aafef0f887c76b9f55f24746f</srcmd5>
+    <version>2.3.5</version>
+    <time>1347619487</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134128</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>1efed08e6254fee424cc6bb139afad1a</srcmd5>
+    <version>2.3.6</version>
+    <time>1352407856</time>
+    <user>namtrac</user>
+    <comment>- Update to 2.3.6
+  - Features
+    - Plugins: Ability to redirect requests to a different WS-Management
+      server (Praveen Paladugu)
+  - Bugfixes
+    - Fix xml namespace in Fault message (Praveen Paladugu)
+    - Pass correct key values when creating a Cim_IndicationSubscription
+      (Santosh Bidaralli)
+    - verify_class_namespace: properly check for 'CIM' class schema
+      (Mayur Bhosle)
+    - Fix MaxElements namespace in Pull context (Praveen Paladugu)
+  - Bindings
+    - Ruby: fix crash in Options destructor
+    - Ruby: mark passing arrays via invoke as unsupported
+  - Building
+    - new cmake option: BUILD_BINDINGS (defaults to yes)
+    - honor BUILD_TESTS for all test directories 
+    - fix MaxcOS build (Dan Villiom Podlaski Christiansen)</comment>
+    <requestid>140562</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>1efed08e6254fee424cc6bb139afad1a</srcmd5>
+    <version>2.3.6</version>
+    <time>1359109555</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9e78bed4ed867b723b3aa54e491a0043</srcmd5>
+    <version>2.3.7</version>
+    <time>1362731392</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157827</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>e9b9144cad6f0d30af489e232213dce7</srcmd5>
+    <version>2.3.7</version>
+    <time>1370523678</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>177899</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>9bf906cedd6b279754c2404afc341f5c</srcmd5>
+    <version>2.4.0</version>
+    <time>1378897160</time>
+    <user>coolo</user>
+    <comment>- Update to 2.4.0
+  - Features
+    - Add support for OptionSet in SOAP header (breaks ABI)
+    - Increase soversion of libwsman_client to 2.0.0
+    - new function wsmc_add_option
+    - Redirect plugin: Added facilities to import the redirection
+      details from an included file (Praveen K Paladugu)
+  - Bugfixes
+    - wsman_transport_set_verify_host passed wrong values to CURL
+    - recognize 'Msvc' (Hyper V) and 'DCIM' (Dell Drac) CIM schemata
+    - xml_parser_element_dump: fix pointer (github issue #8)
+  - Bindings
+    - Support for OptionSet
+      - ClientOptions#add_option
+      - ClientOptions#options= (Ruby)
+    - XmlDoc#to_s returns non-indented xml representation
+    - Define security delivery modes (WSMAN_DELIVERY_SEC_*)
+    - Ruby: API change: Transport.verify_{host,peer}? return Boolean now
+      Transport.verify_peer -&gt; Transport.verify_peer?
+      Transport.verify_host -&gt; Transport.verify_host?
+    - Ruby: Fix Ruby 1.9 threading locks for wsmc_action_* functions
+    - Ruby: Accessors for OptionSet, Selectors, and Properties
+      - ClientOptions#options
+      - ClientOptions#properties
+      - ClientOptions#selectors
+    - Vastly improved bindings documentation
+      Splitted off openwsman-ruby-docs subpackage
+    - Generate documenation with rdoc matching Ruby version
+    - Windows Remote Shell client implementation (see ruby/tests/winrs.rb)</comment>
+    <requestid>198326</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>fd3b812568e84eb499d8bf7f9d3ea6a7</srcmd5>
+    <version>2.4.1</version>
+    <time>1378989216</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to 2.4.1
+  - Fix build for SLE11, Fedora 18 &amp; 19
+  - Fix build time test library path
+  - include version.rb into ruby gem (fixes issue #18)</comment>
+    <requestid>198548</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>fd3b812568e84eb499d8bf7f9d3ea6a7</srcmd5>
+    <version>2.4.1</version>
+    <time>1379663449</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>169489664a71a6943a8753de41370bcd</srcmd5>
+    <version>2.4.2</version>
+    <time>1382361169</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>204106</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>cb4dd624bc8181ec03b0442482c1a0fb</srcmd5>
+    <version>2.4.3</version>
+    <time>1386932403</time>
+    <user>coolo</user>
+    <comment>- Update to 2.4.3
+  - Fix bindings for Java 1.5
+  - Raise exception if client creation fails (bindings)</comment>
+    <requestid>210575</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>2fa8ba793b704ab18240ea5a13dea1b7</srcmd5>
+    <version>2.4.3</version>
+    <time>1391078209</time>
+    <user>coolo</user>
+    <comment>- add 'rcopenwsmand' for systemd-based distributions</comment>
+    <requestid>215591</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c4ae18993eba5591e185d5762a7ab3f8</srcmd5>
+    <version>2.4.4</version>
+    <time>1393568682</time>
+    <user>coolo</user>
+    <comment>- Update to 2.4.4
+  - Security update
+    - ws_xml_make_default_prefix() can overflow buf parameter via sprintf()
+    - ws_xml_make_default_prefix() can overflow buf parameter via sprintf()
+    - wsmc_create_request() potential buf[20] overflow via WSMAN_ACTION_RENEW
+    - LocalSubscriptionOpUpdate() unchecked fopen()
+    - Incorrect order of sanity guards in wsman_get_fault_status_from_doc()
+    - Unchecked memory allocation in wsman_init_plugins(), p-&gt;ifc
+    - Unchecked memory allocation in mem_double(), newptr
+    - Unchecked memory allocation in dictionary_new(), d, d-&gt;val, d-&gt;key, d-&gt;hash
+    - Unchecked memory allocation in u_error_new(), *error
+    - sighup_handler() in wsmand.c uses unsafe functions in a signal handler
+  - Features
+    - add rcopenwsman command to systemd environments
+  - Bindings
+    - support rdoc 2.1 in Ruby bindings
+    - cmake: use PYTHON_INCLUDE_DIRS</comment>
+    <requestid>224111</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>c10abfd0e87cf2a7373d522fc41b3b0b</srcmd5>
+    <version>2.4.5</version>
+    <time>1395406337</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>226959</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>47707ec6a7ecfd4ea81ad0ac41edf3ca</srcmd5>
+    <version>2.4.5</version>
+    <time>1400173979</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>233852</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>024fb523f07b83792b42f4baf37992af</srcmd5>
+    <version>2.4.7</version>
+    <time>1401644427</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>235627</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>024fb523f07b83792b42f4baf37992af</srcmd5>
+    <version>2.4.7</version>
+    <time>1409302073</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>84543027f89a5bc48fdb17b5dd66972b</srcmd5>
+    <version>2.4.12</version>
+    <time>1414776463</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>259040</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>04dcf2575bb4c4490ab01273b885a004</srcmd5>
+    <version>2.4.13</version>
+    <time>1421333949</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.13
+  - Features
+    - Support Ruby 2.2
+  - Bugfixes
+    - Parsing of vendor namespaces (#48, #38)
+    - Client getters memory leaks (#47)
+    - Keep order of 'invoke' parameters (#49)</comment>
+    <requestid>281375</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>30c24b77f4b29fa0f338be9ff83bde1a</srcmd5>
+    <version>2.4.13</version>
+    <time>1422521802</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>283086</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>e8f38fdd4ce9a5f839e214258db1a946</srcmd5>
+    <version>2.4.14</version>
+    <time>1424827086</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.14
+  - Features
+    - Improved C++ bindings (Peter Hatina)
+  - Bugfixes
+    - Build fixes for Fedora21, RHEL7, and CentOS7
+    - option parser accepts '-?' and '--help' as valid</comment>
+    <requestid>287530</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>d2433c53a7786a1b7cdaa27e42443d2d</srcmd5>
+    <version>2.5.0</version>
+    <time>1432799825</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>308922</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>835aba189e75f4c3679a7a295cec06a1</srcmd5>
+    <version>2.5.2</version>
+    <time>1434003763</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>311409</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>1ae08cae4f95c1a7b65fed3da3553c05</srcmd5>
+    <version>2.6.0</version>
+    <time>1434383448</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>312037</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>192fb24a20106475144d910bd23946ed</srcmd5>
+    <version>2.6.0</version>
+    <time>1435172389</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>313299</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>aff8b0d4880485d525d6cda1d24d2b26</srcmd5>
+    <version>2.6.1</version>
+    <time>1440871499</time>
+    <user>coolo</user>
+    <comment>- Update to 2.6.1
+  - Features
+    - Add curlopt_nosignal option to openwsman_client.conf to prevent
+      CURL crashes in multithreaded client applications
+    - Limit EnvelopeSize to 32767 if wsman:MaxEnvelopeSize not set in
+      request (WS-Man 1.2 compatibility) (Prabhakar Pujeri)
+  - Bugfixes
+    - fix memory leaks (Vitezslav Crhonek)
+    - honor client:agent from openwsman_client.conf
+    - fix possible crash in dictionary_get()</comment>
+    <requestid>327655</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>3263f8791e9056a9c940c3b6c0c127bf</srcmd5>
+    <version>2.6.2</version>
+    <time>1445860127</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.2
+  - Features
+    - Install winrs.rb (Windows Remote Shell) to /usr/bin
+    - New package: winrs
+  - Bugfixes
+    - Make iniparser thread-safe (Emil Bartczak)
+    - Fix excessive RPM rebuilds (Olaf Hering)
+    - Fix selector extraction from URI query (Markus Kolb)
+    - Fix RPM building on older distributions
+    - Fix RPM building on Fedora 22
+
+- Fix build for older distributions.
+  Add struct-epr.diff</comment>
+    <requestid>340445</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>dfbd6cc2fd6222bb34e4c70e2dceb3a3</srcmd5>
+    <version>2.6.2</version>
+    <time>1450955762</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>348202</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>3038ca6af2dd87c6dea6828f0bd54707</srcmd5>
+    <version>2.6.3</version>
+    <time>1466681819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>403832</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>a573db2a45b5effae1f299e901f9cfdb</srcmd5>
+    <version>2.6.3</version>
+    <time>1493819802</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492310</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>04810d1152a26e3ee739f39f4c9075c8</srcmd5>
+    <version>2.6.3</version>
+    <time>1505334776</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522878</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>cd0ae171433751ebc2b7a158b8ffd993</srcmd5>
+    <version>2.6.7</version>
+    <time>1519747031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579039</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>de997d8073c84ac4f69999ebbb40049e</srcmd5>
+    <version>2.6.7</version>
+    <time>1520253906</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582529</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>c7808dc62038b16526bc47af0246fe04</srcmd5>
+    <version>2.6.9</version>
+    <time>1542750214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.9
+- Build with CURL 7.62.0 or later
+- Fix VS 2017 compilation (#114)
+- Warn on empty ssl_cipher_list (#111)
+
+- Update to 2.6.8
+- Disable directory listing in the http(s) component</comment>
+    <requestid>650339</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>4ace6661bc99b3e56d8dde699774c8a3</srcmd5>
+    <version>2.6.9</version>
+    <time>1559029328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705567</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>ba46270071945144256329c1094e699b</srcmd5>
+    <version>2.6.9</version>
+    <time>1560459978</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709673</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>07c08076ccd80ad244e9c5dfbfd85449</srcmd5>
+    <version>2.6.10</version>
+    <time>1565864932</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>723295</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>06e57a5ef7f4a766500708196784bc4d</srcmd5>
+    <version>2.6.11</version>
+    <time>1568720399</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.6.11
+  * Bugfix release
+    - prevent double free in events error processing
+
+  * Many potential NULL dereferences fixed (Alexander Usyskin)</comment>
+    <requestid>731472</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>fd5fc88883d4d12cb4c5b2660eec3f46</srcmd5>
+    <version>2.6.12</version>
+    <time>1569523359</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>733369</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>cb934a3f8c6b1caaf42c6acdb281057d</srcmd5>
+    <version>2.7.0</version>
+    <time>1591101698</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>810632</requestid>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>a84f85bcfb4f32488084c3e32907f236</srcmd5>
+    <version>2.7.0</version>
+    <time>1599088550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831199</requestid>
+  </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>b74a1fe614e07d5be08a51a7799e9dbe</srcmd5>
+    <version>2.7.0</version>
+    <time>1634331813</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925142</requestid>
+  </revision>
+  <revision rev="74" vrev="4">
+    <srcmd5>bb8541971bb56218eb8a4ea21a662e1a</srcmd5>
+    <version>2.7.0</version>
+    <time>1654869477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982030</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>d4366eac83ae893c35d917cfaf0b3464</srcmd5>
+    <version>2.7.2</version>
+    <time>1672315778</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.2
+  * Security
+    - call setgroups before setuid or setgid (kkaempf)
+    - harden systemd service (https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort)
+  * Bugfixes
+    - wsman-win-client-transport: initialize certificate pointer (Alexander Usyskin)
+    - iniparser: fix buffer size (Alexander Usyskin)
+    - wsman-win-client-transport: plug leak in error path (Alexander Usyskin)
+    - memory.c: fix memory cleanup (Alexander Usyskin)
+    - Improve handling of HTTP 401 Unauthorized (Vitezslav Crhonek)
+    - Fix serialization tests (kkaempf)
+    - Fix Ruby bindings warnings (kkaempf)
+    - Fix Ruby plugin loading test (kkaempf)
+    - Fix rpm packaging (kkaempf)
+    - Allow to run tests from 'build' directory (kkaempf)
+    - Add Python XML test (kkaempf)
+    - Enable CUNIT tests (kkaempf)
+- drop openwsman-initscript.patch and harden_openwsman.service.patch
+  (both upstream)
+- add openwsman-redhat-initscript.patch
+- Resolve rpmlint report &quot;libwsman3.x86_64: E:
+  shlib-policy-name-error SONAME: libwsman.so.1, expected package
+  suffix: 1&quot; (packaging bug introduced by the update to v2.6.1 on
+  Aug 28 2015)
+- Update to 2.7.1
+  Bugfix release
+  * msvc build fixes (Alexander Usyskin)
+  * cleanup passwords after use (Alexander Usyskin)
+  * drop RANDFILE in owsmangencert.h (kkaempf)
+  * fix potential NULL pointer dereference (Alexander Usyskin)
+  * MinGW build enablement (Bastian Germann)
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_openwsman.service.patch
+  Modified:
+  * openwsman.service
+- Use more appropriate %{_prefix}/lib for firewalld service
+  definitions (boo#1174075).
+- Update to 2.7.0
+  * API change:
+    client_opt: expiry and hearbeat_interval are float (Alexander Usyskin)
+    wsmc_set_sub_expiry() and wsmc_set_heartbeat_interval() change their
+    first parameter from int to float
+  * bump so version of libwsman_client from 4 to 5
+  * split off client libraries from server libraries
+    libwsman_client5 is separate from libwsman3 now.
+- Features
+  * new functions for C++ bindings: OpenWsmanClient::GetWithFlags()
+    and OpenWsmanClient::PutWithFlags to add a 'flags' parameter
+    (Alexander Usyskin)
+  * add FLAG_SUPRESS_100_CONTINUE to options, fixes #131 to workaround
+    a curl problem. Reportedly curl 7.69.0 fixes this also in curl.
+    (Alexander Usyskin)
+- Fixes
+  * fixed several compiler warnings (Alexander Usyskin)
+  * fixed spelling errors (Tomas Winkler)
+- Update to 2.6.13
+  * Bugfixes
+    - fixed several compiler warnings (Alexander Usyskin)
+    - code cleanup (Alexander Usyskin)
+    - general code robustness (Alexander Usyskin)  
+- Update to 2.6.12
+  * Bugfix release
+    - fix regression from 2.5.0: __cimnamespace selector was not
+      properly set in requests.
+- Update to 2.6.11
+  * Bugfix release
+    - prevent double free in events error processing
+- Update to 2.6.10
+  * install firewalld configuration (Leap/SLE 15+, Fedora 15+)
+  * Fix possible denial of service (bsc#1122623, CVE-2019-3816, CVE-2019-3833)
+  * Pthread usage fixes (Alexander Usyskin)
+  * Convert sprintf to snprintf and strcpy to strncpy (Tomas Winkler)
+  * Many potential NULL dereferences fixed (Alexander Usyskin)
+- drop bsc1122623.patch and debug_fix.patch, upstreamed
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut the build queues by allowing usage of systemd-mini
+- bsc1122623.patch: (bsc#1122623, CVE-2019-3816, CVE-2019-3833)
+  + treat all non-registered by provider paths as invalid
+  + fix possible denial of service in path parsing
+- debug_fix.patch: fix compilation in debug mode
+- use OBS specific BuildIgnore syntax that is rpm friendly. This is
+  to prevent rpm parser from reporting errors.
+- Remove comment from postun scriptlet because it generates a
+  script which is not understood by specified interpreter
+- Update to 2.6.9
+- Build with CURL 7.62.0 or later
+- Fix VS 2017 compilation (#114)
+- Warn on empty ssl_cipher_list (#111)
+- Update to 2.6.8
+- Disable directory listing in the http(s) component
+- Switch license to BSD-3-Clause AND GPL-2.0-only, since redirect
+  plugin is under GPL 2.0 only license.
+- Update RPM groups and package descriptions.
+- Replace old $RPM_* shell vars. Remove some unnecessary
+  %if..%endif blocks that do not affect the build process or
+  result.
+- Switch license to BSD-3-Clause AND GPL-2.0-only, since redirect
+  plugin is under GPL 2.0 only license.
+- Update to 2.6.7
+  - Features
+    - Build with CMake 2.6 or later
+  - Bugfixes
+    - fix return value check for SSL_CTX_set_cipher_list()
+    - fix pam config for local install
+- python3-openwsman
+- fix Source declarations to get a complete src.rpm
+- Build Python3 on Leap and SLE 15
+- Fix RHEL7 build
+- update to 2.6.6
+  - openssl 1.1.0 compatibility
+  - build python3 or python2 binding, but not both
+- update to 2.6.5
+  - Fix python3 / ruby 2.5 compatibility
+  - drop openwsman-2.6.2-python3.patch
+- Replace obsolete pam modules with standard ones
+- update to 2.6.4
+  - Bugfixes
+    - setup ECDHE to allow Perfect Forward Secrecy, using the p256
+      NIST prime curve (CVE-2016-2183) (mmeissner)
+- Package for python 3
+- Add openwsman-2.6.2-python3.patch 
+- use strip-nondeterminism to make build more reproducible
+- update to 2.6.3
+  - Bugfixes
+    - Prevent buffer overflow if digest realm too long
+    - Ensure path starts with '/' in client data endpoint
+    - Java bindings build fix
+    - Fix SSL library, usage is not thread safe (vcrhonek)
+    - Improve NetBSD and OSX builds (apjanke)
+    - Install winrs with correct name and permissions
+- make winrs executable
+  add-shebang-to-winrs.patch
+- Install winrs with executable permissions
+- Update to 2.6.2
+  - Features
+    - Install winrs.rb (Windows Remote Shell) to /usr/bin
+    - New package: winrs
+  - Bugfixes
+    - Make iniparser thread-safe (Emil Bartczak)
+    - Fix excessive RPM rebuilds (Olaf Hering)
+    - Fix selector extraction from URI query (Markus Kolb)
+    - Fix RPM building on older distributions
+    - Fix RPM building on Fedora 22
+- Fix build for older distributions.
+  Add struct-epr.diff
+- Update to 2.6.1
+  - Features
+    - Add curlopt_nosignal option to openwsman_client.conf to prevent
+      CURL crashes in multithreaded client applications
+    - Limit EnvelopeSize to 32767 if wsman:MaxEnvelopeSize not set in
+      request (WS-Man 1.2 compatibility) (Prabhakar Pujeri)
+  - Bugfixes
+    - fix memory leaks (Vitezslav Crhonek)
+    - honor client:agent from openwsman_client.conf
+    - fix possible crash in dictionary_get()
+- fix SLE 10 &amp; 11 builds
+- Update to 2.6.0
+  - Features
+    - Implement DSP 0226 Section 6.3 wsman:Locale
+      (wsmc_set_locale, wsmc_get_locale)
+    - set transport timeout for c++ binding (prabhakar_pujeri@dell.com)
+    - print CIMError code in HTTP header (prabhakar_pujeri@dell.com)
+- Update to 2.5.2
+  - Features
+    - build native Python package (Ahmad Jagot)
+  - Cleanup
+    - remove (unused) 'min_threads' config option (Vitezslav Crhonek)
+- Update to 2.5.1
+  - Features
+    - adds RFC1866 support in allowing ; as a separator for
+      resource uri query parameters (selectors).
+    - print a warning if a resource URI (wrongly) uses ',' as
+      query parameter separator.
+- Update to 2.5.0
+  - Drop 'openwsmand' service name, use 'openwsman' only
+    (was never properly supported by systemd anyways)
+  - Features
+    - Rewrite selector and property handling to keep
+      them in order (#49)
+      Selectors and properties can now handle EndpointReferences
+      as values. This increases compatibility with Intel AMT 7.0
+      and later.
+    - ABI change, .so version 3
+    - Ruby: Add EndPointReference#to_s
+- Update to 2.4.15
+  - Features
+    - Ruby: Add Fault#to_s
+    - Ruby: Enable ClientOptions#properties=
+    - Cim: New config option &quot;cim_client_cql' to select CQL query
+      identifier ('CQL' - default, 'DMTF:CQL' - standards-compliant)
+  - Bugfixes
+    - Fix segfault in wsmc_add_property
+    - Fix memleak in xpath handling
+    - Fix typo in parsing max_connections_per_thread (vcrhonek)
+    - Ruby: ClientOptions#properties=
+- Update to 2.4.14
+  - Features
+    - Improved C++ bindings (Peter Hatina)
+  - Bugfixes
+    - Build fixes for Fedora21, RHEL7, and CentOS7
+    - option parser accepts '-?' and '--help' as valid
+- Fix Fedora 21, RHEL 7, and CentOS 7 build
+- Update to 2.4.13
+  - Features
+    - Support Ruby 2.2
+  - Bugfixes
+    - Parsing of vendor namespaces (#48, #38)
+    - Client getters memory leaks (#47)
+    - Keep order of 'invoke' parameters (#49)
+- check SSL version
+- Update to 2.4.12
+  - Features
+    - New config option 'ssl_disable_protocols'. Pre-set to disable
+      SSLv2 and v3 in SSL mode
+    - Ruby: support Ruby 2.1 threading API
+  - Bugfixes
+    - Fix memory corruption due to a malloc made with the wrong size
+    - iniparser: dictionary_set' must return a value (David Holm)
+- drop fix-memory-corruption.patch, upstream
+- call service_add_pre unconditionally
+- Fix possible memory corruption
+  Add fix-memory-corruption.patch
+- Update to 2.4.11
+  - Features
+    - Bindings: EndPointReference.selector_names() for Python
+  - Bugfixes
+    - URI parsing: Disallow comma to separate selectors in resource
+      uri, only ampersand is allowed. (issue #38)
+    - Bindings: Fix Ruby doc generation
+- Update to 2.4.10
+  - Feature
+    Allow to pass EndPointReference instances as invoke() parameters
+    via ClientOptions.add_property
+- Update to 2.4.9
+  - Bugfixes
+    Make finding libssl.so.* more robust (bnc#884965)
+- Update to 2.4.8
+  - Features
+    - Add Fujitsu namespace, cim schema SVS
+  - Bugfixes
+    - fix memory corruption: copy key/value data for options,
+      selectors, and properties
+    - fix .spec file for RHEL/Fedora builds  
+- Update to 2.4.7
+  - Bugfixes
+    - file authenticator: allow password hash of up to 128 characters
+    - libu: don't exit() on malloc errors
+- Update to 2.4.6
+  - Features
+    - Support large hashes (like SHA512) in file authentication
+    - use constant-time password compare to prevent brute-force attacks
+    - Create server-plugin-ruby as separate RPM
+    - Add Unisys namespace and CIM class prefix 'SPAR'
+  - Bugfixes
+    - Fix crash on invalide resource URI  
+    - Fix resource namespace for DCIM_ classes
+- Split off server-side Ruby plugin to openwsman-server-plugin-ruby
+- Alias systemd service openwsman to openwsmand, add respective
+  rcopenwsman and rcopenwsmand commands.
+- Update to 2.4.5
+  - Features
+    - enforce SSL operation in systemd service
+    - Add /usr/sbin/rcopenwsman for systemd environments
+    - New environment variable 'OPENWSMAN_CURL_TRANSPORT_SSLVERSION' to
+      select SSL protocol version. Set it to 'tlsv1.2' for TLS-v1.2
+      (anstein)
+  - Bugfixes
+    - Fix memory leaks in redirect plugin (Praveen K Paladugu)
+    - shttpd: Improve error reporting if SSL context fails
+    - Builds on Fedora 20 now
+- Update to 2.4.4
+  - Security update
+    - ws_xml_make_default_prefix() can overflow buf parameter via sprintf()
+    - ws_xml_make_default_prefix() can overflow buf parameter via sprintf()
+    - wsmc_create_request() potential buf[20] overflow via WSMAN_ACTION_RENEW
+    - LocalSubscriptionOpUpdate() unchecked fopen()
+    - Incorrect order of sanity guards in wsman_get_fault_status_from_doc()
+    - Unchecked memory allocation in wsman_init_plugins(), p-&gt;ifc
+    - Unchecked memory allocation in mem_double(), newptr
+    - Unchecked memory allocation in dictionary_new(), d, d-&gt;val, d-&gt;key, d-&gt;hash
+    - Unchecked memory allocation in u_error_new(), *error
+    - sighup_handler() in wsmand.c uses unsafe functions in a signal handler
+  - Features
+    - add rcopenwsman command to systemd environments
+  - Bindings
+    - support rdoc 2.1 in Ruby bindings
+    - cmake: use PYTHON_INCLUDE_DIRS
+- add 'rcopenwsmand' for systemd-based distributions
+- Update to 2.4.3
+  - Fix bindings for Java 1.5
+  - Raise exception if client creation fails (bindings)
+- Update to 2.4.2
+  - Fix crash in redirect module (typo)
+  - Honor WS-Management 1.1.1 standard (line 739):
+    disable multiple MessageID checks   
+- Update to 2.4.1
+  - Fix build for SLE11, Fedora 18 &amp; 19
+  - Fix build time test library path
+  - include version.rb into ruby gem (fixes issue #18)
+- Update to 2.4.0
+  - Features
+    - Add support for OptionSet in SOAP header (breaks ABI)
+    - Increase soversion of libwsman_client to 2.0.0
+    - new function wsmc_add_option
+    - Redirect plugin: Added facilities to import the redirection
+      details from an included file (Praveen K Paladugu)
+  - Bugfixes
+    - wsman_transport_set_verify_host passed wrong values to CURL
+    - recognize 'Msvc' (Hyper V) and 'DCIM' (Dell Drac) CIM schemata
+    - xml_parser_element_dump: fix pointer (github issue #8)
+  - Bindings
+    - Support for OptionSet
+      - ClientOptions#add_option
+      - ClientOptions#options= (Ruby)
+    - XmlDoc#to_s returns non-indented xml representation
+    - Define security delivery modes (WSMAN_DELIVERY_SEC_*)
+    - Ruby: API change: Transport.verify_{host,peer}? return Boolean now
+      Transport.verify_peer -&gt; Transport.verify_peer?
+      Transport.verify_host -&gt; Transport.verify_host?
+    - Ruby: Fix Ruby 1.9 threading locks for wsmc_action_* functions
+    - Ruby: Accessors for OptionSet, Selectors, and Properties
+      - ClientOptions#options
+      - ClientOptions#properties
+      - ClientOptions#selectors
+    - Vastly improved bindings documentation
+      Splitted off openwsman-ruby-docs subpackage
+    - Generate documenation with rdoc matching Ruby version
+    - Windows Remote Shell client implementation (see ruby/tests/winrs.rb)
+- Fix Fedora 18 and SLE10 builds
+- Drop rubygem build require, we build rpm not gem here.
+- Update to 2.3.7
+  - Bugfixes
+    - Generate pkgconfig (.pc) files correctly
+    - Require SWIG &gt; 2.0.4 for building
+- fix %post script
+- Update to 2.3.6
+  - Features
+    - Plugins: Ability to redirect requests to a different WS-Management
+      server (Praveen Paladugu)
+  - Bugfixes
+    - Fix xml namespace in Fault message (Praveen Paladugu)
+    - Pass correct key values when creating a Cim_IndicationSubscription
+      (Santosh Bidaralli)
+    - verify_class_namespace: properly check for 'CIM' class schema
+      (Mayur Bhosle)
+    - Fix MaxElements namespace in Pull context (Praveen Paladugu)
+  - Bindings
+    - Ruby: fix crash in Options destructor
+    - Ruby: mark passing arrays via invoke as unsupported
+  - Building
+    - new cmake option: BUILD_BINDINGS (defaults to yes)
+    - honor BUILD_TESTS for all test directories 
+    - fix MaxcOS build (Dan Villiom Podlaski Christiansen)
+- fix building for non-SUSE distros, re-add java target for SLES10
+- disable ruby on RHEL6 (missing ruby-devel)
+- improve FindRuby, fixes CentOS5 and RHEL5 builds
+- removes explicit and unecessary -target argument for javac 
+- Update to 2.3.5
+  - Release serializer lock only after use (satya.chittidi@emc.com)
+- Fix ruby(abi) require
+- Update to 2.3.4
+  * Adapt to Swig 2.0.7
+    - renamed construtors/destructors.
+    - SwigClass.. variables are static now
+------------------------------------------------------------------
+- Require ruby(abi) = 1.9.1 for openSUSE &gt; 12.1
+- Update to 2.3.3
+  - Bugfixes
+    - Fixed enumeration with selector filter returning only one
+      instance. (Zoltan Micskei)
+    - mark XPath filtering as not supported (in sfcc)
+  - Bindings
+    - Adapt to Ruby 1.9
+    - Disable RDoc for Ruby 1.9
+    - WsXmlDoc.to_xml - enforce utf-8 encoding
+    - Properly create AssociationInstances(CIM References) /
+      AssociatedInstances(CIM Associations) filter
+  
+- Update to 2.3.2
+  - Bugfixes
+    - Assume 'XPath' as default filter dialect, not 'WQL' (Zoltan Micskei)
+  - Bindings
+    - Add ClientOptions#flags() (read) and ClientOptions#reset_flags()
+    - Add Openwsman#uri_prefix
+    - Add Openwsman#create_doc_from_string
+    - Provide full EndPointReference handling
+- Update to 2.3.1
+  - Features
+    - switch default CIMOM connection to https on port 5989
+      with PAM authentication (this now reflects the default sfcb config)
+  - Bindings
+    - Ruby: Add Openwsman#epr_uri_for
+  - Bugfixes
+    - Fix build issues in .spec file
+- Fix systemd %pre issues on openSUSE
+- Disable building of Ruby GEM in .spec file
+- Add perl-devel for CentOS6 and RHEL6
+- Provide systemd support in Fedora 15
+- Update to 2.3.0
+  Features
+  - openSUSE: support systemd
+  - provider getter functions for all client and client option string
+    values
+  - Add ssl-related config options in [cim] section, see openwsman.conf
+    ssl = yes/no
+    verify_cert = yes/no
+    trust_store = /etc/ssl/certs
+  Bugfixes
+  - Enum/Pull: Fix envelope maxsize handling, return partial result
+  - Fix memleaks in client and client option string setters
+    (Matthias Bolte)
+  - All string value getters (for client and client_opt) return
+    copies now
+    (found by Matthias Bolte)
+  - Define and use PLUGIN_API_VERSION for the server-side plugins
+  - Handle optional arguments propertly during client endpoint URI
+    creation (Matthias Bolte)
+  - Make calls to 'identify' repeatable
+  - Destroy serializer lock and client mutex at exit (Bing Liu)
+  - Fix leak in wsmc_release (Sanjeev Putta)
+  - Allow to reset transport credentials to NULL (Matthias Bolte)
+  - Plug memory leaks in wsman-client-transport (Found by Suneet
+    Chandok, improved by Matthias Bolte)
+  - print warning if event delivery fails
+  Bindings
+  - Provide Ruby bindings also as GEM
+    (-&gt; https://rubygems.org/gems/openwsman)
+  - Add Openwsman#create_doc_from_file to read xml files
+  - Add XmlNode#next to iterate over children with identical name
+  - Add Openwsman#erb_prefix_for to return EPR uri prefixes for
+    different CIM schema
+  - Ruby: Provide a default implementation of auth_request_callback
+  - Ruby: Support Ruby 1.9
+  - Expose Openwsman version as OPENWSMAN_VERSION, OPENWSMAN_MAJOR,
+    OPENWSMAN_MINOR, OPENWSMAN_PATCH
+  - Ruby: expand XmlNode#each to iterate over multiple children of
+    same name
+  - new test tool: winenum.rb, to enumerate WINRM instances
+  - update documentation: Add note about escaping selector values
+- Corrected the license 
+- Corrected the formating according to the openSUSE standard 
+- Do not package files twice.
+- Update to 2.2.7
+  - Features
+    - Rename openwsman-client to libwsman_clientpp since it only
+      includes C++ bindings. Split off libwsman_clientpp-devel.
+      Move openwsman_client.conf to libwsman1.
+    - Performance improvements for Enum (optimized) and Pull requests
+      (Srinivas Thirumalaa)
+  - Bindings
+    - Fix all tests
+    - Enhance client function documentation
+    - Add max_elements, max_envelope_size, fragment, and timeout
+      to Options
+    - Use optimized enumeration in tests
+  - Bugfixes
+    - Fix memory leaks in wsmc_action_enumerate_and_pull and wsmc_release
+      (Matthias Bolte)
+    - Fix possible corruption in ws_serializer_free_mem
+      (Matthias Bolte)
+    - Fix recognition of ntlm and gss-negotiate auth methods when checking
+      server-requested vs. client-offered methods.
+  - Developer
+    - Enable client tests
+    - Improve Windows build (Matthias Bolte)
+    - Reduce libu exposure in the public API (Matthias Bolte)
+- Update to 2.2.6
+  - Features
+    - Add array support for indications (Suresh Sundriyal)
+    - Add indication_baseclass_namespace (Till Steinbach, Suresh Sundriyal)
+  - Bugfixes
+    - Correctly prefix /etc when CMAKE_INSTALL_PREFIX is not /usr (Chris Poblete)
+- Disable SSL callback on Fedora (curl-Bugs-1924441)
+- Update to 2.2.5
+  - Restrict use of wsman:MaxElements to wsman:OptimizeEnumeration
+  - Fix owsmangencert.sh pathes
+  - Improve CMake variable handling
+- Update to 2.2.4
+  - Build with cmake
+  - add -java subpackage (not for SLES10)
+  - enforce manual creation of certificate (to get sufficient
+    entropy for randomness) (Praveen Paladugu)
+- fix pam config on RHEL/Fedora
+- 2.2.3.9 Bugfix release:
+  - bindings (kkaempf)
+    - make all constants uppercase
+    - pass code, code_detail, and message to WsmanStatus()
+      constructor optionally
+    - Pass XmlDoc to Fault() constructor
+    - Fix exceptions for Perl and Python
+    - Ruby: Alias XmlDoc.foo to XmlDoc.body.foo
+    - Ruby: Create bindings documentation
+    - Java: Enable and fix for JDK 1.6 (kkaempf + jblunck)
+  - Fix Fedora/RH build (kkaempf)
+  - Use floor() instead of round() (Suresh Sundriyal)
+  - Reuse username/password if auth_request_func is not set (Arun
+    Venkatachalam)
+  - Catch invalid reference parameters (report bad EPR values)
+    (kkaempf)
+  - fix Windows build (Trevor Witten)
+  - fix ssl (certificate thumbprint) callback check (Arun
+    Venkatachalam)
+- Fix segfault on invalid reference parameters to method calls.
+  bnc#599658
+- Check rc.msg pointer before accessing it through CMGetPointer
+- Fix dynamic loading of ssl lib (bnc#574684)
+- Fix ssl certificate thumbprint callback issue
+  (Arun Venkatachalam, bnc#587348)
+- Updated to 2.2.3 final release
+  - cleanup: access CMPIString by macro, not by casted direct
+    member access
+  - fix connection error msg: rc.msg is a CMPIString, not a char*
+    (kkaempf)
+  - fix for OperationTimeout parsing (Chris Poblete)
+- Updated to 2.2.3 pre-release
+  - fix Windows build (forum.openwsman.org)
+  - fix to build with non-standard subscriptions dir (Chris Poblete)
+  - accept OperationTimeout values as outlined in Section 3.2.6.1
+    of http://www.w3.org/TR/xmlschema-2 (Chris Poblete)
+  - fall back to IPv4 if IPv6 unsupported (Arun Venkatachalam)
+  - make IPv4 vs. IPv6 configurable (kkaempf)
+  - support invoking a method with array type parameter/arguments
+    (Chris Poblete, bnc#581414)
+  - fix crash in (unhandled) Array argument (Suresh Sundriyal)
+  - handle MaxElements in Pull operations (Chris Poblete, kkaempf,
+    bnc#581731)
+  - fix building with ssl when openssl/ssl.h is available
+    (Chris Poblete)
+  - make plugin directory configurable (Chris Poblete)
+  - fix &quot;WXF Invalid Representation&quot; error when sending a Create
+    instance request  using the WinRm client (Trevor Witten)
+- Update to 2.2.2 bugfix release
+  - fix init.d script to run on non-LSB systems (bnc#571873)
+  - Clean up CMake build
+  - More build fixes for RHEL5, Fedora 11+12, CentOS 5
+  - Fix host certificate check in eventing, enable only if the
+    verify_host flag is set (bnc#569611)
+  - fix NULL pointer dereference in PullResponse (bnc#572553)
+  - adapt bindings to Swig 1.3.40
+  - fix setters in bindings
+- fillup_and_install is for SUSE only, remove in .spec for others
+- re-add openwsman.SuSEfirewall2 and openwsman.pam
+- Update to 2.2.1
+- Major changes:
+  - Enumeration timeout fixed, resulting in --enum-idle-timeout option
+    to openwsmand taking seconds (instead of miliseconds) now
+  - Client side CRL (certificate revocation list) support
+    (Arun Venkatachalam)
+  - split off client config as /etc/openwsman/openwsman_client.conf
+  - Fix upper limit check for threads and their stack usage (Suresh Sundriyal)
+    (Allowing to confine memory usage in the 10-20MB range!)
+    Reintroduce max_thread config file parameter and two new parameters
+    * max_connections_per_thread
+    * thread_stack_size
+- Minor changes:
+  - require swig 1.3.30 or later (rhel5 users: upgrade !)
+  - clean up fault generation in CIM backend (Suresh Sundriyal)
+  - fix various memory leaks (Suresh Sundriyal)
+  - fix Python bindings build (kkaempf)
+  - Fix security risk when listing indication subscriptions (Suresh Sundriyal)
+  - Fix xml namespace for enumeration and subscription filters (kkaempf)
+  - Fix class names for swig bindings, makes Python bindings
+    operational (kkaempf)
+  - Use same encoding for faults as in incoming msg (bug305, kkaempf)
+  - Make WS-Enumeration pull response comply to WS-Enumeration sequence
+    ordering (bug220, Suresh Sundriyal)
+- Fix build for Fedora 11.x, 12.x, and RHEL 5.x
+- updated to the version 2.2.0
+  - Major changes:
+    - Adapt IANA ports of 5985 (http) and 5986 (https)
+    - Change the Ruby bindings module name to 'Openwsman'
+    - Change the Ruby plugin module name to 'Openwsman'
+    - IPv6 support
+    - preliminary support for wbem intrinsic operations
+      'EnumerateClassNames' and 'GetClass'
+    - Perl client bindings
+  - Minor changes:
+    - Perl example code added (by warptrosse@gmail.com)
+    - Fixes to the CMake build environment
+    - Fixes to the sfcc backend (argument handling, xml escaping)
+    - Many other bug fixes, e.g.
+      297: More detailed http status codes
+      309: Use correct namespace for detecting Filter node
+      288: CIM Provider Faults not getting propagated to client 
+      279: Openwsman server is adding extra CRLF
+- longer description
+- fix build for SLE9, 10, and 11.
+- using official ports 5985 and 5986 by default (fate#306512)
+- SuSE Firewall configuration
+- use new python macros
+- Fix build with automake-11.1
+  - openwsman-2.1.0-automake_fix.patch
+- fix cyclic dependencies of packages [bnc#467956]
+- fixed SSL/invoke method (ssl_fix.patch and invoke_fix.patch)
+- Fix possible segfault (bnc#442327)
+- updated to 2.1.0
+  * Security related fixes
+  * Many bug fixes related to http stack
+  * GSSAPI support (thanks to Paul Moore)
+- updated to 2.0.1
+  * Added Java bindings
+  * Set proxy in C++ bindings
+  * Fixed SelectorSet Filter
+  * Added SelectorSet filter support to C++ interface
+  * SelecorFilter does not need __cimnamespace
+- dropped obsoleted patch:
+  * interim-bug-fixes.patch (included in update)
+- Fix configure script.
+- update to 2.0.0
+  * Use latest shttpd code base
+  * Fixed SSL related issues with shttpd
+  * Ruby bindings using swish now and part of openwsman
+  * Python bindings update
+  * serialize/de-serialize APIs updated
+    Make serialize/de-serialize APIs independent of server related structure
+  * secure eventing delivery support in WS-Eventing server code and related
+    options added in client code.
+  * WS-Eventing client interfaces updated to make it more general
+  * Source indication namespace configuration supported so that the
+    namespace of subscription related classes can be different from
+    that of indication class
+  * Anonymous identify and custom identify file supported
+  * Support SelectorSet Dialect
+  * Improved Filter API
+  * Improved EPR API
+  * Enahnced bindings to support filters
+  * Initial cmake support
+  * Many other bug fixes
+- added libopenssl-devel to BuildRequires
+- update to svn 2336
+  * added and enabled ruby bindings
+  * custom and anonymous Identify support added
+- new sub-packages: openwsman-ruby, openwsman-python
+- add rpmlintrc for .so files within openwsman-server
+- update to 1.5.9 (svn 2314) in preparation of 1.6.0
+- enable python bindings
+- update to 1.5.1
+    * Fixed crash in CIM plugin
+    * Fixed serialization in client library
+- update to 1.5.0
+  Openwsman 1.5 is an interim stable release toward 2.0 with all
+  completed features since 1.0. This release serves as a checkpoint
+  to evaluate implemented and outstanding features and to take care
+  of bugs instead of waiting until the beta phase of 2.0.
+  See ChangeLog for more details ...
+  
+- fixed installdirs (mkinstalldir.patch)
+- added entries to ChangeLog from wiki (changelog.patch)
+- renamed openwsman to libwsman1 and openwsman-devel to libwsman-devel
+- removed obsolete patches
+  * devel.patch (included in update)
+  * get_auth.patch (included in update)
+  * remote_fs.patch (included in update)
+- update to 1.2.0
+- default to pam authentication in openwsman-server
+- fix filelist (include .so files for plugin loading)
+- fix %preun for base package
+- remove wsmand.log when deleting openwsman-server
+- fix -devel dependencies
+- add wsman_transport_get_auth_method() definition
+- branch packages -server and -client
+- replaced obsoleted macro %run_ldconfig with direct call of ldconfig
+- added $remote_fs to Required-Start in init file (remote_fs.patch)
+- created package (version 1.1.0)
+- based on BuildService package openwsman in home:nashif
+</comment>
+    <requestid>1045668</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>ccf9100e2216bee334fc9ac2274ea06b</srcmd5>
+    <version>2.7.2</version>
+    <time>1673888383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058660</requestid>
+  </revision>
+</revisionlist>

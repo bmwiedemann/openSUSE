@@ -1,0 +1,130 @@
+---
+ unix/init.c  |   16 ++++++++++++++--
+ unix/spawn.c |   18 +++++++++++++++---
+ unix/uid.c   |   11 +++++++++++
+ 3 files changed, 40 insertions(+), 5 deletions(-)
+
+--- unix/init.c
++++ unix/init.c	2017-04-01 08:29:41.877900913 +0000
+@@ -30,6 +30,7 @@
+ #include "sysdep.h"
+ 
+ #include <errno.h>
++#include <grp.h>
+ #include <pwd.h>
+ 
+ #if HAVE_FCNTL_H
+@@ -272,7 +273,11 @@ usysdep_initialize (puuconf,iflags)
+     {
+       q = getpwnam (OWNER);
+       if (q != NULL)
+-	setuid (q->pw_uid);
++	{
++	  if (q->pw_name)
++	    initgroups (q->pw_name, q->pw_gid);
++	  setuid (q->pw_uid);
++	}
+     }
+ 
+   if ((iflags & INIT_GETCWD) != 0)
+@@ -370,7 +375,14 @@ usysdep_exit (fsuccess)
+ boolean fsysdep_other_config (z)
+      const char *z ATTRIBUTE_UNUSED;
+ {
+-  (void) setuid (getuid ());
++  struct passwd *q;
++  uid_t uid = getuid ();
++
++  q = getpwuid (uid);
++  if (q && q->pw_name)
++    initgroups (q->pw_name, q->pw_gid);
++
++  (void) setuid (uid);
+   (void) setgid (getgid ());
+   return TRUE;
+ }
+--- unix/spawn.c
++++ unix/spawn.c	2017-04-01 08:11:14.802602723 +0000
+@@ -28,6 +28,8 @@
+ #include "sysdep.h"
+ 
+ #include <errno.h>
++#include <grp.h>
++#include <pwd.h>
+ 
+ #if HAVE_FCNTL_H
+ #include <fcntl.h>
+@@ -113,6 +115,8 @@ ixsspawn (pazargs, aidescs, fkeepuid, fk
+   int aichild_close[3];
+   pid_t iret = 0;
+   const char *zcmd;
++  uid_t uid;
++  struct passwd *pw;
+ 
+   /* If we might have to use the shell, allocate enough space for the
+      quoted command before forking.  Otherwise the allocation would
+@@ -352,7 +356,11 @@ ixsspawn (pazargs, aidescs, fkeepuid, fk
+   if (! fkeepuid)
+     {
+       /* Return to the uid of the invoking user.  */
+-      (void) setuid (getuid ());
++      uid = getuid ();
++      pw = getpwuid (uid);
++      if (pw && pw->pw_name)
++	initgroups (pw->pw_name, pw->pw_gid);
++      (void) setuid (uid);
+       (void) setgid (getgid ());
+     }
+   else
+@@ -368,11 +376,15 @@ ixsspawn (pazargs, aidescs, fkeepuid, fk
+ 	 Fixing this problem would seem to require a special setuid
+ 	 root program; I have not used this approach because
+ 	 modern systems should not suffer from it.  */
++      uid = geteuid ();
++      pw = getpwuid (uid);
++      if (pw && pw->pw_name)
++	initgroups (pw->pw_name, pw->pw_gid);
+ #if HAVE_SETREUID
+-      (void) setreuid (geteuid (), -1);
++      (void) setreuid (uid, -1);
+       (void) setregid (getegid (), -1);
+ #else
+-      (void) setuid (geteuid ());
++      (void) setuid (uid);
+       (void) setgid (getegid ());
+ #endif
+     }
+--- unix/uid.c
++++ unix/uid.c	2017-04-01 08:31:20.292059493 +0000
+@@ -28,6 +28,8 @@
+ #include "sysdep.h"
+ 
+ #include <errno.h>
++#include <grp.h>
++#include <pwd.h>
+ 
+ /* NetBSD apparently does not support setuid as required by POSIX when
+    using saved setuid, so use seteuid instead.  */
+@@ -45,6 +47,7 @@ fsuser_perms (pieuid, piegid)
+ {
+   uid_t ieuid, iuid;
+   gid_t iegid, igid;
++  struct passwd *pw;
+ 
+   ieuid = geteuid ();
+   iuid = getuid ();
+@@ -57,6 +60,14 @@ fsuser_perms (pieuid, piegid)
+     *piegid = iegid;
+ 
+ #if HAVE_SETREUID
++  pw = getpwuid (ieuid);
++#else
++  pw = getpwuid (iuid);
++#endif
++  if (pw && pw->pw_name)
++    initgroups (pw->pw_name, pw->pw_gid);
++
++#if HAVE_SETREUID
+   /* Swap the effective user id and the real user id.  We can then
+      swap them back again when we want to return to the uucp user's
+      permissions.  */

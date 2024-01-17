@@ -1,0 +1,6 @@
+<package name="greybird-geeko-theme" project="openSUSE:Factory">
+  <title>A Clean Minimalistic Theme for GNOME, XFCE, GTK+ 2 and 3</title>
+  <description>This theme for GTK2/3 and xfwm4/emerald/metacity is a fork of Greybird with openSUSE branding elements added. 
+</description>
+  <devel project="X11:xfce" package="greybird-geeko-theme"/>
+</package>

@@ -1,0 +1,34 @@
+--- unix/pipe.c.orig	2023-10-26 07:37:12.082076653 +0200
++++ unix/pipe.c	2023-10-26 07:54:33.401543580 +0200
+@@ -201,6 +201,7 @@
+   int aidescs[3];
+   const char **pzprog;
+   char **p;
++  const char *zhost;
+ 
+   q = (struct ssysdep_conn *) qconn->psysdep;
+ 
+@@ -214,10 +215,22 @@
+       return FALSE;
+     }
+ 
++  zhost = zphone;
++  if (zhost == NULL)
++    {
++      if (qsys == NULL)
++        {
++          ulog (LOG_ERROR, "No address for pipe connection");
++          return FALSE;
++        }
++      zhost = qsys->uuconf_zname;
++    }
++
++
+   /* Look for a string \H and replace it by the address given for this system */
+   for (p=pzprog; *p; p++)
+     if (!strcmp(*p, "\\H"))
+-      *p = zphone;
++      *p = zhost;
+ 
+   /* Look for a string \Z and replace by the system name to be called */
+   for (p=pzprog; *p; p++)

@@ -1,0 +1,7 @@
+<package name="libzdnn" project="openSUSE:Factory">
+  <title>IBM Z Deep Neural Network Library</title>
+  <description>IBM Z Deep Neural Network Library (zDNN) provides an interface for applications making use of the Neural Network Processing Assist Facility (NNPA).
+
+This IBM-provided C library provides a set of functions that handle the data transformation requirements of the AIU and provide wrapper functions for the NNPA instruction primitives.</description>
+  <devel project="science:machinelearning" package="libzdnn"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-python-barcode" project="openSUSE:Factory">
+  <title>Python Barcode generator</title>
+  <description>This library provides a simple way to create barcodes using only the Python standardlib. The barcodes where created as SVG objects.</description>
+  <devel project="devel:languages:python" package="python-python-barcode"/>
+</package>

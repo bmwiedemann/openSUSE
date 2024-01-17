@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ededf3385e2d799b14a35ec905452818</srcmd5>
+    <version>0.19.0</version>
+    <time>1530866362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.19.0
+  Remove python-PyBindGen-r870.patch
+- Make package singlespec
+- Cleanup
+- Update to 0.17.0
+- Remove all patches. Have been applied upstream.
+- Add python-PyBindGen-r870.patch
+- Add python-PyBindGen-r834.patch
+  * Fix build problem with the 'bool const &amp;' param type
+- Add python-PyBindGen-r831.patch
+  * Fixes UnboundLocalError in overloading.py
+- Initial version
+</comment>
+    <requestid>619829</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fa8873accdc9e99ed1d7e4583225e878</srcmd5>
+    <version>0.20.1</version>
+    <time>1574932508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751401</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>574bdd8aed7833639973679e26b4c6aa</srcmd5>
+    <version>0.22.0</version>
+    <time>1646349509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959286</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9b6f757f56d362eddac711572d7af1d9</srcmd5>
+    <version>0.22.1</version>
+    <time>1662239967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001044</requestid>
+  </revision>
+</revisionlist>

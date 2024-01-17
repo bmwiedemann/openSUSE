@@ -1,0 +1,44 @@
+diff --git a/src/mof/python/CMakeLists.txt b/src/mof/python/CMakeLists.txt
+index ea887daa753d..b2ef4241ef38 100644
+--- a/src/mof/python/CMakeLists.txt
++++ b/src/mof/python/CMakeLists.txt
+@@ -4,17 +4,24 @@ include(${SWIG_USE_FILE})
+ 
+ set(Python_ADDITIONAL_VERSIONS 2.7 2.6 2.5 2.4)
+ find_package(PythonLibs REQUIRED)
++FIND_PACKAGE(PythonInterp REQUIRED)
+ string(REGEX REPLACE "^([0-9]+\\.[0-9]+).*" "\\1" PYTHON_VER "${PYTHONLIBS_VERSION_STRING}")
+ 
+-include_directories(${PYTHON_INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/..)
++EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)" OUTPUT_VARIABLE PYTHON_LIB_DIR)
++STRING(REPLACE "\n" "" PYTHON_LIB_DIR "${PYTHON_LIB_DIR}")
++
++include_directories(${PYTHON_INCLUDE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/..)
++
++MESSAGE(STATUS "Python include: ${PYTHON_INCLUDE_PATH}")
++MESSAGE(STATUS "Python lib: ${PYTHON_LIB_DIR}")
+ 
+ set(CMAKE_SWIG_FLAGS "-c++")
+ 
+ set_source_files_properties(konkretmof.i PROPERTIES CPLUSPLUS ON)
+ set_source_files_properties(konkretmof.i PROPERTIES SWIG_FLAGS "-includeall")
+ swig_add_module(konkretmof python
+   konkretmof.i)
+ swig_link_libraries(konkretmof ${PYTHON_LIBRARIES} konkretmof)
+ 
+-install(TARGETS ${SWIG_MODULE_konkretmof_REAL_NAME} DESTINATION lib${LIB_SUFFIX}/python${PYTHON_VER}/site-packages)
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/konkretmof.py DESTINATION lib${LIB_SUFFIX}/python${PYTHON_VER}/site-packages)
++install(TARGETS ${SWIG_MODULE_konkretmof_REAL_NAME} DESTINATION ${PYTHON_LIB_DIR})
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/konkretmof.py DESTINATION ${PYTHON_LIB_DIR})
+diff --git a/src/mof/python/konkretmof.i b/src/mof/python/konkretmof.i
+index f0901713bbe3..30ec6820c293 100644
+--- a/src/mof/python/konkretmof.i
++++ b/src/mof/python/konkretmof.i
+@@ -15,6 +15,7 @@
+ #include "MOF_Types.h"
+ %}
+ 
++%include "MOF_Config.h"
+ %include "MOF_Parser.h"
+ %include "MOF_Types.h"
+ 

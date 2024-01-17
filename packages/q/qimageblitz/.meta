@@ -1,0 +1,5 @@
+<package name="qimageblitz" project="openSUSE:Factory">
+  <title>Graphical effect and filter library for Qt</title>
+  <description>qimageblitz is a graphical effect and filter library for Qt that contains many improvements over KDE 3.x's kdefx library including bugfixes, memory and speed improvements, and MMX/SSE support.</description>
+  <devel project="devel:libraries:c_c++" package="qimageblitz"/>
+</package>

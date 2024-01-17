@@ -1,0 +1,209 @@
+-------------------------------------------------------------------
+Mon Aug 07 18:51:31 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.40.2:
+  * Fix seg-fault when opening submodule in nested folder
+
+-------------------------------------------------------------------
+Mon Aug 07 18:51:07 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.40.1:
+  * Support bare worktrees where worktree does not have its own .git file
+  * Test bare repos with dotfile setup
+  * Use nerdfont version 3
+  * Don't run the check-required-label check on master
+  * 👽️ update worktree icons for NerdFont V3
+  * Bump gocui
+
+-------------------------------------------------------------------
+Sat Aug 05 14:42:22 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.40.0:
+  * Fix confirmation view sizing
+  * Add custom patch demo
+  * Add worktree demo
+  * Add custom command demo
+  * Add undo/redo demo
+  * Add demo for staging lines
+  * Add demo for amending old commit
+  * Add demo for filtering branches
+  * Support mp4 videos for demos
+  * Remove file watcher code
+  * Refresh when the terminal window gets the focus
+  * Bump gocui
+  * Point tcell at stefanhaller's fork
+  * Appease linter
+  * Increase timeout for linter
+  * Fix focus issue
+  * Wait in demo after setting caption
+  * Add explosion animation when nuking working tree
+  * Output correct path in demo record script
+  * Start in fullscreen when passing a git arg
+  * Adds EditRebaseFromBaseCommit log message to i18n
+  * Wraps rebase func with WithWaitingStatus to show loader when rebasing
+  * Moves log related translations into its own Tr.Log. namespace
+  * Moves hard coded strings for LogCommand to i18n.
+  * Create demo output dir if it doesn't already exist
+  * Add demo test variant
+  * Log error when saving app state fails after showing/hiding command log
+  * Move IgnoreWhitespaceInDiffView to AppState, and persist it when it changes
+  * Show correct keybindings in force-push prompt
+  * Allow force-tagging if tag exists
+  * Add a "Mark commit as base commit for rebase" command
+  * Cleanup: remove extra OutsideFilterMode guard
+  * Add documentation for working with stacked branches
+  * Don't show branch marker for head commit unless updateRefs config is on
+  * Don't show branch heads in reflog subcommits
+  * Visualize local branch heads in commits panel
+  * Store full sha in branch model
+  * Add CheckedOutBranch to Model struct
+  * Make bisect/basic.go test more concrete
+  * Add author short names to commits in test
+  * Improve updateRef test
+  * Remove the old experimentalShowBranchHeads mechanism and config
+  * Fix merge status of commits when update-ref command is present
+  * Add tests for setCommitMergedStatuses
+  * Make setCommitMergedStatuses a non-member function
+  * Remove secureexec package
+  * Standardise on using lo for slice functions
+  * Use double dash for disambuating path in editor templates
+  * Fix flakey worktree tests
+  * Write unit tests with the help of afero
+  * Fix bug where worktree view would take over window upon switching branches
+  * Use forward-slashes on windows
+  * Add more i18n for worktrees
+  * Use fields rather than methods on worktrees
+  * Centralise logic for obtaining repo paths
+  * Remove IO logic from presentation code for worktrees
+  * Add test for opening lazygit in the worktree of a bare repo
+  * Fix test by making branches appear deterministically
+  * Allow entering a submodule by pressing space
+  * Allow entering a worktree by pressing enter
+  * Update repo switch logic
+  * Add test for retained context focus when switching worktrees
+  * Support fastforwarding worktree
+  * Add more worktree tests
+  * Add worktree tests for removing/detaching
+  * Add worktree integration tests
+  * Remove worktree version guards
+  * Show loader when switching worktrees
+  * Support older versions of git when fetching worktrees
+  * Safer fetching of linked worktree paths
+  * Move worktrees tab to files window
+  * Change directory to worktree if given as an argument
+  * Support opening worktree in editor
+  * Properly render worktrees in files panel
+  * Better logic for knowing which repo we're in
+  * Only show worktree in status panel if not the main worktree and worktrees are supported
+  * Hide worktree functionality on old git versions
+  * Associate branches with worktrees even when mid-rebase
+  * Assume that the base of a worktree can be checked out
+  * i18n for worktrees
+  * Don't quit on error
+  * Allow opening worktree in editor
+  * Show base ref suggestions when creating worktree
+  * Refresh work trees when discarding file changes
+  * Checkout worktree when creating from worktree view
+  * Use 'M' for months in branches panel
+  * Fix filtering logic in worktrees view
+  * Support creating worktrees from refs
+  * Log when directory is changed
+  * Handle deleting branch attached to worktree
+  * Don't touch repo stack when switching worktrees
+  * Move status panel presentation logic into presentation package
+  * Land in the same panel when switching to a worktree
+  * Move current worktree to top of list
+  * Prompt to switch to worktree when branch is checked out by other worktree
+  * Update worktree model
+  * Alert when attempting to enter the current worktree
+  * Basic support for adding a worktree
+  * Put all worktree i18n strings together Use tabwriter to align worktree panel contents
+  * Improve worktree panel
+  * Style missing worktree as red and display better error
+  * Hide worktrees in the worktree panel if they point at a non-existing filesystem location
+  * Update status to differentiate the main vs linked worktrees
+  * Support for deleting a worktree
+  * Initial addition of support for worktrees
+  * When bisecting, always mark the current commit as good/bad, not the selected
+  * Add bisect menu entry that lets you choose bisect terms
+  * feat: add os.copyToClipboardCmd to allow for a custom command
+  * Fix the x/exp dependency
+  * Support random order of command execution in unit tests
+  * Have staging refresh wait for files to refresh first
+  * Speed up refresh using concurrency and wait groups
+  * Refactor reflog commit loader
+  * Speed up remote loader
+  * Use wait groups to speed up commit loading
+  * Log duration of post-refresh-update call
+  * Log duration of commands
+  * Log duration of refresh
+  * Show error when trying to open patch menu with an empty patch
+  * bring back yaml library fork
+
+-------------------------------------------------------------------
+Mon Jul 24 13:30:02 UTC 2023 - jkowalczyk@suse.com
+
+ - Update to version 0.39.4:
+  * Updated README.md
+  * Revert "Fix flakey pull_merge_conflict test"
+  * README.md: Add Gentoo installation documentation
+  * Could not type special characters on non-english keyboards
+  * Prompt for commit message when moving a custom patch to a new commit
+
+-------------------------------------------------------------------
+Mon Jul 24 13:29:46 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.39.3:
+  * Fix crash caused by simultaneous read/write of scanner buffer
+  * Better word wrap
+  * Update README.md
+  * Better tag creation UX
+  * Use fuzzy search when filtering a view
+  * Keep track of authors across local commits and branch commits for suggestions
+
+-------------------------------------------------------------------
+Mon Jul 24 13:27:53 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add basic %check to run packaged executable binary --help
+
+-------------------------------------------------------------------
+Sat Jul 22 00:42:30 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.39.2:
+  * Fix rendering to main view on windows
+
+-------------------------------------------------------------------
+Fri Jul 21 12:14:13 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.39.1:
+  * Fix goreleaser
+
+-------------------------------------------------------------------
+Fri Jul 21 12:13:50 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.39.0:
+  * Only apply right-alignment on first column of keybindings menu
+  * Add test for crashing on empty menu
+  * Fix crash on empty menu
+  * Add missing label to label checker
+  * Update release notes config and add CI check
+
+-------------------------------------------------------------------
+Fri Jul 21 12:09:21 UTC 2023 - jkowalczyk@suse.com
+
+- Packaging improvements:
+  * Use _service mode manual as better alias name than disabled
+  * Remove _service set_version arg basename not needed
+  * Fix package name in top comment was copy-paste typo
+  * Remove %define goflags not unused
+  * Remove %define sname not needed as %name is fine in this case
+  * Change group to Development/Tools/Version Control
+  * Remove export GOFLAGS not needed as this is a normal go build
+  * Simplify package description with more helpful language
+
+-------------------------------------------------------------------
+Sat Jun 10 09:50:24 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to lazygit-v0.38.2:
+  * update open docs by @jesseduffield in #2588
+  * Only use --empty=keep option with git versions that support it by @stefanhaller in #2585

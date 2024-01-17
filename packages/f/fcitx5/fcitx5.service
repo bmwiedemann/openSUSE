@@ -1,0 +1,10 @@
+[Unit]
+Description=Next generation of Flexible Input Method Framework
+Conflicts=ibus.service fcitx.service
+
+[Service]
+ExecStart=/usr/bin/fcitx5 -D
+
+[Install]
+Alias=input-method.service
+WantedBy=default.target

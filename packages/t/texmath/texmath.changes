@@ -1,0 +1,1069 @@
+-------------------------------------------------------------------
+Wed Dec 13 02:54:53 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.8.6.
+  texmath (0.12.8.6)
+
+    * Typst writer: avoid redundant `lr`s (#233).
+
+-------------------------------------------------------------------
+Mon Dec 11 19:03:52 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.8.5.
+  texmath (0.12.8.5)
+
+    * Typst writer: use ASCII symbols when possible instead of symbols (#232).
+      E.g., `+` instead of `plus`. Add `\` to characters needing escape.
+      Enhance list of characters that need escaping.
+
+    * Typst writer: fixed EBoxed output so it includes a border.
+
+    * Handle `\ddot` better in conversion to typst (#231).
+
+    * Use typst-symbols 0.1.5
+
+-------------------------------------------------------------------
+Fri Oct 27 16:59:02 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.8.4.
+  texmath (0.12.8.4)
+
+    * TeX reader: ignore `\allowbreak` (#230).
+
+    * TeX reader: handle `*{5}{lr}` in array column specifier (#229).
+
+    * OMML reader: allow `m:e` to be missing in `m:nary` (#228).
+      Technically this is not allowed, according to the spec, but
+      Word and LibreOffice seem to tolerate it.
+
+-------------------------------------------------------------------
+Thu Sep 14 02:54:13 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.8.3.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/texmath-0.12.8.3/src/changelog
+
+-------------------------------------------------------------------
+Fri Sep  8 15:54:23 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.8.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/texmath-0.12.8.2/src/changelog
+
+-------------------------------------------------------------------
+Tue Aug 22 16:13:04 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.8.1.
+  texmath (0.12.8.1)
+
+    * Typst Writer: several fixes (#223, Lleu Yang).
+
+      + Escape quotes (") in inQuotes
+      + Accent `\8407` corresponds to `arrow()`
+      + Write `#none`'s for matrices with blanks at the beginning of a row
+
+-------------------------------------------------------------------
+Sat Aug 19 16:30:11 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.8 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Jun  5 23:38:20 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.8.
+  texmath (0.12.8)
+
+    * Expose Text.TeXMath.Shared [API change]
+
+    * Typst writer: Fix bug where 's' turned into 'space' (#219).
+
+    * Typst writer: Fix handling of overline (#214).
+
+    * Typst writer: Fix underbrace (#217).
+
+    * Typst writer: Improve some accents (#216).
+
+    * TeX writer: don't include \\ on last line of matrix.
+
+    * TeX writer: Remove escaping of spaces inside \text{}.
+      It isn't needed, and it causes problems in MathJax rendering.
+
+    * TeX reader: allow empty matrices.
+
+    * MathML writer: Fix rendering of vectors (#218).
+
+    * Depend on external typst-symbols package.
+
+-------------------------------------------------------------------
+Thu Mar 30 20:26:15 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.7.1.
+  texmath (0.12.7.1)
+
+   * Typst writer:
+
+     + Improve under/overbrace/bracket/line.
+     + Fix bugs with super/subscript grouping (#212).
+     + Fix case where super/subscript is on an empty element,
+       by inserting a zws.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:09:21 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Mar 26 03:16:26 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.7.
+  texmath (0.12.7)
+
+    * Add typst writer. New module: Text.TeXMath.Writers.Typst.
+
+    * TeX reader: Support multilined environment. Closes #210.
+
+-------------------------------------------------------------------
+Wed Jan 25 05:24:19 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.6.
+  texmath (0.12.6)
+
+    * MathML writer:
+
+      + Use style with CSS as well as columnalign (#205).
+        This seems to be needed by browser implementations of MathML.
+      + Remove reliance on mstyle (#205). mstyle doesn't seem to be
+        supported any more, at least in browser implementations of MathML,
+        and the documentation indicates that it is treated like mrow now
+        that styles can go directly on child elements. This commit removes
+        our use of mstyle. Instead of using mstyle, we change mathvariant
+        attributes on descendent elements (and displaystyle attributes on
+        direct children, in the case of fractions).
+      + Extend our existing use of unicode replacements, since many
+        implementations don't properly handle mathvariant. We now get
+        variant characters for mo, mn, and all elements that can sensibly
+        take them, not just mi and mtext.
+      + Omit mathvariant attribute unless we can't find appropriate Unicode.
+        When MathML is displayed by ODT, having BOTH a bold math Unicode
+        character and a mathvariant="bold" attribute seems to confuse it.
+        (Browsers don't care either way.) This gives us more compact and
+        readable output, as well.
+
+-------------------------------------------------------------------
+Wed Jan 18 17:11:39 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.5.5.
+  texmath (0.12.5.5)
+
+    * Allow pandoc-types 1.23.
+
+    * TeX reader: remove false positives for isConvertible (#204).
+      "Convertible" symbols are those in which subscripts render
+      under the symbol in display environments, and as subscripts
+      in inline environments. Previously the TeX parser recognized
+      all relation and binary symbols as convertible, which does not
+      match TeX's behavior.
+
+    * TeX reader: Support `\enspace` (#203).
+
+-------------------------------------------------------------------
+Sat Oct  8 20:29:52 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.5.4.
+  texmath (0.12.5.4)
+
+    * OMML reader: fix treatment of `eqArr` (#196).
+      This change also includes a change to the TeX writer: any array
+      with an alternating sequence of R,L alignments will be rendered
+      as an aligned environment (not just a single [R,L] as currently).
+
+    * OOML Writer: Add low line char ("_") to `isBarChar` (#193, Hagb).
+      Closes jgm/pandoc#8152.
+
+    * Eqn writer: use `-` for minus, `cdots` for cdots (#200).
+
+-------------------------------------------------------------------
+Thu Sep 29 05:35:12 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.5.3.
+  texmath (0.12.5.3)
+
+    * Eqn writer: avoid empty `{}` (#198).
+      This causes an error, along the lines of
+      ```
+      eqn:<standard input>:73: error: syntax error
+       context is
+              } above { >>> } <<<
+      ```
+      which can be avoided if we use `{""}`.
+
+-------------------------------------------------------------------
+Wed Aug  3 17:41:32 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.5.2.
+  texmath (0.12.5.2)
+
+    * Fix bug in implementation of `\mspace` (#195).
+
+-------------------------------------------------------------------
+Tue May 31 18:24:37 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.5.1.
+  texmath (0.12.5.1)
+
+    * Compile texmath-server with `-threaded`.
+      This should fix the crashes we have experienced.
+
+    * Add apache style logging to web server.
+
+    * Add more strictness in Unicode.ToTeX.
+
+-------------------------------------------------------------------
+Sat Apr  2 18:20:57 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.5.
+  texmath (0.12.5)
+
+    * TeX reader: Improve treatment of `\operatorname` (#147).
+      We can now handle spaces, as in `\operatorname{arg\,max}`.
+      We also now have a better fallback when the operator name
+      contains content that can't be turned into plain text.
+      (In this case, we just pass through the contents, since EMathOperator
+      takes a text argument.)
+
+    * TeX: Support more `\var...` commands for greek letters (Albert
+      Krewinkel). AMSmath defines `\varGamma`, `\varDelta`, `\varTheta`,
+      `\varLambda`, `\varXi`, `\varPi`, `\varSigma`, `\varUpsilon`, `\varPhi`,
+      `\varPsi`, and `\varOmega`, all of which are now parsed as unicode
+      characters *MATHEMATICAL ITALIC CAPITAL ...*.  Also, `\varsigma` is
+      now parsed as *MATHEMATICAL SMALL FINAL SIGMA*.
+
+    * OMML writer: better handling for scaled delimeter symbols (#140).
+      We now try to represent these using m:d when possible.
+      This allows the parentheses to expand with the content;
+      previously we'd often get small parentheses with large
+      contents.
+
+    * OMML reader:
+
+      + Allow m:pos to be missing or lack an attribute in m:bar (#187).
+      + Set the default value of pos to "bot" (Maximilian Meier).
+      + Implement support for noBar fractions (#191, Meimax).
+
+    * Add servant-based server with a JSON API.
+
+    * Remove old cgi directory.
+
+    * Improve test suite (#189).  The existing test suite was a complicated
+      mess, so that it was hard to add new tests.  (One of the problems
+      was that the same files were used as golden files for reader
+      tests and as sources for writer tests.) This commit shifts
+      the same tests to a new, easier to understand format, so that
+      it will be simple to add new tests in the future.  We now use
+      the tasty test framework, and we use pretty-show to make the
+      native golden tests easier to comprehend.
+
+    * Add regression tests.
+
+-------------------------------------------------------------------
+Wed Jan 12 03:18:19 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.4.
+  texmath (0.12.4)
+
+    * TeX reader: handle hyperref better (#186).  We don't parse it as a link,
+      but we pass its contents through rather than failing.
+
+    * Update scripts and data in `lib/` directory. These are not build
+      dependencies, but they were used to produce some of the large
+      tables in the source code.  Fixed the scripts and Makefile to work
+      with recent texmath and cabal.  Removed two very large unicode data
+      files that can be downloaded when needed.  (This reduces the size of
+      the source tarball considerably.) Remove `lib/toascii` (no longer used).
+
+    * Update MMLDict using latest unicode.xml.
+
+    * TeX reader: support siunitx `\qty`, `\qtyrange`, `\unit` (#185).
+
+    * Remove Text.TeXMath.Compat.  We can now safely require mtl >= 2.2.1.
+
+    * Use symbolMap from ToTeX to shorten the long hardcoded symbols list.
+      Now we only hard-code items that differ what what is in symbolMap.
+      This reduces the code size by thousands of lines.
+
+    * Unicode.ToTeX: export `symbolMap` [API change].  This uses the data in
+    `records` to create a backwards mapping from TeX commands to Exps (ESymbol
+        elements).  This can replace most of the hardcoded list in the current
+    TeX reader.
+
+    * Split out TeXMath.Readers.TeX.Commands internal module.
+      This makes the TeX reader shorter and should help compile times.
+
+    * OMML reader: better handling of m:t nodes (#151).
+      Previously we parsed an m:t element as an EIdentifier if it contains a
+      single letter, but an EText TextNormal if it contains more than one.  This
+      gave bad results in some cases.  It is better to reserve EText for the
+      case where the m:nor property is specified for "normal text."
+
+    * Require base >= 4.11.
+
+    * Remove `network-uri` flag from stack.yaml.
+
+  texmath (0.12.3.3)
+
+    * OMML writer: use nary only for operators supported by LibreOffice
+      (Albert Krewinkel).  LibreOffice (and possibly Word, too) can handle
+      only a small set of operators in an `nary` element.
+
+    * TeX writer: use `\xleftarrow`, `\xrightarrow` where sensible
+      (Albert Krewinkel).  The commands are generated for expressions over `←`
+      or `→`. Besides being more idiomatic, this change also prevents the
+      generation of invalid LaTeX, as `\leftarrow` and `\rightarrow` are not
+      math operators and hence may not be followed by `\limit`.
+      Both commands are part of amsmath.sty.
+
+    * TeX reader:
+
+      + Improve angled-bracket support (Albert Krewinkel).
+        The amsmath package allows `\left<` and `\right>` as alternatives to
+        `\left\langle` and `\right\rangle`, respectively.
+      + Ignore stared version of `\tag` (Albert Krewinkel).
+      + Support \dots{c,b,m,i,o} from amsmath (#179).
+      + Change symbol returned for \dots{b,i,m} from `…` to `⋯`
+        (Albert Krewinkel).
+
+-------------------------------------------------------------------
+Mon Nov  1 08:39:52 UTC 2021 - psimons@suse.com
+
+- Update texmath to version 0.12.3.2.
+  texmath (0.12.3.2)
+
+    * OMML writer: remove m:nor element in math operators (#178).
+      This caused the document's main font, rather than the math
+      font, to be used in formatting operators, which is undesirable.
+
+-------------------------------------------------------------------
+Mon Aug 16 07:24:01 UTC 2021 - psimons@suse.com
+
+- Update texmath to version 0.12.3.1.
+  texmath (0.12.3.1)
+
+    * MathML reader: don't allow mfenced attributes to inherit (#177).
+      When open and close attributes aren't given on an mfenced,
+      we should use defaults rather than inheriting these from a
+      parent mfenced.
+
+-------------------------------------------------------------------
+Thu May 13 08:27:48 UTC 2021 - psimons@suse.com
+
+- Update texmath to version 0.12.3.
+  texmath (0.12.3)
+
+    * TeX reader: implement logic to convert a Bin symbol to
+      an Op to Op when it occurs at the beginning of a group,
+      or after an Open, Pun, or Op symbol. This will give much
+      better results for unary `-` (#176).
+
+    * OMML writer: fixed rendering of EDelimited (#173).
+      We now properly render "middles" (separators).
+
+-------------------------------------------------------------------
+Tue Mar 16 09:55:34 UTC 2021 - psimons@suse.com
+
+- Update texmath to version 0.12.2.
+  texmath (0.12.2)
+
+    * MathML input: support mmultiscripts element (#158, #100).
+
+    * Make MathML tag/attr recognition case-insensitive (#158).
+
+    * Pandoc writer: better handling of styling such as `\mathrm` (#145).
+      Previously identifiers were always italic, no matter what
+      styling was applied.
+
+    * Ignore `\tag` in TeX input (#162).
+
+    * TeX writer: avoid unneeded `\left` and `\right` for delimited.
+      We don't need `\left` and `\right` when the contents are
+      "standard height."
+
+    * TeX reader: parse implicit EDelimited sections (#172).
+      We now parse `(x)` as EDelimited, even though `\right` and `\left`
+      are not used.
+
+-------------------------------------------------------------------
+Mon Feb  8 05:04:15 UTC 2021 - psimons@suse.com
+
+- Update texmath to version 0.12.1.1.
+  texmath (0.12.1.1)
+
+    * Fix compilation with GHC-9.0.1 (#169, Simon Jakobi).
+      Background:
+      https://gitlab.haskell.org/ghc/ghc/-/wikis/migration/9.0#simplified-subsumption
+    * Add eqn to online demo.
+    * Improve error messages for unknown control sequences, and restructure
+      tex parser to be more efficient (#167).
+
+-------------------------------------------------------------------
+Tue Dec 29 21:16:00 UTC 2020 - psimons@suse.com
+
+- Update texmath to version 0.12.1.
+  texmath (0.12.1)
+
+    * OMML writer: explicitly mark symbols as non-italic (#109).
+      Otherwise, for some reason, they appear as italic by default.
+    * Improve error messages in reading tex arrays.
+    * Improve support for `\bmod`, `\mod`, etc. (#165).
+      Allow them to take complex arguments like `\left( 1 \right)`.
+    * Improve support for `\genfrac` (#164).
+    * Ignore `\textstyle`, `\scriptstyle`, `\scriptscriptstyle`,
+      as we currently ignore `\displaystyle`.
+    * Parse siunitx commands in reading tex (#157).
+    * Improve handling of `\not` in reading tex (#161).
+      Previously we only handled `\not` in front of certain symbols.
+    * Support `\pod` and `\pmod` and clean up spacing and font for
+      `\mod` and `\bmod` (#160).
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Sep 22 09:33:28 UTC 2020 - psimons@suse.com
+
+- Update texmath to version 0.12.0.3.
+  texmath (0.12.0.3)
+
+    * Allow pandoc-types 1.22.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:46:54 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jul 21 12:31:04 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints for PowerPC avoid "no space left on device" build error
+
+-------------------------------------------------------------------
+Tue Jun 16 11:14:56 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Wed May  6 06:54:10 UTC 2020 - psimons@suse.com
+
+- Update texmath to version 0.12.0.2.
+  texmath (0.12.0.2)
+
+    * Allow pandoc-types 1.21.
+    * Pandoc output: omit empty Emph for sub/superscript without base (#155).
+    * tex writer: Use `\overline{\overline{B}}` instead of unicode
+      double line accent (#153).
+
+-------------------------------------------------------------------
+Thu Feb 27 14:17:03 UTC 2020 - psimons@suse.com
+
+- Update texmath to version 0.12.0.1.
+  texmath (0.12.0.1)
+
+    * OMML writer: Fix overline and accent rendering (#152).
+    * OMML reader: Fix dropped arrows (#153). Add tests.
+
+-------------------------------------------------------------------
+Wed Nov 13 03:02:31 UTC 2019 - psimons@suse.com
+
+- Update texmath to version 0.12.
+  texmath (0.12)
+
+    * Use Text instead of String in data types and functions
+      (Christian Despres) [API change].  Note that there are still a few
+      places where we unpack Text to String with a view pattern:
+      performance could likely be increased with further rewriting.
+    * Avoid use of !! with negative index (jgm/pandoc#5853).
+
+-------------------------------------------------------------------
+Fri Nov  8 16:15:22 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Sat Oct  5 02:02:38 UTC 2019 - psimons@suse.com
+
+- Update texmath to version 0.11.3.
+  texmath (0.11.3)
+
+    * Use error instead of fail to allow building with ghc 8.8.
+    * Test output: remove superfluous spaces after control sequences,
+      superfluous groups, and unicode VARIATION SELECTOR 1.
+    * renderTeX: add space between control sequence and any non-ASCII
+      character.  There are differences in behavior of isAlphaNum between
+      different ghc versions that would affect test output otherwise.
+    * charToLaTeXString: Ignore 65024 VARIATION SELECTOR 1 to avoid putting
+      it literally in the output ; it is used in mathml output and occurs
+      in many of the test cases.
+    * Add cabal.project.
+    * Use actions rather than travis for CI.
+
+-------------------------------------------------------------------
+Wed Sep 25 02:02:10 UTC 2019 - psimons@suse.com
+
+- Update texmath to version 0.11.2.3.
+  texmath (0.11.2.3)
+
+    * OMML reader: properly distinguish normal text from math (#136).
+      If `m:nor` or `m:lit` is set in `m:rPr`, we interpret the
+      contents as literal text and not as math.
+    * TeX reader: use different symbol (`_`) for `\underline` (#142).
+      This gets the right accent properties on MathML output, so
+      that the underline is not lower than it should be.
+    * TeX reader: Treat `\bmod` as a relational symbol rather than
+      an operator (#143).  This fixes spacing problems in several
+      output formats.
+
+-------------------------------------------------------------------
+Sat Mar  9 03:01:56 UTC 2019 - psimons@suse.com
+
+- Update texmath to version 0.11.2.2.
+  texmath (0.11.2.2)
+
+    * OMML writer: use m:nor for normal text (#135).
+
+-------------------------------------------------------------------
+Sun Mar  3 03:01:39 UTC 2019 - psimons@suse.com
+
+- Update texmath to version 0.11.2.1.
+  texmath (0.11.2.1)
+
+    * OMML reader: Don't collapse `fName` to a string (#133).
+      This fixes cases where fName has some complexity, e.g.
+      a subscript or limit.
+
+-------------------------------------------------------------------
+Fri Feb  1 03:01:10 UTC 2019 - psimons@suse.com
+
+- Update texmath to version 0.11.2.
+  texmath (0.11.2)
+
+    * Improved handling of \mathop etc (#126).  We now allow operators like
+      `arg\,min`, converting the space into unicode.
+    * Support \hspace (#126).
+    * Support \hdots as synonym of \ldots (#126).
+    * Support \mathds (#126).
+    * In parsing array, ignore `|` in column specs (#127).
+      We have no way to represent this in EArray, currently.
+      Ignoring them seems better than failing altogether.
+
+-------------------------------------------------------------------
+Mon Oct 29 09:03:12 UTC 2018 - psimons@suse.com
+
+- Update texmath to version 0.11.1.2.
+  texmath (0.11.1.2)
+
+    * Eqn writer: properly escape `{` and `}`.
+    * Set more accurate bounds (Herbert Valerio Riedel).
+
+-------------------------------------------------------------------
+Thu Oct  4 15:40:07 UTC 2018 - psimons@suse.com
+
+- Update texmath to version 0.11.1.1.
+  texmath (0.11.1.1)
+
+    * Fix building with ghc-8.6.1 by removing need for now missing
+      MonadFail instances (Jonas Scholl).
+    * TeX reader: Allow operators like `/` to be scaled (#120).
+    * TeX reader: Improved efficiency of basicEnclosure.
+    * TeX reader: Handle `\bmod` (#115).
+
+  texmath (0.11.1)
+
+    * OMML writer: Use m:acc for accents in OMML (#119).  This fixes
+      some spacing issues for e.g. the translation of `\dot{m}`.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:50 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jul 13 14:31:28 UTC 2018 - psimons@suse.com
+
+- Update texmath to version 0.11.0.1.
+  texmath (0.11.0.1)
+
+    * OMML writer: use zero-width space to avoid dashed box (#118).
+      In Word, a dashed box shows up for empty text runs in
+      exponents and bases, or empty exponents and bases.  So
+      we use a zero-width space in these contexts.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update texmath to version 0.11.
+
+  * Changed treatment of non-ASCII characters.
+    Previously we ensured that the output of conversion to tex
+    was pure ASCII.  This meant rendering "ä" as "a", for
+    example, and it meant that many characters (e.g. Chinese)
+    simply got replaced with an empty string, while others
+    got replaced with "[?]".
+
+    This was not a particularly helpful behavior.  Including
+    the unicode characters verbatim doesn't interfere with
+    latex compilation.  They often won't show up in the generated
+    math, but that is no worse than what happened before.
+
+    This change passes through unicode characters unchanged
+    when they can't be converted to standard LaTeX commands.
+
+    An important reason for including the unicode characters
+    is that pandoc uses TeX to represent math in its AST.
+    So, for example, if you convert HTML with mathml to docx,
+    you'll currently lose all Chinese characters, since they'll
+    disappear in the TeX intermediary, even though a direct
+    mathml to ooml conversion would have passed them through.
+    With this change, these conversions will work better
+    (see jgm/pandoc#4642).
+
+    + Removed Text.TeXMath.Unicode.ToASCII (API change).
+    + Removed cbits that were needed for that module.
+    + Modified Tex.TeXMath.Unicode.ToTeX to pass through
+      unicode characters that can't be converted, rather
+      than trying to asciify them or remove them.
+
+  * Render degree symbol in tex as `{^\circ}`.
+  * eqn writer:  use uppercase letters in unicode escapes (jgm/pandoc#4597).
+  * Handle multicharacter operators better in Eqn, TeX, OMML (#109).
+  * OMML reader: unwrap `<w:...>` tags immediately under `<m:oMath>`
+    (#111, Jesse Rosenthal).
+  * Expose Text.TeXMath.TeX (TeX rendering functions) (#108).
+    This is needed in order to use getTeXMath from Text.TeXMath.Unicode.ToTeX.
+  * Pandoc writer: don't insert punctuation space before explicit space
+    (#107).  E.g. in `2,\!4`.
+  * Fix end-line command ('\\') in AMSmath environments (ARATA Mizuki).
+    The end-line command in AMSmath environments does not allow spaces
+    before its optional argument.
+  * Use `\in` for SMALL ELEMENT OF in "base" (Vaclav Haisman).
+  * Use `\ni` in base for U+220D (#103).
+  * Improved unicode -> tex symbol lookup.  Previously we had many
+    cases where the lookup table would map a unicode character to
+    the empty string for the base package, and this would print finding
+    a good match in another package in the environment.
+  * Added support for `\symbf` (#101).
+  * Revert "migrating the lookup structures for Unicode/ToTex.hs to
+    use C source files to accelerate builds."  This change gave us somewhat
+    faster builds (using less memory), but at a huge cost of
+    maintainability.
+  * Removed AlignDefault from Alignment (API change, #102).
+    AlignDefault doesn't make sense for a converter between
+    formats that may have different defaults.  We now properly treat
+    centering as the default in MathML and OMML input.
+  * Update tests that should have been updated for 0.9.4.3.
+  * MathML writer: put linethickness attribute directly on mfrac
+    element. This fixes binomial rendering.
+  * Pandoc writer: better handle accented characters (jgm/pandoc#3922).
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Tue Jul 11 03:02:27 UTC 2017 - psimons@suse.com
+
+- Update to version 0.9.4.1.
+
+-------------------------------------------------------------------
+Mon Mar 27 12:40:11 UTC 2017 - psimons@suse.com
+
+- Update to version 0.9.4 with cabal2obs.
+
+-------------------------------------------------------------------
+Tue Mar 14 09:25:21 UTC 2017 - psimons@suse.com
+
+- Update to version 0.9.3 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Feb 12 14:19:55 UTC 2017 - psimons@suse.com
+
+- Update to version 0.9.1 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Oct 30 16:26:14 UTC 2016 - psimons@suse.com
+
+- Update to version 0.8.6.7 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Oct 17 15:37:29 UTC 2016 - psimons@suse.com
+
+- Update to version 0.8.6.6 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Aug  1 10:41:44 UTC 2016 - psimons@suse.com
+
+- Update to version 0.8.6.5 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:19:19 UTC 2016 - psimons@suse.com
+
+- Update to version 0.8.6.4 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Tue Jun 28 15:24:15 UTC 2016 - mimi.vx@gmail.com
+
+- regenerate spec-file, fix ghc-texmath-devel requires
+- remove texmath-rpmlintrc
+
+-------------------------------------------------------------------
+Mon Jun 27 09:36:32 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.8.6.4
+* Handle equation environment (without numbering).
+
+-------------------------------------------------------------------
+Thu May 26 06:04:59 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.8.6.3
+* Use POST instead of GET for texmath-cgi.
+
+-------------------------------------------------------------------
+Tue Apr 26 09:04:55 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.8.6.2
+* Fixed array alignment issues
+* Use 1 and 0 for _Hide attributes, rather than on and off.
+* Fixed EUnderOver for omml output.  Previously both the under and
+    the over part were being placed under
+
+-------------------------------------------------------------------
+Thu Mar 31 08:41:59 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.8.6.1
+* OMML writer:  Fixed rendering of roots, so that the degree appears
+    in the right place.
+* OMML writer:  Don't include empty rPr elements.
+
+-------------------------------------------------------------------
+Tue Mar 29 07:57:26 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.8.6
+* TeX reader: Support hundreds more math symbols (all of those defined in
+    Text.TeXMath.Unicode.ToTeX), including `\nwarrow`, `\swarrow`, `\nearrow`,
+    `\searrow`.
+
+-------------------------------------------------------------------
+Tue Mar 29 07:40:14 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.8.5.1
+* OMML writer: Fixed order of elements in nary formulas to conform
+    to OMML spec (#88, Niko Weh).  `<e>` must follow the `<sup>` and `<sub>`
+    parts of `<nary>`. This fixes rendering issues in LibreOffice
+    (though Word copes with the incorrect order).
+* Added Paths_texmath to Other-Modules for texmath executable.
+
+-------------------------------------------------------------------
+Mon Mar 21 07:52:29 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.8.5
+* TeX parser: Support limited styling inside \DeclareMathOperator.
+* TeX reader: Correctly parse \mbox.  Its argument is text mode.
+* Updated mathml tests to use mo for operators.
+* TeX reader: support mathopen, mathclose, mathpunct.
+* MathML writer: render EMathOperator as mo, not mi.
+* MathML: handle leading space in EText.
+* Take --version in executable from cabal metadata.
+* Added Paths_texmath to other-modules.
+
+-------------------------------------------------------------------
+Sun Feb 14 15:19:50 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.8.4.2
+* Fixed overbrace, underbrace.  Previously we were using the wrong
+    character: U+FE37 instead of U+23DE.  This didn't work in Word.
+* Support \mathop, \mathrel, \mathbin, \mathord
+* MathML - render Symbol Ord as mi, not mo.
+* Handle align environments with > 2 cells per row.
+
+-------------------------------------------------------------------
+Sun Dec 13 17:03:51 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.8.4.1
+* Fixed bold-italic in OMML.  Previously `\mathbfit` didn't work
+    properly in OMML output.
+* Ignore `\nonumber`.
+* Allow styling in `\operatorname` e.g. `\operatorname{\mathcal{L}}`.
+* Fixed bug in `supHide` and `subHide` for OMML.  This  led to little
+    empty boxes being displayed in integrals with subscripts but no
+    superscripts.
+* Implemented `\mod` as a math operator.  This doesn't capture all the
+    spacing subtleties of the amsmath version, but should be good enough
+    for most purposes.
+* Allow pandoc-types < 1.17.
+* Improved symbol spacing in Pandoc output.
+    This change avoids putting space around binary symbols that
+    come at the beginning or end of a group, or appear on their
+    own.  It also avoids spacing on a binary symbol that follows
+    a Bin, Op, Rel, Open, or Punct atom, in accord with
+    TeXBook Appendix G.  We could go farther towards exactly
+    matching the TeXBook rules, but this simple change goes some of
+    the way.
+
+-------------------------------------------------------------------
+Sun Oct 18 14:30:58 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.8.4
+
+-------------------------------------------------------------------
+Sun Aug 23 17:48:29 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.8.3
+* Parse uppercase Greek letters as EIdentifier, not ESymbol Op.
+   This fixes handling of things like `$Lambda^1$`, particularly in omml.
+
+-------------------------------------------------------------------
+Mon Jul  6 12:54:35 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.8.2.2
+* Handle . after number with no following digits.
+* Handle bare hyphen in \text{...}. Closes jgm/pandoc#2274.
+* Support \ltimes and \rtimes in the TeX reader (Arata Mizuki).
+* Slightly more efficient number parser.
+
+-------------------------------------------------------------------
+Mon May  4 06:00:54 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.8.2
+* Better handling of decimal points. Decimal points are now parsed
+    as parts of numbers, not as separate symbols.  E.g. in MathML they
+    now appear in `<mn>` elements.  Closes #74.
+
+-------------------------------------------------------------------
+Thu Apr 23 20:10:09 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.8.1
+  * OMML: Don't force everything into Roman font by default.
+    This change ensures that variables will be italic by
+    default in Word.  See jgm/pandoc#2075.
+  * Fixed typo in `defaultEnv` to include `amssymb` (#68).
+  * Moved some lookup tables to C, and disabled aggressive
+    profiling defaults, to avoid excessive memory usage in
+    compiling with clang (#70).
+  * Support `\newcommand*` in `parseMacroDefinition` (jgm/pandoc#2005).
+  * Fixed order bug for over/under in OMML reader (#66).
+  * Support `\boldsymbol` (#67).
+  * Added network-uri flag. This addresses the split of network
+    and network-uri packages.
+  * OMML reader: change default accent (Jesse Rosenthal).
+    The default had previously been set as accute (possibly as a
+    placeholder). It appears to be circumflex/hat instead.
+  * Added OMML reader (Jesse Rosenthal).
+  * Support latex \substack (#57).
+  * Added EBoxed and implemented in readers and writers (#58).
+  * Handle latex \genfrac.  Use \genfrac for \brace, \brack,
+    etc. when amsmath is available.
+  * Improvements in handling of space characters.
+  * Use ESpace rather than EText when a mathml mtext just contains
+    a space.
+  * Use \mspace when needed to get latex spaces with odd sizes, rather
+    than finding the closest simple command.
+  * Use Rational instead of Double in ESpaced, EScaled.
+  * Shared: Export getSpaceWidth, getSpaceChars.
+  * Shared: Export fixTree, isEmpty, empty (formerly in MathML reader).
+  * TeX reader:  further improvements in error reporting.
+    Instead of reporting line and column, a snippet is printed
+    with a caret indicating the position of the error.  Also
+    fixed bad position information when control sequences are
+    followed by a letter.
+  * TeX reader:
+    + Improved error reporting.
+    + Optimized parser.
+    + Treat `\ ` as ESpaced rather than ESymbol.
+    + Internal improvements, including using the parsec3 interface
+      instead of the older parsec2 compatibility interface.
+  * Added tests for phantom.
+  * Changes in Exp type:
+    + Removed EUp, EDown, EDownup, EUnary, EBinary.
+    + Added EFraction (and FractionType), ESqrt, Eroot, EPhantom.
+    + Added boolean "convertible" parameter to EUnder, EOver, EUnderover.
+    + Changed parameter of EScaled from String to Double.
+    + Changed parameter of ESpace from String to Double.
+    + Removed EStretchy.
+    + Added EStyled, corresponding to mstyle in mathml, and \mathrm,
+      \mathcal, etc. in TeX (which can contain arbitrary math content,
+      not just text).
+    + Changed the type of EDelimited.  The contents of an EDelimited are
+      now either Right Exp or Left String (the latter case represents a
+      fence in middle position, e.g. \mid| in LaTeX).
+  * Module reorganisation:  the exposed interface has been completely
+    changed, and modules for reading MathML and writing TeX math
+    have been added:
+    + All writers now reside in Text.TeXMath.Writers.
+        - Text.TeXMath.MathML -> Text.TeXMath.Writers.MathML.
+          toMathML and showExp are removed, writeMathML added.
+        - Text.TeXMath.OMML -> Text.TeXMath.Writers.OMML.
+          toOMML and showExp removed, writeOMML added.
+        - Text.TeXMath.Pandoc -> Text.TeXMath.Writers.Pandoc.
+          toPandoc removed, writePandoc added.
+        - New module Text.TeXMath.Writers.TeX, exporting writeTeX,
+          writeTeXWith, addLaTeXEnvironment (the latter giving control
+          over which packages are assumed to be available).
+    + All readers now reside in Text.TeXMath.Readers.
+        - Text.TeXMath.MathMLParser -> Text.TeXMath.Readers.MathML,
+      exporting readMathML.
+        - Text.TeXMath.Readers.TeX nows exports readTeX rather than
+          parseFormula.
+    + New modules for unicode conversion: Text.TeXMath.Unicode.ToASCII,
+      Text.TeXMath.Unicode.ToTeX, Text.TeXMath.Unicode.ToUnicode.
+    + Two MathML specific modules: Text.TeXMath.Readers.MathML.EntityMap,
+      Text.TeXMath.Readers.MathML.MMLDict.
+    + In Text.TeXMath, all the XtoY functions have been removed
+      in favour of rexporting raw reader and writer functions. The
+      data type Exp is now also exported.
+    + TeX writer: Properly handle accents inside \text{}.
+      Use real text environments for EText (\textrm, not \mathrm).
+      Improved handling of scalers (\Big etc.).  Use amsmath matrix
+      environments when appropriate.  Fixed \varepsilon.
+    + MathML writer:  Omit superfluous outer mrows.  Add position
+      information to fences.
+    + OMML writer:  Handle \phantom.
+    + Pandoc writer:  Use unicode characters to support Fraktur and
+      other text styles.
+    + TeX reader:  Use EUnder/Over for \stackrel, \overset, \underset.
+      Improved handling of primes.  Fixed \notin.  Avoid superfluous
+      grouping of single elements.  Improved handling of scalers (\Big etc.).
+      Handle \choose, \brace, \brack, \bangle (#21).
+    + Macros:  Don't raise an error if applying a macro fails to
+      resolve to a fixed point; instead, just return the original string.
+  * Rewrote test suite as a proper cabal test suite.  Added
+    --regenerate-tests and --round-trip options.
+  * Removed cgi and test flags.  Added executable flag to build texmath.
+  * Modified texmath so it works like a cgi script when run as
+    texmath-cgi (through symlink or renaming).  Removed dependency on
+    the cgi package.
+  * New Module: Text.TeXMath.Unidecode, a module for approximating
+    unicode characters in ASCII.
+  * New Module: Text.TeXMath.Shared, a module for shared lookup
+    tables between the various readers and writers
+  * New Module: Text.TeXMath.MathMLParser, exporting readMathML.
+  * New Module: Text.TeXMath.EntityMap, exporting getUnicode,
+    a conversion table from MathML entities to unicode characters.
+  * New Module: Text.TeXMath.UnicodeToLaTeX, exporting getLaTeX,
+    converting a string of unicode characters to a string of equivalent LaTeX
+    commands.
+  * New Module: Text.TeXMath.LaTeX, replacing Text.TeXMath.Parser,
+    exporting toTeXMath.
+  * New Module: Text.TeXMath.MMLDict, implements a lookup table from
+    operators to their default values as defined by the MML dictionary,
+    exporting getOperator.
+  * New Module: Text.TeXMath.Compat, maintaining compatibility with
+    mtl < 2.2.1.
+  * Modified Text.TeXMath to export the primitive readers, as well as
+    mathMLTo{Writer} for all writers
+  * Modified: Text.TeXMath.Types: added additional record types for
+    Text.TeXMath.MMLDict and Text.TeXMath.UnicodeToLaTeX.
+    New Exports: Operator(..), Record(..).
+  * Modified test suite:  use cabal test, added significant number of tests.
+  * Added recognition of the LaTeX command \phantom
+  * Use combining tilde accent for \tilde.  Closes pandoc #1324.
+  * Allow \left to be used with ), ], etc.  Ditto with \right.
+    Previously only (, [, etc. were allowed with \left.  Closes pandoc #1319.
+  * Support \multline (previously it was mispelled "multiline")
+  * Changed data-files to extra-source-files.
+
+-------------------------------------------------------------------
+Thu Jul 31 14:05:51 UTC 2014 - dimstar@opensuse.org
+
+- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+-------------------------------------------------------------------
+Thu Mar 27 10:57:12 UTC 2014 - sbahling@suse.com
+
+- Correct package License
+
+-------------------------------------------------------------------
+Sat Mar 15 16:07:47 UTC 2014 - sbahling@suse.com
+
+- update to 0.6.6
+- needed for pandoc 1.12.3.3
+texmath changes:
+  * Insert braces around macro expansions to prevent breakage (#7).
+  * Support \operatorname and \DeclareMathOperator (rekka) (#17).
+  * Support \providecommand (#15).
+  * Fixed spacing bugs in pandoc rendering (#24).
+  * Ignore \hline at end of array row instead of failing (#19).
+
+-------------------------------------------------------------------
+Tue Dec 31 16:20:44 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 0.6.5.2
+- needed for pandoc 1.12.2.1
+
+-------------------------------------------------------------------
+Tue Dec 31 15:05:50 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- remove cgi support
+* not needed for pandoc
+* drop dependency on ghc-utf8-string-devel
+
+-------------------------------------------------------------------
+Sun Dec 29 16:42:57 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- merge d:l:haskell changes
+
+-------------------------------------------------------------------
+Sun Oct  6 17:16:16 UTC 2013 - sbahling@suse.com
+
+- update to 0.6.4
+- Change Group from Development/Languages/Other to
+  Productivity/Publishing/TeX/Utilities
+
+-------------------------------------------------------------------
+Thu May 16 15:53:35 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 0.6.1.5 from upstream
+* fixed type face for math operators
+* fixed \overset, \underset, and \stackrel commands
+
+-------------------------------------------------------------------
+Mon Mar 11 14:54:39 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 0.6.1.3 from upstream
+* gobble whitespace after formula as well as before.
+* fixed \dot and \ddot.
+* added \Upsilon
+
+-------------------------------------------------------------------
+Wed Oct  3 08:16:20 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 0.6.1.1 from upstream
+* fixes in unicode handling
+* fixes in various output formats (OMML, MML3, ...)
+
+-------------------------------------------------------------------
+Thu Jun  7 07:33:14 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- cabal2spec 0.25.5 spec file template
+
+-------------------------------------------------------------------
+Tue Mar 13 19:06:51 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- upgrade to 0.6.0.3 from upstream (for pandoc 1.9.1.2)
+
+-------------------------------------------------------------------
+Fri Jan 20 21:59:23 UTC 2012 - herbert@graeber-clan.de
+
+- downgrade to version 0.5.0.4 (pandoc needs this)
+
+-------------------------------------------------------------------
+Fri Jan 20 16:10:15 UTC 2012 - herbert@graeber-clan.de
+
+- initial packaging for Fedora automatically generated by cabal2spec-0.24.1

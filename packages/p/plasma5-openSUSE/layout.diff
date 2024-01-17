@@ -1,0 +1,11 @@
+diff --git a/usr/share/plasma/shells/org.kde.plasma.desktop/contents/layout.js b/usr/share/plasma/look-and-feel/org.openSUSE.desktop/contents/layouts/org.kde.plasma.desktop-layout.js
+index e62f467..fabf4ef 100644
+--- a/usr/share/plasma/shells/org.kde.plasma.desktop/contents/layout.js
++++ b/usr/share/plasma/look-and-feel/org.openSUSE.desktop/contents/layouts/org.kde.plasma.desktop-layout.js
+@@ -1,5 +1,5 @@
+ 
+-loadTemplate("org.kde.plasma.desktop.defaultPanel")
++loadTemplate("org.opensuse.desktop.defaultPanel")
+ 
+ var desktopsArray = desktopsForActivity(currentActivity());
+ for( var j = 0; j < desktopsArray.length; j++) {

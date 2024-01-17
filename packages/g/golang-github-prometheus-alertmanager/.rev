@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>22432edfd8248dc3060a15cbb26a152d</srcmd5>
+    <version>0.14.0</version>
+    <time>1521193440</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Factory submission. https://lists.opensuse.org/opensuse-factory/2018-03/msg00087.html</comment>
+    <requestid>587500</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>26f3cfc162f3edaa281708df0e72ee43</srcmd5>
+    <version>0.16.1</version>
+    <time>1551024835</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672873</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c03db5fe4b2013e06beebba05de979d1</srcmd5>
+    <version>0.16.2</version>
+    <time>1555488590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694777</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5f922f6e625358695621e0e899510f29</srcmd5>
+    <version>0.16.2</version>
+    <time>1556107031</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697175</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>2296a16787824a39c871908239c7c050</srcmd5>
+    <version>0.16.2</version>
+    <time>1565179277</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721455</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aefa83d79f30c73b50a879796cdf5799</srcmd5>
+    <version>0.21.0</version>
+    <time>1599598283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832969</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>99fd733fb2e49a25080257ad02d744ab</srcmd5>
+    <version>0.21.0</version>
+    <time>1604510863</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845949</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>4551071d68cf73f43dfe6c1b658cb962</srcmd5>
+    <version>0.21.0</version>
+    <time>1607430248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852577</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>a7c08e08d401e53ded15712bce74acc9</srcmd5>
+    <version>0.21.0</version>
+    <time>1632939551</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922154</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1a8d6a4e0ca6c7694108822a320d2170</srcmd5>
+    <version>0.23.0</version>
+    <time>1646494057</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959295</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>007cb669f3476d8e876d3591fdd547ba</srcmd5>
+    <version>0.23.0</version>
+    <time>1647618179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962719</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>688166563420d82e53091919198ad4a1</srcmd5>
+    <version>0.23.0</version>
+    <time>1649793048</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969424</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>3aaa367a4423331e74d1990279109b26</srcmd5>
+    <version>0.23.0</version>
+    <time>1658510486</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990647</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c115248e3ade0280c1326831c5fa14a3</srcmd5>
+    <version>0.25.0</version>
+    <time>1676648753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066404</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4aaa0c0a6c5ee3a296fc38d23b22c5e3</srcmd5>
+    <version>0.25.0</version>
+    <time>1684313595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087423</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>748744bf21753508812697ade5631d6a</srcmd5>
+    <version>0.26.0</version>
+    <time>1694114027</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109479</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>1502ad80c24ac41d5f02c17f0bccc3ac</srcmd5>
+    <version>0.26.0</version>
+    <time>1701378099</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129939</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>d09bf34c59800353e5d39d0684ff02ec</srcmd5>
+    <version>0.26.0</version>
+    <time>1702405941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1132625</requestid>
+  </revision>
+</revisionlist>

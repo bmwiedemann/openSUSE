@@ -1,0 +1,373 @@
+-------------------------------------------------------------------
+Wed Nov 22 17:27:05 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Override pytest configuration to do not handle warnings as errors.
+
+-------------------------------------------------------------------
+Wed Oct 18 07:31:47 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.31.1:
+  * Fixes:
+    - Fix import error when exceptiongroup isn't available #2231.
+    - Set url_for global for custom Jinja environments #2230.
+
+- Update to 0.31.0:
+  * Added
+    - Officially support Python 3.12 #2214.
+    - Support AnyIO 4.0 #2211.
+    - Strictly type annotate Starlette (strict mode on mypy) #2180.
+  * Fixed
+    - Don't group duplicated headers on a single string when using the TestClient #2219.
+
+- Update to 0.30.0
+  * Removed
+    - Drop Python 3.7 support #2178.
+
+- Update to 0.29.0:
+  * Added
+    - Add follow_redirects parameter to TestClient #2207.
+    - Add __str__ to HTTPException and WebSocketException #2181.
+    - Warn users when using lifespan together with on_startup/on_shutdown #2193.
+    - Collect routes from Host to generate the OpenAPI schema #2183.
+    - Add request argument to TemplateResponse #2191.
+  * Fixed
+    - Stop body_stream in case more_body=False on BaseHTTPMiddleware #2194.
+
+- Update to 0.28.0:
+  * Changed
+     - Reuse Request's body buffer for call_next in BaseHTTPMiddleware #1692.
+     - Move exception handling logic to Route #2026.
+  * Added
+     . Add env parameter to Jinja2Templates, and deprecate **env_options #2159.
+     . Add clear error message when httpx is not installed #2177.
+  * Fixed
+     - Allow "name" argument on templates url_for() #2127.
+
+-------------------------------------------------------------------
+Sun Jun 11 13:34:22 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Wed May 17 07:42:13 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.27.0:
+  * Added
+    - Minify JSON websocket data via send_json #2128
+
+  * Fixed
+    - Replace commonprefix by commonpath on StaticFiles 1797de4.
+    - Convert ImportErrors into ModuleNotFoundError #2135.
+    - Correct the RuntimeError message content in websockets #2141.
+
+-------------------------------------------------------------------
+Tue Mar 14 09:11:16 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.26.1:
+  * Fixed
+    - Fix typing of Lifespan to allow subclasses of Starlette #2077.
+
+-------------------------------------------------------------------
+Fri Mar 10 11:36:42 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.26.0.post1:
+  * Fixed
+    - Replace reference from Events to Lifespan on the mkdocs.yml #2072.
+
+- Update to 0.26.0:
+  * Added
+    - Support lifespan state #2060, #2065 and #2064.
+  * Changed
+    - Change url_for signature to return a URL instance #1385.
+  * Fixed
+    - Allow "name" argument on url_for() and url_path_for() #2050.
+  * Deprecated
+    - Deprecate on_startup and on_shutdown events #2070. 
+
+-------------------------------------------------------------------
+Thu Feb 16 16:22:35 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.25.0:
+  * Fixed
+    - Limit the number of fields and files when parsing 
+    multipart/form-data on the MultipartParser.
+
+- Fixed upstream: reenable tests for tests for i586 and armv7l.
+
+-------------------------------------------------------------------
+Fri Feb 10 18:28:13 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Disable broken tests for i586 and armv7l.
+
+- Update to 0.24.0
+  * Added
+    - Allow StaticFiles to follow symlinks
+    - Allow Request.form() as a context manager
+    - Add size attribute to UploadFile
+    - Add env_prefix argument to Config
+    - Add template context processors
+    - Support str and datetime on expires parameter on the Response.set_cookie method
+  * Changed
+    - Lazily build the middleware stack
+    - Make the file argument required on UploadFile
+    - Use debug extension instead of custom response template extension
+  * Fixed
+    - Fix url parsing of ipv6 urls on URL.replace
+
+-------------------------------------------------------------------
+Wed Jan  4 21:03:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Clean up test dependencies: fastapi pulls this into Staging
+  Ring1, we don't want to pull in more than we want.
+
+-------------------------------------------------------------------
+Tue Dec 13 08:27:49 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 0.21.3
+  * Fixed
+    - Only stop receiving stream on body_stream if body is empty on i
+      the BaseHTTPMiddleware.
+
+- Update to 0.21.0
+  * Added
+    - Add headers parameter to the TestClient.
+  * Deprecated
+    - Deprecate Starlette and Router decorators.
+  * Fixed
+    - Fix bug on FloatConvertor regex.
+
+- Fix test package by adding 'exceptiongroup' python module as a 
+  build dependency.
+
+-------------------------------------------------------------------
+Sun Nov 27 22:53:40 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.22.0
+  * Changed
+    - Bypass GZipMiddleware when response includes Content-Encoding #1901.
+  * Fixed
+    - Remove unneeded unquote() from query parameters on the TestClient #1953.
+    - Make sure MutableHeaders._list is actually a list #1917.
+    - Import compatibility with the next version of AnyIO #1936.
+
+-------------------------------------------------------------------
+Thu Sep 29 08:19:37 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.21.0
+  * Changed
+    - Replace requests with httpx in TestClient #1376.
+  * Added
+    - Add WebSocketException and support for WebSocket exception handlers #1263.
+    - Add middleware parameter to Mount class #1649.
+    - Officially support Python 3.11 1863.
+    - Implement __repr__ for route classes #1864.
+  * Fixed
+    - Fix bug on which BackgroundTasks were cancelled when using BaseHTTPMiddleware and client disconnected #1715.
+- setup.py install is no longer supported by upstream => use pip-based installation
+- added build dependencies:
+  * python3-hatchling
+  * python3-pip
+  * python3-wheel
+
+-------------------------------------------------------------------
+Thu Aug 11 05:22:41 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on contextlib2. 
+
+-------------------------------------------------------------------
+Fri Aug  5 11:37:43 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add missing runtime dependencies anyio and typing_extensions
+- Remove unnecessary build dependencies flake8 and pytest-cov
+
+-------------------------------------------------------------------
+Fri Jul 29 10:21:51 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- enable multibuild for test
+
+-------------------------------------------------------------------
+Tue Jul 12 17:55:25 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.20.4:
+  - Remove converter from path when generating OpenAPI schema
+    #1648.
+  - Revert "Allow StaticFiles to follow symlinks" #1681.
+  - Fix regression on route paths with colons #1675.
+  - Allow StaticFiles to follow symlinks #1337.
+  - Improve detection of async callables #1444.
+  - Send 400 (Bad Request) when boundary is missing #1617.
+  - Send 400 (Bad Request) when missing "name" field on
+    Content-Disposition header #1643.
+  - Do not send empty data to StreamingResponse on
+    BaseHTTPMiddleware #1609.
+  - Add __bool__ dunder for Secret #1625.
+  - Drop Python 3.6 support #1357 and #1616.
+
+-------------------------------------------------------------------
+Sat May 28 15:16:15 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.19.1:
+  * Fixed
+    - Fix inference of Route.name when created from methods #1553.
+    - Avoid TypeError on websocket.disconnect when code is None #1574.
+  * Deprecated
+    - Deprecate WS_1004_NO_STATUS_RCVD and WS_1005_ABNORMAL_CLOSURE in favor
+      of WS_1005_NO_STATUS_RCVD and WS_1006_ABNORMAL_CLOSURE, as the previous
+      constants didn't match the WebSockets specs #1580.
+
+-------------------------------------------------------------------
+Mon Apr 18 15:27:00 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.19.0:
+  * Added
+    - Error handler will always run, even if the error happens
+      on a background task #761.
+    - Add headers parameter to HTTPException #1435.
+    - Internal responses with 405 status code insert an Allow header,
+      as described by RFC 7231 #1436.
+    - The content argument in JSONResponse is now required #1431.
+    - Add custom URL convertor register #1437.
+    - Add content disposition type parameter to FileResponse #1266.
+    - Add next query param with original request URL in requires decorator #920.
+    - Add raw_path to TestClient scope #1445.
+    - Add union operators to MutableHeaders #1240.
+    - Display missing route details on debug page #1363.
+    - Change anyio required version range to >=3.4.0,<5.0 #1421 and #1460.
+    - Add typing-extensions>=3.10 requirement - used only on lower versions
+      than Python 3.10 #1475.
+  * Fixed
+    - Prevent BaseHTTPMiddleware from hiding errors of StreamingResponse
+      and mounted applications #1459.
+    - SessionMiddleware uses an explicit path=..., instead of defaulting
+      to the ASGI 'root_path' #1512.
+    - Request.client is now compliant with the ASGI specifications #1462.
+    - Raise KeyError at early stage for missing boundary #1349.
+  * Deprecated
+    - Deprecate WSGIMiddleware in favor of a2wsgi #1504.
+    - Deprecate run_until_first_complete #1443.
+
+-------------------------------------------------------------------
+Wed Feb 23 01:08:10 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.18.0:
+  * Change default chunk size from 4Kb to 64Kb on FileResponse #1345.
+  * Add support for functools.partial in WebSocketRoute #1356.
+  * Add StaticFiles packages with directory #1350.
+  * Allow environment options in Jinja2Templates #1401.
+  * Allow HEAD method on HttpEndpoint #1346.
+  * Accept additional headers on websocket.accept message #1361 and #1422.
+  * Add reason to WebSocket close ASGI event #1417.
+  * Add headers attribute to UploadFile #1382.
+  * Don't omit Content-Length header for Content-Length: 0 cases #1395.
+  * Don't set headers for responses with 1xx, 204 and 304 status code #1397.
+  * SessionMiddleware.max_age now accepts None, so cookie can last as long
+    as the browser session #1387.
+  * Tweak hashlib.md5() function on FileResponses ETag generation. The
+    parameter usedforsecurity flag is set to False, if the flag is available
+    on the system. This fixes an error raised on systems with FIPS
+    enabled #1366 and #1410.
+  * Fix path_params type on url_path_for() method i.e. turn str into Any #1341.
+  * Host now ignores port on routing #1322. 
+- Set asyncio_mode when running pytest, and stop turning warnings into
+  errors.
+
+-------------------------------------------------------------------
+Wed Dec  8 15:53:03 UTC 2021 - Torsten Gruner <simmphonie@opensuse.org>
+
+- update to version 0.17.1
+  * Fix IndexError in authentication requires when wrapped function
+     arguments are distributed between *args and **kwargs #1335.
+- version 17.0
+  * Added
+    - Response.delete_cookie now accepts the same parameters as
+      Response.set_cookie #1228.
+    - Update the Jinja2Templates constructor to allow PathLike #1292.
+  * Fixed
+    - Fix BadSignature exception handling in SessionMiddleware #1264.
+    - Change HTTPConnection.__getitem__ return type from str to
+      typing.Any #1118.
+    - Change ImmutableMultiDict.getlist return type from typing.List[str]
+      to typing.List[typing.Any] #1235.
+    - Handle OSError exceptions on StaticFiles #1220.
+    - Fix StaticFiles 404.html in HTML mode #1314.
+    - Prevent anyio.ExceptionGroup in error views under a
+      BaseHTTPMiddleware #1262.
+  *Removed
+    - Remove GraphQL support #1198.
+- Remove py39-ignore-loop-deprecation.patch
+
+-------------------------------------------------------------------
+Mon Sep 27 12:44:18 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add py39-ignore-loop-deprecation.patch to fix failing tests
+  (gh#encode/starlette#1293).
+
+-------------------------------------------------------------------
+Thu Jul 22 09:53:25 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.16.0:
+  - Added Encode funding option #1219
+  - Starlette now supports Trio as an async runtime via AnyIO
+    - #1157.
+  - TestClient.websocket_connect() now must be used as a context
+    manager.
+  - Initial support for Python 3.10 - #1201.
+  - The compression level used in GZipMiddleware is now
+    adjustable - #1128.
+  - starlette.websockets.WebSocket instances are now hashable and
+    compare by identity #1039
+  - A number of fixes related to running task groups in lifespan
+    #1213, #1227
+  - Several fixes to CORSMiddleware. See #1111, #1112, #1113,
+    #1199.
+  - Improved exception messages in the case of duplicated path
+    parameter names - #1177.
+  - RedirectResponse now uses quote instead of quote_plus
+    encoding for the Location header to better match the
+    behaviour in other frameworks such as Django - #1164.
+  - Exception causes are now preserved in more cases - #1158.
+  - Session cookies now use the ASGI root path in the case of
+    mounted applications - #1147.
+  - Fixed a cache invalidation bug when static files were deleted
+    in certain circumstances - #1023.
+  - Improved memory usage of BaseHTTPMiddleware when handling
+    large responses - #1012 fixed via #1157
+  - The method starlette.templates.Jinja2Templates.get_env was
+    removed #1218
+  - The ClassVar starlette.testclient.TestClient.async_backend
+    was removed, the backend is now configured using constructor
+    kwargs #1211
+  - Passing an Async Generator Function or a Generator Function
+    to starlette.router.Router(lifespan_context=) is deprecated.
+    You should wrap your lifespan in
+    @contextlib.asynccontextmanager. #1227 #1110
+  - Built-in GraphQL support via the GraphQLApp class has been
+    deprecated and will be removed in a future release. Please
+    see #619. GraphQL is not supported on Python 3.10.
+  - The executor parameter to GraphQLApp was removed. Use
+    executor_class instead.
+  - The workers parameter to WSGIMiddleware was removed. This
+    hasn't had any effect since Starlette v0.6.3.
+
+-------------------------------------------------------------------
+Tue Apr 13 19:20:13 UTC 2021 - simmphonie@opensuse.org
+
+- add build requirements for %pytest
+- remove test for deprecated built-in GraphQL support
+- remove unrecognized arguments in setup.cfg
+
+-------------------------------------------------------------------
+Wed Feb 17 18:40:47 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 0.14.2
+
+-------------------------------------------------------------------
+Wed Dec  2 14:49:51 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to 0.14.1
+
+-------------------------------------------------------------------
+Sat Sep  5 11:33:42 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- initial packaging of 0.13.8
+ 

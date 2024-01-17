@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c8c0aae6c9e453c88dc009007cf80d74</srcmd5>
+    <version>0.03</version>
+    <time>1326378388</time>
+    <user>coolo</user>
+    <comment>this was somehow missed for Task-Moose</comment>
+    <requestid>99727</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c8c0aae6c9e453c88dc009007cf80d74</srcmd5>
+    <version>0.03</version>
+    <time>1340183886</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>c8c0aae6c9e453c88dc009007cf80d74</srcmd5>
+    <version>0.03</version>
+    <time>1359109756</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>c8c0aae6c9e453c88dc009007cf80d74</srcmd5>
+    <version>0.03</version>
+    <time>1379663777</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9b31452b123d0023717d4217bd991ea5</srcmd5>
+    <version>0.04</version>
+    <time>1393611344</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223911</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9b31452b123d0023717d4217bd991ea5</srcmd5>
+    <version>0.04</version>
+    <time>1409302415</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b6af73ee48040fcfd4c06e7f9d64e5fb</srcmd5>
+    <version>0.05</version>
+    <time>1440658583</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325692</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/terraform-providers/terraform-provider-vsphere.git</param>
+              <param name="changesrevision">d5727b8bf01dbfa755b356d7a7e3a1eba78f49ce</param></service><service name="tar_scm">
+                <param name="url">https://github.com/hashicorp/terraform-provider-vsphere.git</param>
+              <param name="changesrevision">b8206ea7fc5a4fe9656790821992f1612ba554a2</param></service></servicedata>

@@ -1,0 +1,10 @@
+<package name="python-celery" project="openSUSE:Factory">
+  <title></title>
+  <description>Celery is a distributed task queue. It was first created for Django, but is now usable from Python. It can also operate with
+other languages via HTTP+JSON. It is used for executing tasks asynchronously, routed to one or more worker servers, running
+concurrently using multiprocessing. It is designed to solve certain problems related to running websites demanding high-availability and performance.
+
+It is perfect for filling caches, posting updates to twitter, mass downloading data like syndication feeds or web scraping. Use-cases are plentiful. Implementing these features asynchronously using celery is easy and fun, and the performance improvements can make it more than worthwhile.</description>
+  <devel project="devel:languages:python" package="python-celery"/>
+  <url>http://github.com/ask/celery</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="samba-ad-dc-image" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic:containers" package="samba-ad-dc-image"/>
+</package>

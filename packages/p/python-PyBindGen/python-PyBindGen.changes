@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Thu Sep  1 16:01:08 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 0.22.1
+  * Fix collections import (needed for Python 3.10)
+
+-------------------------------------------------------------------
+Thu Mar  3 18:35:17 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove some unnecessary she-bangs from installed module
+
+-------------------------------------------------------------------
+Thu Feb 24 09:15:37 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 0.22
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Nov 27 15:14:50 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 0.20.1
+  * fix for method returning const reference to a class, closes #21
+- Update to 0.20.0
+  * Merge pull request #18 from dan-eicher/master
+    Ordered dicts and custom_names
+
+-------------------------------------------------------------------
+Sun Jun 24 01:18:39 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Update to 0.19.0
+  Remove python-PyBindGen-r870.patch
+- Make package singlespec
+- Cleanup
+
+-------------------------------------------------------------------
+Thu May 15 10:57:55 UTC 2014 - reddwarf@opensuse.org
+
+- Update to 0.17.0
+- Remove all patches. Have been applied upstream.
+- Add python-PyBindGen-r870.patch
+
+-------------------------------------------------------------------
+Sun Dec 22 14:11:30 UTC 2013 - reddwarf@opensuse.org
+
+- Add python-PyBindGen-r834.patch
+  * Fix build problem with the 'bool const &' param type
+
+-------------------------------------------------------------------
+Wed Sep  4 16:33:01 UTC 2013 - reddwarf@opensuse.org
+
+- Add python-PyBindGen-r831.patch
+  * Fixes UnboundLocalError in overloading.py
+
+-------------------------------------------------------------------
+Sat Jun  1 08:25:24 UTC 2013 - reddwarf@opensuse.org
+
+- Initial version
+

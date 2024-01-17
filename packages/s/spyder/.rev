@@ -1,0 +1,679 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ff3a9f6b82ff9da99b64242d90879f36</srcmd5>
+    <version>4.1.1</version>
+    <time>1585842169</time>
+    <user>dimstar_suse</user>
+    <comment>As discussed in [1] and announced in [2],
+rename the package from spyder3 to spyder.
+
+[1] https://build.opensuse.org/request/show/787012
+[2] https://lists.opensuse.org/opensuse-factory/2020-03/msg00322.html
+</comment>
+    <requestid>790068</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6fd769bbe3b87b351f298c93aa2f32e4</srcmd5>
+    <version>4.1.2</version>
+    <time>1586775180</time>
+    <user>dimstar_suse</user>
+    <comment>- new version 4.1.2
+- New features
+  Add a new entry to the status bar to show the current 
+  state of Python language server. This will allow users to 
+  know if completions, linting and folding are working as 
+  expected or have issues. Clicking on this entry will also 
+  show a menu from which is possible to restart the server 
+  manually.
+- Important fixes
+  * Completely disable warning informing to restart Spyder 
+    when a screeresolution is detected on macOS.
+  * Show an error message when it's not possible to create a 
+    special console for Sympy, Cython or Pylab.
+  * Restore code folding for all files with less than 2000 lines.
+  * Fix showing help for dot object (e.g. `np.sin`) in the 
+    IPython console.
+  * Fix showing kernel initialization error messages on Windows.
+- for a full list of issues closed and PRs merge see CHANGELOG.md
+- remove patch merged upstream
+  spyder-pr11899-fixdeprecation.patch
+</comment>
+    <requestid>793230</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>de9fff461d6ac09535413dd5d543a501</srcmd5>
+    <version>4.1.2</version>
+    <time>1587467588</time>
+    <user>dimstar_suse</user>
+    <comment>- More work on running the unit tests. Do not run the slow tests for
+  now. (They were not run in the previous setup either)
+</comment>
+    <requestid>795918</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8c7e5c38d42b0658b4312a0b809fabe1</srcmd5>
+    <version>4.1.2</version>
+    <time>1588450719</time>
+    <user>dimstar_suse</user>
+    <comment>- Close leaks in tests for mainwindow and ipythonconsole
+  gh#spyder-ide/spyder#12534
+  spyder-pr12534-closeleaks.patch
+- Now also run the slow tests except for a few.
+- python-opengl is not a requirement
+</comment>
+    <requestid>799656</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ee33bf41fd9d6461cf951dda13df0053</srcmd5>
+    <version>4.1.3</version>
+    <time>1589579546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805808</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>dc22bf6b9a6a32941e745a2c0239c79a</srcmd5>
+    <version>4.1.3</version>
+    <time>1589660875</time>
+    <user>dimstar_suse</user>
+    <comment>Because it currently fails in Factory (it did not in staging)
+- increase memory requirement for builds (the tests consume a lot) 
+</comment>
+    <requestid>806019</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>1e55dcde7077d8bf2611e0203a7eefd2</srcmd5>
+    <version>4.1.3</version>
+    <time>1590780240</time>
+    <user>maxlin_factory</user>
+    <comment>- We can be tested using pytest5
+- Skip one more timeouting test</comment>
+    <requestid>810170</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>005bc9f9773a3ae397887be58945f440</srcmd5>
+    <version>4.1.4</version>
+    <time>1594706199</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.4
+  * Important fixes
+    * Correctly restart kernels after a crash while running code.
+    * Clear variable explorer after a kernel restart.
+    * Fix several errors when sorting variables in the variable
+      explorer.
+    * Fix selection color in several syntax highlighting themes.
+    * Support Jedi 0.17.1, which fixes several issues with code
+      completion in the editor.
+    * Fix errors when running Dask code in the IPython console. 
+    * Only show folding arrows when the user hovers over them, which
+      improves responsiveness in the editor.
+    * Fix several problems with the integration between our projects
+      and the Python language server.
+    * Handle NaT values in the Variable Explorer. 
+- drop spyder-pr12746-fixtests.patch merged upstream</comment>
+    <requestid>820050</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4a11ae49c53fcabb605717c78c7b89c7</srcmd5>
+    <version>4.1.4</version>
+    <time>1597064216</time>
+    <user>dimstar_suse</user>
+    <comment>- singlespec automatic conversion of &quot;Requires: python-*&quot; does not
+  work for the packagename without &quot;python-&quot;
+- only suggest external more intrusive plugins
+  
+
+- move to Python singlespec
+- do not preload qtpy in runtests.py: avoids &quot;Trace/breakpoint traps&quot;
+- skip newly failing tests because of meta change
+- skip the slow mainwindow test again: the mainwindow fixture is
+  leaking file descriptors and causes undeterministic segfaults
+  gh#spyder-ide/spyder#13483</comment>
+    <requestid>824905</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3a81fcb1ff392482463a1638750ff49f</srcmd5>
+    <version>4.1.5</version>
+    <time>1599210652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831526</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d596f1d1e72ac818de702adbc034b015</srcmd5>
+    <version>4.1.5</version>
+    <time>1600703062</time>
+    <user>dimstar_suse</user>
+    <comment>- Require a font package for testing to avoid Qt breakpoint trap
+  gh#jupyter/qtconsole#443
+- Reenable tests for all platforms
+- skip another segfaulting test on Leap (forwarded request 835670 from bnavigator)</comment>
+    <requestid>835671</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>60ccdeb1c2c25f738e186d08b698d2f8</srcmd5>
+    <version>4.2.1</version>
+    <time>1609253292</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.1
+  * Code folding for cells.
+  * Search works as expected for folded regions.
+  * IPython Console preferences are applied on the fly.
+  * IPython files (*.ipy) are better support in the Editor.
+  * Reduce time to show Preferences dialog.
+- Fix appdata.xml install 
+- Skip some more tests failing on i586
+- Update to version 4.2.0
+  New features
+  * New, self-contained installers for Windows and macOS.
+  * Add support for inline and interactive Matplotlib plots in the 
+    debugger.
+  * Automatic detection of conda and pyenv environments in 
+    Preferences &gt; Python interpreter.
+  * Add functionality to do auto-formatting in the Editor. It can 
+    be triggered in the menu Source &gt; Format file or selection or 
+    with the shorcut Ctrl+Alt+I (Cmd+Alt+I in macOS).
+  * Add support for text snippets in the Editor. The list of 
+    available snippets is shown in `Preferences &gt; Completion and 
+    linting &gt; Snippets`.
+  * Support caching cells send in succession to the IPython 
+    console. This will run one cell after the previous one finished.
+  * Make variables take precedence over Pdb commands in the 
+    debugger. In case a variable clashes with a command, you'll 
+    have to prefix the command with !.
+  * Show a message to take a tour of Spyder features the first 
+    time 4.2.0 is launched.
+  * Drop support for Python 2.7 and 3.5.
+  Important fixes
+  * Improve performance in the Editor when painting indent guides 
+    and showing linting messages.
+  * Prevent the creation of temporary files in Dropbox directories 
+    after saving in the Editor.
+  * Prevent the Outline to degrade performance in the Editor when 
+    visible. This was achieved by moving this pane to use the LSP 
+    architecture.
+  * Support Jedi 0.17.2
+- remove all python flavor expansions -- only single flavor for
+  this &quot;app&quot;
+- drop spyder-pr13814-completion.patch merged upstream
+</comment>
+    <requestid>857054</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>329aea5a9b573c39138f27f59842a7fd</srcmd5>
+    <version>4.2.1</version>
+    <time>1610736414</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863312</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>06ceee117cecebdfaa652c29033bc311</srcmd5>
+    <version>4.2.1</version>
+    <time>1613427654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872593</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>06d16a285341c626ae4ca5c9d7a04002</srcmd5>
+    <version>4.2.2</version>
+    <time>1614274027</time>
+    <user>RBrownSUSE</user>
+    <comment>- The apps dialog segfault is back. (QtAwesome, qtwebengine?)
+- Update to version 4.2.2
+  * Improve performance when typing in the editor.
+  * Make variable explorer work for kernels started in remote
+    servers.
+- Drop spyder-pr14514-fix-pandas120.patch merged upstream
+</comment>
+    <requestid>874824</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>09a59e79fd5964ef0cb0aa43e8fdafc8</srcmd5>
+    <version>4.2.3</version>
+    <time>1614948451</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 4.2.3
+  * Fix a very visible bug with Kite installation.
+  * Make Find pane to correctly highlight results in the editor.
+  * Don't show &quot;No such comm&quot; message when restaring kernels.
+- Explicitly limit upper version if Jedi and Parso</comment>
+    <requestid>876706</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>ec8fd87716a12cf245932d921d63b678</srcmd5>
+    <version>4.2.3</version>
+    <time>1615905913</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879182</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>92941cec127700a53a0b7dbd3c545da0</srcmd5>
+    <version>4.2.5</version>
+    <time>1617722981</time>
+    <user>RBrownSUSE</user>
+    <comment>- Remove removal of early QtWebEngine import before tests. It
+   triggered a fallback to testing with qtwebkit which is being
+   removed from Tumbleweed
+- Switch to xvfb-run instead of pytest-xvfb to avoid
+  gh#The-Compiler/pytest-xvfb#11
+- Replace pytest-ordering marks with pytest-order
+  gh#spyder-ide/spyder#14935
+- Update to version 4.2.5
+  * Fix restoring window properties at startup.
+  * Fix a segfault when restarting kernels.
+  * Fix a segfault when processing linting results.
+- Update to version 4.2.4
+  * Fix an important error when restarting kernels.
+  * Add compatibility with the future Spyder
+</comment>
+    <requestid>881754</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8ad6822d8e8cf0d38b1636585d6bae91</srcmd5>
+    <version>5.0.0</version>
+    <time>1618061262</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883922</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>63d16e44568872aa1bb4c4c61ff34a6a</srcmd5>
+    <version>5.0.1</version>
+    <time>1619107427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886761</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0b7b91d9a6bcb1022ff869fe4bfe2652</srcmd5>
+    <version>5.0.2</version>
+    <time>1620840709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892126</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b003b3e1fa5500e66f6b372db6425615</srcmd5>
+    <version>5.0.3</version>
+    <time>1621531488</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894272</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>c7afd54cd139558bf9df630d2ee51cf8</srcmd5>
+    <version>5.0.3</version>
+    <time>1621626627</time>
+    <user>dimstar_suse</user>
+    <comment>- Unpin watchdog. boo#1186327
+- Fix spyder-kernels dep
+- reenable ipythonconsole tests for 32-bit: no bpf failures anymore
+- reenable dependency checks during tests
+</comment>
+    <requestid>894844</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>dfb039d3e2b1200882cd9cbaf0833f20</srcmd5>
+    <version>5.0.4</version>
+    <time>1623767865</time>
+    <user>dimstar_suse</user>
+    <comment>- Add tame-kite-installer-check.patch
+
+- Update to version 5.0.4
+  * Programmatic addition of new layouts
+  * Fix debugger for IPython 7.24.0
+  * Fix loading complex third-party plugins
+  * Fix errors when restarting kernels</comment>
+    <requestid>900005</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5baf7c806bdd6eec8b5b18747fae8ee4</srcmd5>
+    <version>5.0.5</version>
+    <time>1624551778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901722</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>3d32a681a1792a07d157b8c8fa35c30f</srcmd5>
+    <version>5.0.5</version>
+    <time>1626644703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906167</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8e53af172e96e4ee00db696827c56525</srcmd5>
+    <version>5.1.1</version>
+    <time>1628282687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>910384</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>dfc6b6d5c3bae28132765f4d3a946f1d</srcmd5>
+    <version>5.1.1</version>
+    <time>1629471479</time>
+    <user>RBrownSUSE</user>
+    <comment>- Skip one more potentially segfaulting test (forwarded request 913340 from bnavigator)</comment>
+    <requestid>913341</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>dbac8c5efdd948856a62d3cacfe209e3</srcmd5>
+    <version>5.1.1</version>
+    <time>1629706086</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo: now really skip the test. It did not even fail in
+  staging, but still fails in Factory.
+</comment>
+    <requestid>913388</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>870ba11baa9ba0f4998735b7c12a3a97</srcmd5>
+    <version>5.1.2</version>
+    <time>1630697168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>916062</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>703421db5dd45f7de8899d57bb75cfc7</srcmd5>
+    <version>5.1.3</version>
+    <time>1631129800</time>
+    <user>dimstar_suse</user>
+    <comment>This is mainly a supersede to cancel the crashed staging build
+
+- Clean a few test skips, add a new one
+- remove _constraints
+- Update to version 5.1.3
+  * Fix RTreeError with snippets
+  * Fix TypeError with snippets
+- Filter new rpmlint 2 errors in spyder-rpmlintrc
+</comment>
+    <requestid>917544</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>76289c49420f666144c9c6beacdcf795</srcmd5>
+    <version>5.1.5</version>
+    <time>1631913980</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.5
+  * Fix docking of external plugins.
+  * Catch error when starting watcher (Projects)
+  * Improve appearance of toolbar extension button
+- Another take on the kernel crash / OOM issue: test everything
+  (including slow tests) within one xvfb-run boo#1190482
+- kernel still crashing. Disable slow tests for now.
+- Update to version 5.1.4
+  * Fix serious memory leaks and improve performance when typing
+    in the editor.
+  * Fix Issue 16401 - Trim all newlines after the final one when
+    saving a file causes Spyder to freeze when saving a blank file
+  * Fix Issue 16384 - Editor becomes sluggish when displaying
+    errors
+  * Fix Issue 16343 - No handler for workspace/executeCommand
+    request
+- Avoid kernel crash (!?) at testspyder bash function return
+  * boo#1190482
+</comment>
+    <requestid>919871</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>1360be839bdaca1350e149fed9ccc46d</srcmd5>
+    <version>5.1.5</version>
+    <time>1632173613</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920299</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>a07b3aa8a06da0b4b02e19697bc244bb</srcmd5>
+    <version>5.1.5</version>
+    <time>1635539646</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927785</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8a6b293c7aaa6d8b2cdc14627e8543f4</srcmd5>
+    <version>5.2.0</version>
+    <time>1638203309</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934157</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>95935bbec51f0450761d873627a32cf5</srcmd5>
+    <version>5.2.1</version>
+    <time>1640030773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941534</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>96122f66e2776119287288bab8f0672f</srcmd5>
+    <version>5.2.2</version>
+    <time>1642835917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948028</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>7ee3561cdf231c2adf030339e958efc4</srcmd5>
+    <version>5.2.2</version>
+    <time>1648241701</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix unpinning of IPython and unpin pyls (forwarded request 964862 from bnavigator)</comment>
+    <requestid>964863</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ee797d64248d4a6cdf6919254e42ce98</srcmd5>
+    <version>5.3.0</version>
+    <time>1649713726</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.3.0
+  * New Run to current line and Run from current line actions in
+    the Editor
+  * New option to reset per-file run configurations
+  * Now the spyder-terminal plugin comes bundled with the
+    standalone installers (MacOS and Windows)
+  * Now the standalone Windows installers come with Python 3.8.10
+  * Drop support for Python 3.6
+  * Fix the restart logic in the IPython Console to set Matplotlib
+    interactive backends
+  * Fix some issues related to Black formatting configuration and
+    usage
+  * Improve Editor performance by decreasing the amount of requests
+    (didChange request) made to the pylsp server
+  * Disable Kite provider for completions
+  * Require IPython =&gt; 7.31.1 due to CVE-2022-21699
+  * Several fixes for type errors with Python 3.10
+  * New API features
+  * New on_close method for the PluginMainWidget class that its
+    called on closeEvent (forwarded request 968081 from bnavigator)</comment>
+    <requestid>968082</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d4411b5a619cdd3fe1edc67158888579</srcmd5>
+    <version>5.3.1</version>
+    <time>1654457322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the requirements, add note about test suite
+
+- Update to version 5.3.1.
+  * New features
+    * Add a toolbar to the Variable Explorer viewer for dictionaries,
+      lists and sets to easily access the functionality available
+      through its context menu.
+    * Add navigation with extra buttons in the editor for mouses
+      that support them.
+    * Add --no-web-widgets command line option to disable
+      plugins/widgets that use Qt Webengine widgets.
+  * Important fixes
+    * Fix several important bugs related to the Autoformat on save
+      functionality.
+    * Fix options related to the Working directory entry in Preferences.
+    * Make code completion widget entries accessible to screen readers.
+  * New API features
+    * Add get_command_line_options to SpyderPluginV2 so that
+      plugins can access the command line options passed to Spyder.
+    * The current interpreter used by all Spyder plugins can be
+      accessed now through the executable option of the Main \
+      interpreter plugin.
+  * Full changelog here,
+    * https://github.com/spyder-ide/spyder/releases/tag/v5.3.1 (forwarded request 980901 from bnavigator)</comment>
+    <requestid>980902</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>14d61dc60fd38ae7009a9d9e012d4973</srcmd5>
+    <version>5.3.2</version>
+    <time>1659945751</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>992041</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>08f6cf6a406d99d84861b7ad00ec8aba</srcmd5>
+    <version>5.3.3</version>
+    <time>1662405699</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.3.3.
+  * New features
+    * Printing files now uses a light syntax highlighting theme to
+      prevent printing files with dark backgrounds.
+  * Important fixes
+    * Fix several bugs related with the Layout plugin
+      (save visible plugins to restore their visiility and tabify
+      behavior for external plugins).
+    * Fix several bugs related with the focus management between
+      the Editor and other panes.
+    * Improve Find and Replace speed on the Editor.</comment>
+    <requestid>1001154</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>1a1f584c824871a363781c75efd39214</srcmd5>
+    <version>5.4.0</version>
+    <time>1667825529</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.0
+  ## New features
+  * Now the Code Analysis/Pylint plugin uses the current custom
+    interpreter/environment if set
+  * Option to show user environment variables extended to all
+    operative systems (previously available only for Windows)
+  ## Important fixes
+  * Improve Outline Explorer plugin performance and fix updating
+    process when it becomes visible
+  * Improvements to colors on the dependencies dialog and IPython
+    console
+  * Fix IPython console issues on the Matplotlib TkInter backend
+    with debugging and an increase of CPU and memory usage while in
+    an idle state
+  * Fix IPython console memory leak when using the Matplotlib Qt
+    ackend
+  * Fix IPython console input() issue on MacOS
+  * Fix IPython console kernel error regarding environment path as
+    unexpected argument
+  * Fix Spyder 3 icon theme load on Windows with untrusted fonts
+    security restrictions
+  * Fix the Autoformat files on save functionality to not hang with
+    non-Python files
+  * Some fixes for cell execution on Python 3.11
+  * Some fixes to shortcuts (Switch to Editor, Find Next, Find
+    Previous)
+  * Some fixes to improve compatibility with PySide2
+  * Some fixes to prevent blurry SVG icons
+</comment>
+    <requestid>1034142</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ec1a2f75a14355fde5f0260e8085285f</srcmd5>
+    <version>5.4.1</version>
+    <time>1672765235</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.1
+  ## New features
+  * Support for IPython 8
+  * Improvements for code completion and help offered for
+    scientific modules (Numpy, Pandas, Matplotlib and Scipy)
+  * Improvements to the UX/UI of the FindReplace widget (find and
+    replace functionality)
+  * New PYTHONPATH manager plugin
+  ## Important fixes
+  * Improve/fix errors regarding the New Window and Split window
+    Editor funtionality and general RuntimeErrors on the Editor
+  * Improvements when syncing symbols and folding code
+    functionality for the Editor
+  * Fix PYTHONPATH handling for the IPython console
+  * Some fixes for code completion and code style linting
+    functionality
+  * Some fixes/improvements regarding UX/UI for the IPython console
+    pane, menu and context menu generation
+  * Some improvements regarding UX/UI for the current working
+    directory toolbar
+  ## New API features
+  * Improvements to the way Spyder handles menus sections additions (forwarded request 1046014 from bnavigator)</comment>
+    <requestid>1046015</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>7b106d3be8ecc9a0bcd402e2420a9207</srcmd5>
+    <version>5.4.2</version>
+    <time>1674232715</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.2
+  * Fix issues detected with PyZMQ 25
+  * Fix dot completions and improve support for files and
+    directories completions
+  * Fix getting current user enviroment variables
+  * Fix cursor position restauration after autoformat when saving
+    files
+  * Fix error when reverting unexisting files
+  * Fix some issues related with Python 3.11 compatibility (forwarded request 1059825 from bnavigator)</comment>
+    <requestid>1059826</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e41a6fd2a7c7274e2f4652380215b8a5</srcmd5>
+    <version>5.4.3</version>
+    <time>1682782082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083328</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>1fdf91c66a9b6d0da93ae85a85867145</srcmd5>
+    <version>5.4.4</version>
+    <time>1693235565</time>
+    <user>anag+factory</user>
+    <comment>- Raise jedi pin to &lt;0.20 (forwarded request 1105913 from bnavigator)</comment>
+    <requestid>1105914</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>82a072533454b677486d1f2b65a868fe</srcmd5>
+    <version>5.4.5</version>
+    <time>1695664941</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.4.5
+  * Fix Editor scrollflags error on Python 3.7</comment>
+    <requestid>1113196</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>a39daf7b9c6040e3a40449508112886b</srcmd5>
+    <version>5.4.5</version>
+    <time>1698700217</time>
+    <user>anag+factory</user>
+    <comment>- Raise pylint upper pin (requires update to python-lsp-server)
+  * Add spyder-pr21470-pylint3.diff (forwarded request 1121002 from bnavigator)</comment>
+    <requestid>1121004</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>03cb9f5209ed7f7b7af7135e42541a02</srcmd5>
+    <version>5.5.0</version>
+    <time>1701121388</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128649</requestid>
+  </revision>
+</revisionlist>

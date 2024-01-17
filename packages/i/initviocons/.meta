@@ -1,0 +1,12 @@
+<package name="initviocons" project="openSUSE:Factory">
+  <title>Terminal Initialization, e.g. for the iSeries Virtual Console</title>
+  <description>Initviocons can be used on the iSeries platform to recognize terminal
+features of a telnet client that is connected to the virtual console
+(similar to a serial console). It probes the terminal via escape
+sequences to find out the screen size and a suitable TERM type. It also
+does special initialization if possible (for example, carriage return
+suppression for Windows telnet clients). On the iSeries platform, it
+additionally checks for the presence of more than one terminal
+connected on the same line. See /etc/profile for a usage example.</description>
+  <devel project="Base:System" package="initviocons"/>
+</package>

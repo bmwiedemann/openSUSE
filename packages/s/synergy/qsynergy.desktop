@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=qsynergy
+Comment=Share your mouse and keyboard between multiple computers on your desk
+Icon=qsynergy
+Exec=qsynergy
+Terminal=false
+Type=Application
+Categories=Utility;DesktopUtility;
+X-KDE-autostart-after=kdesktop

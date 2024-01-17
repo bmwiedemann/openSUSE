@@ -1,0 +1,246 @@
+-------------------------------------------------------------------
+Wed Mar 30 06:55:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- exclude build for 32bit targets 
+
+-------------------------------------------------------------------
+Mon Aug  2 18:02:36 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.0.2
+  BUG FIXES:
+  * `resource/virtual_machine`: Fix logic bug that caused the provider to set unsupported
+    fields when talking to vsphere 6.5. (1430)
+  * `resource/virtual_machine`: Fix resource diff bug where it was not possible to ignore
+    changes to `cdrom` subresource. (1433)
+  IMPROVEMENTS:
+  * `resource/virtual_machine`: Support periodic time syncing for VMs on vsphere 7.0U1
+    onwards. (1431)
+- from version 2.0.1
+  BUG FIXES:
+  * `resource/virtual_machine`: Only set vvtd/vbs if vsphere version is newer than 6.5.
+    (1423)
+- from version 2.0.0
+  BREAKING CHANGES:
+  * `provider`: Moving forward this provider will only work with Terraform version v0.12 and later.
+  * `resource/virtual_machine`: Deprecated attribute `name` has been removed from the `disk` subresource.
+  BUG FIXES:
+  * `datasource/ovf_datasource`: Fix validation error when importing OVF spec. (1398)
+  * `resource/virtual_machine`: Fix post-import VM regression. (1361)
+  * `resource/virtual_machine`: Round up when calculating disk capacity. (1397)
+  * `resource/vnic`: Fix default netstack name. (1376)
+  IMPROVEMENTS:
+  * `provider`: Provider wide API timeout setting. (1405)
+  * `provider`: Enable keepalive for REST API sessions. (1301)
+  * `provider`: Upgrade Plugin SDK to 2.6.1 (1379)
+  * `datasource/virtual_machine`: Added 'network_interfaces' output. (#1274)
+  * `resource/virtual_machine`: Allow unconfigurable vApp properties to be set. (1199)
+  * `resource/virtual_machine`: Enable VBS (vbsEnabled) and I/O MMU (vvtdEnabled). (1287)
+  * `resource/virtual_machine`: Added `replace_trigger` to support replacement of vms based
+    external changes such as cloud_init (#1360)
+- from version 1.26.0
+  BUG FIXES:
+  * Minor fixes of issues that came up during testing against vSphere 7.0
+  * Change the way we set the timeout for maintenance mode (#1392)
+  IMPROVEMENTS:
+  * `provider`: vSphere 7 compatibility validation (#1381)
+  * `resource/vm`: Allow hardware version up to 19 (#1391)
+- from version 1.25.0
+  BUG FIXES:
+  * `resource/vsphere_entity_permissions`: Sorting permission objects on username/groupname
+    before storing. (#1311)
+  * `resource/vm`: Limit netmask length for ipv4 and ipv6 netmasks. (#1321)
+  * `resource/vm`: Fix missing vApp properties. (#1322)
+  FEATURES:
+  * `data/vsphere_ovf_vm_template`: Created data source OVF VM Template. This new data source allows
+    `vsphere_virtual_machine` to be created by its exported attributes. See PR for more details.
+    (#1339)
+  IMPROVEMENTS:
+  * `resource/distributed_virtual_switch`: Allow vsphere 7. (#1363)
+  * `provider`: Bump Go to version 1.16. (#1365)
+
+-------------------------------------------------------------------
+Mon Jan 18 15:38:38 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.24.3:
+  * Pre-release changelog update
+  * Make API timeout configurable when building VMs
+  * Use Dockerhub Mirror. (#1253)
+  * Suspend stale issue pruning (#1250)
+  * Support for no disks in config (#1241)
+- from version 1.24.2
+  * Update CHANGELOG.md
+  * Avoid nil condition for guestID (#1234)
+
+-------------------------------------------------------------------
+Wed Nov 11 12:04:10 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add symbolic link to comply with new filesystem layout for local provider copies
+- Define and use common Go spec file variables
+
+-------------------------------------------------------------------
+Tue Oct 20 10:31:22 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.24.1:
+  * Create codeql-analysis.yml (#1222)
+  * Fixed a typo in the docs (#1226)
+  * Update CHANGELOG.md
+  * Fix ova deploy and tests (#1221)
+  * Convert folder path to MOID (#1207)
+  * Change default OS method on bare VMs (#1217)
+  * Allow more config options to be changed from OVF (#1218)
+  * Networking additions [WIP] (#1146)
+  * r/host_port_group: Add support for importing (#1194)
+  * set datacenter_id when importing datastore cluster (#1203)
+  * Import ditributed port group using moid (#1208)
+  * Fixing port group resource to enable LACP only in virtual switch resource and not in port level. (#1214)
+  * Update CHANGELOG.md
+  * Add type to content library data source. (#1184)
+- from version 1.24.0
+  * Update CHANGELOG.md
+  * Update pull_request_template.md
+  * Content library vm-template, disk type, and vApp props (#1198)
+  * r/content__library_item: Local upload, OVA, and vm-template sources (#1196)
+  * Subscription and publication support for content library (#1197)
+  * Make storage_policy_id computed. (#1185)
+  * Ignore nil objects in host network. (#1186)
+  * Keep status chan open (#1187)
+  * Set SCSI controller type to unknown when nil (#1188)
+  * Fix non inclusive language (#1193)
+  * Skip SCSI controller check when empty (#1179)
+  * Cleanup after v1.23.0 release
+- from version 1.23.0
+  * Update CHANGELOG.md
+  * Cleanup after v1.23.0 release
+  * Update CHANGELOG.md
+  * Cleanup after v1.23.0 release
+  * Update CHANGELOG.md
+  * Add hall of fame to README.md (#1175)
+  * Update acc tests for simple environment (#1173)
+  * Ignore thin_provisioned and eagerly_scrub during DiskPostCloneOperation (#1161)
+  * Fix vnic import (#1162)
+  * Fixed SetHardwareOptions to fetch the hardware version from QueryConfigOption instead of the default properties (#1159)
+  * Allow performing a linked-clone from a template without requiring snapshots (#1158)
+  * Merged the virtual machine configuration schema between the both the resource and datasource (#1157)
+  * Cleanup after v1.22.0 release
+
+-------------------------------------------------------------------
+Mon Aug 10 08:43:22 UTC 2020 - dmueller@suse.com
+
+- Update to version 1.22.0:
+  * Fix vsan disk name and computed.
+  * Add import for vsphere_virtual_disk (#1) (#1120)
+  * Add roles and permission resources  (#1144)
+  * Add host_thumbprint data source (#1142)
+  * r/vm: Set guest_id before customization (#1139)
+  * Add go-version file (#1135)
+
+-------------------------------------------------------------------
+Tue Jul 07 11:24:56 UTC 2020 - dmueller@suse.com
+
+- Update to version 1.21.0:
+  * v1.21.0
+  * Update CHANGELOG.md and remove backup docs
+  * Reformat examples in documentation to terraform v0.12 (#1116)
+  * Support for SATA and IDE disks (#1118)
+  * Updates imports for org move (#1117)
+  * Cleanup after v1.20.0 release
+  * v1.20.0
+  * Update CHANGELOG.md
+  * Update CHANGELOG.md
+  * Adding ova deployment feature (#1105)
+
+-------------------------------------------------------------------
+Tue Jul 07 11:20:39 UTC 2020 - dmueller@suse.com
+
+- Update to version 1.21.0:
+  * Reformat examples in documentation to terraform v0.12 (#1116)
+  * Support for SATA and IDE disks (#1118)
+  * Updates imports for org move (#1117)
+  * Cleanup after v1.20.0 release
+  * Adding ova deployment feature (#1105)
+
+-------------------------------------------------------------------
+Thu Jun 25 15:07:07 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add symlink for terraform execution
+
+-------------------------------------------------------------------
+Mon Jun  8 07:26:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.18.3:
+  * resource/custom_attribute: Fix id in error message when category is missing. (#1088)
+  * resource/virtual_machine: Add vApp properties with OVF deployment. (#1082)
+  * resource/host & resource/compute_cluster: Add arguments for specifying if cluster management should be handled in host or compute_cluster resource. (#1085)
+  * resource/virtual_machine: Handle OVF argument validation during VM creation. (#1084)
+  * resource/host: Disconnect rather than entering maintenance mode when deleting. (#1083)
+  * resource/virtual_machine: Skip unexpected NIC entries. (#1067)
+  * Respect session_persistence for REST sessions. (#1077)
+  * resource/virtual_machine: Allow users to deploy OVF templates from both from local system and remote URL. (#1052)
+  * resource/virtual_machine: Mark product_key as sensitive. (#1045)
+  * resource/virtual_machine: Increase max hardware_version for vSphere v7.0. (#1056)
+  * resource/virtual_machine: Fix to disk bus sorting. (#1039)
+  * resource/virtual_machine: Only include hardware_version in CreateSpecs. (#1055)
+  * Use built in session persistence in govmomi. (#1050)
+  * resource/virtual_disk: Support VMDK files. (#987)
+  * resource/virtual_machine: Fix disk controller sorting. (#1032)
+  * resource/virtual_machine: Add support for hardware version tracking and upgrading. (#1020)
+  * data/vsphere_network: Handle cases of network port groups with same name using distributed_virtual_switch_uuid. (#1001)
+  * resource/virtual_machine: Fix working with orphaned devices. (#1005)
+  * resource/virtual_machine: Ignore guest_id with content library. (#1014)
+  * New Data Source: content_library (#985)
+  * New Data Source: content_library_item (#985)
+  * New Resource: content_library (#985)
+  * New Resource: content_library_item (#985)
+  * resource/virtual_machine: Add poweron_timeout option for the amount of time to give a VM to power on. (#990)
+  * resource/virtual_machine: Optimize OS family query. (#959)
+  * Migrate provider to Terraform plugin SDK. (#982)
+
+-------------------------------------------------------------------
+Wed April 24 14:10:20 UTC 2020 - clark.hsu@suse.com
+
+- Package terraform-provider-vsphere v1.17.3
+
+-------------------------------------------------------------------
+Sat Feb 22 11:05:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.16.1:
+  bugfixes:
+    * resource/virtual_machine: Set storage_policy_id based off of VM rather than template. (#970)
+    * resource/virtual_machine: Do not set datastoreID in RelocateSpec when datastore_cluster is set. (#933)
+    * resource/vapp_container: Fix handling of child vApp containers. (#941)
+    * resource/virtual_disk: Enforce .vmdk suffix on vmdk_path. (#942)
+    * resource/virtual_machine: Allow blank networkID in order to support cloning into clusters that do not include the source network. (#787)
+    * resource/host: Properly handle situation where NIC teaming policy is nil. (#889)
+    * Limit scope when listing network interfaces. (#840)
+    * resource/compute_cluster: Set HA Admission Control Failure to off before deleting. (#891)
+    * resource/virtual_machine_snapshot: Fix typo in error condition. (#906)
+    * tags: Return matched tag rather than last tag in list. (#910)
+    * resource/virtual_machine: Unmount ISO when switching CDROM backends. (#920)
+    * resource/virtual_machine: Migrate VM when moving to different root resource pool. (#931)
+    * resource/virtual_machine: Change the way we detect if a VM is in a vApp. (#825)
+    * Delete tags and tag_categories when they are removed. (#801)
+    * resource/virtual_machine: Ignore validation when interpolation is not available. (#784)
+    * resource/virtual_machine: Only set vApp properties that are UserConfigurable. (#751)
+    * resource/virtual_machine: Set network_id to empty string when cloning a virtual_machine to a cluster that is not part of source DVS. (#787)
+  features:
+    * New Data Source: storage_policy (#881)
+    * resource/virtual_machine: Do not throw error when disk path is not known yet. (#944)
+    * resource/host Add details to error messages. (#850)
+    * resource/virtual_machine: Pick default datastore for extra disks. (#897)
+    * resource/virtual_machine: Extend ignored_guest_ips to support CIDR. (#841)
+    * New Resource: vsphere_vnic (#876)
+    * Add vim_keep_alive which sets a keepalive interval for VIM session. (#792)
+    * resource/virtual_machine: Mark windows_sysprep_text as sensitive. (#802)
+    * New Resource: vsphere_host (#836)
+    * resource/virtual_machine: Allow cloning of powered on virtual machines. (#785)
+    * Add keep alive timer for VIM sessions. (#792)
+
+-------------------------------------------------------------------
+Wed May 15 16:14:26 UTC 2019 - jmassaguerpla@suse.com
+
+- Review description 
+
+-------------------------------------------------------------------
+Tue May 14 09:52:45 UTC 2019 -  <fbergmann@suse.com>
+
+- Package terraform-provider-vsphere v1.11.0

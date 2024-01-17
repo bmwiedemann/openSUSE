@@ -1,0 +1,13 @@
+diff --git a/src/gfx_curses.c b/src/gfx_curses.c
+index 0a2682f..f7791de 100644
+--- a/src/gfx_curses.c
++++ b/src/gfx_curses.c
+@@ -3,7 +3,7 @@
+ #include <unistd.h>
+ #include "gfx.h"
+ #include "merge.h"
+-#include <gettext.h>
++#include <libintl.h>
+ #include <locale.h>
+ 
+ #define NUMBER_OF_COLORS 7

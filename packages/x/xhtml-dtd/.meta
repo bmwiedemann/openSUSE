@@ -1,0 +1,6 @@
+<package name="xhtml-dtd" project="openSUSE:Factory">
+  <title>XHTML DTDs (Document Type Definitions)</title>
+  <description>Document Type Definitions (DTDs) for XHTML 1/1.1 and some modularized
+variants.</description>
+  <devel project="Publishing" package="xhtml-dtd"/>
+</package>

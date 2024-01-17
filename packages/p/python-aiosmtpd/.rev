@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fdf27f80fb199b30bb245909dec814b0</srcmd5>
+    <version>1.2.1</version>
+    <time>1569588384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>730376</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f29343c51d56bc1d45f0c5dc3d7fccf4</srcmd5>
+    <version>1.2.1</version>
+    <time>1577972534</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not install examples in generic examples folder in sitelib</comment>
+    <requestid>760353</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>99f40e501734457852728a94cbb2f308</srcmd5>
+    <version>1.2.1</version>
+    <time>1591742622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809818</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4ade82e3a4e044a685c3ecda098f4ed2</srcmd5>
+    <version>1.4.2</version>
+    <time>1616925280</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 1.4.2
+- dropped obsolete f414dcdc.patch</comment>
+    <requestid>881335</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d6e91458e95eee27ae38cbd8a7ac012d</srcmd5>
+    <version>1.4.2</version>
+    <time>1620158480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890393</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>04b6fd3d97857a5b94f43e3caf5b9a50</srcmd5>
+    <version>1.4.2</version>
+    <time>1637372544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932596</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>a5aca8e8595ae95db0cacbb069f4300e</srcmd5>
+    <version>1.4.2</version>
+    <time>1642112474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946128</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>7f575a35da9b5c4e566d059555b13d33</srcmd5>
+    <version>1.4.2</version>
+    <time>1669193253</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip rpmlint error python-tests-in-package. 
+- Remove python_module macro definition.
+</comment>
+    <requestid>1037222</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>46a8e6a29bebd47a3ca06e5614bc64d4</srcmd5>
+    <version>1.4.3</version>
+    <time>1673359130</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.3:
+  * Is now compatible with uvloop
+  * Add compatibility for Python 3.10 and 3.11 (Closes #322)
+  * Test matrix update (Closes #306)
+  * Drop Python 3.6, PyPy 3.6 (some) and MacOS 10
+  * Add Python 3.10 &amp; 3.11, PyPy 3.7 &amp; 3.8, Ubuntu 22.04, MacOS 11 &amp; 12
+  * Expanded tox environments
+  * Longer AUTOSTOP_DELAY especially for Windows (Closes #313)
+  * Update signing keys
+  * Some documentation fixes</comment>
+    <requestid>1055964</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9a6172b48759b6c85200ff435ea88adc</srcmd5>
+    <version>1.4.4.post2</version>
+    <time>1676562945</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.4.post2:
+  * Prevent unclean repo from being built (Closes #365)
+  * Reduce chance of not-ready-for-release packages from being
+    uploaded
+  * No longer expect an implicit creation of the event loop
+    through ``get_event_loop()`` (Closes #353)</comment>
+    <requestid>1065973</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6923c8f1c2b058535806b939ec284b7e</srcmd5>
+    <version>1.4.4.post2</version>
+    <time>1686927297</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093361</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,13 @@
+Index: distob-0.3.3/distob/arrays.py
+===================================================================
+--- distob-0.3.3.orig/distob/arrays.py
++++ distob-0.3.3/distob/arrays.py
+@@ -6,7 +6,7 @@ from .distob import (proxy_methods, Remo
+                      scatter, gather, _directed_scatter, _scatter_ndarray,
+                      vectorize, call, methodcall, convert_result)
+ import numpy as np
+-from collections import Sequence
++from collections.abc import Sequence
+ import numbers
+ import types
+ import warnings

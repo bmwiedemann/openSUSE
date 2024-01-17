@@ -1,0 +1,6 @@
+<package name="lxqt-panel" project="openSUSE:Factory">
+  <title>Panel for LXDE-Qt</title>
+  <description>Desktop panel for LXDE-Qt
+</description>
+  <devel project="X11:LXQt" package="lxqt-panel"/>
+</package>

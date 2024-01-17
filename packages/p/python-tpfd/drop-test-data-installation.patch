@@ -1,0 +1,8 @@
+--- tpfd-0.2.4-orig/setup.py	2019-04-05 08:53:40.970638340 +0700
++++ tpfd-0.2.4/setup.py	2019-04-05 08:54:03.326802040 +0700
+@@ -24,4 +24,4 @@
+       zip_safe=False,
+       classifiers=CLASSIFIERS,
+       install_requires=['parse'],
+-      data_files=['test/Test1.txt'])
++)

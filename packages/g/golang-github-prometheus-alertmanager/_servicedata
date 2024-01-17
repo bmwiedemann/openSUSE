@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/prometheus/alertmanager</param>
+              <param name="changesrevision">d7b4f0c7322e7151d6e3b1e31cbc15361e295d8d</param></service></servicedata>

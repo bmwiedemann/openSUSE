@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf838bd020b6863ee73eb4a6acb49518</srcmd5>
+    <version>1.0.0</version>
+    <time>1518601906</time>
+    <user>dimstar_suse</user>
+    <comment>- New Python package to find IP address in known IP ranges</comment>
+    <requestid>576306</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1a70cde5ce11b13aaa54abdde633752b</srcmd5>
+    <version>1.0.0</version>
+    <time>1559837808</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707408</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4edc5558d0860e1200fb5f73f75c0418</srcmd5>
+    <version>1.0.1</version>
+    <time>1584745037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786786</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f104c83e3ed4cf34542fa1c1a1f92c56</srcmd5>
+    <version>1.0.2</version>
+    <time>1596565291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824176</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6a82cfcabfce5a0afbfa742d09cbd58b</srcmd5>
+    <version>1.0.2</version>
+    <time>1615552231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878069</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d8378b487151dd718af4ef5f450d8ccd</srcmd5>
+    <version>1.0.2</version>
+    <time>1616598824</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>880588</requestid>
+  </revision>
+</revisionlist>

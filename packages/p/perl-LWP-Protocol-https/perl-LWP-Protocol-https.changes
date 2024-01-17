@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Fri Aug 11 16:36:32 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Remove CVE-2014-3230.patch, upstream was fixed. CVE-2014-3230, Debian #746576
+
+-------------------------------------------------------------------
+Fri Aug 11 16:30:24 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Update LWP-Protocol-https-6.09-systemca.diff
+
+-------------------------------------------------------------------
+Mon Jul 10 03:06:48 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.11
+   see /usr/share/doc/packages/perl-LWP-Protocol-https/Changes
+
+  6.11      2023-07-09 15:10:30Z
+      - Remove Authority section from dist.ini (GH#64) (Olaf Alders)
+      - Add very basic diagnostic information via test (GH#73) (Olaf Alders)
+      - CVE-2014-3230 - don't disable verification if only hostnames should not
+        (GH#14) (Steffen Ullrich)
+      - Make explicit requirement of Mozilla::CA obsolete (GH#72) (Steffen
+        Ullrich and Olaf Alders)
+      - Remove _in_san and _cn_match. Empty out the _check_sock hook (GH#71)
+        (Chase Whitener)
+      - Use warnings (GH#69) (Pete Houston)
+
+-------------------------------------------------------------------
+Fri Dec 18 03:07:41 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.10
+   see /usr/share/doc/packages/perl-LWP-Protocol-https/Changes
+
+  6.10      2020-12-17 15:42:06Z
+      - Fix #39 - prevent user env from breaking the test (GH#63) (Gianni
+        Ceccarelli)
+      - Include Net::SSLeay in reported prereqs (GH#60) (Olaf Alders)
+      - Use GitHub as a bug tracker (GH#59) (Olaf Alders)
+
+-------------------------------------------------------------------
+Thu Oct 15 13:58:08 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 6.09
+   see /usr/share/doc/packages/perl-LWP-Protocol-https/Changes
+
+  6.09      2020-07-16 13:33:05Z
+      - Make available the version of SSL/TLS protocol used in the connection
+        (GH#56) (Jon Jensen)
+
+  6.08      2020-03-23 20:19:22Z (TRIAL RELEASE)
+      - Add defined check (GH#53) (Mohammad S Anwar)
+      - Fix copyright year (GH#55) (Olaf Alders)
+      - Upgrade Mozilla::CA dependency; originally #26 by dolmen (GH#54) (Shoichi Kaji)
+      - Adds coverage tests (GH#51) (Juan Julin Merelo Guervs)
+      - Migrated to DZil (GH PR#30)
+      - Moved bug tracking from RT to GitHub (GH#48) (Olaf Alders)
+
+Rebase patch LWP-Protocol-https-6.04-systemca.diff to LWP-Protocol-https-6.09-systemca.diff
+
+-------------------------------------------------------------------
+Thu Sep 13 15:42:12 UTC 2018 - pmonrealgonzalez@suse.com
+
+- 6.07      2017-02-19
+    - Cleaned up the Changes log
+    - Explicitly add hostname for SNI to start_SSL (GH PR#17)
+    - Fix the license name
+    - Update some documentation on SSL args
+    - Fix bug when checking for Mozilla::CA (GH PR#29)
+ 
+- Refreshed patch LWP-Protocol-https-6.04-systemca.diff
+
+- Cleaned spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Apr 23 06:00:03 UTC 2015 - coolo@suse.com
+
+- updated to 6.06
+   see /usr/share/doc/packages/perl-LWP-Protocol-https/Changes
+
+  2014-04-18 LWP-Protocol-https 6.06
+  
+  Mike Schilli (3):
+        Merge pull request #12 from drieux/subjectAltName
+        Merge pull request #9 from chorny/master
+        Updated libwww requirement to 6.06 to fix failing t/proxy.t test cases.
+  
+  Gisle Aas (2):
+        Getopt::Long isn't actually used
+        Merge pull request #7 from noxxi/master
+  
+  Alexandr Ciornii (1):
+        better diagnostics in case of failures in apache.t
+  
+  Karen Etheridge (1):
+        Merge pull request #8 from cpansprout/patch-1
+  
+  Steffen Ullrich (1):
+        correct behavior for https_proxy, this goes together with change to 
+        libwww-perl cb80c2ddb7, new method _upgrade_sock in LWP::Protocol::https
+  
+  cpansprout (1):
+        Typo fix: envirionment =~ s/io/o/
+  
+  drieux (1):
+        support for subjectAltName
+  
+  
+  _______________________________________________________________________________
+
+-------------------------------------------------------------------
+Thu May 15 09:39:07 UTC 2014 - vcizek@suse.com
+
+- fix for CVE-2014-3230 (bnc#876862)
+  * perl-LWP-Protocol-https: Environment variables HTTPS_CA_DIR or
+    HTTPS_CA_FILE disable hostname verification
+  * added CVE-2014-3230.patch
+
+-------------------------------------------------------------------
+Wed Apr 30 17:23:34 UTC 2014 - lchiquitto@suse.com
+
+- Remove old tarball (6.03).
+
+-------------------------------------------------------------------
+Wed Jul  3 09:32:03 UTC 2013 - lnussel@suse.de
+
+- Version 6.04
+  * Fix IO::Socket::SSL warnings when not verifying hostname.
+  * Doc spelling fix.
+- Remove usage of Mozilla::CA entirely. IO::Socket::SSL will do the
+  right thing instead.
+
+-------------------------------------------------------------------
+Tue Feb 21 11:26:38 UTC 2012 - coolo@suse.com
+
+- updated to 6.03
+  * Skip test if offline [RT#74163]
+  * Typo fixes
+  * Restore perl-5.8.1 compatibility.
+
+-------------------------------------------------------------------
+Tue Mar 29 12:06:43 UTC 2011 - vcizek@novell.com
+
+- initial package 6.02
+  * created by cpanspec 1.78.03
+
+  This module used to be bundled with the libwww-perl, but it was unbundled in
+  v6.02 in order to be able to declare its dependencies properly for the CPAN
+  tool-chain.  Applications that need https support can just declare their
+  dependency on LWP::Protocol::https and will no longer need to know what
+  underlying modules to install.

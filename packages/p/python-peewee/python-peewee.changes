@@ -1,0 +1,499 @@
+-------------------------------------------------------------------
+Tue Jan  9 15:18:54 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove unneeded BuildRequires PyMySQL and psycopg2. I checked
+  that the number of tests that are run are the same.
+- Fix shebangs and other rpmlint errors/warnings
+
+-------------------------------------------------------------------
+Tue Nov  7 14:21:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.17.0:
+  * Only roll-back in the outermost `@db.transaction`
+    decorator/ctx manager if an unhandled exception occurs.
+  * Cover transaction `BEGIN` in the reconnect-mixin. Given that
+    no transaction has been started, reconnecting when beginning
+    a new transaction ensures that a reconnect will occur if it
+    is safe to do so.
+  * Add support for setting `isolation_level` in `db.atomic()`
+    and `db.transaction()` when using Postgres and MySQL/MariaDB,
+    which will apply to the wrapped transaction.
+  * Add support for the Sqlite `SQLITE_DETERMINISTIC` function
+    flag. This allows user-defined Sqlite functions to be used
+    in indexes and may be used by the query planner.
+  * Fix unreported bug in dataset import when inferred field name
+    differs from column name.
+- disable apsw from tests for sle15 - can't be build anymore
+
+-------------------------------------------------------------------
+Wed Aug 16 14:40:36 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.16.3
+  - Support for Cython 3.0.
+  - Add flag to ManyToManyField to prevent setting/getting values
+    on unsaved instances. This is worthwhile, since reading or
+    writing a many-to-many has no meaning when the instance is unsaved.
+  - Adds a star() helper to Source base-class for selecting all columns.
+  - Fix missing binary types for mysql-connector and mariadb-connector.
+  - Add extract() method to MySQL JSONField for extracting a jsonpath.
+- Add %{?sle15_python_module_pythons}
+- unbind to cython < 3
+
+-------------------------------------------------------------------
+Sun Aug 13 19:59:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- bind to cython < 3
+
+-------------------------------------------------------------------
+Thu Jun  1 20:04:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.16.2:
+  * Fixes a longstanding issue with thread-safety of various
+    decorators, including `atomic()`, `transaction()`,
+    `savepoint()`. The context-managers are unaffected.
+  * Add changes required for building against Cython 3.0 and set
+    Cython language-level to 3.
+  * Ensure indexes aren't added to unindexed fields during
+    introspection, #2691.
+  * Ensure we don't redundantly select same PK in prefetch when
+    using PREFETCH_TYPE.JOIN.
+  * In Sqlite migrator, use Sqlite's builtin DROP and RENAME
+    column facilities when possible. This can be overridden
+    by passing `legacy=True` flag.
+  * This release contains backwards-incompatible changes in the
+    way Peewee initializes connections to the underlying
+    database driver.  Previously, peewee implemented autocommit
+    semantics *on-top* of the existing DB-API transactional
+    workflow. Going forward, Peewee instead places the DB-API
+    driver into autocommit mode directly.
+
+-------------------------------------------------------------------
+Fri Dec  2 21:43:51 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.15.4
+  Raise an exception in ReconnectMixin if connection is lost while inside a transaction (if the transaction was interrupted presumably some changes were lost and explicit intervention is needed).
+  Add db.Model property to reduce boilerplate.
+  Add support for running prefetch() queries with joins instead of subqueries (this helps overcome a MySQL limitation about applying LIMITs to a subquery).
+  Add SQL AVG to whitelist to avoid coercing by default.
+  Allow arbitrary keywords in metaclass constructor, #2627
+  Add a pyproject.toml to silence warnings from newer pips when wheel package is not available.
+  This release has a small helper for reducing boilerplate in some cases by exposing a base model class as an attribute of the database instance.
+  # old:
+  db = SqliteDatabase('...')
+  class BaseModel(Model):
+    class Meta:
+        database = db
+  class MyModel(BaseModel):
+    pass
+
+  # new:
+  db = SqliteDatabase('...')
+  class MyModel(db.Model):
+    pass
+
+-------------------------------------------------------------------
+Fri Oct 28 19:52:59 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.15.3
+  Add scalars() query method (complements scalar()), roughly equivalent to writing [t[0] for t in query.tuples()].
+  Small doc improvements
+  Fix and remove some flaky test assertions with Sqlite INSERT + RETURNING.
+  Fix innocuous failing Sqlite test on big-endian machines.
+  View commits
+
+-------------------------------------------------------------------
+Tue Oct  4 22:59:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.15.2
+  Fix bug where field-specific conversions were being applied to the pattern used for LIKE / ILIKE operations. Refs #2609
+  Fix possible infinite loop when accidentally invoking the __iter__ method on certain Column subclasses. Refs #2606
+  Add new helper for specifying which Model a particular selected column-like should be bound to, in queries with joins that select from multiple sources.
+  View commits
+
+- Update to 3.15.1
+  Fix issue introduced in Sqlite 3.39.0 regarding the propagation of column subtypes in subqueries.
+  Fix bug where cockroachdb server version was not set when beginning a transaction on an unopened database.
+  View commits
+
+- Update to 3.15.0
+  Rollback behavior change in commit ab43376697 (GH #2026). Peewee will no longer automatically return the cursor rowcount for certain bulk-inserts.
+  This should only affect users of MySQL and Sqlite who relied on a bulk INSERT returning the rowcount (as opposed to the cursor's lastrowid).
+  The rowcount behavior is still available chaining the as_rowcount() method:
+  # NOTE: this change only affects MySQL or Sqlite.
+  db = MySQLDatabase(...)
+  # Previously, bulk inserts of the following forms would return the rowcount.
+  query = User.insert_many(...)  # Bulk insert.
+  query = User.insert_from(...)  # Bulk insert (INSERT INTO .. SELECT FROM).
+  # Previous behavior (peewee 3.12 - 3.14.10):
+  # rows_inserted = query.execute()
+
+  # New behavior:
+  last_id = query.execute()
+  # To get the old behavior back:
+  rows_inserted = query.as_rowcount().execute()
+  This release contains a fix for a long-standing request to allow data-modifying queries to support CTEs.
+  CTEs are now supported for use with INSERT, DELETE and UPDATE queries - see #2152.
+  Additionally, this release adds better support for using the new RETURNING syntax with Sqlite automatically. Specify returing_clause=True when
+  initializing your SqliteDatabase and all bulk inserts will automatically specify a RETURNING clause, returning the newly-inserted primary keys.
+  This functionality requires Sqlite 3.35 or newer.
+  Smaller changes:
+  Add shortcuts.insert_where() helper for generating conditional INSERT with a bit less boilerplate.
+  Fix bug in test_utils.count_queres() which could erroneously include pool events such as connect/disconnect, etc.
+
+-------------------------------------------------------------------
+Sat Apr 16 15:24:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.14.10:
+  - Add shortcut for conditional insert using sub-select
+  - Add convenience left_outer_join() method to query.
+  - Add selected_columns property to Select queries.
+  - Add name property to Alias instances.
+  - Fix regression in tests introduced by change to DataSet in
+    3.14.9.
+  - Allow calling table_exists() with a model-class, refs
+  - Improve is_connection_usable() method of MySQLDatabase class.
+  - Better support for VIEWs with playhouse.dataset.DataSet and
+    sqlite-web.
+  - Support INSERT / ON CONFLICT in playhosue.kv for newer
+    Sqlite.
+  - Add ArrayField.contained_by() method, a corollary to
+    contains() and the contains_any() methods.
+  - Support cyclical foreign-key relationships in
+    reflection/introspection, and also for sqlite-web.
+  - Add magic methods for FTS5 field to optimize, rebuild and
+    integrity check the full-text index.
+  - Add fallbacks in setup.py in the event distutils is not
+    available.
+
+-------------------------------------------------------------------
+Sat Nov 13 20:29:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.14.8:
+  * Returning clause can still be specified for Sqlite, however it just needs
+    to be done so manually rather than having it applied automatically.
+  * Fix bug in APSW extension with Sqlite 3.35 and newer, due to handling of
+    last insert rowid with RETURNING. Refs #2479.
+  * Fix pesky bug in new `last_insert_id()` on the `SqliteExtDatabase`.
+  * Only raise `DoesNotExist` when `lazy_load` is enabled on ForeignKeyField
+  * Add missing convenience method `ModelSelect.get_or_none()`
+  * Allow `ForeignKeyField` to specify a custom `BackrefAccessorClass`
+  * Ensure foreign-key-specific conversions are applied on INSERT and UPDATE
+  * Add handling of MySQL error 4031 (inactivity timeout) to the `ReconnectMixin`
+    helper class.
+  * Support specification of conflict target for ON CONFLICT/DO NOTHING.
+  * Add `encoding` parameter to the DataSet `freeze()` and `thaw()` methods
+  * Fix bug which prevented `DeferredForeignKey` from being used as a model's
+    primary key
+  * Ensure foreign key's related object cache is cleared when the foreign-key is
+    set to `None`.
+  * Allow specification of `(schema, table)` to be used with CREATE TABLE AS...
+  * Allow reusing open connections with DataSet
+  * Add `highlight()` and `snippet()` helpers to Sqlite `SearchField`, for use
+    with full-text search extension.
+  * Preserve user-provided aliases in column names.
+  * Add support for Sqlite 3.37 strict tables.
+  * Ensure database is inherited when using `ThreadSafeDatabaseMetadata`, and
+    also adds an implementation in `playhouse.shortcuts` along with basic unit
+    tests.
+  * Better handling of Model's dirty fields when saving, fixes #2466.
+  * Add basic support for MariaDB connector driver in `playhouse.mysql_ext`
+  * Begin a basic implementation for a psycopg3-compatible pg database
+  * Add provisional support for RETURNING when using the appropriate versions of
+    Sqlite or MariaDB.
+
+-------------------------------------------------------------------
+Mon Sep  6 13:42:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.14.4
+  * Bugfix release
+- Update to version 3.14.3
+  * This release contains a single fix for ensuring NULL values
+    are inserted when issuing a bulk-insert of heterogeneous
+    dictionaries which may be missing explicit NULL values.
+- Update to version 3.14.2
+  * Support for named Check and foreign-key constraints.
+  * Better foreign-key introspection for CockroachDB (and Postgres)
+  * Register UUID adapter for Postgres.
+  * Add fn.array_agg() to blacklist for automatic value coercion.
+- Update to version 3.14.1
+  Changes
+  * Properly delegate to a foreign-key field's db_value() function
+    when converting model instances.
+  * Strip quote marks and parentheses from column names returned
+    by sqlite cursor when a function-call is projected without an
+    alias.
+  * Fix DataSet.create_index() method.
+  * Fix column-to-model mapping in model-select from subquery
+    with joins.
+  * Improvements to foreign-key lazy-loading.
+  * Preserve and handle CHECK() constraints in Sqlite migrator.
+  * Add stddev aggregate function to collection of sqlite
+    user-defined funcs.
+- Update to version 3.14.0
+  * Add an experimental helper,
+    shortcuts.resolve_multimodel_query(),
+    for resolving multiple models used in a compound select query.
+  * Add a lateral() method to select query for use with lateral
+    joins, refs issue #2205.
+  * Added support for nested transactions (savepoints) in
+    cockroach-db (requires 20.1 or newer).
+  * Automatically escape wildcards passed to string-matching
+    methods, refs #2224.
+  * Allow index-type to be specified on MySQL, refs #2242.
+  * Added a new API, converter() to be used for specifying a
+    function to use to convert a row-value pulled off the cursor.
+  * Add set() and clear() method to the bitfield flag descriptor.
+  * Add support for range types with IN and other expressions.
+  * Support CTEs bound to compound select queries, refs #2289.
+  Bug-fixes
+  * Fix to return related object id when accessing via the
+    object-id descriptor, when the related object is not populated.
+  * Fix to ensure we do not insert a NULL value for a primary key.
+  * Fix to conditionally set the field/column on an added column
+    in a migration.
+  * Apply field conversion logic to model-class values. Relocates
+    the logic from issue #2131 and fixes #2185.
+  * Clone node before modifying it to be flat in an enclosed
+    nodelist expr, fixes issue #2200.
+  * Fix an invalid item assignment in nodelist, refs #2220.
+  * Fix an incorrect truthiness check used with save() and only=.
+  * Fix regression in filter() where using both *args and **kwargs
+    caused the expressions passed as args to be discarded. #2293.
+
+-------------------------------------------------------------------
+Wed May 20 07:26:11 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Wed Mar 18 16:01:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- switch to PyMSQL instead of mysql-connector-python, which is the
+  default since 3.12.x and doesn't have vulnerabilities (bsc#1122204)
+
+-------------------------------------------------------------------
+Wed Mar 11 15:56:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 3.13.1
+  * This will be a notable release as it adds support for CockroachDB,
+    a distributed, horizontally-scalable SQL database.
+  * Allow FOR UPDATE clause to specify one or more tables (FOR UPDATE OF...).
+  * Support for Postgres LATERAL join.
+  * Fix non-deterministic join ordering issue when using the filter()
+    API across several tables
+  * Bulk insert (insert_many() and insert_from()) will now return
+    the row count instead of the last insert ID.
+  * Migration extension now supports altering a column's data-type,
+    via the new alter_column_type() method.
+  * Added BloomFilter.from_buffer() method for populating a bloom-filter
+    from the output of a previous call to the to_buffer() method.
+
+-------------------------------------------------------------------
+Wed Dec 11 08:07:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Pull in the full python for sqlite
+
+-------------------------------------------------------------------
+Fri Oct 18 10:19:07 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.11.2
+  * Implement hash interface for Alias instances, allowing them to be used in multi-source queries.
+  * Workaround for MySQL prior to 8 and MariaDB handling of union queries inside of parenthesized expressions (like IN).
+  * Be more permissive in letting invalid values be stored in a field whose type is INTEGER or REAL, since Sqlite allows this.
+  * Fix for issue #1991 regarding setting intervening models to None.
+  * Fixes the Model._pk and get_id() interfaces so they no longer introduce the possibility of accidentally resolving the FK.
+
+-------------------------------------------------------------------
+Wed Sep 11 08:24:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.10.0:
+  * Many bugfixes to enumerate, see CHANGELOG.md
+
+-------------------------------------------------------------------
+Tue Jul 23 11:32:26 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.9.6:
+  * Support nesting the Database instance as a context-manager. The outermost block will handle opening and closing the connection along with wrapping everything in a transaction. Nested blocks will use savepoints.
+  * Add new session_start(), session_commit() and session_rollback() interfaces to the Database object to support using transactional controls in situations where a context-manager or decorator is awkward.
+  * Fix error that would arise when attempting to do an empty bulk-insert.
+  * Set isolation_level=None in SQLite connection constructor rather than afterwards using the setter.
+  * Add create_table() method to Select query to implement CREATE TABLE AS.
+  * Cleanup some declarations in the Sqlite C extension.
+  * Add new example showing how to implement Reddit's ranking algorithm in SQL.
+
+-------------------------------------------------------------------
+Sun May 12 20:41:48 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.9.5:
+  * Added small helper for setting timezone when using Postgres.
+  * Improved SQL generation for VALUES clause.
+  * Support passing resolution to TimestampField as a power-of-10.
+  * Small improvements to INSERT queries when the primary-key is not
+    an auto-incrementing integer, but is generated by the database server (eg uuid).
+  * Cleanups to virtual table implementation and python-to-sqlite value conversions.
+  * Fixed bug related to binding previously-unbound models to a database using a
+    context manager, #1913.
+- Change in 3.9.4:
+  * Add Model.bulk_update() method for bulk-updating fields across multiple
+    model instances. Docs.
+  * Add lazy_load parameter to ForeignKeyField. When initialized with lazy_load=False,
+    the foreign-key will not use an additional query to resolve the related model instance.
+  * Added Model.truncate_table() method.
+  * The reflection and pwiz extensions now attempt to be smarter about converting
+    database table and column names into snake-case.
+  * Bulk insert via insert_many() no longer require specification of the fields
+    argument when the inserted rows are lists/tuples. In that case, the fields
+    will be inferred to be all model fields except any auto-increment id.
+  * Add DatabaseProxy, which implements several of the Database class context managers.
+  * Add support for window function frame exclusion and added built-in support for the GROUPS frame type.
+  * Add support for chaining window functions by extending a previously-declared window function.
+  * Playhouse Postgresql extension TSVectorField.match() method supports an additional argument plain,
+    which can be used to control the parsing of the TS query.
+  * Added very minimal JSONField to the playhouse MySQL extension.
+
+-------------------------------------------------------------------
+Sun Mar 24 05:54:34 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.9.3:
+  * Added cross-database support for NULLS FIRST/LAST when specifying
+    the ordering for a query. Previously this was only supported for
+    Postgres.
+  * Added EXCLUDED helper for referring to the EXCLUDED namespace
+    used with INSERT...ON CONFLICT queries, when referencing values in
+    the conflicting row data.
+  * Added helper method to the model Metadata class for setting the
+    table name at run-time. Setting the Model._meta.table_name directly
+    may have appeared to work in some situations, but could lead to
+    subtle bugs. The new API is Model._meta.set_table_name().
+  * Enhanced helpers for working with Peewee interactively, see doc.
+  * Fix cache invalidation bug in DataSet that was originally reported
+    on the sqlite-web project.
+  * New example script implementing a hexastore.
+
+-------------------------------------------------------------------
+Fri Jan 18 22:09:07 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.8.2:
+  * The default row-type for INSERT queries executed with a non-default
+    RETURNING clause has changed from tuple to Model instances. This
+    makes INSERT behavior consistent with UPDATE and DELETE queries
+    that specify a RETURNING clause.
+  * Removing support for the table_alias model Meta option.
+  * Added playhouse.shortcuts.ReconnectMixin, which can be used to
+    implement automatic reconnect under certain error conditions.
+  * Fix SQL generation bug when using an inline window function in
+    the ORDER BY clause of a query.
+  * Fix possible zero-division in user-defined implementation of
+    BM25 ranking algorithm for SQLite full-text search.
+
+-------------------------------------------------------------------
+Mon Oct  8 20:05:48 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.7.1:
+  * Added table_settings model Meta option, which should be a list
+    of strings specifying additional options for CREATE TABLE, which
+    are placed after the closing parentheses.
+  * Allow specification of on_update and on_delete behavior for
+    many-to-many relationships when using ManyToManyField.
+  * Fixed incorrect SQL generation for Postgresql ON CONFLICT clause
+    when the conflict_target is a named constraint (rather than an
+    index expression). This introduces a new keyword-argument to the
+    on_conflict() method: conflict_constraint, which is currently only
+    supported by Postgresql. Refs issue #1737.
+  * Fixed incorrect SQL for sub-selects used on the right side of IN
+    expressions. Previously the query would be assigned an alias, even
+    though an alias was not needed.
+  * Fixed incorrect SQL generation for Model indexes which contain SQL
+    functions as indexed columns.
+  * Fixed bug in the generation of special queries used to perform
+    operations on SQLite FTS5 virtual tables.
+  * Allow frozenset to be correctly parameterized as a list of values.
+  * Allow multi-value INSERT queries to specify columns as a list of
+    strings.
+  * Support CROSS JOIN for model select queries.
+
+-------------------------------------------------------------------
+Sat Jul 28 18:06:40 UTC 2018 - jengelh@inai.de
+
+- Add missing "that".
+
+-------------------------------------------------------------------
+Thu Jul 19 15:38:58 UTC 2018 - mcepl@suse.com
+
+- Update to 3.6.4:
+  - bugfixes
+  - works with python 3.7.0
+  - Support for specifying ROWS or RANGE window frame types.
+  - Add APIs for user-defined window functions if using
+    pysqlite3 and sqlite 3.25.0 or newer.
+  - TimestampField now uses 64-bit integer data-type for
+    storage.
+  - Added support to pwiz and playhouse.reflection to enable
+    generating models from VIEWs.
+  - Added lower-level database API for introspecting VIEWs.
+  - Revamped continuous integration setup for better coverage,
+    including 3.7 and 3.8-dev.
+  - Allow building C extensions even if Cython is not
+    installed, by distributing pre-generated C source files.
+- Fixes tests
+
+-------------------------------------------------------------------
+Wed Jul  4 13:37:37 UTC 2018 - avvissu@yandex.by
+
+- Update to 3.5.2:
+  * New guide to using window functions in Peewee.
+  * New and improved table name auto-generation.
+  * Allow passing single fields/columns to window function
+    order_by and partition_by arguments.
+  * Support for FILTER (WHERE...) clauses with window functions
+    and aggregates.
+  * Added IdentityField class suitable for use with Postgres 10's
+    new identity column type.
+  * Fixed bug creating indexes on tables that are in attached
+    databases (SQLite).
+  * Fixed obscure bug when using prefetch() and ModelAlias to
+    populate a back-reference related model.
+- Change in 3.5.1:
+  * New documentation for working with relationships in Peewee.
+  * Improved tests and documentation for MySQL upsert functionality.
+  * Allow database parameter to be specified with ModelSelect.get()
+    method. For discussion, see #1620.
+  * Add QualifiedNames helper to peewee module exports.
+  * Add temporary= meta option to support temporary tables.
+  * Allow a Database object to be passed to constructor of
+    DataSet helper.
+
+-------------------------------------------------------------------
+Sat Jun 23 19:32:23 UTC 2018 - avvissu@yandex.by
+
+- Update to 3.5.0:
+  * see: /usr/share/package/python-peewee/CHANGELOG.md
+- Build with dependencies: sqlite3, cython
+- Build with python3 and python2 (singlespec)
+- Drop the noarch package (arch-independent-package-contains-binary-or-object)
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Fri Aug 14 15:11:22 UTC 2015 - i@marguerite.su
+
+- update version 2.6.3
+  * read https://github.com/coleifer/peewee/releases
+
+-------------------------------------------------------------------
+Mon Apr 28 12:41:04 UTC 2014 - i@marguerite.su
+
+- update version 2.2.3
+  * New migrations module
+  * Added a return value to Model.save() indicating number of rows
+    affected.
+  * Added a date_trunc() method that works for Sqlite.
+  * Added a Model.sqlall() class-method to return all the SQL to
+    generate the model/indices.
+  * bugfixes
+
+-------------------------------------------------------------------
+Sun Apr 20 16:21:08 UTC 2014 - i@marguerite.su
+
+- initial version 2.2.2
+  * see https://github.com/coleifer/peewee/commits/master for details
+

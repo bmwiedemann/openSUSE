@@ -1,0 +1,103 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd77c218ad5a30a743da7634bd4c3d3b</srcmd5>
+    <version>0.029</version>
+    <time>1485042413</time>
+    <user>dimstar_suse</user>
+    <comment>new package
+allows to strip nondeterminism from various build results
+to make package-build more reproducible</comment>
+    <requestid>448117</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c226eb62bd8c09c2f9a84bedc7ba63bb</srcmd5>
+    <version>0.029</version>
+    <time>1494345795</time>
+    <user>dimstar_suse</user>
+    <comment>add rpm macro to use in spec files</comment>
+    <requestid>493390</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1564bec9a2e597d17470b4cbf8cddd13</srcmd5>
+    <version>0.029</version>
+    <time>1499754203</time>
+    <user>dimstar_suse</user>
+    <comment>Add strip-all-nondeterminism script to make this easier to use correctly
+Add strip-nondeterminism-0.029-zipfix.patch
+  to handle files without permissions in .zip files</comment>
+    <requestid>509062</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5e07db836fa344d5fe8ae9633a918d2f</srcmd5>
+    <version>1.0.0</version>
+    <time>1545376681</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.0.0
+  * Improvements for javadoc, zip, cpio and png handling
+  * Speed up startup time
+- Drop upstream strip-nondeterminism-0.029-zipfix.patch</comment>
+    <requestid>658688</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7ee9b651b6b2d94226795d8ab2634b00</srcmd5>
+    <version>1.6.1</version>
+    <time>1573044450</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.1:
+  + Parallelise dh_strip_nondeterminism script.
+  + Correct indentation level of .zip file field format comment.
+  + dh_strip_nondeterminism: Deduplicate hardlinks via stat(2) to
+    avoid issues.
+  + Call file(1) with the &quot;--&quot; argument placeholder to fix
+    normalisation of files.
+  + Check the return status from Archive::Zip when writing file to
+    disk.
+  + Workaround Archive::Zip's incorrect handling of the
+    localExtraField field.
+  + Support timestamp clamping of &quot;tIME&quot; chunks in .png files.
+  + Drop the t/fixtures/zip/bug_803503.zip test fixtures as they
+    are no longer compatible with Archive::Zip &gt;= 1.66.
+- Drop strip-nondeterminism-0.029-fix-apk.patch: test suite passes
+  without this.
+- BuildRequire perl(Sub::Override): new dependency.
+- Drop _service file: it only has a download_url defined, which is
+  also transparently extracted from the spec file. So this service
+  essentially serves no purpose.</comment>
+    <requestid>744407</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a7d76b86dcd9843618149086fa00a0d6</srcmd5>
+    <version>1.12.0</version>
+    <time>1623868407</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12.0
+  * Also normalise PO-Revision-Date in addition to POT-Creation-Date.
+  * Ignore unwritable files, printing a warning.
+  * Add a warning message under --verbose statement when the Archive::Cpio
+    package is missing. (MR: reproducible-builds/strip-nondeterminism!6)
+  * Fix an off-by-one error when parsing PNG modification times.
+
+- Move macros.strip-nondeterminism from /etc/rpm to
+  %{_rpmmacrodir} (boo#1185657).
+- Install the macro file non-executable: it is loaded by rpm, never
+  run.</comment>
+    <requestid>899924</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5e8c811fde7adc7ab8cab83795847c26</srcmd5>
+    <version>1.12.0</version>
+    <time>1673559752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057779</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>78b8b709b7b42f117738670e7377f262</srcmd5>
+    <version>1.13.1</version>
+    <time>1690743445</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.13.1
+</comment>
+    <requestid>1101230</requestid>
+  </revision>
+</revisionlist>

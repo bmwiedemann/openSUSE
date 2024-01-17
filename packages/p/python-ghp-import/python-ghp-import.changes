@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Thu Jul  6 11:06:17 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Feb 27 10:28:39 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Don't use fdupes -s, it hurts.
+
+-------------------------------------------------------------------
+Wed Sep 28 21:18:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.1.0
+  * Remove outdated "I" and "me" from the text
+  * Use `rfc2822` date format (#109)
+  * Respect `--prefix` when using `--no-jekyll` (#107)
+  * Remove unused constant
+  * Switch from optparse to argparse (#103)
+
+- Update to version 2.0.2
+  * Build and release wheels (#102)
+
+-------------------------------------------------------------------
+Sat Aug 14 21:52:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim conjecture and filler wording from description. Use noun
+  phrase for summary.
+
+-------------------------------------------------------------------
+Fri Aug 13 11:00:02 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 2.0.1
+  * Add --version CLI option
+  * Include minor fixes
+
+-------------------------------------------------------------------
+Wed May 19 18:12:19 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Update to version 1.1.0
+
+-------------------------------------------------------------------
+Wed Feb  3 11:26:27 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.0.1
+  - No changelog from upstream.
+
+-------------------------------------------------------------------
+Wed Jul  4 10:23:46 UTC 2018 - ecsos@opensuse.org
+
+- initial version 0.5.5

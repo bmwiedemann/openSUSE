@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f9b161b8c43306525f6cd799f8cefe4c</srcmd5>
+    <version>1.1.6</version>
+    <time>1554114925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687288</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7924d602f4e28a99d056551d8ab79d62</srcmd5>
+    <version>1.1.6</version>
+    <time>1589892398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>806804</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>08a689506f7180bb558babcb1f2cf2bc</srcmd5>
+    <version>2.1.0</version>
+    <time>1650060868</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970227</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e02f8f71b8f6ef2c2a01751e10e441d9</srcmd5>
+    <version>3.0.0</version>
+    <time>1683728310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085810</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b7ee99cebc2c41a0e099513e8a0cb6ce</srcmd5>
+    <version>3.1.0</version>
+    <time>1702158813</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.0:
+  * Allow specifying ipv6 addresses
+  * Add Typing :: Typed classifier</comment>
+    <requestid>1132140</requestid>
+  </revision>
+</revisionlist>

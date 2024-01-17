@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Sun Jul  7 19:20:13 UTC 2013 - jengelh@inai.de
+
+- Update to new git snapshot 1.4.14+git20
+* Support for running Firmware Flash executables
+* rewrite the ext2 module so that it no longer depends on libext2fs
+
+-------------------------------------------------------------------
+Wed Jun 30 10:22:00 UTC 2010 - jengelh@medozas.de
+
+- update BuildRequires
+- include upstream fixes:
+  * restore SunBlade1000 booting
+
+-------------------------------------------------------------------
+Sun Feb  7 13:58:01 UTC 2010 - jengelh@medozas.de
+
+- bundle "COPYING" file
+
+-------------------------------------------------------------------
+Thu Dec 31 20:09:18 CET 2009 - jengelh@medozas.de
+
+- initial package

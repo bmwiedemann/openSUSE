@@ -1,0 +1,11 @@
+# use as 
+# %?strip_all_nondeterminism
+# or
+# %if 0%?have_strip_nondeterminism > 0
+#    strip_nondeterminism path/to/file.zip
+# %endif
+
+%have_strip_nondeterminism 1
+%strip_all_nondeterminism() \
+ strip-all-nondeterminism \
+ %{nil}

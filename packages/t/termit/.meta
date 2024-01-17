@@ -1,0 +1,10 @@
+<package name="termit" project="openSUSE:Factory">
+  <title>termit is a vte based terminal emulator</title>
+  <description>termit is a terminal emulator based on the vte library.
+
+It includes tabs, bookmarks, and the ability to switch encodings.
+
+It is extensible via Lua.</description>
+  <devel project="X11:terminals" package="termit"/>
+  <url>https://github.com/nonstop/termit/wiki</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="vacuum-im-plugins-usermood" project="openSUSE:Factory">
+  <title>Vacuum-IM plugin to send and receive information about user moods</title>
+  <description>XEP-0107</description>
+  <devel project="network" package="vacuum-im-plugins-usermood"/>
+</package>

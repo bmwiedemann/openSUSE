@@ -1,0 +1,6 @@
+<package name="kate" project="openSUSE:Factory">
+  <title>Advanced Text Editor</title>
+  <description>Kate is an advanced text editor for KDE.
+  </description>
+  <devel project="KDE:Applications" package="kate"/>
+</package>

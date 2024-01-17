@@ -1,0 +1,13 @@
+Index: notcurses-3.0.8/src/demo/demo.c
+===================================================================
+--- notcurses-3.0.8.orig/src/demo/demo.c
++++ notcurses-3.0.8/src/demo/demo.c
+@@ -20,7 +20,7 @@ static char *datadir;
+ static int democount;
+ static demoresult* results;
+ 
+-static const char DEFAULT_DEMO[] = "ixetunchdmbkywjgarvlsfqzo";
++static const char DEFAULT_DEMO[] = "ietunchdmbkywjgarvlsfqzo";
+ 
+ atomic_bool interrupted = ATOMIC_VAR_INIT(false);
+ // checked following demos, whether aborted, failed, or otherwise

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Vodovod
+GenericName=Pipe Mania
+Comment=Cross-platform pipe connecting action puzzle game
+Icon=vodovod
+Exec=vodovod
+Type=Application
+Categories=Game;LogicGame;
+StartupNotify=false

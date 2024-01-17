@@ -1,0 +1,16 @@
+<package name="ssh-tools" project="openSUSE:Factory">
+  <title>A collection of various tools using ssh</title>
+  <description>A collection of various tools using ssh
+The following tools are included
+  * ssh-ping: check if host is reachable using ssh_config
+  * ssh-version: shows version of the SSH server you are connecting to
+  * ssh-diff: diff a file over SSH
+  * ssh-facts: get some facts about the remote system
+  * ssh-hostkeys: prints server host keys in several formats
+  * ssh-keyinfo: prints keys in several formats
+  * ssh-certinfo: shows validity and information of SSH certificates
+
+</description>
+  <devel project="network:utilities" package="ssh-tools"/>
+  <url>https://github.com/vaporup/ssh-tools/</url>
+</package>

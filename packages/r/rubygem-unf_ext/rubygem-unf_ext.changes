@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Tue Nov 28 08:19:29 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- # Changelog
+
+## [0.0.9.1](https://github.com/knu/ruby-unf_ext/tree/v0.0.9.1) (2023-11-16)
+
+[Full Changelog](https://github.com/knu/ruby-unf_ext/compare/v0.0.9...v0.0.9.1)
+
+- Fix use of designated initializers. [\#75](https://github.com/knu/ruby-unf_ext/pull/75) ([igorpeshansky](https://github.com/igorpeshansky))
+
+## [0.0.9](https://github.com/knu/ruby-unf_ext/tree/v0.0.9) (2023-11-11)
+
+[Full Changelog](https://github.com/knu/ruby-unf_ext/compare/v0.0.8.2...v0.0.9)
+
+- Use the newer TypedData extension API [\#72](https://github.com/knu/ruby-unf_ext/pull/72) ([casperisfine](https://github.com/casperisfine))
+- Update Actions - updates OS's, add Ruby 3,2, etc [\#71](https://github.com/knu/ruby-unf_ext/pull/71) ([MSP-Greg](https://github.com/MSP-Greg))
+- Add cross compilation for Ruby 3.2 [\#69](https://github.com/knu/ruby-unf_ext/pull/69) ([johnnyshields](https://github.com/johnnyshields))
+
+
+-------------------------------------------------------------------
+Wed Jun 29 21:01:34 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 0.0.8.2
+
+  * Add x64-mingw-ucrt native gem support for RubyInstaller 3.1.
+
+-------------------------------------------------------------------
+Thu Apr 28 05:53:43 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.0.8.1
+ see installed CHANGELOG.md
+
+
+-------------------------------------------------------------------
+Sat Oct  9 10:01:44 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 0.0.8
+
+  * No functional change in the library code.
+  * Include Windows binaries for Ruby 3.0.
+  * Drop support for Ruby 2.1 and earlier.
+  * Replace Travis CI with Github Actions.
+  * Fix cross-build after upgrading rake-compiler/rake-compiler-dock to 1.1.1/1.1.0.
+
+-------------------------------------------------------------------
+Thu May  7 21:39:00 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.0.7.7
+ see installed CHANGELOG.md
+
+  ## 0.0.7.7 (2019-03-19)
+  
+  - Include Windows binaries for Ruby 2.7.
+
+-------------------------------------------------------------------
+Sun May  5 09:47:48 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.0.7.6
+ see installed CHANGELOG.md
+
+  ## 0.0.7.6 (2019-03-19)
+  
+  - Version bump just for adding Windows binaries for Ruby 2.6.
+
+-------------------------------------------------------------------
+Tue Feb 27 05:39:23 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.0.7.5
+ see installed CHANGELOG.md
+
+  ## 0.0.7.5 (2018-02-06)
+  
+  - Version bump just for adding Windows binaries for Ruby 2.5.
+
+-------------------------------------------------------------------
+Wed Apr 19 04:35:35 UTC 2017 - coolo@suse.com
+
+- updated to version 0.0.7.4
+ see installed CHANGELOG.md
+
+  ## 0.0.7.4 (2017-04-19)
+  
+  - Fix build on ARM and GCC 6 again.
+
+-------------------------------------------------------------------
+Wed Apr 12 04:45:58 UTC 2017 - coolo@suse.com
+
+- updated to version 0.0.7.3
+ see installed CHANGELOG.md
+
+  ## 0.0.7.3 (2017-04-11)
+  
+  - Update the base Unicode version to 9.
+  
+  - Fix compile issues on ARM and GCC 6.
+
+-------------------------------------------------------------------
+Thu Feb  4 05:41:51 UTC 2016 - coolo@suse.com
+
+- updated to version 0.0.7.2
+ see installed CHANGELOG.md
+
+  ## 0.0.7.2 (2016-02-01)
+  
+  - Version bump just for adding Windows binaries for Ruby 2.3.
+
+-------------------------------------------------------------------
+Sat Apr 18 04:30:30 UTC 2015 - coolo@suse.com
+
+- updated to version 0.0.7.1
+
+-------------------------------------------------------------------
+Mon Nov 10 16:23:59 UTC 2014 - mrueckert@suse.de
+
+- restore the buildrequires on gcc-c++
+
+-------------------------------------------------------------------
+Tue Sep 30 12:31:38 UTC 2014 - mrueckert@suse.de
+
+- update to new packaging scheme and add gem2rpm.yml
+
+-------------------------------------------------------------------
+Thu Feb  6 18:11:44 UTC 2014 - coolo@suse.com
+
+- use new macros
+
+-------------------------------------------------------------------
+Thu Mar 14 17:43:33 UTC 2013 - mrueckert@suse.de
+
+- update to version 0.0.6
+  copyright update
+
+-------------------------------------------------------------------
+Sat Jul 28 19:22:37 UTC 2012 - coolo@suse.com
+
+- initial package
+

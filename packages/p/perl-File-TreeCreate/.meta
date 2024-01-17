@@ -1,0 +1,6 @@
+<package name="perl-File-TreeCreate" project="openSUSE:Factory">
+  <title>Recursively create a directory tree</title>
+  <description>This module was extracted from several near-identical copies used in the tests of some of my CPAN distributions.</description>
+  <devel project="devel:languages:perl" package="perl-File-TreeCreate"/>
+  <url>https://metacpan.org/pod/File::TreeCreate</url>
+</package>

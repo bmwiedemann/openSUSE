@@ -1,0 +1,5 @@
+<package name="baloo5" project="openSUSE:Factory">
+  <title>baloo5</title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="baloo5"/>
+</package>

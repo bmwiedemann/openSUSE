@@ -1,0 +1,68 @@
+---
+ unix/serial.c |   38 ++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 36 insertions(+), 2 deletions(-)
+
+--- unix/serial.c
++++ unix/serial.c	2023-07-12 09:28:06.155507529 +0000
+@@ -57,11 +57,10 @@ const char serial_rcsid[] = "$Id: serial
+ 
+ #if HAVE_FCNTL_H
+ #include <fcntl.h>
+-#else
++#endif
+ #if HAVE_SYS_FILE_H
+ #include <sys/file.h>
+ #endif
+-#endif
+ 
+ #ifndef O_RDONLY
+ #define O_RDONLY 0
+@@ -817,6 +816,34 @@ fsserial_lock (qconn, fin, fuser)
+ 	(void) fsserial_lockfile (FALSE, qconn);
+ 	return FALSE;
+       }
++#else
++#if HAVE_TIOCEXCL
++    /* If we can't mark it in use, return FALSE to indicate that the
++       lock failed.  */
++    if (ioctl (qsysdep->o, TIOCEXCL) < 0)
++      {
++	if (errno != EALREADY)
++	  ulog (LOG_ERROR, "ioctl (TIOCEXCL): %s", strerror (errno));
++#ifdef TIOCNOTTY
++	(void) ioctl (qsysdep->o, TIOCNOTTY, (char *) NULL);
++#endif
++	(void) close (qsysdep->o);
++	qsysdep->o = -1;
++	(void) fsserial_lockfile (FALSE, qconn);
++	return FALSE;
++      }
++#if defined(LOCK_EX) && defined(LOCK_NB)
++    if (flock(qsysdep->o, LOCK_EX|LOCK_NB) < 0)
++      {
++	if (errno != EWOULDBLOCK)
++	  ulog (LOG_ERROR, "flock (LOCK_EX|LOCK_NB): %s", strerror (errno));
++	(void) close (qsysdep->o);
++	qsysdep->o = -1;
++	(void) fsserial_lockfile (FALSE, qconn);
++	return FALSE;
++      }
++#endif
++#endif
+ #endif
+ 
+ #if HAVE_DEV_INFO
+@@ -2220,6 +2247,13 @@ fsysdep_modem_end_dial (qconn, qdial)
+ 		q->iflags = iflags;
+ #if HAVE_TIOCSINUSE
+ 		(void) ioctl (onew, TIOCSINUSE, 0);
++#else
++#if HAVE_TIOCEXCL
++		(void) ioctl (onew, TIOCEXCL);
++#if defined(LOCK_EX) && defined(LOCK_NB)
++		(void) flock(onew, LOCK_EX|LOCK_NB);
++#endif
++#endif
+ #endif
+ 	      }
+ 	  }

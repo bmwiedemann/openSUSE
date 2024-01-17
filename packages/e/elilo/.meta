@@ -1,0 +1,5 @@
+<package name="elilo" project="openSUSE:Factory">
+  <title>EFI Linux Loader</title>
+  <description>The EFI Linux boot loader.</description>
+  <devel project="Base:System" package="elilo"/>
+</package>

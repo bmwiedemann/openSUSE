@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Fri Jul 28 16:19:49 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Update to version 1.13.1
+  * Update pyzip regex for latest file(1).
+  * Set upstream metadata fields: Bug-Database, Bug-Submit.
+  * dh_strip_nondeterminism: use get_non_binnmu_date_epoch() when available.
+  * Add a lintian overrides for some false positive tags.
+  * Do not fail on JAR archives containing invalid members with a .jar
+    extension.
+- Drop upstream f1017c67.patch
+
+-------------------------------------------------------------------
+Wed Jan 11 11:53:54 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add f1017c67.patch: Support the magic format as returned by file
+  5.44 (plus commit dc71304b).
+
+-------------------------------------------------------------------
+Mon Jun 14 10:21:07 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to version 1.12.0
+  * Also normalise PO-Revision-Date in addition to POT-Creation-Date.
+  * Ignore unwritable files, printing a warning.
+  * Add a warning message under --verbose statement when the Archive::Cpio
+    package is missing. (MR: reproducible-builds/strip-nondeterminism!6)
+  * Fix an off-by-one error when parsing PNG modification times.
+
+-------------------------------------------------------------------
+Fri Jun 11 11:43:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move macros.strip-nondeterminism from /etc/rpm to
+  %{_rpmmacrodir} (boo#1185657).
+- Install the macro file non-executable: it is loaded by rpm, never
+  run.
+
+-------------------------------------------------------------------
+Tue Oct 29 11:54:17 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.6.1:
+  + Parallelise dh_strip_nondeterminism script.
+  + Correct indentation level of .zip file field format comment.
+  + dh_strip_nondeterminism: Deduplicate hardlinks via stat(2) to
+    avoid issues.
+  + Call file(1) with the "--" argument placeholder to fix
+    normalisation of files.
+  + Check the return status from Archive::Zip when writing file to
+    disk.
+  + Workaround Archive::Zip's incorrect handling of the
+    localExtraField field.
+  + Support timestamp clamping of "tIME" chunks in .png files.
+  + Drop the t/fixtures/zip/bug_803503.zip test fixtures as they
+    are no longer compatible with Archive::Zip >= 1.66.
+- Drop strip-nondeterminism-0.029-fix-apk.patch: test suite passes
+  without this.
+- BuildRequire perl(Sub::Override): new dependency.
+- Drop _service file: it only has a download_url defined, which is
+  also transparently extracted from the spec file. So this service
+  essentially serves no purpose.
+
+-------------------------------------------------------------------
+Sat Dec 15 19:45:06 UTC 2018 - bwiedemann@suse.com
+
+- Update to version 1.0.0
+  * Improvements for javadoc, zip, cpio and png handling
+  * Speed up startup time
+- Drop upstream strip-nondeterminism-0.029-zipfix.patch
+
+-------------------------------------------------------------------
+Mon Jul 10 02:49:15 UTC 2017 - bwiedemann@suse.com
+
+- Add strip-all-nondeterminism script to make this easier to use correctly
+- Add strip-nondeterminism-0.029-zipfix.patch
+  to handle files without permissions in .zip files
+
+-------------------------------------------------------------------
+Sun May  7 09:47:22 UTC 2017 - bwiedemann@suse.com
+
+- add rpm macro to use in spec files
+
+-------------------------------------------------------------------
+Sun Jan  1 00:00:51 UTC 2017 - bwiedemann@suse.com
+
+- update to version 0.029
+  + Add strip-nondeterminism-0.029-fix-apk.patch to fix tests
+
+-------------------------------------------------------------------
+Tue Mar  8 16:08:31 UTC 2016 - bwiedemann@suse.com
+
+- initial package version 0.016

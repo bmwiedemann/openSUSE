@@ -1,0 +1,32 @@
+# Ansible managed: ansible-homelan/master
+
+#include <tunables/global>
+
+profile mtail /usr/sbin/mtail flags=(attach_disconnected) {
+
+  #include <abstractions/base>
+
+  network inet  stream,
+  network inet6 stream,
+
+  /etc/ld.so.cache r,
+  /etc/nsswitch.conf r,
+  /etc/passwd r,
+
+  @{PROC}/sys/net/core/somaxconn r,
+  @{PROC}/@{pid}/fd/ r,
+  @{PROC}/@{pid}/{stat,limits} r,
+  @{sys}/kernel/mm/transparent_hugepage/hpage_pmd_size r,
+
+
+  # grant read access to mtail executable
+  /usr/sbin/mtail r,
+  
+  # grant read access to mtail programs
+  /etc/mtail/ r,
+  /etc/mtail/*.mtail r,
+
+  # grant read access to observed log files
+  /var/log/** r,
+
+}

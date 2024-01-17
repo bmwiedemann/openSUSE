@@ -1,0 +1,14 @@
+diff --git a/lib/LWP/Protocol/https.pm b/lib/LWP/Protocol/https.pm
+index 16fce19..b1a18df 100644
+--- a/lib/LWP/Protocol/https.pm
++++ b/lib/LWP/Protocol/https.pm
+@@ -28,7 +28,8 @@ sub _extra_sock_opts
+             $ssl_opts{SSL_verifycn_scheme} = 'none';
+         }
+     }
+-    if ($ssl_opts{SSL_verify_mode}) {
++    my $suse_allows_mozilla_ca = 0;
++    if ($suse_allows_mozilla_ca && $ssl_opts{SSL_verify_mode}) {
+         unless (exists $ssl_opts{SSL_ca_file} || exists $ssl_opts{SSL_ca_path}) {
+             if ($Net::HTTPS::SSL_SOCKET_CLASS eq 'IO::Socket::SSL'
+                 && defined &IO::Socket::SSL::default_ca

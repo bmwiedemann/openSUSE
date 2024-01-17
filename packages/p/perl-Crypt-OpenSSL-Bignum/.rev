@@ -1,0 +1,156 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4e467f1fa52c68abc0202b2a9d0563d3</srcmd5>
+    <version>0.04</version>
+    <time>1232682746</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>9d84aabc139d2dd03324241548212375</srcmd5>
+    <version>0.04</version>
+    <time>1263301920</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Crypt-OpenSSL-Bignum based on submit request 29213 from user coolo
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>8a4dea4fdf899c078190ada8c34aa580</srcmd5>
+    <version>0.04</version>
+    <time>1268925404</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>8a4dea4fdf899c078190ada8c34aa580</srcmd5>
+    <version>0.04</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>8a4dea4fdf899c078190ada8c34aa580</srcmd5>
+    <version>0.04</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>4701aad97dbb0e03b200dcc57e3910bd</srcmd5>
+    <version>0.04</version>
+    <time>1287485473</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50967 from user coolo
+</comment>
+    <requestid>50967</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>960a90608e08bfc300cc752ce6428840</srcmd5>
+    <version>0.04</version>
+    <time>1287485479</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 50967
+</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>dcacf2e69e8cf71e1c2debd9b24f8004</srcmd5>
+    <version>0.04</version>
+    <time>1291805750</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54908 from user coolo
+</comment>
+    <requestid>54908</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>305f88d135ec5d11d26b5b698c450e40</srcmd5>
+    <version>0.04</version>
+    <time>1291805791</time>
+    <user>darix</user>
+    <comment>Copy from devel:languages:perl/perl-Crypt-OpenSSL-Bignum based on submit request 54908 from user coolo
+</comment>
+    <requestid>54908</requestid>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>305f88d135ec5d11d26b5b698c450e40</srcmd5>
+    <version>0.04</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>305f88d135ec5d11d26b5b698c450e40</srcmd5>
+    <version>0.04</version>
+    <time>1319182253</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>745eb7343d515eb34eaceb766f193be3</srcmd5>
+    <version>0.04</version>
+    <time>1321875438</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92301</requestid>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>aee70d03596dc822d2b06081d6f1801d</srcmd5>
+    <version>0.04</version>
+    <time>1339352320</time>
+    <user>coolo</user>
+    <comment>license update: GPL-1.0+ or Artistic-1.0
+SPDX format (forwarded request 123847 from babelworx)</comment>
+    <requestid>123887</requestid>
+  </revision>
+  <revision rev="14" vrev="20">
+    <srcmd5>aee70d03596dc822d2b06081d6f1801d</srcmd5>
+    <version>0.04</version>
+    <time>1340183818</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="22">
+    <srcmd5>aee70d03596dc822d2b06081d6f1801d</srcmd5>
+    <version>0.04</version>
+    <time>1359109630</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="24">
+    <srcmd5>aee70d03596dc822d2b06081d6f1801d</srcmd5>
+    <version>0.04</version>
+    <time>1379663605</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="26">
+    <srcmd5>aee70d03596dc822d2b06081d6f1801d</srcmd5>
+    <version>0.04</version>
+    <time>1409302224</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5567eed2033f53c6a4577a04ed314ea6</srcmd5>
+    <version>0.06</version>
+    <time>1423258679</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.06
+      - fix for #77911 Patch to add more functions
+      - new constructors: new, rand, pseudo_rand, rand_range
+      - new methods: ucmp, num_bits, num_bytes, rshift, lshift, swap
+      - improved pod documentation (added missing functions)
+      - XS code cleanup
+ 0.05    2015/02/04
+      - fix for #84369 Win32 compatibility patch
+      - fix for #100993 Memory not reclaimed when CTX object goes out of scope
+      - fix for #86561 typo fixes
+      - fix for #82959 Error in synopsis: Crypt::OpenSSL::Bignum-&gt;new_from_hex(&quot;0x3e8&quot;) returns &quot;0&quot;
+      - fix for #81537 to_bin method returns garbage when value is zero</comment>
+    <requestid>284452</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3a3d34f3cda8b40be725f1463b3734b5</srcmd5>
+    <version>0.09</version>
+    <time>1539251518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640262</requestid>
+  </revision>
+</revisionlist>

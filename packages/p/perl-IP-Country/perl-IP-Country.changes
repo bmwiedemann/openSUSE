@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Tue Apr 14 20:27:42 UTC 2015 - coolo@suse.com
+
+- updated to 2.28
+   see /usr/share/doc/packages/perl-IP-Country/CHANGES
+
+  IP-Country-2.28, 2013.05.15
+  ---------------------------
+  Thanks to ANDK for bug report.
+  BUGFIX: http://rt.cpan.org/Public/Bug/Display.html?id=74843
+    minor robustness suggestion to work with CPAN::Reporter
+  Database update (thx NHORNE and darrenrh-at-gmail for reminder)
+
+-------------------------------------------------------------------
+Thu Jun 21 08:09:38 UTC 2012 - cfarrell@suse.com
+
+- license update: (GPL-1.0+ or Artistic-1.0) and SUSE-Redistributable-Content
+  SPDX format and add SUSE-Redistributable-Content from the list linked at
+  http://license.opensuse.org
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:41 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Aug 30 19:07:51 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typo and standardized "Authors:" format in description of 
+  perl-IP-Country.spec
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:22 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Apr  6 22:20:48 UTC 2010 - chris@computersalat.de
+
+- update to 2.27
+  o Added dependency for Geography::Countries (thx Otto Hirr)
+  o Database update (thx Aaron K Dancygier for reminder)
+- cleanup spec
+  o added HEADER, Url, macros
+- added perl-macros
+
+-------------------------------------------------------------------
+Sat May 30 21:52:20 CEST 2009 - lars@linux-schulserver.de
+
+- initial version 2.26
+

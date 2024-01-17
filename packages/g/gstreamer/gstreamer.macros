@@ -1,0 +1,4 @@
+%__gstreamer_provides	%{_rpmconfigdir}/gstreamer-provides
+%__gstreamer_path	libgst
+%__gstreamer_magic	ELF.*(shared object|executable)
+%__gstreamer_flags	magic_and_path

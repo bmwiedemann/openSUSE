@@ -1,0 +1,6 @@
+<package name="perl-String-Trim" project="openSUSE:Factory">
+  <title>Trim whitespace from your strings</title>
+  <description>'String::Trim' trims whitespace off your strings. chomp trims only '$/' (typically, that's newline), but 'trim' will trim all leading and trailing whitespace.</description>
+  <devel project="devel:languages:perl" package="perl-String-Trim"/>
+  <url>https://metacpan.org/release/String-Trim</url>
+</package>

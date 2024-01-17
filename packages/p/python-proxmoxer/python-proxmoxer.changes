@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Wed Feb 22 12:55:53 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- refactor %check section to not use the tests that require the
+  ancient openssh-wrapper module
+  see https://github.com/proxmoxer/proxmoxer/issues/135
+
+-------------------------------------------------------------------
+Tue Feb 21 12:45:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.1:
+  * Update version and changelog
+  * FIX: black linting error
+  * add test to check correct propagation of verify_ssl
+  * fix pass all provided arguments to token auth-backend
+  * Fix README formatting
+  * Remove unneeded class inheritance from `object`
+
+-------------------------------------------------------------------
+Mon Feb 20 17:18:48 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package python-proxmoxer: Python Wrapper for the Proxmox 2.x API (HTTP and SSH)

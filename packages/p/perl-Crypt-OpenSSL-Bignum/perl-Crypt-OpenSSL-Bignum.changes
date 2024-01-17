@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Wed Feb  7 16:16:40 UTC 2018 - coolo@suse.com
+
+- updated to 0.09
+   see /usr/share/doc/packages/perl-Crypt-OpenSSL-Bignum/Changes
+
+  0.09    2017/12/01
+          - fix #4 License is not specified in metadata 
+          - fix #6 Strip 
+ and  out of $lib and $inc
+          - fix #7 Fix building with OpenSSL 1.1.0 
+  
+  0.08    2017/02/08
+          - Makefile.PL MSWin32 fix
+  
+  0.07    2016/10/25
+          - Makefile.PL supports OPENSSL_PREFIX or OPENSSL_LIB+OPENSSL_INCLUDE env variables
+          - Makefile.PL tries to find libcrypto via pkg-config
+
+-------------------------------------------------------------------
+Fri Feb  6 11:03:45 UTC 2015 - coolo@suse.com
+
+- updated to 0.06
+      - fix for #77911 Patch to add more functions
+      - new constructors: new, rand, pseudo_rand, rand_range
+      - new methods: ucmp, num_bits, num_bytes, rshift, lshift, swap
+      - improved pod documentation (added missing functions)
+      - XS code cleanup
+
+ 0.05    2015/02/04
+      - fix for #84369 Win32 compatibility patch
+      - fix for #100993 Memory not reclaimed when CTX object goes out of scope
+      - fix for #86561 typo fixes
+      - fix for #82959 Error in synopsis: Crypt::OpenSSL::Bignum->new_from_hex("0x3e8") returns "0"
+      - fix for #81537 to_bin method returns garbage when value is zero
+
+-------------------------------------------------------------------
+Wed Jun  6 13:52:39 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-1.0+ or Artistic-1.0
+  SPDX format
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:54 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:18 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:35 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Nov 29 14:16:39 UTC 2010 - coolo@novell.com
+
+- recreated by cpanspec 1.78.02
+
+-------------------------------------------------------------------
+Sun Nov 28 11:37:44 UTC 2010 - coolo@novell.com
+
+- remove .packlist file
+
+-------------------------------------------------------------------
+Tue Oct 19 08:31:36 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Tue Jan 20 12:22:24 CET 2009 - varkoly@suse.de
+
+- Initial version of  perl-Crypt-OpenSSL-Bignum 
+

@@ -1,0 +1,10 @@
+<package name="sblim-cim-client2" project="openSUSE:Factory">
+  <title>Java CIM Client library</title>
+  <description>The purpose of this package is to provide a CIM Client Class Library
+for Java applications. It complies to the DMTF standard CIM Operations
+over HTTP and intends to be compatible with JCP JSR48 once it becomes
+available. To learn more about DMTF visit http://www.dmtf.org. More
+infos about the Java Community Process and JSR48 can be found at
+http://www.jcp.org and http://www.jcp.org/en/jsr/detail?id=48.</description>
+  <devel project="systemsmanagement:wbem" package="sblim-cim-client2"/>
+</package>

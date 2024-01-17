@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Sat Jun 10 17:44:54 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Thu Aug 25 12:56:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Skip failing DST tests for Amsterdam during Nazi occupation
+  * gh#sdispater/pendulum#644
+
+-------------------------------------------------------------------
+Tue Oct 27 10:26:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 2.1.2
+  * Added support for build scripts without the setup.py file
+    generation in the editable builder (#2718).
+  * Fixed an error occurring when using older lock files (#2717).
+- Changelog for version 2.1.1
+  * Fixed errors where invalid timezones were matched in 
+    from_format() (#374).
+  * Fixed errors when subtracting negative timedeltas (#419).
+  * Fixed errors in total units computation for durations 
+    with years and months (#482).
+  * Fixed an error where the fold attribute was overridden 
+    when using replace() (#414).
+  * Fixed an error where now() was not returning the 
+    correct result on DST transitions (#483).
+  * Fixed inconsistent typing annotation for the parse() 
+    function (#452).
+  * Added the pl locale (#459).
+- Build the extensions
+- Kill dephell dependency 
+- Disable python2 package (no python2-poetry-core in Leaps 
+  sr#842815)
+
+-------------------------------------------------------------------
+Mon Apr 27 08:48:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Depend on python-dateutil not just dateutil to solve on Leap
+
+-------------------------------------------------------------------
+Mon Apr 20 10:58:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Tue Mar 24 13:18:31 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.1.0
+  Added
+    Added better typing and PEP-561 compliance (#320).
+    Added the is_anniversary() method as an alias of is_birthday() (#298).
+  Changed
+    Dropped support for Python 3.4.
+    is_utc() will now return True for any datetime with an offset of 0, similar to the behavior in the 1.* versions (#295)
+    Duration.in_words() will now return 0 milliseconds for empty durations.
+  Fixed
+    Fixed various issues with timezone transitions for some edge cases (#321, (#350)).
+    Fixed out of bound detection for nth_of("month") (#357).
+    Fixed an error where extra text was accepted in from_format() (#372).
+    Fixed a recursion error when adding time to a DateTime with a fixed timezone (#431).
+    Fixed errors where Period instances were not properly compared to other classes, especially timedelta instances (#427).
+    Fixed deprecation warnings due to internal regexps (#427).
+    Fixed an error where the test() helper would not unset the test instance when an exception was raised (#445).
+    Fixed an error where the week_of_month attribute was not returning the correct value (#446).
+    Fixed an error in the way the Z ISO-8601 UTC designator was not parsed as UTC (#448).
+
+-------------------------------------------------------------------
+Tue Mar  3 13:59:44 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- added pytzdata as dependency 
+
+-------------------------------------------------------------------
+Mon Aug 26 18:55:13 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.0.5 
+  clean-up of spec file
+  license from PGK-INFO added
+
+-------------------------------------------------------------------
+Wed Apr  3 10:38:09 AM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v2.0.4

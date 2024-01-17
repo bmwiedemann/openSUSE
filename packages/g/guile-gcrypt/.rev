@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2aa1d082a30e97de721a544b4edd7f33</srcmd5>
+    <version>0.1.0</version>
+    <time>1543224286</time>
+    <user>dimstar_suse</user>
+    <comment>- guile-gcrypt at version 0.1.0 a dependency of guix
+</comment>
+    <requestid>650358</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3e8c608e5e716f50c78bea8192420f87</srcmd5>
+    <version>0.1.0</version>
+    <time>1564414333</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>719578</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>246430d031f111b132feeebced431120</srcmd5>
+    <version>0.2.0</version>
+    <time>1569391979</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>732634</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bf8d55e2706ffd5f541f0a62045901ea</srcmd5>
+    <version>0.2.1</version>
+    <time>1576927866</time>
+    <user>dimstar_suse</user>
+    <comment>this time with sources mentioned in the spec file :)</comment>
+    <requestid>758240</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d0840e45d0abcfbb1886347662437d35</srcmd5>
+    <version>0.2.1</version>
+    <time>1579032704</time>
+    <user>dimstar_suse</user>
+    <comment>Make ready for Guile 3.0</comment>
+    <requestid>764388</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b60e3e774ac72146cfd53343a47a35f9</srcmd5>
+    <version>0.2.1</version>
+    <time>1594046089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818979</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>35e05e348426907ae07b94fa7f98b3b2</srcmd5>
+    <version>0.3.0</version>
+    <time>1606428883</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0:</comment>
+    <requestid>850988</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>69b58ccf98c8bbae6626d787acd04a68</srcmd5>
+    <version>0.4.0</version>
+    <time>1669914797</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.4.0 (no breaking changes)</comment>
+    <requestid>1039343</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,485 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>402b464a8a5e5b964c4b2465431cfa56</srcmd5>
+    <version>0.5.4</version>
+    <time>1581087175</time>
+    <user>dimstar_suse</user>
+    <comment>Re-adding lutris</comment>
+    <requestid>770538</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>01f1842138c368afd4942622553b6950</srcmd5>
+    <version>0.5.4</version>
+    <time>1583227155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781088</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>64db7957ffcde797708d40c07a34a15d</srcmd5>
+    <version>0.5.5</version>
+    <time>1585760890</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.5:
+  * Initial support for Humble Bundle
+  * Add resolution switching support for Wayland (Mutter only)
+  * Add option to enable ACO shader compiler on Mesa &gt;= 19.3
+  * DXVK is enabled by default
+  * Add initial support for VKD3D
+  * Migrate D9VK configs to use DXVK
+  * Remove d3d10 and d3d10_1 from dlls handled by DXVK
+  * Fix an API breakage occuring with a Gtk update
+  * Add a System info tab in Preferences
+  * Better handle authentication failure for GOG
+  * Fix case issue with key lookup in Steam VDF files
+  * Add Yuzu runner
+  * Add bsnes-hd beta and smsplus libretro cores
+  * Add sound device option for Mednafen
+  * Remove bundled winetricks
+  * Remove xboxdrv integration
+- Remove lutris-0.5.4-boo1161650-remove-polkit.patch: upstreamed
+- Remove lutris-0.5.4-sort_new_with_model_fix.patch: upstreamed</comment>
+    <requestid>789981</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>085123b00474ef6f0f23f5bde19cec8e</srcmd5>
+    <version>0.5.6</version>
+    <time>1586973332</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.6:
+  * Add some wine core processes to be excluded from monitor (Fixes Battle.net
+    and Origin installation issues)
+  * Convert play time from string to float in the database. Do not downgrade
+    back to older versions or you'll experience issues.
+  * Fix for the wine sandbox on non English systems
+  * Allow Citra and MAME to be launched as standalone programs
+  * Avoid a crash if ldconfig -p returns corrupt data
+  * Allow custom messages to be displayed at the end of install scripts
+  * Add option to provide alternate config file for PCSX2 games
+  * Fix issue with usernames containing accented characters
+  * Fix &quot;Restrict to display&quot; option on Wayland/Mutter
+  * Fix blurry icons on KDE
+  * Remove broken translation files (until internationalization is done properly)
+  * Switch source of DXVK builds to Lutris' own (allows Lutris to delay broken
+    DXVK releases and ship custom ones)</comment>
+    <requestid>794008</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>60f06c339e5ab41742498b3c463a029d</srcmd5>
+    <version>0.5.7</version>
+    <time>1594045823</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.7:
+  * Use Meson and Ninja to build translation files
+  * Improve Debian package compliance with standards
+  * Add translation strings for the code base
+  * Set a default directory to manually added games,
+    allowing to remove them
+  * Deprecate MESS runner
+  * Migrate all MESS games to MAME
+  * Get full supported system list from the XML given by MAME
+  * Allow to run MAME games by ID if the ROM path is set
+  * Add a no-GUI option to RPCS3
+  * Fix GalliumNine conflicts with DXVK
+  * Improve performance of DirectX 12 games running on AMD GPU by
+    setting RADV_DEBUG=zerovram
+  * Code style fixes. Pylint is now used in the Travis checks.</comment>
+    <requestid>818830</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>771481debef2316c52541bda3cc65cf6</srcmd5>
+    <version>0.5.7.1</version>
+    <time>1595271772</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.7.1:
+  * Provide D3D12.DLL, based on vkd3d3-proton project
+   (https://github.com/HansKristian-Work/vkd3d-proton),
+   as part of our DXVK runtime. This will help push updates faster
+   and provide better compatibility for Direct3D 12 titles such as
+   World of Warcraft.</comment>
+    <requestid>821824</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fb9435d071605be4bcac51fc39cc4f8a</srcmd5>
+    <version>0.5.8</version>
+    <time>1605644698</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.8:
+  * 3rd party services are now available from the main window
+  * The &quot;Import games&quot; window has been removed. The concept of
+    importing games from other services into Lutris has been removed.
+  * Syncing games from other services on start has been removed.
+  * Integration with the lutris website such as login and showing your
+    library has been delegated to the 'lutris' service in the sidebar.
+  * The lutris service gives the option of searching your library or the whole
+    lutris.net library.
+  * Games from 3rd party services no longer depend on an install script to be
+    present on the website. Lutris will automatically install games with an
+    auto-generated script. Scripts from the website take precedence if available.
+  * Steam games are directly loaded from the Steam API and it is no longer needed
+    to sync your Steam library on the lutris website to see all your Steam games.
+  * Game banners and icons are downloaded from the services themselves. This
+    allows for customized media size in the UI based on what's available from the
+    service.
+  * Added option to hide the text under the icons
+  * The installer game cache configuration has been moved to the installer
+    window.
+  * Installers now offer the choice between downloaded files, custom user
+    provided files or cached files (when available).
+  * Bonus content for GOG games such as manuals or soundtracks can now be
+    downloaded as part of the install process. Selected content are downloaded
+    in a 'extras' folder in the game folder. Those files will likely be in
+    compressed format.
+  * The right side bar has been moved to the bottom of the window to optimize
+    space and to declutter the overall design. Game actions are now shown in a
+    popover menu displayed next to the play button. Runner actions, if available
+    (for example, wine), will show up in a popover menu next to the runner icon.</comment>
+    <requestid>848802</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b97115f4a2442c80e0ae0c403f170a05</srcmd5>
+    <version>0.5.8.1</version>
+    <time>1606828917</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.8.1:
+  * Remove Proton from available Wine versions
+  * Display a dialog until Lutris finishes initializing
+  * Allow to keep game files when uninstalling a game
+  * Remove custom sidebar CSS
+  * Fix popup menu not showing in list view
+  * Fix script loading for local files
+  * Fix installed at column setting name for list view
+  * Fix lutris not launching games with rungameid
+  * Fix installed Steam game for fresh lutris installs</comment>
+    <requestid>851778</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cdec2e6cf545230777a93bc802384997</srcmd5>
+    <version>0.5.8.2</version>
+    <time>1609959434</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.8.2:
+  * Fix popover menus not appearing on Wayland
+  * Fix game bar getting unselected on Wayland (Forces the last game to stay
+    selected)
+  * Update Chinese, Dutch, German and Russian translations
+  * Download DXVK when Lutris starts
+  * Add fsync2 feature detection
+  * Limit simultaneous downloads to 3
+  * Add support for deb file extraction
+  * Add support for Adobe Air games from Humble Bundle (Installation only,
+  * Air runtime will come at a later stage)
+  * Add support for GStreamer enabled Wine builds. This will provide better
+    compatibility for games using Media Foundation</comment>
+    <requestid>860741</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>30bd4dc7233bb5b3b39704acf426902d</srcmd5>
+    <version>0.5.8.2</version>
+    <time>1610304225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861892</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>13df4dcf4e5ba8f96417d894ae5d3228</srcmd5>
+    <version>0.5.8.3</version>
+    <time>1611595470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.8.3:
+  * Really fix popovers not showing on Wayland without making
+    them non-modal
+  * Prevent GStreamer based configuration from being applied
+    in incompatible wine builds.
+  * Fix crash when wine runner accesses DXVK versions before
+    they are uploaded.
+  * Prevent init dialog from being closed while it
+    downloads the runtime.</comment>
+    <requestid>866504</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a42baade419666a3f0c356ec823f3f87</srcmd5>
+    <version>0.5.8.4</version>
+    <time>1625516575</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.8.4:
+  * Fix Steam icon showing too big on some systems
+  * Fix DXVK not updating
+  * Fix Python 3.9 compatibility
+  * Update sidebar on service login
+  * Remember position of window except on Wayland maybe
+  * GST plugin path is now only set if it exists
+  * Default to 7zip when not given an archive extractor
+  * Switch IRC to Libera chat
+  * Fix libretro info file loading
+  * Let pipewire users toggle &quot;Reduce PulseAudio latency&quot;</comment>
+    <requestid>904049</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c93db83b4f8073a7a146630b9e6a94f0</srcmd5>
+    <version>0.5.8.4</version>
+    <time>1626986605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907619</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>392881899f25605611ced8714969e5d9</srcmd5>
+    <version>0.5.9</version>
+    <time>1634141176</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.9:
+  * Add initial support for Epic Games Store
+  * Add support for Steam for Windows as a game source
+  * Add support for DXVK-NVAPI and DLSS
+  * Add FidelityFX Super Resolution (FSR) option for compatible Wine versions
+  * Add workaround for locale issues when Lutris is launched from Steam
+  * Add gamescope option
+  * Lutris games can now be launched from Steam
+  * 3rd party services can be enabled or disabled in the preferences
+  * The main preferences window has now tabs on the left side
+  * Runner configuration is now available from the main preferences window
+  * VKD3D is a separate option from DXVK
+  * Esync is enabled by default
+  * Dolphin is available as a game source (reads games from the emulator's
+    local database of games)
+  * Scan for installed games when using Steam source
+  * Improved automatic installers for GOG, detection of DOSBOX and ScummVM
+    games.
+  * DRM free services (Humble, GOG) can locate existing installations of games
+  * Use 7zip as the default extractor when not given an archive type
+  * Improve process monitoring, allowing for monitoring of Steam games
+  * Disable AMD switchable graphics layer by default (breaks games)
+  * Removed support for Gallium 9
+  * Removed support for X360CE
+  * Removed legacy WineD3D options</comment>
+    <requestid>925031</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e4bc549ecff764e3335b6d35eab2b02e</srcmd5>
+    <version>0.5.9.1</version>
+    <time>1634587156</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.9.1:
+  * Fix possible escaping error for gamescope option
+  * Remove walrus operator to restore compatibility with
+    Python 3.7 / Ubuntu 18.04
+  * Remove log file being written in the home folder
+  * Fix install button for community installer
+  * Fix markup error on gamescope option
+  * Update URL for Ryujinx build
+  * Fix Steam sync creating duplicate games</comment>
+    <requestid>925815</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>af1cb749beb266facc4f2b28d77ca5a8</srcmd5>
+    <version>0.5.9.1</version>
+    <time>1639424675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940180</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8b613ac685e4c5983d83ce65fe49a5bb</srcmd5>
+    <version>0.5.10</version>
+    <time>1649093205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.10:
+  * Add new window to add games to Lutris, with searches from the website,
+    scanning a folder for previously installed games, installing a Windows
+    game from a setup file, installing from a YAML script or configuring a
+    single game manually.
+  * Move the search for Lutris installers from a tab in the Lutris service
+    to the window for adding games.
+  * Add option to add a Lutris game to Steam
+  * Add a coverart format
+  * Add integration with EA Origin
+  * Add integration with Ubisoft Connect
+  * Download missing media on startup
+  * Remove Winesteam runner (install Steam for Windows in Lutris instead)
+    PC (Linux and Windows) games have their own dedicated Nvidia shader cache
+  * Add dgvoodoo2 option
+  * Add option to enable BattleEye anti-cheat support
+  * Default to Retroarch cores in ~/.config/retroarch/cores if available
+  * Add support for downloading patches and DLC for GOG games
+  * Add --export and --import command line flags to export a game a lutris
+    game and re-import it (requires --dest for the destination path, feature still experimental)
+  * Add command line flags to manage runners: --install-runner, --uninstall-runners,
+    --list-runners, --list-wine-versions
+  * Change behavior of the &quot;Stop&quot; button, remove &quot;Kill all Wine processes&quot; action
+  * Gamescope option is now disabled on Nvidia GPUs
+  * Enable F-Sync by default
+  * For details see: https://github.com/lutris/lutris/releases/tag/v0.5.10</comment>
+    <requestid>966794</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>64ea8b5bac9e02be13e47b04970ffe1a</srcmd5>
+    <version>0.5.10</version>
+    <time>1650467034</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>971127</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2e5da9d03fc1244cda49c8a47bd078e0</srcmd5>
+    <version>0.5.10.1</version>
+    <time>1650548540</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.10.1:
+  * Check for Steam executable in home folder for Flatpak
+  * Adjust the Steam, application and desktop shortcuts to launch with
+    Flatpak when necessary
+  * Disable local (XDG) service in Flatpak
+  * Simplify MangoHUD option (now an On/Off toggle)
+  * Remove ability for Lutris to quit Steam
+  * Don't default to fsync on older kernels
+  * Default to a base resolution when Lutris is unable to read the current
+    configuration
+  * Fix issue with .NET 4.8 installation which affects the FF XIV launcher</comment>
+    <requestid>971234</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4ba6d05277bef881a8c5c4c5c9ad978f</srcmd5>
+    <version>0.5.11</version>
+    <time>1661593705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999334</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>613f84905e26cd6a9e120bb2a45e97e3</srcmd5>
+    <version>0.5.11</version>
+    <time>1662462077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001398</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5976d333c9a543c148aa10e91c16c922</srcmd5>
+    <version>0.5.12</version>
+    <time>1669983223</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.12:
+  * Add support for Xbox games with the xemu runner
+  * Fix authentication issue with Origin
+  * Fix authentication issue with EGS
+  * Fix authentication issue with Ubisoft Connect when 2FA is enabled
+  * Fix integration issue with GOG
+  * Add Discord Rich Presence integration
+  * Add ability to extract icons from Windows executables
+  * Allow setting custom cover art
+  * Re-style configuration dialogs</comment>
+    <requestid>1039517</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>cb23718b9ea66b01001784f1c8e2f939</srcmd5>
+    <version>0.5.12</version>
+    <time>1673444161</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057753</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>cf1316bd47e56386da637da71a664e0b</srcmd5>
+    <version>0.5.12</version>
+    <time>1683037136</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083918</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7fb2b43787557439cf48e60403f8d1d9</srcmd5>
+    <version>0.5.13</version>
+    <time>1684415940</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.13:
+  * Add support for Proton
+  * Add drag and drop on the main window. Dropped files will be matched
+    No-Intro, Redump and TOSEC checksums.
+  * Add support for ModDB links in installers (moddb python module required)
+  * Added &quot;Missing&quot; sidebar option for games whose directory is missing
+  * Re-style the configuration, preferences, installer and add-games windows
+  * Group configuration options into sections
+  * Added checkbox to stop asking for the launch config for a game
+  * Added checkbox to sort installed games first
+  * Support for launch-configs in shortcuts and the command line
+  * Show platform badges on banners and cover-art
+  * Installing games from setup files can now use different presets (Win98, 3DFX, ...)
+  * Add filter field to runner list
+  * Show game count in search bar
+  * Workaround Humble Bundle authentication issues by allowing importing
+    cookies from Firefox
+  * Add Itch.io integration
+  * Add Battle.net integration (protobuf dependency required)
+  * Improve detection of DOSBox games on GOG
+  * Added &quot;Unspecified&quot; Vulkan ICD option
+  * Removed ResidualVM (now merged into ScummVM)
+  * Detect obsolete Vulkan drivers and default to DXVK 1.x for them
+  * Improved High-DPI support for custom media
+  * Performance improvements
+- Drop fix-float-str-concat.patch</comment>
+    <requestid>1087508</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>1b5f8ad1e060079795aa1dcf48b61543</srcmd5>
+    <version>0.5.13</version>
+    <time>1689175695</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1098366</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>f4e85dfe50de5f92ef99606382aee885</srcmd5>
+    <version>0.5.13</version>
+    <time>1690987860</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1213440: Add recommends for ca-certificates-steamtricks</comment>
+    <requestid>1102015</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a5ee607734974aaa5c699e1fd55f0187</srcmd5>
+    <version>0.5.14</version>
+    <time>1697836714</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.5.14:
+  * Add Steam account switcher to handle multiple Steam accounts
+    on the same device.
+  * Add user defined tags / categories
+  * Group every API calls for runtime updates in a single one
+  * Download appropriate DXVK and VKD3D versions based on
+    the available GPU PCI IDs
+  * EA App integration. Your Origin games and saves can be manually imported
+    from your Origin prefix.
+  * Add integration with ScummVM local library
+  * Download Wine-GE updates when Lutris starts
+  * Group GOG and Amazon download in a single progress bar
+  * Fix blank login window on online services such as GOG or EGS
+  * Add a sort name field
+  * Yuzu and xemu now use an AppImage
+  * Experimental support for Flatpak provided runners
+  * Header-bar search for configuration options
+  * Support for Gamescope 3.12
+  * Missing games show an additional badge
+  * Add missing dependency on python3-gi-cairo for Debian packages</comment>
+    <requestid>1119150</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a74311fb73df6fe7d2bd3f2a9a72852a</srcmd5>
+    <version>0.5.15</version>
+    <time>1705353364</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138545</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>919558211fd174157085292ecb2f4795</srcmd5>
+    <version>0.5.16</version>
+    <time>1705437506</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.5.16:
+  * Fix bug that prevented installers to complete
+  * Better handling of Steam configurations for the Steam account picker
+  * Load game library in a background thread</comment>
+    <requestid>1139075</requestid>
+  </revision>
+</revisionlist>

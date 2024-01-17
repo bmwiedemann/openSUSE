@@ -1,0 +1,19 @@
+-- .......................................................................... --
+-- File catalog  ............................................................ --
+
+--  XHTML 1.1 plus MathML 2.0 plus SVG 1.1 Catalog Data File                  --
+
+-- .......................................................................... --
+
+OVERRIDE YES
+
+-- SGMLDECL "/usr/share/xml/xhtml/schema/dtd/1.1/xml1.dcl" --
+
+-- "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd" --
+PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN" "/usr/share/xml/xhtml/schema/dtd/1.1-math-svg/xhtml-math-svg.dtd"
+
+PUBLIC "-//W3C//DTD XHTML Basic plus SVG Tiny//EN" "/usr/share/xml/xhtml/schema/dtd/1.1-math-svg/xhtml-basic-svg-tiny-flat.dtd"
+
+-- End of catalog data  ..................................................... --
+-- .......................................................................... --
+

@@ -1,0 +1,135 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b1fb387eece72dc83bfb36cdd67f0770</srcmd5>
+    <version>5.0.13</version>
+    <time>1644435530</time>
+    <user>dimstar_suse</user>
+    <comment>Drop baseline.conf </comment>
+    <requestid>952702</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e3a6054bafe248adec0aa8c5f1d4897e</srcmd5>
+    <version>5.0.14</version>
+    <time>1644707724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953893</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>25e3e9a9eeff40bb8ccedc67c2aa2442</srcmd5>
+    <version>5.0.14</version>
+    <time>1645054257</time>
+    <user>dimstar_suse</user>
+    <comment>- fix preun scirpt
+</comment>
+    <requestid>955406</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>da6ecfdbc57c3a9323711aa547e53005</srcmd5>
+    <version>5.0.14</version>
+    <time>1645820707</time>
+    <user>dimstar_suse</user>
+    <comment>- systemd user env generator moved to package systemd-inputmethod-generator
+- fcitx4 further splits its libraries, adds new Provides/Obsoletes
+</comment>
+    <requestid>957529</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ef78d9dca0cff73f10c324093b8ba5d8</srcmd5>
+    <version>5.0.15</version>
+    <time>1647101724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961189</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>44036560cfa19bf33122afdb5ef941de</srcmd5>
+    <version>5.0.18</version>
+    <time>1657809267</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.18
+  * Support for plasma themes in classicui
+  * Fix client cursor disappears when using qt text-input-v2
+  * Fix clear text when ctrl+c when using gtk text-input-v3
+  * Fix a rare wayland protocol error on sway
+- Fix build by removing unused headers (gh#fcitx/fcitx5#538)
+  * 0001-Remove-unused-xkbcommon-headers.patch
+- Replace raw package name with pkgconfig()
+- Remove &quot;ENABLE_PRESAGE&quot;, it's not used anywhere
+  (https://github.com/fcitx/fcitx5/commit/e7348f0f972d7f4934f3a1dd1258a51d7d057ac4)
+</comment>
+    <requestid>989063</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a8c34da8656a620b2aec23c071421663</srcmd5>
+    <version>5.0.18</version>
+    <time>1663596253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004668</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7826f0037738c0e33e7c42a59e2a6ca6</srcmd5>
+    <version>5.0.19</version>
+    <time>1663764177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005116</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1c54617c5f045ca30e219faacfe5d552</srcmd5>
+    <version>5.0.19</version>
+    <time>1664797557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1007490</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>4ef6fd210d69ada709ffe8403a02c801</srcmd5>
+    <version>5.0.19</version>
+    <time>1665844639</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1010929</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>66e1d2359aa99f4e3161a91ca058d63f</srcmd5>
+    <version>5.0.20</version>
+    <time>1669041023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037073</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>57e52650523216200ffb2617de3bc692</srcmd5>
+    <version>5.0.21</version>
+    <time>1669983177</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1039338</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1904a9a502cd3b94dae74893a75d4487</srcmd5>
+    <version>5.0.23</version>
+    <time>1684846432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088340</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a3b05b2ca3ff27aea127bb51d630cd28</srcmd5>
+    <version>5.1.0</version>
+    <time>1692611080</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104882</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e46ed0e62e25e2bcf7c14f3da78875a9</srcmd5>
+    <version>5.1.1</version>
+    <time>1696451477</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114924</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e21e264bef7148d2155945f4370c432e</srcmd5>
+    <version>2.1.0</version>
+    <time>1576014044</time>
+    <user>dimstar_suse</user>
+    <comment>kafka is going to be a dependency of envoy-proxy and cilium-proxy</comment>
+    <requestid>746601</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9bbd3743f1b0ab6af0a3b72333c5980b</srcmd5>
+    <version>2.1.0</version>
+    <time>1576063478</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>755689</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>02a1c59edaea3f34a4c26c406bfe8609</srcmd5>
+    <version>2.1.0</version>
+    <time>1579273689</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patches which are not needed anymore:
+  * rotate-gc-log.patch
+  * lock-down-jmxremote.patch (forwarded request 765268 from mrostecki)</comment>
+    <requestid>765269</requestid>
+  </revision>
+</revisionlist>

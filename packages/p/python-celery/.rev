@@ -1,0 +1,446 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6b953224ed7f9e7db66be02207d0482f</srcmd5>
+    <version>2.5.1</version>
+    <time>1332241904</time>
+    <user>coolo</user>
+    <comment>Now with license changes</comment>
+    <requestid>109947</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>50c05342180da5964b64bb9cd18980dc</srcmd5>
+    <version>2.5.3</version>
+    <time>1335165386</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>114448</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>50c05342180da5964b64bb9cd18980dc</srcmd5>
+    <version>2.5.3</version>
+    <time>1340184038</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4ed72e18deb0e9de2173d34a500e9ef6</srcmd5>
+    <version>2.5.5</version>
+    <time>1340946179</time>
+    <user>coolo</user>
+    <comment>- Conflict with kombu &gt;= 2.2.0 (see previous changes entry)
+
+- Update to 2.5.5:
+  This is a dummy release performed for the following goals:
+    - Protect against force upgrading to Kombu 2.2.0
+    - Version parity with django-celery</comment>
+    <requestid>126466</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ab1f24e6e2b962edf9c02150ec3c6322</srcmd5>
+    <version>3.0.9</version>
+    <time>1347618866</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134036</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dde1b341b29b8310f615643ea26da75b</srcmd5>
+    <version>3.0.11</version>
+    <time>1349632514</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137358</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>dde1b341b29b8310f615643ea26da75b</srcmd5>
+    <version>3.0.11</version>
+    <time>1359110001</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>db1825b5c39aeb155a6c30ff90fe7976</srcmd5>
+    <version>3.0.19</version>
+    <time>1373953076</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179748</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>db1825b5c39aeb155a6c30ff90fe7976</srcmd5>
+    <version>3.0.19</version>
+    <time>1379664138</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c4d71a65d3ce44be1e81d68bb4823906</srcmd5>
+    <version>3.0.23</version>
+    <time>1380297533</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 200634 from posophe)</comment>
+    <requestid>200670</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>290f7ec3f4200664f08ecc936a28d4d7</srcmd5>
+    <version>3.0.23</version>
+    <time>1382692327</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204529</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>29c75f60e8ec1223dc43ff3fd767ee0f</srcmd5>
+    <version>3.1.5</version>
+    <time>1385977387</time>
+    <user>coolo</user>
+    <comment>update to 3.1.5 (forwarded request 209069 from appleonkel)</comment>
+    <requestid>209113</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>29c75f60e8ec1223dc43ff3fd767ee0f</srcmd5>
+    <version>3.1.5</version>
+    <time>1409302829</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bf015b3950f8a1cd31926dc32b05b074</srcmd5>
+    <version>3.1.16</version>
+    <time>1415866680</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261219</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>005d685f7d25f186eaa4b76b6a0061fa</srcmd5>
+    <version>3.1.18</version>
+    <time>1430891328</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305169</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5130a1045dcc33443c17f72377e539d0</srcmd5>
+    <version>3.1.19</version>
+    <time>1453799683</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353806</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e0b3cfec94a79983e27fe0c4c88fb654</srcmd5>
+    <version>4.0.2</version>
+    <time>1502366578</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>509208</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>f1139030050d49edd1784676efd4379d</srcmd5>
+    <version>4.0.2</version>
+    <time>1504815216</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521058</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>92a0598efeda2feff1701b94efbf7ef0</srcmd5>
+    <version>4.1.0</version>
+    <time>1507570857</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530447</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>fad65c61f69a45af6c384a684da1ddc3</srcmd5>
+    <version>4.1.0</version>
+    <time>1512140019</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing runtime deps (mostly same as build time ones...)</comment>
+    <requestid>546667</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>fdf97606b97eba0ea0c3c58b3b424cf3</srcmd5>
+    <version>4.1.0</version>
+    <time>1526041664</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix testrun with new pytest:
+  * disable-pytest-log-capturing.patch</comment>
+    <requestid>602986</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8dc1256ca0775840bd5c4283cf291724</srcmd5>
+    <version>4.2.1</version>
+    <time>1534543490</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.1:
+  * Fix to build with newest kombu
+  * Many bugfixes around
+- Add patch to skip test that should not be run:
+  * celery-no-redis.patch</comment>
+    <requestid>629554</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>1d1eeeca8f181db0afeb57172080ebda</srcmd5>
+    <version>4.2.1</version>
+    <time>1544726860</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call
+
+- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655590</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>80a31aa376915cf43a7fd56f60f6f876</srcmd5>
+    <version>4.2.1</version>
+    <time>1549020168</time>
+    <user>dimstar_suse</user>
+    <comment>- Add no-async.patch renaming async package to async_tools to
+  make package 3.7 compatible.
+</comment>
+    <requestid>670410</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>4906a9b4600f09eeb8732ff04475f754</srcmd5>
+    <version>4.2.1</version>
+    <time>1551276359</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>678212</requestid>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>3705ba9ae91a062fe468a666163cae10</srcmd5>
+    <version>4.2.1</version>
+    <time>1556474296</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697762</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>bff7f0e78265fd521cdf15a6c60cecd3</srcmd5>
+    <version>4.3.0</version>
+    <time>1564484764</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ringdisabled to avoid pulling the test deps in rings to
+  keep them from growing too much
+
+- Switch to multibuild in order to not pull moto everywhere
+
+- Update to 4.3.0:
+  * See the changelog for in-depth details
+- Remove merged patches:
+  * python37-1.patch
+  * python37-2.patch
+  * python37-3.patch
+  * disable-pytest-log-capturing.patch
+  * celery-no-redis.patch
+  * relax-billiard-pin.patch
+- Rebase patch unpin-pytest.patch</comment>
+    <requestid>718188</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>36538c73a6b744019b7daeb110eb7fef</srcmd5>
+    <version>4.3.0</version>
+    <time>1565178812</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch from git to fix build with new pytest:
+  * pytest5.patch</comment>
+    <requestid>720025</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>808195748d0b421ba270b4da651a5099</srcmd5>
+    <version>4.3.0</version>
+    <time>1574414764</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749510</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>90d8263f78ad2cb3d57b312bfcbc1611</srcmd5>
+    <version>4.4.0</version>
+    <time>1580373297</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767613</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4029c3023bd08b80d6976203c08a17b5</srcmd5>
+    <version>4.4.2</version>
+    <time>1590649548</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 4.4.2:
+  * Various fixes for the 4.4 series
+- Remove no longer needed unpin-pytest.patch</comment>
+    <requestid>805558</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>2b503fb35e6eaf1947e5d1e7de2b9a85</srcmd5>
+    <version>4.4.2</version>
+    <time>1591379961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809824</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0f1709e0f8ea89cb19b321aaef0e241b</srcmd5>
+    <version>4.4.6</version>
+    <time>1594807586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820094</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>bf62e497ab5b88922693ca202301d5ec</srcmd5>
+    <version>4.4.7</version>
+    <time>1603961184</time>
+    <user>dimstar_suse</user>
+    <comment>- Use really the upstream tarball
+
+- Don't update to 5.0.0 because missing dependencies
+- Update to version 4.4.7
+  + Add task_received, task_rejected and task_unknown to signals
+    module.
+  + [ES backend] add 401 as safe for retry.
+  + treat internal errors as failure.
+  + Remove redis fanout caveats.
+  + FIX: -A and --args should behave the same. (#6223)
+  + Class-based tasks autoretry (#6233)
+  + Preserve order of group results with Redis result backend
+    (#6218)
+  + Replace future with celery.five Fixes #6250, and reraise to
+    include
+  + Fix REMAP_SIGTERM=SIGQUIT not working
+  + (Fixes#6258) MongoDB: fix for serialization issue (#6259)
+  + Make use of ordered sets in Redis opt-in
+  + Test, CI, Docker, style and minor doc impovements.</comment>
+    <requestid>838700</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>725ec93858cf2d93e541dc09a72fcc20</srcmd5>
+    <version>5.0.2</version>
+    <time>1607801315</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.02:
+  * Fix _autodiscover_tasks_from_fixups (#6424).
+  * Flush worker prints, notably the banner (#6432).
+  * Breaking Change: Remove ha_policy from queue definition. (#6440)
+  * This argument has no effect since RabbitMQ 3.0. Therefore, We feel
+    comfortable dropping it in a patch release.
+  * Python 3.9 support (#6418).
+  * Regression: When using the prefork pool, pick the fair scheduling strategy
+    by default (#6447).
+  * Preserve callbacks when replacing a task with a chain (#6189).
+  * Fix max_retries override on self.retry() (#6436).
+  * Raise proper error when replacing with an empty chain (#6452)
+  * Specify UTF-8 as the encoding for log files (#6357).
+  * Custom headers now propagate when using the protocol 1 hybrid messages
+    (#6374).
+  * Retry creating the database schema for the database results backend in case of a race condition (#6298).
+  * When using the Redis results backend, awaiting for a chord no longer hangs
+    when setting :setting:`result_expires` to 0 (#6373).
+  * When a user tries to specify the app as an option for the subcommand, a
+    custom error message is displayed (#6363).
+  * Fix the --without-gossip, --without-mingle, and --without-heartbeat options
+    which now work as expected. (#6365)
+  * Provide a clearer error message when the application cannot be loaded.
+  * Avoid printing deprecation warnings for settings when they are loaded from
+    Django settings (#6385).
+  * Allow lowercase log levels for the --loglevel option (#6388).
+  * Detaching now works as expected (#6401).
+  * Restore broadcasting messages from celery control (#6400).
+  * Pass back real result for single task chains (#6411).
+  * Ensure group tasks a deeply serialized (#6342).
+  * Fix chord element counting (#6354).
+  * Restore the celery shell command (#6421).
+  * Breaking Change Remove AMQP result backend (#6360).
+  * Warn when deprecated settings are used (#6353).
+  * Expose retry_policy for Redis result backend (#6330).
+  * Prepare Celery to support the yet to be released Python 3.9 (#6328).
+  * More cleanups of leftover Python 2 support (#6338).
+  * Bump minimum required eventlet version to 0.26.1.
+  * Update Couchbase Result backend to use SDK V3.
+  * Restore monkeypatching when gevent or eventlet are used.
+  * Allow to opt out of ordered group results when using the Redis result
+    backend (#6290).
+  * Breaking Change Remove the deprecated celery.utils.encoding module.
+  * Breaking Change Drop support for the Riak result backend (#5686).
+  * Breaking Change pytest plugin is no longer enabled by default (#6288).
+    Install pytest-celery to enable it.
+  * Breaking Change Brand new CLI based on Click (#5718).
+  * Bump Kombu version to 5.0 (#5686).
+  * Removed most of the compatibility code that supports Python 2 (#5686).
+  * Modernized code to work on Python 3.6 and above (#5686). 
+- Update BuildRequires/Requires.
+- Add patch move-pytest-configuration-to-conftest.patch to fix testsuite.</comment>
+    <requestid>848996</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7d7e0abcbc7edce35bb81db69b6ba109</srcmd5>
+    <version>5.0.5</version>
+    <time>1612182407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866877</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>ee2706f9a624f0ee39d6f1d680f93b1e</srcmd5>
+    <version>5.0.5</version>
+    <time>1613427004</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>870385</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>f48a01b7bdd12ccf9f94e6ec9dacbe41</srcmd5>
+    <version>5.0.5</version>
+    <time>1625950435</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PyYAML dependency for tests
+</comment>
+    <requestid>903633</requestid>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>eb893d9c29b7f1ff7134708bdceb5e2b</srcmd5>
+    <version>5.0.5</version>
+    <time>1629795245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913354</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>204fe9b137c12a70f2e7f80d2a92bb42</srcmd5>
+    <version>5.2.7</version>
+    <time>1658243937</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>989562</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>c6313a21a60e8ab5987e26fc200c8872</srcmd5>
+    <version>5.2.7</version>
+    <time>1680018682</time>
+    <user>dimstar_suse</user>
+    <comment>- add 879af6341974c3778077d8212d78f093b2d77a4f.patch
+  b260860988469ef8ad74f2d4225839c2fa91d590.patch: better
+  compatibility with newer billiard</comment>
+    <requestid>1074931</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>3a101910cc74f6820d340323ae80f9d4</srcmd5>
+    <version>5.2.7</version>
+    <time>1685476940</time>
+    <user>dimstar_suse</user>
+    <comment>- Add sqlalchemy-2.0.patch to support latest version of sqlalchemy.
+  gh#celery/celery#8271</comment>
+    <requestid>1089865</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>c52195256ca8bd8fc1c5108bac786693</srcmd5>
+    <version>5.2.7</version>
+    <time>1686576466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092496</requestid>
+  </revision>
+</revisionlist>

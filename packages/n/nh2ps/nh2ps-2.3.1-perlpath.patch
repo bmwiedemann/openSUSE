@@ -1,0 +1,20 @@
+Index: nh2ps-2.3.1/mkpsfontmap.pl
+===================================================================
+--- nh2ps-2.3.1.orig/mkpsfontmap.pl
++++ nh2ps-2.3.1/mkpsfontmap.pl
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ # nhppf 2.0 fontmap generator
+ #
+Index: nh2ps-2.3.1/nh2ps_opt
+===================================================================
+--- nh2ps-2.3.1.orig/nh2ps_opt
++++ nh2ps-2.3.1/nh2ps_opt
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ # nh2ps_opt 2.0
+ # - nh2ps hangul, hanja font optimizer

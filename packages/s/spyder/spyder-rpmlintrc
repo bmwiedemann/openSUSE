@@ -1,0 +1,2 @@
+# lang package has no python scripts
+addFilter("lang.*no-dependency-on python")

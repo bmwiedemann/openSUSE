@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=gOCR
+GenericName=Optical Character Recognition Program
+Comment=gOCR is an optical character recognition program
+Exec=gocr.tcl
+#Icon=
+Terminal=false
+Type=Application
+Categories=Graphics;Scanning;OCR;

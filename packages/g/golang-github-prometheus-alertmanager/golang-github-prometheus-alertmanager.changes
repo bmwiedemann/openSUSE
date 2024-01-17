@@ -1,0 +1,411 @@
+-------------------------------------------------------------------
+Mon Dec 11 12:15:12 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Do not create PIE for s390x architecture
+
+-------------------------------------------------------------------
+Tue Nov 21 16:24:41 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Add 0002-Set-build-flags.patch
+- Require Go 1.20 or newer for building
+- Remove not used build flags
+- Create position independent executables (PIE)
+- Do not disable stripping the binaries
+- Add System/Monitoring group tag
+- Do not generate automatically changelog entries
+
+-------------------------------------------------------------------
+Mon Aug 28 11:12:49 UTC 2023 - daniel@molkentin.de
+
+- Update to version 0.26.0:
+  * Fast Forward the `main` branch to align with 0.26
+  * Check the validity of the generatorURL field
+  * Fix year in 0.26.0-rc.0 entry (#3468)
+  * Release: fix the version formatting (#3467)
+  * Revert "Release: Fix version format (#3465)" (#3466)
+  * Release: Fix version format (#3465)
+  * Cut v0.26.0 rc.0 (#3447)
+  * Update docs for slack_config (#3455)
+  * Treat error response payloads from Slack as errors (#3121)
+  * Bump github.com/benbjohnson/clock from 1.3.3 to 1.3.5 (#3434)
+  * Bump github.com/go-openapi/errors from 0.20.3 to 0.20.4 (#3413)
+  * Bump github.com/stretchr/testify from 1.8.2 to 1.8.4 (#3414)
+  * Bump github.com/aws/aws-sdk-go from 1.44.234 to 1.44.317 (#3448)
+  * if 9093/9094 port is in use, test case will fail (#3320)
+  * Log the GroupKey and alerts in retry (#3438)
+  * Update email assets after #3420 (#3440)
+  * cluster: fix panic when `tls_client_config` is empty
+  * update the circleCI go orb
+  * Mixin: Pin the mixtool version in CircleCI
+  * Update email.html to use "https://schema.org" instead of "https://schema.org" (#3420)
+  * Bump github.com/prometheus/common from 0.42.0 to 0.44.0
+  * Build with Go 1.20
+  * Fix example matchers in docs
+  * Update common Prometheus files
+  * fixing the field name for pagerduty image_config as per code https://pkg.go.dev/github.com/prometheus/alertmanager/config\#PagerdutyImage
+  * Log a warning when repeat_interval is less than group_interval (#3389)
+  * Add msteams (#3324)
+  * Document difference between tab and newline in tests (#3383)
+  * Bump github.com/prometheus/exporter-toolkit from 0.9.1 to 0.10.0
+  * Bump github.com/cenkalti/backoff/v4 from 4.2.0 to 4.2.1
+  * Bump github.com/go-openapi/runtime from 0.25.0 to 0.26.0
+  * Bump go.uber.org/atomic from 1.10.0 to 1.11.0
+  * Bump github.com/prometheus/client_golang from 1.15.0 to 1.15.1
+  * Bump golang.org/x/net from 0.8.0 to 0.10.0
+  * notify/webhook: trim space from url_file content
+  * Add more tests to TestMatchers (#3362)
+  * Add tests to TestMatchers (#3357)
+  * Cluster: Add memberlist label configuration option (#3354)
+  * api/v2: Delete silence respond with 404 when silence is not found (#3352)
+  * Add support for pushover devices (#3318)
+  * Slack Notifier: Only return an error when it actually occurs (#3350)
+  * Bump golang.org/x/text from 0.8.0 to 0.9.0
+  * Bump github.com/prometheus/client_golang from 1.14.0 to 1.15.0
+  * Bump github.com/benbjohnson/clock from 1.3.0 to 1.3.3
+  * Bump github.com/rs/cors from 1.8.3 to 1.9.0
+  * Bump gopkg.in/telebot.v3 from 3.1.2 to 3.1.3
+  * fix: change receiver model pointer to value (#3338)
+  * add reason code to slack notifier (#3252)
+  * fix wechat notifier response field name (#3330)
+  * add reason code to notifiers (#3307)
+  * Bump github.com/aws/aws-sdk-go from 1.44.211 to 1.44.234
+  * Bump github.com/go-openapi/strfmt from 0.21.3 to 0.21.7
+  * Bump github.com/hashicorp/golang-lru/v2 from 2.0.1 to 2.0.2
+  * Bump golang.org/x/tools from 0.6.0 to 0.7.0
+  * docs: document the new proxy-related settings
+  * Update common Prometheus files
+  * Add receiver name to the alerts page (#3289)
+  * Update gopkg.in/alecthomas/kingpin.v2 to github.com/alecthomas/kingpin/v2
+  * Metrics: Silence maintenance success and failure (#3285)
+  * Metrics: Notification log maintenance success and failure (#3286)
+  * Fix comments as per Josh's feedback (#3284)
+  * Fix corruption in templates that use title function (#3278)
+  * Added note on data retention to documentation for repeat_interval (#3147)
+  * Make TrimSpace available for use in the template (#3281)
+  * support loading webhook URL from a file (#3223)
+  * Bump golang.org/x/tools from 0.4.0 to 0.6.0
+  * Bump github.com/go-openapi/validate from 0.22.0 to 0.22.1 (#3269)
+  * Bump golang.org/x/text from 0.6.0 to 0.7.0
+  * Bump github.com/stretchr/testify from 1.8.1 to 1.8.2
+  * Bump github.com/aws/aws-sdk-go from 1.44.191 to 1.44.211
+  * replace atomic for uber fix atomic
+  * Fix silences flaky test
+  * Seperate the template creating functions for as-lib use (#3225)
+  * fix gracefully-exiting stuck due to adding one more for `WaitGroup` (#3260)
+  * Update common Prometheus files (#3257)
+  * Add `--id` flag to `amtool silence query` (#3241)
+  * Implement Stringer interface for Pairs and KVs (#3256)
+  * Set cache control headers in V2 API to mirror V1 (#3195)
+  * add status code label to the numTotalFailedNotifications metric (#3094)
+  * mark webhook URL as a secret (#3228)
+  * Bump golang.org/x/net from 0.4.0 to 0.5.0
+  * Bump github.com/aws/aws-sdk-go from 1.44.171 to 1.44.191
+  * Bump golang.org/x/text from 0.5.0 to 0.6.0
+  * Bump github.com/gofrs/uuid from 4.3.1+incompatible to 4.4.0+incompatible
+  * Bump github.com/go-openapi/spec from 0.20.7 to 0.20.8
+  * Support loading Telegram bot token from file
+  * Update common Prometheus files
+  * Refactor nflog configuration options to make it similar to Silences. (#3220)
+  * support loading pushover secrets from files (#3200)
+  * Multiple improvements to Alertmanager configuration docs
+  * Changes receiver and inhibition rules arrays to slices of value items
+  * test: reduce flakiness of acceptance tests
+  * Add missing docs for Discord notifier
+  * Bump github.com/rs/cors from 1.8.2 to 1.8.3
+  * Bump github.com/aws/aws-sdk-go from 1.44.162 to 1.44.171
+  * Telegram default parse_mode has been changed to HTML
+  * Synchronize common files from prometheus/prometheus (#3191)
+  * bump:hashicorp/golang-lru to v2,aws-sdk-go,prometheus/common (#3182)
+  * feat: add template.FromGlobsWithAdditionalFuncs (#3174)
+  * Fixup: make signal handlers a bit simpler.
+
+-------------------------------------------------------------------
+Wed Mar 22 10:08:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- rework spec file to use obscpio
+  - run tar and recompress services at buildtime
+
+-------------------------------------------------------------------
+Wed Feb 15 12:39:10 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.25.0:
+  * New notifier: Webex
+  * telegram: use HTML template with HTML parse mode
+  * Add support for reading VictorOps API key from file
+  * Add support for reading PagerDuty secrets from files
+  * Add timezone support to time intervals.
+  * Allow first day of week to be Sunday or Monday
+  * Enable HTTP 2 again
+  * Secure cluster traffic via mutual TLS
+  * EmailConfig: Use CanonicalMIMEHeaderKey instead of TitleCasing for headers
+  * Reduce memory utilization in downstream projects creating
+    multiple Alertmanager instances
+  * Correcting the condition for updating a silence
+    Earlier was checking upto nanosecond precision but reduced to second
+    as the UI only sends upto millisecond
+  * Remove the dedicated field to APIURL in favour of the configuration one
+  * Remove the `bot_token`
+  * Fix casing in victorops log message
+  * Fix one last log level that I missed
+  * Fix email template for resolved notifications
+  * Update documentation
+  * Update dependencies
+- Update required Go version to 1.19
+- Rebased 0001-Default-settings.patch
+- Drop 0002-Update-prometheus-client-to-version-1.11.1.patch
+  fixed upstream (now uses v1.14.0)
+
+-------------------------------------------------------------------
+Tue Jul 19 08:10:44 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Do not include sources (bsc#1200725)
+
+-------------------------------------------------------------------
+Fri Apr  8 11:54:29 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update required Go version to 1.16
+
+-------------------------------------------------------------------
+Thu Mar 10 15:39:10 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update vendor tarball with prometheus/client_golang 1.11.1
+  (bsc#1196338, jsc#SLE-24077)
+  + Added 0002-Update-prometheus-client-to-version-1.11.1.patch
+- Use %autosetup macro
+
+-------------------------------------------------------------------
+Thu Mar 03 21:12:06 UTC 2022 - ecsos@opensuse.org
+
+- Update to version 0.23.0:
+  * Release 0.23.0
+  * Release 0.23.0-rc.0
+  * amtool: Detect version drift and warn users (#2672)
+  * Add ability to skip TLS verification for amtool (#2663)
+  * Fix empty isEqual in amtool. (#2668)
+  * Fix main tests (#2670)
+  * cli: add new template render command (#2538)
+  * OpsGenie: refer to alert instead of incident (#2609)
+  * Docs: target_match and source_match are DEPRECATED (#2665)
+  * Fix test not waiting for cluster member to be ready
+- Add go_modules to _service.
+
+-------------------------------------------------------------------
+Mon Sep 20 14:08:14 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * prometheus-alertmanager.service
+
+-------------------------------------------------------------------
+Mon Nov 30 15:19:25 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Exclude s390 architecture
+
+-------------------------------------------------------------------
+Mon Nov  9 16:45:52 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Update packaging
+  * Remove systemd and shadow hard requirements
+  * use the system user provided by the system-user-prometheus subpackge
+  * add 'prometheus-alertmanager' package alias
+
+-------------------------------------------------------------------
+Fri Oct 30 16:45:34 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Fix building amtool (bsc#1176943)
+
+-------------------------------------------------------------------
+Fri Aug 28 12:43:59 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Fix permissions for /var/lib/prometheus to match
+  golang-github-prometheus-prometheus package. Otherwise the install check will
+  fail.
+
+-------------------------------------------------------------------
+Sat Jul 18 20:24:34 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 0.21.0
+  + Changes:
+    * [HipChat] Remove HipChat integration as it is end-of-life. #2282
+    * [amtool] Remove default assignment of environment variables. #2161
+    * [PagerDuty] Enforce 512KB event size limit. #2225
+  + Enhancements:
+    * [amtool] Add cluster command to show cluster and peer statuses. #2256
+    * Add redirection from / to the routes prefix when it isn't empty. #2235
+    * [Webhook] Add max_alerts option to limit the number of alerts included in the payload. #2274
+    * Improve logs for API v2, notifications and clustering. #2177 #2188 #2260 #2261 #2273
+  + Bugfixes:
+    * Fix child routes not inheriting their parent route's grouping when group_by: [...]. #2154
+    * [UI] Fix the receiver selector in the Alerts page when the receiver name contains regular expression metacharacters such as +. #2090
+    * Fix error message about start and end time validation. #2173
+    * Fix a potential race condition in dispatcher. #2208
+    * [API v2] Return an empty array of peers when the clustering is disabled. #2203
+    * Fix the registration of alertmanager_dispatcher_aggregation_groups and alertmanager_dispatcher_alert_processing_duration_seconds metrics. #2200
+    * Always retry notifications with back-off. #2290
+- Run spec-cleaner
+- Remove rpm group
+- Update to build with go1.14 for Factory (Tumbleweed)
+- Refresh example config from upstream
+
+-------------------------------------------------------------------
+Fri Aug  2 06:11:53 UTC 2019 - Jan Fajerski <jan.fajerski@suse.com>
+
+- Add network-online (Wants and After) dependency to systemd unit bsc#1143913
+
+-------------------------------------------------------------------
+Tue Apr 16 08:15:25 UTC 2019 - Jan Fajerski <jan.fajerski@suse.com>
+
+- Update to 0.16.2
+  + Bug Fixes:
+    * Redact notifier URL from logs to not leak secrets embedded in the URL
+    * Allow sending of unauthenticated SMTP requests when smtp_auth_username is not supplied
+
+-------------------------------------------------------------------
+Fri Feb  8 10:42:37 UTC 2019 - Jan Fajerski <jan.fajerski@suse.com>
+
+- Update to 0.16.1:
+  + Bug Fixes:
+    * Do not populate cluster info if clustering is disabled in API v2
+- Update to 0.16.0:
+  + Deprecate API v1
+  + Remove api/v1/alerts/groups GET endpoint
+  + Revert Alertmanager working directory changes in Docker image back to /alertmanager
+  + Using the recommended label syntax for maintainer in Dockerfile
+  + Change alertmanager_notifications_total to count attempted notifications, not only successful ones (#1578)
+  + Run as nobody inside container
+  + Support w for weeks when creating silences, remove y for year
+  + Features:
+    * Introduce OpenAPI generated API v2
+    * Lookup parts in strings using regexp.MatchString in templates
+    * Support image/thumb url in attachment in Slack notifier
+    * Support custom TLS certificates for the email notifier
+    * Add support for images and links in the PagerDuty notification config
+    * Add support for grouping by all labels
+    * [amtool] Add timeout support to amtool commands
+    * [amtool] Added config routes tools for vizualization and testing routes
+    * [amtool] Support adding alerts using amtool
+  + Enhancements:
+    * Add support for --log.format
+    * Add CORS support to API v2
+    * Support HTML, URL title and custom sounds for Pushover
+    * Update Alert compact view
+    * Support adding custom fields to VictorOps notifications
+    * Add help link in UI to Alertmanager documentation
+    * Enforce HTTP or HTTPS URLs in Alertmanager config
+    * Make OpsGenie API Key a templated string
+    * Add name, value and SlackConfirmationField to action in Slack notifier
+    * Show more alert information on silence form and silence view pages
+    * Add cluster peers DNS refresh job
+  + Bug Fixes:
+    * Fix unmarshalling of secret URLs in config
+    * Do not write groupbyall and groupby when marshaling config
+    * Make a copy of firing alerts with EndsAt=0 when flushing
+    * Respect regex matchers when recreating silences in UI
+    * Change DefaultGlobalConfig to a function in Alertmanager configuration
+    * Fix email template typo in alert-warning style
+    * Fix silence redirect on silence creation UI page
+    * Add missing callback_id parameter in Slack notifier
+    * Throw error if no auth mechanism matches in email notifier
+    * Use quoted-printable transfer encoding for the email notifier
+    * Do not merge expired gossip messages
+    * Fix "PLAIN" auth during notification via smtp-over-tls on port 465
+    * [amtool] Support for assuming first label is alertname in silence add and query
+    * [amtool] Support assuming first label is alertname in alert query with matchers
+    * [amtool] Fix config path check in amtool
+    * [amtool] Fix rfc3339 example texts
+    * [amtool] Fixed issue with loading path of a default configs
+- Update to 0.15.3
+  + Bug Fixes:
+    * Fix alert merging supporting both empty and set EndsAt property for firing alerts send by Prometheus
+- Update to 0.15.2:
+  + Enhancements:
+    * [amtool] Add support for stdin to check-config
+    * Log PagerDuty v1 response on BadRequest
+  + Bug Fixes:
+    * Correctly encode query strings in notifiers (#1516)
+    * Add cache control headers to the API responses to avoid IE caching
+    * Avoid listener blocking on unsubscribe
+    * Fix a bunch of unhandled errors
+    * Update PagerDuty API V2 to send full details on resolve
+    * Validate URLs at config load time
+    * Fix Settle() interval
+    * Fix email to be green if only none firing
+    * Handle errors in notify
+    * Fix templating of hipchat room id
+- Update to 0.15.1:
+  + Bug Fixes:
+    * Fix email template typo in alert-warning style
+    * Fix regression in Pager Duty config
+    * Catch templating errors in Wechat Notify
+    * Fail when no private address can be found for cluster
+    * Make sure we don't miss the first pushPull when joining cluster
+    * Fix concurrent read and wirte group error in dispatch
+- Update to 0.15.0:
+  + [amtool] Update silence add and update flags
+  + Replace deprecated InstrumentHandle
+  + Validate Slack field config and only allow the necessary input
+  + Remove legacy alert ingest endpoint
+  + Move to memberlist as underlying gossip protocol including cluster flag changes from --mesh.xxx to --cluster.xxx
+  + Move Alertmanager working directory in Docker image to /etc/alertmanager
+  + The default group by is no labels.
+  + Features:
+    * [amtool] Filter alerts by receiver
+    * Wait for mesh to settle before sending alerts
+    * [amtool] Support basic auth in alertmanager url
+    * Make HTTP clients used for integrations configurable
+  + Enhancements:
+    * Support receiving alerts with end time and zero start time
+    * Sort dispatched alerts by job+instance
+    * Support alert query filters active and unprocessed
+    * [amtool] Expose alert query flags --active and --unprocessed
+    * Add Slack actions to notifications
+  + Bug Fixes:
+    * Register nflog snapShotSize metric
+    * Sort alerts in correct order before flushing to notifiers
+    * Don't reset initial wait timer if flush is in-progress
+    * Fix resolved alerts still inhibiting
+    * Template wechat config fields
+    * Notify resolved alerts properly
+    * Fix parsing for label values with commas
+    * Hide sensitive Wechat configuration
+    * Prepopulate matchers when recreating a silence
+    * Fix wechat panic
+    * Allow empty matchers in silences/filtering
+    * Properly configure HTTP client for Wechat integration
+
+-------------------------------------------------------------------
+Thu Mar 15 12:46:43 UTC 2018 - jan.fajerski@suse.com
+
+- fix config token in alermanager.yml hipchat_url -> hipchat_api_url 
+
+-------------------------------------------------------------------
+Wed Mar 14 07:34:17 UTC 2018 - jan.fajerski@suse.com
+
+- spec: fix argument for %fdupes
+- Update to 0.14.0:
+  + Enhancements:
+    * Allow templating PagerDuty receiver severity
+    * Include receiver name in failed notifications log messages
+    * Add mesh metrics
+  + Bug fixes:
+    * Don't notify of resolved alerts if none were reported firing
+    * Notify only when new firing alerts are added
+    * Don't count alerts with EndTime in the future as resolved
+
+-------------------------------------------------------------------
+Thu Jan 25 11:58:41 UTC 2018 - kkaempf@suse.com
+
+- Update to 0.13.0
+  See https://github.com/prometheus/alertmanager/releases
+
+-------------------------------------------------------------------
+Thu Jul 27 09:04:14 UTC 2017 - tserong@suse.com
+
+- Add BuildRequires: fdupes
+
+-------------------------------------------------------------------
+Thu May 25 02:25:05 UTC 2017 - tserong@suse.com
+
+- Initial version
+- Adjust default settings
+- Added:
+* 0001-Default-settings.patch

@@ -1,0 +1,10 @@
+<package name="jthread" project="openSUSE:Factory">
+  <title>A cross-platform threading library</title>
+  <description>The JThread package provides some classes to make use of threads easily on
+different platforms. The classes are actually rather simple wrappers around
+existing thread implementations.
+
+</description>
+  <devel project="network:telephony" package="jthread"/>
+  <url>http://research.edm.uhasselt.be/jori/page/CS/Jthread.html</url>
+</package>

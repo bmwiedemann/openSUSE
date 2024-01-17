@@ -1,0 +1,239 @@
+<revisionlist>
+  <revision rev="1" vrev="44">
+    <srcmd5>39480a0ddd509b61b33fd8dfce83114c</srcmd5>
+    <version>4.4</version>
+    <time>1168561637</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="45">
+    <srcmd5>f17db3d54e629f187fcc7f79201027ee</srcmd5>
+    <version>4.4</version>
+    <time>1168614777</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="46">
+    <srcmd5>5783a9c8f6e412c1e175ae3009184564</srcmd5>
+    <version>4.4</version>
+    <time>1168688784</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="47">
+    <srcmd5>46cf44aef4134fc9e3884c896075547d</srcmd5>
+    <version>4.4</version>
+    <time>1168870738</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>07b18bbb192da405a34b11fbdad7b55a</srcmd5>
+    <version>4.5</version>
+    <time>1171558248</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3792666e713622c5b60345d2c5857426</srcmd5>
+    <version>4.5</version>
+    <time>1171927376</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>2b4178fd3df7c588e5be898e43f7a027</srcmd5>
+    <version>4.5</version>
+    <time>1175162638</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>4554f70e73c45dc96e3f7c0fd7177249</srcmd5>
+    <version>4.5</version>
+    <time>1175199370</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="111">
+    <srcmd5>4554f70e73c45dc96e3f7c0fd7177249</srcmd5>
+    <version>4.5</version>
+    <time>1175199370</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="112">
+    <srcmd5>2c4b200287705f2c16e9c7589fb0617a</srcmd5>
+    <version>4.5</version>
+    <time>1224728980</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="113">
+    <srcmd5>ee53b81eebdb3a444ad881d117725fa6</srcmd5>
+    <version>4.5</version>
+    <time>1251474862</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/docbook_4 based on submit request 18540 from user thomas-schraitle
+</comment>
+  </revision>
+  <revision rev="12" vrev="115">
+    <srcmd5>ee53b81eebdb3a444ad881d117725fa6</srcmd5>
+    <version>4.5</version>
+    <time>1251474862</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/docbook_4 based on submit request 18540 from user thomas-schraitle
+</comment>
+  </revision>
+  <revision rev="13" vrev="116">
+    <srcmd5>4554d153c98b6cc4728093e1a2260e40</srcmd5>
+    <version>4.5</version>
+    <time>1268923381</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="118">
+    <srcmd5>4554d153c98b6cc4728093e1a2260e40</srcmd5>
+    <version>4.5</version>
+    <time>1278667343</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="119">
+    <srcmd5>4554d153c98b6cc4728093e1a2260e40</srcmd5>
+    <version>4.5</version>
+    <time>1278678572</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="122">
+    <srcmd5>4554d153c98b6cc4728093e1a2260e40</srcmd5>
+    <version>4.5</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="123">
+    <srcmd5>c5f608a9246d01380874f86f1699f3dd</srcmd5>
+    <version>4.5</version>
+    <time>1302018875</time>
+    <user>darix</user>
+    <comment>Accepted submit request 66021 from user coolo
+</comment>
+    <requestid>66021</requestid>
+  </revision>
+  <revision rev="18" vrev="124">
+    <srcmd5>58c865fd5bf3ad0a389e5ed82c89afda</srcmd5>
+    <version>4.5</version>
+    <time>1302018884</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 66021
+</comment>
+  </revision>
+  <revision rev="19" vrev="125">
+    <srcmd5>92fb1952fdb57d267a13b9a8579d5c02</srcmd5>
+    <version>4.5</version>
+    <time>1316443536</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines) (forwarded request 83283 from jengelh)</comment>
+    <requestid>83331</requestid>
+  </revision>
+  <revision rev="20" vrev="127">
+    <srcmd5>92fb1952fdb57d267a13b9a8579d5c02</srcmd5>
+    <version>4.5</version>
+    <time>1319181853</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="128">
+    <srcmd5>0949a8aa5929b5818bfe60f563976786</srcmd5>
+    <version>4.5</version>
+    <time>1323191198</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="129">
+    <srcmd5>5c035027be1891993e7faa7b184a9f96</srcmd5>
+    <version>4.5</version>
+    <time>1338991577</time>
+    <user>coolo</user>
+    <comment>reduce requires</comment>
+    <requestid>123685</requestid>
+  </revision>
+  <revision rev="23" vrev="130">
+    <srcmd5>6932d733467f1720ab22f8ce9ca65ead</srcmd5>
+    <version>4.5</version>
+    <time>1339585819</time>
+    <user>coolo</user>
+    <comment>- iso_ent is required for SGML, so readd it as long as it's supported</comment>
+    <requestid>124734</requestid>
+  </revision>
+  <revision rev="24" vrev="132">
+    <srcmd5>6932d733467f1720ab22f8ce9ca65ead</srcmd5>
+    <version>4.5</version>
+    <time>1340183288</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="134">
+    <srcmd5>6932d733467f1720ab22f8ce9ca65ead</srcmd5>
+    <version>4.5</version>
+    <time>1359108822</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="135">
+    <srcmd5>cb825fcade286c89219fe4dc0a3e3d0c</srcmd5>
+    <version>4.5</version>
+    <time>1360008572</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 150768 from coolo)</comment>
+    <requestid>150850</requestid>
+  </revision>
+  <revision rev="27" vrev="136">
+    <srcmd5>115f7fccafeb91d62633477172a2ed77</srcmd5>
+    <version>4.5</version>
+    <time>1374490680</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>183956</requestid>
+  </revision>
+  <revision rev="28" vrev="138">
+    <srcmd5>115f7fccafeb91d62633477172a2ed77</srcmd5>
+    <version>4.5</version>
+    <time>1379662245</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="140">
+    <srcmd5>115f7fccafeb91d62633477172a2ed77</srcmd5>
+    <version>4.5</version>
+    <time>1409300779</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="141">
+    <srcmd5>b83119a7cbd0883e8ba3168f7d297d62</srcmd5>
+    <version>4.5</version>
+    <time>1424622305</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286733</requestid>
+  </revision>
+  <revision rev="31" vrev="142">
+    <srcmd5>26fb22d358490a9fd7fec772bb6f2d7d</srcmd5>
+    <version>4.5</version>
+    <time>1512433685</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix XML catalog problems (missing or mistyped identifiers)
+- Fix version 4.1.2 link in SGML (yes!) directory
+- Add missing docbook-xml-4.1.2-catalog.xml
+- 
+- Spec file changes:
+  * Adapted patches (only directory)
+  * Used spec-cleaner
+  * Removed obsolete stuff
+  * Installed files through Makefile
+  * Used/require sgml-skel &gt;= 0.7
+  * Used update-xml-catalog
+- Deal with FIXME</comment>
+    <requestid>546051</requestid>
+  </revision>
+  <revision rev="32" vrev="143">
+    <srcmd5>85cdd825042fda5b3ac299249e086d3f</srcmd5>
+    <version>4.5</version>
+    <time>1555492917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694190</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,343 @@
+---
+ contrib/Makefile.uurt  |    2 +-
+ contrib/Makefile.xchat |    2 +-
+ contrib/amiga.c        |    2 +-
+ contrib/stats.sh       |    2 +-
+ contrib/uuclean        |    4 ++--
+ contrib/uudemon.shar   |    2 +-
+ contrib/uupoll.shar    |   32 +++++++++++++++-----------------
+ contrib/uuq.sh         |    2 +-
+ contrib/uurate.c       |    3 ++-
+ contrib/uurate.man     |    6 +++---
+ contrib/uureroute.perl |    4 ++--
+ contrib/uusnap.c       |    2 +-
+ contrib/uutraf         |    6 +++---
+ contrib/uutry          |    9 +++++----
+ contrib/xc-conf.h-dist |    4 ++--
+ contrib/xchat.man      |    4 ++--
+ 16 files changed, 43 insertions(+), 43 deletions(-)
+
+--- contrib/Makefile.uurt
++++ contrib/Makefile.uurt	2017-03-31 12:12:47.894874344 +0000
+@@ -3,7 +3,7 @@
+ #
+ 
+ # Prefix directory for installation directories.
+-prefix = /usr/local
++prefix = /usr
+ 
+ # Directory where the needed .h files are installed (uucp.h ...).
+ uucpsrcs = ../
+--- contrib/Makefile.xchat
++++ contrib/Makefile.xchat	2017-03-31 12:12:47.974872857 +0000
+@@ -5,7 +5,7 @@
+ #
+ CC=cc
+ SHELL=/bin/sh
+-BIN=/usr/local/lib/uucp
++BIN=/usr/lib/uucp
+ PROGS=xchat
+ 
+ #-----------
+--- contrib/amiga.c
++++ contrib/amiga.c	2017-03-31 12:12:48.058871296 +0000
+@@ -30,7 +30,7 @@
+ int main(int argc,char *argv[],char *envp)
+ {
+   struct passwd *pw;
+-  char   *name = {"/usr/lib/uucp/uucico.real"};
++  char   *name = {"/usr/lib/uucp/uucico"};
+ 
+   if (sysm68k(_m68k_LIMUSER,EUA_GET_LIC) == 0 ) { /* are we unlicensed? */
+     if (sysm68k(_m68k_LIMUSER,EUA_UUCP) == -1) { /* yes, get a "uucp"
+--- contrib/stats.sh
++++ contrib/stats.sh	2017-03-31 12:12:48.146869661 +0000
+@@ -8,7 +8,7 @@
+ # (since baud is not really the correct name for it and bits/s actually
+ # depends on the number of start and stop bits etc)
+ 
+-grep bytes /usr/spool/uucp/Stats | grep -v 'bytes 0.00 secs' | grep -v 'failed after' | tail -80 | \
++grep bytes /var/log/uucp/Stats | grep -v 'bytes 0.00 secs' | grep -v 'failed after' | tail -80 | \
+ gawk '
+   BEGIN {
+     printf("          UUCP transmission history:\n");
+--- contrib/uuclean
++++ contrib/uuclean	2017-03-31 12:12:48.218868323 +0000
+@@ -3,8 +3,8 @@
+ # Do whatever you like with this script.
+ #
+ # Set some variables
+-bindir=/usr/local/bin
+-spooldir=/usr/spool/uucp
++bindir=/usr/bin
++spooldir=/var/spool/uucp
+ #
+ # Warn about all mail over two days old
+ $(bindir)/uustat -c rmail -o 48 -N -Q -W"Unable to deliver; will try up to one week"
+--- contrib/uudemon.shar
++++ contrib/uudemon.shar	2017-03-31 12:12:48.294866911 +0000
+@@ -43,7 +43,7 @@ X
+ X# change LIBDIR to where UUCP library/conf. files are
+ X# change SPOOLDIR to the UUCP spool directory.  It must be HDB-ish.
+ XLIBDIR=/usr/lib/uucp; export LIBDIR
+-XSPOOLDIR=/usr/spool/uucp; export SPOOLDIR
++XSPOOLDIR=/var/spool/uucp; export SPOOLDIR
+ X
+ X###  no changes needed past here  ###
+ X
+--- contrib/uupoll.shar
++++ contrib/uupoll.shar	2017-03-31 12:12:48.382865275 +0000
+@@ -33,7 +33,7 @@ sed 's/^X//' << 'SHAR_EOF' > 'uupoll/Mak
+ # borrowed and hacked from Taylor UUCP 1.04
+ X
+ # Prefix directory for installation directories.
+-prefix = /usr/local
++prefix = /usr
+ X
+ # The user name/group that should own the resulting executables.
+ # Both should run suid.
+@@ -174,7 +174,7 @@ it was to automate the task of reschedul
+ started by an entry in the crontab tables in just the same way uucico is
+ started (it will start uucico):
+ X
+-05 5 * * *       uucp  /usr/local/lib/uucp/autopoll -r1 >>/tmp/poll.log 2>&1
++05 5 * * *       uucp  /usr/lib/uucp/autopoll -r1 >>/tmp/poll.log 2>&1
+ X
+ Any messages go to stderr or a file (if compiled with that option); in case
+ the file could not be opened it will use stdout to tell you just that and quit.
+@@ -384,12 +384,10 @@ without any alias expansion done.
+ a failing call. 
+ .SH FILES
+ .nf
+-/usr/local/lib/uucp	UUCP internal utilities
+-/usr/lib/uucp
+-/usr/local/bin		UUCP internal utilities
+-/usr/bin
+-/usr/spool/uucp/.Status/	Status files for each site
+-/usr/spool/uucp/	UUCP spool area. one of its sub-
++/usr/lib/uucp	UUCP internal utilities
++/usr/bin		UUCP internal utilities
++/var/log/uucp/Stats	Status file for each site
++/var/spool/uucp/	UUCP spool area. one of its sub-
+ X				directories will hold the null jobs.
+ /tmp/poll.log		This file is present only if autopoll
+ X				has been compiled to place the messages
+@@ -1672,15 +1670,15 @@ X
+ /*    Define the complete path to the uuname program.
+ X *    If undefined we'll use just the name 'uuname' to call it
+ X * */
+-#define UNAME_DIR "/usr/local/bin/uuname"
++#define UNAME_DIR "/usr/bin/uuname"
+ X
+ /*    define the path to the directory which does contain uucico */
+-#define CICO_DIR "/usr/local/lib/uucp/uucico"
++#define CICO_DIR "/usr/lib/uucp/uucico"
+ X
+ /*    define the path to the directory which holds all the uucp files.
+ X *    We'll place the poll file in one of it's subdirectories
+ X * */
+-#define SPOOL_DIR "/usr/spool/uucp"
++#define SPOOL_DIR "/var/spool/uucp"
+ X
+ /*    at least one of the follwing must be defined To use the second or  
+ X *    third set of definitions, change the  ``#if 1'' to ``#if 0'' 
+@@ -1724,7 +1722,7 @@ X
+ X *    This will assure that we get the one we want
+ X *    The path must be the same as given in Makefile (lbindir) 
+ X * */
+-#define AUTO_DIR "/usr/local/lib/uucp/autopoll"
++#define AUTO_DIR "/usr/lib/uucp/autopoll"
+ X
+ /*    define the path to the directory which is to contain the
+ X *    message log created by autopoll and the file name itself.
+@@ -1737,11 +1735,11 @@ X
+ /*    define the full path to the directory which holds the status files
+ X *    The name should be given *except* the sitename. A trailing `/' if any
+ X *    must be given.
+-X *    Example: /usr/spool/uucp/.Status/sys.sitename
++X *    Example: /var/spool/uucp/.Status/sys.sitename
+ X *             then specify STATUS_DIR as
+-X *             "/usr/spool/uucp/.Status/sys."
++X *             "/var/spool/uucp/.Status/sys."
+ X * */
+-#define STATUS_DIR "/usr/spool/uucp/.Status/" 
++#define STATUS_DIR "/var/spool/uucp/.Status/" 
+ #endif
+ SHAR_EOF
+ chmod 0444 uupoll/conf.h ||
+@@ -1906,10 +1904,10 @@ for
+ .IR all
+ sites given. That may lead to a `No port available' condition.
+ .SH FILES
+-.ta \w'/usr/spool/uucp/   'u
++.ta \w'/var/spool/uucp/   'u
+ .nf
+ /etc/uucp/	UUCP internal files/utilities
+-/usr/spool/uucp/	Spool directory
++/var/spool/uucp/	Spool directory
+ /tmp/poll.log		This file is present only if uupoll has been
+ X			compiled to place the messages into a file.
+ X			Otherwise all messages will go to stderr.
+--- contrib/uuq.sh
++++ contrib/uuq.sh	2017-03-31 12:12:48.462863788 +0000
+@@ -4,7 +4,7 @@
+ #       note - uses the uuname script or similar functionality.
+ # Zacharias Beckman
+ 
+-SPOOLDIR="/usr/spool/uucp"
++SPOOLDIR="/var/spool/uucp"
+ SYSTEMS=`uuname`
+ TMPFILE="/tmp/uuq.tmp"
+ FORSYSTEM=""
+--- contrib/uurate.c
++++ contrib/uurate.c	2017-03-31 12:13:13.474399028 +0000
+@@ -216,7 +216,7 @@ struct Protocol_Summary
+ struct Host_entry
+     {
+     struct Host_entry *next;
+-    char Hostname[32];
++    char Hostname[MAXHOSTNAMELEN];
+     struct Execution_Command *cmds;      /* Local Activities */
+     struct Phone_Call call[2];            /* In & Out Activities */
+     struct Protocol_Summary *proto;
+@@ -307,6 +307,7 @@ int main(argc, argv)
+   int sent, called = IN;
+   int report = 0;            /* if <= 0 give msg that no report was avail. */
+   int junk;
++  extern int getopt();
+ 
+   /* --------------------------------------------------------------------
+    *           P r o l o g
+--- contrib/uurate.man
++++ contrib/uurate.man	2017-03-31 12:12:48.630860667 +0000
+@@ -1,4 +1,4 @@
+-''' $Id: uurate.man,v 1.4 1993/09/28 17:38:31 kdburg Rel $
++'\" $Id: uurate.man,v 1.4 1993/09/28 17:38:31 kdburg Rel $
+ .TH uurate 1
+ .SH NAME
+ uurate \- Report Taylor UUCP statistics
+@@ -252,8 +252,8 @@ configuration file, so these are only ap
+ .nf
+ .in +.3in
+ .ta 2.2i
+-.IR "/usr/spool/uucp/Log	" "V2/Taylor format call/execution log,"
+-.IR "/usr/spool/uucp/Stats	" "V2/Taylor format file transfer log."
++.IR "/var/log/uucp/Log		" "V2/Taylor format call/execution log,"
++.IR "/var/log/uucp/Stats	" "V2/Taylor format file transfer log."
+ .SS "SEE ALSO"
+ .IR uucico "(8)"
+ .SS BUGS
+--- contrib/uureroute.perl
++++ contrib/uureroute.perl	2017-03-31 12:12:48.702859328 +0000
+@@ -34,7 +34,7 @@ $USAGE = "
+ #
+ ";
+ 
+-$UUSTAT = "uustat";
++$UUSTAT = "/usr/bin/uustat";
+ $SHELL = "/bin/sh";
+ $SMAIL = "/bin/smail";
+ 
+@@ -61,7 +61,7 @@ if (!$verbose)
+ while ($system = shift)
+ {
+     $sysprefix = substr ($system, 0, 7);
+-    $directory = "/usr/spool/uucp/$sysprefix";
++    $directory = "/var/spool/uucp/$sysprefix";
+     open (UUSTAT, "$UUSTAT -s $system -c rmail |");
+     print "set -ex\n";
+     while (<UUSTAT>)
+--- contrib/uusnap.c
++++ contrib/uusnap.c	2017-03-31 12:12:48.786857768 +0000
+@@ -11,7 +11,7 @@
+    At the moment it only works with taylor config and taylor dirs
+ 
+    compile it form the Makefile or:
+-   cc -c -g -pipe -O  -I. -I. -DNEWCONFIGLIB=\"/usr/local/lib/uucp\" uusnap.c
++   cc -c -g -pipe -O  -I. -I. -DNEWCONFIGLIB=\"/usr/lib/uucp\" uusnap.c
+    cc  -o uusnap uusnap.o 
+    For this, uusnap.[ch] must be in the same directory as uucp.h and so.
+ 
+--- contrib/uutraf
++++ contrib/uutraf	2017-03-31 12:12:48.870856207 +0000
+@@ -52,21 +52,21 @@ if ( $ARGV[0] =~ /^-/ ) {
+ }
+ 
+ if ( $uucp_type eq "taylor" || $uucp_type eq "gnu" ) {
+-    @ARGV = ("/usr/local/spool/uucp/Stats") unless $#ARGV >= 0;
++    @ARGV = ("/var/log/uucp/Stats") unless $#ARGV >= 0;
+     $pat = "^[^ ]+ ([^ ]+) \\(([-0-9:\\/ .]+)\\) " .
+ 	"(sent|received) (\\d+) bytes in (\\d+)\\.(\\d+) seconds";
+     $uucp_type = 0;
+     $recv = "received";
+ }
+ elsif ( $uucp_type eq "hdb" || $uucp_type eq "bnu" ) {
+-    @ARGV = ("/usr/spool/uucp/.Admin/xferstats") unless $#ARGV >= 0;
++    @ARGV = ("/var/spool/uucp/.Admin/xferstats") unless $#ARGV >= 0;
+     $pat = "^([^!]+)![^(]+\\(([-0-9:\\/]+)\\).+([<>])-? " .
+ 	"(\\d+) \\/ (\\d+)\\.(\\d+) secs";
+     $uucp_type = 1;
+     $recv = "<";
+ }
+ elsif ( $uucp_type eq "bsd" || $uucp_type eq "v7" ) {
+-    @ARGV = ("/usr/spool/uucp/SYSLOG") unless $#ARGV >= 0;
++    @ARGV = ("/var/spool/uucp/SYSLOG") unless $#ARGV >= 0;
+     $pat = "^[^ ]+ ([^ ]+) \\(([-0-9:\\/]+)\\) \\([^)]+\\) " .
+ 	"(sent|received) (\\d+) b (\\d+) secs";
+     $uucp_type = 2;
+--- contrib/uutry
++++ contrib/uutry	2017-03-31 12:12:48.954854646 +0000
+@@ -14,10 +14,11 @@
+ # The following variables should be gropped from the configuration
+ # files rather then being hard coded here.
+ #
+-Spool=/usr/spool/uucp
+-Lib=/usr/local/lib/uucp
+-Status=$Spool/.Status
+-Debug=$Spool/Debug
++Spool=/var/spool/uucp
++Lib=/usr/lib/uucp
++Log=/var/log
++Status=$Log/Stats
++Debug=$Log/Debug
+ Uucico=$Lib/uucico
+ #
+ # Default option values
+--- contrib/xc-conf.h-dist
++++ contrib/xc-conf.h-dist	2017-03-31 12:12:49.038853084 +0000
+@@ -26,7 +26,7 @@
+  * executed. Normally, this is the same place you put your config
+  * and system files for UUCP.
+  */
+-#define SCRIPT_DIR "/usr/local/conf/uucp/" /* MUST HAVE TRAILING "/" */
++#define SCRIPT_DIR "/etc/uucp/" /* MUST HAVE TRAILING "/" */
+ 
+ /*
+  * The following definition establishes the default path to the
+@@ -34,5 +34,5 @@
+  * this is the same location you configured Taylor UUCP to put its
+  * log files.
+  */
+-#define LOG_DIR "/usr/spool/uucp/" 	   /* MUST HAVE TRAILING "/" */
++#define LOG_DIR "/var/log/uucp/" 	   /* MUST HAVE TRAILING "/" */
+ 
+--- contrib/xchat.man
++++ contrib/xchat.man	2017-03-31 12:12:49.114851672 +0000
+@@ -14,7 +14,7 @@ script. If
+ begins with ``/'', then it is assumed to be a full path name for the
+ script file. If not, a configuration-dependent default directory path
+ (usually
+-.B "/usr/local/conf/uucp/"
++.B "/etc/uucp/"
+ ) is prepended to the script file name. Normally, the default path
+ is the same as that for the Taylor UUCP configuration files.
+ .SH DESCRIPTION
+@@ -163,7 +163,7 @@ If
+ begins with ``/'', it is assumed to be an absolute path name for the
+ debugging file. If not, then a configuration-dependent default directory 
+ path (usually
+-.B "/usr/spool/uucp"
++.B "/var/spool/uucp"
+ ) is prepended to
+ .I xstr.
+ Normally the default path is that of the directory where Taylor UUCP 

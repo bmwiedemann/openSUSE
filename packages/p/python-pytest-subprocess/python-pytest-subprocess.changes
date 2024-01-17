@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Thu Apr  6 07:14:12 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.5.0:
+  * #109: Match also os.PathLike.
+  * #105: Add program matcher. 
+
+-------------------------------------------------------------------
+Fri Jan 27 18:22:44 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Clean out recommendations and test requirements
+- Move to PEP517 build
+
+-------------------------------------------------------------------
+Thu Jan 26 14:08:30 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Simplify %%prep.
+
+-------------------------------------------------------------------
+Wed Jan 25 09:15:32 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
+- Include tests.tar.xz via _service: pulls in tests from github as
+  these are not bundled in original source tarball.

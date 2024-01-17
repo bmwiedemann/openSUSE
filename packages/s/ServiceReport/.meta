@@ -1,0 +1,5 @@
+<package name="ServiceReport" project="openSUSE:Factory">
+  <title>ServiceReport</title>
+  <description>A python-based framework to validate and repair the First Failure Data Capture (FFDC) configurations.</description>
+  <devel project="systemsmanagement" package="ServiceReport"/>
+</package>

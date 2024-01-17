@@ -1,0 +1,16 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/aklajnert/pytest-subprocess</param>
+		<param name="revision">1.4.2</param>
+		<param name="subdir">tests</param>
+		<param name="filename">tests</param>
+		<param name="version">_none_</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="compression">xz</param>
+		<param name="file">tests.tar</param>
+	</service>
+	<service name="download_files" mode="disabled" />
+</services>
+

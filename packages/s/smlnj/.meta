@@ -1,0 +1,6 @@
+<package name="smlnj" project="openSUSE:Factory">
+  <title>Standard ML of New Jersey</title>
+  <description>SML/NJ is an interactive compiler for the Standard ML Programming
+Language (1997 Revision).</description>
+  <devel project="devel:tools:compiler" package="smlnj"/>
+</package>

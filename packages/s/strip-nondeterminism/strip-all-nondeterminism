@@ -1,0 +1,4 @@
+#!/bin/sh
+dir=${1:-.}
+find "$dir" -type f '(' -name '*.zip' -o -name '*.jar' -o -name '*.xpi' -o -name '*.pk3' -o -name '*.mo' -o -name '*.html' -o -name '*.gz' -o -name '*.png' ')' -print0 |\
+ xargs -0 --no-run-if-empty strip-nondeterminism --timestamp=${SOURCE_DATE_EPOCH:-1494270000} --clamp-timestamp

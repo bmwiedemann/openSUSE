@@ -1,0 +1,6 @@
+<package name="php-pear-Net_Socket" project="openSUSE:Factory">
+  <title>Network Socket Interface</title>
+  <description>Interface class to TCP sockets. It provides blocking and non-blocking operation, with different reading and writing modes (byte-wise, block-wise, line-wise and special formats like network byte-order ip addresses).</description>
+  <devel project="server:php:applications" package="php-pear-Net_Socket"/>
+  <url>http://pear.php.net/package/Net_Socket</url>
+</package>

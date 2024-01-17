@@ -1,0 +1,16 @@
+<package name="spyder" project="openSUSE:Factory">
+  <title>The Scientific Python Development Environment</title>
+  <description>Spyder, the Scientific Python Development Environment, is an
+IDE for researchers, engineers and data analysts.
+It features a combination of the editing, analysis, debugging
+and profiling functionality of a development tool with the
+data exploration, interactive execution, deep inspection and
+visualization capabilities of an analysis package. Additionally,
+Spyder offers built-in integration with scientific
+libraries, including NumPy, SciPy, Pandas, IPython, QtConsole,
+Matplotlib, SymPy, and more, and can be extended further with
+full plugin support.
+
+</description>
+  <devel project="devel:languages:python:numeric" package="spyder"/>
+</package>

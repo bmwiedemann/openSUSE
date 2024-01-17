@@ -1,0 +1,8 @@
+<package name="cracklib" project="openSUSE:Factory">
+  <title>Library to crack passwords using dictionaries</title>
+  <description>CrackLib tests passwords to determine whether they match
+certainsecurity-oriented characteristics. You can use CrackLib to
+stopusers from choosing passwords that are too simple.This package
+contains a full dictionary file used by cracklib.</description>
+  <devel project="Base:System" package="cracklib"/>
+</package>

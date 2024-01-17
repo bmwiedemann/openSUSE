@@ -1,0 +1,18 @@
+Index: traittypes-0.2.1/traittypes/tests/test_import_errors.py
+===================================================================
+--- traittypes-0.2.1.orig/traittypes/tests/test_import_errors.py	2018-04-27 16:58:52.000000000 +0200
++++ traittypes-0.2.1/traittypes/tests/test_import_errors.py	2020-07-16 10:15:52.059154494 +0200
+@@ -1,10 +1,10 @@
+ 
+-import nose.tools as nt
++import pytest
+ 
+ from ..traittypes import _DelayedImportError
+ 
+ 
+-@nt.raises(RuntimeError)
+ def test_delayed_access_raises():
+     dummy = _DelayedImportError('mypackage')
+-    dummy.asarray([1, 2, 3])
++    with pytest.raises(RuntimeError):
++        dummy.asarray([1, 2, 3])

@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7bc03807d5925b77b13cc836c3db33a4</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1570710853</time>
+    <user>dimstar_suse</user>
+    <comment>- New Python Azure ADK component package</comment>
+    <requestid>736472</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5ce6c18f59891bc4670601ad0cb62d5a</srcmd5>
+    <version>1.1.0</version>
+    <time>1601652513</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 836298 from glaubitz)</comment>
+    <requestid>836333</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>92f62dddf5f83e455ede2f797da3f6ca</srcmd5>
+    <version>1.1.1</version>
+    <time>1602596659</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 841474 from glaubitz)</comment>
+    <requestid>841532</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0253ff511dd1f32929d20085da1dbfac</srcmd5>
+    <version>1.1.1</version>
+    <time>1607548409</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853827</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c797f05e1c127c63fc5d229f63911f6f</srcmd5>
+    <version>1.2.0b1</version>
+    <time>1620400496</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 890372 from glaubitz)</comment>
+    <requestid>890669</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ab3d4e4b1e73881df6f65bd7a8fc2c5a</srcmd5>
+    <version>1.2.0b2</version>
+    <time>1625516598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904130</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eedbde8fe3e802ff7483e62c2733a503</srcmd5>
+    <version>1.2.0.0</version>
+    <time>1625868036</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.2.0.0 to ensure
+  proper upgrade from previous version 1.2.0b2 (forwarded request 905253 from glaubitz)</comment>
+    <requestid>905278</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>06768292cf8cfa69e3c2e2bd69a4de81</srcmd5>
+    <version>1.3.0</version>
+    <time>1636663102</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 930879 from glaubitz)</comment>
+    <requestid>930882</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a4468a348a7fa7ec3c9d4b3c02b62fed</srcmd5>
+    <version>1.4.0</version>
+    <time>1676464810</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1065707 from glaubitz)</comment>
+    <requestid>1065808</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a16da845946fe2e34b1140d0a262da98</srcmd5>
+    <version>1.5.0</version>
+    <time>1700163122</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.5.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1127166 from glaubitz)</comment>
+    <requestid>1127167</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="libwpd" project="openSUSE:Factory">
+  <title>Library for Importing WordPerfect (tm) Documents</title>
+  <description>libwpd is a general purpose library for reading or interpreting data
+from WordPerfect files. The library is not a stand-alone utility: it is
+designed to be used by another program (for example, a word processor)
+as an in-process component.</description>
+  <devel project="LibreOffice:Factory" package="libwpd"/>
+</package>

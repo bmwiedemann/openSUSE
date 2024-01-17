@@ -1,0 +1,5 @@
+# The smlnj base is known to have many "hidden" dirs such
+# as .cm, .run, .heap, etc
+
+addFilter("hidden-file-or-dir")
+

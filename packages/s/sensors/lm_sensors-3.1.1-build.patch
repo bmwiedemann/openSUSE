@@ -1,0 +1,11 @@
+--- lm_sensors-3.1.1.orig/Makefile
++++ lm_sensors-3.1.1/Makefile
+@@ -141,7 +141,7 @@ ifeq ($(DEBUG),1)
+ ALL_CPPFLAGS += -DDEBUG
+ ALL_CFLAGS += -O -g
+ else
+-ALL_CFLAGS += -O2
++ALL_CFLAGS += $(RPM_OPT_FLAGS)
+ endif
+ 
+ ifeq ($(WARN),1)

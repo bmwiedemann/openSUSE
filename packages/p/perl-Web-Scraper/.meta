@@ -1,0 +1,8 @@
+<package name="perl-Web-Scraper" project="openSUSE:Factory">
+  <title>Web Scraping Toolkit using HTML and CSS Selectors or XPath expressions</title>
+  <description>Web::Scraper is a web scraper toolkit, inspired by Ruby's equivalent Scrapi. It provides a DSL-ish interface for traversing HTML documents and returning a neatly arranged Perl data structure.
+
+The _scraper_ and _process_ blocks provide a method to define what segments of a document to extract. It understands HTML and CSS Selectors as well as XPath expressions.</description>
+  <devel project="devel:languages:perl" package="perl-Web-Scraper"/>
+  <url>https://metacpan.org/release/Web-Scraper</url>
+</package>

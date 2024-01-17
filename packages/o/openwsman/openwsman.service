@@ -1,0 +1,23 @@
+[Unit]
+Description=Openwsman WS-Management Service
+After=syslog.target
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+Type=forking
+ExecStart=/usr/sbin/openwsmand -S
+
+[Install]
+WantedBy=multi-user.target

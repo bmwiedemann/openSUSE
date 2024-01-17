@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Tue Oct  7 12:42:16 UTC 2014 - jengelh@inai.de
+
+- Remove ancient specfile tags and sections
+
+-------------------------------------------------------------------
+Tue Aug 14 03:16:07 CEST 2007 - crrodriguez@suse.de
+
+- added -C option for switching clipping facilities
+- added -O option for setting content overlap
+- make postscript functions out of read in page descriptions 
+  instead of copying the code for every output page
+- corrected sizes of ISO A and B formats
+- don't crash when specifying -s option (scaling)
+ 
+-------------------------------------------------------------------
+Tue Aug 14 01:23:53 CEST 2007 - crrodriguez@suse.de
+
+- update to version 20060221 
+- poster segfaults with any postscript file [#297339]
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:30 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep  8 16:04:34 CEST 2005 - jreuter@suse.de
+
+- fixed wrong permissions of man page (#114849) 
+
+-------------------------------------------------------------------
+Wed Jan 26 14:05:17 CET 2005 - meissner@suse.de
+
+- norootforbuild, use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Tue May 13 17:13:05 CEST 2003 - jreuter@suse.de
+
+- update to version 20020826 (Bugzilla #25882), changes according 
+  to upstream ChangeLog:
+     - addition of "fake" option for KDEprint
+     - allows selection of tile pages to print
+     - replaces gets() with fgets()
+     - allows input from STDIN now
+     - allows poster printing of more than one page
+
+-------------------------------------------------------------------
+Mon Feb 26 16:50:55 CET 2001 - bjacke@suse.de
+
+- initial build
+

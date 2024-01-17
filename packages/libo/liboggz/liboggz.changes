@@ -1,0 +1,134 @@
+-------------------------------------------------------------------
+Thu Jan  8 12:04:24 UTC 2015 - olaf@aepfle.de
+
+- Avoid noarch sub package in SLE_11
+
+-------------------------------------------------------------------
+Sun Feb 23 20:07:05 UTC 2014 - andreas.stieger@gmx.de
+
+- fix build
+- remove source service
+- add source URL
+
+-------------------------------------------------------------------
+Tue May 17 14:25:20 UTC 2011 - coolo@opensuse.org
+
+- fix build (do not patch configure.ac)
+
+-------------------------------------------------------------------
+Sun May  1 17:35:27 UTC 2011 - toddrme2178@gmail.com
+ 
+- Added 32bit compatibility libraries
+- Removed test for obsolete openSUSE versions
+ 
+-------------------------------------------------------------------
+Sat Jan 15 15:39:36 UTC 2011 - coolo@novell.com
+
+- fix requires of doc subpackage
+
+-------------------------------------------------------------------
+Mon Dec  6 02:23:07 UTC 2010 - reddwarf@opensuse.org
+
+- run spec-cleaner
+- updated to 1.1.1
+  * This is a maintenance release of the current 1.1.x series, containing fixes
+    for Mozilla bugs #498380, #496063, #487519, #559338 and Debian bug #557537.
+    Additionally, vorbiscomment parsing was modified to tolerate comments which
+    lack a value, ie. of form "KEY=" and "KEY".
+- fixed license tag
+- added liboggz-1.1.1-docdir.patch
+- removed speex dependency
+
+-------------------------------------------------------------------
+Fri Nov 26 10:56:24 UTC 2010 - davejplater@gmail.com
+
+- Clean up spec file
+
+-------------------------------------------------------------------
+Fri Nov  6 13:30:51 UTC 2009 - mseben@novell.com
+
+- reworked package from packman
+- added doc and oggz-tools subpackage and switched to liboggz2 spec name
+- updated to 1.1.0
+  * This release introduces a new API structure for reporting the byte 
+  offsets of the start and end pages for each packet.
+  * Added <oggz/oggz_packet.h>: add oggz_packet definition, and
+  implement reader to return oggz_packet in OggzReadPacket callback.
+  * Updated shared version info to 8.0.6
+  * Improved accuracy of byte position tracking during reading,
+  as reported by oggz_tell()
+- version 1.0.1
+ * This release corrects timestamp calculation for Theora files with duplicate
+   frames, which are produced by the recently-released libtheora-1.1 encoder.
+ * Updated shared version info to 7:1:6
+ * Mozilla #516847 - calc gp for duplicate frames
+   Theora encodes duplicate frames as zero-length packets, so 
+   increment the calculated granulepos correctly for these.
+ * Escape minus signs in man pages
+ * Fix typo in oggz-dump man page
+- Version 1.0.0
+ * This is a stable maintenance release, including build fixes and
+   updates for embedded platforms (ARM, SH4) and updated Visual Studio
+   project files for Microsoft Windows.
+ * This release also includes a new "oggz codecs" command, which simply
+   lists the codecs present in one or more files. The default
+   comma-separated output is designed for use in an HTML5 <video> codecs
+   attribute.
+ * Updated Visual Studio project files (Barry Duncan)
+ * configure.ac: fix for arm, sh4 builds
+ * remove DocBook .sgml files, use .1 directly
+ * Debian #540360: use version script on GNU/kFreeBSD
+ * oggz-chop: fix detection of accumulated continued pages, ie. when
+   all accumulated pages have granulepos -1 and thus should all be
+   kept when advancing the accumulator
+ * oggz-chop: add a page accumulator for plain pages. Accumulate pages
+   even for start=0, or tracks with no granuleshift, for cases where
+   continued pages occur at the chop time.
+ * oggz-codecs: New tool
+ * oggz-comment: Handle duplicate comments, with unit test
+ * add oggz.1 man page
+ * add examples to chop, comment, dump, info, merge, rip and sort
+   man pages
+ * update ChangeLog with info from all release_notes
+ * Add PATCHES file, update README
+ * Add ability to limit seeks to only search inside a specified byte
+   range. Adds oggz_bounded_seek_set() public API call.
+ * Updated shared version info to 7:0:6
+ * Handle Theora version > 3.2.0 initial granulepos 1|0
+ * Fix data alignment on ARM (Erik de Castro Lopo, Chris Double,
+   Vladimir Vukicevic)
+ * Fix for inefficient oggz_seek_units() (Sean Young)
+ * oggz_read: always set the internal offset to the start of the
+   current page. This is returned by oggz_tell() and can be queried
+   within a ReadPage callback.
+ * oggz_read: Fix packetno check for holes in headers. The packetno
+   has not yet been incremented, so the value to check is off-by-one.
+ * Annodex #1581: avoid _oggz_comment_add_byname() strcmp of NULL
+   (keelerda)
+ * Mozilla #499604, Annodex #486: avoid uninitialized variable in
+   oggz_seek_end()
+ * Mozilla #506870: fix leaks in oggz-comments.c
+ * Mozilla #506878: check oggz_stream_get_content() return values
+ * Mozilla #515376: Check index in dirac_parse_info()
+
+-------------------------------------------------------------------
+Sat Jun  6 00:00:00 UTC 2009 - toni@links2linux.de
+
+- update to 0.9.9
+
+-------------------------------------------------------------------
+Fri May  9 00:00:00 UTC 2008 - toni@links2linux.de
+
+- update to 0.9.7
+- changed package layout according Shared Library Packaging Policy
+
+-------------------------------------------------------------------
+Sun Sep 17 00:00:00 UTC 2006 - toni@links2linux.de
+
+- build for packman
+
+-------------------------------------------------------------------
+Sat May 20 00:00:00 UTC 2006 - oc2pus@arcor.d
+
+- initial version: 0.9.5
+

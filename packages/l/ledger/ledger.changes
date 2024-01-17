@@ -1,0 +1,245 @@
+-------------------------------------------------------------------
+Thu Jul 13 22:18:37 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 3.3.2:
+  * Fix divide by zero (bugs #777 and #2207)
+  * Increase string size limit in src/unistring.h assert
+    (bug #2174)
+  * Require tzdata for Nix flake build (bug #2213)
+- Updates in version 3.3.1:
+  * Fix regression leading to incorrect error about format
+    directives (bug #2205)
+  * Add information about compile features to --version
+  * Fix compiler warnings by minimizing the use of deprecated APIs
+  * Remove unused Python server related code
+  * Various documentation improvements
+- Updates in version 3.3.0:
+  * Use $PAGER when environment variable is set (bug #1674)
+  * Make --depth correctly fold postings to accounts of greater
+    depth into the parent at the specified level (bug #987)
+  * When using wild-cards in the include directive, include matched
+    files in sorted order (bug #1659)
+  * Ensure absolute path for include (bug #2075)
+  * Try to use $XDG_HOME_CONFIG/ledger/ledgerrc or
+    ~/.config/ledger/ledgerrc first
+  * Improve Python 3 support and drop support for Python 2
+  * Add support for automatically reading files encrypted with GPG
+    (bug #1949)
+  * Add support for a "debit" column in the convert command
+    (bug #1120)
+  * Fix parsing of files without end of line (bug #516)
+  * Fix incorrect parsing of expressions containing a - without
+    spaces (bug #2001)
+  * Fix payee metadata on postings not being validated and payee
+    aliases not being honored (bug #556 & bug #1892)
+  * Fix ledger interpreting a posting with 0 difference as a null-
+    posting, which leads to it auto-balancing the posting
+    (bug #1942)
+  * Correctly escape all string values in lisp report (bug #2034)
+  * Fix a regression where empty commodities were shown (bug #1969)
+  * Fix a regression where using multiple commodities in one
+    transaction triggers an assertion (bug #1998)
+  * Fix --time-colon for negative time amounts
+  * Use correct int return type for stream input operations
+    (bug #2058)
+  * Use amount_width for balance report
+  * Remove some UTF-8 code that was having no effect (bug #2061)
+  * Fix unrounding for equity
+  * Fix SIGABRT when python subcommand raises an exception
+  * Support building on older versions of CMAKE (less than 3.7)
+  * Fix compilation with Boost 1.76 (bug #2030)
+  * Fix unicode problems on Windows (bug #1986)
+  * Fix the issue that with Boost >= 1.77 include directive cannot
+    find the file to include for stdin (-f -). Also for -f - when
+    include cannot find the file it reports the error with full
+    path now. (bug #2057 & bug #2092)
+  * Rename quoted_rfc4180 to quoted_rfc, as numbers used in
+    function names confuses the parser (#2007).
+  * Numbers are no longer permitted in value expression function
+    names.
+  * Various documentation improvements
+- Removal of 0001-Fix-compilation-with-Boost-1.76.patch which was
+  fixed in bug #2030
+- Removal of unneeded ledger-cmakelists.patch
+
+-------------------------------------------------------------------
+Tue Jun 15 15:07:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch:
+  * 0001-Fix-compilation-with-Boost-1.76.patch
+
+-------------------------------------------------------------------
+Mon Nov  2 15:15:15 UTC 2020 - olaf@aepfle.de
+
+- Remove trailing .sh suffix from bash-completion to make sure
+  ledger is actually recognized as a command with completions
+
+-------------------------------------------------------------------
+Fri May 29 06:39:31 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.2.1:
+  * Fix regression with expression evaluation by reverting commit
+    Correction to the way parens are parsed in query expressions
+  * Fix --invert breakage by reverting commit Change --invert to
+    invert displayed amounts and totals, not amounts
+  * Fix performance regression by reverting commit Compare price
+    annotations using their textual rendering
+  * Fix library path issue
+  * Allow specifying the Python version
+  * Some documentation fixes
+- Clean up spec file of various legacy parts - it fails to build
+  anyways
+- Refresh ledger-cmakelists.patch
+
+-------------------------------------------------------------------
+Wed May  6 09:20:38 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.2.0
+  * Port Python support to Python 3
+  * Entities are no longer regarded as defined due to being part of a
+  * cleared transaction. --explicit is effectively enabled by default
+    and is now a no-op (PR #1819)
+  * Add --average-lot-prices to show the average of lot prices
+  * Add support for %F date format specifier (bug #1775)
+  * Add commodity_price(NAME, DATE) function
+  * Add set_commodity_price(NAME, DATE) function
+  * Fix buffer overflow when evaluating date
+  * Fix balance assertions on accounts with virtual posts (bug #543)
+  * Fix segfault with ledger print (bug #1850)
+  * Ensure that apply directives (like apply account) have the
+    required argument (bug #553)
+  * Format annotations using a date format that can be parsed
+  * Change --invert to invert displayed amounts and totals, not amounts
+  * Correct the way parens are parsed in query expressions
+  * Compare price annotations using their textual rendering
+
+-------------------------------------------------------------------
+Tue Jan 28 15:01:05 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- add patch ledger-cmakelists.patch:
+  * Use set(CMAKE_CXX_STANDARD 11) to select de desired standard
+  * Build everything with hidden visibility, this allows the compiler
+    to create significantly better code and smaller executable (-800kb)
+
+-------------------------------------------------------------------
+Tue Apr  9 13:43:12 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.3:
+  + Properly reject postings with a comment right after the flag (bug #1753)
+  + Make sorting order of lot information deterministic (bug #1747)
+  + Fix bug in tag value parsing (bug #1702)
+  + Remove the org command, which was always a hack to begin with (bug #1706)
+  + Provide Docker information in README
+  + Various small documentation improvements 
+
+-------------------------------------------------------------------
+Wed Mar 20 08:35:19 UTC 2019 - lars@linux-schulserver.de - 3.1.2
+
+- update to 3.1.2:
+  + Increase maximum length for regex from 255 to 4095 (bug #981)
+  + Initialize periods from from/since clause rather than earliest 
+    transaction date (bug #1159)
+  + Check balance assertions against the amount after the posting (bug #1147)
+  + Allow balance assertions with multiple posts to same account (bug #1187)
+  + Fix period duration of "every X days" and similar statements (bug #370)
+  + Make option --force-color not require --color anymore (bug #1109)
+  + Add quoted_rfc4180 to allow CVS output with RFC 4180 compliant quoting.
+  + Add support for --prepend-format in accounts command
+  + Fix handling of edge cases in trim function (bug #520)
+  + Fix auto xact posts not getting applied to account total during 
+    journal parse (bug #552)
+  + Transfer null_post flags to generated postings
+  + Fix segfault when using --market with --group-by
+  + Use amount_width variable for budget report
+  + Keep pending items in budgets until the last day they apply
+  + Fix bug where .total used in value expressions breaks totals
+  + Make automated transactions work with assertions (bug #1127)
+  + Improve parsing of date tokens (bug #1626)
+  + Don't attempt to invert a value if it's already zero (bug #1703)
+  + Do not parse user-specified init-file twice
+  + Fix parsing issue of effective dates 
+    (bug #1722, TALOS-2017-0303, CVE-2017-2807)
+  + Fix use-after-free issue with deferred postings 
+    (bug #1723, TALOS-2017-0304, CVE-2017-2808)
+  + Fix possible stack overflow in option parsing routine 
+    (bug #1222, CVE-2017-12481)
+  + Fix possible stack overflow in date parsing routine 
+    (bug #1224, CVE-2017-12482)
+  + Fix use-after-free when using --gain (bug #541)
+  + Python: Removed double quotes from Unicode values.
+  + Python: Ensure that parse errors produce useful RuntimeErrors
+  + Python: Expose journal expand_aliases
+  + Python: Expose journal_t::register_account
+  + Improve bash completion
+  + Emacs Lisp files have been moved to 
+    https://github.com/ledger/ledger-mode
+  + Fix build under MSYS (32-bit).
+  + Fix build under Cygwin.
+  + Various documentation improvements
+- removed upstreamed patches:
+  + 465.patch
+  + boost_168.patch
+- add libboost_system-devel as build requires
+- package the bashcompletion script as config file
+- re-introduce BuildRoot and defattr macros for older distributions 
+  (they don't harm on newer ones, so don't use a if condition)
+- get rid of the suse_version conditional for boost libraries, as 
+  the package gets build only from SLE-12 and beyond anyway
+- do not use macros in the URL, as OBS is not expending these for 
+  the WebUI
+
+-------------------------------------------------------------------
+Fri Aug 17 07:27:43 UTC 2018 - adam.majer@suse.de
+
+- cleanup specfile - install license as %license
+- boost_168.patch: fix building with Boost 1.68. Sha1 compatibility
+  header was removed from Uuid library (boo#1105084)
+
+-------------------------------------------------------------------
+Wed Feb  1 12:34:15 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Tue Sep 13 14:37:46 UTC 2016 - adam.majer@suse.de
+
+- 465.patch
+  + Fix compilation with Boost 1.61 (boo#994382)
+  + upstream PR https://github.com/ledger/ledger/pull/465
+
+-------------------------------------------------------------------
+Wed Jan 27 10:19:14 UTC 2016 - mimi.vx@gmail.com
+
+- update to 3.1.1
+- drop  ledger-3.1-fix-build-with-boost-1.58.patch
+        ledger-3.1-convert-boost::optional-objects-to-bool-explicitly.patch
+* Added a --no-revalued option
+* Improved Embedded Python Support
+* Use ./.ledgerrc if ~/.ledgerrc doesn't exist
+* Fixed parsing of transactions with single-character payees and comments
+* Fixed crash when using -M option with empty result
+* Fixed sorting for option --auto-match
+* Fixed treatment of year 2015 and Y2014 directives
+* Fixed crash when using --trace 10 or above
+* Build fix for boost 1.58, 1.59, 1.60
+* Build fix for Cygwin
+* Various documentation improvements
+* Examples in the documentation are tested just like unit tests
+
+-------------------------------------------------------------------
+Sun Aug  2 20:42:30 UTC 2015 - antoine.belvire@laposte.net
+
+- Fix build with boost 1.58:
+  * add ledger-3.1-convert-boost::optional-objects-to-bool-explicitly.patch
+  * add ledger-3.1-fix-build-with-boost-1.58.patch
+
+-------------------------------------------------------------------
+Fri Feb  6 14:24:22 UTC 2015 - jmatejka@suse.cz
+
+- Install license file
+
+-------------------------------------------------------------------
+Thu Jan 22 16:46:28 UTC 2015 - jmatejka@suse.cz
+
+- Init package
+

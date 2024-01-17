@@ -1,0 +1,143 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ec8b59af7bd606d60e54ef6872b72ea</srcmd5>
+    <version>0.5.1</version>
+    <time>1517323370</time>
+    <user>dimstar_suse</user>
+    <comment>Submitting package to factory, needed for  python-cairocffi and qtile.</comment>
+    <requestid>570465</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d9ea9abb0d56ba39fb48aa49d78b3f5c</srcmd5>
+    <version>0.5.1</version>
+    <time>1544726726</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654076</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>56810f213af6efa552fa6d2decf5bbdd</srcmd5>
+    <version>0.6.0</version>
+    <time>1548452723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668540</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4736c0aed3a3ae897633c0fa20ed8ada</srcmd5>
+    <version>0.7.0</version>
+    <time>1553888205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Various updates and fixes for ghc/cabal
+  * Drop unnecessary imports
+- Enable tests</comment>
+    <requestid>687601</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e1ac305d7c0fe3b22f16349a2db59b5d</srcmd5>
+    <version>0.8.0</version>
+    <time>1557263567</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701054</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>06f696360b4bad7e52b173ae85960c89</srcmd5>
+    <version>0.8.1</version>
+    <time>1561195388</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1:
+  * Testsuite expansion mostly</comment>
+    <requestid>710345</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f12b05603679f796c8ef31e7aa680356</srcmd5>
+    <version>0.9.0</version>
+    <time>1581693896</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>770566</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>74056d9f0cd8ba13a4a26fb776e68c04</srcmd5>
+    <version>0.9.0</version>
+    <time>1582642985</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable tests to avoid deadlock in xvfb</comment>
+    <requestid>777875</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2ca77504e7fe5ebb7b937119f3aa46d9</srcmd5>
+    <version>0.10.1</version>
+    <time>1603959732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844109</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a2bdbd765b9e4321f2c2225f40ac1046</srcmd5>
+    <version>0.11.1</version>
+    <time>1626466366</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace use of nose2 by pytest. There is no need to do anything
+  else.
+- Update to 0.11.1
+  * connection: don't automatically disconnect() on connection error
+  * drop support for python 3.5
+  * tests: switch to nose2
+  * travis: test python 3.9
+</comment>
+    <requestid>906657</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5d2a4366a348f490c30585633b66ab02</srcmd5>
+    <version>0.12.1</version>
+    <time>1664638933</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006504</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c9c67e359f2165a8c8b455f9407cb9b6</srcmd5>
+    <version>1.2.0</version>
+    <time>1679854745</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074162</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d8756174ddd6f0f00ac0067da0551051</srcmd5>
+    <version>1.2.0</version>
+    <time>1682193486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081721</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>90f1716ff761192c9c75c283ddd1d5ef</srcmd5>
+    <version>1.3.0</version>
+    <time>1683801094</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.0:
+  * remove leftover six import
+  * module: expose additional xcb errors
+  * Fix List.to_string()
+- drop python-xcffib-six-leftover.patch (upstream)</comment>
+    <requestid>1085981</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8f565f8e4f600b33cf09745dc0f8acaa</srcmd5>
+    <version>1.5.0</version>
+    <time>1698001275</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.0:
+  * build against xcb-proto 1.16.0 (Tycho Andersen)
+  * add an automatic-github-releaser script
+  * use cffi's in-line mode
+  * build against xcb-proto 1.16.0
+- remove python-xcffib-ffi-import.patch
+</comment>
+    <requestid>1118908</requestid>
+  </revision>
+</revisionlist>

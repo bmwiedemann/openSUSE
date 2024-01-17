@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5499c1b4ab10753750416e0658fbca34</srcmd5>
+    <version>0.04</version>
+    <time>1421333915</time>
+    <user>dimstar_suse</user>
+    <comment>one more for openQA</comment>
+    <requestid>281077</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ff878837cc69f41c5bdf0cead0671c93</srcmd5>
+    <version>0.04</version>
+    <time>1508316677</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with perl 5.26</comment>
+    <requestid>534171</requestid>
+  </revision>
+</revisionlist>

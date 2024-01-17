@@ -1,0 +1,5 @@
+<package name="notejot" project="openSUSE:Factory">
+  <title>Notejot</title>
+  <description>A Sticky Note App</description>
+  <devel project="X11:Pantheon:Apps" package="notejot"/>
+</package>

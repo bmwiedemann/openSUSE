@@ -1,0 +1,10 @@
+-- a/setup.cfg
++++ b/setup.cfg
+@@ -1,7 +1,7 @@
+ [bdist_wheel]
+ universal = 1
+ 
+-[pytest]
++[tool:pytest]
+ norecursedirs = .git .* *.egg* old docs dist build
+ addopts = -rw

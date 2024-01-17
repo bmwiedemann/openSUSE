@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ccbf0f775d791f5058ed772d53c414fb</srcmd5>
+    <version>2.2.2</version>
+    <time>1600180116</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834555</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dfb7549df87e4c403f927c35468356e5</srcmd5>
+    <version>2.2.2</version>
+    <time>1604510770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845710</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a3edadbdfaec41e713945f39ec064b85</srcmd5>
+    <version>2.2.2+git10.1caca0630e36</version>
+    <time>1612378586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868935</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e34aa6624eaa1d240933e9d868d22d8d</srcmd5>
+    <version>2.2.3</version>
+    <time>1626386449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906520</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>cda6eece455a2a79dc193787e2170c62</srcmd5>
+    <version>2.2.3</version>
+    <time>1627680146</time>
+    <user>dimstar_suse</user>
+    <comment>- Added hardening to systemd service(s). Added harden_servicereport.service.patch</comment>
+    <requestid>909402</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>77f8cb246bf0d087b419b8dadea9e3f8</srcmd5>
+    <version>2.2.3+git1.55a13db1c256</version>
+    <time>1632522936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921331</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a4459acf3efe6b1cae7c3cfed65ab93b</srcmd5>
+    <version>2.2.3+git1.55a13db1c256</version>
+    <time>1639515718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940452</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>fd5d61bd15cc4dcc871ffd4650b0f97f</srcmd5>
+    <version>2.2.3+git1.55a13db1c256</version>
+    <time>1639685935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940761</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>ba67bcb0e1e731d5bdb541594a4bc029</srcmd5>
+    <version>2.2.3+git1.55a13db1c256</version>
+    <time>1699388927</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1124042</requestid>
+  </revision>
+</revisionlist>

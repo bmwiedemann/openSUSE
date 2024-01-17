@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Nov  2 07:20:09 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7
+  * 'ssh-force-password': Enforces password authentication
+  * ssh-ping
+    + Option (-C) to connect/reconnect as soon as the host responds
+    + Exit Codes
+      - 1: More than 1 request lost
+      - 2: All requests lost
+    + Environment Variable
+      - SSH_PING_NO_COLORS: if set, no colors are shown (like -n)
+
+-------------------------------------------------------------------
+Thu Jan 30 15:58:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.6

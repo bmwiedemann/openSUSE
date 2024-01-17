@@ -1,0 +1,178 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dfc7687318e7ac90552c3f4ed56f8985</srcmd5>
+    <version>1.3</version>
+    <time>1515261205</time>
+    <user>dimstar_suse</user>
+    <comment>For SLE15, removed %clean section from spec</comment>
+    <requestid>562003</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9a4ba3b6c684fa483a19d5ec9743b6f3</srcmd5>
+    <version>1.3</version>
+    <time>1515506136</time>
+    <user>dimstar_suse</user>
+    <comment>New Security Announcement Pattern (forwarded request 562592 from jrecord)</comment>
+    <requestid>562593</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e40f2b2e7d35ab1ec692468fb0d5716c</srcmd5>
+    <version>1.3</version>
+    <time>1516634304</time>
+    <user>dimstar_suse</user>
+    <comment>New Security Announcement Patterns (forwarded request 567805 from jrecord)</comment>
+    <requestid>567806</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a4027f7405ee50776455851bc4a13f8d</srcmd5>
+    <version>1.3</version>
+    <time>1517824348</time>
+    <user>dimstar_suse</user>
+    <comment>security announcement patterns (forwarded request 572119 from jrecord)</comment>
+    <requestid>572120</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ecdf51e6dbe7b281a5995eed5f7780b0</srcmd5>
+    <version>1.3</version>
+    <time>1519218810</time>
+    <user>dimstar_suse</user>
+    <comment>security announcement patterns (forwarded request 578559 from jrecord)</comment>
+    <requestid>578560</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>bb5c441cefebcbd3dc7a642df4f484e2</srcmd5>
+    <version>1.3</version>
+    <time>1530866576</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620917</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c08baced16e80a6ed80771b72f64fdd4</srcmd5>
+    <version>1.3.1</version>
+    <time>1608112904</time>
+    <user>dimstar_suse</user>
+    <comment>Updated Package</comment>
+    <requestid>856088</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>23798ca129220e2c7166536a6fd4b8a0</srcmd5>
+    <version>1.3.1</version>
+    <time>1614948454</time>
+    <user>RBrownSUSE</user>
+    <comment>New Security Patterns (forwarded request 876716 from jrecord)</comment>
+    <requestid>876717</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b75b6fcd7d51b28510c19c75be40c25f</srcmd5>
+    <version>1.3.1</version>
+    <time>1617279478</time>
+    <user>RBrownSUSE</user>
+    <comment>Factory Ready (forwarded request 882453 from jrecord)</comment>
+    <requestid>882454</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>39dd524c7c7cb9322cee3068b37eb8a9</srcmd5>
+    <version>1.3.1</version>
+    <time>1619107432</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 887358 from jrecord)</comment>
+    <requestid>887359</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cfd6baa05f1695f97609f4fbe3b0c815</srcmd5>
+    <version>1.3.2</version>
+    <time>1620240040</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 890772 from jrecord)</comment>
+    <requestid>890773</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>1a1aade6ef33c7cf9c15de7a0d3b1f83</srcmd5>
+    <version>1.3.2</version>
+    <time>1622536637</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 895599 from jrecord)</comment>
+    <requestid>895600</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0f4990d8d992152a82e5cc271d0f4e99</srcmd5>
+    <version>1.3.3</version>
+    <time>1622759607</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 897017 from jrecord)</comment>
+    <requestid>897018</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>cf159190fe090bdf12370c66858ef910</srcmd5>
+    <version>1.3.3</version>
+    <time>1624136656</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 900797 from jrecord)</comment>
+    <requestid>900798</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2b8adf8cb2025fcd37fa0e214d432f8b</srcmd5>
+    <version>1.3.4</version>
+    <time>1625338248</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 903774 from jrecord)</comment>
+    <requestid>903775</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a66b1bbc69e3eb847b4f0e67c718cfa9</srcmd5>
+    <version>1.3.5</version>
+    <time>1629269779</time>
+    <user>RBrownSUSE</user>
+    <comment>Factory Ready (forwarded request 912703 from jrecord)</comment>
+    <requestid>912704</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d917a0ac26a654df049f05db40ba1012</srcmd5>
+    <version>1.5.0</version>
+    <time>1636149511</time>
+    <user>dimstar_suse</user>
+    <comment>Converted from python2 to python3 bsc#1191005 (forwarded request 929476 from jrecord)</comment>
+    <requestid>929477</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>725af1a529557fbc5247acdfc2581b0c</srcmd5>
+    <version>1.5.0</version>
+    <time>1646848048</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 960271 from jrecord)</comment>
+    <requestid>960272</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6dcd820754a1f1336706fd37b9ad4f64</srcmd5>
+    <version>1.5.1</version>
+    <time>1652475817</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>977075</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>aae17f9750895176368ee48cbc8b5ef9</srcmd5>
+    <version>1.5.2</version>
+    <time>1666978227</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed invalid solution links bsc#1204776 (forwarded request 1031617 from jrecord)</comment>
+    <requestid>1031618</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0e3897f11d62658835312e4447093dd6</srcmd5>
+    <version>1.5.3</version>
+    <time>1693570773</time>
+    <user>anag+factory</user>
+    <comment>bsc#1214837 (forwarded request 1108322 from jrecord)</comment>
+    <requestid>1108323</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2d2cecc627bc10d605c696cb625fdd90</srcmd5>
+    <version>1.5.4</version>
+    <time>1705099606</time>
+    <user>anag+factory</user>
+    <comment>Changed pattern mode in spec file bsc#1218773 (forwarded request 1138382 from jrecord)</comment>
+    <requestid>1138383</requestid>
+  </revision>
+</revisionlist>

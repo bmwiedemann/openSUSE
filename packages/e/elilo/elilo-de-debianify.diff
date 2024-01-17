@@ -1,0 +1,42 @@
+---
+ Make.defaults   |    5 +++--
+ ia32/Makefile   |    2 +-
+ x86_64/Makefile |    2 +-
+ 3 files changed, 5 insertions(+), 4 deletions(-)
+
+--- a/Make.defaults
++++ b/Make.defaults
+@@ -63,8 +63,9 @@ CDIR    := $(shell if [ "$$PWD" != "" ];
+ TOPDIR  =
+ ALLSUBDIRS = ia32 ia64 x86_64 fs choosers devschemes tools
+ 
+-HOSTARCH   = $(shell dpkg-architecture -qDEB_BUILD_ARCH | sed s,i[3456789]86,ia32, | sed s,amd64,x86_64, )
+-ARCH	   := $(shell dpkg-architecture -qDEB_BUILD_ARCH | sed s,i[3456789]86,ia32, | sed s,amd64,x86_64, )
++HOSTARCH  := $(shell if ! dpkg-architecture -qDEB_BUILD_ARCH 2>/dev/null; then \
++		uname -m; fi | sed -e s,i[3456789]86,ia32, -e s,amd64,x86_64, )
++ARCH      := $(HOSTARCH)
+ INCDIR	   = -I. -I$(TOPDIR) -I$(EFIINC) -I$(EFIINC)/$(ARCH) -I$(EFIINC)/protocol -I$(TOPDIR)/efi110
+ CPPFLAGS   = -DCONFIG_$(ARCH) 
+ 
+--- a/x86_64/Makefile
++++ b/x86_64/Makefile
+@@ -43,7 +43,7 @@ all: $(TARGET)
+ system.o: rmswitch.h
+ 
+ rmswitch.h: bin_to_h.c rmswitch.S
+-	$(CC) -o bin_to_h $(SRCDIR)/bin_to_h.c
++	$(CC) $(OPTIMFLAGS) -o bin_to_h $(SRCDIR)/bin_to_h.c
+ 	$(AS) -o rmswitch.o $(SRCDIR)/rmswitch.S
+ 	$(LD) -Ttext 0x0 -s --oformat binary -o rmswitch rmswitch.o
+ 	./bin_to_h <rmswitch >rmswitch.h
+--- a/ia32/Makefile
++++ b/ia32/Makefile
+@@ -42,7 +42,7 @@ all: $(TARGET)
+ system.o: rmswitch.h
+ 
+ rmswitch.h: bin_to_h.c rmswitch.S
+-	$(CC) -o bin_to_h $(SRCDIR)/bin_to_h.c
++	$(CC) $(OPTIMFLAGS) -o bin_to_h $(SRCDIR)/bin_to_h.c
+ 	$(AS) -o rmswitch.o $(SRCDIR)/rmswitch.S
+ 	$(LD) -Ttext 0x0 -s --oformat binary -o rmswitch rmswitch.o
+ 	./bin_to_h <rmswitch >rmswitch.h

@@ -1,0 +1,28 @@
+<package name="rav1e" project="openSUSE:Factory">
+  <title>Fastest and safest AV1 encoder</title>
+  <description>rav1e is an AV1 video encoder.
+
+AV1 is a video codec by the Alliance for Open Media, composed of most
+of the important Web companies (Google, Facebook, Netflix, Amazon,
+Microsoft, Mozilla...).
+
+AV1 has the potential to be up to 20% better than the HEVC codec, but
+the patents license is totally free, while HEVC patents licenses are
+insanely high and very confusing.
+
+rav1e features:
+
+* Intra and inter frames
+* 64x64 superblocks
+* 4x4 to 64x64 RDO-selected square and 2:1/1:2 rectangular blocks
+* DC, H, V, Paeth, smooth, and a subset of directional prediction modes
+* DCT, (FLIP-)ADST and identity transforms (up to 64x64, 16x16 and 32x32 respectively)
+* 8-, 10- and 12-bit depth color
+* 4:2:0 (full support), 4:2:2 and 4:4:4 (limited) chroma sampling
+* Variable speed settings
+* Near real-time encoding at high speed levels
+
+</description>
+  <devel project="multimedia:libs" package="rav1e"/>
+  <url>https://github.com/xiph/rav1e</url>
+</package>

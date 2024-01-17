@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>98d743981d9ed257328e4230b89b8af1</srcmd5>
+    <version>1.2.0</version>
+    <time>1476874764</time>
+    <user>dimstar_suse</user>
+    <comment>fate#320836</comment>
+    <requestid>414554</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8ae4e5ea4d312415066deaaa50153456</srcmd5>
+    <version>1.2.0</version>
+    <time>1496926974</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>501576</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>717baf908422ef23afe2e3de23d3bfb2</srcmd5>
+    <version>1.2.0</version>
+    <time>1503061295</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Group: Development/Languages/OCaml
+
+- Wrap specfile conditionals to fix quilt setup
+
+- Remove autodeps for pre openSUSE 12.1 releases</comment>
+    <requestid>512523</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b864c4cdff1dc93c5ba9fc5142df3ffa</srcmd5>
+    <version>1.3.2</version>
+    <time>1571950979</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>738937</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>94ece5ac3031a0695917e5adeddfaa90</srcmd5>
+    <version>1.3.2</version>
+    <time>1573571504</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>746698</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>17c2d656ab876413f076f8a5b19b8fee</srcmd5>
+    <version>1.3.3</version>
+    <time>1651784839</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>975185</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8ea6b4a8a8f30361105c7ff7301b8dac</srcmd5>
+    <version>1.3.4</version>
+    <time>1655821978</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>984130</requestid>
+  </revision>
+</revisionlist>

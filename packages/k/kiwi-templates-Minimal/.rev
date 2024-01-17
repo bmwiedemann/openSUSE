@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dbd84e547e09ca22c8249bc84e825cde</srcmd5>
+    <version>84.87.1</version>
+    <time>1648841812</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission of the renamed JeOS</comment>
+    <requestid>966453</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>30a632aa96fbc0f1f82296260b9e1dc7</srcmd5>
+    <version>84.87.1</version>
+    <time>1650466644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971024</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>813c5b27ee88fbe9a2b42894b3b4aebd</srcmd5>
+    <version>84.87.1</version>
+    <time>1666089861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1012011</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ea37c0735f4204f1b9607fba623d1427</srcmd5>
+    <version>84.87.1</version>
+    <time>1668271232</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035204</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>da71a16169fd6bcd4fcd7f09375b8ba9</srcmd5>
+    <version>84.87.1</version>
+    <time>1672304239</time>
+    <user>dimstar_suse</user>
+    <comment>- editbootinstall_rpi.sh: fix loopdev name to work with new kiwi.</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>46eea73be7f18c395de300e87f947e3c</srcmd5>
+    <version>84.87.1</version>
+    <time>1679766898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074107</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>e397adb82f0a275d0e3b55d104a1f43c</srcmd5>
+    <version>84.87.1</version>
+    <time>1683212973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084242</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>d66c9763d8e508b94816cb0e91842b7e</srcmd5>
+    <version>84.87.1</version>
+    <time>1694630610</time>
+    <user>anag+factory</user>
+    <comment>- Add combustion (jsc#PED-5843)</comment>
+    <requestid>1110654</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>a1c2c88965e7528c893473abcf246cf3</srcmd5>
+    <version>84.87.1</version>
+    <time>1703102421</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134168</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>b10ac88fc1131c6ee2198d1bafbb8f5f</srcmd5>
+    <version>84.87.1</version>
+    <time>1704380217</time>
+    <user>dimstar_suse</user>
+    <comment>- Handle new sources in spec file too (forwarded request 1135437 from lnussel)</comment>
+    <requestid>1135438</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>054258f3d435c9659365c1284ea4f30a</srcmd5>
+    <version>84.87.1</version>
+    <time>1704919856</time>
+    <user>anag+factory</user>
+    <comment>- Drop systemd-sysvinit, the main systemd package itself contains
+  /sbin/reboot etc. now
+
+- Use kernel-default-base instead of kvmsmall</comment>
+    <requestid>1137720</requestid>
+  </revision>
+</revisionlist>

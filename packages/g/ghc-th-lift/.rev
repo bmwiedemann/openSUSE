@@ -1,0 +1,151 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1668d56d3bb42fadff0b9d5a15e7a33</srcmd5>
+    <version>0.7.6</version>
+    <time>1491567631</time>
+    <user>maxlin_factory</user>
+    <comment>fix license tag to address review from sr#422610</comment>
+    <requestid>483243</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c4e22eb582d876fe3e72952fbcb7e680</srcmd5>
+    <version>0.7.7</version>
+    <time>1494346199</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.7.7 with cabal2obs.</comment>
+    <requestid>493589</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>92bfc29ad29a1e864884544165add1bb</srcmd5>
+    <version>0.7.7</version>
+    <time>1505506725</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525529</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>476f0fb3522439b12bf43db6a159c064</srcmd5>
+    <version>0.7.8</version>
+    <time>1527675277</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-th-lift to the latest version.</comment>
+    <requestid>607903</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e3a8cd7c2bcd20327f117b3712222d3a</srcmd5>
+    <version>0.7.10</version>
+    <time>1532445778</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update th-lift to version 0.7.10.
+  Upstream has not updated the file &quot;Changelog&quot; since the last
+  release.</comment>
+    <requestid>623873</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9264ab56ac89d4274663315deb2c3614</srcmd5>
+    <version>0.7.11</version>
+    <time>1535963695</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>632488</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ec8827c87e5b5fd007ae4e91d935cd46</srcmd5>
+    <version>0.7.11</version>
+    <time>1540451161</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643470</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>53656115449825a41d0f05d6de766a8b</srcmd5>
+    <version>0.8</version>
+    <time>1557389429</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>700205</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4a18531eabc8902b4b7dfe47b7212564</srcmd5>
+    <version>0.8.0.1</version>
+    <time>1558129395</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>703479</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>44e236a8147f7a209e820539291e1b9e</srcmd5>
+    <version>0.8.1</version>
+    <time>1577451499</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759532</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>66ac422b3f305677dab989664d837ff2</srcmd5>
+    <version>0.8.1</version>
+    <time>1592579984</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815192</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>61c0a0067010016f161cfa7715b7f070</srcmd5>
+    <version>0.8.1</version>
+    <time>1598643565</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829448</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3c3039f6851784b4ddd08fa0f3483f2b</srcmd5>
+    <version>0.8.2</version>
+    <time>1603458904</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>842769</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>afecde85dcec53f44e530ed506ae2aa8</srcmd5>
+    <version>0.8.2</version>
+    <time>1608634051</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857605</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>026867f5bd74e6e4599a996fcb6678ec</srcmd5>
+    <version>0.8.2</version>
+    <time>1620240033</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>890702</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>059413ee33682066467fe6ade3c74488</srcmd5>
+    <version>0.8.2</version>
+    <time>1665668595</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1008528</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5d4383718872aea0f153a4757bf1734c</srcmd5>
+    <version>0.8.3</version>
+    <time>1680636235</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076077</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c1b4310c895f50cede72634e165fe656</srcmd5>
+    <version>0.8.4</version>
+    <time>1691594764</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103046</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bf716760b3740752dcf15b2c04774058</srcmd5>
+    <version>1.0.0</version>
+    <time>1599088531</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829804</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6e0990a8d240a3c2a93eb6b7a5638db1</srcmd5>
+    <version>1.0.0</version>
+    <time>1603725790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844087</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fdbef6418707da4d9c1afe0cc46d286c</srcmd5>
+    <version>1.0.0</version>
+    <time>1605124017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847721</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c847076deccead87e168adaee7217503</srcmd5>
+    <version>1.0.0</version>
+    <time>1608634296</time>
+    <user>dimstar_suse</user>
+    <comment>- Install misc.schema by default (ldap mail alias)
+
+- Fix error caused by uninitialized DEBUG variable (forwarded request 857864 from kukuk)</comment>
+    <requestid>857865</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>07b7d19e29b932ba077559de9d18dc83</srcmd5>
+    <version>1.0.0</version>
+    <time>1627911663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909716</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>655c07a36312d7316bdcd155b2ab6710</srcmd5>
+    <version>1.0.0</version>
+    <time>1628023715</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909806</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>54e955bb258af3dd78cf0b3d34335d61</srcmd5>
+    <version>1.0.0</version>
+    <time>1649181357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967018</requestid>
+  </revision>
+</revisionlist>

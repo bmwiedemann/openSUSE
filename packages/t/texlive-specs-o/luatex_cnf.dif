@@ -1,0 +1,62 @@
+---
+ texmf-dist/web2c/texmfcnf.lua |   24 ++++++++++++++++--------
+ 1 file changed, 16 insertions(+), 8 deletions(-)
+
+--- texmf-dist/web2c/texmfcnf.lua
++++ texmf-dist/web2c/texmfcnf.lua	2023-03-24 14:00:29.022032019 +0000
+@@ -41,6 +41,12 @@ return {
+             --     "selfautoparent:texmf/web2c",
+             -- }
+ 
++         -- TEXMFCNF        = {
++         --        "home:texmf/web2c",
++         --        "/etc/texmf/web2c",
++         --        "selfautodir:/share/texmf/web2c",
++         -- },
++
+             -- We have only one cache path but there can be more. The first writable one will be taken
+             -- but there can be more readable paths.
+ 
+@@ -50,10 +56,9 @@ return {
+ 
+             -- texlive
+ 
+-            TEXMFVAR        = "home:" .. hiddentexlivepath .. "/texmf-var",
+-            TEXMFCONFIG     = "home:" .. hiddentexlivepath .. "/texmf-config",
+-            TEXMFSYSVAR     = "selfautoparent:texmf-var",
+-            TEXMFCACHE      = "$TEXMFSYSVAR;$TEXMFVAR",
++            TEXMFSYSVAR     = "/var/lib/texmf",
++            TEXMFVAR        = "$TEXMFSYSVAR",
++            HOMECACHE       = "home:.cache/texmf/fonts",
+ 
+             -- I don't like this texmf under home and texmf-home would make more sense. One never knows
+             -- what installers put under texmf anywhere and sorting out problems will be a pain. But on
+@@ -73,13 +78,16 @@ return {
+ 
+             -- texlive:
+ 
+-            TEXMFDIST       = "selfautoparent:texmf-dist",
+-            TEXMFSYSCONFIG  = "selfautoparent:texmf-config",
++            TEXMFDIST       = "/usr/share/texmf",
++            TEXMFSYSCONFIG  = "/etc/texmf",
++
++            TEXMFCACHE      = "$TEXMFSYSVAR;$TEXMFVAR;$HOMECACHE",
++            TEXMFCONFIG     = "$TEXMFSYSCONFIG",
+ 
+             -- The texmf-local path is only used for (maybe) some additional configuration file.
+ 
+             TEXMFLOCAL      = "selfautoparent:texmf-local",
+-            TEXMFFONTS      = "selfautoparent:texmf-fonts",
++            TEXMFFONTS      = "$TEXMFDIST/fonts",
+             TEXMFPROJECT    = "selfautoparent:texmf-project",
+ 
+             TEXMFHOME       = "home:texmf",
+@@ -94,7 +102,7 @@ return {
+ 
+             -- texlive:
+ 
+-            TEXMF           = "{$TEXMFCONFIG,$TEXMFHOME,!!$TEXMFSYSCONFIG,!!$TEXMFSYSVAR,!!$TEXMFPROJECT,!!$TEXMFFONTS,!!$TEXMFLOCAL,!!$TEXMFDIST}",
++            TEXMF           = "{$TEXMFHOME,!!$TEXMFSYSCONFIG,!!$TEXMFSYSVAR,!!$TEXMFLOCAL,$TEXMFDIST}",
+ 
+             TEXFONTMAPS     = ".;$TEXMF/fonts/data//;$TEXMF/fonts/map/{pdftex,dvips}//",
+             ENCFONTS        = ".;$TEXMF/fonts/data//;$TEXMF/fonts/enc/{dvips,pdftex}//",

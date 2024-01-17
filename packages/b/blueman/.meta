@@ -1,0 +1,5 @@
+<package name="blueman" project="openSUSE:Factory">
+  <title>blueman</title>
+  <description>blueman</description>
+  <devel project="Base:System" package="blueman"/>
+</package>

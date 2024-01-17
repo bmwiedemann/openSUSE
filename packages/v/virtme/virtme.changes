@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Wed Dec 13 09:36:30 UTC 2023 - Robert Frohl <rfrohl@suse.com>
+
+- Require qemu-tools instead virtiofsd for older SLE/Leap versions 
+
+-------------------------------------------------------------------
+Thu Nov 30 11:22:25 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 1.18
+  * restore old --run behavior
+  * fix --user behavior
+
+-------------------------------------------------------------------
+Thu Nov 16 10:56:32 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- virtme-ng version: 1.17
+  * Fixes Leap build
+
+-------------------------------------------------------------------
+Fri Apr 21 10:21:46 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update project URL: https://github.com/arighi/virtme
+- Update to version 0.1.2
+  - Remove upstreamed patches
+    - 0001-Add-save-initramfs-to-save-the-actual-generated-init.patch
+    - 0002-Make-save-initramfs-show-command-output-more-useful.patch
+    - 0003-Fix-the-error-message-for-mods-misuse.patch
+    - 0004-Fix-the-mods-error-even-better.patch
+    - 0005-mkinitramfs.py-Search-for-busybox-.-static-first.patch
+    - 0006-mkinitramfs-Improve-the-find_busybox-algorithm.patch
+    - 0007-Add-util.find_binary-to-find-binaries.patch
+    - 0008-modfinder-Use-find_binary_or_raise-to-find-modprobe.patch
+    - 0009-Enable-the-Xen-console-when-using-xen.patch
+    - 0001-configkernel-Add-CONFIG_INOTIFY_USER-y.patch
+    - 0002-Use-fsdev-multidevs-remap-on-QEMU-4.2.patch
+    - 0003-Add-more-typing-annotations.patch
+    - 0004-run.py-Extract-path-file-sanitizing-into-a-new-funct.patch
+    - 0005-run.py-Introduce-blk-disk-argument.patch
+    - 0006-Minor-sanitize_disk_args-cleanup.patch
+    - aarch64-Fix-aarch64-support.patch
+
+-------------------------------------------------------------------
+Tue Dec 14 14:14:14 UTC 2021 - ohering@suse.de
+
+- Add python-rpm-macros (bsc#1180125)
+
+-------------------------------------------------------------------
+Thu Nov 12 08:24:10 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- Update patch for aarch64 support. Does not break full emulation case.
+
+-------------------------------------------------------------------
+Fri Oct 30 11:09:02 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- Add patch to fix aarch64 native support.
+  * aarch64-Fix-aarch64-support.patch
+
+-------------------------------------------------------------------
+Wed Jul 22 01:14:28 UTC 2020 - Marcos de Souza <mpdesouza@suse.com>
+
+- Add patches to include some fixes and the new --blk-disk feature
+  * 0001-Add-save-initramfs-to-save-the-actual-generated-init.patch
+  * 0002-Make-save-initramfs-show-command-output-more-useful.patch
+  * 0003-Fix-the-error-message-for-mods-misuse.patch
+  * 0004-Fix-the-mods-error-even-better.patch
+  * 0005-mkinitramfs.py-Search-for-busybox-.-static-first.patch
+  * 0006-mkinitramfs-Improve-the-find_busybox-algorithm.patch
+  * 0007-Add-util.find_binary-to-find-binaries.patch
+  * 0008-modfinder-Use-find_binary_or_raise-to-find-modprobe.patch
+  * 0009-Enable-the-Xen-console-when-using-xen.patch
+  * 0001-configkernel-Add-CONFIG_INOTIFY_USER-y.patch
+  * 0002-Use-fsdev-multidevs-remap-on-QEMU-4.2.patch
+  * 0003-Add-more-typing-annotations.patch
+  * 0004-run.py-Extract-path-file-sanitizing-into-a-new-funct.patch
+  * 0005-run.py-Introduce-blk-disk-argument.patch
+  * 0006-Minor-sanitize_disk_args-cleanup.patch
+- Drop outdated patch:
+  * 0001-mkinitramfs.py-Search-for-busybox-.-static-first.patch
+
+-------------------------------------------------------------------
+Thu Oct 17 02:06:33 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- Current Tumbleweed's busybox does not work with virtme. For now require
+  busybox-static since it works;
+  * 0001-mkinitramfs.py-Search-for-busybox-.-static-first.patch: Check for
+    busybox-static over dynamically linked busybox
+- Change the dependency to busybox-static instead of the dynamically linked on.
+
+-------------------------------------------------------------------
+Wed Oct 16 17:51:50 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias, conjecture and vision from descriptions.
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Oct 15 15:53:23 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- Remove the python3- prefix from the final package
+- Added full source URL
+
+-------------------------------------------------------------------
+Tue Oct 15 01:38:51 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- Remove _service and add the virtme source code into the project.
+
+-------------------------------------------------------------------
+Sat Oct 12 01:09:46 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- Add busybox and qemu as dependencies of virtme. Now 'virtme-run
+  --installed-kernel' works out-of-the-box.
+
+-------------------------------------------------------------------
+Thu Oct 10 19:41:06 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- Newly released version 0.1.1
+- Use an OBS service to download the tarball
+- Removed all patches, since they are all included in the new version
+
+-------------------------------------------------------------------
+Mon Sep 30 03:27:06 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- Add a new patch to support --mods auto in openSUSE.
+
+-------------------------------------------------------------------
+Mon Sep 30 03:00:03 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- Update virtme version with previous patches already included in the upstream
+  project
+
+-------------------------------------------------------------------
+Mon Aug 26 02:13:38 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- Add patches to enable experimental --kdir with modules enabled
+
+-------------------------------------------------------------------
+Thu Aug 22 02:09:04 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
+
+- First version of the package

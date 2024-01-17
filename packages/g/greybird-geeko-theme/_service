@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="localonly">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/shimmerproject/Greybird-Geeko.git</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">maurizio.galli@gmail.com</param>
+  </service>
+  <service mode="localonly" name="tar"/>
+  <service mode="localonly" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="localonly"/>
+</services>

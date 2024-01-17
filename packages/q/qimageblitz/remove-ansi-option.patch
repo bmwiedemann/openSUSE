@@ -1,0 +1,19 @@
+From: Luca Beltrame <lbeltrame@kde.org>
+Subject: Remove -ansi option
+
+It is equivalent to "-std=c++98", which breaks building as Qt relies on C++11.
+
+---
+Index: qimageblitz-0.0.6+svn1515099/CMakeLists.txt
+===================================================================
+--- qimageblitz-0.0.6+svn1515099.orig/CMakeLists.txt
++++ qimageblitz-0.0.6+svn1515099/CMakeLists.txt
+@@ -32,7 +32,7 @@ set(LIB_INSTALL_DIR          "${EXEC_INS
+ 
+ if (CMAKE_COMPILER_IS_GNUCXX)
+    if (CMAKE_SYSTEM_NAME MATCHES Linux OR CMAKE_SYSTEM_NAME STREQUAL GNU)
+-       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor -Wno-long-long -ansi -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security -fno-exceptions -fno-check-new -fno-common")
++       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor -Wno-long-long -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security -fno-exceptions -fno-check-new -fno-common")
+        add_definitions(-DQT_NO_EXCEPTIONS)
+    endif (CMAKE_SYSTEM_NAME MATCHES Linux OR CMAKE_SYSTEM_NAME STREQUAL GNU)
+ endif (CMAKE_COMPILER_IS_GNUCXX)

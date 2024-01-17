@@ -1,0 +1,26 @@
+From db56ce96c62aeb35c17fab70e41a83509a933848 Mon Sep 17 00:00:00 2001
+From: Javier Llorente <javier@opensuse.org>
+Date: Tue, 8 Dec 2020 14:08:11 +0100
+Subject: [PATCH] Fix application output
+
+There is no application output on Qt Creator because logging goes to journald.
+Workaround: set QT_LOGGING_TO_CONSOLE and QT_FORCE_STDERR_LOGGING
+---
+ src/app/main.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/app/main.cpp b/src/app/main.cpp
+index d4c4a47..1f1ddc8 100644
+--- a/src/app/main.cpp
++++ b/src/app/main.cpp
+@@ -519,6 +519,10 @@ int main(int argc, char **argv)
+     restoreEnvVarFromSquish("SQUISH_SHELL_ORIG_DYLD_LIBRARY_PATH", "DYLD_LIBRARY_PATH");
+     restoreEnvVarFromSquish("SQUISH_ORIG_DYLD_FRAMEWORK_PATH", "DYLD_FRAMEWORK_PATH");
+ 
++    // Force Qt to log to stderr
++    Utils::Environment::modifySystemEnvironment(
++        {{"QT_FORCE_STDERR_LOGGING", "1", Utils::EnvironmentItem::SetEnabled}});
++
+     if (options.userLibraryPath) {
+         if ((*options.userLibraryPath).isEmpty()) {
+             Utils::Environment::modifySystemEnvironment(

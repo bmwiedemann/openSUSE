@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Mon Nov 13 13:59:54 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix homepage URL
+- Add _service file (use on next release)
+
+-------------------------------------------------------------------
+Thu Dec  8 19:39:48 UTC 2022 - Jacob Michalskie <hellcp@opensuse.org>
+
+- Add 0003-susepaste-use-paste-opensuse.org.patch: Replace
+  susepaste.org submission address with paste.opensuse.org 
+
+-------------------------------------------------------------------
+Sat Dec  4 03:12:56 UTC 2021 - malcolmlewis@opensuse.org
+
+- Add 0002-susepaste-add-image-paste-info.patch: Add info on
+  posting an image to susepaste in the man page, (boo#1193400). 
+
+-------------------------------------------------------------------
+Tue Mar 31 17:24:07 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 0001-susepaste-Fix-parsing-of-returned-Location-header.patch:
+  fix parsing of location header returned by susepaste.org
+  (boo#1166669).
+
+-------------------------------------------------------------------
+Tue Aug 27 07:24:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim duplicated wording from descriptions.
+
+-------------------------------------------------------------------
+Sun Aug 11 15:17:41 UTC 2019 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- updated to version 0.6
+  - error out when pasting unreadable file
+  - fix one bashism
+  - allow to specify protocol
+
+-------------------------------------------------------------------
+Sun Nov 26 10:47:28 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Dec 16 20:48:02 CET 2011 - mhrusecky@suse.cz
+
+- minor spec file beautifications
+
+-------------------------------------------------------------------
+Thu Apr 21 16:04:27 CEST 2011 - mhrusecky@suse.cz
+
+- updated to version 0.5
+  - support for pasting with key
+  - fixed infinite loop on syntax error
+
+-------------------------------------------------------------------
+Mon Jan  3 00:10:02 CET 2011 - mhrusecky@suse.cz
+
+- updated to version 0.4.1
+  - fixed screenshot pasting script to cleanup temporaly files
+
+-------------------------------------------------------------------
+Sat Jan  1 20:45:05 CET 2011 - mhrusecky@suse.cz
+
+- updated to version 0.4
+  - adding screenshot pasting script
+
+-------------------------------------------------------------------
+Mon Dec  6 16:16:04 CET 2010 - mhrusecky@suse.cz
+
+- updated to version 0.3
+  - support for commandline option
+  - support for pasting images
+  - automatic recognition of several file types 
+
+-------------------------------------------------------------------
+Mon Aug 30 12:15:06 CEST 2010 - mhrusecky@suse.cz
+
+- adding http://paste.opensuse.org as another output
+- adding man page
+
+-------------------------------------------------------------------
+Fri Jul 30 22:46:21 CEST 2010 - mhrusecky@suse.cz
+
+- packaged first version of the script
+

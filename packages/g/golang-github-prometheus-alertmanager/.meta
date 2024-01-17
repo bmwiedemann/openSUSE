@@ -1,0 +1,5 @@
+<package name="golang-github-prometheus-alertmanager" project="openSUSE:Factory">
+  <title>golang-github-prometheus-alertmanager</title>
+  <description></description>
+  <devel project="server:monitoring" package="golang-github-prometheus-alertmanager"/>
+</package>

@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Tue Aug  8 10:58:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * Dropped support for Python 3.7 and Django 1.x. Declared
+    support for Python 3.12.
+
+-------------------------------------------------------------------
+Thu Apr 13 10:15:32 UTC 2023 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
+Fri Feb 10 12:37:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * Dropped support for Python 2.7, Python 3.6, and Django 1.8.
+  * Declare our support for Python 3.11 and Django 4.1.
+
+-------------------------------------------------------------------
+Sat Sep  3 03:48:09 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.0.3
+  * Add support for Django 4.0
+
+-------------------------------------------------------------------
+Sun Dec 26 06:33:30 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.0.2
+  * If a non-UTF8 file was found when looking for templates, it
+    would fail when reading during the reporting phase, ending
+    execution. This failure is now raised in a way that can be
+    ignored with a .coveragerc setting of
+    [report] ignore_errors=True.
+  * When using source=., an existing coverage HTML report directory
+    would be found and believed to be unmeasured HTML template files
+- from v2.0.0
+  * Drop support for Python 3.4 and 3.5.
+  * A setting is available: template_extensions lets you set the file
+    extensions that will be considered when looking for unused templates
+  * Fix an issue on Windows where file names were being compared
+    case-sensitively, causing templates to be missed
+  * Fix an issue where tag libraries can't be found if imported
+    during test collection.
+
+-------------------------------------------------------------------
+Thu May 20 08:34:52 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pytest macro
+
+-------------------------------------------------------------------
+Thu Feb 20 09:25:29 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.8.0:
+  * Support coverage 5
+  * New django and python support
+
+-------------------------------------------------------------------
+Mon Feb 18 06:10:48 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.6.0

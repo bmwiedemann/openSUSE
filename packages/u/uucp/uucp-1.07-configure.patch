@@ -1,0 +1,21 @@
+---
+ configure.in |    8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+--- configure.in
++++ configure.in	2017-04-04 13:41:00.208256684 +0000
+@@ -356,7 +356,13 @@ AC_CHECK_FUNCS(strchr strrchr index rind
+ AC_CHECK_FUNCS(strdup strcasecmp strncasecmp stricmp strnicmp)
+ AC_CHECK_FUNCS(bsearch vfprintf)
+ AC_CHECK_FUNCS(remove ftruncate ltrunc rename opendir dup2 waitpid wait4)
+-AC_CHECK_FUNCS(sigsetjmp setret sigaction sigvec sigset)
++AC_CHECK_FUNCS(setret sigaction sigvec sigset)
++AC_MSG_CHECKING(for sigsetjmp)
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM([#include <setjmp.h>],
++    [sigjmp_buf bar; sigsetjmp (bar, 0);])],
++    [AC_MSG_RESULT(yes)
++    AC_DEFINE([HAVE_SIGSETJMP], [1], [Define if you have the sigsetjmp function.])],
++    [AC_MSG_RESULT(no)])
+ AC_CHECK_FUNCS(sigprocmask sigblock sighold getdtablesize sysconf)
+ AC_CHECK_FUNCS(setpgrp setsid setreuid seteuid gethostname uname)
+ AC_CHECK_FUNCS(gettimeofday ftw glob dev_info getaddrinfo)

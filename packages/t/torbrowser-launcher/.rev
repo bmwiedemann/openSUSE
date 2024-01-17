@@ -1,0 +1,194 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b69dc29561adf967bc6ccfda8a273808</srcmd5>
+    <version>0.2.2</version>
+    <time>1450284149</time>
+    <user>dimstar_suse</user>
+    <comment>New package: torbrowser-launcher - Downloads, installs (in user's home dir) and updates torbrowser and adds a desktop launcher to launch the browser itself.</comment>
+    <requestid>348338</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0ab1312f475d9ca7212e087cf07a2874</srcmd5>
+    <version>0.2.4</version>
+    <time>1460101181</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>385143</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b9e72a4c2bca38ac9578799d5d10ca61</srcmd5>
+    <version>0.2.5</version>
+    <time>1469382777</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412609</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a5cb7a72dfdbec9385f6835c9fe84d9d</srcmd5>
+    <version>0.2.6</version>
+    <time>1470773738</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417704</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>93b5e7295209e4fb6da12fd5910233d3</srcmd5>
+    <version>0.2.6</version>
+    <time>1487029639</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456102</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ad678c23c9feee95b254a5fe9a8514e2</srcmd5>
+    <version>0.2.7</version>
+    <time>1488560050</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>461774</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>875c44d7a4357fa032f8979fff71e488</srcmd5>
+    <version>0.2.8</version>
+    <time>1500456167</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511234</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1b37ead5dc78bbce3fe0ed68ee9dfbbb</srcmd5>
+    <version>0.2.9</version>
+    <time>1517932111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572914</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>822a05b3269ec63e47d481ceae280ddf</srcmd5>
+    <version>0.3.0</version>
+    <time>1537964607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638196</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f1add8df34a0c6701b823c45d5ec108f</srcmd5>
+    <version>0.3.1</version>
+    <time>1541667032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646959</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>5e0a1028531172cc9258d1b39fa77062</srcmd5>
+    <version>0.3.1</version>
+    <time>1553809796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689364</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>589910d7635663990c025bc1776e114c</srcmd5>
+    <version>0.3.2</version>
+    <time>1564137600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718289</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>0f2442f384ff32bedf681c91304c6231</srcmd5>
+    <version>0.3.2</version>
+    <time>1582899706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780208</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>0c6a4604cf1ab02cf81dd6533259be5f</srcmd5>
+    <version>0.3.2</version>
+    <time>1584050779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784137</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>376c8a4fbc0355444278ade8e3f59194</srcmd5>
+    <version>0.3.2</version>
+    <time>1601044472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836465</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>845318c6888ef81d82c79355775cb840</srcmd5>
+    <version>0.3.2</version>
+    <time>1601296122</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>837985</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>abf43778f328c137352dd3e8fbacadc5</srcmd5>
+    <version>0.3.3</version>
+    <time>1602155650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840185</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>30247b98bdc69fa1fc7cb85238bf0a4d</srcmd5>
+    <version>0.3.4</version>
+    <time>1624462720</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901564</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>85105b8d81408e4116e54cfea1f779bf</srcmd5>
+    <version>0.3.5</version>
+    <time>1639267068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>939958</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>9307fdaac05cf1e8294c3844618398fe</srcmd5>
+    <version>0.3.5</version>
+    <time>1641940967</time>
+    <user>dimstar_suse</user>
+    <comment>- add python-rpm-macros</comment>
+    <requestid>945688</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>cb26e8bec619255a545e96b90f9ef0a0</srcmd5>
+    <version>0.3.5</version>
+    <time>1653417105</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978924</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>218165970241d8a13227764827b49049</srcmd5>
+    <version>0.3.5</version>
+    <time>1661432937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999079</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c098306d37fb056bddab9df1b759a304</srcmd5>
+    <version>0.3.6</version>
+    <time>1671128758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043136</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5de6ae7b3074dcf4c3b11a8a1f910745</srcmd5>
+    <version>0.3.7</version>
+    <time>1705353663</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138852</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1111b4de9b19b244f8e768c6de82576b</srcmd5>
+    <version>0.1.1</version>
+    <time>1571950971</time>
+    <user>dimstar_suse</user>
+    <comment>New package see https://lists.opensuse.org/opensuse-factory/2019-10/msg00087.html </comment>
+    <requestid>738661</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f9f7b5a2862f0afb1c7665cbbbb9eec4</srcmd5>
+    <version>0.1.1</version>
+    <time>1572021774</time>
+    <user>dimstar_suse</user>
+    <comment>Add patch to check for busbox-static, instead of busybox.</comment>
+    <requestid>742761</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4cbaa38cbd17d34d0f28bbe1036501d6</srcmd5>
+    <version>0.1.1</version>
+    <time>1637108025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931598</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>87595e47b7d713cb26633a8458efac99</srcmd5>
+    <version>0.1.1</version>
+    <time>1640690793</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>942898</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5512247d9bfccb156db6a781b8475d80</srcmd5>
+    <version>0.1.2</version>
+    <time>1682193801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082143</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d66664aff020a214020a26313fe3691f</srcmd5>
+    <version>1.17</version>
+    <time>1701121366</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127694</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>06fa6a5b440ada8bf1109409efccd3ba</srcmd5>
+    <version>1.18</version>
+    <time>1701378236</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129979</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f5f8d2e268f935d22e8da1c8c50d25a3</srcmd5>
+    <version>1.18</version>
+    <time>1702845133</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133629</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3441803d5c80b7883ec4e972a74db9d0</srcmd5>
+    <version>105</version>
+    <time>1423130402</time>
+    <user>dimstar_suse</user>
+    <comment>eatmydata, a LD_PRELOAD library, used in openQA.</comment>
+    <requestid>283904</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>26885f4b6409499130506b2a23b1e30e</srcmd5>
+    <version>105</version>
+    <time>1427445691</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293247</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a2cc919957f2109695687a9ab7835330</srcmd5>
+    <version>105</version>
+    <time>1584050953</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file</comment>
+    <requestid>784350</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0d82e3f01f0b5ab991f1c818ebdeac9c</srcmd5>
+    <version>130</version>
+    <time>1640617645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942767</requestid>
+  </revision>
+</revisionlist>

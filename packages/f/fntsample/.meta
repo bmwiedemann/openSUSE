@@ -1,0 +1,18 @@
+<package name="fntsample" project="openSUSE:Factory">
+  <title>Produce Font Samples</title>
+  <description>fntsample is a program for making font samples that show Unicode coverage of
+the font. The samples are similar in appearance to Unicode charts. Samples can
+be saved as PDF or PostScript files.
+
+Features:
+* Support for various font formats using FreeType library, including TrueType,
+  OpenType, and Type1.
+* Creating samples in PDF and PostScript format.
+* Adding outlines with Unicode block names for PDF samples.
+* Selection of code ranges to show in charts.
+* Comparing of two font files with highlighting of added glyphs.
+
+</description>
+  <devel project="Publishing" package="fntsample"/>
+  <url>https://github.com/eugmes/fntsample</url>
+</package>

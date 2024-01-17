@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Fri Mar 11 10:07:35 UTC 2016 - coolo@suse.com
+
+- updated to 0.49
+   see /usr/share/doc/packages/perl-File-Rsync/Changelog
+
+  Thu Mar 10 07:52:24 CST 2016 ( leakin at japh dot net )
+  
+  	* version 0.49: fix infun, broken since 0.46 refactor
+  
+  	Michal Krupicka ( Michal dot Krupicka at skoda-auto dot cz ) reported
+  	that I broke the the input function (it worked differently from 0.45
+  	and the documentation) when I converted to using IPC::Run3.  This restores
+  	compatability with 0.45. Thanks Michal.
+
+-------------------------------------------------------------------
+Tue Sep 22 09:04:10 UTC 2015 - coolo@suse.com
+
+- updated to 0.48
+   see /usr/share/doc/packages/perl-File-Rsync/Changelog
+
+  Mon Sep 21 15:58:35 CDT 2015 ( leakin at dfw dot nostrum dot com )
+  
+  	* version 0.48: fix list option parsing
+  
+  	Bill Shunn ( proprietor at shunn dot net ) found a bug in list option
+  	parsing that broke filters (and probably others as well).
+
+-------------------------------------------------------------------
+Sun Sep 20 08:53:10 UTC 2015 - coolo@suse.com
+
+- updated to 0.47
+   see /usr/share/doc/packages/perl-File-Rsync/Changelog
+
+  Fri Sep 11 08:36:39 CDT 2015 ( leakin at dfw dot nostrum dot com )
+  
+  	* version 0.47: fixed hash ref parsing
+  
+  	Andreas Koenig ( andk at cpan dot org ) pointed out a problem
+  	with the hash ref compatibility code, and then graciously provided
+  	a test case to help me track down the problem. Added another
+  	test to confirm.
+
+-------------------------------------------------------------------
+Sun Aug 23 08:49:07 UTC 2015 - coolo@suse.com
+
+- updated to 0.46
+   see /usr/share/doc/packages/perl-File-Rsync/Changelog
+
+  Wed Jul 29 09:32:05 CDT 2015 ( leakin at dfw dot nostrum dot com )
+  
+  	* version 0.46: added support for new options up to 3.1.1
+  
+  	Max Maischein ( corion at corion dot net ) provided code and
+  	insight on how to support Windows OS, as well as some improved
+  	tests.  IPC::Open3 was replaced with IPC::Run3 as part of this
+  	effort, thanks to Max for showing me this module.  It simplified
+  	a big chunk of code and I was able to take advantage of its
+  	features in a few places (see infun and files-from below).
+  
+  	Gavin Carr ( gavin at openfusion dot com dot au ) enlightened me
+  	some time ago of the advantages of ordered args with rsync.
+  	Order of args is now preserved.  This is a long overdue change.
+  	Rsync itself performs some things differently based on the order
+  	of some args, hopefully this is a big improvement in functionality
+  	and doesn't break anyone.  Passing options as a hash ref is now
+  	deprecated.  Thanks Gavin, sorry it took me so long to implement.
+  
+  	Petya Kohts ( kohts at yandex-team dot ru ) suggested code
+  	for srchost that would properly handle the rsync:// prefix
+  
+  	Neil Hooey ( nhooey at gmail dot com) provided a better
+  	algorithm for the status method.
+  
+  	Erez Schatz ( moonbuzz at gmail dot com ) sent improved pod
+  	formatting that should work better with pod2html
+  
+  	The module debug option has become moddebug so it does not conflict
+  	with the rsync debug option.
+  
+  	infun can now be an array ref, contents are fed to stdin via IPC::Run3
+  
+  	files-from can also be an array ref, this is handled in the module
+  	by setting infun to the array ref and --files-from='-'
+  
+  	Added several more tests.
+
+-------------------------------------------------------------------
+Sat Dec 27 22:26:04 UTC 2014 - lars@linux-schulserver.de
+
+- update to 0.45:
+  + removed 'use File::Rsync::Config', oops
+  + long overdue fix for automated builds, removed prompt for 
+    rsync path to use PATH enviroment instead
+
+-------------------------------------------------------------------
+Fri Nov 18 11:07:10 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:24 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Jul 30 17:05:08 UTC 2010 - lars@linux-schulserver.de
+
+- initial version 0.43
+

@@ -1,0 +1,5 @@
+<package name="nginx-module-zstd" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:http" package="nginx-module-zstd"/>
+</package>

@@ -1,0 +1,32 @@
+diff --git a/dark/meson.build b/dark/meson.build
+index ce076dc..2c5b45f 100644
+--- a/dark/meson.build
++++ b/dark/meson.build
+@@ -14,7 +14,6 @@ scss_files = files([
+     'gtk-3.0/_gnome-apps.scss',
+     'gtk-3.0/_lightdm-gtk-greeter.scss',
+     'gtk-3.0/_others.scss',
+-    'gtk-3.0/_unity.scss',
+     'gtk-3.0/_xfce.scss'
+ ])
+ 
+@@ -77,6 +76,5 @@ if not get_option('flatpak')
+     install_subdir('metacity-1', install_dir : theme_path)
+     install_subdir('xfwm4', install_dir : theme_path)
+     install_subdir('plank', install_dir : theme_path)
+-    install_subdir('unity', install_dir : theme_path)
+     install_subdir('variants/a11y/xfwm4', install_dir : a11y_theme_path)
+ endif
+diff --git a/light/meson.build b/light/meson.build
+index 48618f6..48ab645 100644
+--- a/light/meson.build
++++ b/light/meson.build
+@@ -17,7 +17,6 @@ if not get_option('flatpak')
+     install_subdir('xfce-notify-4.0', install_dir : theme_path)
+     install_subdir('xfwm4', install_dir : theme_path)
+     install_subdir('plank', install_dir : theme_path)
+-    install_subdir('unity', install_dir : theme_path)
+     install_subdir('variants/a11y/xfwm4', install_dir : a11y_theme_path)
+     install_subdir('variants/bright/xfce-notify-4.0', install_dir : bright_theme_path)
+     install_subdir('variants/compact/xfwm4', install_dir : compact_theme_path)
+

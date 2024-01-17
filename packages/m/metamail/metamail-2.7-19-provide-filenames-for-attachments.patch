@@ -1,0 +1,107 @@
+--- a/bin/metasend
++++ b/bin/metasend
+@@ -55,7 +55,8 @@ fi
+ 
+ ouputfile=""
+ multipartsubtype="mixed"
+-cdescrip="An object packed by metasend"
++cdescrip=    # -Immi
++attachfilename=    # -Immi
+ isentity=0
+ newid=`date ${d+"$d"}| tr " :" "__"`
+ cid="<${newid}_$idctr@${hname}>"
+@@ -210,6 +211,17 @@ do
+ 		    cdescrip=$1
+ 		    shift ;;
+ 
++# begin immi
++		-A) shift
++		    if test -z "$*"
++		    then
++			echo "-A requires a following argument, the attachment file name"
++			exit 1
++		    fi
++		    attachfilename=$1
++		    shift ;;
++#end immi
++
+ 		-E) isentity=1
+ 		    shift ;;
+ 
+@@ -253,6 +265,7 @@ do
+ 		    eval datafile${multipart}=$datafile
+ 		    eval encode${multipart}=$encode
+ 		    eval cdescrip${multipart}=\"$cdescrip\"
++		    eval attachfilename${multipart}=\"$attachfilename\"   # -Immi
+ 		    eval cid${multipart}=\"$cid\"
+ 		    eval isentity${multipart}=$isentity
+ 		    eval encodingprog${multipart}=\"\$encodingprog\"
+@@ -264,7 +277,8 @@ do
+ 		    newid=`date ${d+"$d"}| tr " :" "__"`
+ 		    cid="<${newid}_$idctr@${hname}>"
+ 		    idctr=`expr $idctr + 1`
+-		    cdescrip="An object packed by metasend"
++		    cdescrip=             # -Immi
++		    attachfilename=       # -Immi
+ 		    isentity=0
+ 		    multipart=`expr $multipart + 1`
+ 		    shift ;;
+@@ -363,9 +377,11 @@ then
+ 		    eval encode${multipart}=$encode
+ 		    eval encodingprog${multipart}=\"\$encodingprog\"
+ 		    eval cdescrip${multipart}=\"$cdescrip\"
++		    eval attachfilename${multipart}=\"$attachfilename\"   # -Immi
+ 		    eval cid${multipart}=\"$cid\"
+ 		    eval isentity${multipart}=$isentity
+-		    cdescrip="An object packed by metasend"
++		    cdescrip=         # -Immi
++		    attachfilename=   # -Immi
+ 		    isentity=0
+ 		    ctype=""
+ 		    datafile=""
+@@ -458,6 +474,7 @@ eval ctype${multipart}=\"$ctype\"
+ eval datafile${multipart}=$datafile
+ eval encode${multipart}=$encode
+ eval cdescrip${multipart}=\"$cdescrip\"
++eval attachfilename${multipart}=\"$attachfilename\"   # -Immi
+ eval cid${multipart}=\"$cid\"
+ eval isentity${multipart}=$isentity
+ eval encodingprog${multipart}=\"\$encodingprog\"
+@@ -521,7 +538,18 @@ then
+ 		then
+ 			eval echo "Content-ID: \$cid$i" >> $fname
+ 			eval echo "Content-type: \$ctype$i" >> $fname
+-			eval echo "Content-Description: \$cdescrip$i" >> $fname
++#begin immi
++			eval cdescrip=\$cdescrip$i
++			if test ! -z "$cdescrip"
++			then
++				echo "Content-Description: $cdescrip" >> $fname
++			fi
++			eval attachfilename=\$attachfilename$i
++			if test ! -z "$attachfilename"
++			then
++				echo "Content-Disposition: attachment; filename=\"$attachfilename\"" >> $fname
++			fi
++#end immi
+ 			eval echo "Content-Transfer-Encoding: \$encode$i" >> $fname
+ 			echo "" >> $fname
+ 		fi
+@@ -536,7 +564,16 @@ else
+ 	then
+ 		echo "Content-ID: $cid" >> $fname
+ 		echo "Content-type: $ctype" >> $fname
+-		echo "Content-Description: $cdescrip" >> $fname
++#begin immi
++		if test ! -z "$cdescrip"
++		then
++			echo "Content-Description: $cdescrip" >> $fname
++		fi
++		if test ! -z "$attachfilename"
++		then
++			echo "Content-Disposition: attachment; filename=\"$attachfilename\"" >> $fname
++		fi
++#end immi
+ 		echo "Content-Transfer-Encoding: $encode" >> $fname
+ 	fi
+ 	echo "" >> $fname

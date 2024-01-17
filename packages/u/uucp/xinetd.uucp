@@ -1,0 +1,46 @@
+#
+# The Internet UUCP service.
+# 
+# Find UUCP config examples at
+#     /usr/share/doc/packages/uucp/cfg_example/taylor_config/
+#
+service uucp
+{
+    disable	= yes
+    socket_type	= stream
+    protocol	= tcp
+  # bind        = localhost
+    wait	= no
+    user	= uucp
+    group       = uucp
+    server	= /usr/lib/uucp/uucico
+    server_args	= -l
+}
+
+# The config needs to be adjusted by the admin, see example file in /etc/uucp/
+# Just an proposal without any without obligation, without any warranty, and
+# at your own risk:
+#
+# Creation of /etc/uucp/stunnel.pem used in /etc/uucp/suucp-server.conf
+# > su - uucp
+# > test -e suucp-server.conf || cp -p suucp-server.conf.example suucp-server.conf
+# > openssl req -new -x509 -days 3650 -utf8 -nodes -keyout stunnel.pem -out stunnel.pem
+# > dd if=/dev/urandom count=4 | openssl dhparam -rand - 1024 >> stunnel.pem
+#
+# Fingerprint and hash
+# > su - uucp
+# > openssl x509 -text -subject -dates -fingerprint -noout -in stunnel.pem
+# > ln -sf stunnel.pem /etc/uucp/$(openssl x509 -hash -noout -in stunnel.pem).0 
+#
+
+service suucp
+{
+    disable     = yes
+    socket_type = stream
+    protocol    = tcp
+    wait	= no
+    user	= root
+    group       = root
+    server      = /usr/sbin/stunnel
+    server_args = /etc/uucp/suucp-server.conf
+}

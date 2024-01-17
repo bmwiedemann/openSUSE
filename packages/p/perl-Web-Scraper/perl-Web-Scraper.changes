@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Tue Sep 14 19:25:25 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- refresh spec file
+
+-------------------------------------------------------------------
+Wed Apr 15 14:10:28 UTC 2015 - coolo@suse.com
+
+- updated to 0.38
+   see /usr/share/doc/packages/perl-Web-Scraper/Changes
+
+  0.38  2014-10-19 17:25:53 PDT
+          - Improved documentation #8 (vti)
+          - Add regexp filter #10 (creaktive)
+          - Fix documentation error #16
+  
+  0.37  Fri Oct 19 15:09:17 PDT 2012
+          - Repack with the latest Module::Install
+  
+  0.36  Sat Nov 19 12:12:54 PST 2011
+          - Support HTML5 tags by not ignoring unknonw tags (leedo)
+  
+  0.35  Mon Sep 26 18:40:06 PDT 2011
+          - Added support for comments() XPath #3 (Perlover)
+
+- drop scraper subpackage as the binary is no longer installed
+
+-------------------------------------------------------------------
+Fri Apr 22 15:10:21 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.34
+   - Skip xml_simple.t if LibXML is not there (omega)
+   - Remove failing invalid XPath tests 
+
+-------------------------------------------------------------------
+Sat Dec 25 01:13:53 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.32)

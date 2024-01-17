@@ -1,0 +1,6 @@
+<package name="python-hatchling" project="openSUSE:Factory">
+  <title>Build backend used by Hatch</title>
+  <description>This is the extensible, standards compliant build backend used by Hatch.</description>
+  <devel project="devel:languages:python" package="python-hatchling"/>
+  <url>https://hatch.pypa.io/latest/</url>
+</package>

@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e94ce4620fdc083fb0736a917379c8f8</srcmd5>
+    <version>0.0.1</version>
+    <time>1351688742</time>
+    <user>coolo</user>
+    <comment>I add COPYING file to archive.</comment>
+    <requestid>139288</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e94ce4620fdc083fb0736a917379c8f8</srcmd5>
+    <version>0.0.1</version>
+    <time>1359110536</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>e94ce4620fdc083fb0736a917379c8f8</srcmd5>
+    <version>0.0.1</version>
+    <time>1379664906</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>e94ce4620fdc083fb0736a917379c8f8</srcmd5>
+    <version>0.0.1</version>
+    <time>1409303595</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>d4c27f35486158cffb84491cfc47dac3</srcmd5>
+    <version>0.0.1</version>
+    <time>1515110325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555754</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>fb863e7efc95ef45e6f8446728b41e66</srcmd5>
+    <version>0.0.1</version>
+    <time>1528492650</time>
+    <user>dimstar_suse</user>
+    <comment>- add support for Qt 5.11
+</comment>
+    <requestid>614614</requestid>
+  </revision>
+</revisionlist>

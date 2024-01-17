@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Tue Aug  2 13:23:00 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 3.0.0:
+  * BREAKING CHANGE: Add type hints, which removes Python2 compatibility
+  * Update make_string util to clean up bad values (#128)
+  * Fix Olympus SpecialMode Unknown Values (#143)
+  * Remove coding system from UserComment sequence only if it is valid (#147)
+  * Fixes to orientation
+  * Add some EXIF tags
+  * Add support for PNG files (#159)
+  * Fix for HEIC Unknown Parsers (#153)
+  * Handle images that has corrupted headers/tags (#152)
+
+-------------------------------------------------------------------
+Fri Aug 27 12:36:56 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.3.2:
+  * Fixes for HEIC files from Note10+ (#127) by Drew Perttula
+  * Add missing EXIF OffsetTime tags (#126) by Étienne Pelletier
+
+-------------------------------------------------------------------
+Mon Sep  7 06:31:09 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.3.1:
+  * Fix bug introduced with v2.3.0 in HEIC processing.
+  * Add notice on Python2 EOL
+  * Modernize code and improve testing, split up some huge functions
+  * Added support for webp file format (#116) by Grzegorz Ruciński
+  * Add linting
+  * Added missing IFD data type; correct spelling mistake (#119) by Piero
+    Toffanin
+  * Add syntax highlight for README (#117) by John Lin
+  * Add Python 3.8 to CI (#113) by 2*yo
+  * make HEIC exif extractor much more compatible (#109) by Tony Guo
+  * Add black level tag (#108)
+  * Use list instead of tuple for classifiers (#107) by Florian Preinstorfer
+  * Add support for Python 3.5, 3.6, 3.7
+  * Drop official support for Python 2.6, 3.2, 3.3
+  * Fix for string count equals 0 (issue #67)
+  * Rebasing of struct pull requests: closes #54, closes #60 by Christopher
+    Chavez
+  * Refactor to use Python's struct module for packing/unpacking by Dave Jones
+  * Support floating point fields" by Reed Nightingale (reedbn)
+  * Raw images support by changing Tiff detection by xaumex
+  * Fix GPS information erroneously None (#96) by Christopher Chavez
+  * Initial HEIC support (Sam Rushing) 
+- Correct Source URL to not hardcode the version
+- Use python_bin_suffix to call correct script during check
+- Drop merged_pr_58.patch, included upstream
+- Refresh exif-samples-master.tar.gz
+
+-------------------------------------------------------------------
+Tue May 26 06:34:09 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Tue Apr 23 11:48:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Mark properly as BSD3c
+
+-------------------------------------------------------------------
+Mon Apr 15 20:34:33 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix missing quoting of wildcards in /usr/bin/find calls.
+- Use noun phrase in summary. Ensure neutrality of description.
+- Use %setup for all unpacking.
+
+-------------------------------------------------------------------
+Fri Apr 12 15:46:56 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add merged_pr_58.patch for Python 3 support
+- Replace invalid pytest with real test suite
+- Tidy spec file; use %license, remove unnecessary devel
+
+-------------------------------------------------------------------
+Tue Nov 14 10:46:22 UTC 2017 - marco.strigl@suse.com
+
+- initial version submitted to :misc
+
+-------------------------------------------------------------------
+Tue Jun  7 18:55:14 UTC 2016 - sbahling@suse.com
+
+- Initial build. Version 2.1.2. 

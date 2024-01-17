@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95f1fed5a0f461a917558c6a05d0de82</srcmd5>
+    <version>0.43</version>
+    <time>1289421939</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52618 from user coolo
+</comment>
+    <requestid>52618</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>13517114b616bf678584eb7f206d36d1</srcmd5>
+    <version>0.43</version>
+    <time>1289421944</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52618
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7e31f6ba20844838c7c5068cfa0c9198</srcmd5>
+    <version>0.43</version>
+    <time>1291582298</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54534 from user coolo
+</comment>
+    <requestid>54534</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a432489fbeb8db6d19f0a471d615c698</srcmd5>
+    <version>0.43</version>
+    <time>1291582307</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54534
+</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>a432489fbeb8db6d19f0a471d615c698</srcmd5>
+    <version>0.43</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>a432489fbeb8db6d19f0a471d615c698</srcmd5>
+    <version>0.43</version>
+    <time>1319182266</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>3b4a74caf8c808e61630cbfbe1e07b9f</srcmd5>
+    <version>0.43</version>
+    <time>1321875599</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92091</requestid>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>41f786d0263d610e4ab770e684254cd8</srcmd5>
+    <version>0.43</version>
+    <time>1323193286</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>41f786d0263d610e4ab770e684254cd8</srcmd5>
+    <version>0.43</version>
+    <time>1340183841</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>41f786d0263d610e4ab770e684254cd8</srcmd5>
+    <version>0.43</version>
+    <time>1359109668</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>41f786d0263d610e4ab770e684254cd8</srcmd5>
+    <version>0.43</version>
+    <time>1379663676</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>41f786d0263d610e4ab770e684254cd8</srcmd5>
+    <version>0.43</version>
+    <time>1409302292</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e1b7f0e54c6509feca09af83a22e06ad</srcmd5>
+    <version>0.45</version>
+    <time>1429948337</time>
+    <user>coolo</user>
+    <comment>- update to 0.45:
+  + removed 'use File::Rsync::Config', oops
+  + long overdue fix for automated builds, removed prompt for 
+    rsync path to use PATH enviroment instead</comment>
+    <requestid>298089</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>df1b1d003f06e8bde6581db00fd885f3</srcmd5>
+    <version>0.46</version>
+    <time>1440658589</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325699</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3bcbf859077ec5936f0240390a02b6e6</srcmd5>
+    <version>0.48</version>
+    <time>1443068154</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333091</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>02205520daf4b45a46cf85eece4c6b87</srcmd5>
+    <version>0.49</version>
+    <time>1458228850</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>370287</requestid>
+  </revision>
+</revisionlist>

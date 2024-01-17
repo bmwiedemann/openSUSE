@@ -1,0 +1,7 @@
+<package name="python-PyBindGen" project="openSUSE:Factory">
+  <title>Python Bindings Generator</title>
+  <description>A tool to generate Python bindings for C/C++ code.
+
+</description>
+  <devel project="science" package="python-PyBindGen"/>
+</package>

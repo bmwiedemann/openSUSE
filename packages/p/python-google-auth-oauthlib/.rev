@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a643de241f370c1c54b237f92d76b313</srcmd5>
+    <version>0.3.0</version>
+    <time>1557142027</time>
+    <user>dimstar_suse</user>
+    <comment>Google authentication library</comment>
+    <requestid>700458</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ef75196734d636eb2aa1423c01b3d51d</srcmd5>
+    <version>0.4.0</version>
+    <time>1569588393</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Add get_user_credentials function to get your user credentials (#40)
+  * Add noxfile (#43)
+  * Implement code verifier (PKCE) (#42)
+  * Use actual server port in redirect_uri to allow automatic assignment (#33)
+  * Fix links after repo move to googleapis (#41)</comment>
+    <requestid>730378</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8651b999b007db64fccc10e973eeaedc</srcmd5>
+    <version>0.4.1</version>
+    <time>1570557560</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1:
+  * Don't auto-generate code_verifier by default. (#48)</comment>
+    <requestid>736031</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4036e44fe04a1bacd39afc1f3278d427</srcmd5>
+    <version>0.4.1</version>
+    <time>1587467450</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795814</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>25f8aa4a614b8303fa357a94d6fac2a0</srcmd5>
+    <version>0.4.1</version>
+    <time>1590650197</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809362</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b9ac27df96867d40badba87ab297463f</srcmd5>
+    <version>0.4.5</version>
+    <time>1629706084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913351</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>aac0f21a7194dee9121d38421072875e</srcmd5>
+    <version>0.5.1</version>
+    <time>1649876774</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.1
+  * avoid deprecated &quot;out-of-band&quot; authentication flow (#186)
+- from version 0.5.0
+  * deprecate OAuth out-of-band flow (#175)
+- from version 0.4.6
+  * remove dependency on `six` (#146), closes (#145) (forwarded request 969855 from glaubitz)</comment>
+    <requestid>969866</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>dd8d9aa64aeac2db6aa0f45ef2dfd569</srcmd5>
+    <version>0.5.1</version>
+    <time>1654869456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981537</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e1846ec6ac9f3a0d8a772b9bc936ada9</srcmd5>
+    <version>0.5.2</version>
+    <time>1663074603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003291</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3a0d7f686899d297fac71d70fcf60e0c</srcmd5>
+    <version>0.5.3</version>
+    <time>1665591949</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010142</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6c73e45d68afd644cd07c00885f3d491</srcmd5>
+    <version>0.7.1</version>
+    <time>1667995007</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034454</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>60de18da936fabbc7fc568e57ca177ec</srcmd5>
+    <version>0.8.0</version>
+    <time>1672927265</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0.8.0:
+  * Add support for Python 3.11
+  * Introduce granted scopes to credentials</comment>
+    <requestid>1056090</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8170180672c86df0541982f9688b73f6</srcmd5>
+    <version>1.0.0</version>
+    <time>1678204255</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0
+  * PKCE is enabled by default. (#269)
+  * Change the library from preview to stable (#267)
+  * Remove deprecated OOB code (1391486) (forwarded request 1069899 from glaubitz)</comment>
+    <requestid>1069914</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>cf227a778689c22c340cce8a7fe5119f</srcmd5>
+    <version>1.0.0</version>
+    <time>1680536793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076888</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>a1f0e1c1fbd39bbc7d0a91d9b59f1448</srcmd5>
+    <version>1.0.0</version>
+    <time>1688398972</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096399</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f7e3d7b6c780617b86d8a02c0f054a80</srcmd5>
+    <version>1.1.0</version>
+    <time>1696529094</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.0:
+  * Adding support to specify browser while launching browser to
+    authention (#305) (1a9dca8), closes #303
+  * Pass thru OAuth audience during
+    InstalledAppFlow.run_local_server (#300) (fe08531)
+  * Fix grammar with fetch_token docstring (#273) (b2e3688)
+
+- Update to version 0.5.3</comment>
+    <requestid>1115768</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a9901ceccb64e6e608560eda976337c4</srcmd5>
+    <version>1.2.0</version>
+    <time>1702845142</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * Add support for Python 3.12 (#318)
+  * Use setuptools.find_namespace_packages (#321)</comment>
+    <requestid>1133645</requestid>
+  </revision>
+</revisionlist>
