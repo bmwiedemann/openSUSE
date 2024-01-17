@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 17 11:35:11 UTC 2024 - Denys Kondratenko <stdden@opensuse.org>
+
+- wlr-randr v0.3.1
+  * Destroy head and mode objects before disconnect
+  * Stop assuming serial is non-zero
+  * Check for wl_display_roundtrip error
+  * build: bump to v0.3.1 
+
+-------------------------------------------------------------------
 Mon Jul 17 08:02:51 UTC 2023 - Denys Kondratenko <stdden@opensuse.org>
 
 - wlr-randr v0.3.0
