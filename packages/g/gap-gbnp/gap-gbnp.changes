@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Sat Jul 16 20:09:43 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.5
+  * Janitorial changes only
+
+-------------------------------------------------------------------
+Sun Jun 19 11:02:47 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.0.3
+* Internal build fixes
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split gbnp (version 1.1) off the gap RPM package

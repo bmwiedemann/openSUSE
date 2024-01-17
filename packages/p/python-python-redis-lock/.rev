@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>26705c675c0753670fcabca23577cd9a</srcmd5>
+    <version>3.5.0</version>
+    <time>1592398101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815241</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b7f692a0739e18760d64e722ca03531d</srcmd5>
+    <version>3.6.0</version>
+    <time>1596703332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824579</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>32c93ef86e8a44bdb5b83962b12a216a</srcmd5>
+    <version>3.6.0</version>
+    <time>1597856318</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix leap build by disabling py2 as the django-redis version
+  requirement is without py2 support</comment>
+    <requestid>827814</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ce3b188119f66ddb9d7e667ad82b9a6d</srcmd5>
+    <version>3.6.0</version>
+    <time>1616680354</time>
+    <user>RBrownSUSE</user>
+    <comment>- Skip test test_no_overlap2 (gh#ionelmc/python-redis-lock#86)
+</comment>
+    <requestid>881211</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>29440b30b1dfbb144239ad92c6f70916</srcmd5>
+    <version>3.7.0</version>
+    <time>1665185125</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008707</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>44c5c2289cb5e6a09f0f54e0d6dbc9d7</srcmd5>
+    <version>4.0.0</version>
+    <time>1689175657</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.0:
+  - Dropped support for Python 2.7 and 3.6.
+  - Switched from Travis to GitHub Actions.
+  - Made logging messages more consistent.
+  - Replaced the redis_lock.refresh.thread.* loggers with a
+    single redis_lock.refresh.thread logger.
+  - Various testing cleanup (mainly removal of hardcoded tmp
+    paths).
+- Temporarily switch off tests (gh#ionelmc/python-redis-lock#107)</comment>
+    <requestid>1098243</requestid>
+  </revision>
+</revisionlist>

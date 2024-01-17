@@ -1,0 +1,8 @@
+<package name="libxlsxwriter" project="openSUSE:Factory">
+  <title>A C library for creating Excel XLSX files</title>
+  <description>A C library for creating Excel XLSX files.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="libxlsxwriter"/>
+  <url>https://github.com/jmcnamara/libxlsxwriter</url>
+</package>

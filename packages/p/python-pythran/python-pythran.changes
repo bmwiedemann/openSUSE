@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Wed Nov 29 04:27:01 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Prepare for Python 3.12, by skipping it for the other test flavors, and
+  adding one for it.
+
+-------------------------------------------------------------------
+Tue Nov 21 06:35:39 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.14.0:
+  * Numpy compatibility - update signatures, complex number handling, long
+    double support
+  * Lazyly import top-level modules and submodules
+  * Improve array indexing by an array
+  * Require at least clang 7 or gcc 8
+  * Make pythran compilation reproducible
+  * Support np.roll with multiple axis
+  * Support numpy.ndarray.view
+  * Improve list resizing speed
+  * Fix bug when filtering an empty sequence
+- Drop patches, now included upstream:
+  * numpy-longdouble.patch
+  * numpy-complex.patch
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
+Tue Aug  8 16:00:58 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Fix build error in Leap, because it must not be two "Patch:" lines.
+
+-------------------------------------------------------------------
+Thu Jul 27 10:10:55 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream numpy-longdouble.patch and numpy-complex.patch to support new numpy
+
+-------------------------------------------------------------------
+Sat Jun 10 17:53:22 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon May 15 15:19:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.1:
+  * Bump xsimd dependency to 11.0.0, with a backported patch.
+  * Improve performance of functions revieving scalar arguments.
+    This changes the internal function call API.
+  * Improve performance of fix-stride slicing, using a new slice
+    representation.
+  * Improve numpy.copyto performance, and detect copyto pattern usage.
+  * Force internal linkage of generated functions, which gives more
+    optimization room to the C++ compiler.
+  * Provide entry points pythran.import_pythrancode and
+    pythran.import_pythranfile, as a poor man JIT option.
+  * Optimize numpy.argmax(cst * val) into numpy.argmax(val) when cst is
+    positive.
+  * Avoid copies upon numpy.array_split
+  * Get rid of unused functions C++ warnings
+  * Avoid generating a loop footer when the loop index is not used
+    outside of the loop.
+- fix the test-flavor splitting for python311
+
+-------------------------------------------------------------------
+Wed Jan 25 10:22:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.1:
+  * Bump xsimd depdency to 10.0.0
+  * Correctly raise KeyError when getting an unset dict item
+  * Fix negative binomial implementation
+  * Correctly convert strided array with offset
+  * Support np.clip(v, None, x) and np.clip(v, x, None)
+  * Support scipy.special.ndtr, scipy.special.ndtri, scipy.special.gammaincinv
+  * Fix set intersection
+  * Support numpy.fft.fftn
+  * Support axis parameter in numpy.argsort
+
+-------------------------------------------------------------------
+Sun Dec 25 11:01:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Revert. 2046-fix-cli-doc-test.patch did not fix the tests.
+  gh#serge-sans-paille/pythran#2046
+
+-------------------------------------------------------------------
+Sat Dec 17 14:32:56 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add 2046-fix-cli-doc-test.patch to fix failing tests
+  (gh#serge-sans-paille/pythran#2046).
+
+-------------------------------------------------------------------
+Fri Nov 25 01:54:50 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Skip also failing test_toolchain and test_cli
+  (gh#serge-sans-paille/pythran#2044) tests.
+
+-------------------------------------------------------------------
+Tue Oct 11 08:41:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.0
+  * Improve numpy expression computation speed
+  * Decent ICC support (fixing an issue from 2018!)
+  * Much faster C++ code generation
+  * Complete rework of constant folder
+  * Support C++-time evaluation of numpy.ndarray.ndim
+  * Improved omp declare reduction support
+  * Allow indexing of ndarray by integers of mixed types
+  * A lot of small pesty bug fixes in the C++ headers
+- Drop patches
+  * gcc12-fixes.patch
+  * pythran-pr1984-fixdistutils.patch
+
+-------------------------------------------------------------------
+Mon Jul 18 12:24:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add pythran-pr1984-fixdistutils.patch
+  * gh#serge-sans-paille/pythran#1984
+  * Fixes gh#serge-sans-paille/pythran#1984 with setuptools >= 60
+
+-------------------------------------------------------------------
+Tue Mar 15 07:59:46 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add gcc12-fixes.patch in order to fix GCC 12 building issues.
+
+-------------------------------------------------------------------
+Fri Jan 28 18:47:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix errors uncovered by staging:
+  * Mention python-pythran-rpmlintrc
+  * also make :test-py* noarch so that no debuginfo package fails
+
+-------------------------------------------------------------------
+Sun Jan 23 15:10:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for 0.11
+  * debundling inspired by Fedora package:
+    https://src.fedoraproject.org/rpms/pythran/blob/rawhide/f/pythran.spec
+- Required by scipy 1.7

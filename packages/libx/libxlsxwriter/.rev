@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>36548ca013ff8d74e7e06fa1a930e663</srcmd5>
+    <version>1.1.5</version>
+    <time>1689614581</time>
+    <user>anag+factory</user>
+    <comment>Removal of static libraries should hopefully bring this in line with Factory standards.</comment>
+    <requestid>1098729</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,23 @@
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: 2015-03-30T09:15:11
+
+Do not use absolute paths to icons. [Application containerization
+requires the icons to be below /usr/share/icons or
+/usr/share/pixmaps, but the specfile will take care of that.]
+
+
+---
+ doomsday/tools/shell/doomsday-shell.desktop.in |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+Index: Doomsday-Engine-2.2.1.1/doomsday/tools/shell/doomsday-shell.desktop.in
+===================================================================
+--- Doomsday-Engine-2.2.1.1.orig/doomsday/tools/shell/doomsday-shell.desktop.in
++++ Doomsday-Engine-2.2.1.1/doomsday/tools/shell/doomsday-shell.desktop.in
+@@ -6,5 +6,4 @@ Categories=Game;ActionGame;
+ Exec=${CMAKE_INSTALL_PREFIX}/bin/doomsday-shell
+ Terminal=false
+ Type=Application
+-Icon=${CMAKE_INSTALL_PREFIX}/${DENG_INSTALL_DATA_DIR}/deng-shell-logo-256.png
+-
++Icon=deng-shell-logo-256.png

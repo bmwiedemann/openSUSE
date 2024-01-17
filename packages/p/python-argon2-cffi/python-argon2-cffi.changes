@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Thu Dec 14 09:14:35 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 23.1.0:
+  * The only new feature is the possibility to pass an own salt
+    to `argon2.PasswordHasher.hash()`, however a lot has changed
+    around documentation and packaging to make *argon2-cffi*
+    maintainable in the future.
+  * Python 3.6 is not supported anymore.
+  * The `InvalidHash` exception is deprecated in favor of
+    `InvalidHashError`. No plans for removal currently exist and
+    the names can (but shouldn't) be used interchangeably.
+  * `argon2.hash_password()`, `argon2.hash_password_raw()`, and
+    `argon2.verify_password()` that have been soft-deprecated
+    since 2016 are now hard-deprecated. They now raise
+    `DeprecationWarning`s and will be removed in 2024.
+  * Official support for Python 3.11 and 3.12. No code changes
+    were necessary.
+  * `argon2.exceptions.InvalidHashError` as a replacement for
+    `InvalidHash`.
+  * *salt* parameter to `argon2.PasswordHasher.hash()` to allow
+    for custom salts. This is only useful for specialized use-
+    cases -- leave it on None unless you know exactly what you
+    are doing. \#153
+
+-------------------------------------------------------------------
+Fri Jun  9 06:25:05 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Fri Mar 24 10:57:17 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed dependency six
+
+-------------------------------------------------------------------
+Fri May  6 12:54:25 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 21.3.0
+  * Feature: Full type hints.
+  * Adjusted defaults to RFC 9106 and support for pre-configured profiles.
+  * Python 3.5 is not supported anymore.
+  * The CFFI bindings have been extracted into a separate project:
+    argon2-cffi-bindings
+  * Added: argon2.Parameters.from_parameters() together with the
+    argon2.profiles module that offers easy access to the RFC-recommended
+    configuration parameters and then some.
+  * The CLI interface now has a --profile option that takes any name
+    from argon2.profiles.
+  * argon2.PasswordHasher now uses the RFC 9106 low-memory profile
+    by default. The old defaults are available as argon2.profiles.PRE_21_2.
+
+-------------------------------------------------------------------
+Sun Nov 14 23:14:06 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 21.1.0
+- skip building for Python 2 because not supported anymore
+
+-------------------------------------------------------------------
+Tue Jul 28 06:32:23 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 20.1.0:
+  * It is now possible to manually override the detection of SSE2 using
+    the ``ARGON2_CFFI_USE_SSE2`` environment variable.
+
+-------------------------------------------------------------------
+Mon Mar 16 10:12:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Fri Jan 17 12:29:23 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 19.2.0
+  * Python 3.4 is not supported anymore.
+  * The dependency on enum34 is now protected using a PEP 508 marker.
+
+-------------------------------------------------------------------
+Tue Jun  4 13:50:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip test that randomly fails in obs test_argument_ranges
+
+-------------------------------------------------------------------
+Mon Apr  1 10:54:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Provide argon2_cffi namespace too
+
+-------------------------------------------------------------------
+Tue Feb 19 12:11:20 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v19.1.0
+  * Vendoring Argon2 @ 670229c
+  * Added support for Argon2 v1.2 hashes in argon2.extract_parameters()
+- from 18.3.0
+  * Vendoring Argon2 @ 670229c
+  * argon2.PasswordHasher's hash type is now configurable
+- from 18.2.0
+  * Vendoring Argon2 @ 670229c
+  * The hash type for ``argon2.PasswordHasher`` is Argon2\ **id** now.
+    This decision has been made based on the recommendations in the latest
+    Argon2 RFC draft
+  * To make the change of hash type backward compatible,
+    argon2.PasswordHasher.verify() now determines the type of the hash and
+    verifies it accordingly
+  * Some of the hash parameters have been made stricter to be closer to said
+    recommendations. The current goal for a hash verification times is around 50ms
+  * To allow for bespoke decisions about upgrading Argon2 parameters, it's now
+    possible to extract them from a hash via argon2.extract_parameters()
+  * Additionally argon2.PasswordHasher now has a check_needs_rehash() method
+    that allows to verify whether a hash has been created with the instance's
+    parameters or whether it should be rehashed
+
+-------------------------------------------------------------------
+Wed Aug  8 15:07:52 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Wed Aug  8 14:02:08 UTC 2018 - tchvatal@suse.com
+
+- Do not use bundled argon2
+
+-------------------------------------------------------------------
+Wed Aug  8 13:36:02 UTC 2018 - tchvatal@suse.com
+
+- Initial package for v18.1.0, used by Django

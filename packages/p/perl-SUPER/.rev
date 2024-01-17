@@ -1,0 +1,110 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b1a7bc1b9c7d645c1ec5b259d19b3b60</srcmd5>
+    <version>1.17</version>
+    <time>1290441912</time>
+    <user>darix</user>
+    <comment>Accepted submit request 52572 from user coolo
+</comment>
+    <requestid>52572</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1b100823494ecd4709836de49784a7e9</srcmd5>
+    <version>1.17</version>
+    <time>1290441923</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 52572
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ae2128364e0e71c331b7bfb2407fdd6b</srcmd5>
+    <version>1.17</version>
+    <time>1291583773</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54650 from user coolo
+</comment>
+    <requestid>54650</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>af6a2596d2f64b362e2939829319f031</srcmd5>
+    <version>1.17</version>
+    <time>1291583779</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54650
+</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>af6a2596d2f64b362e2939829319f031</srcmd5>
+    <version>1.17</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>af6a2596d2f64b362e2939829319f031</srcmd5>
+    <version>1.17</version>
+    <time>1319182303</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>a3b756ea26d8af0b7d452479926f0954</srcmd5>
+    <version>1.17</version>
+    <time>1323193662</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>a3b756ea26d8af0b7d452479926f0954</srcmd5>
+    <version>1.17</version>
+    <time>1340183913</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>a3b756ea26d8af0b7d452479926f0954</srcmd5>
+    <version>1.17</version>
+    <time>1359109790</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>a3b756ea26d8af0b7d452479926f0954</srcmd5>
+    <version>1.17</version>
+    <time>1379663832</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ab48465bd689aaefe215f0eb9bed4ed9</srcmd5>
+    <version>1.20120705</version>
+    <time>1380112438</time>
+    <user>coolo</user>
+    <comment>- updated to 1.20120705
+    - resolved PAUSE packaging nit (Oliver Mengué, RT #77110)
+    - converted to dzil (forwarded request 177577 from coolo)</comment>
+    <requestid>177589</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>ab48465bd689aaefe215f0eb9bed4ed9</srcmd5>
+    <version>1.20120705</version>
+    <time>1409302470</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c3714fa5c1181431d523fa1a63d5223e</srcmd5>
+    <version>1.20141117</version>
+    <time>1439190988</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321416</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>22ea315567900bd27c94fd8859b2c4a8</srcmd5>
+    <version>1.20190531</version>
+    <time>1559643019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706891</requestid>
+  </revision>
+</revisionlist>

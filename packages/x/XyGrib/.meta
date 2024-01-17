@@ -1,0 +1,10 @@
+<package name="XyGrib" project="openSUSE:Factory">
+  <title>Visualization of meteo data from files in GRIB Format 1 and 2</title>
+  <description>Visualization of meteo data from files in GRIB Format 1 Grib data are used
+to display weather data in detailed format for a certain area of sea.
+XyGrib is a fork of zyGrib, a QT program to display and use grib data on Linux.
+
+</description>
+  <devel project="Application:Geo" package="XyGrib"/>
+  <url>http://www.opengribs.org</url>
+</package>

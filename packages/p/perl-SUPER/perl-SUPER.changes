@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Sat Jun  1 05:23:16 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.20190531
+   see /usr/share/doc/packages/perl-SUPER/Changes
+
+  1.20190531 2019-05-31 16:57:30-07:00 America/Los_Angeles
+      - allow main->SUPER::... to work when SUPER.pm is loaded (PR #1, Charles McGarvey)
+
+-------------------------------------------------------------------
+Sat Aug  8 09:02:39 UTC 2015 - coolo@suse.com
+
+- updated to 1.20141117
+   see /usr/share/doc/packages/perl-SUPER/Changes
+
+  1.20141117 2014-11-17 09:12:01-08:00 America/Los_Angeles
+      - improved export mechanism
+      - removed useless Exporter tests
+      - improved docs (RT #79681)
+  
+  1.20141116 2014-11-16 14:07:18-08:00 America/Los_Angeles
+      - resolved Test::More changes (RT #97939)
+
+-------------------------------------------------------------------
+Tue Jun  4 18:06:37 UTC 2013 - coolo@suse.com
+
+- updated to 1.20120705
+    - resolved PAUSE packaging nit (Oliver Mengué, RT #77110)
+    - converted to dzil
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:46 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Aug  3 16:02:24 UTC 2010 - chris@computersalat.de
+
+- initial package 1.17
+  * created by cpanspec 1.78
+

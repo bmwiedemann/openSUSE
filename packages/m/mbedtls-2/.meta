@@ -1,0 +1,14 @@
+<package name="mbedtls-2" project="openSUSE:Factory">
+  <title>Libraries for crypto and SSL/TLS protocols</title>
+  <description>mbedtls implements the SSL3, TLS 1.0, 1.1 and 1.2 protocols. It
+supports a number of extensions such as SSL Session Tickets (RFC
+5077), Server Name Indication (SNI) (RFC 6066), Truncated HMAC (RFC
+6066), Max Fragment Length (RFC 6066), Secure Renegotiation (RFC
+5746) and Application Layer Protocol Negotiation (ALPN). It
+understands the RSA, (EC)DH(E)-RSA, (EC)DH(E)-PSK and RSA-PSK key
+exchanges.
+
+</description>
+  <devel project="security:tls" package="mbedtls-2"/>
+  <url>https://tls.mbed.org</url>
+</package>

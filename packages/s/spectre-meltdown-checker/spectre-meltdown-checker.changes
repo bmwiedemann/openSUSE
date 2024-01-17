@@ -1,0 +1,184 @@
+-------------------------------------------------------------------
+Wed Aug 30 15:39:04 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.46
+  This release mainly focuses on the detection of the new Zenbleed
+  (CVE-2023-20593) vulnerability, among few other changes that were in
+  line waiting for a release:
+
+  - feat: detect the vulnerability and mitigation of Zenbleed (CVE-2023-20593)
+  - feat: add the linux-firmware repository as another source for CPU microcode versions
+  - feat: arm: add Neoverse-N2, Neoverse-V1 and Neoverse-V2
+  - fix: docker: adding missing utils (#433)
+  - feat: add support for Guix System kernel
+  - fix: rewrite SQL to be sqlite3 >= 3.41 compatible (#443)
+  - fix: a /devnull file was mistakenly created on the filesystem
+  - fix: fwdb: ignore MCEdb versions where an official Intel version exists (fixes #430)
+
+-------------------------------------------------------------------
+Fri Apr  1 11:42:03 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.45
+  - arm64: phytium: Add CPU Implementer Phytium
+  - arm64: variant 4: detect ssbd mitigation from kernel img, system.map or kconfig
+  - chore: ensure vars are set before being dereferenced (set -u compat)
+  - chore: fix indentation
+  - chore: fwdb: update to v220+i20220208
+  - chore: only attempt to load msr and cpuid module once
+  - chore: read_cpuid: use named constants
+  - chore: readme: framapic is gone, host the screenshots on GitHub
+  - chore: replace 'Vulnerable to' by 'Affected by' in the hw section
+  - chore: speculative execution -> transient execution
+  - chore: update fwdb to v222+i20220208
+  - chore: update Intel Family 6 models
+  - chore: wording: model not vulnerable -> model not affected
+  - doc: add an FAQ entry about CVE support
+  - doc: add an FAQ.md and update the README.md accordingly
+  - doc: more FAQ and README
+  - doc: readme: make the FAQ entry more visible
+  - feat: add --allow-msr-write, no longer write by default (#385), detect when writing is denied
+  - feat: add --cpu, apply changes to (read|write)_msr, update fwdb to v221+i20220208
+  - feat: add subleaf != 0 support for read_cpuid
+  - feat: arm: add Cortex A77 and Neoverse-N1 (fixes #371)
+  - feat: bsd: for unimplemented CVEs, at least report when CPU is not affected
+  - feat: hw check: add IPRED, RRSBA, BHI features check
+  - feat: implement detection for MCEPSC under BSD
+  - feat: set default TMPDIR for Android (#415)
+  - fix: extract_kernel: don't overwrite kernel_err if already set
+  - fix: has_vmm false positive with pcp
+  - fix: is_ucode_blacklisted: fix some model names
+  - fix: mcedb: v191 changed the MCE table format
+  - fix: refuse to run under MacOS and ESXi
+  - fix: retpoline: detection on 5.15.28+ (#420)
+  - fix: variant4: added case where prctl ssbd status is tagged as 'unknown'
+
+-------------------------------------------------------------------
+Fri May  7 14:56:38 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.44
+  - feat: add support for SRBDS related vulnerabilities
+  - feat: add zstd kernel decompression (#370)
+  - enh: arm: add experimental support for binary arm images
+  - enh: rsb filling: no longer need the 'strings' tool to check for kernel support in live mode
+  - fix: fwdb: remove Intel extract tempdir on exit
+  - fix: has_vmm: ignore kernel threads when looking for a hypervisor (fixes #278)
+  - fix: fwdb: use the commit date as the intel fwdb version
+  - fix: fwdb: update Intel's repository URL
+  - fix: arm64: cve-2017-5753: kernels 4.19+ use a different nospec macro
+  - fix: on CPU parse info under FreeBSD
+  - chore: github: add check run on pull requests
+  - chore: fwdb: update to v165.20201021+i20200616
+
+-------------------------------------------------------------------
+Fri Jan 24 11:52:18 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix typo (s/Require:/Requires:/).
+
+-------------------------------------------------------------------
+Thu Jan 16 16:32:47 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- added requires binutils, as the script calls "readelf"
+
+-------------------------------------------------------------------
+Wed Dec 11 07:37:50 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- version 0.43
+  - feat: implement TAA detection (CVE-2019-11135 bsc#1139073)
+  - feat: implement MCEPSC / iTLB Multihit detection (CVE-2018-12207 bsc#1117665)
+  - feat: taa: add TSX_CTRL MSR detection in hardware info
+  - feat: fwdb: use both Intel GitHub repo and MCEdb to build our firmware version database
+  - feat: use --live with --kernel/--config/--map to override file detection in live mode
+  - enh: rework the vuln logic of MDS with --paranoid (fixes #307)
+  - enh: explain that Enhanced IBRS is better for performance than classic IBRS
+  - enh: kernel: autodetect customized arch kernels from cmdline
+  - enh: kernel decompression: better tolerance against missing tools
+  - enh: mock: implement reading from /proc/cmdline
+  - fix: variant3a: Silvermont CPUs are not vulnerable to variant 3a
+  - fix: lockdown: detect Red Hat locked down kernels (impacts MSR writes)
+  - fix: lockdown: detect locked down mode in vanilla 5.4+ kernels
+  - fix: sgx: on locked down kernels, fallback to CPUID bit for detection
+  - fix: fwdb: builtin version takes precedence if the local cached version is older
+  - fix: pteinv: don't check kernel image if not available
+  - fix: silence useless error from grep (fixes #322)
+  - fix: msr: fix msr module detection under Ubuntu 19.10 (fixes #316)
+  - fix: mocking value for read_msr
+  - chore: rename mcedb cmdline parameters to fwdb, and change db version scheme
+  - chore: fwdb: update to v130.20191104+i20191027
+  - chore: add GitHub check workflow
+- upstream tarball no longer includes license, use the gpl 3 standalone html for it
+
+-------------------------------------------------------------------
+Wed Jun 26 06:54:42 UTC 2019 - Pavol Cupka <palica@liguros.net>
+
+- version 0.42
+    * add FreeBSD MDS mitigation detection
+    * add mocking functionality to help debugging, dump data to mock the behavior of your CPU with --dump-mock-data
+    * AMD, ARM and CAVIUM are not vulnerable to MDS
+    * RDCL_NO bit wasn't taking precedence for L1TF check on some newer Intel CPUs
+    * The MDS_NO bit on newer Intel CPUs is now recognized and used
+    * remove libvirtd from hypervisor detection to avoid false positives (#278)
+    * under BSD, the data returned when reading MSR was incorrectly formatted
+    * update builtin MCEdb from v110 to v111
+
+-------------------------------------------------------------------
+Fri May 24 08:29:21 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- noarch does not work on older distros, removed
+
+-------------------------------------------------------------------
+Thu May 16 08:01:35 UTC 2019 - Pavol Cupka <palica@liguros.net>
+
+- version 0.41
+  * add support for the 4 MDS CVEs
+  * add Spectre and Meltdown mitigation detection for Hygon CPU
+  * for SSBD, report whether the mitigation is active
+  * and other fixes and enhancements
+
+-------------------------------------------------------------------
+Wed Mar 27 08:02:00 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use Source URL. Remove services, just run `osc service lr
+  download_files` for updating.
+
+-------------------------------------------------------------------
+Wed Mar 27 06:50:08 UTC 2019 - Marcus Meissner <meissner@suse.com>
+
+- disable the services, just run "osc service disabledrun" for upadating.
+
+-------------------------------------------------------------------
+Sun Oct 14 15:21:50 UTC 2018 - sean@suspend.net
+
+- version 0.40
+  * add support for L1TF CVEs (aka Foreshadow and Foreshadow-NG)
+  * add summary of vulnerabilities at the end of script execution
+
+-------------------------------------------------------------------
+Fri Jul 27 09:18:43 UTC 2018 - jengelh@inai.de
+
+- Compact and wrap description.
+
+-------------------------------------------------------------------
+Wed May 30 13:28:57 UTC 2018 - meissner@suse.com
+
+- version 0.37
+  * lots of improvements
+  * spectre v4 and v3a added
+
+-------------------------------------------------------------------
+Mon Jan 15 07:56:12 UTC 2018 - adrian@suse.de
+
+- update to version 0.31
+  * meltdown: detecting Xen PV, reporting as not vulnerable
+  * is_cpu_vulnerable: add check for old Atoms
+  * ibrs: check for spec_ctrl_ibrs in cpuinfo
+
+-------------------------------------------------------------------
+Sat Jan 13 16:05:06 UTC 2018 - adrian@suse.de
+
+- update to version 0.29
+  * AMD updates
+
+-------------------------------------------------------------------
+Fri Jan 12 08:39:58 UTC 2018 - adrian@suse.de
+
+- initial package of version 0.27

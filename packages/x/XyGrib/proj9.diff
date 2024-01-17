@@ -1,0 +1,154 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b066a044..77633a21 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -124,22 +124,22 @@ find_path(OPENJPEG_INCLUDE_DIR
+ include_directories(${OPENJPEG_INCLUDE_DIR})
+ 
+ if(NOT WIN32)
+-    include(cmake/FindPROJ4.cmake)
+-    if(NOT PROJ4_FOUND)
+-      message(FATAL_ERROR "PROJ.4 library not found!")
++    include(cmake/FindPROJ9.cmake)
++    if(NOT PROJ9_FOUND)
++      message(FATAL_ERROR "PROJ.9 library not found!")
+     endif()
+-    include_directories(${PROJ4_INCLUDE_DIRS})
++    include_directories(${PROJ9_INCLUDE_DIRS})
+ endif()
+ if(WIN32)
+-    find_library(PROJ4_LIBRARIES
++    find_library(PROJ9_LIBRARIES
+         NAME "libproj.a"
+         PATHS
+         $ENV{EXTERNLIBS}/lib
+          /opt/lib
+         REQUIRED
+     )
+-    find_path(PROJ4_INCLUDE_DIRS
+-         NAMES "proj_api.h"
++    find_path(PROJ9_INCLUDE_DIRS
++         NAMES "proj.h"
+          PATHS
+          $ENV{EXTERNLIBS}/include
+          /opt/include
+diff --git a/cmake/FindPROJ9.cmake b/cmake/FindPROJ9.cmake
+new file mode 100644
+index 00000000..33470ac2
+--- /dev/null
++++ b/cmake/FindPROJ9.cmake
+@@ -0,0 +1,76 @@
++# - Find PROJ9
++# Find the PROJ9 includes and library
++#
++#  PROJ9_INCLUDE_DIR - Where to find PROJ9 includes
++#  PROJ9_LIBRARIES   - List of libraries when using PROJ9
++#  PROJ9_FOUND       - True if PROJ9 was found
++
++IF(PROJ9_INCLUDE_DIR)
++  SET(PROJ9_FIND_QUIETLY TRUE)
++ENDIF(PROJ9_INCLUDE_DIR)
++
++FIND_PATH(PROJ9_INCLUDE_DIR "proj.h"
++  PATHS
++  $ENV{EXTERNLIBS}/include
++  $ENV{EXTERNLIBS}/PROJ9/include
++  ~/Library/Frameworks/include
++  /Library/Frameworks/include
++  /usr/local/include
++  /usr/include
++  /sw/include # Fink
++  /opt/local/include # DarwinPorts
++  /opt/csw/include # Blastwave
++  /opt/include
++  DOC "PROJ9 - Headers"
++)
++
++SET(PROJ9_NAMES PROJ9 proj proj_9_0)
++SET(PROJ9_DBG_NAMES PROJ9D projD proj_9_0_1)
++
++FIND_LIBRARY(PROJ9_LIBRARY NAMES ${PROJ9_NAMES}
++  PATHS
++  $ENV{EXTERNLIBS}
++  $ENV{EXTERNLIBS}/PROJ9
++  ~/Library/Frameworks
++  /Library/Frameworks
++  /usr/local
++  /usr
++  /sw
++  /opt/local
++  /opt/csw
++  /opt
++  PATH_SUFFIXES lib lib64
++  DOC "PROJ9 - Library"
++)
++
++INCLUDE(FindPackageHandleStandardArgs)
++
++IF(MSVC)
++  # VisualStudio needs a debug version
++  FIND_LIBRARY(PROJ9_LIBRARY_DEBUG NAMES ${PROJ9_DBG_NAMES}
++    PATHS
++    $ENV{EXTERNLIBS}/PROJ9/lib
++    DOC "PROJ9 - Library (Debug)"
++  )
++  
++  IF(PROJ9_LIBRARY_DEBUG AND PROJ9_LIBRARY)
++    SET(PROJ9_LIBRARIES optimized ${PROJ9_LIBRARY} debug ${PROJ9_LIBRARY_DEBUG})
++  ENDIF(PROJ9_LIBRARY_DEBUG AND PROJ9_LIBRARY)
++
++  FIND_PACKAGE_HANDLE_STANDARD_ARGS(PROJ9 DEFAULT_MSG PROJ9_LIBRARY PROJ9_LIBRARY_DEBUG PROJ9_INCLUDE_DIR)
++
++  MARK_AS_ADVANCED(PROJ9_LIBRARY PROJ9_LIBRARY_DEBUG PROJ9_INCLUDE_DIR)
++  
++ELSE(MSVC)
++  # rest of the world
++  SET(PROJ9_LIBRARIES ${PROJ9_LIBRARY})
++
++  FIND_PACKAGE_HANDLE_STANDARD_ARGS(PROJ9 DEFAULT_MSG PROJ9_LIBRARY PROJ9_INCLUDE_DIR)
++  
++  MARK_AS_ADVANCED(PROJ9_LIBRARY PROJ9_INCLUDE_DIR)
++  
++ENDIF(MSVC)
++
++IF(PROJ9_FOUND)
++  SET(PROJ9_INCLUDE_DIRS ${PROJ9_INCLUDE_DIR})
++ENDIF(PROJ9_FOUND)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 2e5dbde4..9c96d49f 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -118,7 +118,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/util)
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/map ${MAP_GENERATED_HEADERS})
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/GUI ${GUI_GENERATED_HEADERS})
+ 
+-target_link_libraries(${CMAKE_PROJECT_NAME} g2clib gui util map ${LIBNOVA_LIBRARY} ${OPENJPEG_LIBRARIES} ${Qt5Core_LIBRARIES} ${Qt5Gui_LIBRARIES} ${Qt5Widgets_LIBRARIES} ${Qt5Network_LIBRARIES} ${Qt5Xml_LIBRARIES} ${Qt5PrintSupport_LIBRARIES} ${BZIP2_LIBRARIES} ${ZLIB_LIBRARIES} ${PROJ4_LIBRARIES} ${PNG_LIBRARIES})
++target_link_libraries(${CMAKE_PROJECT_NAME} g2clib gui util map ${LIBNOVA_LIBRARY} ${OPENJPEG_LIBRARIES} ${Qt5Core_LIBRARIES} ${Qt5Gui_LIBRARIES} ${Qt5Widgets_LIBRARIES} ${Qt5Network_LIBRARIES} ${Qt5Xml_LIBRARIES} ${Qt5PrintSupport_LIBRARIES} ${BZIP2_LIBRARIES} ${ZLIB_LIBRARIES} ${PROJ9_LIBRARIES} ${PNG_LIBRARIES})
+ 
+ # Sanitizers, part 2/2
+ if ( CMAKE_VERSION VERSION_GREATER 3.4 )
+diff --git a/src/map/Projection.h b/src/map/Projection.h
+index b4ca7f5b..d482e0dd 100644
+--- a/src/map/Projection.h
++++ b/src/map/Projection.h
+@@ -21,10 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #include <QObject>
+ #include <cstdio>
+ 
+-#ifndef ACCEPT_USE_OF_DEPRECATED_PROJ_API_H
+-#define ACCEPT_USE_OF_DEPRECATED_PROJ_API_H
+-#endif
+-#include "proj_api.h"
++#include "proj.h"
+ 
+ class Projection : public QObject
+ {
+@@ -141,7 +138,7 @@ class Projection_libproj : public Projection
+ 		int   getProjection()   {return currentProj;}
+ 
+ 	private :
+-		projPJ libProj;
++		PJ * libProj;
+ 		int  currentProj;
+ };
+ 

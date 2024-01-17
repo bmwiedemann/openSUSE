@@ -1,0 +1,15 @@
+Index: ftgl-2.4.0/src/Makefile.am
+===================================================================
+--- ftgl-2.4.0.orig/src/Makefile.am
++++ ftgl-2.4.0/src/Makefile.am
+@@ -72,6 +72,10 @@ ftgl_headers = \
+     FTGL/FTSimpleLayout.h \
+     FTGL/FTTriangleExtractorGlyph.h \
+     FTGL/FTGLTriangleExtractorFont.h \
++    FTVectoriser.h \
++    FTContour.h \
++    FTList.h \
++    FTVector.h \
+     ${NULL}
+ 
+ ftglyph_sources = \

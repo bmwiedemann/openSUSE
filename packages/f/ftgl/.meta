@@ -1,0 +1,30 @@
+<package name="ftgl" project="openSUSE:Factory">
+  <title>Library for Using Arbitrary Fonts in OpenGL Applications</title>
+  <description>FTGL is a free open source library that enables developers to use
+arbitrary fonts in their OpenGL (www.opengl.org) applications.
+
+Unlike other OpenGL font libraries, FTGL uses standard font file
+formats, so there is no need of a preprocessing step to convert the
+high quality font data into a lesser quality, proprietary format.
+
+FTGL uses the Freetype (www.freetype.org) font library to open and
+'decode' the fonts. It then takes that output and stores it in a format
+that is most efficient for OpenGL rendering.
+
+The supported rendering modes are:
+
+- Bit maps
+
+- Antialiased Pix maps
+
+- Outlines
+
+- Polygon meshes
+
+- Extruded polygon meshes
+
+- Texture maps
+
+- Buffer maps</description>
+  <devel project="multimedia:libs" package="ftgl"/>
+</package>

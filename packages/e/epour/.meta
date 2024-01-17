@@ -1,0 +1,5 @@
+<package name="epour" project="openSUSE:Factory">
+  <title></title>
+  <description>EFL and libtorrent based BitTorrent client.</description>
+  <devel project="X11:Enlightenment:Factory" package="epour"/>
+</package>

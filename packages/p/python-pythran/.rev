@@ -1,0 +1,153 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7e9b3a2aa028182495e4867172619f0f</srcmd5>
+    <version>0.11.0</version>
+    <time>1643926567</time>
+    <user>dimstar_suse</user>
+    <comment>build requirement of scipy 1.7
+
+now with fixed empty debuginfo extraction</comment>
+    <requestid>949968</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dd0bc236703ca3c18af9abdd2a91f38b</srcmd5>
+    <version>0.11.0</version>
+    <time>1647462630</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961960</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6a3e557179b753679b72e4733216f612</srcmd5>
+    <version>0.11.0</version>
+    <time>1659941093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>990028</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1d15efd6516ac22f0bf02ab4e90d8dc5</srcmd5>
+    <version>0.12.0</version>
+    <time>1666440716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009791</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>298956d2cf6bef5ff7ce05ac72556be6</srcmd5>
+    <version>0.12.0</version>
+    <time>1669484702</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip also failing test_toolchain and test_cli
+  (gh#serge-sans-paille/pythran#2044) tests.
+</comment>
+    <requestid>1038177</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>a731a90073eb9f4aa5c5038868d08998</srcmd5>
+    <version>0.12.0</version>
+    <time>1672315726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045509</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>017d14d2d4abc9e87ca53e07f3851ef9</srcmd5>
+    <version>0.12.1</version>
+    <time>1674737816</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.12.1:
+  * Bump xsimd depdency to 10.0.0
+  * Correctly raise KeyError when getting an unset dict item
+  * Fix negative binomial implementation
+  * Correctly convert strided array with offset
+  * Support np.clip(v, None, x) and np.clip(v, x, None)
+  * Support scipy.special.ndtr, scipy.special.ndtri, scipy.special.gammaincinv
+  * Fix set intersection
+  * Support numpy.fft.fftn
+  * Support axis parameter in numpy.argsort</comment>
+    <requestid>1060837</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b862a7c44a8d254574b272c82bbf987a</srcmd5>
+    <version>0.13.1</version>
+    <time>1684239365</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.1:
+  * Bump xsimd dependency to 11.0.0, with a backported patch.
+  * Improve performance of functions revieving scalar arguments.
+    This changes the internal function call API.
+  * Improve performance of fix-stride slicing, using a new slice
+    representation.
+  * Improve numpy.copyto performance, and detect copyto pattern usage.
+  * Force internal linkage of generated functions, which gives more
+    optimization room to the C++ compiler.
+  * Provide entry points pythran.import_pythrancode and
+    pythran.import_pythranfile, as a poor man JIT option.
+  * Optimize numpy.argmax(cst * val) into numpy.argmax(val) when cst is
+    positive.
+  * Avoid copies upon numpy.array_split
+  * Get rid of unused functions C++ warnings
+  * Avoid generating a loop footer when the loop index is not used
+    outside of the loop.
+- fix the test-flavor splitting for python311</comment>
+    <requestid>1087264</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>36b40e7bde1f2763683bebc2abfa376b</srcmd5>
+    <version>0.13.1</version>
+    <time>1686576274</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092220</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>f94e63acfc2f2901974ddf6aef159967</srcmd5>
+    <version>0.13.1</version>
+    <time>1690575590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101065</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>9dfd3b385b65337e5ab665cb5d7bc00f</srcmd5>
+    <version>0.13.1</version>
+    <time>1691947057</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1102981 from ecsos
+
+- Fix build error in Leap, because it must not be two &quot;Patch:&quot; lines.</comment>
+    <requestid>1103601</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e22d527e6120c463e29bcf25e2d86123</srcmd5>
+    <version>0.14.0</version>
+    <time>1700675646</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.0:
+  * Numpy compatibility - update signatures, complex number handling, long
+    double support
+  * Lazyly import top-level modules and submodules
+  * Improve array indexing by an array
+  * Require at least clang 7 or gcc 8
+  * Make pythran compilation reproducible
+  * Support np.roll with multiple axis
+  * Support numpy.ndarray.view
+  * Improve list resizing speed
+  * Fix bug when filtering an empty sequence
+- Drop patches, now included upstream:
+  * numpy-longdouble.patch
+  * numpy-complex.patch
+- Switch to pyproject macros.</comment>
+    <requestid>1127832</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c7e1b3e12cb75347a9b558b4afd51693</srcmd5>
+    <version>0.14.0</version>
+    <time>1701377944</time>
+    <user>anag+factory</user>
+    <comment>- Prepare for Python 3.12, by skipping it for the other test flavors, and
+  adding one for it.</comment>
+    <requestid>1129689</requestid>
+  </revision>
+</revisionlist>

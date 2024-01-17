@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>85b9b639e9d2157c0e4f58576e6260f7</srcmd5>
+    <version>2.0.2</version>
+    <time>1601044253</time>
+    <user>dimstar_suse</user>
+    <comment>Fix spec file</comment>
+    <requestid>833255</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4d4efa159bf6e3a9beedd18c74683fe0</srcmd5>
+    <version>2.1.0</version>
+    <time>1604865579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846956</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6376c06072c169e0bd168a63f8b25acd</srcmd5>
+    <version>2.1.1</version>
+    <time>1606142903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850091</requestid>
+  </revision>
+</revisionlist>
