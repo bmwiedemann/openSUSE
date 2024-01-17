@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Tk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Patch0:         Tk-804.029-event.diff
 Patch1:         Tk-804.029-macro.diff
 Patch2:         Tk-804.029-null.diff
 Patch3:         Tk-804.029-refcnt.diff
+Patch4:         Tk-804.036-fix-strlen-vs-int-pointer-confusion.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}

@@ -18,6 +18,7 @@ patches:
   Tk-804.029-macro.diff: -p0
   Tk-804.029-null.diff: -p0
   Tk-804.029-refcnt.diff: -p0
+  Tk-804.036-fix-strlen-vs-int-pointer-confusion.patch: -p0
 preamble: |-
   BuildRequires:  liberation-fonts
   BuildRequires:  libjpeg-devel
