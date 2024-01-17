@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 16 15:22:42 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Drop unneeded setuptools-git dependency
+
+-------------------------------------------------------------------
 Tue Jul 25 12:42:51 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.0.1
