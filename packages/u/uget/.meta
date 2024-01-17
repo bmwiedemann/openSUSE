@@ -1,0 +1,7 @@
+<package name="uget" project="openSUSE:Factory">
+  <title>Easy-to-use GTK+ Download Manager</title>
+  <description>Uget is a easy-to-use download manager written in GTK+. It supports
+pause and resume, and the ability to classify download, with every
+category having an independent configuration.</description>
+  <devel project="GNOME:Apps" package="uget"/>
+</package>

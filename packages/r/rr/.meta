@@ -1,0 +1,10 @@
+<package name="rr" project="openSUSE:Factory">
+  <title>Records nondeterministic executions and debugs them deterministically</title>
+  <description>This program aspires to be your primary debugging tool, enhancing gdb. It
+also provides efficient reverse execution under gdb. Set breakpoints and
+data watchpoints and quickly reverse-execute to where they were hit.
+
+</description>
+  <devel project="devel:tools" package="rr"/>
+  <url>http://rr-project.org/</url>
+</package>

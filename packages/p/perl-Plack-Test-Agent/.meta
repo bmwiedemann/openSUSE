@@ -1,0 +1,6 @@
+<package name="perl-Plack-Test-Agent" project="openSUSE:Factory">
+  <title>OO interface for testing low-level Plack/PSGI apps</title>
+  <description>OO interface for testing low-level Plack/PSGI apps</description>
+  <devel project="devel:languages:perl" package="perl-Plack-Test-Agent"/>
+  <url>https://metacpan.org/release/Plack-Test-Agent</url>
+</package>

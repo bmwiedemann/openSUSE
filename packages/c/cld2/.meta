@@ -1,0 +1,8 @@
+<package name="cld2" project="openSUSE:Factory">
+  <title>A library to detect the natural language of text</title>
+  <description>Detects over 80 languages in UTF-8 text, based largely on groups of four letters. Also tables for 160+ language version.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="cld2"/>
+  <url>https://code.google.com/p/cld2/</url>
+</package>

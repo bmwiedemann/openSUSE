@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Tue Oct 14 12:44:00 UTC 2014 - jengelh@inai.de
+
+- Use source URLs and remove ancient specfile tags and sections
+
+-------------------------------------------------------------------
+Fri Nov 18 11:07:48 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:34:08 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:46 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Nov 25 19:45:44 CET 2009 - meissner@suse.de
+
+- rediffed for fuzz=0
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:51 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 28 22:15:28 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Wed Aug 10 01:49:41 CEST 2005 - ro@suse.de
+
+- ignore test errors for the moment 
+
+-------------------------------------------------------------------
+Mon Aug  1 16:07:43 CEST 2005 - mjancar@suse.cz
+
+- update to 2.0
+- add perl-Authen-SASL and perl-Net-XMPP to Requires
+
+-------------------------------------------------------------------
+Tue Mar 02 16:56:04 CET 2004 - mjancar@suse.cz
+
+- update to 1.29
+
+-------------------------------------------------------------------
+Fri Aug 22 17:17:59 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Thu Aug 07 14:58:27 CEST 2003 - mjancar@suse.cz
+
+- fix tests that depend on certain order of entries
+  in a hash (it is random in perl 5.8.1)
+
+-------------------------------------------------------------------
+Tue Jul 22 20:32:05 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Tue Jun 17 18:40:51 CEST 2003 - mjancar@suse.cz
+
+- fix filelist
+
+-------------------------------------------------------------------
+Tue May 20 12:40:43 CEST 2003 - mjancar@suse.cz
+
+- remove unpackaged files
+
+-------------------------------------------------------------------
+Wed Dec 18 19:03:04 CET 2002 - prehak@suse.cz
+
+- updated to version 1.28
+- removed x permissions from nonexecutable example scripts
+
+-------------------------------------------------------------------
+Sat Jul 20 20:56:11 CEST 2002 - prehak@suse.cz
+
+- update to version 1.26
+- added perl-Unicode-String to neededforbuild and to Required
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Tue Jan 15 16:38:22 CET 2002 - rvasice@suse.cz
+
+- update to version 1.0024
+
+-------------------------------------------------------------------
+Wed Aug 15 11:40:56 CEST 2001 - rvasice@suse.cz
+
+- initial package release (version 1.0022)
+

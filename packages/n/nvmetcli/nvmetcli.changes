@@ -1,0 +1,163 @@
+-------------------------------------------------------------------
+Mon Dec 11 07:24:26 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- update old changelog entry so it mention that a patch has been removed
+
+-------------------------------------------------------------------
+Fri Dec  8 15:17:30 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- add old changelog entry to changelog
+
+-------------------------------------------------------------------
+Tue Dec  5 13:45:44 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- fix build on SLE15 code streams
+
+-------------------------------------------------------------------
+Fri Nov 17 14:59:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not define pythons: direclt use the python3 - relevant macros.
+
+-------------------------------------------------------------------
+Thu Nov 09 08:31:02 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version v0.8: (jsc#PED-6252 jsc#PED-5728)
+  * nvmetcli: set up the target only after the network is configured
+  * nvmetcli: fixup ana groupid setting for namespaces
+  * nvmetcli: add a tcp example json
+  * nvmetcli: Correct xrange usage for py3
+  * nvmetcli: Allow different devices for make test
+  * nvmetcli: Report save name correctly
+  * nvme.py: Make modprobe work for kmod lib too
+  * nvme.py: Sync the containing directory
+  * nvme.py: Explicit close is redundant
+  * nvmetcli: Improve IOError handling on restore
+  * nvmetcli: don't remove ANA Group 1 on clear
+  * nvmetcli: ANA configuration support (bsc#1130981)
+- remove 0001-nvmetcli-don-t-remove-ANA-Group-1-on-clear.patch
+- remove nvmetcli-ANA-configuration-support.patch
+- use autosetup instead listing all patches individual
+- build package according PEP 517, 518. Thus don't call setup.py directly
+- use fdupes to reduce package size
+
+-------------------------------------------------------------------
+Fri Nov 25 11:39:56 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_nvmet.service.patch
+
+-------------------------------------------------------------------
+Fri Mar 27 07:48:31 UTC 2020 - hare@suse.de
+
+- Update to version v0.7:
+  * bump version to v0.7
+  * nvmetcli: ANA configuration support
+  * nvmetcli: simplify the enabled logic
+  * nvmetcli: pep8 fixes
+  * nvmetcli: support inline_data_size port parameter
+  * Revert "nvmetcli: expose nvmet port status and state"
+  * Support python3 dictionary access.
+  * nvmetcli: expose nvmet port status and state
+- Remove patch merged with upstream
+  * nvmetcli-make-dict-access-python-version-independant.patch
+- 'clear' command doesn't handle ANA groups correctly (bsc#1167644)
+  adding patch
+  - 0001-nvmetcli-don-t-remove-ANA-Group-1-on-clear.patch
+
+-------------------------------------------------------------------
+Fri Mar 29 12:45:17 CET 2019 - hare@suse.de
+
+- Add ANA support (bsc#1130981)
+  * nvmetcli-ANA-configuration-support.patch
+
+-------------------------------------------------------------------
+Mon Apr 16 19:08:25 UTC 2018 - lduncan@suse.com
+
+- Stop using singlespec, since we only need a
+  python3 version of this package, and we do not
+  want it named "python3-nvmetcli" (bsc#1082208).
+  Also, use the "python-six" module to make
+  dictionary iteration work for Python 2 and 3,
+  adding patch:
+  * nvmetcli-make-dict-access-python-version-independant.patch
+
+-------------------------------------------------------------------
+Fri Apr 13 17:47:21 UTC 2018 - lduncan@suse.com
+
+- Support python3 by using the python-six module,
+  and convert dictionary access to use 'six' routines,
+  so we can work on python 2 or python 3 (bsc#1082208)
+
+-------------------------------------------------------------------
+Sun Apr  8 20:36:58 UTC 2018 - lduncan@suse.com
+
+- Convert to Python3-only siglespec (bsc#1082208)
+  * Update the SPEC file, using singlespec format, but
+    telling the macros to ignore Python2
+  * Tell the scripts to use Python3 instead of python,
+    adding patch:
+    - nvmetcli-update-python-to-python3.patch
+
+-------------------------------------------------------------------
+Tue Jan 23 10:04:23 UTC 2018 - jthumshirn@suse.com
+
+- Update to version v0.6: (FATE#322737)
+   - 0001-nvmetcli-remove-status-method-for-the-uiportnode.patch
+  * nvmetcli: remove status method for the UIPortNode
+  * nvmetcli: expose ls to dump UI configuration
+  * nvmetcli: decorate namespace, subsystem and port UI
+  * nvmetcli: port decoration coloring only if its enabled
+  * bump version to v0.6
+
+-------------------------------------------------------------------
+Fri Dec  1 09:34:11 UTC 2017 - jthumshirn@suse.com
+
+- Don't display bogus 'disabled' status for ports (bsc#1070533)
+  + 0001-nvmetcli-remove-status-method-for-the-uiportnode.patch
+
+-------------------------------------------------------------------
+Fri Aug 11 11:27:37 UTC 2017 - jthumshirn@suse.com
+
+- Update to version v0.5: (FATE#322737)
+  -  0001-nvmetcli-add-support-for-NS-UUIDs.patch
+  * nvmetcli: add support for NS UUIDs
+  * nvmetcli: allow setting of serial number number
+  * nvmetcli: allow setting of the subsystem version
+  * add a make clean pass to bump-ver.sh
+  * bump version to v0.5
+
+-------------------------------------------------------------------
+Fri Jun 16 09:55:32 UTC 2017 - jthumshirn@suse.com
+
+- Add possibiliy to configure Namespace UUIDs (bsc#1038235)
+  + 0001-nvmetcli-add-support-for-NS-UUIDs.patch
+
+-------------------------------------------------------------------
+Tue May 23 12:57:57 UTC 2017 - jthumshirn@suse.com
+
+- Change dependency from python-configshell to python-configshell-fb (bsc#1040212)
+
+-------------------------------------------------------------------
+Mon May 08 11:35:37 UTC 2017 - jthumshirn@suse.com
+
+- Update to version v0.4: (bsc#1034105)
+  * add example configuration files
+  * update .gitignore for the auto-generated manpage formats
+  * add a bump-ver.sh script to automate cutting releases
+  * bump version to v0.3
+  * nvmetcli: fix Port and Host operations in shell
+  * nvmetcli: fix Referral operation in shell
+  * nvmetcli: Install nvmetcli in /usr/sbin with setup.py
+  * nvmetcli: create json file's dir first if it doesn't exist
+  * Add fc transport support to nvmetcli
+  * bump version to v0.4
+
+-------------------------------------------------------------------
+Sat Feb 11 21:08:31 UTC 2017 - jengelh@inai.de
+
+- expand nvmet
+-------------------------------------------------------------------
+Wed Oct 12 08:11:25 UTC 2016 - jthumshirn@suse.com
+
+- Initial import for SUSE (FATE#321732)
+

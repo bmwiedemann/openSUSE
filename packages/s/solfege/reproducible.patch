@@ -1,0 +1,26 @@
+commit 29fbd6ac51c1983dd8cb29a02e7a3554d2243a08
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Sun Feb 23 21:12:35 2020 +0100
+
+    Sort input file list
+    
+    so that solfege-3.23.4/solfege/languages.py in
+    openSUSE's solfege package builds in a reproducible way
+    in spite of indeterministic filesystem readdir order
+    and http://bugs.python.org/issue30461
+    
+    See https://reproducible-builds.org/ for why this is good.
+
+diff --git a/tools/buildutil.py b/tools/buildutil.py
+index fce99b9..c908f99 100644
+--- a/tools/buildutil.py
++++ b/tools/buildutil.py
+@@ -35,7 +35,7 @@ C_locale_idx = 1
+ languages = [
+    'system default',
+    'English/United States [en-us]',""", file=f)
+-    for fn in glob.glob("po/*.po"):
++    for fn in sorted(glob.glob("po/*.po")):
+         print("   '%s'," % os.path.splitext(os.path.basename(fn))[0], file=f)
+     print("]", file=f)
+     f.close()

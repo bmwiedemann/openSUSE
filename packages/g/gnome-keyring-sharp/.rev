@@ -1,0 +1,121 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>ab69eb9c9d7e06c57aad5cfd63c2cb09</srcmd5>
+    <version>0.1.0</version>
+    <time>1184207479</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3d7df8e4233d8b9011e0ca5175639830</srcmd5>
+    <version>1.0.0</version>
+    <time>1218668868</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3d7df8e4233d8b9011e0ca5175639830</srcmd5>
+    <version>1.0.0</version>
+    <time>1218668868</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b128d2f9c43eeec734083112c595d069</srcmd5>
+    <version>1.0.0</version>
+    <time>1268923773</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>b128d2f9c43eeec734083112c595d069</srcmd5>
+    <version>1.0.0</version>
+    <time>1278667347</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>b128d2f9c43eeec734083112c595d069</srcmd5>
+    <version>1.0.0</version>
+    <time>1278678578</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>1ee8b3f3916d7d4c734a7eb27bec85bd</srcmd5>
+    <version>unknown</version>
+    <time>1284124946</time>
+    <user>autobuild</user>
+    <comment>Copy from Mono:Factory/gnome-keyring-sharp based on submit request 47399 from user ajorgensen
+</comment>
+    <requestid>47399</requestid>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>1ee8b3f3916d7d4c734a7eb27bec85bd</srcmd5>
+    <version>unknown</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>1ee8b3f3916d7d4c734a7eb27bec85bd</srcmd5>
+    <version>unknown</version>
+    <time>1319181919</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>a61c751654f417267c0692dac8d3e7d8</srcmd5>
+    <version>1.0.2</version>
+    <time>1319206374</time>
+    <user>coolo</user>
+    <comment>add libtool as buildrequire to avoid a hidden require from projconfig (forwarded request 87929 from coolo)</comment>
+    <requestid>88770</requestid>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>4fb5212828390ebe0ec3b555fdca5c02</srcmd5>
+    <version>1.0.2</version>
+    <time>1323191651</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>4fb5212828390ebe0ec3b555fdca5c02</srcmd5>
+    <version>1.0.2</version>
+    <time>1340183381</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="19">
+    <srcmd5>4fb5212828390ebe0ec3b555fdca5c02</srcmd5>
+    <version>1.0.2</version>
+    <time>1359108959</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="21">
+    <srcmd5>4fb5212828390ebe0ec3b555fdca5c02</srcmd5>
+    <version>1.0.2</version>
+    <time>1379662492</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="23">
+    <srcmd5>4fb5212828390ebe0ec3b555fdca5c02</srcmd5>
+    <version>1.0.2</version>
+    <time>1409301027</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="24">
+    <srcmd5>3ecd0f340aa8e5c86609f771f0a40f60</srcmd5>
+    <version>1.0.2</version>
+    <time>1494938704</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494743</requestid>
+  </revision>
+  <revision rev="17" vrev="25">
+    <srcmd5>24647b563bb994de6bd8aba99cf8590d</srcmd5>
+    <version>1.0.2</version>
+    <time>1495442805</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495595</requestid>
+  </revision>
+</revisionlist>

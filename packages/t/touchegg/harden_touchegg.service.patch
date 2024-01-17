@@ -1,0 +1,22 @@
+Index: touchegg-2.0.10/installation/touchegg.service.in
+===================================================================
+--- touchegg-2.0.10.orig/installation/touchegg.service.in
++++ touchegg-2.0.10/installation/touchegg.service.in
+@@ -3,6 +3,17 @@ Description=Touchégg Daemon
+ Documentation=https://github.com/JoseExposito/touchegg/tree/master/installation#readme
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=simple
+ Group=input
+ ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/touchegg --daemon

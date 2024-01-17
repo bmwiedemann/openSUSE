@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Thu Aug 31 09:10:04 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream cython3.patch
+
+-------------------------------------------------------------------
+Wed Mar  1 13:48:09 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop compilation.log to make package build reproducible
+
+-------------------------------------------------------------------
+Tue Feb  7 09:40:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken tests with latest numpy >= 1.24
+- Update to 2.3.10
+  * Improved compilation for M1/M2, and Py3.7
+  * Improved plotting warping paths
+  * Improved kmeans clustering for ndim
+- 2.3.5
+  * Improved compilation for M1/M2, and Py3.7
+  * Improved plotting warping paths
+  * Improved kmeans clustering for ndim
+- 2.3.4
+  * Additional clustering techniques. E.g. DTW Barycenter Averaging for
+    clustering, k-medoids.
+  * Subsequence search and local concurrences.
+  * Improved Windows compatibility.
+  * Anaconda release (by @m-rossi )
+  * Improved visualisations
+
+-------------------------------------------------------------------
+Fri Feb 12 22:35:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.2.4
+  * no release notes found
+- NumPy, SciPy, Matplotlib are optional. Don't require them for the
+  python36 build (NEP 29: They don't exist for that flavor in TW)
+- Drop synthetic_control.data included in the archive now
+- Remove -devel package with the one source file in the past and
+  also the new source files. Nobody needs them installed into the
+  sitearch.
+
+-------------------------------------------------------------------
+Thu Nov 21 04:38:31 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- initial version

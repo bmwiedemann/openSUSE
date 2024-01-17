@@ -1,0 +1,29 @@
+From: Lee Duncan <lduncan@suse.com>
+Date: Sun Apr  8 13:35:35 PDT 2018
+Subject: [PATCH] use python3 instead of python
+
+For ensuring this package uses python3 instead of
+"python", it is better to patch the two places
+where this is needed, rather than try to get
+the SPEC file RPM macros to do the work, without
+munging the package name.
+
+--- 
+diff -aurp nvmetcli-v0.6.orig/nvmetcli nvmetcli-v0.6/nvmetcli
+--- nvmetcli-v0.6.orig/nvmetcli	2018-01-22 10:45:05.000000000 -0800
++++ nvmetcli-v0.6/nvmetcli	2018-03-30 12:20:36.875255323 -0700
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ '''
+ Frontend to access to the NVMe target configfs hierarchy
+diff -aurp nvmetcli-v0.6.orig/setup.py nvmetcli-v0.6/setup.py
+--- nvmetcli-v0.6.orig/setup.py	2018-01-22 10:45:05.000000000 -0800
++++ nvmetcli-v0.6/setup.py	2018-03-30 12:20:30.215047092 -0700
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python3
+ '''
+ This file is part of ConfigShell.
+ Copyright (c) 2011-2013 by Datera, Inc

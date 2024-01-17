@@ -1,0 +1,28 @@
+From: Dave Plater <davejplater@gmail.com>
+Date: 2019-11-23 13:13:22 +0200
+Subject: Don't rebuild AUTHORS INSTALL README FAQ, they exist.
+
+Index: Makefile.in
+===================================================================
+--- Makefile.in.orig	2019-11-23 12:59:02.395971346 +0200
++++ Makefile.in	2019-11-23 13:01:30.897831528 +0200
+@@ -62,7 +62,7 @@ export LIBS:=@LIBS@
+ export DISTNAME:=$(PACKAGE)-$(VERSION)
+ export DISTDIR:=$(PWD)/$(PACKAGE)-$(VERSION)
+ 
+-TARGETS += AUTHORS INSTALL README FAQ INSTALL.win32
++#TARGETS += AUTHORS INSTALL README FAQ INSTALL.win32
+ installfiles += ui.xml help-menu.xml
+ 
+ .PHONY: all genfiles genlyfiles
+@@ -79,8 +79,8 @@ SUBDIRS := po feta solfege test tools to
+ 
+ FAQ INSTALL.win32 README INSTALL : topdocs/defs.texi
+ 
+-%: topdocs/%.texi
+-	LC_ALL=C makeinfo -I topdocs --no-split --no-headers --output $(notdir $(basename $<)) $<
++#%: topdocs/%.texi
++#	LC_ALL=C makeinfo -I topdocs --no-split --no-headers --output $(notdir $(basename $<)) $<
+ 
+ dist_files = AUTHORS COPYING INSTALL FAQ INSTALL.win32 \
+ 	Makefile.in config.h.in \

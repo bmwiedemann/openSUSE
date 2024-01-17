@@ -1,0 +1,247 @@
+-------------------------------------------------------------------
+Sun Sep 24 18:07:10 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.30.1
+  * Adapt to Python 3.12.0rc2 #272 (@ellert)
+- Release 0.30.0
+  * Updated dot magic, with tests #268 (@dsblank)
+  * Update tests.yml #270 (@dsblank)
+  * Fix magic completion #269 (@dsblank)
+
+-------------------------------------------------------------------
+Sat Aug  5 16:23:06 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.29.5:
+  * Maintenance and upkeep improvements
+    + Ignore DeprecationWarnings for datetime.utcnow() #265 (@ellert)
+    + Update docs config #263 (@blink1073)
+    + Update ci badge #262 (@blink1073)
+  * Documentation improvements
+    + Change nbviewer URL to use Jupyter #264 (@rgbkrk)
+
+-------------------------------------------------------------------
+Mon Dec 26 22:29:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.29.4
+  * Add back magics tests #261 (@ellert)
+  * Update tests for widgets 8 #260 (@blink1073)
+- Release v0.29.3
+  * Maintenance cleanup #257 (@blink1073)
+  * Use hatch for example projects #256 (@blink1073)
+
+-------------------------------------------------------------------
+Thu Aug 11 13:48:44 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * LICENSE, etc back on pypi, switch back to pypi files
+  * switch to hatchling
+
+- update to version 0.29.2:
+  * Bugs fixed
+    + Restore versions of metakernel-echo and metakernel-python #252
+      (@ellert)
+  * Maintenance and upkeep improvements
+    + Switch to hatch backend #254 (@blink1073)
+
+-------------------------------------------------------------------
+Sun Aug  7 09:00:49 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix build requirements
+- Switch to github archive for the license file
+  gh#Calysto/metakernel#253
+
+-------------------------------------------------------------------
+Sun Aug  7 02:06:13 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * switched to flit backend for building
+
+- update to version 0.29.1:
+  * Bugs fixed
+    + Strip paste-bracketing control characters #250 (@anewusername)
+  * Maintenance and upkeep improvements
+    + Address deprecation warnings #249 (@ellert)
+    + Switch to flit build backend #246 (@blink1073)
+  * Documentation improvements
+    + Correct spelling mistakes #248 (@EdwardBetts)
+
+-------------------------------------------------------------------
+Wed Jul 13 08:51:45 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean specfile
+- Remove color from pytest call, clean test requirmement on cov
+
+-------------------------------------------------------------------
+Sun Jun  5 13:47:57 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * updated requirements
+
+- update to version 0.29.0:
+  * Clean up testing and add more CI #244 (@blink1073)
+  * Fix macos tests #243 (@blink1073)
+  * Clean up CI and bump supported pythons #242 (@blink1073)
+
+-------------------------------------------------------------------
+Sat Feb 19 03:16:48 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * in %doc update history.rst->CHANGELOG.md, add RELEASE.md
+  * require jupyter-core, moved ipyparalle to recommends
+
+- update to version 0.28.2:
+  * Test with jupyter_kernel_test #238 (@blink1073)
+
+- changes from version 0.28.1:
+  * Fix trove classifier #236 (@blink1073)
+
+- changes from version 0.28.0:
+  * Note This was not uploaded to PyPI because it had an incorrect
+    trove classifer
+  * Add support for jupyter releaser #234 (@blink1073)
+  * Modernize build and test #233 (@blink1073)
+  * Fix Iframe display issue #231 (@cathalmccabe)
+  * Add a blockly magic instead of a jigsaw magic #229 (@ChrisJaunes)
+
+- changes from version 0.27.5:
+  * Escape backslashes in strings #226 (@ellert)
+  * Add missing dollar signs to %latex examples and tests #225
+    (@ellert)
+  * Support older jedi versions #224 (@ellert)
+
+- changes from version 0.27.4:
+  * Add support for SOURCE_DATE_EPOCH #223 (@jnahmias)
+
+- changes from version 0.27.3:
+  * Fix warnings when running tests under python 3.9 #222 (@jnahmias)
+
+- changes from version 0.27.2:
+  * Use TERM=dumb for bash REPLWrapper #221 (@jnahmias)
+  * Use tempfile instead of writing to cwd #220 (@jnahmias)
+
+- changes from version 0.27.0:
+  * More py2 removal #219 (@blink1073)
+  * Remove py2 #218 (@joequant)
+  * Monkey patch display to output to kernel #216 (@joequant)
+  * Fix warnings #215 (@joequant)
+
+- changes from version 0.26.1:
+  * Dev/fix retval in exec #214 (@joequant)
+
+- changes from version 0.26.0:
+  * Combine exec/eval evaluators #213 (@joequant)
+  * Dev/fix voila #212 (@joequant)
+  * Add Error_display method to _metakernel.py #205 (@jld23)
+
+- changes from version 0.25.0:
+  * Fix python evals #208 #210 (@joequant)
+  * Fix ipywidgets display #209 (@joequant)
+
+-------------------------------------------------------------------
+Tue Dec 15 12:52:42 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Provide the old jupyter package name only for the primary
+  Python3 interpreter -- gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
+Sun Apr 26 19:36:56 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+
+- update to version 0.24.4:
+  * portalocker and ipyparallel as optional dependencies
+  * Remove undefined line in expect stdin
+
+-------------------------------------------------------------------
+Thu Mar 12 20:35:48 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- add coreutils-doc as build dependency, testing calls man sleep
+
+-------------------------------------------------------------------
+Fri Dec  6 18:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Disable python2 support since dependencies dropped python2
+
+-------------------------------------------------------------------
+Tue Nov 12 17:01:17 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.24.3
+  * Update setup.py
+  * Update activity_magic.py
+
+-------------------------------------------------------------------
+Thu Aug  8 09:39:19 AM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Remove unnecessary indirect dependencies
+- Remove tests from runtime package
+
+-------------------------------------------------------------------
+Wed Jun 12 20:03:20 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.24.2
+  * Fix TypeError
+- Update to 0.24.1
+  * delay creating wrapper until we need to execute
+- Update to 0.24.0
+  * finish transition to pytest
+  * Finish updates to stream_handler
+  * remove local bash kernel and point to calysto_bash  
+
+-------------------------------------------------------------------
+Wed May 29 20:10:40 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.23.0
+  * Clean up configurability handling and docs 
+  * fix handling of kernel class
+  * export the metakernel app
+  * Add settings handling
+  * switch to powershell on windows
+  * clean up interrupt behavior and error handling
+  * clean up stdin handler
+  * clean up replwrap prompt handling
+  * avoid double printing output
+  * add support for cr printing
+  * Fix handling metadata in _formatter
+  * Define cluster_size and cluster_rank on host kernel
+  * kernel.parent can be None in some situations
+  * Allow help and info to return mime-type data
+  * Adjustment for newer jedi
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Rename to to match python package naming guidelines.
+
+-------------------------------------------------------------------
+Wed Mar 21 20:41:56 UTC 2018 - sebix+novell.com@sebix.at
+
+- Use %license macro for license.
+
+-------------------------------------------------------------------
+Thu Feb 15 15:54:04 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.20.14
+  * No changelog
+
+-------------------------------------------------------------------
+Mon Nov  6 18:01:15 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 0.20.12
+  * No changelog
+
+-------------------------------------------------------------------
+Wed Sep 20 01:38:27 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 0.20.7
+  * No changelog
+
+-------------------------------------------------------------------
+Wed Jul 12 15:54:44 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

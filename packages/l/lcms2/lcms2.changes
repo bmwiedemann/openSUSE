@@ -1,0 +1,307 @@
+-------------------------------------------------------------------
+Mon Dec  4 20:27:04 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- update to 2.16:
+  * New: import .CUBE files as RGB device links
+  * New: Read/Write MHC2 tags for Windows GPU access
+  * New: Support for UTF8 on multi-localized Unicode functions
+  * New: Support for OkLab color space, built-in and formatter.
+  * Improved: floating point transforms float -> integer are now
+    honored as float
+  * Improved: MSYS2, mingw is now supported
+  * Improved: preferred CMM, platform and creator now survives profile
+    edition.
+  * Fixed: tificc now can deal with Lab TIFF
+  * Fixed: code can now be compiled by a C++17 compiler, "register"
+    keyword use detected at compile time.
+  * Fixed: Reverted PostScript creation that corrupted some interpreters.
+  * Bug fixing
+
+-------------------------------------------------------------------
+Sat Apr 15 09:49:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15:
+  * New MESON build system, many thanks to amispark and Lovell
+    Fuller for bringing this.
+  * Fixed a bug that caused memory corruption on colord
+  * cmsReadRawTag can read portions  of tags again. Removing this
+    caused colord to segfault when dumping profiles
+  * Added more checks based of fuzzer discoveries.
+  * MSYS2 can now compile lcms2
+  * Checked on Apple Silicon M1 and M2
+  * Fixed a bug of fastfloat plug-in that affected Krita CMYK
+    color selector
+- drop 0001-fix-memory-corruption-when-unregistering-plugins.patch (upstream)
+
+-------------------------------------------------------------------
+Mon Dec 12 08:50:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- switch to pkgconfig(zlib) for alternative providers support
+
+-------------------------------------------------------------------
+Wed Nov 16 07:39:44 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Removed reverse-0001-fix-memory-leaks-on-testbed.patch and added
+  0001-fix-memory-corruption-when-unregistering-plugins.patch as
+  final fix for https://github.com/hughsie/colord/issues/145
+
+-------------------------------------------------------------------
+Fri Nov 11 13:40:18 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Added reverse-0001-fix-memory-leaks-on-testbed.patch to fix
+  colord's i586 build failure
+
+-------------------------------------------------------------------
+Tue Nov  8 08:12:31 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.14:
+  * lcms2 now implements ICC specification 4.4
+  * New multi-threaded plug-in
+  * Several fixes to keep fuzzers happy
+  * Removed check on DLL when CMS_NO_REGISTER_KEYWORD is used
+  * Added more validation against broken profiles
+  * Added more help to several tools
+  * Revised documentation
+
+-------------------------------------------------------------------
+Mon Feb 14 23:13:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.1:
+  * Fix a bug on grayscale that made printing gray on white paper
+  * Added support for premultiplied alpha
+  * tifficc can now handle alpha channels, both unassociated and premultiplied
+  * Better documentation
+  * CGATS parser can now deal with very long strings
+  * Added Projects for Visual Studio 2020
+  * Travis CI discontinued, GitHub actions used instead
+  * Added a very preliminary meson build script (thanks to xclaesse)
+  * Added ARM64 target to visual studio 2019 (thanks to gaborkertesz-linaro)
+  * Added thread safe code to get time
+  * Added automatic linear space detection
+  * Added cmsGetStageContextID function
+  * Added cmsDetectRGBProfileGamma
+  * configure now accepts --without-fastfloat to turn plugin off
+  * autogen.sh has now a --distclean toggle to get rid of all autotools generated files
+  * Checked to work on STM32 Cortex-A, Cortex-M families
+  * Bug & typos fixing (thanks to many reporters and contributors)
+  * Fixed mem leaks and out-of bounds accesses as reported by fuzzer 
+
+-------------------------------------------------------------------
+Mon Jan 31 12:56:29 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.13:
+  * Added support for premultiplied alpha
+  * tifficc can now handle alpha channels, both unassociated and premultiplied
+  * CGATS parser can now deal with very long strings
+  * Added Projects for Visual Studio 2020
+  * Added ARM64 target to visual studio 2019 (thanks to gaborkertesz-linaro)
+  * Added thread safe code to get time
+  * Added automatic linear space detection
+  * Added cmsGetStageContextID function
+  * Added cmsDetectRGBProfileGamma function
+  * configure now accepts --without-fastfloat to turn plugin off
+  * Checked to work on STM32 Cortex-A, Cortex-M families
+  * Bug & typos fixing (thanks to many reporters and contributors)
+- Rebase lcms2-visibility.patch
+
+-------------------------------------------------------------------
+Sat Apr 24 09:28:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12:
+  * Added build system for fast-float plugin (see plugin documentation)
+  * Added new build-in sigmoidal tone curve
+  * Added XCode 12 project
+  * Added support for multichannel input up to 15 channels
+  * Fix LUT8 write matrix
+  * Fix version mess on 10/11
+  * Fix tools & samples xgetopt
+  * Fix warnings on different function pointers
+  * Fix matlab MEX compilation
+  * plugin: cleanup and better SSE detection
+  * plugin: add lab to any on float
+  * plugin: it can now be compiled as C++
+  * recover PDF documentation, but try to keep it under a resonable size.
+  * Prevent a rare but possible out-of-bounds read in postscript generator
+  * Fix some compiler warnings
+  * Add named color profile building sample to testbed 
+
+-------------------------------------------------------------------
+Wed Aug  5 13:31:44 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 2.11
+  * Fixed __cpuid() on fast float plugin to allow gnu gcc
+  * Fixed copy alpha bounds check
+  * Fixed data race condition on contexts pool
+  * Fixed LUT16 write matrix on multichannel V2 profiles
+- Changes in 2.10
+  * Added a compilation toggle to remove "register" keyword in API. 
+  * Previously commercial, fast_float plug-in is now released as open source
+    under GPL3 license.
+  * MD5 functions are now accesible through plug-in API.
+  * Added support for Visual Studio 2019
+  * Bug fixing.
+- Drop lcms2-cgats-memory-allocation.patch, its now in upstream code
+- Refresh patches
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Oct  3 17:34:41 CEST 2018 - sbrabec@suse.com
+
+- Add check on CGATS memory allocation (bsc1108813, CVE-2018-16435,
+  lcms2-cgats-memory-allocation.patch).
+
+-------------------------------------------------------------------
+Mon Nov 27 22:57:10 UTC 2017 - plinnell@opensuse.org
+
+- Update to 2.9
+- Drop 0001-Added-an-extra-check-to-MLU-bounds.patch, it is now
+  in the upstream code
+  * Bugfix release
+  + Several fixes related with security, and therefore not detailed here.
+  + C++ compiles now without warnings
+  + Added OSX and clang in travis
+  + Added a travis-ci test matrix for many compilers and OS. 
+    Thanks to Thomas Weber (debian) for this great improvement.
+  + testbed can now work with dynamic versions of library 
+  + Fixed wrong planar formatters regarding linestride interpretation
+  
+-------------------------------------------------------------------
+Tue Jan 24 00:47:25 UTC 2017 - plinnell@opensuse.org
+
+- Added 0001-Added-an-extra-check-to-MLU-bounds.patch 
+  * fixes https://bugzilla.suse.com/show_bug.cgi?id=1021364
+
+-------------------------------------------------------------------
+Tue Aug 16 06:09:50 UTC 2016 - plinnell@opensuse.org
+- Update to 2.8
+
+* Fixed many typos in comments, thanks to Stefan Weil for doing that.
+* Fixed localization bug, added a new test case crayons.icc thnaks to Richard Hughes for providing the profile. 
+* Fixed a bug in optimizer that made some formats (i.e, bits planar) unavailable
+* Fixed misalignment problems on Alpha. The compiler does not align strings, and accessing begin of string as a uint16 makes code to fail.
+* Added some extra checks to the tools and examples.
+* Fix a bug that prevented to read luminance tag
+* BIG amount of functionality contributed/Sponsored  by Alien Skin Software: TransformStride, copyAlpha, performance plug-ins. Fixes some warnings as well.
+* added an extra _ to _stdcall to make it more portable
+* Fixed a bug in transicc for named color profiles
+* Fixed several compiler warnings
+* Added support for Visual Studio 2015
+* Fixed for XCODE project
+
+-------------------------------------------------------------------
+Thu Apr 14 11:13:07 UTC 2016 - idonmez@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Fri Jun 26 11:04:33 UTC 2015 - aloisio@gmx.com
+
+- Update to version 2.7
+  * improved multi-threading
+  * added contexts and a new locking plug-in type
+  * bugfixes and other minor features
+- Dropped lcms-endian.patch that was fixed upstream.
+
+-------------------------------------------------------------------
+Fri May 16 06:27:26 UTC 2014 - mailaender@opensuse.org
+
+- Fixed missing dependency pthread
+
+-------------------------------------------------------------------
+Mon Mar 17 16:20:45 UTC 2014 - adrian@suse.de
+
+- update to version 2.6
+  * Fixed a double free in recovering from a previous error in default intent handler.
+  * Fixed some indexing out of bounds in floating point interpolation
+  * Fixed a bug in PCS/Colorspace order when reading V2 Lab devicelinks
+  * Added a way to retrieve matrix shaper always, no matter LUT is present
+  * Changed endianess detection for PowerPC
+  * Fixed memory leaks on error handling
+  * Big revamp on Contexts, from Artifex
+  * New locking plug-in, from Artifex
+  * Added directories for tiff, jpeg in configure script
+  * Fix for delete tag memory corruption
+  * Added pthread dependency. From now lcms supports multithreading
+
+-------------------------------------------------------------------
+Mon Jan  6 06:02:04 UTC 2014 - crrodriguez@opensuse.org
+
+- Correct lcms-endian.patch to rely on autoconf only, no
+  extra arch specific preprocessor hackery.
+
+-------------------------------------------------------------------
+Wed Jul  3 02:42:52 UTC 2013 - mrdocs@opensuse.org
+
+- Update to version 2.5
+  * Maintenance update 
+  + Focused on incorrect path and error handling. 
+    It also updates the black point compensation algorithm 
+    to match the ICC including the new black point compensation algorithm
+    actually being standarized by TC130, ICC and ISO.
+    
+-------------------------------------------------------------------
+Sun Oct 28 18:52:41 UTC 2012 - tittiatcoke@gmail.com
+
+- Update to version 2.4
+  * Featured release
+    + Performance and stability fixes
+    + Black point detection from the algorithm disclosed by Adobe
+    + Added support for transforms on planar data with different 
+      stride
+    + Added a new plug-in type for optimizing full transforms
+    + Linear (gamma 1.0) profiles can now operate in unbounded mode
+    + Added "half" float support
+    + Please see the ChangeLog  file for more details.
+
+-------------------------------------------------------------------
+Sat Dec 17 13:12:55 UTC 2011 - adrian@suse.de
+
+- update to version 2.3
+  * Full support for ICC 4.3
+
+-------------------------------------------------------------------
+Thu Nov 24 02:12:00 UTC 2011 - crrodriguez@opensuse.org
+
+- Open all fds with O_CLOEXEC
+- Use gcc visibility, symbol table shrinks around 50% ...
+
+-------------------------------------------------------------------
+Fri Jun 10 23:36:41 UTC 2011 - mrdocs@opensuse.org
+
+-update to 2.2 
+ *maintenance update
+ +Version  2.2 adds stability.
+ - fixes all known bugs
+ - adds support  for dictionary  metatag. Pascal unit now compiles
+   under FPK Pascal as well as Delphi. 
+
+
+-------------------------------------------------------------------
+Tue Apr 19 00:15:43 CEST 2011 - ro@suse.de
+
+- fix devel package name in baselibs.conf 
+
+-------------------------------------------------------------------
+Sun Dec 26 18:03:50 UTC 2010 - adrian@suse.de
+
+- update to version 2.1
+  * maintenance release (no further details in changelog)
+- remove obsolete patches
+
+-------------------------------------------------------------------
+Wed Nov 10 08:53:50 UTC 2010 - mrdocs@opensuse.org
+
+- build documentation noarch and recompress tar
+
+-------------------------------------------------------------------
+Fri Oct  8 15:11:49 UTC 2010 - mrdocs@opensuse.org
+
+-more spec file cleanups and prepare for factory submit
+-test building against it in my home repo
+
+-------------------------------------------------------------------
+Tue May 18 14:17:45 UTC 2010 - adrian@suse.de
+
+- initial lcms2 package, based on package from version 1
+- use OBS source services to download tar ball
+

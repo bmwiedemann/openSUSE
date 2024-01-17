@@ -1,0 +1,225 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0963fcb741dfbff890854c8230f043f6</srcmd5>
+    <version>0.6.3</version>
+    <time>1380201163</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>199331</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8dddb12ca991284414d7b60c7d92d9f0</srcmd5>
+    <version>0.6.4</version>
+    <time>1380864360</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202035</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fabb0184ba142b9949ff6e8e47beb173</srcmd5>
+    <version>0.7.0</version>
+    <time>1383041052</time>
+    <user>scarabeus_factory</user>
+    <comment>- Don't install global &quot;tests&quot; module into python_sitelib
+
+- update to 0.7.0:
+  * Refactored core.py and increased its unit test coverage to 80%. 
+  HTTPretty is slightly more robust now</comment>
+    <requestid>205011</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0a24bb0fb991be613a8d337f2f23db11</srcmd5>
+    <version>0.7.1</version>
+    <time>1390429889</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.7.1:
+  + Bug fix: POST requests being called twice #100
+- Rebased deps-cleanup.diff</comment>
+    <requestid>214159</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ec444026049547a5174e31a3e58108ad</srcmd5>
+    <version>0.8.0</version>
+    <time>1396538068</time>
+    <user>coolo</user>
+    <comment>- Drop old tarball
+
+- update to 0.8.0:
+  * This new version brings Python 3 support, leaner requirements
+- remove deps-cleanup.diff</comment>
+    <requestid>228847</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>58a0609b011fd97ddcd2ab80780c123d</srcmd5>
+    <version>0.8.3</version>
+    <time>1406836244</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243241</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>58a0609b011fd97ddcd2ab80780c123d</srcmd5>
+    <version>0.8.3</version>
+    <time>1409302890</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>32fc59d14f4da37fdb030c1f30eacf68</srcmd5>
+    <version>0.8.8</version>
+    <time>1429769065</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298510</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>8a23fec9d6f98aaefc6d70c997f1df4f</srcmd5>
+    <version>0.8.8</version>
+    <time>1458228869</time>
+    <user>dimstar_suse</user>
+    <comment>- add copying</comment>
+    <requestid>371250</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b646b787783c40b7f4dd2cc6473d1db0</srcmd5>
+    <version>0.8.14</version>
+    <time>1503392954</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517861</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>de869c5e457c5ec3a28051494aac1fb6</srcmd5>
+    <version>0.8.14</version>
+    <time>1503926301</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518970</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>85e5b5078a98d0d8fd7620e995e09dfc</srcmd5>
+    <version>0.8.14</version>
+    <time>1545647891</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659418</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>835e44e5462c8c2a22447e5722af733d</srcmd5>
+    <version>0.9.6</version>
+    <time>1546946938</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.9.6:
+  * Many fixes all around
+  * Support for python 3.7
+- Make sure we really run the tests</comment>
+    <requestid>663284</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5cb5e8b1155e4f54800e468cd7708633</srcmd5>
+    <version>1.0.2</version>
+    <time>1587325742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792733</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>008fbc8766d1fc4245cd4ed2851d1360</srcmd5>
+    <version>1.0.2</version>
+    <time>1597306405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826033</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>760ff839dbabf8dcc277fd79fd8f6fdb</srcmd5>
+    <version>1.0.2</version>
+    <time>1598351877</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827226</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3a9d468e9b35ed9b1aafa1757269faa9</srcmd5>
+    <version>1.0.3</version>
+    <time>1608112793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855847</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3c0d74d01afa7039c48d840926ed057e</srcmd5>
+    <version>1.0.5</version>
+    <time>1617034870</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>880621</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8a23abaf8e0cfcdb7ce9afbcc2d62bfc</srcmd5>
+    <version>1.1.4</version>
+    <time>1647367426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961644</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>d938e7ed26761c695c034833cbefc395</srcmd5>
+    <version>1.1.4</version>
+    <time>1651856293</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-mock.patch:
+  * Use unittest.mock in the functional tests.</comment>
+    <requestid>975077</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>acfa60beec4a6355d988e7b3fff2141e</srcmd5>
+    <version>1.1.4</version>
+    <time>1660144347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993919</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>f848d770c15505223a128e765bb7b69d</srcmd5>
+    <version>1.1.4</version>
+    <time>1666978171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031602</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>663c287732eb881b8df3e50767fdd828</srcmd5>
+    <version>1.1.4</version>
+    <time>1680290049</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch relax-test-callback-response.patch:
+  * Relax timeout for test_callback_response (bsc#1209571)</comment>
+    <requestid>1075359</requestid>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>ff19183e69aa27784e1c910da3a68e8a</srcmd5>
+    <version>1.1.4</version>
+    <time>1684490124</time>
+    <user>dimstar_suse</user>
+    <comment>- skip failing testsuite tests after requests update</comment>
+    <requestid>1087345</requestid>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>6708dd7c26a466d054d7bbf77849ea8b</srcmd5>
+    <version>1.1.4</version>
+    <time>1686927117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093061</requestid>
+  </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>c07a2efe2dddf42d70547e8f9cb49cbe</srcmd5>
+    <version>1.1.4</version>
+    <time>1704491917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1135867</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Thu Sep  7 08:43:58 CEST 2017 - pth@suse.de
+
+- Add cxref-new_float_types.patch from upstream to add new float types.
+
+-------------------------------------------------------------------
+Wed Sep  6 10:23:06 CEST 2017 - pth@suse.de
+
+- Add allow_redirect_of_cxref_cpp_configure_output_in_postinst.patch from
+  Debian.
+
+-------------------------------------------------------------------
+Fri May 22 18:45:31 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.6e
+  * see ChangeLog for details
+- Cleanup spec file with spec-clener
+- Use url for source
+- Add gpg signature
+- Update project url
+
+-------------------------------------------------------------------
+Tue Nov 27 18:03:04 CET 2012 - pth@suse.de
+
+- Repackage as tar.bz2 so that it can build on older distibutions.
+
+-------------------------------------------------------------------
+Fri Jul  6 13:36:16 CEST 2012 - pth@suse.de
+
+- Update to 1.6d:
+  Bug fixes
+    Updated for latest version of autoconf.
+    Allow structure initialisers to have multiple components
+    (e.g. a.b=1).
+    Remove gcc warning messages.
+    Change Makefile for better comptibility with FreeBSD.
+- Explicit require automake, autoconf and libtool.
+- Repackage as tar.xz.
+
+-------------------------------------------------------------------
+Tue Jan 11 06:42:46 UTC 2011 - pth@novell.com
+
+- Initial package
+
+

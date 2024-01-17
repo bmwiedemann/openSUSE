@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Tue Apr 11 08:24:24 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use skip_pythonX instead of redefining pythons to explicit
+  versions: python38 is not supported in all distros anymore (e.g
+  Tumbleweed). So rather define for what distro flavors we do not
+  need to be built fot.
+
+-------------------------------------------------------------------
+Tue Mar 21 11:13:49 UTC 2023 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/plotly/plotly.py/commit/c3fb1a575f009057111f0a7d149861fda2c59129
+  + python-chart-studio-no-six.patch
+
+-------------------------------------------------------------------
+Wed Jul  8 10:49:25 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.1.0
+  * The default URLs have been changed from plot.ly to plotly.com 
+    to match the changes to Chart Studio Cloud.
+
+-------------------------------------------------------------------
+Fri Dec  6 18:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Disable python2 support since dependencies dropped python2
+
+-------------------------------------------------------------------
+Thu Jul 25 17:10:05 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

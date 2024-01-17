@@ -1,0 +1,6 @@
+<package name="touchegg" project="openSUSE:Factory">
+  <title>A multitouch gesture recogniser for GNU/Linux</title>
+  <description>Touchegg is a multitouch gesture recogniser for GNU/Linux that allows associating actions to each gesture.
+Written in C++ with Qt4 and geis library.</description>
+  <devel project="X11:Unity" package="touchegg"/>
+</package>

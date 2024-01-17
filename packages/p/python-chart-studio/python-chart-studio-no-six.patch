@@ -1,0 +1,379 @@
+Index: chart-studio-1.1.0/chart_studio/plotly/chunked_requests/chunked_request.py
+===================================================================
+--- chart-studio-1.1.0.orig/chart_studio/plotly/chunked_requests/chunked_request.py
++++ chart-studio-1.1.0/chart_studio/plotly/chunked_requests/chunked_request.py
+@@ -1,10 +1,10 @@
+-import time
+-import six
++import http.client
+ import os
+ import ssl
++import time
++from io import StringIO
+ 
+-from six.moves import http_client
+-from six.moves.urllib.parse import urlparse, unquote
++from urllib.parse import urlparse, unquote
+ 
+ from chart_studio.api import utils
+ 
+@@ -50,12 +50,12 @@ class Stream:
+             # Reconnect depending on the status code.
+             if (response == "" and "" in reconnect_on) or (
+                 response
+-                and isinstance(response, http_client.HTTPResponse)
++                and isinstance(response, http.client.HTTPResponse)
+                 and response.status in reconnect_on
+             ):
+                 self._reconnect()
+ 
+-            elif response and isinstance(response, http_client.HTTPResponse):
++            elif response and isinstance(response, http.client.HTTPResponse):
+                 # If an HTTPResponse was recieved then
+                 # make the users aware instead of
+                 # auto-reconnecting in case the
+@@ -85,7 +85,7 @@ class Stream:
+                 "{msglen}\r\n{msg}\r\n".format(msglen=msglen, msg=msg).encode("utf-8")
+             )
+             self._conn.sock.setblocking(0)
+-        except http_client.socket.error:
++        except http.client.socket.error:
+             self._reconnect()
+             self.write(data)
+ 
+@@ -152,11 +152,11 @@ class Stream:
+         if proxy_server and proxy_port:
+             if ssl_enabled:
+                 context = self._get_ssl_context()
+-                self._conn = http_client.HTTPSConnection(
++                self._conn = http.client.HTTPSConnection(
+                     proxy_server, proxy_port, context=context
+                 )
+             else:
+-                self._conn = http_client.HTTPConnection(proxy_server, proxy_port)
++                self._conn = http.client.HTTPConnection(proxy_server, proxy_port)
+ 
+             tunnel_headers = None
+             if proxy_auth:
+@@ -166,9 +166,9 @@ class Stream:
+         else:
+             if ssl_enabled:
+                 context = self._get_ssl_context()
+-                self._conn = http_client.HTTPSConnection(server, port, context=context)
++                self._conn = http.client.HTTPSConnection(server, port, context=context)
+             else:
+-                self._conn = http_client.HTTPConnection(server, port)
++                self._conn = http.client.HTTPConnection(server, port)
+ 
+         self._conn.putrequest("POST", self._url)
+         self._conn.putheader("Transfer-Encoding", "chunked")
+@@ -179,14 +179,14 @@ class Stream:
+         # Set blocking to False prevents recv
+         # from blocking while waiting for a response.
+         self._conn.sock.setblocking(False)
+-        self._bytes = six.b("")
++        self._bytes = b""
+         self._reset_retries()
+         time.sleep(0.5)
+ 
+     def close(self):
+         """ Close the connection to server.
+ 
+-        If available, return a http_client.HTTPResponse object.
++        If available, return a http.client.HTTPResponse object.
+ 
+         Closing the connection involves sending the
+         Transfer-Encoding terminating bytes.
+@@ -199,7 +199,7 @@ class Stream:
+         # require an extra \r\n.
+         try:
+             self._conn.send("\r\n0\r\n\r\n".encode("utf-8"))
+-        except http_client.socket.error:
++        except http.client.socket.error:
+             # In case the socket has already been closed
+             return ""
+ 
+@@ -219,28 +219,28 @@ class Stream:
+         while True:
+             try:
+                 _bytes = self._conn.sock.recv(1)
+-            except http_client.socket.error:
++            except http.client.socket.error:
+                 # For error 54: Connection reset by peer
+                 # (and perhaps others)
+-                return six.b("")
+-            if _bytes == six.b(""):
++                return b""
++            if _bytes == b"":
+                 break
+             else:
+                 response += _bytes
+         # Set recv to be non-blocking again
+         self._conn.sock.setblocking(False)
+ 
+-        # Convert the response string to a http_client.HTTPResponse
++        # Convert the response string to a http.client.HTTPResponse
+         # object with a bit of a hack
+-        if response != six.b(""):
++        if response != b"":
+             # Taken from
+             # http://pythonwise.blogspot.ca/2010/02/parse-http-response.html
+             try:
+-                response = http_client.HTTPResponse(_FakeSocket(response))
++                response = http.client.HTTPResponse(_FakeSocket(response))
+                 response.begin()
+             except:
+                 # Bad headers ... etc.
+-                response = six.b("")
++                response = b""
+         return response
+ 
+     def _isconnected(self):
+@@ -268,10 +268,10 @@ class Stream:
+             # 3 - Check if the server has returned any data.
+             # If they have, then start to store the response
+             # in _bytes.
+-            self._bytes = six.b("")
++            self._bytes = b""
+             self._bytes = self._conn.sock.recv(1)
+             return False
+-        except http_client.socket.error as e:
++        except http.client.socket.error as e:
+             # Check why recv failed
+             # Windows machines are the error codes
+             # that start with 1
+@@ -320,7 +320,7 @@ class Stream:
+         if not self._isconnected():
+             try:
+                 self._connect()
+-            except http_client.socket.error as e:
++            except http.client.socket.error as e:
+                 # Attempt to reconnect if the connection was refused
+                 if e.errno == 61 or e.errno == 10061:
+                     # errno 61 is the "Connection Refused" error
+@@ -346,8 +346,8 @@ class Stream:
+         self._delay = 1
+ 
+ 
+-class _FakeSocket(six.StringIO):
+-    # Used to construct a http_client.HTTPResponse object
++class _FakeSocket(StringIO):
++    # Used to construct a http.client.HTTPResponse object
+     # from a string.
+     # Thx to: http://pythonwise.blogspot.ca/2010/02/parse-http-response.html
+     def makefile(self, *args, **kwargs):
+Index: chart-studio-1.1.0/chart_studio/plotly/plotly.py
+===================================================================
+--- chart-studio-1.1.0.orig/chart_studio/plotly/plotly.py
++++ chart-studio-1.1.0/chart_studio/plotly/plotly.py
+@@ -21,11 +21,10 @@ import copy
+ import json
+ import os
+ import time
++import urllib
+ import warnings
+ import webbrowser
+ 
+-import six
+-import six.moves
+ import json as _json
+ 
+ import _plotly_utils.utils
+@@ -513,8 +512,6 @@ def get_figure(file_owner_or_url, file_i
+     fid = "{}:{}".format(file_owner, file_id)
+     response = v2.plots.content(fid, inline_data=True)
+     figure = response.json()
+-    if six.PY2:
+-        figure = byteify(figure)
+     # Fix 'histogramx', 'histogramy', and 'bardir' stuff
+     for index, entry in enumerate(figure["data"]):
+         try:
+@@ -620,7 +617,7 @@ class Stream:
+ 
+         # If no scheme (https/https) is included in the streaming_url, the
+         # host will be None. Use streaming_url in this case.
+-        host = six.moves.urllib.parse.urlparse(streaming_url).hostname or streaming_url
++        host = urllib.parse.urlparse(streaming_url).hostname or streaming_url
+ 
+         headers = {"Host": host, "plotly-streamtoken": self.stream_id}
+         streaming_specs = {
+@@ -1380,7 +1377,7 @@ def parse_grid_id_args(grid, grid_url):
+     else:
+         supplied_arg_name = supplied_arg_names.pop()
+         if supplied_arg_name == "grid_url":
+-            path = six.moves.urllib.parse.urlparse(grid_url).path
++            path = urllib.parse.urlparse(grid_url).path
+             file_owner, file_id = path.replace("/~", "").split("/")[0:2]
+             return "{0}:{1}".format(file_owner, file_id)
+         else:
+@@ -1392,7 +1389,7 @@ def add_share_key_to_url(plot_url, attem
+     Check that share key is enabled and update url to include the secret key
+ 
+     """
+-    urlsplit = six.moves.urllib.parse.urlparse(plot_url)
++    urlsplit = urllib.parse.urlparse(plot_url)
+     username = urlsplit.path.split("/")[1].split("~")[1]
+     idlocal = urlsplit.path.split("/")[2]
+     fid = "{}:{}".format(username, idlocal)
+Index: chart-studio-1.1.0/chart_studio/session.py
+===================================================================
+--- chart-studio-1.1.0.orig/chart_studio/session.py
++++ chart-studio-1.1.0/chart_studio/session.py
+@@ -9,39 +9,37 @@ from __future__ import absolute_import
+ 
+ import copy
+ 
+-import six
+-
+ import _plotly_utils.exceptions
+ 
+ 
+ _session = {"credentials": {}, "config": {}, "plot_options": {}}
+ 
+ CREDENTIALS_KEYS = {
+-    "username": six.string_types,
+-    "api_key": six.string_types,
+-    "proxy_username": six.string_types,
+-    "proxy_password": six.string_types,
++    "username": str,
++    "api_key": str,
++    "proxy_username": str,
++    "proxy_password": str,
+     "stream_ids": list,
+ }
+ 
+ CONFIG_KEYS = {
+-    "plotly_domain": six.string_types,
+-    "plotly_streaming_domain": six.string_types,
+-    "plotly_api_domain": six.string_types,
++    "plotly_domain": str,
++    "plotly_streaming_domain": str,
++    "plotly_api_domain": str,
+     "plotly_ssl_verification": bool,
+     "plotly_proxy_authorization": bool,
+     "world_readable": bool,
+     "auto_open": bool,
+-    "sharing": six.string_types,
++    "sharing": str,
+ }
+ 
+ PLOT_OPTIONS = {
+-    "filename": six.string_types,
+-    "fileopt": six.string_types,
++    "filename": str,
++    "fileopt": str,
+     "validate": bool,
+     "world_readable": bool,
+     "auto_open": bool,
+-    "sharing": six.string_types,
++    "sharing": str,
+ }
+ 
+ SHARING_OPTIONS = ["public", "private", "secret"]
+Index: chart-studio-1.1.0/chart_studio/tools.py
+===================================================================
+--- chart-studio-1.1.0.orig/chart_studio/tools.py
++++ chart-studio-1.1.0/chart_studio/tools.py
+@@ -9,9 +9,9 @@ Functions that USERS will possibly want
+ """
+ from __future__ import absolute_import
+ 
++import urllib
+ import warnings
+ 
+-import six
+ import copy
+ 
+ from _plotly_utils import optional_imports
+@@ -102,13 +102,13 @@ def set_credentials_file(
+         )
+     ensure_local_plotly_files()  # make sure what's there is OK
+     credentials = get_credentials_file()
+-    if isinstance(username, six.string_types):
++    if isinstance(username, str):
+         credentials["username"] = username
+-    if isinstance(api_key, six.string_types):
++    if isinstance(api_key, str):
+         credentials["api_key"] = api_key
+-    if isinstance(proxy_username, six.string_types):
++    if isinstance(proxy_username, str):
+         credentials["proxy_username"] = proxy_username
+-    if isinstance(proxy_password, six.string_types):
++    if isinstance(proxy_password, str):
+         credentials["proxy_password"] = proxy_password
+     if isinstance(stream_ids, (list, tuple)):
+         credentials["stream_ids"] = stream_ids
+@@ -173,23 +173,23 @@ def set_config_file(
+     )
+ 
+     settings = get_config_file()
+-    if isinstance(plotly_domain, six.string_types):
++    if isinstance(plotly_domain, str):
+         settings["plotly_domain"] = plotly_domain
+     elif plotly_domain is not None:
+         raise TypeError("plotly_domain should be a string")
+-    if isinstance(plotly_streaming_domain, six.string_types):
++    if isinstance(plotly_streaming_domain, str):
+         settings["plotly_streaming_domain"] = plotly_streaming_domain
+     elif plotly_streaming_domain is not None:
+         raise TypeError("plotly_streaming_domain should be a string")
+-    if isinstance(plotly_api_domain, six.string_types):
++    if isinstance(plotly_api_domain, str):
+         settings["plotly_api_domain"] = plotly_api_domain
+     elif plotly_api_domain is not None:
+         raise TypeError("plotly_api_domain should be a string")
+-    if isinstance(plotly_ssl_verification, (six.string_types, bool)):
++    if isinstance(plotly_ssl_verification, (str, bool)):
+         settings["plotly_ssl_verification"] = plotly_ssl_verification
+     elif plotly_ssl_verification is not None:
+         raise TypeError("plotly_ssl_verification should be a boolean")
+-    if isinstance(plotly_proxy_authorization, (six.string_types, bool)):
++    if isinstance(plotly_proxy_authorization, (str, bool)):
+         settings["plotly_proxy_authorization"] = plotly_proxy_authorization
+     elif plotly_proxy_authorization is not None:
+         raise TypeError("plotly_proxy_authorization should be a boolean")
+@@ -208,7 +208,7 @@ def set_config_file(
+         settings.pop("sharing")
+     elif world_readable is not None:
+         raise TypeError("Input should be a boolean")
+-    if isinstance(sharing, six.string_types):
++    if isinstance(sharing, str):
+         settings["sharing"] = sharing
+     elif sharing is not None:
+         raise TypeError("sharing should be a string")
+@@ -260,12 +260,12 @@ def _get_embed_url(file_owner_or_url, fi
+                 "\nRun help on this function for more information."
+                 "".format(url, plotly_rest_url)
+             )
+-        urlsplit = six.moves.urllib.parse.urlparse(url)
++        urlsplit = urllib.parse.urlparse(url)
+         file_owner = urlsplit.path.split("/")[1].split("~")[1]
+         file_id = urlsplit.path.split("/")[2]
+ 
+         # to check for share_key we check urlsplit.query
+-        query_dict = six.moves.urllib.parse.parse_qs(urlsplit.query)
++        query_dict = urllib.parse.parse_qs(urlsplit.query)
+         if query_dict:
+             share_key = query_dict["share_key"][-1]
+         else:
+Index: chart-studio-1.1.0/setup.py
+===================================================================
+--- chart-studio-1.1.0.orig/setup.py
++++ chart-studio-1.1.0/setup.py
+@@ -41,6 +41,6 @@ setup(
+         "chart_studio.plotly.chunked_requests",
+         "chart_studio.presentation_objs",
+     ],
+-    install_requires=["plotly", "requests", "retrying>=1.3.3", "six"],
++    install_requires=["plotly", "requests", "retrying>=1.3.3"],
+     zip_safe=False,
+ )
+Index: chart-studio-1.1.0/chart_studio.egg-info/requires.txt
+===================================================================
+--- chart-studio-1.1.0.orig/chart_studio.egg-info/requires.txt
++++ chart-studio-1.1.0/chart_studio.egg-info/requires.txt
+@@ -1,4 +1,3 @@
+ plotly
+ requests
+ retrying>=1.3.3
+-six

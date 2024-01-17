@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>509eb46db434f4f3e9b2e9e9fdfaa96d</srcmd5>
+    <version>1.7.1</version>
+    <time>1598642463</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain rustscan in Factory</comment>
+    <requestid>828658</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a4dbe2bb21e2047794bf2b3e765a718a</srcmd5>
+    <version>1.8.0</version>
+    <time>1599598240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832931</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a6072f463a171a85ddd9f080a668f22e</srcmd5>
+    <version>1.10.0</version>
+    <time>1603545416</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839311</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5396030e61b35cf72b3b1fd83cbee14e</srcmd5>
+    <version>2.0.1</version>
+    <time>1605124046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847588</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8990e8c3eae951dd365edfd772807fc3</srcmd5>
+    <version>2.0.1</version>
+    <time>1636319352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929993</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>70f98cfb12667522f6e3ecfecb124e2d</srcmd5>
+    <version>2.0.1+0</version>
+    <time>1641556358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944724</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>15fa9ba817b5aacdc0a6b62333749cfb</srcmd5>
+    <version>2.0.1+0</version>
+    <time>1653417223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979018</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f9999fc01416d3c418c841296eed3195</srcmd5>
+    <version>2.0.1+0</version>
+    <time>1656865620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986445</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>81ecda02dc73f8fe1e070ca764e5a732</srcmd5>
+    <version>2.1.1+0</version>
+    <time>1670162324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039890</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1c6a1caaa662a4f23e0001ac0fe6d36d</srcmd5>
+    <version>2.1.1+0</version>
+    <time>1686927305</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093334</requestid>
+  </revision>
+</revisionlist>

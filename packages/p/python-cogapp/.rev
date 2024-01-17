@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bdf9d3074c6e5fdd38a417a8181a2dc0</srcmd5>
+    <version>2.5.1</version>
+    <time>1493455965</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by recent versions of python-paver</comment>
+    <requestid>488042</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dd346ea32adbb02bfcb4a6ec7f4881de</srcmd5>
+    <version>2.5.1</version>
+    <time>1544726487</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653978</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>36f081abeca6ae66437295ba13b51fba</srcmd5>
+    <version>3.0.0</version>
+    <time>1554749580</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0:
+  * Use pytest for testing
+  * Many many changes in git but no readable changelog</comment>
+    <requestid>691785</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9f5b7b17b37997ca0daa28f683308429</srcmd5>
+    <version>3.0.0</version>
+    <time>1620840674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891392</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b54e20874bd3e6dc010833626020bca2</srcmd5>
+    <version>3.3.0</version>
+    <time>1664302444</time>
+    <user>RBrownFactory</user>
+    <comment>- Remove not needed patch in prep section 
+- Change preun to postun to run python_uninstall_alternatives to remove rpmlint
+  errors
+
+- Update to 3.3.0:
+  Added the --check option to check whether files would change if run again, for use in continuous integration scenarios.
+- Update to 3.2.0:
+  Added the -P option to use print() instead of cog.outl() for code output.
+- Update to 3.1.0: 
+  * Fix a problem with Python 3.8.10 and 3.9.5 that require absolute paths in sys.path
+    https://github.com/nedbat/cog/issues/16
+    Python 3.9 and 3.10 are supported.</comment>
+    <requestid>1006330</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>03bb8c14c50098e570c07479e1be26c5</srcmd5>
+    <version>3.3.0</version>
+    <time>1685393278</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68)
+- Use pyproject to build the package
+</comment>
+    <requestid>1089565</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>79784aa4c6109d32e7b77fd45787f3f0</srcmd5>
+    <version>3.3.0</version>
+    <time>1701902962</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1130996 from jtorres
+
+- Add .py suffix to avoid conflicts with the cog browser package.</comment>
+    <requestid>1131360</requestid>
+  </revision>
+</revisionlist>

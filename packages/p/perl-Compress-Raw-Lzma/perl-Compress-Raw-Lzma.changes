@@ -1,0 +1,405 @@
+-------------------------------------------------------------------
+Wed Jul 26 03:07:05 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.206
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.206 25July 2023
+      * 2.206
+        Tue, 25 Jul 2023 16:24:23 +0100
+        e4ceaeac2d96b3c1cf0830549c857a5909778e35
+      * Add instructions to deal with build failure on Ubuntu/Debian
+        https://github.com/pmqs/Compress-Raw-Lzma/issues/7
+        Tue, 18 Jul 2023 09:17:53 +0100
+        b2d20bb04a940f29e743b83396253794cde33a2d
+    2.205 16 July 2023
+      * 2.205
+        Sun, 16 Jul 2023 16:27:25 +0100
+        0a62359512bc744b92b2ab5006cda4fb11288e91
+      * Test::More isn't warns in Perl 5.38
+        Sun, 9 Jul 2023 22:14:20 +0100
+        b1618e085c274c8c60256cb0517bbf86ea790007
+      * perl 5.38
+        Sun, 9 Jul 2023 22:13:15 +0100
+        e590230d24b6b4e5bac7056d143cd1fff6e45481
+      * add on workflow_dispatch
+        Fri, 9 Jun 2023 16:33:15 +0100
+        7839cc6e574f400ed58e89f8944f4e5c2b960a98
+      * update action/checkout version
+        Wed, 8 Feb 2023 22:30:51 +0000
+        419479d0974fa40a9a91d0f47c433a8196896893
+
+-------------------------------------------------------------------
+Thu Feb  9 03:06:48 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.204
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.204 8 February 2023
+
+      * Use GIMME_V instead of GIMME
+        54e3c1e18b61f0892056925240bbc80f76e2f038
+
+-------------------------------------------------------------------
+Sun Jun 26 03:06:52 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.201
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.201 25 June 2022
+
+        * 2.201
+          Sat Jun 25 09:50:04 2022 +0100
+          367f6414d5eb54e5f0d1d07ceb1c909ce5ac84d8
+
+-------------------------------------------------------------------
+Wed Apr 13 19:15:03 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- separate BuildRequires
+
+-------------------------------------------------------------------
+Wed Apr  6 03:07:49 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.103 3 April 2022
+        * No changes
+
+-------------------------------------------------------------------
+Sun Feb 21 03:07:38 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.101
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.101 20 February 2021
+
+        * fix version numbers in meta files
+
+-------------------------------------------------------------------
+Fri Jan  8 03:06:56 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.100
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.100 7 January 2021
+
+        * Expose liblzma's 'preset_dict' feature
+          https://github.com/pmqs/Compress-Raw-Lzma/pull/6
+          4d9d4e596c4f567c87626a827e39c4435e62472d fix typo
+          dc394d53b0575edf8f72e28829a2ff9faea7e729 Add t/10preset_dict.t
+          c5afb68e2a3a4b2fc4e548ffa61d2a3a383b5c96 Add cast to deRef
+          32f9085aba510c4d99d4a374406e734b13b82eef fix minor typos
+          55b8d6a6f65a1d6426c55f5b51aefdba6dabfbb3 fix merge issue
+          9eb88de7abaaefe736d475260c73de525e7ae39f Merge branch 'master' of https://github.com/pmqs/Compress-Raw-Lzma
+          3432a769b283ac5dc9fd757e973cc8aefc1e2345 Merge pull request #6 from anall/wip/preset_dictionary
+          68fe695c16b14a983f39c8c8567557148bbc43ca Expose the preset_dict feature from liblzma when creating a Lzma filter
+
+        * trim whitespace
+          4ca252f1e1d740489dbd3736ab1f74e1492dff6d
+
+-------------------------------------------------------------------
+Sat Aug  1 03:08:57 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.096
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.096 31 July 2020
+        * No changes
+    2.095 19 July 2020
+        * No changes
+
+-------------------------------------------------------------------
+Tue Jul 14 03:08:58 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.094
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.094 13 July 2020
+
+        * Issue with Append mode & SvOOK
+          Issue https://github.com/pmqs/Compress-Raw-Lzma/issues/4
+          10fbd83afbf02b255bfac79fc38f6b507bc93b4e
+
+-------------------------------------------------------------------
+Sun Dec  8 03:15:19 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.093
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.093 7 December 2019
+  
+        * Lzma.xs -- add allocator to lzma_properties_decode
+          Fixes chach on Windows.
+          Issue https://github.com/pmqs/Compress-Raw-Lzma/issues/2
+          155b1730163301f59260316b2c011ec41ff4e378
+
+-------------------------------------------------------------------
+Mon Dec  2 03:07:29 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.092
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.092 1 December 2019
+  
+        * use lzma_llocator
+          Issue https://github.com/pmqs/Compress-Raw-Lzma/issues/2
+          2cf13f99ef6ce862b138f83f6d3d9597d59106b9
+
+-------------------------------------------------------------------
+Mon Nov 25 11:45:56 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.091
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.091 23 November 2019
+  
+        * More updates for memory leak in raw_decoder
+          Issue https://github.com/pmqs/Compress-Raw-Lzma/issues/1
+          08e80080b0d94e17eb1e9ceed589b145cdaf8495
+          ac9b6e5c9c6966a40d1a6caf2f2c6dc021ed50d9
+  
+        * Silence compiler warning
+          https://github.com/pmqs/Compress-Raw-Lzma/issues/1
+          c496f8716b3651cab2753cf90a3aa47a7ce0a339
+
+-------------------------------------------------------------------
+Sun Nov 10 10:02:21 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.090
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.090 9 November 2019
+  
+        * Memory leak in raw_decoder
+          Issue https://github.com/pmqs/Compress-Raw-Lzma/issues/1
+          05c0eac3ab1edd05e5bc945463af004dcbc88c00
+          b020045e17a7ab7338c010f5100ec63e8e8e9040
+
+-------------------------------------------------------------------
+Mon Nov  4 11:11:47 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.089
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.089 3 November 2019
+  
+        * No Changes
+    
+    2.088 31 October 2019
+  
+        * Add SUPPPORT section
+          11a43c1b8053a0502d7a89bcfeb62f8fe5da7f14
+
+-------------------------------------------------------------------
+Sun Aug 11 05:04:30 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.087
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+-------------------------------------------------------------------
+Wed Apr  3 06:48:34 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.086
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.086 31 March 2019
+  
+        * Moved source to github https://github.com/pmqs/Compress-Raw-Lzma
+  
+        * Add META_MERGE to Makefile.PL
+  
+        * Added meta-json.t & meta-yaml.t
+
+-------------------------------------------------------------------
+Wed Jan 16 06:05:00 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.085
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.085 12 January 2019
+  
+        * t/050interop-xz.t
+        Test harness can use a lot of memory. 
+        On systems with small memory t/050interop-xz.t can fail.
+        Free memory before invoking xz.
+        [rt.cpan.org #128194]  may fail (memory leak?)
+
+-------------------------------------------------------------------
+Mon Jan  7 06:03:32 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.084
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.084 5 January 2019
+  
+        * No Changes
+
+-------------------------------------------------------------------
+Mon Dec 31 06:04:06 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.083
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.083 30 December 2018
+  
+        * No Changes
+
+-------------------------------------------------------------------
+Sat Apr 21 05:06:15 UTC 2018 - coolo@suse.com
+
+- updated to 2.082
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.082 15 April 2018
+        * README
+          Document clash with older version of liblzma
+          #125046: Undefined symbol "lzma_properties_size"
+  
+        * Lzma.pm
+          #125093: [PATCH] fix spelling mistakes: defaut -> default
+
+-------------------------------------------------------------------
+Wed Apr 11 05:07:02 UTC 2018 - coolo@suse.com
+
+- updated to 2.081
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.081 4 April 2018
+  
+        * previous release used $^W instead of use warnings. Fixed.
+
+-------------------------------------------------------------------
+Wed Apr  4 05:08:24 UTC 2018 - coolo@suse.com
+
+- updated to 2.080
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.080 2 April 2018
+  
+        * No Changes
+
+-------------------------------------------------------------------
+Mon Jul 10 13:43:44 UTC 2017 - coolo@suse.com
+
+- updated to 2.074
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.074 18 Feb 2017
+  
+        * Lzma.xs
+          Comment out unused variables & remove C++-ism
+          #120272: [PATCH] Unbreak compilation
+  
+        * Make failure when LZMA_VERSION != lzma_version_number more excplicit
+  
+        * Added interface to LZMA_VERSION and LZMA_VERSION_STRING
+  
+    2.072 4 Feb 2017
+        * Makefile.PL
+          #120084: Need Fix for Makefile.PL depending on . in @INC
+  
+        * #105460: use of Compress::Raw::Lzma::RawDecoder fails with large amount of data
+          AppendOutput for "encode" methods said default was 1. It is actually.
+  
+    2.070 28 Dec 2016
+  
+        * #119207: Compress-Raw-Lzma-2.069 bug report
+  
+    2.069 26 Sep 2015
+  
+        * No Changes
+
+-------------------------------------------------------------------
+Wed Dec 24 15:27:20 UTC 2014 - jnweiger@gmail.com
+
+- update to 2.068 23 Dec 2014
+      * No Changes
+
+- 2.064 1 February 2014
+      * [PATCH] Handle non-PVs better [#91558]
+
+-------------------------------------------------------------------
+Sun Dec  1 22:43:54 UTC 2013 - jw@suse.com
+
+- Update to 2.062, since 2.052 fails on 13.1 with 
+   t/01llzma-generic.t at line 487
+    [   61s] #          got: 'Appended$&A*̓5KH=*5$Appended'
+    [   61s] #     expected: 'Appended'
+   and many other fatal errors.
+- 2.062 11 August 2013 * fix typos [RT #86418]
+- 2.061 19 May 2013 * silence compiler warning by making 2nd parameter to DispStream a const char*
+- 2.060 7 January 2013 * No Changes
+- 2.059 24 November 2012 * Copy-on-write support
+- 2.058 12 November 2012 * No Changes
+- 2.057 10 November 2012
+     * update to ppport.h that includes SvPV_nomg_nolen
+     * added PERL_NO_GET_CONTEXT
+- 2.055 5 August 2012 * Fix misuse of magic in API
+
+-------------------------------------------------------------------
+Mon Jun 25 11:20:46 UTC 2012 - chris@computersalat.de
+
+- update to 2.052
+      * Fixed to allow building with C++
+- 2.049 17 February 2012
+      * README wasn't included in the distribution.
+- 2.047 28 January 2012
+      * Set minimum Perl version to 5.6
+- 2.045 3 December 2011
+      * Moved FAQ.pod to IO::Compress
+- 2.044 2 December 2011
+      * Moved FAQ.pod under the lib directory so it can get installed
+- 2.039 28 October 2011
+      * croak if attempt to freeze/thaw compression object
+        [RT #69985]
+- 2.036 18 June 2011
+      * A number of changes to facilitate adding LZMA support to
+        IO::Compress::Zip & IO::Uncompress::Unzip
+          * Added preset filters Lzma::Filter::Lzma1::Preset & 
+            Lzma::Filter::Lzma2::Preset
+          * Added forZip option to Compress::Raw::Lzma::Encoder
+          * Added properties option to Compress::Raw::Lzma::RawDecoder
+- update license to spdx format
+
+-------------------------------------------------------------------
+Tue May 31 14:33:40 UTC 2011 - coolo@novell.com
+
+- updated to 2.035
+   code name "No Changes"
+
+-------------------------------------------------------------------
+Sat Apr 16 08:14:17 UTC 2011 - coolo@opensuse.org
+
+- updated to 2.033
+   * Changed default MemLimit from 128Meg to unlimited.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:06 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Nov  9 08:53:52 UTC 2010 - coolo@novell.com
+
+- update to 2.031
+  * build with xz 5.0
+
+-------------------------------------------------------------------
+Tue Sep 21 20:35:49 UTC 2010 - jw@novell.com
+
+- testsuite recommends xz
+
+-------------------------------------------------------------------
+Tue Sep 21 19:07:51 UTC 2010 - jw@novell.com
+
+- update to 2.030
+  * no visible changes
+  * created by cpanspec 1.78.02
+
+-------------------------------------------------------------------
+Mon Sep 13 22:26:28 UTC 2010 - jw@novell.com
+
+- use xz-devel instead of lzma-devel
+
+-------------------------------------------------------------------
+Wed Jun 30 23:30:43 UTC 2010 - jw@novell.com
+
+- initial version 2.029 needed by perl-IO-Compress-Lzma

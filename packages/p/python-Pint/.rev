@@ -1,0 +1,246 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f7f502381fa334d4bef9d8f1ddba450c</srcmd5>
+    <version>0.6</version>
+    <time>1461855223</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>389379</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5ab87a25a4ba9689f5fa5f3b88484294</srcmd5>
+    <version>0.7.2</version>
+    <time>1465336161</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400231</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bcc84bd3050cc6de90ca09eea70a67bd</srcmd5>
+    <version>0.8.1</version>
+    <time>1503999838</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518563</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f0a2979d5360189b316ea85132f95d3a</srcmd5>
+    <version>0.9</version>
+    <time>1554115156</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix funcsigs dependency
+- Remove unused devel package dep
+- Remove test bconds
+
+- Update to version 0.9:
+  - Add support for registering with matplotlib’s unit handling
+    (gh#hgrecco/pint#317, thanks dopplershift)
+  - Add converters for matplotlib’s unit support.
+    (gh#hgrecco/pint#317, thanks Ryan May)
+  - Fix unwanted side effects in auto dimensionality reduction.
+    (gh#hgrecco/pint#516, thanks Ben Loer)
+  - Allow dimensionality check for non Quantity arguments.
+  - Make Quantity and UnitContainer objects hashable.
+    (gh#hgrecco/pint#286, thanks Nevada Sanchez)
+  - Fix unit tests errors with numpy &gt;=1.13.
+    (gh#hgrecco/pint#577, thanks cpascual)
+  - Avoid error in in-place exponentiation with numpy &gt; 1.11.
+    (gh#hgrecco/pint#577, thanks cpascual)
+  - fix compatible units in context. (thanks enrico)
+  - Added warning for unsupported ufunc. (gh#hgrecco/pint#626,
+    thanks kanhua)
+  - Improve IPython pretty printers. (gh#hgrecco/pint#590, thanks
+    tecki)
+  - Drop Support for Python 2.6, 3.0, 3.1 and 3.2.
+    (gh#hgrecco/pint#567)
+  - Prepare for deprecation announced in Python 3.7
+    (gh#hgrecco/pint#747, thanks Simon Willison)
+  - Added several new units and Systems (gh#hgrecco/pint#749,
+    gh#hgrecco/pint#737)
+  - Started experimental pandas support (gh#hgrecco/pint#746 and</comment>
+    <requestid>690080</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c498377e282d40fd24655d6e0f279eb6</srcmd5>
+    <version>0.10.1</version>
+    <time>1580724767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768794</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5f4a23ea4d702f3b75480c1cd7d89968</srcmd5>
+    <version>0.10.1</version>
+    <time>1587467391</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove py2 dep as the package is marked as python3 only</comment>
+    <requestid>795783</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>eb40a88ad615faba259c213bd116f09e</srcmd5>
+    <version>0.10.1</version>
+    <time>1589579533</time>
+    <user>dimstar_suse</user>
+    <comment>- Package requires pytest 4.x or newer</comment>
+    <requestid>805763</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>531476e6b7cce0db0215163464b7aa8c</srcmd5>
+    <version>0.11</version>
+    <time>1591209361</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11:
+  - Added pint-convert script.
+  - Remove `default_en_0.6.txt`.
+  - Make `__str__` and `__format__` locale configurable.
+  (Issue #984)
+  - Quantities wrapping NumPy arrays will no longer warning for the changed
+  array function behavior introduced in 0.10.
+  (Issue #1029, Thanks Jon Thielen)
+  - **BREAKING CHANGE**:
+  The array protocol fallback deprecated in version 0.10 has been removed.
+  (Issue #1029, Thanks Jon Thielen)
+  - Now we use `pyproject.toml` for providing `setuptools_scm` settings
+  - Remove `default_en_0.6.txt`
+  - Reorganize long_description.
+  - Moved Pi to definitions files.
+  - Use ints (not floats) a defaults at many points in the codebase as in Python 3
+  the true division is the default one.
+  - **BREAKING CHANGE**:
+  Added `from_string` method to all Definitions subclasses. The value/converter
+  argument of the constructor no longer accepts an string.
+  It is unlikely that this change affects the end user.
+  - Added additional NumPy function implementations (allclose, intersect1d)
+  (Issue #979, Thanks Jon Thielen)
+  - Allow constants in units by using a leading underscore (Issue #989, Thanks
+  Juan Nunez-Iglesias)
+  - Fixed bug where to_compact handled prefix units incorrectly (Issue #960)</comment>
+    <requestid>811107</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7a48cf79aff50972289c6156b39cc7df</srcmd5>
+    <version>0.14</version>
+    <time>1594228486</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14
+  * Changes required to support Pint-Pandas 0.1.
+  * Reinstated support for pickle protocol 0 and 1, which is required by pytables
+    (Issue #1036, Thanks Guido Imperiale)
+  * Fixed bug with multiplication of Quantity by dict (Issue #1032)
+  * Bare zeros and NaNs (not wrapped by Quantity) are now gracefully accepted by all numpy
+    operations; e.g. np.stack([Quantity([1, 2], &quot;m&quot;), [0, np.nan]) is now valid, whereas
+    np.stack([Quantity([1, 2], &quot;m&quot;), [3, 4]) will continue raising DimensionalityError.
+    (Issue #1050, Thanks Guido Imperiale)
+  * NaN is now treated the same as zero in addition, subtraction, equality, and
+    disequality (Issue #1051, Thanks Guido Imperiale)
+  * Fixed issue where quantities with a very large magnitude would throw an IndexError
+    when using to_compact()
+  * Fixed crash when a Unit with prefix is declared for the first time while a Context
+    containing unit redefinitions is active
+    (Issues #1062 and #1097, Thanks Guido Imperiale)
+  * New implementation of 'Lx' String Format Type Option
+    The old implementation treated 'Lx' as 'S' as produced by 'uncertainties'
+    package, but that is not fully compatible with SIunitx. The new code protects
+    SIunitx by fixing what unceratinties produces.
+    (Issue #814)
+  * Added link to budding `pint-xarray` interface library to the docs, next to
+    the link to pint*pandas. (Thanks Tom Nicholas.)
+  * Removed outdated `_dir` attribute of `UnitsRegistry`, and added `__iter__`
+    method so that now `list(ureg)` returns a list of all units in registry.
+    (Issue #1072, Thanks Tom Nicholas)
+  * Replace pkg_resources.version to importlib.metadata.version. (Issue #1083)
+  * Fix typo in docs for wraps example with optional arguments. (Issue #1088)
+  * Add momentum as a dimension
+  * Fixed a bug where unit exponents were only partially superscripted in HTML format</comment>
+    <requestid>819352</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2b0b58c16919f7ee97e87381fa4aa5c7</srcmd5>
+    <version>0.15</version>
+    <time>1600702045</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15:
+  - Change `Quantity` and `Unit` HTML (i.e., Jupyter notebook) repr away from LaTeX to a
+    simpler, more performant pretty-text and table based repr inspired by Sparse and Dask.
+  - Add `case_sensitive` option to registry for case (in)sensitive handling when parsing
+  - Implement Dask collection interface to support Pint Quantity wrapped Dask arrays.
+  - Started automatically testing examples in the documentation
+  - Fixed an exception generated when reducing dimensions with three or more
+    units of the same type
+  - Fixed right operand power for dimensionless Quantity to reflect numpy behavior. (Issue #1136)
+  - Eliminated warning when setting a masked value on an underlying MaskedArray.
+  - Add `sort` option to `formatting.formatter` to permit disabling sorting of component units in format string</comment>
+    <requestid>835385</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b523146e097e99fb40c3e9368350dff5</srcmd5>
+    <version>0.16.1</version>
+    <time>1611668764</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865060</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>06b3232cb6f599f7b673a170707c9b0b</srcmd5>
+    <version>0.17</version>
+    <time>1618859153</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17:
+  * Add the Wh unit for battery capacity measurements
+  * Fix issue with reducable dimensionless units when using power
+    (Quantity**ndarray)
+  * Fix comparisons between Quantities and Measurements.
+  * UnitsContainer returns false if other is str and cannnot be parsed
+  * Fix numpy.linalg.solve unit output. (Issue #1246)
+  * Support numpy.lib.stride_tricks.sliding_window_view. (Issue #1255)
+  * Move all tests to pytest.
+  * Quantity comparisons now ensure other is Quantity.
+  * Add sign function compatibility.
+  * Fix scalar to ndarray tolist.
+  * Fix tolist function with scalar ndarray.
+  * Implements a first benchmark suite in airspeed velocity (asv). 
+  * Power for pseudo-dimensionless units.
+- No longer build for Python 3.6, due to no NumPy.</comment>
+    <requestid>886518</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4b74e66d5d74faac25fd6c2ba3283dad</srcmd5>
+    <version>0.18</version>
+    <time>1638131423</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934421</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7b7ebbc11ba0664cf10dce954420927c</srcmd5>
+    <version>0.19.2</version>
+    <time>1654004864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980050</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>104b2b0fe594206af6265e4d9a58e619</srcmd5>
+    <version>0.20.1</version>
+    <time>1673559885</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1057861</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d80ede85482295d0de2e3f46dec7e1bf</srcmd5>
+    <version>0.22</version>
+    <time>1690987856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101983</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>9161a02c6f663c0f59a3c6207237058d</srcmd5>
+    <version>0.22</version>
+    <time>1704281016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1135595</requestid>
+  </revision>
+</revisionlist>

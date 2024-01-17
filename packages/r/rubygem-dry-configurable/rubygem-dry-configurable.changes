@@ -1,0 +1,221 @@
+-------------------------------------------------------------------
+Wed Dec  7 11:17:57 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.0.1
+ see installed CHANGELOG.md
+
+  ## 1.0.1 2022-11-16
+  
+  
+  ### Changed
+  
+  - Renamed `@config` and `@_settings` internal instance variables to `@__config__` and `@__settings__` in order to avoid clashes with user-defined instance variables (#159 by @timriley)
+  
+  [Compare v1.0.0...v1.0.1](https://github.com/dry-rb/dry-configurable/compare/v1.0.0...v1.0.1)
+  
+  ## 1.0.0 2022-11-04
+  
+  
+  ### Changed
+  
+  - Dependency on `dry-core` was updated to ~> 1.0 (@solnic)
+  
+  [Compare v0.16.1...v1.0.0](https://github.com/dry-rb/dry-configurable/compare/v0.16.1...v1.0.0)
+  
+
+-------------------------------------------------------------------
+Fri Oct 28 04:55:07 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.16.1
+ see installed CHANGELOG.md
+
+  ## 0.16.1 2022-10-13
+  
+  ### Changed
+  
+  - Restored performance of config value reads (direct reader methods as well as aggregate methods like `#values` and `#to_h`) to pre-0.16.0 levels (#149 by @timriley)
+  
+  [Compare v0.16.0...v0.16.1](https://github.com/dry-rb/dry-configurable/compare/v0.16.0...v0.16.1)
+  
+
+-------------------------------------------------------------------
+Mon Oct 10 13:03:10 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.16.0
+ see installed CHANGELOG.md
+
+  ## 0.16.0 2022-10-08
+  
+  
+  ### Added
+  
+  - Support for custom config classes via `config_class:` option (#136 by @solnic)
+  
+    ```ruby
+    extend Dry::Configurable(config_class: MyConfig)
+    ```
+  
+    Your config class should inherit from `Dry::Configurable::Config`.
+  - Return `Dry::Core::Constants::Undefined` (instead of nil) as the value for non-configured settings via a `default_undefined: true` option (#141 by @timriley)
+  
+    ```ruby
+    extend Dry::Configurable(default_undefined: true)
+    ```
+  
+    You must opt into this feature via the `default_undefined: true` option. Non-configured setting values are still `nil` by default.
+  
+  ### Fixed
+  
+  - Remove exec bit from version.rb (#139 by @Fryguy)
+  
+  ### Changed
+  
+  - Improve memory usage by separating setting definitions from config values (#138 by @timriley)
+  
+    Your usage of dry-configurable may be impacted if you have been accessing objects from `_settings` or the internals of `Dry::Configurable::Config`. `_settings` now returns `Dry::Configurable::Setting` instances, which contain only the details from the setting's definition. Setting _values_ remain in `Dry::Configurable::Config`.
+  - Use Zeitwerk to speed up load time (#135 by @solnic)
+  
+  [Compare v0.15.0...v0.16.0](https://github.com/dry-rb/dry-configurable/compare/v0.15.0...v0.16.0)
+  
+
+-------------------------------------------------------------------
+Thu Aug  4 13:07:48 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.15.0
+ see installed CHANGELOG.md
+
+  ## 0.15.0 2022-04-21
+  
+  
+  ### Changed
+  
+  - The `finalize!` method (as class or instance method, depending on whether you extend or include `Dry::Configurable` respectively) now accepts a boolean `freeze_values:` argument, which if true, will recursively freeze all config values in addition to the `config` itself. (#105 by @ojab)
+  
+    ```ruby
+    class MyConfigurable
+      include Dry::Configurable
+  
+      setting :db, default: "postgre"
+    end
+  
+    my_obj = MyConfigurable.new
+    my_obj.finalize!(freeze_values: true)
+    my_obj.config.db << "sql" # Will raise FrozenError
+    ```
+  - `Dry::Configurable::Config#update` will set hashes as values for non-nested settings (#131 by @ojab)
+  
+    ```ruby
+    class MyConfigurable
+      extend Dry::Configurable
+  
+      setting :sslcert, constructor: ->(v) { v&.values_at(:pem, :pass)&.join }
+    end
+  
+    MyConfigurable.config.update(sslcert: {pem: "cert", pass: "qwerty"})
+    MyConfigurable.config.sslcert # => "certqwerty"
+    ```
+  - `Dry::Configurable::Config#update` will accept any values implicitly convertible to hash via `#to_hash` (#133 by @timriley)
+  
+  [Compare v0.14.0...v0.15.0](https://github.com/dry-rb/dry-configurable/compare/v0.14.0...v0.15.0)
+  
+
+-------------------------------------------------------------------
+Tue Jan 25 06:50:41 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.14.0
+ see installed CHANGELOG.md
+
+  ## 0.14.0 2022-01-14
+  
+  
+  ### Changed
+  
+  - Settings defined after an access to `config` will still be made available on that `config`. (#130 by @timriley)
+  - Cloneable settings are cloned immediately upon assignment. (#130 by @timriley)
+  - Changes to config values in parent classes after subclasses have already been created will not be propogated to those subclasses. Subclasses created _after_ config values have been changed in the parent _will_ receive those config values. (#130 by @timriley)
+  
+  [Compare v0.13.0...v0.14.0](https://github.com/dry-rb/dry-configurable/compare/v0.13.0...v0.14.0)
+  
+  ## 0.13.0 2021-09-12
+  
+  
+  ### Added
+  
+  - Added flags to determine whether to warn on the API usage deprecated in this release (see "Changed" section below). Set these to `false` to suppress the warnings. (#124 by @timriley)
+  
+    ```ruby
+    Dry::Configurable.warn_on_setting_constructor_block false
+    Dry::Configurable.warn_on_setting_positional_default false
+    ```
+  
+  ### Fixed
+  
+  - Fixed `ArgumentError` for classes including `Dry::Configurable` whose `initializer` has required kwargs. (#113 by @timriley)
+  
+  ### Changed
+  
+  - Deprecated the setting constructor provided as a block. Provide it via the `constructor:` keyword argument instead. (#111 by @waiting-for-dev & @timriley)
+  
+    ```ruby
+    setting :path, constructor: -> path { Pathname(path) }
+    ```
+  - Deprecated the setting default provided as the second positional argument. Provide it via the `default:` keyword argument instead. (#112 and #121 by @waiting-for-dev & @timriley)
+  
+    ```ruby
+    setting :path, default: "some/default/path"
+    ```
+  - [BREAKING] Removed implicit `to_hash` conversion from `Config`. (#114 by @timriley)
+  
+  [Compare v0.12.1...v0.13.0](https://github.com/dry-rb/dry-configurable/compare/v0.12.1...v0.13.0)
+  
+
+-------------------------------------------------------------------
+Thu Jun 24 17:18:22 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.12.1
+ see installed CHANGELOG.md
+
+  ## 0.12.1 2021-02-15
+  
+  
+  ### Added
+  
+  - Settings may be specified with a `cloneable` option, e.g.
+  
+  ```ruby
+  setting :component_dirs, Configuration::ComponentDirs.new, cloneable: true
+  ```
+  
+  This change makes it possible to provide “rich” config values that carry their own
+  configuration interface.
+  
+  In the above example, `ComponentDirs` could provide its own API for adding component
+  dirs and configuring aspects of their behavior at the same time. By being passed to
+  the setting along with `cloneable: true`, dry-configurable will ensure the setting's
+  values are cloned along with the setting at all the appropriate times.
+  
+  A custom cloneable setting value should provide its own `#initialize_copy` (used by
+  `Object#dup`) with the appropriate logic. (@timriley in #102)
+  
+  ### Fixed
+  
+  - Only `#initialize` instance method is prepended, leaving the rest of the instance
+  methods to be included as normal again. This allows classes including
+  `Dry::Configurable` to override instance methods with their own methods as required
+  (@adam12 in #103)
+  
+  
+  [Compare v0.12.0...v0.12.1](https://github.com/dry-rb/dry-configurable/compare/v0.12.0...v0.12.1)
+  
+
+-------------------------------------------------------------------
+Wed Jan 20 12:33:11 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.12.0
+ see installed CHANGELOG.md
+
+
+-------------------------------------------------------------------
+Wed Jul  1 13:20:52 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- initial package (version 0.11.6)

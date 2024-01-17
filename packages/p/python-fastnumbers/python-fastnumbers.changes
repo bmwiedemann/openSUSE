@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Fri Dec 29 18:35:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * Added the ``denoise`` option to convert floats to int without
+  * numerical noise (issues #69 and #77)
+  * Support for Python 3.12 (issues #73 and #75)
+- switch to gcc 13 on SLE15
+
+-------------------------------------------------------------------
+Mon Jul 10 15:53:34 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.0.1
+  * Fixed
+    - Add back missing key option in type hints for deprecated fast_* functions
+- Update to 5.0.0
+  * Added
+    - Added the map option to all try_* functions to enable very fast conversions of lists or other iterables (issues #61, #63 and #67)
+    - Added try_array to enable very fast conversions directly to numpy arrays (issues #62 and #65)
+  * Changed
+    - Move to a model where the return code is a value or error instead of a model where one has to check the error state after getting a value (issue #66)
+    - Significantly simplified the type annotations (by 4000+ lines!)
+  * Fixed
+    - Increased code coverage and fixed missing headers in codecov reaport (issue #64)
+- Add %{?sle15_python_module_pythons}
+- Ensure that SLE-15 uses gcc-12.
+
+-------------------------------------------------------------------
+Sun Jan 23 20:43:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.1:
+  * Support for Python 3.10
+  * Full coverage of mypy type-checking
+  * Support for Python 3.5
+
+-------------------------------------------------------------------
+Mon Apr 19 05:54:56 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.1.0:
+  * Added
+    + query_type function to determine what as type fastnumbers will
+      interpret a given input
+  * Fixed
+    + Support for Python 3.9 (eliminate use of private Python C function
+      that is now hidden in 3.9)
+
+-------------------------------------------------------------------
+Thu Jan 30 14:50:20 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 3.0.0
+  + Added
+    * Support and tests for Python 3.8
+    * Text to highlight that `fastnumbers` is not always faster that native Python
+    * `on_fail` option that is identical to `key`, but has a more descriptive name
+    * Windows testing to Travis-CI
+    * Code quality checks to Travis-CI
+    * Deployment from Travis-CI
+    * RELEASING.md
+  + Changed
+    * Cleaned up all test code so that it no longer includes unused code
+      and also conformes to flake8/black
+    * Near-complete re-write of the README, hopefully to make the functionality
+      of `fastnumbers` clearer, to support better navigation, and to better
+      highlight caveats.
+    * Made all named options keyword-only except for `default`
+  + Deprecated
+    * `key` function (it will forever remain allowed, but is "hidden" and cannot
+      be given with `on_fail`)
+  + Fixed
+    * Bug where the `coerce` option of `real()` was ignored
+    * Improved testing reproducibility by pinning all test dependencies
+  + Removed
+    * Support for Python 2.7 and Python 3.4
+    * Appveyor service
+
+
+-------------------------------------------------------------------
+Mon Aug 26 01:04:51 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix spurious test failure
+
+-------------------------------------------------------------------
+Tue May 21 14:00:05 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Remove arch restriction
+
+-------------------------------------------------------------------
+Wed Apr 17 12:07:36 UTC 2019 - pgajdos@suse.com
+
+- version update to 2.2.1
+  * Formatting docstring
+  * Add `allow_underscores` option to toggle whether or not underscores
+   are allowed inside numbers on Python >= 3.6
+  * Update CHANGELOG format to style from https://keepachangelog.com/
+
+-------------------------------------------------------------------
+Tue Feb  5 07:04:22 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add missing python3-testsuite BR
+
+-------------------------------------------------------------------
+Sun Sep 30 16:20:37 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.1.1:
+  * Fix compile error on FreeBSD where fastnumbers’ “string.h”
+    shadowed the system “string.h”.
+  * Add a high-level description of the fastnumbers algorithm in the
+    documentation.
+
+- changes from version 2.1.0:
+  * Fix bug in converting unicode numbers on Python 3.7.
+  * Restructure code base, hopefully improving simplicity.
+  * Speedup of conversions of ASCII-like unicode in Python 3.
+  * Speedup of conversions for large integers and large floats -
+    fastnumbers should now be at least as fast as built-in functions.
+
+- changes from version 2.0.5:
+  * Fix bug in fast_real that resulted in an OverflowError when given
+    very large int-like floats.
+  * Source files are sorted before compilation.
+
+-------------------------------------------------------------------
+Sun Jul 29 12:49:55 UTC 2018 - jengelh@inai.de
+
+- Update description.
+
+-------------------------------------------------------------------
+Wed May  9 02:30:33 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 2.0.4
+  * Updated docstrings.
+  * Improved timing documentation.
+  * Added testing for Python 3.7.
+
+-------------------------------------------------------------------
+Thu Oct 19 00:05:00 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

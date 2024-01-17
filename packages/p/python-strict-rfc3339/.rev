@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>afa0e422d7a5dfe3a2624800a8db1dc4</srcmd5>
+    <version>0.7</version>
+    <time>1553888092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685004</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>91bff7669d1164150c151ad4cd35ea5d</srcmd5>
+    <version>0.7</version>
+    <time>1554372042</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim bias from descriptions.</comment>
+    <requestid>690288</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7526b9cd9b9c09076b667d8ca289b5cb</srcmd5>
+    <version>0.7</version>
+    <time>1576062687</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix source url
+
+- Add missing runtime dependency on timezone
+- Replace dead link with GitHub URL
+- Activate test suite</comment>
+    <requestid>755178</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b1bc8b7254328113391bd2d11f370c88</srcmd5>
+    <version>0.7</version>
+    <time>1682193507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081746</requestid>
+  </revision>
+</revisionlist>

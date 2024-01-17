@@ -1,0 +1,96 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>dddd37c231f423e86ac96a922ce52ad7</srcmd5>
+    <version>0.9.2</version>
+    <time>1268927187</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>dddd37c231f423e86ac96a922ce52ad7</srcmd5>
+    <version>0.9.2</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>dddd37c231f423e86ac96a922ce52ad7</srcmd5>
+    <version>0.9.2</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>a6bd91e8c8194bd24b2268280f220e6c</srcmd5>
+    <version>1.0.0</version>
+    <time>1297119373</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60250 from user lrupp
+</comment>
+    <requestid>60250</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>85b4874e9c618f551ec4d9d5ccd753e9</srcmd5>
+    <version>1.0.0</version>
+    <time>1297119392</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60250
+</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>85b4874e9c618f551ec4d9d5ccd753e9</srcmd5>
+    <version>1.0.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>85b4874e9c618f551ec4d9d5ccd753e9</srcmd5>
+    <version>1.0.0</version>
+    <time>1319181877</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>85b4874e9c618f551ec4d9d5ccd753e9</srcmd5>
+    <version>1.0.0</version>
+    <time>1340183328</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>85b4874e9c618f551ec4d9d5ccd753e9</srcmd5>
+    <version>1.0.0</version>
+    <time>1359108877</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>f3f436b38b29fb06c50f96f8a22f1144</srcmd5>
+    <version>1.0.0</version>
+    <time>1363270787</time>
+    <user>coolo</user>
+    <comment>Submit new license header to fix build</comment>
+    <requestid>158719</requestid>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>f3f436b38b29fb06c50f96f8a22f1144</srcmd5>
+    <version>1.0.0</version>
+    <time>1379662340</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="18">
+    <srcmd5>f3f436b38b29fb06c50f96f8a22f1144</srcmd5>
+    <version>1.0.0</version>
+    <time>1409300876</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>47d984ec454199d2f2a6191540f1afb0</srcmd5>
+    <version>1.0.1</version>
+    <time>1428652197</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>295180</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,15 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/google/j2objc.git</param>
+		<param name="revision">58a43c25788f95f3ea9444d800d09a57533edcbc</param>
+		<param name="versionformat">2.2</param>
+		<param name="subdir">annotations</param>
+		<param name="filename">j2objc-annotations</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

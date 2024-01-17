@@ -1,0 +1,162 @@
+---
+ Makefile            |   13 ++-----------
+ epgui/epgmain.c     |   17 +++++++++++------
+ tvsim/tvsim_main.c  |   17 +++++++++++------
+ tvsim/vbirec_main.c |   17 +++++++++++------
+ 4 files changed, 35 insertions(+), 29 deletions(-)
+
+--- Makefile.orig
++++ Makefile
+@@ -79,8 +79,8 @@ DEFS   += -DX11_APP_DEFAULTS=\"$(resdir)
+ # path to Tcl/Tk script library (note Tk is sometimes in X11/lib/tk#.#)
+ TK_LIBRARY_PATH  = /usr/lib/tk$(TCL_VER)
+ TCL_LIBRARY_PATH = /usr/lib/tcl$(TCL_VER)
+-DEFS   += -DTK_LIBRARY_PATH=\"$(TK_LIBRARY_PATH)\"
+-DEFS   += -DTCL_LIBRARY_PATH=\"$(TCL_LIBRARY_PATH)\"
++#DEFS   += -DTK_LIBRARY_PATH=\"$(TK_LIBRARY_PATH)\"
++#DEFS   += -DTCL_LIBRARY_PATH=\"$(TCL_LIBRARY_PATH)\"
+ 
+ # enable use of multi-threading
+ DEFS    += -DUSE_THREADS
+@@ -310,15 +310,6 @@ tcl_headers_tvsim: $(addprefix $(BUILD_D
+ $(BUILD_DIR)/tcl2c: tcl2c.c
+ 	$(CC) $(CFLAGS) -o $(BUILD_DIR)/tcl2c tcl2c.c
+ 
+-$(TCL_LIBRARY_PATH)/tclIndex $(TK_LIBRARY_PATH)/tclIndex :
+-	@if [ ! -f $(TCL_LIBRARY_PATH) -o ! -f $(TK_LIBRARY_PATH) ] ; then \
+-	  echo "$(@D) is not a valid Tcl/Tk library directory"; \
+-	  echo "Check the definitions of TCL_LIBRARY_PATH and TK_LIBRARY_PATH"; \
+-	  false; \
+-	fi
+-
+-epgui/loadtcl.c :: $(TCL_LIBRARY_PATH)/tclIndex $(TK_LIBRARY_PATH)/tclIndex
+-
+ .PHONY: covstats
+ covstats:
+ 	geninfo -b `pwd` $(BUILD_DIR)/epg{db,ctl,ui,vbi}/. $(BUILD_DIR)/xmltv/.
+--- epgui/epgmain.c.orig
++++ epgui/epgmain.c
+@@ -107,11 +107,7 @@
+ #include "epgui/epgmain.h"
+ 
+ 
+-#ifndef USE_PRECOMPILED_TCL_LIBS
+-# if !defined(TCL_LIBRARY_PATH) || !defined(TK_LIBRARY_PATH)
+-#  error "Must define both TK_ and TCL_LIBRARY_PATH"
+-# endif
+-#else
++#ifdef USE_PRECOMPILED_TCL_LIBS
+ # define TCL_LIBRARY_PATH  "."
+ # define TK_LIBRARY_PATH   "."
+ #endif
+@@ -1999,8 +1995,12 @@ static int ui_init( int argc, char **arg
+    }
+    Tcl_SetVar(interp, "argv0", argv[0], TCL_GLOBAL_ONLY);
+ 
++#ifdef TCL_LIBRARY_PATH
+    Tcl_SetVar(interp, "tcl_library", TCL_LIBRARY_PATH, TCL_GLOBAL_ONLY);
++#endif
++#ifdef TK_LIBRARY_PATH
+    Tcl_SetVar(interp, "tk_library", TK_LIBRARY_PATH, TCL_GLOBAL_ONLY);
++#endif
+    Tcl_SetVar(interp, "tcl_interactive", "0", TCL_GLOBAL_ONLY);
+ 
+    #ifndef WIN32
+@@ -2028,7 +2028,12 @@ static int ui_init( int argc, char **arg
+       {
+          #ifndef USE_PRECOMPILED_TCL_LIBS
+          fprintf(stderr, "Failed to initialise the Tk library at '%s' - exiting.\nTk error message: %s\n",
+-                         TK_LIBRARY_PATH, Tcl_GetStringResult(interp));
++#ifdef TK_LIBRARY_PATH
++                         TK_LIBRARY_PATH,
++#else
++			 "<default Tk library path>",
++#endif
++			 Tcl_GetStringResult(interp));
+          exit(1);
+          #endif
+       }
+--- tvsim/tvsim_main.c.orig
++++ tvsim/tvsim_main.c
+@@ -83,11 +83,7 @@
+ # define TCL_EVAL_CONST(INTERP, SCRIPT) Tcl_VarEval(INTERP, "uplevel #0 {", (char *) SCRIPT, "}", NULL)
+ #endif
+ 
+-#ifndef USE_PRECOMPILED_TCL_LIBS
+-# if !defined(TCL_LIBRARY_PATH) || !defined(TK_LIBRARY_PATH)
+-#  error "Must define both TK_ and TCL_LIBRARY_PATH"
+-# endif
+-#else
++#ifdef USE_PRECOMPILED_TCL_LIBS
+ # define TCL_LIBRARY_PATH  "."
+ # define TK_LIBRARY_PATH   "."
+ # include "epgtcl/tcl_libs.h"
+@@ -2072,8 +2068,12 @@ static int ui_init( int argc, char **arg
+       Tcl_SetVar(interp, "argv0", argv[0], TCL_GLOBAL_ONLY);
+    #endif
+ 
++#ifdef TCL_LIBRARY_PATH
+    Tcl_SetVar(interp, "tcl_library", TCL_LIBRARY_PATH, TCL_GLOBAL_ONLY);
++#endif
++#ifdef TK_LIBRARY_PATH
+    Tcl_SetVar(interp, "tk_library", TK_LIBRARY_PATH, TCL_GLOBAL_ONLY);
++#endif
+    Tcl_SetVar(interp, "tcl_interactive", "0", TCL_GLOBAL_ONLY);
+    Tcl_SetVar(interp, "TVSIM_VERSION", TVSIM_VERSION_STR, TCL_GLOBAL_ONLY);
+ 
+@@ -2089,7 +2089,12 @@ static int ui_init( int argc, char **arg
+    {
+       #ifndef USE_PRECOMPILED_TCL_LIBS
+       fprintf(stderr, "Failed to initialise the Tk library at '%s' - exiting.\nTk error message: %s\n",
+-                      TK_LIBRARY_PATH, Tcl_GetStringResult(interp));
++#ifdef TK_LIBRARY_PATH
++                      TK_LIBRARY_PATH,
++#else
++		      "<default Tk library path>",
++#endif
++		      Tcl_GetStringResult(interp));
+       exit(1);
+       #endif
+    }
+--- tvsim/vbirec_main.c.orig
++++ tvsim/vbirec_main.c
+@@ -80,11 +80,7 @@
+ # define TCL_EVAL_CONST(INTERP, SCRIPT) Tcl_VarEval(INTERP, (char *) SCRIPT, NULL)
+ #endif
+ 
+-#ifndef USE_PRECOMPILED_TCL_LIBS
+-# if !defined(TCL_LIBRARY_PATH) || !defined(TK_LIBRARY_PATH)
+-#  error "Must define both TK_ and TCL_LIBRARY_PATH"
+-# endif
+-#else
++#ifdef USE_PRECOMPILED_TCL_LIBS
+ # define TCL_LIBRARY_PATH  "."
+ # define TK_LIBRARY_PATH   "."
+ # include "epgtcl/tcl_libs.h"
+@@ -1139,8 +1135,12 @@ static int ui_init( int argc, char **arg
+    }
+    Tcl_SetVar(interp, "argv0", argv[0], TCL_GLOBAL_ONLY);
+ 
++#ifdef TCL_LIBRARY_PATH
+    Tcl_SetVar(interp, "tcl_library", TCL_LIBRARY_PATH, TCL_GLOBAL_ONLY);
++#endif
++#ifdef TK_LIBRARY_PATH
+    Tcl_SetVar(interp, "tk_library", TK_LIBRARY_PATH, TCL_GLOBAL_ONLY);
++#endif
+    Tcl_SetVar(interp, "tcl_interactive", "0", TCL_GLOBAL_ONLY);
+    Tcl_SetVar(interp, "TVSIM_VERSION", TVSIM_VERSION_STR, TCL_GLOBAL_ONLY);
+ 
+@@ -1158,7 +1158,12 @@ static int ui_init( int argc, char **arg
+    {
+       #ifndef USE_PRECOMPILED_TCL_LIBS
+       fprintf(stderr, "Failed to initialise the Tk library at '%s' - exiting.\nTk error message: %s\n",
+-                      TK_LIBRARY_PATH, Tcl_GetStringResult(interp));
++#ifdef TK_LIBRARY_PATH
++                      TK_LIBRARY_PATH,
++#else
++		      "<default Tk library path>",
++#endif
++		      Tcl_GetStringResult(interp));
+       exit(1);
+       #endif
+    }

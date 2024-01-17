@@ -1,0 +1,5 @@
+<package name="polkit-kde-agent-5" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="polkit-kde-agent-5"/>
+</package>

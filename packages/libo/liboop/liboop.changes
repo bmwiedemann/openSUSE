@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Sat Feb 10 12:25:24 UTC 2018 - jengelh@inai.de
+
+- Remove useless --with-pic (no effect with --disable-static).
+  Immediately remove .la files rather than %excluding.
+- Remove historic Obsolete/Provides pairs.
+- Use %make_install and streamline the macro style.
+
+-------------------------------------------------------------------
+Thu Feb  8 08:04:14 UTC 2018 - aloisio@gmx.com
+
+- Update to version 1.0.1
+  * no changelog supplied
+  * new maintainer and homepage
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Tue Jan 31 11:28:37 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+- Employ shlib policy
+- Make pkgconfig provides available
+
+-------------------------------------------------------------------
+Thu Dec 27 05:24:13 CET 2007 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-post* errors
+- remove useless "la" file 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:37 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Feb  9 16:30:34 CET 2005 - lmuelle@suse.de
+
+- Update to version 1.0.
+- Split off liboop-devel sub package.

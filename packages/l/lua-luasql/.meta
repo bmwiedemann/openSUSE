@@ -1,0 +1,5 @@
+<package name="lua-luasql" project="openSUSE:Factory">
+  <title>luasql</title>
+  <description></description>
+  <devel project="devel:languages:lua" package="lua-luasql"/>
+</package>

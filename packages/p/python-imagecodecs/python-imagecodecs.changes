@@ -1,0 +1,271 @@
+-------------------------------------------------------------------
+Wed Sep 13 11:57:38 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add patches for the compatibility with libavif 1.0.0:
+  * libavif.patch
+  * quantize.patch
+  * avif.patch
+  * tests.patch
+  * integrate.patch
+
+-------------------------------------------------------------------
+Tue Sep 12 14:21:29 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add patch cython3.patch to fix build
+
+-------------------------------------------------------------------
+Fri Mar 24 14:31:16 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.3.16
+  * Pass 6884 tests.
+  * Require libjpeg-turbo 2.1.91 (3.0 beta) and c-blosc2 2.7.1.
+  * Add experimental type hints.
+  * Add SZIP codec via libaec library.
+  * Use Zstd streaming API to decode blocks with unknown
+    decompressed size.
+  * Remove unused level, index, and numthreads parameters
+    (breaking).
+  * Make AEC and BLOSC constants enums (breaking).
+  * Capitalize numcodecs class names (breaking).
+  * Remove JPEG12 codec (breaking; use JPEG8 instead).
+  * Encode and decode lossless and 12-bit JPEG with JPEG8 codec by
+    default.
+  * Remove JPEGSOF3 fallback in JPEG codec.
+  * Fix slow IFD seeking with libtiff 4.5.
+  * Fixes for Cython 3.0.
+- Release 2023.1.23
+  * Require libjxl 0.8.
+  * Change mapping of level to distance parameter in jpegxl_encode.
+  * Add option to specify bitspersample in jpegxl_encode.
+  * Add option to pass de/linearize tables to LJPEG codec.
+  * Fix lj92 decoder for SSSS=16 (#59).
+  * Prefer ljpeg over jpegsof3 codec.
+  * Add option to specify AVIF encoder codec.
+  * Support LERC with Zstd or Deflate compression.
+  * Squeeze chunk arrays by default in numcodecs image compression
+    codecs.
+- Skip testing with dask on python 3.11: no numba yet
+- Add blosc2, SVT-AV1, jpegxl (libjxl)), SZIP (libsz2)
+- Disable jpeg8/libjpeg-turbo: required beta version not available
+
+-------------------------------------------------------------------
+Sat Jan 21 11:40:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.12.24
+  * Pass 6512 tests.
+  * Fix PNG codec error handling.
+  * Fix truncated transferfunctions in cms_profile (#57).
+  * Fix exceptions not raised in cdef functions not returning
+    Python object.
+- Release 2022.12.22
+  * Require libtiff 4.5 (breaking).
+  * Require libavif 0.11 (breaking).
+  * Change jpegxl_encode level parameter to resemble libjpeg
+    quality (breaking).
+  * Add LZFSE codec via lzfse library.
+  * Add LZHAM codec via lzham library.
+  * Fix AttributeError in cms_profile (#52).
+  * Support gamma argument in cms_profile (#53).
+  * Raise limit of TIFF pages to 1048576.
+  * Use libtiff thread-safe error/warning handlers.
+  * Add option to specify filters and strategy in png_encode.
+  * Add option to specify integrity check type in lzma_encode.
+  * Fix DeprecationWarning with NumPy 1.24.
+
+-------------------------------------------------------------------
+Sun Oct  9 08:05:22 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update imagecodecs_distributor_setup.py to skip unbuildable exts
+- Refresh always-cythonize.patch
+- Enable s390x & ppc64 builds
+- Update to v2022.9.26
+  * Pass 6357 tests.
+  * Support JPEG XL multi-channel (planar grayscale only) and multi-frame.
+  * Require libjxl 0.7 (breaking).
+  * Switch to Blosc2 API and require c-blosc 2.4 (breaking).
+  * Return LogLuv encoded TIFF as float32.
+  * Add RGBE codec via rgbe.c.
+- from v2022.8.8
+  * Drop support for libjpeg.
+  * Fix encoding JPEG in RGB color space.
+  * Require ZFP 1.0.
+- from v2022.7.31
+  * Add option to decode WebP as RGBA.
+  * Add option to specify WebP compression method.
+  * Use exact lossless WebP encoding.
+- from v2022.7.27
+  * Add LZW encoder.
+  * Add QOI codec via qoi.h
+  * Add HEIF codec via libheif
+  * Add JETRAW codec via Jetraw demo (source only).
+  * Add ByteShuffle codec, a generic version of FloatPred.
+  * Replace imcd_floatpred by imcd_byteshuffle (breaking).
+  * Use bool type in imcd (breaking).
+- from v2022.2.22
+  * Fix jpeg numcodecs with tables
+  * Add APNG codec via libpng-apng patch.
+  * Add lossless and decodingspeed parameters to jpegxl_encode
+  * Add option to read JPEG XL animations.
+  * Add dummy numthreads parameter to codec functions.
+  * Set default numthreads to 1 (disable multi-threading).
+  * Drop support for Python 3.7 and numpy < 1.19 (NEP29).
+- from v2021.11.20
+  * Fix testing on pypy and Python 3.10.
+- from v2021.11.11
+  * Require libjxl 0.6.x.
+  * Add CMS codec via Little CMS library for color space transformations (WIP).
+  * Add MOZJPEG codec via mozjpeg library (Windows only).
+  * Add SPNG codec via libspng library.
+  * Rename avif_encode maxthreads parameter to numthreads (breaking).
+  * Accept n-dimensional output in non-image numcodecs decoders.
+  * Support masks in LERC codec.
+  * Support multi-threading and planar format in JPEG2K codec.
+  * Support multi-resolution, MCT, bitspersample, and 32-bit in jpeg2k encoder.
+  * Change jpeg2k_encode level parameter to fixed quality psnr (breaking).
+  * Change jpegxl_encode effort parameter default to minimum 3.
+  * Change JPEG encoders to use YCbCr for RGB images by default.
+  * Replace lerc_encode planarconfig with planar parameter (breaking).
+  * Add option to specify omp numthreads and chunksize in ZFP codec.
+  * Set default numthreads to 0.
+  * Fix Blosc default typesize.
+  * Fix segfault in jpegxl_encode.
+  * Replace many constants with enums (breaking).
+- from v2021.8.26
+  * Add BLOSC2 codec via c-blosc2 library.
+  * Require LERC 3 and libjxl 0.5.
+  * Do not exceed literal-only size in PackBits encoder.
+  * Raise ImcdError if output is insufficient in PackBits codecs (breaking).
+  * Raise ImcdError if input is corrupt in PackBits decoder (breaking).
+  * Fix delta codec for non-native byteorder.
+- from v2021.7.30
+  * Support more dtypes and axes argument in PackBits encoder.
+  * Fix worst case output size in PackBits encoder.
+  * Fix decoding AVIF created with older libavif.
+  * Fix decoding GIF with disposal to previous for first frame.
+  * Add lossless option in jpeg_encode.
+
+-------------------------------------------------------------------
+Wed Jun 30 07:28:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.6.8
+  * Pass 5185 tests.
+  * Fix building with Cython 0.3a7.
+  * Decode TIFF with JPEG compression, YCBCR or CMYK colorspace as RGB24.
+  * Vendor cfitsio/ricecomp.c for shared library builds on Windows (#18).
+- Release 2021.5.20
+  * Add ZLIBNG codec via zlib-ng library.
+  * Add RCOMP (Rice) codec via cfitsio library.
+  * Fix decoding of 16-bit JPEG with jpeg_decode.
+  * Relax user provided output array shape requirement.
+- Release 2021.4.28
+  * Change WebP default compression level to lossless.
+  * Rename jpegxl codec to brunsli (breaking).
+  * Add new JPEG XL codec via jpeg-xl library.
+  * Add PGLZ codec via PostgreSQL's pg_lzcompress.c.
+  * Update to libtiff 4.3 and libjpeg-turbo 2.1.
+  * Enable JPEG 12-bit codec in manylinux wheels.
+  * Drop manylinux2010 wheels.
+- Release 2021.3.31
+  * Add numcodecs compatible codecs for use by Zarr (experimental).
+  * Support separate JPEG header in jpeg_decode.
+  * Do not decode JPEG LS and XL in jpeg_decode (breaking).
+  * Fix ZFP with partial header.
+  * Fix JPEG LS tests (#15).
+  * Fix LZ4F contentchecksum.
+  * Remove blosc Snappy tests.
+  * Fix docstrings.
+- drop imagecodecs-pr15-test_jpegls.patch fixed upstream-
+- refresh always-cythonize.patch
+
+-------------------------------------------------------------------
+Wed Mar 10 10:42:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2021.2.26
+  Pass 4915 tests. Support X2 and X4 floating point predictors
+  (found in DNG).
+- enable additional codecs through imagecodecs_distributor_setup.py
+- Add imagecodecs-pr15-test_jpegls.patch
+  gh#cgohlke/imagecodecs#15
+- disable builds for big-endian platforms as per upstream README
+
+-------------------------------------------------------------------
+Mon Feb  1 19:40:15 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2021.1.28
+  * Add option to return JPEG XR fixed point pixel types as
+    integers
+  * Add LJPEG codec via liblj92 (alternative to JPEGSOF3 codec)
+  * Change zopfli header location.
+- refresh always-cythonize.patch
+- drop zopfli-headers.patch fixed upstream
+- Add more testing requirements to test backends
+- Add skip reporting to pytest to see what is still missing
+
+-------------------------------------------------------------------
+Tue Jan 12 21:54:10 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 2021.1.11.
+  * Fix build issues (#7, #8).
+  * Return bytearray instead of bytes on PyPy.
+  * Raise TypeError if output provided is bytes (breaking).
+- Updates for version 2021.1.8
+  * Add float24 codec.
+  * Update copyrights.
+- Updates for version 2020.12.24
+  * Update dependencies and build scripts.
+- Updates for version 2020.12.22
+  * Add AVIF codec via libavif (WIP).
+  * Add DEFLATE/Zlib and GZIP codecs via libdeflate.
+  * Add LZ4F codec.
+  * Add high compression mode option to lz4_encode.
+  * Convert JPEG XR 16 and 32-bit fixed point pixel types to float32.
+  * Fix JPEG 2000 lossy encoding.
+  * Fix GIF disposal handling.
+  * Remove support for Python 3.6 (NEP 29).
+- Rebase always-cythonize.patch
+- Rebase zopfli-headers.patch
+
+-------------------------------------------------------------------
+Fri Aug 28 09:20:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild to not cycle
+
+-------------------------------------------------------------------
+Fri Aug 28 08:37:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to enforce cythonization:
+  * always-cythonize.patch
+- Add patch to locate zopfli headers properly:
+  * zopfli-headers.patch
+
+-------------------------------------------------------------------
+Fri Aug 28 08:20:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2020.5.30:
+  * pythhon3 only
+  * add support for more codecs
+
+-------------------------------------------------------------------
+Mon May 25 10:59:24 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Thu Apr 23 10:58:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- As the package is marked as py3 only drop the python2 deps
+
+-------------------------------------------------------------------
+Fri Dec  6 18:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Disable python2 support since dependencies dropped python2
+
+-------------------------------------------------------------------
+Tue Jul 30 11:36:02 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2019.5.22
+
+-------------------------------------------------------------------
+Mon Mar  4 10:03:51 AM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v2019.2.22

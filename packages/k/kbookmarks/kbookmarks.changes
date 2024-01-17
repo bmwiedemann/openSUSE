@@ -1,0 +1,1207 @@
+-------------------------------------------------------------------
+Sat Jan 13 11:21:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.114.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.114.0
+- No code change since 5.113.0
+
+-------------------------------------------------------------------
+Tue Dec  5 11:17:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.113.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.113.0
+- No code change since 5.112.0
+
+-------------------------------------------------------------------
+Mon Nov  6 09:13:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.112.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.112.0
+- No code change since 5.111.0
+
+-------------------------------------------------------------------
+Mon Oct  9 20:20:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.111.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.111.0
+- No code change since 5.110.0
+
+-------------------------------------------------------------------
+Wed Sep  6 12:23:51 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.110.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.110.0
+- No code change since 5.109.0
+
+-------------------------------------------------------------------
+Tue Aug  8 17:42:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.109.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.109.0
+- Changes since 5.108.0:
+  * Add explicit moc includes to sources for moc-covered headers
+
+-------------------------------------------------------------------
+Mon Jul  3 07:01:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.108.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.108.0
+- Changes since 5.107.0:
+  * Remove qt6 CI builds
+
+-------------------------------------------------------------------
+Mon Jun  5 07:43:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.107.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.107.0
+- No code change since 5.106.0
+
+-------------------------------------------------------------------
+Sat May  6 14:01:26 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- No code change since 5.105.0
+
+-------------------------------------------------------------------
+Sat Apr  1 17:00:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.105.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.105.0
+- No code change since 5.104.0
+
+-------------------------------------------------------------------
+Mon Mar  6 09:07:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.104.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.104.0
+- No code change since 5.103.0
+
+-------------------------------------------------------------------
+Wed Feb  8 09:12:41 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- No code change since 5.102.0
+
+-------------------------------------------------------------------
+Thu Jan 12 08:18:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- No code change since 5.101.0
+
+-------------------------------------------------------------------
+Tue Dec  6 20:10:23 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.101.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.101.0
+- No code change since 5.100.0
+
+-------------------------------------------------------------------
+Tue Nov  8 08:34:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.100.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.100.0
+- Changes since 5.99.0:
+  * Don't use KXmlGui when building without deprecated stuff
+  * Add Qt6 windows CI support
+  * Fix the translation folder name
+
+-------------------------------------------------------------------
+Sat Oct  1 15:55:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- No code change since 5.98.0
+
+-------------------------------------------------------------------
+Tue Sep  6 07:16:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * Add FreeBSD Qt6 CI support
+
+-------------------------------------------------------------------
+Sun Aug  7 22:27:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- No code change since 5.96.0
+
+-------------------------------------------------------------------
+Sun Jul  3 11:55:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- Changes since 5.95.0:
+  * Bump deprecation KF version in ecm_set_disabled_deprecation_versions
+
+-------------------------------------------------------------------
+Fri Jun 10 14:12:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * port to standard C++ smart pointers where possible
+
+-------------------------------------------------------------------
+Tue May 10 08:17:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * Add windows CI
+
+-------------------------------------------------------------------
+Sun Apr  3 10:47:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * Require unittests to pass for CI pipelines to pass
+  * Add Android to supported platforms in repo metadata
+
+-------------------------------------------------------------------
+Mon Mar  7 09:26:43 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Add Qt6 Android CI
+  * Check executables exist in PATH before passing them to QProcess
+
+-------------------------------------------------------------------
+Sun Feb  6 10:16:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Utilize ECMDeprecationSettings to manage deprecate Qt/KF API
+  * Add CI qt6 support
+
+-------------------------------------------------------------------
+Mon Jan  3 12:47:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * [kbookmarksmanager] Don't recreate static QRegularExpression in findByAddress
+  * Use QStringConverter rather than QTextCodec with Qt6
+  * Change the build system to enable building with Qt6
+
+-------------------------------------------------------------------
+Sat Dec  4 22:56:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * Add source file back
+  * Fix compile
+  * Make CI happy
+
+-------------------------------------------------------------------
+Sun Nov  7 09:13:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:07:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Changes since 5.87.0:
+  * Add FreeBSD CI
+  * Add Android CI
+  * Correct platform specification - we can be built on Android as well
+
+-------------------------------------------------------------------
+Sun Oct  3 20:33:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.87.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.87.0
+- Changes since 5.86.0:
+  * Add Gitlab CI configuration
+
+-------------------------------------------------------------------
+Wed Sep 15 08:23:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the unneeded baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Sep  6 06:21:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Changes since 5.85.0:
+  * Add support for static builds
+  * replace "MacOSX" with "macOS"
+
+-------------------------------------------------------------------
+Fri Aug  6 12:11:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- No code change since 5.84.0
+
+-------------------------------------------------------------------
+Sun Jul  4 07:45:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- No code change since 5.83.0
+
+-------------------------------------------------------------------
+Sat Jun  5 11:58:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.83.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.83.0
+- Changes since 5.82.0:
+  * Bump required CMake version to 3.16
+
+-------------------------------------------------------------------
+Sat May  1 16:40:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- No code change since 5.81.0
+
+-------------------------------------------------------------------
+Mon Apr  5 07:12:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Changes since 5.80.0:
+  * [opera] Port away from direct QTextCodec use
+
+-------------------------------------------------------------------
+Sun Mar  7 09:26:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.80.0
+- Changes since 5.79.0:
+  * Add missing forward decl
+  * Group includes
+  * Run clang-format
+  * Add clang-format configuration
+  * Remove unused include
+
+-------------------------------------------------------------------
+Mon Feb  8 08:46:01 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- No code change since 5.78.0
+
+-------------------------------------------------------------------
+Wed Jan  6 10:47:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- No code change since 5.77.0
+
+-------------------------------------------------------------------
+Sat Dec  5 18:56:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Changes since 5.76.0:
+  * Pass parent to Q*Layout ctor instead of calling setLayout()
+
+-------------------------------------------------------------------
+Sat Nov  7 21:34:17 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.76.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.76.0
+- Changes since 5.75.0:
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+
+-------------------------------------------------------------------
+Mon Oct  5 08:32:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * Const'ify pointer/variable when it's possible
+
+-------------------------------------------------------------------
+Sun Sep  6 12:48:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Changes since 5.73.0:
+  * Remove unused includes
+  * Clean forward declaration
+  * Remove obsolete COPYING files
+  * API dox: document CamelCase includes
+  * KBookmarkManager: clear memory tree when the file is deleted
+
+-------------------------------------------------------------------
+Sun Aug  2 07:13:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Changes since 5.72.0:
+  * Add license texts according to REUSE specification
+  * Converte license statements to SPDX expressions
+  * Use KF-standardized Qt logging categories
+  * Use camelcase include. (scripted)
+
+-------------------------------------------------------------------
+Sun Jul  5 07:55:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- No code change since 5.71.0
+
+-------------------------------------------------------------------
+Sun Jun  7 08:06:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * Use UI marker context in more tr() calls
+  * KBookmarkMenuTest: extend unittest to cover undeprecated API
+
+-------------------------------------------------------------------
+Sun May  3 09:39:44 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * Always create actioncollection
+  * [KBookMarksMenu] Set objectName for newBookmarkFolderAction
+  * [KBookmarksMenu] Assign m_actionCollection early to prevent crash
+- Drop Always-create-actioncollection.patch. Merged upstream
+
+-------------------------------------------------------------------
+Mon Apr 20 09:19:16 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Always-create-actioncollection.patch to fix crash in
+  Konqueror when going to a subfolder in the bookmarks menu
+  (boo#1169838)
+
+-------------------------------------------------------------------
+Sun Apr  5 19:45:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- Changes since 5.68.0:
+  * Decouple KBookmarksMenu from KActionCollection
+
+-------------------------------------------------------------------
+Sun Mar  8 09:17:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Changes since 5.67.0:
+  * Make it compile against qt5.15. SkipEmptyParts is part of Qt::.
+  * Rename actions to be consistent
+  * Use ecm_qt_install_logging_categories over manual categories file
+
+-------------------------------------------------------------------
+Sun Feb  2 18:06:44 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:32:31 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Changes since 5.66.0:
+  * [bookmarksmenu] Improve variable name
+  * Remove outdated comments
+
+-------------------------------------------------------------------
+Sun Jan  5 09:01:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.66.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.66.0.php
+- Changes since 5.65.0:
+  * Remove endl in qDebug
+  * Update the obsolete projects.kde.org URL
+
+-------------------------------------------------------------------
+Sun Dec  8 11:18:21 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.65.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.65.0.php
+- Changes since 5.64.0:
+  * Simplify null check
+  * Clean up includes
+  * Remove unneeded moc include
+  * Remove superflous private
+  * Deprecate KonqBookmarkMenu and KonqBookmarkContextMenu
+  * Move classes only used by KonqBookmarkMenu together with it.
+  * Coding style fixes
+
+-------------------------------------------------------------------
+Sun Nov  3 15:46:49 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.64.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.64.0.php
+- Changes since 5.63.0:
+  * Use ECMGenerateExportHeader to manage deprecated API better
+
+-------------------------------------------------------------------
+Sun Oct  6 13:26:18 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.63.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.63.0.php
+- Changes since 5.62.0:
+  * KBookmark: improve addBookmark apidox
+  * Port away from deprecated method toTime_t()
+
+-------------------------------------------------------------------
+Sat Sep  7 20:36:31 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- No code change since 5.61.0
+- Replace foo-devel with cmake(KF5Foo) in build requirements
+
+-------------------------------------------------------------------
+Wed Aug  7 17:51:09 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Remove deprecated method 
+  * Remove unused includes
+
+-------------------------------------------------------------------
+Fri Jul 19 11:38:38 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * Install in new logging directory when we use kf5 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- No code changes since 5.58.0
+
+-------------------------------------------------------------------
+Wed May 15 18:16:15 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- Changes since 5.57.0:
+  * Fix KBoomarkMenuTest when Bookmarks Editor is not installed
+  * Fix compile with Qt 5.10
+  * Add support for KBookmarkOwner to communicate if it has tabs open
+  * Replace count() == 0 by isEmpty()
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:41 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * [kbookmarks] compile without foreach
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:35 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * Replace KIconThemes dependency with equivalent QIcon usage
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:01 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * Build without D-Bus on Android
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:42 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * No code changes since 5.53.0
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:42 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Use isEmpty()
+  * Use new syntax
+  * Port away from deprecated KAuthorized::authorizeKAction
+  * Use more member-function-pointer-based signal/slot connections
+  * Use more explicit constructors with internal classes
+  * Use QDateTime::currentDateTimeUtc().toTime_t()
+  * Use Q_OBJECT with QObject subclass (help debugging introspection)
+  * Less implicit cast from ASCII/ByteArray
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:02 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Remove unused variable
+  * Use reserve() on qt containers when fill size is known
+
+-------------------------------------------------------------------
+Tue Oct 16 08:01:51 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:51:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * API dox: 0 -> nullptr
+  * Use QString's multi-arg with multiple string args
+  * Make sure to build with strict compile flags
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Aug 21 09:36:22 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary; use complete sentences in description.
+
+-------------------------------------------------------------------
+Sun Aug 19 09:18:49 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Honor BUILD_TESTING
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:35 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:02 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Warning--
+
+-------------------------------------------------------------------
+Sun May 13 21:03:00 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:02 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Remove not necessary QtCore and co
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:40 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * None
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:07 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:14 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * Port to new connect api
+  * Use debug categories
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:47 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * do not show edit bookmarks action if keditbookmarks is not installed
+  * port from deprecated KAuthorized::authorizeKAction to authorizeAction
+  * cleanup and sort headers
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:13 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * Remove QtCore
+  * Add .arcconfig
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:37 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:16 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * Do not leak symbols of pimpl classes, protect with Q_DECL_HIDDEN
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:17 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * API dox: use official name "D-Bus" consistently
+
+-------------------------------------------------------------------
+Wed Jul 12 07:13:59 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * Emit errors when keditbookmarks is missing (kde#303830)
+  * [FEATURE] Option to build & install QCH file with the public API dox
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * None
+
+-------------------------------------------------------------------
+Mon May 15 13:53:11 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:44 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:15 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Commit translations from l10n-kf5
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Upgrade KF5 version to 5.32.0.
+
+-------------------------------------------------------------------
+Thu Feb  9 09:24:01 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:38:12 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 01:55:42 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 20:13:10 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 12:50:15 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:47:09 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:50:34 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * KBookmarkGroup::moveBookmark: fix return value when item is
+    already at the right position
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:02:01 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * Cleanup KBookmarkManagerList before qApp exits,
+    to avoid deadlocks with the DBus thread
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:23:28 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:30:06 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:18:55 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 09:54:54 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 17:59:23 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:41:55 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * Fully initialize DynMenuInfo in return value
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:03:08 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 16:57:52 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:02 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:12:41 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:14 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * KBookmarkManager: use KDirWatch instead of QFileSystemWatcher
+    to detect user-places.xbel being created.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:44:48 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * Don't add a bookmark with url is empty and text is empty
+  * Encode KBookmark URL to fix compatibility with KDE4 applications
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:12 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+
+-------------------------------------------------------------------
+Sun May  3 19:50:07 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:58 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * Fix build with Qt 5.5
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+- Added kconfig-devel and kcodecs-devel BuildRequires
+- Added kwidgetsaddons-devel Requires to devel subpackage
+- Drop no longer needed Requires of the devel subpackage:
+  kconfigwidgets-devel, kiconthemes-devel and kxmlgui-devel
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:58 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:34 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:31 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:51 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:47:42 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:58 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * Fix encoding issue in KIO places dialog (kde#337642)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:38 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:21 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+
+-------------------------------------------------------------------
+Fri Jul 11 09:48:36 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Define kf5_version within package
+
+-------------------------------------------------------------------
+Tue Jul  1 21:36:09 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:40 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Added libqt5-linguist-devel BuildRequires
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sun May  4 01:40:57 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:21 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+
+-------------------------------------------------------------------
+Tue Mar  4 16:35:40 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Sat Feb  8 02:17:23 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init kbookmarks package
+

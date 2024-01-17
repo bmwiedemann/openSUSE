@@ -1,0 +1,7 @@
+<package name="adwaita-qt" project="openSUSE:Factory">
+  <title>adwaita-qt</title>
+  <description>Theme to let Qt applications fit nicely into GNOME desktop.
+  
+  </description>
+  <devel project="GNOME:Apps" package="adwaita-qt"/>
+</package>

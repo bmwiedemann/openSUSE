@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Thu Jun 20 12:46:35 UTC 2013 - max@suse.com
+
+- Update to version 4.1 from the kbskit SF project for
+  compatibility with itk 4.0.0.
+- Manpages are not included anymore, but current documentation can
+  be found on http://incrtcl.sourceforge.net/iwidgets/ .
+
+-------------------------------------------------------------------
+Tue Dec 20 20:55:34 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon May 19 14:20:47 CEST 2008 - max@suse.de
+
+- Change Requires to reflect the split of itk from itcl.
+
+-------------------------------------------------------------------
+Fri Nov 10 12:28:25 CET 2006 - ro@suse.de
+
+- fix docu permissions 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:35 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jun 17 11:56:01 CEST 2005 - max@suse.de
+
+- Moved the sctipt library to /usr/share/tcl .
+
+-------------------------------------------------------------------
+Mon Feb  2 17:20:07 CET 2004 - hmacht@suse.de
+
+- added option # norootforbuild in specfile 
+
+-------------------------------------------------------------------
+Wed Jul 23 16:27:35 CEST 2003 - max@suse.de
+
+- Removed unneeded stuff from neededforbuild.
+
+-------------------------------------------------------------------
+Mon Jan 13 16:32:45 CET 2003 - max@suse.de
+
+- This package has been split off from itcl, because the sources
+  are separate projects now.
+
+- New version 4.0.1.
+
+- As the dependencies for Tcl extensions can't currently be
+  tracked automatically, packages that depend on itcl might
+  need to be changed to depend on iwidgets as well, if they
+  actually use it.

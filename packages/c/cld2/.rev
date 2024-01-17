@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7832f4e3f6ab82975fc61aa8e0ba2107</srcmd5>
+    <version>0.0.0~svn195</version>
+    <time>1432888827</time>
+    <user>dimstar_suse</user>
+    <comment>cld2, an optional dependency for poedit &gt;= 1.8</comment>
+    <requestid>308973</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ff469657a758d8c85d4b62e0c7a04624</srcmd5>
+    <version>0.0.0~svn195</version>
+    <time>1466681820</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with gcc6 in Factory, build with -std=c++98 boo#985158</comment>
+    <requestid>403860</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2ed97d4f98316d6416d5afd51a6be20c</srcmd5>
+    <version>20150820</version>
+    <time>1507897005</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533152</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a704eb4ee987bb88c28922ff38cb7980</srcmd5>
+    <version>20150820</version>
+    <time>1596278029</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823869</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>67709c0342854d5fe68fcec49b787bc8</srcmd5>
+    <version>20150820</version>
+    <time>1597856175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827730</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>02e46c83a76bc7c338519dd529dc3a6a</srcmd5>
+    <version>20150820</version>
+    <time>1608221075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856399</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>722ac1d0787ec9b098053007aa60f0da</srcmd5>
+    <version>20150820</version>
+    <time>1616598932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880750</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="yast2-journal" project="openSUSE:Factory">
+  <title>YaST2 - Reading of systemd journal</title>
+  <description>A YaST2 module to read the systemd journal in a convenient and user-friendly way.
+</description>
+  <devel project="YaST:Head" package="yast2-journal"/>
+</package>

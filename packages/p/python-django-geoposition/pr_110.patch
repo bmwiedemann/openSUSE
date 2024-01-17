@@ -1,0 +1,157 @@
+From cbbd56afa21d7ba226c643bc6a7e9319f4099b17 Mon Sep 17 00:00:00 2001
+From: Billy Williamson <wewill147@gmail.com>
+Date: Thu, 31 Oct 2019 13:13:12 -0500
+Subject: [PATCH 1/5] Replace deprecated function to work in Django 2
+
+---
+ geoposition/fields.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/geoposition/fields.py b/geoposition/fields.py
+index 9fe86bc..69496c6 100644
+--- a/geoposition/fields.py
++++ b/geoposition/fields.py
+@@ -47,7 +47,7 @@ def get_prep_value(self, value):
+         return str(value)
+ 
+     def value_to_string(self, obj):
+-        value = self._get_val_from_obj(obj)
++        value = self.value_from_object(obj)
+         return smart_text(value)
+ 
+     def formfield(self, **kwargs):
+
+From 159db23072f581577de33dab9dbb51a36e8b02f0 Mon Sep 17 00:00:00 2001
+From: Billy Williamson <wewill147@gmail.com>
+Date: Mon, 9 Dec 2019 16:52:30 -0600
+Subject: [PATCH 2/5] Remove import from django.utils.six
+
+---
+ geoposition/fields.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/geoposition/fields.py b/geoposition/fields.py
+index 69496c6..adf2b02 100644
+--- a/geoposition/fields.py
++++ b/geoposition/fields.py
+@@ -1,7 +1,6 @@
+ from __future__ import unicode_literals
+ 
+ from django.db import models
+-from django.utils.six import with_metaclass
+ from django.utils.translation import ugettext_lazy as _
+ from django.utils.encoding import smart_text
+ 
+
+From 37982944a7f5b76772d7baebb27c37458ab11f07 Mon Sep 17 00:00:00 2001
+From: "William E. Williamson" <wew01@cybirical.com>
+Date: Mon, 9 Dec 2019 17:07:48 -0600
+Subject: [PATCH 3/5] Change six.text_type to str
+
+---
+ geoposition/widgets.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/geoposition/widgets.py b/geoposition/widgets.py
+index e2b82a1..e6ff0cf 100644
+--- a/geoposition/widgets.py
++++ b/geoposition/widgets.py
+@@ -3,7 +3,6 @@
+ import json
+ from django import forms
+ from django.template.loader import render_to_string
+-from django.utils import six
+ from django.utils.translation import ugettext_lazy as _
+ from .conf import settings
+ 
+@@ -17,7 +16,7 @@ def __init__(self, attrs=None):
+         super(GeopositionWidget, self).__init__(widgets, attrs)
+ 
+     def decompress(self, value):
+-        if isinstance(value, six.text_type):
++        if isinstance(value, str):
+             return value.rsplit(',')
+         if value:
+             return [value.latitude, value.longitude]
+
+From ce3d2cc046f1c5b40a92aaa90db5a57e15bb81eb Mon Sep 17 00:00:00 2001
+From: starcross <aluton@gmail.com>
+Date: Sun, 22 Dec 2019 18:41:07 +0000
+Subject: [PATCH 4/5] Fixes for django 2/3 compatibility
+
+---
+ geoposition/fields.py         |  2 +-
+ geoposition/tests/settings.py | 18 +++++++++++++++++-
+ geoposition/tests/urls.py     | 11 ++++++-----
+ 3 files changed, 24 insertions(+), 7 deletions(-)
+
+diff --git a/geoposition/fields.py b/geoposition/fields.py
+index adf2b02..4f83086 100644
+--- a/geoposition/fields.py
++++ b/geoposition/fields.py
+@@ -39,7 +39,7 @@ def to_python(self, value):
+ 
+         return Geoposition(latitude, longitude)
+ 
+-    def from_db_value(self, value, expression, connection, context):
++    def from_db_value(self, value, expression, connection):
+         return self.to_python(value)
+ 
+     def get_prep_value(self, value):
+diff --git a/geoposition/tests/settings.py b/geoposition/tests/settings.py
+index b97528f..049c0e9 100644
+--- a/geoposition/tests/settings.py
++++ b/geoposition/tests/settings.py
+@@ -20,7 +20,7 @@
+     'example',
+ )
+ 
+-MIDDLEWARE_CLASSES = (
++MIDDLEWARE = (
+     'django.contrib.sessions.middleware.SessionMiddleware',
+     'django.middleware.common.CommonMiddleware',
+     'django.middleware.csrf.CsrfViewMiddleware',
+@@ -38,6 +38,22 @@
+     }
+ }
+ 
++TEMPLATES = [
++    {
++        'BACKEND': 'django.template.backends.django.DjangoTemplates',
++        'DIRS': [os.path.join(BASE_DIR,  'templates')],
++        'APP_DIRS': True,
++        'OPTIONS': {
++            'context_processors': [
++                'django.template.context_processors.debug',
++                'django.template.context_processors.request',
++                'django.contrib.auth.context_processors.auth',
++                'django.contrib.messages.context_processors.messages',
++            ],
++        },
++    },
++]
++
+ LANGUAGE_CODE = 'en-us'
+ TIME_ZONE = 'UTC'
+ USE_I18N = True
+diff --git a/geoposition/tests/urls.py b/geoposition/tests/urls.py
+index e4eeac2..be8eb98 100644
+--- a/geoposition/tests/urls.py
++++ b/geoposition/tests/urls.py
+@@ -1,9 +1,10 @@
+-from django.conf.urls import patterns, include, url
++from django.urls import path, include
+ from django.contrib import admin
++from example.views import poi_list
+ 
+ admin.autodiscover()
+ 
+-urlpatterns = patterns('',
+-    url(r'^$', 'example.views.poi_list'),
+-    url(r'^admin/', include(admin.site.urls)),
+-)
++urlpatterns = [
++    path('', poi_list),
++    path('admin/', admin.site.urls),
++]
+

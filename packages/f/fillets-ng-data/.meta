@@ -1,0 +1,11 @@
+<package name="fillets-ng-data" project="openSUSE:Factory">
+  <title>Game Data for Fish Fillets - Next Generation</title>
+  <description>Fish Fillets is strictly a puzzle game. The goal in each of the 70
+levels is always the same: to find a safe way out. The fish utter witty
+remarks about their surroundings and the various inhabitants of their
+underwater realm quarrel among themselves or comment on the efforts of
+your fish. The whole game is accompanied by quiet, comforting music.
+
+This package contains data for the game.</description>
+  <devel project="games" package="fillets-ng-data"/>
+</package>

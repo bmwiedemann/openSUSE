@@ -1,0 +1,169 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fa9171c75c40db0b59a169196b1a0f2d</srcmd5>
+    <version>0~20130331</version>
+    <time>1367237054</time>
+    <user>coolo</user>
+    <comment>Joachim Metz has created a set of c libraries used by security tools.  The libxxx packages often include basic applications sub-packages which are useful by themselves.</comment>
+    <requestid>173522</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6ff1d6f6107ea7f4665e5578ad9e6182</srcmd5>
+    <version>0~20130331</version>
+    <time>1375728341</time>
+    <user>coolo</user>
+    <comment>Minor specfile cleanup. No functional change.
+part of summer 2013 libyal refresh for opensuse 13.1</comment>
+    <requestid>185877</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>6ff1d6f6107ea7f4665e5578ad9e6182</srcmd5>
+    <version>0~20130331</version>
+    <time>1379662908</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6ff32b8fe9bbda4b81720920b8cb8880</srcmd5>
+    <version>0~20140731</version>
+    <time>1408089347</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244707</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6ff32b8fe9bbda4b81720920b8cb8880</srcmd5>
+    <version>0~20140731</version>
+    <time>1409301511</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>41d7d6c362416ca1548df4f20b4c0c6c</srcmd5>
+    <version>0~20150104</version>
+    <time>1420927510</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280530</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2d1f69cdd1c324ec97c6a377e6db71ac</srcmd5>
+    <version>0~20170110</version>
+    <time>1507197406</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530315</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4e41f92bc02e38c4549aeeaa04bbe1c3</srcmd5>
+    <version>0~20190102</version>
+    <time>1557141733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693955</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ffe6b5cee35c2efe472c935466771904</srcmd5>
+    <version>0~20201012</version>
+    <time>1609111740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858868</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a0b03d79ecd93807cd9836f7cc11a0c3</srcmd5>
+    <version>20210412</version>
+    <time>1623363485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898221</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bcab99a5b95930384b0b4276d83d9993</srcmd5>
+    <version>20210522</version>
+    <time>1624813150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902509</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c64ee60a328de4bd73dffab219d27d8f</srcmd5>
+    <version>20210522</version>
+    <time>1637970672</time>
+    <user>dimstar_suse</user>
+    <comment>- Add keyring</comment>
+    <requestid>933944</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>79ce249a4f5184f80a54bd4aa98f08ad</srcmd5>
+    <version>20210522</version>
+    <time>1642835891</time>
+    <user>dimstar_suse</user>
+    <comment>- Transform specfile to emit python multiversion packages.</comment>
+    <requestid>947867</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>25983a1a0859d4c2812953623f915fdc</srcmd5>
+    <version>20220424</version>
+    <time>1650922529</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220424</comment>
+    <requestid>972511</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a1c1d227fad921bcb58309a3d1592874</srcmd5>
+    <version>20220529</version>
+    <time>1653907451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220529</comment>
+    <requestid>979758</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>39c56f2953aafd5fe181b30781288667</srcmd5>
+    <version>20220529</version>
+    <time>1660051694</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symver</comment>
+    <requestid>993967</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>77c06bbdc3424dcddbe2a83b34a867fc</srcmd5>
+    <version>20221127</version>
+    <time>1669630027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221127</comment>
+    <requestid>1038543</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f72f285fb00d387c13d7e55f4be4ec08</srcmd5>
+    <version>20230406</version>
+    <time>1680897728</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20230406</comment>
+    <requestid>1077901</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>199c6e03525ac2801e95187435503eaf</srcmd5>
+    <version>20230406</version>
+    <time>1691594705</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1102985</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8efe3fa6ab489bf7413ca512c7befc1a</srcmd5>
+    <version>20231120</version>
+    <time>1700772069</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231120</comment>
+    <requestid>1128196</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d6e2107ba54f561342602ce042871769</srcmd5>
+    <version>20240114</version>
+    <time>1705353593</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240114</comment>
+    <requestid>1138736</requestid>
+  </revision>
+</revisionlist>

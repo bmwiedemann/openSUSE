@@ -1,0 +1,40 @@
+Index: b/src/cmscgats.c
+===================================================================
+--- a/src/cmscgats.c	2022-11-01 12:13:11.000000000 +0200
++++ b/src/cmscgats.c	2022-11-11 14:16:56.842380821 +0200
+@@ -1017,7 +1017,7 @@ void InSymbol(cmsIT8* it8)
+                     return;
+                 }
+ 
+-                FileNest->Stream = fopen(FileNest->FileName, "rt");
++                FileNest->Stream = fopen(FileNest->FileName, "rte");
+                 if (FileNest->Stream == NULL) {
+ 
+                         SynError(it8, "File %s not found", FileNest->FileName);
+@@ -1912,7 +1912,7 @@ cmsBool CMSEXPORT cmsIT8SaveToFile(cmsHA
+ 
+     memset(&sd, 0, sizeof(sd));
+ 
+-    sd.stream = fopen(cFileName, "wt");
++    sd.stream = fopen(cFileName, "wte");
+     if (!sd.stream) return FALSE;
+ 
+     for (i=0; i < it8 ->TablesCount; i++) {
+@@ -2423,7 +2423,7 @@ cmsBool IsMyFile(const char* FileName)
+    cmsUInt32Number Size;
+    cmsUInt8Number Ptr[133];
+ 
+-   fp = fopen(FileName, "rt");
++   fp = fopen(FileName, "rte");
+    if (!fp) {
+        cmsSignalError(0, cmsERROR_FILE, "File '%s' not found", FileName);
+        return FALSE;
+@@ -2506,7 +2506,7 @@ cmsHANDLE  CMSEXPORT cmsIT8LoadFromFile(
+      if (!hIT8) return NULL;
+ 
+ 
+-     it8 ->FileStack[0]->Stream = fopen(cFileName, "rt");
++     it8 ->FileStack[0]->Stream = fopen(cFileName, "rte");
+ 
+      if (!it8 ->FileStack[0]->Stream) {
+          cmsIT8Free(hIT8);

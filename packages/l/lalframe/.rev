@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>832310aa909f5ea04760f6f0b69ceb62</srcmd5>
+    <version>1.5.1</version>
+    <time>1604510718</time>
+    <user>dimstar_suse</user>
+    <comment>Frame Library for gravitational wave data analysis</comment>
+    <requestid>845393</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d7c281a1fdbd9ef108c04d8f3410f83d</srcmd5>
+    <version>1.5.3</version>
+    <time>1613463558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872142</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8080c4d3b5858393fca4c484b377bf18</srcmd5>
+    <version>1.5.4</version>
+    <time>1619031543</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>876068</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1e3d06fe21fb068e8c3291b9437eed27</srcmd5>
+    <version>1.6.0</version>
+    <time>1642455235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945454</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7471164db9abefb8c9b4b0be2c1e3954</srcmd5>
+    <version>2.0.1</version>
+    <time>1661346662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998854</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>06cf9d638dae714c1e6402013243c566</srcmd5>
+    <version>2.0.1</version>
+    <time>1676990166</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066780</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>db18ae054c614e47e0c15ce52f1b515f</srcmd5>
+    <version>3.0.1</version>
+    <time>1685141447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089161</requestid>
+  </revision>
+</revisionlist>

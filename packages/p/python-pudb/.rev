@@ -1,0 +1,119 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b41545e5757f2b16bbb88dff2a63d4ed</srcmd5>
+    <version>2018.1</version>
+    <time>1530741332</time>
+    <user>dimstar_suse</user>
+    <comment>New package
+- Update to 2018.1:
+    * Show variables that start with an underscore in the var view
+    * Show length of array types in var view
+    * Don't crash on var state changes if no variable shown
+    * set socket REUSEADDR opt for the remote debugger
+    * set default value of 'Go to Line' to None instead of empty string
+    * update Go-to-Line UI with File/Current Line/Go to Line
+    * Placate new Flake8; add some license headers
+    * check 'safely_stringify_for_pudb' on the type #276
+    * Use urwid.util.calc_text_pos() in make_canvas() 
+    * Use text_width() in var_view
+    * Create text_width() help function for getting the (terminal) width of…
+    * Don't return early when &quot;returning&quot; from a module
+- Setup alterantives
+- Initial packaging effort
+- Packaged 2017.1.4
+- Enabled tests, with TestFileSourceCodeProvider.test_get_lines
+  excluded (https://github.com/inducer/pudb/issues/304)
+</comment>
+    <requestid>620426</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cbdabdf7a509bd8fd9b8748bd4bf1188</srcmd5>
+    <version>2018.1</version>
+    <time>1532774683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625758</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1bc94d9857dcee4c6357b55620d7c70a</srcmd5>
+    <version>2019.1</version>
+    <time>1558129420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703565</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>81e77fa666329a44a3ca5d819d8ec63e</srcmd5>
+    <version>2019.1</version>
+    <time>1565864992</time>
+    <user>dimstar_suse</user>
+    <comment>- Added package runtime requirements.</comment>
+    <requestid>723471</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0c579ced4efe7ac2b98abf1e19e81cf5</srcmd5>
+    <version>2019.2</version>
+    <time>1584643897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786390</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3ad651a1cabc752eb5cb7563166071e3</srcmd5>
+    <version>2019.2</version>
+    <time>1588105888</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>798523</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>99af59485cf35c675b04e8daae2d3980</srcmd5>
+    <version>2020.1</version>
+    <time>1611163625</time>
+    <user>dimstar_suse</user>
+    <comment>* Update to 2020.1:
+  - Use Jedi for completion in the built-in shell
+  - Add vi keys for sidebar
+  - Clean up vi key handling, remove duplication
+  - add -m switch to run as module
+  - Require Py3.6
+  - Use h/l to collapse/open containers in var view
+  - feat: add reverse remote pudb
+* Fix dealing with alternatives.
+</comment>
+    <requestid>864376</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>99bf8fe9aa8885438b40d977f4670d45</srcmd5>
+    <version>2021.2.2</version>
+    <time>1639075530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>937341</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>05aa200cfc24d1359751e560220ddc95</srcmd5>
+    <version>2022.1.2</version>
+    <time>1665754883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010376</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>27d050215f4dfdbf51003553fdefed81</srcmd5>
+    <version>2022.1.3</version>
+    <time>1668173808</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035185</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>ab92a0ef7a42757bfc19b547cc3e519d</srcmd5>
+    <version>2022.1.3</version>
+    <time>1694113945</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+</comment>
+    <requestid>1108067</requestid>
+  </revision>
+</revisionlist>

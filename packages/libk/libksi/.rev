@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5dc4ce8c30552a940bca9891c56b0f2e</srcmd5>
+    <version>3.2.2.0</version>
+    <time>1436331555</time>
+    <user>coolo</user>
+    <comment>libksi, an optional dependency for rsyslog 8.11.0
+With license fix applied</comment>
+    <requestid>315001</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5e87cc301584c3913da3c3f999fda1fe</srcmd5>
+    <version>3.4.0.5</version>
+    <time>1452027282</time>
+    <user>dimstar_suse</user>
+    <comment>libksi 3.4.0.5. Will break rsyslog (the only package depending on it). Rsyslog 8.15.0 needs/fixes that.</comment>
+    <requestid>351684</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>dbb6968385e8c113313595f8f66fc82b</srcmd5>
+    <version>3.4.0.5</version>
+    <time>1487597271</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457464</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>9b2ceff7de2613e41d457a3e14d1a758</srcmd5>
+    <version>3.4.0.5</version>
+    <time>1504520803</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519202</requestid>
+  </revision>
+</revisionlist>

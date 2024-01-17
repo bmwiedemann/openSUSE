@@ -1,0 +1,5 @@
+<package name="cdemu-daemon" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="filesystems" package="cdemu-daemon"/>
+</package>

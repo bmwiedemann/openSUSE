@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>412ffac4161e6e2436b12e37f2d66c49</srcmd5>
+    <version>1.2.3</version>
+    <time>1576014349</time>
+    <user>dimstar_suse</user>
+    <comment>Dynamic Time Warping (DTW) package</comment>
+    <requestid>755602</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>437e657a4c0d2dbd61f6d51c839174d1</srcmd5>
+    <version>2.2.4</version>
+    <time>1613427465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871599</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bde3959ba004e1114ca974bbec7b9b53</srcmd5>
+    <version>2.3.10</version>
+    <time>1675792192</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable broken tests with latest numpy &gt;= 1.24
+- Update to 2.3.10
+  * Improved compilation for M1/M2, and Py3.7
+  * Improved plotting warping paths
+  * Improved kmeans clustering for ndim
+- 2.3.5
+  * Improved compilation for M1/M2, and Py3.7
+  * Improved plotting warping paths
+  * Improved kmeans clustering for ndim
+- 2.3.4
+  * Additional clustering techniques. E.g. DTW Barycenter Averaging for
+    clustering, k-medoids.
+  * Subsequence search and local concurrences.
+  * Improved Windows compatibility.
+  * Anaconda release (by @m-rossi )
+  * Improved visualisations
+</comment>
+    <requestid>1063598</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>82634b9e8b774e39ea512ae2852f0060</srcmd5>
+    <version>2.3.10</version>
+    <time>1677794609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068489</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>44957a9b7d9dc2996e2819adbc97823a</srcmd5>
+    <version>2.3.10</version>
+    <time>1693860791</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108782</requestid>
+  </revision>
+</revisionlist>

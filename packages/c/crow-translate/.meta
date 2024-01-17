@@ -1,0 +1,5 @@
+<package name="crow-translate" project="openSUSE:Factory">
+  <title>crow-translate</title>
+  <description></description>
+  <devel project="network" package="crow-translate"/>
+</package>

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b0c281950ec5e673544576a88c79bd7</srcmd5>
+    <version>1.0.0</version>
+    <time>1564155228</time>
+    <user>dimstar_suse</user>
+    <comment>chart-studio plotly package, split from the python-plotly package in the latest release</comment>
+    <requestid>718608</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4cbb93c18f85fe2c7ff2144d9a93f6ee</srcmd5>
+    <version>1.0.0</version>
+    <time>1575727749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754769</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b4f2f0c126d423da870f2ff9f039993d</srcmd5>
+    <version>1.1.0</version>
+    <time>1594293630</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819678</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5295f5f66c85b5ed4b5a632f8cea6230</srcmd5>
+    <version>1.1.0</version>
+    <time>1679667593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073602</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>368f5e591125cfbc4cbb1b97d086be4a</srcmd5>
+    <version>1.1.0</version>
+    <time>1681296736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078559</requestid>
+  </revision>
+</revisionlist>

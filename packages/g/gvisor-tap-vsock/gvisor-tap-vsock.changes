@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Thu Aug 03 12:50:21 UTC 2023 - danish.prakash@suse.com
+
+- Use .obscpio archive format with obs_scm svc
+- Update to version 0.7.0:
+  * build(deps): bump github.com/onsi/gomega from 1.27.8 to 1.27.10
+  * build(deps): bump golang.org/x/crypto from 0.10.0 to 0.11.0
+  * go.mod: gvisor.dev/gvisor v0.0.0-20230715022000-fd277b20b8db
+  * go.mod: gvisor.dev/gvisor v0.0.0-20230518002134-99c295d3b367
+  * build: Update go version to 1.20
+  * Update packit targets
+  * build(deps): bump golang.org/x/sys from 0.9.0 to 0.10.0
+  * build(deps): bump github.com/coreos/stream-metadata-go
+  * Remove unnecessary allocations and Write calls.
+
+-------------------------------------------------------------------
+Thu Jul 27 11:55:11 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- First version of the gvisor-tap-vsock package
+

@@ -1,0 +1,9 @@
+diff -uprN gnome-keyring-sharp-1.0.2.old/src/Gnome.Keyring/AssemblyInfo.cs.in gnome-keyring-sharp-1.0.2/src/Gnome.Keyring/AssemblyInfo.cs.in
+--- gnome-keyring-sharp-1.0.2.old/src/Gnome.Keyring/AssemblyInfo.cs.in	2010-07-01 03:06:58.000000000 +0400
++++ gnome-keyring-sharp-1.0.2/src/Gnome.Keyring/AssemblyInfo.cs.in	2017-05-03 19:38:50.255801885 +0300
+@@ -36,4 +36,4 @@ using System.Runtime.CompilerServices;
+ [assembly: AssemblyCopyright ("(c) 2006 Novell, Inc.")]
+ [assembly: AssemblyCompany ("Novell, Inc.")]
+ [assembly: AssemblyKeyFile ("Gnome.Keyring.snk")]
+-
++[assembly: AssemblyDelaySignAttribute(true)]

@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>945d0aedcf417be0f11caa07b76d43c6</srcmd5>
+    <version>1.4.2</version>
+    <time>1594293633</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>819681</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>00873c03f3e4918314859cbf433713f4</srcmd5>
+    <version>1.4.2</version>
+    <time>1613774993</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>873914</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>05aa544ff76d40d6b819aa5064b3dace</srcmd5>
+    <version>1.4.2</version>
+    <time>1621201303</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893354</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e16318acf94cbcc55edb54509131eee4</srcmd5>
+    <version>1.4.3</version>
+    <time>1685632763</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.3:
+  * Builder properly handles Hermitian conjugation of array-like
+    values.
+  * Various maintenance.</comment>
+    <requestid>1090076</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>90d92a953c4d7922098f2098c557c230</srcmd5>
+    <version>1.4.4</version>
+    <time>1702845183</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.4:
+  * Ensure compatibility with recent versions of SymPy,
+    matplotlib and Sphinx.
+  * Fix current density plotting when sites coincide.
+
+- skip python36 (scipy)</comment>
+    <requestid>1133664</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Sun Apr  2 10:51:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to 2.0.16:
+  * Do not use abstract socket on BSD
+  * Fix compilation error on GCC 13
+
+-------------------------------------------------------------------
+Sun Nov 27 19:54:32 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 2.0.15:
+  * Add TOUCHEGG_DEVICE_TYPE environment variable to RUN_COMMAND
+  * Remove Firefox from the default config, it supports native gestures
+
+-------------------------------------------------------------------
+Tue Apr 26 14:35:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.14:
+  * Performance improvements calculating the size of the animations
+  * Fix crash that might happen when multiple input devices are added and
+    removed
+
+-------------------------------------------------------------------
+Tue Feb 15 20:01:38 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.0.13 (changes since 2.0.10):
+  * Allow to display any animation on SEND_KEYS/RUN_COMMAND.
+  * Add cyclic option to CHANGE_DESKTOP.
+  * Improve pinch gesture detection on touchscreens.
+  * Honour the XDG basedir specification.
+  * Improve pinch detection when the fingers are placed
+    horizontally or vertically.
+  * Allow to run in multiple X displays.
+  * Allow to configure the number of times a repeated action is
+    executed.
+
+-------------------------------------------------------------------
+Thu Nov 25 08:35:23 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_touchegg.service.patch
+
+-------------------------------------------------------------------
+Mon Jun 14 06:59:01 UTC 2021 - Richard Tsai <richard9404@gmail.com>
+
+- Update to 2.0.10
+  * Touchscreen: Use touch average to calculate deltas
+  * libinput 1.18 support: Different deltas depending on libinput version
+
+-------------------------------------------------------------------
+Sat Apr 17 03:26:05 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.0.9
+  * Use screen rotation to calculate touchscreen gestures direction
+
+-------------------------------------------------------------------
+Sat Apr 03 00:15:07 UTC 2021 - Markus Ebner <info@ebner-markus.de>
+
+- Update to 2.0.8
+  * Fix animation when screens ot the same size are arranged vertically
+  * Fix crash caused by a g_variant not being referenced
+  * Handle the TOUCH_CANCEL event to avoid bugs
+
+- Update to 2.0.7
+  * Include different log levels, thanks to @imabuddha
+  * Improvements in documentation
+  * Fix intermittent crash
+
+- Update to 2.0.6
+  * New action added: `FULLSCREEN_WINDOW`. Thanks to @MarioJim
+  * Use D-Bus for daemon-client communication, making easier to write clients different languages
+  * Animations are pixel-precise at low speeds
+  * Make application name case insensitive in config file
+
+- Update to 2.0.5
+  * Allow to cancel non animated gestures when configured to run on end. Thanks to @d86leader
+  * Using unaccelerated deltas and different horizontal and vertical finish thresholds for a better
+    user experience
+  * Fix crashes when incorrect keys are used on `SEND_KEYS`
+  * Handle devices reporting a size of 0x0 mm
+  * Allow to use a symlink as configuration to Dotfiles users
+  * Handles window managers that don't set the `_NET_WORKAREA` atom
+
+- Update to 2.0.4
+  * New gesture available for touchscreens: `TAP`
+  * New action added: `MOUSE_CLICK`
+  * Better multi-monitor support
+  * Improve config file watcher
+
+- Update to 2.0.3
+  * Use `auto` with `color` and `borderColor` to use your theme's accent color
+  * Use `auto` with `CHANGE_DESKTOP` to follow your natural scroll preferences
+  * You are downloading a much better Debian (.deb) package
+  * Now Linux distributions shipping Touchégg by default can update your configuration easily
+  * Improve protocol backward compatibility for third party integrations
+
+- Update to 2.0.2
+  * Touchscreen support. Now you can use PINCH and SWIPE gestures on your touchscreen.
+  * Animations are smoother, even in devices with limited resources like the Raspberry Pi 4.
+  * CHANGE_DESKTOP now allows to use up/down/left/right directions in addition to previous/next.
+    Made with love for KDE users.
+  * Touchégg is added to startup automatically on installation.
+  * In case you manually added it to startup you don't need to change anything, now you can not run
+    multiple instances in parallel by mistake.
+  * Fix Crash when a screen is connected but disabled. Thanks to @magnus-gross.
+  * Fix Intermittent crash after editing the configuration file.
+  * Fix Crash when performing a gesture on the root window.
+
+- Update to 2.0.1
+  * Fix Arch Linux and openSUSE compilation
+
+- Update to 2.0.0
+  * Total rewrite
+  * Add libinput support
+  * Add 1:1 animations so your gestures doesn't feel like a "shortcut" anymore
+  * Drop the Qt dependency for better compatibility
+  * Available gestures: SWIPE, PINCH
+  * Available actions: MAXIMIZE_RESTORE_WINDOW, MINIMIZE_WINDOW, TILE_WINDOW,
+    CLOSE_WINDOW, CHANGE_DESKTOP, SHOW_DESKTOP, SEND_KEYS, RUN_COMMAND
+    
+- Removed touchegg-1.1.1-slowdown-scroll-speed.patch
+  Obsolete
+- Removed touchegg-qt5.patch
+  Obsolete
+
+-------------------------------------------------------------------
+Mon Mar 12 12:43:56 UTC 2018 - sor.alexei@meowr.ru
+
+- Add touchegg-qt5.patch: Build with Qt5.
+- Add some missing dependencies.
+
+-------------------------------------------------------------------
+Fri Oct  9 19:11:09 UTC 2015 - sor.alexei@meowr.ru
+
+- Further spec cleanup.
+- Use a tarball with bundled touchegg-gui.
+- Add touchegg-gui subpackage.
+- Add GPL-3.0+ to licenses (touchegg-gui license).
+- Use optimised CFLAGS.
+- Correct package group.
+
+-------------------------------------------------------------------
+Mon Dec 22 18:27:38 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner to be acceptable
+
+-------------------------------------------------------------------
+Sat Jun 22 00:00:00 UTC 2013 - kamforbb@gmail.com
+
+- Add patch touchegg-1.1.1-slowdown-scroll-speed.patch
+
+-------------------------------------------------------------------
+Sat May  7 00:00:00 UTC 2011 - cabelo@opensuse.org
+
+- Create package in openSuse Build : Alessandro de Oliveira Faria.

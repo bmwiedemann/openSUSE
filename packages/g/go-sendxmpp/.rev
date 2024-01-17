@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c247cd7cd39956a356f297a112c9f6db</srcmd5>
+    <version>0.5.1</version>
+    <time>1659721852</time>
+    <user>dimstar_suse</user>
+    <comment>go-sendxmpp</comment>
+    <requestid>993091</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>49ba00eed4388b590d58a5242b787c51</srcmd5>
+    <version>0.5.3</version>
+    <time>1664468081</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 0.5.3:
+  * Prepare release v0.5.3
+  * Don't check for empty message in listen mode.
+  * Start new development cycle.
+  * Release v0.5.2
+  * Update go modules.
+  * Don't connect to the XMPP server if the message is empty
+  * Update go modules.
+  * Remove another &quot;little&quot;.
+  * Remove the &quot;little&quot;.
+  * Fix typo.
+  * Improve error handling in XML parsing.
+  * Update go modules.
+  * Update go modules.
+  * Update go modules.
+  * Update go modules.
+  * Update go modules.
+  * Update go modules.
+  * Update go modules.
+  * Use resource as alias if specified and no alias is specified.
+  * Update go modules.
+  * Deprecate resource setting and introduce alias setting.
+  * Update go modules.
+  * Detect CNAME loops.
+  * Update go modules.
+  * Perform CNAME look ups.
+  * Update go modules.
+  * Fix typo.
+  * Reply to IQs.
+  * CI: Strip binaries.</comment>
+    <requestid>1006976</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a5034d25a7b62cea370728676fdb6a05</srcmd5>
+    <version>0.5.4</version>
+    <time>1664553512</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 0.5.4:
+  * Fix http-upload.</comment>
+    <requestid>1007173</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a3751210bbb48d3ab19e0e958a404a10</srcmd5>
+    <version>0.5.5</version>
+    <time>1666178250</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.5:
+  * Improve interactive mode.</comment>
+    <requestid>1029733</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d8f3b585083e4674b240504875a8f52e</srcmd5>
+    <version>0.5.6</version>
+    <time>1668432537</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.6:
+  Added:
+  * Add short option -h for http-upload.
+  Changed:
+  * Fix Ox key generation.</comment>
+    <requestid>1035535</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fac3d87f6c06eb484894b6b48fa27bd7</srcmd5>
+    <version>0.6.0</version>
+    <time>1688399006</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  Added:
+  * Add support for sending Out of Band Data (OOB).
+  * Add SCRAM-SHA-1, SCRAM-SHA-256 and SCRAM-SHA512 support (via go-xmpp commit bef3e54).
+  * Add support for messages of type headline.
+  Changed:
+  * Print --help output to stdout instead of stderr.
+  * Print sent stanzas when --debug is used (via go-xmpp commit 9129a110df1b).
+  * Allow JIDs without localpart.
+  * Use single quotes for attributes in stanzas created by github.com/beevik/etree (vial etree v1.1.4).
+  * Fix SRV lookup when the domain has a CNAME (via xmppsrv v0.2.5).
+  * Fall back to directTLS on port 5223 (instead of StartTLS on port 5222)
+    if no SRV records are provided and -t is set.
+  * Remove trailing newlines in interactive mode.</comment>
+    <requestid>1096417</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2f2004fbe24e259c5357d554f61d2829</srcmd5>
+    <version>0.6.1</version>
+    <time>1690370671</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.6.1:
+  * Properly close connection to server.</comment>
+    <requestid>1100735</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>72054e61b6eb2095ad0762af19b10df1</srcmd5>
+    <version>0.7.0</version>
+    <time>1699994557</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.0:
+  * Reply to XEP-0092 software version requests.
+  * Add support for PLUS variants of SCRAM authentification mechanisms
+    (requires go-xmpp commit 4c385a334c606e8bc387f0a3d4d84975802b3984).
+  * Add pinning of last used authentification mechanism if a SCRAM
+    mechanism was used.
+  * Print every stanza in a new line (requires go-xmpp commit
+    31c7eb6919b67b18e901dc45a8e5681040ea7f31).
+
+- Update to 0.6.2:
+  * Properly close connection to server if ^C is pressed in
+    interactive mode.
+  * Replace invalid characters by UTF8 replacement char.
+  * Add warning that there is no Ox support for messages of type
+    headline.
+  * Suppress warnings about reading from closed connection if
+    go-sendxmpp closes the connection before exiting.
+  * Remove unnecessary newlines after stanzas.
+  * Fix segfault when authentication fails due to invalid username
+    or password.</comment>
+    <requestid>1125796</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a49054324c31ff359b7ef33f50ea398f</srcmd5>
+    <version>0.8.0</version>
+    <time>1704829888</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.8.0:
+  Added:
+  * Add no parameter --scram-mech-pinning.
+  Changed:
+  * Refuse to upload a file if upload slot doesn't provide https.
+  * Use XEP-0474 instead of SCRAM mechanism pinning to prevent
+    downgrade attacks</comment>
+    <requestid>1137737</requestid>
+  </revision>
+</revisionlist>

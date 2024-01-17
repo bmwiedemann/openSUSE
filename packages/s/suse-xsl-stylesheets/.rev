@@ -1,0 +1,640 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3b1909438dc44c6a335309e9477bc79f</srcmd5>
+    <version>1.9.6</version>
+    <time>1336465766</time>
+    <user>coolo</user>
+    <comment>The contents of this package used to be in daps, which is currently available in Factory.
+With version 1.0 we split daps into daps and suse-xsl-stylesheets.
+Both packages are needed to build the openSUSE manuals.</comment>
+    <requestid>116442</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>048ede13fbd7eb717e63045fa194bd0b</srcmd5>
+    <version>1.9.6.2</version>
+    <time>1337757688</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121589</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>83902052d49b46c33641a3d6fbea21f9</srcmd5>
+    <version>1.9.6.4</version>
+    <time>1339620487</time>
+    <user>coolo</user>
+    <comment>Version 1.9.6.4: Added numeration attribute for novdoc</comment>
+    <requestid>124644</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>83902052d49b46c33641a3d6fbea21f9</srcmd5>
+    <version>1.9.6.4</version>
+    <time>1340184245</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7e1f9a79339aae4ef2e03706810757b7</srcmd5>
+    <version>1.9.11</version>
+    <time>1347348028</time>
+    <user>coolo</user>
+    <comment>See .changes file for details
+Needed for building our books</comment>
+    <requestid>132622</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>94d660a250ab61fee7c7798b2fdff262</srcmd5>
+    <version>1.9.13</version>
+    <time>1349633033</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137347</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7198fe1bd58a913b0d1b5fd83c58d35c</srcmd5>
+    <version>1.9.14</version>
+    <time>1357676004</time>
+    <user>coolo</user>
+    <comment>Added FAQ elements in Novdoc DTD. See full details in .changes file.</comment>
+    <requestid>147558</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1e1220bda17d5ebe149a79099ad6b4df</srcmd5>
+    <version>1.9.15</version>
+    <time>1358416258</time>
+    <user>coolo</user>
+    <comment>Updated Novdoc DTD. See .changes file for more information.</comment>
+    <requestid>148680</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>1e1220bda17d5ebe149a79099ad6b4df</srcmd5>
+    <version>1.9.15</version>
+    <time>1359110450</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>31f43b6027302bf48547a98143f179c4</srcmd5>
+    <version>1.9.18</version>
+    <time>1360872921</time>
+    <user>coolo</user>
+    <comment>Added essential bugfixes for FO target.
+If possible, please include it into 12.3</comment>
+    <requestid>155382</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f61e04c0b50f9afb7345de8b639f3a34</srcmd5>
+    <version>1.9.19</version>
+    <time>1367501470</time>
+    <user>coolo</user>
+    <comment>Added version &lt; 4.3.99 for susedoc obsoletes</comment>
+    <requestid>174296</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ce267571ce22cd1f04e0f836fb4bee29</srcmd5>
+    <version>1.9.21</version>
+    <time>1370453759</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>177734</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>ce267571ce22cd1f04e0f836fb4bee29</srcmd5>
+    <version>1.9.21</version>
+    <time>1379664745</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3bb930b18da24ea5f7b282871ad9a503</srcmd5>
+    <version>1.9.22</version>
+    <time>1380112742</time>
+    <user>coolo</user>
+    <comment>Added last important changes from new layout, both HTML and FO; patched VERSION.xsl</comment>
+    <requestid>200493</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5aad103b624de8e6fad5398cacf76472</srcmd5>
+    <version>2.0~beta2</version>
+    <time>1389732723</time>
+    <user>coolo</user>
+    <comment>Contains a new NovDoc version and various stylesheet fixes.</comment>
+    <requestid>213883</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0df3a59d6a20a4a8bf7907eee349224e</srcmd5>
+    <version>2.0~beta3</version>
+    <time>1397627038</time>
+    <user>coolo</user>
+    <comment>update to 2.0~beta3 (forwarded request 230191 from rsalevsky)</comment>
+    <requestid>230194</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6eb62c415fd5671871cbde64c57fe955</srcmd5>
+    <version>2.0~beta4</version>
+    <time>1401184263</time>
+    <user>coolo</user>
+    <comment>Update to Version 2.0~beta4 (forwarded request 235014 from stknorr)</comment>
+    <requestid>235019</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4f77e2467013722cf331a98364b41dd9</srcmd5>
+    <version>2.0~beta5</version>
+    <time>1403672243</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237857</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0697c8f72a771e439a428d8d1f0785c1</srcmd5>
+    <version>2.0~rc1</version>
+    <time>1404973003</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239345</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cca75d78791336a4157cb3986067960e</srcmd5>
+    <version>2.0~rc2</version>
+    <time>1406521870</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242366</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>43850191a8ab3ec7741f3d7f489776e2</srcmd5>
+    <version>2.0~rc2</version>
+    <time>1408021058</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244323</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>43850191a8ab3ec7741f3d7f489776e2</srcmd5>
+    <version>2.0~rc2</version>
+    <time>1409303428</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>938670d7e099039fc18b2657acef8529</srcmd5>
+    <version>2.0~rc4</version>
+    <time>1412142008</time>
+    <user>coolo</user>
+    <comment>Created RC4, see .changes file</comment>
+    <requestid>253064</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>c68a4353b83e4b07b5f20fc1dffbd25b</srcmd5>
+    <version>2.0~rc4</version>
+    <time>1425031001</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286766</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7ee03486a6e0e25c5c4539c1ce522da9</srcmd5>
+    <version>2.0~rc5</version>
+    <time>1430891237</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>305295</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>cd5df159fa30052b7c8d8ca73996be37</srcmd5>
+    <version>2.0.1</version>
+    <time>1436111922</time>
+    <user>coolo</user>
+    <comment>Updated to 2.0.1, see .changelog</comment>
+    <requestid>314992</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f8ac2a0c957378898e555e01a87432e2</srcmd5>
+    <version>2.0.2</version>
+    <time>1437059649</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>316622</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>016086033b2ee2ba5f9dc39f3e976c2a</srcmd5>
+    <version>2.0.3</version>
+    <time>1440153729</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>324133</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2b1e08a7485db27824d5de6c1d8ca17a</srcmd5>
+    <version>2.0.4</version>
+    <time>1450363911</time>
+    <user>dimstar_suse</user>
+    <comment>Removed the superfluous but harmless SVN updater script that the factory-auto bot complained about.</comment>
+    <requestid>348345</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a452c7f47fcc7808538c6d8970789a93</srcmd5>
+    <version>2.0.5</version>
+    <time>1462447075</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>392330</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>95f604294e48d00f0170bda1b4719bc7</srcmd5>
+    <version>2.0.6.1</version>
+    <time>1470773653</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417036</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c845357e07ddeae1d22ad277e92ad9ab</srcmd5>
+    <version>2.0.6.2</version>
+    <time>1474370483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>427975</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>d51e9e151d0bb23e535edb49a38966da</srcmd5>
+    <version>2.0.6.3</version>
+    <time>1476409085</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433757</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>5beaa33669bb9eff02c389f520b296e2</srcmd5>
+    <version>2.0.7</version>
+    <time>1486045833</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453433</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>6b19800b9759f71e2093c933d5e444f8</srcmd5>
+    <version>2.0.7.1</version>
+    <time>1487028992</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455761</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d0628c19783e6c973f9556b68edb1e8b</srcmd5>
+    <version>2.0.7.2</version>
+    <time>1495267727</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494845</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>7e210de567be1a26787f0567518787e8</srcmd5>
+    <version>2.0.7.2</version>
+    <time>1495883789</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497748</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>ce578c9fe32bba1bd216b59e35f75488</srcmd5>
+    <version>2.0.7.2</version>
+    <time>1498202207</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504184</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>37b6490c09f2c5e456f8625a9a46b09a</srcmd5>
+    <version>2.0.8</version>
+    <time>1508197773</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533090</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>59cdcd539a33c7fadded663674cefb9a</srcmd5>
+    <version>2.0.8</version>
+    <time>1517668638</time>
+    <user>dimstar_suse</user>
+    <comment>Remove liberation2-fonts package from requirements (bsc#1077375)</comment>
+    <requestid>570553</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>98a8998e9684ecb4f192ee378c4262ee</srcmd5>
+    <version>2.0.9</version>
+    <time>1518697360</time>
+    <user>dimstar_suse</user>
+    <comment>Stable release of the SUSE XSL stylesheets 2.0.9:
+Find issues in our GitHub tracker at
+https://github.com/openSUSE/suse-xsl/issues/NUMBER
+HTML only:
+* Bug tracker PIs are now allowed in the info element which means they
+  can now be profiled properly
+* Update GitHub issues URL syntax to properly apply labels again
+PDF/HTML:
+* Support for intra xrefs to &quot;section&quot; and &quot;sect5&quot; elements
+Packaging:
+* Exclude env/ and *.tmp files from TAR ball
+* Remove dependency on aspell
+* Remove SUSE dictionary from this package: It does not belong here
+  (boo#1052970)
+Test cases:
+* Markup fixes for dapscompare tests
+* Use correct SCHEMA for dapscompare tests</comment>
+    <requestid>576829</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f54ea931e85aa5246239ccabec9bde82</srcmd5>
+    <version>2.0.12</version>
+    <time>1531469498</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620735</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>5f01b187dca287a0a2e5c0a667fe4dca</srcmd5>
+    <version>2.0.13</version>
+    <time>1544441110</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653631</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>6add0055d068a2618401a62311288a37</srcmd5>
+    <version>2.0.13</version>
+    <time>1555488219</time>
+    <user>dimstar_suse</user>
+    <comment>Tracker bug for SLE stylesheet update: bsc#1132032</comment>
+    <requestid>692719</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>92c860214416eebe0630bc5616273633</srcmd5>
+    <version>2.0.14</version>
+    <time>1568190228</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>729010</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>f01b8fe22863ee41d5e42bf68def1d46</srcmd5>
+    <version>2.0.15</version>
+    <time>1574932350</time>
+    <user>dimstar_suse</user>
+    <comment>Stable release of the SUSE XSL stylesheets 2.0.15:
+
+General:
+* Update architecture names to current nomenclature
+
+HTML + PDF:
+* Fix old documentation link www.suse.com/documentation
+  and replace it with https://documentation.suse.com/
+  (#402)
+* Disable intra-xrefs
+  If we point to another book AND we have an @xrefstyle
+  -&gt; output the same text content as the original xref
+  template but remove the link(#398)</comment>
+    <requestid>750917</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>c18ac7ccd485cbd547328549bdc2fdb9</srcmd5>
+    <version>2.0.16</version>
+    <time>1589660702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805691</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>b8b43df2c1b9c979912622795823a1a6</srcmd5>
+    <version>2.0.17</version>
+    <time>1591379949</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>809647</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>42d0cf17d09f9662df05fe486a748373</srcmd5>
+    <version>2.81.0</version>
+    <time>1620398715</time>
+    <user>dimstar_suse</user>
+    <comment>SUSE XSL stylesheets 2.81.0 -- These stylesheets contain branding
+updates &amp; we will need them on SLE 15 SP3 for building release notes.
+Replaces sr#890404</comment>
+    <requestid>890444</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>16859759d9b5ff3c4e9c51afd5860b4a</srcmd5>
+    <version>2.83.0</version>
+    <time>1646241610</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>958115</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>c15102b9b07795c77c60bca897df7753</srcmd5>
+    <version>2.84.1</version>
+    <time>1657378745</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987878</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>b77a68a211aa024cbbe2612fbff01b37</srcmd5>
+    <version>2.85.1</version>
+    <time>1659106041</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991669</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>51ba4a46b51d2b7f1e81441b8f054019</srcmd5>
+    <version>2.86.0</version>
+    <time>1660235474</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>994168</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>c83e320a4643d37aaa432e0299a5f18b</srcmd5>
+    <version>2.86.1</version>
+    <time>1662740532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001781</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>b06b76daac6ee5393eae87bd98ed8803</srcmd5>
+    <version>2.86.2</version>
+    <time>1663327922</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1003725</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>3626f6b5cf30e2d3784bc076883522ea</srcmd5>
+    <version>2.86.3</version>
+    <time>1665754836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010197</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>83966a6eb253a87a5cd12af120464785</srcmd5>
+    <version>2.86.4</version>
+    <time>1666871638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031168</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>f49243174c43eb6bd2f5aee9813a1be5</srcmd5>
+    <version>2.86.5</version>
+    <time>1667904448</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034280</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>c7434ad5476d9715941682ee3d59f956</srcmd5>
+    <version>2.87.1</version>
+    <time>1669715569</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038739</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>54b3b9eb694e3ea2d4af07a9a46205a5</srcmd5>
+    <version>2.88.0</version>
+    <time>1670703466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041905</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>3ec1e4f9ca95d609065bd22fea78ed07</srcmd5>
+    <version>2.88.1</version>
+    <time>1670954097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042409</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>20d4bcff7782bb809856ac07045087e7</srcmd5>
+    <version>2.88.2</version>
+    <time>1671564000</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1043827</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>8fbab2cafb5428cc81ff8603a7cdc2ed</srcmd5>
+    <version>2.88.3</version>
+    <time>1674810923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061134</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>4d7c271e51f5d65a5d0840b8fed45953</srcmd5>
+    <version>2.89.0</version>
+    <time>1677878676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068962</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>6c9fe3d75deefdac662c88723e1e00ed</srcmd5>
+    <version>2.90.0</version>
+    <time>1681996412</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080103</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>ed1c4c835171538f1b1a955f6be232c4</srcmd5>
+    <version>2.91.2</version>
+    <time>1684688892</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1087910</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>90ed6d4ab05f9f517da9685bc3f9c141</srcmd5>
+    <version>2.92.0</version>
+    <time>1690469412</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100888</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>f8a84556da32c26a57ea44f2968c0a64</srcmd5>
+    <version>2.92.1</version>
+    <time>1690987672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101529</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>98030fa8a55b7a73819df9253df05cba</srcmd5>
+    <version>2.92.3</version>
+    <time>1691674396</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103277</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>d627c743366bcb2609164f95cf8122ab</srcmd5>
+    <version>2.92.4</version>
+    <time>1691762112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103340</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>e7f57ec75cd84fb3a68ebca4d9548d95</srcmd5>
+    <version>2.92.5</version>
+    <time>1692188198</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104067</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>ee2175883376b7f50acb6ab72cc32df5</srcmd5>
+    <version>2.92.6</version>
+    <time>1694019337</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1108841</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>f6a7e38942a1f69678e80798916d7b45</srcmd5>
+    <version>2.92.7</version>
+    <time>1695412006</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1111953</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>8d5a9c18681a5e0347f477e288f95d16</srcmd5>
+    <version>2.92.8</version>
+    <time>1697748414</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118799</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>cb3e79821f1f154203f27995bc953db8</srcmd5>
+    <version>2.92.9</version>
+    <time>1698952858</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121626</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>eff2d69a243281369ffabc1b236d5251</srcmd5>
+    <version>2.93.0</version>
+    <time>1701206259</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129494</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="crudini" project="openSUSE:Factory">
+  <title>CRUD for ini files</title>
+  <description>Small wrapper for updating ini files</description>
+  <devel project="Cloud:OpenStack:Factory" package="crudini"/>
+</package>

@@ -1,0 +1,25 @@
+From fc753c7f752ea77650ca708104acc384f025dd54 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Sat, 15 Apr 2023 07:09:01 +0200
+Subject: [PATCH] Compile with only 1 thread
+
+but give an option to do fast non-deterministic builds
+
+parallel compile causes assignment of random symbol names
+so we build single-threaded, which is slower, but gives reproducible results
+---
+ macros.ghc-suse | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/macros.ghc-suse b/macros.ghc-suse
+index 3fe39a0..61a154a 100644
+--- a/macros.ghc-suse
++++ b/macros.ghc-suse
+@@ -29,4 +29,6 @@ mkdir -p %{buildroot}/usr/src/debug
+ %with_ghc_prof 1
+ 
+ # %%{?_smp_ncpus_max:--jobs=%%{?_smp_ncpus_max}}
+-%ghc_smp_mflags %{?_smp_mflags}
++# parallel compile causes assignment of random symbol names
++# so for distribution releases we build single-threaded, which is slower, but gives reproducible results
++# for devel project set ghc_smp_flags in Macros

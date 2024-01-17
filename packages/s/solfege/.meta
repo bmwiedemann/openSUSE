@@ -1,0 +1,10 @@
+<package name="solfege" project="openSUSE:Factory">
+  <title>Eartraining program</title>
+  <description>Solfege is an eartraining program for X written in python, using
+the GTK+ and GNOME libraries. To use this software you need some
+basic knowledge about music theory. Using solfege you can learn
+to recognise melodic and harmonic intervals, compare interval
+sizes, sing the intervals the computer asks for, identify chords,
+sing chords, scales, dictation and remember rhythmic patterns.</description>
+  <devel project="multimedia:apps" package="solfege"/>
+</package>

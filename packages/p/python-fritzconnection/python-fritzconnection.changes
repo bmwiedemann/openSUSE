@@ -1,0 +1,193 @@
+-------------------------------------------------------------------
+Sun Jan 14 17:38:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.2:
+  * bugfix: fix a crash in the cache-verification in case the cache
+    is activated in combination with the Fritz!Box default-ip and
+    multiple AVM-devices are connected in the local network, so an
+    arbitrary device may respond (which would also be a bug in
+    applications using fritzconnection anyway) (introduced in
+    version 1.10.0).
+  * bugfix: fix broken reconnection of fritzmonitor in case of
+    socket loss. (#196)
+  * cleaner type-hints for public api.
+  * documentation: Style change to “Furo” and minor content improvements.
+  * bugfix: added a missing import to the /docs/requirements.in
+    file to generate the API-documentation on readthedocs.org
+  * support added for Python 3.12
+  * support removed for Python 3.6
+  * type-hints added for the public API.
+  * command-line interface: the check for a given password has been
+    removed
+  * bugfix: unneeded required password removed from the fritzstatus
+    command-line interface. (#192)
+  * bugfix: make fritzwlan.get_beacon_security() work with older
+    router models not supporting the
+    NewX_AVM-DE_PossibleBeaconTypes argument. (#191)
+  * bugfix in ‘setup.py`: add
+    long_description_content_type=”text/markdown”, because it is
+    not used as default.
+  * New method hangup(). (#184)
+  * bugfix: removed issues preventing the method
+    get_hosts_attributes() to return a list of dictionaries
+    representing the host-attributes. (#190)
+  * New method call_http() for accessing the (aha-)http-interface.
+  * bugfix: create cache directory if not existing. (#183)
+  * New core module to access the (aha-)http-interface.
+  * New class HomeAutomationDevice. Represents properties and
+    state of a home-automation device.
+  * New method get_homeautomation_device().
+  * New method get_homeautomation_devices().
+  * New method get_device_information_list(). Substitutes the
+    device_information() method.
+  * New property updatecheck allows access to router attributes
+    without permissions (#168)
+  * New FritzAuthorizationError raised on calling actions without
+    the proper permissions (#170)
+
+-------------------------------------------------------------------
+Fri Oct 28 17:04:59 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- update to 1.10.3 - 2022-09-08
+  * upper limit for dependency pinning removed to support installation on more recent environments.
+
+-------------------------------------------------------------------
+Wed Sep 28 15:44:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- update to 1.10.2 - 2022-09-04
+  * bugfix: missing self in FritzStatus.get_device_info() (introduced in 1.10.0) (#165)
+  * dependencies pinned for requests not supporting Python 3.6 since version 2.28.0 and for segno (which still works with EOL versions).
+
+- update to 1.10.1 - 2022-09-01
+  * bugfix: cli argument forwarding (introduced in 1.10.0) (#164)
+  * enhancement: cli flag -y to suppress cache-verification now implies -x (use cache)
+
+- update to 1.10.0 - 2022-08-24
+  * FritzConnection
+  * API cache integration added: for faster start up times the router API can optional get saved in a cache-file.
+  *  This can save up to several seconds run-time on instanciation.
+  FritzHosts:
+  * New method get_hosts_attributes providing a list of dictionaries with the attribues of all known hosts (#134)
+  FritzStatus:
+  * New property update_available (#156)
+  * New property connection_service
+  * New property has_wan_support (#162)
+  * New property has_wan_enabled (#147)
+  * New property upnp_enabled() (#153)
+  * New property device_has_mesh_support (#146)
+  * New method get_default_connection_service (#146)
+  * New method get_device_info() (#155)
+  FritzWLAN:
+  * QR-code now supports encryption information for the described network by auto-detecting the security settings (which is optional but set to default) (#139)
+  Testing:
+  * requires opencv to check qr-codes
+  * covering Python 3.11
+  * New class ArgumentNamespace added in fritzconnection.lib.fritztools for convenient handling of dictionaries returned from FritzConnection.call_action() calls.
+  * Better error message in case application access is disabled (#142)
+
+-------------------------------------------------------------------
+Fri Mar  4 08:55:03 UTC 2022 - pgajdos@suse.com
+
+- disable flaky test_terminate_thread_on_failed_reconnection and
+  test_restart_failed_monitor
+
+-------------------------------------------------------------------
+Sun Jan 23 15:57:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.1:
+  * bugfix: AttributeError in `FritzHomeAutomation.device_information()`
+    removed - bug introduced in 1.9.0
+  * `FritzWLAN.get_wifi_qr_code()` forwards the optional `security` and
+    `hidden` parameters to `segno`
+
+-------------------------------------------------------------------
+Sat Jan 15 17:26:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.0:
+  * New method `get_wifi_qr_code()` for QR-code creation for wifi-access
+  * New method `channel_info
+  * FritzHomeAutomation: New method `device_information
+  * FritzConnection: new command line option `-R` to reboot the system
+  * New method `get_generic_host_entries` returning a generator to iterate over
+    all entries as reported by the method `get_generic_host_entry`.
+  * The methods `get_active_hosts` and `get_hosts_info` provide additional host
+    attributes
+  * Refactoring of the logging module `fritzconnection.core.logger` (introduced
+    in 1.7.0). Now emitting messages from INFO-level and up by default.
+  * Connection errors with the router raised from the underlying `urllib3`
+    library are caught and raised again as FritzConnectionException preserving
+    the connection error information
+  * bugfix: logger deactivated by default
+  * Tests extended for Python 3.10
+  * `enable` and `disable` to enable and disable a wlan network.
+  * `get_password` and `set_password` to get the current password or set a new
+    one for a wlan network.
+  * New FritzGuestWLAN library class.
+  * New FritzConnection method `reboot`.
+  * New logging module `fritzconnection.core.logger`.
+  * New arguments for FritzConnection: `pool_connections` and `pool_maxsize` to
+    adapt the default urllib3 settings (used by requests). (#114).
+  * New properties `FritzStatus.device_uptime` and
+    `FritzStatus.connection_uptime``; the latter a replacement for
+    `FritzStatus.uptime` – still existing as an alias.
+  * bugfix: html-escape arguments in case that special characters are allowed
+    by the protocol.
+  * bugfix: `FritzStatus.bytes_sent` will return the 32 bit value from older
+    Fritz!Box models.
+  * bugfix: raise `FritzActionError` on accessing the mesh topology information
+    from a device not having accesss to this information.
+  * adding code-of-conduct and contributing files to the repository.
+  * Compatibility with Fritz!OS 7.24 and newer: takes the last logged in
+    username as default in case that a username is not provided.
+  * bugfix: byte_formatter may return wrong numbers on values < 1 and has
+    raised math domain error on values == 0.D (bug introduced with version
+  * bugfix: FritzStatus library now returns a 32 bit value for *bytes_received*
+    for older Fritz!OS versions not providing the newer 64 bit information
+    instead of raising an exception.
+  * change: Output of bitrate changed to log10 based calculation
+  * New core module fritzmonitor for reporting realtime phone call events
+  * Library class FritzStatus with additional properties: *attenuation*,
+    *str_attenuation*, *noise_margin* and *str_noise_margin*
+  * Library class FritzHost with additional method *get_host_name*
+  * Namespace prefix for xml-arguments removed
+  * Test extended for Python 3.9
+
+-------------------------------------------------------------------
+Tue Sep 29 17:46:23 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.3.4
+  - Rework the interface
+  - Required for FritzOS 7.12 and newer
+
+-------------------------------------------------------------------
+Tue Mar 17 07:21:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add correct tarball (version 1.2.1)
+
+-------------------------------------------------------------------
+Sat Mar 14 20:39:40 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.1
+- Fill description
+- Package README and license file
+- Run testsuite
+
+-------------------------------------------------------------------
+Thu Feb 27 02:08:26 CET 2020 - ro@suse.de
+
+- update to 1.2.0
+
+-------------------------------------------------------------------
+Fri Jan 24 01:50:42 CET 2020 - ro@suse.de
+
+- update to 0.8.4, use git url and add service file
+
+-------------------------------------------------------------------
+Mon Jul  8 00:20:33 CEST 2019 - ro@suse.de
+
+- update to 0.6.5
+
+-------------------------------------------------------------------
+Sun Jul  7 22:12:20 UTC 2019 - Ruediger Oertel <ro@suse.com>
+
+- initial version 0.4.5

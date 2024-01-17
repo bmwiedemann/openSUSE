@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>df803ac074911545e02dbe3b863c4e95</srcmd5>
+    <version>0.1.1</version>
+    <time>1546535383</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit, repo-checker has a stale review</comment>
+    <requestid>662614</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8caea2f273dd6716bff5691c13fe18aa</srcmd5>
+    <version>0.2.0</version>
+    <time>1642273517</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.0:
+  * B902 error added for cases where a blind ``Exception`` is caught</comment>
+    <requestid>946646</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ecb10d42d65aae944af5d8884db8ae39</srcmd5>
+    <version>0.2.1</version>
+    <time>1664467998</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006735</requestid>
+  </revision>
+</revisionlist>

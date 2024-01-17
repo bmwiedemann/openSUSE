@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>72e496ecb03dff9cedd674ee931209f6</srcmd5>
+    <version>5.5.0</version>
+    <time>1653313936</time>
+    <user>dimstar_suse</user>
+    <comment>rr</comment>
+    <requestid>978692</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9094f82a1b389eb7235d18ae432e4da8</srcmd5>
+    <version>5.6.0</version>
+    <time>1659946907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.6.0:
+  * This release includes many bug fixes, improvements to system call coverage, and
+    incremental performance improvements. Plus:
+  * ARM Aarch64 support is now production quality (features implemented and
+    tests pass), with some caveats. Recent iterations of Cortex and Neoverse (AWS
+    Graviton) chips are supported, as is Apple M1 (when running Linux on bare metal
+    M1). LDREX/STREX are not supported; userspace code must use Large System
+    Extensions atomics only. Thanks to Yichao Yu and Keno Fischer for this work! We
+    don't have prebuilt ARM packages yet.
+  * Recording applications that use RDTSC heavily should be much faster than in
+    previous versions of rr.
+  * The rseq system call is now supported (via emulation).
+-  Remove patches contained in new release:
+  * rr-glib-234.patch
+  * rr-map-elf-header.patch
+  * rr-pthread-for-new-gcc.patch</comment>
+    <requestid>993680</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5c5f968f14eeffbabf81167810b030bf</srcmd5>
+    <version>5.6.0</version>
+    <time>1660662484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>996403</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5bd795e3bf0158cc5aca1971ff47f5b4</srcmd5>
+    <version>5.6.0</version>
+    <time>1667306554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032539</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>5e55e5478a92e0072d2c8e1c98edfe74</srcmd5>
+    <version>5.6.0</version>
+    <time>1685981223</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop e32502d0.patch: 
+  This was added due to a build fail related to:
+  https://github.com/rr-debugger/rr/issues/3485
+  Which seems to have been a bug in gcc:
+  https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109420
+  But now it seems that it fails our build and without this patch
+  it builds fine
+
+- Add e32502d0.patch: Avoid having type members and enum members
+  of Arch with the same name 
+
+- Add 2248c85c.patch: Fix build on Tumbleweed with gcc13 by
+  explicitly including cstdint</comment>
+    <requestid>1090819</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>787491836d54f25c14f05362109acbe3</srcmd5>
+    <version>5.7.0</version>
+    <time>1696529003</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.7.0:
+  * This release includes many bug fixes, improvements to system
+    call coverage, and incremental performance improvements.
+    In particular, performance is improved for applications with
+    thousands of threads (partly via the new WaitManager).
+    A lot of rare intermittent bugs have been fixed, partly due
+    to significant reworking of how unexpected task exits are handled.
+- Remove upstream patches:
+  * 2248c85c.patch
+  * 2979c60e.patch</comment>
+    <requestid>1115163</requestid>
+  </revision>
+</revisionlist>

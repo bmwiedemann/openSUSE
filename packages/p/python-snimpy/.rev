@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>afaa40844b407ce8e1e86db56776ad4b</srcmd5>
+    <version>0.8.13</version>
+    <time>1585085737</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>787688</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4153106ada7c428f067bdf4c22af3243</srcmd5>
+    <version>0.8.14</version>
+    <time>1606649210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850755</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e44db12f1ca3b917ac12ef8f543e9f77</srcmd5>
+    <version>0.8.14</version>
+    <time>1613677206</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from python3_only to python_alternative for the snimpy script
+  and its manual page.</comment>
+    <requestid>867027</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>795dbc9c40ab1acd5f6c7a8a1e071e57</srcmd5>
+    <version>1.0.0</version>
+    <time>1623098634</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.0:
+  * Drop compatibility with Python 2</comment>
+    <requestid>897974</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f3caf168ce42c908e4909dc406ad0237</srcmd5>
+    <version>1.0.0</version>
+    <time>1650467027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971081</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>020a584cfb83900c0836762adcf590dd</srcmd5>
+    <version>1.0.1</version>
+    <time>1690897095</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.0.1:
+  * Switch to pysnmp-lextudio, a maintained fork of PySNMP.
+- Drop patch python-snimpy-disable-IPv6-tests.diff, no longer required.
+- Use pyproject macros.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1101629</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>37a94a94c7827ee3932053c2091641c5</srcmd5>
+    <version>1.0.2</version>
+    <time>1704281076</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2:
+  * Compatibility with Python 3.12 by adding dependency to
+    pyasyncore.</comment>
+    <requestid>1135641</requestid>
+  </revision>
+</revisionlist>

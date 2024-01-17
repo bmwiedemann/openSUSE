@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1d2a4bc97a3508eb0c4ece042b70b2c0</srcmd5>
+    <version>0.03</version>
+    <time>1402947039</time>
+    <user>coolo</user>
+    <comment>needed for slic3r</comment>
+    <requestid>237473</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1d2a4bc97a3508eb0c4ece042b70b2c0</srcmd5>
+    <version>0.03</version>
+    <time>1409302336</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

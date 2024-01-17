@@ -1,0 +1,5 @@
+<package name="python-imagecodecs" project="openSUSE:Factory">
+  <title>python-imagecodecs</title>
+  <description>Image transformation, compression, and decompression codecs</description>
+  <devel project="devel:languages:python" package="python-imagecodecs"/>
+</package>

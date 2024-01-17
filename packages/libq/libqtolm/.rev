@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4c00cf23245c06d25daf027cb7fa1753</srcmd5>
+    <version>3.0.1</version>
+    <time>1610736343</time>
+    <user>dimstar_suse</user>
+    <comment>Qt bindings for libolm. Needed by libQuotient</comment>
+    <requestid>859954</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Tue Dec  5 14:29:56 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- Add .py suffix to avoid conflicts with the cog browser package.
+
+-------------------------------------------------------------------
+Mon May 29 11:38:28 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+- Use pyproject to build the package
+
+-------------------------------------------------------------------
+Tue Sep 27 06:52:19 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed patch in prep section 
+- Change preun to postun to run python_uninstall_alternatives to remove rpmlint
+  errors
+
+-------------------------------------------------------------------
+Mon Sep 26 22:06:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.3.0:
+  Added the --check option to check whether files would change if run again, for use in continuous integration scenarios.
+
+- Update to 3.2.0:
+  Added the -P option to use print() instead of cog.outl() for code output.
+
+- Update to 3.1.0: 
+  * Fix a problem with Python 3.8.10 and 3.9.5 that require absolute paths in sys.path
+    https://github.com/nedbat/cog/issues/16
+    Python 3.9 and 3.10 are supported.
+
+-------------------------------------------------------------------
+Fri May  7 20:31:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- always use absoulte import paths for -I parameter: mitigate
+  failure due to bpo-43105 fix.
+
+-------------------------------------------------------------------
+Fri Apr  5 11:14:30 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.0.0:
+  * Use pytest for testing
+  * Many many changes in git but no readable changelog
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:44 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Apr 14 22:54:18 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

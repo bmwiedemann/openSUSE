@@ -1,0 +1,9 @@
+<package name="rubygem-manpages" project="openSUSE:Factory">
+  <title>Adds support for man pages to rubygems</title>
+  <description>With this gem the rubygems command will detect man pages within gems and
+exposes them to the man command.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-manpages"/>
+  <url>https://github.com/bitboxer/manpages</url>
+</package>

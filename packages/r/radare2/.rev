@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bf941967fd7e163ae0a2cfc7ed6c4dd4</srcmd5>
+    <version>5.2.1</version>
+    <time>1623098606</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>898127</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9b757dd00b382e65ea6c1b49256c9fec</srcmd5>
+    <version>5.3.1</version>
+    <time>1626788347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907077</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8376095c22248e9fe13c8b3065510415</srcmd5>
+    <version>5.3.1</version>
+    <time>1628584048</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>910802</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>86d113199f99e2745218663f16bba7bd</srcmd5>
+    <version>5.5.4</version>
+    <time>1644273491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952063</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>24e5120a22636ca2f11b7671003fda44</srcmd5>
+    <version>5.7.0</version>
+    <time>1657114946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987158</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bf9c7f3184aee1b38b600d74199d86e8</srcmd5>
+    <version>5.7.8</version>
+    <time>1668702296</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036446</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>33bc5d30d9a3db1e214ff88813c2c114</srcmd5>
+    <version>5.8.6</version>
+    <time>1684415998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087779</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f98bd70830d3d0793703dc4660d73f6d</srcmd5>
+    <version>5.8.8</version>
+    <time>1697657183</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118572</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ac452c4fe7b0ef6c1a3bdf02e4cfe800</srcmd5>
+    <version>0.65</version>
+    <time>1505334559</time>
+    <user>dimstar_suse</user>
+    <comment>needed for kopano-migration-imap [kopano.src.rpm]</comment>
+    <requestid>521978</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>70b1c2ac220ef570921f41c3cedcd469</srcmd5>
+    <version>0.66</version>
+    <time>1598030312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828479</requestid>
+  </revision>
+</revisionlist>

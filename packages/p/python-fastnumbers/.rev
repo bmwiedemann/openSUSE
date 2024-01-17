@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>671f6d6c3e941641d7f27a1299be7315</srcmd5>
+    <version>2.0.4</version>
+    <time>1527933854</time>
+    <user>dimstar_suse</user>
+    <comment>Fast conversions to numbers</comment>
+    <requestid>612071</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>da58330f49d62b861249906abc6c8b82</srcmd5>
+    <version>2.0.4</version>
+    <time>1533045696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626403</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>daec9992c205f472381c6e1edaa394f5</srcmd5>
+    <version>2.1.1</version>
+    <time>1538502440</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639320</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6598d38d7e5ccb1721d78318067c1a5d</srcmd5>
+    <version>2.1.1</version>
+    <time>1549361955</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671305</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a07a19e4ef41157a7bfe93ba9c5fd78a</srcmd5>
+    <version>2.2.1</version>
+    <time>1555574208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695145</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c080806ea38f6ac214435cd9951c281b</srcmd5>
+    <version>2.2.1</version>
+    <time>1558532466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704700</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>f7e29c98e3695ce97c5040c8c79540df</srcmd5>
+    <version>2.2.1</version>
+    <time>1566894125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725988</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>79048da4a07cea7dd3b64937b1a752dc</srcmd5>
+    <version>3.0.0</version>
+    <time>1580724765</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768786</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>163a7e33be3635fdaa7d767ab058af4c</srcmd5>
+    <version>3.1.0</version>
+    <time>1618859155</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * Added
+    + query_type function to determine what as type fastnumbers will
+      interpret a given input
+  * Fixed
+    + Support for Python 3.9 (eliminate use of private Python C function
+      that is now hidden in 3.9)</comment>
+    <requestid>886526</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dfc14ac4ae9320874249819fb42ac58a</srcmd5>
+    <version>3.2.1</version>
+    <time>1642973062</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.1:
+  * Support for Python 3.10
+  * Full coverage of mypy type-checking
+  * Support for Python 3.5</comment>
+    <requestid>948264</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4fc8ac123b754fe06b9b87b0da9090ab</srcmd5>
+    <version>5.0.1</version>
+    <time>1690743476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.1
+  * Fixed
+    - Add back missing key option in type hints for deprecated fast_* functions
+- Update to 5.0.0
+  * Added
+    - Added the map option to all try_* functions to enable very fast conversions of lists or other iterables (issues #61, #63 and #67)
+    - Added try_array to enable very fast conversions directly to numpy arrays (issues #62 and #65)
+  * Changed
+    - Move to a model where the return code is a value or error instead of a model where one has to check the error state after getting a value (issue #66)
+    - Significantly simplified the type annotations (by 4000+ lines!)
+  * Fixed
+    - Increased code coverage and fixed missing headers in codecov reaport (issue #64)
+- Add %{?sle15_python_module_pythons}
+- Ensure that SLE-15 uses gcc-12.</comment>
+    <requestid>1101334</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fa28b85a749d5513e6e5c996984947f0</srcmd5>
+    <version>5.1.0</version>
+    <time>1704281098</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1.0:
+  * Added the ``denoise`` option to convert floats to int without
+  * numerical noise (issues #69 and #77)
+  * Support for Python 3.12 (issues #73 and #75)
+- switch to gcc 13 on SLE15
+
+      that is now hidden in 3.9)</comment>
+    <requestid>1135700</requestid>
+  </revision>
+</revisionlist>

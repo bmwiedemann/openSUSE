@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Sat May 14 10:59:16 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to version 5:
+  * new game Tugow
+  * add a menu and .desktop file
+  * improved Mines,Miketron gameplay and Sudoku algorithm
+
+-------------------------------------------------------------------
+Sun Jun  6 08:53:09 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- initial packaging of version 4.1.1

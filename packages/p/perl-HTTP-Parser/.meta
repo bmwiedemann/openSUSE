@@ -1,0 +1,6 @@
+<package name="perl-HTTP-Parser" project="openSUSE:Factory">
+  <title>Parse HTTP/1.1 request into HTTP::Request/Response object</title>
+  <description>This is an HTTP request parser. It takes chunks of text as received and returns a 'hint' as to what is required, or returns the HTTP::Request when a complete request has been read. HTTP/1.1 chunking is supported. It dies if it finds an error.</description>
+  <devel project="devel:languages:perl" package="perl-HTTP-Parser"/>
+  <url>https://metacpan.org/release/HTTP-Parser</url>
+</package>

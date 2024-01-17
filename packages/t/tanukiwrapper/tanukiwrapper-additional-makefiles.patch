@@ -1,0 +1,468 @@
+Description: linux makefiles for other architectures
+
+Index: wrapper_3.5.35_src/src/c/Makefile-linux-mips-32.make
+===================================================================
+--- /dev/null
++++ wrapper_3.5.35_src/src/c/Makefile-linux-mips-32.make
+@@ -0,0 +1,49 @@
++
++# Copyright (c) 1999, 2013 Tanuki Software, Ltd.
++# http://www.tanukisoftware.com
++# All rights reserved.
++#
++# This software is the proprietary information of Tanuki Software.
++# You shall use it only in accordance with the terms of the
++# license agreement you entered into with Tanuki Software.
++# http://wrapper.tanukisoftware.com/doc/english/licenseOverview.html
++
++COMPILE = gcc -O3 -fPIC -Wall --pedantic -DLINUX -D_FILE_OFFSET_BITS=64 -fpic -D_GNU_SOURCE -DUNICODE -D_UNICODE
++
++INCLUDE=$(JAVA_HOME)/include
++
++DEFS = -I$(INCLUDE) -I$(INCLUDE)/linux
++
++wrapper_SOURCE = wrapper.c wrapperinfo.c wrappereventloop.c wrapper_unix.c property.c logger.c logger_file.c wrapper_file.c wrapper_i18n.c wrapper_hashmap.c wrapper_ulimit.c wrapper_encoding.c wrapper_jvminfo.c
++
++libwrapper_so_OBJECTS = wrapper_i18n.o wrapperjni_unix.o wrapperinfo.o wrapperjni.o loggerjni.o
++
++BIN = ../../bin
++LIB = ../../lib
++
++all: init wrapper libwrapper.so
++
++clean:
++	rm -f *.o
++
++cleanall: clean
++	rm -rf *~ .deps
++	rm -f $(BIN)/wrapper $(LIB)/libwrapper.so
++
++init:
++	if test ! -d .deps; then mkdir .deps; fi
++
++wrapper: $(wrapper_SOURCE)
++	$(COMPILE) -pthread $(wrapper_SOURCE) -lm $(LDFLAGS) -o $(BIN)/wrapper
++
++libwrapper.so: $(libwrapper_so_OBJECTS)
++	${COMPILE} -shared $(libwrapper_so_OBJECTS) $(LDFLAGS) -o $(LIB)/libwrapper.so
++
++%.o: %.c
++	@echo '$(COMPILE) -c $<'; \
++	$(COMPILE) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
++	@-cp .deps/$(*F).pp .deps/$(*F).P; \
++	tr ' ' '\012' < .deps/$(*F).pp \
++	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
++	>> .deps/$(*F).P; \
++	rm .deps/$(*F).pp
+Index: wrapper_3.5.35_src/src/c/Makefile-linux-mipsel-32.make
+===================================================================
+--- /dev/null
++++ wrapper_3.5.35_src/src/c/Makefile-linux-mipsel-32.make
+@@ -0,0 +1,49 @@
++
++# Copyright (c) 1999, 2013 Tanuki Software, Ltd.
++# http://www.tanukisoftware.com
++# All rights reserved.
++#
++# This software is the proprietary information of Tanuki Software.
++# You shall use it only in accordance with the terms of the
++# license agreement you entered into with Tanuki Software.
++# http://wrapper.tanukisoftware.com/doc/english/licenseOverview.html
++
++COMPILE = gcc -O3 -fPIC -Wall --pedantic -DLINUX -D_FILE_OFFSET_BITS=64 -fpic -D_GNU_SOURCE -DUNICODE -D_UNICODE
++
++INCLUDE=$(JAVA_HOME)/include
++
++DEFS = -I$(INCLUDE) -I$(INCLUDE)/linux
++
++wrapper_SOURCE = wrapper.c wrapperinfo.c wrappereventloop.c wrapper_unix.c property.c logger.c logger_file.c wrapper_file.c wrapper_i18n.c wrapper_hashmap.c wrapper_ulimit.c wrapper_encoding.c wrapper_jvminfo.c
++
++libwrapper_so_OBJECTS = wrapper_i18n.o wrapperjni_unix.o wrapperinfo.o wrapperjni.o loggerjni.o
++
++BIN = ../../bin
++LIB = ../../lib
++
++all: init wrapper libwrapper.so
++
++clean:
++	rm -f *.o
++
++cleanall: clean
++	rm -rf *~ .deps
++	rm -f $(BIN)/wrapper $(LIB)/libwrapper.so
++
++init:
++	if test ! -d .deps; then mkdir .deps; fi
++
++wrapper: $(wrapper_SOURCE)
++	$(COMPILE) -pthread $(wrapper_SOURCE) -lm $(LDFLAGS) -o $(BIN)/wrapper
++
++libwrapper.so: $(libwrapper_so_OBJECTS)
++	${COMPILE} -shared $(libwrapper_so_OBJECTS) $(LDFLAGS) -o $(LIB)/libwrapper.so
++
++%.o: %.c
++	@echo '$(COMPILE) -c $<'; \
++	$(COMPILE) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
++	@-cp .deps/$(*F).pp .deps/$(*F).P; \
++	tr ' ' '\012' < .deps/$(*F).pp \
++	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
++	>> .deps/$(*F).P; \
++	rm .deps/$(*F).pp
+Index: wrapper_3.5.35_src/src/c/Makefile-linux-s390x-64.make
+===================================================================
+--- /dev/null
++++ wrapper_3.5.35_src/src/c/Makefile-linux-s390x-64.make
+@@ -0,0 +1,49 @@
++
++# Copyright (c) 1999, 2013 Tanuki Software, Ltd.
++# http://www.tanukisoftware.com
++# All rights reserved.
++#
++# This software is the proprietary information of Tanuki Software.
++# You shall use it only in accordance with the terms of the
++# license agreement you entered into with Tanuki Software.
++# http://wrapper.tanukisoftware.com/doc/english/licenseOverview.html
++
++COMPILE = gcc -O3 -m64 -fPIC -Wall --pedantic -DLINUX -DJSW64 -D_FILE_OFFSET_BITS=64 -fpic -D_GNU_SOURCE -DUNICODE -D_UNICODE
++
++INCLUDE=$(JAVA_HOME)/include
++
++DEFS = -I$(INCLUDE) -I$(INCLUDE)/linux
++
++wrapper_SOURCE = wrapper.c wrapperinfo.c wrappereventloop.c wrapper_unix.c property.c logger.c logger_file.c wrapper_file.c wrapper_i18n.c wrapper_hashmap.c wrapper_ulimit.c wrapper_encoding.c wrapper_jvminfo.c
++
++libwrapper_so_OBJECTS = wrapper_i18n.o wrapperjni_unix.o wrapperinfo.o wrapperjni.o loggerjni.o
++
++BIN = ../../bin
++LIB = ../../lib
++
++all: init wrapper libwrapper.so
++
++clean:
++	rm -f *.o
++
++cleanall: clean
++	rm -rf *~ .deps
++	rm -f $(BIN)/wrapper $(LIB)/libwrapper.so
++
++init:
++	if test ! -d .deps; then mkdir .deps; fi
++
++wrapper: $(wrapper_SOURCE)
++	$(COMPILE) -pthread $(wrapper_SOURCE) $(LDFLAGS) -o $(BIN)/wrapper -lm
++
++libwrapper.so: $(libwrapper_so_OBJECTS)
++	${COMPILE} -shared $(libwrapper_so_OBJECTS) $(LDFLAGS) -o $(LIB)/libwrapper.so
++
++%.o: %.c
++	@echo '$(COMPILE) -c $<'; \
++	$(COMPILE) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
++	@-cp .deps/$(*F).pp .deps/$(*F).P; \
++	tr ' ' '\012' < .deps/$(*F).pp \
++	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
++	>> .deps/$(*F).P; \
++	rm .deps/$(*F).pp
+Index: wrapper_3.5.35_src/src/c/Makefile-linux-sparc-32.make
+===================================================================
+--- /dev/null
++++ wrapper_3.5.35_src/src/c/Makefile-linux-sparc-32.make
+@@ -0,0 +1,49 @@
++
++# Copyright (c) 1999, 2013 Tanuki Software, Ltd.
++# http://www.tanukisoftware.com
++# All rights reserved.
++#
++# This software is the proprietary information of Tanuki Software.
++# You shall use it only in accordance with the terms of the
++# license agreement you entered into with Tanuki Software.
++# http://wrapper.tanukisoftware.com/doc/english/licenseOverview.html
++
++COMPILE = gcc -O3 -m32 -fPIC -Wall --pedantic -DLINUX -D_FILE_OFFSET_BITS=64 -fpic -D_GNU_SOURCE -DUNICODE -D_UNICODE
++
++INCLUDE=$(JAVA_HOME)/include
++
++DEFS = -I$(INCLUDE) -I$(INCLUDE)/linux
++
++wrapper_SOURCE = wrapper.c wrapperinfo.c wrappereventloop.c wrapper_unix.c property.c logger.c logger_file.c wrapper_file.c wrapper_i18n.c wrapper_hashmap.c wrapper_ulimit.c wrapper_encoding.c wrapper_jvminfo.c
++
++libwrapper_so_OBJECTS = wrapper_i18n.o wrapperjni_unix.o wrapperinfo.o wrapperjni.o loggerjni.o
++
++BIN = ../../bin
++LIB = ../../lib
++
++all: init wrapper libwrapper.so
++
++clean:
++	rm -f *.o
++
++cleanall: clean
++	rm -rf *~ .deps
++	rm -f $(BIN)/wrapper $(LIB)/libwrapper.so
++
++init:
++	if test ! -d .deps; then mkdir .deps; fi
++
++wrapper: $(wrapper_SOURCE)
++	$(COMPILE) -lm -pthread $(LDFLAGS) $(wrapper_SOURCE) -o $(BIN)/wrapper
++
++libwrapper.so: $(libwrapper_so_OBJECTS)
++	${COMPILE} -shared $(LDFLAGS) $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
++
++%.o: %.c
++	@echo '$(COMPILE) -c $<'; \
++	$(COMPILE) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
++	@-cp .deps/$(*F).pp .deps/$(*F).P; \
++	tr ' ' '\012' < .deps/$(*F).pp \
++	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
++	>> .deps/$(*F).P; \
++	rm .deps/$(*F).pp
+Index: wrapper_3.5.35_src/src/c/Makefile-linux-sparc-64.make
+===================================================================
+--- /dev/null
++++ wrapper_3.5.35_src/src/c/Makefile-linux-sparc-64.make
+@@ -0,0 +1,49 @@
++
++# Copyright (c) 1999, 2013 Tanuki Software, Ltd.
++# http://www.tanukisoftware.com
++# All rights reserved.
++#
++# This software is the proprietary information of Tanuki Software.
++# You shall use it only in accordance with the terms of the
++# license agreement you entered into with Tanuki Software.
++# http://wrapper.tanukisoftware.com/doc/english/licenseOverview.html
++
++COMPILE = gcc -O3 -m64 -fPIC -Wall --pedantic -DLINUX -DJSW64 -D_FILE_OFFSET_BITS=64 -fpic -D_GNU_SOURCE -DUNICODE -D_UNICODE
++
++INCLUDE=$(JAVA_HOME)/include
++
++DEFS = -I$(INCLUDE) -I$(INCLUDE)/linux
++
++wrapper_SOURCE = wrapper.c wrapperinfo.c wrappereventloop.c wrapper_unix.c property.c logger.c logger_file.c wrapper_file.c wrapper_i18n.c wrapper_hashmap.c wrapper_ulimit.c wrapper_encoding.c wrapper_jvminfo.c
++
++libwrapper_so_OBJECTS = wrapper_i18n.o wrapperjni_unix.o wrapperinfo.o wrapperjni.o loggerjni.o
++
++BIN = ../../bin
++LIB = ../../lib
++
++all: init wrapper libwrapper.so
++
++clean:
++	rm -f *.o
++
++cleanall: clean
++	rm -rf *~ .deps
++	rm -f $(BIN)/wrapper $(LIB)/libwrapper.so
++
++init:
++	if test ! -d .deps; then mkdir .deps; fi
++
++wrapper: $(wrapper_SOURCE)
++	$(COMPILE) -lm -pthread $(LDFLAGS) $(wrapper_SOURCE) -o $(BIN)/wrapper
++
++libwrapper.so: $(libwrapper_so_OBJECTS)
++	${COMPILE} -shared $(LDFLAGS) $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
++
++%.o: %.c
++	@echo '$(COMPILE) -c $<'; \
++	$(COMPILE) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
++	@-cp .deps/$(*F).pp .deps/$(*F).P; \
++	tr ' ' '\012' < .deps/$(*F).pp \
++	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
++	>> .deps/$(*F).P; \
++	rm .deps/$(*F).pp
+Index: wrapper_3.5.35_src/src/c/Makefile-linux-aarch64-64.make
+===================================================================
+--- /dev/null
++++ wrapper_3.5.35_src/src/c/Makefile-linux-aarch64-64.make
+@@ -0,0 +1,49 @@
++
++# Copyright (c) 1999, 2013 Tanuki Software, Ltd.
++# http://www.tanukisoftware.com
++# All rights reserved.
++#
++# This software is the proprietary information of Tanuki Software.
++# You shall use it only in accordance with the terms of the
++# license agreement you entered into with Tanuki Software.
++# http://wrapper.tanukisoftware.com/doc/english/licenseOverview.html
++
++COMPILE = gcc -O3 -fPIC -Wall --pedantic -DLINUX -DJSW64 -D_FILE_OFFSET_BITS=64 -fpic -D_GNU_SOURCE -DUNICODE -D_UNICODE
++
++INCLUDE=$(JAVA_HOME)/include
++
++DEFS = -I$(INCLUDE) -I$(INCLUDE)/linux
++
++wrapper_SOURCE = wrapper.c wrapperinfo.c wrappereventloop.c wrapper_unix.c property.c logger.c logger_file.c wrapper_file.c wrapper_i18n.c wrapper_hashmap.c wrapper_ulimit.c wrapper_encoding.c wrapper_jvminfo.c
++
++libwrapper_so_OBJECTS = wrapper_i18n.o wrapperjni_unix.o wrapperinfo.o wrapperjni.o loggerjni.o
++
++BIN = ../../bin
++LIB = ../../lib
++
++all: init wrapper libwrapper.so
++
++clean:
++	rm -f *.o
++
++cleanall: clean
++	rm -rf *~ .deps
++	rm -f $(BIN)/wrapper $(LIB)/libwrapper.so
++
++init:
++	if test ! -d .deps; then mkdir .deps; fi
++
++wrapper: $(wrapper_SOURCE)
++	$(COMPILE) -pthread $(wrapper_SOURCE) -lm $(LDFLAGS) -o $(BIN)/wrapper
++
++libwrapper.so: $(libwrapper_so_OBJECTS)
++	${COMPILE} -shared $(libwrapper_so_OBJECTS) $(LDFLAGS) -o $(LIB)/libwrapper.so
++
++%.o: %.c
++	@echo '$(COMPILE) -c $<'; \
++	$(COMPILE) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
++	@-cp .deps/$(*F).pp .deps/$(*F).P; \
++	tr ' ' '\012' < .deps/$(*F).pp \
++	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
++	>> .deps/$(*F).P; \
++	rm .deps/$(*F).pp
+Index: wrapper_3.5.35_src/src/c/Makefile-linux-arm-32.make
+===================================================================
+--- /dev/null
++++ wrapper_3.5.35_src/src/c/Makefile-linux-arm-32.make
+@@ -0,0 +1,49 @@
++
++# Copyright (c) 1999, 2013 Tanuki Software, Ltd.
++# http://www.tanukisoftware.com
++# All rights reserved.
++#
++# This software is the proprietary information of Tanuki Software.
++# You shall use it only in accordance with the terms of the
++# license agreement you entered into with Tanuki Software.
++# http://wrapper.tanukisoftware.com/doc/english/licenseOverview.html
++
++COMPILE = gcc -O3 -fPIC -Wall --pedantic -DLINUX -DJSW64 -D_FILE_OFFSET_BITS=64 -fpic -D_GNU_SOURCE -DUNICODE -D_UNICODE
++
++INCLUDE=$(JAVA_HOME)/include
++
++DEFS = -I$(INCLUDE) -I$(INCLUDE)/linux
++
++wrapper_SOURCE = wrapper.c wrapperinfo.c wrappereventloop.c wrapper_unix.c property.c logger.c logger_file.c wrapper_file.c wrapper_i18n.c wrapper_hashmap.c wrapper_ulimit.c wrapper_encoding.c wrapper_jvminfo.c
++
++libwrapper_so_OBJECTS = wrapper_i18n.o wrapperjni_unix.o wrapperinfo.o wrapperjni.o loggerjni.o
++
++BIN = ../../bin
++LIB = ../../lib
++
++all: init wrapper libwrapper.so
++
++clean:
++	rm -f *.o
++
++cleanall: clean
++	rm -rf *~ .deps
++	rm -f $(BIN)/wrapper $(LIB)/libwrapper.so
++
++init:
++	if test ! -d .deps; then mkdir .deps; fi
++
++wrapper: $(wrapper_SOURCE)
++	$(COMPILE) -pthread $(wrapper_SOURCE) -lm $(LDFLAGS) -o $(BIN)/wrapper
++
++libwrapper.so: $(libwrapper_so_OBJECTS)
++	${COMPILE} -shared $(libwrapper_so_OBJECTS) $(LDFLAGS) -o $(LIB)/libwrapper.so
++
++%.o: %.c
++	@echo '$(COMPILE) -c $<'; \
++	$(COMPILE) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
++	@-cp .deps/$(*F).pp .deps/$(*F).P; \
++	tr ' ' '\012' < .deps/$(*F).pp \
++	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
++	>> .deps/$(*F).P; \
++	rm .deps/$(*F).pp
+Index: wrapper_3.5.35_src/src/c/Makefile-linux-riscv64-64.make
+===================================================================
+--- /dev/null
++++ wrapper_3.5.35_src/src/c/Makefile-linux-riscv64-64.make
+@@ -0,0 +1,49 @@
++
++# Copyright (c) 1999, 2013 Tanuki Software, Ltd.
++# http://www.tanukisoftware.com
++# All rights reserved.
++#
++# This software is the proprietary information of Tanuki Software.
++# You shall use it only in accordance with the terms of the
++# license agreement you entered into with Tanuki Software.
++# http://wrapper.tanukisoftware.com/doc/english/licenseOverview.html
++
++COMPILE = gcc -O3 -fPIC -Wall --pedantic -DLINUX -DJSW64 -D_FILE_OFFSET_BITS=64 -fpic -D_GNU_SOURCE -DUNICODE -D_UNICODE
++
++INCLUDE=$(JAVA_HOME)/include
++
++DEFS = -I$(INCLUDE) -I$(INCLUDE)/linux
++
++wrapper_SOURCE = wrapper.c wrapperinfo.c wrappereventloop.c wrapper_unix.c property.c logger.c logger_file.c wrapper_file.c wrapper_i18n.c wrapper_hashmap.c wrapper_ulimit.c wrapper_encoding.c wrapper_jvminfo.c
++
++libwrapper_so_OBJECTS = wrapper_i18n.o wrapperjni_unix.o wrapperinfo.o wrapperjni.o loggerjni.o
++
++BIN = ../../bin
++LIB = ../../lib
++
++all: init wrapper libwrapper.so
++
++clean:
++	rm -f *.o
++
++cleanall: clean
++	rm -rf *~ .deps
++	rm -f $(BIN)/wrapper $(LIB)/libwrapper.so
++
++init:
++	if test ! -d .deps; then mkdir .deps; fi
++
++wrapper: $(wrapper_SOURCE)
++	$(COMPILE) -pthread $(wrapper_SOURCE) -lm $(LDFLAGS) -o $(BIN)/wrapper
++
++libwrapper.so: $(libwrapper_so_OBJECTS)
++	${COMPILE} -shared $(libwrapper_so_OBJECTS) $(LDFLAGS) -o $(LIB)/libwrapper.so
++
++%.o: %.c
++	@echo '$(COMPILE) -c $<'; \
++	$(COMPILE) $(DEFS) -Wp,-MD,.deps/$(*F).pp -c $<
++	@-cp .deps/$(*F).pp .deps/$(*F).P; \
++	tr ' ' '\012' < .deps/$(*F).pp \
++	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
++	>> .deps/$(*F).P; \
++	rm .deps/$(*F).pp
+Index: wrapper_3.5.35_src/src/c/Makefile-linux-ppcle-64.make
+===================================================================
+--- wrapper_3.5.35_src.orig/src/c/Makefile-linux-ppcle-64.make
++++ wrapper_3.5.35_src/src/c/Makefile-linux-ppcle-64.make
+@@ -33,10 +33,10 @@ init:
+ 	if test ! -d .deps; then mkdir .deps; fi
+ 
+ wrapper: $(wrapper_SOURCE)
+-	$(COMPILE) -lm -pthread $(wrapper_SOURCE) -o $(BIN)/wrapper
++	$(COMPILE) -pthread $(wrapper_SOURCE) $(LDFLAGS) -o $(BIN)/wrapper -lm
+ 
+ libwrapper.so: $(libwrapper_so_OBJECTS)
+-	${COMPILE} -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
++	${COMPILE} -shared $(libwrapper_so_OBJECTS) $(LDFLAGS) -o $(LIB)/libwrapper.so
+ 
+ %.o: %.c
+ 	@echo '$(COMPILE) -c $<'; \
+Index: wrapper_3.5.35_src/src/c/Makefile-linux-ppcbe-64.make
+===================================================================
+--- wrapper_3.5.35_src.orig/src/c/Makefile-linux-ppcbe-64.make
++++ wrapper_3.5.35_src/src/c/Makefile-linux-ppcbe-64.make
+@@ -33,10 +33,10 @@ init:
+ 	if test ! -d .deps; then mkdir .deps; fi
+ 
+ wrapper: $(wrapper_SOURCE)
+-	$(COMPILE) -lm -pthread $(wrapper_SOURCE) -o $(BIN)/wrapper
++	$(COMPILE) -pthread $(wrapper_SOURCE) $(LDFLAGS) -o $(BIN)/wrapper -lm
+ 
+ libwrapper.so: $(libwrapper_so_OBJECTS)
+-	${COMPILE} -shared $(libwrapper_so_OBJECTS) -o $(LIB)/libwrapper.so
++	${COMPILE} -shared $(libwrapper_so_OBJECTS) $(LDFLAGS) -o $(LIB)/libwrapper.so
+ 
+ %.o: %.c
+ 	@echo '$(COMPILE) -c $<'; \

@@ -1,0 +1,8 @@
+<package name="perl-PostScript-Simple" project="openSUSE:Factory">
+  <title>a simple method of writing PostScript files from Perl</title>
+  <description>PostScript::Simple allows you to have a simple method of writing
+PostScript files from Perl. It has several graphics primitives that
+allow lines, circles, polygons and boxes to be drawn. Text can be added
+to the page using standard PostScript fonts.</description>
+  <devel project="devel:languages:perl" package="perl-PostScript-Simple"/>
+</package>

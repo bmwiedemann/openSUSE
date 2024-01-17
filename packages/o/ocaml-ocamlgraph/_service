@@ -1,0 +1,28 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="filename">ocaml-ocamlgraph</param>
+    <param name="revision">9ebfbb119b50d98b31f34be4983cd4f842460ea0</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/backtracking/ocamlgraph.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name='exclude'>.gitignore</param>
+    <param name='exclude'>.merlin</param>
+    <param name='exclude'>.ocp-indent</param>
+    <param name='exclude'>CREDITS</param>
+    <param name='exclude'>FAQ</param>
+    <param name='exclude'>INSTALL.md</param>
+    <param name='exclude'>TODO.md</param>
+    <param name='exclude'>dgraph/examples</param>
+    <param name='exclude'>examples</param>
+    <param name='exclude'>tests</param>
+    <param name='exclude'>view_graph</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>
