@@ -1,0 +1,124 @@
+From 517bf7792a4f2d9f7d6062efeec9089e78c5458e Mon Sep 17 00:00:00 2001
+From: Mamoru TASAKA <mtasaka@fedoraproject.org>
+Date: Thu, 19 Jan 2023 16:39:17 +0900
+Subject: [PATCH 1/2] Replace File.exists? with File.exist?
+
+File.exists? is deprecated since ruby2.1 and is removed with ruby3.2.
+Replace with File.exist? .
+---
+ spec/support/libvirt_acceptance_context.rb    | 2 +-
+ spec/support/matchers/have_file_content.rb    | 2 +-
+ spec/unit/action/clean_machine_folder_spec.rb | 6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/spec/support/libvirt_acceptance_context.rb b/spec/support/libvirt_acceptance_context.rb
+index 762822440..8e0f53392 100644
+--- a/spec/support/libvirt_acceptance_context.rb
++++ b/spec/support/libvirt_acceptance_context.rb
+@@ -71,7 +71,7 @@ def copy_vagrantfile(vagrant_home, target_env)
+     # allows for a helper Vagrantfile to force specific provider options if testing
+     # environment needs them
+     vagrantfile = File.join(vagrant_home, 'Vagrantfile')
+-    if File.exists?(vagrantfile) and !File.exists?(File.join(target_env.homedir, 'Vagrantfile'))
++    if File.exist?(vagrantfile) and !File.exist?(File.join(target_env.homedir, 'Vagrantfile'))
+       FileUtils.cp(vagrantfile, target_env.homedir)
+     end
+   end
+diff --git a/spec/support/matchers/have_file_content.rb b/spec/support/matchers/have_file_content.rb
+index 9970f6b8d..20215180a 100644
+--- a/spec/support/matchers/have_file_content.rb
++++ b/spec/support/matchers/have_file_content.rb
+@@ -45,7 +45,7 @@
+ #     end
+ RSpec::Matchers.define :have_file_content do |expected|
+   match do |actual|
+-    next false unless File.exists?(actual)
++    next false unless File.exist?(actual)
+ 
+     @actual   = File.read(actual).chomp
+     @expected = if expected.is_a? String
+diff --git a/spec/unit/action/clean_machine_folder_spec.rb b/spec/unit/action/clean_machine_folder_spec.rb
+index faad98cde..b8ed8acc6 100644
+--- a/spec/unit/action/clean_machine_folder_spec.rb
++++ b/spec/unit/action/clean_machine_folder_spec.rb
+@@ -20,7 +20,7 @@
+ 
+         expect(subject.call(env)).to be_nil
+ 
+-        expect(File.exists?(machine.data_dir)).to eq(true)
++        expect(File.exist?(machine.data_dir)).to eq(true)
+         expect(Dir.entries(machine.data_dir)).to match_array([".", ".."])
+       end
+     end
+@@ -38,7 +38,7 @@
+ 
+         expect(subject.call(env)).to be_nil
+ 
+-        expect(File.exists?(machine.data_dir)).to eq(true)
++        expect(File.exist?(machine.data_dir)).to eq(true)
+         expect(Dir.entries(machine.data_dir)).to match_array([".", ".."])
+       end
+     end
+@@ -51,7 +51,7 @@
+ 
+         expect(subject.call(env)).to be_nil
+ 
+-        expect(File.exists?(machine.data_dir)).to eq(true)
++        expect(File.exist?(machine.data_dir)).to eq(true)
+         expect(Dir.entries(machine.data_dir)).to match_array([".", ".."])
+       end
+     end
+
+From 578d3ae4296a78c8b276ff2bc5471fa045a61736 Mon Sep 17 00:00:00 2001
+From: Mamoru TASAKA <mtasaka@fedoraproject.org>
+Date: Thu, 19 Jan 2023 17:07:39 +0900
+Subject: [PATCH 2/2] Set empty host when nil on finalize_from_uri
+
+With ruby3.2, URI.parse now sets empty host instead of nil via:
+https://github.com/ruby/ruby/commit/dd5118f8524c425894d4716b787837ad7380bb0d
+
+Adjust test case so, also with ruby <= 3.1, forcely set empty string for host
+when nil to make finalize_from_uri behavior consistent between different
+host ruby versions.
+---
+ lib/vagrant-libvirt/config.rb | 4 ++--
+ spec/unit/config_spec.rb      | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/lib/vagrant-libvirt/config.rb b/lib/vagrant-libvirt/config.rb
+index 471d40dce..dfaef6167 100644
+--- a/lib/vagrant-libvirt/config.rb
++++ b/lib/vagrant-libvirt/config.rb
+@@ -1304,8 +1304,8 @@ def finalize_from_uri
+           end
+         end
+ 
+-        # Extract host values from uri if provided, otherwise nil
+-        @host = uri.host
++        # Extract host values from uri if provided, otherwise set empty string
++        @host = uri.host || ""
+         @port = uri.port
+         # only override username if there is a value provided
+         @username = nil if @username == UNSET_VALUE
+diff --git a/spec/unit/config_spec.rb b/spec/unit/config_spec.rb
+index 951b3ce58..f43de4df9 100644
+--- a/spec/unit/config_spec.rb
++++ b/spec/unit/config_spec.rb
+@@ -86,7 +86,7 @@
+         ],
+         [ # connect explicit to unix socket
+           {:uri => "qemu+unix:///system"},
+-          {:uri => "qemu+unix:///system", :connect_via_ssh => false, :host => nil, :username => nil},
++          {:uri => "qemu+unix:///system", :connect_via_ssh => false, :host => "", :username => nil},
+         ],
+         [ # via libssh2 should enable ssh as well
+           {:uri => "qemu+libssh2://user@remote/system?known_hosts=/home/user/.ssh/known_hosts"},
+@@ -139,7 +139,7 @@
+         ],
+         [ # with session and using ssh infer connect by ssh and ignore host as not provided
+           {},
+-          {:uri => "qemu+ssh:///session", :qemu_use_session => true, :connect_via_ssh => true, :host => nil},
++          {:uri => "qemu+ssh:///session", :qemu_use_session => true, :connect_via_ssh => true, :host => ""},
+           {
+             :env => {'LIBVIRT_DEFAULT_URI' => "qemu+ssh:///session"},
+           }

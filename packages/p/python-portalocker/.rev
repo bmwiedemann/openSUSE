@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8af939c9b5365a774f142b7c45c89359</srcmd5>
+    <version>1.2.1</version>
+    <time>1526578400</time>
+    <user>dimstar_suse</user>
+    <comment>Initial packaging effort (changes filename fixed)</comment>
+    <requestid>610091</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>441ad2c9b811df59d144a8f86a6fea74</srcmd5>
+    <version>1.2.1</version>
+    <time>1527582595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610287</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a85af5f2887323f53bf76f0e451dd0f0</srcmd5>
+    <version>1.4.0</version>
+    <time>1550221332</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.0:
+  * no upstream changelog
+- Drop patch portalocker-1.2.1-old-Sphinx.patch</comment>
+    <requestid>674951</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9e3ad7f2d7ac84cb0454cd99b5175290</srcmd5>
+    <version>1.5.0</version>
+    <time>1563914396</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.0:
+  * No upstream changelog
+- Switch to github tarball to include tests</comment>
+    <requestid>717856</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>201ec4125a0ed0cf679f2c72d0da7931</srcmd5>
+    <version>1.5.1</version>
+    <time>1569233168</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.1:
+  * no upstream changelog</comment>
+    <requestid>729892</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7f5dcadfedc23ea8792038125d12f20e</srcmd5>
+    <version>1.5.2</version>
+    <time>1584531955</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786107</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>25bea837e93934ad803f9c790929c6bf</srcmd5>
+    <version>1.7.0</version>
+    <time>1591286042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811269</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b86212d6472f7d509a696299e35cc395</srcmd5>
+    <version>1.7.0</version>
+    <time>1682095684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081829</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8b0aa59a27a7f17719aa9b76cbd07d8d</srcmd5>
+    <version>2.7.0</version>
+    <time>1683295138</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.0:
+  * Added fail_when_locked=False support to BoundedSemaphore thanks to
+    @flaviens
+- 2.6.0:
+  * Added fileno() support. Fixes #80 on posix systems
+- 2.5.1:
+  * Added clear warning when locking in non-blocking mode without
+    specifying either EXCLUSIVE or SHARED mode. Fixes #77
+- 2.5.0:
+  * Fixed shared locks on Windows and simplified locking mechanism
+- 2.4.0:
+  * Added warning when trying to use a timeout in blocking mode. And
+    removed deprecated testing code and checks
+- 2.3.2:
+  * Added semver indicator and specified needed Python release thanks
+    to @rayluo v2.3.2
+- 2.3.1:
+  * Removed Python 2 classifier thanks to @rayluo v2.3.1
+- 2.3.0:
+  * enabled PEP 561 compliance v2.3.0
+- 2.2.1:
+  * removed debug statement v2.2.1
+- 2.2.0:
+  * updated travis location
+- 2.1.0:
+  * Added Redis based distributed lock which gracefully handles
+    connection loss and dying applications. Added full type hinting
+    support. Fixed bug where the file handle was not always explicitly
+    closed with errors
+- v2.0.0:
+  * Removed support for old Python versions. Versions 3.5 and above
+    are supported. Added BoundedSemaphore class
+- 1.7.1:
+  * removed tests from wheel file
+</comment>
+    <requestid>1084960</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3d15066db37216ae2e51f4459e68f65b</srcmd5>
+    <version>2.8.2</version>
+    <time>1704660166</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.2:
+  * Removed docs from build to fix #88 again
+- update to 2.8.0:
+  * Added support for Python 3.11 and 3.12
+    Made the package fully ruff, pyright and mypy compliant with
+    automated testsing using both tox and Github actions</comment>
+    <requestid>1137440</requestid>
+  </revision>
+</revisionlist>

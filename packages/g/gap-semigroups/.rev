@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6194f61ae32804a19da0c0d5d7052590</srcmd5>
+    <version>5.3.2</version>
+    <time>1703800779</time>
+    <user>anag+factory</user>
+    <comment>GAP CAS module</comment>
+    <requestid>1134875</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>baf6d13820331b3f949c6c064a5d8208</srcmd5>
+    <version>5.3.2</version>
+    <time>1704380285</time>
+    <user>dimstar_suse</user>
+    <comment>Drop config.log and autom4te.cache for reproducible builds (forwarded request 1136433 from bmwiedemann)</comment>
+    <requestid>1136521</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bfb71c18987867345c6cf77141c383bc</srcmd5>
+    <version>5.3.3</version>
+    <time>1704558567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.3.3</comment>
+    <requestid>1137167</requestid>
+  </revision>
+</revisionlist>

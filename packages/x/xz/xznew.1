@@ -1,0 +1,39 @@
+.TH XZNEW 1
+.SH NAME
+xznew \-   recompress .gz or .tgz files to .xz files
+.SH SYNOPSIS
+.B xznew
+[ -ftv9PK] [ name.gz ...  ]
+.SH DESCRIPTION
+.I  xznew
+recompresses files from .gz (gzip) format to .xz (xz) format.
+If you want to recompress a file already in xz format, rename the file
+to force a .xz extension then apply xznew.
+.SH OPTIONS
+.TP
+.B \-f
+Force recompression from .gz to .xz format even if a .xz file already exists.
+.TP
+.B \-t
+Tests the new files before deleting originals.
+.TP
+.B \-v
+Verbose. Display the name and percentage reduction for each file compressed.
+.TP
+.B \-9
+Use the slowest compression method (optimal compression).
+.TP
+.B \-P
+Use pipes for the conversion to reduce disk space usage.
+.TP
+.B \-K
+Keep a .gz file when it is smaller than the .xz file
+.SH "SEE ALSO"
+xz(1), gzip(1)
+.SH BUGS
+.I xznew
+does not maintain the time stamp with the -P option if
+.I cpmod(1)
+is not available and
+.I touch(1)
+does not support the -r option.

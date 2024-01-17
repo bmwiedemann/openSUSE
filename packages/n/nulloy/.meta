@@ -1,0 +1,5 @@
+<package name="nulloy" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:apps" package="nulloy"/>
+</package>

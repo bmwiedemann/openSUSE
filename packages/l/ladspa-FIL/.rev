@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c5192fc92f3b8e2f3326b64eed5e2f5d</srcmd5>
+    <version>0.3.0</version>
+    <time>1393618482</time>
+    <user>coolo</user>
+    <comment>New package, just split from ladspa
+Resubmission after the license correction</comment>
+    <requestid>223886</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>adcec7db86cd2c4ad7e4141fd5b8b394</srcmd5>
+    <version>0.3.0</version>
+    <time>1393936626</time>
+    <user>coolo</user>
+    <comment>- Run spec-cleaner
+- Remove obsoleted autoreq/autoprov tags</comment>
+    <requestid>224428</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>adcec7db86cd2c4ad7e4141fd5b8b394</srcmd5>
+    <version>0.3.0</version>
+    <time>1409301450</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

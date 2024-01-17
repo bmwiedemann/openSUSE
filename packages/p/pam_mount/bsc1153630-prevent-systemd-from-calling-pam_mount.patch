@@ -1,0 +1,34 @@
+Index: pam_mount-2.16/doc/pam_mount.8.in
+===================================================================
+--- pam_mount-2.16.orig/doc/pam_mount.8.in
++++ pam_mount-2.16/doc/pam_mount.8.in
+@@ -51,7 +51,7 @@ volumes are not allowed by the example p
+ pam_mount.
+ .SH PAM configuration
+ .PP
+-In addition, you must include two entries in the system's applicable
++In addition, you must include three entries in the system's applicable
+ /etc/pam.d/\fIservice\fP config files, as the following example shows:
+ .IP
+ .nf
+@@ -64,9 +64,12 @@ In addition, you must include two entrie
+     password required  pam_pwdb.so shadow nullok use_authtok
+     session  required  pam_pwdb.so
+     session  optional  pam_console.so
+++++ session [success=1 default=ignore] pam_succeed_if.so service = systemd-user
+ +++ session  optional  pam_mount.so
+ .fi
+ .PP
++The two lines marked "session" must be kept together!
++.PP
+ When "sufficient" is used in the second column, you must make sure that
+ pam_mount is added before this entry. Otherwise pam_mount will not get executed
+ should a previous PAM module succeed. Also be aware of the "include"
+@@ -84,6 +87,7 @@ account sufficient  pam_ldap.so
+ auth    required    pam_mount.so
+ auth    sufficient  pam_ldap.so use_first_pass
+ auth    required    pam_unix.so use_first_pass
++session [success=1 default=ignore] pam_succeed_if.so service = systemd-user
+ session optional    pam_mount.so
+ \(bu\(bu\(bu
+ .fi

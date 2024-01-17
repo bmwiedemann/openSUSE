@@ -1,0 +1,11 @@
+Index: xtrans-1.4.0/xtrans.pc.in
+===================================================================
+--- xtrans-1.4.0.orig/xtrans.pc.in
++++ xtrans-1.4.0/xtrans.pc.in
+@@ -1,6 +1,5 @@
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+-libdir=@libdir@
+ includedir=@includedir@
+ 
+ Name: XTrans

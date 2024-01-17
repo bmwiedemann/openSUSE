@@ -1,0 +1,7 @@
+<package name="spew" project="openSUSE:Factory">
+  <title>An I/O performance measurement and load generation tool</title>
+  <description>Spew is used to measure I/O performance of character devices, block devices, and regular files. It can also be used to generate high I/O loads to stress systems while verifying data integrity.
+
+Spew is easy to use and is flexible. No configuration files or complicated client/server configurations are needed. Spew also generates its own data patterns that are designed to make it easy to find and debug data integrity problems.</description>
+  <devel project="benchmark" package="spew"/>
+</package>
