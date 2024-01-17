@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 16 17:55:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 45.1:
+  + Fix error to console when opening Preferences.
+  + Fix undo.
+  + Fix search when empty.
+- Convert to source service for easier updating.
+
+-------------------------------------------------------------------
 Mon Sep 25 19:47:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:
