@@ -1,0 +1,188 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>18c440f36ec5b7a3b6e9ec821ad1dd40</srcmd5>
+    <version>0.6.7</version>
+    <time>1543224250</time>
+    <user>dimstar_suse</user>
+    <comment>Build dependency for Firefox &gt;= 63 boo#1115645
+</comment>
+    <requestid>650291</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>97c21174db0d7f6730b38ddbcb7e6f8d</srcmd5>
+    <version>0.6.8</version>
+    <time>1553699511</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.6.8 to satisfy Firefox 66.0 build requirements
+</comment>
+    <requestid>686025</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fa3c015eca8b82e01e80327504647cf9</srcmd5>
+    <version>0.8.7</version>
+    <time>1558938528</time>
+    <user>dimstar_suse</user>
+    <comment>* there is no upstream changelog provided (forwarded request 705194 from wrosenauer)</comment>
+    <requestid>705196</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4c519747297677415c7a3db9fc7ba53d</srcmd5>
+    <version>0.9.0</version>
+    <time>1565694725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721882</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>362e7e3ae536ef05e7e8549b701e1cc4</srcmd5>
+    <version>0.9.1</version>
+    <time>1571751731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741334</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>52d17d7b59b4468af23cbd06054cd68b</srcmd5>
+    <version>0.12.0</version>
+    <time>1581694081</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>772453</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>885d2183ca9eb921b27cbb645c4ecbc5</srcmd5>
+    <version>0.13.0</version>
+    <time>1583948001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782698</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d391ef0804d03bb1bbb53152f96746b3</srcmd5>
+    <version>0.13.1</version>
+    <time>1585667587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789912</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6fa66d149413e8ba85c6ce02dd31b162</srcmd5>
+    <version>0.14.1</version>
+    <time>1591380111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810403</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2ba31933f8d26e3d18ae6950cbb613d8</srcmd5>
+    <version>0.14.3</version>
+    <time>1595949873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822975</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>31c048eb811ce1cde1f628109454ec3b</srcmd5>
+    <version>0.15.0</version>
+    <time>1603202623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842309</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cb7c10f85b44a1eb9b51f827e0676b9d</srcmd5>
+    <version>0.16.0</version>
+    <time>1611163398</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>864245</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a99f2c84aa955f64cc70652d061c3841</srcmd5>
+    <version>0.19.0</version>
+    <time>1619031490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886803</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b2e227a473f2c957c37385a4e725bd78</srcmd5>
+    <version>0.19.0+git0</version>
+    <time>1623521124</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898581</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d1d9fd2283baf990fcc563863600e928</srcmd5>
+    <version>0.19.0+git0</version>
+    <time>1624551737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901198</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>b372d4060830cc38e2aa13e2940a1c00</srcmd5>
+    <version>0.19.0+git0</version>
+    <time>1625675377</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904034</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ecc93dae968cc3fced2400936fe95fa9</srcmd5>
+    <version>0.20.0+git0</version>
+    <time>1627898659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909327</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4580b6d6848d56a6e760e9e1034d84af</srcmd5>
+    <version>0.21.0+git0</version>
+    <time>1648739905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965381</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>02d26f49f8531325a3845bb32fe9703c</srcmd5>
+    <version>0.21.0+git0</version>
+    <time>1649370393</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966925</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9944e9a53eb46333e558d9ce9c12569a</srcmd5>
+    <version>0.23.0+git0</version>
+    <time>1650657213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972007</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>12acdff64dec328ecc574ce94896e50d</srcmd5>
+    <version>0.24.3+git0</version>
+    <time>1659554148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>991358</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f02baf683c7f2d25bbd3c38488ddbef9</srcmd5>
+    <version>0.25.0+git0</version>
+    <time>1694019385</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109135</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>06eea1ddc2075d6e33f5a166795a5cb8</srcmd5>
+    <version>0.26.0+git0</version>
+    <time>1695412019</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112098</requestid>
+  </revision>
+</revisionlist>

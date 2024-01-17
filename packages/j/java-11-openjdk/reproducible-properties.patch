@@ -1,0 +1,15 @@
+--- a/src/java.base/share/classes/java/util/Properties.java
++++ b/src/java.base/share/classes/java/util/Properties.java
+@@ -929,7 +929,11 @@ class Properties extends Hashtable<Object,Object> {
+         if (comments != null) {
+             writeComments(bw, comments);
+         }
+-        bw.write("#" + new Date().toString());
++        Date now = new Date();
++        if (System.getenv("SOURCE_DATE_EPOCH") != null) {
++            now = new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")));
++        }
++        bw.write("#" + now.toString());
+         bw.newLine();
+         synchronized (this) {
+             for (Map.Entry<Object, Object> e : entrySet()) {

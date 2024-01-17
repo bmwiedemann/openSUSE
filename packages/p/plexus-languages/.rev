@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6242676a873e5f1ac4ffb62a72a6fd56</srcmd5>
+    <version>0.9.10</version>
+    <time>1554281399</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>688980</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3248c8d5c1ca5625a8017975f9fc4afa</srcmd5>
+    <version>0.9.10</version>
+    <time>1554458655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690951</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9ac41e71ac468b1c1b866ce2c8ca62a2</srcmd5>
+    <version>1.0.3</version>
+    <time>1574783724</time>
+    <user>dimstar_suse</user>
+    <comment>1.0.3</comment>
+    <requestid>750519</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d95c84346619dae9617e128a77af4499</srcmd5>
+    <version>1.0.3</version>
+    <time>1613677235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873203</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a5cf04ec971511ab8a6afa907d5dde9b</srcmd5>
+    <version>1.1.1</version>
+    <time>1646948731</time>
+    <user>dimstar_suse</user>
+    <comment>1.1.1</comment>
+    <requestid>960769</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>baafb26f66c09c282db70e81345964b3</srcmd5>
+    <version>1.1.1</version>
+    <time>1647205316</time>
+    <user>dimstar_suse</user>
+    <comment>Build as multirelease modular jar</comment>
+    <requestid>961198</requestid>
+  </revision>
+</revisionlist>

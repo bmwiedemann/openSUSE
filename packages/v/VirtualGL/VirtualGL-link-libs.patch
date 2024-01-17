@@ -1,0 +1,42 @@
+From: tchvatal@suse.com
+Date: 2014-08-29T09:28:04+00:00
+Subject: Fix building with -Wl,-z,now and no-undefined
+
+Index: VirtualGL-2.6.4/server/CMakeLists.txt
+===================================================================
+--- VirtualGL-2.6.4.orig/server/CMakeLists.txt
++++ VirtualGL-2.6.4/server/CMakeLists.txt
+@@ -143,12 +143,12 @@
+ if(VGL_FAKEOPENCL)
+ 	target_compile_definitions(${VGL_DLFAKER_NAME} PUBLIC -DFAKEOPENCL)
+ endif()
+-target_link_libraries(${VGL_DLFAKER_NAME} ${LIBDL})
++target_link_libraries(${VGL_DLFAKER_NAME} ${LIBDL} vglfaker)
+ install(TARGETS ${VGL_DLFAKER_NAME} DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ add_library(${VGL_GEFAKER_NAME} SHARED gefaker.c)
+ set_target_properties(${VGL_GEFAKER_NAME} PROPERTIES LINK_FLAGS "${MINUSZ}defs")
+-target_link_libraries(${VGL_GEFAKER_NAME} ${LIBDL})
++target_link_libraries(${VGL_GEFAKER_NAME} ${LIBDL} vglfaker)
+ install(TARGETS ${VGL_GEFAKER_NAME} DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ set(HEADERS ../common/rr.h rrtransport.h)
+@@ -231,7 +231,7 @@
+ 		"${VGLTRANS_TEST_LINK_FLAGS}")
+ endif()
+ target_link_libraries(vgltrans_test vglcommon ${FBXFAKERLIB} ${TJPEG_LIBRARY}
+-	vglsocket)
++	vglsocket vglfaker)
+ if(CMAKE_SYSTEM_NAME STREQUAL "SunOS" AND GNUCXX)
+ 	target_link_libraries(vgltrans_test stdc++)
+ endif()
+@@ -241,7 +241,8 @@
+ 	set_target_properties(vgltrans_test2 PROPERTIES
+ 		LINK_FLAGS "${MAPFLAG}${CMAKE_CURRENT_SOURCE_DIR}/testplugin-mapfile")
+ endif()
+-target_link_libraries(vgltrans_test2 vglcommon ${FBXFAKERLIB} ${TJPEG_LIBRARY})
++target_link_libraries(vgltrans_test2 vglcommon ${FBXFAKERLIB} ${TJPEG_LIBRARY}
++	vglfaker)
+ if(CMAKE_SYSTEM_NAME STREQUAL "SunOS" AND GNUCXX)
+ 	target_link_libraries(vgltrans_test2 stdc++)
+ endif()

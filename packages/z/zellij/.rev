@@ -1,0 +1,245 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>caef94318ede5fcd3e69def7fba1387f</srcmd5>
+    <version>0.30.0</version>
+    <time>1659034734</time>
+    <user>RBrownFactory</user>
+    <comment>I want to maintain zellij in openSUSE:Factory</comment>
+    <requestid>991453</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2e2f4d3804d905ad3220d3b6744de4e5</srcmd5>
+    <version>0.31.0</version>
+    <time>1659554208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992545</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>21997a6a62a89c7e63610ea002ca441c</srcmd5>
+    <version>0.31.3</version>
+    <time>1661593847</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>999520</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2896f167770fb51b89970ec6ff476d4b</srcmd5>
+    <version>0.31.3</version>
+    <time>1662239961</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1001029</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c5ff57b79f73684b024ec0c95ff16dde</srcmd5>
+    <version>0.31.4</version>
+    <time>1664797563</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1007511</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7d3ac0af0430a8c44f706e30ae51837f</srcmd5>
+    <version>0.31.4</version>
+    <time>1666440807</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1030484</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eff8485a7d36f1dbc669465115c25da9</srcmd5>
+    <version>0.32.0</version>
+    <time>1667901274</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034320</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>669df665f7da7a5dfd23bd11a9ff0918</srcmd5>
+    <version>0.33.0</version>
+    <time>1669289129</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1037802</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e5edb8866ec545a0bb84d13bbfc340bb</srcmd5>
+    <version>0.34.4</version>
+    <time>1671889945</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1045158</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>11770ff2f9c9ff23e6f304d89f3a8c45</srcmd5>
+    <version>0.35.1</version>
+    <time>1678555447</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix vendored dependencies.
+- Fix specfile. Duplicated BuildRequires section for rust+cargo
+- Update to version 0.35.1:
+  * fix(panes): show visual error when unable to split panes vertically/horizontally
+  * WIP: Use xtask as build system
+  * fix(panes): show visual error when failing to resize panes
+  * chore(repo): remove nix support
+  * Floating panes in layouts
+  * add tmux close pane key
+  * fix: properly end selection with copy_on_select = false
+  * fix 3 bugs
+  * Errors: less unwrap in server
+  * Support UTF-8 character in tab name and pane name
+  * errors: handle missing plugin caches
+  * Improve client disconnect handling
+  * feat: add ScrollToTop action by 
+  * Fix status bar not displaying w/ size=1 and show shortcuts
+  * Add GoToTabName action to switch tab by name
+  * Use singlepass in debug mode by 
+  * cleanups around &quot;buffer full&quot; error
+  * Make the singlepass compiler opt-in through flags by 
+  * Add pencil theme
+  * Apply correct color on 'more tabs' message
+  * feat: add args to new-tab action
+  * update termwiz to v0.20.0
+  * feat(ui): swap layouts and stacked panes
+  * fix(ux): cache stdin queries on startup (remove startup delay)
+  * Project Governance Change
+  * Add Helix editor (hx) to editors that support prefix positions
+  * Extend display char in tab
+  * Fix fullscreen navigation by 
+  * fix(grid): glitchy resizes
+  * Update bug_report.md template with OSX log directory
+  * fix(layout): various parser and ui fixes
+  * fix(messaging): cache hold pane messages by their tab_id if the tab is not ready
+  * fix(layout): tab focus
+  * fix(cli): new-tab now also looks in layout_dir for layouts
+  * fix(kdl): new-tab keybind looks in layout_dir for layouts
+  * fix(cli): edit cwd
+  * fix(layouts): do not relayout twice on auto_layout
+  * fix(new-tab): get config parameters from config file
+  * fix(grid): only use background pending styling when deleting characters
+  * feat(layouts): exact panes constraint
+  * fix(pty): report no-cwd for empty path returned from sysinfo
+  * fix(sixel): report pixel size in winsize change ioctl
+  * Fix plugin location path decoding from Url
+  * Add action QueryTabNames to list all tab names
+  * fix(pty): do not crash when unable to set cwd
+  * fix(layouts): naming and gototabname
+  * fix(cli): make auto_layout work through the cli
+  * feat: add self-provided themes
+  * Feature: simulate publishing
+  * Revert theme pr
+</comment>
+    <requestid>1070835</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>43bd83e436405b12271fcba6b2e05819</srcmd5>
+    <version>0.35.2</version>
+    <time>1680536758</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1076785</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5db14086d125a1bc932202548e1ae7d3</srcmd5>
+    <version>0.36.0</version>
+    <time>1683559505</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1085500</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>74d84dcd9b2150d16315c1df22c02630</srcmd5>
+    <version>0.37.2</version>
+    <time>1687380017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.37.2:
+  * hotfix: include theme files into binary
+  * fix: make plugin hide_self api idempotent
+- Changes from 0.37.1:
+  * hotfix: theme options does not work
+  * fix: various plugin api methods
+- Changes from major release 0.37.0:
+  * fix(plugin): respect hide session option on compact-bar
+  * feat: allow excluding tabs from tab sync in layouts
+  * feat: support default cwd
+  * feat: cli action to reload plugins at runtime for easier plugin development
+  * docs(architecture): update architecture docs
+  * feat(themes): add nightfox themes
+  * feat: provide default themes
+  * feat: update and render plugins asynchronously
+  * fix: support environment variables and shell expansions in layout cwds
+  * fix: add file paths to file not found errors
+  * fix: error loading non-existant themes directory
+  * build: speed up build and ci
+  * fix: sticky bit FreeBSD crash
+  * build: Bump rust toolchain version to 1.67
+  * fix: update config file output
+  * feat: plugin workers for background tasks
+  * fix: cwd of newtab action
+  * feat: plugin system overhaul
+  * feat: add virtually all of Zellij's API to plugins
+  * fix: runtime panic because of local cache
+  * fix: cursor flickering
+  * fix: focus tab as well as pane when relaunching plugin
+  * feat: ui improvements for strider search
+  * fix: only watch fs if plugins explicitly request it
+  * fix: suppress debug logging when not debugging
+  * feat: send pane events to plugins
+  * fix: use debounced watcher for watching filesystem
+  * feat: add more plugin api methods
+</comment>
+    <requestid>1094350</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>29523d34a9dae1a70092157f6a518a81</srcmd5>
+    <version>0.37.2</version>
+    <time>1692611136</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1104915</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e8a05192967ffb8f2fb13a4e36af9c50</srcmd5>
+    <version>0.38.1</version>
+    <time>1694460096</time>
+    <user>anag+factory</user>
+    <comment>- Add session-manager and fixture-tests plugins.
+- Update to version 0.38.1:
+  * refactor(server): remove unnecessary mut
+  * fix(status-bar): add break tab hints
+  * fix(reconnect): glitches on windows terminal
+  * fix(grid): memory leak with unfocused tabs
+  * fix(input): enforce ordering of actions after opening a new pane
+- Remove zellij-fix-theme-dir.patch 
+</comment>
+    <requestid>1110146</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>970adf5c0a7bd198ba5fafba5e3f4b51</srcmd5>
+    <version>0.38.2</version>
+    <time>1695664934</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.38.2:
+  * fix(terminal): wrap lines when adding characters in
+    alternate screen
+</comment>
+    <requestid>1113179</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4b2e0cedaf6ca27355636557fd3b5dd6</srcmd5>
+    <version>0.39.1</version>
+    <time>1701023876</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1128835</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>53dc3d6542b6aef6b893eeac442b377f</srcmd5>
+    <version>0.39.2</version>
+    <time>1705255400</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138480</requestid>
+  </revision>
+</revisionlist>

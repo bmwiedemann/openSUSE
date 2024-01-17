@@ -1,0 +1,29 @@
+From 85419ca09d225630cd1740e554bfb65c560e3904 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 21 Dec 2022 14:49:34 +0800
+Subject: [PATCH] Exclude '-march=native' from ppc64le and riscv64
+
+Since gcc of ppc64le and riscv64 doesn't support '-march=native', remove
+it from HOST_CPPFLAGS.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ src/include/defaults.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/include/defaults.mk b/src/include/defaults.mk
+index 9da5182..94502ed 100644
+--- a/src/include/defaults.mk
++++ b/src/include/defaults.mk
+@@ -70,7 +70,7 @@ override SOFLAGS = $(_SOFLAGS) \
+ 		   $(call family,SOFLAGS)
+ 
+ HOST_ARCH=$(shell uname -m)
+-ifneq ($(HOST_ARCH),ia64)
++ifeq (, $(filter ia64 riscv64 ppc64le, $(HOST_ARCH)))
+ 	HOST_MARCH=-march=native
+ else
+ 	HOST_MARCH=
+-- 
+2.35.3
+

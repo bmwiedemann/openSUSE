@@ -1,0 +1,20 @@
+Source: http://www.corpit.ru/pipermail/udns/2018q2/000184.html
+
+dns_add_srch() initialization problem
+
+udns seems to insist on twice repeating queries for nonexistent domain
+names with my local search path appended, which seems to be due to a
+bug in dns_init_resolvconf()?
+
+
+--- udns_init.c.orig	2018-04-30 07:41:41.533514452 +0300
++++ udns_init.c	2018-04-30 07:41:43.789510882 +0300
+@@ -204,7 +204,7 @@
+     dns_set_opts(ctx, v);
+ 
+   /* if still no search list, use local domain name */
+-  if (has_srch &&
++  if (!has_srch &&
+       gethostname(buf, sizeof(buf) - 1) == 0 &&
+       (v = strchr(buf, '.')) != NULL &&
+       *++v != '\0')

@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a25dc8e482c0139db605503e1c576deb</srcmd5>
+    <version>2.9.1</version>
+    <time>1593458230</time>
+    <user>dimstar_suse</user>
+    <comment>Initial package for 2.9.1</comment>
+    <requestid>817607</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1dacfddf5565ab3778c6a3f039a94028</srcmd5>
+    <version>2.13.3</version>
+    <time>1665591750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009899</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>63ae8bd020bce3c699b78efd6cddda89</srcmd5>
+    <version>2.13.3</version>
+    <time>1682193722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081995</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fd266ec33fc84702f798b4db6bee605c</srcmd5>
+    <version>4.0.0</version>
+    <time>1684490117</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.0:
+  * Fixed ``@typechecked`` optimization causing compilation of
+    instrumented code to fail  when an ``if`` block was left
+    empty by the AST transformer
+  * Fixed the AST transformer trying to parse the second argument
+    of ``typing.Annotated`` as a forward reference
+  * Added ``InstrumentationWarning`` to the public API
+  * Changed ``@typechecked`` to skip instrumentation in optimized
+    mode, as in typeguard 2.x
+  * Avoid type checks where the types in question are shadowed by
+    local variables
+  * Fixed instrumentation using ``typing.Optional`` without a
+    subscript when the subscript value was erased due to
+    being an ignored import
+  * Fixed ``TypeError: isinstance() arg 2 must be a type or tuple
+    of types`` when instrumented code tries to check a value
+    against a naked (``str``, not ``ForwardRef``)
+  * forward reference
+  * Fixed instrumentation using the wrong &quot;self&quot; type in the
+    ``__new__()`` method
+  * Fixed imports guarded by ``if TYPE_CHECKING:`` when used with
+    subscripts
+  * (``SomeType[...]``) being replaced with ``Any[...]`` instead
+    of just ``Any``
+  * Fixed instrumentation inadvertently mutating a function's
+    annotations on Python 3.7 and 3.8
+  * Fixed ``Concatenate[...]`` in ``Callable`` parameters causing
+    ``TypeError`` to be raised
+  * Fixed type checks for ``*args`` or ``**kwargs`` not being
+    suppressed when their types are unusable</comment>
+    <requestid>1087114</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1d767b10f7593682e1e5d8cab8507ca1</srcmd5>
+    <version>4.1.5</version>
+    <time>1701792064</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.1.5:
+  * Fixed ``Callable`` erroneously rejecting a callable that has
+    the requested amount of positional arguments but they have
+    defaults
+  * Fixed a regression introduced in v4.1.4 where the elements of
+    ``Literal`` got quotes removed from them by the AST transformer
+  * Fixed ``AttributeError`` where the transformer removed
+    elements from a PEP 604 union
+  * Fixed ``AttributeError: 'Subscript' object has no attribute
+    'slice'`` when encountering an annotation with a subscript
+    containing an ignored type
+  * Fixed type checking not being skipped when the target is a
+    union (PEP 604 or ``typing.Union``) where one of the elements
+    is an ignored type (shadowed by an argument, variable
+    assignment or an ``if TYPE_CHECKING`` import)
+  * Dropped Python 3.7 support
+  * Fixed ``@typechecked`` optimization causing compilation of
+    instrumented code to fail when any block was left empty by the
+    AST transformer (eg ``if`` or ``try`` / ``except`` blocks)
+  * Fixed placement of injected typeguard imports with respect to
+    ``__future__`` imports and module docstrings
+  * Fixed ``Any`` being removed from a subscript that still
+    contains other elements
+  * Fixed ``suppress_type_checks()`` causing annotated variable
+    assignments to always assign ``None``
+  * Added support for passing a tuple as ``expected_type`` to
+    ``check_type()``, making it more of a drop-in replacement for
+    ``isinstance()``
+  * Fixed regression where ``Literal`` inside a ``Union`` had
+    quotes stripped from its contents, thus typically causing</comment>
+    <requestid>1130725</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Thu Dec 14 16:03:34 UTC 2023 - msuchanek@suse.com
+
+- Update to version 1.0.0~rc3 (jsc#PED-5449):
+  * Guest/verify: fix misbehaviour of verify and write with -p
+  * Guest/generate: trustedcadb variable allow only CA certificates
+  * Guest/Verify: -w option allowed when use -u with -p
+  * guest/generate: fix potential null reference in pk/append special case
+
+-------------------------------------------------------------------
+Fri Oct 13 14:04:07 UTC 2023 - msuchanek@suse.com
+
+- Update to version 1.0.0~rc2+git1.1f96bad:
+  * guest/read: return early if next esd cannot be parsed
+  * guest: Remove x509 SHA GUID functions and macros
+  * guest/generate: change --append option to be a boolean based on presence
+  * guest/read: allow paths with or without a trailing slash
+  * Makefile: Fix installation after source reorganization
+- Remove upstreamed secvarctl-install.patch
+
+-------------------------------------------------------------------
+Mon Oct 02 13:56:10 UTC 2023 - msuchanek@suse.com
+
+- Update to version 1.0.0~rc1+git0.a180a56:
+  * guest/util: Add crypto id to signature list
+  * secvarctl: guest secure boot variable backend
+  * secvarctl: reorganised host secure boot variable backend
+- Fix installation: secvarctl-install.patch
+
+-------------------------------------------------------------------
+Tue Nov 22 20:10:25 UTC 2022 - msuchanek@suse.com
+
+- Update to version 0.3+git13.76db7a7:
+  * Update crypto calling functions to expect success return codes
+  * crypto-gnutls.c: Unify return codes
+  * crypto-mbedtls.c: Unify error codes
+  * crypto-openssl.c: Unify return codes
+  * crypto: Add support for GnuTLS
+  * crypto: Fix openssl implementation of crypto_x509_is_RSA
+  * crypto: Enable compatability with OpenSSL V3
+  * crypto: Catch possible uninitialized return code
+
+-------------------------------------------------------------------
+Thu Sep 23 08:22:33 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Version 0.2+git31 released as 0.3 (jsc#SLE-18126).
+
+-------------------------------------------------------------------
+Mon Sep 20 17:26:18 UTC 2021 - msuchanek@suse.com
+
+- Update to version 0.2+git31~26ea751:
+- Remove workaround for wrong man page location - fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jun 16 11:09:59 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Initial packaging (jsc#SLE-18126).

@@ -1,0 +1,8 @@
+<package name="rawtherapee" project="openSUSE:Factory">
+  <title>RawTherapee</title>
+  <description>RawTherapee is a cross platform image processing software equipped with the essential tools for high quality and efficient RAW photo development.
+
+Latest build from default branch.</description>
+  <devel project="graphics" package="rawtherapee"/>
+  <url>http://rawtherapee.com</url>
+</package>

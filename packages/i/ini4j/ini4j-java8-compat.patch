@@ -1,0 +1,34 @@
+--- ini4j-0.5.1/src/org/ini4j/BasicProfile.java
++++ ini4j-0.5.1/src/org/ini4j/BasicProfile.java
+@@ -138,11 +138,17 @@
+         return remove((Object) section.getName());
+     }
+ 
+-    @Override public String remove(Object sectionName, Object optionName)
++    @Override public boolean remove(Object sectionName, Object optionName)
+     {
+         Section sec = get(sectionName);
+-
+-        return (sec == null) ? null : sec.remove(optionName);
++        if (sec == null) {
++            return false;
++        }
++        if (sec.containsKey(optionName)) {
++            sec.remove(optionName);
++            return true;
++        }
++        return false;
+     }
+ 
+     boolean isTreeMode()
+--- ini4j-0.5.1/src/org/ini4j/Profile.java
++++ ini4j-0.5.1/src/org/ini4j/Profile.java
+@@ -43,7 +43,7 @@
+ 
+     Section remove(Profile.Section section);
+ 
+-    String remove(Object sectionName, Object optionName);
++    boolean remove(Object sectionName, Object optionName);
+ 
+     interface Section extends OptionMap
+     {

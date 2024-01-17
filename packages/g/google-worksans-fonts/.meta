@@ -1,0 +1,10 @@
+<package name="google-worksans-fonts" project="openSUSE:Factory">
+  <title>A Grotesque Sans Serif Font</title>
+  <description>Work Sans is a 9 weight typeface family based loosely on early Grotesques — for example, Stephenson Blake, Miller &amp; Richard and Bauerschen Giesserei.
+
+Work Sans has been updated between 2018–2020 with accompanying italics, variable font files and the character set has been expanded to the Google Latin Expert glyph set, which will now support Vietnamese.
+
+Designer: Wei Huang</description>
+  <devel project="M17N:fonts" package="google-worksans-fonts"/>
+  <url>https://github.com/weiweihuanghuang/Work-Sans</url>
+</package>

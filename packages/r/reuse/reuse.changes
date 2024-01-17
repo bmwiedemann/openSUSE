@@ -1,0 +1,258 @@
+-------------------------------------------------------------------
+Tue Aug  1 21:32:01 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 2.1.0:
+  * Added
+    + Detect SPDX snippet tags in files. (gh#fsfe/reuse-tool#699)
+    + More file types are recognised:
+      + Fennel (`.fnl`) (gh#fsfe/reuse-tool#638)
+      + CommonJS (`.cjs`) (gh#fsfe/reuse-tool#632)
+      + Qt .pro (`.pro`) (gh#fsfe/reuse-tool#632)
+      + Qt .pri (`.pri`) (gh#fsfe/reuse-tool#755)
+      + Qt .qrc (`.qrc`) (gh#fsfe/reuse-tool#755)
+      + Qt .qss(`.qss`) (gh#fsfe/reuse-tool#755)
+      + Qt .ui (`.ui`) (gh#fsfe/reuse-tool#755)
+      + Textile (`.textile`) (gh#fsfe/reuse-tool##712)
+      + Visual Studio Code workspace (`.code-workspace`) (gh#fsfe/reuse-tool#747)
+      + Application Resource Bundle (`.arb`) (gh#fsfe/reuse-tool#749)
+      + Svelte components (`.svelte`)
+      + AES encrypted files (`.aes`) (gh#fsfe/reuse-tool#758)
+      + Jakarte Server Page (`.jsp`) (gh#fsfe/reuse-tool#757)
+      + Clang format (`.clang-format`) (gh#fsfe/reuse-tool#632)
+      + Browserslist config (`.browserslist`)
+      + Prettier config (`.prettierrc`) and ignored files (`.prettierignore`)
+      + Flutter pubspec.lock (`pubspec.lock`) (gh#fsfe/reuse-tool#751)
+      + Flutter .metadata (`.metadata`) (gh#fsfe/reuse-tool#751)
+      + Terraform (`.tf`, `tfvars`) and HCL (`.hcl`). (gh#fsfe/reuse-tool#756)
+      + Typst (`.typ`)
+    + Added loglevel argument to pytest and skip one test if loglevel is too high
+      (gh#fsfe/reuse-tool#645).
+    + `--add-license-concluded`, `--creator-person`, and `--creator-organization`
+      added to `reuse spdx`. (gh#fsfe/reuse-tool#623)
+    + Additional license metadata for the Python package has been added. The actual
+      SPDX license expression remains the same:
+      `Apache-2.0 AND CC0-1.0 AND CC-BY-SA-4.0 AND GPL-3.0-or-later`.
+      (gh#fsfe/reuse-tool#733)
+    + Added `--contributor` option to `annotate`. (gh#fsfe/reuse-tool#669)
+    + Added `--json` flag to `lint` command (gh#fsfe/reuse-tool#654).
+    + `reuse.ReuseInfo` now has `copy` and `union` methods. (gh#fsfe/reuse-tool#759)
+    + `reuse.ReuseInfo` now stores information about the source from which the
+      information was gathered. (gh#fsfe/reuse-tool#654, gh#fsfe/reuse-tool#787)
+    + Added Ukrainian and Czech translations (gh#fsfe/reuse-tool#767)
+    + Added `--suppress-deprecation` to hide (verbose) deprecation warnings.
+      (gh#fsfe/reuse-tool#778)
+  * Changed
+    + Bumped SPDX license list to v3.20. (gh#fsfe/reuse-tool#692)
+    + `reuse.SpdxInfo` was renamed to `reuse.ReuseInfo`. It is now a (frozen)
+      dataclass instead of a namedtuple. This is only relevant if you're using reuse
+      as a library in Python. Other functions and methods were similarly renamed.
+      (gh#fsfe/reuse-tool#669)
+    + Sphinx documentation: Switched from RTD theme to Furo. (gh#fsfe/reuse-tool#673,
+      gh#fsfe/reuse-tool#716)
+    + Removed dependency on setuptools' `pkg_resources` to determine the installed
+      version of reuse. (gh#fsfe/reuse-tool#724)
+    + Bumped SPDX license list to v3.21. (gh#fsfe/reuse-tool#763)
+    + `Project.reuse_info_of` now returns a list of `ReuseInfo` objects instead of a
+      single one. This is because the source information is now stored alongside the
+      REUSE information. (gh#fsfe/reuse-tool#787)
+  * Deprecated
+    + Pending deprecation of aggregation of file sources. Presently, when copyright
+      and licensing information is defined both within e.g. the file itself and in
+      the DEP5 file, then the information is merged or aggregated for the purposes
+      of linting and BOM generation. In the future, this will no longer be the case
+     unless explicitly defined. The exact mechanism for this is not yet concrete,
+     but a `PendingDeprecationWarning` will be shown to the user to make them aware
+     of this. (gh#fsfe/reuse-tool#778)
+  * Removed
+    + Python 3.6 and 3.7 support has been dropped. (gh#fsfe/reuse-tool#673,
+      gh#fsfe/reuse-tool#759)
+    + Removed runtime and build time dependency on `setuptools`.
+      (gh#fsfe/reuse-tool#724)
+  * Fixed
+    + Fixed automatic generation of Sphinx documentation via readthedocs.io by
+      adding a `.readthedocs.yaml` configuration file (gh#fsfe/reuse-tool##648)
+    + Fixed a compatibility issue where reuse could not be installed (built) if
+      gettext is not installed. (gh#fsfe/reuse-tool##691)
+    + Translations are available in Docker images. (gh#fsfe/reuse-tool##701)
+    + Marked the `/data` directory in Docker containers as safe in Git, preventing
+      errors related to linting Git repositories. (gh#fsfe/reuse-tool##720)
+    + Repaired error when using Galician translations. (gh#fsfe/reuse-tool##719)
+- Version 2.0.0: This version was yanked.
+
+-------------------------------------------------------------------
+Wed Apr  5 00:22:48 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 1.1.2:
+  * It is now possible/easier to use the `build` module to build this module.
+    Previously, there was a namespace conflict (gh#fsfe/reuse-tool#640).
+- Changes of 1.1.1:
+  * Don't include documentation files (e.g. `README.md`) in top-level (i.e.,
+    `site-packages/`) (gh#fsfe/reuse-tool#657).
+  * Include documentation directory in sdist
+    (gh#fsfe/reuse-tool#657).
+- Changes of 1.1.0:
+  * Added support for Python 3.11 (gh#fsfe/reuse-tool#603).
+  * More file types are recognised:
+    + Kotlin script (`.kts`)
+    + Android Interface Definition Language (`.aidl`)
+    + Certificate files (`.pem`)
+  * Added comment styles:
+    + Apache Velocity Template (Extensions: `.vm`, `.vtl`)
+      (gh#fsfe/reuse-tool#554).
+    + XQuery comment style (Extensions: `.xq(l|m|y|uery|)`)
+      (gh#fsfe/reuse-tool#610).
+  * Some special endings are always stripped from copyright and
+    licensing statements (gh#fsfe/reuse-tool#602):
+    + `">` (and variations such as `'>`, `" >`, and `"/>`)
+    + `] ::`
+  * Removed `setup.py` and replaced it with a Poetry configuration
+    (gh#fsfe/reuse-tool#600).
+  * Updated PyPI development status to 'production/stable'
+    (gh#fsfe/reuse-tool#381).
+  * The pre-commit hook now passes `lint` as an overridable argument
+    (gh#fsfe/reuse-tool#574).
+  * `addheader` has been renamed to `annotate`. The functionality remains the
+    same (gh#fsfe/reuse-tool#550).
+  * Bumped SPDX license list to v3.19.
+  * `addheader` has been deprecated. It still works, but is now undocumented
+    (gh#fsfe/reuse-tool#550).
+  * Releases to PyPI are no longer GPG-signed. Support for this is not present
+    in Poetry and not planned (gh#fsfe/reuse-tool#600).
+  * Dependency on `requests` removed; using `urllib.request` from the standard
+    library instead (gh#fsfe/reuse-tool#600).
+  * Repair tests related to CVE-2022-39253 changes in upstream Git. New
+    versions of Git no longer allow `git submodule add repository path` where
+    repository is a file. A flag was added to explicitly allow this in the test
+    framework (gh#fsfe/reuse-tool#619).
+  * Sanitize xargs input in scripts documentation (gh#fsfe/reuse-tool#525).
+  * License identifiers in comments with symmetrical ASCII art frames are now
+    properly detected (gh#fsfe/reuse-tool#560)
+  * Fixed an error where copyright statements contained within a multi-line
+    comment style on a single line could not be parsed (gh#fsfe/reuse-tool#593).
+  * In PHP files, add header after `<?php` (gh#fsfe/reuse-tool#543).
+- Adapt spec file to poetry.
+- Update URL.
+
+-------------------------------------------------------------------
+Fri Dec 16 12:02:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Allow git to use the file: protocol: add "git config --global
+  protocol.file.allow always" to check section.
+
+-------------------------------------------------------------------
+Thu May 19 12:26:50 UTC 2022 - Carmen Bianca Bakker <carmen@carmenbianca.eu>
+
+- update to 1.0.0:
+  - Added the ability to ignore parts of a file when running `reuse lint`. Simply
+    add `REUSE-IgnoreStart` and `REUSE-IgnoreEnd` as comments and all lines
+    between the two will be ignored by the next run of `reuse lint`. (#463)
+  - Meson subprojects are now ignored by default. (#496)
+  - Added `--skip-existing` flag to `addheader` in order to skip files that
+    already contain SPDX information. This may be useful for only adding SPDX
+    information to newly created files. (#480)
+  - Added `--recursive` flag to `addheader`. (#469)
+  - Ignore all SPDX files with their typical formats and extensions. (#494)
+  - Add support for merging copyright lines based on copyright statement,
+    transforming multiple lines with a single year into a single line with a
+    range. (#328)
+  - Deprecated `--explicit-license` in favour of `--force-dot-license`.
+    `--explicit-license` will remain useable (although undocumented) for the
+    foreseeable future. (#476)
+  - Better support for unary "+" operator in license identifiers. For example, if
+    `Apache-1.0+` appears as a declared license, it should not be identified as
+    missing, bad, or unused if `LICENSES/Apache-1.0.txt` exists. It is, however,
+    identified separately as a used license. (#123)
+  - When `addheader` creates a `.license` file, that file now has a newline at the
+    end. (#477)
+  - `supported-licenses` command that lists all licenses supported by REUSE (#401)
+  - `--quiet` switch to the `lint` command (#402)
+
+-------------------------------------------------------------------
+Sun Aug 16 21:27:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.11.1:
+  - Always write the output files encoded in UTF-8, explicitly. This is already the
+    default on most Unix systems, but it was not on Windows.
+  - All symlinks and 0-sized files in projects are now ignored.
+  - The licenses CAL-1.0 and CAL-1.0-Combined-Work-Exception contain an SPDX tag
+    within themselves. Files that are named after these licenses are now ignored.
+  - Fixed a bug where `addheader` wouldn't properly apply the template on
+    `.license` files if the `.license` file was non-empty, but did not contain
+    valid SPDX tags.
+  - Add support for autoconf comment style (listed as m4).
+    + Cython (`.pyx`, `.pxd`)
+    + Sass and SCSS (`.sass`, `.scss`)
+    + XSL (`.xsl`)
+    + Mailmap (`.mailmap`)
+  - Added `--single-line` and `--multi-line` flags to `addheader`. These flags
+    force a certain comment style.
+  - Added support for Mercurial 4.3+.
+  - A pre-commit hook has been added.
+  - When an incorrect SPDX identifier is forwarded to `download` or `init`, the
+    tool now suggests what you might have meant.
+  - Under the hood, a lot of code that has to do with Git and Mercurial was moved
+    into its own module.
+  - Fixed a bug with `addheader --explicit-license` that would result in
+    `file.license.license` if `file.license` already existed.
+  - Fixed a Windows-only bug to do with calling subprocesses.
+  - Fixed a rare bug that would trigger when a directory is both ignored and
+    contains a `.git` file.
+
+-------------------------------------------------------------------
+Thu Jan 23 16:17:07 UTC 2020 - Carmen Bianca Bakker <carmen@carmenbianca.eu>
+
+- Update to version 0.8.0:
+  + Performance improved with multiprocessing
+  + New translations added for various different languages.
+  + Can no longer lint subdirectories; must specify root with --root.
+  + addheader supports many more file types.
+  + Deprecated licenses are now recognised.
+
+-------------------------------------------------------------------
+Thu Nov 28 13:43:38 UTC 2019 - Carmen Bianca Bakker <carmen@carmenbianca.eu>
+
+- Update to version 0.7.0:
+  + Git submodules are ignored by default. Use --include-submodules
+    to include them again.
+  + Upstream name changed from fsfe-reuse to reuse.
+  + addheader improvements.
+
+-------------------------------------------------------------------
+Thu Sep  5 13:46:52 UTC 2019 - Carmen Bianca Bakker <carmen@carmenbianca.eu>
+
+- Update to version 0.5.0:
+  + The tool is now compliant with REUSE v3.0
+
+-------------------------------------------------------------------
+Wed Aug 15 11:13:04 UTC 2018 - carmen@carmenbianca.eu
+
+- Update to version 0.3.3:
+  + Files ending in .spdx are no longer considered licenses.
+
+-------------------------------------------------------------------
+Tue Aug 14 16:14:17 UTC 2018 - carmen@carmenbianca.eu
+
+- Update to version 0.3.1:
+  + Finding of root directory fixed when using pygit2.
+
+-------------------------------------------------------------------
+Wed May 16 12:50:44 UTC 2018 - carmen@carmenbianca.eu
+
+- Update to version 0.3.0:
+  + Bill of materials output is now deterministic.  Entries are
+    sorted.
+
+-------------------------------------------------------------------
+Tue Apr 17 12:14:17 UTC 2018 - carmen@carmenbianca.eu
+
+- Update to version 0.2.0:
+  + Added translations for Dutch, Esperanto and Spanish.
+  + Added new `-only` and `-or-later` SPDX tags for GPL.
+  + Based on argparse instead of click.
+- Remove xfail-test.patch.
+
+-------------------------------------------------------------------
+Tue Dec 19 13:27:16 UTC 2017 - carmen@carmenbianca.eu
+
+- Added package, version 0.1.1.
+- Add xfail-test.patch to ignore a test that fails occasionally.

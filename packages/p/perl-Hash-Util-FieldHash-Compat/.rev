@@ -1,0 +1,116 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a264ec561b2c09fd1c586055fcf6ea3d</srcmd5>
+    <version>0.03</version>
+    <time>1311083383</time>
+    <user>saschpe</user>
+    <comment>dep of perl-CHI</comment>
+    <requestid>76237</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>12f77972a3031df5ca49055969fca81c</srcmd5>
+    <version>0.03</version>
+    <time>1311083394</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76237
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>12f77972a3031df5ca49055969fca81c</srcmd5>
+    <version>0.03</version>
+    <time>1319182277</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>92290a2a16b246e35dbfa9acba8b6234</srcmd5>
+    <version>0.03</version>
+    <time>1323193339</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>92290a2a16b246e35dbfa9acba8b6234</srcmd5>
+    <version>0.03</version>
+    <time>1340183857</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>92290a2a16b246e35dbfa9acba8b6234</srcmd5>
+    <version>0.03</version>
+    <time>1359109702</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>92290a2a16b246e35dbfa9acba8b6234</srcmd5>
+    <version>0.03</version>
+    <time>1379663708</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cf217da2eca1aee2ac40ef027b0a0652</srcmd5>
+    <version>0.04</version>
+    <time>1392111885</time>
+    <user>coolo</user>
+    <comment>- update to 0.04:
+  + RT#83667: localize $SIG{__DIE__} before an eval</comment>
+    <requestid>221500</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>02a39b2dd68292ad956d90666eecc7ec</srcmd5>
+    <version>0.05</version>
+    <time>1394386701</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>224990</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b1ae5c0247a332307c609dd7c1ff5c23</srcmd5>
+    <version>0.07</version>
+    <time>1396009031</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>228033</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b1ae5c0247a332307c609dd7c1ff5c23</srcmd5>
+    <version>0.07</version>
+    <time>1409302330</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>da466621ec0fd5d2e9cb2a12db4416c4</srcmd5>
+    <version>0.08</version>
+    <time>1429107841</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296069</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>01d53106fe237ada54297a4adc96b977</srcmd5>
+    <version>0.09</version>
+    <time>1440743184</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325698</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7bc7d20312b0ba67a5cbf2ba3494c558</srcmd5>
+    <version>0.10</version>
+    <time>1444636897</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>334361</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5e48858993d6f200375dc6517ea991ef</srcmd5>
+    <version>0.11</version>
+    <time>1466814251</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404390</requestid>
+  </revision>
+</revisionlist>

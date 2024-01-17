@@ -1,0 +1,232 @@
+--- jdk10/src/share/vm/code/codeCache.cpp	2017-01-13 00:41:16.000000000 +0100
++++ jdk10/src/share/vm/code/codeCache.cpp	2017-01-25 10:28:19.880008325 +0100
+@@ -403,7 +403,7 @@
+   add_heap(heap);
+ 
+   // Reserve Space
+-  size_t size_initial = MIN2(InitialCodeCacheSize, rs.size());
++  size_t size_initial = MIN2((size_t)InitialCodeCacheSize, rs.size());
+   size_initial = round_to(size_initial, os::vm_page_size());
+   if (!heap->reserve(rs, size_initial, CodeCacheSegmentSize)) {
+     vm_exit_during_initialization("Could not reserve enough space for code cache");
+--- jdk10/src/share/vm/gc/cms/compactibleFreeListSpace.cpp	2017-01-13 00:41:16.000000000 +0100
++++ jdk10/src/share/vm/gc/cms/compactibleFreeListSpace.cpp	2017-01-25 10:28:19.880008325 +0100
+@@ -2506,7 +2506,7 @@
+     //
+     size_t multiple = (size_t) (_num_blocks[word_sz]/(((double)CMSOldPLABToleranceFactor)*CMSOldPLABNumRefills*n_blks));
+     n_blks +=  CMSOldPLABReactivityFactor*multiple*n_blks;
+-    n_blks = MIN2(n_blks, CMSOldPLABMax);
++    n_blks = MIN2(n_blks, (size_t)CMSOldPLABMax);
+   }
+   assert(n_blks > 0, "Error");
+   _cfls->par_get_chunk_of_blocks(word_sz, n_blks, fl);
+--- jdk10/src/share/vm/gc/cms/concurrentMarkSweepGeneration.cpp	2017-01-13 00:41:16.000000000 +0100
++++ jdk10/src/share/vm/gc/cms/concurrentMarkSweepGeneration.cpp	2017-01-25 10:28:19.884008234 +0100
+@@ -753,7 +753,7 @@
+   if (free_percentage < desired_free_percentage) {
+     size_t desired_capacity = (size_t)(used() / ((double) 1 - desired_free_percentage));
+     assert(desired_capacity >= capacity(), "invalid expansion size");
+-    size_t expand_bytes = MAX2(desired_capacity - capacity(), MinHeapDeltaBytes);
++    size_t expand_bytes = MAX2(desired_capacity - capacity(), (size_t)MinHeapDeltaBytes);
+     Log(gc) log;
+     if (log.is_trace()) {
+       size_t desired_capacity = (size_t)(used() / ((double) 1 - desired_free_percentage));
+@@ -5510,7 +5510,7 @@
+     HeapWord* curAddr = _markBitMap.startWord();
+     while (curAddr < _markBitMap.endWord()) {
+       size_t remaining  = pointer_delta(_markBitMap.endWord(), curAddr);
+-      MemRegion chunk(curAddr, MIN2(CMSBitMapYieldQuantum, remaining));
++      MemRegion chunk(curAddr, MIN2((size_t)CMSBitMapYieldQuantum, remaining));
+       _markBitMap.clear_large_range(chunk);
+       if (ConcurrentMarkSweepThread::should_yield() &&
+           !foregroundGCIsActive() &&
+@@ -5791,7 +5791,7 @@
+     return;
+   }
+   // Double capacity if possible
+-  size_t new_capacity = MIN2(_capacity*2, MarkStackSizeMax);
++  size_t new_capacity = MIN2(_capacity*2, (size_t)MarkStackSizeMax);
+   // Do not give up existing stack until we have managed to
+   // get the double capacity that we desired.
+   ReservedSpace rs(ReservedSpace::allocation_align_size_up(
+--- jdk10/src/share/vm/gc/cms/parNewGeneration.cpp	2017-01-13 00:41:16.000000000 +0100
++++ jdk10/src/share/vm/gc/cms/parNewGeneration.cpp	2017-01-25 10:28:19.884008234 +0100
+@@ -197,7 +197,7 @@
+   const size_t num_overflow_elems = of_stack->size();
+   const size_t space_available = queue->max_elems() - queue->size();
+   const size_t num_take_elems = MIN3(space_available / 4,
+-                                     ParGCDesiredObjsFromOverflowList,
++                                     (size_t)ParGCDesiredObjsFromOverflowList,
+                                      num_overflow_elems);
+   // Transfer the most recent num_take_elems from the overflow
+   // stack to our work queue.
+--- jdk10/src/share/vm/gc/g1/g1CollectedHeap.cpp	2017-01-13 00:41:16.000000000 +0100
++++ jdk10/src/share/vm/gc/g1/g1CollectedHeap.cpp	2017-01-25 10:28:19.884008234 +0100
+@@ -1595,7 +1595,7 @@
+ 
+   _verifier->verify_region_sets_optional();
+ 
+-  size_t expand_bytes = MAX2(word_size * HeapWordSize, MinHeapDeltaBytes);
++  size_t expand_bytes = MAX2(word_size * HeapWordSize, (size_t)MinHeapDeltaBytes);
+   log_debug(gc, ergo, heap)("Attempt heap expansion (allocation request failed). Allocation request: " SIZE_FORMAT "B",
+                             word_size * HeapWordSize);
+ 
+--- jdk10/src/share/vm/gc/g1/g1ConcurrentMark.cpp	2017-01-13 00:41:16.000000000 +0100
++++ jdk10/src/share/vm/gc/g1/g1ConcurrentMark.cpp	2017-01-25 10:28:19.884008234 +0100
+@@ -2458,7 +2458,7 @@
+   // of things to do) or totally (at the very end).
+   size_t target_size;
+   if (partially) {
+-    target_size = MIN2((size_t)_task_queue->max_elems()/3, GCDrainStackTargetSize);
++    target_size = MIN2((size_t)_task_queue->max_elems()/3, (size_t)GCDrainStackTargetSize);
+   } else {
+     target_size = 0;
+   }
+--- jdk10/src/share/vm/gc/g1/g1ConcurrentMarkObjArrayProcessor.cpp	2017-01-13 00:41:16.000000000 +0100
++++ jdk10/src/share/vm/gc/g1/g1ConcurrentMarkObjArrayProcessor.cpp	2017-01-25 10:30:27.289082074 +0100
+@@ -41,7 +41,7 @@
+ }
+ 
+ size_t G1CMObjArrayProcessor::process_array_slice(objArrayOop obj, HeapWord* start_from, size_t remaining) {
+-  size_t words_to_scan = MIN2(remaining, ObjArrayMarkingStride);
++  size_t words_to_scan = MIN2(remaining, (size_t)ObjArrayMarkingStride);
+ 
+   if (remaining > ObjArrayMarkingStride) {
+     push_array_slice(start_from + ObjArrayMarkingStride);
+--- jdk10/src/share/vm/gc/g1/g1PageBasedVirtualSpace.hpp	2017-01-13 00:41:16.000000000 +0100
++++ jdk10/src/share/vm/gc/g1/g1PageBasedVirtualSpace.hpp	2017-01-25 10:28:19.884008234 +0100
+@@ -91,7 +91,7 @@
+   void pretouch_internal(size_t start_page, size_t end_page);
+ 
+   // Returns the index of the page which contains the given address.
+-  uintptr_t  addr_to_page_index(char* addr) const;
++  size_t  addr_to_page_index(char* addr) const;
+   // Returns the address of the given page index.
+   char*  page_start(size_t index) const;
+ 
+--- jdk10/src/share/vm/gc/parallel/psCompactionManager.inline.hpp	2017-01-13 00:41:16.000000000 +0100
++++ jdk10/src/share/vm/gc/parallel/psCompactionManager.inline.hpp	2017-01-25 10:28:19.888008143 +0100
+@@ -119,7 +119,7 @@
+   const size_t beg_index = size_t(index);
+   assert(beg_index < len || len == 0, "index too large");
+ 
+-  const size_t stride = MIN2(len - beg_index, ObjArrayMarkingStride);
++  const size_t stride = MIN2(len - beg_index, (size_t)ObjArrayMarkingStride);
+   const size_t end_index = beg_index + stride;
+   T* const base = (T*)obj->base();
+   T* const beg = base + beg_index;
+--- jdk10/src/share/vm/gc/parallel/psParallelCompact.cpp	2017-01-13 00:41:16.000000000 +0100
++++ jdk10/src/share/vm/gc/parallel/psParallelCompact.cpp	2017-01-25 10:28:19.888008143 +0100
+@@ -905,8 +905,8 @@
+ void PSParallelCompact::initialize_dead_wood_limiter()
+ {
+   const size_t max = 100;
+-  _dwl_mean = double(MIN2(ParallelOldDeadWoodLimiterMean, max)) / 100.0;
+-  _dwl_std_dev = double(MIN2(ParallelOldDeadWoodLimiterStdDev, max)) / 100.0;
++  _dwl_mean = double(MIN2((size_t)ParallelOldDeadWoodLimiterMean, max)) / 100.0;
++  _dwl_std_dev = double(MIN2((size_t)ParallelOldDeadWoodLimiterStdDev, max)) / 100.0;
+   _dwl_first_term = 1.0 / (sqrt(2.0 * M_PI) * _dwl_std_dev);
+   DEBUG_ONLY(_dwl_initialized = true;)
+   _dwl_adjustment = normal_distribution(1.0);
+--- jdk10/src/share/vm/gc/shared/collectorPolicy.cpp	2017-01-13 00:41:16.000000000 +0100
++++ jdk10/src/share/vm/gc/shared/collectorPolicy.cpp	2017-01-25 10:28:19.888008143 +0100
+@@ -450,7 +450,7 @@
+     // yield a size that is too small) and bound it by MaxNewSize above.
+     // Ergonomics plays here by previously calculating the desired
+     // NewSize and MaxNewSize.
+-    _max_young_size = MIN2(MAX2(_max_young_size, _initial_young_size), MaxNewSize);
++    _max_young_size = MIN2(MAX2(_max_young_size, _initial_young_size), (size_t)MaxNewSize);
+   }
+ 
+   // Given the maximum young size, determine the initial and
+@@ -480,7 +480,7 @@
+       // NewSize as the floor, because if NewRatio is overly large, the resulting
+       // size can be too small.
+       _initial_young_size =
+-        MIN2(_max_young_size, MAX2(scale_by_NewRatio_aligned(_initial_heap_byte_size), NewSize));
++        MIN2(_max_young_size, MAX2(scale_by_NewRatio_aligned(_initial_heap_byte_size), (size_t)NewSize));
+     }
+   }
+ 
+--- jdk10/src/share/vm/gc/shared/plab.cpp	2017-01-13 00:41:16.000000000 +0100
++++ jdk10/src/share/vm/gc/shared/plab.cpp	2017-01-25 10:28:19.888008143 +0100
+@@ -32,7 +32,7 @@
+ 
+ size_t PLAB::min_size() {
+   // Make sure that we return something that is larger than AlignmentReserve
+-  return align_object_size(MAX2(MinTLABSize / HeapWordSize, (uintx)oopDesc::header_size())) + AlignmentReserve;
++  return align_object_size(MAX2(MinTLABSize / HeapWordSize, (size_t)oopDesc::header_size())) + AlignmentReserve;
+ }
+ 
+ size_t PLAB::max_size() {
+--- jdk10/src/share/vm/memory/metaspace.cpp	2017-01-13 00:41:16.000000000 +0100
++++ jdk10/src/share/vm/memory/metaspace.cpp	2017-01-25 10:28:19.888008143 +0100
+@@ -1542,7 +1542,7 @@
+ 
+ void MetaspaceGC::post_initialize() {
+   // Reset the high-water mark once the VM initialization is done.
+-  _capacity_until_GC = MAX2(MetaspaceAux::committed_bytes(), MetaspaceSize);
++  _capacity_until_GC = MAX2(MetaspaceAux::committed_bytes(), (size_t)MetaspaceSize);
+ }
+ 
+ bool MetaspaceGC::can_expand(size_t word_size, bool is_class) {
+@@ -1602,7 +1602,7 @@
+     (size_t)MIN2(min_tmp, double(max_uintx));
+   // Don't shrink less than the initial generation size
+   minimum_desired_capacity = MAX2(minimum_desired_capacity,
+-                                  MetaspaceSize);
++                                  (size_t)MetaspaceSize);
+ 
+   log_trace(gc, metaspace)("MetaspaceGC::compute_new_size: ");
+   log_trace(gc, metaspace)("    minimum_free_percentage: %6.2f  maximum_used_percentage: %6.2f",
+@@ -1648,7 +1648,7 @@
+     const double max_tmp = used_after_gc / minimum_used_percentage;
+     size_t maximum_desired_capacity = (size_t)MIN2(max_tmp, double(max_uintx));
+     maximum_desired_capacity = MAX2(maximum_desired_capacity,
+-                                    MetaspaceSize);
++                                    (size_t)MetaspaceSize);
+     log_trace(gc, metaspace)("    maximum_free_percentage: %6.2f  minimum_used_percentage: %6.2f",
+                              maximum_free_percentage, minimum_used_percentage);
+     log_trace(gc, metaspace)("    minimum_desired_capacity: %6.1fKB  maximum_desired_capacity: %6.1fKB",
+@@ -3352,7 +3352,7 @@
+     // on the medium chunk list.   The next chunk will be small and progress
+     // from there.  This size calculated by -version.
+     _first_class_chunk_word_size = MIN2((size_t)MediumChunk*6,
+-                                       (CompressedClassSpaceSize/BytesPerWord)*2);
++                                       (size_t)(CompressedClassSpaceSize/BytesPerWord)*2);
+     _first_class_chunk_word_size = align_word_size_up(_first_class_chunk_word_size);
+     // Arbitrarily set the initial virtual space to a multiple
+     // of the boot class loader size.
+--- jdk10/src/share/vm/prims/whitebox.cpp	2017-01-13 00:41:16.000000000 +0100
++++ jdk10/src/share/vm/prims/whitebox.cpp	2017-01-25 10:28:19.888008143 +0100
+@@ -1017,7 +1017,7 @@
+ WB_END
+ 
+ WB_ENTRY(jobject, WB_GetSizeTVMFlag(JNIEnv* env, jobject o, jstring name))
+-  uintx result;
++  size_t result;
+   if (GetVMFlag <size_t> (thread, env, name, &result, &CommandLineFlags::size_tAt)) {
+     ThreadToNativeFromVM ttnfv(thread);   // can't be in VM when we call JNI
+     return longBox(thread, env, result);
+--- jdk10/src/share/vm/runtime/arguments.cpp	2017-01-13 00:41:16.000000000 +0100
++++ jdk10/src/share/vm/runtime/arguments.cpp	2017-01-25 10:28:19.892008051 +0100
+@@ -1488,7 +1488,7 @@
+   // Increase the code cache size - tiered compiles a lot more.
+   if (FLAG_IS_DEFAULT(ReservedCodeCacheSize)) {
+     FLAG_SET_ERGO(uintx, ReservedCodeCacheSize,
+-                  MIN2(CODE_CACHE_DEFAULT_LIMIT, ReservedCodeCacheSize * 5));
++                  MIN2(CODE_CACHE_DEFAULT_LIMIT, (size_t)(ReservedCodeCacheSize * 5)));
+   }
+   // Enable SegmentedCodeCache if TieredCompilation is enabled and ReservedCodeCacheSize >= 240M
+   if (FLAG_IS_DEFAULT(SegmentedCodeCache) && ReservedCodeCacheSize >= 240*M) {
+--- jdk10/src/share/vm/runtime/arguments.hpp	2017-01-13 00:41:16.000000000 +0100
++++ jdk10/src/share/vm/runtime/arguments.hpp	2017-01-25 10:28:19.892008051 +0100
+@@ -416,7 +416,7 @@
+   // Value of the conservative maximum heap alignment needed
+   static size_t  _conservative_max_heap_alignment;
+ 
+-  static uintx  _min_heap_size;
++  static size_t _min_heap_size;
+ 
+   // -Xrun arguments
+   static AgentLibraryList _libraryList;

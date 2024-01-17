@@ -1,0 +1,472 @@
+-------------------------------------------------------------------
+Fri Jan 12 17:54:44 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.39.2:
+  * Fix: typo in help page
+  * Fix: untie serialization interval from session read interval
+  * Fix: zellij-server: fix compiler warnings
+
+-------------------------------------------------------------------
+Sat Nov 18 22:23:25 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update sources in specfile
+  * remove cargo_config
+- Update to version 0.39.1:
+  * fix: styled underlines in editors
+  * fix(plugins): add `LaunchPlugin` and some cwd fixes
+  * fix(performance): significantly reduce CPU utilization when serializing sessions
+  * fix(panes): reuse CWD when dropping to shell in command panes
+  * fix(resurrection): reduce default serialization interval to 1m and make it configurable
+  * fix(plugins): allow reloading plugins if they crashed
+  * feat(panes): start panes/editors/commands/plugins in-place
+  * fix(theme): fg color for gruvbox light theme
+  * fix: display parsing error for kdl files located under the 'themes' directory
+  * refactor(plugins): wasmer v3.1.1
+  * refactor(config): dependency updates
+  * fix(plugins): address cranelift-codegen vulnerability
+  * fix(plugins): use versioned path for plugin artifact cache
+  * feat(sessions): session resurrection
+  * feat(rendering): terminal synchronized output
+  * feat(plugins): plugin command API for executing commands in the background
+  * feat(ui): cyberpunk themes
+  * feat(ux): add ESC option to drop to shell in command panes
+  * feat(plugins): allow plugins to make web requests behind a permission
+  * feat(plugins): UI components for plugins
+  * feat(plugins): load plugins from the web
+  * feat(terminal): support styled underlines
+  * feat(ux): allow renaming sessions
+  * fix(plugins): open new plugins in the current cwd
+
+-------------------------------------------------------------------
+Sat Sep 23 04:33:42 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.38.2:
+  * fix(terminal): wrap lines when adding characters in
+    alternate screen
+
+-------------------------------------------------------------------
+Sat Sep  9 13:59:14 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add session-manager and fixture-tests plugins.
+
+-------------------------------------------------------------------
+Sat Sep  9 13:21:11 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.38.1:
+  * refactor(server): remove unnecessary mut
+  * fix(status-bar): add break tab hints
+  * fix(reconnect): glitches on windows terminal
+  * fix(grid): memory leak with unfocused tabs
+  * fix(input): enforce ordering of actions after opening a new pane
+
+-------------------------------------------------------------------
+Sat Sep  9 13:15:26 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove zellij-fix-theme-dir.patch 
+
+-------------------------------------------------------------------
+Sun Aug 13 13:26:55 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Replace obsoleted `disabled` option with `manual`
+
+-------------------------------------------------------------------
+Wed Jun 21 10:11:48 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.37.2:
+  * hotfix: include theme files into binary
+  * fix: make plugin hide_self api idempotent
+- Changes from 0.37.1:
+  * hotfix: theme options does not work
+  * fix: various plugin api methods
+- Changes from major release 0.37.0:
+  * fix(plugin): respect hide session option on compact-bar
+  * feat: allow excluding tabs from tab sync in layouts
+  * feat: support default cwd
+  * feat: cli action to reload plugins at runtime for easier plugin development
+  * docs(architecture): update architecture docs
+  * feat(themes): add nightfox themes
+  * feat: provide default themes
+  * feat: update and render plugins asynchronously
+  * fix: support environment variables and shell expansions in layout cwds
+  * fix: add file paths to file not found errors
+  * fix: error loading non-existant themes directory
+  * build: speed up build and ci
+  * fix: sticky bit FreeBSD crash
+  * build: Bump rust toolchain version to 1.67
+  * fix: update config file output
+  * feat: plugin workers for background tasks
+  * fix: cwd of newtab action
+  * feat: plugin system overhaul
+  * feat: add virtually all of Zellij's API to plugins
+  * fix: runtime panic because of local cache
+  * fix: cursor flickering
+  * fix: focus tab as well as pane when relaunching plugin
+  * feat: ui improvements for strider search
+  * fix: only watch fs if plugins explicitly request it
+  * fix: suppress debug logging when not debugging
+  * feat: send pane events to plugins
+  * fix: use debounced watcher for watching filesystem
+  * feat: add more plugin api methods
+
+-------------------------------------------------------------------
+Mon May  1 08:08:07 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.36.0:
+  * add my tweaked theme
+  * fix(screen): focus pane on screen edge when moving pane focus offtab
+  * Correct summary
+  * Updated layout examples to .kdl from .yaml
+  * fix(panes): adding panes to lone stack
+  * fix(panes): closing a stacked pane should relayout
+  * Fixed issue #1948
+  * feat(plugins): async plugin loading
+  * docs(readme): update roadmap image
+  * Add action to clear all buffers for a specific pane
+  * Added launch in xonsh
+  * Add option to hide session name in tab-bar (deriving from #2172)
+  * fix(layouts): don't default to default swap layouts on new-tab action
+  * fix(layouts): nested attribute truncating
+  * fix(scrollback-editor): properly invoke editor when command includes spaces
+  * fix(layouts): focus tab race
+  * feat(panes): allow defining an expanded stacked pane
+  * fix(layout): pane focus in stack
+  * fix(plugins): prevent Strider from opening double-panes when editing files
+  * fix: set sticky bit on socket
+  * chore(assets): adjust logo
+  * fix: do not hold on to router thread handle until server exit
+
+-------------------------------------------------------------------
+Sun Mar 26 23:04:42 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.35.2:
+  * fix(sessions): attach --create regression
+  * fix(screen): hold and applylayout races
+  * fix(ansi): pad line end when erasing characters
+
+-------------------------------------------------------------------
+Mon Mar 13 14:25:31 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Install the themes
+- Allow to load themes from /usr/share/zellij/themes/
+  * Added zellij-fix-theme-dir.patch
+
+-------------------------------------------------------------------
+Sat Mar 11 08:13:55 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix vendored dependencies.
+
+-------------------------------------------------------------------
+Sat Mar 11 07:56:44 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix specfile. Duplicated BuildRequires section for rust+cargo
+
+-------------------------------------------------------------------
+Fri Mar 10 13:52:38 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.35.1:
+  * fix(panes): show visual error when unable to split panes vertically/horizontally
+  * WIP: Use xtask as build system
+  * fix(panes): show visual error when failing to resize panes
+  * chore(repo): remove nix support
+  * Floating panes in layouts
+  * add tmux close pane key
+  * fix: properly end selection with copy_on_select = false
+  * fix 3 bugs
+  * Errors: less unwrap in server
+  * Support UTF-8 character in tab name and pane name
+  * errors: handle missing plugin caches
+  * Improve client disconnect handling
+  * feat: add ScrollToTop action by 
+  * Fix status bar not displaying w/ size=1 and show shortcuts
+  * Add GoToTabName action to switch tab by name
+  * Use singlepass in debug mode by 
+  * cleanups around "buffer full" error
+  * Make the singlepass compiler opt-in through flags by 
+  * Add pencil theme
+  * Apply correct color on 'more tabs' message
+  * feat: add args to new-tab action
+  * update termwiz to v0.20.0
+  * feat(ui): swap layouts and stacked panes
+  * fix(ux): cache stdin queries on startup (remove startup delay)
+  * Project Governance Change
+  * Add Helix editor (hx) to editors that support prefix positions
+  * Extend display char in tab
+  * Fix fullscreen navigation by 
+  * fix(grid): glitchy resizes
+  * Update bug_report.md template with OSX log directory
+  * fix(layout): various parser and ui fixes
+  * fix(messaging): cache hold pane messages by their tab_id if the tab is not ready
+  * fix(layout): tab focus
+  * fix(cli): new-tab now also looks in layout_dir for layouts
+  * fix(kdl): new-tab keybind looks in layout_dir for layouts
+  * fix(cli): edit cwd
+  * fix(layouts): do not relayout twice on auto_layout
+  * fix(new-tab): get config parameters from config file
+  * fix(grid): only use background pending styling when deleting characters
+  * feat(layouts): exact panes constraint
+  * fix(pty): report no-cwd for empty path returned from sysinfo
+  * fix(sixel): report pixel size in winsize change ioctl
+  * Fix plugin location path decoding from Url
+  * Add action QueryTabNames to list all tab names
+  * fix(pty): do not crash when unable to set cwd
+  * fix(layouts): naming and gototabname
+  * fix(cli): make auto_layout work through the cli
+  * feat: add self-provided themes
+  * Feature: simulate publishing
+  * Revert theme pr
+
+-------------------------------------------------------------------
+Sat Dec 17 06:21:27 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.34.4:
+  * Fix application crash when resizing with flexible plugin panes in layout
+  * Allow the SHELL variable to contain non-absolute shell paths (e.g. SHELL=sh instead of SHELL=/bin/sh
+
+-------------------------------------------------------------------
+Sun Dec 11 04:13:24 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.34.3:
+  * Performance: both loading and rendering are significantly faster now and take less HW resources
+  * Loading screen: Zellij now has a minor loading screen (0.5 seconds) before it starts. This is so 
+    that input from STDIN will not be lost while Zellij queries the user's terminal emulator for 
+    pixel/cell ratio and the default colors
+  * We now fall back to /bin/sh if we can't find a $SHELL variable
+  * Users can now directionally decrease pane size and not just increase it - by default these are 
+    bound to HJKL (uppercase letter) in resize mode, but can be bound like anything to other keys.
+  * Lots of stability and bug fixes
+  * BREAKING CHANGES:
+    - performance: change plugin data flow to improve render speed
+    - performance: various render pipeline improvements
+  * Fixes:
+    - server on longer crashes on client crash
+    - preserve pane focus properly when closing panes and switching tabs
+    - missing tokyo-night-dark theme
+- plugin assets are now moved to zellij-utils/assets/plugins. updated specfile accordingly
+
+-------------------------------------------------------------------
+Thu Nov 17 02:24:51 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update specfile
+
+-------------------------------------------------------------------
+Sun Nov 13 00:10:48 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.33.0:
+  * debugging: improve error handling in `zellij_server::pty` (https://github.com/zellij-org/zellij/pull/1840)
+  * feat: allow command panes to optionally close on exit (https://github.com/zellij-org/zellij/pull/1869)
+  * add: everforest-dark, everforest-light themes to the example theme directory (https://github.com/zellij-org/zellij/pull/1873)
+  * feat: support multiple themes in one file (https://github.com/zellij-org/zellij/pull/1855)
+  * debugging: Remove calls to unwrap in `zellij_server::ui::*` (https://github.com/zellij-org/zellij/pull/1870)
+  * debugging: Remove calls to unwrap in `zellij_server::pty_writer` (https://github.com/zellij-org/zellij/pull/1872)
+  * docs(example): update the format of the themes for the example directory (https://github.com/zellij-org/zellij/pull/1877)
+  * debugging: Remove calls to unwrap in `zellij_server::terminal_bytes` (https://github.com/zellij-org/zellij/pull/1876)
+  * debugging: Remove calls to unwrap in `zellij_server::output` (https://github.com/zellij-org/zellij/pull/1878)
+  * fix: resolve `zellij setup --clean` panic (https://github.com/zellij-org/zellij/pull/1882)
+  * feat: allow toggling mouse mode at runtime (https://github.com/zellij-org/zellij/pull/1883)
+  * fix: display status bar properly if limited to only 1 line (https://github.com/zellij-org/zellij/pull/1875)
+  * feat: allow starting command panes suspended (https://github.com/zellij-org/zellij/pull/1887)
+  * debugging: Remove calls to unwrap in `zellij_server::os_input_output` (https://github.com/zellij-org/zellij/pull/1895)
+  * fix: remove space key from shared_except (https://github.com/zellij-org/zellij/pull/1884)
+  * fix: clear search when sending terminating char (https://github.com/zellij-org/zellij/pull/1853)
+  * fix: properly convert the backslash key from old YAML config files (https://github.com/zellij-org/zellij/pull/1879)
+  * fix: clear floating panes indication when closing a floating command pane (https://github.com/zellij-org/zellij/pull/1897)
+  * Terminal compatibility: do not reset bold when resetting DIM (https://github.com/zellij-org/zellij/pull/1803)
+  * fix: Do not advertise 24 bit color support unchecked (https://github.com/zellij-org/zellij/pull/1900)
+  * fix: treat CWD properly when opening your editor through `zellij edit` or `ze` (https://github.com/zellij-org/zellij/pull/1904)
+  * fix: allow cli actions to be run outside of a tty environment (https://github.com/zellij-org/zellij/pull/1905)
+  * Terminal compatibility: send focus in/out events to terminal panes (https://github.com/zellij-org/zellij/pull/1908)
+  * fix: various bugs with no-frames and floating panes (https://github.com/zellij-org/zellij/pull/1909)
+  * debugging: Improve error logging in server (https://github.com/zellij-org/zellij/pull/1881)
+  * docs: add kanagawa theme (https://github.com/zellij-org/zellij/pull/1913)
+  * fix: use 'temp_dir' instead of hard-coded '/tmp/' (https://github.com/zellij-org/zellij/pull/1898)
+  * debugging: Don't strip debug symbols from release binaries (https://github.com/zellij-org/zellij/pull/1916)
+  * deps: upgrade termwiz to 0.19.0 and rust MSRV to 1.60.0 (https://github.com/zellij-org/zellij/pull/1896)
+
+-------------------------------------------------------------------
+Fri Oct 28 23:31:49 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.32.0:
+  * BREAKING CHANGE: switch config/layout/theme language to KDL (https://github.com/zellij-org/zellij/pull/1759)
+  * debugging: Improve error handling in screen thread (https://github.com/zellij-org/zellij/pull/1670)
+  * fix: Server exits when client panics (https://github.com/zellij-org/zellij/pull/1731)
+  * fix: Server panics when writing to suppressed pane (https://github.com/zellij-org/zellij/pull/1749)
+  * debugging: Improve error handling in screen thread private functions (https://github.com/zellij-org/zellij/pull/1770)
+  * fix(nix): add DiskArbitration and Foundation to darwin builds (https://github.com/zellij-org/zellij/pull/1724)
+  * debugging: Remove calls to `panic` in server/tab (https://github.com/zellij-org/zellij/pull/1748)
+  * debugging: Improve error format in server/thread_bus (https://github.com/zellij-org/zellij/pull/1775)
+  * feat: command pane - send commands to Zellij and re-run them with ENTER (https://github.com/zellij-org/zellij/pull/1787)
+  * fix: escape quotes and backslashes when converting YAML to KDL (https://github.com/zellij-org/zellij/pull/1790)
+  * fix: frameless pane wrong size after closing other panes (https://github.com/zellij-org/zellij/pull/1776)
+  * fix: error on mixed nodes in layouts (https://github.com/zellij-org/zellij/pull/1791)
+  * fix: error on duplicate pane_template / tab_template definitions in layouts (https://github.com/zellij-org/zellij/pull/1792)
+  * fix: accept session-name through the cli properly (https://github.com/zellij-org/zellij/pull/1793)
+  * fix: Prevent recursive sessions from layout files (https://github.com/zellij-org/zellij/pull/1766)
+  * fix: better error messages and recovery from layout issues (https://github.com/zellij-org/zellij/pull/1797)
+  * feat: allow layouts to have a global cwd (https://github.com/zellij-org/zellij/pull/1798)
+  * feat: edit panes in layouts (https://github.com/zellij-org/zellij/pull/1799)
+  * debugging: Log `thread_bus` IPC messages only in debug mode (https://github.com/zellij-org/zellij/pull/1800)
+  * feat: improve zellij run CLI (https://github.com/zellij-org/zellij/pull/1804)
+  * docs: Add tips for code contributions to CONTRIBUTING (https://github.com/zellij-org/zellij/pull/1805)
+  * feat: change floating panes to be grouped rather than scattered (https://github.com/zellij-org/zellij/pull/1810)
+  * fix: default to vi editor when we can't an editor in EDITOR or VISUAL and none is configured (https://github.com/zellij-org/zellij/pull/1811)
+  * deps: upgrade log4rs to 1.2.0 (https://github.com/zellij-org/zellij/pull/1814)
+  * feat: allow `DumpScreen` to dump the viewport by default (https://github.com/zellij-org/zellij/pull/1794)
+  * Terminal compatibility: clear scroll region when terminal pane is cleared (https://github.com/zellij-org/zellij/pull/1826)
+  * feat: allow defining tab cwd in layouts (https://github.com/zellij-org/zellij/pull/1828)
+  * debugging: Remove calls to `unwrap` from plugin WASM VM (https://github.com/zellij-org/zellij/pull/1827)
+  * debugging: Improve error handling in `server/route` (https://github.com/zellij-org/zellij/pull/1808)
+  * debugging: Detect plugin version mismatches (https://github.com/zellij-org/zellij/pull/1838)
+  * feat: add help to cli options (https://github.com/zellij-org/zellij/pull/1839)
+
+-------------------------------------------------------------------
+Sat Oct 15 00:32:25 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Install zellij.desktop and zellij.png.
+
+-------------------------------------------------------------------
+Mon Oct 10 10:20:22 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Use tier 1 arches because some crate for other tier archs
+  are not supported.
+- Use rust version 1.59 and above.
+- Mandown only exists in Tumbleweed.
+
+------------------------------------------------------------------
+Sun Oct  9 02:05:25 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Explicitly just enable unstable features with `--features unstable`
+- Rebuild wasm-wasi plugins manually.
+- Update specfile:
+  * Use mandown to generate manpage for zellij from a markdown file.
+  * Move docs with %doc macro properly.
+
+-------------------------------------------------------------------
+Sat Oct  8 10:51:51 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Enable all features which includes unstable features.
+
+-------------------------------------------------------------------
+Wed Oct  5 22:24:29 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix install of shell completions in specfile.
+
+-------------------------------------------------------------------
+Wed Oct  5 00:41:20 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
+Tue Oct  4 17:03:17 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Don't rebuild the plugins. Seems to cause a version mismatch.
+
+-------------------------------------------------------------------
+Tue Oct  4 16:27:54 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Revert to disabling cargo update.
+- Reupload non-updated vendored deps.
+
+-------------------------------------------------------------------
+Tue Oct  4 15:34:36 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add bash completions
+- Add zsh completions
+- Add fish completions
+- Disable tests since it is "ignored" by default.
+
+-------------------------------------------------------------------
+Tue Oct  4 04:40:22 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Reenable cargo update in _service.
+- Reupload vendor.tar.gz with updated deps.
+- Add `libgcc_s1` in BuilRequires in specfile.
+- Increase physical memory size in _constraints file.
+- Enable cargo tests.
+- Enable all arches.
+
+-------------------------------------------------------------------
+Mon Oct  3 01:16:19 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Disable cargo update to fix some wasm related issues.
+- Reupload vendored deps with the not updated cargo dependencies.
+
+-------------------------------------------------------------------
+Sun Sep 25 07:03:54 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.31.4:
+  * Terminal compatibility: improve vttest compliance (#1671)
+  * fix: bracketed paste handling regression (#1689)
+  * fix: occasional startup crashes (#1706)
+  * fix: gracefully handle SSH disconnects (#1710)
+  * fix: handle osc params larger than 1024 bytes (#1711)
+  * Terminal compatibility: implement faux scrolling when in alternate screen mode(#1678)
+  * fix: mouse-click on tab-bar in simplified-ui now always focuses the correct tab (#1658)
+  * fix: sort UI cursors properly when multiple users are focused on the same pane (#1719)
+
+-------------------------------------------------------------------
+Sat Aug 27 12:03:02 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- update of vendored dependencies
+
+-------------------------------------------------------------------
+Sat Aug 20 06:36:15 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Bump version to 0.31.3:
+  * HOTFIX: fix up-arrow regression
+  * from 0.31.2:
+    - fix: crash when attaching to a session without the first tab (#1648)
+    - fix: race crash on startup when server is not ready (#1651)
+    - Terminal compatibility: forward OSC52 clipboard copy events from terminals (#1644)
+    - refactor: terminal characters (#1663)
+    - Terminal compatibility: properly send mouse clicks and drags to terminal panes (#1664)
+
+
+-------------------------------------------------------------------
+Mon Aug  1 07:38:35 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid OOM
+
+-------------------------------------------------------------------
+Fri Jul 29 12:35:43 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Bump version to 0.31.0:
+  * feat: Log errors causing "empty message received from client" (https://github.com/zellij-org/zellij/pull/1459)
+  * chore(dependencies): update `crossbeam` `0.8.0` -> `0.8.1` (https://github.com/zellij-org/zellij/pull/1463)
+  * add(option): `default-layout` setting for changing the default layout upon start, example: `default_layout: compact` (https://github.com/zellij-org/zellij/pull/1467)
+  * fix: many typos (https://github.com/zellij-org/zellij/pull/1481)
+  * add: checksum for release binary (https://github.com/zellij-org/zellij/pull/1482)
+  * fix: update cli tooltips (https://github.com/zellij-org/zellij/pull/1488)
+  * refactor: deduplicate code in `screen.rs` (https://github.com/zellij-org/zellij/pull/1453)
+  * chore(dependencies): update  `clap`: `3.1.18` -> `3.2.2` (https://github.com/zellij-org/zellij/pull/1496)
+  * fix: send `WriteChars:` once per action (https://github.com/zellij-org/zellij/pull/1516)
+  * feat: allow swapping tabs, in a fullscreen pane (https://github.com/zellij-org/zellij/pull/1515)
+  * feat: add action of undo renmae (https://github.com/zellij-org/zellij/pull/1513)
+  * fix(docs): fix macport installation instructions (https://github.com/zellij-org/zellij/pull/1529)
+  * feat: allow hex colors for themes (https://github.com/zellij-org/zellij/pull/1536)
+  * fix: client hang when server is killed / shutdown delay (https://github.com/zellij-org/zellij/pull/1535)
+  * fix: properly handle in-place editor in full-screen (https://github.com/zellij-org/zellij/pull/1544)
+  * Terminal compatibility: properly trim whitespace in lines with wide-characters when resizing panes (https://github.com/zellij-org/zellij/pull/1545)
+  * fix: reset scroll properly when typing in certain edge cases (https://github.com/zellij-org/zellij/pull/1547)
+  * fix: logging may fill up /tmp, now logs are capped at 100 kB (https://github.com/zellij-org/zellij/pull/1548)
+  * fix: crash when terminal rows or columns are 0 (https://github.com/zellij-org/zellij/pull/1552)
+  * refactor: moved shared data structures to zellij-utils (https://github.com/zellij-org/zellij/pull/1541)
+  * feat: support displaying images/video in the terminal with sixel graphics (https://github.com/zellij-org/zellij/pull/1557)
+  * fix: add usage comment to fish `auto-start` script (https://github.com/zellij-org/zellij/pull/1583)
+  * fix: refactor match session name (https://github.com/zellij-org/zellij/pull/1582)
+  * fix: print "Session detached" rather than "Bye from Zellij!" when detaching from a session (https://github.com/zellij-org/zellij/pull/1573#issuecomment-1181562138)
+  * performance: improve terminal responsiveness (https://github.com/zellij-org/zellij/pull/1585 and https://github.com/zellij-org/zellij/pull/1610)
+  * Terminal compatibility: persist cursor show/hide across alternate screen (https://github.com/zellij-org/zellij/pull/1586)
+  * fix: support multi-argument EDITOR/VISUAL/scrollback-editor commands (https://github.com/zellij-org/zellij/pull/1587)
+  * fix: avoid sending mouse click events on pane frames to applications (https://github.com/zellij-org/zellij/pull/1584)
+  * feat: search through terminal scrollback (https://github.com/zellij-org/zellij/pull/1521)
+  * feat: support themes directory (https://github.com/zellij-org/zellij/pull/1577)
+  * feat: Improve logging by writing server panics into the logfile (https://github.com/zellij-org/zellij/pull/1602)
+  * fix: reflect configured keybindings in the status bar (https://github.com/zellij-org/zellij/pull/1242)
+  * add: capability to dispatch actions from the cli (https://github.com/zellij-org/zellij/pull/1265)
+
+- add README.suse-maint.md
+
+-------------------------------------------------------------------
+Fri Jul 22 08:03:02 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for zellij 0.30.0

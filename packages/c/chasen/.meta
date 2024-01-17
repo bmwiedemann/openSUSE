@@ -1,0 +1,17 @@
+<package name="chasen" project="openSUSE:Factory">
+  <title>Japanese Morphological Analysis System</title>
+  <description>Japanese Morphological Analysis System, ChaSen
+
+ChaSen version 1.0 was officially released on 19 February, 1997 by the
+Computational Linguistics Laboratory, the Graduate School of
+Information Science, and the Nara Institute of Science and Technology
+(NAIST). It is a free Japanese Morphological analyser. It grew out of
+JUMAN version 2.0 development and has made significant improvements in
+system performance. Origin of Package Name:
+
+Takayama, Nara (where NAIST is situated) is famous for producing a tea
+whisk used in traditional Japanese tea ceremonies. The Japanese name
+for the tea whisk is &quot;chasen&quot; and that is the reason for giving the
+name ChaSen to this package developed in NAIST.</description>
+  <devel project="M17N" package="chasen"/>
+</package>

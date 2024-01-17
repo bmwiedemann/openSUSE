@@ -1,0 +1,5 @@
+<package name="qca" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Qt6" package="qca"/>
+</package>

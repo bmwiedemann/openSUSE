@@ -1,0 +1,32 @@
+--- jdk11/src/hotspot/cpu/zero/cppInterpreter_zero.cpp	2021-01-19 09:53:51.448158984 +0100
++++ jdk11/src/hotspot/cpu/zero/cppInterpreter_zero.cpp	2021-01-19 09:59:03.485978413 +0100
+@@ -102,8 +102,8 @@
+       return result;
+     default:
+       ShouldNotReachHere();
+-      return result; // silence compiler warnings
+   }
++  return result;
+ }
+ 
+ 
+--- jdk11/src/hotspot/os_cpu/bsd_zero/os_bsd_zero.cpp	2021-01-19 09:53:51.452159007 +0100
++++ jdk11/src/hotspot/os_cpu/bsd_zero/os_bsd_zero.cpp	2021-01-19 09:55:04.060582394 +0100
+@@ -196,6 +196,7 @@
+     else*/ if (thread->thread_state() == _thread_in_vm &&
+                sig == SIGBUS && thread->doing_unsafe_access()) {
+       ShouldNotCallThis();
++    return 0;
+     }
+ 
+     // jni_fast_Get<Primitive>Field can trap at certain pc's if a GC
+--- jdk11/src/hotspot/os_cpu/linux_zero/os_linux_zero.cpp	2021-01-19 09:53:51.456159031 +0100
++++ jdk11/src/hotspot/os_cpu/linux_zero/os_linux_zero.cpp	2021-01-19 09:55:04.060582394 +0100
+@@ -210,6 +210,7 @@
+     else*/ if (thread->thread_state() == _thread_in_vm &&
+                sig == SIGBUS && thread->doing_unsafe_access()) {
+       ShouldNotCallThis();
++    return 0;
+     }
+ 
+     // jni_fast_Get<Primitive>Field can trap at certain pc's if a GC

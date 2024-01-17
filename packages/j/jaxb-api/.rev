@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5c0d1bcccd407ab28aceb421510f0bd3</srcmd5>
+    <version>4.0.0</version>
+    <time>1646948712</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>960659</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fe62f5dd3e02ebd8f4ad8bd85888e74d</srcmd5>
+    <version>4.0.0</version>
+    <time>1649713765</time>
+    <user>dimstar_suse</user>
+    <comment>resolve current.year to something that does not change</comment>
+    <requestid>969208</requestid>
+  </revision>
+</revisionlist>

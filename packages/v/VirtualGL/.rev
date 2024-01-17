@@ -1,0 +1,179 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>99414260bacc2febb830dc25dd06aa0a</srcmd5>
+    <version>2.3.3</version>
+    <time>1405053936</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>239080</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ed34a4b2ec6260495dc1a04ce091d358</srcmd5>
+    <version>2.3.3</version>
+    <time>1408957420</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245625</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ed34a4b2ec6260495dc1a04ce091d358</srcmd5>
+    <version>2.3.3</version>
+    <time>1409300452</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3f6cf6fb5b6fa4da43a4f6b9a31a33e7</srcmd5>
+    <version>2.3.90</version>
+    <time>1409761333</time>
+    <user>coolo</user>
+    <comment>- Version bump to beta1 of 2.4 (2.3.90)
+- Fix building with -Wl,-z,now and no-undefined
+  * VirtualGL-link-libs.patch</comment>
+    <requestid>246796</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a0fa12e6d56b3f59ae9de5cf920d9396</srcmd5>
+    <version>2.4.1</version>
+    <time>1442474321</time>
+    <user>dimstar_suse</user>
+    <comment>- Add proper wxwidgets license string
+
+- Update to 2.4.1:
+  * Various bugfixes not mentioned on changes
+  * Refresh VirtualGL-link-libs.patch</comment>
+    <requestid>328276</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>159fd6fb3adca3682637ee49a6649e21</srcmd5>
+    <version>2.5</version>
+    <time>1466327304</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 2.5 release
+  * See upstream changelog for details
+  * Mostly removal of compat for pre-VirtualGL namespace
+- Refresh patch VirtualGL-link-libs.patch
+
+- new gcc6_literal_suffixes.patch</comment>
+    <requestid>402767</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5a98a54103d7e4a3da01278accae8b67</srcmd5>
+    <version>2.5</version>
+    <time>1472477680</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix bnc#993645 as-needed eating symbols needed by this lib
+  * virtualgl-nodl.patch
+- Use system xcb headers
+- Rename glxinfo2 to vglxinfo, sounds bit better and more descriptive</comment>
+    <requestid>421737</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e3da51c5df03fb95f0800d8156c6ebbd</srcmd5>
+    <version>2.5.2</version>
+    <time>1514027984</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable ssl feature as we can tunnel via ssh and the openssl-1.1
+  is not compatible at all currently
+
+- Version update 2.5.2:
+  * Various compat fixes all around
+- Remove merged gcc6_literal_suffixes.patch
+- Refresh VirtualGL-link-libs.patch and virtualgl-nodl.patch</comment>
+    <requestid>548081</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>8d112635a59aa523cabc477f772a6918</srcmd5>
+    <version>2.5.2</version>
+    <time>1529501501</time>
+    <user>maxlin_factory</user>
+    <comment>- Do not provide the env files which change the preload order
+  bsc#1097210</comment>
+    <requestid>617686</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>ba5eda86af6451c0e84da1b4f8711264</srcmd5>
+    <version>2.5.2</version>
+    <time>1573045516</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745338</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9cd62de9d00822918b68aadce01d25ee</srcmd5>
+    <version>2.6.3</version>
+    <time>1581368053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>772621</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9c030b802a66bb23783b4d642e8ad31e</srcmd5>
+    <version>2.6.3</version>
+    <time>1591101703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810751</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9515445a408b891d600e4fe3801a001b</srcmd5>
+    <version>2.6.4</version>
+    <time>1596457013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823986</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>139f03dc8f2928d30a032de73053a0c2</srcmd5>
+    <version>2.6.5</version>
+    <time>1608835135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858448</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>29eb920947528f44636df0e6e832d3ce</srcmd5>
+    <version>3.0.2</version>
+    <time>1671722563</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.2:
+  1. Support for transparent overlay visuals has been retired in this version of
+  VirtualGL.  That feature will continue to be maintained in the 2.6.x branch on
+  a break/fix basis only.  Most applications that once used transparent overlay
+  visuals used them with color index rendering, which was removed in OpenGL 3.1
+  in 2009.  Thus, almost all applications that render overlays now do so using
+  other mechanisms.  Furthermore, the need for VirtualGL to hand off the
+  rendering of transparent overlay visuals to the 2D X server has always limited
+  the usefulness of the feature, and the discontinuation of the VirtualGL Client
+  for Exceed relegated the feature to Un*x clients (with workstation-class GPUs)
+  and the VGL Transport only.  Given that nVidia's implementation of transparent
+  overlay visuals requires disabling the X Composite extension, which cannot be
+  done in many modern Linux distributions, that further limited the feature to
+  the point of uselessness.
+  2. The VirtualGL Faker now assigns various permutations of common OpenGL
+  rendering attributes to the available 2D X server visuals.  This maximizes the
+  chances that &quot;visual hunting&quot; 3D applications (applications that use X11
+  functions to obtain a list of 2D X server visuals, then iterate through the
+  list with `glXGetConfig()` until they find a visual with a desired set of
+  OpenGL rendering attributes) will find a suitable visual.
+  `VGL_DEFAULTFBCONFIG` can still be used to assign a specified set of OpenGL
+  rendering attributes to all 2D X server visuals, although the usefulness of
+  that feature is now very limited.
+  3. The VirtualGL Faker now includes an EGL back end that optionally emulates
+  the GLX API using a combination of the EGL API (with the
+  `EGL_EXT_platform_device` extension) and OpenGL renderbuffer objects (RBOs.)
+  On supported platforms, the EGL back end allows the VirtualGL Faker to be used
+  without a 3D X server.  The EGL back end can be activated by setting the
+  `VGL_DISPLAY` environment variable to the path of a DRI device, such as
+  **/dev/dri/card0**, or by passing that device path to `vglrun` using the `-d`</comment>
+    <requestid>1044106</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dccd160fd4ca6c39640c122908e82580</srcmd5>
+    <version>3.1</version>
+    <time>1702845248</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133726</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,115 @@
+-------------------------------------------------------------------
+Tue May  3 08:00:26 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Reenable build for Python 3.10.
+
+-------------------------------------------------------------------
+Thu Feb  3 10:34:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.9.0
+  * Upgrade to opset 14(#183)
+  * Fix RNN version in opset 14 change(#186)
+  * Update max supported opset to 15.(#198)
+  * Temporarily disable fp16 test(#185)
+  * Add op_block_list arg to float16 converter(#190)
+  * Add node_block_list to fp16 conversion script(#191)
+  * Added script for automatic conversion to float16, excluding
+    the minim…(#193)
+  * Fix onnx2py for new onnx package(#177)
+  * Fix onnx2py to avoid making long paths(#192)
+  * Fix onnx2py for seq types(#194)
+  * Replace 'output' with 'input' in RuntimeError(#182)
+  * Add InstanceNormalization op to DEFAULT_OP_BLOCK_LIST(#197)
+- Skip python310: not supported yet by onnx
+
+-------------------------------------------------------------------
+Wed Apr  7 09:12:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.8.0 
+  API
+  * Initialize container node_domain_version_pair_sets (#123)
+  * Fix handling onnx model opset after creating Graph (#125)
+  * Add CumSum to black list and fix duplicated node name issue 
+    (#127)
+  * Add Softsign activation function. (#135)
+  * Enforce model to graph opset (#145)
+  * Upgrade op_version to pass onnx initializer checker (#146)
+  * Add support for complex number, unsigned integers (#147)
+  * Add hummingbird installed method (#134)
+  * Set keepdims=1 as default for ReduceSum (#157)
+  * Fix rank shift in apply_reducesum and _apply_squeeze_unsqueeze 
+    (#158)
+  Opset 13
+  * Update default values for opset 13 (#160)
+  * Update to opset 13 (#156)
+  * Bump DEFAULT_OPSET_NUMBER = 13 (#159)
+  Optimizer
+  * (Optimizer) Remove Matmul from broadcast op (#129)
+  * (Optimizer) Refine the onnx_fx and optimizer code. (#130)
+  * Handle len(pred_0.tensors) == 0 in is_same_node_merge (#133)
+  * Hanlde Split op in is_same_node_merge (#136)
+  * Fix next.precedence range(1, 5) case in ConvBatchNormOptimizer 
+    (#137)
+  * Add a matmul optimization (#138)
+  * Pass Max/Min for PushTransposeSolution (#139)
+  * Support the sub graph and constant in const folding (#122)
+  PushTranspose
+  * Combine TransposeOptimizer and PushTransposeOptimizer into one 
+    #131
+  * PushTranspose optimizer for LSTM - Squeeze (#128)
+  * Fix PushTransposeSolution for a node_transpose_no_pass case 
+    #140
+  * Fix MergeOptimizer for the case Transpose + xxx + Transpose 
+    (#142)
+  * Handle multiple end.precedences for SwapOpSolution (#143)
+  * Skip PushTranspose when broadcast has two un-init inputs (#144)
+  float16
+  * Updated float16 conversion script to maintain sign and 
+    finiteness of converted constants #153
+  * Support >2GB ONNX models for fp16 conversion (#167)
+  * fix the version which starts to support infer_shapes_path 
+    (#168)
+  onn2py
+  * onnx2py is a tool which converts an ONNX graph into a python 
+    script (#161, #162, #164, #165, #166)
+- Release 1.7.0
+  * supports ONNX 1.7
+  * improve the onnx optimizer
+  * a new tool to create the ONNX model from a python function.
+
+-------------------------------------------------------------------
+Mon Feb 15 16:49:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- NEP 29: Tumbleweed does not have python36-numpy and depending
+  packages anymore. Skip python36 build.
+
+-------------------------------------------------------------------
+Wed Mar  4 08:20:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add missing dependencies fixing failing tests
+- Update to 1.6.5:
+  * e87c572 port the topology bug fixing. (#49)
+  * 2ffbcad Support dynamic inputs for apply_slice (#48)
+  * 7185620 A better operator builder for ONNXConverter-Common (#46)
+  * c452903 Support dynamic pads for Pad opset 11 (#45)
+  * 9bc1744 Use axes for Squeeze/Unsqueeze (#44)
+  * 66f8887 Allow repeats be string type for apply_tile (#43)
+  * 47a6c35 Add apply_conv (#42)
+  * 98ee169 Add apply_squeeze (#40)
+  * 82f08ed Add apply_gather, apply_greater, apply_gru, etc (#39)
+  * 672c5f7 Reformat and clean up some codes.
+  * f684aeb Use coordinate_transformation_mode as default parameter (tf 2.0 will change it) (#38)
+  * 85e9bcf Add support for detecting if h2o is installed. (#37)
+  * b5f216b Handle dynamic shape in apply_reshape (#36)
+  * b9700d1 Handle case input_name is list for apply_reshape (#35)
+  * 511a071 Generate graph after optimizing onnx model (#34)
+
+-------------------------------------------------------------------
+Wed Mar  4 08:17:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Rename to onnxconverter-common to match up pypi name
+
+-------------------------------------------------------------------
+Mon Mar  2 14:29:06 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- inital commit of the onnx-convertet_common tools version 1.6.0
