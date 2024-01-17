@@ -1893,4 +1893,12 @@ General : Update internal Libraw to snapshot 202110
     <comment>Require extra-cmake-modules at build time</comment>
     <requestid>1133536</requestid>
   </revision>
+  <revision rev="219" vrev="1">
+    <srcmd5>94b7b98ddc7b31eb3661b19300634ff9</srcmd5>
+    <version>8.2.0</version>
+    <time>1705526195</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139399</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 15 14:52:32 UTC 2024 - Wolfgang Bauer <wbauer1@a1.net>
+
+- Update to 8.2.0:
+  https://www.digikam.org/news/2023-12-03-8.2.0_release_announcement/
+- Drop 0001-Use-FindLibExiv2.cmake-from-ECM.patch, no longer
+  necessary
+- Rebase 0001-Look-for-each-akonadi-component-separately.patch
+
+-------------------------------------------------------------------
 Fri Dec 15 22:02:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Require extra-cmake-modules at build time

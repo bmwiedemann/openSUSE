@@ -15,15 +15,15 @@ index 6100334..8a18288 100644
  
  if(ENABLE_AKONADICONTACTSUPPORT)
  
--    find_package(KF5 ${AKONADI_MIN_VERSION} QUIET
+-    find_package(KF${QT_VERSION_MAJOR} ${AKONADI_MIN_VERSION} QUIET
 -                                            OPTIONAL_COMPONENTS
 -                                            Akonadi
 -                                            AkonadiContact      # For KDE Mail Contacts support.
 -                                            Contacts            # API for contacts/address book data.
 -    )
-+    find_package(KF5Akonadi ${AKONADI_MIN_VERSION} REQUIRED)
-+    find_package(KF5AkonadiContact ${AKONADI_MIN_VERSION} REQUIRED) # For KDE Mail Contacts support.
-+    find_package(KF5Contacts ${AKONADI_MIN_VERSION} REQUIRED) # API for contacts/address book data.
++    find_package(KF${QT_VERSION_MAJOR}Akonadi ${AKONADI_MIN_VERSION} REQUIRED)
++    find_package(KF${QT_VERSION_MAJOR}AkonadiContact ${AKONADI_MIN_VERSION} REQUIRED) # For KDE Mail Contacts support.
++    find_package(KF${QT_VERSION_MAJOR}Contacts ${AKONADI_MIN_VERSION} REQUIRED) # API for contacts/address book data.
  
  endif()
  

@@ -1,7 +1,7 @@
 #
 # spec file for package digikam
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define soversion 8_1_0
+%define soversion 8_2_0
 %bcond_without released
 %bcond_with    apidocs
 Name:           digikam
-Version:        8.1.0
+Version:        8.2.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later
@@ -32,8 +32,6 @@ Source2:        %{name}.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Look-for-each-akonadi-component-separately.patch
-# PATCH-FIX-UPSTREAM fixed differently upstream
-Patch1:         0001-Use-FindLibExiv2.cmake-from-ECM.patch
 # QtWebEngine is not available on ppc and zSystems
 ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{riscv}
 BuildRequires:  QtAV-devel >= 1.12
@@ -51,7 +49,7 @@ BuildRequires:  libeigen3-devel
 BuildRequires:  libexiv2-devel >= 0.27.1
 BuildRequires:  liblqr-devel
 BuildRequires:  libtiff-devel
-BuildRequires:  opencv-devel >= 3.3.0
+BuildRequires:  opencv-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 %if %{with apidocs}
@@ -94,6 +92,7 @@ BuildRequires:  cmake(Qt5XmlPatterns)
 BuildRequires:  cmake(libheif)
 BuildRequires:  pkgconfig(Magick++)
 BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(jasper)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(lensfun)
 BuildRequires:  pkgconfig(libavcodec)
@@ -174,11 +173,11 @@ The main digikam libraries that are being shared between showfoto and digikam
 
 %if %{pkg_vcmp akonadi-contact-devel >= 23.03.80}
 # Digikam doesn't look explicitly for akonadi-server but relies on AkonadiContact dependencies
-sed -i 's#KF5::AkonadiCore#KPim5::AkonadiCore#' core/utilities/extrasupport/addressbook/CMakeLists.txt
+sed -i 's#KF${QT_VERSION_MAJOR}::AkonadiCore#KPim${QT_VERSION_MAJOR}::AkonadiCore#' core/utilities/extrasupport/addressbook/CMakeLists.txt
 %endif
 # Compatibility CMake files were removed in PIM packages after 23.08.0
 %if %{pkg_vcmp akonadi-contact-devel >= 23.08.0}
-sed -i 's#KF5\([:]*Akonadi\)#KPim5\1#' core/{CMakeLists.txt,utilities/extrasupport/{addressbook/,}CMakeLists.txt,app/DigikamCoreTarget.cmake,cmake/rules/RulesKDEFramework.cmake}
+sed -i 's#KF${QT_VERSION_MAJOR}\([:]*Akonadi\)#KPim${QT_VERSION_MAJOR}\1#' core/{CMakeLists.txt,utilities/extrasupport/{addressbook/,}CMakeLists.txt,app/DigikamCoreTarget.cmake,cmake/rules/RulesKDEFramework.cmake}
 %endif
 
 %build
