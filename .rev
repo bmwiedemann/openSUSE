@@ -90,4 +90,13 @@
     <comment></comment>
     <requestid>1058986</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>38d2bf3d8a34a912fb58cb98ca7bfa9a</srcmd5>
+    <version>5.12.13</version>
+    <time>1703801015</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-Zip-Path-Traversal.patch
+  * Fix Zip Path Traversal (boo#1218428 and CVE-2023-50255) (forwarded request 1135475 from hillwood)</comment>
+    <requestid>1135476</requestid>
+  </revision>
 </revisionlist>

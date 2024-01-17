@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 28 12:43:20 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-Zip-Path-Traversal.patch
+  * Fix Zip Path Traversal (boo#1218428 and CVE-2023-50255)
+
+-------------------------------------------------------------------
 Mon Jan 16 20:56:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.12.13:
