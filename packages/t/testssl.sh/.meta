@@ -1,0 +1,10 @@
+<package name="testssl.sh" project="openSUSE:Factory">
+  <title>Testing TLS/SSL Encryption Anywhere On Any Port</title>
+  <description>testssl.sh is a free command line tool which checks a server's service on
+any port for the support of TLS/SSL ciphers, protocols as well as some
+cryptographic flaws.
+
+</description>
+  <devel project="network:utilities" package="testssl.sh"/>
+  <url>https://testssl.sh</url>
+</package>

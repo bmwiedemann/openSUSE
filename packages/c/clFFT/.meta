@@ -1,0 +1,19 @@
+<package name="clFFT" project="openSUSE:Factory">
+  <title>OpenCL FFT library</title>
+  <description>The clFFT library is an open source OpenCL library implementation of discrete
+Fast Fourier Transforms, which:
+  * Provides a fast and accurate platform for calculating discrete FFTs.
+  * Works on CPU or GPU backends.
+  * Supports in-place or out-of-place transforms.
+  * Supports 1D, 2D, and 3D transforms with a batch size that can be greater
+    than 1.
+  * Supports planar (real and complex components in separate arrays) and
+    interleaved (real and complex components as a pair contiguous in memory)
+    formats.
+  * Supports dimension lengths that can be any mix of powers of 2, 3, and 5.
+  * Supports single and double precision floating point formats.
+
+</description>
+  <devel project="science" package="clFFT"/>
+  <url>https://github.com/clMathLibraries/clFFT</url>
+</package>

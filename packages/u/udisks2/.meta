@@ -1,0 +1,6 @@
+<package name="udisks2" project="openSUSE:Factory">
+  <title>The udisks2 package</title>
+  <description>The udisks package, second useless edition
+</description>
+  <devel project="Base:System" package="udisks2"/>
+</package>

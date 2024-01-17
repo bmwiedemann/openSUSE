@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3810e6608df49c61186271e719b4c484</srcmd5>
+    <version>1.06</version>
+    <time>1289865593</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52798 from user computersalat
+</comment>
+    <requestid>52798</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b54b213a2717702071daad2fbdf21dfc</srcmd5>
+    <version>1.06</version>
+    <time>1290096226</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53177 from user coolo
+</comment>
+    <requestid>53177</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0d363b8e8ea7a6bc94d2148a708b3598</srcmd5>
+    <version>1.06</version>
+    <time>1290096230</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53177
+</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1605aacd8f08dd3a731ad6e8c922fc59</srcmd5>
+    <version>1.06</version>
+    <time>1291582285</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54533 from user coolo
+</comment>
+    <requestid>54533</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>68be083e0d886a93d32be1d37ecd018b</srcmd5>
+    <version>1.06</version>
+    <time>1291582292</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54533
+</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>68be083e0d886a93d32be1d37ecd018b</srcmd5>
+    <version>1.06</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>68be083e0d886a93d32be1d37ecd018b</srcmd5>
+    <version>1.06</version>
+    <time>1319182266</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>e74ad2596e000722d8d83f39d630e4b7</srcmd5>
+    <version>1.06</version>
+    <time>1321875592</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92231</requestid>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>5e45d0b0fc45960b67015e05da3b5ecd</srcmd5>
+    <version>1.06</version>
+    <time>1323193284</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>5e45d0b0fc45960b67015e05da3b5ecd</srcmd5>
+    <version>1.06</version>
+    <time>1340183840</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>5e45d0b0fc45960b67015e05da3b5ecd</srcmd5>
+    <version>1.06</version>
+    <time>1359109667</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c2f4cd70f697d22e8cf91366bb6ff07f</srcmd5>
+    <version>1.12</version>
+    <time>1370517192</time>
+    <user>coolo</user>
+    <comment>license update: Artistic-2.0
+See Readme.md (forwarded request 177746 from babelworx)</comment>
+    <requestid>177770</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>c2f4cd70f697d22e8cf91366bb6ff07f</srcmd5>
+    <version>1.12</version>
+    <time>1379663674</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>c2f4cd70f697d22e8cf91366bb6ff07f</srcmd5>
+    <version>1.12</version>
+    <time>1409302290</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5a090bb1972922d1a618dc6bb144a770</srcmd5>
+    <version>1.16</version>
+    <time>1468360351</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407386</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5ba34ba7317122f69e966a41ad51b5ce</srcmd5>
+    <version>1.18</version>
+    <time>1567010233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726665</requestid>
+  </revision>
+</revisionlist>

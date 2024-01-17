@@ -1,0 +1,7 @@
+<package name="acpi" project="openSUSE:Factory">
+  <title>Command-line ACPI client</title>
+  <description>Linux ACPI client is a small command-line program that attempts to
+replicate the functionality of the 'old' apm command on ACPI systems.
+It includes battery and thermal information.</description>
+  <devel project="Base:System" package="acpi"/>
+</package>

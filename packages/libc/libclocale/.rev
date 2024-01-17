@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ec5d94604e016ce45d1b6b4f44a6b9e</srcmd5>
+    <version>0~20121224</version>
+    <time>1366357796</time>
+    <user>coolo</user>
+    <comment>Joachim Metz has created a set of c libraries used by security tools.  The libxxx packages often include basic applications sub-packages which are useful by themselves.</comment>
+    <requestid>163811</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>607e03e46c5f75910cda145b666e1715</srcmd5>
+    <version>0~20130609</version>
+    <time>1375284196</time>
+    <user>coolo</user>
+    <comment>update to 0~20130609
+upstream changed the tarball from &quot;alpha&quot; to &quot;experimental&quot;, but it is still an upgrade.
+Part of summer 2013 libyal refresh for opensuse 13.1</comment>
+    <requestid>185027</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>607e03e46c5f75910cda145b666e1715</srcmd5>
+    <version>0~20130609</version>
+    <time>1379662917</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4b2ac89de8eef749927f52ecddefb47e</srcmd5>
+    <version>0~20140105</version>
+    <time>1408353834</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244915</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4b2ac89de8eef749927f52ecddefb47e</srcmd5>
+    <version>0~20140105</version>
+    <time>1409301521</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9d03c55f0b3091e917693f9b67982741</srcmd5>
+    <version>0~20150101</version>
+    <time>1421959757</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282291</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>19e32b2f9297f8c7717ef9293e765168</srcmd5>
+    <version>0~20170105</version>
+    <time>1487681243</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458543</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e38723313d808e5900882ef0929aac74</srcmd5>
+    <version>0~20180721</version>
+    <time>1566291582</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724632</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>32f085ff3638466f40f5db3725f945ee</srcmd5>
+    <version>0~20200913</version>
+    <time>1608317956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855525</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ceaf43bc728247e7760f47770df20d4b</srcmd5>
+    <version>20210410</version>
+    <time>1623012047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897774</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4916e4ab1c75e7f36024c578d08f74c9</srcmd5>
+    <version>20210526</version>
+    <time>1624735536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902521</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9c3b5e51d7d886eab43b56b91583c0a7</srcmd5>
+    <version>20210526</version>
+    <time>1637970670</time>
+    <user>dimstar_suse</user>
+    <comment>- Add keyring</comment>
+    <requestid>933930</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fdd344dd684f7deec1692af481842013</srcmd5>
+    <version>20220107</version>
+    <time>1641680649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220107</comment>
+    <requestid>944889</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3e9705585d1ac3c10c37373e5dd22513</srcmd5>
+    <version>20220107</version>
+    <time>1660051699</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993973</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>85ed67f5308b0ac7e1455176fcd0a1d0</srcmd5>
+    <version>20220107</version>
+    <time>1669629963</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038447</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3cc172b014e750dac5553af4409e8c8b</srcmd5>
+    <version>20221218</version>
+    <time>1671380560</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221218</comment>
+    <requestid>1043616</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b4c7cd30ad4232dbbadc487e5a678690</srcmd5>
+    <version>20240107</version>
+    <time>1704753904</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240107</comment>
+    <requestid>1137457</requestid>
+  </revision>
+</revisionlist>

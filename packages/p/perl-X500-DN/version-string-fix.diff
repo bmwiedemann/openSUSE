@@ -1,0 +1,11 @@
+--- DN.pm
++++ DN.pm	2008/02/25 11:27:32
+@@ -4,7 +4,7 @@
+ 
+ package X500::DN;
+ 
+-use 5.6.1; # the "our" keyword below needs it
++use 5.006_001; # the "our" keyword below needs it
+ use strict;
+ use Carp;
+ use Parse::RecDescent 1.80;

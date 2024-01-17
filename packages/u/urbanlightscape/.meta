@@ -1,0 +1,14 @@
+<package name="urbanlightscape" project="openSUSE:Factory">
+  <title>Improve Lighting, Correct Exposure, Add Synthetic Light to Photos</title>
+  <description>Urban Lightscape is a photo filter for exposure correction,
+localized brightness adjustments, dodging and burning, and the
+introduction of synthetic lighting to a photo. A simple
+&quot;double-click-and-drag&quot; paradigm is used to place control points on
+a photo, and clever edge detection localises and interpolates
+lightness adjustments around and between these points. Results are
+rapid, with additional controls for more subtle refinements.
+
+</description>
+  <devel project="graphics" package="urbanlightscape"/>
+  <url>http://www.indii.org/software/urbanlightscape</url>
+</package>

@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>693304dd7c08d6a6cdf85e793a23f300</srcmd5>
+    <version>1.11</version>
+    <time>1445288024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>339763</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>93953b79119fc2ad171b17de4d76e105</srcmd5>
+    <version>1.13</version>
+    <time>1476780173</time>
+    <user>dimstar_suse</user>
+    <comment>- show decoded gpt attribute bits
+- 1.13
+
+- added some GPT GUIDs of linux partitions
+- 1.12</comment>
+    <requestid>435115</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>55effa032e28ee79344f7231ac1465c5</srcmd5>
+    <version>1.14</version>
+    <time>1491896941</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>487027</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cc91a7a8335a06b5728e4ce717988cdb</srcmd5>
+    <version>1.15</version>
+    <time>1505139773</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>522989</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a68ff59e75dbf2e124cc77b9579b442f</srcmd5>
+    <version>1.16</version>
+    <time>1520415465</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>583261</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b74ef36566249a15905ce44bf04fb0be</srcmd5>
+    <version>1.17</version>
+    <time>1524742723</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>601010</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f7b29cd7a36302fe4b463fe7772b93b8</srcmd5>
+    <version>1.18</version>
+    <time>1524838145</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>601612</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6854e63af9dbf960eb0bb1390c7c237c</srcmd5>
+    <version>1.19</version>
+    <time>1564137657</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>718470</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5756521ec94b93b6a5e0805a5c7811e7</srcmd5>
+    <version>1.20</version>
+    <time>1610123964</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>861714</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e093c7df2dac18415630195082986ff0</srcmd5>
+    <version>2.0</version>
+    <time>1635438687</time>
+    <user>dimstar_suse</user>
+    <comment>- merge gh#wfeldt/parti#12
+- split into separate parts
+- catch and log all disk accesses
+- gpt, filesystem, disk json output implemented
+- json related functions
+- el torito json output
+- add mbr json output
+- add apple partition table json output
+- updated git2log
+- refactor code and add JSON output
+- 2.0
+--------------------------------------------------------------------</comment>
+    <requestid>927946</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e62062d1ee1dc5faa435680f646edfbf</srcmd5>
+    <version>2.1</version>
+    <time>1636038590</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>929065</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>27ab67615962821cf527a927005f2f6d</srcmd5>
+    <version>2.2</version>
+    <time>1637372330</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>932255</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bcfe45e8497ed274f3248465c15f70da</srcmd5>
+    <version>2.3</version>
+    <time>1679417004</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1073369</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f98c74e6b30909e86b68fcff68edd547</srcmd5>
+    <version>2.4</version>
+    <time>1684239381</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1087272</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>539d39e0c6107dd7343cdf065d25f09d</srcmd5>
+    <version>2.5</version>
+    <time>1690215957</time>
+    <user>anag+factory</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1099885</requestid>
+  </revision>
+</revisionlist>

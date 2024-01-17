@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Tue Apr  4 19:03:27 UTC 2017 - rpm@fthiessen.de
+
+- Update to version 1.19
+  * Fixes a bug that could prevent certain UDMF maps from loading.
+- Dropped zdbsp-automake.diff as it now uses cmake
+- Added install-binary.patch to add the install target
+- Use https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Fri Mar 31 21:28:14 UTC 2017 - meissner@suse.com
+
+- disable pie also in LDFLAGS
+
+-------------------------------------------------------------------
+Thu Mar  5 12:31:29 UTC 2015 - jengelh@inai.de
+
+- Preemptively disable PIE, since there is assembler included
+
+-------------------------------------------------------------------
+Sat Mar 23 13:16:01 UTC 2013 - jengelh@inai.de
+
+- Add patch zdbsp-bigendian.diff to resolve compile problems
+  on SPARC
+- Force disable of SSE on non-x86ish
+
+-------------------------------------------------------------------
+Wed Jan  9 09:58:29 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.18.1
+* Introduce a new node format for better compatibility with UDMF
+  maps that have vertices with fractional coordinates.
+
+-------------------------------------------------------------------
+Thu May 17 18:13:16 UTC 2012 - joop.boonen@opensuse.org
+
+- Added missing BuildRequires automake
+- Cleaned up the spec file
+
+-------------------------------------------------------------------
+Tue Aug 31 22:50:31 UTC 2010 - jengelh@medozas.de
+
+- Update to new upstream release 1.17
+* This version fixes a critical bug introduced in 1.16 that caused
+  it to write garbage for normal nodes. 
+* minor performance improvements
+
+-------------------------------------------------------------------
+Tue Jul 27 16:01:23 UTC 2010 - jengelh@medozas.de
+
+- Update to new upstream release 1.16
+  * correctly write nodes for maps with more than 64K vertices
+  * support for uncompressed extended nodes for prBoom+
+
+-------------------------------------------------------------------
+Tue Jul 27 15:49:55 UTC 2010 - jengelh@medozas.de
+
+- Split up zdoom package into its components
+- ZDBSP 1.14
+

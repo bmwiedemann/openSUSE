@@ -1,0 +1,9 @@
+diff -Nur zdbsp-1.19/CMakeLists.txt new/CMakeLists.txt
+--- zdbsp-1.19/CMakeLists.txt	2016-01-07 21:33:31.000000000 +0100
++++ new/CMakeLists.txt	2017-04-04 21:17:22.339397549 +0200
+@@ -221,3 +221,5 @@
+ add_executable( zdbsp ${SOURCES} ${HEADERS} )
+ target_link_libraries( zdbsp ${ZDBSP_LIBS} ${PROF_LIB} )
+ include_directories( "${ZLIB_INCLUDE_DIR}" )
++
++install(PROGRAMS "${CMAKE_CURRENT_BINARY_DIR}/zdbsp" DESTINATION bin)

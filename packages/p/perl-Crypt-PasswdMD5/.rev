@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0871b246a529b624ce1f95441aeb1c87</srcmd5>
+    <version>1.40</version>
+    <time>1453998170</time>
+    <user>dimstar_suse</user>
+    <comment>Dochazka dependency</comment>
+    <requestid>355529</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>076ce1b83cddb24e8ea574b395637641</srcmd5>
+    <version>1.41</version>
+    <time>1612378578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868897</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>caadf5234f0e675729835301059171b0</srcmd5>
+    <version>1.42</version>
+    <time>1659382312</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991553</requestid>
+  </revision>
+</revisionlist>

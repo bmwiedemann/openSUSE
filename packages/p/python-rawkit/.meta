@@ -1,0 +1,8 @@
+<package name="python-rawkit" project="openSUSE:Factory">
+  <title>CTypes based LibRaw bindings</title>
+  <description>The rawkit (pronounced rocket) module is a ctypes-based LibRaw
+binding for Python inspired by the Wand API.
+
+</description>
+  <devel project="devel:languages:python" package="python-rawkit"/>
+</package>

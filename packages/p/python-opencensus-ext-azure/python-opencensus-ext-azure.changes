@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Tue Oct 18 11:45:21 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.1.6
+  * Add statusCode and exceptionType to network statsbeat (#1138)
+- from version 1.1.5
+  * Allow specifying metrics (custom_measurements) for Azure custom events (#1117)
+  * Shutdown Statsbeat when hitting error/exception threshold (#1127)
+  * Fix failure counting statsbeat - refactor status code logic in transport (#1132)
+  * Use logging handler close instead of custom atexit hook (#1134)
+- from version 1.1.4
+  * Statsbeat bug fixes - status codes (#1113)
+  * Statsbeat bug fixes - do not log if statsbeat (#1116)
+  * Add deprecation warning for explicitly using instrumentation key (#1118)
+- from version 1.1.3
+  * Hotfix for version number (#1108)
+- from version 1.1.2
+  * Statsbeat bug fixes, shorten host in network stats (#1100)
+  * Support statsbeat in EU regions (#1105)
+- from version 1.1.1
+  * Fix statsbeats metric names (#1089)
+  * Add AAD statsbeat feature, fix incorrect counting of retry (#1093)
+- Refresh patches for new version
+  * opencensus-pr1002-remove-mock.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Sat Oct 23 12:31:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.0
+  * Enable AAD authorization via TokenCredential (#1021)
+  * Implement attach rate metrics via Statsbeat (#1053)
+  * Implement network metrics via Statsbeat - Success count (#1059)
+  * Implement network metrics via Statsbeat - Others (#1062)
+  * Implement feature and instrumentation metrics via Statsbeat
+    (#1076)
+  * Support stamp specific redirect in exporters (#1078)
+- Release 1.0.8
+  * Fix logger.exception with no exception info throwing error
+    (#1006)
+  * Add enable_local_storage to turn on/off local storage + retry +
+    flushing logic (#1016)
+- Release 1.0.7
+  * Hotfix (#1004)
+- Release 1.0.6
+  * Disable heartbeat metrics in exporters (#984)
+  * Loosen instrumentation key validation to GUID (#986)
+- Release 1.0.5
+  * Attach rate metrics via Heartbeat for Web and Function apps
+    (#930)
+  * Attach rate metrics for VM (#935)
+  * Add links in properties for trace exporter envelopes (#936)
+  * Fix attach rate metrics for VM to only ping data service on
+    retry (#946)
+  * Added queue capacity configuration for exporters (#949)
+- Release 1.0.4
+  * Remove dependency rate from standard metrics (#903)
+  * Implement customEvents using AzureEventHandler (#925)
+- Release 1.0.3
+  * Change default path of local storage (#903)
+  * Add support to initialize azure exporters with proxies (#902)
+- Remove mock
+  * opencensus-pr1002-remove-mock.patch
+  * gh#census-instrumentation/opencensus-python#1002
+
+-------------------------------------------------------------------
+Tue Mar 10 12:59:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Avoid extensions namespace clash
+
+-------------------------------------------------------------------
+Fri Feb 21 13:14:04 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 1.0.2
