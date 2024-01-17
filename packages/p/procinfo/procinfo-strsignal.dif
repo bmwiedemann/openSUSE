@@ -1,0 +1,15 @@
+---
+ routines.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- routines.c
++++ routines.c	2020-08-07 08:11:45.038790291 +0000
+@@ -146,7 +146,7 @@ quit (int i)
+ 	exit (0);
+     } else {
+ 	printf ("%s%s%s", ve, se, tgoto (cm, 0, li));
+-	printf ("[%s]\n", sys_siglist[i]);
++	printf ("[%s]\n", strsignal(i));
+ 	exit (128 + i);
+     }
+ }

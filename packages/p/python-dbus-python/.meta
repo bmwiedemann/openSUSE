@@ -1,0 +1,5 @@
+<package name="python-dbus-python" project="openSUSE:Factory">
+  <title>dbus-1-python</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="Base:System" package="python-dbus-python"/>
+</package>

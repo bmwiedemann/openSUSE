@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9f6fd56c8c32eed36513e7420ba8de68</srcmd5>
+    <version>1.6.0</version>
+    <time>1629706068</time>
+    <user>dimstar_suse</user>
+    <comment>add to factory</comment>
+    <requestid>913585</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7f038de72d42fb86ec8927c2686bf933</srcmd5>
+    <version>1.7.0</version>
+    <time>1634754244</time>
+    <user>dimstar_suse</user>
+    <comment>- Add keyring &amp; use source verification (forwarded request 926535 from gmbr3)</comment>
+    <requestid>926537</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c2b85c7399509016b7867c09ba60d405</srcmd5>
+    <version>1.7.0</version>
+    <time>1646073814</time>
+    <user>dimstar_suse</user>
+    <comment>- Use hardlinks in %fdupes for python files (forwarded request 957774 from gmbr3)</comment>
+    <requestid>957968</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6bfa27ed392f9796d1496d78350534f1</srcmd5>
+    <version>1.8.0</version>
+    <time>1657885962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>989314</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>78b58f4040d7e4be2c15cc801891e5bc</srcmd5>
+    <version>1.9.0</version>
+    <time>1678814273</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071796</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>39234ad279e67d6b262ab1a7b9e744bb</srcmd5>
+    <version>1.9.0</version>
+    <time>1684596211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087912</requestid>
+  </revision>
+</revisionlist>

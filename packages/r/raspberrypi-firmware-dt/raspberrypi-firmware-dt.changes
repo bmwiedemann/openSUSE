@@ -1,0 +1,465 @@
+-------------------------------------------------------------------
+Mon Dec 11 09:03:47 UTC 2023 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- They are vendor changes in bcm2835-dma driver around new RPi5
+  which  makes new device trees unusable without corresponding
+  changes in DMA driver. Lets revert offending commit.
+  Fixes bsc#1217512.
+
+- Add patch:
+ * 0001-Revert-bcm2711-rpi-ds-Switch-to-dma40-channel-for-hd.patch
+
+-------------------------------------------------------------------
+Thu Nov 23 11:23:22 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 77f41f30fe (2023-11-21):
+  * switch to 6.6 branch
+- Rebase patches:
+  * 0001-ARM-dts-bcm2711-rpi-Reuse-bcm2836-vchiq-driver.patch
+  * 0001-ARM-dts-bcm27xx-Use-better-name-for-spidev.patch
+
+-------------------------------------------------------------------
+Tue Jul 18 11:25:24 UTC 2023 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Update 0001-ARM-dts-bcm27xx-Use-better-name-for-spidev.patch description
+
+-------------------------------------------------------------------
+Mon Jul 17 14:40:37 UTC 2023 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Use compatible string which is supported by spidev module (bsc#1212791):
+  * 0001-ARM-dts-bcm27xx-Use-better-name-for-spidev.patch
+
+-------------------------------------------------------------------
+Tue May 30 07:28:41 UTC 2023 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Enable 3.5mm jack socket stereo audio (bsc#1209314):
+  * 0001-ARM-dts-bcm2711-rpi-Reuse-bcm2836-vchiq-driver.patch
+
+-------------------------------------------------------------------
+Thu May  4 12:34:02 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 870c0a313b18 (2023-05-02):
+  * switch to 6.3 branch
+
+-------------------------------------------------------------------
+Fri Mar  3 11:56:37 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to d3cab1cb1b6d (2023-03-02):
+  * switch to 6.2 branch
+
+-------------------------------------------------------------------
+Fri Jan 20 14:08:11 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 194f76d49a89 (2023-01-20)
+
+-------------------------------------------------------------------
+Tue Jan  3 10:14:35 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 696dcc735044 (2022-12-21):
+  * switch to 6.1 branch
+
+-------------------------------------------------------------------
+Thu Oct 27 13:38:09 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 692039799e78 (2022-10-26)
+
+-------------------------------------------------------------------
+Wed Oct 12 12:22:25 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 896b8da17ad1 (2022-10-03):
+  * switch to 6.0 branch
+
+-------------------------------------------------------------------
+Wed Oct  5 07:12:56 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to a26d9d4da299 (2022-09-27):
+  * switch to 5.19 branch
+
+-------------------------------------------------------------------
+Fri Jul  8 08:12:43 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 82c39f3914 (2022-07-06):
+  * switch to 5.18 branch
+
+-------------------------------------------------------------------
+Wed Apr 27 13:17:53 UTC 2022 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Use last patch commit date instead patch creation date when creating
+  device tree archive and package version. Patch creation date could be
+  much earlier than patch commit date, which could mislead which patches
+  are included inside the package.
+
+  For example:
+
+    commit 7e72dd813a175ea7bf166655217ce60fbd7d4a21
+    Author:     Dom Cobley <popcornmix@gmail.com>
+    AuthorDate: Tue Oct 19 14:15:45 2021 +0100
+    Commit:     Dom Cobley <popcornmix@gmail.com>
+    CommitDate: Mon Nov 29 16:26:09 2021 +0000
+
+	dt: Move VEC clock to clk-raspberrypi
+
+  Package which contain this commit was named 2021.11.19 while obviously it
+  has changes from 2021.11.29.
+
+- Update to da91801ca1 (2022-04-24)
+  * overlays: Fix pitft28/35-resistive rotate params
+  * ARM: dts: Add i2c0mux node to Model B rev 1
+  * overlays: Add "drm" parameter to pitft28-resistive
+  * overlays: mipi-dbi-spi: width-mm and height-mm are mandatory
+  * Add support for the AudioInjector.net bare i2s sound card
+  * dtoverlays: Add overlay for Sony IMX258 image sensor
+  * ARM: dts: Enable PMU on Cortex-A72 in AArch32 state
+  * overlays/rpi-display: Add support for DRM driver
+  * Revert "update rpi-display-overlay.dts pins for 5.10+"
+  * overlays: Add overlay for MIPI DBI displays
+  * dtoverlays: Connect the backlight to the pitft35 display
+  * overlays: iqs550: Enable interrupt pull-down
+  * CM1&3 cam1_reg and cam1_reg_gpio fix
+  * dtoverlay: Add VCM option to ov5647 overlay
+  * dtoverlays: Add VCM option to imx219
+  * ARM: dts: bcm2711-rpi-ds: Disable the BCM2835 STC
+
+-------------------------------------------------------------------
+Wed Mar  2 08:01:22 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 8dd9f663bd7c (2022-02-25):
+  * Add GPIO names
+  * Add overlays:
+    - spi0-0cs
+    - vc4-kms-dpi-hyperpixel2r
+    - vc4-kms-dpi-hyperpixel4
+    - vc4-kms-dpi-hyperpixel4sq
+    - vc4-kms-dpi-panel
+    - waveshare-can-fd-hat-mode-a
+    - waveshare-can-fd-hat-mode-b
+
+-------------------------------------------------------------------
+Fri Jan 21 14:07:41 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Switch to 5.16 branch - boo#1194423
+- Update to ffd6c6dc4dbf (2022-01-19)
+
+-------------------------------------------------------------------
+Tue Nov 30 10:59:38 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 14c1845ff9 (2021-11-19):
+  * Add DTS:
+    - bcm2710-rpi-zero-2-w.dts
+    - bcm2710-rpi-zero-2.dts
+  * Add overlays:
+    - adafruit-st7735r-overlay.dts
+    - fbtft-overlay.dts
+    - imx519-overlay.dts
+    - mcp2515-overlay.dts
+    - mlx90640-overlay.dts
+
+-------------------------------------------------------------------
+Fri Sep 17 10:11:30 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2425833c7ff5 (2021-09-17)
+  * Switch to 5.14 branch
+  * Drop upstream-overlay-rpi-poe.patch
+
+-------------------------------------------------------------------
+Fri Apr  9 10:30:10 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- Add overlay for smbios information (bsc#1183079)
+   * smbios-overlay.dts
+
+-------------------------------------------------------------------
+Mon Mar 15 17:32:52 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to 16991af20b (2021-03-15) (bsc#1183238):
+   * overlays: Add pcie-32bit-dma overlay
+
+-------------------------------------------------------------------
+Mon Mar  1 13:14:11 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Introduce enable-bt-overlay.dts (bsc#1182759)
+
+-------------------------------------------------------------------
+Wed Jan 27 11:51:38 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Introduce disable-v3d-overlay.dts, in order to be able to selectively disable
+  v3d while using vc4 as the display controller (jsc#SLE-15928).
+
+-------------------------------------------------------------------
+Mon Jan 25 13:33:48 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to 02dbfea28f (2021-01-22):
+ * Add reserved memory template to hold firmware configuration
+
+- Drop upstream-blconfig-rmem.patch as it's now available upstream.
+
+-------------------------------------------------------------------
+Fri Jan 22 11:11:46 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Introduce upstream-blconfig-rmem.patch for firmware to be able to define
+  firmware's configuration reserved memory (jsc#SLE-16616)
+
+-------------------------------------------------------------------
+Wed Dec  9 14:57:29 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to f77383ec0ed3 (2020-12-07) (jsc#SLE-16676):
+ * Introduce RPi400 device-tree
+
+-------------------------------------------------------------------
+Thu Nov 26 12:54:35 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Introduce upstream-overlay-rpi-poe.patch to adapt the overlay to our driver (jsc#SLE-16543)
+
+-------------------------------------------------------------------
+Thu Oct 29 16:35:31 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to 2dc96ad40979 (2020-10-26):
+ * Introduce firmware-clocks
+ * Introduce firmware-reset
+ * Add reset controller in xHCI node
+- Get rid of vl805-firmware-loader-overlay.dts, not needed anymore
+
+-------------------------------------------------------------------
+Tue Jul 21 11:37:26 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add vl805-firware-loader-overlay.dts which registers a reset controller
+  that'll take care of triggering vl805's firmware load.
+
+-------------------------------------------------------------------
+Tue Apr 28 10:36:14 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to d7b4d5935198 (2020-05-02)
+  * Adds gpio labels for rpi4 (bsc#1164722)
+  * Get rid of upstream-emmc2bus.patch, not needed anymore
+
+-------------------------------------------------------------------
+Mon Apr  6 09:40:40 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to b08ce72793b5 (2020-04-02) (bsc#1167761)
+  * Based on v5.6.y
+  * Uses upstream's CMA handling
+  * Introduces GPIO labels
+  * Fixes DMA issues with firmware DT node
+  * Introduces thermal nodes
+- Remove rpi4-thermal.dts as it's now available in the stock device-tree.
+- Remove rpi4-gpio-names-overlay.dts as it's now available in the stock device-tree.
+- Remove rpi4-firmware-dma-ranges-overlay.dts as it's now available in the stock device-tree.
+- Remove upstream-cma.patch as it's now available in the stock device-tree.
+- Remove upstream-pcie-dma-ranges.patch as it's now available in the stock device-tree.
+- Refresh upstream-emmc2bus.patch so it applies on v5.6.y
+
+-------------------------------------------------------------------
+Tue Mar 31 21:34:26 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- Use proper quoting for the modalias Supplements (see also
+  https://github.com/openSUSE/libzypp/issues/216).
+
+-------------------------------------------------------------------
+Fri Mar 27 12:30:54 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- Add a modalias Supplements, so the package gets selected
+  automatically on a Raspberry Pi.
+
+-------------------------------------------------------------------
+Thu Mar 26 10:35:55 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add upstream-cma.patch unifying CMA handling on all RPis (bsc#1167761)
+- Remove rpi4-cma-overlay.dts since not needed anymore (bsc#1167761)
+- Rename emmc2bus.patch to upstream-emmc2bus.patch to mark this is a reality upstream
+- Rename pcie-dma-ranges.patch to upstream-pcie-dma-ranges.patch to mark this is a reality upstream
+
+-------------------------------------------------------------------
+Fri Mar 20 13:58:19 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add rpi4-firware-dma-ranges-overlay.dts which fixes touch input on the
+  official 7" display (bsc#1167147)
+
+-------------------------------------------------------------------
+Fri Mar 13 11:13:45 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Get rid of remove-vmmc-emmc2.patch now that the kernel supports it (bsc#1165954)
+
+-------------------------------------------------------------------
+Wed Mar 11 17:17:54 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add uboot-bcm2835-pl011-overlay.dts which fixes booting in RPi, RPi2, RPi0 (bsc#1166414)
+
+-------------------------------------------------------------------
+Wed Mar  4 18:13:12 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add emmc2bus.patch needed for 32bit DMA support on newer bcm2711 revisions (bsc#1165143)
+
+-------------------------------------------------------------------
+Fri Feb 28 11:32:19 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add rpi4-gpio-names-overlay.dts so as to have a consistent way to access
+  GPIOs, as opposed to sysfs (bsc#1164722)
+
+-------------------------------------------------------------------
+Thu Feb 27 11:27:47 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Replace PCIE overlay rpi4-pcie-ib-size-fix-overlay.dts with patch
+  pcie-dma-ranges.patch, as RPI's firmware scans/alters that value before
+  applying overlays (bsc#1165143)
+
+-------------------------------------------------------------------
+Wed Feb 19 14:12:46 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to 6a3905568d (2020-02-03) (jsc#SLE-7296)
+ * based on rpi-5.5.y
+- Remove obsolete overlays and patches because of bump to rpi-5.5.y:
+ * rpi4-genet-overlay.dtso
+ * upstream-rpi4-genet-phy.patch
+- Add remove-vmmc-emmc2.patch fixing issues with SD cards boot
+
+-------------------------------------------------------------------
+Thu Jan 16 13:14:17 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add rpi4-thermal.dts overlay, which provides CPU thermal measurements (bsc#1160311).
+
+-------------------------------------------------------------------
+Fri Jan 10 13:33:08 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update rpi4-genet-overlay.dts and create upstream-rpi4-genet-phy.patch to fix
+  phy configuration (bsc#1160310)
+- Update to 30757c902b (2020-01-09)
+  * based on rpi-5.4.y
+
+-------------------------------------------------------------------
+Wed Nov 27 17:42:56 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- Add rpi4-genet-overlay.dts which sets the upstream compatible for the
+  network device. (jsc#SLE-7771)
+
+-------------------------------------------------------------------
+Tue Nov 26 17:21:44 UTC 2019 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add rpi4-cma-overlay.dts, which properly configures CMA on the RPi4 (SLE-7771)
+- Add rpi4-pcie-ib-size-fix-overlay.dts, which fixes RPi4 PCIe's dma-ranges
+  (SLE-7771)
+
+-------------------------------------------------------------------
+Mon Nov 11 18:29:08 UTC 2019 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add disable-vc4-overlay.dts, which simply disables vc4 (SLE-7771)
+
+-------------------------------------------------------------------
+Fri Oct  4 13:09:27 UTC 2019 - Matthias Brugger <mbrugger@suse.com>
+
+- Update to aa9b526123 (2019-09-19)
+  * based on rpi-5.3.y
+  * updates rpi-ft5406-overlay
+
+-------------------------------------------------------------------
+Thu Sep  5 15:48:17 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to c00d518f3a69 (2019-08-17)
+  * add overlays: act-led, disable-bt, disable-wifi, i2c0, i2c1,
+    miniuart-bt, 
+
+-------------------------------------------------------------------
+Thu Jun 27 11:58:01 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 534913e878 (2019-06-18):
+  * Add rpi-4-b device tree
+  * add overlays: i2c3, i2c4, i2c5, i2c6, spi-gpio40-45, spi3-1cs, 
+    spi3-2cs, spi4-1cs, spi4-2cs, spi5-1cs, spi5-2cs, spi6-1cs, 
+    spi6-2cs, uart2, uart3, uart4, uart5
+
+-------------------------------------------------------------------
+Wed Jun  5 07:38:30 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Switch branch to 'rpi-5.1.y' to match the kernel version
+- Update to f1d85e3870 (2019-06-03):
+  * remove 3dlab-nano-player, upstream-aux-interrupt (deprecated 
+    and no more needed)
+  * add draws, i-sabre-q2m, ilitek251x, iqaudio-codec, max98357a,
+    piglow, udrc
+
+-------------------------------------------------------------------
+Tue Mar 12 10:03:07 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Handle properly the branch switch in get-from-git.sh script
+- Switch branch to 'rpi-5.0.y' to match the kernel version
+- Remove upstreamed patch:
+  * upstream-rpi-ft5406-overlay.patch
+- Update to 00794df91 (2019-03-06):
+  * remove adv7282m, adv728x-m, ov5647, tc358743 and tc358743-audio
+  * update balena-fin
+
+-------------------------------------------------------------------
+Fri Mar  8 13:51:27 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Include README file for overlays as it contains useful information
+
+-------------------------------------------------------------------
+Thu Jan 31 08:52:05 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 8f862eec9 (2019-01-29):
+  * dtoverlays: Correct DT handling camera GPIOs
+  * overlays: Add mcp342x overlay
+  * overlays: mcp23017: Support the MCP23008
+  * overlays: Add ssd1306 overlay for OLED display
+  * overlays: sdio: Add enhanced 1-bit support
+  * dtoverlays: fe-pi-audio: fix sgtl5000 compatible string
+  * overlays: Update README with removal of lirc-rpi
+  * Add overlay for SLB9760 Iridium /LetsTrust TPM
+  * lirc-rpi: Remove in favour of gpio-ir
+  * overlays: Update upstream overlay
+  * dtoverlays: Add i2c on 0&1 option to TC358743, ADV7282 and OV5647
+  * overlays: Remove superfluous #address/size-cells
+  * dtoverlays: Add support for ADV7280-M, ADV7281-M and ADV7281-MA chips.
+  * arm: dt: Add DT overlays for ADV7282M, OV5647, and TC358743
+  * overlays: uart0 - return GPIOs 14 and 15 to inputs
+  * overlays: pi3-disable-bt: Clear out bt_pins node
+  * overlays: Add gpio-no-bank0-irq overlay
+  * overlays: add overrides for PoE HAT fan control
+  * Update gpio-fan-overlay.dts (#2711)
+  * devicetree: add RPi CM3 dts to arm64; mimic the RPi 3B arm64 dts 
+    implementation, by referring to the actual dts file in the arm directory
+- Remove upstream-aux-interrupt-overlay.dts as it is already in 
+  arch/arm/boot/dts/overlays/upstream-aux-interrupt-overlay.dts
+
+-------------------------------------------------------------------
+Tue Jan 15 12:56:15 UTC 2019 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add upstream-rpi-ft5406-overlay.patch which updates the touchscreen's
+  overlay to support both downstream and upstream versions of the driver
+  (FATE#326921, bsc#1122118)
+
+-------------------------------------------------------------------
+Fri Nov 30 09:29:26 UTC 2018 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to 161163f65 (2018-07-16) pulled version rpi-4.19.y (bsc#1116751)
+- Removed rpi3-hdmi-overlay.dts, not needed since exp-gpio's binding was fixed
+- Removed upstream-mmc-compatible.dts, not needed thanks to update
+- Added Conflicts statement in spec file to avoid installs with older kernels
+
+-------------------------------------------------------------------
+Tue Nov 20 12:42:02 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to f6878de4d (2018-11-15)
+
+-------------------------------------------------------------------
+Wed Mar 14 14:47:23 UTC 2018 - agraf@suse.com
+
+- Update to ad350a581a44 (2018-03-14)
+  - Add rpi3-plus dtb which gives us a proper compatible string
+
+-------------------------------------------------------------------
+Wed Mar 14 09:47:28 UTC 2018 - agraf@suse.com
+
+- Update to d35408f26 (2018-03-13)
+  - Fix wifi detection on RPi3 (bsc#1085262)
+
+-------------------------------------------------------------------
+Mon Feb 19 10:42:24 UTC 2018 - agraf@suse.com
+
+- Add overlays to match previous U-Boot provided DT:
+  - rpi3-hdmi-overlay.dts
+  - upstream-mmc-overlay.dts
+  - upstream-aux-interrupt-overlay.dts
+
+-------------------------------------------------------------------
+Fri Feb 16 15:40:47 UTC 2018 - agraf@suse.com
+
+- Initial commit of 7ba7fbcc4 (2018-02-02)

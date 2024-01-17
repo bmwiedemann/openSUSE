@@ -1,0 +1,9 @@
+<package name="perl-IO-Handle-Util" project="openSUSE:Factory">
+  <title>Routines to Manipulate or Create IO::Handle Objects</title>
+  <description>This module provides a number of helpful routines to manipulate or create
+IO::Handle like objects.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-IO-Handle-Util"/>
+  <url>http://search.cpan.org/dist/IO-Handle-Util</url>
+</package>

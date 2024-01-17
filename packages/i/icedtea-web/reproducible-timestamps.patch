@@ -1,0 +1,38 @@
+diff --git a/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/HtmlFormatter.java b/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/HtmlFormatter.java
+index 643fcfd..c0a082c 100644
+--- a/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/HtmlFormatter.java
++++ b/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/HtmlFormatter.java
+@@ -95,6 +95,10 @@ public class HtmlFormatter extends ReplacingTextFormatter {
+         if (includeXmlHeader) {
+             xml = "<?xml version=\"1.0\" encoding=\"" + encoding + "\"?>\n";
+         }
++        Date now = new Date();
++        if (System.getenv("SOURCE_DATE_EPOCH") != null) {
++            now = new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")));
++        }
+         return xml + "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n"
+                 + "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">\n"
+                 + "  <head>\n"
+@@ -102,7 +106,7 @@ public class HtmlFormatter extends ReplacingTextFormatter {
+                 + "    <meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=" + encoding + "\" />\n"
+                 + "  </head>\n"
+                 + "  <body>\n"
+-                + "    <H5  align=\"right\">" + id + ": " + getVersion() + ", " + JNLPRuntime.getLocalisedTimeStamp(new Date()) + "</H5>";
++                + "    <H5  align=\"right\">" + id + ": " + getVersion() + ", " + JNLPRuntime.getLocalisedTimeStamp(now) + "</H5>";
+     }
+ 
+     @Override
+diff --git a/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/ManFormatter.java b/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/ManFormatter.java
+index 9e2d1ae..9c0e595 100644
+--- a/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/ManFormatter.java
++++ b/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/ManFormatter.java
+@@ -118,6 +118,9 @@ public class ManFormatter extends ReplacingTextFormatter {
+ 
+     private String getManPageDate(boolean localize) {
+         Date now = new Date();
++        if (System.getenv("SOURCE_DATE_EPOCH") != null) {
++            now = new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")));
++        }
+         Calendar c = Calendar.getInstance();
+         c.setTime(now);
+         int day = c.get(Calendar.DAY_OF_MONTH);

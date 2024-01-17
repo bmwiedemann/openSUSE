@@ -1,0 +1,5 @@
+<package name="scala-parser-combinators" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="scala-parser-combinators"/>
+</package>

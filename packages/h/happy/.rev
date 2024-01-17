@@ -1,0 +1,265 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>18887351af082802ec934aa3f040b9df</srcmd5>
+    <version>1.18.10</version>
+    <time>1357659578</time>
+    <user>coolo</user>
+    <comment>Fixed license tag</comment>
+    <requestid>146485</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>18887351af082802ec934aa3f040b9df</srcmd5>
+    <version>1.18.10</version>
+    <time>1359109041</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>754bc501cfa22fe9fa25992f92f31188</srcmd5>
+    <version>1.18.10</version>
+    <time>1375427336</time>
+    <user>coolo</user>
+    <comment>Update to Haskell Platform 2013.2.0.0 (forwarded request 185280 from ptrommler)</comment>
+    <requestid>185453</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>754bc501cfa22fe9fa25992f92f31188</srcmd5>
+    <version>1.18.10</version>
+    <time>1379662603</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>46d9d55d86cfa884bbe1d351c3e8fa1c</srcmd5>
+    <version>1.18.10</version>
+    <time>1408957496</time>
+    <user>coolo</user>
+    <comment>enable PowerPC builds</comment>
+    <requestid>246022</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>46d9d55d86cfa884bbe1d351c3e8fa1c</srcmd5>
+    <version>1.18.10</version>
+    <time>1409301152</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b48470bbcc2d67fa4009213808e1a2fb</srcmd5>
+    <version>1.19.4</version>
+    <time>1417031715</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260178</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c54ef359054b256e286ac14cf0d17643</srcmd5>
+    <version>1.19.4</version>
+    <time>1423596225</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>284949</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cb253b8cc47a9cbf2d30f19194639d9c</srcmd5>
+    <version>1.19.5</version>
+    <time>1431493961</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>306437</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d12a5f08e55f94e0b263793eb5ec80b2</srcmd5>
+    <version>1.19.5</version>
+    <time>1440337406</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324500</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b5db0537919fa44b14be3127e59943d5</srcmd5>
+    <version>1.19.5</version>
+    <time>1469081636</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411630</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>c7696cd0bdfc1a8123e679c49add9591</srcmd5>
+    <version>1.19.5</version>
+    <time>1496534180</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>494208</requestid>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>08623fe8d07998f9b37e9c3d3da4fc3b</srcmd5>
+    <version>1.19.5</version>
+    <time>1500275435</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510096</requestid>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>6bbf952121548ee12979570a390e5511</srcmd5>
+    <version>1.19.5</version>
+    <time>1505507342</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525769</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1d98cec68b7a0f188a75fa7ffc9ddb53</srcmd5>
+    <version>1.19.9</version>
+    <time>1527675607</time>
+    <user>dimstar_suse</user>
+    <comment>Update happy to version 1.19.9.</comment>
+    <requestid>609802</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>9f3fd80d5cfa78312e0c36e4e0ddeca5</srcmd5>
+    <version>1.19.9</version>
+    <time>1532445814</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Another tweak for SLE 12
+  * use plain make to build documentation
+
+- Fix build on SLE 12 SP 3
+  * configure in doc directory chokes on
+    --disable-dependency-tracking
+
+- temporary disable tests
+- update to 1.19.5
+* strict version requirement by Haskell Platform
+* Code cleanups (thanks Index Int &lt;vlad.z.4096@gmail.com&gt;)
+- change licence to BSD-2-Clause
+* fixed upstream
+- spec file cleanup and reformatting by OBS service
+- fixed license tag
+- make service localonly for Factory submission
+- update to 1.18.10 from upstream for Haskell Platform 2012.4.0.0
+- dropped BuildRequires xmltex (not needed)
+- update to 1.18.9 from upstream for Haskell Platform 2012.2.0.0
+- patch file added
+- build, install and package man page
+- BR autoconf explicitly
+- Added ghc-mtl-devel BR
+- Initial packaging.</comment>
+    <requestid>623903</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>7d313f21a3567145d51ead98d5e310d8</srcmd5>
+    <version>1.19.9</version>
+    <time>1540448511</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>643334</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0538b76cba914e87738f37f41d90ac71</srcmd5>
+    <version>1.19.10</version>
+    <time>1558129405</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>703482</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>870d87c62cd9c353c4c628337fab4f4e</srcmd5>
+    <version>1.19.11</version>
+    <time>1560338340</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>709207</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6bf7d329e92b74c7b72164ef1245fbc1</srcmd5>
+    <version>1.19.12</version>
+    <time>1571402127</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>737228</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>f7c258456b143e953530bb606e342296</srcmd5>
+    <version>1.19.12</version>
+    <time>1577451570</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759571</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>38ef4ace0806dd9401b3bc6ea1be4948</srcmd5>
+    <version>1.19.12</version>
+    <time>1592580123</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815229</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>f5849cb65947906465c5d92c18e32985</srcmd5>
+    <version>1.19.12</version>
+    <time>1598643729</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829518</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ada2564d2970f8f83c3291a54f04fac9</srcmd5>
+    <version>1.20.0</version>
+    <time>1599506572</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>831335</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>25ae2844f3a02dfffd736f51c45971cc</srcmd5>
+    <version>1.20.0</version>
+    <time>1608634193</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857685</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1fdb931dd9a63616607a65f409f06058</srcmd5>
+    <version>1.21.0</version>
+    <time>1636663070</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>930453</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>8ece3a68f6508814b3e4cfa76eeecb76</srcmd5>
+    <version>1.20.0</version>
+    <time>1644617406</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953571</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>5e7e0d476dc3da758e78d690f5d7f631</srcmd5>
+    <version>1.20.0</version>
+    <time>1659382262</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>987121</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1069129181e63a825ec5297c01e230ab</srcmd5>
+    <version>1.20.1.1</version>
+    <time>1680636315</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076151</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>9bd43de374176c4de58bb33f230ebfa0</srcmd5>
+    <version>1.20.1.1</version>
+    <time>1697061394</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1116854</requestid>
+  </revision>
+</revisionlist>

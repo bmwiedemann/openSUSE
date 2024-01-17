@@ -1,0 +1,45 @@
+From 3dd1661a3d91671ca6c977c2e514f47d807be79d Mon Sep 17 00:00:00 2001
+From: Craig Small <csmall@dropbear.xyz>
+Date: Mon, 29 Mar 2021 22:11:27 +1100
+Subject: [PATCH] docs: psr ps field is last run processor
+
+The ps.1 manpage incorrectly stated that psr field showed the
+processor the process was assigned to. However if the assignment
+has changed but the process has not run, then the field doesn't
+change.
+
+Some digging by @srikard showed it wasn't the processor assigned
+but the last one it was run on. The man page now correctly
+describes psr in that way.
+
+References:
+ procps-ng/procps#187
+---
+ ps/ps.1 | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git ps/ps.1 ps/ps.1
+index 8678123..b433655 100644
+--- ps/ps.1
++++ ps/ps.1
+|@@ -4,7 +4,7 @@
+| .\" Quick hack conversion by Albert Cahalan, 1998.
+| .\" Licensed under version 2 of the Gnu General Public License.
+| .\"
+|-.TH PS "1" "2021-03-05" "procps-ng" "User Commands"
+|+.TH PS "1" "2021-03-29" "procps-ng" "User Commands"
+| .\"
+| .\" To render this page:
+| .\"    groff -t -b -man -X -P-resolution -P100 -Tps ps.1 &
+@@ -1518,7 +1518,7 @@ priority of the process.  Higher number means lower priority.
+ T}
+ 
+ psr	PSR	T{
+-processor that process is currently assigned to.
++processor that process last executed on.
+ T}
+ 
+ rgid	RGID	T{
+-- 
+2.26.2
+

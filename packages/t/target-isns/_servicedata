@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+            <param name="url">https://github.com/open-iscsi/target-isns.git</param>
+          <param name="changesrevision">52e4fd427b1aff902ef4e7bce9a9c2f6b358a5eb</param></service></servicedata>

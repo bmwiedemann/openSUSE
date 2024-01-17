@@ -1,0 +1,13 @@
+--- a/scripts/debcommit.pl
++++ b/scripts/debcommit.pl
+@@ -663,7 +663,9 @@ sub commit {
+     } else {
+         die "debcommit: unknown program $prog";
+     }
+-    die "debcommit: commit failed\n" if (!$action_rc);
++    # mercurial 1.6 returns failure if nothing is to be committed
++    # but we still want to continue with tagging
++    die "debcommit: commit failed\n" if (!$action_rc) && (!$release);
+ }
+ 
+ sub tag {

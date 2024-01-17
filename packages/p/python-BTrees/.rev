@@ -1,0 +1,171 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>082f97935262426072fe8adfc18776c9</srcmd5>
+    <version>4.0.8</version>
+    <time>1380217600</time>
+    <user>coolo</user>
+    <comment>needed by python-ZODB3, which replaced now-deleted python-zodb3</comment>
+    <requestid>200694</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>082f97935262426072fe8adfc18776c9</srcmd5>
+    <version>4.0.8</version>
+    <time>1409302778</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>02efdcba745a154b06b5213966af26de</srcmd5>
+    <version>4.1.1</version>
+    <time>1423258709</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284548</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cc0b1b609fe5fcd0e060e93af5c8d465</srcmd5>
+    <version>4.1.2</version>
+    <time>1430891383</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>305509</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>19482e7da196e71969533b1ac6ea2325</srcmd5>
+    <version>4.4.1</version>
+    <time>1500670013</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509207</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>249173a95593f2d0f5d2691a8033af2c</srcmd5>
+    <version>4.5.1</version>
+    <time>1549916850</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v4.5.1
+  + Use pyproject.toml to specify build dependencies. This requires pip
+    18 or later to build from source.
+- 4.5.0
+  + Add support for Python 3.6 and 3.7, and drop support for Python 3.3.
+  + Raise an ``ImportError`` consistently on Python 3 if the C extension for
+    BTrees is used but the ``persistent`` C extension is not available.
+    Previously this could result in an odd ``AttributeError``.
+  + Fix the possibility of a rare crash in the C extension when
+    deallocating items.
+  + Respect the ``PURE_PYTHON`` environment variable at runtime even if
+    the C extensions are available.
+  + Always attempt to build the C extensions, but make their success
+    optional.
+  + Fix a ``DeprecationWarning`` that could come from I and L objects in
+    Python 2 in pure-Python mode.
+- Use %license (forwarded request 673139 from jayvdb)</comment>
+    <requestid>673140</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5d410a655903077cd992b78d3cc258d2</srcmd5>
+    <version>4.6.0</version>
+    <time>1565097109</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721097</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fc2796c76d738902548551bcb9e9e53b</srcmd5>
+    <version>4.6.0</version>
+    <time>1571210033</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738297</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>56dbf84430081e28198c970ad4c10a3e</srcmd5>
+    <version>4.6.1</version>
+    <time>1579194877</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.6.1
+  * Add support for Python 3.8. (forwarded request 764017 from mcalabkova)</comment>
+    <requestid>764041</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9ddda309088d0359ca4368b2c68f7e08</srcmd5>
+    <version>4.7.1</version>
+    <time>1585265378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788269</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>17ded175975652afe9ca356c3b61e94a</srcmd5>
+    <version>4.7.2</version>
+    <time>1586973204</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not bother with documentation
+- Update to 4.7.2:
+  * Fix more cases of C and Python inconsistency.</comment>
+    <requestid>793790</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4d15be95c12f1a5b4fc256d33939b34f</srcmd5>
+    <version>4.8.0</version>
+    <time>1622536370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895163</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>effe20f0d61f501ed98da6760bfb76a2</srcmd5>
+    <version>4.8.0</version>
+    <time>1642835874</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>947626</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>51f0cda962bc7e2598752d67b3a3a9f8</srcmd5>
+    <version>4.11.0</version>
+    <time>1668514697</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1035606</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dbf3d498c24a977fca935019bf2ecd4a</srcmd5>
+    <version>4.11.3</version>
+    <time>1672851041</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.11.3:
+  * point release to rebuild full set of wheels
+  * We no longer provide 32bit wheels for the Windows platform, only x86_64.</comment>
+    <requestid>1046210</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>67e943efe82d221dcac9762162174e32</srcmd5>
+    <version>5.0</version>
+    <time>1676827124</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0:
+  * Build Linux binary wheels for Python 3.11.
+  * Drop support for Python 2.7, 3.5, 3.6.</comment>
+    <requestid>1066267</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>e86ec484faae4b8348af4b48b65f4af8</srcmd5>
+    <version>5.0</version>
+    <time>1686576256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092070</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>62f3f1053b24a423e3d72ec77d77729b</srcmd5>
+    <version>5.1</version>
+    <time>1699183108</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.1:
+  * Drop using setup_requires due to constant problems on GHA.
+  * Add support for Python 3.12.
+</comment>
+    <requestid>1122970</requestid>
+  </revision>
+</revisionlist>

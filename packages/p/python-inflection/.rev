@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a6b14982c6008e13ef072295f001c950</srcmd5>
+    <version>0.3.1</version>
+    <time>1513245588</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package for version 0.3.1
+</comment>
+    <requestid>556401</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>562ae33815c016e63a74d608f4886f3c</srcmd5>
+    <version>0.3.1</version>
+    <time>1545647905</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659440</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d87e376974eb8f3e5455b95d21cf7366</srcmd5>
+    <version>0.4.0</version>
+    <time>1586869880</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>793755</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ab14243fad49c9c72be4d23cbf3691f1</srcmd5>
+    <version>0.5.0</version>
+    <time>1596565495</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>824332</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>db65beb87f63db277744ad8b367aecb3</srcmd5>
+    <version>0.5.1</version>
+    <time>1598726676</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>830446</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>892efbe54f36c574c05246e3777174e3</srcmd5>
+    <version>0.5.1</version>
+    <time>1622536656</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895757</requestid>
+  </revision>
+</revisionlist>

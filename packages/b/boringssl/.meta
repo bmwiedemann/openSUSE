@@ -1,0 +1,8 @@
+<package name="boringssl" project="openSUSE:Factory">
+  <title>BoringSSL</title>
+  <description>BoringSSL is an open-source implementation of the Secure Sockets Layer
+(SSL) and Transport Layer Security (TLS) protocols. It derives from
+OpenSSL.</description>
+  <devel project="security:tls" package="boringssl"/>
+  <url>https://boringssl.googlesource.com/boringssl/</url>
+</package>

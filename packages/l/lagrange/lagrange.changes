@@ -1,0 +1,1782 @@
+-------------------------------------------------------------------
+Tue Dec 12 21:05:50 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.17.5
+  - Fixed a few small memory leaks.
+  - Fixed unnecessary copying of data while waiting for an audio buffer to
+    become playable.
+  - Gopher: Detect audio media type from file extension with the s item type
+    (it's not always WAV).
+  - Content that uses charset=utf-8 is checked for validity. If the encoding is
+    invalid, the content is instead decoded as CP437 (if it has ANSI escapes;
+    possibly it's ASCII art) or just Latin-1.
+  - Remove ANSI escapes from window titles.
+  - Modified rule for when 'text/plain' is assumed to actually be 'text/gemini'
+    based on the file extension.
+
+-------------------------------------------------------------------
+Mon Nov 20 16:38:42 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.17.4
+  - Removed automatic horizontal scrolling of wide preformatted blocks. Instead,
+    hold down the Shift key to scroll horizontally with the mouse wheel.
+  - Fixed an event processing issue where some events were not handled as
+    expected, for instance when opening a link into split view the opened link
+    was not highlighted.
+  - Fixed links not reacting to mouse hover after jumping to a heading from the
+    Outline.
+  - Fixed input prompt behaving strangely after changing font size. (Lines are
+    now forced to rewrap after changing the font.)
+  - Fixed mouse cursor not changing its shape in all open windows.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Sat Nov  4 19:22:03 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.17.3
+  - Fixed activating a pinned identity when opening a bookmark via the Bookmarks
+    menu.
+  - Fixed initial scope of a created identity when using the default selection.
+  - Fixed issues with dropdown menus when the menu appears as a popup window.
+  - Fixed clearing the pinned identity of a bookmark.
+
+-------------------------------------------------------------------
+Wed Oct 25 17:02:44 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.17.2
+  - Tabs opened in background are immediately added to the URL history.
+  - Mouse wheel direction switches back to vertical when a wide block has been
+    scrolled all the way.
+  - Fixed current text selection extending during scrolling even after mouse
+    button has been released.
+  - Fixed drag-to-select with the mouse being too sensitive to mouse movement.
+  - Fixed the numbered links key (default: Alt/Option) while navigating to new
+    pages. It is no longer necessary to release and press the key again on the
+    new page.
+  - Fixed long bookmark titles making the Bookmarks menu too wide.
+  - ANSI Cursor Forward control sequence ("CSI n C") is converted to a series of
+    spaces, but only in preformatted text.
+  - Fixed parsing of ANSI SGR sequences with many attributes concatenated (e.g.,
+    0;1;40;30).
+  - Fixed inline image loading indicator overdrawing itself, becoming unreadable.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Sun Oct 22 12:48:32 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.17.1
+  - Added "Vibrant Light" color theme.
+  - Improved readability of "Colorful Light" headings.
+  - Tuned autoscrolling when selecting text to avoid accidental scrolling.
+  - Preformatted blocks no longer switch to a smaller font to fit to the page.
+  - Mouse wheel scrolls a wide preformatted block when hovering over the block,
+    instead of scrolling vertically. You can hold the Shift key to swap the
+    scroll direction.
+  - Fixed horizontal scrolling issues with preformatted blocks: only scroll if
+    needed, allow scrolling anywhere on the block and not just on non-empty text
+    lines, and when scrolling disallow swipe navigation over the area.
+  - Fixed visual artifacts around and next to preformatted blocks (e.g.,
+    streaking).
+  - Fixed potential crash after (un)folding a preformatted block.
+  - Fixed links being non-clickable after searching text on a page has scrolled
+    the view.
+  - Fixed scroll position being reset when reloading the page.
+  - Fixed initial size of the upload dialog when font size has been changed.
+  - Fixed "View as Plain Text" context menu item after reloading a page.
+  - Strip any null characters from the page source during whitespace
+    normalization.
+
+-------------------------------------------------------------------
+Sat Oct  7 16:25:40 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.17.0
+  - Caps Lock is no longer treated as a modifier key in keybindings. Use
+    --capslock to enable it.
+  - New features:
+    - The Bookmarks menu lists all of your bookmarks and folders.
+    - Snippets: A collection of short text segments that can be pasted into any
+      input field via the context menu. For example, useful for your gemlog
+      header/footer and other often-repeated parts.
+    - Snippets can be managed in Preferences > Snippets and created by
+      right-clicking on links or selected text on a page.
+    - Custom search queries: Snippets whose name starts with a bang (e.g., "!w")
+      can be invoked in the URL field to make customized queries. The snippet
+      content should be a Gemini search URL, for example:
+      "gemini://gemi.dev/cgi-bin/wp.cgi/search".
+    - Quick lookup shows matching snippets as a new type of search result.
+    - Keyboard shortcut Shift+1/⇧1 for conveniently making a snippet query.
+    - Input prompts, upload dialogs, and bookmark editors can be resized by
+      dragging the left or right edge.
+    - Text zooming in the upload text editor.
+    - Gemtext syntax highlighting in the upload dialog.
+    - Recently submitted input prompt contents are saved persistently and can be
+      restored via the Ellipsis utility menu in the prompt dialog.
+    - You can force the input prompt to appear before a certain URL is requested
+      so you can enter a query string. This is useful for avoiding an extra
+      request when it is known that a URL will require input (e.g., search
+      engine, game input).
+    - When importing links as bookmarks, you can optionally create subfolders
+      from headings. You can also choose a destination folder for the imported
+      bookmarks.
+    - Quickly add/move a bookmark into a folder with the navbar bookmark button
+      context menu.
+    - User-selectable feed refresh interval. Previously the interval been
+      hardcoded to four hours. (Based on a patch by Michael Nordmeyer.)
+    - Setting to never/always collapse preformatted blocks, disabling the
+      ability to toggle the folding.
+    - "Fold All" and "Unfold All" in Bookmarks sidebar context menu.
+    - "Search" context menu item on selected text to make a search query with
+      it.
+    - "Use as Search URL" in link context menu.
+    - "Mark All Links as Visited" in the Tools submenu.
+    - Option --capslock: enable Caps Lock as a modifier in keybindings.
+    - Option --theme (-t): change UI color theme of open Lagrange windows. Can
+      be used in scripts to switch the theme automatically (for example, see the
+      darkman utility; thanks to Jason McBrayer for suggesting this).
+    - Support for the Nex protocol
+      (nex://nightfall.city/nex/info/specification.txt).
+    - Keyboard shortcut for deleting bookmarks (Backspace). Useful when the
+      Bookmarks list has input focus.
+  - Changes and enhancements:
+    - Menus can have submenus. Several of the old menus were reorganized
+      accordingly. For example, the page context menu has a Tools submenu for
+      translation, Titan uploads, etc.
+    - Show unsupported media types as plain text if the content is valid UTF-8
+      encoded text.
+    - The page scrolls while selecting text near top/bottom.
+    - Display a logo graphic in empty windows/tabs as a placeholder.
+    - Visualize input focus in lists by drawing a focus rectangle around the
+      current item.
+    - Menu separators are taller and more distinct for a clearer item
+      separation.
+    - Adjusted colors of the Import Identity dialog.
+    - Auto-hide sidebars when resizing a window/split if the document area would
+      become narrower than the sidebar.
+    - Tuned theme color palette and improved background colors of "Colorful
+      Light".
+    - Newly created client certificates have a default expiration date in the
+      year 9999, which means they won't expire. One can still also set a specific
+      date as before.
+    - Periodically save UI state (including each tab's navigation history) to
+      prevent data loss in case the app crashes. These runtime saves do not
+      include any cached page content. The full cache is still saved as before
+      when quitting the app.
+  - Fixes:
+    - Potential crash at shutdown when a feed update is ongoing.
+    - Problems with window refresh when multiple windows are open. For example,
+      the cursor not blinking in input fields.
+    - Incorrect name displayed in page banner when URL query string contains a
+      tilde name.
+    - Fixed navbar spinner animation going too fast when both sides of a split
+      view are being loaded.
+    - Glitches during swipe navigation (touch screens, macOS trackpad). Behavior
+      is more robust at ends of history and when content is not immediately
+      available in cache.
+    - Fixed opening of context menus via keyboard (incorrect click position).
+    - Fixed a text rendering issue where glyphs were incorrect when preceded by
+      a Narrow No-Break Space.
+
+-------------------------------------------------------------------
+Sun Aug 20 10:45:27 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.16.7
+  - Workaround for window refresh potentially getting stuck while receiving a
+    streaming response. (Limit update frequency.)
+  - Don't navigate back when stopping a streaming request.
+
+-------------------------------------------------------------------
+Mon Jul 31 11:56:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16.6:
+  * Fix crash related to invalid UTF-8 on a link line
+  * Fix splitting long lines in input fields
+
+-------------------------------------------------------------------
+Tue Jun 27 15:12:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16.5:
+  * Changed where new tabs are placed with the regular "New Tab" command.
+
+-------------------------------------------------------------------
+Tue Jun 13 14:50:24 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.16.4
+  - Context/button menus use a popup window if they would otherwise have to
+    scroll (e.g., "Dark theme:" in Preferences and "Folder:" in the bookmark
+    editor).
+  - Improved tab closing order: close all sibling tabs opened from an origin tab
+    before switching back to the origin tab.
+  - Center a short title under the icon in the page margin.
+  - Fixed navbar URL text selection when opening new tabs (keep all selected).
+  - Fixed too much empty space in the input prompt layout.
+  - Fixed input field not being updated after cutting text.
+  - Fixed stuck mouse button when opening a context menu while performing a
+    drag.
+  - Fixed incorrect mouse button state and other potential incorrect behavior
+    after resizing the window.
+
+-------------------------------------------------------------------
+Sat Jun 10 15:53:11 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.16.3
+  - Remove whitespace from ends of a URL pasted into an input field.
+  - Fixed links whose label is a single Emoji sometimes not appearing.
+  - Fixed zooming not affecting unfocused windows right away.
+  - Fixed current zoom level not being applied to newly created windows.
+  - Fixed updating of selected text range in navbar URL when changing tabs.
+  - Fixed mouse wheel scrolling not working in unfocused windows.
+
+-------------------------------------------------------------------
+Wed May 31 19:37:39 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.16.2
+  - Set input focus to navbar URL field when opening an empty window.
+  - The navbar URL field only omits the "gemini:" scheme when the text actually
+    doesn't fit horizontally, and only when the field is inactive.
+  - Fixed problems with handling URLs in input fields. For example, copying the
+    URL to the clipboard sometimes had unexpected or incorrect results.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Tue May 23 09:08:00 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.16.1
+  - Fixed handling of the AltGr key during text input (again).
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Mon May 22 04:25:38 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.16.0
+  - New features:
+    - Input prompt font size can be changed with the Zoom In/Out/Reset keys.
+    - Preferences: Option for silently following scheme-changing redirects
+      (Network tab; default: no).
+  - Changes and enhancements:
+    - Tab creation and closing follows common browser conventions: new tabs are
+      opened next to the most recently opened tab, so they retain the correct
+      left-to-right order.
+    - Preferences: Moved cache/memory size settings to Content tab.
+    - Page title in margin omits prefix Emoji if it matches the bookmark icon.
+    - Adjusted word-wrapping to break at a period inside a word (e.g., domain
+      names).
+    - If the page is missing a level 1 heading, use the first content line as
+      the title.
+  - Fixes:
+    - Fixed tab order getting reversed when restoring tabs at launch.
+    - Fixed order of opened tabs when using "Open in New Tabs" on a bookmark
+      folder.
+    - Fixed input focus going to the wrong split when pressing Ctrl+L/ with an
+      Upload dialog open.
+    - Fixed text fields becoming nonresponsive when multiple fields are active.
+    - Fixed input query dialogs not being hidden when the tab changes.
+    - Fixed incorrect parsing of "hostname:port" in URL field (without // or
+      gemini://).
+    - Fixed potential crash when switching between cached pages while navigating
+      in history.
+    - Fixed potential crash when closing split view during a scrolling animation
+
+-------------------------------------------------------------------
+Sun Apr 30 11:14:17 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.15.9
+  - Added new UI translation: Basque (euskara).
+  - Improved opening and closing of tabs. New tabs now open to the right of the
+    current tab.
+  - Allow scaling up small images up to 2x size.
+  - Fixed possible crash when closing tabs.
+  - Fixed crashes on Wayland due to use of X11-specific code.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Sat Apr  8 16:01:12 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.15.8
+  - Fixed activation of a pinned identity in inline media requests.
+  - Fixed potential crash when changing split view mode during a UI animation.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Tue Mar 28 19:14:45 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.15.7
+  - Fixed window contents getting frozen after Reset Zoom when zoom level is
+    already at 100%.
+  - Fixed key modifiers not being recognized before a text field has been
+    activated. (Affects some versions of SDL.)
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Thu Mar 23 08:13:46 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.15.6
+  - The Outline tab in the sidebar now uses regular UI colors, like other
+    sidebar tabs.
+  - Fixed handling of the AltGr key during text input.
+  - Fixed incorrect background colors for Preferences tab buttons with certain
+    themes (e.g., Colorful Light).
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Mon Mar 20 15:24:59 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.15.5
+  - Added several new translated languages: Azerbaijani, Catalan, Czech, Danish,
+    Dutch, Esperanto, Finnish, Greek, Hebrew, Hungarian, Indonesian, Irish,
+    Korean, Persian, Polish, Slovak, Swedish, Turkish, and Ukrainian.
+    (LibreTranslate server was upgraded to v1.3.10.)
+  - Added "Auto-detect" as the default source language for translation.
+  - Added option to skip preformatted blocks when translating a page.
+  - Fixed translation of link lines. Only the link label is now translated.
+  - Fixed lines on translated pages sometimes shifting position and getting the
+    wrong line types.
+  - Fixed handling of redirects when fetching subscribed feed pages.
+  - Fixed saving the "Split view pinning" setting so it doesn't reset when
+    relaunching the app.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Fri Mar 10 15:24:18 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update 1.15.4
+  - Fixed crash when trying to open a tab, New Identity dialog, or the Identity
+    menu when the Preferences window is focused.
+  - Fixed potential crash if switching focus to a widget being dismissed (e.g.,
+    popup going away).
+  - Fixed text input becoming unresponsive when focus switches from a popup
+    being dismissed to a new popup.
+  - Fixed closing the Preferences window with Ctrl+W.
+  - Fixed unnecessary page layout update when closing Preferences.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Wed Mar  1 09:46:16 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.15.3
+  - Fixed handling of redirects in the inline media player and file downloader.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:20:49 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.15.2
+  - Fixed moving input focus to the next window when closing a window.
+  - Centered footer info text for better balance.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Tue Jan 31 22:23:59 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- Update to 1.15.1
+  - Fixed opening multiple Preferences windows at the same time.
+  - Fixed the Preferences window missing a window icon.
+  - Footer information moved out of the margin area and under the page content.
+  - Updated UI translations.
+- Update to 1.15.0
+  - New features:
+    - Preferences dialog opens as a separate window.
+    - Option --prefs-sheet: open Preferences as a sheet like in previous
+      releases.
+    - Reordering tabs: tab buttons can be dragged with the mouse, and tabs can
+      be moved left/right using tab context menu items or keyboard shortcuts.
+    - Move a tab to the other side of a split view (tab context menu).
+    - Move a tab to a new window (tab context menu).
+    - Added a "Window" menu to the menu bar that has actions for manipulating
+      and switching the active window, and duplicating and switching tabs. (On
+      macOS, this menu has already been available.)
+    - Gopher: Option to disable Gemini styling on Gopher menu pages. When
+      disabled, whitespace is not normalized and all non-link lines are
+      presented as regular paragraph text.
+    - Japanese UI translation (13% complete).
+  - Changes and enhancements:
+    - Redesigned Preferences dialog with vertical tabs and a new organization of
+      the settings. "Fonts" and "Colors" are removed, and there is a new
+      "Content" tab.
+    - Mouse cursor turns into the I-beam only over selectable text.
+    - Indicate that tab autoreloading is enabled by changing the appearance of
+      the navbar reload button.
+    - GTK: Request dark window theme if the app UI color theme is dark.
+    - Prevent high-resolution mice from flooding event processing with too many
+      motion events and delaying UI refresh.
+    - Updated UI translations.
+  - Fixes:
+    - Changing the UI scaling factor will now affect all existing and newly
+      created windows.
+    - Possible crash when duplicating a tab.
+    - Issues with event processing when multiple windows are open.
+    - Workaround for a hang when running many parallel requests with MIME filter
+      hooks.
+
+-------------------------------------------------------------------
+Sun Jan 15 21:29:12 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- Update to 1.14.2
+  - Fixed a potential crash when using musl libc.
+  - Fixed a potential crash when closing tabs in split view mode.
+  - Fixed inconsistent spacing after level 1 headings.
+  - Fixed endless reload animation events if a split view is closed while
+    loading a page.
+  - Fixed page load progress indicator that was being obscured by active split
+    marker in split view.
+  - Fixed potential crash when trying to reuse a TLS session.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Mon Nov 28 08:44:40 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.14.1
+  - Fixed possible crash when closing a tab with the outline sidebar visible.
+  - Fixed hang when setting a folder's parent to itself in the Edit Folder
+    dialog.
+  - Updated UI translations.
+- update to 1.14.0
+  - New features:
+    - A bookmark folder can be opened in new tabs, in the same window or a new
+      one, one tab per bookmark.
+    - Pinned bookmark identities. A simpler way to use identities. When the
+      "Pinned identity" property is set on a bookmark, opening the bookmark
+      causes the selected identity to be "pinned" to the tab: while you stay on
+      the same site, the identity remains in use when opening links. However,
+      when opening a link to another site, a new tab gets opened. (The old way
+      of per-URL identities is still available, too.)
+    - New identities can be created for use in the current directory (as opposed
+      to domain or page).
+    - Option --dump (-d) to print contents of URLs/paths to stdout. Metadata is
+      printed to stderr.
+    - Option --dump-identity (-I) selects the identity to use with --dump.
+    - Option --replace-tab URL opens a URL, replacing contents of the active
+      tab.
+    - Option --user DIR (-U) to set the directory where user data is stored.
+  - Changes and enhancements:
+    - When creating new identities, make it clearer what the scope of usage will
+      be. The UI actions explicitly say "New Identity for Domain" when the
+      default usage will be the entire domain.
+    - URLs opened via system-level handlers always open a new tab, like URLs
+      opened via the command line.
+    - MIME types of many new file extensions are recognized (courtesy of John
+      Cowan).
+    - The regular expression library PCRE2 is preferred over PCRE, if available.
+      The older library is in maintenance mode.
+    - Updated UI translations.
+  - Fixes:
+    - Accidental backwards navigation when quickly refreshing the page twice.
+    - Page scroll position is kept when loading finishes, if the user already
+      scrolled during loading.
+    - Schemeless relative URLs no longer assume "gemini" as the scheme, instead
+      using the current page's scheme as default.
+    - Opening a feed entry in a background tab will mark is as read, like
+      opening in the foreground does.
+    - ANSI escapes 39 and 49 (reset FG/BG color to default) were not working.
+
+-------------------------------------------------------------------
+Sun Nov  6 11:43:23 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.13.8
+  - Fixed issues with text selection and range visualization.
+
+-------------------------------------------------------------------
+Mon Jul  4 09:16:20 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.13.7
+  - Fixed reporting of errors related to a proxy server certificate.
+  - An untrusted proxy server certificate can be trusted via Page Information.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Thu May 26 09:38:07 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.13.6
+  - Added option to split tabs evenly, excluding sidebar widths (default: no).
+  - Fixed crash when switching view to plain text.
+  - Fixed manually entered image URLs inadvertently opening inline.
+  - Fixed mouse event handling in split view mode when a dialog is open on one
+    side. The other side would not receive wheel events unless input focus was
+    first switched over.
+  - Fixed issues with popup menu positioning.
+  - Fixed drawing of the widget scroll indicator when a widget doesn't fit
+    vertically in the window.
+  - Possible workaround for an issue with mouse hover autoscrolling on an
+    external displays.
+  - Don't open an endless number of bookmark creation/edit dialogs when holding
+    down the keyboard shortcut (Ctrl+D/⌘D).
+  - Percent-encode backslashes in externally opened URLs, for improved
+    compatibility.
+  - Custom link icons are allowed with unsupported/unrecognized protocols (i.e.,
+    Emoji at the start of link label).
+  - Use file name as the tab/window title if the content has no headings.
+  - Avoid redundancy in tab/window titles ("Cosmos — Cosmos" → "Cosmos").
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Fri May 20 15:47:30 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.13.5
+  - Parent navigation assumes directory URL is equivalent to index page URL
+    (e.g., "/path/" == "/path/index.gmi"): this now only applies to Gemini URLs,
+    and checks for "index.gemini", too, as per Gemini Best Practices.
+  - Fixed crash when determining the name of a ZIP file from a URL.
+  - Fixed misparsing of URL to form the name of a downloaded file (%23 decoded
+    too early).
+
+-------------------------------------------------------------------
+Thu May 12 19:36:23 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.13.4
+  - TUI: Improved detection of supported color modes. The preferred mode is a
+    modifiable palette with 256+ colors. As a fallback, use a fixed VGA palette,
+    or basic monochrome if the terminal doesn't support colors.
+  - TUI: Tuned build flags in build-tui.sh as a Linux workaround (set -O1 on
+    SEALCurses).
+  - TUI: Ignore the LAGRANGE_OVERRIDE_DPI environment variable.
+  - Spartan: Fixed opening URLs in other apps via operating system handlers.
+  - Updated language strings.
+
+-------------------------------------------------------------------
+Sat May  7 17:57:00 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.13.3
+  - Changed URL field bookmark indicator for better consistency.
+  - Show a proper error page if server closes the connection before a header is
+    fully received.
+  - Spartan: Prefilled prompt input from URL query string is selected by
+    default.
+  - Spartan: Fixed composing request content out of the query string.
+  - Spartan: Fixed handling of empty path in a request.
+  - Spartan: Allow opening URLs from command line.
+  - Spartan: .desktop file includes Spartan scheme handling.
+
+-------------------------------------------------------------------
+Tue May  3 16:35:05 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.13.0
+  - New features:
+    - Curses-based clagrange for running the app in the terminal. This is a
+      complete TUI port of the original GUI version including, e.g., UI
+      animations, smooth scrolling, and split view mode. clagrange has separate
+      preferences, UI state, and key bindings but the rest of the runtime files
+      are shared with the GUI version.
+    - Build option ENABLE_TUI: build a text mode version of the app so it can be
+      run in the terminal. Enabling this produces an executable called clagrange
+      that is not linked with SDL.
+    - URL field indicator that shows if there's a bookmark for the current page.
+      Clicking on the indicator opens the Add/Edit Bookmark dialog.
+    - Checking server certificates using a bundled root CA file.
+    - Build option CACERT_PEM_PATH: path of a cacert.pem file that contains
+      trusted root CA certificates. This file is included in resources.lgr.
+    - Support for the Spartan protocol. Prompt lines will open an input dialog
+      for submitting text. This can be expanded to the full upload dialog using
+      which a file can be uploaded, too.
+    - Reopening the last closed tab. The default binding is Shift+Ctrl+T.
+    - Page context menu item "View as Plain Text": show the page source as plain
+      text.
+    - Option to view Markdown as source or as a Gemtext conversion (default: as
+      source).
+  - Changes and enhancements:
+    - Updated Noto Emoji font with support for Unicode 14. There should be no
+      more missing Emoji glyphs.
+    - Improved UI keyboard navigation. The sidebar and all widgets in dialogs
+      are accessible via Tab cycling, and new shortcuts have been added for
+      opening menus. Menu items and lists are cursor-navigable. Opening the
+      sidebar automatically gives it keyboard focus.
+    - When bookmarking a page, show the Edit Bookmark dialog if there's already
+      a bookmark for the URL. The Edit Bookmark dialog has a new Duplicate
+      button for actually making a duplicate bookmark.
+    - Markdown documents support horizontal rules.
+    - TUI: Zoom controls resize the open sidebar (left sidebar if both visible).
+  - Fixes:
+    - Sidebar page outline not updated when the current tab changes.
+    - The Escape key closes the bookmark editor dialog as intended.
+    - Preferences: "Justify" option must be hidden if HarfBuzz is not used.
+- update to 1.13.1
+  - Fixed crash when opening Preferences. The text renderer had problems with
+    font lookup.
+- update to 1.13.2
+  - Fixed failure to restore the selected fonts at launch.
+  - Fixed window state being reset when quitting the app by closing the last
+    window. (No such problem was occurring when quitting via menu or Ctrl+Q.)
+
+-------------------------------------------------------------------
+Sat Apr 23 09:03:39 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.12.2
+  - Fixed positioning of the language translation dialog's progress animation.
+  - Fixed hovering on links via the keyboard (default binding: H).
+  - Tab buttons use theme background color with light Oceanic to avoid a color
+    clash.
+  - Feed refresh indicator uses the accent color.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Wed Apr  6 07:12:11 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.12.1
+  - Updated Help: export/import, user data archives, paragraph justification.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Tue Apr  5 16:56:27 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.12.0
+  - New features:
+    - Export and import user data as a ZIP archive, including identities,
+      bookmarks, site-specific settings, trusted certificate fingerprints, and
+      browsing history.
+    - UI layout options: the navigation/tab bars can be moved to the bottom of
+      the window, and one can have a traditional menu bar instead of the
+      hamburger menu.
+    - Added style option to justify paragraphs that are at least three lines
+      long.
+    - Added new content theme "Oceanic" with support for both dark and light
+      modes.
+    - Added new UI accent colors: Red, Green, Blue, Gray.
+    - Feeds: Added "Mark Below as Read" context menu item.
+    - Site-specific setting for TLS session resumption (enabled by default).
+  - Changes and enhancements:
+    - Roboto is the new default content/UI font, except on Windows where Segoe
+      UI is the default font.
+    - Toggles use symbols instead of YES/NO.
+    - UI uses only one accent color at a time.
+    - Theme palette tuning: adjusted generated palettes of Colorful Dark/Light,
+      improved the Sepia theme, and added a dark mode Sepia variant.
+    - Certain pages like Help open in a new tab. If the page is already open in
+      a tab, that tab is activated instead of opening a new one.
+    - Improved word wrapping with more breaking punctuation.
+    - Text renderer uses additional subpixel offsets with lower-density
+      displays.
+    - Text rendering optimizations: avoid repeated shaping of the same text.
+    - UI rendering optimizations.
+  - Fixes:
+    - Fixed a possible crash when clicking on the first link of a page with the
+      monospace body text option enabled.
+    - Fixed occasional small gaps between glyph backgrounds.
+    - Fixed problems with marking feed entries as read/unread.
+    - The bookmark dialog doesn't show irrelevant fields when editing a bookmark
+      folder.
+    - Spurious spaces are removed from ends of bookmark titles.
+    - Pasting text into an input field should not decode reserved URL
+      characters.
+    - Percent-encoded spaces (%20) in a file name were not decoded when saving a
+      file.
+
+-------------------------------------------------------------------
+Fri Mar 18 22:26:57 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.11.2
+  - Added a keybinding for focusing the URL field.
+  - Sidebar items (bookmarks, feed entries, history) can be middle-clicked to
+    open in a new tab. Holding Shift will open the tab in the foreground.
+  - Flags can be used as link icons. Note that additional fonts and HarfBuzz are
+    required for all the flag symbols to be visible.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Wed Mar  2 22:37:33 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.11.1
+  - Fixed opening bookmarks in a new window.
+  - Fixed use of a cached TLS session after deactivating a client certificate.
+- update to 1.11.0
+  - Downgrading back to v1.10 causes all site-specific themes to be forgotten.
+    Back up your sitespec.ini beforehand.
+  - New features:
+    - Multiple windows. Windows can be opened via the menu, Ctrl/⌘+N, or link
+      context menus.
+    - Restoring tabs at launch is now optional. Added a toggle in Preferences >
+      General.
+    - Site-specific settings (Shift+Ctrl/⌘+Comma), with options for theme
+      customization and showing ANSI escape warnings. The custom theme is based
+      on a "seed string" chosen by the user.
+    - Fontpack search. Fonts in the skyjake.fi font library have been indexed
+      based on all the glyphs they provide, so one can look up which fontpacks
+      provide any missing glyphs.
+    - "Manage Fonts" button on the Preferences > Fonts tab. It opens
+      "about:fonts".
+    - "Tab width" setting (default: 8). This controls how TAB characters are
+      displayed on pages.
+    - Setting for maximum valid URI length on 'text/gemini' link lines.
+    - Option to show images decoded from data URLs immediately after loading a
+      page. This is limited to JPEG, PNG, WebP, and GIF (no animations).
+    - "Paste and Go" in the input field context menu.
+    - TLS session caching: reduces the need for redundant handshaking by keeping
+      old TLS sessions cached for 10 minutes.
+    - UI language for Italian.
+  - Changes and enhancements:
+    - The input prompt dialog saves entered text persistently, just like the
+      Upload dialog. This prevents losing text if the dialog is closed
+      accidentally.
+    - Input field backup is done per window, e.g., "uploadbackup.2.txt".
+    - Sidebar context menus have more consistent "open" menu items, now
+      including opening the item in a new window.
+    - The missing glyphs warning dialog now shows a list of the missing code
+      points.
+    - Downloading the Classic Set fontpack is no longer suggested since
+      fontpacks can be searched as needed.
+    - Abbreviate font pack descriptions on "about:fonts". The full description
+      is shown when viewing a single fontpack.
+    - The active tab button uses the theme background color if the page color
+      theme has a bright colorful background to avoid clashing with the UI
+      accent color.
+    - Adjusted colors of the Gray and Black page themes.
+    - Added additional (small) variations to theme hues.
+    - Data URLs have their own link icon.
+    - Adjusted appearance of context menus.
+    - Updated UI translations.
+  - Fixes:
+    - Incorrect behavior and UI glitches related to data URLs. The UI will now
+      omit the encoded part of data URLs.
+    - Occasional mismatch between page and banner backgrounds. It was due to
+      loss of precision when converting colors to 8-bit RGB.
+    - Issues with changing UI metrics when a window moves between displays. Not
+      all UI elements were rescaled properly.
+    - Glitches with opening and closing context menus.
+    - TAB characters are no longer forcibly normalized to spaces.
+    - Pasting LF characters in the URL field should not be possible.
+    - Avoid reinitializing fonts more than once during startup.
+
+-------------------------------------------------------------------
+Sun Feb 20 14:36:54 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.10.6
+  - Added bindings for switching Feeds list to Unread/All mode.
+  - Fixed normalization of empty Gemini URL paths to / as per the November 2021
+    spec update.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Sun Feb 13 08:33:17 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.10.5
+  - Added a keybinding for "Paste Preceding Line" (in input prompt menu).
+  - The "Miscellaneous Symbols and Arrows" Unicode block (U+2B00...U+2BFF) is
+    accepted as custom link icons.
+  - When mixing Emoji into preformatted text (glyphs are from different fonts),
+    lay out the Emoji as double-wide characters to avoid overlapping.
+  - Faster hover-scrolling of long popup menus.
+  - Fixed sidebars not getting updated after identity addition/deletion.
+  - Fixed "Paste Preceding Line" not being undoable.
+  - Fixed lookup of missing glyphs. Fontpack priorities are now applied as
+    documented.
+  - Fixed animation issue with sidebars in the right side of split view.
+  - Fixed a refresh issue that caused the first line of the page to be redrawn
+    continuously, spiking CPU usage.
+  - Fixed link numbers showing up next to image captions.
+  - Fixed how the link hover popup handles extremely long URLs.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Sat Feb  5 16:44:32 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.10.4
+  - Added missing ANSI background color codes 100-107 (high-intensity VGA).
+  - Fixed how the ANSI FG color is adjusted to keep text legible on dark or
+    bright backgrounds when BG color is unset.
+  - Fixed possible crash when there are ANSI escapes in the alt text of a
+    preformatted block.
+  - Fixed tab/window titles containing ANSI escapes (escapes are removed).
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Sun Jan 30 15:57:04 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.10.3
+  - Unix: Added a lagrange(1) manual page.
+  - Hide the [+] button on the tab button row if the navbar has a New Tab
+    button.
+  - "/index.gmi" is considered equal to "/" when navigating to parent directory.
+  - Site icon ❑ replaced with ⌘ ("place of interest") for a more distinct
+    appearance and to avoid similarity with the ❐ "Open in New Tab" icon.
+  - Navigating to parent or root from "about:" pages goes to "about:about" to
+    see overview of all the About pages.
+  - Gopher: Fixed navigating to root, e.g., when clicking on the page top
+    banner. Set item type to 1 to show a gophermap and not the plain source.
+  - Titan: When navigating to parent/root, switch URL scheme to "gemini". This
+    action occurs on a Titan response page, so initiating a new upload with the
+    parent/root URL is probably not appropriate.
+  - Fixed crash when a media player is active and a new download is started.
+  - Fixed crash when a line contains nothing but an ANSI escape sequence.
+  - Fixed a possible crash when saving state of subscribed feeds.
+  - Fixed the right-hand sidebar handling the U and Shift+U key events if it was
+    showing the Feeds tab, even though the sidebar was hidden.
+  - Fixed line wrapping at backslashes. They are now considered word-breaking
+    characters.
+
+-------------------------------------------------------------------
+Mon Jan 24 21:26:16 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.10.2
+  - Fixed cancelling an input query. Now pressing Cancel will navigate back to
+    the previous page as intended.
+  - Gopher: Fixed navigating to parent. Set item type to 1 to show a gophermap
+    and not the plain source.
+  - Updated Smol Emoji: added the rest of Unicode 8 Emoji glyphs.
+
+-------------------------------------------------------------------
+Thu Jan 20 21:05:18 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.10.1
+  - Fixed bottom actions of the Feeds sidebar getting hidden when all entries
+    are read. This prevented switching between Unread/All filter modes.
+  - Fixed potential crash when downloading a large file (e.g., a fontpack).
+  - Linux: SDL event handling workaround adjusted to only apply to 2.0.18+.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Mon Jan 17 17:28:51 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.10.0
+  - New features:
+    - Customizable navbar actions. Right-click on a button to change its action.
+      (Identity and hamburger buttons cannot be changed.)
+    - Identity toolbar menu can be used to switch between alternate identities.
+      If you have used multiple identities on one site, this makes it more
+      convenient to switch between them.
+    - Added "Edit Page with Titan": opens the upload dialog with current page's
+      content prefilled.
+    - Added "Paste Preceding Line" in the input prompt dialog. Potential use
+      cases include user-editable sections on a page and suggested/example input
+      values.
+    - Added footer action to open file in another app when the media type is
+      unsupported.
+    - Added option to disable cursor blinking in input fields.
+    - Added ANSI SGR codes for light and regular font weights (2, 10).
+    - macOS: Added "Show in Finder" in the Identities sidebar.
+  - Changes and enhancements:
+    - Improved image inlining: all responses with an image media type can get
+      inlined, regardless of the file extension in the URL.
+    - Inline image metadata goes under the image instead of possibly overlapping
+      the label text.
+    - Inline downloads have a context menu for relevant actions, and clicking on
+      the download opens the file.
+    - Improved highlighting of open pages. The highlight no longer goes under
+      the side elements on the page.
+    - Entry dates in feed links are de-emphasized for improved readability.
+    - Revised link hover popup. None of the information appears on the same line
+      any more (which was problematic if there wasn't enough space). Instead,
+      everything is shown in a popup at the bottom/top of the view, including
+      the identity that will be used when opening the link and the date of last
+      visit.
+    - Revised layout of the Upload dialog. There is a new edit field that lets
+      you modify the file path of the URL. Identity names are in bold.
+    - Optimized UI layout procedure and memory use during UI event processing.
+    - Audio subsystem is only initialized when actually needed.
+    - Prevent state file corruption if the app happens to get killed while state
+      is being saved.
+    - Gempub: Open books in 1:2 split mode instead of 1:1.
+    - Minor improvements in page caching.
+    - Detect when text is Bengali, Devanagari, Oriya, or Tamil.
+  - Fixes:
+    - Fixed a history caching issue: if there were multiple instances of the
+      same URL in history, only the latest one's content would be used when
+      navigating back/forward.
+    - Fixed handling of reserved characters in URLs (cf. RFC 3986, section 2.2).
+    - Fixed the copy/paste context menu not showing in input fields.
+    - Fixed duplicated warnings showing in the page banner.
+    - Fixed very narrow input fields causing the app to hang.
+    - Fixed initial scroll position in multiline input fields.
+    - Fixed layout issues in the sidebar on empty Feeds and Identities tabs.
+    - Fixed lookup results list becoming too narrow.
+    - Fixed glitches when a widget has multiple simultanous animations.
+    - Fixed mixed-language CJK word wrapping.
+    - Fixed parsing Atom feed dates with leading whitespace.
+
+-------------------------------------------------------------------
+Wed Jan  5 11:02:10 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.9.5
+  - Fixed misshapen button borders (SDL 2.0.16 line drawing workaround).
+  - Fixed actions being triggered when navigating via home row keys.
+
+-------------------------------------------------------------------
+Tue Jan  4 09:35:33 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.9.4
+  - Fixed crash when a link is missing both URL and label (just a =>).
+  - Fixed handling of foreground color escapes in the simple text renderer.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Fri Dec 24 12:38:56 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.9.3
+  - Added UI language for Dutch.
+  - Updated UI translations.
+  - Fixed the simple text renderer (build error, hanging).
+  - Fixed time zone of the "valid from" time in created client certificates.
+
+-------------------------------------------------------------------
+Wed Dec  8 22:39:51 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.9.2
+  - Fixed possible crash when switching Feeds sidebar filter mode via the popup
+    menu.
+  - Shorter label for "Mark All as Read" in Feeds sidebar actions.
+  - In popup menus, differentiate between selected item and hover item.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Mon Nov 29 19:46:09 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.9.1
+  - Added "24-Hour Time" preference. Currently it only affects the page
+    timestamp in the bottom left corner.
+  - Heading level 3 is indented like regular text lines, making the difference
+    to level 2 evident.
+  - Fixed crash when creating a top-level bookmark.
+  - Fixed drawing the page timestamp.
+  - Fixed layout of tab buttons and other resizing widgets so all available
+    space is used.
+  - Fixed tab close buttons preventing activation of very short tab buttons. The
+    close buttons only appear if there is room for them.
+  - Fixed very short tab labels not getting truncated.
+  - Fixed the New Tab button not staying at the right edge of the window,
+    depending on how many tabs are open.
+
+-------------------------------------------------------------------
+Sat Nov 27 13:43:18 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.9.0
+  - New features:
+    - Added a toolbar button for toggling the left sidebar.
+    - Added an unsplit button in the toolbar when in split view mode.
+    - Choose parent folder when creating or editing a bookmark.
+    - Support for 24-bit RGB ANSI color sequences.
+    - Support for ANSI background color escapes (disabled by default).
+    - UI language for Turkish.
+  - Changes and enhancements:
+    - Adjusted font styles of heading levels 2 and 3.
+    - Sidebar context menus also appear when clicking over the sidebar
+      background. In this case the menu contains general functions not related
+      to any item.
+    - Feeds tab in the sidebar has a redesigned action toolbar with "Mark All as
+      Read", and dropdown menu and keyboard shortcuts for changing the filter
+      mode.
+    - Feeds tab remembers the unread/all filter mode persistently.
+    - ANSI foreground colors are modified to match colored theme backgrounds
+      (e.g., Sepia).
+    - Navigating back and forward in history will skip input query prompts
+      (status 1x), showing only the query results.
+    - Ctrl+A now selects all text in input fields.
+    - The resource bundle (resources.lgr) is now a regular ZIP archive. This
+      allows it to do double duty as a fontpack containing the built-in fonts.
+      The archive contains a version number to avoid use of obsolete resources.
+  - Fixes:
+    - Fixed layout issues related to footer action buttons. Sometimes the
+      buttons would overlap page content.
+    - Fixed handling duplicate feed entries: if multiple entries in a feed have
+      the same URL, only use the first one.
+
+-------------------------------------------------------------------
+Mon Nov 22 07:22:44 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.8.3
+  - Fixed clicking on UI elements that are over the page top banner. The banner
+    would always get clicked instead.
+  - Titan upload identity is remembered as a site-specific setting. It is no
+    longer affected by selections in the Identities sidebar.
+
+-------------------------------------------------------------------
+Thu Nov 18 20:41:47 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.8.2
+  - Fixed encoding of + characters in URLs as per RFC 3986.
+  - Fixed crash when fontpack.ini specifies a file that cannot be found.
+  - Fixed incorrect title of some error messages (was showing response meta
+    info).
+  - Fixed ambiguous font dropdown menu items if some fonts have the same name.
+    Now the unique font ID will be included in these cases.
+  - Made it possible to manually trust a certificate whose subject doesn't match
+    domain name.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Sat Nov  6 19:57:17 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.8.1
+  - Added UI translations: Hungarian, Czech.
+  - Added the zip utility as a build requirement. It is used for making
+    fontpacks.
+  - Fixed build failure with the simple text renderer, i.e., when HarfBuzz is
+    disabled.
+  - Fixed issues scrolling tall popup menus (e.g., UI language selection).
+  - Fixed a line spacing artifact in long headings. With some fonts, the lines
+    were clipping each other so the spacing was restored to normal.
+  - Fixed a socket I/O issue that caused received data to be ignored when the
+    peer closed the connection prematurely.
+  - Gopher: Recognize both LF and CRLF line endings in page content.
+
+-------------------------------------------------------------------
+Sat Oct 30 19:18:41 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.8.0
+  - warning Font settings will be reset to defaults. Only a minimal set of fonts
+    is bundled with the app. If additional fonts are needed, one can use custom
+    TrueType fonts or download some from the Font Library.
+  - New features:
+    - Added a customizable font library. Open "about:fonts" to view and manage
+      the installed fonts.
+    - Added TrueType fonts as a recognized content type. When one is viewed in
+      the app (e.g., via a drag-and-drop), there is an option to install it as a
+      user font.
+    - Added fontpacks: ZIP archives containing one or more TrueType fonts and
+      parameters about how they should be used.
+    - Added support for TrueType collections (.ttc).
+    - Added new font options: separate preformatted and monospace body fonts, UI
+      font, smoothing.
+    - Added style option to show all links as bold regardless of visited status.
+    - Added warning message about missing font glyphs.
+    - Added warning message about terminal emulation. Lagrange supports a small
+      subset of ANSI escape sequences, so page appearance may be incorrect when
+      these are used in content.
+    - Added tab close buttons.
+    - Added style option to show links as bold regardless of visited status.
+    - Added a feed subscription option to exclude web links (HTTP/HTTPS), since
+      those are not viewable in the app by default.
+    - Added an automatic conversion of Markdown to Gemtext when viewing local
+      files. (Not all Markdown features are supported.)
+    - Added UI language for Ukrainian (uk).
+  - Changes and enhancements:
+    - Removed all alternative built-in content fonts.
+    - The default content font is Source Sans, same as the UI font.
+    - Redesigned error/warning messages. These now show up as part of the page
+      top banner, and their appearance can no longer be replicated via Gemtext.
+    - Warning messages are interactive. Click on them to perform relevant
+      actions.
+    - Per-pixel scrolling in input fields (e.g., when using a trackpad on
+      macOS).
+    - "file://" pages are always unthemed.
+    - Show a byte counter during large downloads instead of instantly jumping to
+      a content view. Content may not viewable correctly until the download has
+      finished.
+    - Site-specific settings (sitespec.txt) converted to .ini format. These are
+      currently used for the Titan upload port and remembering which warnings
+      have been dismissed.
+  - Fixes:
+    - Fixed an issue where the page is unscrollable until the mouse cursor is
+      moved (wrong hover state).
+    - Fixed wrapping of long input prompts and dialog messages.
+    - Titan upload token is remembered when the dialog is closed.
+    - Fixed various layout issues with page footer buttons.
+    - Fixed theme change glitches when an input prompt appears.
+
+-------------------------------------------------------------------
+Tue Oct 19 18:26:13 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.7.3
+  - Fixed a memory leak in the text renderer.
+  - Added option to place new bookmarks to the top of the bookmarks list.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
+Tue Oct 12 19:35:41 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.7.2
+  - Fixed regressions in text selection, for example when marking text leftwards
+    from the start position or when starting from outside any text run.
+  - Fixed a crash when clicking on Outline sidebar items before a page has
+    finished loading.
+  - Gopher: Handle the p line type (PNG image).
+
+-------------------------------------------------------------------
+Sun Oct  3 07:02:44 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.7.1
+  - Fixed feed entries forgetting their (un)read status after several months.
+  - Fixed feed entries being discarded before they are removed from their source
+    feed, causing them to reappear on the next refresh.
+  - Fixed failure to parse Atom feed entry timestamps that use space as the
+    date/time separator.
+  - Fixed dropdown labels staying visible in the translation dialog.
+  - Fixed showing/hiding of the feed update indicator in split view.
+  - Fixed a crash when selecting text.
+  - Added a small progress bar to the feed update indicator.
+  - When adding a bookmark/folder, the bookmarks list scrolls to show the new
+    item.
+  - Improved reordering bookmarks in a folder: an item inside a folder can be
+    moved to be the last item in the folder, or out of the folder depending on
+    which side of the boundary marker the mouse cursor is.
+
+-------------------------------------------------------------------
+Tue Sep 28 19:34:41 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.7.0
+  - Warning! Bookmarks file format has changed. Your existing bookmarks will be
+    imported to the new format. The old bookmarks.txt file can be found in the
+    config directory and is writable only by v1.6 and earlier versions.
+  - Warning! Saved UI state format has changed. Downgrading will reset window
+    state, close all tabs, and clear the navigation cache.
+  - New features:
+    - Added bookmark folders. Folders can be nested inside each other, and the
+      fold state of each folder is remembered persistently (per sidebar).
+    - The Bookmarks export/list page uses subheadings (level 2 and 3) to
+      represent folders.
+    - Added menu item to sort (a folder of) bookmarks alphabetically.
+    - Added identity selection in the Upload dialog.
+    - Added image colorization setting. Images can be viewed in grayscale or
+      using the page's theme colors.
+    - Added UI focus cycling to all buttons with Tab and Shift+Tab. This
+      includes dialog buttons and the navigation bar.
+    - Added a footer action to view application/octet-stream content depending
+      on recognized file extensions.
+    - Added support for viewing WebP images. The libwebp library is an optional
+      dependency and will be included in the build if found via pkg-config.
+    - Added command line options -w, -h for setting window size at launch.
+    - Added new UI languages: Esperanto, Spanish (Mexico), Galician,
+      Interslavic, and Slovak. Note that some of these are still works in
+      progress.
+  - Changes and enhancements:
+    - Bookmarks are now ordered manually. You can drag and drop bookmarks in the
+      list to change the order.
+    - The internal bookmarks file format is now a TOML subset instead of just
+      being three text lines per bookmark, making it more robust and
+      human-readable.
+    - Context menus and other popup menus that do not fit inside the window are
+      split off into independent windows.
+    - Dropdown button menus position themselves on the currently selected item.
+    - Dialogs that don't fit inside the window have a scroll bar. Note that such
+      dialogs can only be scrolled via mouse wheel/trackpad, not by dragging the
+      bar.
+    - Adjusted mouse wheel smooth scrolling speed for better consistency. The
+      default scrolling speeds were increased to level 2.
+    - Visited URLs are remembered for six months. This affects the unread status
+      of feed entries and the visited status of links.
+    - Adjusted the UI color palette so that the alternative accent color is used
+      more rarely. For example, input fields now use the primary accent color.
+    - Adjusted button hover/press colors for better consistency, particularly
+      when the button label uses a non-standard color.
+    - Image links (as determined by file extension) automatically use a "photo"
+      link icon if the URL is on the current site. This makes it clearer which
+      links will likely show up as an inline image.
+    - Alt+Shift+Tab inserts a tab character in input fields.
+    - UI rendering optimizations. Some UI controls (e.g., navbar, menus) will
+      buffer their contents so they can be drawn efficiently during animations.
+  - Fixes:
+    - Fixed issues with subscribed feed entry tracking. Heading entries are not
+      discarded until they are removed from the source.
+    - Fixed the sidebar unread entry count showing the wrong number after
+      subscribing to a Headings feed.
+    - Fixed handling of tab characters in the Upload text editor (when using
+      HarfBuzz).
+    - Fixed hang when wrapping a very long word (with HarfBuzz disabled).
+    - Fixed regressions in retaining window state, position, and size.
+    - Fixed URL encoding of the % character.
+    - Fixed ambiguous handling of colons in URI paths.
+    - Fixed issues with cursor positioning in multi-line input fields.
+    - Fixed issues with touch swipe events.
+    - X11: Ask SDL not to bypass the window compositor. This should avoid issues
+      on KDE, for example.
+
+-------------------------------------------------------------------
+Wed Sep  1 19:32:57 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.6.5
+  - Audio init errors are no longer fatal. SDL's error message will still be
+    printed.
+  - Fixed appearance of tab buttons (should have no top frame).
+  - Fixed a cursor position regression in input fields related to handling of
+    variation selectors (codepoint clusters). Moving the cursor to the start of
+    a wrapped line segment put the cursor in the wrong place.
+  - Fixed right-clicking on sidebar tab buttons. It was showing the wrong
+    context menu when the list had been scrolled down.
+  - Fixed crash when using the SDL2 KMSDRM video driver.
+  - Fixed minor visual artifacts in preformatted blocks and near the bottom of
+    the page.
+
+-------------------------------------------------------------------
+Sun Aug 22 09:27:19 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.6.4
+  - Local files containing UTF-8 text can be viewed regardless of their file
+    extension.
+  - Fixed input field cursor positioning and insertion problems around Emoji
+    variation selectors.
+  - Fixed "Unknown Status Code" shown in Page Information for valid status
+    codes.
+  - Fixed an issue with network requests that would make it appear the server
+    was not responding, but the request would not time out.
+  - Fixed a potential invalid memory access when clicking on sidebar items.
+  - OpenBSD: Fixed a freeze after a network request is cancelled.
+  - Fixed page contents not reflowing during a window resize.
+  - Added build option ENABLE_RESIZE_DRAW. SDL doesn't redraw window contents on
+    all platforms during resizing, so this can be used to force it.
+- Removed patch lagrange-1.6.3-Updated-AppData.patch. Applied upstream.
+
+-------------------------------------------------------------------
+Sun Aug 15 11:46:07 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- Added patch lagrange-1.6.3-Updated-AppData.patch
+  (on git this was released as a version 1.6.3-1)
+
+-------------------------------------------------------------------
+Sun Aug 15 09:55:50 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.6.3
+  - Select all text in an input field using Shift+Ctrl+A.
+  - Input fields do not lose focus when the window becomes inactive, making it
+    easier to resume input afterwards.
+  - Fixed delay after switching to split view mode.
+  - Fixed what gets drawn in an empty tab, before a document is available for
+    rendering (e.g., after switching to split view mode).
+  - Fixed highlighting the domain name in URL input fields.
+  - Fixed hiding the Gemini URL scheme in input fields when the window is
+    narrow.
+  - Fixed the line break key modifier inadvertently affecting URL input fields,
+    where line breaks are not allowed.
+  - Fixed the line break key modifier affecting the upload dialog's text field.
+  - Fixed a potential hang when closing a socket before the connection is fully
+    opened.
+  - Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  3 19:50:41 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.6.2
+  - Added --tab-url to print currently active tab's URL.
+  - Upload dialog expands to full window height when the entered text is long.
+  - Home/End keys in an input field move to start/end of the wrapped line
+    segment.
+  - Scroll with mouse wheel in input fields.
+  - Slower cursor blink rate in input fields.
+  - Adjusted dark mode colors for focused input fields.
+  - Fixed incorrect behavior in input fields when typing or deleting text while
+    holding down the Shift key.
+  - Fixed crash in Upload dialog if server responds with a redirect.
+  - Fixed buffered graphics (UI, fonts) getting lost under rare circumstances.
+  - Fixed drawing of wrapped text when the app is compiled without HarfBuzz.
+
+-------------------------------------------------------------------
+Fri Jul 30 10:02:45 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.6.1
+  - Fixed potential crash when inserting a line break in an input field.
+  - Fixed cursor positioning in fixed-length input fields.
+  - Fixed copying text in input fields (the wrong region was copied).
+  - Fixed URL input field contents not being selected after opening a new tab.
+  - Fixed Upload dialog not showing when reloading a Titan URL.
+  - Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 27 09:31:51 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.6.0
+  - warning A new TOFU trust store will be created. The old one is kept around
+    but ignored.
+  - warning App state serialization format has been updated. Downgrading to a
+    previous release will cause app state to be reset (e.g., tabs closed,
+    navigation history cleared).
+  - warning New build dependencies: HarfBuzz and GNU FriBidi (see README).
+  - New features:
+    - Added support for bidirectional text and complex scripts. العالم متنوع
+    - Right-to-left paragraphs are aligned to the right. Link icons and
+      list/quote symbols are moved to the right margin.
+    - Added support for Titan uploads. The data to upload can be entered via a
+      text field or by dropping a file on the window.
+    - Added a keybinding for opening the current page URL in the upload dialog
+      (Ctrl+U). This simply switches the page's URL scheme from gemini to titan.
+    - Added a configuration file for defining the UI color palette (see Help,
+      section 3.5).
+    - Added settings for keyboard and mouse scrolling speeds.
+    - Added setting for changing Return key behavior in input fields (line break
+      vs. accept).
+    - Added setting for adjusting line spacing.
+    - Added link context menu item for deleting local files (e.g., downloads).
+  - Changes and enhancements:
+    - Improved TOFU: if the server certificate is not trusted, the connection is
+      aborted at the TLS handshake stage. Previously, only a warning was shown
+      and the page contents were fetched regardless.
+    - Server certificate fingerprints are generated based on public keys, which
+      allows servers to renew their certificates without losing trusted status.
+    - Improved handling of expired server certificates. An error page is shown
+      and the connection is aborted at the TLS handshake stage. The user can
+      give a temporary exception to load the page.
+    - Page contents are cached in presentation form for quicker restoring during
+      back/forward navigation.
+    - Inline images/audio will not get discarded during back/forward navigation.
+      The Network > Memory Size setting determines the maximum memory usage for
+      media. Setting the Memory Size to zero is equivalent to the previous
+      behavior of discarding everything when the page changes.
+    - Debug information includes RAM use in addition to cache size. This
+      includes document layout and media stored in memory (e.g., raw pixel data
+      of images).
+    - Text input fields support larger amounts of content and expand vertically
+      only up to a limit, after which they start scrolling.
+    - Preferences have been reorganized. There is a new Fonts tab, and some
+      General settings have been moved to the Style tab. All color-related
+      settings are on the Colors tab, including UI theme colors.
+    - Links opened on a page are updated to reflect visited status even when
+      opening into a background tab or to the side.
+    - Unicode Byte Order Mark is ignored in the beginning of a page.
+    - Updated Smol Emoji with new characters.
+    - Query/Feeds indicators have a smaller appearance in a narrow window to
+      leave room for the URL.
+  - Fixes:
+    - Large lede paragraph font is not applied if the paragraph has too many
+      lines.
+    - Fixed minor kerning issues when using Nunito.
+    - Fixed sizing of characters in the Noto Symbols fonts.
+    - Improved internal handling of URLs. For example, some URLs were not being
+      recognized as visited because of percent-encoding differences.
+    - Fixed URL in the generated page for viewing a single image (spaces weren't
+      encoded).
+    - Input dialog is not dismissed unless the Cancel button is clicked or
+      Escape is pressed.
+    - Workaround for a potential hang during the closing of a socket.
+    - TLS client certificates generated by the app have identical issuer and
+      subject fields, including all the provided information and not just the
+      Common Name.
+    - Gopher: Improved detection of ASCII art.
+    - Gopher: Show contents of unrecognized line types.
+    - Gopher: Don't collapse preformatted blocks since everything is
+      preformatted in the source.
+    - Gopher: All preformatted blocks are unindented to avoid misaligned ASCII
+      art.
+
+-------------------------------------------------------------------
+Wed Jun 16 15:50:08 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.5.2
+  - Fixed pasting a PEM-formatted certificate and/or private key via clipboard
+    in Import Identity.
+  - Possible workaround for a visual glitch in the URL field.
+  - Specify StartupWMClass in .desktop file.
+  - Normalize page contents to avoid the most common issues with diacritics
+    (Unicode NFC).
+  - Expanded the set of recognized custom link icons.
+  - Updated "Smol Emoji" font with new glyphs.
+  - Allow use of TLS cipher "DHE-RSA-AES256-GCM-SHA384".
+
+-------------------------------------------------------------------
+Sun Jun  6 14:41:51 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.5.1
+  - Updated UI translations.
+  - Updated "Smol Emoji" font with new and improved glyphs.
+
+-------------------------------------------------------------------
+Sun May 30 18:22:14 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.5.0
+  - Added "Smol Emoji" and "Noto Sans Symbols" fonts, removed Symbola.
+  - warning Many Emoji and pictographs defined in the last five years are
+    currently missing.
+  - Added document footer buttons: on certain pages (e.g., error messages) show
+    relevant actions in the bottom of the page. For example, if a certificate is
+    required for viewing a page, show buttons for creating a new identity and
+    showing the Identities sidebar.
+  - Error pages include the human-readable text sent by the server.
+  - Disregard old feed entries whose unread status would have been forgotten.
+  - Added UI language: Polish.
+  - Identity management:
+      - Revised New Identity dialog. An option is provided to automatically use
+        the new identity on the current domain/page. The additional fields are
+        hidden by default.
+      - Improved usability of Identities sidebar. No more accidental
+        activations: left-clicking an identity opens the context menu without
+        making any changes. The context menu shows each active URL as a menu
+        item for easy access. Identity icons reflect the usage status: all
+        identities used on the current domain get highlighted in addition to the
+        currently used one.
+      - Identities can be exported: certificate and private key are opened in a
+        new tab in plain text PEM format.
+      - Fixed issues with identity usage: a higher-up URL overrides and
+        deactivates all contained URLs to avoid redundant activation.
+  - Text input:
+      - Revised text input widgets: added support for multiple lines, and when
+        entering user response to a query, show how many bytes are remaining for
+        the response URL about to be submitted. In dialogs, input fields expand
+        vertically instead of scrolling their content horizontally.
+      - Input widgets allow inserting newlines using Shift+Return.
+      - Disallow sending query responses that are too long (1024 bytes maximum).
+      - Shift-click to select a range of text in input widgets (i.e, without
+        dragging).
+  - Rendering:
+      - Animate showing and hiding of sidebars and dialogs. Animations are
+        enabled by default, by can be disabled with Preferences > Interface >
+        Animations.
+      - Added setting for a custom TrueType symbol font for any missing
+        characters. Note: Must be a .TTF file — OpenType and bitmap fonts are
+        not supported.
+      - Link navigation shortcut icons (home row and numbered) are drawn with a
+        consistent appearance.
+      - Improved icon alignment in lists.
+      - Reduced line gap between word-wrapped top-level headings.
+      - Modal dialog background dimming fades in/out smoothly.
+  - Split view:
+      - Added keybindings for split view menu items.
+      - Changed default split view keys to conform to Emacs (3 for horizontal, 2
+        for vertical split).
+      - Fixes and improvements for touch screen event handling in split view
+        mode.
+  - Command line:
+      - Added --url-or-search (-u) command line option. Depending on the
+        parameter, either open an URL or make a search query.
+      - Open all URLs/files specified on the command line in new tabs, and raise
+        the window if the app is already running. (Kudos to Alyssa Rosenzweig.)
+  - Gempub:
+      - Linear navigation through the book with Left/Right arrow keys and via
+        footer buttons. The navigation order is determined by links on the
+        Gempub index page.
+
+-------------------------------------------------------------------
+Sat May 22 10:29:52 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.4.2
+  - Fixed UI colors being all black on the first run.
+  - Fixed right mouse click on an inactive split not having any effect.
+  - Fixed action buttons showing under the Help link in an empty Identities
+    sidebar.
+  - Fixed potential crash at shutdown.
+  - Fixed minor UI layout issues.
+
+-------------------------------------------------------------------
+Thu May 13 15:50:59 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.4.1
+  - Fixed removing the left side split by closing all its tabs. The URL input
+    field got confused about which tab was currently open, and the wrong theme
+    was active.
+  - Fixed tab merging when unsplitting the window: keep the currently active tab
+    open.
+  - Fixed issue with sidebars sometimes becoming unresponsive.
+  - Fixed font used for visited monospace Gopher links.
+  - Fixed incorrectly shown/hidden ◧ indicator.
+  - Fixed scrollbar in Preferences > Keys being hidden until the list is
+    scrolled.
+
+
+-------------------------------------------------------------------
+Fri May  7 19:09:26 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.4.0
+  - Added split view modes: two tabs at once, horizontal/vertical split,
+    1:1/2:1/1:2 weights, merge tabs, swap sides. See section 1.8 in Help for
+    details.
+  - Split view pinning: keep a page pinned on one side while all opened links go
+    to the other side.
+  - "file://" URLs can be used for viewing contents of local directories and ZIP
+    archives.
+  - Basic Gempub support: a cover page is generated based on metadata, and
+    there's an automatic split view for index and contents. On macOS, Lagrange
+    is registered as a viewer of .gpub files.
+  - Bold link styling is used for indicating which links are unvisited.
+  - Page rendering was optimized: now each line of text is rendered into the
+    view buffer only once, and whenever the view is stationary, content is
+    prefilled in the available space outside the viewport. Previously, at least
+    one line of text was rendered every frame when the viewport was moving,
+    which was mostly redundant.
+  - Added UI languages: Interlingua, Toki Pona.
+  - Added "New"/"Import" buttons in the bottom of the Identities tab.
+  - Added an "All"/"Unread" mode switch in the bottom of the Feeds tab.
+  - Added toggles for special tags in the bookmark creation/editor dialog.
+  - Added "Show Downloads" to the File/main menu.
+  - Added "Open Downloaded File" to the file save dialog to make it easy to find
+    the local copy of the file.
+  - Updated the UI font to Source Sans 3. It now has all the styles and weights
+    needed for page rendering, too.
+  - Added a semibold Fira Sans weight (used for unvisited links).
+  - Preferences: Reorganized the fonts dropdown menu.
+  - Changed popup dismiss behavior so that a click outside just dismisses the
+    popup and does not trigger further actions.
+  - All lists support smooth scrolling.
+  - Multitouch scrolling: each finger can scroll a different widget.
+  - Adjustments to how display DPI affects UI scaling.
+  - Fixed allocation of page rendering buffers. Previously, some buffers may
+    have gone unused or were allocated erroneously to the same position, causing
+    unnecessary work for the page renderer.
+  - Fixed various issues in the UI layout.
+  - Fixed parsing URI scheme (limited set of characters allowed).
+  - Don't percent encode equal signs in URL paths.
+
+-------------------------------------------------------------------
+Mon Apr 26 18:59:12 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.3.4
+  - Allow server certificates with a *.tld subject wildcard.
+  - Updated the French UI translation.
+  - Fixed media type check in the audio player. Media types with parameters
+    failed to be recognized.
+  - Fixed crash after a redirect.
+  - Fixed a rare issue with handling multiple rapid network requests.
+  - Fixed a rare situation where a network connection would fail to open.
+  - Minor stability improvements.
+
+-------------------------------------------------------------------
+Sun Apr 18 13:04:44 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.3.3
+  - Added UI languages: French, German. (Note that neither is 100% finished
+    yet.)
+  - Added build option to disable IPC for compatibility reasons.
+  - Added environment variable LAGRANGE_OVERRIDE_DPI.
+  - Back/forward navigation buttons are disabled if they have no more pages to
+    switch to.
+  - Minor UI color tuning.
+  - Fixed possible crash when closing a tab.
+  - Fixed possible crash when restoring application state at launch.
+  - Fixed problems parsing and making requests with literal IPv6 addresses.
+
+-------------------------------------------------------------------
+Sun Apr 11 16:32:47 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.3.2
+  - Fixed crash after updating from v1.2 due to undefined CA file/path
+    configuration.
+  - Fixed conflation of pixel ratio and display DPI. Pixel ratio is now always
+    separately detected so mouse events can be correctly positioned. You may
+    find that adjusting the UI scale factor (Preferences > Interface) is
+    necessary after upgrading.
+  - Fixed sidebar width changing when moving the window to a different display.
+  - Fixed inability to use Tab in keybindings.
+  - Fixed opening Gopher URLs via drag-and-drop.
+  - Fixed "Add bookmark..." on a feed entry.
+  - Fixed keybindings list not being updated immediately when UI language
+    changes.
+  - Fixed trimming of link label text when a custom Emoji is used.
+
+-------------------------------------------------------------------
+Mon Apr  5 17:43:32 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.3.1
+  - Added UI languages: Serbian, Interlingue.
+  - Added option to disable bold links for light/dark backgrounds.
+  - Updated the Nunito font to the latest version.
+  - Fixed crash during word wrapping.
+  - Fixed keybindings overriding the home row key navigation mode.
+  - Fixed kerning in the text renderer.
+  - Fixed issue with overlapped drawing of list bullets vs. list items.
+  - Fixed cropped list bullets when using Literata.
+  - Fixed whitespace normalization in plain text files (tab characters).
+  - Fixed issues buffering window contents, possibly causing missing font glyphs.
+
+-------------------------------------------------------------------
+Wed Mar 31 18:01:32 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.3.0
+  - Localization
+    - Added the first set of UI translations: Chinese (Simplified, Traditional),
+      Finnish, Russian, and Spanish. Many thanks to the translators!
+    - Added page content translation using a LibreTranslate instance running on
+      xlt.skyjake.fi. This is somewhat experimental and may occasionally mess up
+      Gemtext markup. Expect long pages to be quite slow to translate (more than
+      a minute).
+  - Resources
+    - Added Noto Sans CJK (Simplified Chinese) font.
+    - Added Noto Sans Arabic font. Note that right-to-left/bidirectional text
+      rendering is not implemented yet.
+    - Added "about:about" that lists all the available "about:" pages.
+  - Browsing
+    - Alt text is shown when hovering over a preformatted block.
+    - Clicking on a preformatted block collapses it, leaving only the alt text.
+    - Added option to collapse all preformatted blocks on page load.
+    - A server certificate can also be verified by Certificate Authorities. When
+      "CA file" and/or "CA path" are set in Preferences, CA verification will
+      mark a certificate as trusted.
+    - Relaxed TOFU certificate checking when it comes to domain names:
+      domain.tld in a certificate is implicitly considered to also mean
+      *.domain.tld.
+    - Fixed handling of IDNs when the user sets a server certificate as trusted
+      via the UI.
+    - Fixed handling of unknown URI schemes. Previously they were forcefully
+      converted to absolute URIs, breaking them.
+  - Page content and rendering
+    - Color adjustments to the "Colorful Dark", "Colorful Light", and "Gray"
+      themes. "Gray" looks different in dark and light UI modes.
+    - Spacing of bullet lists vs. link lists is more consistent.
+    - Links are shown in bold, and tinted with the page theme color for more
+      coherent appearance.
+    - Custom link icons: Gemini links whose destination is on the same domain
+      use as icon the Emoji or other pictograph at the start of the link label.
+      (For example, see Astrobotany menus.)
+    - Added option to wrap lines in plain text files. This is on by default
+      because there is no horizontal scrolling for plain text.
+    - Large images are downscaled to an appropriate size for presentation.
+    - Improved font glyph caching to reduce stuttering during scrolling. All
+      required glyphs are cached after a page load finishes. This allows more
+      efficient copying of glyphs as the operations can be batched.
+    - Larger content buffers for scrolling, reducing need to redraw content.
+    - Gopher: Handling the 'h' line type.
+    - Fixed minor issues with word wrapping.
+    - Fixed minor blending artifacts with the current heading shown on the right
+      side of the page.
+  - User interface
+    - Improved event handling to support touch screens on any platform (if
+      supported by SDL).
+    - UI scaling factor is applied immediately when closing Preferences.
+      Restarting is no longer necessary.
+    - Window rescaled automatically when moving it to a display with a different
+      DPI.
+    - Added unread feed entry count to the sidebar.
+    - Added a context menu for toggling sidebars. The menu appears when
+      right-clicking on the navbar or on the sidebar tab buttons.
+    - Double/triple click selection modes. Double click and drag will select by
+      word, triple click by paragraph.
+    - Popup menus have icons for items to make it faster to find the item you're
+      looking for.
+    - Soft shadows for popup menus.
+    - Scrollbars fade away on macOS/iOS and dim on other platforms.
+    - Reload button moved into the URL field.
+    - Narrow URL input fields will not display the default "gemini" scheme.
+    - Domain name is highlighted in URL fields.
+    - Added a cut/copy/paste context menu to input fields.
+    - Added an "Import..." button to the empty Identities sidebar.
+    - Preferences dialog was partially reorganized for clarity.
+    - Tabs in Preferences look the same as tabs in the sidebar.
+    - Cleaner appearance for unread feed items in the sidebar.
+    - Dialog buttons show the corresponding shortcut key.
+    - Fixed background activity indicators overlapping each other.
+    - Fixed glitches when widgets extend beyond the left edge of the window.
+    - Fixed use of plurals in UI strings, enabling support for three or more
+      plural forms.
+  - Keybindings
+    - Default page scroll keybindings changed: PageUp/Down scroll a whole page,
+      and Space/Shift+Space scrolls half a page. If you're changed these
+      bindings, note that they will be reset to defaults.
+    - Added keybinding for subscribing to a page.
+    - Keyboard modifiers can be remapped using the modmap.txt configuration
+      file.
+    - Caps Lock can be used as a modifier key.
+    - Internet hot keys (if present on a keyboard) can be used to navigate
+      back/forward and reload the page.
+  - Command line use
+    - Added conventional --help, --version options.
+    - A previously started instance can be controlled with command line options.
+    - --list-tab-urls prints a list of the currently open URLs in the running
+      instance.
+  - Bug fixes
+    - Only one instance of Lagrange is allowed to run per user directory. This
+      prevents instances from overwriting each other's data.
+    - Fixed use of multiple search terms for quick lookup.
+    - Fixed handling of multiple feeds having an entry with the same URL.
+    - Fixed percent-decoding of URLs on the command line and coming in via
+      system URL handlers.
+
+-------------------------------------------------------------------
+Sun Mar 14 19:11:47 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.2.3
+  - Fixed XML parser hanging on numeric character entities.
+  - Fixed "Monospace Body" option causing Gemtext line markup to be visible.
+  - Fixed bookmarking a wrapped link. Now the entire label text gets used
+    instead of just the clicked segment.
+  - Fixed handling of non-advancing monospace glyphs.
+  - CMake: Automatically check if lib/the_Foundation is up-to-date.
+  - CMake: Build configuration fails if an SSL library is not found.
+  - Reverted default bookmarks having "Getting Started" as a remote bookmark
+    source. Now it's just a regular bookmark.
+
+-------------------------------------------------------------------
+Sun Mar  7 14:17:36 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.2.2
+  - Stability improvements.
+  - Whitespace is no longer normalized when using the monospace body setting.
+  - Fixed issues with percent-encoded Gopher paths.
+
+-------------------------------------------------------------------
+Sat Feb 27 18:14:15 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.2.1
+  - Fixed crash when creating a bookmark.
+
+-------------------------------------------------------------------
+Sat Feb 27 15:02:24 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.2.0
+  - New features
+    - Atom feed subscriptions: Atom XML documents are automatically converted to
+      Gemini feed index pages. This is a built-in version of the Atom-to-Gemini
+      example on the Help page.
+    - Inline downloads: right-click on any link that is openable inside Lagrange
+      and select "Download Linked File".
+    - Editable bookmark icons: use your favorite Unicode character as the symbol
+      to represent a bookmarked site.
+    - Searching via URL field: non-URL text entered in the field is passed onto
+      the configured search query URL (Preferences > Network). An indicator is
+      shown if a query will take place.
+    - Tab auto-reloading: configure a reloading interval using the page context
+      menu ("Set Auto-Reload..."). Auto-reloading is part of the persistent
+      state of the tab.
+    - "Iosevka" and "Source Sans Pro" (the UI font) can be used as heading and
+      body fonts.
+    - User preference for aligning all pages to the top of the window.
+    - Keybinding (F11) for toggling fullscreen mode.
+    - Keybinding for finding text on page.
+  - UI design
+    - Enhanced navbar: adjusted spacing, URL field has a maximum width, tab
+      titles have less pronounced borders.
+    - Improved sidebar appearance: bold subheadings, larger feed icons, adjusted
+      spacing, background color.
+    - Font consistency: all UI elements use the same font (i.e., no more
+      monospace input fields).
+    - Added setting for UI accent color (teal, orange).
+    - General fine-tuning of the color palette.
+    - Dialog buttons are aligned to the right edge, leaving room for additional
+      action buttons on the left.
+    - Page Information button is embedded in the URL field.
+    - Page Information dialog is attached to its button.
+    - Site icons use a different color in tab titles for visual distinction.
+    - Fade background behind modal dialogs.
+    - Responsive page margins.
+  - Other changes
+    - Help is opened on first run instead of the "About Lagrange" page to make
+      it easier to discover important Gemini links like the FAQ.
+    - "Go to Root" respects a user name found in the URL. One can still "Go to
+      Parent" to get above the user level.
+    - Feed entries are sorted by refresh time if they are published on the same
+      date.
+    - Don't show future-dated feed entries in Feeds.
+    - Middle-clicking on links: open new tab in background or foreground
+      depending on the Shift key.
+    - Shift+Insert can be used for pasting clipboard contents into input fields.
+    - Removed a strange violet-on-green color theme pairing.
+  - Bug fixes
+    - Fixed text prompt dialogs closing and accepting the entered text when
+      switching focus away from the app.
+    - Scroll position remains fixed while horizontally resizing the window or
+      sidebars.
+    - Fixed a crash when opening the audio player menu.
+    - Fixed Gopher requests that were using URL (percent) encoded characters.
+
+
+-------------------------------------------------------------------
+Mon Feb 22 19:21:14 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.1.4
+  - Fixed feed entry highlight/read status issue in the sidebar.
+  - Fixed Gopher menu links that contain spaces.
+  - Fixed vertical alignment of short pages: top banner is excluded because it
+    is not part of the content.
+
+
+-------------------------------------------------------------------
+Wed Feb 17 03:10:02 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Avoid compile-time CPU-detection (boo#1100677)
+
+-------------------------------------------------------------------
+Sun Feb 14 17:13:00 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.1.3
+  - Fixed crash when deleting a bookmark that was being used as a remote
+    bookmark source.
+  - Fixed potential crash at shutdown.
+  - Fixed URL path decoding not respecting reserved characters.
+
+
+-------------------------------------------------------------------
+Wed Feb 10 17:18:31 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.1.2
+  - Fixed potential crash at launch.
+  - Fixed input query from a background tab being applied to the foreground tab.
+    An input query now forces a tab to the foreground.
+  - Fixed window scroll position moving when resizing vertically.
+  - Fixed feed refresh waiting forever if a server doesn't respond.
+  - Fixed hover state not being cleared when right-clicking links.
+  - Fixed remote bookmarks not appearing if they lacked a user-friendly name on
+    the source page.
+
+
+-------------------------------------------------------------------
+Fri Feb  5 22:55:29 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- new package; version 1.1.1

@@ -1,0 +1,13 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/cilynx/rtl88x2bu.git</param>
+    <param name="filename">rtl88x2bu</param>
+    <param name="versionformat">5.8.7.1+git%cd.%h</param>
+    <param name="revision">5.8.7.1_35809.20191129_COEX20191120-7777</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="manual" />
+
+  <service name="tar" mode="buildtime" />
+</services>

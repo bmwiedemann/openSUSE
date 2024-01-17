@@ -1,0 +1,5 @@
+<package name="raspberrypi-firmware-dt" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware:boot" package="raspberrypi-firmware-dt"/>
+</package>

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>910511a79360f30c7df61d651d6ece5b</srcmd5>
+    <version>0.1.1</version>
+    <time>1595578011</time>
+    <user>dimstar_suse</user>
+    <comment>New package cpptoml 0.1.1 required by wireplumber</comment>
+    <requestid>822372</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>92ea7aa0e7cc5e6eafde4d6df94301c2</srcmd5>
+    <version>0.1.1</version>
+    <time>1621269926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893704</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a074c0d4994972ed1d9fff3f9652c2a5</srcmd5>
+    <version>0.1.1</version>
+    <time>1624462709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901464</requestid>
+  </revision>
+</revisionlist>

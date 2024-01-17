@@ -1,0 +1,51 @@
+Index: devscripts-v2.22.2/Makefile
+===================================================================
+--- devscripts-v2.22.2.orig/Makefile
++++ devscripts-v2.22.2/Makefile
+@@ -4,7 +4,7 @@ include Makefile.common
+ 
+ DESTDIR =
+ 
+-all: version doc make_scripts conf.default translated_manpages
++all: version doc conf.default
+ 
+ version:
+ 	rm -f version
+Index: devscripts-v2.22.2/Makefile.common
+===================================================================
+--- devscripts-v2.22.2.orig/Makefile.common
++++ devscripts-v2.22.2/Makefile.common
+@@ -14,3 +14,5 @@ PERLMOD_DIR = $(shell perl -MConfig -e '
+ DATA_DIR = $(PREFIX)/share/devscripts
+ TEMPLATES_DIR = $(DATA_DIR)/templates
+ SYSCONFDIR = /etc
++
++XSL_STYLESHEET = /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl
+Index: devscripts-v2.22.2/po4a/Makefile
+===================================================================
+--- devscripts-v2.22.2.orig/po4a/Makefile
++++ devscripts-v2.22.2/po4a/Makefile
+@@ -33,8 +33,7 @@ clean: ../doc/devscripts.1
+ 	-podchecker $<
+ 	pod2man --utf8 --center=" " --release="$(DESC_$(dir $@))" $< > $@
+ %.1:: %.dbk translate
+-	xsltproc --nonet \
+-	  /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl $<
++	xsltproc --nonet -o $@ $(XSL_STYLESHEET) $<
+ 	# /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/other.xsl
+ 	# (which is imported by the above stylesheet) insists in writing the output
+ 	# to where it wants to.  we can only move the file ourselves.
+Index: devscripts-v2.22.2/scripts/Makefile
+===================================================================
+--- devscripts-v2.22.2.orig/scripts/Makefile
++++ devscripts-v2.22.2/scripts/Makefile
+@@ -87,8 +87,7 @@ endif
+ 	podchecker $<
+ 	pod2man --utf8 --center=" " --release="Debian Utilities" $< > $@
+ %.1: %.dbk
+-	xsltproc --nonet -o $@ \
+-	  /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl $<
++	xsltproc --nonet -o $@ $(XSL_STYLESHEET) $<
+ 
+ # Syntax checker
+ test_sh: $(SH_CHECKS)

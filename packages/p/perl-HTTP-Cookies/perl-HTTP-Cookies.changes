@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Fri Dec  8 03:07:00 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.11
+   see /usr/share/doc/packages/perl-HTTP-Cookies/Changes
+
+  6.11      2023-12-07 16:36:52Z
+      - Replace "Test" with "Test::More" (GH#70) (James Raspass)
+
+-------------------------------------------------------------------
+Tue Jan  5 03:07:23 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.10
+   see /usr/share/doc/packages/perl-HTTP-Cookies/Changes
+
+  6.10      2021-01-04 22:03:43Z
+      - Do not set discard if max-age is set (GH#61) (robnagler, simbabque)
+      - Add tests for #61 - do not set discard if max-age is set (GH#65) (Julien Fiegehenn)
+
+-------------------------------------------------------------------
+Fri Nov 20 11:27:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.09
+   see /usr/share/doc/packages/perl-HTTP-Cookies/Changes
+
+  6.09      2020-11-19 22:20:47Z
+      - Allow HttpOnly cookies to be loaded by HTTP::Cookies::Netscape (GH#63)
+        (Charlie Hothersall-Thomas)
+
+-------------------------------------------------------------------
+Tue Dec  3 03:16:55 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 6.08
+   see /usr/share/doc/packages/perl-HTTP-Cookies/Changes
+
+  6.08      2019-12-02 15:58:32Z
+      - allow different "ignore_discard" value at save() time (GH#2) (Alex Peters)
+
+-------------------------------------------------------------------
+Tue Nov 19 08:32:40 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 6.07
+   see /usr/share/doc/packages/perl-HTTP-Cookies/Changes
+
+  6.07      2019-11-15 18:11:42Z
+      - Fix t/issue32.t on old perl versions (GH#59) (Bernhard M. Wiedemann)
+
+-------------------------------------------------------------------
+Thu Nov 14 09:29:21 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 6.06
+   see /usr/share/doc/packages/perl-HTTP-Cookies/Changes
+
+  6.06      2019-11-12 14:28:31Z
+      - Make test pass in 2025 (GH#56) (Bernhard M. Wiedemann)
+
+-------------------------------------------------------------------
+Fri Oct 25 09:44:16 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 6.05
+   see /usr/share/doc/packages/perl-HTTP-Cookies/Changes
+
+  6.05      2019-10-24 02:21:51Z
+      - Fix GH#32 by checking for " as well as ; when splitting. (GH#49) (colinnewell)
+      - Fix GH#48 update documentation about $version (GH#55) (Dave Menninger)
+      - Fix broken README badge (GH#54) (Alex Peters)
+      - Whenever possible, use an absolute four digit year for Time::Local (GH#52) (Olaf Alders)
+      - Add test case for Issue #26 (GH#45) (George-NG)
+      - Long numbers (GH#47) (pludlamCVL)
+      - Cookies.pm: die if close on $fh in ->save fails (GH#46) (MCRayRay)
+      - Replace "use vars" with "our" (GH#43) (James Raspass)
+      - Fixed minor typo in the pod for HTTP::Cookies. (GH#39) (Mohammad S Anwar)
+
+-------------------------------------------------------------------
+Fri Aug  4 05:41:54 UTC 2017 - coolo@suse.com
+
+- updated to 6.04
+   see /usr/share/doc/packages/perl-HTTP-Cookies/Changes
+
+  6.04      2017-08-03 15:05:22Z
+      - Fix package version numbers
+
+-------------------------------------------------------------------
+Tue Apr  4 05:54:13 UTC 2017 - coolo@suse.com
+
+- updated to 6.03
+   see /usr/share/doc/packages/perl-HTTP-Cookies/Changes
+
+-------------------------------------------------------------------
+Thu Feb 16 21:12:18 UTC 2012 - coolo@suse.com
+
+- updated to 6.01
+  * Restore 5.8.1 compatiblity.
+
+-------------------------------------------------------------------
+Mon Mar 14 13:01:34 UTC 2011 - vcizek@novell.com
+
+- initial package 6.00
+  * created by cpanspec 1.78.03
+

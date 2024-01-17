@@ -1,0 +1,25 @@
+--- procinfo.c
++++ procinfo.c	2006-12-06 11:31:46.000000000 +0100
+@@ -117,7 +117,7 @@ static void
+ first_page (long sl)
+ {
+     unsigned long elapsed;
+-    char loadavg[32];
++    char loadavg[128];
+     int i, havetwosix = 0, lastdisk;
+     static int have_m_c = -1;	/* Do we have cache info? */
+     static int have_m_l = -1;	/* Do we have new-style-one-datum-per-line? */
+@@ -263,10 +263,9 @@ first_page (long sl)
+ /**** /proc/loadavg ****/
+ 
+     fseek (loadavgfp, 0L, SEEK_SET);
+-    fgets (line, sizeof (line), loadavgfp);
+-    strcpy (loadavg, line);
+-    loadavg[strlen (loadavg) - 1] = '\0';
+-    fgets (line, sizeof (line), loadavgfp);
++    fgets (loadavg, sizeof (loadavg), loadavgfp);
++    if ((last = strchr(loadavg, '\n')))
++	*last = '\0';
+ 
+     printf ("Bootup: %s    Load average: %s\n\n", booted, loadavg);
+ 

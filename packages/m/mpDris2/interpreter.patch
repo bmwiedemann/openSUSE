@@ -1,0 +1,10 @@
+Index: mpDris2-0.7/src/mpDris2.in.py
+===================================================================
+--- mpDris2-0.7/src/mpDris2.in.py.orig	2018-05-08 21:18:40.591530305 +0200
++++ mpDris2-0.7/src/mpDris2.in.py	2018-05-08 21:19:35.171342273 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #
+ #    This program is free software: you can redistribute it and/or modify

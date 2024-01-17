@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Mon Jul 24 20:18:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.27.8:
+  * Periodically close open `request.Sessions` to avoid buggy
+    interaction with Docker Desktop
+  * Support for Azure Dall-e
+  * Embeddings util - remove unnecessary sort by index
+  * allow api_version to be set by environment variable
+  * Fixed CLI streamed chat completions.
+  * Update README to use gpt-3.5-turbo by default
+  * Updating code and readme to reference the Azure's newest
+    2023-05-15 API Version
+  * allow for passing requests.Session
+  * fix error messages mentioning support@
+  * Speed up imports
+  * Add proxy argument support for openai client
+  * Add `__version__` in `__init__.py`
+  * Fix grabbing value out of header
+  * add case to handle indented .json parsing (#175)
+  * Add `openai/datalib/__init__.py`
+  * updated the link for OpenAI API
+
+-------------------------------------------------------------------
+Thu Jan 26 10:13:45 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file.
+
+-------------------------------------------------------------------
+Thu Jan 26 07:29:00 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- initial package of version 0.26.2
+

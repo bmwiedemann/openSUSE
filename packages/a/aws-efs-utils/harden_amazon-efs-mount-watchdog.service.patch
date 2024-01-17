@@ -1,0 +1,24 @@
+Index: efs-utils-1.17/dist/amazon-efs-mount-watchdog.service
+===================================================================
+--- efs-utils-1.17.orig/dist/amazon-efs-mount-watchdog.service
++++ efs-utils-1.17/dist/amazon-efs-mount-watchdog.service
+@@ -11,6 +11,19 @@ Description=amazon-efs-mount-watchdog
+ Before=remote-fs-pre.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=simple
+ ExecStart=/usr/bin/env amazon-efs-mount-watchdog
+ KillMode=process

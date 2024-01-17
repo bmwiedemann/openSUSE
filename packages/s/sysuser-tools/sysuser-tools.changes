@@ -1,0 +1,258 @@
+-------------------------------------------------------------------
+Tue Nov  7 10:07:20 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
+Tue Jul 18 18:18:18 UTC 2023 - olaf@aepfle.de
+
+- Version 3.2
+- update sysusers_requires to request sysuser-shadow 3.2
+- Use TAB consistently for indention in sysusers2shadow.sh
+- This pkg needs to follow behavior which is described in sysusers.d(5).
+  Always create a system group of the same name as the system user,
+  even if the user already exists. (bsc#1205161, bsc#1207778, bsc#1213240)
+
+-------------------------------------------------------------------
+Mon Jul 17 17:17:17 UTC 2023 - olaf@aepfle.de
+
+- Add "quilt setup" friendly hint to %sysusers_requires usage
+  It is not required to have sysuser-tools installed when working
+  with a pkg source which uses sysuser-tools at build time.
+
+-------------------------------------------------------------------
+Tue Sep  6 15:49:48 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use append so if a pre file already exists it isn't overridden
+
+-------------------------------------------------------------------
+Tue Feb  1 12:58:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- invoke bash for bash scripts (bsc#1195391) 
+
+-------------------------------------------------------------------
+Fri Nov 26 09:43:02 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable systemd-sysuser on SLE15 to stay compatible
+  (disable-systemd-sysusers.patch)
+
+-------------------------------------------------------------------
+Wed Sep  8 09:12:05 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add support for new shell field [bsc#1189518]
+
+-------------------------------------------------------------------
+Thu Jul 15 06:45:15 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use /bin/bash for sysusers-generate-pre
+
+-------------------------------------------------------------------
+Tue Jun 29 13:08:44 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Remove usage of grep from sysusers-generate-pre
+- Add a simple test of sysusers-generate-pre to %check
+
+-------------------------------------------------------------------
+Mon Jun 21 09:56:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Bump version up to 3.1. The --replace parameter only appeared in
+  systemd 238, so we need to ensure to get the update order correct
+  for sysuser-generate when using the 3rd command line parameters:
+  * systemd -> sysuser-tools -> system-{user|group}-FOO.
+- Add dependency on systemd >=238 if systemd is installed to
+  sysuser-shadow
+- update sysuser_requires to request sysuser-shadow 3.1
+
+-------------------------------------------------------------------
+Mon Jun  7 11:11:27 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Support systemd-sysusers --replace=/usr/lib/sysusers.d/ option
+- sysusers-generate-pre: only use first argument for grep
+- sysusers2shadow.sh: use "run" prefix for systemd-sysusers call
+- macros.sysusers: fix typo
+
+-------------------------------------------------------------------
+Sat May  8 13:19:03 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use /usr/sbin/nologin instead of /sbin/nologin
+
+-------------------------------------------------------------------
+Mon Feb 15 07:30:25 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't abort on unbound first argument
+
+-------------------------------------------------------------------
+Thu Feb 11 13:54:01 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove sysusers/nscd workaround
+
+-------------------------------------------------------------------
+Fri Jan 29 13:36:08 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use systemd-sysusers only if /proc is mounted, don't require it
+
+-------------------------------------------------------------------
+Wed Jan 27 13:02:13 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Set --replace option for systemd-sysusers
+
+-------------------------------------------------------------------
+Wed Jan 20 15:06:51 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Ignore nscd return code
+
+-------------------------------------------------------------------
+Tue Jan 19 15:15:41 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- If systemd-sysusers is used to create a new user/group, invalidate
+  the nscd passwd and group cache to make the new user/group
+  visible immediately as workaround [bsc#1181121].
+  Needs to be removed after sytemd-sysusers get's fixed, since we
+  invalidate the cache even if the user/group file wasn't changed.
+
+-------------------------------------------------------------------
+Sun Jan 17 21:16:25 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- An "u" in a sysusers.d file will create an user and a group.
+  Create provides for both, user and group.
+
+-------------------------------------------------------------------
+Thu Jan 14 14:30:20 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use systemd-sysusers as default to create and update the user
+  account. Fixes the problem that a modified sysusers config file
+  get's ignored by useradd and adduser [bsc#1180549].
+
+-------------------------------------------------------------------
+Fri Dec  4 10:54:00 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- useradd_or_adduser_dep must be PreReq so ordering makes sure it gets
+  installed before.
+- suggest shadow where useradd_or_adduser_dep is actually required
+
+-------------------------------------------------------------------
+Fri Sep 18 10:32:53 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Avoid useless use of cat
+- Simplify %sysusers_requires
+- Drop shebang, rpm passes it to /bin/sh itself
+
+-------------------------------------------------------------------
+Fri Aug 21 15:09:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Packages providing users need /usr/bin/cat installed to create
+  them. Add that to the PreRequires.
+
+-------------------------------------------------------------------
+Fri Aug 21 12:43:43 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create system groups for system users
+
+-------------------------------------------------------------------
+Wed Mar 25 07:53:55 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Fix bug introduced by simplification of check for useradd -g
+- Refactor use of sed away
+
+-------------------------------------------------------------------
+Tue Mar 24 10:01:39 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Use eval set -- $LINE instead of read for parsing
+
+-------------------------------------------------------------------
+Fri Mar 20 10:08:43 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Clean up sysusers2shadow and make it use only /bin/sh
+- Don't let busybox adduser create the home directory, it breaks
+  permissions of e.g. /sbin (home of daemon)
+- Use only /bin/sh in sysusers-generate-pre and the generated code
+
+-------------------------------------------------------------------
+Tue Mar 17 10:12:15 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Drop use of tail from the generated %pre scriptlets
+
+-------------------------------------------------------------------
+Sun Dec 29 19:16:13 UTC 2019 - kukuk@suse.de
+
+- Look for /bin/busybox, too
+- Add special handling for busybox and groups
+
+-------------------------------------------------------------------
+Fri Jul 26 13:28:27 CEST 2019 - kukuk@suse.de
+
+- Use suggests shadow to prefer that over busybox in normal systems
+
+-------------------------------------------------------------------
+Thu Jul 25 16:00:35 CEST 2019 - kukuk@suse.de
+
+- Add support for busybox adduser/addgroup
+- Change requirements from shadow to useradd_or_adduser_dep
+
+-------------------------------------------------------------------
+Thu May  9 13:23:56 CEST 2019 - kukuk@suse.de
+
+- Fix default home directory [bsc#1105934]
+- Use _rpmmacrodir for macro file
+
+-------------------------------------------------------------------
+Mon Oct  9 13:51:42 UTC 2017 - dimstar@opensuse.org
+
+- Further enhance sysusers-generate-pre: inside the build
+  environment, it can be acceptable to be failing to create the
+  users (e.g when building sysuser-tools or system-user-root, since
+  those two packages have to be speificallty excluded). Always
+  return with error code 0 if /.buildenv exists.
+
+-------------------------------------------------------------------
+Wed Sep 27 11:06:52 UTC 2017 - dimstar@opensuse.org
+
+- sysusers2shadow.sh: Exit if one of the useradd/groupadd/usermod
+  call fails: the resulting system is quite undefined if this
+  should happen.
+- sysusers-generate-pre: exit the pre script with the exit code
+  of sysusers2shadow.sh.
+
+-------------------------------------------------------------------
+Mon Jun 19 14:07:51 CEST 2017 - kukuk@suse.de
+
+- sysuser-tools needs to require sysuser-shadow
+
+-------------------------------------------------------------------
+Mon Jun 19 13:48:34 CEST 2017 - kukuk@suse.de
+
+- Add requires for shadow to sysuser-shadow
+
+-------------------------------------------------------------------
+Sun Jun 18 18:07:24 CEST 2017 - kukuk@suse.de
+
+- Put helper script into own subpackage
+
+-------------------------------------------------------------------
+Sat Jun 17 09:20:09 CEST 2017 - kukuk@suse.de
+
+- Convert sysusers config file to shadow arguments and use
+  shadow suite to create user and groups. Fixes [bsc#1041497] and
+  serveral dependency loops.
+
+-------------------------------------------------------------------
+Tue May 30 10:07:45 CEST 2017 - kukuk@suse.de
+
+- Don't ignore errors of systemd-sysusers [bsc#1039708]
+
+-------------------------------------------------------------------
+Wed Mar 15 14:46:43 CET 2017 - kukuk@suse.de
+
+- Don't remove 'm' and 'r' entries from sysusers configuration
+
+-------------------------------------------------------------------
+Fri Jan 20 13:04:51 CET 2017 - kukuk@suse.de
+
+- Add macros.sysusers
+
+-------------------------------------------------------------------
+Wed Dec 21 16:09:05 UTC 2016 - lnussel@suse.de
+
+- initial package
+

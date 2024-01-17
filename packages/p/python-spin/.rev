@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4389c9380af4591e45c3b67de5e3881a</srcmd5>
+    <version>0.7</version>
+    <time>1696451462</time>
+    <user>anag+factory</user>
+    <comment>- Initial release of 0.7</comment>
+    <requestid>1114885</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>27bf324b02c686acc38ef1ab4b1a1670</srcmd5>
+    <version>0.8</version>
+    <time>1702488970</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8:
+  * Also support build sanity check on &lt;3.11 (#124).
+  * Support .spin.toml/spin.toml as an alternate configuration
+    files (#129).
+  * Add --version (#134).
+  * Add alias for help (#135).
+  * Add LLDB (debug) command (#137).
+  * Add pip install with editable mode (#139).
+  * Fix unclosed file warning on debug python (#127).
+
+- Initial release of 0.7</comment>
+    <requestid>1132840</requestid>
+  </revision>
+</revisionlist>

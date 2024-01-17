@@ -1,0 +1,101 @@
+--- procinfo.c
++++ procinfo.c	2008-07-10 19:23:18.243245843 +0200
+@@ -143,16 +143,7 @@ first_page (long sl)
+ 
+     fclose (meminfofp); meminfofp = myfopen (PROC_DIR "meminfo");
+ 
+-    fgets (line, sizeof (line), meminfofp);
+-
+-    if (have_m_c == -1) {
+-	if (strstr (line, "cached:"))
+-	    have_m_c = 1;
+-	else
+-	    have_m_c = 0;
+-    }
+-
+-    if (have_m_l == -1) {
++    if (have_m_l == -1 || have_m_c == -1) {
+ 	char kickme[1024];
+ 	/* God, this next stuff needs AT LEAST a macro to hide behind. */
+ 	fclose (meminfofp); meminfofp = myfopen (PROC_DIR "meminfo");
+@@ -161,17 +152,23 @@ first_page (long sl)
+ 	    have_m_l = 1;
+ 	else
+ 	    have_m_l = 0;
++	if (strstr (kickme, "Cached:"))
++	    have_m_c = 1;
++	else
++	    have_m_c = 0;
+ 	fclose (meminfofp); meminfofp = myfopen (PROC_DIR "meminfo");
+     }
+ 
+-
+     printf ("Memory:      Total        Used        Free      "
+ 	    "Shared     Buffers      %s\n", have_m_c ? "Cached" : "");
+ 
++    fgets (line, sizeof (line), meminfofp);
++
+     if (have_m_l) {
+ 
+ 	new.m_to = new.m_us = new.m_fr = new.m_sh = new.m_bu = 0;
+-	new.s_to = new.s_us = new.s_fr = 0;
++	new.s_to = new.s_us = new.s_fr = new.m_bo = new.m_an = 0;
++	new.n_fs = new.s_lr = new.s_lu = new.s_ca = 0;
+ 
+ 	do {
+ 	    char *type = strtok (line, ":");
+@@ -190,10 +187,26 @@ first_page (long sl)
+ 		new.s_to = VAL;
+ 	    else if (ISSTR ("SwapFree"))
+ 		new.s_fr = VAL;
++	    else if (ISSTR ("SwapCached"))
++		new.s_ca = VAL;
++	    else if (ISSTR ("Bounce"))
++		new.m_bo = VAL;
++	    else if (ISSTR ("AnonPages"))
++		new.m_an = VAL;
++	    else if (ISSTR ("NFS_Unstable"))
++		new.n_fs = VAL;
++	    else if (ISSTR ("SReclaimable"))
++		new.s_lr = VAL;
++	    else if (ISSTR ("SUnreclaim"))
++		new.s_lu = VAL;
+ 	} while (fgets (line, sizeof (line), meminfofp));
+ 
+ 	new.m_us = new.m_to - new.m_fr;
+ 	new.s_us = new.s_to - new.s_fr;
++	new.m_ca += new.s_lr;
++	new.m_ca += new.s_lu;
++	new.m_ca += new.n_fs;
++	new.m_ca += new.s_ca;
+ 
+     } else {
+ 
+@@ -460,13 +473,13 @@ first_page (long sl)
+ /* XXX Is this stuff still relevant/true? */
+ 
+ #ifdef __i386__		/* IRQ 0 is timer tick on i386's... */
+-    if (nr_irqs && new.intr[0]) {
++    if (nr_irqs && new.intr[0] && (new.intr[0] != old.intr[0])) {
+ 	if (fs && old.uptime)
+ 	    elapsed = (DIFF(intr[0]) * usr_hz) / sys_hz;
+     } else
+ #endif
+ #ifdef __sparc__	/* IRQ 10 is timer tick on sparc's... */
+-    if (nr_irqs && new.intr[10]) {
++    if (nr_irqs && new.intr[10] && (new.intr[0] != old.intr[0])) {
+ 	if (fs && old.uptime)
+ 	    elapsed = (DIFF(intr[10]) * usr_hz) / sys_hz;
+     } else
+--- procinfo.h
++++ procinfo.h	2008-07-10 19:14:27.301441388 +0200
+@@ -82,7 +82,8 @@ struct info
+ {
+     unsigned long uptime;
+     long m_to, m_us, m_fr, m_sh, m_bu, m_ca;
+-    long s_to, s_us, s_fr;
++    long s_to, s_us, s_fr, m_bo, m_an, n_fs;
++    long s_lr, s_lu, s_ca;
+     unsigned long cpu_user, cpu_nice, cpu_sys, cpu_idle, cpu_iowait, cpu_hirq, cpu_sirq, cpu_steal, cpu_guest;
+     unsigned long disk[8];
+     unsigned long disk_r[8];

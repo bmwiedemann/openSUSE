@@ -1,0 +1,12 @@
+<package name="avgtime" project="openSUSE:Factory">
+  <title>Utility similar to &quot;time&quot;, but with repetitions and more statistics</title>
+  <description>avgtime works like the &quot;time&quot; command, except it accepts an &quot;-r&quot;
+argument to specify repetitions and shows more detailed statistics.
+
+If repetitions are specified, then statistics are computed and shown, like
+median, mean, and standard deviation.
+
+</description>
+  <devel project="devel:languages:D" package="avgtime"/>
+  <url>https://github.com/jmcabo/%{short_name}</url>
+</package>

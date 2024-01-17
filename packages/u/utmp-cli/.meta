@@ -1,0 +1,6 @@
+<package name="utmp-cli" project="openSUSE:Factory">
+  <title>utmp-cli</title>
+  <description>A command-line program for making a temperature measurement using a USB thermometer like the ones you can buy at usbtemp.com.</description>
+  <devel project="hardware" package="utmp-cli"/>
+  <url>https://usbtemp.com/</url>
+</package>

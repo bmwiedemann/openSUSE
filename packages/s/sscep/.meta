@@ -1,0 +1,9 @@
+<package name="sscep" project="openSUSE:Factory">
+  <title>A command line client for the SCEP protocol</title>
+  <description>Simple SCEP (Simple Certificate Enrollment Protocol) client with
+modifications for engine support &amp; more.
+
+</description>
+  <devel project="network:utilities" package="sscep"/>
+  <url>https://github.com/certnanny/sscep</url>
+</package>

@@ -1,0 +1,110 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95c29ac4de09885ae8e288d4c1d27526</srcmd5>
+    <version>0.2.0</version>
+    <time>1678814196</time>
+    <user>dimstar_suse</user>
+    <comment>new package needed by INDI</comment>
+    <requestid>1071408</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3118d78d42c7824647e5121a7a0f48cc</srcmd5>
+    <version>0.2.1</version>
+    <time>1679416849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.1 (no changelog).
+- Use noun phrase for descriptions. Avoid miniscule main package
+  by moving documentation to subpackages.
+</comment>
+    <requestid>1073022</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4d9d9c2defbe512398aa5b2c171b70d4</srcmd5>
+    <version>0.2.3</version>
+    <time>1681296743</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.3:
+  * Fix issue with ColorFilterArray.
+</comment>
+    <requestid>1078590</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>12e3df981a6f971c5084901c20126ffa</srcmd5>
+    <version>0.2.5</version>
+    <time>1685051546</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.5:
+  * Add method to for ICC profile
+  * Add StreamBuffer to optimize save/load from memory
+  * Add support for thumbnail
+- Add fix-pkgconfig.patch
+</comment>
+    <requestid>1088998</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d9f886880e0b1e243b5a5ec293e705ad</srcmd5>
+    <version>0.2.6</version>
+    <time>1685889744</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.6:
+  * Fix &quot;string sub-command REPLACE requires at least four arguments&quot;
+  * Fix generating pkgconfig file
+- Rebase patch
+</comment>
+    <requestid>1090746</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d4bd781c82812e60496a06a327d02057</srcmd5>
+    <version>0.2.8</version>
+    <time>1686753077</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.8:
+  * Remove linking against zstd
+- Drop 6028354c61d230bf2ee85d90cef5d1464da9c5a1.patch
+- Update to 0.2.7:
+  * Fix reading ICCprofile
+- Add 6028354c61d230bf2ee85d90cef5d1464da9c5a1.patch
+</comment>
+    <requestid>1093067</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8dcb83a5f82bee712e577dda1f2f4e4a</srcmd5>
+    <version>0.2.9</version>
+    <time>1693235830</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.2.9:
+  * Support for ZSTD
+</comment>
+    <requestid>1106269</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ad93cfe0fb6d7fc7bd628cd438ca4c34</srcmd5>
+    <version>0.2.9</version>
+    <time>1697147071</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1117493</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>16781f6ef47f79597eb3cf15f974248e</srcmd5>
+    <version>0.2.10</version>
+    <time>1697657186</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.2.10:
+  * Fix incorrect header size.
+</comment>
+    <requestid>1118598</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8a706891c57b062f8e904caa55114a0f</srcmd5>
+    <version>0.2.11</version>
+    <time>1704829834</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.2.11:
+  * Convert aperture and focal length from mm to meters.
+  * Fix not loading String properties.
+- Add fix-projver.patch.
+</comment>
+    <requestid>1137669</requestid>
+  </revision>
+</revisionlist>

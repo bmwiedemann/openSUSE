@@ -1,0 +1,5 @@
+<package name="lagrange" project="openSUSE:Factory">
+  <title>Desktop GUI client for browsing Geminispace</title>
+  <description>Lagrange is a desktop GUI client for browsing Geminispace. It offers modern conveniences familiar from web browsers, such as smooth scrolling, inline image viewing, multiple tabs, visual themes, Unicode fonts, bookmarks, history, and page outlines.</description>
+  <devel project="network" package="lagrange"/>
+</package>

@@ -1,0 +1,9 @@
+[Unit]
+Description=Nextcloud CronJob
+
+[Service]
+User=@APACHE_USER@
+ExecStart=/usr/bin/php -f @APACHE_MYSERVERROOT@/nextcloud/cron.php
+
+[Install]
+WantedBy=basic.target

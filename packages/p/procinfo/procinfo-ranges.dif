@@ -1,0 +1,42 @@
+---
+ procinfo.c |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+--- procinfo.c
++++ procinfo.c	2014-10-09 12:05:59.099837903 +0000
+@@ -661,7 +661,7 @@ first_page (long sl)
+ 	    while (fgets (line, sizeof (line), dmafp)) {
+ 		char *q, *p;
+ 		size_t len;
+-		int num;
++		long num;
+ 
+ 		q = strchr(line, ':');
+ 		if (!q || (*q == '\0') || (*q == '\n'))
+@@ -692,7 +692,7 @@ first_page (long sl)
+ 			continue;
+ 
+ 		    if (strncmp (q, s->label, len) == 0) {
+-			tmplen = snprintf(tmp, sizeof(tmp), " [%d]", num);
++			tmplen = snprintf(tmp, sizeof(tmp), " [%ld]", num);
+ 
+ 			if (tmplen > 21)		/* Should not happen */
+ 			    continue;
+@@ -902,7 +902,7 @@ second_page (void)
+ 	    fs = strchr (line, '\t');
+ 	    fs = strtok (fs + 1, "\n");
+ 	    if (line[0] == 'n') {
+-		sprintf (tmp, "[%s]", fs);
++		snprintf (tmp, sizeof(tmp), "[%s]", fs);
+ 		printf ("%-20s", tmp);
+ 	    } else
+ 		printf ("%-20s", fs);
+@@ -1235,7 +1235,7 @@ main (int ac, char **av)
+ 		    if (strlen (line) > 1) {
+ 			tmpsl = atof (line);
+ 			sl = (long) (tmpsl * 1000000.0);
+-			sprintf (line, "delay set to %f", tmpsl);
++			snprintf (line, sizeof(line), "delay set to %f", tmpsl);
+ 			message = line;
+ 		    }
+ 		    redrawn = 1;

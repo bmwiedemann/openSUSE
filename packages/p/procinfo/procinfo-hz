@@ -1,0 +1,114 @@
+--- Makefile
++++ Makefile	2006-11-17 11:57:53.000000000 +0100
+@@ -10,7 +10,7 @@ LDFLAGS = -s
+ # If you get lots of `undefined references', you probably need -lncurses
+ # instead:
+ 
+-LDLIBS = -ltinfo
++LDLIBS = -ltinfo -lrt
+ 
+ ### Add to taste:
+ 
+--- procinfo.c
++++ procinfo.c	2006-11-27 11:53:42.000000000 +0100
+@@ -83,6 +83,33 @@ float rate = 1.0;		/* per interval or pe
+ struct info new, old, base;
+ struct utsname ut;
+ 
++unsigned long sys_hz, usr_hz;
++
++void get_HZ(void)
++{
++    FILE* hzfp;
++
++    if (!access (PROC_DIR "sys/kernel/HZ", R_OK)) {
++	hzfp = myfopen (PROC_DIR "sys/kernel/HZ");
++	fscanf (hzfp, "%li", &sys_hz);
++	fclose (hzfp);
++    } else if (linux_version_code >= 0x20560) {
++	struct timespec ts;
++	if (clock_getres(CLOCK_REALTIME, &ts) < 0)
++	    sys_hz = 1000;
++	else {
++	    double res = ts.tv_sec+(((double)ts.tv_nsec)/1.0e9);
++	    sys_hz = (unsigned long)((1.0/res)+0.5);
++	}
++    } else
++	sys_hz = 100;
++    if ((long)(usr_hz = (unsigned long)sysconf(_SC_CLK_TCK)) == -1)
++#ifdef HZ
++	usr_hz = HZ;
++#else
++	usr_hz = 100;
++#endif
++}
+ 
+ static void
+ first_page (long sl)
+@@ -100,7 +127,7 @@ first_page (long sl)
+ 
+     fgets (line, sizeof (line), uptimefp);
+     new.uptime =
+-	(unsigned long) (atof (strtok (line, " ")) * (unsigned long) HZ);
++	(unsigned long) (atof (strtok (line, " ")) * (unsigned long) usr_hz);
+ 
+ 
+ /**** /proc/meminfo ****/
+@@ -333,15 +359,15 @@ first_page (long sl)
+ /* XXX Is this stuff still relevant/true? */
+ 
+ #ifdef __i386__		/* IRQ 0 is timer tick on i386's... */
+-    if (nr_irqs) {
++    if (nr_irqs && new.intr[0]) {
+ 	if (fs && old.uptime)
+-	    elapsed = DIFF (intr[0]);
++	    elapsed = (DIFF(intr[0]) * usr_hz) / sys_hz;
+     } else
+ #endif
+ #ifdef __sparc__	/* IRQ 10 is timer tick on sparc's... */
+-    if (nr_irqs) {
++    if (nr_irqs && new.intr[10]) {
+ 	if (fs && old.uptime)
+-	    elapsed = DIFF (intr[10]);
++	    elapsed = (DIFF(intr[10]) * usr_hz) / sys_hz;
+     } else
+ #endif
+     {
+@@ -703,6 +729,7 @@ main (int ac, char **av)
+     linux_version_code = (atol(strtok(ut.release, ".")) * 0x10000) +
+ 	(atol(strtok(NULL, ".")) * 0x100) +
+ 	atol(strtok(NULL, ""));
++    get_HZ();
+ 
+     while ((getoptopt = getopt (ac, av, "sfn:madirDSF:bChv")) != EOF) {
+ 	switch (getoptopt) {
+--- procinfo.h
++++ procinfo.h	2006-07-17 14:27:06.000000000 +0200
+@@ -27,6 +27,8 @@
+ 
+ #define ISSTR(s)	(!strcmp(s, type))
+ 
++extern unsigned long sys_hz, usr_hz;
++
+ #if 0
+ #define VAL		(strtoul(strtok(NULL, "\t "), NULL, 10))
+ #else
+--- routines.c
++++ routines.c	2006-07-17 14:32:21.000000000 +0200
+@@ -390,7 +390,7 @@ hms (unsigned long t)
+     unsigned int d, h, m, s;
+     static char buf[22];
+ 
+-    t = (t*100) / HZ;
++    t = (t*100ULL) / usr_hz;
+     d = (unsigned int) (t / 8640000);
+     t = t - ((unsigned long)d * 8640000);
+     h = (unsigned int) (t / 360000);
+@@ -413,6 +413,7 @@ perc (unsigned long i, unsigned long t, 
+     unsigned int v;
+     static char buf[16];
+ 
++    t = (t*100ULL) / usr_hz;
+     if ((signed long) i == -1 || t == 0)
+ 	return "---.-%";
+ 

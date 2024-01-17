@@ -1,0 +1,5 @@
+<package name="python-mesonpep517" project="openSUSE:Factory">
+  <title>PEP517 for the Meson build system</title>
+  <description>This package contains a Python module that implements PEP517 for the Meson build system.</description>
+  <devel project="devel:languages:python" package="python-mesonpep517"/>
+</package>

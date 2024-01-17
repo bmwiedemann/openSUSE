@@ -1,0 +1,5 @@
+<package name="rtl88x2bu" project="openSUSE:Factory">
+  <title>Realtek rtl88x2bu KMP</title>
+  <description></description>
+  <devel project="hardware" package="rtl88x2bu"/>
+</package>

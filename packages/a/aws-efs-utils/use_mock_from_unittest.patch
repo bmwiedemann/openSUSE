@@ -1,0 +1,12 @@
+diff -Nru efs-utils-1.33.4.orig/test/common.py efs-utils-1.33.4/test/common.py
+--- efs-utils-1.33.4.orig/test/common.py	2022-09-22 07:36:56.000000000 +0200
++++ efs-utils-1.33.4/test/common.py	2022-09-23 14:58:48.522147941 +0200
+@@ -8,7 +8,7 @@
+ 
+ import subprocess
+ 
+-from mock import MagicMock
++from unittest.mock import MagicMock
+ 
+ 
+ # The process mock can be retrieved by calling PopenMock(<init params>).mock

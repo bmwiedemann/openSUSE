@@ -1,0 +1,9 @@
+# 
+# Nextcloud CronJob every 5 minutes.
+#
+# Uncomment to enable it.
+
+SHELL=/bin/sh
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+#*/5 * * * * @APACHE_USER@ /usr/bin/php -f @APACHE_MYSERVERROOT@/nextcloud/cron.php /dev/null 2>&1

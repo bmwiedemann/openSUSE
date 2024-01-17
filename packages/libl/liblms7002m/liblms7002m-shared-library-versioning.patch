@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f5c69ee..df5ff1d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -65,6 +65,7 @@ else()
+     set(LIBLMS7_TYPE SHARED)
+ endif()
+ add_library(lms7compact ${LIBLMS7_TYPE} ${LIBLMS7_FILES})
++set_target_properties(lms7compact PROPERTIES VERSION ${LIBVER} SOVERSION ${MAJOR_VERSION})
+ 
+ install(TARGETS lms7compact DESTINATION ${LIBLMS7002M_LIBRARY_DIR})
+ ########################################################################

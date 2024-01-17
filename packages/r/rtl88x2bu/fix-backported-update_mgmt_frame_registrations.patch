@@ -1,0 +1,56 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+Subject: Fix build with SLE 15-SP3 / Leap 15.3
+
+The SLE 15 SP3/Leap 15.3's kernel includes
+backported patches to support update_mgmt_frame_registrations
+instead of mgmt_frame_register which would be expected
+according to the kernel version, so we force to use the
+more modern interface.
+
+--- os_dep/linux/ioctl_cfg80211.c.orig
++++ os_dep/linux/ioctl_cfg80211.c
+@@ -7771,7 +7771,7 @@ exit:
+ 	return ret;
+ }
+ 
+-#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 3, 18))
+ 
+ static void cfg80211_rtw_mgmt_frame_register(struct wiphy *wiphy,
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 6, 0))
+@@ -7787,7 +7787,7 @@ static void cfg80211_rtw_update_mgmt_fra
+ 						    struct mgmt_frame_regs *upd)
+ #endif
+ {
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 8, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 3, 18))
+ 	u32 rtw_mask = BIT(IEEE80211_STYPE_PROBE_REQ >> 4);
+ #endif
+ 
+@@ -7805,7 +7805,7 @@ static void cfg80211_rtw_update_mgmt_fra
+ 	pwdev_priv = adapter_wdev_data(adapter);
+ 
+ #ifdef CONFIG_DEBUG_CFG80211
+-#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 3, 18))
+ 	RTW_INFO(FUNC_ADPT_FMT" frame_type:%x, reg:%d\n", FUNC_ADPT_ARG(adapter),
+ 		frame_type, reg);
+ #else
+@@ -7817,7 +7817,7 @@ static void cfg80211_rtw_update_mgmt_fra
+ 	/* Wait QC Verify */
+ 	return;
+ 
+-#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 3, 18))
+ 	switch (frame_type) {
+ 	case IEEE80211_STYPE_AUTH: /* 0x00B0 */
+ 		if (reg > 0)
+@@ -10230,7 +10230,7 @@ static struct cfg80211_ops rtw_cfg80211_
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 37)) || defined(COMPAT_KERNEL_RELEASE)
+ 	.mgmt_tx = cfg80211_rtw_mgmt_tx,
+ 
+-#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 3, 18))
+ 	.mgmt_frame_register = cfg80211_rtw_mgmt_frame_register,
+ #else
+ 	.update_mgmt_frame_registrations =

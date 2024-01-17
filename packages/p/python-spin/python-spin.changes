@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Wed Dec 13 10:19:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8:
+  * Also support build sanity check on <3.11 (#124).
+  * Support .spin.toml/spin.toml as an alternate configuration
+    files (#129).
+  * Add --version (#134).
+  * Add alias for help (#135).
+  * Add LLDB (debug) command (#137).
+  * Add pip install with editable mode (#139).
+  * Fix unclosed file warning on debug python (#127).
+
+-------------------------------------------------------------------
+Tue Oct  3 04:34:18 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Initial release of 0.7

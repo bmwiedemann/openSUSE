@@ -1,0 +1,16 @@
+<package name="perl-Template-Toolkit" project="openSUSE:Factory">
+  <title>Template Processing System</title>
+  <description>The Template Toolkit is a collection of modules which implement a
+fast, flexible, powerful, and extensible template processing system.
+It was originally designed and remains primarily useful for generating
+dynamic web content, but it can be used equally well for processing
+any other kind of text based documents: HTML, XML, POD, PostScript,
+LaTeX, and so on.
+
+It can be used as a stand-alone Perl module or embedded within an
+Apache/mod_perl server for generating highly configurable dynamic web
+content.  A number of Perl scripts are also provided which can greatly
+simplify the process of creating and managing static web content and 
+other offline document systems.</description>
+  <devel project="devel:languages:perl" package="perl-Template-Toolkit"/>
+</package>

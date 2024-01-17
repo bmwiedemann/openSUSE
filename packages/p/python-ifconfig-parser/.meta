@@ -1,0 +1,8 @@
+<package name="python-ifconfig-parser" project="openSUSE:Factory">
+  <title>Python package for parsing raw output of ifconfig</title>
+  <description>Python package for parsing raw output of ifconfig.
+
+</description>
+  <devel project="devel:languages:python" package="python-ifconfig-parser"/>
+  <url>https://github.com/KnightWhoSayNi/ifconfig-parser</url>
+</package>

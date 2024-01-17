@@ -1,0 +1,22 @@
+--- procinfo-18/routines.c
++++ procinfo-18/routines.c
+@@ -275,6 +275,8 @@
+     if (ret != 5)	/* Damn egcs uses nested ()'s... */
+ 	ret = sscanf (line, "Linux version %s (%[^)]) (gcc %[^(] (%*[^)])) #%s %[^\n]",
+ 		      ver, host, gcc, compno, date);
++    if (ret != 5)	/* Maybe even one layer more */
++	ret = sscanf (line, "Linux version %s (%[^)]) (gcc %[^(] (%*[^)]) (%*[^)])) #%s %[^\n]", ver, host, gcc, compno, date);
+ 
+     if (ret == 3) {	/* At least we've got ver & host right... */
+ 	strcpy (gcc, "[can't parse]");
+@@ -282,6 +284,10 @@
+ 	date[0] = 0;
+     }
+ 
++    len = strlen(gcc) - 1;
++    while(gcc[len] == ' ')
++    	gcc[len--] = '\0';
++
+     /* BTW, from here we're free to re-use line[]. */
+ 
+     here = strdup (myname);

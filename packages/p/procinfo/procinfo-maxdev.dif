@@ -1,0 +1,33 @@
+---
+ procinfo.c |    4 +++-
+ procinfo.h |    4 ++--
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+--- procinfo.c
++++ procinfo.c	2004-12-17 10:20:49.000000000 +0000
+@@ -829,7 +829,9 @@ second_page (void)
+ 	printf ("%s\nCharacter Devices:                      "
+ 		"Block Devices:\n",
+ 		fs ? ce : "");
+-	while (fgets (line, sizeof (line), devicesfp)) {
++	while (fgets (line, sizeof (line), devicesfp) && 
++			count[CDRV] < MAX_DEV &&
++			count[BDRV] < MAX_DEV) {
+ 	    switch (line[0]) {
+ 	    case 'C':
+ 		which = CDRV;
+--- procinfo.h
++++ procinfo.h	2004-12-17 10:18:11.000000000 +0000
+@@ -71,10 +71,10 @@ static inline unsigned long find_val(voi
+ #define CDRV		0
+ #define BDRV		1
+ #ifndef MAX_CHRDEV
+-#define MAX_CHRDEV	32
++#define MAX_CHRDEV	512
+ #endif
+ #ifndef MAX_BLKDEV
+-#define MAX_BLKDEV	32
++#define MAX_BLKDEV	512
+ #endif
+ #define MAX_DEV		MAX(MAX_CHRDEV, MAX_BLKDEV)
+ 

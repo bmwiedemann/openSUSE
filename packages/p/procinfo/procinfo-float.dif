@@ -1,0 +1,69 @@
+--- procinfo.c
++++ procinfo.c	2007-07-30 14:53:29.000000000 +0000
+@@ -219,7 +219,7 @@ first_page (long sl)
+ 	  the DIFF macro, so that we'll end up with nice multiples of
+ 	  4 when using the -d option.
+ 	*/
+-#define rate (sl>1000000 ? sl/1000000 : 1)
++#define rate (sl>1000000 ? (float)(sl/1000000) : (float)1.0)
+ 	printf ("Mem:  %12ld%12ld%12ld%12ld%12ld",
+ 		DIFF (m_to), DIFF (m_us), DIFF (m_fr), DIFF (m_sh), DIFF (m_bu));
+ 	if (have_m_c)
+@@ -1206,9 +1206,11 @@ main (int ac, char **av)
+ 
+ 	    then = now;
+ 	    gettimeofday (&now, 0);
+-	    if (per_sec)
+-		rate = (float) now.tv_sec + (float) now.tv_usec / 1.0e6 -
+-		    (float) then.tv_sec - (float) then.tv_usec / 1.0e6;
++	    if (per_sec) {
++		struct timeval sub;
++		timersub(&now, &then, &sub);
++		rate = (float)sub.tv_sec+(float)sub.tv_usec/1.0e6;
++	    }
+ 
+ 	} else {
+ 	    putchar ('\n');
+--- routines.c
++++ routines.c	2007-07-30 14:50:08.000000000 +0000
+@@ -397,7 +397,7 @@ char *
+ hms (unsigned long t)
+ {
+     unsigned int d, h, m, s;
+-    static char buf[22];
++    static char buf[256];
+ 
+     t = (t*100ULL) / usr_hz;
+     d = (unsigned int) (t / 8640000);
+@@ -409,9 +409,11 @@ hms (unsigned long t)
+     s = (unsigned int) (t / 100);
+     t = t - ((unsigned long)s * 100);
+     if (d > 0)
+-	sprintf (buf, "%3ud %2u:%02u:%02u.%02u", d, h, m, s, (unsigned int) t);
++	snprintf (buf, sizeof(buf)-1,
++		"%3ud %2u:%02u:%02u.%02u", d, h, m, s, (unsigned int) t);
+     else
+-	sprintf (buf, "     %2u:%02u:%02u.%02u", h, m, s, (unsigned int) t);
++	snprintf (buf, sizeof(buf)-1,
++		"     %2u:%02u:%02u.%02u",    h, m, s, (unsigned int) t);
+     return buf;
+ }
+ 
+@@ -420,7 +422,7 @@ char *
+ perc (unsigned long i, unsigned long t, int cpus)
+ {
+     unsigned int v;
+-    static char buf[16];
++    static char buf[128];
+ 
+     t = (t*100ULL) / usr_hz;
+     if ((signed long) i == -1 || t == 0)
+@@ -434,7 +436,7 @@ perc (unsigned long i, unsigned long t,
+     /* if (v > 1000)
+ 	return "+++.+%";
+     else */
+-	sprintf (buf, "%3u.%u%%", v / 10, v % 10);
++	snprintf (buf, sizeof(buf)-1, "%3u.%u%%", v / 10, v % 10);
+     return buf;
+ }
+ 

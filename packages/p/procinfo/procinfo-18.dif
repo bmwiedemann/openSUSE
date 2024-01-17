@@ -1,0 +1,65 @@
+---
+ Makefile   |   13 +++++++------
+ procinfo.c |    2 +-
+ routines.c |    2 +-
+ 3 files changed, 9 insertions(+), 8 deletions(-)
+
+--- Makefile
++++ Makefile	2014-10-09 10:39:00.144337785 +0000
+@@ -1,16 +1,17 @@
+ ### Makefile for procinfo.
+ 
+ prefix=/usr
++mandir=$(prefix)/share/man
+ 
+ CC = gcc -Wall -Wstrict-prototypes
+ 
+-CFLAGS = -O2
++CFLAGS = $(RPM_OPT_FLAGS) -pipe
+ LDFLAGS = -s
+ 
+ # If you get lots of `undefined references', you probably need -lncurses
+ # instead:
+ 
+-LDLIBS = -ltermcap
++LDLIBS = -ltinfo
+ 
+ ### Add to taste:
+ 
+@@ -36,10 +37,10 @@ install: procinfo procinfo.8 lsdev.pl so
+ 	install procinfo $(prefix)/bin/procinfo
+ 	install lsdev.pl $(prefix)/bin/lsdev
+ 	install socklist.pl $(prefix)/bin/socklist
+-	-mkdir -p $(prefix)/man/man8
+-	install -m 644  procinfo.8 $(prefix)/man/man8/procinfo.8
+-	install -m 644  lsdev.8 $(prefix)/man/man8/lsdev.8
+-	install -m 644  socklist.8 $(prefix)/man/man8/socklist.8
++	-mkdir -p $(mandir)/man8
++	install -m 644  procinfo.8 $(mandir)/man8/procinfo.8
++	install -m 644  lsdev.8 $(mandir)/man8/lsdev.8
++	install -m 644  socklist.8 $(mandir)/man8/socklist.8
+ 
+ clean:
+ 	rm -f procinfo procinfo.0 *.o *~ out
+--- procinfo.c
++++ procinfo.c	2001-09-17 14:56:55.000000000 +0000
+@@ -16,7 +16,7 @@
+ 
+ */
+ 
+-static char *rcsid = "$Id: procinfo.c,v 1.56 2001/02/25 11:29:13 svm Exp svm $";
++static char *rcsid __attribute__ ((unused)) = "$Id: procinfo.c,v 1.56 2001/02/25 11:29:13 svm Exp svm $";
+ 
+ #include <errno.h>
+ #include <fcntl.h>
+--- routines.c
++++ routines.c	2001-09-17 15:12:46.000000000 +0000
+@@ -16,7 +16,7 @@
+ 
+ */
+ 
+-static char *rcsid = "$Id: routines.c,v 1.24 2001/02/24 23:30:35 svm Exp svm $";
++static char *rcsid __attribute__ ((unused)) = "$Id: routines.c,v 1.24 2001/02/24 23:30:35 svm Exp svm $";
+ 
+ #include <errno.h>
+ #include <signal.h>

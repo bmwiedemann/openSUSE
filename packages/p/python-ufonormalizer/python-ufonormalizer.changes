@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Mon Mar  7 10:41:03 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.1
+  * Fixes the deletion of images by the normalizer (#88)
+  * Does not write empty keys (#89) in layerinfo.plist (or an empty
+    layerinfo.plist) 
+
+-------------------------------------------------------------------
+Thu Aug 26 09:50:54 UTC 2021 - pgajdos@suse.com
+
+- version update to 0.6.0
+  * Changes how <notes> are handled, the normalizer will not change
+    the formatting of lines in a note anymore. This is backwards
+    compatible, as it will not change any previously normalized UFOs.
+
+-------------------------------------------------------------------
+Sun Apr 25 20:06:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.3
+  * Fixes reporting of version number
+- Releases between 0.4.1 and 0.5.3:
+  * Cleans up extra, un-need artifacts.
+  * Converted ufoNormalizer to package instead of a module
+  * Drops Python 2.x and 3.5.
+  * Fixes plistlib issues with Python 3.9  
+  *  Fix whitespace handling in glyph notes (#71), thanks
+     @colinmford!
+
+-------------------------------------------------------------------
+Wed May 20 09:47:52 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of python-ufonormalizer

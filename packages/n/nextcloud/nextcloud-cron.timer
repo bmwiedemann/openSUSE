@@ -1,0 +1,10 @@
+[Unit]
+Description=Nextcloud CronJob - run every 5 minutes
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=5min
+Unit=nextcloud-cron.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,6 @@
+<package name="jgraphx" project="openSUSE:Factory">
+  <title>jgraphx</title>
+  <description>JGraphX (aka JGraph 6) is the most powerful, easy-to-use and feature-rich open source (BSD) graph drawing component available for Java.</description>
+  <devel project="Java:packages" package="jgraphx"/>
+  <url>http://www.jgraph.com/jgraph.html</url>
+</package>

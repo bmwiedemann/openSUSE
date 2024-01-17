@@ -1,0 +1,16 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/AdoptOpenJDK/IcedTea-Web.git</param>
+		<param name="revision">icedtea-web-1.8.8</param>
+		<param name="match-tag">icedtea-web-*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">icedtea-web-(.*)</param>
+        <param name="filename">icedtea-web</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

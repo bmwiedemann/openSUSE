@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a4356c3ee6376821b87afeb580bdf36</srcmd5>
+    <version>4.1.2</version>
+    <time>1553635921</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to single spec
+- Add %license
+- Update to v4.1.2
+  * Fix misbound function call in JavaScript lexer
+- from v4.1.1
+  * Slight improvements to JavaScript lexer
+- from v4.1.0
+  * Add JavaScript lexer
+- from v4.0.11
+  * Fix keyboard shortcut for preferences
+- from v4.0.10
+  * Use 0 instead of None to disable wordWrapMarker
+    Necessary because the OpenSesame config chokes on config options
+    with different types
+- from v4.0.9
+  * Fix copy-paste issues on MacOS 
+- from v4.0.7
+  * Convert line endings to unix-style when pasting
+- Update to 4.0.6:
+  * see: /usr/share/doc/packages/python-qprogedit/changelog 
+- Swith to Qt5
+- Update to 3.2.2:
+  * see: /usr/share/doc/packages/python-qprogedit/changelog
+- Initial package
+</comment>
+    <requestid>686930</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>07f72813a271c88a0eb67def7ec801b6</srcmd5>
+    <version>4.1.2</version>
+    <time>1554458447</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim filler wording and fixup grammar within the description.</comment>
+    <requestid>690285</requestid>
+  </revision>
+</revisionlist>

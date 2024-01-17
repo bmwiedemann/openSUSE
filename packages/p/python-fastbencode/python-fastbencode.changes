@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Thu Feb 16 21:10:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2:
+  * No upstream changelog available
+
+-------------------------------------------------------------------
+Mon Nov  7 22:52:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.1 
+  * Make C extension mandatory when built in cibuildwheel
+  * Rely on standard infra for optionally building extension.
+  * Don't install wheel explicitly
+  * Fix uploading artifacts.
+
+- Update to version 0.0.15
+  * Publish wheels from the right directory.
+
+- Update to version 0.0.14.
+  * Depend on packaging for packaging.version.
+  * Add pyproject.toml
+  * Build wheels on pull request.
+  * Build python wheels.
+  * Migrate to setup.cfg.
+  * Ship py.typed.
+
+-------------------------------------------------------------------
+Wed Oct 12 03:14:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.2.2  
+  Fix import error for Python 3.6+.
+
+-------------------------------------------------------------------
+Fri Jun 17 06:06:27 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Initial package for fastbencode 0.0.9. 

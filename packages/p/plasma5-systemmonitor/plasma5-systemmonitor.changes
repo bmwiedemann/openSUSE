@@ -1,0 +1,621 @@
+-------------------------------------------------------------------
+Wed Dec  6 11:47:12 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.10
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.10
+- No code changes since 5.27.9
+
+-------------------------------------------------------------------
+Tue Oct 24 14:26:15 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.9
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.9
+- No code changes since 5.27.8
+
+-------------------------------------------------------------------
+Tue Sep 12 11:22:28 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.8
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.8
+- Changes since 5.27.7:
+  * Hide heightHelper BasicListItem
+
+-------------------------------------------------------------------
+Tue Aug  1 11:19:25 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.7
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.7
+- No code changes since 5.27.6
+
+-------------------------------------------------------------------
+Tue Jun 20 17:15:04 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.6
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.6
+- Changes since 5.27.5:
+  * Fix layout of Add New Page dialog with wordy languages (kde#470726)
+
+-------------------------------------------------------------------
+Tue May  9 13:44:14 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- No code changes since 5.27.4
+
+-------------------------------------------------------------------
+Tue Apr  4 15:05:42 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- No code changes since 5.27.3
+
+-------------------------------------------------------------------
+Tue Mar 14 15:06:02 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.3
+- No code changes since 5.27.2
+
+-------------------------------------------------------------------
+Tue Feb 28 17:34:18 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.2
+- No code changes since 5.27.1
+
+-------------------------------------------------------------------
+Tue Feb 21 14:09:24 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.1
+- No code changes since 5.27.0
+
+-------------------------------------------------------------------
+Thu Feb  9 14:19:48 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- Changes since 5.26.90:
+  * Set RemoveDeadEntries=true in the pages knsrc (kde#453651)
+  * table: Workaround a memory leak in QQmlPropertyCache (kde#460370)
+
+-------------------------------------------------------------------
+Thu Jan 19 14:43:23 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Changes since 5.26.5:
+  * Process table: Always use binary name for icon lookup (kde#454326)
+  * Add missing KWindowSystem link
+  * applicationstable: Use the same scaling for CPU details as the column display (kde#462775)
+  * table: Don't clear the selection when setting current index (kde#460615)
+  * Be more explicit in kill button texts (kde#454753)
+  * port all headers to pragma once
+  * Slightly reduce minimum window size (kde#462803)
+  * Convert hardcoded minimum sizes to multiples of GridUnit
+  * Use ecm_set_disabled_deprecation_versions
+  * Perform initialization in initialization list
+  * Remove invalid appstream releases
+  * Install po folder
+  * Move DialogLoader to data of ScrollablePage (kde#459514)
+  * Set QSurfaceFormat::ResetNotification
+
+-------------------------------------------------------------------
+Wed Jan  4 14:06:22 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.5
+- No code changes since 5.26.4
+
+-------------------------------------------------------------------
+Tue Nov 29 14:47:26 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.4
+- No code changes since 5.26.3
+
+-------------------------------------------------------------------
+Tue Nov  8 17:25:28 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.3
+- No code changes since 5.26.2
+
+-------------------------------------------------------------------
+Wed Oct 26 14:16:22 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.2
+- No code changes since 5.26.1
+
+-------------------------------------------------------------------
+Tue Oct 18 11:27:34 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- No code changes since 5.26.0
+
+-------------------------------------------------------------------
+Thu Oct  6 14:48:46 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * Install po folder
+  * Move DialogLoader to data of ScrollablePage (kde#459514)
+  * Set QSurfaceFormat::ResetNotification
+
+-------------------------------------------------------------------
+Thu Sep 15 20:47:34 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Changes since 5.25.5:
+  * Install metainfo file
+  * Remove dot from appstream summary
+  * Add FreeBSD Qt6 CI support
+  * Add reuse CI
+  * Doc: Remove outdated requirements section from README.md
+  * Add keywords for common search terms
+  * Use new ECMFindQmlModule
+  * Request passing unit tests on Linux and BSD
+  * Use the new dialog for replacing missing sensors
+  * Display a message when sensors are missing from a page
+  * Add a dialog to display missing sensors and what to replace them with
+  * Use JavaScript strict equality ===
+
+-------------------------------------------------------------------
+Tue Sep  6 16:56:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.5
+- No code changes since 5.25.4
+
+-------------------------------------------------------------------
+Tue Aug  2 14:07:14 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.4
+- No code changes since 5.25.3
+
+-------------------------------------------------------------------
+Tue Jul 12 11:29:04 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.3
+- No code changes since 5.25.2
+
+-------------------------------------------------------------------
+Tue Jun 28 13:03:34 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.2
+- No code changes since 5.25.1
+
+-------------------------------------------------------------------
+Tue Jun 21 11:39:47 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.1
+- No code changes since 5.25.0
+
+-------------------------------------------------------------------
+Thu Jun  9 11:15:04 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- No code changes since 5.24.90
+
+-------------------------------------------------------------------
+Thu May 19 19:46:05 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Changes since 5.24.5:
+  * Fix activating running instance on Wayland
+  * Set loadType to onstart for history page
+  * Add a page option to allow preloading a page (kde#440402)
+  * REmove duplicate header between header/file
+  * Remove explicit QuickSettings init method call
+  * Add CI support
+  * It's enabled by default in qt6
+  * Fix compile against qt6
+  * Allow to build against qt6
+  * Do not use Control as container for config UI elements
+  * Set "noMargins" to true for Applications and Processes pages (kde#447146)
+  * Mark as single window app
+
+-------------------------------------------------------------------
+Tue May  3 13:00:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.5
+- No code changes since 5.24.4
+
+-------------------------------------------------------------------
+Tue Mar 29 16:04:40 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.4
+- No code changes since 5.24.3
+
+-------------------------------------------------------------------
+Tue Mar  8 18:10:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.3
+- No code changes since 5.24.2
+
+-------------------------------------------------------------------
+Tue Feb 22 16:21:04 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.2
+- No code changes since 5.24.1
+
+-------------------------------------------------------------------
+Tue Feb 15 19:18:19 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.1
+- No code changes since 5.24.0
+
+-------------------------------------------------------------------
+Sat Feb  5 19:51:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Changes since 5.23.90:
+  * Do not use Control as container for config UI elements
+  * Set "noMargins" to true for Applications and Processes pages (kde#447146)
+  * Mark as single window app
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:33 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Changes since 5.23.5:
+  * Fix clazy warnings
+  * Fix some clazy warnings
+  * Fix some cppcheck warnings
+  * Remove unused variable
+  * Strip punctuation of labels in config
+  * Add comma separated filtering to ApplicationsTableView
+  * ApplicationsTable: Remove unneeded ProcessSortFilterModel (kde#445544)
+  * Add GitLab CI
+  * Don't make right click popup modal
+  * Fix main.qml URL from not being a URL
+  * Port away from Kirigami.Units.devicePixelRatio
+  * Move spinbox below label in Sensor settings to avoid getting cut off
+  * Allow changing row heights to one of three different modes (kde#441489)
+  * Clarify that the KSysGuard package is libksysguard
+  * Find KSystemStats
+  * Install external kinfocenter module in ${KDE_INSTALL_DATADIR}/plasma/kinfocenter/externalmodules
+  * Add .kde-ci.yml
+  * add external infocenter module
+  * Avoid basing a preferredWidth on a currentWidth
+  * No need to build a custom string for the application window title
+
+-------------------------------------------------------------------
+Tue Jan  4 14:58:19 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.5
+- Changes since 5.23.4:
+  * Add comma separated filtering to ApplicationsTableView
+  * ApplicationsTable: Remove unneeded ProcessSortFilterModel (kde#445544)
+
+-------------------------------------------------------------------
+Tue Nov 30 14:59:23 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.4
+- Changes since 5.23.3:
+  * Don't make right click popup modal
+
+-------------------------------------------------------------------
+Tue Nov  9 15:43:27 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.3
+- No code changes since 5.23.2
+
+-------------------------------------------------------------------
+Tue Oct 26 14:56:01 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.2
+- No code changes since 5.23.1
+
+-------------------------------------------------------------------
+Tue Oct 19 14:05:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.1
+- No code changes since 5.23.0
+
+-------------------------------------------------------------------
+Thu Oct  7 13:50:11 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * Avoid basing a preferredWidth on a currentWidth
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:05:12 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Aug 31 19:08:49 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.5
+- Changes since 5.22.4:
+  * Fix page export (kde#440551)
+
+-------------------------------------------------------------------
+Tue Jul 27 12:35:01 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.4
+- No code changes since 5.22.3
+
+-------------------------------------------------------------------
+Tue Jul  6 12:01:50 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.3
+- Changes since 5.22.2.1:
+  * Pass parent index when fetching selection data (kde#438626)
+
+-------------------------------------------------------------------
+Wed Jun 23 08:24:45 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.2.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.2
+- No code changes since 5.22.1
+
+-------------------------------------------------------------------
+Tue Jun 15 13:17:28 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.1
+- Changes since 5.22.0:
+  * Clear layers when navigating
+  * Switch away from removed pages (kde#437499)
+  * Do not reset the start page if the model changes
+  * Fix binding loop and null derefence warnings in EditablePage::heightForContent
+  * Fix GCC warning about copying an element from a container
+  * Use entryEvent signal for reacting to GHNS changes
+  * Push NewStuff pages to layers, not the stack (kde#437961)
+
+-------------------------------------------------------------------
+Thu Jun  3 13:06:16 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- Changes since 5.21.90:
+  * Rename BasicCellDelegate -> TextCellDelegate
+  * Move mouse handling up to a common ancestor of the item
+  * Fix flickering in table view (kde#436803)
+  * Move mouse handling back to delegates
+  * Fix initial sort order (kde#437449)
+  * Fix newstuff action connection (kde#437702)
+  * Do not position dialogs at fractional positions (kde#437805,kde#437804)
+  * Fix sorting in Applications Detail View
+  * Terminate process when pressing Delete (kde#436416)
+  * [Applications Table] Prompt only on SIGKILL/SIGTERM
+
+-------------------------------------------------------------------
+Thu May 13 18:15:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue May  4 14:15:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.5
+- Changes since 5.21.4:
+  * Also append fixedColumns  on initial load
+  * Remove RowLayout from KillDialog DialogButtonBox (kde#435192)
+  * Cleanup old controller if FaceLoader gets destroyed
+
+-------------------------------------------------------------------
+Tue Apr  6 14:00:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.4
+- Changes since 5.21.3:
+  * Fix scrollbar overlapping configuration page (kde#434461)
+
+-------------------------------------------------------------------
+Tue Mar 16 13:55:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.3
+- Changes since 5.21.2:
+  * The checkbox can be bigger than the text (kde#434009)
+  * Ensure correct paddings (kde#434007)
+  * Display existing search text in search field for application/process pages (kde#433324)
+  * Set "ForceSaveOnDestroy" to true for Applications and Processes faces
+  * Do not call a non-existing function (kde#433706)
+  * Avoid showing "Processes: 0" in applications sidebar whilst loading (kde#433326)
+  * Properly change colorSet (kde#434006)
+  * Fix some visual bugs of the KillDialog (kde#433751)
+  * Fix initial size of page download dialog (kde#433726)
+
+-------------------------------------------------------------------
+Tue Mar  2 15:01:38 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.2
+- Changes since 5.21.1:
+  * Initialize m_pageData (kde#433532)
+  * Add downloaded pages instantly again
+
+-------------------------------------------------------------------
+Tue Feb 23 14:52:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.1
+- Changes since 5.21.0:
+  * Fix duplicate name columns appearing when configuring columns (kde#433216)
+
+-------------------------------------------------------------------
+Thu Feb 11 18:23:14 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * Layout tables correctly in rtl case
+  * Improve dragging in rtl mode
+  * Fix crashes relating to PageDialog (kde#432147)
+  * Always open a dialog when it's loaded
+  * Make table header height equal to Kirigami list item height
+  * Remove rangeToX values from History page
+  * ProcessSortFilter: Check if any column has been set rather than only uid
+  * Use the correct total memory sensor for Application Details
+  * Port ApplicationDetails to use HistoryProxySource
+  * Use view color as background color for Application Details pane
+  * Set a proper icon for the "search" actions in table faces
+  * Create TreeDecoration dynamically
+  * Use a Loader for deferring creation of dialogs in main files
+
+-------------------------------------------------------------------
+Thu Jan 21 21:32:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov  5 19:53:23 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use suse_update_desktop_file to fix build on Leap
+
+-------------------------------------------------------------------
+Thu Nov  5 15:36:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0 (actually a preview for 5.21)
+
+-------------------------------------------------------------------
+Mon Oct 26 21:37:03 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Initial package

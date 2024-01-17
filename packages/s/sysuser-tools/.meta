@@ -1,0 +1,7 @@
+<package name="sysuser-tools" project="openSUSE:Factory">
+  <title>Auto provides for system users</title>
+  <description>Generate auto provides for system users.
+
+</description>
+  <devel project="Base:System" package="sysuser-tools"/>
+</package>

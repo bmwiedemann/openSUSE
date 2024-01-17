@@ -1,0 +1,7 @@
+<package name="perl-Snowball-Swedish" project="openSUSE:Factory">
+  <title>Snowball::Swedish Perl module</title>
+  <description>Lingua::Stem::Snowball::Se is a perl port of the swedish
+stemmer at http://snowball.sourceforge.net.</description>
+  <devel project="devel:languages:perl" package="perl-Snowball-Swedish"/>
+  <url>http://search.cpan.org/dist/Snowball-Swedish/</url>
+</package>

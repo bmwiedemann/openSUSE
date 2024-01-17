@@ -1,0 +1,17 @@
+---
+ procinfo.8 |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- procinfo.8
++++ procinfo.8	2010-10-12 13:42:49.000000000 +0000
+@@ -174,8 +174,8 @@ or
+ option). Modules with a use count larger than 0 are marked with an
+ asterisk.
+ 
+-." Deleted modules are marked with a `d', uninitialized
+-." modules with a `u', and modules with a bad state flag with a `b'.
++.\" Deleted modules are marked with a `d', uninitialized
++.\" modules with a `u', and modules with a bad state flag with a `b'.
+ 
+ .TP
+ .BI Character\ and\ Block\ Devices:

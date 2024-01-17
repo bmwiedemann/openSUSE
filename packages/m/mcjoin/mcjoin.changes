@@ -1,0 +1,115 @@
+-------------------------------------------------------------------
+Sun Sep 18 10:39:13 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.11
+  * Fix issue with spurious timer expiry on Aarch64 (Arm64)
+  * Fix #26: sender takes 100% CPU usage in daemon mode
+- Update to version 2.10
+  * Minor bug fixes, found by Coverity Scan
+  * Fix #18: optional trailing group port arguments ip4/ip6.
+  * Fix #19: setsid() problem causing mcjoin to exit when
+    daemonized.
+  * regression introduced in v2.7.
+  * Fix #23: fix uptime display in old output mode.
+  * Document alternative use-case.
+
+-------------------------------------------------------------------
+Fri Jan 15 19:11:16 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.9
+  * Multiple viewing modes, including new stats and rate/bytes
+    view. See help text for details.
+  * Another presentation view, show rate/bytes + plotter.
+  * Update plotter on timer, not input, we want to see the gaps.
+  * Change style of headings from top style to pimctl/mroutectl
+    style.
+  * Improved viewing modes and plotter characters for
+    dupes/delay/etc.
+  * Improved column sizing for better use of whitespace in narrow
+    ttys.
+  * Show stats on exit.
+  * Support for scrolling log up/down with PgUp/PgDn.
+  * Support for displaying uptime, also shown on exit.
+  * Support for generating duplicate frames, for testing purposes.
+  * Support for toggling debug logs at runtime.
+
+-------------------------------------------------------------------
+Fri Jan  8 16:57:06 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8
+  * Detect a default interface even on systems without default
+    route.
+  * Support Ctrl-L to refresh a garbled display.
+  * Support for a deadline timeout -W sec.
+  * Support for redirecting output to a log file
+    e.g. "mcjoin -l debug > file".
+  * Document reverse path filtering in Linux.
+  * Document how to test with older IGMP versions in Linux.
+  * Fix resize glitch in plotter (new event based framework).
+  * Fix TTY restore on abort or abnormal exit.
+  * Fully restore support for old output, "-o".
+
+-------------------------------------------------------------------
+Tue Nov 10 08:40:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7
+  * New user interface, inspired by mtr. Easier to track multiple
+    streams and spot gaps in real-time.
+  * Adjust ulimit so we can open enough sockets to send/receive
+    multicast.
+  * Support for adjusting payload length, 42 -> 1648.
+  * Support for adjusting packet send/poll rate.
+  * Support for using old UI using -o flag.
+  * Support any source port in (S,G) joins.
+  * Greatly improved IPv6 support, portability and multiple groups.
+  * Dropped -r SEC option, not needed anymore and was misleading.
+  * Fix #8: Handle IPv6 being disabled, per group and per socket.
+  * Fix #9: No feedback on receiver when using mcjoin as sender.
+  * Fix #10: Calculate and show gaps in received groups.
+
+-------------------------------------------------------------------
+Thu Apr 23 17:52:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6
+  * Full IPv6 support, both send and join.
+  * Increase MAX number of groups to join: 250 -> 2048
+  * Relocate source code to src/ sub-directory
+  * Add support for sending with/to IPv6 address/group
+  * Update docs slightly
+
+-------------------------------------------------------------------
+Wed Feb 26 11:56:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5
+  * Replaced mutually exclusive options -q and -d with -l level.
+    Default log level is notice, for true quiet mode, use -l none
+  * Added new daemon mode, which makes mcjoin detach from its
+    controlling terminal and run in the background, with all
+    output except progress redirected to syslog
+  * Fix possible file descriptor leak
+  * Improve error detection if mcjoin cannot find a default
+    interface, a valid (source) IP address, or anything else
+    goes wrong
+  * Add support for -w SEC, initial delay before actually
+    starting. Useful if started very early in a system bootstrap
+    before network has come up properly
+- Update to version 2.4
+  * Support for SSM (S,G) join, in addition to the existing
+    ASM (*,G) join
+  * Find interface bsaed on default route with best metric
+  * Initial support for IPv6 (*,G) and (S,G) joins
+
+-------------------------------------------------------------------
+Thu Apr  4 19:41:39 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3
+  * Automatically detect default interface
+  * Enable support for multiple mcjoin receivers on one host using
+    the same destination (Internet) port
+  * Fix #1: Receiver does not stop after count received packets
+  * Avoid using GLIBC extension `__progname`
+
+-------------------------------------------------------------------
+Mon Jun 18 12:19:16 UTC 2018 - mardnh@gmx.de
+
+- Initial package, version 2.2

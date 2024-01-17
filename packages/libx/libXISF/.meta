@@ -1,0 +1,6 @@
+<package name="libXISF" project="openSUSE:Factory">
+  <title>libXISF</title>
+  <description>LibXISF is C++ library that can read and write XISF files produced by PixInsight. It implement XISF 1.0 specification.</description>
+  <devel project="Application:Astrophotography" package="libXISF"/>
+  <url>https://gitea.nouspiro.space/nou/libXISF</url>
+</package>

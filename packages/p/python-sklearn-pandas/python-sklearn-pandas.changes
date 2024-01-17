@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Mon Feb  6 08:06:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken tests gh#scikit-learn-contrib/sklearn-pandas#248
+
+-------------------------------------------------------------------
+Sat Feb 12 23:37:31 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.2.0:
+  * Added an ability to provide callable functions instead of static
+    column list.
+
+- changes from version 2.1.0:
+  * Removed test for Python 3.6 and added Python 3.9
+  * Added deprecation warning for NumericalTransformer
+  * Fixed pickling issue causing integration issues with Baikal.
+  * Started publishing package to conda repo
+
+-------------------------------------------------------------------
+Thu Jan 28 19:44:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to version 2.0.4
+  * Explicitly handling serialization (#224)
+  * document fixes
+  * Making transform function thread safe (#194)
+  * Switched to nox for unit testing (#226)
+- Changlog for 2.0.3
+  * Added elapsed time information for each feature.
+- Skip python36 build because of SciPy 1.6.0  
+- Get the GitHub archive for the tests and run them
+- No extra mock required
+
+-------------------------------------------------------------------
+Sat Oct 10 19:08:06 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * updated versions of required packages
+
+- update to version 2.0.2:
+  * Fix DataFrameMapper drop_cols attribute naming consistency with
+    scikit-learn and initialization.
+
+- changes from version 2.0.1:
+  * Added an option to explicitly drop columns.
+
+- changes from version 2.0.0:
+  * Deprecated support for Python < 3.6.
+  * Deprecated support for old versions of scikit-learn, pandas and
+    numpy. Please check setup.py for minimum requirement.
+  * Removed CategoricalImputer, cross_val_score and GridSearchCV. All
+    these functionality now exists as part of scikit-learn. Please use
+    SimpleImputer instead of CategoricalImputer. Also Cross validation
+    from sklearn now supports dataframe so we don't need to use cross
+    validation wrapper provided over here.
+  * Added NumericalTransformer for common numerical
+    transformations. Currently it implements log and log1p
+    transformation.
+  * Added prefix and suffix options. See examples above. These are
+    usually helpful when using gen_features.
+  * Added drop_cols argument to DataframeMapper. This can be used to
+    explicitly drop columns
+
+-------------------------------------------------------------------
+Mon Jan  6 15:11:42 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Drop python2 subpackage due to dependencies dropping python2.
+
+-------------------------------------------------------------------
+Sat Dec  8 19:39:33 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.8.0:
+  * Add FunctionTransformer class (#117).
+  * Fix column names derivation for dataframes with multi-index or
+    non-string columns (#166).
+  * Change behaviour of DataFrameMapper's fit_transform method to
+    invoke each underlying transformers' native fit_transform if
+    implemented. (#150)
+
+-------------------------------------------------------------------
+Sun Sep  2 16:30:43 UTC 2018 - arun@gmx.de
+
+- specfile:
+ * remove devel from noarch
+ * be more specific in %files section
+
+- update to version 1.7.0:
+  * Fix issues with unicode names in get_names (#160).
+  * Update to build using numpy==1.14 and python==3.6 (#154).
+  * Add strategy and fill_value parameters to CategoricalImputer to
+    allow imputing with values other than the mode (#144), (#161).
+  * Preserve input data types when no transform is supplied (#138).
+
+-------------------------------------------------------------------
+Thu May 24 17:45:17 UTC 2018 - toddrme2178@gmail.com
+
+- spec file cleanups
+
+-------------------------------------------------------------------
+Thu Nov  9 06:00:35 UTC 2017 - arun@gmx.de
+
+- update to version 1.6.0:
+  * Add column name to exception during fit/transform (#110).
+  * Add gen_feature helper function to help generating the same
+    transformation for multiple columns (#126).
+
+-------------------------------------------------------------------
+Fri Oct 20 16:18:41 UTC 2017 - toddrme2178@gmail.com
+
+- initial version
