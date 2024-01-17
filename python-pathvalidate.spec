@@ -16,9 +16,9 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pathvalidate
-Version:        2.5.2
+Version:        3.2.0
 Release:        0
 Summary:        Python library to sanitize/validate a string such as filenames
 License:        MIT
