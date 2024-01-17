@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sun Jan 14 10:08:15 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- update up to 2023.11.30:
+  * In the implementation of the "MPEGVideoStreamFramer" class, gave
+    "TimeCode::operator==()" the "const" qualifier, to make some
+    compilers happy.
+  * Performed the annual update of the copyright years near the start
+    of each file 
+- update to 2023.11.08:
+  * Changed the signature to the virtual function
+    "getRTPSinkandRTCP()" (in "ServerMediaSubession", and its subclasses
+    "OnDemandServerMediaSession" and "PassiveServerMediaSubsession")
+    to make its 'result' arguments "rtpSink" and "rtcp" no longer "const *".
+    There was no real reason to make those "const *".
+- update to 2023.11.07:
+  * In the class "GenericMediaServer", made the variables
+    "fServerMediaSessions", 
+    "fClientConnections", and "fClientSessions" 'protected' rather
+    than 'private', to allow subclasses to access them if desired.
+- update to 2023.10.30:
+  * Fixed a bug in "deleteEventTrigger()" that had accidentally been
+    introduced during the change to 'event trigger' implementation
+    back in June.
+- update to 2023.07.24:
+  * Updated the event trigger implementation once again, to allow for
+    the possibility of developers redefining MAX_NUM_EVENT_TRIGGERS
+    (it must always be <= the number of bits in an "EventTriggerId",
+    though.
+- update to 2023.06.20:
+  * Updated the event trigger implementation again - in the case where
+    "NO_STD_LIB" is defined.  In this case,
+    "fTriggersAwaitingHandling" is implemented as an array of "Boolean
+    volatile"s, rather than as a 32-bit bitmap.  This should make
+    'race conditions' less likely even if "NO_STD_LIB" is defined
+    (though you should use the preferred, default implementation -
+    that uses an array of "std::atomic_flag"s - if possible).
+- update to 2023.06.16:
+  * Changed the (default) implementation of 'event triggers' in
+    "BasicTaskScheduler" to implement "fTriggersAwaitingHandling"
+    using "std:atomic_flag"s, rather than as a bitmap.
+    This should overcome 'race conditions' that some users experienced
+    when calling "triggerEvent()" from a non-LIVE555 thread.
+  * Note that this is the first time the LIVE555 code has required the
+    C++ standard library.
+    (If you cannot use the C++ standard library, then you can compile
+    the code - but getting the old behavior - by defining "NO_STD_LIB".)
+  * Minor change to "RTSPCommon.cpp" to overcome a compilation error
+    in XCode on Mac OS X.
+- update to 2023.06.14:
+  * Fixed a bug in the Matroska file parsing code that could sometimes
+    cause a 'use after free' error. (bsc#1218758, CVE-2023-20573)
+- update to 2023.06.10:
+  * Minor change to "GroupsockHelper.cpp" to overcome a compilation
+    error in XCode on Mac OS X.
+- update to 2023.06.08:
+  * Updated the "dateHeader()" function in "RTSPCommon.cpp" to use
+    "gmtime_r()" instead of the older, non-thread-safe "gmtime()".
+- Applied workarounds for the build error with atomic_flag test
+
+-------------------------------------------------------------------
 Mon May 29 19:32:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.5.10:
