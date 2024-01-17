@@ -1,7 +1,7 @@
 #
 # spec file for package vorta
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vorta
-Version:        0.8.12
+Version:        0.9.1
 Release:        0
 Summary:        Desktop Backup Client based on BorgBackup
 License:        GPL-3.0-only
@@ -25,8 +25,8 @@ Group:          Productivity/Archiving/Backup
 URL:            https://github.com/borgbase/vorta
 Source:         https://github.com/borgbase/%{name}/archive/v%{version}.tar.gz
 Source1:        vorta.desktop
-# PATCH-FIX-OPENSUSE
-Patch0:         fix-dependencies.patch
+# PATCH-FIX-OPENSUSE vorta-fix-dependencies.patch malcolmlewis@opensuse.org -- Remove dependencies that are named differently.
+Patch0:         vorta-fix-dependencies.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
@@ -38,10 +38,11 @@ BuildRequires:  python3-platformdirs
 BuildRequires:  python3-psutil
 BuildRequires:  python3-pytest
 BuildRequires:  python3-python-dateutil
-BuildRequires:  python3-qt5
+BuildRequires:  python3-qt6
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools-git
 BuildRequires:  update-desktop-files
+## MANUAL BEGIN
 Requires:       borgbackup
 Requires:       python3-APScheduler < 4.0
 Requires:       python3-QDarkStyle
@@ -50,7 +51,8 @@ Requires:       python3-peewee
 Requires:       python3-platformdirs
 Requires:       python3-psutil
 Requires:       python3-python-dateutil
-Requires:       python3-qt5
+Requires:       python3-qt6
+## MANUAL END
 BuildArch:      noarch
 
 %description
@@ -59,8 +61,7 @@ the desktop environment to protect data from disk failure,
 ransomware and theft.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export LANG=en_US.UTF-8
