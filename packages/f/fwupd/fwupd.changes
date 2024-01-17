@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 13 05:05:41 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
+
+- Fix build failure on s390x and ppc64le
+  + This release modifies spec file
+    - add s390x and ppc64le into default 'with efi_fw_update'
+      so that old dbxtool version can be obsoleted.
+
+-------------------------------------------------------------------
 Thu Jan  4 16:14:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.9.11:

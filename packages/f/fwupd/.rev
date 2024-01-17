@@ -629,4 +629,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>1136900</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>3fd418c073ffbfb77acf4867a140a595</srcmd5>
+    <version>1.9.11</version>
+    <time>1705526101</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139199</requestid>
+  </revision>
 </revisionlist>
