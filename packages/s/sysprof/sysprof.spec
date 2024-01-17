@@ -1,7 +1,7 @@
 #
 # spec file for package sysprof
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -58,9 +58,6 @@ BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.105
 BuildRequires:  pkgconfig(systemd)
 Requires:       hicolor-icon-theme
 %{?systemd_ordering}
-# Sep 2023: ui and capture-devel-static sub-packages were dropped on 3.48.0 -> 45.rc
-Obsoletes:      sysprof-ui < 3.49
-Obsoletes:      sysprof-capture-devel-static < 3.49
 
 %description
 Sysprof is a sampling CPU profiler for Linux that collects accurate,
@@ -69,6 +66,7 @@ calltrees.
 
 %package gtk
 Summary:        Sysprof binary with GUI support
+Obsoletes:      sysprof-ui < 3.49
 
 %description gtk
 Sysprof is a sampling CPU profiler for Linux that collects accurate,
@@ -89,6 +87,7 @@ Summary:        Development files for %{name}
 Group:          Development/Tools/Debuggers
 Requires:       %{name} = %{version}
 Requires:       libsysprof-%{apiver}-%{sover} = %{version}
+Obsoletes:      sysprof-capture-devel-static < 3.49
 
 %description    devel
 The %{name}-devel package contains header files for developing

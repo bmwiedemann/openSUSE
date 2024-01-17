@@ -269,4 +269,15 @@
     <comment></comment>
     <requestid>1132652</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>870211259d20913ee5de566de08d931c</srcmd5>
+    <version>45.1</version>
+    <time>1705526343</time>
+    <user>anag+factory</user>
+    <comment>- Move wronly places obsoletes:
+  + Obsoletes sysprof-ui &lt; 3.49 from main to -gtk package.
+  + Obsoletes sysprof-capture-devel-static from main to -devel
+    package. (forwarded request 1139450 from dimstar)</comment>
+    <requestid>1139512</requestid>
+  </revision>
 </revisionlist>
