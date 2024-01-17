@@ -1,7 +1,7 @@
 #
 # spec file for package gdl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -99,7 +99,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/*.so
 %{_datadir}/gir-1.0/Gdl-3.gir
-%{_datadir}/gtk-doc/html/gdl-3.0/
+%{_datadir}/gtk-doc/
 
 %files lang -f %{name}-3.lang
 
