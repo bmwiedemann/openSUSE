@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-termcolor
-Version:        2.1.1
+Version:        2.4.0
 Release:        0
 Summary:        ANSII Color formatting for output in terminal
 License:        MIT
@@ -28,7 +28,6 @@ BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,6 +52,7 @@ Available attributes: bold, dark, underline, blink, reverse, concealed.
 %files %{python_files}
 %license COPYING.txt
 %doc CHANGES.md README.md
-%{python_sitelib}/*
+%{python_sitelib}/termcolor
+%{python_sitelib}/termcolor-%{version}.dist-info
 
 %changelog
