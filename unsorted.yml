@@ -17,10 +17,12 @@ unsorted:
   - AMF-docs 
   - ART 
   - AppCSXCAD 
+  - AppStream 
   - AppStream-compose 
   - AppStream-compose-devel 
   - AppStream-devel 
   - AppStream-doc 
+  - AppStream-lang 
   - AusweisApp 
   - AusweisApp2 
   - Bear 
@@ -36,7 +38,6 @@ unsorted:
   - CharLS-devel 
   - Coin-devel 
   - Coin4-devel 
-  - Coin4-devel-doc 
   - ColPack-devel 
   - ColPack-devel-32bit 
   - ColorFull-devel 
@@ -150,25 +151,25 @@ unsorted:
   - MyGUI-devel 
   - MyGUI-devel-doc 
   - MyGUI-tools 
+  - NetworkManager-applet-fortisslvpn 
+  - NetworkManager-applet-iodine 
+  - NetworkManager-applet-l2tp 
+  - NetworkManager-applet-libreswan 
+  - NetworkManager-applet-strongswan 
   - NetworkManager-branding-upstream 
   - NetworkManager-cloud-setup 
   - NetworkManager-devel 
   - NetworkManager-devel-32bit 
   - NetworkManager-fortisslvpn 
-  - NetworkManager-fortisslvpn-gnome 
   - NetworkManager-fortisslvpn-lang 
   - NetworkManager-iodine 
-  - NetworkManager-iodine-gnome 
   - NetworkManager-iodine-lang 
   - NetworkManager-l2tp 
-  - NetworkManager-l2tp-gnome 
   - NetworkManager-l2tp-lang 
   - NetworkManager-libreswan 
-  - NetworkManager-libreswan-gnome 
   - NetworkManager-libreswan-lang 
   - NetworkManager-ovs 
   - NetworkManager-strongswan 
-  - NetworkManager-strongswan-gnome 
   - NetworkManager-strongswan-lang 
   - NsCDE 
   - NumCpp-devel 
@@ -291,8 +292,10 @@ unsorted:
   - SDL2_sound-devel 
   - SDL2_ttf-devel 
   - SDL_Pango-devel 
+  - SDL_mixer-devel 
   - SDL_sound-devel 
   - SHERPA-MC-devel 
+  - SQLiteCpp-devel 
   - SVT-AV1 
   - SVT-AV1-devel 
   - SampleICC 
@@ -310,7 +313,6 @@ unsorted:
   - StyLua 
   - SwayNotificationCenter 
   - ThePEG-devel 
-  - ThePEG-libs 
   - TreeMaker 
   - UEFITool 
   - UltimateDailyWallpaper 
@@ -345,7 +347,6 @@ unsorted:
   - aaa_base-wsl 
   - aalib 
   - aalib-devel 
-  - aardvark-dns 
   - abcde 
   - abcm2ps 
   - abi-compliance-checker 
@@ -759,6 +760,7 @@ unsorted:
   - apcupsd 
   - apcupsd-cgi 
   - apfel-devel 
+  - apfel-devel-static 
   - apfel-doc 
   - apfsprogs 
   - apg 
@@ -783,6 +785,8 @@ unsorted:
   - appmenu-registrar 
   - appres 
   - appstream-glib-devel 
+  - appstream-qt5-devel 
+  - appstream-qt6-devel 
   - apptainer 
   - appx-util 
   - apr-devel 
@@ -964,6 +968,7 @@ unsorted:
   - assertj-core 
   - assertj-core-javadoc 
   - assimp-devel 
+  - ast-grep 
   - asterisk-sounds-devel 
   - asteroid 
   - asteroids3D 
@@ -1221,6 +1226,7 @@ unsorted:
   - bamf-devel 
   - bamf-doc 
   - bananapir2-firmware 
+  - bandicoot-devel 
   - bandwidth 
   - barcode 
   - barcode-devel 
@@ -1370,6 +1376,8 @@ unsorted:
   - blas-devel-32bit 
   - blas-devel-static 
   - blasphemer 
+  - blaze-devel 
+  - blaze-devel-doc 
   - bleachbit 
   - bleachbit-lang 
   - blender 
@@ -1377,6 +1385,7 @@ unsorted:
   - blender-lang 
   - bless 
   - bless-doc 
+  - blis-devel 
   - bliss 
   - bliss-devel 
   - blitz-devel 
@@ -1449,21 +1458,21 @@ unsorted:
   - boost-gnu-openmpi4-hpc-devel 
   - boost-gnu-openmpi4-hpc-python3 
   - boost-jam 
-  - boost1_83_0-doc-html 
-  - boost1_83_0-doc-pdf 
-  - boost1_83_0-jam 
-  - boost1_83_0-quickbook 
-  - boost_1_83_0-gnu-hpc 
-  - boost_1_83_0-gnu-hpc-devel 
-  - boost_1_83_0-gnu-mpich-hpc 
-  - boost_1_83_0-gnu-mpich-hpc-devel 
-  - boost_1_83_0-gnu-mpich-hpc-python3 
-  - boost_1_83_0-gnu-mvapich2-hpc 
-  - boost_1_83_0-gnu-mvapich2-hpc-devel 
-  - boost_1_83_0-gnu-mvapich2-hpc-python3 
-  - boost_1_83_0-gnu-openmpi4-hpc 
-  - boost_1_83_0-gnu-openmpi4-hpc-devel 
-  - boost_1_83_0-gnu-openmpi4-hpc-python3 
+  - boost1_84_0-doc-html 
+  - boost1_84_0-doc-pdf 
+  - boost1_84_0-jam 
+  - boost1_84_0-quickbook 
+  - boost_1_84_0-gnu-hpc 
+  - boost_1_84_0-gnu-hpc-devel 
+  - boost_1_84_0-gnu-mpich-hpc 
+  - boost_1_84_0-gnu-mpich-hpc-devel 
+  - boost_1_84_0-gnu-mpich-hpc-python3 
+  - boost_1_84_0-gnu-mvapich2-hpc 
+  - boost_1_84_0-gnu-mvapich2-hpc-devel 
+  - boost_1_84_0-gnu-mvapich2-hpc-python3 
+  - boost_1_84_0-gnu-openmpi4-hpc 
+  - boost_1_84_0-gnu-openmpi4-hpc-devel 
+  - boost_1_84_0-gnu-openmpi4-hpc-python3 
   - booth 
   - booth-test 
   - bootiso 
@@ -1604,7 +1613,6 @@ unsorted:
   - budgie-screenshot-applet-lang 
   - budgie-showtime-applet 
   - budgie-takeabreak-applet 
-  - budgie-trash-applet 
   - budgie-visualspace-applet 
   - budgie-wallstreet 
   - budgie-weathershow-applet 
@@ -1708,6 +1716,7 @@ unsorted:
   - busybox-time 
   - busybox-traceroute 
   - busybox-tunctl 
+  - busybox-udhcpc 
   - busybox-unzip 
   - busybox-util-linux 
   - busybox-vi 
@@ -1841,6 +1850,8 @@ unsorted:
   - camsource-devel 
   - canberra-gtk-play-gnome 
   - canlock 
+  - canokey-qemu 
+  - canokey-qemu-devel 
   - cantata 
   - cantata-lang 
   - cantor 
@@ -1866,6 +1877,8 @@ unsorted:
   - cargo1.71 
   - cargo1.72 
   - cargo1.73 
+  - cargo1.74 
+  - cargo1.75 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -1876,6 +1889,8 @@ unsorted:
   - carla 
   - carla-devel 
   - carla-vst 
+  - cartridges 
+  - cartridges-lang 
   - casacore 
   - casacore-devel 
   - casacore-openmpi4 
@@ -2076,6 +2091,7 @@ unsorted:
   - ckb-next 
   - ckermit 
   - ckermit-doc 
+  - clBLAS-devel 
   - clFFT 
   - clFFT-devel 
   - clack 
@@ -2129,6 +2145,20 @@ unsorted:
   - clevis-luks 
   - clevis-systemd 
   - clevis-udisks2 
+  - clhep-Cast-devel 
+  - clhep-Evaluator-devel 
+  - clhep-Exceptions-devel 
+  - clhep-GenericFunctions-devel 
+  - clhep-Geometry-devel 
+  - clhep-Matrix-devel 
+  - clhep-Random-devel 
+  - clhep-RandomObjects-devel 
+  - clhep-RefCount-devel 
+  - clhep-Units-devel 
+  - clhep-Utility-devel 
+  - clhep-Vector-devel 
+  - clhep-devel 
+  - clhep-doc 
   - cli11-devel 
   - cli11-doc 
   - clinfo 
@@ -2206,9 +2236,11 @@ unsorted:
   - cmus-plugin-vorbis 
   - cmus-plugin-wavpack 
   - cmus-plugins-all 
-  - cnf-rs-zsh 
+  - cnf-zsh 
+  - cni 
   - cni-plugin-dnsname 
   - cni-plugin-flannel 
+  - cni-plugins 
   - cntlm 
   - cobbler 
   - cobbler-tests 
@@ -2236,6 +2268,8 @@ unsorted:
   - codemodel 
   - codemodel-javadoc 
   - codespell 
+  - cog 
+  - cog-devel 
   - cogl-devel 
   - coin-or-Cbc 
   - coin-or-Cbc-devel 
@@ -2409,6 +2443,7 @@ unsorted:
   - cool-retro-term 
   - coolkey 
   - coolkey-devel 
+  - coppwr 
   - coq 
   - coq-devel 
   - coq-doc 
@@ -2802,7 +2837,6 @@ unsorted:
   - dLeyna-devel 
   - dMagnetic 
   - dSFMT-devel 
-  - dagger 
   - dai-banna-fonts 
   - dante 
   - dante-devel 
@@ -2820,6 +2854,7 @@ unsorted:
   - dar-doc 
   - dar-lang 
   - dareader-devel 
+  - darkhttpd 
   - darktable 
   - darktable-tools-basecurve 
   - darktable-tools-noise 
@@ -2897,6 +2932,8 @@ unsorted:
   - debugbreak-devel 
   - debugedit 
   - debuginfod-dummy-client 
+  - decaf 
+  - decaf-devel 
   - decentxml 
   - decentxml-javadoc 
   - decibels 
@@ -3035,6 +3072,7 @@ unsorted:
   - dh-make 
   - dhcp-devel 
   - dhcp-doc 
+  - dhcp-keama 
   - dhcpd-pools 
   - dhewm3 
   - dhex 
@@ -3212,6 +3250,8 @@ unsorted:
   - dpkg-devel 
   - dpkg-lang 
   - dqlite-devel 
+  - draco 
+  - draco-devel 
   - dracut-extra 
   - dracut-fips 
   - dracut-kiwi-lib 
@@ -3220,6 +3260,7 @@ unsorted:
   - dracut-kiwi-oem-repart 
   - dracut-kiwi-overlay 
   - dracut-kiwi-verity 
+  - dracut-pcr-signature 
   - dracut-sshd 
   - dracut-tools 
   - dragonbox-devel 
@@ -3396,6 +3437,7 @@ unsorted:
   - efl-examples 
   - efl-lang 
   - efl-testsuite 
+  - efm-langserver 
   - efont-serif-fonts 
   - eglexternalplatform-devel 
   - eiciel 
@@ -3429,7 +3471,6 @@ unsorted:
   - elisa-lang 
   - elixir 
   - elixir-doc 
-  - elixir-ex_doc 
   - elixir-hex 
   - elk 
   - elk-data 
@@ -3452,6 +3493,7 @@ unsorted:
   - emf2svg-conv 
   - emil 
   - emojione-color-font 
+  - emptyepsilon 
   - enblend-enfuse 
   - enblend-enfuse-doc 
   - enc 
@@ -3608,6 +3650,8 @@ unsorted:
   - eth-fastfabric 
   - etherape 
   - etherape-lang 
+  - etherdfs 
+  - ethflop 
   - etrophy 
   - etrophy-data 
   - etrophy-devel 
@@ -3632,7 +3676,6 @@ unsorted:
   - exec-maven-plugin-javadoc 
   - execstack 
   - exempi-tools 
-  - exfat-utils 
   - exfatprogs 
   - exif 
   - exiftool 
@@ -3695,8 +3738,11 @@ unsorted:
   - farstream-data 
   - farstream-devel 
   - fasd 
+  - fast_float-devel 
   - fasterxml-oss-parent 
   - fastfetch 
+  - fastfetch-bash-completion 
+  - fastfetch-fish-completion 
   - fastjar 
   - fastjet-contrib-devel 
   - fastjet-contrib-devel-static 
@@ -3802,6 +3848,7 @@ unsorted:
   - fcitx5-table-other 
   - fcitx5-unikey 
   - fcitx5-zhuyin 
+  - fclones 
   - fcwnn 
   - fcwnn-devel 
   - fcwnncom 
@@ -3810,12 +3857,9 @@ unsorted:
   - fd-fish-completion 
   - fd-zsh-completion 
   - fde-firstboot 
-  - fde-tools 
-  - fde-tools-bash-completion 
   - fde-tpm-helper-rpm-macros 
   - fdo-client 
   - fdo-client-devel 
-  - featherpad 
   - featherpad-lang 
   - fec-devel 
   - feedbackd 
@@ -3888,7 +3932,6 @@ unsorted:
   - ffmpeg-6-libswscale-devel 
   - ffmpeg-6-mini-devel 
   - ffmpeg-6-mini-libs 
-  - ffmpeg-6-private-devel 
   - ffmsindex 
   - ffnvcodec-devel 
   - ffsb 
@@ -3917,6 +3960,7 @@ unsorted:
   - file-devel 
   - file-devel-32bit 
   - file-unpack 
+  - file-unpack2 
   - fileb0x 
   - filebench 
   - filezilla 
@@ -4030,6 +4074,7 @@ unsorted:
   - fmit 
   - fmpp 
   - fmpp-javadoc 
+  - fmt-9-devel 
   - fmt-devel 
   - fnotifystat 
   - fnotifystat-bash-completion 
@@ -4227,7 +4272,6 @@ unsorted:
   - fuse-devel 
   - fuse-devel-static 
   - fuse-doc 
-  - fuse-exfat 
   - fuse-oscfs 
   - fuse2fs 
   - fuse3-devel 
@@ -4289,6 +4333,160 @@ unsorted:
   - gammu-doc 
   - gammu-smsd 
   - ganglia-web 
+  - gap 
+  - gap-4ti2interface 
+  - gap-ace 
+  - gap-aclib 
+  - gap-agt 
+  - gap-alnuth 
+  - gap-anupq 
+  - gap-atlasrep 
+  - gap-autodoc 
+  - gap-automata 
+  - gap-automgrp 
+  - gap-autpgrp 
+  - gap-browse 
+  - gap-cap 
+  - gap-caratinterface 
+  - gap-cddinterface 
+  - gap-circle 
+  - gap-classicpres 
+  - gap-cohomolo 
+  - gap-congruence 
+  - gap-corelg 
+  - gap-crime 
+  - gap-crisp 
+  - gap-crypting 
+  - gap-cryst 
+  - gap-crystcat 
+  - gap-ctbllib 
+  - gap-cubefree 
+  - gap-curlinterface 
+  - gap-cvec 
+  - gap-datastructures 
+  - gap-deepthought 
+  - gap-design 
+  - gap-devel 
+  - gap-difsets 
+  - gap-digraphs 
+  - gap-edim 
+  - gap-example 
+  - gap-examplesforhomalg 
+  - gap-factint 
+  - gap-ferret 
+  - gap-fga 
+  - gap-fining 
+  - gap-float 
+  - gap-format 
+  - gap-forms 
+  - gap-fplsa 
+  - gap-fr 
+  - gap-full 
+  - gap-fwtree 
+  - gap-gapdoc 
+  - gap-gauss 
+  - gap-gaussforhomalg 
+  - gap-gbnp 
+  - gap-generalizedmorphismsforcap 
+  - gap-genss 
+  - gap-gradedmodules 
+  - gap-gradedringforhomalg 
+  - gap-grape 
+  - gap-groupoids 
+  - gap-grpconst 
+  - gap-guarana 
+  - gap-guava 
+  - gap-hap 
+  - gap-hapcryst 
+  - gap-hecke 
+  - gap-help 
+  - gap-homalg 
+  - gap-homalgtocas 
+  - gap-idrel 
+  - gap-images 
+  - gap-intpic 
+  - gap-io 
+  - gap-io_forhomalg 
+  - gap-irredsol 
+  - gap-itc 
+  - gap-json 
+  - gap-kan 
+  - gap-kbmag 
+  - gap-laguna 
+  - gap-liealgdb 
+  - gap-liepring 
+  - gap-liering 
+  - gap-linearalgebraforcap 
+  - gap-localizeringforhomalg 
+  - gap-loops 
+  - gap-lpres 
+  - gap-majoranaalgebras 
+  - gap-mapclass 
+  - gap-matgrp 
+  - gap-matricesforhomalg 
+  - gap-modisom 
+  - gap-modules 
+  - gap-monoidalcategories 
+  - gap-nconvex 
+  - gap-nilmat 
+  - gap-nock 
+  - gap-normalizinterface 
+  - gap-nq 
+  - gap-numericalsgps 
+  - gap-openmath 
+  - gap-orb 
+  - gap-patternclass 
+  - gap-permut 
+  - gap-polenta 
+  - gap-polycyclic 
+  - gap-polymaking 
+  - gap-primgrp 
+  - gap-profiling 
+  - gap-qpa 
+  - gap-quagroup 
+  - gap-radiroot 
+  - gap-rcwa 
+  - gap-rds 
+  - gap-recog 
+  - gap-repndecomp 
+  - gap-repsn 
+  - gap-resclasses 
+  - gap-ringsforhomalg 
+  - gap-rpm-devel 
+  - gap-sco 
+  - gap-scscp 
+  - gap-semigroups 
+  - gap-sglppow 
+  - gap-sgpviz 
+  - gap-simpcomp 
+  - gap-singular 
+  - gap-sl2reps 
+  - gap-sla 
+  - gap-smallgrp 
+  - gap-smallsemi 
+  - gap-sonata 
+  - gap-sophus 
+  - gap-spinsym 
+  - gap-standardff 
+  - gap-symbcompcc 
+  - gap-thelma 
+  - gap-tomlib 
+  - gap-toolsforhomalg 
+  - gap-toric 
+  - gap-toricvarieties 
+  - gap-transgrp 
+  - gap-ugaly 
+  - gap-unipot 
+  - gap-unitlib 
+  - gap-utils 
+  - gap-uuid 
+  - gap-walrus 
+  - gap-wedderga 
+  - gap-xgap 
+  - gap-xmod 
+  - gap-xmodalg 
+  - gap-yangbaxter 
+  - gap-zeromqinterface 
   - garlic 
   - garlic-doc 
   - gasket-driver 
@@ -4447,6 +4645,8 @@ unsorted:
   - geany-lang 
   - geany-plugins 
   - geany-plugins-lang 
+  - gearlever 
+  - gearlever-lang 
   - geary 
   - geary-lang 
   - gebaar-libinput 
@@ -4927,10 +5127,6 @@ unsorted:
   - ghc-config-ini-devel 
   - ghc-config-ini-doc 
   - ghc-config-ini-prof 
-  - ghc-connection 
-  - ghc-connection-devel 
-  - ghc-connection-doc 
-  - ghc-connection-prof 
   - ghc-constraints 
   - ghc-constraints-devel 
   - ghc-constraints-doc 
@@ -4971,10 +5167,6 @@ unsorted:
   - ghc-crypto-cipher-types-devel 
   - ghc-crypto-cipher-types-doc 
   - ghc-crypto-cipher-types-prof 
-  - ghc-crypto-random 
-  - ghc-crypto-random-devel 
-  - ghc-crypto-random-doc 
-  - ghc-crypto-random-prof 
   - ghc-cryptohash-md5 
   - ghc-cryptohash-md5-devel 
   - ghc-cryptohash-md5-doc 
@@ -4987,6 +5179,30 @@ unsorted:
   - ghc-cryptohash-sha256-devel 
   - ghc-cryptohash-sha256-doc 
   - ghc-cryptohash-sha256-prof 
+  - ghc-crypton 
+  - ghc-crypton-connection 
+  - ghc-crypton-connection-devel 
+  - ghc-crypton-connection-doc 
+  - ghc-crypton-connection-prof 
+  - ghc-crypton-devel 
+  - ghc-crypton-doc 
+  - ghc-crypton-prof 
+  - ghc-crypton-x509 
+  - ghc-crypton-x509-devel 
+  - ghc-crypton-x509-doc 
+  - ghc-crypton-x509-prof 
+  - ghc-crypton-x509-store 
+  - ghc-crypton-x509-store-devel 
+  - ghc-crypton-x509-store-doc 
+  - ghc-crypton-x509-store-prof 
+  - ghc-crypton-x509-system 
+  - ghc-crypton-x509-system-devel 
+  - ghc-crypton-x509-system-doc 
+  - ghc-crypton-x509-system-prof 
+  - ghc-crypton-x509-validation 
+  - ghc-crypton-x509-validation-devel 
+  - ghc-crypton-x509-validation-doc 
+  - ghc-crypton-x509-validation-prof 
   - ghc-cryptonite 
   - ghc-cryptonite-conduit 
   - ghc-cryptonite-conduit-devel 
@@ -5060,6 +5276,10 @@ unsorted:
   - ghc-digest-devel 
   - ghc-digest-doc 
   - ghc-digest-prof 
+  - ghc-digits 
+  - ghc-digits-devel 
+  - ghc-digits-doc 
+  - ghc-digits-prof 
   - ghc-directory 
   - ghc-directory-devel 
   - ghc-directory-doc 
@@ -5159,10 +5379,6 @@ unsorted:
   - ghc-filepattern-doc 
   - ghc-filepattern-prof 
   - ghc-filesystem 
-  - ghc-foldable1-classes-compat 
-  - ghc-foldable1-classes-compat-devel 
-  - ghc-foldable1-classes-compat-doc 
-  - ghc-foldable1-classes-compat-prof 
   - ghc-foldl 
   - ghc-foldl-devel 
   - ghc-foldl-doc 
@@ -5279,6 +5495,10 @@ unsorted:
   - ghc-hledger-lib-doc 
   - ghc-hledger-lib-prof 
   - ghc-hledger-prof 
+  - ghc-hledger-ui 
+  - ghc-hledger-ui-devel 
+  - ghc-hledger-ui-doc 
+  - ghc-hledger-ui-prof 
   - ghc-hlint 
   - ghc-hlint-devel 
   - ghc-hlint-doc 
@@ -5419,6 +5639,10 @@ unsorted:
   - ghc-indexed-traversable-instances-doc 
   - ghc-indexed-traversable-instances-prof 
   - ghc-indexed-traversable-prof 
+  - ghc-integer-conversion 
+  - ghc-integer-conversion-devel 
+  - ghc-integer-conversion-doc 
+  - ghc-integer-conversion-prof 
   - ghc-integer-logarithms 
   - ghc-integer-logarithms-devel 
   - ghc-integer-logarithms-doc 
@@ -5605,6 +5829,10 @@ unsorted:
   - ghc-network-byte-order-devel 
   - ghc-network-byte-order-doc 
   - ghc-network-byte-order-prof 
+  - ghc-network-control 
+  - ghc-network-control-devel 
+  - ghc-network-control-doc 
+  - ghc-network-control-prof 
   - ghc-network-devel 
   - ghc-network-doc 
   - ghc-network-info 
@@ -6034,6 +6262,10 @@ unsorted:
   - ghc-text-conversions-prof 
   - ghc-text-devel 
   - ghc-text-doc 
+  - ghc-text-iso8601 
+  - ghc-text-iso8601-devel 
+  - ghc-text-iso8601-doc 
+  - ghc-text-iso8601-prof 
   - ghc-text-prof 
   - ghc-text-short 
   - ghc-text-short-devel 
@@ -6103,6 +6335,10 @@ unsorted:
   - ghc-tls-session-manager-devel 
   - ghc-tls-session-manager-doc 
   - ghc-tls-session-manager-prof 
+  - ghc-toml-parser 
+  - ghc-toml-parser-devel 
+  - ghc-toml-parser-doc 
+  - ghc-toml-parser-prof 
   - ghc-topograph 
   - ghc-topograph-devel 
   - ghc-topograph-doc 
@@ -6228,9 +6464,17 @@ unsorted:
   - ghc-void-doc 
   - ghc-void-prof 
   - ghc-vty 
+  - ghc-vty-crossplatform 
+  - ghc-vty-crossplatform-devel 
+  - ghc-vty-crossplatform-doc 
+  - ghc-vty-crossplatform-prof 
   - ghc-vty-devel 
   - ghc-vty-doc 
   - ghc-vty-prof 
+  - ghc-vty-unix 
+  - ghc-vty-unix-devel 
+  - ghc-vty-unix-doc 
+  - ghc-vty-unix-prof 
   - ghc-wai 
   - ghc-wai-app-static 
   - ghc-wai-app-static-devel 
@@ -6872,6 +7116,10 @@ unsorted:
   - go1.21-doc 
   - go1.21-libstd 
   - go1.21-race 
+  - go1.22 
+  - go1.22-doc 
+  - go1.22-libstd 
+  - go1.22-race 
   - go1.9 
   - go1.9-doc 
   - go1.9-race 
@@ -6946,10 +7194,12 @@ unsorted:
   - google-alegreya-sans-fonts 
   - google-allerta-fonts 
   - google-anonymouspro-fonts 
+  - google-arimo-fonts 
   - google-authenticator-libpam 
   - google-cabin-fonts 
   - google-caladea-fonts 
   - google-cardo-fonts 
+  - google-cousine-fonts 
   - google-errorprone-annotation 
   - google-errorprone-annotations 
   - google-errorprone-annotations-javadoc 
@@ -6969,6 +7219,58 @@ unsorted:
   - google-lekton-fonts 
   - google-merriweather-fonts 
   - google-nobile-fonts 
+  - google-noto-fangsongkssrotated-fonts 
+  - google-noto-fangsongkssvertical-fonts 
+  - google-noto-fonts 
+  - google-noto-kufiarabic-fonts 
+  - google-noto-music-fonts 
+  - google-noto-naskharabic-fonts 
+  - google-noto-nastaliqurdu-fonts 
+  - google-noto-rashihebrew-fonts 
+  - google-noto-sans-adlam-fonts 
+  - google-noto-sans-adlamunjoined-fonts 
+  - google-noto-sans-anatolianhieroglyphs-fonts 
+  - google-noto-sans-arabic-fonts 
+  - google-noto-sans-armenian-fonts 
+  - google-noto-sans-avestan-fonts 
+  - google-noto-sans-balinese-fonts 
+  - google-noto-sans-bamum-fonts 
+  - google-noto-sans-bassavah-fonts 
+  - google-noto-sans-batak-fonts 
+  - google-noto-sans-bengali-fonts 
+  - google-noto-sans-bhaiksuki-fonts 
+  - google-noto-sans-brahmi-fonts 
+  - google-noto-sans-buginese-fonts 
+  - google-noto-sans-buhid-fonts 
+  - google-noto-sans-canadianaboriginal-fonts 
+  - google-noto-sans-carian-fonts 
+  - google-noto-sans-caucasianalbanian-fonts 
+  - google-noto-sans-chakma-fonts 
+  - google-noto-sans-cham-fonts 
+  - google-noto-sans-cherokee-fonts 
+  - google-noto-sans-chorasmian-fonts 
+  - google-noto-sans-coptic-fonts 
+  - google-noto-sans-cuneiform-fonts 
+  - google-noto-sans-cypriot-fonts 
+  - google-noto-sans-cyprominoan-fonts 
+  - google-noto-sans-deseret-fonts 
+  - google-noto-sans-devanagari-fonts 
+  - google-noto-sans-duployan-fonts 
+  - google-noto-sans-egyptianhieroglyphs-fonts 
+  - google-noto-sans-elbasan-fonts 
+  - google-noto-sans-elymaic-fonts 
+  - google-noto-sans-ethiopic-fonts 
+  - google-noto-sans-georgian-fonts 
+  - google-noto-sans-glagolitic-fonts 
+  - google-noto-sans-gothic-fonts 
+  - google-noto-sans-grantha-fonts 
+  - google-noto-sans-gujarati-fonts 
+  - google-noto-sans-gunjalagondi-fonts 
+  - google-noto-sans-gurmukhi-fonts 
+  - google-noto-sans-hanifirohingya-fonts 
+  - google-noto-sans-hanunoo-fonts 
+  - google-noto-sans-hatran-fonts 
+  - google-noto-sans-hebrew-fonts 
   - google-noto-sans-hk-black-fonts 
   - google-noto-sans-hk-bold-fonts 
   - google-noto-sans-hk-demilight-fonts 
@@ -6979,6 +7281,11 @@ unsorted:
   - google-noto-sans-hk-mono-fonts 
   - google-noto-sans-hk-regular-fonts 
   - google-noto-sans-hk-thin-fonts 
+  - google-noto-sans-imperialaramaic-fonts 
+  - google-noto-sans-indicsiyaqnumbers-fonts 
+  - google-noto-sans-inscriptionalpahlavi-fonts 
+  - google-noto-sans-inscriptionalparthian-fonts 
+  - google-noto-sans-javanese-fonts 
   - google-noto-sans-jp-black-fonts 
   - google-noto-sans-jp-demilight-fonts 
   - google-noto-sans-jp-fonts-full 
@@ -6986,6 +7293,14 @@ unsorted:
   - google-noto-sans-jp-medium-fonts 
   - google-noto-sans-jp-mono-fonts 
   - google-noto-sans-jp-thin-fonts 
+  - google-noto-sans-kaithi-fonts 
+  - google-noto-sans-kannada-fonts 
+  - google-noto-sans-kawi-fonts 
+  - google-noto-sans-kayahli-fonts 
+  - google-noto-sans-kharoshthi-fonts 
+  - google-noto-sans-khmer-fonts 
+  - google-noto-sans-khojki-fonts 
+  - google-noto-sans-khudawadi-fonts 
   - google-noto-sans-kr-black-fonts 
   - google-noto-sans-kr-demilight-fonts 
   - google-noto-sans-kr-fonts-full 
@@ -6993,6 +7308,64 @@ unsorted:
   - google-noto-sans-kr-medium-fonts 
   - google-noto-sans-kr-mono-fonts 
   - google-noto-sans-kr-thin-fonts 
+  - google-noto-sans-lao-fonts 
+  - google-noto-sans-laolooped-fonts 
+  - google-noto-sans-lepcha-fonts 
+  - google-noto-sans-limbu-fonts 
+  - google-noto-sans-lineara-fonts 
+  - google-noto-sans-linearb-fonts 
+  - google-noto-sans-lisu-fonts 
+  - google-noto-sans-lycian-fonts 
+  - google-noto-sans-lydian-fonts 
+  - google-noto-sans-mahajani-fonts 
+  - google-noto-sans-malayalam-fonts 
+  - google-noto-sans-mandaic-fonts 
+  - google-noto-sans-manichaean-fonts 
+  - google-noto-sans-marchen-fonts 
+  - google-noto-sans-masaramgondi-fonts 
+  - google-noto-sans-mayannumerals-fonts 
+  - google-noto-sans-medefaidrin-fonts 
+  - google-noto-sans-meeteimayek-fonts 
+  - google-noto-sans-mendekikakui-fonts 
+  - google-noto-sans-meroitic-fonts 
+  - google-noto-sans-miao-fonts 
+  - google-noto-sans-modi-fonts 
+  - google-noto-sans-mongolian-fonts 
+  - google-noto-sans-mono-fonts 
+  - google-noto-sans-mro-fonts 
+  - google-noto-sans-multani-fonts 
+  - google-noto-sans-myanmar-fonts 
+  - google-noto-sans-nabataean-fonts 
+  - google-noto-sans-nagmundari-fonts 
+  - google-noto-sans-nandinagari-fonts 
+  - google-noto-sans-newa-fonts 
+  - google-noto-sans-newtailue-fonts 
+  - google-noto-sans-nko-fonts 
+  - google-noto-sans-nkounjoined-fonts 
+  - google-noto-sans-nushu-fonts 
+  - google-noto-sans-ogham-fonts 
+  - google-noto-sans-olchiki-fonts 
+  - google-noto-sans-oldhungarian-fonts 
+  - google-noto-sans-olditalic-fonts 
+  - google-noto-sans-oldnortharabian-fonts 
+  - google-noto-sans-oldpermic-fonts 
+  - google-noto-sans-oldpersian-fonts 
+  - google-noto-sans-oldsogdian-fonts 
+  - google-noto-sans-oldsoutharabian-fonts 
+  - google-noto-sans-oldturkic-fonts 
+  - google-noto-sans-oriya-fonts 
+  - google-noto-sans-osage-fonts 
+  - google-noto-sans-osmanya-fonts 
+  - google-noto-sans-pahawhhmong-fonts 
+  - google-noto-sans-palmyrene-fonts 
+  - google-noto-sans-paucinhau-fonts 
+  - google-noto-sans-phagspa-fonts 
+  - google-noto-sans-phoenician-fonts 
+  - google-noto-sans-psalterpahlavi-fonts 
+  - google-noto-sans-rejang-fonts 
+  - google-noto-sans-runic-fonts 
+  - google-noto-sans-samaritan-fonts 
+  - google-noto-sans-saurashtra-fonts 
   - google-noto-sans-sc-black-fonts 
   - google-noto-sans-sc-demilight-fonts 
   - google-noto-sans-sc-fonts-full 
@@ -7000,6 +7373,30 @@ unsorted:
   - google-noto-sans-sc-medium-fonts 
   - google-noto-sans-sc-mono-fonts 
   - google-noto-sans-sc-thin-fonts 
+  - google-noto-sans-sharada-fonts 
+  - google-noto-sans-shavian-fonts 
+  - google-noto-sans-siddham-fonts 
+  - google-noto-sans-signwriting-fonts 
+  - google-noto-sans-sinhala-fonts 
+  - google-noto-sans-sogdian-fonts 
+  - google-noto-sans-sorasompeng-fonts 
+  - google-noto-sans-soyombo-fonts 
+  - google-noto-sans-sundanese-fonts 
+  - google-noto-sans-sylotinagri-fonts 
+  - google-noto-sans-symbols-fonts 
+  - google-noto-sans-symbols2-fonts 
+  - google-noto-sans-syriac-fonts 
+  - google-noto-sans-syriaceastern-fonts 
+  - google-noto-sans-syriacwestern-fonts 
+  - google-noto-sans-tagalog-fonts 
+  - google-noto-sans-tagbanwa-fonts 
+  - google-noto-sans-taile-fonts 
+  - google-noto-sans-taitham-fonts 
+  - google-noto-sans-taiviet-fonts 
+  - google-noto-sans-takri-fonts 
+  - google-noto-sans-tamil-fonts 
+  - google-noto-sans-tamilsupplement-fonts 
+  - google-noto-sans-tangsa-fonts 
   - google-noto-sans-tc-black-fonts 
   - google-noto-sans-tc-demilight-fonts 
   - google-noto-sans-tc-fonts-full 
@@ -7007,6 +7404,34 @@ unsorted:
   - google-noto-sans-tc-medium-fonts 
   - google-noto-sans-tc-mono-fonts 
   - google-noto-sans-tc-thin-fonts 
+  - google-noto-sans-telugu-fonts 
+  - google-noto-sans-thaana-fonts 
+  - google-noto-sans-thai-fonts 
+  - google-noto-sans-thailooped-fonts 
+  - google-noto-sans-tifinagh-fonts 
+  - google-noto-sans-tirhuta-fonts 
+  - google-noto-sans-ugaritic-fonts 
+  - google-noto-sans-vai-fonts 
+  - google-noto-sans-vithkuqi-fonts 
+  - google-noto-sans-wancho-fonts 
+  - google-noto-sans-warangciti-fonts 
+  - google-noto-sans-yi-fonts 
+  - google-noto-sans-zanabazarsquare-fonts 
+  - google-noto-serif-ahom-fonts 
+  - google-noto-serif-armenian-fonts 
+  - google-noto-serif-balinese-fonts 
+  - google-noto-serif-bengali-fonts 
+  - google-noto-serif-devanagari-fonts 
+  - google-noto-serif-display-fonts 
+  - google-noto-serif-divesakuru-fonts 
+  - google-noto-serif-dogra-fonts 
+  - google-noto-serif-ethiopic-fonts 
+  - google-noto-serif-fonts 
+  - google-noto-serif-georgian-fonts 
+  - google-noto-serif-grantha-fonts 
+  - google-noto-serif-gujarati-fonts 
+  - google-noto-serif-gurmukhi-fonts 
+  - google-noto-serif-hebrew-fonts 
   - google-noto-serif-hk-black-fonts 
   - google-noto-serif-hk-bold-fonts 
   - google-noto-serif-hk-extralight-fonts 
@@ -7022,6 +7447,10 @@ unsorted:
   - google-noto-serif-jp-light-fonts 
   - google-noto-serif-jp-medium-fonts 
   - google-noto-serif-jp-semibold-fonts 
+  - google-noto-serif-kannada-fonts 
+  - google-noto-serif-khitansmallscript-fonts 
+  - google-noto-serif-khmer-fonts 
+  - google-noto-serif-khojki-fonts 
   - google-noto-serif-kr-black-fonts 
   - google-noto-serif-kr-bold-fonts 
   - google-noto-serif-kr-extralight-fonts 
@@ -7031,18 +7460,36 @@ unsorted:
   - google-noto-serif-kr-medium-fonts 
   - google-noto-serif-kr-regular-fonts 
   - google-noto-serif-kr-semibold-fonts 
+  - google-noto-serif-lao-fonts 
+  - google-noto-serif-makasar-fonts 
+  - google-noto-serif-malayalam-fonts 
+  - google-noto-serif-myanmar-fonts 
+  - google-noto-serif-nphmong-fonts 
+  - google-noto-serif-olduyghur-fonts 
+  - google-noto-serif-oriya-fonts 
+  - google-noto-serif-ottomansiyaq-fonts 
   - google-noto-serif-sc-black-fonts 
   - google-noto-serif-sc-extralight-fonts 
   - google-noto-serif-sc-fonts-full 
   - google-noto-serif-sc-light-fonts 
   - google-noto-serif-sc-medium-fonts 
   - google-noto-serif-sc-semibold-fonts 
+  - google-noto-serif-sinhala-fonts 
+  - google-noto-serif-tamil-fonts 
+  - google-noto-serif-tangut-fonts 
   - google-noto-serif-tc-black-fonts 
   - google-noto-serif-tc-extralight-fonts 
   - google-noto-serif-tc-fonts-full 
   - google-noto-serif-tc-light-fonts 
   - google-noto-serif-tc-medium-fonts 
   - google-noto-serif-tc-semibold-fonts 
+  - google-noto-serif-telugu-fonts 
+  - google-noto-serif-thai-fonts 
+  - google-noto-serif-tibetan-fonts 
+  - google-noto-serif-toto-fonts 
+  - google-noto-serif-vithkuqi-fonts 
+  - google-noto-serif-yezidi-fonts 
+  - google-noto-traditionalnushu-fonts 
   - google-or-tools 
   - google-or-tools-devel 
   - google-or-tools-minizinc 
@@ -7050,6 +7497,7 @@ unsorted:
   - google-quiche-source 
   - google-roboto-mono-fonts 
   - google-roboto-slab-fonts 
+  - google-tinos-fonts 
   - google-worksans-fonts 
   - google-worksans-fonts-doc 
   - googleapis-source 
@@ -7529,6 +7977,7 @@ unsorted:
   - haproxy 
   - hardening-check 
   - hardinfo 
+  - hare 
   - harec 
   - harfbuzz-devel 
   - harfbuzz-tools 
@@ -7613,6 +8062,8 @@ unsorted:
   - heaptrack-devel 
   - heaptrack-gui 
   - heaptrack-lang 
+  - heatshrink 
+  - heatshrink-devel 
   - hedgewars 
   - hedgewars-data 
   - heimdall 
@@ -7701,6 +8152,7 @@ unsorted:
   - homeshick 
   - honggfuzz 
   - horst 
+  - host-spawn 
   - hostap-utils 
   - hostapd 
   - hostinfo 
@@ -7762,6 +8214,7 @@ unsorted:
   - hunspell-devel 
   - hunspell-devel-32bit 
   - hunspell-tools 
+  - hurl 
   - hut 
   - hut-bash-completion 
   - hut-fish-completion 
@@ -7921,6 +8374,8 @@ unsorted:
   - id3lib-devel 
   - id3lib-examples 
   - id3v2 
+  - identity 
+  - identity-lang 
   - idep 
   - ido-devel 
   - idutils 
@@ -8035,6 +8490,7 @@ unsorted:
   - intel-opencl-devel 
   - intelhex 
   - inter-fonts 
+  - inter-variable-fonts 
   - interbench 
   - interceptty 
   - intlfonts 
@@ -8241,6 +8697,8 @@ unsorted:
   - jackson-module-paranamer 
   - jackson-modules-base 
   - jackson-modules-base-javadoc 
+  - jackson-modules-java8 
+  - jackson-modules-java8-javadoc 
   - jackson-parent 
   - jacktrip 
   - jaero 
@@ -8648,6 +9106,10 @@ unsorted:
   - juk 
   - juk-lang 
   - jul-to-slf4j 
+  - julia 
+  - julia-compat 
+  - julia-compat-devel 
+  - julia-devel 
   - juliaup 
   - julius 
   - junit 
@@ -8663,7 +9125,6 @@ unsorted:
   - jupyter-bqplot-jupyterlab 
   - jupyter-bqplot-notebook 
   - jupyter-cadabra2-kernel 
-  - jupyter-calysto 
   - jupyter-collaboration 
   - jupyter-doc 
   - jupyter-ipydatawidgets 
@@ -8824,6 +9285,10 @@ unsorted:
   - kblackbox-lang 
   - kblocks 
   - kblocks-lang 
+  - kbom 
+  - kbom-bash-completion 
+  - kbom-fish-completion 
+  - kbom-zsh-completion 
   - kbookmarks-devel 
   - kbounce 
   - kbounce-lang 
@@ -8857,8 +9322,7 @@ unsorted:
   - kdbusaddons-devel 
   - kddockwidgets-devel 
   - kddockwidgets-qt6-devel 
-  - kde-inotify-survey 
-  - kde-inotify-survey-lang 
+  - kde-fcstd-thumbnailer 
   - kde-l10n-devel 
   - kde-oxygen-fonts 
   - kde-theme-dracula 
@@ -9221,6 +9685,8 @@ unsorted:
   - kquickimageeditor-devel 
   - kquickimageeditor-imports 
   - kraft 
+  - krb5-appl-clients 
+  - krb5-appl-servers 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
   - krb5-devel 
@@ -9338,6 +9804,8 @@ unsorted:
   - kubectl-oomd 
   - kubectl-operator 
   - kubectl-tree 
+  - kubectl-view-allocations 
+  - kubectl-view-secret 
   - kubectl-who-can 
   - kubectx 
   - kubefirst 
@@ -9552,6 +10020,8 @@ unsorted:
   - kyverno-zsh-completion 
   - labplot-kf5 
   - labplot-kf5-lang 
+  - labwc 
+  - labwc-lang 
   - ladish 
   - ladspa 
   - ladspa-32bit 
@@ -9836,6 +10306,9 @@ unsorted:
   - lf-bash-completion 
   - lf-fish-completion 
   - lf-zsh-completion 
+  - lfortran 
+  - lfortran-devel 
+  - lfortran-devel-static 
   - lha 
   - lhasa-devel 
   - lib2geom-devel 
@@ -9848,9 +10321,9 @@ unsorted:
   - lib4ti2-0 
   - lib5250-0 
   - libADLMIDI1 
-  - libAPFEL0 
+  - libAPFEL0_0_0 
   - libAlembic1_8 
-  - libAppStreamQt-devel 
+  - libAppStreamQt3 
   - libArcus-devel 
   - libArcus3 
   - libAvogadro1 
@@ -9858,6 +10331,17 @@ unsorted:
   - libBulletInverseDynamicsUtils3_17 
   - libBulletWorldImporter3_17 
   - libBulletXmlWorldImporter3_17 
+  - libCLHEP-2_4_7_1 
+  - libCLHEP-Cast-2_4_7_1 
+  - libCLHEP-Evaluator-2_4_7_1 
+  - libCLHEP-Exceptions-2_4_7_1 
+  - libCLHEP-GenericFunctions-2_4_7_1 
+  - libCLHEP-Geometry-2_4_7_1 
+  - libCLHEP-Matrix-2_4_7_1 
+  - libCLHEP-Random-2_4_7_1 
+  - libCLHEP-RandomObjects-2_4_7_1 
+  - libCLHEP-RefCount-2_4_7_1 
+  - libCLHEP-Vector-2_4_7_1 
   - libCSXCAD0 
   - libCbc3 
   - libCgl1 
@@ -9983,7 +10467,7 @@ unsorted:
   - libLTO16 
   - libLTO17 
   - libLibreGraphAPI1 
-  - libLimeSuite23_10-0 
+  - libLimeSuite23_11-0 
   - libMagick++-7_Q16HDRI5 
   - libMagick++-7_Q16HDRI5-32bit 
   - libMagick++-devel 
@@ -9992,34 +10476,34 @@ unsorted:
   - libMagickWand-7_Q16HDRI10-32bit 
   - libMathMLSolver0_3 
   - libMrm4 
-  - libMyGUICommon3_4_1 
-  - libMyGUIEngine3_4_1 
+  - libMyGUICommon3_4_3 
+  - libMyGUIEngine3_4_3 
   - libOIS-devel 
   - libOIS1_5_0 
   - libOSMesa-devel 
   - libOSMesa-devel-32bit 
   - libOSMesa8-32bit 
   - libOgreBites-devel 
-  - libOgreBites13_5 
-  - libOgreBitesQt13_5 
+  - libOgreBites13_6 
+  - libOgreBitesQt13_6 
   - libOgreMain-devel 
-  - libOgreMain13_5 
-  - libOgreMain13_5-codecs 
-  - libOgreMain13_5-plugins 
+  - libOgreMain13_6 
+  - libOgreMain13_6-codecs 
+  - libOgreMain13_6-plugins 
   - libOgreMeshLodGenerator-devel 
-  - libOgreMeshLodGenerator13_5 
+  - libOgreMeshLodGenerator13_6 
   - libOgreOverlay-devel 
-  - libOgreOverlay13_5 
+  - libOgreOverlay13_6 
   - libOgrePaging-devel 
-  - libOgrePaging13_5 
+  - libOgrePaging13_6 
   - libOgreProperty-devel 
-  - libOgreProperty13_5 
+  - libOgreProperty13_6 
   - libOgreRTShaderSystem-devel 
-  - libOgreRTShaderSystem13_5 
+  - libOgreRTShaderSystem13_6 
   - libOgreTerrain-devel 
-  - libOgreTerrain13_5 
+  - libOgreTerrain13_6 
   - libOgreVolume-devel 
-  - libOgreVolume13_5 
+  - libOgreVolume13_6 
   - libOkteta3 
   - libOpenCL1 
   - libOpenCL1-32bit 
@@ -10308,7 +10792,7 @@ unsorted:
   - libQuotientQt6-0_8 
   - libRaTools0 
   - libRecast1 
-  - libRivet-3_1_8 
+  - libRivet-3_1_9 
   - libSDL-1_2-0-32bit 
   - libSDL2-2_0-0-32bit 
   - libSDL2_Pango4 
@@ -10328,7 +10812,6 @@ unsorted:
   - libSDL_image-1_2-0 
   - libSDL_image-devel 
   - libSDL_mixer-1_2-0 
-  - libSDL_mixer-devel 
   - libSDL_net-1_2-0 
   - libSDL_net-devel 
   - libSDL_sound-1_0-1 
@@ -10342,8 +10825,8 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2023_5_rc1-32bit 
-  - libSRM-suse0 
+  - libSPIRV-Tools-2023_6_rc1-32bit 
+  - libSRM0 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -10363,6 +10846,7 @@ unsorted:
   - libSvtAv1Dec0 
   - libTMCG-devel 
   - libTMCG18 
+  - libThePEG30 
   - libUTF0_3 
   - libUil4 
   - libUnitTest++-2_0_0 
@@ -10495,7 +10979,7 @@ unsorted:
   - libXxf86vm-devel 
   - libXxf86vm-devel-32bit 
   - libXxf86vm1-32bit 
-  - libYODA-1_9_8 
+  - libYODA-1_9_9 
   - libZXing3-32bit 
   - liba2ps1 
   - liba52-0-32bit 
@@ -10604,8 +11088,8 @@ unsorted:
   - libamd-doc 
   - libaml0 
   - libancient2 
-  - libangelscript2_35_1 
-  - libangelscript_addons2_35_1 
+  - libangelscript2_36_1 
+  - libangelscript_addons2_36_1 
   - libanjuta-3-0 
   - libansilove-devel 
   - libansilove1 
@@ -10638,9 +11122,9 @@ unsorted:
   - libargon2-1-32bit 
   - libargtable2-0 
   - libargtable2-devel 
-  - libarm_compute32 
-  - libarm_compute_core32 
-  - libarm_compute_graph32 
+  - libarm_compute33 
+  - libarm_compute_core33 
+  - libarm_compute_graph33 
   - libarmadillo12 
   - libarmnn33 
   - libarmnn33-opencl 
@@ -10777,6 +11261,7 @@ unsorted:
   - libb64 
   - libb64-devel 
   - libbamf3-2 
+  - libbandicoot1 
   - libbaresip2 
   - libbarvinok23 
   - libbase-javadoc 
@@ -10820,6 +11305,11 @@ unsorted:
   - libbfoverlay-devel 
   - libbfoverlay-tools 
   - libbfoverlay1 
+  - libbgcode 
+  - libbgcode-devel 
+  - libbgcode_binarize0_2_0 
+  - libbgcode_convert0_2_0 
+  - libbgcode_core0_2_0 
   - libbiblesync2_0 
   - libbinio-devel 
   - libbinio1 
@@ -10839,6 +11329,7 @@ unsorted:
   - libblas3-32bit 
   - libblastrampoline-devel 
   - libblastrampoline5 
+  - libblis4 
   - libbliss0_77 
   - libblitz0 
   - libblkid-devel 
@@ -10860,145 +11351,145 @@ unsorted:
   - libbobcat6 
   - libboinc7 
   - libboost_atomic-devel 
-  - libboost_atomic1_83_0 
-  - libboost_atomic1_83_0-32bit 
-  - libboost_atomic1_83_0-devel 
-  - libboost_atomic1_83_0-x86-64-v3 
+  - libboost_atomic1_84_0 
+  - libboost_atomic1_84_0-32bit 
+  - libboost_atomic1_84_0-devel 
+  - libboost_atomic1_84_0-x86-64-v3 
   - libboost_chrono-devel 
-  - libboost_chrono1_83_0 
-  - libboost_chrono1_83_0-devel 
+  - libboost_chrono1_84_0 
+  - libboost_chrono1_84_0-devel 
   - libboost_container-devel 
-  - libboost_container1_83_0 
-  - libboost_container1_83_0-32bit 
-  - libboost_container1_83_0-devel 
-  - libboost_container1_83_0-x86-64-v3 
+  - libboost_container1_84_0 
+  - libboost_container1_84_0-32bit 
+  - libboost_container1_84_0-devel 
+  - libboost_container1_84_0-x86-64-v3 
   - libboost_context-devel 
-  - libboost_context1_83_0 
-  - libboost_context1_83_0-32bit 
-  - libboost_context1_83_0-devel 
+  - libboost_context1_84_0 
+  - libboost_context1_84_0-32bit 
+  - libboost_context1_84_0-devel 
   - libboost_contract-devel 
-  - libboost_contract1_83_0 
-  - libboost_contract1_83_0-devel 
+  - libboost_contract1_84_0 
+  - libboost_contract1_84_0-devel 
   - libboost_coroutine-devel 
-  - libboost_coroutine1_83_0 
-  - libboost_coroutine1_83_0-32bit 
-  - libboost_coroutine1_83_0-devel 
+  - libboost_coroutine1_84_0 
+  - libboost_coroutine1_84_0-32bit 
+  - libboost_coroutine1_84_0-devel 
   - libboost_date_time-devel 
-  - libboost_date_time1_83_0 
-  - libboost_date_time1_83_0-32bit 
-  - libboost_date_time1_83_0-devel 
-  - libboost_date_time1_83_0-x86-64-v3 
+  - libboost_date_time1_84_0 
+  - libboost_date_time1_84_0-32bit 
+  - libboost_date_time1_84_0-devel 
+  - libboost_date_time1_84_0-x86-64-v3 
   - libboost_fiber-devel 
-  - libboost_fiber1_83_0 
-  - libboost_fiber1_83_0-32bit 
-  - libboost_fiber1_83_0-devel 
+  - libboost_fiber1_84_0 
+  - libboost_fiber1_84_0-32bit 
+  - libboost_fiber1_84_0-devel 
   - libboost_filesystem-devel 
-  - libboost_filesystem1_83_0-32bit 
-  - libboost_filesystem1_83_0-devel 
+  - libboost_filesystem1_84_0-32bit 
+  - libboost_filesystem1_84_0-devel 
   - libboost_graph-devel 
-  - libboost_graph1_83_0 
-  - libboost_graph1_83_0-32bit 
-  - libboost_graph1_83_0-devel 
-  - libboost_graph1_83_0-x86-64-v3 
+  - libboost_graph1_84_0 
+  - libboost_graph1_84_0-32bit 
+  - libboost_graph1_84_0-devel 
+  - libboost_graph1_84_0-x86-64-v3 
   - libboost_graph_parallel-devel 
-  - libboost_graph_parallel1_83_0 
-  - libboost_graph_parallel1_83_0-32bit 
-  - libboost_graph_parallel1_83_0-devel 
-  - libboost_graph_parallel1_83_0-x86-64-v3 
+  - libboost_graph_parallel1_84_0 
+  - libboost_graph_parallel1_84_0-32bit 
+  - libboost_graph_parallel1_84_0-devel 
+  - libboost_graph_parallel1_84_0-x86-64-v3 
   - libboost_headers-devel 
-  - libboost_headers1_83_0-devel 
+  - libboost_headers1_84_0-devel 
   - libboost_iostreams-devel 
-  - libboost_iostreams1_83_0-32bit 
-  - libboost_iostreams1_83_0-devel 
-  - libboost_json1_83_0 
-  - libboost_json1_83_0-32bit 
-  - libboost_json1_83_0-devel 
-  - libboost_json1_83_0-x86-64-v3 
+  - libboost_iostreams1_84_0-32bit 
+  - libboost_iostreams1_84_0-devel 
+  - libboost_json1_84_0 
+  - libboost_json1_84_0-32bit 
+  - libboost_json1_84_0-devel 
+  - libboost_json1_84_0-x86-64-v3 
   - libboost_locale-devel 
-  - libboost_locale1_83_0-32bit 
-  - libboost_locale1_83_0-devel 
+  - libboost_locale1_84_0-32bit 
+  - libboost_locale1_84_0-devel 
   - libboost_log-devel 
-  - libboost_log1_83_0 
-  - libboost_log1_83_0-devel 
+  - libboost_log1_84_0 
+  - libboost_log1_84_0-devel 
   - libboost_math-devel 
-  - libboost_math1_83_0 
-  - libboost_math1_83_0-32bit 
-  - libboost_math1_83_0-devel 
-  - libboost_math1_83_0-x86-64-v3 
+  - libboost_math1_84_0 
+  - libboost_math1_84_0-32bit 
+  - libboost_math1_84_0-devel 
+  - libboost_math1_84_0-x86-64-v3 
   - libboost_mpi-devel 
-  - libboost_mpi1_83_0 
-  - libboost_mpi1_83_0-32bit 
-  - libboost_mpi1_83_0-devel 
-  - libboost_mpi1_83_0-x86-64-v3 
-  - libboost_mpi_python-py3-1_83_0 
-  - libboost_mpi_python-py3-1_83_0-devel 
+  - libboost_mpi1_84_0 
+  - libboost_mpi1_84_0-32bit 
+  - libboost_mpi1_84_0-devel 
+  - libboost_mpi1_84_0-x86-64-v3 
+  - libboost_mpi_python-py3-1_84_0 
+  - libboost_mpi_python-py3-1_84_0-devel 
   - libboost_mpi_python3-devel 
   - libboost_nowide-devel 
-  - libboost_nowide1_83_0 
-  - libboost_nowide1_83_0-32bit 
-  - libboost_nowide1_83_0-devel 
-  - libboost_nowide1_83_0-x86-64-v3 
-  - libboost_numpy-py3-1_83_0 
-  - libboost_numpy-py3-1_83_0-devel 
+  - libboost_nowide1_84_0 
+  - libboost_nowide1_84_0-32bit 
+  - libboost_nowide1_84_0-devel 
+  - libboost_nowide1_84_0-x86-64-v3 
+  - libboost_numpy-py3-1_84_0 
+  - libboost_numpy-py3-1_84_0-devel 
   - libboost_numpy3-devel 
   - libboost_program_options-devel 
-  - libboost_program_options1_83_0 
-  - libboost_program_options1_83_0-32bit 
-  - libboost_program_options1_83_0-devel 
-  - libboost_program_options1_83_0-x86-64-v3 
-  - libboost_python-py3-1_83_0-32bit 
-  - libboost_python-py3-1_83_0-devel 
+  - libboost_program_options1_84_0 
+  - libboost_program_options1_84_0-32bit 
+  - libboost_program_options1_84_0-devel 
+  - libboost_program_options1_84_0-x86-64-v3 
+  - libboost_python-py3-1_84_0-32bit 
+  - libboost_python-py3-1_84_0-devel 
   - libboost_python3-devel 
   - libboost_random-devel 
-  - libboost_random1_83_0 
-  - libboost_random1_83_0-32bit 
-  - libboost_random1_83_0-devel 
-  - libboost_random1_83_0-x86-64-v3 
+  - libboost_random1_84_0 
+  - libboost_random1_84_0-32bit 
+  - libboost_random1_84_0-devel 
+  - libboost_random1_84_0-x86-64-v3 
   - libboost_regex-devel 
-  - libboost_regex1_83_0 
-  - libboost_regex1_83_0-32bit 
-  - libboost_regex1_83_0-devel 
-  - libboost_regex1_83_0-x86-64-v3 
+  - libboost_regex1_84_0 
+  - libboost_regex1_84_0-32bit 
+  - libboost_regex1_84_0-devel 
+  - libboost_regex1_84_0-x86-64-v3 
   - libboost_serialization-devel 
-  - libboost_serialization1_83_0 
-  - libboost_serialization1_83_0-32bit 
-  - libboost_serialization1_83_0-devel 
-  - libboost_serialization1_83_0-x86-64-v3 
+  - libboost_serialization1_84_0 
+  - libboost_serialization1_84_0-32bit 
+  - libboost_serialization1_84_0-devel 
+  - libboost_serialization1_84_0-x86-64-v3 
   - libboost_stacktrace-devel 
-  - libboost_stacktrace1_83_0 
-  - libboost_stacktrace1_83_0-32bit 
-  - libboost_stacktrace1_83_0-devel 
-  - libboost_stacktrace1_83_0-x86-64-v3 
+  - libboost_stacktrace1_84_0 
+  - libboost_stacktrace1_84_0-32bit 
+  - libboost_stacktrace1_84_0-devel 
+  - libboost_stacktrace1_84_0-x86-64-v3 
   - libboost_system-devel 
-  - libboost_system1_83_0 
-  - libboost_system1_83_0-32bit 
-  - libboost_system1_83_0-devel 
-  - libboost_system1_83_0-x86-64-v3 
+  - libboost_system1_84_0 
+  - libboost_system1_84_0-32bit 
+  - libboost_system1_84_0-devel 
+  - libboost_system1_84_0-x86-64-v3 
   - libboost_test-devel 
-  - libboost_test1_83_0 
-  - libboost_test1_83_0-32bit 
-  - libboost_test1_83_0-devel 
-  - libboost_test1_83_0-x86-64-v3 
+  - libboost_test1_84_0 
+  - libboost_test1_84_0-32bit 
+  - libboost_test1_84_0-devel 
+  - libboost_test1_84_0-x86-64-v3 
   - libboost_thread-devel 
-  - libboost_thread1_83_0-32bit 
-  - libboost_thread1_83_0-devel 
+  - libboost_thread1_84_0-32bit 
+  - libboost_thread1_84_0-devel 
   - libboost_timer-devel 
-  - libboost_timer1_83_0 
-  - libboost_timer1_83_0-devel 
+  - libboost_timer1_84_0 
+  - libboost_timer1_84_0-devel 
   - libboost_type_erasure-devel 
-  - libboost_type_erasure1_83_0 
-  - libboost_type_erasure1_83_0-32bit 
-  - libboost_type_erasure1_83_0-devel 
-  - libboost_type_erasure1_83_0-x86-64-v3 
-  - libboost_url1_83_0 
-  - libboost_url1_83_0-32bit 
-  - libboost_url1_83_0-devel 
-  - libboost_url1_83_0-x86-64-v3 
+  - libboost_type_erasure1_84_0 
+  - libboost_type_erasure1_84_0-32bit 
+  - libboost_type_erasure1_84_0-devel 
+  - libboost_type_erasure1_84_0-x86-64-v3 
+  - libboost_url1_84_0 
+  - libboost_url1_84_0-32bit 
+  - libboost_url1_84_0-devel 
+  - libboost_url1_84_0-x86-64-v3 
   - libboost_wave-devel 
-  - libboost_wave1_83_0 
-  - libboost_wave1_83_0-32bit 
-  - libboost_wave1_83_0-devel 
-  - libboost_wave1_83_0-x86-64-v3 
+  - libboost_wave1_84_0 
+  - libboost_wave1_84_0-32bit 
+  - libboost_wave1_84_0-devel 
+  - libboost_wave1_84_0-x86-64-v3 
   - libboringssl1 
   - libbotan-2-19 
   - libbotan-devel 
@@ -11156,7 +11647,7 @@ unsorted:
   - libcfile1 
   - libcg3-1 
   - libcglm0 
-  - libcgns4_3 
+  - libcgns4_4 
   - libchafa0 
   - libchamplain-0_12-0 
   - libchamplain-devel 
@@ -11198,6 +11689,7 @@ unsorted:
   - libcjson1 
   - libck0 
   - libckteec0 
+  - libclBLAS2 
   - libclFFT2 
   - libclang-cpp13 
   - libclang-cpp14 
@@ -11283,8 +11775,8 @@ unsorted:
   - libcorrect-devel 
   - libcorrect0_0_0 
   - libcotp-devel 
-  - libcotp2 
-  - libcourier-unicode7 
+  - libcotp3 
+  - libcourier-unicode8 
   - libcpath-devel 
   - libcpath1 
   - libcpg4-32bit 
@@ -11309,8 +11801,8 @@ unsorted:
   - libcreg-devel 
   - libcreg-tools 
   - libcreg1 
+  - libcriterion-devel 
   - libcriterion3 
-  - libcriterion3-devel 
   - libcriu2 
   - libcroco 
   - libcroco-devel 
@@ -11318,7 +11810,7 @@ unsorted:
   - libcryptmount-devel 
   - libcrypto50 
   - libcryptopp-devel 
-  - libcryptopp8_8_0 
+  - libcryptopp8_9_0 
   - libcryptsetup-devel 
   - libcryptsetup12-32bit 
   - libcryptui-devel 
@@ -11391,7 +11883,7 @@ unsorted:
   - libdate-tz3 
   - libdatovka 
   - libdatovka-devel 
-  - libdatovka5 
+  - libdatovka6 
   - libdatrie-devel 
   - libdatrie1-32bit 
   - libdav1d7-32bit 
@@ -11449,6 +11941,7 @@ unsorted:
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
+  - libdecaf0 
   - libdecor-0-0-32bit 
   - libdecor-32bit 
   - libdecor-devel 
@@ -11510,6 +12003,7 @@ unsorted:
   - libdovi3-32bit 
   - libdpdk-23 
   - libdqlite0 
+  - libdraco8 
   - libdrm-devel 
   - libdrm-devel-32bit 
   - libdrm-tools 
@@ -11550,6 +12044,7 @@ unsorted:
   - libdvbv5-0-32bit 
   - libdvbv5-devel 
   - libdvdnav-devel 
+  - libdvdnav4-32bit 
   - libdvdread-devel 
   - libdvdread8-32bit 
   - libdw-devel 
@@ -11573,7 +12068,7 @@ unsorted:
   - libeXosip2 
   - libeXosip2-15 
   - libeXosip2-devel 
-  - libeantic1 
+  - libeantic3 
   - libeb16 
   - libebml-devel 
   - libebur128-1 
@@ -11826,7 +12321,8 @@ unsorted:
   - libfmapi1 
   - libfmos-devel 
   - libfmos1 
-  - libfmt9-32bit 
+  - libfmt10 
+  - libfmt10-32bit 
   - libfole-devel 
   - libfole1 
   - libfolks-telepathy26 
@@ -11960,6 +12456,7 @@ unsorted:
   - libgammaray-shared-qt6-3_0_0 
   - libganesha_nfsd-devel 
   - libganesha_nfsd3_3 
+  - libgap8 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
   - libgarcon-doc 
@@ -12011,7 +12508,7 @@ unsorted:
   - libgda-ui-6_0-tools 
   - libgda-xslt-6_0-6_0_0 
   - libgdal-drivers 
-  - libgdal33 
+  - libgdal34 
   - libgdata-devel 
   - libgdbm6-32bit 
   - libgdbm_compat4-32bit 
@@ -12100,7 +12597,7 @@ unsorted:
   - libglog0 
   - libgloox18 
   - libglpk40 
-  - libglslang13-32bit 
+  - libglslang14-32bit 
   - libgltf-0_1-1 
   - libgltf-devel 
   - libglusterfs0 
@@ -12116,7 +12613,7 @@ unsorted:
   - libgmodule-2_0-0-32bit 
   - libgmpxx4 
   - libgmpxx4-32bit 
-  - libgmsh4_11 
+  - libgmsh4_12 
   - libgmxapi0 
   - libgmxapi_mpi0 
   - libgnome-bluetooth13 
@@ -12134,7 +12631,7 @@ unsorted:
   - libgnt-devel 
   - libgnt0 
   - libgnuastro19 
-  - libgnuradio-3_10_8 
+  - libgnuradio-3_10_9 
   - libgnuradio-funcube-devel 
   - libgnuradio-funcube3_10_0 
   - libgnuradio-iqbalance-devel 
@@ -12200,9 +12697,9 @@ unsorted:
   - libgravatar-devel 
   - libgromacs8 
   - libgromacs_mpi8 
-  - libgrpc++1_59 
-  - libgrpc1_59 
-  - libgrpc36 
+  - libgrpc++1_60 
+  - libgrpc1_60 
+  - libgrpc37 
   - libgsasl-devel 
   - libgsequencer0 
   - libgsettings-qt1 
@@ -12217,7 +12714,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit 
   - libgsmsd8 
-  - libgsoap-2_8_131 
+  - libgsoap-2_8_132 
   - libgssapi3 
   - libgssdp-1_6-0-32bit 
   - libgssdp-devel 
@@ -12432,6 +12929,8 @@ unsorted:
   - libhdhomerun-devel 
   - libhdhomerun2 
   - libhealpix_cxx3 
+  - libheatshrink0_4_1 
+  - libheatshrink_dynalloc0_4_1 
   - libheif-devel 
   - libheif1-32bit 
   - libheimbase1 
@@ -12474,7 +12973,7 @@ unsorted:
   - libhwloc15 
   - libhwy1-32bit 
   - libhx509-5 
-  - libhydrogen-core-1_2_1 
+  - libhydrogen-core-1_2_3 
   - libhydrogen-core-devel 
   - libhyphen0-32bit 
   - libi2c0 
@@ -12482,7 +12981,7 @@ unsorted:
   - libibdm1 
   - libibmad5 
   - libibmad5-32bit 
-  - libibmtss1 
+  - libibmtss2 
   - libibnetdisc5 
   - libibumad3 
   - libibumad3-32bit 
@@ -12638,7 +13137,7 @@ unsorted:
   - libjack0-32bit 
   - libjacknet0-32bit 
   - libjackserver0-32bit 
-  - libjanet1_32 
+  - libjanet1_33 
   - libjansson-devel 
   - libjasper-devel 
   - libjasper7-32bit 
@@ -12678,9 +13177,11 @@ unsorted:
   - libjsonrpc-glib-1_0-1 
   - libjte-devel 
   - libjthread1_3_3 
+  - libjulia-compat1 
+  - libjulia1 
   - libjxl-devel 
   - libjxl-tools 
-  - libjxl0_8-32bit 
+  - libjxl0_9-32bit 
   - libjxrglue0 
   - libkadm5clnt7 
   - libkadm5srv8 
@@ -12720,13 +13221,13 @@ unsorted:
   - libkea-cryptolink38 
   - libkea-d2srv30 
   - libkea-database48 
-  - libkea-dhcp++73 
+  - libkea-dhcp++74 
   - libkea-dhcp_ddns41 
-  - libkea-dhcpsrv89 
+  - libkea-dhcpsrv90 
   - libkea-dns++42 
   - libkea-eval52 
   - libkea-exceptions23 
-  - libkea-hooks77 
+  - libkea-hooks78 
   - libkea-http56 
   - libkea-log48 
   - libkea-mysql53 
@@ -12773,7 +13274,7 @@ unsorted:
   - libknet1-devel 
   - libknet1-plugins-all 
   - libknot14 
-  - libkokkos-4_1 
+  - libkokkos-4_2 
   - libkolabxml-devel 
   - libkomparediff2-devel 
   - libkonkretcmpi0 
@@ -12860,6 +13361,7 @@ unsorted:
   - libleveldb1 
   - libleveldb1-x86-64-v3 
   - liblevmar2 
+  - liblfortran0 
   - libliftoff-devel 
   - libliftoff0 
   - liblightdm-qt5-3-0 
@@ -12912,7 +13414,7 @@ unsorted:
   - liblog4cplus-2_0-3 
   - liblog4cpp5 
   - liblog4cxx-devel 
-  - liblog4cxx13 
+  - liblog4cxx15 
   - liblog4shib-devel 
   - liblog4shib2 
   - liblogg44-devel 
@@ -13206,7 +13708,7 @@ unsorted:
   - libmrss0 
   - libmruby3_1_0 
   - libmruby_core3_1_0 
-  - libmsgpackc2 
+  - libmsgpack-c2 
   - libmsi-1_0-0 
   - libmsiecf-devel 
   - libmsiecf-tools 
@@ -13257,16 +13759,16 @@ unsorted:
   - libnanomsg6 
   - libnanosvg0 
   - libnanosvgrast0 
-  - libnauty-2_8_6 
+  - libnauty-2_8_8 
   - libnbcompat-devel 
   - libnbcompat0 
   - libnbd 
   - libnbd-bash-completion 
   - libnbd-devel 
   - libnblib_gmx0 
-  - libnco-5_1_7 
+  - libnco-5_1_9 
   - libnco-devel 
-  - libnco_c++-5_1_7 
+  - libnco_c++-5_1_9 
   - libncurses5 
   - libncurses5-32bit 
   - libncurses6-32bit 
@@ -13353,9 +13855,6 @@ unsorted:
   - libnice 
   - libnice-devel 
   - libnice10-32bit 
-  - libnilfs0 
-  - libnilfscleaner0 
-  - libnilfsgc0 
   - libnitrokey-devel 
   - libnitrokey-udev 
   - libnitrokey3 
@@ -13391,7 +13890,7 @@ unsorted:
   - libnozzle1 
   - libnozzle1-devel 
   - libnpupnp-devel 
-  - libnpupnp9 
+  - libnpupnp13 
   - libnscd-devel 
   - libnsfdb-devel 
   - libnsfdb-tools 
@@ -13501,10 +14000,10 @@ unsorted:
   - libopenblas-gnu-hpc-devel 
   - libopenblas-pthreads-gnu-hpc 
   - libopenblas-pthreads-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_21-gnu-hpc 
-  - libopenblas-pthreads_0_3_21-gnu-hpc-devel 
-  - libopenblas_0_3_21-gnu-hpc 
-  - libopenblas_0_3_21-gnu-hpc-devel 
+  - libopenblas-pthreads_0_3_25-gnu-hpc 
+  - libopenblas-pthreads_0_3_25-gnu-hpc-devel 
+  - libopenblas_0_3_25-gnu-hpc 
+  - libopenblas_0_3_25-gnu-hpc-devel 
   - libopenblas_openmp-devel 
   - libopenblas_pthreads-devel 
   - libopenblas_pthreads-devel-32bit 
@@ -13513,13 +14012,13 @@ unsorted:
   - libopenblas_serial-devel-32bit 
   - libopenblas_serial0 
   - libopenblas_serial0-32bit 
-  - libopencascade-applicationframework7_7 
-  - libopencascade-dataexchange7_7 
-  - libopencascade-draw7_7 
-  - libopencascade-foundationclasses7_7 
-  - libopencascade-modelingalgorithms7_7 
-  - libopencascade-modelingdata7_7 
-  - libopencascade-visualization7_7 
+  - libopencascade-applicationframework7_7_2 
+  - libopencascade-dataexchange7_7_2 
+  - libopencascade-draw7_7_2 
+  - libopencascade-foundationclasses7_7_2 
+  - libopencascade-modelingalgorithms7_7_2 
+  - libopencascade-modelingdata7_7_2 
+  - libopencascade-visualization7_7_2 
   - libopencl-clang14 
   - libopencore-amr-devel 
   - libopencore-amrnb0-32bit 
@@ -13729,7 +14228,7 @@ unsorted:
   - libparaview5_11 
   - libpari-gmp-tls8 
   - libparlatype-devel 
-  - libparlatype5 
+  - libparlatype7 
   - libparpack2-openmpi4 
   - libparquet1400 
   - libparserutils-devel 
@@ -13909,6 +14408,7 @@ unsorted:
   - libpostproc56 
   - libpostproc56-32bit 
   - libpostproc57-32bit 
+  - libpostquantumcryptoengine1 
   - libpowerman0 
   - libppl14 
   - libppl_c4 
@@ -13941,15 +14441,15 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprotobuf-c-devel 
-  - libprotobuf-lite23_4_0-32bit 
+  - libprotobuf-lite25_1_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-lite3_21_12-32bit 
   - libprotobuf-nanopb0 
-  - libprotobuf23_4_0-32bit 
+  - libprotobuf25_1_0-32bit 
   - libprotobuf3_21_12 
   - libprotobuf3_21_12-32bit 
-  - libprotoc23_4_0 
-  - libprotoc23_4_0-32bit 
+  - libprotoc25_1_0 
+  - libprotoc25_1_0-32bit 
   - libprotoc3_21_12 
   - libprotoc3_21_12-32bit 
   - libproxy-devel 
@@ -14041,7 +14541,7 @@ unsorted:
   - libqaccessibilityclient-qt6-0 
   - libqaccessibilityclient-qt6-devel 
   - libqalculate-devel 
-  - libqat3 
+  - libqat4 
   - libqatzip3 
   - libqb-devel 
   - libqb-devel-32bit 
@@ -14492,7 +14992,7 @@ unsorted:
   - librsb0 
   - librseq-devel 
   - librseq0 
-  - librssguard-4_5_5 
+  - librssguard-4_6_3 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -14586,6 +15086,8 @@ unsorted:
   - libseccomp-devel 
   - libseccomp-tools 
   - libseccomp2-32bit 
+  - libsecp256k1-2 
+  - libsecp256k1-devel 
   - libsecprog-devel 
   - libsecprog0 
   - libsecret-1-0-32bit 
@@ -14737,7 +15239,7 @@ unsorted:
   - libspandsp3-32bit 
   - libspatialindex6 
   - libspatialite-devel 
-  - libspatialite7 
+  - libspatialite8 
   - libspdlog1_12 
   - libspdlog1_12-32bit 
   - libspdylay7 
@@ -14771,6 +15273,7 @@ unsorted:
   - libsqlcipher-3_42_0-0 
   - libsqlcipher-3_42_0-0-x86-64-v3 
   - libsqlite3-0-32bit 
+  - libsqlitecpp0 
   - libsqlparser1 
   - libsquashfuse0 
   - libsquirrel1001 
@@ -14870,21 +15373,20 @@ unsorted:
   - libsundials_nvec6 
   - libsundials_nvec6-mvapich2 
   - libsundials_nvec6-openmpi4 
-  - libsundials_sunlinsol4_3_0 
-  - libsundials_sunlinsol4_3_0-mvapich2 
-  - libsundials_sunlinsol4_3_0-openmpi4 
+  - libsundials_sunlinsol4 
+  - libsundials_sunlinsol4-mvapich2 
+  - libsundials_sunlinsol4-openmpi4 
   - libsundials_sunmatrix4 
   - libsundials_sunmatrix4-mvapich2 
   - libsundials_sunmatrix4-openmpi4 
-  - libsundials_sunnonlin3_3_0 
-  - libsundials_sunnonlin3_3_0-mvapich2 
-  - libsundials_sunnonlin3_3_0-openmpi4 
+  - libsundials_sunnonlin3 
+  - libsundials_sunnonlin3-mvapich2 
+  - libsundials_sunnonlin3-openmpi4 
   - libsuperlu-gnu-hpc 
   - libsuperlu6 
   - libsuperlu6-32bit 
   - libsuperlu_6_0_1-gnu-hpc 
   - libsurgescript0_5_6 
-  - libsuseconnect 
   - libsvm-devel 
   - libsvm-java 
   - libsvm3 
@@ -14903,7 +15405,7 @@ unsorted:
   - libsybdb5-32bit 
   - libsymmetrica2 
   - libsympol0_1 
-  - libsymspg1 
+  - libsymspg2 
   - libsyn123-0 
   - libsyn123-0-32bit 
   - libsynce-devel 
@@ -15029,6 +15531,7 @@ unsorted:
   - libtolua5 
   - libtomcrypt-devel 
   - libtomcrypt-examples 
+  - libtomlplusplus3 
   - libtommath-devel 
   - libtommath-examples 
   - libtomoe-gtk0 
@@ -15175,11 +15678,11 @@ unsorted:
   - libunwind-setjmp0 
   - libunwind-setjmp0-32bit 
   - libunwind8-32bit 
-  - libupb36 
+  - libupb37 
   - libupm1 
   - libupnp-devel 
   - libupnpp-devel 
-  - libupnpp12 
+  - libupnpp16 
   - libupower-glib-devel 
   - libupsclient6 
   - liburcu-devel 
@@ -15307,6 +15810,7 @@ unsorted:
   - libvirt-daemon-hooks 
   - libvirt-daemon-lxc 
   - libvirt-daemon-plugin-sanlock 
+  - libvirt-daemon-proxy 
   - libvirt-dbus 
   - libvirt-devel 
   - libvirt-doc 
@@ -15330,7 +15834,7 @@ unsorted:
   - libvma 
   - libvma-devel 
   - libvma9 
-  - libvmaf1-32bit 
+  - libvmaf3-32bit 
   - libvmdk-devel 
   - libvmdk-tools 
   - libvmdk1 
@@ -15347,7 +15851,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit 
-  - libvolk3_0 
+  - libvolk3_1 
   - libvomsapi1 
   - libvorbis-devel 
   - libvorbis-devel-32bit 
@@ -15365,7 +15869,6 @@ unsorted:
   - libvpl 
   - libvpl-devel 
   - libvpl-samples 
-  - libvpl2 
   - libvpx-devel 
   - libvpx8-32bit 
   - libvsapm-devel 
@@ -15394,9 +15897,9 @@ unsorted:
   - libvterm-devel 
   - libvterm-tools 
   - libvterm0 
-  - libvtk-m-2_0 
-  - libvtk-m-mpich-2_0 
-  - libvtk-m-openmpi4-2_0 
+  - libvtk-m-2_1 
+  - libvtk-m-mpich-2_1 
+  - libvtk-m-openmpi4-2_1 
   - libvtk1 
   - libvtk1-openmpi4 
   - libvulkan1-32bit 
@@ -15419,7 +15922,7 @@ unsorted:
   - libwayland-server0-32bit 
   - libwbxml2-1 
   - libwbxml2-devel 
-  - libwcs7 
+  - libwcs8 
   - libwebcam-devel 
   - libwebcam0 
   - libwebkit2gtk-4_0-37-32bit 
@@ -15442,17 +15945,17 @@ unsorted:
   - libwebrtc_audio_processing1 
   - libwebsockets-devel 
   - libwebsockets19 
-  - libweston-12 
-  - libweston-12-0 
+  - libweston-13 
+  - libweston-13-0 
   - libwget2 
   - libwhich 
   - libwiiuse0 
   - libwim15 
   - libwind0 
-  - libwireshark16 
-  - libwiretap13 
-  - libwlroots10 
+  - libwireshark17 
+  - libwiretap14 
   - libwlroots11 
+  - libwlroots12 
   - libwmf-0_2-7-32bit 
   - libwmf-devel 
   - libwmf-gnome 
@@ -15488,7 +15991,7 @@ unsorted:
   - libwsman_client5 
   - libwsman_clientpp-devel 
   - libwsman_clientpp1 
-  - libwsutil14 
+  - libwsutil15 
   - libwtcdb-devel 
   - libwtcdb-tools 
   - libwtcdb1 
@@ -15499,91 +16002,91 @@ unsorted:
   - libwv2-4 
   - libwx_base-suse-devel 
   - libwx_base-suse-nostl-devel 
+  - libwx_baseu-suse-nostl10_0_0 
   - libwx_baseu-suse-nostl3_0_5 
-  - libwx_baseu-suse-nostl9_0_0 
+  - libwx_baseu-suse10_0_0 
   - libwx_baseu-suse3_0_5 
-  - libwx_baseu-suse9_0_0 
+  - libwx_baseu_net-suse-nostl10_0_0 
   - libwx_baseu_net-suse-nostl3_0_5 
-  - libwx_baseu_net-suse-nostl9_0_0 
+  - libwx_baseu_net-suse10_0_0 
   - libwx_baseu_net-suse3_0_5 
-  - libwx_baseu_net-suse9_0_0 
+  - libwx_baseu_xml-suse-nostl10_0_0 
   - libwx_baseu_xml-suse-nostl3_0_5 
-  - libwx_baseu_xml-suse-nostl9_0_0 
+  - libwx_baseu_xml-suse10_0_0 
   - libwx_baseu_xml-suse3_0_5 
-  - libwx_baseu_xml-suse9_0_0 
   - libwx_gtk2u_adv-suse-nostl3_0_5 
+  - libwx_gtk2u_adv-suse10_0_0 
   - libwx_gtk2u_adv-suse3_0_5 
-  - libwx_gtk2u_adv-suse9_0_0 
   - libwx_gtk2u_aui-suse-nostl3_0_5 
+  - libwx_gtk2u_aui-suse10_0_0 
   - libwx_gtk2u_aui-suse3_0_5 
-  - libwx_gtk2u_aui-suse9_0_0 
   - libwx_gtk2u_core-suse-nostl3_0_5 
+  - libwx_gtk2u_core-suse10_0_0 
   - libwx_gtk2u_core-suse3_0_5 
-  - libwx_gtk2u_core-suse9_0_0 
   - libwx_gtk2u_gl-suse-nostl3_0_5 
+  - libwx_gtk2u_gl-suse10_0_0 
   - libwx_gtk2u_gl-suse3_0_5 
-  - libwx_gtk2u_gl-suse9_0_0 
   - libwx_gtk2u_html-suse-nostl3_0_5 
+  - libwx_gtk2u_html-suse10_0_0 
   - libwx_gtk2u_html-suse3_0_5 
-  - libwx_gtk2u_html-suse9_0_0 
   - libwx_gtk2u_media-suse-nostl3_0_5 
+  - libwx_gtk2u_media-suse10_0_0 
   - libwx_gtk2u_media-suse3_0_5 
-  - libwx_gtk2u_media-suse9_0_0 
   - libwx_gtk2u_propgrid-suse-nostl3_0_5 
+  - libwx_gtk2u_propgrid-suse10_0_0 
   - libwx_gtk2u_propgrid-suse3_0_5 
-  - libwx_gtk2u_propgrid-suse9_0_0 
   - libwx_gtk2u_qa-suse-nostl3_0_5 
+  - libwx_gtk2u_qa-suse10_0_0 
   - libwx_gtk2u_qa-suse3_0_5 
-  - libwx_gtk2u_qa-suse9_0_0 
   - libwx_gtk2u_ribbon-suse-nostl3_0_5 
+  - libwx_gtk2u_ribbon-suse10_0_0 
   - libwx_gtk2u_ribbon-suse3_0_5 
-  - libwx_gtk2u_ribbon-suse9_0_0 
   - libwx_gtk2u_richtext-suse-nostl3_0_5 
+  - libwx_gtk2u_richtext-suse10_0_0 
   - libwx_gtk2u_richtext-suse3_0_5 
-  - libwx_gtk2u_richtext-suse9_0_0 
   - libwx_gtk2u_stc-suse-nostl3_0_5 
+  - libwx_gtk2u_stc-suse10_0_0 
   - libwx_gtk2u_stc-suse3_0_5 
-  - libwx_gtk2u_stc-suse9_0_0 
   - libwx_gtk2u_xrc-suse-nostl3_0_5 
+  - libwx_gtk2u_xrc-suse10_0_0 
   - libwx_gtk2u_xrc-suse3_0_5 
-  - libwx_gtk2u_xrc-suse9_0_0 
-  - libwx_gtk3u_adv-suse-nostl9_0_0 
-  - libwx_gtk3u_adv-suse9_0_0 
-  - libwx_gtk3u_aui-suse-nostl9_0_0 
-  - libwx_gtk3u_aui-suse9_0_0 
-  - libwx_gtk3u_core-suse-nostl9_0_0 
-  - libwx_gtk3u_core-suse9_0_0 
-  - libwx_gtk3u_gl-suse-nostl9_0_0 
-  - libwx_gtk3u_gl-suse9_0_0 
-  - libwx_gtk3u_html-suse-nostl9_0_0 
-  - libwx_gtk3u_html-suse9_0_0 
-  - libwx_gtk3u_media-suse-nostl9_0_0 
-  - libwx_gtk3u_media-suse9_0_0 
-  - libwx_gtk3u_propgrid-suse-nostl9_0_0 
-  - libwx_gtk3u_propgrid-suse9_0_0 
-  - libwx_gtk3u_qa-suse-nostl9_0_0 
-  - libwx_gtk3u_qa-suse9_0_0 
-  - libwx_gtk3u_ribbon-suse-nostl9_0_0 
-  - libwx_gtk3u_ribbon-suse9_0_0 
-  - libwx_gtk3u_richtext-suse-nostl9_0_0 
-  - libwx_gtk3u_richtext-suse9_0_0 
-  - libwx_gtk3u_stc-suse-nostl9_0_0 
-  - libwx_gtk3u_stc-suse9_0_0 
-  - libwx_gtk3u_webview-suse9_0_0 
-  - libwx_gtk3u_xrc-suse-nostl9_0_0 
-  - libwx_gtk3u_xrc-suse9_0_0 
-  - libwx_qtu_adv-suse9_0_0 
-  - libwx_qtu_aui-suse9_0_0 
-  - libwx_qtu_core-suse9_0_0 
-  - libwx_qtu_gl-suse9_0_0 
-  - libwx_qtu_html-suse9_0_0 
-  - libwx_qtu_media-suse9_0_0 
-  - libwx_qtu_propgrid-suse9_0_0 
-  - libwx_qtu_qa-suse9_0_0 
-  - libwx_qtu_ribbon-suse9_0_0 
-  - libwx_qtu_richtext-suse9_0_0 
-  - libwx_qtu_stc-suse9_0_0 
-  - libwx_qtu_xrc-suse9_0_0 
+  - libwx_gtk3u_adv-suse-nostl10_0_0 
+  - libwx_gtk3u_adv-suse10_0_0 
+  - libwx_gtk3u_aui-suse-nostl10_0_0 
+  - libwx_gtk3u_aui-suse10_0_0 
+  - libwx_gtk3u_core-suse-nostl10_0_0 
+  - libwx_gtk3u_core-suse10_0_0 
+  - libwx_gtk3u_gl-suse-nostl10_0_0 
+  - libwx_gtk3u_gl-suse10_0_0 
+  - libwx_gtk3u_html-suse-nostl10_0_0 
+  - libwx_gtk3u_html-suse10_0_0 
+  - libwx_gtk3u_media-suse-nostl10_0_0 
+  - libwx_gtk3u_media-suse10_0_0 
+  - libwx_gtk3u_propgrid-suse-nostl10_0_0 
+  - libwx_gtk3u_propgrid-suse10_0_0 
+  - libwx_gtk3u_qa-suse-nostl10_0_0 
+  - libwx_gtk3u_qa-suse10_0_0 
+  - libwx_gtk3u_ribbon-suse-nostl10_0_0 
+  - libwx_gtk3u_ribbon-suse10_0_0 
+  - libwx_gtk3u_richtext-suse-nostl10_0_0 
+  - libwx_gtk3u_richtext-suse10_0_0 
+  - libwx_gtk3u_stc-suse-nostl10_0_0 
+  - libwx_gtk3u_stc-suse10_0_0 
+  - libwx_gtk3u_webview-suse10_0_0 
+  - libwx_gtk3u_xrc-suse-nostl10_0_0 
+  - libwx_gtk3u_xrc-suse10_0_0 
+  - libwx_qtu_adv-suse10_0_0 
+  - libwx_qtu_aui-suse10_0_0 
+  - libwx_qtu_core-suse10_0_0 
+  - libwx_qtu_gl-suse10_0_0 
+  - libwx_qtu_html-suse10_0_0 
+  - libwx_qtu_media-suse10_0_0 
+  - libwx_qtu_propgrid-suse10_0_0 
+  - libwx_qtu_qa-suse10_0_0 
+  - libwx_qtu_ribbon-suse10_0_0 
+  - libwx_qtu_richtext-suse10_0_0 
+  - libwx_qtu_stc-suse10_0_0 
+  - libwx_qtu_xrc-suse10_0_0 
   - libwxcode_gtk2u_wxsqlite3-3_2-0 
   - libwxlua 
   - libwxlua-wx32-3_1_0_0 
@@ -15680,6 +16183,7 @@ unsorted:
   - libxkbcommon-devel 
   - libxkbcommon-devel-32bit 
   - libxkbcommon-tools 
+  - libxkbcommon-tools-bash-completion 
   - libxkbcommon-x11-0-32bit 
   - libxkbcommon-x11-devel 
   - libxkbcommon-x11-devel-32bit 
@@ -15688,6 +16192,8 @@ unsorted:
   - libxkbfile-devel-32bit 
   - libxkbfile1-32bit 
   - libxkbregistry-devel 
+  - libxkbregistry-devel-32bit 
+  - libxkbregistry0-32bit 
   - libxkbui-devel 
   - libxkbui1 
   - libxklavier-devel 
@@ -15757,6 +16263,7 @@ unsorted:
   - libxtrxdsp0 
   - libxtrxll-devel 
   - libxtrxll0 
+  - libxvidcore4-32bit 
   - libxy3 
   - libyajl-devel 
   - libyajl-devel-static 
@@ -15827,6 +16334,7 @@ unsorted:
   - libzip-devel 
   - libzip-tools 
   - libzip5-32bit 
+  - libzipios2 
   - libzita-convolver4 
   - libzita-resampler1 
   - libzix-0-0 
@@ -16096,10 +16604,13 @@ unsorted:
   - lomt-junction-fonts 
   - lomt-knewave-fonts 
   - lomt-leaguegothic-fonts 
+  - lomt-leaguespartan-fonts 
+  - lomt-leaguespartan-variable-fonts 
   - lomt-lindenhill-fonts 
   - lomt-orbitron-fonts 
   - lomt-ostrichsans-fonts 
   - lomt-prociono-fonts 
+  - lomt-raleway-fonts 
   - lomt-script1-fonts 
   - lomt-sniglet-fonts 
   - lomt-sortsmillgoudy-fonts 
@@ -16535,6 +17046,7 @@ unsorted:
   - mame-tools 
   - man-pages-fi 
   - man-pages-id 
+  - man-pages-ko 
   - man-pages-mk 
   - man-pages-nb 
   - man-pages-nl 
@@ -16547,7 +17059,6 @@ unsorted:
   - manaplus-lang 
   - manchu-fonts 
   - mandoc 
-  - mandoc-bin 
   - mandown 
   - mangoapp 
   - mangohud 
@@ -17244,6 +17755,8 @@ unsorted:
   - modello-maven-plugin-javadoc 
   - modem-manager-gui 
   - modem-manager-gui-lang 
+  - moditect 
+  - moditect-javadoc 
   - modsecurity 
   - modsecurity-devel 
   - modulemd-validator 
@@ -17263,6 +17776,7 @@ unsorted:
   - molsketch-devel 
   - molsketch-doc 
   - monero-devel 
+  - monero-gui 
   - monero-utils 
   - monerod 
   - mongolian-fonts 
@@ -17987,7 +18501,6 @@ unsorted:
   - net6 
   - net6-devel 
   - net6-lang 
-  - netavark 
   - netbeans-javaparser 
   - netbeans-resolver 
   - netbeans-svnclientadapter 
@@ -18111,7 +18624,6 @@ unsorted:
   - ngspice-scripts 
   - ngspice-xspice-cm 
   - nh2ps 
-  - nilfs-utils 
   - nilfs-utils-devel 
   - nim 
   - nimbus-icon-theme 
@@ -18180,229 +18692,6 @@ unsorted:
   - notmuch-devel 
   - notmuch-doc 
   - notmuch-emacs 
-  - noto-arimo-fonts 
-  - noto-cousine-fonts 
-  - noto-fonts 
-  - noto-kufiarabic-fonts 
-  - noto-loopedlao-fonts 
-  - noto-loopedlao-ui-fonts 
-  - noto-loopedthai-fonts 
-  - noto-loopedthai-ui-fonts 
-  - noto-music-fonts 
-  - noto-naskharabic-fonts 
-  - noto-naskharabic-ui-fonts 
-  - noto-nastaliqurdu-fonts 
-  - noto-rashihebrew-fonts 
-  - noto-sans-adlam-fonts 
-  - noto-sans-adlamunjoined-fonts 
-  - noto-sans-anatolianhieroglyphs-fonts 
-  - noto-sans-arabic-fonts 
-  - noto-sans-arabic-ui-fonts 
-  - noto-sans-armenian-fonts 
-  - noto-sans-avestan-fonts 
-  - noto-sans-balinese-fonts 
-  - noto-sans-bamum-fonts 
-  - noto-sans-bassavah-fonts 
-  - noto-sans-batak-fonts 
-  - noto-sans-bengali-fonts 
-  - noto-sans-bengali-ui-fonts 
-  - noto-sans-bhaiksuki-fonts 
-  - noto-sans-brahmi-fonts 
-  - noto-sans-buginese-fonts 
-  - noto-sans-buhid-fonts 
-  - noto-sans-canadianaboriginal-fonts 
-  - noto-sans-carian-fonts 
-  - noto-sans-caucasianalbanian-fonts 
-  - noto-sans-chakma-fonts 
-  - noto-sans-cham-fonts 
-  - noto-sans-cherokee-fonts 
-  - noto-sans-chorasmian-fonts 
-  - noto-sans-coptic-fonts 
-  - noto-sans-cuneiform-fonts 
-  - noto-sans-cypriot-fonts 
-  - noto-sans-cyprominoan-fonts 
-  - noto-sans-deseret-fonts 
-  - noto-sans-devanagari-fonts 
-  - noto-sans-devanagari-ui-fonts 
-  - noto-sans-duployan-fonts 
-  - noto-sans-egyptianhieroglyphs-fonts 
-  - noto-sans-elbasan-fonts 
-  - noto-sans-elymaic-fonts 
-  - noto-sans-ethiopic-fonts 
-  - noto-sans-georgian-fonts 
-  - noto-sans-glagolitic-fonts 
-  - noto-sans-gothic-fonts 
-  - noto-sans-grantha-fonts 
-  - noto-sans-gujarati-fonts 
-  - noto-sans-gujarati-ui-fonts 
-  - noto-sans-gunjalagondi-fonts 
-  - noto-sans-gurmukhi-fonts 
-  - noto-sans-gurmukhi-ui-fonts 
-  - noto-sans-hanifirohingya-fonts 
-  - noto-sans-hanunoo-fonts 
-  - noto-sans-hatran-fonts 
-  - noto-sans-hebrew-fonts 
-  - noto-sans-hebrewdroid-fonts 
-  - noto-sans-hebrewnew-fonts 
-  - noto-sans-imperialaramaic-fonts 
-  - noto-sans-indicsiyaqnumbers-fonts 
-  - noto-sans-inscriptionalpahlavi-fonts 
-  - noto-sans-inscriptionalparthian-fonts 
-  - noto-sans-javanese-fonts 
-  - noto-sans-kaithi-fonts 
-  - noto-sans-kannada-fonts 
-  - noto-sans-kannada-ui-fonts 
-  - noto-sans-kayahli-fonts 
-  - noto-sans-kharoshthi-fonts 
-  - noto-sans-khmer-fonts 
-  - noto-sans-khmer-ui-fonts 
-  - noto-sans-khojki-fonts 
-  - noto-sans-khudawadi-fonts 
-  - noto-sans-lao-fonts 
-  - noto-sans-lao-ui-fonts 
-  - noto-sans-lepcha-fonts 
-  - noto-sans-limbu-fonts 
-  - noto-sans-lineara-fonts 
-  - noto-sans-linearb-fonts 
-  - noto-sans-lisu-fonts 
-  - noto-sans-lycian-fonts 
-  - noto-sans-lydian-fonts 
-  - noto-sans-mahajani-fonts 
-  - noto-sans-malayalam-fonts 
-  - noto-sans-malayalam-ui-fonts 
-  - noto-sans-mandaic-fonts 
-  - noto-sans-manichaean-fonts 
-  - noto-sans-marchen-fonts 
-  - noto-sans-masaramgondi-fonts 
-  - noto-sans-mayannumerals-fonts 
-  - noto-sans-medefaidrin-fonts 
-  - noto-sans-meeteimayek-fonts 
-  - noto-sans-mendekikakui-fonts 
-  - noto-sans-meroitic-fonts 
-  - noto-sans-miao-fonts 
-  - noto-sans-modi-fonts 
-  - noto-sans-mongolian-fonts 
-  - noto-sans-mono-fonts 
-  - noto-sans-mro-fonts 
-  - noto-sans-multani-fonts 
-  - noto-sans-myanmar-fonts 
-  - noto-sans-myanmar-ui-fonts 
-  - noto-sans-nabataean-fonts 
-  - noto-sans-nandinagari-fonts 
-  - noto-sans-newa-fonts 
-  - noto-sans-newtailue-fonts 
-  - noto-sans-nko-fonts 
-  - noto-sans-nushu-fonts 
-  - noto-sans-ogham-fonts 
-  - noto-sans-olchiki-fonts 
-  - noto-sans-oldhungarian-fonts 
-  - noto-sans-olditalic-fonts 
-  - noto-sans-oldnortharabian-fonts 
-  - noto-sans-oldpermic-fonts 
-  - noto-sans-oldpersian-fonts 
-  - noto-sans-oldsogdian-fonts 
-  - noto-sans-oldsoutharabian-fonts 
-  - noto-sans-oldturkic-fonts 
-  - noto-sans-oriya-fonts 
-  - noto-sans-oriya-ui-fonts 
-  - noto-sans-osage-fonts 
-  - noto-sans-osmanya-fonts 
-  - noto-sans-pahawhhmong-fonts 
-  - noto-sans-palmyrene-fonts 
-  - noto-sans-paucinhau-fonts 
-  - noto-sans-phagspa-fonts 
-  - noto-sans-phoenician-fonts 
-  - noto-sans-psalterpahlavi-fonts 
-  - noto-sans-rejang-fonts 
-  - noto-sans-runic-fonts 
-  - noto-sans-samaritan-fonts 
-  - noto-sans-saurashtra-fonts 
-  - noto-sans-sharada-fonts 
-  - noto-sans-shavian-fonts 
-  - noto-sans-siddham-fonts 
-  - noto-sans-signwriting-fonts 
-  - noto-sans-sinhala-fonts 
-  - noto-sans-sinhala-ui-fonts 
-  - noto-sans-sogdian-fonts 
-  - noto-sans-sorasompeng-fonts 
-  - noto-sans-soyombo-fonts 
-  - noto-sans-sundanese-fonts 
-  - noto-sans-sylotinagri-fonts 
-  - noto-sans-symbols-fonts 
-  - noto-sans-symbols2-fonts 
-  - noto-sans-syriac-fonts 
-  - noto-sans-tagalog-fonts 
-  - noto-sans-tagbanwa-fonts 
-  - noto-sans-taile-fonts 
-  - noto-sans-taitham-fonts 
-  - noto-sans-taiviet-fonts 
-  - noto-sans-takri-fonts 
-  - noto-sans-tamil-fonts 
-  - noto-sans-tamil-ui-fonts 
-  - noto-sans-tamilsupplement-fonts 
-  - noto-sans-tangsa-fonts 
-  - noto-sans-telugu-fonts 
-  - noto-sans-telugu-ui-fonts 
-  - noto-sans-thaana-fonts 
-  - noto-sans-thai-fonts 
-  - noto-sans-thai-ui-fonts 
-  - noto-sans-tifinagh-fonts 
-  - noto-sans-tifinaghadrar-fonts 
-  - noto-sans-tifinaghagrawimazighen-fonts 
-  - noto-sans-tifinaghahaggar-fonts 
-  - noto-sans-tifinaghair-fonts 
-  - noto-sans-tifinaghapt-fonts 
-  - noto-sans-tifinaghazawagh-fonts 
-  - noto-sans-tifinaghghat-fonts 
-  - noto-sans-tifinaghhawad-fonts 
-  - noto-sans-tifinaghrhissaixa-fonts 
-  - noto-sans-tifinaghsil-fonts 
-  - noto-sans-tifinaghtawellemmet-fonts 
-  - noto-sans-tirhuta-fonts 
-  - noto-sans-ugaritic-fonts 
-  - noto-sans-vai-fonts 
-  - noto-sans-vithkuqi-fonts 
-  - noto-sans-wancho-fonts 
-  - noto-sans-warangciti-fonts 
-  - noto-sans-yi-fonts 
-  - noto-sans-zanabazarsquare-fonts 
-  - noto-serif-ahom-fonts 
-  - noto-serif-armenian-fonts 
-  - noto-serif-balinese-fonts 
-  - noto-serif-bengali-fonts 
-  - noto-serif-devanagari-fonts 
-  - noto-serif-display-fonts 
-  - noto-serif-divesakuru-fonts 
-  - noto-serif-dogra-fonts 
-  - noto-serif-ethiopic-fonts 
-  - noto-serif-fonts 
-  - noto-serif-georgian-fonts 
-  - noto-serif-grantha-fonts 
-  - noto-serif-gujarati-fonts 
-  - noto-serif-gurmukhi-fonts 
-  - noto-serif-hebrew-fonts 
-  - noto-serif-kannada-fonts 
-  - noto-serif-khmer-fonts 
-  - noto-serif-khojki-fonts 
-  - noto-serif-lao-fonts 
-  - noto-serif-makasar-fonts 
-  - noto-serif-malayalam-fonts 
-  - noto-serif-myanmar-fonts 
-  - noto-serif-nyiakengpuachuehmong-fonts 
-  - noto-serif-olduyghur-fonts 
-  - noto-serif-oriya-fonts 
-  - noto-serif-sinhala-fonts 
-  - noto-serif-tamil-fonts 
-  - noto-serif-tamilslanted-fonts 
-  - noto-serif-tangut-fonts 
-  - noto-serif-telugu-fonts 
-  - noto-serif-thai-fonts 
-  - noto-serif-tibetan-fonts 
-  - noto-serif-toto-fonts 
-  - noto-serif-vithkuqi-fonts 
-  - noto-serif-yezidi-fonts 
-  - noto-tinos-fonts 
-  - noto-traditionalnushu-fonts 
   - nova 
   - nova-bash-completion 
   - nova-fish-completion 
@@ -18545,8 +18834,6 @@ unsorted:
   - ocaml-augeas-devel 
   - ocaml-base64 
   - ocaml-base64-devel 
-  - ocaml-benchmark 
-  - ocaml-benchmark-devel 
   - ocaml-bigarray-compat 
   - ocaml-bigarray-compat-devel 
   - ocaml-bisect_ppx 
@@ -18787,6 +19074,7 @@ unsorted:
   - octave-forge-vrml 
   - octave-nlopt_optimize 
   - octave-openEMS 
+  - oculante 
   - oddjob 
   - oddjob-gpupdate 
   - oddjob-mkhomedir 
@@ -18905,6 +19193,8 @@ unsorted:
   - openSUSE-e-X-Icons 
   - openSUSE-e-X-Neon-Icons 
   - openSUSE-e-X-Oliveleaf-Icons 
+  - openSUSE-release-appliance 
+  - openSUSE-release-appliance-custom 
   - openSUSE-release-appliance-docker 
   - openSUSE-release-appliance-hyperv 
   - openSUSE-release-appliance-kvm 
@@ -18912,7 +19202,6 @@ unsorted:
   - openSUSE-release-appliance-vagrant 
   - openSUSE-release-appliance-vmware 
   - openSUSE-release-appliance-wsl 
-  - openSUSE-release-ftp 
   - openSUSE-release-livecd-gnome 
   - openSUSE-release-livecd-kde 
   - openSUSE-release-livecd-x11 
@@ -18958,8 +19247,8 @@ unsorted:
   - openbabel-devel 
   - openbabel-gui 
   - openblas-common-devel 
-  - openblas-pthreads_0_3_21-gnu-hpc-devel-static 
-  - openblas_0_3_21-gnu-hpc-devel-static 
+  - openblas-pthreads_0_3_25-gnu-hpc-devel-static 
+  - openblas_0_3_25-gnu-hpc-devel-static 
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
@@ -19177,6 +19466,7 @@ unsorted:
   - oqs-provider 
   - orage 
   - orage-lang 
+  - oras 
   - orc 
   - orc-doc 
   - orcania-devel 
@@ -19297,6 +19587,7 @@ unsorted:
   - owncloud-client-dolphin 
   - owncloud-client-nautilus 
   - owncloud-client-nemo 
+  - owncloud-dolphin 
   - owntone 
   - oxygen5 
   - oxygen5-cursors 
@@ -19617,7 +19908,6 @@ unsorted:
   - pcp-pmda-activemq 
   - pcp-pmda-apache 
   - pcp-pmda-bash 
-  - pcp-pmda-bind2 
   - pcp-pmda-bonding 
   - pcp-pmda-cifs 
   - pcp-pmda-cisco 
@@ -19663,7 +19953,6 @@ unsorted:
   - pcp-pmda-rabbitmq 
   - pcp-pmda-redis 
   - pcp-pmda-roomtemp 
-  - pcp-pmda-rpm 
   - pcp-pmda-rsyslog 
   - pcp-pmda-samba 
   - pcp-pmda-sendmail 
@@ -19676,14 +19965,12 @@ unsorted:
   - pcp-pmda-systemd 
   - pcp-pmda-trace 
   - pcp-pmda-unbound 
-  - pcp-pmda-vmware 
   - pcp-pmda-weblog 
   - pcp-pmda-zimbra 
   - pcp-pmda-zswap 
   - pcp-system-tools 
   - pcp-testsuite 
   - pcp-zeroconf 
-  - pcr-oracle 
   - pcre-devel 
   - pcre-devel-static 
   - pcre-doc 
@@ -19703,6 +19990,7 @@ unsorted:
   - pcsc-reflex60 
   - pcsc-tools 
   - pcsc-towitoko-devel 
+  - pcsx2 
   - pdf2djvu 
   - pdf2djvu-lang 
   - pdf2svg 
@@ -20169,6 +20457,7 @@ unsorted:
   - perl-File-TreeCreate 
   - perl-File-Type 
   - perl-File-Unpack 
+  - perl-File-Unpack2 
   - perl-File-Which 
   - perl-File-chdir 
   - perl-File-pushd 
@@ -20789,6 +21078,7 @@ unsorted:
   - perl-Sys-Virt 
   - perl-Sysadm-Install 
   - perl-System-Command 
+  - perl-TAP-Formatter-GitHubActions 
   - perl-TAP-Harness-JUnit 
   - perl-Task-Kensho-Async 
   - perl-Task-Kensho-CLI 
@@ -20915,6 +21205,7 @@ unsorted:
   - perl-Test-YAML 
   - perl-Test-YAML-Valid 
   - perl-Test-utf8 
+  - perl-Test2-Formatter-YAMLEnhancedTAP 
   - perl-Test2-Plugin-NoWarnings 
   - perl-Test2-Suite 
   - perl-Text-Aligner 
@@ -21331,6 +21622,7 @@ unsorted:
   - plantuml-javadoc 
   - plasma-applet-weather-widget 
   - plasma-applet-weather-widget-lang 
+  - plasma-branding-MicroOS 
   - plasma-framework-devel 
   - plasma-nm5-fortisslvpn 
   - plasma-nm5-iodine 
@@ -21606,8 +21898,6 @@ unsorted:
   - postgresql11-pgsql-ogr-fdw 
   - postgresql11-plperl 
   - postgresql11-plpython 
-  - postgresql11-plr 
-  - postgresql11-plr-doc 
   - postgresql11-pltcl 
   - postgresql11-postgis 
   - postgresql11-postgis-utils 
@@ -21618,6 +21908,7 @@ unsorted:
   - postgresql12-contrib 
   - postgresql12-devel 
   - postgresql12-docs 
+  - postgresql12-libversion 
   - postgresql12-llvmjit 
   - postgresql12-llvmjit-devel 
   - postgresql12-orafce 
@@ -21639,6 +21930,7 @@ unsorted:
   - postgresql13-contrib 
   - postgresql13-devel 
   - postgresql13-docs 
+  - postgresql13-libversion 
   - postgresql13-llvmjit 
   - postgresql13-llvmjit-devel 
   - postgresql13-orafce 
@@ -21661,6 +21953,7 @@ unsorted:
   - postgresql14-contrib 
   - postgresql14-devel 
   - postgresql14-docs 
+  - postgresql14-libversion 
   - postgresql14-llvmjit 
   - postgresql14-llvmjit-devel 
   - postgresql14-orafce 
@@ -21683,6 +21976,7 @@ unsorted:
   - postgresql15-contrib 
   - postgresql15-devel 
   - postgresql15-docs 
+  - postgresql15-libversion 
   - postgresql15-llvmjit 
   - postgresql15-llvmjit-devel 
   - postgresql15-orafce 
@@ -21704,18 +21998,24 @@ unsorted:
   - postgresql16-devel 
   - postgresql16-devel-mini 
   - postgresql16-docs 
+  - postgresql16-libversion 
   - postgresql16-llvmjit 
   - postgresql16-llvmjit-devel 
   - postgresql16-orafce 
   - postgresql16-plperl 
   - postgresql16-plpython 
+  - postgresql16-plr 
+  - postgresql16-plr-doc 
   - postgresql16-pltcl 
   - postgresql16-server-devel 
   - postgresql16-test 
+  - postgresql16-timescaledb 
   - postgrey 
   - postorius 
   - postorius-web 
   - postorius-web-uwsgi 
+  - postquantumcryptoengine 
+  - postquantumcryptoengine-devel 
   - postsrsd 
   - potrace 
   - potrace-devel 
@@ -21809,6 +22109,7 @@ unsorted:
   - procs 
   - product-builder 
   - product-builder-plugin-Tumbleweed 
+  - product-composer 
   - profanity 
   - profanity-mini 
   - profanity-standard 
@@ -22020,6 +22321,7 @@ unsorted:
   - pythia-doc 
   - python 
   - python-32bit 
+  - python-Flask-Assets-doc 
   - python-Genshi-doc 
   - python-Kivy-doc 
   - python-M2Crypto-doc 
@@ -22043,6 +22345,10 @@ unsorted:
   - python-atomicwrites-doc-doc 
   - python-automaton-doc 
   - python-azure-agent 
+  - python-azure-agent-config-default 
+  - python-azure-agent-config-hpc 
+  - python-azure-agent-config-micro 
+  - python-azure-agent-config-server 
   - python-azure-agent-test 
   - python-barbicanclient-doc 
   - python-base 
@@ -22061,7 +22367,6 @@ unsorted:
   - python-castellan-doc 
   - python-chewing 
   - python-cinderclient-doc 
-  - python-cliff-doc 
   - python-curses 
   - python-dbus-python-common-devel 
   - python-debtcollector-doc 
@@ -22074,7 +22379,6 @@ unsorted:
   - python-efl-examples 
   - python-fastcluster-doc 
   - python-flake8-doc 
-  - python-flup-doc 
   - python-freezerclient-doc 
   - python-gdbm 
   - python-gevent-doc 
@@ -22184,14 +22488,12 @@ unsorted:
   - python-sip6-doc 
   - python-six-doc 
   - python-sqlalchemy-migrate-doc 
-  - python-stevedore-doc 
   - python-sushy-doc 
   - python-swiftclient-doc 
   - python-tk 
   - python-tooz-doc 
   - python-tqdm-bash-completion 
   - python-translationstring-doc 
-  - python-typeshed 
   - python-xml 
   - python-zope.deprecation-doc 
   - python-zope.event-doc 
@@ -22240,7 +22542,7 @@ unsorted:
   - python3-barbicanclient 
   - python3-bcc 
   - python3-boost_parallel_mpi 
-  - python3-boost_parallel_mpi1_83_0 
+  - python3-boost_parallel_mpi1_84_0 
   - python3-botan 
   - python3-bump2version 
   - python3-bytesize 
@@ -22260,7 +22562,6 @@ unsorted:
   - python3-clang15 
   - python3-clang16 
   - python3-clang17 
-  - python3-cliff 
   - python3-clingo 
   - python3-clinkgrammar 
   - python3-clustershell 
@@ -22286,7 +22587,6 @@ unsorted:
   - python3-dnf-plugin-versionlock 
   - python3-dnf-plugins-core 
   - python3-dnf-plugins-extras-common 
-  - python3-dogpile.cache 
   - python3-ec2imgutils 
   - python3-ec2metadata 
   - python3-espressomd 
@@ -22458,6 +22758,7 @@ unsorted:
   - python3-pysol-cards 
   - python3-pytest-ansible 
   - python3-pytest-cookies 
+  - python3-python-sql 
   - python3-rados 
   - python3-rbd 
   - python3-renderspec 
@@ -22471,6 +22772,7 @@ unsorted:
   - python3-shiboken6 
   - python3-shiboken6-devel 
   - python3-smbus 
+  - python3-solv 
   - python3-spglib 
   - python3-sphinxbase 
   - python3-sphinxbase5 
@@ -22480,7 +22782,6 @@ unsorted:
   - python3-sss-murmur 
   - python3-sss_nss_idmap 
   - python3-sssd-config 
-  - python3-stevedore 
   - python3-stp 
   - python3-subliminal 
   - python3-susepubliccloudinfo 
@@ -22551,6 +22852,7 @@ unsorted:
   - python310-Fiona 
   - python310-Flask 
   - python310-Flask-Admin 
+  - python310-Flask-Assets 
   - python310-Flask-Babel 
   - python310-Flask-Bootstrap 
   - python310-Flask-Caching 
@@ -22563,6 +22865,7 @@ unsorted:
   - python310-Flask-Mail 
   - python310-Flask-Mailman 
   - python310-Flask-Migrate 
+  - python310-Flask-OpenTracing 
   - python310-Flask-Paranoid 
   - python310-Flask-Principal 
   - python310-Flask-RESTful 
@@ -22596,7 +22899,6 @@ unsorted:
   - python310-Kivy-devel 
   - python310-LHAPDF 
   - python310-LTTL 
-  - python310-Lektor 
   - python310-Levenshtein 
   - python310-Logbook 
   - python310-M2Crypto 
@@ -22641,6 +22943,7 @@ unsorted:
   - python310-PyDispatcher 
   - python310-PyECLib 
   - python310-PyFxA 
+  - python310-PyGLM 
   - python310-PyGithub 
   - python310-PyHamcrest 
   - python310-PyICU 
@@ -22700,6 +23003,7 @@ unsorted:
   - python310-QtAwesome 
   - python310-QtPy 
   - python310-QtPy-test 
+  - python310-RangeHTTPServer 
   - python310-RegexOrder 
   - python310-Routes 
   - python310-Rtree 
@@ -22875,6 +23179,7 @@ unsorted:
   - python310-astroid 
   - python310-astropy 
   - python310-astropy-healpix 
+  - python310-astropy-iers-data 
   - python310-asttokens 
   - python310-astunparse 
   - python310-asv 
@@ -23106,6 +23411,7 @@ unsorted:
   - python310-azure-mgmt-healthcareapis 
   - python310-azure-mgmt-hybridcompute 
   - python310-azure-mgmt-hybridconnectivity 
+  - python310-azure-mgmt-hybridcontainerservice 
   - python310-azure-mgmt-hybridkubernetes 
   - python310-azure-mgmt-hybridnetwork 
   - python310-azure-mgmt-imagebuilder 
@@ -23139,6 +23445,7 @@ unsorted:
   - python310-azure-mgmt-msi 
   - python310-azure-mgmt-netapp 
   - python310-azure-mgmt-network 
+  - python310-azure-mgmt-networkanalytics 
   - python310-azure-mgmt-networkcloud 
   - python310-azure-mgmt-networkfunction 
   - python310-azure-mgmt-newrelicobservability 
@@ -23261,7 +23568,6 @@ unsorted:
   - python310-base-32bit 
   - python310-base58 
   - python310-bashate 
-  - python310-basictracer 
   - python310-bcrypt 
   - python310-beartype 
   - python310-beautifulsoup4 
@@ -23336,7 +23642,6 @@ unsorted:
   - python310-calmjs.parse 
   - python310-calmjs.types 
   - python310-calver 
-  - python310-calysto 
   - python310-cangjie 
   - python310-canonicaljson 
   - python310-capturer 
@@ -23403,6 +23708,7 @@ unsorted:
   - python310-click-repl 
   - python310-click-spinner 
   - python310-click-threading 
+  - python310-cliff 
   - python310-cligj 
   - python310-clikit 
   - python310-clint 
@@ -23542,7 +23848,6 @@ unsorted:
   - python310-deepmerge 
   - python310-defcon 
   - python310-defusedxml 
-  - python310-delegator 
   - python310-delegator.py 
   - python310-dennis 
   - python310-deprecation 
@@ -23579,7 +23884,6 @@ unsorted:
   - python310-dj-database-url 
   - python310-django-allauth 
   - python310-django-appconf 
-  - python310-django-assets 
   - python310-django-attachments 
   - python310-django-auth-ldap 
   - python310-django-avatar 
@@ -23696,6 +24000,7 @@ unsorted:
   - python310-docstring-to-markdown 
   - python310-docutils 
   - python310-docutils-ast-writer 
+  - python310-dogpile.cache 
   - python310-dogslow 
   - python310-dominate 
   - python310-dotmap 
@@ -23771,6 +24076,7 @@ unsorted:
   - python310-execnet 
   - python310-executing 
   - python310-exiv2 
+  - python310-expandvars 
   - python310-expects 
   - python310-expiringdict 
   - python310-exrex 
@@ -23851,7 +24157,6 @@ unsorted:
   - python310-flufl.lock 
   - python310-flufl.testing 
   - python310-fluidity-sm 
-  - python310-flup 
   - python310-flynt 
   - python310-folium 
   - python310-fontMath 
@@ -23926,16 +24231,32 @@ unsorted:
   - python310-google-auth 
   - python310-google-auth-httplib2 
   - python310-google-auth-oauthlib 
+  - python310-google-cloud-appengine-logging 
+  - python310-google-cloud-artifact-registry 
+  - python310-google-cloud-audit-log 
+  - python310-google-cloud-build 
+  - python310-google-cloud-compute 
   - python310-google-cloud-core 
+  - python310-google-cloud-domains 
+  - python310-google-cloud-firestore 
+  - python310-google-cloud-iam 
   - python310-google-cloud-kms 
+  - python310-google-cloud-kms-inventory 
+  - python310-google-cloud-logging 
+  - python310-google-cloud-run 
+  - python310-google-cloud-secret-manager 
+  - python310-google-cloud-service-directory 
+  - python310-google-cloud-spanner 
   - python310-google-cloud-speech 
   - python310-google-cloud-storage 
   - python310-google-cloud-translate 
+  - python310-google-cloud-vpc-access 
   - python310-google-crc32c 
   - python310-google-resumable-media 
   - python310-google_trans_new 
   - python310-googleapis-common-protos 
   - python310-googlemaps 
+  - python310-gp-libs 
   - python310-gpg 
   - python310-gphoto2 
   - python310-gprof2dot 
@@ -23952,7 +24273,6 @@ unsorted:
   - python310-grimoirelab-toolkit 
   - python310-grpc-google-iam-v1 
   - python310-grpcio 
-  - python310-grpcio-gcp 
   - python310-grpcio-status 
   - python310-grpcio-tools 
   - python310-gscholar 
@@ -23982,6 +24302,7 @@ unsorted:
   - python310-hanzidentifier 
   - python310-happybase 
   - python310-haproxyctl 
+  - python310-hardware 
   - python310-hashids 
   - python310-hatch 
   - python310-hatch-fancy-pypi-readme 
@@ -24176,6 +24497,7 @@ unsorted:
   - python310-jsonschema 
   - python310-jsonschema-format 
   - python310-jsonschema-format-nongpl 
+  - python310-jsonschema-path 
   - python310-jsonschema-spec 
   - python310-jsonschema-specifications 
   - python310-jsonschema417 
@@ -24201,7 +24523,6 @@ unsorted:
   - python310-jupyter-server-terminals 
   - python310-jupyter-server-test 
   - python310-jupyter-sphinx 
-  - python310-jupyter-telemetry 
   - python310-jupyter-ydoc 
   - python310-jupyter_console 
   - python310-jupyterlab 
@@ -24288,6 +24609,7 @@ unsorted:
   - python310-libevtx 
   - python310-libewf 
   - python310-libexe 
+  - python310-libfcrypto 
   - python310-libfmos 
   - python310-libfsapfs 
   - python310-libfsext 
@@ -24324,6 +24646,7 @@ unsorted:
   - python310-libtmux 
   - python310-libusb1 
   - python310-libusbsio 
+  - python310-libversion 
   - python310-libvhdi 
   - python310-libvirt-python 
   - python310-libvmdk 
@@ -24403,7 +24726,8 @@ unsorted:
   - python310-matplotlib-gtk4 
   - python310-matplotlib-inline 
   - python310-matplotlib-latex 
-  - python310-matplotlib-qt5 
+  - python310-matplotlib-nbagg 
+  - python310-matplotlib-qt 
   - python310-matplotlib-testdata 
   - python310-matplotlib-tk 
   - python310-matplotlib-web 
@@ -24440,7 +24764,9 @@ unsorted:
   - python310-minio 
   - python310-miniupnpc 
   - python310-misaka 
+  - python310-mistletoe 
   - python310-mistune 
+  - python310-mistune2 
   - python310-mitmproxy 
   - python310-mitmproxy-wireguard 
   - python310-mizani 
@@ -24537,6 +24863,7 @@ unsorted:
   - python310-net-snmp 
   - python310-netCDF4 
   - python310-netaddr 
+  - python310-nethsm 
   - python310-netifaces 
   - python310-netmiko 
   - python310-netpbmfile 
@@ -24577,8 +24904,8 @@ unsorted:
   - python310-numpy-devel 
   - python310-numpy-gnu-hpc 
   - python310-numpy-gnu-hpc-devel 
-  - python310-numpy_1_25_2-gnu-hpc 
-  - python310-numpy_1_25_2-gnu-hpc-devel 
+  - python310-numpy_1_26_2-gnu-hpc 
+  - python310-numpy_1_26_2-gnu-hpc-devel 
   - python310-numpydoc 
   - python310-nwdiag 
   - python310-nxapi-plumbing 
@@ -24621,6 +24948,14 @@ unsorted:
   - python310-openpyxl 
   - python310-openqa_client 
   - python310-opentelemetry-api 
+  - python310-opentelemetry-exporter-otlp 
+  - python310-opentelemetry-exporter-otlp-proto-common 
+  - python310-opentelemetry-exporter-otlp-proto-grpc 
+  - python310-opentelemetry-exporter-otlp-proto-http 
+  - python310-opentelemetry-proto 
+  - python310-opentelemetry-sdk 
+  - python310-opentelemetry-semantic-conventions 
+  - python310-opentelemetry-test-utils 
   - python310-opentracing 
   - python310-openwrt-luci-rpc 
   - python310-opt-einsum 
@@ -24713,7 +25048,6 @@ unsorted:
   - python310-pdfrw 
   - python310-pdm 
   - python310-pdm-backend 
-  - python310-pdm-pep517 
   - python310-pecan 
   - python310-peewee 
   - python310-pefile 
@@ -24846,6 +25180,7 @@ unsorted:
   - python310-pure-sasl 
   - python310-purl 
   - python310-py 
+  - python310-py-build-cmake 
   - python310-py-cpuinfo 
   - python310-py-espeak-ng 
   - python310-py-gitea-opensuse-org 
@@ -24885,6 +25220,7 @@ unsorted:
   - python310-pybars3 
   - python310-pybcj 
   - python310-pybeam 
+  - python310-pybgcode 
   - python310-pybind11 
   - python310-pybind11-devel 
   - python310-pybind11-stubgen 
@@ -24946,7 +25282,6 @@ unsorted:
   - python310-pygame 
   - python310-pygame-devel 
   - python310-pygdbmi 
-  - python310-pygeos 
   - python310-pygerrit2 
   - python310-pygit2 
   - python310-pyglet 
@@ -24963,7 +25298,6 @@ unsorted:
   - python310-pyinstaller-hooks-contrib 
   - python310-pyipp 
   - python310-pyjavaproperties 
-  - python310-pyjnius 
   - python310-pyjokes 
   - python310-pyjsparser 
   - python310-pyjwkest 
@@ -25112,6 +25446,7 @@ unsorted:
   - python310-pytest-forked 
   - python310-pytest-freezegun 
   - python310-pytest-git 
+  - python310-pytest-grpc 
   - python310-pytest-helpers-namespace 
   - python310-pytest-html 
   - python310-pytest-httpbin 
@@ -25246,7 +25581,6 @@ unsorted:
   - python310-python-socketio 
   - python310-python-socks 
   - python310-python-sofa 
-  - python310-python-sql 
   - python310-python-stdnum 
   - python310-python-subunit 
   - python310-python-ternary 
@@ -25265,6 +25599,7 @@ unsorted:
   - python310-pytidylib 
   - python310-pytils 
   - python310-pytimeparse 
+  - python310-pytimeparse2 
   - python310-pytlv 
   - python310-pytoml 
   - python310-pytoolconfig 
@@ -25332,7 +25667,6 @@ unsorted:
   - python310-qtwebengine-qt5 
   - python310-qtwebengine-qt5-devel 
   - python310-quantities 
-  - python310-quantum-blackbird 
   - python310-queuelib 
   - python310-quicktions 
   - python310-quimb 
@@ -25426,6 +25760,7 @@ unsorted:
   - python310-rpy2 
   - python310-rpyc 
   - python310-rq 
+  - python310-rq-scheduler 
   - python310-rsa 
   - python310-rss2email 
   - python310-rst.linker 
@@ -25468,7 +25803,7 @@ unsorted:
   - python310-scikit-umfpack 
   - python310-scipy 
   - python310-scipy-gnu-hpc 
-  - python310-scipy_1_11_1-gnu-hpc 
+  - python310-scipy_1_11_4-gnu-hpc 
   - python310-scitokens 
   - python310-scour 
   - python310-scp 
@@ -25570,6 +25905,7 @@ unsorted:
   - python310-sphinx-argparse 
   - python310-sphinx-autobuild 
   - python310-sphinx-autodoc-typehints 
+  - python310-sphinx-basic-ng 
   - python310-sphinx-book-theme 
   - python310-sphinx-bootstrap-theme 
   - python310-sphinx-click 
@@ -25582,7 +25918,6 @@ unsorted:
   - python310-sphinx-tabs 
   - python310-sphinx-theme-builder 
   - python310-sphinx-version-warning 
-  - python310-sphinx_mdinclude 
   - python310-sphinx_press_theme 
   - python310-sphinx_rtd_theme 
   - python310-sphinxcontrib-apidoc 
@@ -25639,6 +25974,7 @@ unsorted:
   - python310-statsmodels 
   - python310-stdeb 
   - python310-stestr 
+  - python310-stevedore 
   - python310-stomp.py 
   - python310-stomper 
   - python310-straight-plugin 
@@ -25795,6 +26131,7 @@ unsorted:
   - python310-typeguard 
   - python310-typepy 
   - python310-typer 
+  - python310-types-humanfriendly 
   - python310-types-python-dateutil 
   - python310-typing-inspect 
   - python310-typing_extensions 
@@ -25803,6 +26140,7 @@ unsorted:
   - python310-u-msgpack-python 
   - python310-ua-parser 
   - python310-uamqp 
+  - python310-ubelt 
   - python310-uc-micro-py 
   - python310-ufoLib2 
   - python310-ufoProcessor 
@@ -26061,6 +26399,7 @@ unsorted:
   - python311-Fiona 
   - python311-Flask 
   - python311-Flask-Admin 
+  - python311-Flask-Assets 
   - python311-Flask-Babel 
   - python311-Flask-Bootstrap 
   - python311-Flask-Caching 
@@ -26073,6 +26412,7 @@ unsorted:
   - python311-Flask-Mail 
   - python311-Flask-Mailman 
   - python311-Flask-Migrate 
+  - python311-Flask-OpenTracing 
   - python311-Flask-Paranoid 
   - python311-Flask-Principal 
   - python311-Flask-RESTful 
@@ -26105,7 +26445,6 @@ unsorted:
   - python311-Kivy-devel 
   - python311-LHAPDF 
   - python311-LTTL 
-  - python311-Lektor 
   - python311-Levenshtein 
   - python311-Logbook 
   - python311-Markdown 
@@ -26145,6 +26484,7 @@ unsorted:
   - python311-PyDispatcher 
   - python311-PyECLib 
   - python311-PyFxA 
+  - python311-PyGLM 
   - python311-PyGithub 
   - python311-PyHamcrest 
   - python311-PyICU 
@@ -26197,6 +26537,7 @@ unsorted:
   - python311-QtAwesome 
   - python311-QtPy 
   - python311-QtPy-test 
+  - python311-RangeHTTPServer 
   - python311-RegexOrder 
   - python311-Routes 
   - python311-Rtree 
@@ -26361,6 +26702,7 @@ unsorted:
   - python311-astroid 
   - python311-astropy 
   - python311-astropy-healpix 
+  - python311-astropy-iers-data 
   - python311-asttokens 
   - python311-astunparse 
   - python311-asv 
@@ -26585,6 +26927,7 @@ unsorted:
   - python311-azure-mgmt-healthcareapis 
   - python311-azure-mgmt-hybridcompute 
   - python311-azure-mgmt-hybridconnectivity 
+  - python311-azure-mgmt-hybridcontainerservice 
   - python311-azure-mgmt-hybridkubernetes 
   - python311-azure-mgmt-hybridnetwork 
   - python311-azure-mgmt-imagebuilder 
@@ -26618,6 +26961,7 @@ unsorted:
   - python311-azure-mgmt-msi 
   - python311-azure-mgmt-netapp 
   - python311-azure-mgmt-network 
+  - python311-azure-mgmt-networkanalytics 
   - python311-azure-mgmt-networkcloud 
   - python311-azure-mgmt-networkfunction 
   - python311-azure-mgmt-newrelicobservability 
@@ -26739,7 +27083,6 @@ unsorted:
   - python311-base-32bit 
   - python311-base58 
   - python311-bashate 
-  - python311-basictracer 
   - python311-beartype 
   - python311-beautifulsoup4 
   - python311-before-after 
@@ -26811,7 +27154,6 @@ unsorted:
   - python311-calmjs.parse 
   - python311-calmjs.types 
   - python311-calver 
-  - python311-calysto 
   - python311-cangjie 
   - python311-canonicaljson 
   - python311-capturer 
@@ -26874,6 +27216,7 @@ unsorted:
   - python311-click-repl 
   - python311-click-spinner 
   - python311-click-threading 
+  - python311-cliff 
   - python311-cligj 
   - python311-clikit 
   - python311-clint 
@@ -27003,7 +27346,6 @@ unsorted:
   - python311-deepmerge 
   - python311-defcon 
   - python311-defusedxml 
-  - python311-delegator 
   - python311-delegator.py 
   - python311-dennis 
   - python311-deprecation 
@@ -27039,7 +27381,6 @@ unsorted:
   - python311-dj-database-url 
   - python311-django-allauth 
   - python311-django-appconf 
-  - python311-django-assets 
   - python311-django-attachments 
   - python311-django-auth-ldap 
   - python311-django-avatar 
@@ -27154,6 +27495,7 @@ unsorted:
   - python311-docstring-to-markdown 
   - python311-docutils 
   - python311-docutils-ast-writer 
+  - python311-dogpile.cache 
   - python311-dogslow 
   - python311-dominate 
   - python311-dotmap 
@@ -27229,6 +27571,7 @@ unsorted:
   - python311-execnet 
   - python311-executing 
   - python311-exiv2 
+  - python311-expandvars 
   - python311-expects 
   - python311-expiringdict 
   - python311-exrex 
@@ -27304,7 +27647,6 @@ unsorted:
   - python311-fluent 
   - python311-flufl.testing 
   - python311-fluidity-sm 
-  - python311-flup 
   - python311-flynt 
   - python311-folium 
   - python311-fontMath 
@@ -27376,16 +27718,32 @@ unsorted:
   - python311-google-auth 
   - python311-google-auth-httplib2 
   - python311-google-auth-oauthlib 
+  - python311-google-cloud-appengine-logging 
+  - python311-google-cloud-artifact-registry 
+  - python311-google-cloud-audit-log 
+  - python311-google-cloud-build 
+  - python311-google-cloud-compute 
   - python311-google-cloud-core 
+  - python311-google-cloud-domains 
+  - python311-google-cloud-firestore 
+  - python311-google-cloud-iam 
   - python311-google-cloud-kms 
+  - python311-google-cloud-kms-inventory 
+  - python311-google-cloud-logging 
+  - python311-google-cloud-run 
+  - python311-google-cloud-secret-manager 
+  - python311-google-cloud-service-directory 
+  - python311-google-cloud-spanner 
   - python311-google-cloud-speech 
   - python311-google-cloud-storage 
   - python311-google-cloud-translate 
+  - python311-google-cloud-vpc-access 
   - python311-google-crc32c 
   - python311-google-resumable-media 
   - python311-google_trans_new 
   - python311-googleapis-common-protos 
   - python311-googlemaps 
+  - python311-gp-libs 
   - python311-gphoto2 
   - python311-gprof2dot 
   - python311-gps3 
@@ -27400,7 +27758,6 @@ unsorted:
   - python311-grimoirelab-toolkit 
   - python311-grpc-google-iam-v1 
   - python311-grpcio 
-  - python311-grpcio-gcp 
   - python311-grpcio-status 
   - python311-grpcio-tools 
   - python311-gscholar 
@@ -27426,6 +27783,7 @@ unsorted:
   - python311-hanzidentifier 
   - python311-happybase 
   - python311-haproxyctl 
+  - python311-hardware 
   - python311-hashids 
   - python311-hatch 
   - python311-hatch-fancy-pypi-readme 
@@ -27603,6 +27961,7 @@ unsorted:
   - python311-jsonrpclib-pelix 
   - python311-jsonschema-format 
   - python311-jsonschema-format-nongpl 
+  - python311-jsonschema-path 
   - python311-jsonschema-spec 
   - python311-jsonschema417 
   - python311-jsonschema417-format 
@@ -27627,7 +27986,6 @@ unsorted:
   - python311-jupyter-server-terminals 
   - python311-jupyter-server-test 
   - python311-jupyter-sphinx 
-  - python311-jupyter-telemetry 
   - python311-jupyter-ydoc 
   - python311-jupyter_console 
   - python311-jupyterlab 
@@ -27709,6 +28067,7 @@ unsorted:
   - python311-libevtx 
   - python311-libewf 
   - python311-libexe 
+  - python311-libfcrypto 
   - python311-libfmos 
   - python311-libfsapfs 
   - python311-libfsext 
@@ -27745,6 +28104,7 @@ unsorted:
   - python311-libtmux 
   - python311-libusb1 
   - python311-libusbsio 
+  - python311-libversion 
   - python311-libvhdi 
   - python311-libvmdk 
   - python311-libvsapm 
@@ -27819,7 +28179,8 @@ unsorted:
   - python311-matplotlib-gtk4 
   - python311-matplotlib-inline 
   - python311-matplotlib-latex 
-  - python311-matplotlib-qt5 
+  - python311-matplotlib-nbagg 
+  - python311-matplotlib-qt 
   - python311-matplotlib-testdata 
   - python311-matplotlib-tk 
   - python311-matplotlib-web 
@@ -27854,7 +28215,9 @@ unsorted:
   - python311-minio 
   - python311-miniupnpc 
   - python311-misaka 
+  - python311-mistletoe 
   - python311-mistune 
+  - python311-mistune2 
   - python311-mitmproxy 
   - python311-mitmproxy-wireguard 
   - python311-mizani 
@@ -27947,6 +28310,7 @@ unsorted:
   - python311-nested-lookup 
   - python311-net-snmp 
   - python311-netCDF4 
+  - python311-nethsm 
   - python311-netmiko 
   - python311-netpbmfile 
   - python311-netutils 
@@ -27983,8 +28347,8 @@ unsorted:
   - python311-numpy-devel 
   - python311-numpy-gnu-hpc 
   - python311-numpy-gnu-hpc-devel 
-  - python311-numpy_1_25_2-gnu-hpc 
-  - python311-numpy_1_25_2-gnu-hpc-devel 
+  - python311-numpy_1_26_2-gnu-hpc 
+  - python311-numpy_1_26_2-gnu-hpc-devel 
   - python311-numpydoc 
   - python311-nwdiag 
   - python311-nxapi-plumbing 
@@ -28025,6 +28389,14 @@ unsorted:
   - python311-openpyxl 
   - python311-openqa_client 
   - python311-opentelemetry-api 
+  - python311-opentelemetry-exporter-otlp 
+  - python311-opentelemetry-exporter-otlp-proto-common 
+  - python311-opentelemetry-exporter-otlp-proto-grpc 
+  - python311-opentelemetry-exporter-otlp-proto-http 
+  - python311-opentelemetry-proto 
+  - python311-opentelemetry-sdk 
+  - python311-opentelemetry-semantic-conventions 
+  - python311-opentelemetry-test-utils 
   - python311-opentracing 
   - python311-openwrt-luci-rpc 
   - python311-opt-einsum 
@@ -28114,7 +28486,6 @@ unsorted:
   - python311-pdfrw 
   - python311-pdm 
   - python311-pdm-backend 
-  - python311-pdm-pep517 
   - python311-pecan 
   - python311-peewee 
   - python311-pefile 
@@ -28237,6 +28608,7 @@ unsorted:
   - python311-pure-eval 
   - python311-pure-sasl 
   - python311-purl 
+  - python311-py-build-cmake 
   - python311-py-cpuinfo 
   - python311-py-espeak-ng 
   - python311-py-gitea-opensuse-org 
@@ -28274,6 +28646,7 @@ unsorted:
   - python311-pybars3 
   - python311-pybcj 
   - python311-pybeam 
+  - python311-pybgcode 
   - python311-pybind11 
   - python311-pybind11-devel 
   - python311-pybind11-stubgen 
@@ -28329,7 +28702,6 @@ unsorted:
   - python311-pygame 
   - python311-pygame-devel 
   - python311-pygdbmi 
-  - python311-pygeos 
   - python311-pygerrit2 
   - python311-pyglet 
   - python311-pygls 
@@ -28344,7 +28716,6 @@ unsorted:
   - python311-pyinstaller-hooks-contrib 
   - python311-pyipp 
   - python311-pyjavaproperties 
-  - python311-pyjnius 
   - python311-pyjokes 
   - python311-pyjsparser 
   - python311-pyjwkest 
@@ -28486,6 +28857,7 @@ unsorted:
   - python311-pytest-forked 
   - python311-pytest-freezegun 
   - python311-pytest-git 
+  - python311-pytest-grpc 
   - python311-pytest-helpers-namespace 
   - python311-pytest-html 
   - python311-pytest-httpbin 
@@ -28618,7 +28990,6 @@ unsorted:
   - python311-python-socketio 
   - python311-python-socks 
   - python311-python-sofa 
-  - python311-python-sql 
   - python311-python-stdnum 
   - python311-python-subunit 
   - python311-python-ternary 
@@ -28637,6 +29008,7 @@ unsorted:
   - python311-pytidylib 
   - python311-pytils 
   - python311-pytimeparse 
+  - python311-pytimeparse2 
   - python311-pytlv 
   - python311-pytoml 
   - python311-pytoolconfig 
@@ -28699,7 +29071,6 @@ unsorted:
   - python311-qtwebengine-qt5 
   - python311-qtwebengine-qt5-devel 
   - python311-quantities 
-  - python311-quantum-blackbird 
   - python311-queuelib 
   - python311-quicktions 
   - python311-quimb 
@@ -28785,6 +29156,7 @@ unsorted:
   - python311-rpy2 
   - python311-rpyc 
   - python311-rq 
+  - python311-rq-scheduler 
   - python311-rsa 
   - python311-rss2email 
   - python311-rst.linker 
@@ -28827,7 +29199,7 @@ unsorted:
   - python311-scikit-umfpack 
   - python311-scipy 
   - python311-scipy-gnu-hpc 
-  - python311-scipy_1_11_1-gnu-hpc 
+  - python311-scipy_1_11_4-gnu-hpc 
   - python311-scitokens 
   - python311-scp 
   - python311-screeninfo 
@@ -28917,6 +29289,7 @@ unsorted:
   - python311-sphinx-argparse 
   - python311-sphinx-autobuild 
   - python311-sphinx-autodoc-typehints 
+  - python311-sphinx-basic-ng 
   - python311-sphinx-book-theme 
   - python311-sphinx-bootstrap-theme 
   - python311-sphinx-click 
@@ -28929,7 +29302,6 @@ unsorted:
   - python311-sphinx-tabs 
   - python311-sphinx-theme-builder 
   - python311-sphinx-version-warning 
-  - python311-sphinx_mdinclude 
   - python311-sphinx_press_theme 
   - python311-sphinx_rtd_theme 
   - python311-sphinxcontrib-apidoc 
@@ -28986,6 +29358,7 @@ unsorted:
   - python311-statsmodels 
   - python311-stdeb 
   - python311-stestr 
+  - python311-stevedore 
   - python311-stomp.py 
   - python311-stomper 
   - python311-straight-plugin 
@@ -29138,6 +29511,7 @@ unsorted:
   - python311-typeguard 
   - python311-typepy 
   - python311-typer 
+  - python311-types-humanfriendly 
   - python311-types-python-dateutil 
   - python311-typing-inspect 
   - python311-typogrify 
@@ -29145,6 +29519,7 @@ unsorted:
   - python311-u-msgpack-python 
   - python311-ua-parser 
   - python311-uamqp 
+  - python311-ubelt 
   - python311-uc-micro-py 
   - python311-ufoLib2 
   - python311-ufoProcessor 
@@ -29421,6 +29796,7 @@ unsorted:
   - python39-Fiona 
   - python39-Flask 
   - python39-Flask-Admin 
+  - python39-Flask-Assets 
   - python39-Flask-Babel 
   - python39-Flask-Bootstrap 
   - python39-Flask-Caching 
@@ -29433,6 +29809,7 @@ unsorted:
   - python39-Flask-Mail 
   - python39-Flask-Mailman 
   - python39-Flask-Migrate 
+  - python39-Flask-OpenTracing 
   - python39-Flask-Paranoid 
   - python39-Flask-Principal 
   - python39-Flask-RESTful 
@@ -29466,7 +29843,6 @@ unsorted:
   - python39-Kivy-devel 
   - python39-LHAPDF 
   - python39-LTTL 
-  - python39-Lektor 
   - python39-Levenshtein 
   - python39-Logbook 
   - python39-M2Crypto 
@@ -29511,6 +29887,7 @@ unsorted:
   - python39-PyDispatcher 
   - python39-PyECLib 
   - python39-PyFxA 
+  - python39-PyGLM 
   - python39-PyGithub 
   - python39-PyHamcrest 
   - python39-PyICU 
@@ -29570,6 +29947,7 @@ unsorted:
   - python39-QtAwesome 
   - python39-QtPy 
   - python39-QtPy-test 
+  - python39-RangeHTTPServer 
   - python39-RegexOrder 
   - python39-Routes 
   - python39-Rtree 
@@ -29745,6 +30123,7 @@ unsorted:
   - python39-astroid 
   - python39-astropy 
   - python39-astropy-healpix 
+  - python39-astropy-iers-data 
   - python39-asttokens 
   - python39-astunparse 
   - python39-asv 
@@ -29976,6 +30355,7 @@ unsorted:
   - python39-azure-mgmt-healthcareapis 
   - python39-azure-mgmt-hybridcompute 
   - python39-azure-mgmt-hybridconnectivity 
+  - python39-azure-mgmt-hybridcontainerservice 
   - python39-azure-mgmt-hybridkubernetes 
   - python39-azure-mgmt-hybridnetwork 
   - python39-azure-mgmt-imagebuilder 
@@ -30009,6 +30389,7 @@ unsorted:
   - python39-azure-mgmt-msi 
   - python39-azure-mgmt-netapp 
   - python39-azure-mgmt-network 
+  - python39-azure-mgmt-networkanalytics 
   - python39-azure-mgmt-networkcloud 
   - python39-azure-mgmt-networkfunction 
   - python39-azure-mgmt-newrelicobservability 
@@ -30131,7 +30512,6 @@ unsorted:
   - python39-base-32bit 
   - python39-base58 
   - python39-bashate 
-  - python39-basictracer 
   - python39-bcrypt 
   - python39-beartype 
   - python39-beautifulsoup4 
@@ -30206,7 +30586,6 @@ unsorted:
   - python39-calmjs.parse 
   - python39-calmjs.types 
   - python39-calver 
-  - python39-calysto 
   - python39-cangjie 
   - python39-canonicaljson 
   - python39-capturer 
@@ -30274,6 +30653,7 @@ unsorted:
   - python39-click-repl 
   - python39-click-spinner 
   - python39-click-threading 
+  - python39-cliff 
   - python39-cligj 
   - python39-clikit 
   - python39-clint 
@@ -30413,7 +30793,6 @@ unsorted:
   - python39-deepmerge 
   - python39-defcon 
   - python39-defusedxml 
-  - python39-delegator 
   - python39-delegator.py 
   - python39-dennis 
   - python39-deprecation 
@@ -30449,7 +30828,6 @@ unsorted:
   - python39-dj-database-url 
   - python39-django-allauth 
   - python39-django-appconf 
-  - python39-django-assets 
   - python39-django-attachments 
   - python39-django-auth-ldap 
   - python39-django-avatar 
@@ -30566,6 +30944,7 @@ unsorted:
   - python39-docstring-to-markdown 
   - python39-docutils 
   - python39-docutils-ast-writer 
+  - python39-dogpile.cache 
   - python39-dogslow 
   - python39-dominate 
   - python39-dotmap 
@@ -30641,6 +31020,7 @@ unsorted:
   - python39-execnet 
   - python39-executing 
   - python39-exiv2 
+  - python39-expandvars 
   - python39-expects 
   - python39-expiringdict 
   - python39-exrex 
@@ -30721,7 +31101,6 @@ unsorted:
   - python39-flufl.lock 
   - python39-flufl.testing 
   - python39-fluidity-sm 
-  - python39-flup 
   - python39-flynt 
   - python39-folium 
   - python39-fontMath 
@@ -30796,16 +31175,32 @@ unsorted:
   - python39-google-auth 
   - python39-google-auth-httplib2 
   - python39-google-auth-oauthlib 
+  - python39-google-cloud-appengine-logging 
+  - python39-google-cloud-artifact-registry 
+  - python39-google-cloud-audit-log 
+  - python39-google-cloud-build 
+  - python39-google-cloud-compute 
   - python39-google-cloud-core 
+  - python39-google-cloud-domains 
+  - python39-google-cloud-firestore 
+  - python39-google-cloud-iam 
   - python39-google-cloud-kms 
+  - python39-google-cloud-kms-inventory 
+  - python39-google-cloud-logging 
+  - python39-google-cloud-run 
+  - python39-google-cloud-secret-manager 
+  - python39-google-cloud-service-directory 
+  - python39-google-cloud-spanner 
   - python39-google-cloud-speech 
   - python39-google-cloud-storage 
   - python39-google-cloud-translate 
+  - python39-google-cloud-vpc-access 
   - python39-google-crc32c 
   - python39-google-resumable-media 
   - python39-google_trans_new 
   - python39-googleapis-common-protos 
   - python39-googlemaps 
+  - python39-gp-libs 
   - python39-gpg 
   - python39-gphoto2 
   - python39-gprof2dot 
@@ -30822,7 +31217,6 @@ unsorted:
   - python39-grimoirelab-toolkit 
   - python39-grpc-google-iam-v1 
   - python39-grpcio 
-  - python39-grpcio-gcp 
   - python39-grpcio-status 
   - python39-grpcio-tools 
   - python39-gscholar 
@@ -30851,6 +31245,7 @@ unsorted:
   - python39-hanzidentifier 
   - python39-happybase 
   - python39-haproxyctl 
+  - python39-hardware 
   - python39-hashids 
   - python39-hatch 
   - python39-hatch-fancy-pypi-readme 
@@ -31045,6 +31440,7 @@ unsorted:
   - python39-jsonschema 
   - python39-jsonschema-format 
   - python39-jsonschema-format-nongpl 
+  - python39-jsonschema-path 
   - python39-jsonschema-spec 
   - python39-jsonschema-specifications 
   - python39-jsonschema417 
@@ -31070,7 +31466,6 @@ unsorted:
   - python39-jupyter-server-terminals 
   - python39-jupyter-server-test 
   - python39-jupyter-sphinx 
-  - python39-jupyter-telemetry 
   - python39-jupyter-ydoc 
   - python39-jupyter_console 
   - python39-jupyterlab 
@@ -31156,6 +31551,7 @@ unsorted:
   - python39-libevtx 
   - python39-libewf 
   - python39-libexe 
+  - python39-libfcrypto 
   - python39-libfmos 
   - python39-libfsapfs 
   - python39-libfsext 
@@ -31192,6 +31588,7 @@ unsorted:
   - python39-libtmux 
   - python39-libusb1 
   - python39-libusbsio 
+  - python39-libversion 
   - python39-libvhdi 
   - python39-libvirt-python 
   - python39-libvmdk 
@@ -31271,7 +31668,8 @@ unsorted:
   - python39-matplotlib-gtk4 
   - python39-matplotlib-inline 
   - python39-matplotlib-latex 
-  - python39-matplotlib-qt5 
+  - python39-matplotlib-nbagg 
+  - python39-matplotlib-qt 
   - python39-matplotlib-testdata 
   - python39-matplotlib-tk 
   - python39-matplotlib-web 
@@ -31307,7 +31705,9 @@ unsorted:
   - python39-minio 
   - python39-miniupnpc 
   - python39-misaka 
+  - python39-mistletoe 
   - python39-mistune 
+  - python39-mistune2 
   - python39-mitmproxy 
   - python39-mitmproxy-wireguard 
   - python39-mizani 
@@ -31403,6 +31803,7 @@ unsorted:
   - python39-net-snmp 
   - python39-netCDF4 
   - python39-netaddr 
+  - python39-nethsm 
   - python39-netifaces 
   - python39-netmiko 
   - python39-netpbmfile 
@@ -31443,8 +31844,8 @@ unsorted:
   - python39-numpy-devel 
   - python39-numpy-gnu-hpc 
   - python39-numpy-gnu-hpc-devel 
-  - python39-numpy_1_25_2-gnu-hpc 
-  - python39-numpy_1_25_2-gnu-hpc-devel 
+  - python39-numpy_1_26_2-gnu-hpc 
+  - python39-numpy_1_26_2-gnu-hpc-devel 
   - python39-numpydoc 
   - python39-nwdiag 
   - python39-nxapi-plumbing 
@@ -31487,6 +31888,14 @@ unsorted:
   - python39-openpyxl 
   - python39-openqa_client 
   - python39-opentelemetry-api 
+  - python39-opentelemetry-exporter-otlp 
+  - python39-opentelemetry-exporter-otlp-proto-common 
+  - python39-opentelemetry-exporter-otlp-proto-grpc 
+  - python39-opentelemetry-exporter-otlp-proto-http 
+  - python39-opentelemetry-proto 
+  - python39-opentelemetry-sdk 
+  - python39-opentelemetry-semantic-conventions 
+  - python39-opentelemetry-test-utils 
   - python39-opentracing 
   - python39-openwrt-luci-rpc 
   - python39-opt-einsum 
@@ -31579,7 +31988,6 @@ unsorted:
   - python39-pdfrw 
   - python39-pdm 
   - python39-pdm-backend 
-  - python39-pdm-pep517 
   - python39-pecan 
   - python39-peewee 
   - python39-pefile 
@@ -31712,6 +32120,7 @@ unsorted:
   - python39-pure-sasl 
   - python39-purl 
   - python39-py 
+  - python39-py-build-cmake 
   - python39-py-cpuinfo 
   - python39-py-espeak-ng 
   - python39-py-gitea-opensuse-org 
@@ -31751,6 +32160,7 @@ unsorted:
   - python39-pybars3 
   - python39-pybcj 
   - python39-pybeam 
+  - python39-pybgcode 
   - python39-pybind11 
   - python39-pybind11-devel 
   - python39-pybind11-stubgen 
@@ -31813,7 +32223,6 @@ unsorted:
   - python39-pygame 
   - python39-pygame-devel 
   - python39-pygdbmi 
-  - python39-pygeos 
   - python39-pygerrit2 
   - python39-pygit2 
   - python39-pyglet 
@@ -31830,7 +32239,6 @@ unsorted:
   - python39-pyinstaller-hooks-contrib 
   - python39-pyipp 
   - python39-pyjavaproperties 
-  - python39-pyjnius 
   - python39-pyjokes 
   - python39-pyjsparser 
   - python39-pyjwkest 
@@ -31979,6 +32387,7 @@ unsorted:
   - python39-pytest-forked 
   - python39-pytest-freezegun 
   - python39-pytest-git 
+  - python39-pytest-grpc 
   - python39-pytest-helpers-namespace 
   - python39-pytest-html 
   - python39-pytest-httpbin 
@@ -32112,7 +32521,6 @@ unsorted:
   - python39-python-socketio 
   - python39-python-socks 
   - python39-python-sofa 
-  - python39-python-sql 
   - python39-python-stdnum 
   - python39-python-subunit 
   - python39-python-ternary 
@@ -32131,6 +32539,7 @@ unsorted:
   - python39-pytidylib 
   - python39-pytils 
   - python39-pytimeparse 
+  - python39-pytimeparse2 
   - python39-pytlv 
   - python39-pytoml 
   - python39-pytoolconfig 
@@ -32198,7 +32607,6 @@ unsorted:
   - python39-qtwebengine-qt5 
   - python39-qtwebengine-qt5-devel 
   - python39-quantities 
-  - python39-quantum-blackbird 
   - python39-queuelib 
   - python39-quicktions 
   - python39-quimb 
@@ -32292,6 +32700,7 @@ unsorted:
   - python39-rpy2 
   - python39-rpyc 
   - python39-rq 
+  - python39-rq-scheduler 
   - python39-rsa 
   - python39-rss2email 
   - python39-rst.linker 
@@ -32334,7 +32743,7 @@ unsorted:
   - python39-scikit-umfpack 
   - python39-scipy 
   - python39-scipy-gnu-hpc 
-  - python39-scipy_1_11_1-gnu-hpc 
+  - python39-scipy_1_11_4-gnu-hpc 
   - python39-scitokens 
   - python39-scour 
   - python39-scp 
@@ -32436,6 +32845,7 @@ unsorted:
   - python39-sphinx-argparse 
   - python39-sphinx-autobuild 
   - python39-sphinx-autodoc-typehints 
+  - python39-sphinx-basic-ng 
   - python39-sphinx-book-theme 
   - python39-sphinx-bootstrap-theme 
   - python39-sphinx-click 
@@ -32448,7 +32858,6 @@ unsorted:
   - python39-sphinx-tabs 
   - python39-sphinx-theme-builder 
   - python39-sphinx-version-warning 
-  - python39-sphinx_mdinclude 
   - python39-sphinx_press_theme 
   - python39-sphinx_rtd_theme 
   - python39-sphinxcontrib-apidoc 
@@ -32505,6 +32914,7 @@ unsorted:
   - python39-statsmodels 
   - python39-stdeb 
   - python39-stestr 
+  - python39-stevedore 
   - python39-stomp.py 
   - python39-stomper 
   - python39-straight-plugin 
@@ -32660,6 +33070,7 @@ unsorted:
   - python39-typeguard 
   - python39-typepy 
   - python39-typer 
+  - python39-types-humanfriendly 
   - python39-types-python-dateutil 
   - python39-typing-inspect 
   - python39-typing_extensions 
@@ -32668,6 +33079,7 @@ unsorted:
   - python39-u-msgpack-python 
   - python39-ua-parser 
   - python39-uamqp 
+  - python39-ubelt 
   - python39-uc-micro-py 
   - python39-ufoLib2 
   - python39-ufoProcessor 
@@ -33502,6 +33914,7 @@ unsorted:
   - qtermwidget-qt5-devel 
   - qtfm 
   - qtile 
+  - qtilitools 
   - qtkeychain-qt5-devel 
   - qtkeychain-qt6-devel 
   - qtkeychain-qt6-lang 
@@ -33581,7 +33994,6 @@ unsorted:
   - rainbow-zsh-completion 
   - rakkess 
   - rakudo 
-  - raleway-fonts 
   - rancher-cli 
   - rancher-kim 
   - rang-devel 
@@ -33610,6 +34022,7 @@ unsorted:
   - rav1e 
   - rav1e-devel 
   - raw-thumbnailer 
+  - rawhide 
   - rawtherapee 
   - raylib-devel 
   - razercfg 
@@ -33855,7 +34268,6 @@ unsorted:
   - rofi-devel 
   - rofi-wayland 
   - rofi-wayland-devel 
-  - rollback-helper 
   - rook 
   - rook-ceph-helm-charts 
   - rook-integration 
@@ -33991,7 +34403,6 @@ unsorted:
   - ruby3.2-rubygem-activerecord-7.0 
   - ruby3.2-rubygem-activestorage-7.0 
   - ruby3.2-rubygem-activesupport-7.0 
-  - ruby3.2-rubygem-agama 
   - ruby3.2-rubygem-coffee-rails 
   - ruby3.2-rubygem-delayed_job 
   - ruby3.2-rubygem-delayed_job_active_record 
@@ -34002,7 +34413,6 @@ unsorted:
   - ruby3.2-rubygem-font-awesome-rails 
   - ruby3.2-rubygem-gettext_i18n_rails_js 
   - ruby3.2-rubygem-globalid 
-  - ruby3.2-rubygem-grape 
   - ruby3.2-rubygem-grpc 
   - ruby3.2-rubygem-haml-rails 
   - ruby3.2-rubygem-importmap-rails 
@@ -34011,7 +34421,6 @@ unsorted:
   - ruby3.2-rubygem-js-routes 
   - ruby3.2-rubygem-json-jwt 
   - ruby3.2-rubygem-lightbox2 
-  - ruby3.2-rubygem-lolcat 
   - ruby3.2-rubygem-openid_connect 
   - ruby3.2-rubygem-pundit 
   - ruby3.2-rubygem-rack-oauth2 
@@ -34028,7 +34437,6 @@ unsorted:
   - ruby3.2-rubygem-sprockets-rails 
   - ruby3.2-rubygem-stimulus-rails 
   - ruby3.2-rubygem-swd 
-  - ruby3.2-rubygem-tmuxinator 
   - ruby3.2-rubygem-turbo-rails 
   - ruby3.2-rubygem-validate_email 
   - ruby3.2-rubygem-validate_url 
@@ -34049,6 +34457,8 @@ unsorted:
   - rust1.71 
   - rust1.72 
   - rust1.73 
+  - rust1.74 
+  - rust1.75 
   - rustscan 
   - rustup 
   - rxp 
@@ -34064,6 +34474,7 @@ unsorted:
   - ryzenadj 
   - rzsz 
   - s-tui 
+  - s390-tools 
   - s3backer 
   - s3fs 
   - sablot 
@@ -34135,6 +34546,7 @@ unsorted:
   - saxpath-javadoc 
   - sbc-devel 
   - sbcl 
+  - sbctl 
   - sbd 
   - sbd-devel 
   - sbiload 
@@ -34166,6 +34578,7 @@ unsorted:
   - sca-appliance-broker 
   - sca-appliance-common 
   - sca-appliance-patdev 
+  - sca-patterns-alp1 
   - sca-patterns-base 
   - sca-patterns-hae 
   - sca-patterns-sle11 
@@ -34201,6 +34614,7 @@ unsorted:
   - scap-security-guide-ubuntu 
   - scap-workbench 
   - scap-workbench-doc 
+  - scapy 
   - scat 
   - sccache 
   - sccs 
@@ -34260,7 +34674,11 @@ unsorted:
   - scotch_6_1_0-gnu-hpc 
   - scotch_6_1_0-gnu-hpc-devel 
   - scotch_6_1_0-gnu-hpc-devel-static 
+  - scout 
   - scout-command-not-found 
+  - scrcpy 
+  - scrcpy-bash-completion 
+  - scrcpy-zsh-completion 
   - scream 
   - screen-message 
   - screencast 
@@ -34340,8 +34758,6 @@ unsorted:
   - servletapi4 
   - servletapi4-javadoc 
   - servletapi5 
-  - sesdev 
-  - sesdev-qa 
   - setconf 
   - sethdlc 
   - setools-gui 
@@ -34580,6 +34996,8 @@ unsorted:
   - snorenotify-qt5-devel 
   - snowball 
   - snowball-devel 
+  - snpguest 
+  - snphost 
   - soapy-osmo-devel 
   - soapy-remote-server 
   - soapy-sdr 
@@ -34677,7 +35095,6 @@ unsorted:
   - spectcl 
   - spectre-meltdown-checker 
   - speech-dispatcher-configure 
-  - speech-dispatcher-module-espeak 
   - speedcrunch 
   - speedtest-cli 
   - speex 
@@ -34817,6 +35234,7 @@ unsorted:
   - stk-devel 
   - stl-thumb 
   - stl-thumb-devel 
+  - stl-thumb-kde 
   - stlink 
   - stlink-devel 
   - stlink-gui 
@@ -34878,6 +35296,8 @@ unsorted:
   - subversion-tools 
   - suck 
   - sudo-devel 
+  - sudo-policy-sudo-auth-self 
+  - sudo-policy-wheel-auth-self 
   - sudo-test 
   - sudoku-sensei 
   - suil-devel 
@@ -34927,8 +35347,6 @@ unsorted:
   - suse-hpc 
   - suse-prime 
   - suse-xsl-stylesheets 
-  - suseconnect-ng 
-  - suseconnect-ruby-bindings 
   - suseprime-appindicator 
   - svg-schema 
   - svg-schema-doc 
@@ -34974,7 +35392,9 @@ unsorted:
   - swingx-javadoc 
   - swipl 
   - switch_sles_sle-hpc 
+  - switcheroo 
   - switcheroo-control-doc 
+  - switcheroo-lang 
   - sword 
   - sword-devel 
   - swtcalendar 
@@ -35029,6 +35449,7 @@ unsorted:
   - sysstat-isag 
   - system-group-ne 
   - system-group-obsolete 
+  - system-group-sudo 
   - system-user-grafana 
   - system-user-grommunio 
   - system-user-gromox 
@@ -44205,6 +44626,7 @@ unsorted:
   - tktable 
   - tkxcd 
   - tllist-devel 
+  - tlrc 
   - tls 
   - tlswrap 
   - tmate 
@@ -44254,6 +44676,7 @@ unsorted:
   - tomcat10-servlet-6_0-api 
   - tomcat10-webapps 
   - toml11-devel 
+  - tomlplusplus-devel 
   - tomoe 
   - tomoe-devel 
   - tomoe-doc 
@@ -44641,8 +45064,6 @@ unsorted:
   - typelib-1_0-LibvirtSandbox-1_0 
   - typelib-1_0-Libxfce4panel-2_0 
   - typelib-1_0-LightDM-1 
-  - typelib-1_0-LunarCalendar-3_0 
-  - typelib-1_0-LunarDate-3_0 
   - typelib-1_0-MalcontentUi-1 
   - typelib-1_0-Manette-0_2-0 
   - typelib-1_0-MateDesktop-2_0 
@@ -44761,7 +45182,10 @@ unsorted:
   - uget-integrator 
   - uget-lang 
   - ugrep 
+  - ugrep-bash-completion 
+  - ugrep-fish-completion 
   - ugrep-indexer 
+  - ugrep-zsh-completion 
   - uhd-devel 
   - uhd-doc 
   - uhd-firmware 
@@ -44856,6 +45280,16 @@ unsorted:
   - uperf 
   - upm-devel 
   - upmpdcli 
+  - upmpdcli-bbc 
+  - upmpdcli-config 
+  - upmpdcli-hra 
+  - upmpdcli-mother-earth-radio 
+  - upmpdcli-radio-browser 
+  - upmpdcli-radio-paradise 
+  - upmpdcli-radios 
+  - upmpdcli-subsonic 
+  - upmpdcli-tidal 
+  - upmpdcli-uprcl 
   - upplay 
   - upsm 
   - upx 
@@ -44895,6 +45329,7 @@ unsorted:
   - usbredir-devel 
   - usbsdmux-udev 
   - usbtop 
+  - usbutils-devel 
   - usbview 
   - usnic_tools 
   - usrp-firmware 
@@ -44911,8 +45346,6 @@ unsorted:
   - utils-libnfs 
   - utmp-cli 
   - utox 
-  - utsushi 
-  - utsushi-lang 
   - uucp 
   - uucp-xinetd 
   - uudeview 
@@ -45005,6 +45438,7 @@ unsorted:
   - vde2 
   - vde2-cryptcab 
   - vde2-slirp 
+  - vdu_controls 
   - vectorscan-devel 
   - vectorscan-examples 
   - ved 
@@ -45136,6 +45570,7 @@ unsorted:
   - visio2svg-conv 
   - vit 
   - vitetris 
+  - viu 
   - vkbasalt 
   - vkbasalt-cli 
   - vkd3d-devel 
@@ -45402,8 +45837,8 @@ unsorted:
   - wlr-randr 
   - wlr-sunclock 
   - wlrctl 
+  - wlroots-0_16-devel 
   - wlroots-devel 
-  - wlroots10-devel 
   - wlsunset 
   - wm-icons 
   - wmenu 
@@ -45883,6 +46318,8 @@ unsorted:
   - xtables-addons-kmp-default 
   - xtables-geoip 
   - xteddy 
+  - xtensor-devel 
+  - xtensor-doc 
   - xterm-console 
   - xtexit 
   - xtl-devel 
@@ -45894,6 +46331,7 @@ unsorted:
   - xtrxdsp-tests 
   - xtrxll-tools 
   - xvfb-run 
+  - xvidcore-devel 
   - xvidtune 
   - xviewer 
   - xviewer-devel 
@@ -45914,6 +46352,7 @@ unsorted:
   - xwallpaper 
   - xwallpaper-zsh-completion 
   - xwayland-devel 
+  - xwayland-run 
   - xwaylandvideobridge 
   - xwd 
   - xwininfo 
@@ -46074,6 +46513,7 @@ unsorted:
   - zam-plugins-jack 
   - zanshin 
   - zanshin-lang 
+  - zapzap 
   - zathura 
   - zathura-bash-completion 
   - zathura-devel 
@@ -46111,6 +46551,8 @@ unsorted:
   - zinnia 
   - zinnia-devel 
   - zinnia-tomoe 
+  - zipios-devel 
+  - zipios-devel-doc 
   - zipkin-api-source 
   - zita-convolver-devel 
   - zita-resampler-devel 
@@ -46148,6 +46590,7 @@ unsorted:
   - zpaqfranz 
   - zps 
   - zram-generator 
+  - zsa-udev-rules 
   - zsh 
   - zsh-htmldoc 
   - zsh-sh 

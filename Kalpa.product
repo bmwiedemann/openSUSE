@@ -3,17 +3,17 @@
   <products>
     <product>
       <vendor>openSUSE</vendor>
-      <name>Aeon</name>
-      <releasepkgname>Aeon-release</releasepkgname>
+      <name>Kalpa</name>
+      <releasepkgname>Kalpa-release</releasepkgname>
       <endoflife/>
       <version>20240116</version>
       <!-- release is no longer optional -->
       <release>0</release>
-      <productline>Aeon</productline>
+      <productline>Kalpa</productline>
 
-      <summary>openSUSE Aeon</summary>
-      <shortsummary>openSUSE Aeon</shortsummary>
-      <description>openSUSE Aeon bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
+      <summary>openSUSE Kalpa</summary>
+      <shortsummary>openSUSE Kalpa</shortsummary>
+      <description>openSUSE Kalpa bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
         It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and opinionated desktop.
       </description>
 
@@ -27,7 +27,7 @@
 
       <buildconfig>
         <!-- This section is needed to generate the installation media -->
-        <producttheme>Aeon</producttheme>
+        <producttheme>Kalpa</producttheme>
         <create_flavors>true</create_flavors>
       </buildconfig>
 
@@ -55,14 +55,14 @@
     <media type="image"
          flavor="appliance"
          mediastyle="tumbleweed"
-         name="openSUSE-Aeon-self-installer" >
+         name="openSUSE-Kalpa-self-installer" >
     <!-- Create no product media, but a flavor release subpackage -->
     </media>
 
   </mediasets>
 
 
-  <xi:include href="opensuse_aeon.group"/>
+  <xi:include href="opensuse_kalpa.group"/>
 
 </productdefinition>
 

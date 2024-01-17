@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE-Addon-NonOss___20231121" schemaversion="4.1">
+<image name="OBS__openSUSE-Addon-NonOss___20240116" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20231121</productvar>
+      <productvar name="VERSION">20240116</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-addon-nonoss:20231121,openSUSE NonOSS Addon</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-addon-nonoss:20240116,openSUSE NonOSS Addon</productinfo>
       <productinfo name="LINGUAS">af ar be_BY bg br ca cy el et ga gl gu_IN he hi_IN hr ka km ko lt mk nn pa_IN rw sk sl sr_CS ss st tg th tr uk ve vi xh zu </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-Addon-NonOss/20231121/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-Addon-NonOss/20240116/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -66,22 +66,7 @@
       <repopackage name="clicfs-profile-gnome" onlyarch="skipit"/>
       <repopackage name="clicfs-profile-kde" onlyarch="skipit"/>
       <repopackage name="compiz-branding-SLE" onlyarch="skipit"/>
-      <repopackage name="cpp41" onlyarch="skipit"/>
-      <repopackage name="cpp43" onlyarch="skipit"/>
-      <repopackage name="cpp45" onlyarch="skipit"/>
-      <repopackage name="cpp46" onlyarch="skipit"/>
-      <repopackage name="cpp47" onlyarch="skipit"/>
       <repopackage name="cpq_etk" onlyarch="skipit"/>
-      <repopackage name="cross-armv5tel-gcc47-icecream-backend" onlyarch="skipit"/>
-      <repopackage name="cross-armv7hl-gcc47-icecream-backend" onlyarch="skipit"/>
-      <repopackage name="cross-hppa-gcc47-icecream-backend" onlyarch="skipit"/>
-      <repopackage name="cross-i386-gcc47-icecream-backend" onlyarch="skipit"/>
-      <repopackage name="cross-ia64-gcc47-icecream-backend" onlyarch="skipit"/>
-      <repopackage name="cross-ppc-gcc47-icecream-backend" onlyarch="skipit"/>
-      <repopackage name="cross-ppc64-gcc47-icecream-backend" onlyarch="skipit"/>
-      <repopackage name="cross-s390-gcc47-icecream-backend" onlyarch="skipit"/>
-      <repopackage name="cross-s390x-gcc47-icecream-backend" onlyarch="skipit"/>
-      <repopackage name="cross-x86_64-gcc47-icecream-backend" onlyarch="skipit"/>
       <repopackage name="dbench-ctcs2-glue" onlyarch="skipit"/>
       <repopackage name="desktop-data-SLED" onlyarch="skipit"/>
       <repopackage name="desktop-data-SLED-extra-gnome" onlyarch="skipit"/>
@@ -101,85 +86,6 @@
       <repopackage name="eclipse-tests-bootstrap" onlyarch="skipit"/>
       <repopackage name="enchant-zemberek" onlyarch="skipit"/>
       <repopackage name="epiphany-branding-SLED" onlyarch="skipit"/>
-      <repopackage name="gcc41" onlyarch="skipit"/>
-      <repopackage name="gcc41-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc41-ada" onlyarch="skipit"/>
-      <repopackage name="gcc41-c++" onlyarch="skipit"/>
-      <repopackage name="gcc41-fortran" onlyarch="skipit"/>
-      <repopackage name="gcc41-fortran-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc41-gij" onlyarch="skipit"/>
-      <repopackage name="gcc41-gij-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc41-info" onlyarch="skipit"/>
-      <repopackage name="gcc41-java" onlyarch="skipit"/>
-      <repopackage name="gcc41-locale" onlyarch="skipit"/>
-      <repopackage name="gcc41-obj-c++" onlyarch="skipit"/>
-      <repopackage name="gcc41-objc" onlyarch="skipit"/>
-      <repopackage name="gcc41-objc-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc41-testresults" onlyarch="skipit"/>
-      <repopackage name="gcc43" onlyarch="skipit"/>
-      <repopackage name="gcc43-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc43-ada" onlyarch="skipit"/>
-      <repopackage name="gcc43-c++" onlyarch="skipit"/>
-      <repopackage name="gcc43-debugsource" onlyarch="skipit"/>
-      <repopackage name="gcc43-fortran" onlyarch="skipit"/>
-      <repopackage name="gcc43-fortran-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc43-gij" onlyarch="skipit"/>
-      <repopackage name="gcc43-gij-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc43-info" onlyarch="skipit"/>
-      <repopackage name="gcc43-java" onlyarch="skipit"/>
-      <repopackage name="gcc43-locale" onlyarch="skipit"/>
-      <repopackage name="gcc43-obj-c++" onlyarch="skipit"/>
-      <repopackage name="gcc43-objc" onlyarch="skipit"/>
-      <repopackage name="gcc43-objc-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc43-testresults" onlyarch="skipit"/>
-      <repopackage name="gcc45" onlyarch="skipit"/>
-      <repopackage name="gcc45-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc45-ada" onlyarch="skipit"/>
-      <repopackage name="gcc45-ada-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc45-c++" onlyarch="skipit"/>
-      <repopackage name="gcc45-fortran" onlyarch="skipit"/>
-      <repopackage name="gcc45-fortran-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc45-gij" onlyarch="skipit"/>
-      <repopackage name="gcc45-gij-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc45-info" onlyarch="skipit"/>
-      <repopackage name="gcc45-java" onlyarch="skipit"/>
-      <repopackage name="gcc45-locale" onlyarch="skipit"/>
-      <repopackage name="gcc45-obj-c++" onlyarch="skipit"/>
-      <repopackage name="gcc45-objc" onlyarch="skipit"/>
-      <repopackage name="gcc45-objc-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc45-testresults" onlyarch="skipit"/>
-      <repopackage name="gcc46" onlyarch="skipit"/>
-      <repopackage name="gcc46-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc46-ada" onlyarch="skipit"/>
-      <repopackage name="gcc46-ada-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc46-c++" onlyarch="skipit"/>
-      <repopackage name="gcc46-fortran" onlyarch="skipit"/>
-      <repopackage name="gcc46-fortran-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc46-gij" onlyarch="skipit"/>
-      <repopackage name="gcc46-gij-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc46-info" onlyarch="skipit"/>
-      <repopackage name="gcc46-java" onlyarch="skipit"/>
-      <repopackage name="gcc46-locale" onlyarch="skipit"/>
-      <repopackage name="gcc46-obj-c++" onlyarch="skipit"/>
-      <repopackage name="gcc46-objc" onlyarch="skipit"/>
-      <repopackage name="gcc46-objc-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc46-testresults" onlyarch="skipit"/>
-      <repopackage name="gcc47" onlyarch="skipit"/>
-      <repopackage name="gcc47-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc47-ada" onlyarch="skipit"/>
-      <repopackage name="gcc47-ada-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc47-c++" onlyarch="skipit"/>
-      <repopackage name="gcc47-debugsource" onlyarch="skipit"/>
-      <repopackage name="gcc47-fortran" onlyarch="skipit"/>
-      <repopackage name="gcc47-fortran-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc47-gij" onlyarch="skipit"/>
-      <repopackage name="gcc47-gij-32bit" onlyarch="skipit"/>
-      <repopackage name="gcc47-info" onlyarch="skipit"/>
-      <repopackage name="gcc47-java" onlyarch="skipit"/>
-      <repopackage name="gcc47-locale" onlyarch="skipit"/>
-      <repopackage name="gcc47-obj-c++" onlyarch="skipit"/>
-      <repopackage name="gcc47-objc" onlyarch="skipit"/>
-      <repopackage name="gcc47-objc-32bit" onlyarch="skipit"/>
       <repopackage name="gconf2-branding-SLED" onlyarch="skipit"/>
       <repopackage name="gconf2-branding-SLES" onlyarch="skipit"/>
       <repopackage name="gettext-runtime-mini" onlyarch="skipit"/>
@@ -245,148 +151,7 @@
       <repopackage name="kiwi-profiled-livecd-x11" onlyarch="skipit"/>
       <repopackage name="kiwi-profiled-livecd-x11-iso" onlyarch="skipit"/>
       <repopackage name="kiwi-promo-dvd-parts" onlyarch="skipit"/>
-      <repopackage name="libada41" onlyarch="skipit"/>
-      <repopackage name="libada43" onlyarch="skipit"/>
-      <repopackage name="libada45" onlyarch="skipit"/>
-      <repopackage name="libada46" onlyarch="skipit"/>
-      <repopackage name="libada47" onlyarch="skipit"/>
-      <repopackage name="libada47-32bit" onlyarch="skipit"/>
-      <repopackage name="libcdio++0-mini" onlyarch="skipit"/>
-      <repopackage name="libcdio-mini-devel" onlyarch="skipit"/>
-      <repopackage name="libcdio-mini-utils" onlyarch="skipit"/>
-      <repopackage name="libcdio_cdda0-mini" onlyarch="skipit"/>
-      <repopackage name="libcdio_paranoia0-mini" onlyarch="skipit"/>
-      <repopackage name="libffi4-gcc47" onlyarch="skipit"/>
-      <repopackage name="libffi4-gcc47-32bit" onlyarch="skipit"/>
-      <repopackage name="libffi41" onlyarch="skipit"/>
-      <repopackage name="libffi41-32bit" onlyarch="skipit"/>
-      <repopackage name="libffi41-devel" onlyarch="skipit"/>
-      <repopackage name="libffi41-devel-32bit" onlyarch="skipit"/>
-      <repopackage name="libffi43" onlyarch="skipit"/>
-      <repopackage name="libffi43-32bit" onlyarch="skipit"/>
-      <repopackage name="libffi43-debugsource" onlyarch="skipit"/>
-      <repopackage name="libffi43-devel" onlyarch="skipit"/>
-      <repopackage name="libffi43-devel-32bit" onlyarch="skipit"/>
-      <repopackage name="libffi45" onlyarch="skipit"/>
-      <repopackage name="libffi45-32bit" onlyarch="skipit"/>
-      <repopackage name="libffi45-devel" onlyarch="skipit"/>
-      <repopackage name="libffi45-devel-32bit" onlyarch="skipit"/>
-      <repopackage name="libffi46" onlyarch="skipit"/>
-      <repopackage name="libffi46-32bit" onlyarch="skipit"/>
-      <repopackage name="libffi46-devel" onlyarch="skipit"/>
-      <repopackage name="libffi46-devel-32bit" onlyarch="skipit"/>
-      <repopackage name="libffi47" onlyarch="skipit"/>
-      <repopackage name="libffi47-debugsource" onlyarch="skipit"/>
-      <repopackage name="libffi47-devel" onlyarch="skipit"/>
-      <repopackage name="libffi47-devel-32bit" onlyarch="skipit"/>
-      <repopackage name="libgcc33" onlyarch="skipit"/>
-      <repopackage name="libgcc33-32bit" onlyarch="skipit"/>
-      <repopackage name="libgcc41" onlyarch="skipit"/>
-      <repopackage name="libgcc41-32bit" onlyarch="skipit"/>
-      <repopackage name="libgcc43" onlyarch="skipit"/>
-      <repopackage name="libgcc43-32bit" onlyarch="skipit"/>
-      <repopackage name="libgcc45" onlyarch="skipit"/>
-      <repopackage name="libgcc45-32bit" onlyarch="skipit"/>
-      <repopackage name="libgcc46" onlyarch="skipit"/>
-      <repopackage name="libgcc46-32bit" onlyarch="skipit"/>
-      <repopackage name="libgcc_s1-gcc47" onlyarch="skipit"/>
-      <repopackage name="libgcc_s1-gcc47-32bit" onlyarch="skipit"/>
-      <repopackage name="libgcj41" onlyarch="skipit"/>
-      <repopackage name="libgcj41-32bit" onlyarch="skipit"/>
-      <repopackage name="libgcj41-devel" onlyarch="skipit"/>
-      <repopackage name="libgcj41-devel-32bit" onlyarch="skipit"/>
-      <repopackage name="libgcj43" onlyarch="skipit"/>
-      <repopackage name="libgcj43-32bit" onlyarch="skipit"/>
-      <repopackage name="libgcj43-devel" onlyarch="skipit"/>
-      <repopackage name="libgcj43-devel-32bit" onlyarch="skipit"/>
-      <repopackage name="libgcj43-jar" onlyarch="skipit"/>
-      <repopackage name="libgcj45" onlyarch="skipit"/>
-      <repopackage name="libgcj45-32bit" onlyarch="skipit"/>
-      <repopackage name="libgcj45-devel" onlyarch="skipit"/>
-      <repopackage name="libgcj45-devel-32bit" onlyarch="skipit"/>
-      <repopackage name="libgcj45-jar" onlyarch="skipit"/>
-      <repopackage name="libgcj46" onlyarch="skipit"/>
-      <repopackage name="libgcj46-32bit" onlyarch="skipit"/>
-      <repopackage name="libgcj46-devel" onlyarch="skipit"/>
-      <repopackage name="libgcj46-devel-32bit" onlyarch="skipit"/>
-      <repopackage name="libgcj46-jar" onlyarch="skipit"/>
-      <repopackage name="libgcj47" onlyarch="skipit"/>
-      <repopackage name="libgcj47-32bit" onlyarch="skipit"/>
-      <repopackage name="libgcj47-debugsource" onlyarch="skipit"/>
-      <repopackage name="libgcj47-devel" onlyarch="skipit"/>
-      <repopackage name="libgcj47-devel-32bit" onlyarch="skipit"/>
-      <repopackage name="libgcj47-jar" onlyarch="skipit"/>
-      <repopackage name="libgcj_bc1-gcc47" onlyarch="skipit"/>
-      <repopackage name="libgcj_bc43" onlyarch="skipit"/>
-      <repopackage name="libgcj_bc45" onlyarch="skipit"/>
-      <repopackage name="libgcj_bc46" onlyarch="skipit"/>
-      <repopackage name="libgfortran3-gcc47" onlyarch="skipit"/>
-      <repopackage name="libgfortran3-gcc47-32bit" onlyarch="skipit"/>
-      <repopackage name="libgfortran41" onlyarch="skipit"/>
-      <repopackage name="libgfortran41-32bit" onlyarch="skipit"/>
-      <repopackage name="libgfortran43" onlyarch="skipit"/>
-      <repopackage name="libgfortran43-32bit" onlyarch="skipit"/>
-      <repopackage name="libgfortran45" onlyarch="skipit"/>
-      <repopackage name="libgfortran45-32bit" onlyarch="skipit"/>
-      <repopackage name="libgfortran46" onlyarch="skipit"/>
-      <repopackage name="libgfortran46-32bit" onlyarch="skipit"/>
-      <repopackage name="libgomp1-gcc47" onlyarch="skipit"/>
-      <repopackage name="libgomp1-gcc47-32bit" onlyarch="skipit"/>
-      <repopackage name="libgomp43" onlyarch="skipit"/>
-      <repopackage name="libgomp43-32bit" onlyarch="skipit"/>
-      <repopackage name="libgomp45" onlyarch="skipit"/>
-      <repopackage name="libgomp45-32bit" onlyarch="skipit"/>
-      <repopackage name="libgomp46" onlyarch="skipit"/>
-      <repopackage name="libgomp46-32bit" onlyarch="skipit"/>
       <repopackage name="libmicro-ctcs-glue" onlyarch="skipit"/>
-      <repopackage name="libmudflap41" onlyarch="skipit"/>
-      <repopackage name="libmudflap41-32bit" onlyarch="skipit"/>
-      <repopackage name="libmudflap45" onlyarch="skipit"/>
-      <repopackage name="libmudflap45-32bit" onlyarch="skipit"/>
-      <repopackage name="libmudflap46" onlyarch="skipit"/>
-      <repopackage name="libmudflap46-32bit" onlyarch="skipit"/>
-      <repopackage name="libobjc4-gcc47" onlyarch="skipit"/>
-      <repopackage name="libobjc4-gcc47-32bit" onlyarch="skipit"/>
-      <repopackage name="libobjc41" onlyarch="skipit"/>
-      <repopackage name="libobjc41-32bit" onlyarch="skipit"/>
-      <repopackage name="libobjc43" onlyarch="skipit"/>
-      <repopackage name="libobjc43-32bit" onlyarch="skipit"/>
-      <repopackage name="libobjc45" onlyarch="skipit"/>
-      <repopackage name="libobjc45-32bit" onlyarch="skipit"/>
-      <repopackage name="libobjc46" onlyarch="skipit"/>
-      <repopackage name="libobjc46-32bit" onlyarch="skipit"/>
-      <repopackage name="libquadmath0-gcc47" onlyarch="skipit"/>
-      <repopackage name="libquadmath0-gcc47-32bit" onlyarch="skipit"/>
-      <repopackage name="libstdc++41" onlyarch="skipit"/>
-      <repopackage name="libstdc++41-32bit" onlyarch="skipit"/>
-      <repopackage name="libstdc++41-devel" onlyarch="skipit"/>
-      <repopackage name="libstdc++41-devel-32bit" onlyarch="skipit"/>
-      <repopackage name="libstdc++41-doc" onlyarch="skipit"/>
-      <repopackage name="libstdc++43" onlyarch="skipit"/>
-      <repopackage name="libstdc++43-32bit" onlyarch="skipit"/>
-      <repopackage name="libstdc++43-devel" onlyarch="skipit"/>
-      <repopackage name="libstdc++43-devel-32bit" onlyarch="skipit"/>
-      <repopackage name="libstdc++43-doc" onlyarch="skipit"/>
-      <repopackage name="libstdc++45" onlyarch="skipit"/>
-      <repopackage name="libstdc++45-32bit" onlyarch="skipit"/>
-      <repopackage name="libstdc++45-devel" onlyarch="skipit"/>
-      <repopackage name="libstdc++45-devel-32bit" onlyarch="skipit"/>
-      <repopackage name="libstdc++45-doc" onlyarch="skipit"/>
-      <repopackage name="libstdc++46" onlyarch="skipit"/>
-      <repopackage name="libstdc++46-32bit" onlyarch="skipit"/>
-      <repopackage name="libstdc++46-devel" onlyarch="skipit"/>
-      <repopackage name="libstdc++46-devel-32bit" onlyarch="skipit"/>
-      <repopackage name="libstdc++46-doc" onlyarch="skipit"/>
-      <repopackage name="libstdc++47-devel" onlyarch="skipit"/>
-      <repopackage name="libstdc++47-devel-32bit" onlyarch="skipit"/>
-      <repopackage name="libstdc++47-doc" onlyarch="skipit"/>
-      <repopackage name="libstdc++6-gcc47" onlyarch="skipit"/>
-      <repopackage name="libstdc++6-gcc47-32bit" onlyarch="skipit"/>
-      <repopackage name="libstdc++6-gcc47-locale" onlyarch="skipit"/>
-      <repopackage name="libsystemd0-mini" onlyarch="skipit"/>
-      <repopackage name="libudev-mini-devel" onlyarch="skipit"/>
-      <repopackage name="libudev-mini1" onlyarch="skipit"/>
-      <repopackage name="libudf0-mini" onlyarch="skipit"/>
       <repopackage name="maven-compiler-plugin-bootstrap" onlyarch="skipit"/>
       <repopackage name="maven-failsafe-plugin-bootstrap" onlyarch="skipit"/>
       <repopackage name="maven-jar-plugin-bootstrap" onlyarch="skipit"/>
@@ -406,31 +171,9 @@
       <repopackage name="openSUSE-Addon-NonOss-release-ppc" onlyarch="skipit"/>
       <repopackage name="openSUSE-driverupdate" onlyarch="skipit"/>
       <repopackage name="openSUSE-images" onlyarch="skipit"/>
-      <repopackage name="openSUSE-LiveCD-release" onlyarch="skipit"/>
-      <repopackage name="openSUSE-LiveCD-release-livecd-gnome" onlyarch="skipit"/>
-      <repopackage name="openSUSE-LiveCD-release-livecd-kde" onlyarch="skipit"/>
       <repopackage name="openSUSE-OSP-release" onlyarch="skipit"/>
       <repopackage name="openSUSE-OSP-release-dvd-promo" onlyarch="skipit"/>
-      <repopackage name="openSUSE-Promo-release" onlyarch="skipit"/>
-      <repopackage name="openSUSE-Promo-release-promodvd" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release-appliance" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release-dvd" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release-dvd-biarch" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release-dvd-promo" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release-dvd-promo" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release-livecd-gnome" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release-livecd-kde" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release-livecd-kde3" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release-livecd-x11" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release-livecd-xfce" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release-livetree" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release-livetree-gnome" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release-livetree-kde" onlyarch="skipit"/>
       <repopackage name="openSUSE-release-mini" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release-promodvd" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release-usb-gnome" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release-usb-kde" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release-usb-x11" onlyarch="skipit"/>
       <repopackage name="package-lists-openSUSE-GNOME-cd" onlyarch="skipit"/>
       <repopackage name="package-lists-openSUSE-images" onlyarch="skipit"/>
       <repopackage name="package-lists-openSUSE-KDE-cd" onlyarch="skipit"/>
@@ -449,14 +192,7 @@
       <repopackage name="splashy-branding-SLED" onlyarch="skipit"/>
       <repopackage name="stringtemplate4-bootstrap" onlyarch="skipit"/>
       <repopackage name="sysbench-ctcs-glue" onlyarch="skipit"/>
-      <repopackage name="systemd-mini" onlyarch="skipit"/>
-      <repopackage name="systemd-mini-analyze" onlyarch="skipit"/>
-      <repopackage name="systemd-mini-bash-completion" onlyarch="skipit"/>
-      <repopackage name="systemd-mini-devel" onlyarch="skipit"/>
-      <repopackage name="systemd-mini-sysvinit" onlyarch="skipit"/>
-      <repopackage name="sysvinit" onlyarch="skipit"/>
       <repopackage name="tycho-bootstrap" onlyarch="skipit"/>
-      <repopackage name="udev-mini" onlyarch="skipit"/>
       <repopackage name="xml-commons-apis-bootstrap" onlyarch="skipit"/>
       <repopackage name="xml-commons-resolver-bootstrap" onlyarch="skipit"/>
       <repopackage name="xml-commons-which-bootstrap" onlyarch="skipit"/>
