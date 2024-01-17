@@ -19,7 +19,7 @@
 %bcond_without released
 %define libname libKPim5Gravatar5
 Name:           libgravatar
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        Library to download and display gravatars
 License:        GPL-2.0-only AND LGPL-2.1-or-later
