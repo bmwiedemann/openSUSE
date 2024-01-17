@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           libkmahjongg
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        General Data for KDE Games
 License:        GPL-2.0-or-later
@@ -28,8 +28,8 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  xz
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
