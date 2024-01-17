@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Mon Oct 23 12:20:19 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add license header
+
+-------------------------------------------------------------------
+Thu Aug  4 07:43:27 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use standard LABEL directive to add mandatory labels
+
+-------------------------------------------------------------------
+Mon Dec  6 14:37:46 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build only on aarch64 and x86_64
+
+-------------------------------------------------------------------
+Fri Jun  4 12:20:48 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Include the registry in org.opensuse.reference
+
+-------------------------------------------------------------------
+Wed Apr 28 16:25:44 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Tag the image with <version>-<release>
+
+-------------------------------------------------------------------
+Sun Apr 25 09:37:15 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Run zypper clean after installation
+
+-------------------------------------------------------------------
+Tue Mar 16 16:06:56 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add placeholder vars to be replaced during build
+- Use KUBEVIRTFROM to set the base image
+
+-------------------------------------------------------------------
+Fri Mar 12 09:07:04 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Rename virt-cdi-apiserver to cdi-apiserver
+
+-------------------------------------------------------------------
+Sun Oct 25 23:03:09 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Initial container for CDI API server

@@ -1,0 +1,57 @@
+From f5a777572fb9c91fa10be3c1ffd5f65cc9323653 Mon Sep 17 00:00:00 2001
+From: fortable1999 <fortable1999@gmail.com>
+Date: Wed, 12 Dec 2018 11:18:50 +0900
+Subject: [PATCH] Fixed test case for ListCorrector; Fixed FSA __eq__ function
+
+---
+ src/whoosh/automata/fsa.py | 7 +------
+ tests/test_reading.py      | 1 +
+ tests/test_spelling.py     | 7 ++++++-
+ 5 files changed, 12 insertions(+), 8 deletions(-)
+ create mode 100644 .gitignore
+
+diff --git a/src/whoosh/automata/fsa.py b/src/whoosh/automata/fsa.py
+index 280ddb50..54d23f2f 100644
+--- a/src/whoosh/automata/fsa.py
++++ b/src/whoosh/automata/fsa.py
+@@ -44,12 +44,7 @@ def __eq__(self, other):
+             return False
+         st = self.transitions
+         ot = other.transitions
+-        if list(st) != list(ot):
+-            return False
+-        for key in st:
+-            if st[key] != ot[key]:
+-                return False
+-        return True
++        return st == ot
+ 
+     def all_states(self):
+         stateset = set(self.transitions)
+diff --git a/tests/test_reading.py b/tests/test_reading.py
+index e2c2b71d..9fefc41c 100644
+--- a/tests/test_reading.py
++++ b/tests/test_reading.py
+@@ -1,3 +1,4 @@
++# coding=utf-8
+ from __future__ import with_statement
+ import random, threading, time
+ 
+diff --git a/tests/test_spelling.py b/tests/test_spelling.py
+index ce5284f1..440c2d02 100644
+--- a/tests/test_spelling.py
++++ b/tests/test_spelling.py
+@@ -20,7 +20,12 @@ def test_list_corrector():
+     corr = spelling.ListCorrector(_wordlist)
+     typo = "reoction"
+     sugs = list(corr.suggest(typo, maxdist=2))
+-    target = [w for w in _wordlist if levenshtein(typo, w) <= 2]
++    target = []
++    for lev_dist in range(1, 3):
++        # sugs will return suggest first ordered by levenshtein distance
++        # then second order by dictionary order
++        target += [w for w in _wordlist
++                   if levenshtein(typo, w) <= lev_dist and w not in target]
+     assert sugs == target
+ 
+ 

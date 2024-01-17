@@ -1,0 +1,201 @@
+-------------------------------------------------------------------
+Sun Feb 26 06:56:55 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.9.1:
+  The 1.9.0 release revealed a few bugs. Here are the ones we
+  felt should be squished immediately.
+  - Log a warning message when identically named fields are
+    encountered (#1201).
+  - Avoid dependence on listdir order in tests (#1193).
+  - Prevent empty geometries arrays from appearing in
+    __geo_interface__ (#1197).
+  - setuptools added to pyproject.toml. Its pkg_resources module
+    is used by the CLI (#1191).
+- Update to 1.9.0:
+  - Deprecations
+    - The precision keyword argument of
+      fiona.transform.transform_geom is deprecated and will be
+      removed in version 2.0.
+    - The fiona.drivers() function has been deprecated and
+      will be removed in version 2.0. It should be replaced by
+      fiona.Env().
+    - The new fiona.meta module will be renamed to fiona.drivers
+      in version 2.0.
+  - The major new features are:
+    - A new CRS class identical to Rasterio's.
+    - New Feature and Geometry classes. These are returned
+      instead of dicts but are compatible with version 1.8's
+      dicts.
+    - Access to format driver metadata.
+   Please see the change log entries for 1.9 pre-releases at
+   https://github.com/Toblerity/Fiona/releases to see a complete
+   list of new features and bug fixes.
+
+-------------------------------------------------------------------
+Thu Dec  1 22:15:35 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip two failing tests
+
+-------------------------------------------------------------------
+Thu Sep 15 06:33:43 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.8.21
+  * Driver mode support tests have been made more general and less
+     susceptible to driver quirks involving feature fields and
+     coordinate values.
+  * OSError is raised on attempts to open a dataset in a Python
+    file object in "a" mode.
+  * Upgrade attrs, cython, etc to open up Python 3.10 support
+  * Allow FieldSkipLogFilter to handle exception messages as well as strings
+  * Clean up VSI files left by MemoryFileBase
+  * Hard-coded "utf-8" collection encoding has been removed
+- from v1.8.20
+  * Allow use with click 8 and higher
+- from v1.8.19
+  * In fiona/env.py the GDAL data path is now configured using
+    set_gdal_config instead by setting the GDAL_DATA environment variable
+  * Spurious iterator reset warnings have been eliminated.
+- from v1.8.18
+  * The precision option of transform has been fixed for the case of
+    GeometryCollections
+  * Added missing --co (creation) option to fio-load
+  * If the certifi package can be imported, its certificate store
+    location will be passed to GDAL during import of fiona._env unless
+    CURL_CA_BUNDLE is already set.
+  * Warn when feature fields named "" are found
+- from v1.8.17
+  * To fix issue #952 the fio-cat command no longer cuts feature
+    geometries at the anti-meridian by default. A --cut-at-antimeridian
+    option has been added to allow cutting of geometries in a geographic
+    destination coordinate reference system.
+- from v1.8.16
+  * More OGR errors and warnings arising in calls to GDAL C API functions
+    are surfaced.
+  * A circular import introduced in some cases in 1.8.15 has been fixed
+- from v1.8.15
+  * Change shim functions to not return tuples
+  * Raise a Python exception when VSIFOpenL fails.
+- from v1.8.14
+  * When creating a new Collection in a MemoryFile with a default (random) name
+    Fiona will attempt to use a format driver-supported file extension.
+    When initializing a MemoryFile with bytes of data formatted for a vector
+    driver that requires a certain file name or extension, the user should
+    continue to pass an appropriate filename and/or extension.
+  * Read support for FlatGeobuf has been enabled in the drvsupport module.
+  * The MemoryFile implementation has been improved so that it can support multi-part
+    S3 downloads (#906). This is largely a port of code from rasterio.
+  * Axis ordering for results of fiona.transform was wrong when CRS were
+    passed in the "EPSG:dddd" form.
+  * Allow implicit access to the only dataset in a ZipMemoryFile.
+    The path argument of ZipMemoryFile.open() is now optional
+  * Improve support for datetime types: support milliseconds, timezones
+    and improve warnings if type is not supported by driver
+  * Fix "Failed to commit transaction" TransactionError for FileGDB driver.
+  * Load GDAL DLL dependencies on Python 3.8+ / Windows with add_dll_directory()
+  * Do not require optional properties
+  * Ensure that slice does not overflow available data
+  * Resolve issue when "ERROR 4: Unable to open EPSG support file gcs.csv."
+    is raised on importing fiona.
+  * Resolve issue resulting in possible mixed up fields names (affecting
+    only DXF, GPX, GPSTrackMacker and DGN driver)
+  * Ensure crs_wkt is passed when writing to MemoryFile
+
+-------------------------------------------------------------------
+Sat Mar 14 17:15:49 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 1.18.13.post1
+  + improve binary wheel compatibility with shapely 1.7.0
+  + All update are referenced online or in the package
+    https://github.com/Toblerity/Fiona/blob/master/CHANGES.txt
+- Fix tests error with proj.db (datadir instead libdir)
+- Make only python3 as we don't have anymore python2-pyproj
+- spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jun 12 20:55:22 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix dependencies.
+- Enable unit tests
+- Ran spec-cleaner
+
+-------------------------------------------------------------------
+Mon Apr  1 15:30:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Split executable into own module to avoid conflicts with fio.
+  fio is a Linux Kernel project so we probably don't want to make
+  fiona conflict with it completely.
+
+-------------------------------------------------------------------
+Fri Mar 29 08:26:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description. Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Mar 28 18:34:55 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to last version 1.8.6
+  * The advertisement for JSON driver enablement in 1.8.5 was false (#176), but
+    in this release they are ready for use.
+- Update to last version 1.8.5
+  * GDAL seems to work best if GDAL_DATA is set as early as possible. Ideally it
+    is set when building the library or in the environment before importing
+    Fiona, but for wheels we patch GDAL_DATA into os.environ when fiona.env
+    is imported. This resolves #731.
+  * A combination of bugs which allowed .cpg files to be overlooked has been
+    fixed (#726).
+  * On entering a collection context (Collection.__enter__) a new anonymous GDAL
+    environment is created if needed and entered. This makes `with
+    fiona.open(...) as collection:` roughly equivalent to `with fiona.open(...)
+    as collection, Env():`. This helps prevent bugs when Collections are created
+    and then used later or in different scopes.
+  * Missing GDAL support for TopoJSON, GeoJSONSeq, and ESRIJSON has been enabled
+    (#721).
+  * A regression in handling of polygons with M values (#724) has been fixed.
+  * Per-feature debug logging calls in OGRFeatureBuilder methods have been
+    eliminated to improve feature writing performance (#718).
+  * Native support for datasets in Google Cloud Storage identified by "gs"
+    resource names has been added (#709).
+  * Support has been added for triangle, polyhedral surface, and TIN geometry
+    types (#679).
+  * Notes about using the MemoryFile and ZipMemoryFile classes has been added to
+    the manual (#674).
+
+-------------------------------------------------------------------
+Wed Mar  6 13:08:31 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Rename package to python-Fiona
+- Install license and documentation
+
+-------------------------------------------------------------------
+Wed Mar  6 09:05:08 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to last version 1.8.4
+  + There are no known breaking changes in 1.8.0. Python warnings
+    should be expected in several cases of class and method
+    deprecation.
+  + The fiona.drivers() context manager is being replaced by
+    fiona.Env(), which also registers format drivers and has the
+    same properties as the GDAL configuration manager in Rasterio.
+  + Collection slicing will be disallowed in a future version of
+    Fiona to remove the confusion between mapping and list semantics
+    for Collection objects. Code such as
+    fiona.open(“example.shp”)[1:10]
+    should be changed to list(fiona.open(“example.shp”))[1:10].
+- Packaging: Minimal spec-cleaner
+  + Remove unneeded requires: python
+
+-------------------------------------------------------------------
+Sun Oct 21 09:24:33 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to last version 1.7.13
+  Including fix for boo#1107387
+- Packaging:
+  + redone spec with py2pac singlespec
+  + package is not noarch
+  + /usr/bin/fio is distributed only for python3
+
+-------------------------------------------------------------------
+Tue Jun 09 11:00:00 UTC 2015 - Angelos Tzotsos <tzotsos@opensuse.org>
+
+- initial packaging (1.5.1)
+

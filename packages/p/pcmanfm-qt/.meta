@@ -1,0 +1,5 @@
+<package name="pcmanfm-qt" project="openSUSE:Factory">
+  <title>Qt port of PCManFM</title>
+  <description>File manager and desktop icon manager (Qt port of PCManFM and libfm)</description>
+  <devel project="X11:LXQt" package="pcmanfm-qt"/>
+</package>

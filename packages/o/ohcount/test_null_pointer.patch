@@ -1,0 +1,16 @@
+--- ohcount-4.0.0-orig/src/sourcefile.c	2019-02-26 17:39:28.000000000 -0300
++++ ohcount-4.0.0/src/sourcefile.c	2020-03-26 14:34:32.334582616 -0300
+@@ -178,11 +178,11 @@
+     lang = iter->pl;
+   }
+ 
+-  if (strcmp(entity, "lcode") == 0) {
++  if ( (p != NULL) && (strcmp(entity, "lcode") == 0) ) {
+     while (*p == ' ' || *p == '\t') p++;
+     ohcount_parsed_language_add_code(lang, p, pe - p);
+   } else if (strcmp(entity, "lcomment") == 0) {
+-    while (*p == ' ' || *p == '\t') p++;
++    while ( (p != NULL) && (*p == ' ' || *p == '\t')) p++;
+     ohcount_parsed_language_add_comment(lang, p, pe - p);
+   } else if (strcmp(entity, "lblank") == 0) {
+     lang->blanks_count++;

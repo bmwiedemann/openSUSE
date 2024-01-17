@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e87405cb4253c2406da1bd2bbc6ce4c7</srcmd5>
+    <version>2.6.7</version>
+    <time>1603545466</time>
+    <user>dimstar_suse</user>
+    <comment>[NOTE: Depends on sr#843533] Different language bindings for LDAS tools.</comment>
+    <requestid>843534</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b839911f64f3ca2e38232c805ca8211d</srcmd5>
+    <version>2.6.7</version>
+    <time>1613427510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871641</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ef8e627e6990f295f9eda433d0defb91</srcmd5>
+    <version>2.6.7</version>
+    <time>1620504463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891508</requestid>
+  </revision>
+</revisionlist>

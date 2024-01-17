@@ -1,0 +1,5 @@
+<package name="python-docutils-ast-writer" project="openSUSE:Factory">
+  <title></title>
+  <description>AST Writer for docutils</description>
+  <devel project="devel:languages:python" package="python-docutils-ast-writer"/>
+</package>

@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>88d678e6a5167eed6169b08326b3b713</srcmd5>
+    <version>0.2.5.1</version>
+    <time>1578069284</time>
+    <user>dimstar_suse</user>
+    <comment>new dependency after ghc-8.8.1</comment>
+    <requestid>760273</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>64691404781aa88e779bcef34094e98c</srcmd5>
+    <version>0.2.5.1</version>
+    <time>1589197007</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801064</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f691c49d93c935260118bebb01da9240</srcmd5>
+    <version>0.2.5.1</version>
+    <time>1599507158</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>832337</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>54cea4974c3e995c1d3aba1451513697</srcmd5>
+    <version>0.2.5.1</version>
+    <time>1608634122</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857647</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3bdd3bde8468eb6a780e090a269d6de5</srcmd5>
+    <version>0.2.5.2</version>
+    <time>1619447977</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>888412</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3ae96acfa29aed606c0ce326d9f0ac6b</srcmd5>
+    <version>0.2.5.2</version>
+    <time>1636663067</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>930450</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>0cec29043878ea4d38a3abaa1c17b29f</srcmd5>
+    <version>0.2.5.2</version>
+    <time>1665668613</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1008545</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>a7fad9995bdaaa5c9f1217aa300751d1</srcmd5>
+    <version>0.2.5.2</version>
+    <time>1674043855</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1059125</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>cf1efc4276e2d963d8682d60eebafc22</srcmd5>
+    <version>0.2.5.2</version>
+    <time>1680636271</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076112</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>03d14c716947482dd9361b6e478541b8</srcmd5>
+    <version>0.2.5.2</version>
+    <time>1688476933</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1096601</requestid>
+  </revision>
+</revisionlist>

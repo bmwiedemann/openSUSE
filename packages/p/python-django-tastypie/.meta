@@ -1,0 +1,5 @@
+<package name="python-django-tastypie" project="openSUSE:Factory">
+  <title></title>
+  <description>Creating delicious APIs for Django apps since 2010.</description>
+  <devel project="devel:languages:python:django" package="python-django-tastypie"/>
+</package>

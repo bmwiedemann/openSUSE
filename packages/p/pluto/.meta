@@ -1,0 +1,6 @@
+<package name="pluto" project="openSUSE:Factory">
+  <title>pluto</title>
+  <description>A cli tool to help discover deprecated apiVersions in Kubernetes</description>
+  <devel project="devel:kubic" package="pluto"/>
+  <url>https://github.com/FairwindsOps/pluto</url>
+</package>

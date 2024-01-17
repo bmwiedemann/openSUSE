@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a9bd547f52b41d7e79b6541335fa8fc</srcmd5>
+    <version>3.0.1</version>
+    <time>1556621894</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>692024</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>783fa70cc0630e4b4bf2b13fec96858b</srcmd5>
+    <version>3.0.1</version>
+    <time>1575282936</time>
+    <user>dimstar_suse</user>
+    <comment>fix build in factory</comment>
+    <requestid>752793</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>89aaae96430b8b577cb437181d51ed1f</srcmd5>
+    <version>3.0.1</version>
+    <time>1647974452</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963958</requestid>
+  </revision>
+</revisionlist>

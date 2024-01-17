@@ -1,0 +1,23 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/LINBIT/linstor-client</param>
+    <param name="scm">git</param>
+    <param name="filename">linstor-client</param>
+<!--
+    build service using release linstor-client atm.
+    <param name="version">1.12.0</param>
+    Need to use the corresponding linstor-api-py
+-->
+    <param name="versionformat">1.12.0+git.%h</param>
+    <param name="revision">master</param>
+  </service>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">*linstor-client*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="set_version" mode="disabled">
+    <param name="basename">linstor-client</param>
+  </service>
+</services>

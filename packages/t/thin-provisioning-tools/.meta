@@ -1,0 +1,5 @@
+<package name="thin-provisioning-tools" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Base:System" package="thin-provisioning-tools"/>
+</package>

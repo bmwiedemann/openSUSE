@@ -1,0 +1,8 @@
+<package name="arptables" project="openSUSE:Factory">
+  <title>User Space Tool to Set Up and Maintain ARP Filtering Tables</title>
+  <description>arptables is a user space tool used to set up and maintain thetables of
+ARP rules in the Linux kernel. These rules inspect the ARPframes.
+arptables is similar to the iptables userspace tool, but less
+complicated.</description>
+  <devel project="security:netfilter" package="arptables"/>
+</package>

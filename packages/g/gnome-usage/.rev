@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3f3e86cace35571c84158c16a7ad4151</srcmd5>
+    <version>0.4.5~20180114.6452220</version>
+    <time>1517932200</time>
+    <user>dimstar_suse</user>
+    <comment>New package, GNOME 3.28 target</comment>
+    <requestid>573235</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a2444ac61bdfc1546a5403f4f91bf6f6</srcmd5>
+    <version>3.28.0</version>
+    <time>1521052791</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 586347 from dimstar)</comment>
+    <requestid>586352</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b14ff98da3cb2f1adcc5b3329ac71033</srcmd5>
+    <version>3.30.0</version>
+    <time>1538117581</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 638219 from iznogood)</comment>
+    <requestid>638360</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eb8539b01f473883db6146c34f7fe8bf</srcmd5>
+    <version>3.32.0</version>
+    <time>1556916297</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 695605 from dimstar)</comment>
+    <requestid>695663</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7b8bd362c22ca04931130f90bfeaf39f</srcmd5>
+    <version>3.33.2</version>
+    <time>1571401964</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736570</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>873728e850063996ed3157d4440a4e76</srcmd5>
+    <version>3.33.2</version>
+    <time>1580152514</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767156 from dimstar)</comment>
+    <requestid>767421</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>da6331885c4e3b88cc8626ef1cefa95a</srcmd5>
+    <version>3.37.1</version>
+    <time>1605783377</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847233</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6a93426a257e3e28b7147fd611218988</srcmd5>
+    <version>3.38.1</version>
+    <time>1630697129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.38.1:
+  + Flag GtkBuilder children as unowned.
+  + Prevent reading beyond GTop's args.
+  + Prevent navigation to the storage separator.
+  + Prevent a double border in the performance sidebar.
+  + List compatible form-factors.
+- Changes from version 3.38.0:
+  + Port to Tracker 3.
+  + Updated translations.
+- Replace pkgconfig(tracker-sparql-2.0) BuildRequires with
+  pkgconfig(tracker-sparql-3.0): follow  upstreams port to
+  Tracker 3. (forwarded request 915474 from dimstar)</comment>
+    <requestid>915477</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>acf1eb2a840c32f77f399e210ae0701a</srcmd5>
+    <version>45.0</version>
+    <time>1695208987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111852</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>ded69fe496508f1e49ac846ff709cbb7</srcmd5>
+    <version>45.0</version>
+    <time>1705437604</time>
+    <user>anag+factory</user>
+    <comment>- Convert to source service for easier updating. (forwarded request 1139299 from dimstar)</comment>
+    <requestid>1139303</requestid>
+  </revision>
+</revisionlist>

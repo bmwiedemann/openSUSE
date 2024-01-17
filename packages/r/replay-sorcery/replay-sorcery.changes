@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Thu Apr 14 23:41:20 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- remove nasm from buildrequires as it is unused 
+
+-------------------------------------------------------------------
+Wed Jan 26 16:43:49 UTC 2022 - andy great <andythe_great@pm.me>
+
+- Fix build failed for Leap, adding %{_prefix}/etc
+
+-------------------------------------------------------------------
+Sat Jul 10 19:45:29 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 0.6.0.
+  * Features
+    * Experimental KMS service as a much more secure way to handle
+      hardware acceleration
+      * The old method (SETUID) is still supported but will be
+        removed before 1.0
+      * SETUID is already disabled by default but can be reenabled
+      * See the new documentation for details
+    * "Command" controller that lets you run a command to save a
+      video (useful for wayland)
+  * Fixes
+    * Much lower CPU usage when using PulseAudio
+  * Other
+    * Updated documentation
+    * libbacktrace updates
+    * Updated to latest FFmpeg version (removing deprecated function)
+
+-------------------------------------------------------------------
+Wed Jan 27 15:13:43 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 0.5.0.
+  * Added experimental HEVC support (main profile only)
+  * Added replay-sorcery kms-devices command to list KMS 
+    device/plane combos
+  * Added videoDevice option to select the video device to grab 
+    frames from
+  * Fixes configuration issue where some systems install to lib64
+  * prevent log spamming if audio input fails
+  * Creates parent directories if they are missing
+  * Small improvements to README
+  * Remove extradata generation for VA-API since it was gross, 
+    unnecesary and didn't work in certain cases anyway
+- Remove dependecies libopenh264-6.
+
+-------------------------------------------------------------------
+Sat Jan 23 10:17:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update description.
+
+-------------------------------------------------------------------
+Thu Jan  7 08:26:42 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Add libdrm2 dependency.
+
+-------------------------------------------------------------------
+Mon Nov 30 14:57:21 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release.

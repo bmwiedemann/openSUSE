@@ -1,0 +1,23 @@
+<package name="openomf" project="openSUSE:Factory">
+  <title>Open Source remake of &quot;One Must Fall 2097&quot;</title>
+  <description>OpenOMF is a Open Source remake of &quot;One Must Fall 2097&quot;.
+
+In the year 2097, steel will bend and sparks will fly as you control
+a 90-foot robot in a futuristic fight of Epic proportions.
+OMF 2097 will rip your heart out with full screen, ultra fast
+fighting action.
+
+One Must Fall: 2097 adds an entirely new dimension to the fighting
+game genre. In OMF's &quot;Tournament Play,&quot; you enter the arena as an
+inexperienced 98,000 pound weakling. Fighting through match after match
+of opponents, you earn cash and experience for every fight you win.
+
+You can use this cash to enhance your robot to new levels of strength.
+After many fights, your power will reach nearly unbeatable levels--or
+so it seems. At the end of each tournament you'll contend with an
+ultra-powerful boss robot.
+
+</description>
+  <devel project="games" package="openomf"/>
+  <url>http://www.openomf.org</url>
+</package>

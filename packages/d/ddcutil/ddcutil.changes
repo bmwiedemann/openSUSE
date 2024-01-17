@@ -1,0 +1,464 @@
+-------------------------------------------------------------------
+Sun Apr 23 17:14:47 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Split udev rules from command line tools (main) package. Allows
+  distribution wide usage of libddcutil without affecting device
+  permissions and security.
+
+-------------------------------------------------------------------
+Sat Jan 28 19:44:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.1:
+  * The default sleep-multipler value was 0, instead of 1. This resulted in
+    failure of most DDC/CI operations, including display detection.
+
+-------------------------------------------------------------------
+Mon Jan 16 15:17:46 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.4.0:
+  + The ability to use the write()/read() interface of i2c-dev has been restored.
+    It is needed to work around a bug in the proprietary nvidia driver.  By
+     default,  the write()/read() interface is used for the nvidia driver, the
+     ioctl() interface is used for all other drivers. Command line options
+    ***--use-file-io*** and ***--use-ioctl-io*** affect his default behavior.
+    When i2c-dev's file io interface is used, option ***--force-slave-address***
+    is again meaningful.
+  + Option ***--sleep-multiplier*** and API functions **ddca_set_sleep_multiplier_value()**,
+    **ddca_set_default_sleep_multiplier_value()** now accept 0 as a valid
+    argument.
+  + The ddcutil command parser reports an error if a display selection option
+    (e.g. ***--bus***) is given on a command to which it does not apply.
+  + Write additional error and information messages to the system log.
+  + Eliminate message "Is DDC/CI enabled in the monitor's on-screen display?"
+    It's rarely the cause of communication failures.
+  + Warn of a possibly invalid DRM connector name in **detect** output if
+    monitors with identical EDIDs are used with the proprietary nvidia driver.
+  + Handle /dev/i2c device names with a double hyphen, e.g. /dev/i2c--3.
+  + Better libddcutil handling of configuration file errors.  Do not abort
+    initialization in case of errors.
+  + Fix interpretation of digital display type bits for EDID version 1.4
+  + Miscellaneous segfaults.
+
+-------------------------------------------------------------------
+Tue Nov  8 09:46:20 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.3.0:
+  + Option --force-slave-address no longer has any effect
+  + Commands getvcp and vcpinfo can now take multiple features as arguments, for example ddcutil getvcp 10 12
+  + Better reporting of user configuration issues at startup.
+  + The sleep-suppression related options, --sleep-less, --less-sleep, 
+    --enable-sleep-suppression, and --disable-sleep-suppression no longer have any effect
+  
+
+-------------------------------------------------------------------
+Thu May 19 07:30:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.2:
+  + Improve handling of and messages regarding DDC communication
+    failures with errno EBUSY. In particular, this error occurs
+    when driver ddcci is loaded.
+  + Command **detect**: If DDC communication fails with error
+    EBUSY, report the display as "Busy" instead of "Invalid" and
+    suggest use of option ***--force-slave-address***.
+  + Command **environment**: Suggest use of option
+    ***--force-slave-address*** if driver ddcci is detected.
+  + Messages re EBUSY errors are always written to the system log.
+  + Command **detect**:
+    - Do not report the EDID source unless there is a value to
+      show. This value is set only for USB connected monitors.
+    - Show extended output based on option ***--verbose***, not
+      undocumented option ***--very-verbose***.
+    - Report color bit depth if EDID version >= 1.4
+  + Command **environment**: Simplify the exploration of sysfs.
+  + API changes:
+    - Field latest_sl_values in struct DDCA_Feature_Metadata struct
+      is no longer set,
+    - API function ddca_report_display_info(): include binary
+      serial number.
+  + Building and porting:
+    - When building ddcutil, allow for building a static library if
+      **configure** option ***--enable-static*** is set. Linux
+      distributions frown on packaging static libraries, but if a
+      user wants to build it who am I to judge. By default, static
+      libraries are not built.
+    - Replace use of Linux specific function **__assert_fail()**
+      with **exit()** in traced assertions.  **__assert_fail** is
+      used in the Linux implementation of **assert()**, but is not
+      in the C specification.  This can present a problem in
+      porting ddcutil.
+  + Code cleanup:
+    - Delete incomplete, experimental code for asynhronous feature
+      access, including files src/ddc/ddc_async.c/h.
+    - Remove unused files src/util/output_sink.c/h.
+  + Fixed
+    - Only write Starting/Terminating messages to the system log if
+      option ***--syslog*** is specified.
+    - Avoid compilation warnings when assert() statments are
+      disabled (NDEBUG is defined).
+   - Fixed a segfault in the debug/trace code of
+     ddca_get_display_refs().
+
+-------------------------------------------------------------------
+Mon Apr 25 15:40:21 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rename libddcutil3 subpackage to libddcutil4, making the package
+  name actually match the provided library. conflict the wrongly
+  named package.
+
+-------------------------------------------------------------------
+Mon Dec 20 10:58:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * User Defined Features, which have existed for some time, are now formally
+   available.
+  * Option --mccs now applies to getvcp, setvcp, and dumpvcp as well as vcpinfo. 
+  * Workaround for EDID reading issu with recent kernels and i915/docking stations
+  * Configuration file ddcutilrc, located on the XDG config path (normally
+    $HOME/.config/ddcutil/ddcutilrc) is processed by both ddcutil and
+    libddcutil.
+  * Monitor capabilities strings are cached to improve performance of the
+    capabilities command.
+  * Partial workarounds for problems in DRM video drivers (e.g. i915, AMDGPU)
+    when monitors are connected to a docking station. The monitor may not be
+    detected (because no EDID is reported), or the monitor may appear as two
+    different /dev/i2c devices.
+  * When probing /dev/i2c devices for monitors, ddcutil could put AMD Navi2
+    devices (e.g. RX6000 series) into an inconsistent state. This is because
+    the devices expose an I2C devices for the SMU. Display detection is
+    modified to avoid probing these devices.
+  * Option -enable-capabilities-cache is now the default.
+  * Command ddcutil --verbose reports the raw EDID.
+  * Major events are written to the system log. These include starting,
+    stopping, and severe internal errors.
+  * Fix for github issue #178: Error detecting i2c-dev kernel module. The
+    checks are now performed using libkmod.
+  * libddcutil trace output can be redirected to a file.
+  * The shared library file name is libddcutil.so.4.1.0
+
+-------------------------------------------------------------------
+Thu Jul  1 06:44:37 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unncessary BuildRequires on python-devel 
+
+-------------------------------------------------------------------
+Sun Aug 16 13:20:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.9.9:
+  * Additional per-thread statistics are shown when --verbose is specified along with --stats
+  * --dynamic-sleep-adjustment
+  * ddcutil no longer supports AMD's old proprietary display driver fglrx
+
+-------------------------------------------------------------------
+Mon May 25 07:26:37 UTC 2020 - Simon Lees <simonf.lees@suse.com>
+
+- Update to ddcutil 0.9.8
+  * A new command line option, --sleep-multiplier, adjusts the time ddcutil
+    pauses between sending a request to the monitor and reading from the
+    monitor.
+    Many monitors work successfully with shorter sleep durations than required
+    by the DDC/CI specification, in which case ddcutil execution time can be
+    considerably reduced. On the other hand, some monitors having communication
+    difficulty may work with longer sleep durations than required by the DDC/CI
+    specification.
+  * A bug fix for the situation where certain mice would lock up during
+    display detection.
+  * libddcutil api break and move to v2
+  * The libddcutil shared library API has some minor extensions.
+- cmake files installed to right location
+- Update to ddcutil 0.9.7
+  * Fixed the cause of a segfault during display detection if a monitor
+    appearing to support the USB Monitor Control Class Specification, i.e. one
+    that uses USB to communicate monitor settings, is connected to the system.
+  * The release also contains some minor code cleanup.
+- Update to ddcutil 0.9.6
+  * SONAME support is enabled for libddcutil.
+  * Other minor enhancements, bug fixes, and API changes.
+
+-------------------------------------------------------------------
+Tue Feb 26 10:39:09 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to ddcutil 0.9.5
+  * Feature x72 (Gamma)
+    Added support for Virtual Control Panel feature x72 (Gamma). This is
+    an unusual complex non-continuous feature in that its value can be
+    changed by the user, and the parenthesized "values" in the
+    capabilities string require special interpretation. The following
+    commands have been modified:
+    - ddcutil getvcp 72: Interpret the output
+    - ddcutil capabilities: Interpret the parenthesized "values" substring
+    - ddcutil setvcp: See below.
+
+  * Command setvcp
+    Can now take 2 byte values an an argument. Values can be specified as
+    hexadecimal (SH byte then SL) or as decimal (0..65535).
+
+  * Configuration and Diagnostics
+    Contrary to existing documentation, kernel module i2c_dev is in fact
+    required when using the proprietary Nvidia driver.
+    Kernel module documentation has been corrected, and command ddcutil
+    environment has been updated.
+
+  * Bug Fixes
+    Fix the cause of an assert failure when displaying the value of feature
+    x8F (Audio Treble) or x91 (Audio Bass).
+
+  * Monitor Quirks
+    Instead of setting the "unsupported feature" bit in the getvcp reply
+    packet for an unsupported feature, the Dell AW3418DW causes I2C failure
+    with Linux errno EIO. ddcutil now interprets the EIO response as
+    indicating an unsupported feature instead of reporting an error. This
+    special handling currently applies only to the Dell AW3418DW.
+
+  * Miscellaneous
+    Update file README.md and make it more usable as the github overview file.
+
+  * API Changes (see https://www.ddcutil.com/c_api_95/)
+
+- Update to ddcutil 0.9.4
+  * Fix the cause of failure to build from source for the x32 ABI. The file
+    output by the dumpvcp command no longer contains a TIMESTAMP_MILLIS field,
+    the number of seconds since start of the machine epoch, typically
+    January 1, 1970. This field, and its companion TIMESTAMP_TEXT, are ignored
+    on input, so this  change can only affect an external program that relies
+    on the TIMESTAMP_MILLIS field, say for sorting.
+
+  * Fix an execution failure that resulted from attempting to open an already
+    opened display. This occured on the capabilities command when the vcp
+    field in the string returned by the monitor was damaaged or missing,
+    causing ddcutil to attempt to read the VCP version from feature 0xDF.
+
+  * Features 0x59..0x5E (6 axis separation values). Report these values as
+    normal continuous (C) values instead of just uninterpreted bytes.
+
+- Update to ddcutil 0.9.3
+  * Display Detection
+    Display detection no longer performs initial probes of I2C slave addresses
+    on each possible /dev/i2c device. These initial probes do not return valid
+    information on a Dell P2715Q, and have been seen to cause screen corruption
+    on Dell XPS 13 laptops. In addition, /dev/i2c devices for Synopsys
+    DesignWare are automatically skipped.
+
+    As a result of the changes to display detection, ddcutil detect --verbose
+    no longer reports the presence of slave addresses x30 (EDID block number)
+    or x37 (DDC), but does report whether a display is an Embedded Display
+    Port (eDP) device, which is the case for recent laptop displays. It also
+    reports the sysfs device name.
+
+  * User Supplied Feature Definitions
+    ddcutil internals have been extensively restructured for future support of
+    user supplied feature definitions. This will allow users to supply feature
+    definitions for manufacturer reserved features, i.e. those in the range
+    xe0..xff. While not yet ready for public use, there are a couple changes
+    already visible in the user interface
+
+  * Tracing
+    Added trace groups: UDF (user defined features), DDCIO (low level DDC
+    functions), VCP (feature metadata).
+
+    Because of the volume of output, trace group "DDC" has been split into DDC
+    and DDCIO, with the latter containing low level DDC services.
+
+  * API Changes
+    The C API has had a few changes to support user supplied feature
+    definitions and reflecting experience gained from work on the Qt C++ GUI
+    interface. See API Changes in Release 9.3
+    (https://www.ddcutil.com/c_api_93/) for details.
+
+  * Miscellaneous
+    Vebose output of the environment command now displays execution timestamps
+    to aid in interpreting system logs.
+
+-------------------------------------------------------------------
+Tue Oct  2 10:38:11 UTC 2018 - Antonio Larrosa <alarrosa@suse.com> - 0.9.2
+
+- Update to ddcutil 0.9.2
+  * Command ddcutil detect
+    + Eliminate the Supports DDC: line. The output of this line reflects the result
+      of a simple test for slave address x37 at the I2C layer. This command can
+      fail on monitors that support DDC and succeed in monitors where DDC is
+      turned off. The result of the x37 test is still reported as part of the
+      --verbose output of detect.
+
+    + Eliminate duplicate displays for DisplayPort connected monitors.
+
+  * Command ddcutil --help
+    + Include command scs (Save Current Settings) in the output of ddcutil --help.
+      ddcutil scs executes a Save Current Settings operation, which is supported
+      by some but not all DDC capable displays. This command was implemented some
+      time ago, but was not described in the help output.
+
+  * Command ddcutil environment
+    + When checking for group i2c membership, issue a special message if running
+      as root instead of the generic message that the current user is not a
+      member of group i2c.
+
+  * USB connected displays
+    + Fix an invalid feature read of a USB connected display, observed when
+      getting the controller manufacturer but VCP feature code xC8 is unsupported.
+
+    + When reading a USB report, regard errno EINVAL as an expected indication
+      that no value is found rather than an unexpected status code.
+
+  * Tracing
+    + Fix the cause of a segfault when tracing a write-only DDC exchange
+      (i.e. setting a VCP value)
+    + Disable debug messages regarding device id table initialization in the
+      environment command.
+    + Eliminate double newlines in several error and trace messages
+
+  * Building ddcutil
+    + libusb function libusb_set_debug() is deprecated in recent libusb versions,
+      in favor of libusb_set_option(), resulting in a compiler warning when flag
+      -Wdeprecated-declarations is set. Calls to libusb_set_debug() in file
+      libusb_util.c are replaced by iftested code that uses the proper function.
+    + Fix an unreachable assert() statement in file execution_stats.c that was
+      detected by compiling with option -Werror-switch-unreachable.
+    + Add "__attribute__ ((deprecated))" statements to functions
+      ddca_report_active_displays() and ddca_get_feature_name_by_display(), in
+      header file ddcutil_c_api.h. The inline documentation for these function
+      already indicated their deprecated status.
+
+-------------------------------------------------------------------
+Sun Jul 29 09:26:24 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary. Use preexisting macro for SUSE docdir.
+
+-------------------------------------------------------------------
+Tue Jun 19 15:09:12 UTC 2018 - alarrosa@suse.com
+
+- Update to ddcutil 0.9.1
+  * Fix the cause of an abort that may occur on command environment --verbose
+    when examining an extremely large log file.
+
+- Update to ddcutil 0.9.0
+  * Significant Command Line Changes
+  * The setvcp command now allows new values for Continuous type features to be
+    specified as relative values, e.g. the following commands increase or
+    decrease the value of the brightness feature by 5.
+    * ddcutil setvcp 10 + 5
+    * ddcutil setvcp 10 - 5
+  * Option --no-table is now the default.
+  * Table type features are by default not included in most feature groups
+    specified on getvcp, e.g. getvcp known.
+  * The interpretation of --show-unsupported has been tweaked. This option
+    applies to command getvcp. (The probe command always reports unsupported
+    features.) Command getvcp reports unsupported features if any of the
+    following hold:
+    - A specific feature was specified by its code, as opposed to a feature set.
+    - Verbose output is in effect
+    - Option --show-unsupported was specified.
+  * Options --rw and --ro apply to both the getvcp and vcpinfo commands.
+    Option --wo applies only to vcpinfo.
+  * Filters the information returned by vcpinfo to that for the specified
+    MCCS version.
+  * Additional feature sets have been defined for the getvcp and vcpinfo
+    commands. They surface internal ddcutil feature descriptions, and are
+    intended to facilitate exploring the MCCS specification and its
+    implementation on particular monitors.
+  * The VCP file created by dumpvcp now includes a PRODUCT_CODE field including
+    the manufacturer product code from the EDID. For some manufacturers, the
+    model name in the EDID does not in fact distinguish among models. Notably,
+    Samsung commonly uses just "Syncmaster" for the model name. Currently,
+    loadvcp recognizes this field name but does not make use of the value.
+  * The C API has been extensively revised reflecting experience gained from
+    work on a Qt C++ GUI interface. See API Changes in Release 9.0
+    (http://www.ddcutil.com/c_api_90/) for details.
+  * See more detailed changes at http://www.ddcutil.com/release_notes/#090
+
+- Update to ddcutil 0.8.6
+  * The externally visible changes in this release include minor enhancements
+    and bug fixes. There are also changes in the C API. Internally, there have
+    been extensive changes in support of the C and (future) Python APIs.
+  * Because of the design of the DDC/CI protocol, there is no certain way to
+    distinguish a response indicating that a feature of type Table (T) is
+    unsupported from a DDC/CI protocol error. As a result, ddcutil getvcp
+    performs the maximum number of retries on a Table type feature before
+    giving up. However, Table type features are rarely implemented. The new
+    --notable option allows Table type features to be ignored, speeding up
+    execution of getvcp commmands for multiple features.
+  * Option --notable applies if the argument to getvcp is a feature set, e.g.
+    COLOR or KNOWN instead of a single feature id. In that case Table type
+    features are ignored.
+  * The use of longjmp() to handle exceptional error condiitions (typically
+    program logic errors) has been eliminated.
+  * API functions removed: ddca_register_jmp_buf(),
+    ddca_get_global_failure_information()
+  * Structs removed: DDCA_Global_Failure_Information
+  * Add trace class ENV for tracing environment related functions
+  * Internally, many functions in key portions of the code base now return
+    exception-like structs instead of status codes. Option --excp causes
+    ddcutil to report these exception-like structs when they are converted
+    to status codes (and the internal detail is discarded).
+  * Fix a segfault when probing DRM using the environment command on aarch64.
+  * Fix a typo in the recommendations section at the end of the environment
+    command.
+  * See more detailed changes at http://www.ddcutil.com/release_notes/#086
+
+-------------------------------------------------------------------
+Wed Dec 13 16:49:45 UTC 2017 - alarrosa@suse.com
+
+- Update to ddcutil 0.8.5
+  * This release contains a large number of minor enhancements and bug fixes
+  * The environment command is extensively revised. The increasingly large
+    collection of tests has been consolidated.
+  * The required glib-2.0 version has been increased from 2.16 to 2.32
+    reflecting the use of glib thread functions.
+  * Fix a logic error in the VCP version comparison function vcp_version_le().
+    This bug affected only audio related VCP feature codes x8f, x91, and x93.
+    It also affected experimental command watch which listens for monitor
+    changes not made by ddcutil, i.e. by pressing buttons on the monitor.
+  * Properly handle the failure case where a display is detected on an I2C bus
+    (EDID is read) but DDC communication fails, and the user specifies the
+    display on the command line using the I2C bus number (option --bus).
+  * Fix the cause of a segfault when the loadvcp command reads a user modified
+    VCP file. The command now fails gracefully if none of MFG_ID, MODEL,
+    and SN are present.
+  * Fix the cause of a segfault when displaying I2C functionality flags in the
+    --environment command. This segfault was seen only in 32 bit versions of
+    ddcutil.
+  * The --stats option showed incorrect time statistics on 32 bit versions of
+    ddcutil.
+  * Add "-lddcutil" to output of "pkgconfig ddcutil --libs".
+  * Improve reporting of the individual errors that result in command failure
+    due to maximum I2C retries exceeded.
+  * interrogate, environment and usbenvironment now redirect all stderr output
+    to stdout for easier capture
+  * Added command line options -trcfile and -trcfunc to enable tracing by
+    file name and function name.
+  * Added configuration option --enable-x11 controlling whether X11 related
+    diagnostics are included in the environment and interrogate commands,
+    allowing ddcutil to build in embedded environments that lack X11.
+    The default is yes.
+  * Verbose EDID decription, e.g. on command detect --verbose, now reports EDID
+    byte 24 (x14), the supported features bitmap. This is purely informational.
+  * Ongoing work to make functions thread safe.
+  * Code cleanup.
+  * The full list of changes can be read at
+    http://www.ddcutil.com/release_notes/
+
+-------------------------------------------------------------------
+Tue Sep  5 23:36:48 UTC 2017 - jengelh@inai.de
+
+- Clear repeated summary, fix RPM groups, repair description not
+  matching the filelists.
+
+-------------------------------------------------------------------
+Tue Sep  5 14:49:55 UTC 2017 - alarrosa@suse.com
+
+- Use the sources as distributed in github, which is different from
+  the sources in rockowitz's OBS project
+- Use automake/autoconf/libtool
+
+-------------------------------------------------------------------
+Mon Sep  4 08:56:28 UTC 2017 - alarrosa@suse.com
+
+- Don't unset the _unpackaged_files_terminate_build test,
+  which was forgotten from the original spec file. Instead,
+  set --docdir correctly for configure and remove an unwanted
+  file after make install.
+- Add the %doc line to the library package so it also installs the license
+
+-------------------------------------------------------------------
+Fri Sep  1 16:58:56 UTC 2017 - alarrosa@suse.com
+
+- Initial release of ddcutil 0.8.4 based on rockowitz's generic spec file

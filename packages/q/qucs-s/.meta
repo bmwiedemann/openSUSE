@@ -1,0 +1,6 @@
+<package name="qucs-s" project="openSUSE:Factory">
+  <title>Qucs-S</title>
+  <description>Qucs-S is a spin-off of the Qucs cross-platform circuit simulator. &quot;S&quot; letter indicates SPICE. The purpose of the Qucs-S subproject is to use free SPICE circuit simulation kernels with the Qucs GUI. It merges the power of SPICE and the simplicity of the Qucs GUI. Qucs intentionally uses its own SPICE incompatible simulation kernel Qucsator. It has advanced RF and AC domain simulation features, but most of the existing industrial SPICE models are incompatible with it. Qucs-S is not a simulator by itself, but it requires to use a simulation backend with it. The schematic document format of Qucs and Qucs-S are fully compatible.</description>
+  <devel project="electronics" package="qucs-s"/>
+  <url>https://ra3xdh.github.io/</url>
+</package>

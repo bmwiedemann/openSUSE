@@ -1,0 +1,6 @@
+<package name="perl-LWP-ConsoleLogger" project="openSUSE:Factory">
+  <title></title>
+  <description>BETA BETA BETA. This is currently an experiment. Things could change. Please adjust accordingly.  It can be hard (or at least tedious) to debug mechanize scripts. LWP::Debug is deprecated. It suggests you write your own debugging handlers, set up a proxy or install Wireshark. Those are all workable solutions, but this module exists to save you some of that work. The guts of this module are stolen from Plack::Middleware::DebugLogging, which in turn stole most of its internals from Catalyst. If you're new to LWP::ConsoleLogger, I suggest getting started with the LWP::ConsoleLogger::Easy wrapper. This will get you up and running in minutes. If you need to tweak the settings that LWP::ConsoleLogger::Easy chooses for you (or if you just want to be fancy), please read on.  Since this is a debugging library, I've left as much mutable state as possible, so that you can easily toggle output on and off and otherwise adjust how you deal with the output.</description>
+  <devel project="devel:languages:perl" package="perl-LWP-ConsoleLogger"/>
+  <url>https://metacpan.org/release/LWP-ConsoleLogger</url>
+</package>

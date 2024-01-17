@@ -1,0 +1,139 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e10f1ece838ed87f4db21ccdeb95b040</srcmd5>
+    <version>1.1553677467.1bfaa5a1c</version>
+    <time>1553700133</time>
+    <user>dimstar_suse</user>
+    <comment>- Created Package
+</comment>
+    <requestid>689033</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3cc201f17d6d0656212d0740e647e85d</srcmd5>
+    <version>1.1558347989.0bd999e02</version>
+    <time>1558427955</time>
+    <user>dimstar_suse</user>
+    <comment>Added dependency</comment>
+    <requestid>704215</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b75cf053753e61ff836bb839d9b7ed4d</srcmd5>
+    <version>1.1558441645.3cae9c7d1</version>
+    <time>1558516622</time>
+    <user>dimstar_suse</user>
+    <comment>Ensure reproducible dependency sorting required for automatic SRs.</comment>
+    <requestid>704451</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>17b2e1d5851a126f926ae28001085f9c</srcmd5>
+    <version>1.1571044665.b011a0f19</version>
+    <time>1571057674</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1571044665.b011a0f19</comment>
+    <requestid>738232</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a1672f1db8463b9d82a5e0c5e31ec795</srcmd5>
+    <version>1.1582296846.a3b8d70ac</version>
+    <time>1582394858</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1582296846.a3b8d70ac</comment>
+    <requestid>778077</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f6734ae285c7536524de84b4b8fb6412</srcmd5>
+    <version>1.1587742910.61c04acc6</version>
+    <time>1588023180</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1587742910.61c04acc6</comment>
+    <requestid>797687</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>83b33f818a0b251503cf89775453ebaa</srcmd5>
+    <version>1.1588065120.89ee29a4f</version>
+    <time>1588105942</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1588065120.89ee29a4f</comment>
+    <requestid>798645</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>70c6a526e1543714b0c2aa0ba9944b7c</srcmd5>
+    <version>1.1588256872.ccb52cab0</version>
+    <time>1588324614</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1588256872.ccb52cab0</comment>
+    <requestid>799344</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c53ddf16acd195ea3ca61ab13bdc23d0</srcmd5>
+    <version>1.1588677877.4a5451ae8</version>
+    <time>1588698398</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1588677877.4a5451ae8</comment>
+    <requestid>800347</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dbc133cfbe7496d22bb430f2568c934e</srcmd5>
+    <version>1.1605909252.d4e65c233</version>
+    <time>1606142456</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1605909252.d4e65c233</comment>
+    <requestid>849810</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b3cb15201026efe72e4ca1a5493b35e2</srcmd5>
+    <version>1.1607356688.955de9678</version>
+    <time>1607430283</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1607356688.955de9678</comment>
+    <requestid>853668</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e976af41ab402f4a934e84f2eff8806b</srcmd5>
+    <version>1.1608117796.97fb6cf31</version>
+    <time>1608221038</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1608117796.97fb6cf31</comment>
+    <requestid>856587</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6071a3909477712aa45473070b23ad32</srcmd5>
+    <version>1.1611078054.be9dd333f</version>
+    <time>1611163667</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1611078054.be9dd333f</comment>
+    <requestid>864501</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e69bcae15bce506d5da0e9d06223fa04</srcmd5>
+    <version>1.1621516512.d2de45c99</version>
+    <time>1621626600</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1621516512.d2de45c99</comment>
+    <requestid>894700</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>471586799b9717dd256b2ae8c06c0c45</srcmd5>
+    <version>1.1663929680.f0809437</version>
+    <time>1664112906</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1663929680.f0809437</comment>
+    <requestid>1005668</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>021367a219a3243cfe6f6c9095d2a822</srcmd5>
+    <version>1.1673260278.dba37e72</version>
+    <time>1673281449</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1673260278.dba37e72</comment>
+    <requestid>1057057</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>280baad08fb19590acdd13e82bfa3154</srcmd5>
+    <version>1.1674229328.3f0c40ae</version>
+    <time>1674324742</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1674229328.3f0c40ae</comment>
+    <requestid>1060077</requestid>
+  </revision>
+</revisionlist>

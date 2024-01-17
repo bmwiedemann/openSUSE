@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>254eae19117b8a147a3eb3f00cc94077</srcmd5>
+    <version>0.14.1</version>
+    <time>1611348744</time>
+    <user>dimstar_suse</user>
+    <comment>First opensuse package to interface with Tableau </comment>
+    <requestid>865663</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ba67aad5c4653c848fff6605422066ab</srcmd5>
+    <version>0.15.0</version>
+    <time>1613677298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873421</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7fff99719ae99d564b061ec4e5f5136a</srcmd5>
+    <version>0.18.0</version>
+    <time>1650466626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970984</requestid>
+  </revision>
+</revisionlist>

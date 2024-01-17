@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1cf287528bcf19a1ec75bd3e61271c1c</srcmd5>
+    <version>0.2.0+git20201019+0345c66</version>
+    <time>1639930999</time>
+    <user>dimstar_suse</user>
+    <comment>initial package
+
+changes since last submit:
+- removed coverage test. The &quot;FTBFS&quot; is not replicable</comment>
+    <requestid>941487</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e1bc990b673392ca982c5afc2f5af85b</srcmd5>
+    <version>0.2.1</version>
+    <time>1643228851</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.2.1:
+ - Resolve deprecation warning for Python 3.9
+ - Fix print related typos in the README files
+</comment>
+    <requestid>949296</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e09201f809d8c04693672dafd28311be</srcmd5>
+    <version>0.2.1</version>
+    <time>1647532914</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>962380</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e60f3c0222ed82fc3d481fe29300a3dc</srcmd5>
+    <version>0.4.0</version>
+    <time>1701462377</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.0:
+  * Fixed typo in `batch_load_fn` TypeError
+  * Removed `None` default value for `key` arg in
+    `DataLoader.load()`
+  * Removed Python 3.6 as a supported target version
+- update to 0.3.0:
+  * Adds typing
+  * Drops support for Python&lt;3.6
+  * Adds support for overriding `get_cache_key` in subclasses
+  * Improves README.md and removes README.rst</comment>
+    <requestid>1130179</requestid>
+  </revision>
+</revisionlist>

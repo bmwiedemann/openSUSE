@@ -1,0 +1,2 @@
+# We package gems as it would have been installed via gem.
+addFilter("devel-file-in-non-devel-package")

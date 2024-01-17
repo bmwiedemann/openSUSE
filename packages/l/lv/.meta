@@ -1,0 +1,16 @@
+<package name="lv" project="openSUSE:Factory">
+  <title>Powerful, Multilingual File Viewer, Same User Interface as &quot;Less&quot;</title>
+  <description>Lv is a powerful, multilingual file viewer. Apparently, lv looks like
+less (1), a representative file viewer on UNIX, so UNIX people (and
+less people on other OSs) do not have to learn a burdensome new
+interface.
+
+Lv can decode and encode multilingual streams through many coding
+systems. Lv can be used as a coding system translation filter.
+
+Lv can recognize multibyte patterns as regular expressions, and
+provides multilingual grep (1) functionality under the name lgrep.
+
+Lv can recognize ANSI escape sequences for text decoration.</description>
+  <devel project="M17N" package="lv"/>
+</package>

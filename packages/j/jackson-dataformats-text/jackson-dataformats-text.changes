@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Sat Sep  9 13:41:12 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Mon Aug 21 14:10:44 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.15.2
+  * No changes since 2.15.1
+  * 2.15.1 (16-May-2023)
+    + #404: (yaml) Cannot serialize YAML with Deduction-Based
+      Polymorphism
+  * 2.15.0 (23-Apr-2023)
+    + #373: (yaml) Positive numbers with plus sign not quoted
+      correctly with 'ALWAYS_QUOTE_NUMBERS_AS_STRINGS'
+    + #387: (toml) Stack overflow (50083) found by OSS-Fuzz
+      (bsc#1214111, CVE-2023-3894)
+    + #388: (yaml) Add
+      'YAMLParser.Feature.PARSE_BOOLEAN_LIKE_WORDS_AS_STRINGS' to
+      allow parsing "boolean" words as strings instead of booleans
+    + #390: (yaml) Upgrade to Snakeyaml 2.0 (resolves CVE-2022-1471,
+      bsc#1205944)
+    + #411: (toml) Fuzzer-found issue #57237 (buffer boundary
+      condition)
+    + #415: (yaml) Use 'LoaderOptions.allowDuplicateKeys' to enforce
+      duplicate key detection
+  * 2.14.3 (05-May-2023)
+    + #378: Some artifacts missing 'NOTICE', 'LICENSE' files
+  * 2.14.2 (28-Jan-2023)
+    + #356: (toml) Fix TOML parse failure when number token hits
+      buffer edge
+    + #370: (yaml) Replace use of deprecated constructor of
+      SnakeYAML ParserImpl
+  * 2.14.1 (21-Nov-2022)
+    + #352: Disabling
+      'CsvParser.Feature.FAIL_ON_MISSING_HEADER_COLUMNS' has no
+      effect
+  * 2.14.0 (05-Nov-2022)
+    + #169: (properties) Need a way to escape dots in property keys
+      (add path separator configuration)
+    + #244: (yaml) Add 'YAMLGenerator.Feature.ALLOW_LONG_KEYS' to
+      allow writing keys longer than 128 characters (default)
+    + #285: (csv) Missing columns from header line (compare to
+      'CsvSchema') not detected when reordering columns (add
+      'CsvParser.Feature.FAIL_ON_MISSING_HEADER_COLUMNS')
+    + #297: (csv) CSV schema caching POJOs with different views
+    + #314: (csv) Add fast floating-point parsing, generation
+      support
+    + #335/#346: (yaml) Update to SnakeYAML 1.33
+    + #337: (yaml) Allow overriding of file size limit for
+      YAMLParser by exposing SnakeYAML 'LoaderOptions'
+    + #345: (yaml) Support configuring SnakeYAML DumperOptions
+      directly
+    + #351: (csv) Make CSVDecoder use lazy parsing of
+      BigInteger/BigDecimal
+    + (yaml) Fixes to number decoding based on oss-fuzz findings
+  * 2.13.5 (23-Jan-2023)
+    + #343: Incorrect output buffer boundary check in 'CsvEncoder'
+  * 2.13.4 (03-Sep-2022)
+    + #329: (yaml) Update to SnakeYAML 1.31
+
+-------------------------------------------------------------------
+Tue Jun 14 16:16:51 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of jackson-dataformats-text 2.13.3

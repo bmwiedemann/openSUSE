@@ -1,0 +1,227 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8b763fc87108d141ed98e736fd293b25</srcmd5>
+    <version>0.9.2</version>
+    <time>1526371825</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.9.2 (2018-05-04) 
+  + High-level changes
+    Fixed handling of DISCARD ALL command when parallel workers are
+     involved, which sometimes caused the extension to complain it 
+     was not preloaded
+    User permission bug fix where users locating TRIGGER permissions
+    in a database could not insert data into a hypertable
+   + Fixes for some issues with 32-bit architectures
+- Changes for 0.9.1
+  + High-level changes
+    For this release only, you will need to restart the database 
+    before running ALTER EXTENSION
+    Several edge cases regarding CTEs addressed
+    Updated preloader with better error messaging and fixed edge case
+    ABI compatibility with latest PostgreSQL to help catch any 
+    breaking changes
+- Changes for 0.9.0
+  + When updating your database, you should connect using
+    psql with the -X flag to prevent any .psqlrc commands from
+    accidentally triggering the load of a previous DB version.
+  + High-level changes
+    Support for multiple extension versions on different databases 
+    in the same PostgreSQL instance. 
+    This allows different databases to be updated independently 
+    and provides for smoother updates between versions. No
+    more spurious errors in the log as the extension is being
+    updated, and new versions no longer require a restart of 
+    the database.
+  + Streamlined update process for smaller binary/package sizes
+  + Significant refactoring to simplify and improve codebase, 
+    including improvements to error handling, security/permissions
+  + Corrections to edge-case scenarios involving dropping schemas,
+    hypertables, dimensions, and more
+  + Correctness improvements through propagating reloptions from main
+    table to chunk tables and blocking ONLY commands that try to alter
+    hypertables (i.e., changes should be applied to chunks as well)
+  + Addition of a migrate_data option to create_hypertable to allow
+    non-empty tables to be turned into hypertables without separate
+    creation &amp; insertion steps. Note, this option may take a while 
+    if the original table has lots of data
+  + Support for ALTER TABLE RENAME CONSTRAINT
+  + Support for adjusting the number of partitions for a space dimension
+  + Improvements to tablespace handling
+- Adapt cmake ld flags (no-as-needed) for build on Leap 42x/SLE12 
+- initial package
+</comment>
+    <requestid>605658</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1359c8c2af1e46d1912cc60c20b3e413</srcmd5>
+    <version>0.9.2</version>
+    <time>1527582823</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610716</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>607feecfc0bdb9ecff7583fba990f5cf</srcmd5>
+    <version>1.0.0</version>
+    <time>1543828273</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653220</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>89de5f896f40ffae3e36d9b3a8893e03</srcmd5>
+    <version>1.2.0</version>
+    <time>1552464703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>671889</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9af80d71cfda931aac8f7a6af5097e2d</srcmd5>
+    <version>1.2.0</version>
+    <time>1553888499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670882</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>269edf4e4beb2768abc59ab764ce1453</srcmd5>
+    <version>1.6.1</version>
+    <time>1586112855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791391</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>68bb912fd6780e581f8abc0aab2b2201</srcmd5>
+    <version>1.7.1</version>
+    <time>1592840731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816033</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2cc36ade3ef1e4a2cf2bc1b0639bb27d</srcmd5>
+    <version>1.7.4</version>
+    <time>1625225275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903549</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>71a21d9aa976adc8f1f0be5ee212994f</srcmd5>
+    <version>2.6.0</version>
+    <time>1647532925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962455</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4e707c8e058d187ee0f4e3cc2b1f0769</srcmd5>
+    <version>2.9.3</version>
+    <time>1675956228</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.3
+  https://github.com/timescale/timescaledb/releases/tag/2.9.3
+
+- enable pg 15 build
+
+- Update to version 2.9.2
+  https://github.com/timescale/timescaledb/releases/tag/2.9.2
+
+- Update to version 2.9.1
+  https://github.com/timescale/timescaledb/releases/tag/2.9.1
+
+- Update to version 2.9.0
+  https://github.com/timescale/timescaledb/releases/tag/2.9.0
+- dropped clang-format9_support.diff:
+  minimum required version is now 14
+
+- Update to version 2.8.1
+  https://github.com/timescale/timescaledb/releases/tag/2.8.1
+
+- Update to version 2.8.0
+  https://github.com/timescale/timescaledb/releases/tag/2.8.0
+- refreshed clang-format9_support.diff
+
+- Update to version 2.7.2
+  https://github.com/timescale/timescaledb/releases/tag/2.7.1
+  https://github.com/timescale/timescaledb/releases/tag/2.7.2
+
+- Update to version 2.7.0
+  https://github.com/timescale/timescaledb/releases/tag/2.7.0
+- drop ab6b90caf.patch: included upstream</comment>
+    <requestid>1064023</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d8a048e2e8dbda22a2f614bd1720c1f5</srcmd5>
+    <version>2.10.0</version>
+    <time>1677075689</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10.0
+  https://github.com/timescale/timescaledb/releases/tag/2.10.0</comment>
+    <requestid>1067045</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f6f53de98fa8707cb47bc3c5f8c13900</srcmd5>
+    <version>2.10.2</version>
+    <time>1682079442</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10.2
+  https://github.com/timescale/timescaledb/releases/tag/2.10.2
+
+- Update to version 2.10.1
+  https://github.com/timescale/timescaledb/releases/tag/2.10.1</comment>
+    <requestid>1080967</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3627eeec267824550236eea578d93223</srcmd5>
+    <version>2.11.2</version>
+    <time>1693235876</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1106774</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4f4f80771ea54ed75e67dc347ecd7c8b</srcmd5>
+    <version>2.12.0</version>
+    <time>1696014795</time>
+    <user>anag+factory</user>
+    <comment>- drop pg 12. not supported. no pg 16 support yet either.
+
+- Update to version 2.12.0
+  https://github.com/timescale/timescaledb/releases/tag/2.12.0</comment>
+    <requestid>1113709</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>23dacfd28174674f4cd84c626a78b3f6</srcmd5>
+    <version>2.12.1</version>
+    <time>1697146911</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.12.1
+- clean up trailing whitespaces in the changes file</comment>
+    <requestid>1117169</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4c520fc67566105d293f8246fdb18088</srcmd5>
+    <version>2.12.2</version>
+    <time>1697836727</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119206</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b303a8d790167d5c1bfcc613b21e595c</srcmd5>
+    <version>2.13.1</version>
+    <time>1704829881</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.13.1
+  https://github.com/timescale/timescaledb/releases/tag/2.13.1
+
+- enable pg 16
+
+- Update to version 2.13.0
+  https://github.com/timescale/timescaledb/releases/tag/2.13.0</comment>
+    <requestid>1137725</requestid>
+  </revision>
+</revisionlist>

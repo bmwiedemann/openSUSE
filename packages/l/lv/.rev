@@ -1,0 +1,133 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c8946aeb81dafad5dcb9b5d59a425016</srcmd5>
+    <version>4.51</version>
+    <time>1168903464</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="30">
+    <srcmd5>4cd751345fe19ba22017702b47bf932d</srcmd5>
+    <version>4.51</version>
+    <time>1175185223</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="124">
+    <srcmd5>4cd751345fe19ba22017702b47bf932d</srcmd5>
+    <version>4.51</version>
+    <time>1175185223</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="125">
+    <srcmd5>8d679e590a01568c85e298e62e11fca6</srcmd5>
+    <version>4.51</version>
+    <time>1245276096</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="127">
+    <srcmd5>8d679e590a01568c85e298e62e11fca6</srcmd5>
+    <version>4.51</version>
+    <time>1245276096</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="128">
+    <srcmd5>c6ac711c83f8d37af0910afaa27f50ff</srcmd5>
+    <version>4.51</version>
+    <time>1268924865</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="130">
+    <srcmd5>c6ac711c83f8d37af0910afaa27f50ff</srcmd5>
+    <version>4.51</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="131">
+    <srcmd5>c6ac711c83f8d37af0910afaa27f50ff</srcmd5>
+    <version>4.51</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="134">
+    <srcmd5>c6ac711c83f8d37af0910afaa27f50ff</srcmd5>
+    <version>4.51</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="136">
+    <srcmd5>c6ac711c83f8d37af0910afaa27f50ff</srcmd5>
+    <version>4.51</version>
+    <time>1319182162</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="137">
+    <srcmd5>0909b35da4b56ab5e7139a3b365b6dbc</srcmd5>
+    <version>4.51</version>
+    <time>1322073397</time>
+    <user>coolo</user>
+    <comment>- build against libtinfo</comment>
+    <requestid>93190</requestid>
+  </revision>
+  <revision rev="12" vrev="138">
+    <srcmd5>18b75be010cd01cd5a7e08eb30c635dc</srcmd5>
+    <version>4.51</version>
+    <time>1323340182</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94796 from coolo)</comment>
+    <requestid>94872</requestid>
+  </revision>
+  <revision rev="13" vrev="139">
+    <srcmd5>4760f1884342b171d66025521b2cc704</srcmd5>
+    <version>4.51</version>
+    <time>1328712029</time>
+    <user>coolo</user>
+    <comment>- remove suse_update_config macro</comment>
+    <requestid>103161</requestid>
+  </revision>
+  <revision rev="14" vrev="141">
+    <srcmd5>4760f1884342b171d66025521b2cc704</srcmd5>
+    <version>4.51</version>
+    <time>1340183678</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="143">
+    <srcmd5>4760f1884342b171d66025521b2cc704</srcmd5>
+    <version>4.51</version>
+    <time>1359109414</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="145">
+    <srcmd5>4760f1884342b171d66025521b2cc704</srcmd5>
+    <version>4.51</version>
+    <time>1379663211</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="147">
+    <srcmd5>4760f1884342b171d66025521b2cc704</srcmd5>
+    <version>4.51</version>
+    <time>1409301830</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="148">
+    <srcmd5>a9834e6ef697e19ada69f92050ed0c80</srcmd5>
+    <version>4.51</version>
+    <time>1498202312</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505685</requestid>
+  </revision>
+  <revision rev="19" vrev="149">
+    <srcmd5>2f81d12ab43fc97ce1874b41ca68d67f</srcmd5>
+    <version>4.51</version>
+    <time>1499415476</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508643</requestid>
+  </revision>
+</revisionlist>

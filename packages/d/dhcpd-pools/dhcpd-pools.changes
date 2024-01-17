@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Wed Dec  7 21:38:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2:
+  * contrib: snmptest.pl SNMPwalk can't access to all variables/wrong sort
+  * contrib: point out where one can find zabbix template
+  * config: remove unnecessary padding
+
+-------------------------------------------------------------------
+Tue Apr 21 18:38:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Use correct name for the changes file
+
+-------------------------------------------------------------------
+Fri Apr 17 12:58:42 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.1
+  * Autoreconf done & PACKAGE_URL introduced.
+  * PACKAGE_URL introduced to configure.ac
+  * Dominic Germain sent xml, and detailed xml, outputs
+    patch.
+  * Dominic Germain pointed out include directive bug,
+    which broke shared network name.
+  * Anonymous contrib addition snmptest.pl which should
+    provide some sort of SNMP integration.
+  * Range statements have dynamic-bootp flag and it no
+    longer will break analysis.
+
+-------------------------------------------------------------------
+Fri Apr 17 12:55:02 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Specfile overhaul
+  * Run spec-cleaner
+  * Use proper build requires
+  * Convert inline changelog to changes file
+  * Run testsuite
+
+-------------------------------------------------------------------
+Wed Jan 17 00:00:00 UTC 2018 - klaus@vink-slott.dk
+
+- Version 3.0 released from author
+- added package documentation
+
+-------------------------------------------------------------------
+Tue Feb  7 00:00:00 UTC 2017 - klaus@vink-slott.dk
+
+- added nessary modifications to build including uthash
+
+-------------------------------------------------------------------
+Tue Mar 13 00:00:00 UTC 2012 - barbereau@gmail.com
+
+- Code clean up
+- Added proper path to openSuse dhcpd file locations
+- Corrected spec error
+

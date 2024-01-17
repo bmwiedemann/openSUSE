@@ -1,0 +1,13 @@
+Index: Makefile
+===================================================================
+--- Makefile.orig	2007-10-12 15:55:44.000000000 +0200
++++ Makefile	2009-06-17 17:21:22.000000000 +0200
+@@ -16,7 +16,7 @@ spu-top.o: spu-top.c spu-tools.h
+ spu-ps.o: spu-ps.c spu-tools.h
+ 
+ spu-top: ctx-info.o spu-info.o proc-info.o general-info.o spu-top.o
+-	$(CC) $(CFLAGS) -lncurses ctx-info.o spu-info.o proc-info.o general-info.o spu-top.o -o spu-top
++	$(CC) $(CFLAGS) ctx-info.o spu-info.o proc-info.o general-info.o spu-top.o -o spu-top -lncurses
+ 
+ spu-ps: ctx-info.o spu-ps.o
+ 	$(CC) $(CFLAGS) ctx-info.o spu-ps.o -o spu-ps

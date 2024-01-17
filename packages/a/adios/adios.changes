@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Mon Oct 23 11:36:32 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5 
+
+-------------------------------------------------------------------
+Fri Feb  5 20:38:28 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Add build support for gcc10 to HPC build (bsc#1174439).
+- Add openmpi4 flavors.
+- Add Fix-code-to-be-python3-compliant.patch:
+  * Remove python2 code and dependencies.
+  * Removed & Automated: fix_python_shebang.patch
+  * Make python3 the default for TW and SLE/Leap 15
+- Do not mark template files for HPC as %config.
+
+-------------------------------------------------------------------
+Wed Feb  3 19:03:57 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Change 'Requires:' to other HPC packages to %requires_eq to depend
+  on the exact version. This should take care of HPC packages ignoring
+  proper ABI versioning.
+
+-------------------------------------------------------------------
+Mon Jul 20 12:16:03 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Adapt to HPC module netcdf naming change (boo#1174291).
+
+-------------------------------------------------------------------
+Sat Jul 18 22:59:18 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Drop numpy build dependency. The numpy wrapper is currently not
+  built, and can be built separately.
+- Add -fallow-argument-mismatch Fortran flag to workaround
+  GFortran10 being more strict by default.
+
+-------------------------------------------------------------------
+Sat Nov 30 14:01:36 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Correct naming of openmpi1 packages in Leap 15.0/15.1 (still
+  called openmpi), fixes unresolvable packages.
+- Add non-HPC openmpi2 and openmpi3 flavors.
+
+-------------------------------------------------------------------
+Fri Nov 29 20:27:51 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Add support for gcc7.
+- Add support for gcc8 and gcc9 (jsc#SLE-7766 & jsc#SLE-8604).
+
+-------------------------------------------------------------------
+Fri Nov 29 15:34:45 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Disable openmpi1 builds for SLE/Leap > 15.1.
+- Enable openmpi3 builds for Leap and SLE > 15.1 (jsc#SLE-7773).
+- Disable build on s390/s390x as netcdf is not available (bsc#1157965).
+- Fix openmpi1 names for non-HPC builds on Factory.
+
+-------------------------------------------------------------------
+Fri Nov 29 07:51:31 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Add missing FCFLAGS export
+
+-------------------------------------------------------------------
+Thu Nov 28 10:14:37 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix aarch64 LTO build with -ffat-lto-objects flag
+
+-------------------------------------------------------------------
+Fri Oct 18 08:22:51 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Disable openmpi3 and the openmpi flavor in SLE.
+
+-------------------------------------------------------------------
+Mon Oct  7 09:23:07 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Remake patch adios-correct-func-ret.patch to make sure the functions
+  return something instead of changing the return type from int to void.
+
+-------------------------------------------------------------------
+Mon Apr 29 09:40:06 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Move the static libraries to a -devel-static packages. Adios doesn't
+  provides shared libraries and the static libraries are required for
+  the bindings to work.
+
+-------------------------------------------------------------------
+Wed Apr 10 09:20:20 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Fix path for the files that were installed directly at /etc.
+
+-------------------------------------------------------------------
+Mon Apr  8 07:43:14 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update Licensing.
+
+-------------------------------------------------------------------
+Fri Mar 29 08:28:48 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Generalize and trim bias from description.
+
+-------------------------------------------------------------------
+Thu Mar 28 10:40:04 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Drop the packages and flavors for examples/examples-hpc. It's easier
+  for an interested user to download directly the source package and build
+  them directly.
+- Update the URLs to use https
+- Add -L option to the standard master package
+- Delete the module .version file in the %postun if it's the default one
+- Use the macro %hpc_modules_init to load the module files
+
+-------------------------------------------------------------------
+Mon Mar 25 19:37:08 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Re-add CPATH, C_INCLUDE_PATH and CPLUS_INCLUDE_PATH to the module
+  file.
+- Add a separate package with the examples in two flavors one for
+  non-HPC and another one for HPC: examples and examples-hpc.
+- Update Requires for the devel package.
+
+-------------------------------------------------------------------
+Wed Feb 20 14:57:33 UTC 2019 - Ana Guerrero López <aguerrero@suse.com>
+
+- Update to version 1.31.1 (jsc#SLE-6004)
+- Add python support:
+  * This is only for Python2
+  * Update in the module file
+  * Add needed Requires on python2-xml and python2-PyYAML
+- Fix a few python shebangs with patch fix_python_shebang.patch
+- Add a Requires on hdf5 for every mpi flavor and update the module 
+file with 'depends-on phdf5'.
+- Add examples packages. It's only created for the openmpi flavor 
+to avoid having several packages with the same content.
+- Spec file polishing: spec-cleaner and update to the lastest 
+packaging convention for HPC packages.
+
+-------------------------------------------------------------------
+Tue Jan  9 19:35:14 UTC 2018 - jjolly@suse.com
+
+- Added hpc macros support
+  * Added _multibuild with serial, openmpi, and gnu-openmpi-hpc
+  * Created devel package and module package
+  * Created lua lmod module file for adios
+- Added adios-correct-func-ret.patch
+
+-------------------------------------------------------------------
+Fri Jan  5 01:12:14 UTC 2018 - jjolly@suse.com
+
+- First pass on adios specfile

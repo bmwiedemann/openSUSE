@@ -1,0 +1,5 @@
+<package name="kemoticons" project="openSUSE:Factory">
+  <title>kemoticons</title>
+  <description>KEmoticons</description>
+  <devel project="KDE:Frameworks5" package="kemoticons"/>
+</package>

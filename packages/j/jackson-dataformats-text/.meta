@@ -1,0 +1,5 @@
+<package name="jackson-dataformats-text" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="jackson-dataformats-text"/>
+</package>

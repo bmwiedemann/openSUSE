@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f98439c3eb8360c63535b220ac20d969</srcmd5>
+    <version>2.3.0</version>
+    <time>1376513860</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>186555</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f98439c3eb8360c63535b220ac20d969</srcmd5>
+    <version>2.3.0</version>
+    <time>1379664042</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>f98439c3eb8360c63535b220ac20d969</srcmd5>
+    <version>2.3.0</version>
+    <time>1409302718</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>b37a1c62ed778663ad644e2d30fec715</srcmd5>
+    <version>2.3.0</version>
+    <time>1438615315</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320011</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>5cc1ec2181a085bb51d1d5296e43befa</srcmd5>
+    <version>2.3.0</version>
+    <time>1607017399</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+- added patches
+  fix CVE-2020-27818 [bsc#1179528], global buffer overflow was discovered in check_chunk_name function via crafted pngfile
+  + pngcheck-CVE-2020-27818.patch</comment>
+    <requestid>852889</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>288638121abdbf85849c53dfce96e427</srcmd5>
+    <version>3.0.0</version>
+    <time>1609253547</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 3.0.0
+  * 20070709 GRR: tweaked color definitions slightly to work better on terminals
+  *               with white/light backgrounds
+  * 20070712 GRR: added Makefile.mingw32
+  * 20100504 GRR: fixed DHDR (pre-MNG-1.0) bug identified by Winfried &lt;szukw000@arcor.de&gt;
+  * 20170713 GRP: added eXIf support (GRR: added check for II/MM/unknown format)
+  * 20201012 BB:  converted static const help/usage-related strings to macros so
+  *               -Werror=format-security doesn't trigger (Ben Beasley)
+  * 20201015 BB:  added (help2man-generated) man pages for all three utils
+  * 20201017 GRR: added top-level LICENSE file; fixed various compiler warnings
+  * 20201031 GRR: replaced gpl/COPYING (outdated address, references to Library
+  *               GPL) with https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
+  *               (thanks to Ben Beasley for catching that)
+  * 20201113 BB:  fixed buffer-overflow vulnerability discovered by &quot;giantbranch
+  *               of NSFOCUS Security Team&quot;
+  *               https://bugzilla.redhat.com/show_bug.cgi?id=1897485
+  * 20201128 BB:  found and fixed four additional vulnerabilities (null-pointer
+  *               dereference and three buffer overruns)
+  * 20201209 LP:  fixed an off-by-one bug in check_magic() (Lucy Phipps)
+  * 20201209 LL:  converted two zlib-version warnings/errors to go to stderr
+  *               (Lemures Lemniscati, actually from 20180318; forwarded by LP)
+  * 20201210 BB:  fixed another buffer-overflow vulnerability discovered by
+  *               &quot;giantbranch of NSFOCUS Security Team&quot;
+  *               https://bugzilla.redhat.com/show_bug.cgi?id=1905775
+  * 20201212 GRR: removed -f (&quot;force&quot;) option due to multiple security issues
+- modified patches
+  % fixbuild.diff (refreshed)
+- deleted patches
+  - pngcheck-CVE-2020-27818.patch (upstreamed)</comment>
+    <requestid>859052</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7b5861ebb5a5dc15e86d5961010bb783</srcmd5>
+    <version>3.0.3</version>
+    <time>1639424704</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 3.0.3
+  * 20210124 GRR: released version 3.0.1
+  *               ----------------------
+  * 20201217 BB:  fixed a crash bug (and probable vulnerability) in large (MNG)
+  *               LOOP chunks
+  * 20210131 GRR: updated Makefile.mingw32 for modern versions and added
+  *               Makefile.mingw64 (targets Win64); both are essentially
+  *               UNTESTED, however!
+  * 20210131 GRR: released version 3.0.2
+  *               ----------------------
+  * 20210416 BB:  fixed a divide-by-zero crash bug (and probable vulnerability)
+  *               in interlaced images with extra compressed data beyond the
+  *               nominal end of the image data (found by &quot;chiba of topsec alpha
+  *               lab&quot;)</comment>
+    <requestid>940245</requestid>
+  </revision>
+</revisionlist>

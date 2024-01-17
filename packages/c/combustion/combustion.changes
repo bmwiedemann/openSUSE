@@ -1,0 +1,248 @@
+-------------------------------------------------------------------
+Thu Dec 21 16:51:38 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.3+git3:
+  * 30firstboot: Do not detect firstboot in the zipl initrd "initgrub" mode
+    (bsc#1218065)
+  * Handle absence of NM and wicked properly
+  * Use dracut $hookdir instead of hardcoding
+
+-------------------------------------------------------------------
+Thu Nov 23 10:46:52 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.3:
+  * Add udev rule for VMware guestinfo
+  * Read VMware guestinfo value as base64 encoded gzipped script
+  * Support VMware guestinfo
+
+-------------------------------------------------------------------
+Wed Oct 18 06:14:38 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.2+git9:
+  * Override subvol= with the new snapshot if necessary
+
+-------------------------------------------------------------------
+Thu Oct 12 09:35:57 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.2+git8:
+  * Set mount propagation flags for /sysroot in the right order
+
+-------------------------------------------------------------------
+Fri Sep 15 12:29:49 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.2+git7:
+  * Try the KIWI selfinstall .iso as fallback config source (jsc#PED-6587, jsc#SMO-271)
+
+-------------------------------------------------------------------
+Tue Sep 12 15:04:25 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.2+git6:
+  * Fix failure if /sysroot not mounted and no config provided
+
+-------------------------------------------------------------------
+Thu Sep 07 12:39:56 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.2+git5:
+  * Run combustion-prepare.service before ignition-enable-network.service
+  * Revert "Remove now obsolete workaround for ignition-mount.service ExecStop"
+  * Only attempt firstboot check on devices
+
+-------------------------------------------------------------------
+Tue Aug 22 15:57:49 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.2+git2:
+  * Don't consider /var/lib/YaST2/reconfig_system for firstboot detection
+  * Use improved x-initrd.mount code in firstboot-detect as well
+
+-------------------------------------------------------------------
+Mon Aug 21 06:35:50 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.2:
+  * Don't remove YaST reconfig_system marker if called from ignition
+  * Remove now obsolete workaround for ignition-mount.service ExecStop
+  * Set dasd_mod.dasd=autodetect in modprobe.d
+  * Omit combustion module in initrds for already configured systems
+  * New module to handle firstboot detection in the initrd (poo#127196,
+    jsc#PED-5843)
+  * Fixes for use with ignition-kargs-helper
+  * Improve x-initrd.mount handling
+  * Work around systemd issue with emergency.target at the root
+
+-------------------------------------------------------------------
+Thu Aug 03 07:32:20 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.1+git0:
+  * Add option to run the script in the prepare phase as well
+  * Add compatibility for ignition-kargs-helper
+  * Populate /dev/shm/combustion/ in the --prepare stage
+  * Small README.md improvements
+  * combustion.rules: Match /module/qemu_fw_cfg instead of the namespace within
+
+-------------------------------------------------------------------
+Tue Jul 11 12:51:13 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.0+git4:
+  * Handle uppercase filesystem labels in combustion.rules as well
+  * Update README.md to explain the current mechanism of firstboot_happened
+
+-------------------------------------------------------------------
+Thu Aug 18 12:57:27 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.0+git2:
+  * Let selinux-microos-relabel decide whether a relabel is necessary (bsc#1202437)
+
+-------------------------------------------------------------------
+Tue Aug 02 11:32:23 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.0+git1:
+  * Use /lib/dracut/hooks instead of the usr-merged location (bsc#1201957)
+
+-------------------------------------------------------------------
+Wed Jul 06 09:34:01 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Switch to use the git repo with obs_scm
+- Update to version 1.0+git0:
+  * Add Makefile for make install support
+  * Start sysroot-usr.mount as well
+  * Replace invalid use of ln_r in module-setup.sh
+
+-------------------------------------------------------------------
+Thu Mar 24 09:40:34 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Bump version to 0.3
+- Use the Wiki page as URL (boo#1195383)
+- Don't touch /sysroot/etc/ after creating a new snapshot, it ends up
+  in the old snapshot's overlay
+
+-------------------------------------------------------------------
+Wed Mar 23 15:15:15 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Disable ignition-mount.service's ExecStop instead of stopping the
+  unit (boo#1197309)
+
+-------------------------------------------------------------------
+Mon Mar 21 13:20:39 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Be more --quiet with systemctl
+
+-------------------------------------------------------------------
+Thu Mar  3 11:58:07 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Support the dracut network-manager module
+
+-------------------------------------------------------------------
+Mon Jan 24 11:44:57 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Remove /var/lib/YaST2/reconfig_system on successful runs
+
+-------------------------------------------------------------------
+Wed Nov 24 13:10:37 UTC 2021 - Dimitar Zahariev <mitko@tuionui.com>
+
+- Look for filesystems with uppercase labels as well
+
+-------------------------------------------------------------------
+Tue Jul 27 06:37:56 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Drop explicit dependency on sysroot.mount. Instead, handle starting and
+  stopping of the unit explicitly to avoid conflicts.
+- Add workaround for gh#systemd/systemd#20329
+
+-------------------------------------------------------------------
+Mon Jun 21 07:07:23 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Set the exit status explicitly
+
+-------------------------------------------------------------------
+Mon Jun  7 14:13:14 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- combustion: Relabel the old snapshot (if necessary) and explicitly
+  trigger autorelabel for the new snapshot
+
+-------------------------------------------------------------------
+Fri Mar  5 13:35:22 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Expand and clarify README
+
+-------------------------------------------------------------------
+Wed Jan 20 09:50:53 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- module-setup.sh: Install grep as well
+
+-------------------------------------------------------------------
+Thu Oct 22 07:26:03 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Change license to GPL-2.0-or-later
+
+-------------------------------------------------------------------
+Tue Oct 13 09:00:58 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Also stop ignition-mount.service if there's no config
+
+-------------------------------------------------------------------
+Tue Oct  6 10:19:57 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Implement support for systems without transactional-update
+- Require rmdir explicitly
+
+-------------------------------------------------------------------
+Mon Oct  5 08:33:19 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Fail properly when the retval file doesn't exist
+- Stop ignition-mount.service to avoid conflict (boo#1176746)
+
+-------------------------------------------------------------------
+Thu Sep 17 10:56:44 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Overhaul configuration fetching:
+  * Add udev rules to wait for either ignition, combustion or
+    fw_cfg drives
+  * Allow combustion.firstboot in addition to ignition.firstboot
+  M combustion
+  A combustion-prepare.service
+  M combustion.service
+  M module-setup.sh
+- Bump version to 0.2
+
+-------------------------------------------------------------------
+Mon Sep 14 09:20:49 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Avoid concurrent run of Ignition and Combustion initialization
+  scripts to a avoid a duplicate mount of the same device.
+
+-------------------------------------------------------------------
+Fri Sep  4 14:27:17 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add combustion-prepare.service to enable network if needed:
+  M combustion
+  A combustion-prepare.service
+  M combustion.service
+  M module-setup.sh
+- Don't fail if no config drive found to not break ignition with
+  fw_cfg
+
+-------------------------------------------------------------------
+Fri Jul 17 12:25:25 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Adjust README after removal of combustion-generator
+- Switch to GPL-2.0-only
+
+-------------------------------------------------------------------
+Thu Jul  9 10:29:44 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Also force mounting of /tmp
+- Fix getting the script's return value
+
+-------------------------------------------------------------------
+Wed Jul  1 10:31:10 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Set the timeout for the config device explicitly, like ignition-dracut
+
+-------------------------------------------------------------------
+Fri Jun 19 11:26:48 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Drop dependency on ignition
+
+-------------------------------------------------------------------
+Thu Jun 18 11:07:54 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Initial commit

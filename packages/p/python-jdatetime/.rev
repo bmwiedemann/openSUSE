@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f0ed5dc34033ab791f1546a3327f9651</srcmd5>
+    <version>3.6.0</version>
+    <time>1569233797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>730707</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e1362ba080da09337d8db1f61f677e44</srcmd5>
+    <version>3.6.0</version>
+    <time>1569392104</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>732666</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8126c28e575afe99de4adb7c52f0dec4</srcmd5>
+    <version>3.6.2</version>
+    <time>1583702523</time>
+    <user>dimstar_suse</user>
+    <comment>-  Update to version 3.6.2:
+   * Support for python 3.7 and 3.8
+   * Fixed %Y length in strptime</comment>
+    <requestid>780798</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>09739325e5c65f59769962bf931c36ad</srcmd5>
+    <version>3.8.2</version>
+    <time>1643486245</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.8.2:
+  * Fix older version objects unpickling problem
+  * Fixed pickle problem of jdate and jdatetime objects(#108)
+  * Fixed unicode literal problem in isoformat
+  * Add ZoneInfo support
+  * Add date.min based on cpython implementation
+  * Add date.max based on cpython implementation
+  * Run test and publish package from github action</comment>
+    <requestid>949531</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9dd28687b03e74084f9898bde5048c74</srcmd5>
+    <version>4.1.0</version>
+    <time>1656053101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984627</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a535a43aefb8885bd92476c69a700cd3</srcmd5>
+    <version>4.1.1</version>
+    <time>1702071122</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.1.1:
+  * Add `fromisoformat` method to `jdatetime.date`
+  * Add support for Python 3.11
+  * Fix two chars month handling in jdatetime.datetime.strptime
+
+- Update to 4.0.0:</comment>
+    <requestid>1131725</requestid>
+  </revision>
+</revisionlist>

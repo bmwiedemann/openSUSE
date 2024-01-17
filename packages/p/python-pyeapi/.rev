@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a2c8b17eaf3db6cad66a4341942b82d2</srcmd5>
+    <version>0.8.2</version>
+    <time>1570010257</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734038</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9185366dbb8a624e065f5871e0eefdbc</srcmd5>
+    <version>0.8.3</version>
+    <time>1580152610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767568</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>84fa7ba81788e28772ab4a4902eb2c37</srcmd5>
+    <version>0.8.4</version>
+    <time>1605644782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848969</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>219d5f070f0e3bec125b2ab765f00938</srcmd5>
+    <version>0.8.4</version>
+    <time>1642112477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946132</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>69c069114b391b11e597c4635a23045b</srcmd5>
+    <version>0.8.4</version>
+    <time>1649274735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967352</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>672b2e06e7348227eff8d9ac270a42d4</srcmd5>
+    <version>1.0.2</version>
+    <time>1704281278</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2:
+  * Fixed all system tests and provides some enhancements for
+    unit tests
+- update to 1.0.1:
+  * This is an interim release for EOS integration purpose
+- update to 1.0.0:
+  * This is a Python3 only release (Python2 is no longer
+    supported)
+  * The minimum supported python version is 3.7
+  * Arista EOS 4.22 or later is required (for on-box use cases
+    only)</comment>
+    <requestid>1136014</requestid>
+  </revision>
+</revisionlist>

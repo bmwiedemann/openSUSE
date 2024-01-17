@@ -1,0 +1,33 @@
+--- lxde-common-0.99.0/openbox/rc.xml.in	2014-10-23 16:08:00.000000000 +0200
++++ lxde-common-0.99.0-new/openbox/rc.xml.in	2014-10-24 20:27:01.327451058 +0200
+@@ -271,13 +271,13 @@
+       </action>
+   </keybind>
+ 
+-  <keybind key="C-Escape">
++  <keybind key="C-A-Escape">
+       <action name="Execute">
+-          <command>lxpanelctl menu</command>
++          <command>xkill</command>
+       </action>
+   </keybind>
+ 
+-  <keybind key="A-F1">
++  <keybind key="Super_L">
+       <action name="Execute">
+           <command>lxpanelctl menu</command>
+       </action>
+@@ -294,9 +294,11 @@
+       </action>
+   </keybind>
+ 
+-  <!-- Launch gnome-screenshot when PrintScreen is pressed -->
++  <!-- Launch xfce4-screenshooter for screenshots -->
+   <keybind key="Print">
+-      <action name="Execute"><command>gnome-screenshot -i</command></action>
++      <action name="Execute">
++          <command>xfce4-screenshooter -f</command>
++      </action>
+   </keybind>
+ 
+   <!-- Launch LXRandR when Fn+Screen is pressed -->

@@ -1,0 +1,635 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6a8ea8c2d432f3763b497dfacc0054db</srcmd5>
+    <version>1.2.3</version>
+    <time>1575923840</time>
+    <user>dimstar_suse</user>
+    <comment>Renamed jupyter-jupyterlab</comment>
+    <requestid>755333</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4b30ebd7fe433ad84dee2a8bf8ad3a46</srcmd5>
+    <version>1.2.3</version>
+    <time>1576189108</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755892</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2092ab55800c81178dc40d7041f1c75a</srcmd5>
+    <version>1.2.4</version>
+    <time>1579195255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764775</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6377308a031764b8eb5c52a38650b485</srcmd5>
+    <version>1.2.6</version>
+    <time>1580300338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768087</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fff6a300132c8c104f136593335f89f5</srcmd5>
+    <version>2.0.0</version>
+    <time>1583311646</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781253</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2d77cfe14f21bf1726cc5efd5d1b51ce</srcmd5>
+    <version>2.0.0</version>
+    <time>1583837711</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782989</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>242224320bd6f743565e95c1065f84c2</srcmd5>
+    <version>2.0.0</version>
+    <time>1585761665</time>
+    <user>dimstar_suse</user>
+    <comment>- We should work with tornado 4, 5 and 6.
+- The bugs were found in tornado 6.0.1 and 6.0.2 were fixed
+  by upstream developers</comment>
+    <requestid>790533</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>55dd320b05f594a85621659db9f81f3f</srcmd5>
+    <version>2.1.3</version>
+    <time>1590506518</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix download url
+- Fix the deps to match setup.py
+
+- update to version 2.1.3:
+  * Fix Jupyterlab manager extension handling of missing package
+    metadata (#8463)
+  * Python 3.10 compatibility (#8446)
+  * Fix extension compatibility checks (#8434)
+- changes from version 2.1.2:
+  * Fix icon sidebar height for third party extensions (#8333)
+  * Pin JupyterLab server requirement more tightly (#8330)
+  * Scrolls cells into view after deletion (#8287)
+  * Sets data attribute on file type in filebrowser (#8275)
+
+- update to version 2.1.1:
+  * Pin puppeteer to fix ci (#8260)
+  * Fix Save As for files without sessions (#8248)
+  * fix sed commands for /usr/bin/env
+- changes from version 2.1.0:
+  * See the JupyterLab 2.1 milestone on GitHub for the full list of
+    pull requests and issues closed.
+  * User-facing changes
+    + Display the extension manager in the left sidebar by
+      default. Users will need to acknowledge the disclaimer in the
+      extension manager before using it. (#8050, #8145)
+    + Added blacklist and whitelist support for the extension manager
+      (#7989)
+    + Automatically link URLs in notebook output text (#8075, #7393)
+    + Added a “Restart Kernel and Run All Cells…” button to the
+      notebook toolbar (#8024)</comment>
+    <requestid>808519</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cde805165bf2fd36034810ad21a3049d</srcmd5>
+    <version>2.1.4</version>
+    <time>1591743019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.4:
+  * Various minor fixes</comment>
+    <requestid>812839</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6034b40cefe997a8f7da3b08cadedb06</srcmd5>
+    <version>2.2.0</version>
+    <time>1595011725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821358</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e5f649130446a77d50d6bd74841b23e7</srcmd5>
+    <version>3.0.7</version>
+    <time>1612989011</time>
+    <user>dimstar_suse</user>
+    <comment>- Set buildshell to /bin/bash for use of &quot;+=&quot;.
+- Fix typo in requirements
+- Update to 3.0.7
+  * Full Changelog at
+    https://jupyterlab.readthedocs.io/en/stable/getting_started/changelog.html
+- User Facing changes in v3.0.0
+  * Extensions can be installed without building JupyterLab with
+    NodeJS
+  * The JupyterLab interface supports multiple language
+  * A new visual debugger
+  * Improvements to Simple Interface mode and Mobile
+  * Table of Contents is now in core
+  * Visual filter in file browser
+  * Property inspector moved to right sidebar
+  * Command Palette is a floating window
+  * Now depends on Jupyter Server
+</comment>
+    <requestid>870838</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6c0889fb12ce8d8091b64b34c6bbefb5</srcmd5>
+    <version>3.1.7</version>
+    <time>1629706075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>912676</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6bb8798563856e987b42ecf9d442d694</srcmd5>
+    <version>3.1.12</version>
+    <time>1632431032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920901</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c577e5eb07f4e2cc33ae6a6eb2907661</srcmd5>
+    <version>3.2.0</version>
+    <time>1634587175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925911</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6311be1026bc55a2e7fdee260518e9e7</srcmd5>
+    <version>3.2.3</version>
+    <time>1636840115</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.3
+  * [3.2.x] Expose window.jupyterapp #11417 (@jtpio)
+  * Handle relative paths to themePath and schemaDir #11427
+    (@jtpio)
+  * fix #11377 &amp; bump Yjs dependencies &amp; fix modeldb overwriting
+    yjs content
+  * akes ILabShell optional in toc extension
+- Changes in 3.2.2
+  * Make orig_nbformat optional #11005 #11370 (@nanoant)
+  * Updated dialog with text to a reasonable width #11331 (@3coins)
+  * Fix for terminal theme style #11291 (@3coins)
+  * Only trigger dirty status update on value changes #11346
+    (@krassowski)
+  * Run nested code cells directly from markdown headings #11375
+    (@jess-x)
+  * Fix release_test #11390 (@fcollonval)
+  * Removed cat package.json #11372 (@ceesu)
+  * Relax @playright/test dependency in Galata #11371 (@jtpio)
+- Changes in 3.2.1
+  * Updated button styles to accessible colors #11321 (@3coins)
+  * Fix for debugger not working for scripts #11311 (@3coins)
+  * Added handling of '\r' ended files #11310 (@lucabarcelos)
+  * Emit indexChanged on model state updates #11298 (@krassowski)
+  * Fix ANSI vs URL conflict, prefix www. with https:// #11272
+    (@krassowski)
+  * Pass version spec as an input #11322 (@jtpio) (forwarded request 931198 from bnavigator)</comment>
+    <requestid>931199</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>b105d1479de986d64f04ef4dbeabc283</srcmd5>
+    <version>3.2.3</version>
+    <time>1637108033</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931630</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>94939ca03af8658ad4bf0f68752ad5d7</srcmd5>
+    <version>3.4.4</version>
+    <time>1659470938</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.4
+  Enhancements made
+  * Adds version maintenance policy #12829 (@jweill-aws)
+  * Increase title width in simple mode #11546 (@SylvainCorlay)
+  * Bump xtermjs to latest #12715 (@yuvipanda)
+  * Debugger: Make kernel source list react based #12751 (@vidartf)
+  * Optimize debugger editor eachLine loops #12746 (@vidartf)
+  * Make password inputs not give away how many characters were
+    typed #12659 (@jasongrout)
+  Bugs fixed
+  * Remove drive prefix from the file path when creating the new
+    path #12824 (@hbcarlos)
+  * Use path to extract tmpPath #12823 (@fcollonval)
+  * update tab name after file rename #12791 (@RobbyPratl)
+  * Update base.css #12783 (@siddartha-10)
+  * Pin nbclassic below 0.4.0 #12767 (@fcollonval)
+  * Set focus when active cell changes only from mouse click #12735
+    (@fcollonval)
+  * Fix staging/yarn.lock registry #12742 (@vidartf)
+  * Debugger: Fix CSS for variables inspecting #12749
+    (@martinRenou)
+  * Translate &quot;Default: &quot; and &quot;Remove&quot; in custom fields #12732
+    (@krassowski)
+  * Fix cell toolbar overlap in side-by-side render mode #12710
+    (@peytondmurray)
+  * Remove ipywidgets message count in the execution indicator
+    model #12665 (@trungleduc)
+  Maintenance and upkeep improvements
+  * Update verdaccio, start registry on 0.0.0.0 #12825
+    (@fcollonval)</comment>
+    <requestid>992098</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>99a5a5c7e331f2b3bda89195125ca608</srcmd5>
+    <version>3.4.5</version>
+    <time>1660313179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994552</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3883e6ecbf3b51eda31d1dd63d031069</srcmd5>
+    <version>3.4.6</version>
+    <time>1662833846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002375</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dd2a1bad50081d4e85a60fdafdbee33e</srcmd5>
+    <version>3.4.7</version>
+    <time>1663155886</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003369</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>42fe3b5d8b768da29da9812c7626ae9e</srcmd5>
+    <version>3.4.8</version>
+    <time>1665591829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009181</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8c16df05dd6e52982c931b3ed0fcf2eb</srcmd5>
+    <version>3.5.0</version>
+    <time>1666871656</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.5.0
+  * Enhancements made
+    + Optimize text mimerenderer: ansi vs autolink #13202
+      (@vidartf)
+    + Collapse debugger panel when disabling debugger #13088
+      (@yanmulin)
+    + File Browser: add support for filtering directories on search
+      #12342 (@jtpio)
+    + Prompt for renaming at first manual save #12953 (@fcollonval)
+    + Raise ceiling on jupyter_server dependency to &lt; 3 #13068
+      (@Zsailer)
+  * Bugs fixed
+    + Set isUntitled to false on document path changes #13268
+      (@fcollonval)
+    + Don't dispose the notebook metadata editor on active cell
+      change #13259 (@fcollonval)
+    + Use keystroke format consistent with menus #13200
+      (@fcollonval)
+  * Maintenance and upkeep improvements
+    + Fix memory leaks #13229 (@fcollonval)
+    + Bump to the latest Lumino 1.x #13190 (@fcollonval)
+    + Update branch configuration #13184 (@fcollonval)</comment>
+    <requestid>1031382</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5ef71ecb656430cf8688ba93d9eab02d</srcmd5>
+    <version>3.5.2</version>
+    <time>1672668100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.5.2
+  * use jupyter_config_dir instead of config_path[0] for
+    workspaces, settings #13589 (@minrk)
+  * Fix Python test dependencies #13508 (@fcollonval)
+- Release 3.5.1
+  * Fixes sharing metadata #13491 (@hbcarlos)
+  * Bump sanitize-html to 2.7.3 #13509 (@fcollonval)
+</comment>
+    <requestid>1045951</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7ef52bbf271bd0418b5c04474ede233b</srcmd5>
+    <version>3.6.2</version>
+    <time>1679667631</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.2
+  * Fix save as without changing the file name #14212 (@hbcarlos)
+  * Fix save as in collaborative mode #14182 (@hbcarlos)
+  * Fix non-document wide undo stack #14063 (@fcollonval)
+  * Fix code/content/ui font-size change #14077 (@FoSuCloud)
+  * Restore @jupyterlab/shared-models as proxy to @jupyter/ydoc
+    #14133 (@fcollonval)
+  * Doc session #14128 (@hbcarlos)
+  * Use local paths instead of driveName:path in the shared model
+    #13866 (@hbcarlos)
+  * use singleton boolean type for codemirror lineWiseCopyCut
+    setting #14055 (@bollwyvl)
+  * Fix integrity #14226 (@fcollonval)
+  * Increases timeout #14045 (@brichet)
+  * Use Python 3.11 for js-debugger tests #13941 (@fcollonval)
+  * Fix verdaccio start up with nodejs 18.14.0 #13959 (@fcollonval)
+- Update to 3.6.1
+  * Revert target to ES2017 #13914 (@fcollonval)
+- Update to 3.6.0
+  ## New features added
+  * Add copy and paste commands to terminal context menu #13535
+    (@krassowski)
+  * Turn terminal links into anchors using xterm addon #13645
+    (@mgcth)
+  * Allows to pause the execution during debug #13494 (@brichet)
+  * Ask confirmation when closing a document #13489 (@fcollonval)
+  * Add events service #13465 (@fcollonval)
+  * Add notification queue and display using toast #12959
+    (@telamonian)
+  * Add announcements #13444 (@fcollonval)
+  * Add line history to Stdin cell outputs #13431 (@fcollonval)
+  * Add user configuration for additional schemes for the sanitizer
+    plugin #13419 (@fcollonval)
+  * User service #12926 (@hbcarlos)
+  ## Enhancements made
+  * Expose contentVisibility widget hiding mode #13860
+    (@fcollonval)
+  * default locale will use OS default locale #13721 (@fcollonval)
+  * Enable strict CSS containment for MainAreaWidget #13811
+    (@krassowski)
+  * User defined default viewer take precedence for rendered
+    factory #11541 (@fcollonval)
+  * Remove not needed Completer.IRenderer.sanitizer #13700
+    (@fcollonval)
+  * Contain the tabs within the tabbar (do not use translation
+    transform) #13671 (@krassowski)
+  * Sanitize notification message #13510 (@fcollonval)
+  * Use more the contextual collaborative model attribute #13564
+    (@fcollonval)
+  * Add lumino with support for plugin deactivation #13541
+    (@fcollonval)
+  * Sets whether the model is collaborative or not when registering
+    its factory #13526 (@hbcarlos)
+  * RTC: Move user name to user panel #13517 (@martinRenou)
+  * jupyter_server_ydoc&gt;=0.6.0,&lt;0.7.0 #13499 (@fcollonval)
+  * Define file or activity icons color as static #13408
+    (@fcollonval)
+  * Added collaborative_document_save_de… #13404 (@fcollonval)
+  * Add a hover effect to plugin list entries #13384 (@krassowski)
+  * Bump Lumino 1.x #13378 (@fcollonval)
+  * Store original path as returned from contents API in the
+    Contents.IModel #13216 (@krassowski)
+  * Update document dirty logic for RTC #13364 (@davidbrochart)
+  * Store document info in the state not in a separate context map
+    out of the document interface. #13317 (@fcollonval)
+  * Use file ID #13246 (@davidbrochart)
+  * Relax doc provider API #13214 (@fcollonval)
+  * Avoids restoring widget in dock panel when first loading in
+    'single-document' mode #13314 (@brichet)
+  * Fix illegible white on yellow text of stacktrace in dark theme
+    #13249 (@NikolayXHD)
+  * Use settings icons for 6 plugins #13298 (@krassowski)
+  * Do not run galata in .ipynb_checkpoints #13297 (@krassowski)
+  * Allow empty notebook #13296 (@martinRenou)
+  * Optimize text mimerenderer: ansi vs autolink #13202 (@vidartf)
+  * Remove Yjs locking mechanism #13222 (@davidbrochart)
+  ## Bugs fixed
+  * Define colour and background for filebrowser edit field #13895
+    (@krassowski)
+  * Reset execution indicator state when kernel restarts #13832
+    (@krassowski)
+  * Restore blueprint focus overrides on 3.x branch #13879
+    (@krassowski)
+  * Restore partial border effect for menu #13878 (@krassowski)
+  * Pin jupyter_ydoc #13863 (@fcollonval)
+  * Fix preferred_dir for examples #13788 (@fcollonval)
+  * Bump canvas to version with nodejs 18 binaries #13783
+    (@fcollonval)
+  * Explain why cell model may be missing in cell toolbar #13763
+    (@krassowski)
+  * Fix handling of settingEditorType #13761 (@jtpio)
+  * Fix execution indicator in RTC mode #13693 (@trungleduc)
+  * Force jupyter-server v1 to check against notebook v6 #13716
+    (@fcollonval)
+  * Write the browser open files for test #13634 (@fcollonval)
+  * Add the scaleFactor value from the embed options when creating
+    the PNG representation for a Vega-based chart #13610
+    (@joaopalmeiro)
+  * Does not prevent default behavior when shift-clicking #13616
+    (@jmk89)
+  * Do not load CSS of disabled federated extensions #11962
+    (@jtpio)
+  * use jupyter_config_dir instead of config_path[0] for
+    workspaces, settings #13589 (@minrk)
+  * Bump @lumino/application #13590 (@fcollonval)
+  * Restores the appearance of the settingeditor's input focus
+    #13554 (@brichet)
+  * Fix a wrong argument when calling 'renderMimeVariable' #13531
+    (@brichet)
+  * fix size of toc running indicator #13568 (@uenot)
+  * Fixes backward-incompatible changes for 3.6 #13560 (@hbcarlos)
+  * Make focus visible (mostly CSS) #13415 (@gabalafou)
+  * Set corrections to icons and switch colors #13500
+    (@HaudinFlorence)
+  * Default IDocumentProviderFactory.IOptions generic to
+    ISharedDocument #13490 (@jtpio)
+  * Use same key for saving user info in local store #13482
+    @hbcarlos
+</comment>
+    <requestid>1073771</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>134a59394e9ebeff74f6cd144d852ef4</srcmd5>
+    <version>3.6.3</version>
+    <time>1682368273</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.3
+  * Bump lumino 1.x #14286 (@fcollonval)
+  * Provide @jupyterlab/shared-models as singleton #14229
+    (@fcollonval) (forwarded request 1082328 from bnavigator)</comment>
+    <requestid>1082330</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9a29ca8f647d9c7dbb81c5c8ef181617</srcmd5>
+    <version>4.0.2</version>
+    <time>1686665383</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.2
+  * Add support for copier 8.0.0 #14644 (@fcollonval)
+  * Update documentation snapshots #14636 (@fcollonval)
+  * Allow Lumino 1.x version for rendermime-interfaces #14618
+    (@fcollonval)
+- Release 4.0.1
+  ## Enhancements made
+  * Enable base numbering option #14586 (@tuncbkose)
+  * added dynamic functionality to the text spacing #14561
+    (@j264415)
+  * Implement dialog element for dialogs with accessibility #14560
+    (@t03857785)
+  * Allow maxHeight being equal to minHeight for HoverBox’s
+    visibility #14533 (@nishikantparmariam)
+  * FileBrowser: Added the sortNotebooksFirst option #14497
+    (@tpatel)
+  ## Bugs fixed
+  * Inherit font family from .cm-editor #14601 (@krassowski)
+  * Fix: Toolbar doesn’t update on paste. #14596 (@brijsiyag)
+  * Highlight booleans using the same style as keywords #14588
+    (@krassowski)
+  * Avoid clearing the host node while rendering Markdown #14579
+    (@c3Vu)
+  * Fix react error log in shortcuts dialog #14566 (@c3Vu)
+  * Updates docs to reflect that v4 is released #14556
+    (@JasonWeill)
+  * Fix drive handling for sessions and terminals #14519
+    (@fcollonval)
+- Release 4.0.0 highlights
+  * New text editor (forwarded request 1092697 from bnavigator)</comment>
+    <requestid>1092698</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d93b02470bcfafff3b12bd4d43a234b9</srcmd5>
+    <version>4.0.4</version>
+    <time>1691332185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102510</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>254ea0e8912cbd06e5bb7d4e97982c5b</srcmd5>
+    <version>4.0.5</version>
+    <time>1692045375</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.0.5:
+  * Check backward dep (#14956)
+  * Ensure not breaking backward compatibility (#14952)
+  * Bump lumino packages (#14951)
+  * Fix View Menu &quot;Show line number&quot; does not show its corresponding
+    shortcut (#14950)
+  * Make the browser check default_url configurable (#14949)
+  * Allow opening links in new tabs when HTML is trusted (#14943)
+  * Remove docker ignore file (#14938)
+  * Fix broken link (#14940)
+  * Make the DOM structure of linked output views more similar to
+    outputs (#14941)
+  * Custom script to upgrade staging/yarn.lock (#14935)
+  * Rename readthedoc config (#14930)
+  * Fix incorrect indentation browser_check.py (#14923)
+</comment>
+    <requestid>1103904</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>30e1b4eae3be74f3532f873df6df4699</srcmd5>
+    <version>4.0.5</version>
+    <time>1692379673</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104431</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f9c57288fadecb02773f23de2102ec38</srcmd5>
+    <version>4.0.6</version>
+    <time>1695664932</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.6
+  ## Enhancements made
+  * Add more LSP request types #15064 (@krassowski)
+  * Expose processedItemsCache as a protected in CompleterModel
+    #15025 (@krassowski)
+  * Fix filebrowser.open and add ability to provide a factory
+    #14983 (@fcollonval)
+  * Use config compatible with notebook 7 #14978 (@fcollonval)
+  ## Bugs fixed
+  * Fix return type of getMimeTypeByLanguage() #15101 (@krassowski)
+  * Fix documentation panel display logic of the completer #15106
+    (@trungleduc)
+  * Check applicable provider in ProviderReconciliator #15094
+    (@trungleduc)
+  * Completer: switch renderer &amp; model on update, update on
+    providers change #15065 (@krassowski)
+  * Fix _updateConstraints missing protected/private classifier.
+    #15066 (@krassowski)
+  * HoverBox: adjust right when moving node to fit within window
+    #15052 (@krassowski)
+  * fixes codemirror settings #15009 (@andrewfulton9)
+  * Pass completion context to shouldShowContinuousHint() #15015
+    (@krassowski)
+  * Fix translation syntax to extract it by the parser #14979
+    (@fcollonval)
+  * added title to Close tab icon #14973 (@j264415)
+  ## Maintenance and upkeep improvements
+  * Install playwright browser in jupyterlab.browser_check #15117
+    (@brichet)
+  * Enable Playwright trace #15087 (@jtpio)</comment>
+    <requestid>1113181</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2d046c5127aa3c1ec24719038600ed64</srcmd5>
+    <version>4.0.7</version>
+    <time>1697146857</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.7
+  ## Enhancements made
+  * Add the standard SQL mimetype #15180 (@brichet)
+  ## Bugs fixed
+  * Restore horizontal scrolling of outputs for Firefox #15171
+    (@fcollonval)
+  * Fix text wrapping in the search box #15080 (@eliaslma)
+  * Fix completer documentation panel hiding and animation #15238
+    (@krassowski)
+  * Fix clicking in the TOC does not scroll #15184 (@parmentelat)
+  * Hide completer when changing notebook tabs #14534
+    (@nishikantparmariam)
+  * Backport of MathJax double init/font URL fix and binder/log
+    updates #15231 (@bollwyvl)
+  * Restore syntax highlighting for mimetypes with more than one
+    identifier #15175 (@jans-code)
+  * Fix completer width inflation and jitter #15132 (@krassowski)
+  * Fix Show Keyboard Shortcuts command #15170 (@jtpio)
+  * Blur footer for any key that triggers a 'select above', not
+    just ArrowUp #14796 (@smacke)
+  * Fix background-color in &lt;select&gt; elements in dark theme #15098
+    (@Rmarieta)
+  * Fix selection in active line #15129 (@krassowski)
+  * Remove unusedDocuments, fix culling of foreign documents #15105
+    (@krassowski)</comment>
+    <requestid>1117066</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>db53bf7a397c75eb0dc19d97986a6e67</srcmd5>
+    <version>4.0.9</version>
+    <time>1701121370</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.9
+  ## Bugs fixed
+  * Improve cell toolbar tracker #15314 (@fcollonval)
+  * Do not update filebrowser breadcrumbs when not needed #15387
+    (@krassowski)
+  * Don't show default value for objects in Settings Editor #15380
+    (@firai)
+  * Fix highlighting search in an out-of-viewport cell #15376
+    (@fcollonval)
+  * Fix overreactive scrolling to next cell after Shift + Enter
+    #15288 (@krassowski)
+  * Fix missing default property breaking codemirror overrides.json
+    #15346 (@LJMP)
+  * Fix update button in extension manager #15331
+    (@nbowditch-einblick)
+  * Fix scrolling when dragging files in the file browser #15318
+    (@krassowski)
+  * Fix scrolling past long outputs in presence of un-rendered
+    headings #15356 (@krassowski)
+  * Update notebook window on resize if height changes #15357
+    (@krassowski)
+  * Remove unnecessary requirement from codemirror service plugin
+    #15362 (@paulkim3151)
+- Release 4.0.8
+  ## Enhancements made
+  * Expand search box horizontally when text grows long #15266
+    (@sinistersnare)
+  ## Bugs fixed
+  * Add min width to constrain resizing in side-by-side view #14529
+    (@dharmaquark)</comment>
+    <requestid>1128944</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,579 @@
+-------------------------------------------------------------------
+Thu Jan  4 09:09:55 UTC 2024 - cloud-devel@suse.de
+
+- update to version 4.2.1
+  - Imported Translations from Zanata
+
+-------------------------------------------------------------------
+Fri Dec  1 16:28:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.0:
+  * Revert "Moves supported python runtimes from version 3.8 to
+    3.10"
+  * Moves supported python runtimes from version 3.8 to 3.10
+  * Fix deprecated rule logic if the rule was deleted in policy
+    directory
+  * Update master for stable/2023.1
+
+-------------------------------------------------------------------
+Mon Mar  6 20:46:19 UTC 2023 - cloud-devel@suse.de
+
+- update to version 4.1.1
+  - Fix py38 jobs by using focal rather than jammy
+  - Add Python3 antelope unit tests
+  - Imported Translations from Zanata
+  - Update master for stable/zed
+- add 0001-Avoid-TypeError-when-building-with-Sphinx-6.1.1-and-.patch
+
+-------------------------------------------------------------------
+Sat Oct  1 12:38:50 UTC 2022 - cloud-devel@suse.de
+
+- update to version 4.0.0
+  - Drop python3.6/3.7 support in testing runtime
+  - Fix generation of sample policy files
+
+-------------------------------------------------------------------
+Sat Jun  4 15:23:47 UTC 2022 - cloud-devel@suse.de
+
+- update to version 3.12.1
+  - Update python testing classifier
+  - Fix formatting of release list
+  - make deprecated rule examples explicit
+  - Update master for stable/yoga
+  - Refactor scope enforcement in the Enforcer class
+  - Map system_scope in creds dictionary
+  - Update master for stable/xena
+  - Enforce scope check always when rule has scope_types set
+  - Rules in policy directory files can be deleted.
+  - Add Python3 zed unit tests
+  - Increase timeout of the cross-neutron-tox-py38 job
+  - Add Python3 yoga unit tests
+  - Don't reset rules without overwriting
+  - Don't raise InvalidScope exception when do_raise=False
+  - Add scope_types attribute to the BaseCheck class
+  - Expand set_defaults() to set other config default value
+  - Clarify enforce_new_defaults help text
+  - Only pass exclude-deprecated when True
+
+-------------------------------------------------------------------
+Tue Oct 26 21:46:46 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.8.2
+  - Adding tests on cache handler
+  - Improving documentation about target resources
+  - Fix a typo in the document
+  - Add Python3 xena unit tests
+  - Add debug log in pick_default_policy_file
+  - Changed minversion in tox to 3.18.0
+  - Replace getargspec with getfullargspec
+  - Correctly handle IO errors at policy file load
+  - Use py3 as the default runtime for tox
+  - Add unit tests on cache handler
+  - Reinstate double deprecation test logic
+  - Move flake8 as a pre-commit local target.
+  - Update master for stable/wallaby
+  - Ussuri+ is python3 only and update python to python3
+  - Dropping lower constraints testing
+  - setup.cfg: Replace dashes with underscores
+
+-------------------------------------------------------------------
+Sun May  2 17:41:14 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.7.0
+  - Work on copy of registered rule instead of original object
+  - Fix oslopolicy-j2y-convertor tool for RuleDefault
+  - Adding pre-commit
+  - trivial: Tweak docstrings
+  - Add Python3 wallaby unit tests
+  - pre-commit: Resolve dependency conflicts
+  - Handle deprecated rule only once
+  - Remove all usage of six library
+  - Fix hacking min version to 3.0.1
+  - Remove format option examples in policy generator
+  - Switch to collections.abc.MutableMapping
+  - tests: Unset requests-related environment variables
+  - Make 'Rule' attributes read-only
+  - Fix grammar issues
+  - Add policy file selection logic when default changing to yaml
+  - Add documentation parameters for DeprecatedRule
+  - Use TOX_CONSTRAINTS_FILE
+  - remove unicode from code
+  - Don't modify 'Rule.check'
+  - Add nova/neutron project unit/functional tests job in gate
+  - Update master for stable/victoria
+
+-------------------------------------------------------------------
+Fri Oct  9 19:17:34 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.5.0
+  - Reload files in policy_dirs on primary file change
+  - Log warning for redundant file rules
+  - docs: Add description of 'oslopolicy-policy-generator'
+  - Don't deepcopy objects before mask_dict_password
+  - Add oslopolicy-validator tool
+  - Add release notes links to doc index
+  - Remove translation sections from setup.cfg
+  - Add Python3 victoria unit tests
+  - Switch to newer openstackdocstheme and reno versions
+  - sample-generator: Improve YAML output
+  - Clarify what exactly an "access file" is
+  - Fix unit tests to work with stevedore > 2.0.1
+  - Add py38 package metadata
+  - Bump bandit version
+  - [goal] Migrate testing to ubuntu focal
+  - Remove the conversion according to the comment of jdennis
+  - Mark sphinx extensions thread safe
+  - Deprecate the JSON support for policy_file
+  - Remove the unused coding style modules
+  - Fix pygments style
+  - Add oslopolicy-convert-json-to-yaml tool
+  - docs: Add separate man page for each CLI tool
+  - Bump default tox env from py37 to py38
+  - Update master for stable/ussuri
+  - Include example of literal comparison policy rule
+  - Align contributing doc with oslo's policy
+
+-------------------------------------------------------------------
+Mon Aug 10 10:22:25 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.1.1
+  - Reload files in policy_dirs on primary file change
+  - Update .gitreview for stable/ussuri
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/ussuri
+
+-------------------------------------------------------------------
+Tue May 12 09:54:56 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.1.0
+  - Fix reference cycle caused by deprecated sample override
+  - Bump the openstackdocstheme extension to 1.20
+  - tox: Trivial cleanup
+  - Fix doc comments for new enforce default flag
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - Use unittest.mock instead of third party mock
+  - Update hacking for Python3
+  - Add new config to enforce the new defaults
+  - Allow disabling the default check_str change warnings
+  - Initialize global config object in cli tools
+  - Bump oslo.utils to 3.40.0
+  - Temporarily make namespace arg optional
+  - Link to the Keystone role documentation
+  - Follow the new PTI for document build
+  - Don't use string processing to combine deprecated rules
+  - Modernize policy checker
+  - Don't parse cli args on the global object in sphinxpolicygen
+  - Make HTTP check doc heading more specific
+  - Cleanup warnings
+  - Update master for stable/train
+  - Suppress deprecation warnings in oslopolicy-list-redundant
+  - tox: Keeping going with docs
+  - remove outdated header
+  - Update the constraints url
+  - Switch to Ussuri jobs
+  - Move away from python setup.py test who is deprecated in pbr
+
+-------------------------------------------------------------------
+Sat Mar 14 12:05:15 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- switch to python 3.x only builds
+
+-------------------------------------------------------------------
+Tue Mar 10 18:21:35 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.3.3
+  - Modernize policy checker
+  - Fix reference cycle caused by deprecated sample override
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/train
+  - Update .gitreview for stable/train
+  - Suppress deprecation warnings in oslopolicy-list-redundant
+
+-------------------------------------------------------------------
+Wed Oct  9 12:27:45 UTC 2019 - cloud-devel@suse.de
+
+- update to version 2.3.2
+  - Dropping the py35 testing
+  - Add Python 3 Train unit tests
+  - Clarify policy_file configuration option help text
+  - Corrects tox.ini snippet to point to config file
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Add attribute to suppress deprecation warnings
+  - Add unit tests on the sphinxext indent function
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Updated from global requirements
+  - Add py36 and py37 tox envs
+  - Only alias when policy names change
+  - Move doc related modules to doc/requirements.txt
+  - Provide more specific error when namespace is missing
+  - OpenDev Migration Patch
+  - Update master for stable/stein
+
+-------------------------------------------------------------------
+Mon Apr  8 11:37:57 UTC 2019 - cloud-devel@suse.de
+
+- update to version 2.1.1
+  - Use template for lower-constraints
+  - Fix sample config value when set_defaults is used
+  - Imported Translations from Zanata
+  - sphinxext: Start parsing 'DocumentedRuleDefault.description' as rST
+  - Remove PyPI downloads
+  - Fully log RBAC enforcement data
+  - Add ability to pass in target data for the oslopolicy-checker
+  - Add guidelines for naming policies
+  - Prevent sensitive target data from being logged
+  - generator: Reimplement wrapping of 'description'
+  - Change openstack-dev to openstack-discuss
+  - import zuul job settings from project-config
+  - oslopolicy-checker: iterate through rules in sorted order
+  - Update reno for stable/rocky
+  - add python 3.6 unit test job
+  - Add domain scope support for scope types
+  - Correct typo in docs
+  - Unit test for CLI
+  - Add docs for developers testing APIs
+  - add lib-forward-testing-python3 test job
+  - Move _capture_stdout to a common place
+  - Use oslo.config instead of argparse.
+  - Pass in policy name as part of the oslopolicy-check check call
+  - Add minor nits in testing documentation
+  - Docs: Remove references to JSON format
+  - Add ability for policy-checker to read configuration
+  - Add policy-upgrade tool
+  - Fix usage of token fixture in shell tests
+  - Fixes is_admin type from StrOpt to BoolOpt.
+  - Fixes file access using with statements.
+  - Update hacking version
+  - Make upgrades more robust with policy overrides
+  - Clean up .gitignore references to personal tools
+  - Enhance test to prevent JSON parsing regression
+  - Update sphinx extension logging
+  - add python 3.7 unit test job
+
+-------------------------------------------------------------------
+Thu Sep 20 22:21:48 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.38.1
+  - Pass dictionary as creds in policy tests
+  - fix tox python3 overrides
+  - trivial: Fix file permissions
+  - Add CLI usage documentation
+  - Add blueprints and releasenotes link to README
+  - Teach Enforcer.enforce to deal with context objects
+  - Avoid redundant policy syntax checks
+  - Add examples and clarification around scope_types
+  - Fix requirements and convert to stestr
+  - Clarify CLI documentation
+
+-------------------------------------------------------------------
+Mon Sep  3 09:28:27 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.37.0
+  - Remove stale pip-missing-reqs tox test
+  - Update sphinxext to include scope_types in docs
+  - set default python to python3
+  - Fix document formatting
+  - Update reno for stable/queens
+  - Update links in README
+  - make the sphinxpolicygen extension handle multiple input/output files
+  - Render deprecated policy names when generating files
+  - Remove erroneous newline in sample generation
+  - Update documentation to include usage for new projects
+  - Include deprecated_reason when deprecated_rule is set
+  - Imported Translations from Zanata
+  - Trivial: Update pypi url to new url
+  - Updated from global requirements
+  - add lower-constraints job
+  - Include both new and deprecated rules in generated sample
+
+-------------------------------------------------------------------
+Fri Feb 23 13:24:01 UTC 2018 - tbechtold@suse.com
+
+- Switch to stable/queens spec template
+
+-------------------------------------------------------------------
+Wed Jan 17 12:01:33 UTC 2018 - dmueller@suse.com
+
+- convert to singlespec
+
+-------------------------------------------------------------------
+Mon Jan 15 11:57:49 UTC 2018 - cloud-devel@suse.de
+
+- update to version 1.33.1
+  - Fix string injection for InvalidScope
+  - Imported Translations from Zanata
+  - Avoid tox_install.sh for constraints support
+  - add bandit to pep8 job
+  - Add JSON output option to sample generator
+  - External Policy hook should support SSL
+  - rewrite HttpCheckFixture to not mock out entire HttpCheck class
+  - http/https check rules as stevedore extensions
+  - Add functionality to deprecate policies
+  - Handle deprecation of inspect.getargspec
+  - Documentation and release notes for plugins
+  - Remove -U from pip install
+  - Modification to add additional information in the HTTPCheck request.
+  - fix formatting for empty defaults
+  - Add scope_types to RuleDefault objects
+  - Pass creds as a dict in tests
+  - Only log deprecation warnings when they are overridden
+  - throw an exception when sphinxext cannot find the config file
+  - Update reno for stable/pike
+  - Remove setting of version/release from releasenotes
+  - expand type documentation for Enforcer arguments
+  - Add configuration option for enforcing scope
+  - Updated from global requirements
+  - Add a release note for enforce_scope
+
+-------------------------------------------------------------------
+Mon Aug  7 08:48:06 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.25.1
+  - Fix parsing bug when config file is empty.
+  - Modify tests in test_generator
+  - fix formatting for empty defaults
+  - Simplify message of exception PolicyNotAuthorized
+  - [Fix gate]Update test requirement
+  - Add additional param to policy.RuleDefault
+  - Update reno for stable/ocata
+  - Check reStructuredText documents for common style issues.
+  - switch from oslosphinx to openstackdocstheme
+  - Add release note for DocumentedRuleDefault
+  - Optimize the link address
+  - Update UPPER_CONSTRAINTS_FILE for stable/pike
+  - Update usage documentation
+  - move existing documentation into new standard layout
+  - Add optional exception for check_rules
+  - pbr.version.VersionInfo needs package name (oslo.xyz and not oslo_xyz)
+  - Update URLs in documents according to document migration
+  - import configuration guide content from openstack-manuals repo
+  - throw an exception when sphinxext cannot find the config file
+  - oslopolicy-sample-generator description support
+  - sphinxext: Format definition lists correctly
+  - Comment out the rule from generated sample-policy file
+  - Allow multiline descriptions for RuleDefaults
+  - Update .gitreview for stable/pike
+  - Remove log translations
+  - Delete the unnecessary word in policy.py
+  - Add Sphinx extension to pretty-print modules
+  - Remove support for py34
+  - sphinxext: Use field lists in output
+  - Updated from global requirements
+  - Seperate each policy rule with new line
+  - Use Sphinx 1.5 warning-is-error
+
+-------------------------------------------------------------------
+Fri Feb 10 15:52:53 UTC 2017 - cloud-devel@suse.de
+
+- update to version 1.18.0:
+  - Add missing parameter description in module _cache_handler
+  - Imported Translations from Zanata
+  - Enable release notes translation
+  - Remove dead code and use default value of argparse.
+  - Remove oslo.utils from requirements
+  - Update reno for stable/newton
+  - Remove references to Python 3.4
+  - Change assertTrue(isinstance()) by optimal assert
+  - Add stevedore to requirements
+  - Show team and repo badges on README
+  - Improved performance of parse_file_contents() method
+  - Doc: declare YAML/JSON support
+  - Remove wrong parameter type for class NotCheck from docstring
+  - Add sphinx extension to build sample policy
+  - Perform basic checks on policy definitions
+  - Update docs on policy sample generator
+  - Fix a code logic while doing cyclical reference check to the policy
+  - doc: Add introduction to index page
+  - Add Constraints support
+  - Changed the home-page link
+  - Fix typo in oslo.policy
+  - Make exception PolicyNotAuthorized more readable
+  - Updated from global requirements
+
+-------------------------------------------------------------------
+Fri Oct 14 13:59:40 UTC 2016 - tbechtold@suse.com
+
+- switch to stable/newton tarball in _service
+
+-------------------------------------------------------------------
+Wed Aug 31 16:24:48 UTC 2016 - tbechtold@suse.com
+
+- update to version 1.14.0
+  * Revert "Adds debug logging for policy file validation"
+  * Delete H803 in flake8 ignore
+  * Allow policy file to not exist
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Wed Aug 10 14:42:42 UTC 2016 - tbechtold@suse.com
+
+- update to version 1.13.0
+  * Fix mispelled method name in setup.cfg
+  * Add note about not all APIs support policy enforcement by user_id
+  * Imported Translations from Zanata
+  * Fixed unit tests running on Windows
+  * Add Python 3.5 classifier and venv
+  * Adds debug logging for policy file validation
+  * Updated from global requirements
+
+-------------------------------------------------------------------
+Mon Jul  4 15:52:41 UTC 2016 - tbechtold@suse.com
+
+- update to 1.11.0:
+  * Updated from global requirements
+  * Imported Translations from Zanata
+  * Improve policy sample generation testing
+  * Add helper scripts for generating policy info
+
+-------------------------------------------------------------------
+Mon Jul  4 10:10:41 UTC 2016 - tbechtold@suse.com
+
+- update to 1.9.0:
+  * Add sample file generation script and helper methods
+  * Add equality operator to policy.RuleDefault
+  * Imported Translations from Zanata
+  * Updated from global requirements
+  * Fix typo: 'olso' to 'oslo'
+  * Updated from global requirements
+  * Updated from global requirements
+  * Add reno for release notes management
+  * Add policy registration and authorize method
+  * Updated from global requirements
+  * doc: Fix wrong import statement in usage
+
+-------------------------------------------------------------------
+Sat Jun  4 06:13:56 UTC 2016 - tbechtold@suse.com
+
+- update to 1.8.0:
+  * Trivial: ignore openstack/common in flake8 exclude list
+  * Updated from global requirements
+  * Imported Translations from Zanata
+  * Deprecate load_json() in favor of load()
+  * Support policy file in YAML
+- use renderspec source service
+- update spec from upstream
+
+-------------------------------------------------------------------
+Thu Mar  3 07:36:56 UTC 2016 - tbechtold@suse.com
+
+- update to 1.5.0:
+  * Updated from global requirements
+  * Update translation setup
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Revert "Pass environment variables of proxy to tox"
+  * Run docs testenv by default with tox
+  * Add oslopolicy-checker command-line tool
+  * Updated from global requirements
+  * Don't crash on RoleCheck when roles not present
+  * assertIsNone(val) instead of assertEqual(None,val)
+  * Updated from global requirements
+  * Add string format rendering to RoleCheck.__call__()
+  * Pass environment variables of proxy to tox
+  * Fixes combined "and" and "or" rule handling
+  * Make sure item of policy_dirs is directory
+  * Updated from global requirements
+  * Use dict comprehension
+  * Don't generate doc from test
+  * Trival: Remove 'MANIFEST.in'
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Use requests-mock instead of httpretty in tests
+  * Clarify usage docs
+  * Correct invalid doc references
+  * Updated from global requirements
+  * Remove Python 2.6 classifier
+  * Remove python 2.6 and cleanup tox.ini
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Use JSON generator
+  * Add test for enforce with rule doesn't exist
+  * Add test for raising default exception
+  * Add test for invalid JSON
+  * Add cover test requirement
+  * Fix a typo in policy.py
+  * Updated from global requirements
+  * Custom fixture to avoid external call in HttpCheck
+  * Fix coverage configuration and execution
+  * add auto-generated docs for config options
+  * Add shields.io version/downloads links/badges into README.rst
+  * Updated from global requirements
+  * Use requests in http check instead of urllib
+  * Change ignore-errors to ignore_errors
+  * Updated from global requirements
+  * remove deprecation text for policy_dirs option
+- Switch to .spec from rpm-packaging upstream project
+
+-------------------------------------------------------------------
+Wed Sep  9 06:52:21 UTC 2015 - tbechtold@suse.com
+
+- update to 0.11.0:
+  * Updated from global requirements
+  * Pass reference then actual to assertEqual
+  * Overwrite option should not cause policy file reloading
+  * Updated from global requirements
+  * Setup translations
+  * Have the enforcer have its own file cache
+  * Updated from global requirements
+  * Updated from global requirements
+- adjust Requires according requirements.txt
+
+-------------------------------------------------------------------
+Tue Jul 28 12:56:21 UTC 2015 - tbechtold@suse.com
+
+- update to 0.8.0:
+  * Updated from global requirements
+  * Fix typo of 'available' in token_fixture.py
+  * Fixes up the API docs and module index
+- adjust Requires according requirements.txt
+
+-------------------------------------------------------------------
+Fri Jul 17 08:11:27 UTC 2015 - tbechtold@suse.com
+
+- update to 0.7.0:
+  * Remove oslo-incubator specific code
+  * Move fileutils functions to oslo.policy
+  * Add six and oslo.utils to requirements
+  * Add tox target to find missing requirements
+  * Updated from global requirements
+  * Updated from global requirements
+- Update Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Wed Jun 10 18:03:16 UTC 2015 - tbechtold@suse.com
+
+- update to 0.6.0:
+  * Fix Enforcer docstring
+- Run testsuite in parallel
+
+-------------------------------------------------------------------
+Mon Jun  8 14:03:31 UTC 2015 - tbechtold@suse.com
+
+- update to 0.5.0:
+  * Expose base check classes as part of public API
+  * Uncap library requirements for liberty
+  * Fix invalid indentation in _load_policy_file method
+  * Cleanup README.rst and setup.cfg
+  * Avoid reloading policy files in policy.d for every call
+  * Lists for Generic Checks
+  * Updated from global requirements
+- Update Requires according to requirements.txt
+
+-------------------------------------------------------------------
+Mon Jun  1 07:15:10 UTC 2015 - dmueller@suse.com
+
+- remove wildcards from the filelist
+
+-------------------------------------------------------------------
+Mon Mar 16 16:12:07 UTC 2015 - tbechtold@suse.com
+
+- Enable tests during build
+- Adjust Requires and BuildRequires
+
+-------------------------------------------------------------------
+Mon Mar 16 16:05:52 UTC 2015 - tbechtold@suse.com
+
+- Initial packaging
+

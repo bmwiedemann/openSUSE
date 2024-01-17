@@ -1,0 +1,22 @@
+diff --git a/test-suite/tests/numbers.test b/test-suite/tests/numbers.test
+index 59e370e..6b07655 100644
+--- a/test-suite/tests/numbers.test
++++ b/test-suite/tests/numbers.test
+@@ -5309,7 +5309,7 @@
+                                     d))))))))
+ 
+     (with-test-prefix "fractions"
+-      (for '((1/10 16/3 10/7))  ;; denominators
++      (for '((1/10 16/3))  ;; denominators
+            (lambda (d)
+              (for '((0 1 2 5 1/2 3/2 5/2))  ;; multiples
+                   (lambda (m)
+@@ -5319,7 +5319,7 @@
+                                     d))))))))
+ 
+     (with-test-prefix "mixed types"
+-      (for `((10 ,big 12.0 10/7 +inf.0 -inf.0 +nan.0))  ;; denominators
++      (for `((10 ,big 12.0 +inf.0 -inf.0 +nan.0))  ;; denominators
+            (lambda (d)
+              (for `((25 ,(* 3/2 big) 130.0 15/7
+                         0 0.0 -0.0 +inf.0 -inf.0 +nan.0))  ;; numerators

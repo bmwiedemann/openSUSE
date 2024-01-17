@@ -1,0 +1,10 @@
+<package name="mtr" project="openSUSE:Factory">
+  <title>Ping and Traceroute Network Diagnostic Tool</title>
+  <description>Mtr is a network diagnostic tool that combines Ping and Traceroute into
+one program. This package contains the mtr version with an ncurses
+interface, in other words, the text mode version is usable in a shell
+(telnet or SSH session, for example).
+
+Find the graphical version in the mtr-gtk package.</description>
+  <devel project="network:utilities" package="mtr"/>
+</package>

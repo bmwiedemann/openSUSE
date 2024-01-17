@@ -1,0 +1,344 @@
+-------------------------------------------------------------------
+Mon Mar 20 07:37:32 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.10.1
+  * Fixed: Loading image from stdin single instance client runner
+    side doesn't work.
+
+-------------------------------------------------------------------
+Mon May 23 07:40:04 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.10.0
+  New
+  * Set image save location on command line.
+  * Add debug logging.
+  * Add FTP upload.
+  * Upload image via command line without opening editor.
+  * Add multi-language comment option to desktop file.
+  * Add MimeType of Images to desktop file.
+  * Add .jpeg to open file dialog filter (File > Open).
+  * Escape closes window (and exits when not using tray).
+  * Double-click mouse to confirm rect selection.
+  * Activate tab that is prompting for save.
+  * Add Save all options menu.
+  * Allow overwriting existing files.
+  * Allow setting Imgur upload title/description.
+  * Search bar in the settings dialog.
+  * Make implicit capture delay configurable.
+  * Shortcuts for Actions can be made global and non-global per
+    config.
+  * OCR scan of screenshots (via plugin).
+  Fixed
+  * Opens a new window for each capture.
+  * First cli invocation won't copy image to clipboard.
+  * Snipping area incorrectly positioned with screen scaling.
+  * MainWindow position not restored when outside primary screen.
+  * Interface window isn't restored to the default after tab is
+    closed in maximized state.
+  * Failed Imgur uploads show up titled as 'Upload Successful'.
+  * Preview of screenshot is scaled after changing desktop size.
+  * After an auto start followed by reboot/turn on the window
+    section is stretched.
+  Changed
+  * Improve translation experience by using full sentences.
+  * Make switch 'to select tool after drawing item' by default
+    disabled.
+- Drop %check since tests are now using new dependencies that are
+  not available out of the box *SUSE
+
+-------------------------------------------------------------------
+Thu Nov 25 23:12:07 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.9.2
+  New
+  * Set image save location on command line.
+  * Add debug logging.
+  * Add FTP upload.
+  * Upload image via command line without opening editor.
+  * Add multi-language comment option to desktop file.
+  * Add MimeType of Images to desktop file.
+  * Add .jpeg to open file dialog filter (File > Open).
+  * Escape closes window (and exits when not using tray).
+  Fixed
+  * Opens a new window for each capture.
+  * First cli invocation won't copy image to clipboard.
+  Changed
+  * Improve translation experience by using full sentences.
+
+-------------------------------------------------------------------
+Sun Sep 19 10:04:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.9.1
+  Fixed
+  * Dropped temporary images appear in the open recent menu.
+  * Resizing window to match content doesn't work on opening first
+    image/screenshot.
+  * Cursor not captured in rectangle capture.
+
+-------------------------------------------------------------------
+Sat Jun  5 12:50:27 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.9.0
+  New
+  * Add option to select the default action for tray icon left
+    click.
+  * Open/Paste from clipboard via tray icon.
+  * Show/hide toolbar and annotation settings with TAB.
+  * Add setting for auto hiding toolbar and annotator settings.
+  * Allow setting transparency of not selected snipping area
+    region.
+  * Resize selected rect area with arrow keys.
+  * Copy a screenshot to clipboard as data URI.
+  * Allow disabling tray icon notifications.
+  * Provide option to open recent files.
+  * Allow disabling auto resizing after first capture.
+  * Drag and Drop from ksnip to other applications.
+  * Add support for KDE Plasma notification service.
+  * User-defined actions for taking screenshot and
+    post-processing.
+  * Add 'hide main window' option to actions.
+  Fixed
+  * Not possible to change adorner color.
+  * ksnip --version output printed to stderr.
+
+-------------------------------------------------------------------
+Tue Mar 23 10:48:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.8.2
+  Fixed:
+  * Add missing includes to build on UNIX.
+  * Ksnip starts minimized.
+  * Main window still show after screenshot when corresponding
+    option disabled.
+  * Cancel screenshot shows main window when window was hidden.
+  * Close button hidden after taking screenshot under kwin.
+
+-------------------------------------------------------------------
+Sat Mar 13 11:25:34 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.8.1
+  * Changed: Allow changing adorner color for rect area selection.
+    (#519)
+  * Changed: Notarize ksnip for macOS. (#402)
+  * Changed: Default font for numbering tool change to Arial.
+    (#200)
+  * Changed kImageAnnotator: Horizontally align text inside spin
+    box. (#203)
+  * Changed kImageAnnotator: Change zoom with mouse wheel to
+    CTRL+Wheel. (#210)
+  * Fixed: If file selection is cancelled during ksnip's file open
+    dialog via tray icon, ksnip closes. (#503)
+  * Fixed: Cancel on Quit not work when editor is hidden. (#342)
+  * Fixed: Canceling rect area selection activates main window.
+    (#521)
+  * Fixed: Enter key doesn't finishes resizing. (#523)
+  * Fixed: Missing version number in mac binaries. (#401)
+  * Fixed: Canceling save dialog show the option save path in the
+    header. (#545)
+  * Fixed: Save-as Window does not get focus when using snap.
+    (#543)
+  * Fixed: Editor can not be shown again after click close icon.
+    (#400)
+  * Fixed: Icons and text boxes not correctly scaled under gnome
+    with hdpi. (#549)
+  * Fixed: Window captures include non-transparent border of
+    background on Gnome. (#460)
+  * Fixed: Annotating hidpi image downscales the result after being
+    saved. (#172)
+  * Fixed kImageAnnotator: Brazilian Portuguese translation not
+    loaded. (#176)
+  * Fixed kImageAnnotator: error: control reaches end of non-void
+    function. (#177)
+  * Fixed kImageAnnotator: Cursor in Text tool have too bad
+    visibility. (#184)
+  * Fixed kImageAnnotator: bumped SONAME without name change.
+    (#185)
+  * Fixed kImageAnnotator: Entering multiple characters at once
+    moves the text cursor only for one character. (#186)
+  * Fixed kImageAnnotator: Activating context menu while drawing
+    item leaves item in error state. (#196)
+  * Fixed kImageAnnotator: Icons not scaled on gnome with hdpi
+    enabled. (#201)
+  * Fixed kImageAnnotator: Text/Number Pointer and Text/Number
+    Arrow don't inherit Text/Number Font in Settings. (#208)
+
+-------------------------------------------------------------------
+Mon Dec 14 20:57:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Run testsuite
+
+-------------------------------------------------------------------
+Mon Dec 14 20:28:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.0
+  New:
+  * Pin screenshots in frameless windows that stay in foreground.
+  * Support for unit tests.
+  * Add brew cask package for ksnip.
+  * Allow setting image quality when saving images.
+  * Add support for cross-platform wayland screenshots using
+    xdg-desktop-portal.
+  * Add save and save as tab contextMenu items.
+  * Add open directory context menu item on capture tabs.
+  * Add copy path to clipboard context menu item on capture tabs.
+  * Add option to delete saved images.
+  * Add support for loading image from stdin.
+  * Add screenshot options as application actions to desktop file.
+  * Allow renaming existing images.
+  * Make hiding main window during screenshot optional.
+  * Open several files at once in tabs.
+  * Allow modifying selected rectangle before making screenshot.
+  * Option to keep main window hidden after a taking screenshot.
+  Changed:
+  * Show all Screenshot options in System Tray.
+  * Upload multiple stickers at once.
+  * Follow pattern for monochromatic systray icon.
+  * Pin window shows default cursor when mouse over it.
+  * Cancel snipping area if no selection made after 60 sec.
+  * Allow removing imgur account.
+  Fixed:
+  * zh_Hans translation won't load.
+  * Ksnip only saves the upper right part of the screenshot with
+    HiDPI.
+  * Main window not resized with new captures.
+  * Brazilian Portuguese translation not loaded.
+
+-------------------------------------------------------------------
+Fri Jul 31 19:37:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.3
+  * Install svg icon file in hicolor theme dir instead of
+    usr/share/pixmaps/.
+- Update to version 1.7.2
+  Changed:
+  * Stop upload script when process writes to stderr.
+  * Upload script uses regex to select output for clipboard.
+  Fixed:
+  * Ksnip becomes unresponsive when file dropped into it.
+  * Ksnip window always visible on screenshots on Gnome Wayland.
+
+-------------------------------------------------------------------
+Thu Jun 25 19:32:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.1
+  Fixed:
+  * User not prompted to save when taking new screenshot without
+    tabs.
+
+-------------------------------------------------------------------
+Fri Jun 19 07:25:11 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0
+  New:
+  * Pasting image or path to image from clipboard.
+  * Save to same file when editing existing image.
+  * Support for PrtScrn hotkey.
+  * Auto save new screenshot.
+  * Remember file for already saved images.
+  * Add support for drag and drop images into ksnip.
+  * Insert embedded image into an existing screenshot.
+  * Show screenshots in tabs.
+  * Add Maximize Window Button in Print Preview.
+  * Click on toast message opens content.
+  * Remember last used folder in the save file dialog.
+  * Custom script for upload images.
+  * Disable single global hotkey by clearing the shortcut.
+  * Run ksnip as single instance.
+  * Add option for disabling tabs.
+  * Add count wildcard format for filename.
+  * Allow to change upload imgur URI.
+  * Support for adding custom stickers.
+  Changed:
+  * Save As option was added and useInstantSave config was removed.
+  * Disable scroll down with zero value in timeout widget.
+  * Disable unsupported capture modes in settings.
+  Fixed:
+  * Compilation error with Qt 5.15.
+  * Undo and redo translation reverts back to English.
+  * When 'Capture Save Location' is not set, ksnip fails to save.
+  * Connections that required ssl not working on AppImages.
+  * Main window hangs when pressing Esc on selecting screenshot
+    area state.
+  * Unable to resize ksnip window.
+  * Rectangle picker is not closed with -r -s switches when mouse
+    button is released.
+- Remove patch (fixed upstream):
+  * 0001-Fix-compilation-error-with-Qt-5.15-279.patch
+
+-------------------------------------------------------------------
+Fri Jun  5 18:29:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.6.2
+  * Changed: Add missing plugs to silence snap socket warnings.
+  * Fixed: Window decoration and alt+tab menu show Wayland generic icon on KDE Plasma.
+  * Fixed: Logout canceled by 'ksnip' under KDE.
+  * Fixed: Ksnip not displayed on the monitor (off screen).
+  * Fixed: CTRL+Q to quit Ksnip not working.
+  * Fixed: Global Hotkeys not working with activated Num and Caps Lock under X11.
+  * Fixed: Meta Global Hotkey under X11 not working.
+- Add upstream patch:
+  * 0001-Fix-compilation-error-with-Qt-5.15-279.patch
+
+-------------------------------------------------------------------
+Wed Feb 26 13:57:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.1
+  * Allow opening link directly to image without opening in browser.
+  * Always use transparent snipping area background for Wayland.
+  * Disable unavailable config options.
+
+-------------------------------------------------------------------
+Sun Feb  9 22:20:46 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.0
+  New:
+  * Make captured cursor an item which can be moved and deleted.
+  * Add watermarks to annotated image.
+  * Add crop button to toolbar.
+  * Add undo and redo button on toolbar.
+  * Make if watermark is rotated a config option.
+  * Do not open image uploaded to imgur in browser.
+  * Add shortcuts for taking screenshots.
+  * Add Global HotKeys for X11.
+  * Provide option to use previous capture area.
+  * Add System Tray Icon.
+  * Show tray icon notification after image was uploaded to
+    imgur or saved.
+  * Add support for Open-with.
+  * Open ksnip minimized to tray.
+  Changed:
+  * Change copy icon.
+  * Before discarding ask if user want save or not or cancel.
+  * Shortcut for imgur upload was changed to Shift + i.
+  Fixed:
+  * Wildcards in path are not resolved.
+  * CLI arg --rectarea doesn't work.
+  * Add shortcut for File Menu in Main Menu.
+  * Prompt to save before exit enabled now by default.
+  * Configuration Window not translated.
+  * ksnip opens anyway with -s option specified.
+  * Open Image with full size window doesn't resize main window.
+  * Can't work correctly when using scaled display.
+  * ksnip opens outside desktop if last saved position was on n
+    longer available monitor.
+  * Window demaximize when taking a new screenshot.
+  * Add support for Chinese Text Input.
+- Drop patch:
+  * ksnip-fix-install-dir.patch (not longer needed)
+
+-------------------------------------------------------------------
+Mon Jan 13 21:14:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Drop superflous "Recommends: %{name}-lang"
+
+-------------------------------------------------------------------
+Sun Dec 29 19:57:33 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Package stable release, version 1.5.0
+- Add patch:
+  * ksnip-fix-install-dir.patch
+
+-------------------------------------------------------------------
+Thu Jun  6 17:43:11 UTC 2019 - Андрей Алыпов <and.november@opensuse.org>
+
+- initial package (version 1.6.0) for openSUSE

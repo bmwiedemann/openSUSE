@@ -1,0 +1,188 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>73ba805fe49ceef26572d2ff660d2496</srcmd5>
+    <version>2.13.4</version>
+    <time>1665185005</time>
+    <user>RBrownFactory</user>
+    <comment>new package ansible-core that contains the core functionality that was previously in the ansible package
+- rpmlintrc copied from the old package and adapted
+- new ansible package will be submitted separately</comment>
+    <requestid>1008358</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>38ec01a7b6a70411d5cd3da3cb3dc3a8</srcmd5>
+    <version>2.13.5</version>
+    <time>1665591939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010144</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e3ccbbdf33425b2fe791363fadbd6c81</srcmd5>
+    <version>2.13.6</version>
+    <time>1668702272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035976</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>11a45f8ade88e921099babee4e451320</srcmd5>
+    <version>2.14.0</version>
+    <time>1669129833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037239</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0ef59d1fa120c263eea1383702eea8e4</srcmd5>
+    <version>2.14.0</version>
+    <time>1669378390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038047</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>27bdfcbf690635109a7077e07a107ebb</srcmd5>
+    <version>2.14.0</version>
+    <time>1669983215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039506</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>8674cd481025e8cd1fcec97f5db11bf3</srcmd5>
+    <version>2.14.0</version>
+    <time>1670430929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040861</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>76aa0538488994d871a28e8666d7bf64</srcmd5>
+    <version>2.14.1</version>
+    <time>1670588282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041722</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8cbdb69896b1256ac97ab582b9d61e1e</srcmd5>
+    <version>2.14.2</version>
+    <time>1675792147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063484</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d4085959872fed19cf59d7dd88b2dc04</srcmd5>
+    <version>2.14.3</version>
+    <time>1678283564</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069973</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>62599c69440823730d3a66368360d2c1</srcmd5>
+    <version>2.14.4</version>
+    <time>1680018664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074995</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3edc44657b7a86710fc4afdcaade29b1</srcmd5>
+    <version>2.14.5</version>
+    <time>1682433741</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082571</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>3e19bc3612e83ecde40ac3ef8bc38b0d</srcmd5>
+    <version>2.14.5</version>
+    <time>1682959892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083850</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>55d65c890efebe4be6a3fa73d7f4e3b7</srcmd5>
+    <version>2.15.0</version>
+    <time>1684754080</time>
+    <user>dimstar_suse</user>
+    <comment>- major update to 2.15.0:
+  https://github.com/ansible/ansible/blob/v2.15.0/changelogs/
+  CHANGELOG-v2.15.rst
+
+- modify %if-condition to allow building for python3.10 or
+  python3.11 on SLES15
+
+- change python version on Leap15/SLES15 to python3.11 to use the
+  new stack supported by SUSE</comment>
+    <requestid>1088276</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>02eeda037ee2337b6b1d08bc7a9a3eb8</srcmd5>
+    <version>2.15.1</version>
+    <time>1687379995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094258</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>686e1cd4a3dffc364840f0b180e48a75</srcmd5>
+    <version>2.15.2</version>
+    <time>1689710912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099211</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7ae6fef02ed6a04dd6d418b9446c8b1c</srcmd5>
+    <version>2.15.3</version>
+    <time>1694200564</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109675</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e1298c0f43bd303decf4c817dc0cee2f</srcmd5>
+    <version>2.15.4</version>
+    <time>1694545439</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110578</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ae40b2d417be8ed8f78ce70f82b82866</srcmd5>
+    <version>2.15.5</version>
+    <time>1696964431</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116561</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>358aad6dc5d7a2b24ec85565d45bbd89</srcmd5>
+    <version>2.15.6</version>
+    <time>1699388862</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123920</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>eaf8b30243619321b4b11d74b2e0c76b</srcmd5>
+    <version>2.15.7</version>
+    <time>1701792201</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130887</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>68ebe8a276572a6c906027e7d7c0f5a0</srcmd5>
+    <version>2.15.8</version>
+    <time>1702488893</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132748</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,189 @@
+Index: mtr-0.95/Makefile.am
+===================================================================
+--- mtr-0.95.orig/Makefile.am
++++ mtr-0.95/Makefile.am
+@@ -35,10 +35,14 @@ mtr.8: $(srcdir)/man/mtr.8.in
+ 	$(AM_V_GEN) $(srcdir)/build-aux/mangen.sh "$(VERSION)" \
+ 		$(srcdir)/man/mtr.8.in $@
+ 
++xmtr.8: $(srcdir)/man/xmtr.8.in
++	$(AM_V_GEN) $(srcdir)/build-aux/mangen.sh "$(VERSION)" \
++		$(srcdir)/man/xmtr.8.in $@
++
+ $(PATHFILES): Makefile
+ 
+-dist_man_MANS = mtr.8 mtr-packet.8
+-PATHFILES += man/mtr.8 man/mtr-packet.8
++dist_man_MANS = mtr.8 mtr-packet.8 xmtr.8
++PATHFILES += man/mtr.8 man/mtr-packet.8 man/xmtr.8
+ 
+ install-exec-hook:
+ 	`setcap cap_net_raw+ep $(DESTDIR)$(sbindir)/mtr-packet` \
+Index: mtr-0.95/man/xmtr.8.in
+===================================================================
+--- mtr-0.95.orig/man/xmtr.8.in
++++ mtr-0.95/man/xmtr.8.in
+@@ -1,8 +1,8 @@
+-.TH MTR 8 "@VERSION@" "mtr" "System Administration"
++.TH XMTR 8 "@VERSION@" "xmtr" "System Administration"
+ .SH NAME
+-mtr \- a network diagnostic tool
++xmtr \- a network diagnostic tool
+ .SH SYNOPSIS
+-.B mtr
++.B xmtr
+ [\c
+ .BR \-4 |\c
+ .B \-6\c
+@@ -114,7 +114,7 @@ mtr \- a network diagnostic tool
+ ]
+ .I HOSTNAME
+ .SH DESCRIPTION
+-.B mtr
++.B xmtr
+ combines the functionality of the
+ .B traceroute
+ and
+@@ -122,15 +122,15 @@ and
+ programs in a single network diagnostic tool.
+ .PP
+ As
+-.B mtr
++.B xmtr
+ starts, it investigates the network connection between the host
+-.B mtr
++.B xmtr
+ runs on and
+ .BR HOSTNAME
+ by sending packets with purposely low TTLs.  It continues to send
+ packets with low TTL, noting the response time of the intervening
+ routers.  This allows
+-.B mtr
++.B xmtr
+ to print the response percentage and response times of the internet
+ route to
+ .BR HOSTNAME .
+@@ -145,7 +145,7 @@ and the percentage of packet loss.
+ Print the summary of command line argument options.
+ .TP
+ .B \-v\fR, \fB\-\-version
+-Print the installed version of mtr.
++Print the installed version of xmtr.
+ .TP
+ .B \-4
+ Use IPv4 only.
+@@ -158,11 +158,11 @@ Reads the list of hostnames from the spe
+ .TP
+ .B \-r\fR, \fB\-\-report
+ This option puts
+-.B mtr
++.B xmtr
+ into
+ .B report
+ mode.  When in this mode,
+-.B mtr
++.B xmtr
+ will run for the number of cycles specified by the
+ .B \-c
+ option, and then print statistics and exit.
+@@ -170,30 +170,30 @@ option, and then print statistics and ex
+ \c
+ This mode is useful for generating statistics about network quality.
+ Note that each running instance of
+-.B mtr
++.B xmtr
+ generates a significant amount of network traffic.  Using
+-.B mtr
++.B xmtr
+ to measure the quality of your network may result in decreased
+ network performance.
+ .TP
+ .B \-w\fR, \fB\-\-report\-wide
+ This option puts
+-.B mtr
++.B xmtr
+ into
+ .B wide report
+ mode.  When in this mode,
+-.B mtr
++.B xmtr
+ will not cut hostnames in the report.
+ .TP
+ .B \-x\fR, \fB\-\-xml
+ Use this option to tell
+-.B mtr
++.B xmtr
+ to use the xml output format.  This format is better suited for
+ automated processing of the measurement results.
+ .TP
+ .B \-t\fR, \fB\-\-curses
+ Use this option to force
+-.B mtr
++.B xmtr
+ to use the curses based terminal
+ interface (if available).
+ In case the list of hops exceeds the
+@@ -215,10 +215,10 @@ information.
+ .TP
+ .B \-g\fR, \fB\-\-gtk
+ Use this option to force
+-.B mtr
++.B xmtr
+ to use the GTK+ based X11 window interface (if available).
+ GTK+ must have been available on the system when
+-.B mtr
++.B xmtr
+ was built for this to work.  See the GTK+ web page at
+ .UR http://\:www.\:gtk.\:org/
+ .UE
+@@ -264,27 +264,27 @@ MTR.0.86+git:16e39fc0;1435562787;OK;nic.
+ .TP
+ .B \-j\fR, \fB\-\-json
+ Use this option to tell
+-.B mtr
++.B xmtr
+ to use the JSON output format.  This format is better suited for
+ automated processing of the measurement results.
+ Jansson library must have been available on the system when
+-.B mtr
++.B xmtr
+ was built for this to work.
+ .TP
+ .B \-p\fR, \fB\-\-split
+ Use this option to set
+-.B mtr
++.B xmtr
+ to spit out a format that is suitable for a split-user interface.
+ .TP
+ .B \-n\fR, \fB\-\-no\-dns
+ Use this option to force
+-.B mtr
++.B xmtr
+ to display numeric IP numbers and not try to resolve the
+ host names.
+ .TP
+ .B \-b\fR, \fB\-\-show\-ips
+ Use this option to tell
+-.B mtr
++.B xmtr
+ to display both the host names and numeric IP numbers.  In split mode
+ this adds an extra field to the output.  In report mode, there is usually
+ too little space to add the IPs, and they will be truncated.  Use the
+@@ -379,7 +379,7 @@ Specifies value for type of service fiel
+ .TP
+ .B \-e\fR, \fB\-\-mpls
+ Use this option to tell
+-.B mtr
++.B xmtr
+ to display information from ICMP extensions for MPLS (RFC 4950)
+ that are encoded in the response packets.
+ .TP
+@@ -437,7 +437,7 @@ is 32 unsigned integer.  See
+ .BR socket (7)
+ for full description of this socket option.
+ .SH ENVIRONMENT
+-.B mtr
++.B xmtr
+ recognizes a few environment variables.
+ .TP
+ .B MTR_OPTIONS

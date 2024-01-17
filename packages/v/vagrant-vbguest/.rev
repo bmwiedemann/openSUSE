@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2ee589167a8eed07bfaeca5e15580a74</srcmd5>
+    <version>0.31.0</version>
+    <time>1673284785</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.31.0</comment>
+    <requestid>1057137</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7e90d4dea7cedf3cf1651176f2cda8f5</srcmd5>
+    <version>0.31.0</version>
+    <time>1676990202</time>
+    <user>dimstar_suse</user>
+    <comment>- Added %global macros for correctly determine the version of ruby.</comment>
+    <requestid>1066982</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>78683c3283db86e66b3b4cb5687f6cdd</srcmd5>
+    <version>0.32.0</version>
+    <time>1703102599</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.32.0.
+  * Fixed testing for running GuestAdditions on Linux,
+    when reading /proc/modules returns in multiple chunks.
+  * Don't unmount the GuestAdditions iso when it's not mounted.
+    Ignore errors during un-mounting.</comment>
+    <requestid>1134151</requestid>
+  </revision>
+</revisionlist>

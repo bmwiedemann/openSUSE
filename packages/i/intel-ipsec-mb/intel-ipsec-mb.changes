@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Fri Nov 17 13:58:40 UTC 2023 - Tomasz Kantecki <tomasz.kantecki@intel.com>
+
+- Update to v1.5:
+  * CMake MinGW support added.
+  * QUIC CHACHA20-POLY1305 and CHACHA20 HP API added.
+  * AVX2-VAES AES-CTR and AES-GCM implementations added.
+  * SSE SM4-ECB and SM4-CBC implementations added.
+  * x86-64 SM3 and SM3-HMAC implementations added.
+  * Self-Test callback functionality added with message corrupt option.
+  * Implemented a workaround for false load-block condition in SSE AES-CBC implementations.
+  * Optimized CRC32 algorithms, AES-GCM AVX2 and AES-GCM AVX512 implementations.
+  * Updated ACVP app (imb-acvp) to support libacvp v2.0+.
+  * Test vector format standardized for various algorithms (CBC/CFB/CTR/ECB/DES/GCM/CCM/CHACHA20-POLY/SNOW3G/ZUC/KASUMI/SNOW-V).
+  * Extended xvalid app to test burst API.
+  * Burst API is used by default in imb-perf tool.
+- Fixed issues:
+  * CMake files ignore LIB_INSTALL_DIR and incorrectly put the shared libraries in /usr/lib (issue #125)
+  * The CMakefile does not install the headers (normal Makefile does) (issue #126)
+  * File ./test/acvp-app/utils.o is not removed after "make clean" (issue #130)
+  * nasm can not find .inc .asm files when building with CMake (issue #131)
+- More details at https://github.com/intel/intel-ipsec-mb/releases/tag/v1.5
+
+-------------------------------------------------------------------
+Tue Aug  8 23:23:50 UTC 2023 - Tomasz Kantecki <tomasz.kantecki@intel.com>
+
+- Update to v1.4:
+  * POLY1305 AVX2 with AVX-IFMA instructions added.
+  * Optimized GHASH component in AVX512 VAES (type2) AES-GCM implementation.
+  * Implemented a workaround for false load-block condition in SSE and AVX2 AES-GCM implementations.
+  * Removed AVX AES-GCM implementation, its API symbols map to the SSE implementation.
+  * QUIC header protection API added.
+  * QUIC AES-GCM-128/256 AEAD API added.
+  * Removed v0.53 (and older) compatibility symbol mapping (NO_COMPAT_IMB_API_053 not defined).
+  * ZUC AVX2-GFNI implementation added.
+  * SHA-NI instructions enabled to use in SHA1/224/256 direct API
+  * New API (imb_set_session) added to be used with burst API, helping speeding up the crypto scheduling.
+  * New API added to calculate IPAD/OPAD for SHAx-HMAC.
+  * New direct API added to calculate DES-CFB and AES-CFB-256 on a single block.
+- Fixed issues:
+  * MB_MGR corruption at initialization
+  * Performance scaling
+- More details at https://github.com/intel/intel-ipsec-mb/releases/tag/v1.4
+
+-------------------------------------------------------------------
+Wed Oct  5 12:38:24 UTC 2022 - Stephen Mcintyre <stephen.mcintyre@intel.com>
+
+- Update for release package v1.3
+
+-------------------------------------------------------------------
+Thu Mar 31 18:24:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Move documentation out of libintel-ipsec-mb1
+  (conflicts with a future libintel-ipsec-mb2).
+
+-------------------------------------------------------------------
+Fri Mar 11 00:00:00 UTC 2022 - Stephen McIntyre <stephen.mcintyre@intel.com>
+
+- initial version of the SUSE package

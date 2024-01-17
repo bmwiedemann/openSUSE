@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8848078e03e9376ae0bf6a28a3480bf3</srcmd5>
+    <version>0.4.1</version>
+    <time>1596363572</time>
+    <user>dimstar_suse</user>
+    <comment>BuildDep of black-hole-solver</comment>
+    <requestid>823871</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c4cb56fbc2bdbe6642bf2e9cbc9bd2d2</srcmd5>
+    <version>0.8.0</version>
+    <time>1606828969</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  * Enhance and expand the README.
+    https://lists.debian.org/debian-devel-games/2020/03/msg00008.html
+- Update to 0.6.0:
+  * Made the WITH_TEST_SUITE option off by default to avoid depending on cmocka
+    ( https://github.com/shlomif/fortune-mod/issues/44 )
+  * Remove unused code and other cleanups. (forwarded request 851852 from Vogtinator)</comment>
+    <requestid>851853</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ded81a629062d71710029b5aabb14e22</srcmd5>
+    <version>0.10.0</version>
+    <time>1640200681</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941978</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4b0eb8d89a89e4cdc6076837af3ef457</srcmd5>
+    <version>0.10.1</version>
+    <time>1660423019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994878</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>30f00e431ea896270b1b25576a425ec0</srcmd5>
+    <version>0.10.2</version>
+    <time>1702845115</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.10.2:
+  * Exclude .ninja files from trailing space check
+  * Refactoring and minor build-fixes.</comment>
+    <requestid>1133579</requestid>
+  </revision>
+</revisionlist>

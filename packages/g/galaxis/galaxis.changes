@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Sun Aug 16 15:38:32 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 10.0:
+  * Rehosted on GitLab
+  * Fully converted to new shipper-based packaging.
+  * C declaration cleanup.  Passes cppcheck auditing.
+  * Project logo added. 
+
+-------------------------------------------------------------------
+Fri Jun 12 21:16:32 UTC 2015 - nemysis@gmx.ch
+
+- Initial package creation

@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Fri Mar 27 21:05:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.9:
+  * Mouse pointer is now invisible
+  * Customizable refresh rate from 50 (default) to 120 Hz
+  * Optimized one XLib call per frame
+  * Fix Makefile usage
+  * Remove one fall through warning
+
+-------------------------------------------------------------------
+Sat May 27 04:58:50 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort input files to make build reproducible
+  (boo#1041090)
+
+-------------------------------------------------------------------
+Mon Nov 24 19:26:02 UTC 2014 - nemysis@gmx.ch
+
+- Initial package creation
+

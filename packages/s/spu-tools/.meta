@@ -1,0 +1,11 @@
+<package name="spu-tools" project="openSUSE:Factory">
+  <title>User space tools for Cell/B.E.</title>
+  <description>The spu-tools package contains user space tools for Cell/B.E.
+   Currently, it contain two tools: - spu-top: a tool like top to
+   watch the SPU's on a Cell BE System. It shows information about
+   SPUs and running SPU contexts.
+
+- spu-ps: a tool like ps, which dumps a report on the currently running
+SPU contexts.</description>
+  <devel project="Base:System" package="spu-tools"/>
+</package>

@@ -1,0 +1,6 @@
+--- lxde-common-0.99.0/lxde-logout.in	2014-09-01 16:17:11.000000000 +0200
++++ lxde-common-0.99.0-new/lxde-logout.in	2014-10-24 20:22:11.284423916 +0200
+@@ -1,2 +1,2 @@
+ #!/bin/sh
+-lxsession-logout --banner "@prefix@/share/lxde/images/logout-banner.png" --side=top
++lxsession-logout --banner "@prefix@/share/lxde/images/suse-logout.png" --side=top

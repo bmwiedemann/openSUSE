@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c4af79f1de02906da8fd9a56e2152a31</srcmd5>
+    <version>2.7.0</version>
+    <time>1430165330</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>304166</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c460714326e3b2cd9ced8a848141f37a</srcmd5>
+    <version>2.7.4</version>
+    <time>1498485414</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506215</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ed78e77a7b004ff89499b738d9cc4fec</srcmd5>
+    <version>2.7.4</version>
+    <time>1499754443</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509128</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>21098e041f2fd670fa049abfaab82c15</srcmd5>
+    <version>2.7.4</version>
+    <time>1544726695</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654064</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>5b0a1f6c130a53e54bead9c9d3ec4e36</srcmd5>
+    <version>2.7.4</version>
+    <time>1564484447</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with pytest4+ (both in git of upstream):
+  * pytest4.patch
+  * py2encoding.patch
+- Use fdupes
+- Update URL
+- Make sure py2 tests are run too</comment>
+    <requestid>716224</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>653c7595d250a975f9697ad5e1dd4a22</srcmd5>
+    <version>2.7.4</version>
+    <time>1624462687</time>
+    <user>dimstar_suse</user>
+    <comment>- Add NullMatcherClass-hashable.patch which adds __hash__
+  method to NullMatcherClass, so that it works with Sphinx4
+  (gh#whoosh-community/whoosh#570).
+</comment>
+    <requestid>901102</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>9d29b3014dd5bcb718d59d81295c9ce2</srcmd5>
+    <version>2.7.4</version>
+    <time>1682691743</time>
+    <user>dimstar_suse</user>
+    <comment>- Move documentation into the main package for SLE15</comment>
+    <requestid>1083127</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>fe4d4a2b58534b2c93771a6dd026d55d</srcmd5>
+    <version>2.7.4</version>
+    <time>1683037100</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68)
+</comment>
+    <requestid>1083919</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>ff83eb9ef970473b70af786dd3e89554</srcmd5>
+    <version>2.7.4</version>
+    <time>1683212975</time>
+    <user>dimstar_suse</user>
+    <comment>- fix line endings</comment>
+    <requestid>1084256</requestid>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>a3931a6379c8f2738c57d6541edf907e</srcmd5>
+    <version>2.7.4</version>
+    <time>1694113965</time>
+    <user>anag+factory</user>
+    <comment>- Update in SLE-15 (bsc#1197830)</comment>
+    <requestid>1109333</requestid>
+  </revision>
+</revisionlist>

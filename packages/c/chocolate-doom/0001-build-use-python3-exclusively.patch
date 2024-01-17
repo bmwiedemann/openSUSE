@@ -1,0 +1,89 @@
+From b291e003c04431557c7369c12f2febd1aa233109 Mon Sep 17 00:00:00 2001
+From: Fabian Greffrath <fabian@greffrath.com>
+Date: Fri, 27 Nov 2020 09:17:04 +0100
+Subject: [PATCH] build: use python3 exclusively
+
+Python 2 is deprecated and is going to be removed from Linux
+distributions in the short term [1,2]. Thus, (parts of) the build
+process will fail on current systems like e.g. Debian unstable.
+
+The /bin/python binary is not going to exist anymore. The canonical
+name for the Python 3 binary is, you guess it, /bin/python3. So, let's
+just use this during our build process and go future proof.
+
+Fixes #1158.
+
+[1] https://wiki.debian.org/Python#Python_in_Debian
+[2] https://wiki.debian.org/Python/2Removal
+---
+ configure.ac                  |    2 +-
+ data/convert-icon             |    2 +-
+ man/docgen                    |    2 +-
+ man/simplecpp                 |    2 +-
+ pkg/win32/cp-with-libs        |    2 +-
+ textscreen/fonts/convert-font |    2 +-
+ 6 files changed, 6 insertions(+), 6 deletions(-)
+
+Index: chocolate-doom-3.0.1/configure.ac
+===================================================================
+--- chocolate-doom-3.0.1.orig/configure.ac
++++ chocolate-doom-3.0.1/configure.ac
+@@ -16,7 +16,7 @@ orig_CFLAGS="$CFLAGS"
+ 
+ AC_PROG_CC
+ AC_PROG_RANLIB
+-AC_CHECK_PROG(HAVE_PYTHON, python, true, false)
++AC_CHECK_PROG(HAVE_PYTHON, python3, true, false)
+ 
+ OPT_LEVEL=2
+ 
+Index: chocolate-doom-3.0.1/data/convert-icon
+===================================================================
+--- chocolate-doom-3.0.1.orig/data/convert-icon
++++ chocolate-doom-3.0.1/data/convert-icon
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ #
+ # Copyright(C) 2005-2014 Simon Howard
+ #
+Index: chocolate-doom-3.0.1/man/docgen
+===================================================================
+--- chocolate-doom-3.0.1.orig/man/docgen
++++ chocolate-doom-3.0.1/man/docgen
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # 
+ # Chocolate Doom self-documentation tool.  This works similar to javadoc
+ # or doxygen, but documents command line parameters and configuration
+Index: chocolate-doom-3.0.1/man/simplecpp
+===================================================================
+--- chocolate-doom-3.0.1.orig/man/simplecpp
++++ chocolate-doom-3.0.1/man/simplecpp
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ #
+ # Copyright (c) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
+ # Contributors to the Freedoom project.  All rights reserved.
+Index: chocolate-doom-3.0.1/pkg/win32/cp-with-libs
+===================================================================
+--- chocolate-doom-3.0.1.orig/pkg/win32/cp-with-libs
++++ chocolate-doom-3.0.1/pkg/win32/cp-with-libs
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ #
+ # Copyright(C) 2016 Simon Howard
+ #
+Index: chocolate-doom-3.0.1/textscreen/fonts/convert-font
+===================================================================
+--- chocolate-doom-3.0.1.orig/textscreen/fonts/convert-font
++++ chocolate-doom-3.0.1/textscreen/fonts/convert-font
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ #
+ # Copyright(C) 2016 Simon Howard
+ #

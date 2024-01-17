@@ -1,0 +1,28 @@
+From: Ana Guerrero Lopez <aguerrero@suse.com>
+Date: Mon Oct  7 11:47:15 +0200
+Subject: make sure the function returns something
+Upstream: no
+
+diff -Nrua adios-1.13.1.orig/src/core/adiosf.c adios-1.13.1/src/core/adiosf.c
+--- adios-1.13.1.orig/src/core/adiosf.c
++++ adios-1.13.1/src/core/adiosf.c	2019-10-07 11:30:44.886522751 +0200
+@@ -548,6 +548,8 @@
+         adios_common_set_time_aggregation(g, bufsize, sg);
+     }
+     *err = adios_errno;
++    
++    return 0;
+ }
+ 
+ ///////////////////////////////////////////////////////////////////////////////
+diff -Nrua adios-1.13.1.orig/tests/C/flexpath_tests/two_streams/writer.c adios-1.13.1/tests/C/flexpath_tests/two_streams/writer.c
+--- adios-1.13.1.orig/tests/C/flexpath_tests/two_streams/writer.c
++++ adios-1.13.1/tests/C/flexpath_tests/two_streams/writer.c
+@@ -87,6 +87,7 @@
+     
+     adios_close(adios_handle);
+     
++    return 0;
+ }    
+ 
+ int main(int argc, char ** argv)

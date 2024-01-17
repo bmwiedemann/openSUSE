@@ -1,0 +1,5 @@
+<package name="weld-parent" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="weld-parent"/>
+</package>

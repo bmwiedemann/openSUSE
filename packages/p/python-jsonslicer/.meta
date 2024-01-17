@@ -1,0 +1,5 @@
+<package name="python-jsonslicer" project="openSUSE:Factory">
+  <title></title>
+  <description>Stream JSON parser with iterator interface</description>
+  <devel project="devel:languages:python" package="python-jsonslicer"/>
+</package>

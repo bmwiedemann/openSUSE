@@ -1,0 +1,24 @@
+--- lxde-common-0.99.0/desktop.conf	2014-09-01 16:17:11.000000000 +0200
++++ lxde-common-0.99.0-new/desktop.conf	2014-10-24 20:29:31.141398985 +0200
+@@ -2,8 +2,8 @@
+ window_manager=openbox-lxde
+ 
+ [GTK]
+-sNet/ThemeName=Clearlooks
+-sNet/IconThemeName=nuoveXT2
++sNet/ThemeName=Adwaita
++sNet/IconThemeName=Adwaita
+ sGtk/FontName=Sans 10
+ iGtk/ToolbarStyle=3
+ iGtk/ButtonImages=1
+--- lxde-common-0.99.0-new/openbox/rc.xml.in	2014-10-24 20:32:18.001113429 +0200
++++ lxde-common-0.99.0-new-a/openbox/rc.xml.in	2014-10-24 20:29:58.000000000 +0200
+@@ -42,7 +42,7 @@
+ </placement>
+ 
+ <theme>
+-  <name>Onyx</name>
++  <name>Adwaita-ob</name>
+   <titleLayout>NLIMC</titleLayout>
+   <!--
+       available characters are NDSLIMC, each can occur at most once.

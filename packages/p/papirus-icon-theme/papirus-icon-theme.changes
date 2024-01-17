@@ -1,0 +1,2569 @@
+-------------------------------------------------------------------
+Sat Oct  7 06:33:37 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to 20230901: 
+  Added icons
+
+  * ALT Media Writer by @Arbars in #3463
+  * Btrfs Assistant by @morganist in #3509
+  * CBOR serialized content .cbor by @sennoth in #3460
+  * CoffeeScript file .coffee by @sennoth in #3460
+  * CoffeeScript object notation file .cson by @sennoth in #3460
+  * disk-quota (tray icons) #3363 by @SmartFinn
+  * Doom Runner #3522 by @morganist in #3527
+  * Emerald Theme Manager by @SmartFinn
+  * Fall Guys #2358 #2359 by @morganist in #3539
+  * folder-docker #3203 by @SmartFinn
+  * folder-notes #3296 by @SmartFinn
+  * folder-obsidian #3512 by @VPS07 in #3537
+  * folder-systemd by @igor-dyatlov
+  * Gradience #3275 by @morganist in #3531
+  * Haansoft Hangul document *.hwp by @mjkim0727 in #3535
+  * Index (Plasma Mobile) #2007 by @morganist #3528
+  * Inkscape: icon for Shape Builder Tool #3488 by @hervyqa in
+    #3511
+  * Julia file .julia #3409 by @SmartFinn
+  * Kalk (Plasma Mobile) #2007 by @morganist #3528
+  * Kamoso by @morganist in #3515
+  * Kclock (Plasma Mobile) #2007 by @morganist #3528
+  * KDE ISO Image Writer (FlatHub) #2007 by @morganist in #3506
+  * KJots by @mjkim0727 in #3541
+  * KopiaUI #2007 #3359 by @SmartFinn
+  * KRecorder (Plasma Mobile) by @mjkim0727 in #3534
+  * Lagrange by @morganist in #3523
+  * Merkuro Calendar by @mjkim0727 in #3540
+  * Merkuro Contact by @mjkim0727 in #3540
+  * Merkuro Mail by @mjkim0727 in #3540
+  * Microsoft 365 (Webapps) by @mjkim0727 in #3534
+  * Mullvad Browser #2007 #3407 by @SmartFinn
+  * Nvtop #3510 by @morganist in #3513
+  * OpenMW Content Editor (Flathub) by @morganist in #3525
+  * OpenSUSE Welcome by @SmartFinn
+  * Organic Maps #2007 by @morganist in #3508
+  * QMLKonsole (Plasma Mobile) #2007 by @morganist #3528
+  * Recipes file for Just command runner .justfile by @sennoth
+    in #3460
+  * Roblox App (Vinegar) #2007 by @badlydrawnface in #3530
+  * Roblox Studio (Vinegar) #2007 by @badlydrawnface in #3530
+  * Screenshooter icon in GNOME status menu by @SmartFinn
+  * Shredder Duplicate Finder (rmlint) by @SmartFinn
+  * Simply Linux distro icon by @Arbars in #3463
+  * Sonic Robo Blast 2 Kart (AUR) by @badlydrawnface in #3530
+  * StarDict by @Arbars in #3463
+  * start-here-kde by @mjkim0727 in #3534
+  * Stylus CSS preprocessor .styl by @sennoth in #3460
+  * SuperSlicer #3480 by @morganist in #3524
+  * Test speakers window icons (GNOME 44) #3532 by @SmartFinn
+  * Vinegar (Flathub) #2007 #3530 by @SmartFinn
+  * Vlang source file .v by @sennoth in #3460
+  * VueJS single file component .vue by @sennoth in #3460
+  * WebAssembly file .wasm by @sennoth in #3460
+  * YaST Alternatives by @SmartFinn
+  * YaST AppArmor by @morganist in #3526
+  * YaST Auth Client by @morganist in #3526
+  * YaST Relocation Server by @SmartFinn
+  * YaST Services Manager by @morganist in #3526
+  * YaST Systemd Journal by @morganist in #3526
+  * YaST VPN by @morganist in #3526
+
+  Updated icons
+
+  * Document file icon #3375 by @SmartFinn
+  * Document Graphics file icon #3375 by @SmartFinn
+  * Filelight #3451 by @SmartFinn
+  * KDE Partition Manager #3451 by @morganist in #3505
+  * KDE Wallet by @morganist in #3538
+  * LibreOffice Base #3375 by @mjkim0727 in #3533
+  * LibreOffice Calc #3375 by @mjkim0727 in #3533
+  * LibreOffice Chart #3375 by @mjkim0727 in #3533
+  * LibreOffice Draw #3375 by @mjkim0727 in #3533
+  * LibreOffice Impress #3375 by @mjkim0727 in #3533
+  * LibreOffice Main #3375 by @mjkim0727 in #3533
+  * LibreOffice Math #3375 by @mjkim0727 in #3533
+  * LibreOffice Writer #3375 by @mjkim0727 in #3533
+  * package-available #3434 by @SmartFinn
+  * Sweeper #3543 by @SmartFinn
+  * System Software Update by @SmartFinn
+  * YaST Firewall by @morganist in #3526
+  * YaST Install VM by @SmartFinn
+
+  Changes and fixes
+
+  * Fixed icon name for YaST Online Update by @SmartFinn
+    in #3526
+  * Fixed white gaps in CMakeSetup icons
+  * Remap gnome-disks, palimpsest to org.gnome.DiskUtility
+    #3504
+
+  Others
+
+  * Updated installation instruction for Debian 12+
+
+
+- changes from 20230801
+  Added icons
+
+  * Age of Empires II by @gitadum in #3447
+  * Alligator #2007 by @morganist in #3496
+  * Ardour 7 by @hervyqa in #3483
+  * Arianna #2007 #3429 by @morganist in #3499
+  * cinnamon-settings-gestures by @kabishchev in #3450
+  * gtkcord4 (Flathub) #2007 by @badlydrawnface in #3475
+  * Helix #3428 by @hervyqa in #3470
+  * IPlan #3455 by @azadaquib in #3474
+  * Legacy Launcher (FlatHub) #2007 by @morganist in #3500
+  * Media Downloader #3380 by @hervyqa in #3473
+  * OpenJDK 20 by @saikat0511 in #3445
+  * OpenTTD (JGR Patch Pack) #3503
+  * Phasmophobia #3457 by @azadaquib in #3466
+  * Protontricks (Flathub) #2007 by @badlydrawnface in #3475
+  * ProtonUp-Qt (Nixpkg) by @hervyqa in #3471
+  * Qt Visual Graph Editor #3414 by @hervyqa in #3469
+  * Rosalie's Mupen GUI (RMG) by @badlydrawnface in #3472
+  * Slimbook Battery #3459 by @azadaquib in #3468
+  * Solstice WebApp icons by @dominichayesferen in #3490
+  * text-javascript by @DevBlooming in #3458
+  * Tokodon #2007 by @morganist in #3495
+  * USBImager #3415 by @hervyqa in #3486
+  * Yandex Browser (Flathub) #2007 by @badlydrawnface in #3475
+
+  Updated icons
+
+  * GNOME Firmware #2392 by @morganist in #3502
+  * Heroic Games Launcher #3479 by @morganist in #3497
+  * Julia #3341 by @morganist in #3498
+  * Obsidian by @VPS07 in #3444
+  * Thunderbird #3439 by @morganist in #3501
+
+-------------------------------------------------------------------
+Sun Jul 16 10:54:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20230601:
+  Added icons:
+  * Adobe Reader (Flathub) #2007
+  * Baidu Netdisk (Flathub) #2007
+  * Chatterino #3378
+  * Dream Logical World (Steam) #3393
+  * Enpass (Flathub) #2007
+  * Feather (Flathub) #2007
+  * GB Studio (Flathub) #2007
+  * Gluon Scene Builder (Flathub) #2007
+  * Godot 3 (Flathub) #2007
+  * Jellyfin Server (Flathub) #2007
+  * JupyterLab Desktop (Flathub) #2007
+  * Koodo Reader (Flathub) #2007
+  * memento (Flathub) #2007
+  * Micro Text Editor (Flathub) #2007
+  * Pop_Shop! (see
+    https://github.com/PapirusDevelopmentTeam/papirus-icon-
+    theme/issues/3423#issuecomment-1568569943) #3423 #3442
+  * Protégé (Flathub) #2007
+  * Proton VPN (Flathub) #2007 #3438
+  * Puddletag (Flathub) #2007
+  * Pulsar  #2007 #3361 #3394
+  * Remote Viewer (virt-viewer) (Flathub) #2007
+  * RetroArch (Steam) #3422
+  * Ripcord (Flathub) #2007
+  * Roccat-tools (Flathub) #2007
+  * Safe Eyes (Flathub) #2007
+  * SoapUI Open Source (Flathub) #2007
+  * Stretchly (Flathub) #2007
+  * Tenacity (Flathub) #2007
+  * VSCode Exploration #3398
+  * Waterfox (Flathub) #2007
+  * ZSNES (Flathub) #2007
+
+-------------------------------------------------------------------
+Fri Mar  3 20:47:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20230301:
+  Added icons:
+  * Beneath a Steel Sky (Gentoo Portage) #3241
+  * BleachBit #2007
+  * Chatterino #3378
+  * Emby Theater (Flathub) #2007
+  * Exaile (Flathub) #2007
+  * Freeciv gtk+-3.22 client (Flathub) #2007
+  * gImageReader #2007
+  * Google Chrome (unstable) (Flathub) #2007
+  * Gummi (Flathub) #2007
+  * JD-GUI (Flathub) #2007
+  * LTris (Flathub) #2007
+  * Maelstrom (Flathub) #2007
+  * Magicka 2 #3387
+  * OpenArena (Quake3e) (Flathub) #2007
+  * Opera (Flathub) #2007
+  * Pd-extended (Flathub) #2007
+  * Pokete #3386
+  * puNES #2007
+  * SCID (Flathub) #2007
+  * Steam ROM Manager (Flathub) #2007
+  * TigerVNC Viewer (Flathub) #2007
+  * Touhou Luna Nights #3376
+  * Vroid Studio #3368
+
+-------------------------------------------------------------------
+Sat Jan  7 14:45:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20230104:
+  * Komikku
+  * WebCord #3355
+  * Changed Pix symlink target to multimedia-photo-manager
+  * Rename application-dart to text-x-dart
+  * Updated app ids of RSS Guard
+
+-------------------------------------------------------------------
+Mon Dec  5 20:55:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20221201:
+  * Added icons:
+  * icon Apifox #3330
+  * icon Atoms #3306
+  * icon Aviator
+  * icon Boards
+  * icon A Dance Of Fire And Ice
+  * icon Game Of Life
+  * icon Satisfactory
+  * icon Tube Converter
+  * icon Vanilla OS
+  * icon Zap
+  * symlink OpenJDK 19
+  * Updated icons:
+  * recolor Clairvoyant
+  * recolor Obfuscate
+  * Changes and fixes:
+  * fix htop
+
+-------------------------------------------------------------------
+Tue Nov  1 22:34:05 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20221101
+
+* Added icons:
+
+  * icon Eyedropper
+  * icon GridPlayer
+  * icon Helm #3289
+  * icon Hidamari
+  * icon Memento
+  * icon QQmusic
+  * symlink Mixxx #3292
+  * symlink Sigil
+  * symlink YouTube Music (Web app) #3290
+  * Updated icons:
+
+* Updated icons:
+
+  * redesign Google Drive #3293
+  * redesign Nicotine+ #3288
+
+- Version 20220910 changes:
+* Added icons:
+
+  * Ear Tag #3226
+  * mimetypes packages Arch Linux
+  * mimetypes Rnote
+  * Jetbrains Toolbox (tray) #3228
+  * Stella (flatpak)
+  * Kasts #3238
+  * ThiefMD #3235
+  * Naver Whale #3229
+  * ffmpeg #3233
+  * Gabut Download Manager
+  * pacseek #3239
+  * LibreOffice 7.4
+  * Harmonoid
+  * EndeavourOS #3263
+  * Rog Control Center #3261
+  * Cemu
+  * electron12/16/17/18/19
+  * playonlinux4
+  * ED2E_EpicGamesLauncher.0
+  * CE93_RobloxPlayerLauncher.0
+  * 631F_RobloxStudioLauncherBeta.0
+  * Element #3278
+  * Step mimetypes #3022
+  * WebCord #3280
+  * p3x-onenote
+  * DevHub (tray)
+  * Myuzi
+  * Helix #3283
+  * GNOME Crossword Editor #3284
+  * LAMPA
+
+* Updated icons:
+
+  * QT QDBusViewer #3234
+  * Déjà Dup #3279
+  * Raider
+  * Font Downloader
+  * Short Circuit
+  * Quod Libet #3281
+  * Ex Falso #3281
+  * resize Ferdium (tray 22/24) #3285
+
+* Changes and fixes:
+
+  * fix more duplicated icons on actions/apps #3257
+
+- Version 20220808 changes:
+* Added icons:
+
+  * gnu.pspp
+  * qmmp
+  * MongoDB
+  * FreeDownloadManager
+  * Boxi
+  * GNOME Settings
+  * BlueBubbles
+  * Around #3191
+  * Internxt Drive (tray)
+  * TickTick (app & tray)
+  * Vita3K #3204
+  * Morgen (app & tray)
+  * GNOME Crosswords #3200
+  * ToolBox #3199
+  * Bforartists #3193
+  * Plex Desktop
+  * Jetbrains DataSpell #3206
+  * Ferdium (tray) #3207
+  * Clockify (tray)
+  * Flare
+  * HexChat
+  * Material Maker
+  * wechat-uos
+  * Airshipper #3213
+  * Cinny
+  * Logseq
+  * ZapZap
+  * Done
+  * SuperTux
+  * BiglyBT
+  * Open Hardware Monitor #3217
+  * Tagger #3167
+  * Minecraft Bedrock Launcher #3184
+  * MAME
+  * Trilium
+  * NormCap
+  * SysDVR-Qt
+  * Distributor Logo Peppermint #3222
+  * Kasts #3223
+
+* Updated icons:
+
+  * Vaults
+  * Tubefeeder
+  * Cider
+  * Internxt Drive
+  * Flacon #3181
+  * Hackgregator
+  * Trilium
+  * Distributor Logo Lubuntu #3221
+
+* Changes and fixes:
+
+  * change symlinks on Qt5 Tools #3224
+
+-------------------------------------------------------------------
+Sun Jul 10 10:17:14 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20220710
+* Added icons:
+
+  * Gajim (tray)
+  * Thingy #3148
+  * Lunacy
+  * Amberol
+  * Meridius
+  * Pizarra #3151
+  * SAOImageDS9 #3149
+  * Coolero
+  * ProtonUp-Qt
+  * hwloc #3143
+  * Drawio (mime) #3144
+  * Ferdium #3131
+  * GeForce Now (Chrome Web App)
+  * Parsec
+  * G4Music
+  * Lapce
+  * Bazecor #3132
+  * ATLauncher
+  * OpenKJ
+  * Plex HTPC #3054
+  * Polyphone
+  * Geopard #3109
+  * Helvum #3107
+  * Whaler #3106
+  * Time Cop #3105
+  * Webcamoid
+  * Gittyup
+  * Horizon EDA
+  * Coulr
+  * F3D
+  * NotepadNext
+  * Play
+  * YouTube (Chrome Web App) #3156
+  * Notion (Chrome Web App) #3156
+  * Quickgui #3154
+  * QtAV #3158
+  * Soundux #3157
+  * Chrome Canvas
+  * Tidal-hifi #3160
+  * Budgie Control Center #3164
+  * Ubuntu-Budgie Window Shuffler Control #3163
+  * Ubuntu-Budgie WallStreet Control #3162
+  * Ubuntu-Budgie Previews Control #3161
+  * view-barcode-qr #3166
+  * Weka #3165
+  * Skanlite (flatpak)
+  * FFaudioConverter
+  * Kuro (app & tray) #3173
+  * Manyverse
+  * Turbowarp #3169
+  * preferences-security-firewal
+  * preferences-desktop-feedback
+  * preferences-desktop-tablet
+  * preferences-online-accounts
+  * Reddit (Chrome Web App)
+  * UbuntuBudgie QuickChar #3175
+  * CherryTree (flatpak) #3177
+  * Xbox Cloud Gaming (Chrome Web App) #3185
+  * AuthPass #3182
+  * Ayatana Webmail (tray)
+  * MATE Tweak
+  * Ayatana Settings
+  * Ferdi (tray) #3187
+  * (ayatana-)indicator-keyboard 16px #3053
+  * Google Chrome (Flatpak) #2007
+  * Birdtray #3190
+  * VMware Remote Console #3189
+  * XClicker #3174
+
+* Updated icons:
+
+  * KTeaTime #3146
+  * Spot #3079
+  * Yandex Browser
+  * Oh My SVG #3150
+  * Tux Paint
+  * Plex
+  * WezTerm #3153
+  * Rnote
+  * Bottles #3155
+  * Font Downloader #3082
+  * Exodus
+  * Whatsie
+  * Accessories Text Editor #3176
+  * Gufw
+
+* Changes and fixes:
+
+  * fix Chrome Web Apps icons #3156
+
+-------------------------------------------------------------------
+Tue Jun  7 05:29:17 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20220606
+* Added icons:
+
+  * BlackBox
+  * Hbud
+  * TickTick #3093
+  * PolyMC #3100
+  * Collision #3097
+  * Epic Asset Manager #3096
+  * Ambience #3092
+  * Docker Desktop
+  * Heroic Games Launcher
+  * Repomaker
+  * Reactions
+  * Countdown #3091
+  * Paper note
+  * Furtherance #3080
+  * Tubefeeder
+  * Steam Deck Gaming Return
+  * Session Desktop (tray)
+  * Epson Scan 2 #3118
+  * Social #3122
+  * Citations #3121
+  * Crow Translate #3112
+  * Muck #2868
+  * V Notes #3120
+  * Boatswain #3115
+  * GNUnet Messenger #3114
+  * Warp #3113
+  * Inky #3111
+  * Tuhi #3110
+  * RuneLite #2968
+  * MDWriter
+  * Aspia Console/Client
+  * Dialect
+  * EmulationStation Desktop Edition
+  * SGDBoop
+  * Telegrand
+  * DICOM (mime) #3127
+  * Raider #3084
+  * Dia #3128
+  * RiftShare
+  * RetroDeck
+  * WeMeet #3130
+  * qjackctl
+  * ImHex #3133
+  * Btop #3137
+  * Chrome Canvas #3138
+  * Aperture Desk Job
+  * Waydroid
+  * Ryujinx (flatpak)
+
+* Updated icons:
+
+  * Markets #3090
+  * PDF Arranger #3089
+  * Pika Backup #3119
+  * WebArchives #3116
+  * Musescore (mime) #3126
+  * Proton VPN (app & tray) #3125
+  * Chrome Remote Desktop #3136
+
+-------------------------------------------------------------------
+Tue May 10 01:19:21 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20220508
+* Added icons:
+
+  * DuckDuckGo #3012
+  * Betterbird #3011
+  * Ensembles #2996
+  * Smile
+  * Flowtime
+  * Bugdom
+  * OpenJDK 18
+  * KakaoTalk
+  * GNOME 42 Settings application
+  * Keep Talking and Nobody Explodes #2816
+  * ro.go.hmlendea.DL-Desktop
+  * Qtractor #3071
+  * Vivaldi-Snapshot #3066
+  * Java JDK
+  * list-drag-handle-symbolic #3050
+  * NeoChat (tray) #3060
+  * Amberol
+  * Tracks
+  * Cider
+  * Lapce #3030
+  * Kakoune #3029
+  * application-octet-stream (mime) #3027
+  * Ayatana Keyboard Indicator (tray) #3053
+  * ModernDeck (app & tray)
+  * Google Chat Linux (app & tray)
+  * VirusTotal #3015
+  * io.github.mimbrero.WhatsAppDesktop #3062
+  * tinyMediaManager #3023
+  * Roam Research #3031
+  * Athens #3032
+  * Crunchyroll #3044
+  * Jack Mixer #3048
+  * ProtonVPN GUI tray icons #3052
+  * d-tracker #3057
+  * Factor #3064
+  * Hoppscotch #3074
+  * Tracks
+  * Do
+  * Dynamic Wallpaper
+  * Iotas
+  * Warsow game #3073
+  * music-artist-symbolic #3098
+  * music-playlist-symbolic #3098
+  * selection-mode-symbolic #3098
+  * Microsoft Edge #3094
+  * Zettlr #3095
+  * Oh My SVG #3077
+  * Hypatia #3078
+
+* Updated Icons:
+
+  * QuteBrowser #3010
+  * GNOME Dictionary
+  * GNOME Console #3014
+  * Bustle
+  * KDEConnect trusted icons #3061
+  * CopyQ #3051
+
+* Changes and fixes:
+
+  * fix spinner icon size #3055
+  * fix Ensembles (48px)
+  * fix tvdisconnected
+
+-------------------------------------------------------------------
+Wed Apr 20 18:41:16 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 20220302
+  * Fix render issue for org.kde.kalendar icon
+  * Added icons:
+    * TheLounge
+    * TLauncher
+    * Koodo Reader
+    * Portmaster
+    * Confy
+    * Parapara
+  * Updated icons:
+    * Calligra Sheets/Stage/Words
+    * FlashCS6
+    * FLV mime
+    * QuteBrowser
+    * Borderlands GOTY
+    * Xournal++
+
+-------------------------------------------------------------------
+Mon Feb  7 00:25:32 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20220204
+* Added icons
+
+  *Annotator #2942
+  *Aqua Data Studio #2944
+  *BlueMail (app & tray) #2938
+  *Chirurgien #2946
+  *Cinnamon Virtual Keyboard #2931
+  *Deltarune #2936
+  *Fcitx Mozc tray icons #2970
+  *Freezer (tray icon)
+  *gentoo File Manager #2952
+  *GNOME Console (symbolic)
+  *Iaito #2951
+  *Jupyter Notebook (symbolic) #2950
+  *KDiskMark #2948
+  *L3afpad #2963
+  *LibreOffice 7.3 (symbolic)
+  *LiteIDE #2961
+  *Loop #2947
+  *LosslessCut #2967
+  *Notesnook
+  *OpenVPN
+  *Plex Media Player (symbolic) #2960
+  *Pronterface #2959
+  *QOpenVPN (symbolic)
+  *Sandbox game
+  *Servo #2933
+  *sfxr-qt #2954
+  *Shutter Encoder #2943
+  *Space Launch #2945
+  *Trackiton Download Manager #2929
+  *vibrantLinux (Flathub) #2932
+  *welle.io #2975
+  *Wiiware (mimetypes) #2965
+  *Worker #2956
+
+* Updated icons
+
+  *Applications Office #2962
+  *KiCad #2969
+  *PDF Slicer #2964
+  *Preferences Plugin & symlink Extension Manager #2949
+  *Rambox (app & tray)
+  *Webfont Kit Generator #2966
+
+-------------------------------------------------------------------
+Tue Jan  4 00:39:54 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20220101
+* Added icons
+
+  * AAAAXY #2007
+  * Arduino (mimetypes) #2497
+  * Banking
+  * blueberry-tray-active-symbolic
+  * Conduktor
+  * Dot Matrix #2900
+  * Elixir (app and mimetypes icons) #2914 #2919
+  * Emulsion #2902
+  * Eolie
+  * Epiphany Canary
+  * Free Heroes 2 #2742
+  * Gamma
+  * Godot Mono #2895
+  * Headlines #2898
+  * Headlines #2898
+  * ImageRoll
+  * Journable
+  * Junction
+  * kdenlive-slip, kdenlive-slide (actions) #2915
+  * Midterm #2007
+  * Minecraft: Pi Edition: Reborn (Flathub) #2007
+  * Mr.Boom #2557
+  * Obliviate
+  * OpenRGB (Flathub) #2007
+  * Overwatch #2906
+  * Plano
+  * qtscrcpy
+  * Random
+  * Safe (categories)
+  * Scenarist
+  * Sticky #2910
+  * Stream
+  * suanPan #2893
+  * Tellico (Flathub) #2007
+  * Text Pieces #2903
+  * Tidal (PWA) #2917
+  * Valdo GTK
+  * Vaults
+  * VMWare folder icons #2911
+  * Weasis (Flathub) #2007
+  * WezTerm #2923
+  * Whalebird (Flathub) #2007
+  * Windscribe #2924
+  * Wordbook
+  * Xfce lock #2926
+
+* Updated icons
+
+  * Diffuse #2925
+  * document-open/save/save-as/save-all (actions) #2912
+  * Emblem #2899
+  * GNOME Calls
+  * GNOME Password Safe
+  * GNvim
+  * Kotlin (mimetypes) #2894
+  * Neovim
+  * Spotify #2922
+  * Spotify Qt #2922
+  * Spyder IDE #2928
+  * Transmission (symbolic) #2874
+
+* Changes and fixes
+
+  * Added missing 22px Commit icon #2818 
+
+-------------------------------------------------------------------
+Sun Dec 12 00:57:20 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20211201
+* Added icons
+
+  * Added actions icons:
+    * cell_edit
+    * edit-delete-remove
+    * edit-entry
+    * editor
+    * edittext
+    * gnumeric-comment-edit
+    * gnumeric-link-edit
+    * languages
+    * output_win
+    * view-media-genre
+    * view-media-playcount
+  * Adwaita Demo
+  * Akira
+  * Android Studio Preview (Beta/Canary) #2891
+  * Apple Music
+  * Asunder #2880
+  * Beyond All Reason #2871
+  * Binance
+  * Birdfont
+  * Blockbench (Flathub) #2007
+  * Cambalache
+  * Carla (Flathub) #2007
+  * Compact Shutdown (Plasmoid)
+  * Crab Game #2869
+  * Daty
+  * DaVinci Resolve
+  * eqonomize (mimetypes icon) #2863
+  * Fasttracker II
+  * Give Me Lyrics
+  * GNOME Passbook
+  * GNOME Secrets
+  * Greenfoot (Flathub) #2007
+  * GTK4 Demo
+  * Hackgregator
+  * Hamster (Flathub) #2007
+  * Haruna
+  * Hively Tracker
+  * iCloud
+  * iCloud Drive
+  * iCloud Photos
+  * Input Method (Plasmoid)
+  * Inspektor
+  * Internxt Drive
+  * Jami
+  * Keyboard Layout (Plasmoid)
+  * KiCad Suite (Flathub)
+  * LunarVim #2882
+  * Manuskript (Flathub) #2007
+  * Mathematica (mimetypes icons)
+  * MenuLibre (Flathub) #2007
+  * Minimize All (Plasmoid)
+  * Mousai
+  * Mt
+  * Mu-editor
+  * Nostalgia
+  * Notejot
+  * osu! (Flathub) #2007
+  * Password
+  * Password Manager
+  * PCSX2 (AppImage)
+  * Pixel Piracy #2799
+  * Plots
+  * preferences-system-windows-behavior
+  * QDirStat #2877
+  * qimgv #2878
+  * Quick Lookup
+  * Rare (tray icon) #2844
+  * Rnote
+  * Sentinel dVPN
+  * SongRec
+  * Spotify QT
+  * Steam Rom Manager #2879
+  * Sums
+  * Synology Assistant/Drive/Note Station #2860
+  * Tandem
+  * TilEm
+  * Tomate
+  * Twitz
+  * VMware Workstation (actions, and mimetypes icons) #2855
+  * Wike
+  * Zenkit #2890
+  * Zettlr
+
+* Updated icons
+
+  * application-vnd.android.package-archive (*.apk) (mimetypes icon)
+  * application-x-sharedlib (mimetypes icon)
+  * bluetooth (tray, and symbolic icons)
+  * GNOME GTG
+  * GNOME Keysign
+  * GNOME Notes
+  * GTK4 Widget Factory
+  * media-playlist-play (actions icon)
+  * network-wired (tray, and symbolic icons)
+  * Portfolio
+  * preferences-activities
+  * radio (tray, and actions icons)
+  * Steam (tray icon)
+  * Transmission (apps, and tray icons) #2874
+  * unknown (mimetypes icon)
+  * user-desktop (monochrome places icon)
+  * view-media-lyrics (actions icon)
+  * window-pin, and window-unpin (actions icon)
+
+* Changes and fixes
+
+  * Changed color for Electron Mail tray icon to support color changing
+  * Removed CSS stylesheet from folder-applications 48px icons
+ 
+
+-------------------------------------------------------------------
+Mon Nov  1 23:19:17 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20211101
+* Added icons
+
+  * ayatana-indicator-notification #2848
+  * bsnes #2825
+  * Colorway #2849
+  * dialog-objects
+  * Eqonomize #2835
+  * GameJolt Client #2847
+  * Feather Wallet #2851
+  * MAD Linux #2830
+  * Mailspring (Flathub) #2007
+  * mesen #2850
+  * Molotov.tv #2833
+  * OpenJDK 17 #2836
+  * papirus-folders GUI
+  * Rare #2844
+  * Revolt (Flathub) #2007
+  * Servez #2832
+  * Share Preview #2838
+  * Sparrow Wallet #2827
+  * Strawberry Music Player (Flathub) #2007
+  * Subtitle Composer (Flathub) #2007
+  * The Gnumeric Spreadsheet (Flathub) #2007
+  * WhatPulse #2845
+  * xemu (Flathub) #2007
+  * Xonsh #2837
+
+* Updated icons
+
+  * Among Us
+  * GNOME Twitch
+  * Moe Era
+  * MyNotes
+  * Notes (categories icon)
+  * Notification Bell (preferences icon) #2841
+  * PIA Manager
+  * Simplenote
+  * SkullGirls
+  * Stem Link
+  * Sticky Notes
+  * TeamViewer
+  * Unity & Unity Hub #2843
+  * YouTube
+  * Youtube DL
+  * Youtube Music
+
+* Changes and fixes
+
+  * Fixed color changing for folder_home2, folder_man, and 
+    folder_wordprocessing places icons
+  * Minor fixes to Anki icon
+
+-------------------------------------------------------------------
+Sat Oct  2 06:49:11 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20211001
+  * Added icons
+
+    * ares #2826
+    * Artikulate (Flathub) #2007
+    * Badlion Client #2804
+    * Bitwig Template (mimetypes icon)
+    * BOINC Manager (Flathub) #2007
+    * Borderlands #2811
+    * Brave (AUR)
+    * Brave (Flatpak) #2824
+    * Caprine (Flathub) #2007
+    * Chatty #2747
+    * Commit #2818
+    * Cowsay #2007
+    * CudaText (Flathub) #2007
+    * D-Spy #2007
+    * Denemo (Flathub) #2007
+    * Electronics (categories icon) #2814
+    * Emblem #2007
+    * Game Maker Studio 2 #2812
+    * GNOME Calls #2747
+    * GNOME Text Editor #2815
+    * GNU GTick #2806
+    * Google Chat (PWA)
+    * Google Translate #2798
+    * gpx-viewer (Flathub) #2007
+    * Guilded (Flathub) #2007
+    * Haguichi (rDNS panel symlinks) #2823
+    * Hyperbola (distributor logo)
+    * IceDove UXP
+    * IceWeasel UXP
+    * JamesDSP (apps and tray icons) #2810
+    * JPEXS Free Flash Decompiler (Flathub) #2007
+    * KeePassXC (Flatpak tray icons)
+    * King’s Cross #2747
+    * Linquist TS (mimetypes icons)
+    * Lorem #2007
+    * MEGA (megaalert tray icon)
+    * Megapixels #2747
+    * Metronome (Flathub) #2007
+    * Multi Lingual TERMinal emulator
+    * NetEase Cloud Music GTK #2007
+    * Portfolio #2747
+    * Powersupply #2747
+    * PWAs for Brave #2819
+    * Revolt Chat
+    * RubyMine (Flathub) #2007
+    * Sharik
+    * sidebar-collapse, sidebar-expand (actions icons)
+    * Syncthing (folder icon) #2778
+    * Tenacity #2813
+    * Textadept #2808
+    * ThinkOrSwim (Flathub) #2007
+    * Thonny (Flathub) #2007
+    * Typography #2007
+    * Vector Slicer #2007
+    * Ventoy #2809
+    * view-pages-* (actions icons)
+    * Wired network status icons for Plasma
+    * Xilinx Vivado (part of Xilinx Vivado Design Suite) (Flathub) #2007
+    * Youtube Music Desktop (Flatpak)
+    * ZeroTier GUI
+
+  * Updated icons
+
+    * Bitwig (apps and mimetypes icons)
+    * Desktop Locale (Settings)
+    * Desktop Notification Bell (Settings)
+    * GNOME Connections #2796
+    * Google Chat
+    * KTorrent
+    * Security High/Low/Medium
+    * System Monitor
+    * TigerVNC
+
+  * Changes and fixes
+
+    * Added a few missing GNOME symbolic icons
+    * Added darkcyan folder color that suitable
+      to Pop!_OS GTK theme #2820
+    * Added missing KDE ColorScheme class on
+      indicator-notification-close-deselect icon
+-------------------------------------------------------------------
+Fri Sep  3 23:11:30 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 20210901.
+  * Added icons
+    * Animage
+    * Audacium (AppImage)
+    * Avocado (PSX emulator)
+    * Badger
+    * Badgie
+    * Bauh (tray icons)
+    * Burp Suite #2768
+    * CatFacts
+    * DarkBar
+    * Deepin applications
+    * edit-move (actions icon)
+    * Enigma
+    * GitsCover
+    * Grapejuice #2770
+    * GreenWithEnvy (tray icons)
+    * Health
+    * Highscore #2762
+    * Hourglass
+    * Insomnia
+    * Iridium
+    * Jadx-Gui #2776
+    * Khronos
+    * Kiwix (Flathub) #2007
+    * KLayout (Flathub) #2007
+    * KWin (actions icons) #2789
+    * LibreOffice 7.2
+    * Louper
+    * Mandelbulber2 (Flathub) #2007
+    * Mattermost (tray icons)
+    * MediaGet
+    * Mixer
+    * Moneta
+    * mpvz
+    * Nasc
+    * NES, SNES, and Wii (mimetype icons) #2505
+    * ObConf-Qt
+    * Olivia
+    * Ordne
+    * OutLiner
+    * ParaView (Flathub) #2007
+    * Pebbles
+    * Peeq
+    * Play! (PS2 emulator)
+    * Popsicle
+    * QRC (mimetype icons)
+    * QtWAW (app & tray) #2769
+    * Rambox Pro (app & tray icons) #2765
+    * Rannum
+    * Remember The Milk (tray icons)
+    * remmina-status (tray icons)
+    * Scilab (Flathub) #2007
+    * ShouldIDoIt
+    * SMPlayer (Flatpak, AppImage)
+    * Sonic Mania (Steam and Lutris)
+    * Synology Cloud Station Backup #2007
+    * Time-Limit
+    * Touché #2785
+    * Tuner
+    * TypeWriter
+    * Wasabi Wallet (Flathub) #2007
+    * Weather icons (48px status) #2764
+    * window-keep-{above,below}, and window-{shade,unshade}
+      (actions icons) #2767
+    * Windy weather icons #2764
+    * Yaradio Yamusic (app and tray icons)
+    * Zint Barcode Studio (Flathub) #2007
+  * Updated icons
+    * Audacium
+    * Dialect #2421
+    * Insync (app and tray icons)
+    * Mailspring
+    * Preferences Desktop Display
+    * RPCS3
+    * show-menu (actions icon)
+    * Ubiquity
+  * Changes and fixes
+    * Increased opacity for monochrome icons from
+      0.30 to 0.35 #2782
+    * Removed Blueman icons from status #2784
+    * Removed KDE color scheme from ePapirus symbolic icons #2781
+  * Others
+    * Added test for searching unoptimized icons
+    * Fixed installation issue when target directory contained
+      spaces #2795
+
+-------------------------------------------------------------------
+Thu Aug 12 23:25:27 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20210802
+
+  - Highlights
+
+    - Modernized applications and devices icons with display
+    - Updated icons for the categories:
+      * Development
+      * Development Translation
+      * Education
+      * Games
+      * Graphics
+      * Internet #2621
+      * Utilities
+
+  - Added icons
+
+    - 0CC-FamiTracker
+    - A7800
+    - Albert launcher tray icon (#2738)
+    - Audacium #2761
+    - BambooTracker
+    - BEAST
+    - cpupower-gui
+    - CraftStudio
+    - Doki Doki Literature Club Plus!
+    - Dopamine (AppImage)
+    - drive-removable-media-usb-panel #2744
+    - Eiciel
+    - EmulationStation
+    - FamiStudio
+    - FamiTracker
+    - ffdec #2741
+    - Fontmatrix
+    - Github-desktop (Flathub) #2007
+    - GMAMEUI
+    - Google Tasks Desktop
+    - GOverlay
+    - gsplus
+    - Heroic
+    - Higan
+    - icarus
+    - Insomnia (Flathub) #2007
+    - JPEXS Free Flash Decompiler #2741
+    - Keysmith (Flathub) #2007
+    - KWeather (Flathub) #2007
+    - Liquid War
+    - Logseq #2751
+    - m64p
+    - MATE Eiciel
+    - Mednafen
+    - MESS
+    - Monero GUI (Flathub) #2007
+    - moserial (Flathub) #2007
+    - MotionBox Video Browser
+    - new-window-symbolic #2754
+    - Olympus #2753 #2748
+    - OpenJDK 16 #2737
+    - Opensnitch (tray icons)
+    - QtScrcpy #2732
+    - QuickHash
+    - Redis Desktop Manager (Flathub) #2007
+    - Rivals of Aether
+    - RustDesk #2743
+    - Sayonara (Flathub) #2007
+    - Session Desktop #2731
+    - Spek
+    - Trilium Notes #2746
+    - udiskie (actions icons) #2744
+    - Wasabi #2757
+    - Waveform11 (Flathub) #2007
+    - YOGA Image Optimizer
+    - Zenbooru
+    - ZSNES #2662
+
+  - Updated icons
+
+    - Clight
+    - Google Calendar #2756
+    - Ishiiruka
+    - Mednaffe
+
+  - Changes and fixes
+
+    - Changed symlinks target for system monitor apps
+    - Removed preferences-system from actions
+
+-------------------------------------------------------------------
+Thu Jul  1 22:48:29 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20210701
+
+  - Added icons
+
+     * AppCenter #2735
+     * Art of Illusion (app and mimetype icons)
+     * Bulky
+     * Bullet list symbolic icon #2709
+     * Cine Encoder
+     * ClickUp #2725
+     * cuteNTR
+     * Decoder #2708
+     * Deskreen
+     * Dhewm 3 (Flathub) #2007
+     * GDLauncher (Flathub) #2007
+     * gngeo #2705
+     * GNOME Tour #2707
+     * GNOME Video Arcade
+     * GNvim
+     * Gromit-MPX
+     * Haruna Video Player (Flathub) #2007
+     * Kooha #2730
+     * LinuxDC++ (Flathub) #2007
+     * m64p (Flathub) #2007
+     * NCSA Mosaic (AppImage)
+     * Neko Project II kai
+     * PDF Chain (Flathub) #2007
+     * Plank Show Desktop #2706
+     * Plots
+     * Pop!_OS COSMIC dock icons #2734
+     * ProtonVPN GUI #2720
+     * PyCrust
+     * QMC2 Arcade #692
+     * Radicle Upstream
+     * RSS Guard
+     * Slimbook AMD Controller (app and tray icons)
+     * Surviving Mars (Steam & Lutris) #2711
+     * TDE package_games_arcade
+     * TETR.IO Desktop
+     * Uno Calculator
+     * Webamp Desktop
+     * Webex #2717
+     * Wine Launcher
+     * XDCed
+     * Ymuse (app & actions icons)
+     * Yuzu (Flathub) #2007
+     * Zint
+     * zmNinja
+
+  - Updated icons
+
+     * applets-screenshooter symbolic icon
+     * channel-secure and channel-insecure symbolic icons
+     * Dolphin Emulator
+     * Godot #2723
+     * Jami
+     * Pixelorama #2684
+     * Planner
+     * Symbolic icons for radio and checkbox buttons
+     * Toggl Track
+
+ - Changes and fixes
+
+    * Removed unused view-filter-rtl icon. Updated view-filter
+      and view-list-tree icons
+    * Updated document-replace, swap-panels, view-choose, and
+      view-visible actions icons
+
+-------------------------------------------------------------------
+Fri Jun  4 02:03:58 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20210601
+  
+  - Added icons
+    
+     * add-subtitle (actions)
+     * Allusion
+     * application-default-symbolic #2672
+     * ASCIIpOrtal #2541
+     * Athena File Manager
+     * AutoRemesher
+     * AwesomeBump
+     * Bootstrap Studio #2686
+     * Calibre icons (Flatpak) #2693
+     * Clapper #2699
+     * Daily Wallpaper
+     * DeSmuME
+     * Dopamine
+     * DSDA-Doom #2685
+     * DuckStation (Flathub) #2007
+     * EasyEffects #2680
+     * Electron Cash #2671
+     * Foot
+     * gtkcord
+     * Hatari (Flathub) #2007
+     * Identity
+     * KLatexFormula #2664
+     * KLayout #2683
+     * Knowte
+     * LibreWolf Community
+     * Mail filetype icons #2688
+         * application/mbox
+         * application/vnd.stardivision.mail
+         * message/rfc822
+         * text/vcard
+     * Mate Desktop #2700
+     * media-playlist-repeat-song/single (actions) #2675
+     * Mednaffe (Flathub) #2007
+     * Melvor Idle #2694
+     * Monero GUI #2678
+     * Motrix (Flathub) #2007
+     * mpv (Flathub) #2007
+     * Outwiker
+     * PC Engine (mimetypes) #2505
+     * Pocket Casts (app & tray) #2670
+     * Portal Reloaded #2667
+     * Programming filetype icons #2691
+         * application/vnd.chess-pgn
+         * application/x-asp
+         * text/vnd.wap.wmlscript
+         * text/x-cobol
+         * text/x-eiffel
+         * text/x-erlang
+         * text/x-fortran
+         * text/x-gradle
+         * text/x-gradle
+         * text/x-lilypond
+         * text/x-ms-regedit
+         * text/x-ocaml
+         * text/x-opml+xml
+         * text/x-scheme
+         * text/x-vbscript
+     * PyMOL (Flathub) #2007
+     * QElectroTech (Flathub) #2007
+     * Qt Creator (Flathub) #2007
+     * REDRIVER2
+     * Remote Raspberry
+     * Rolled Out #2674
+     * SciDAVis (Flathub) #2007
+     * Spot
+     * Sunvox #2689
+     * Super Mario 64
+     * tomboy-ng
+     * TOML (mimetypes) #2676
+     * torrenttools
+     * Tribler (Flathub) #2007
+     * Veusz (Flathub) #2007
+     * Virtual Boy (mimetypes) #2505
+     * Vitomu
+     * Worms Armageddon
+     * YouTube Music (app & tray)
+     * Yuna
+    
+  - Updated icons
+    
+     * 1Password (tray icons)
+     * Azure Data Studio #2701
+     * Discord (app and tray icons) #2679
+     * Fedora #2684
+     * Fedora Media Writer #2684
+     * Google Meet #2703
+     * Kitty #2673
+     * Linux Mint #2684
+     * Mint Dev Settings #2684
+     * PulseEffects
+     * Zulip #2684
+    
+  - Changes and fixes
+    
+     * Added and remapped a lot of mimetypes symlinks #2697
+     * Added Carmine folder color #2692
+     * Renamed Nicotine+ tray icons #2687
+
+-------------------------------------------------------------------
+Thu Apr  1 23:42:03 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20210401
+
+  - Added icons
+   
+    * Apollo Studio #2612
+    * Armello (Lutris & Steam)
+    * AT Launcher #2562
+    * Blush Blush (Steam & Lutris)
+    * Clight
+    * Colortone (Steam & Lutris)
+    * Crush Crush (Steam & Lutris)
+    * CubicSDR #2559
+    * Dead Or Alive 6
+    * Endless Zone (Steam & Lutris)
+    * ET: Legacy (Flathub) #2007
+    * Evernote Client
+    * Fluent Reader #2571
+    * Fluffychat #2576
+    * FortiClient & FortiClient SSLVPN #2603
+    * Freezer #2591
+    * FTB App #2586
+    * Gaphor #2553
+    * Gear Up (Steam & Lutris)
+    * glabels-qt #2593
+    * GNOME Software #2617
+    * GOA Microsoft Exchange #2563
+    * GoldenDict (Flathub) #2007
+    * Grand Theft Auto V (Steam & Lutris)
+    * GTA III (Steam & Lutris)
+    * GTA: Vice City (Steam & Lutris)
+    * Guilded #2597
+    * Hacknet (Steam & Lutris)
+    * Hashbrown #2572
+    * Helltaker (Steam & Lutris)
+    * Hyperspace #2599
+    * Jubler
+    * Jupyter Lab #2584
+    * KmCaster (Flathub) #2007
+    * Lara Croft and the Temple of Osiris (Lutris & Steam)
+    * LibreOffice 7.1.x
+    * Lite #2600
+    * LiVES
+    * MeshLab
+    * MeshLab (Flathub) #2007
+    * message-indicator-symbolic #2624
+    * Metadata Cleaner #2561
+    * Muse Dash (Lutris & Steam)
+    * Narcissu (Steam & Lutris)
+    * NBTExplorer (Flathub) #2007
+    * NEKOPARA vol. 0-4 (Steam & Lutris)
+    * NightSky (Steam & Lutris)
+    * nnn #2554
+    * Omnishell #2580
+    * Onivim2 #2607
+    * OpenRGB
+    * PHD2 #2579
+    * Phoenix Wright: Ace Attorney Trilogy (Steam & Lutris)
+    * Pitivi/GES video project (mimetype icons) #2594
+    * Plexamp (Flathub) #2007
+    * Portfolio Performance #2566
+    * qBittorrent (dark and light tray icons) #2609
+    * Sakura Spirit (Steam & Lutris)
+    * SciDAVis #2581
+    * Sengi #2556
+    * Setzer #2589
+    * Sidekick Web Browser #2602
+    * SoundCloud PWA #2604
+    * Steam Link (Flathub) #2007
+    * Stellaris (Lutris & Steam)
+    * SysMonTask #2598
+    * Tabletop Simulator (Lutris & Steam)
+    * Technic Launcher #2590
+    * Tekken 7 #2582
+    * The Witcher 3 (Steam & Lutris)
+    * Valheim (Steam & Lutris)
+    * Videomass
+    * Viper Browser
+    * Wike
+    * Xfce4 panel plugins:
+        * GenMon
+        * NetLoad
+        * SystemLoad
+    * Youtube-dl-gui (AppImage)
+    * Yuzu EA
+    * Zoho Mail - Desktop #2569
+  
+  - Updated icons
+  
+    * Applications folder #2549
+    * Clock #2613
+    * Dolphin File Manager (FlatHub)
+    * Epiphany #2573
+    * GNOME Disk Utility #2443
+    * KAlarm
+    * KPhotoAlbum
+    * Pitivi #2594
+    * Q4Wine #2618
+    * Steam #2588 #2595
+    * SteamOS
+    * VSCodium #2596
+    * web-, photo-, and video- cameras
+    * Windows distributor logo and Windows executable files
+    * Wine #2618
+    * wine-folder #2618
+    * Winetricks #2618
+    * Youtube
+    * Youtube Music Desktop
+    * Youtube-dl
+    * Zim Desktop Wiki #2616
+  
+  - Changes and fixes
+  
+    * Removed fedora-logo-icon to avoid confusion in RHEL 8 #2619
+  
+  - Others
+  
+    * Added alternate icons Nautilus and Thunar (see comment) #2567
+    
+
+-------------------------------------------------------------------
+Tue Mar  2 22:48:01 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20210302
+
+  - Highlights
+
+    * Added a lot of icons for KMyMoney #1629
+    * Returned classic icon for Nautilus, Thunar, Nemo, and Dolphin
+      file managers #2555 #2567
+    * Returned old Telegram tray icons #2477
+    * Updated shape of folders #2570
+
+  - Added icons
+
+    * Alarm Clock Applet (app and tray icons)
+    * AntiMicroX (tray icon)
+    * Authenticator (Flathub) #2007
+    * Break Timer (Flathub) #2007
+    * Butter
+    * Chiaki (Flathub) #2007
+    * Citra (Flathub) #2007
+    * Curtail #2551
+    * DeltaChat (app and tray icons) #2575
+    * Deluge (Flathub) #2007
+    * Droidcam #2536
+    * Fcitx 5 (Flathub) #2007
+    * FlameRobin #2544
+    * Frescobaldi (Flathub) #2007
+    * Geeqie (Flathub) #2007
+    * GeForce Now Electron (Flathub) #2007
+    * Ghidra (Flathub) #2007
+    * GitQlient
+    * Granatier (Flathub) #2007
+    * GTA 3 & GTA Vice City
+    * Guitarix (Flathub) #2007
+    * homerun (actions icon)
+    * Jamulus (Flathub) #2007
+    * Kame Editor #2542
+    * KBlackbox (Flathub) #2007
+    * Logisim Evolution (Flathub) #2007
+    * Lutris (tray icon)
+    * MegaBasterd (Flathub) #2007
+    * Moonlight (AppImage)
+    * Obsidian #2007 #2534
+    * OCaml #2538
+    * OnionShare (Flathub) #2007
+    * OpenJDK 15 #2564
+    * PDF Arranger (Flathub) #2007
+    * Plasma System Settings #2550
+    * PopcornTime-Ru
+    * Popout3D (Flathub) #2007
+    * Posterazor #2547
+    * ProtonVPN Linux GUI (app and tray icons) #2537
+    * regexxer #2543
+    * SC Controller (tray icons and AppImage symlink)
+    * Standard Notes (Flathub) #2007
+    * Stremio (Flathub) #2007
+    * Thorium Reader #2539
+    * TikTok (Web App)
+    * Toggl Track (Flathub) #2007
+    * TorrServer
+    * UnCiv (Flathub) #2007
+    * Webfont Kit Generator #2552
+    * Whatsapp for Linux #2574
+    * Wiz Note (Flathub) #2007
+    * Xfe #2525
+    * Xfimage #2526
+    * Xfpack #2527
+    * Xfwrite #2528
+    * Zenmap (Flathub) #2007
+
+  - Updated icons
+
+    * office-chart-* actions icons
+    * QJoyPad (tray icon)
+    * Terminal emulators (Terminal, Terminal SU, Xfce Terminal) #2545
+    * System Software Install
+
+  - Changes and fixes
+
+    * Added 64px trash-bin icons to fix scaling
+    * Added symlinks for many varied mimetypes #2568
+    * Fixed rendering of Joplin icon
+    * Fixed monochrome trash-bin icons alongside color icons in the
+      sidebar of file managers
+    * Removed system-software-install from 22x22/actions and
+      24x24/actions
+    * Returned accent color on indicator-messages-new icon #2540
+
+  - Others
+
+    * Added SVGO 2.0.0+ config. SVGO v1 support was dropped!
+
+-------------------------------------------------------------------
+Tue Feb  2 01:05:35 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version  20210201
+
+  - Added icons
+
+    * ADLplug & OPNplug
+    * Aqualung
+    * Astah
+    * Audiosurf & Audiosurf 2
+    * Baobab #2506
+    * Beemy
+    * Big Finish Downloader
+    * Blanket #2513
+    * Blob Wars: Attrition
+    * Bloboats #2478
+    * Boiler
+    * Bomber (Flathub) #2007
+    * Bovo (Flathub) #2007
+    * Catfish
+    * Comgen
+    * Copy Paste Grab
+    * CudaText #2483
+    * Cyberpunk 2077 (Steam and Lutris)
+    * Dangerous Golf
+    * DDC/CI control #2465
+    * Dimmer
+    * Ding #2514
+    * Dino
+    * Dooble Web Browser #2516
+    * DOSBox ECE
+    * dotFonts
+    * Dragon Player
+    * DUSK #2475
+    * EndeavourOS distro logo #2485
+    * ExpanDrive
+    * FreeTennis #2479
+    * Friday Night Funkin (Lutris) #2507
+    * Friday Night Funkin #2507
+    * Gammastep (app and tray icons) #2468
+    * Gammy
+    * Garcon #2487
+    * Greenfish Icon Editor Pro
+    * Guitar (Git Client)
+    * Hypnotix
+    * icons DaVinci Resolve Studio
+    * icons Linux Lite Software #2496
+    * ImageJ #2521
+    * Implemented individual icons for the file managers:
+         * Dolphin (FlatHub)
+         * Nautilus
+         * Nemo
+         * Thunar
+    * Joplin (Flathub) #2007
+    * Keysmith
+    * KiCad (Flathub) #2007
+    * Kindd
+    * Kiwix #2480
+    * KMPlayer
+    * KonbuCase
+    * KTimeTracker
+    * Laborejo Software Suite:
+        * Agordejo
+        * Fluajho
+        * Laborejo
+        * Patroneo
+        * Vico
+    * LibreWolf Browser
+    * melonDS #2464
+    * Modelio
+    * Mousepad
+    * Mpdevil #2499
+    * NeoChat (KDE)
+    * Neverball (Flathub) #2007
+    * New Session Manager
+        * Jackpatch
+        * NSM-Legacy-GUI
+        * NSM-Proxy
+    * NoiseTorch
+    * Nostlan
+    * Notejot (Flathub) #2007
+    * OpenBlok
+    * OpenMW Content Editor #2413
+    * OPN2BankEditor & OPL3BankEditor
+    * osu!Lazer
+    * Parole
+    * PeaZip (Flathub) #2007
+    * Phototonic #2481
+    * Pixelitor (Flathub) #2007
+    * Play it Slowly #2493
+    * Popout3D
+    * Projecteur #2491
+    * QJournalctl
+    * Quilter (Flathub) #2007
+    * Reco
+    * Ristretto
+    * Rosegarden (Flathub) #2007
+    * ROM mimetypes #2505
+        * Atari 2600
+        * Atari 7800
+        * Atari Lynx
+        * Game Boy
+        * Game Boy Advance
+        * Game Boy Color
+        * Nintendo 3DS
+        * Nintendo 3DS Executable
+        * Nintendo DS
+        * Sega Pico
+        * SEGA Pico
+        * Wonderswan
+        * Wonderswan Color
+    * Send Anywhere (tray icons)
+    * Spectator #2007
+    * Substance (AppImage)
+    * Timekpr-nExT Control Panel (app & tray icons) #2498
+    * Tomato
+    * Torii SRS #2512
+    * Tuxcut #2473
+    * Unknown Horizons (Flathub) #2007
+    * Webapp Manager
+    * What IP #2471
+    * Wifi Hotspot #2489
+    * WxMaxima #2524
+    * Xfce Task Manager
+    * Xfce Terminal Settings
+    * Xfwm 4
+    * yadPush
+    * Yuzu (AppImage)
+
+  - Updated icons
+
+    * Android File Transfer
+    * Android SDK
+    * ANGRYsearch
+    * APK mimetype icons
+    * Applixware #2495
+    * Arduino
+    * Ark
+    * Audacity
+    * Boop-GTK #2530
+    * Cantor #2476
+    * Chess #2495
+    * Chromium
+    * Chromium Dev
+    * Civilization V
+    * Distributor Logo Linux Lite #2496
+    * EasyTAG
+    * Eric
+    * FileZilla
+    * GUFW
+    * Java mimetype icons
+    * Joplin #2520
+    * LabPlot #2472
+    * Mumble #2495
+    * Preferences System Search
+    * Python
+    * Qv2ray
+    * Ring
+    * SearchMonkey #2494
+    * Security High/Medium/Low icons
+    * Send Anywhere (app icon)
+    * Shell script mimetype icons
+    * Telegram (tray icons) #2477
+    * Terminal emulators (Terminal, Terminal SU, Tilix, Terminology)
+    * Type:Rider #2495
+    * VirtualBox disk image mimetype icons #2508
+    * VK Messenger (app & tray icons) #2503
+    * X Rebirth #2495
+    * Xfce4 Session
+    * Xfwm 4 Composite Editor
+
+  - Changes and fixes
+
+    * Added a few mimetype symlinks #2492
+    * Added missing audio-off symlinks to derivative themes
+    * Added missing mic-off symlink to Papirus/16x16/panel
+    * Fixed org.nicotine_plus.Nicotine_connect icons
+    * Fixed paper size in 32/64 mimetype icons #2508
+    * Remap application-octet-stream symlink to unknown mimetype
+      #2500
+    * Removed folder-pastel icons from derivative themes
+    * Removed mic-ready icons from ePapirus/*/actions
+    * Removed nicotine-tray-* icons from ePapirus
+    * Removed orphan folder-nordic-saved-search icon
+    * Removed orphan onboard icon from ePapirus/24x24/panel
+    * Restored text color in a few panel icons 
+
+-------------------------------------------------------------------
+Sat Jan  2 05:36:21 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20210101
+
+  - Highlights
+  
+    * Added new status colors (success: green, warning: orange, 
+      and error: red) to monochrome icons #2448
+  
+  - Added icons
+  
+    * 010 Editor #2454
+    * Alan Wake (Steam & Lutris)
+    * Alien Swarm (Steam & Lutris)
+    * Alien Swarm: Reactive Drop (Steam & Lutris)
+    * Alien: Isolation (Steam & Lutris)
+    * Amnesia: Rebirth (Steam & Lutris)
+    * Among Us (Steam & Lutris)
+    * Ardour 6.5.0
+    * Baldi's Basics (Steam & Lutris)
+    * Basilisk II (Flathub) #2007
+    * Beaker Browser
+    * BeamNG.drive (Steam & Lutris)
+    * Beat Hazard (Steam & Lutris)
+    * Beat Hazard 2 (Steam & Lutris)
+    * Beat Saber (Steam & Lutris)
+    * Beekeeper Studio
+    * Beneath a Steel Sky and Beyond a Steel Sky (Steam)
+    * Call of Duty (Steam & Lutris)
+    * Call of Duty 2 (Steam & Lutris)
+    * Child of Light (Steam)
+    * Chromium Web Browser (Flathub) #2007
+    * Counter-Strike: Condition Zero (Steam & Lutris)
+    * Diffuse (Flathub) #2007
+    * Discord Development/Canary (Flathub)
+    * Distributor logos for BSD systems #630
+         DragonFly BSD
+         GhostBSD
+         MidnightBSD
+         NetBSD
+         OpenBSD
+         TrueOS
+    * DJV View #2453
+    * DOOM Eternal (Steam & Lutris)
+    * DOSBox Staging
+    * DOSBox-X (Flathub) #2007
+    * EDuke32
+    * Epic Games
+    * Filmulator (Flathub) #2007
+    * Firmware Manager
+    * Flycast
+    * folder-snap #2305
+    * Font Downloader #2461
+    * GCstar #2440
+    * GooTool (app and mimetype icons)
+    * Gramps (Flathub) #2007
+    * Half-Life 2: Deathmatch/Lost Coast (Steam & Lutris)
+    * Half-Life: Alyx (Steam)
+    * hugin (Flathub) #2007
+    * IO Return to Castle Wolfenstein (Flathub) #2007
+    * JClic (Flathub) #2007
+    * Katawa Shoujo (Lutris)
+    * Kega Fusion
+    * Lens - The Kubernetes IDE #2469
+    * Lightcord (app and tray icons) #2463
+    * Lyrebird
+    * Machinarium (Steam & Lutris)
+    * Penumbra: Black Plague (Steam & Lutris)
+    * Penumbra: Necrologue (Community Mod) (Steam & Lutris)
+    * Penumbra: Overture (Steam & Lutris)
+    * Penumbra: Requiem (Steam & Lutris)
+    * Persona 4 Golden (Steam & Lutris)
+    * Phantompeer #2456
+    * Phantompeer #2456
+    * Polychromatic #2445
+    * PowerISO (Flatpak) #2007
+    * Prison Architect (Steam & Lutris)
+    * Ricochet (Steam & Lutris)
+    * Scania Truck Driving Simulator (Steam & Lutris)
+    * SciTE (Flathub) #2007
+    * Secret Maryo Chronicles (Lutris)
+    * SOMA (Steam & Lutris)
+    * Sonic Pi (Flathub) #2007
+    * SonoBus #2462
+    * SoundConverter (Flathub) #2007
+    * Space Engineers (Steam & Lutris)
+    * Sven Co-op (Steam & Lutris)
+    * Synergy (Steam & Lutris)
+    * System76 Driver
+    * TeXmacs (mimetype icon) #2446
+    * The Sims 3 (Steam & Lutris)
+    * The Sims 4 (Steam & Lutris)
+    * The Stanley Parable (Steam & Lutris)
+    * The Witcher (Steam & Lutris)
+    * Tomb Raider (Steam & Lutris)
+    * TrackMania Nations Forever (Steam & Lutris)
+    * Typora (Flathub) #2007
+    * ungoogled-chromium (Flathub) #2007
+    * Viking (Flathub) #2007
+    * Vorta (tray icons) #2459
+    * Warframe (Steam & Lutris)
+    * World of Goo (AUR)
+    * World of Goo Demo (Steam)
+    * Worms Reloaded Demo (Steam)
+    * wxLame
+    * X Rebirth (Steam & Lutris)
+    * X2: The Threat (Steam & Lutris)
+    * X3: Albion Prelude (Steam & Lutris)
+    * X3: Reunion (Steam & Lutris)
+    * X3: Terran Conflict (Steam & Lutris)
+    * X4: Foundations (Steam & Lutris)
+    * Xcfe Gigolo
+    * Xfce CPU Graph Plugin
+    * Xfce Sample Plugin
+    * Xfce StopWatch Plugin
+    * Xfce Tumbler
+    * Xfce Volman
+    * Zombie Panic! Source (Steam & Lutris)
+  
+  - Updated icons
+  
+    * Android Studio
+    * Audio muted icons
+    * audio-recorder-on #2448
+    * Batteries icons #2447 #2448
+    * Camera and mic on/ready/off icons #2448
+    * Dconf Editor #2439
+    * Discord (muted, connected, and speaking tray icons)
+    * Disk Usage Analyzer #2442
+    * GNOME LaTeX (ex Latexila) #881
+    * KDE Connect disconnected icons #2448
+    * Meld
+    * Mullvad VPN #1580
+    * Qt Assistant
+    * Qt Creator
+    * Qt Designer
+    * Qt Linguist
+    * Security tray icons #2448
+    * System Reboot, Shutdown, Suspend, Save Session, Hibernate,
+      Switch User icons
+    * Tangram #2441
+    * The Witcher 2
+    * update-{low,medium,high} panel icons #2448
+  
+  - Changes and fixes
+  
+    * Added a lot of symlinks for apps in Xfce 4.16 #2466
+    * Added missing symlink for Beholder 2 (Steam)
+    * Added missing symlink for Counter-Strike Source (Steam)
+    * Increased audio-volume icons for 22/24px sizes
+    * Moved mic-on icon to panel
+    * Removed camera/mic/audio status icons from actions
+
+-------------------------------------------------------------------
+Tue Dec  1 23:00:32 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20201201
+
+  - Added icons
+
+    * Alsa Tools GUI #2433
+    * Amazon WorkSpaces (Flathub) #2007
+    * Android Messages Desktop (tray icon)
+    * Angry IP Scanner #2432
+    * Applications Other
+    * Bless (Flathub) #2007
+    * Bless Hex Editor #2420
+    * Cadence (tray icons)
+    * CoreCtrl (app and tray icons) #2247
+    * Deepin Wine Wechat #2452
+    * DeSmuME (Flathub) #2007
+    * Dialect #2421
+    * DuckStation #2416
+    * EasyTAG (FlatHub) #2007
+    * edit-clear-history #2428
+    * Electron 9 #2437
+    * FontManager #2007
+    * G'MIC-Qt & ZArt #2451
+    * Giara #2417
+    * GNOME FontViewer #2007
+    * GNOME Pika Backup
+    * GNOME Solanum
+    * Gwenview (Flathub) #2007
+    * HideMy.name VPN
+    * Ideogram #2427
+    * KCachegrind (Flathub) #2007
+    * Kontrast (Flathub) #2007
+    * LabPlot (FlatHub) #2007
+    * Liferea (Flathub) #2007
+    * MEGAsync (FlatHub) #2007
+    * Moonlighter #2424
+    * MPZ Music Player #2436
+    * OBD Auto Doctor #2449
+    * OpenDiablo2 #2418
+    * OpenRCT 2 (Flathub) #2007
+    * Outlook PWA #2438
+    * Preferences Other
+    * Pritunl Client Electron
+    * ProtonMail Import-Export (Flathub) #2007
+    * Qnapi (Flathub) #2007
+    * qView (Flathub) #2007
+    * RcloneBrowser (AppImage)
+    * Scribus (mimetype icon) #2419
+    * Simplenote (Flathub) #2007
+    * SQLite3 (mime type icon) #2434
+    * Super Productivity (tray icons)
+    * VGrive (Appindicator icon)
+    * Video Downloader (FlatHub) #2007
+    * WhatsApp Qt (Flathub) #2007
+    * xfce4-session (Switch User) #2429
+
+  - Updated icons
+
+    * Elisa #2423
+    * GNOME Reversi #2435
+    * Juk #2423
+    * KCachegrind
+    * Plasma #2422
+    * PlasmaShell #2422
+    * Plasmoid (mime type icon) #2422
+    * RcloneBrowser
+    * Spotify #1984 #2431
+    * Super Productivity
+
+  - Changes and fixes
+
+    * Fixed eMule icon
+    * Fixed viewBox in several icons #2426
+
+-------------------------------------------------------------------
+Sun Nov  1 23:45:04 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to verion 20201031
+ 
+  - Added icons
+    
+    * Blobby Volley 2 #2414
+    * Boxy SVG Editor #2399
+    * Chiaki (Flathub) #2007
+    * Chromium (Freeworld) #2391
+    * CLion (Flathub) #2007
+    * DevilutionX #2407
+    * Extraterm #2408
+    * Flameshot
+    * GDLauncher (app and tray icons) #2409
+    * guiscrcpy #2382
+    * Homebank (mimetype icon) #2394
+    * Jamulus #2389
+    * Joplin #2404
+    * KeepassXC (tray icons) #2397
+    * Kiten (Flathub) #2007
+    * Konquest (Flathub) #2007
+    * KTorrent (Flathub) #2007
+    * Micro #2395
+    * Microsoft Edge (stable/beta/dev) #2402
+    * Musikcube #2403
+    * NetRadiant #2401
+    * Oolite #2393
+    * OpenMW-CS #2405
+    * QCalcFileHash #2406
+    * Todoist (Flathub) #2007
+    * Veusz #2386
+    * Xfce Dictionary #2406
+    * xfce4-notifyd #2406 #2412
+  
+  - Updated icons
+   
+    * Arch Linux #2385
+    * GMail
+  
+  - Changes and fixes
+    
+    * Fixed invalid icon name for Prepros #2415
+    * Remap im.riot.Riot symlink to element-desktop #2418
+
+- Version 20201001
+
+  - Added icons
+   
+    * adriconf #2007
+    * AntiMicroX #2007
+    * AppImage (mime type icon)
+    * Blinken #2007
+    * DDraceNetwork #2362
+    * Detwinner #2377
+    * Dynamic Wallpaper Editor
+    * Eclipse IDE for Web and JavaScript Developers #2007
+    * Element #2366
+    * Gerbera Media Server #2368
+    * Gestures
+    * GitBlade
+    * GitEye
+    * GNOME Layout Switcher
+    * Google Play (Anbox) #2369
+    * JabRef #2007
+    * jMonkeyEngine SDK #2367
+    * Kanagram #2007
+    * KiCad (mime type icon) #2333
+    * Kig #2007
+    * KLettres #2007
+    * KTurtle #2007
+    * Ledger Live #2365
+    * Marble #2007
+    * MellowPlayer #2007
+    * mntray (app and tray icons)
+    * MoonPlayer (AppImage)
+    * MystiQ
+    * Nextcloud desktop sync client #2007
+    * PortProton
+    * Renoise #2363
+    * revelation #2007
+    * sFTP Client
+    * Sound Juicer #2007
+    * Tibia #2315
+    * Tipp10 #2007
+    * Video Downloader #2378
+
+  - Updated icons 
+
+    * Conky Manager 2 #2387
+    * Eddy #820
+    * GColor 3 #2379
+    * GNOME Calculator #2370
+    * GNOME Logs #2376
+    * Hyper
+    * MKVMergeGUI
+    * Postman #1338
+    * Todoist & added tray icon
+
+  - Changes and fixes
+
+    * Fixed bomi app icon
+
+-------------------------------------------------------------------
+Tue Sep 15 23:02:55 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20200901 
+
+  - Highlights
+      - Added new folder colors:
+        * breeze (Breeze¹)
+        * palebrown (Adwaita²) #2341
+        * paleorange (elementaryOS)
+
+¹ Breeze Dark theme looks better with the default blue color.
+² Adwaita-dark theme looks better with earlier added brown color.
+
+  - Added icons
+    * 1Password (app and tray icons) #2351
+    * Advanced Radio Player (plasmoid)
+    * Atom Nightly #2347
+    * Avalonia ILSpy #2354
+    * Bashtop & Bpytop #2340
+    * BespokeSynth #2357
+    * Boop-GTK #2361
+    * Disk Quota (plasmoid)
+    * Fokus (plasmoid)
+    * GitLab Issues (plasmoid)
+    * GitLab (tray icons)
+    * GNOME Network Displays #2339
+    * GoLand #2007
+    * Google Chat #2349
+    * Individual Core Usage (plasmoid)
+    * Jellyamp
+    * Jellyfin Desktop
+    * Jitsi Meet #2352
+    * KCalc #2007
+    * KNIGHTS #2303
+    * LazPaint #2343
+    * LibreOffice 7.0.0
+    * Lovers in a Dangerous Spacetime #2316
+    * Markets #2337
+    * MupenGUI #2356
+    * Playbar (plasmoid)
+    * Pixeluvo #2342
+    * projectM #2344
+    * Pulse Secure Client #2360
+    * Qalculate (tray icons)
+    * Redirection (game) #2355
+    * Superpaper
+    * Switch Theme (plasmoid)
+    * System monitor Sensor (plasmoid)
+    * Tardis #2353
+    * Torguard #2346
+    * Warpinator #2007
+
+  - Updated icons
+    * GIMP
+    * Jellyfin
+    * Multimedia Controls (plasmoid)
+    * Opera (stable/beta/developer)
+    * VSCodium #2350
+
+  - Changes and fixes
+    * Added and renamed Nicotine+ tray icons
+    * Added missing width/height properties to several icons
+
+
+-------------------------------------------------------------------
+Wed Aug  5 01:25:43 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20200801
+  - Added 32 icons
+  - Updated icons
+    * Bitwarden #2326
+    * Deezer #2332
+    * Laigter #2319
+    * MuseScore #2334
+  - Changes and fixes
+    * Fix blurred emblem for symlinks
+    * Fixed inconsistent arrows in ePapirus #2307
+    * Fixed scaling icons for 96px/128px/192px/256px/320px/384px/448px/512px icon sizes #2312 (Fixes #2309)
+    * Removed obsolete Zrythm symlink
+
+-------------------------------------------------------------------
+Fri Jul  3 05:38:16 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20200702
+  - Added 50 icons
+  - Updated 20 icons
+  - Changes and fixes
+    * Added a few missing symlinks to symbolic icons of GNOME apps
+    * Changed color of emblems #2274
+    * Fixed a glich in Veloren icon #2282
+    * Fixed blurred 96px icons in GNOME and in other GTK-based #2301
+    * Increased 32px/64px folder icons #2274
+    * Removed qgis-mime symlink to avoid overriding image mime icons #1265
+
+-------------------------------------------------------------------
+Wed Jun  3 04:06:52 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20200602
+  - Animated notification icons in Pantheon and other improvements to ePapirus
+  - Yaru folders color #2198
+  - Added 66 icons
+  - Updated 23 icons
+  - Changes and fixes
+    * Added hacks for LXQt Plugins #2211
+    * Fixed the size of the muted mic in Pantheon (ePapirus) #2241
+    * Moved gtk-network icon from actions to places #2197
+    * Removed gnome from Inherits #1153
+    * Unified the disabled state in symbolic icons
+
+-------------------------------------------------------------------
+Fri May  1 11:03:03 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20200430
+  - Added a lot of icons for games installed with Lutris client #2167
+  - Added 63 icons
+  - Updated 22 icons
+  - Changes and fixes
+    * Remapped symlinks of package managers to system-software-install
+    * Remapped i-network-printer symlink to printer-network icon
+    * Removed opacity from variety-indicator panel icon #2153
+
+-------------------------------------------------------------------
+Sun Apr  5 11:35:16 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20200405
+  - Added 58 icons
+  - Updated icons:
+    * Color Picker
+    * FeatherPad
+    * htop
+    * Komodo IDE #2108
+    * Kvantum
+    * Minecraft #2135 #2134
+    * Pure Maps
+  - Changes and fixes:
+    * Added a few actions and status symbolic icons
+
+
+-------------------------------------------------------------------
+Tue Mar  3 23:28:58 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20200301
+  - Added 115 icons
+  - Updated icons:
+    * GNOME Music
+    * Kate #2064
+    * Marker #2072
+  - Changes and fixes:
+    * Add a few symlinks for packages in Fedora Flatpak repo
+
+-------------------------------------------------------------------
+Mon Feb  3 01:44:31 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20200201
+  - Added 74 icons
+  - Updated icons:
+    * Document Viewer #2055
+    * MS Office #2056
+
+-------------------------------------------------------------------
+Tue Jan  7 09:19:38 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20200102
+  - Highlights:
+    * Added more Kali Linux related icons #2022
+    * Added more icons for apps hosted on Flathub #2007
+  - Added icons
+  - Updated icons
+  - Changes and fixes:
+    * Fixed icon name for dhewm3 #1979
+
+-------------------------------------------------------------------
+Thu Dec  5 01:38:05 UTC 2019 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to version 20191201
+  - Added icons
+  - Updated icons
+  - Changes and fixes:
+    * Added a several icons for Kali Linux
+    * Added missed folder-book to Papirus-Dark and ePapirus themes
+    * Moved blockdevice icon from apps to devices
+
+-------------------------------------------------------------------
+Fri Nov  8 01:37:34 UTC 2019 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20191101
+  - Highlights:
+    * Improved Inkscape icon theme #1949
+  - Added icons
+  - Updated icons
+  - Changes and fixes:
+    * Added 16 symlinks for Flatpak apps hosted on Flathub
+    * Added nordic folder color that suitable to Nordic GTK theme #1870
+
+-------------------------------------------------------------------
+Sat Oct 12 01:26:37 UTC 2019 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20191009
+  - Added icons 
+  - Updated icons
+
+-------------------------------------------------------------------
+Wed Oct  2 03:46:11 UTC 2019 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20190919
+  - Added icons
+  - Updated icons
+  - Changes and fixes:
+    * Added symlinks for apps of MX Linux #1905
+    * Fixed distribute-vertical-gaps Inkscape icon #1897
+    * Make Delete icon different from Move to Trash #1892
+    * Removed symlinks for Firefox 3, 3.5, 4, and Aurora
+
+-------------------------------------------------------------------
+Sat Aug 17 11:22:37 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20190817
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Optimize app icons for Luakit, qBrowser, Apache Directory Studio
+    * Optimize Mullvad VPN panel icons
+
+-------------------------------------------------------------------
+Wed Aug 14 14:03:25 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20190802
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Fixed icon name for PomoDoneApp
+
+-------------------------------------------------------------------
+Tue Jul 16 20:33:54 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20190708
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Fixed Gmail & Gmail Offline icons
+    * Fixed align in Preferences Desktop Default Applications icon
+
+
+-------------------------------------------------------------------
+Mon Jun 17 19:02:48 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20190615
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Added a lot of icons for KDE Plasma 5.16
+	* Added distro icons in gnome-control-center for Ubuntu and Fedora
+	* Changed icon name for Drill
+	* Fixed icon name for dhcpcd-gtk
+	* Fixed margins for network-error network-offline icons
+	* Added Papirus themes for Thunderbird as Extras
+
+-------------------------------------------------------------------
+Wed May  1 14:13:08 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20190501
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Added a hack for Thunar 1.8.0 that fixed the size of icons in toolbar
+    * Added deeporange folder color that suitable to Yaru GTK theme
+    * Changed icon names for LibreOffice hosted on Flathub
+    * Fixed amazone-store icon
+
+-------------------------------------------------------------------
+Tue Apr  2 19:02:59 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20190331
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Added missing icons for apps in GNOME 3.32
+	* Fixed alignment of 16px apps icons for a better experience in vertical docks and panels
+	* Removed useless transforms on a lot of apps icons
+
+-------------------------------------------------------------------
+Sat Mar  2 16:12:36 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Updated to version 20190302 
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Added indigo folder color (gh#PapirusDevelopmentTeam/papirus-icon-theme#1632)
+    * Added white folder color (gh#PapirusDevelopmentTeam/papirus-icon-theme#1641)
+    * Changed color of screens for devices (gh#PapirusDevelopmentTeam/papirus-icon-theme#1626)
+    * Changed highlight color for monochrome icons
+    * Increased height of 22/24px gnome-mpv icons (gh#PapirusDevelopmentTeam/papirus-icon-theme#1638)
+    * Fixed pixel align for Inkscape icon
+    * Removed purple folder color (gh#PapirusDevelopmentTeam/papirus-icon-theme#1590)
+  - Others
+    * Optimized a lot of SVG icons (gh#PapirusDevelopmentTeam/papirus-icon-theme#1656)
+
+-------------------------------------------------------------------
+Sun Feb  3 12:35:40 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 20190203
+  - Highlights
+    * Deepin Cloud Print
+    * Deepin Cloud Scan
+    * Deepin Desktop Environment Introduction
+    * Deepin Draw
+    * Deepin Feedback
+    * Deepin Launcher
+    * Deepin Manual
+    * Deepin Movie
+    * Deepin Remote Assistance
+    * Deepin Repair Tools
+    * Deepin Toggle Desktop
+    * Mime icon for Deepin Clone
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Added attention icons for indicator-kdeconnect
+    * Differentiate the MessagingMenu tray icon from the xfce4-notifyd tray icon (gh#PapirusDevelopmentTeam/papirus-icon-theme#1567)
+    * Fixed the pixelated sound volume icon on Papirus-Light (gh#PapirusDevelopmentTeam/papirus-icon-theme#1602)
+    * Removed app icon for Qt Designer to fix toolbar icons (gh#PapirusDevelopmentTeam/papirus-icon-theme#1600)
+
+-------------------------------------------------------------------
+Sun Jan  6 07:37:08 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 20190106
+  - Highlights
+	* Added a lot of icons and symlinks for Flatpak packages hosted on Flathub
+	* Added pink and purple folder color
+  - Added icons
+  - Updated icons
+  - Changes and fixes
+    * Added missing Dropbox emblem icon
+    * Added Syncthing emblem icons
+    * Rename Mullvad icon to mullvad-vpn
+
+-------------------------------------------------------------------
+Sun Nov 25 22:04:43 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to 20181120
+  - Highlights
+    * Papirus-Adapta and Papirus-Adapta-Nokto icon themes removed (gh#PapirusDevelopmentTeam/papirus-icon-theme#1499)
+    * Papirus, Papirus-Dark, and Papirus-Light detached from GTK theme colors (gh#PapirusDevelopmentTeam/papirus-icon-theme#1500)
+  - Added Icons
+  - Updated Icons
+  - Changes and fixes
+    * Added audio-volume-* icons to actions as workaround (gh#PapirusDevelopmentTeam/papirus-icon-theme#1526)
+	* Added icons of opened folders for elementaryOS Juno (gh#PapirusDevelopmentTeam/papirus-icon-theme#1521)
+	* Added mimetype icons that are specific to Google Drive API
+	* Added workaround for folder-saved-search icon in toolbars (gh#PapirusDevelopmentTeam/papirus-icon-theme#1510)
+	* Changed application-xslt+xml symlink to application-xml (gh#PapirusDevelopmentTeam/papirus-icon-theme#1508)
+	* Removed extra icons for Unity Launcher and Unity Tweak Tool
+
+-------------------------------------------------------------------
+Tue Oct  9 20:39:10 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to 20181007
+  * Added 23 emoji icons (gh#PapirusDevelopmentTeam/papirus-icon-theme#1460)
+  * added a lot icons for Fcitx Input Method Framework (gh#PapirusDevelopmentTeam/papirus-icon-theme#1271)
+  * Added new icons
+  * Updated icons
+  * Added a few symbolic icons for GNOME apps
+  * Added icons for CPU Monitor and Network Monitor Docky docklets
+  * Added missing icons for GNOME panel applets
+
+-------------------------------------------------------------------
+Sun Aug 19 22:04:51 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 20180816
+  * Added new icons
+  * Updated icons
+  * channel-secure-symbolic (gh#PapirusDevelopmentTeam/papirus-icon-theme#1424)
+  * Delete ubuntu-mono-dark icon theme from Inherits (gh#PapirusDevelopmentTeam/papirus-icon-theme#1429)
+  * Fixed some 16px actions
+  * Fixed some Libre Office icons
+  * Moved extra/clementine icons to actions & devices
+
+-------------------------------------------------------------------
+Sat Jul 21 14:45:06 UTC 2018 - mimi.vx@gmail.com
+
+- update to 20180720
+ * Added new icons
+ * Updated icons
+ * Support Indicator KDE Connect old version
+ * resize network-wireless symbolic & panel
+
+-------------------------------------------------------------------
+Fri Jun  8 19:06:39 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 20180601
+  * New uniform for several icons (gh#PapirusDevelopmentTeam/papirus-icon-theme#1252)
+  * Added new icons
+  * Updated icons
+  * Added mime icons for various location data formats
+  * Fixed 16x16/panel/bumblebee-indicator.svg icon (gh#PapirusDevelopmentTeam/papirus-icon-theme#1278)
+  * Added bluegrey folder color to match Adapta-BlueGrey(-Nokto) theme from adapta-gtk-theme-colorpack
+  * Add symbolic suffix to Lock Keys icons (gh#PapirusDevelopmentTeam/papirus-icon-theme#1302)
+
+-------------------------------------------------------------------
+Tue May  1 17:54:49 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 20180501
+  * Added icons
+  * Updated icons
+  * full changelog: https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/releases/tag/20180501
+
+-------------------------------------------------------------------
+Tue Apr  3 18:58:30 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 20180401
+  * Added new icons
+  * Updated a few icons
+  * Colorize some mimes
+  * Fix icon sizes on index.theme's (gh#PapirusDevelopmentTeam/papirus-icon-theme#1197)
+
+-------------------------------------------------------------------
+Wed Mar 14 20:46:07 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 20180311
+  * Added new icons
+  * Updated a few icons
+  * Fix some icons (gh#PapirusDevelopmentTeam/papirus-icon-theme#1151)
+- Update License to follow SPDX-3.0 standard
+
+-------------------------------------------------------------------
+Sun Feb 18 19:05:56 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 20180114
+  * Added new icons
+  * Updaded a few icons 
+
+-------------------------------------------------------------------
+Thu Feb  1 19:52:11 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 20180201
+  * Added symlinks for Flatpak apps (gh#PapirusDevelopmentTeam/papirus-icon-theme#1062)
+    * GIMP
+	* Glade
+	* gitg
+	* dconf-editor
+	* Android Studio
+  * Added some mime symlinks for archives
+  * Added microphone-sensitivity-none-symbolic symlink for Cinnamon
+    (gh#PapirusDevelopmentTeam/papirus-icon-theme#1095)
+  * Changed symbolic mail icons (gh#PapirusDevelopmentTeam/papirus-icon-theme#1076)
+  * Fixed Ibus Pinyin (gh#PapirusDevelopmentTeam/papirus-icon-theme#1093)
+  * Fixed animation of VPN connection
+  * Redesign stars icons (bookmarks, bookmarks-missing, plasmagik, COH2)
+
+-------------------------------------------------------------------
+Sun Jan 21 18:30:24 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 20180116
+  * License changed from LGPL-3.0 to GPL-3.0
+  * Added new icons
+  * Updated a few icons
+  * Added missing folder-torrent symlink
+  * Fixed icon names for kdeconnect-indicator
+  * Changed the white color to more lighter
+- Update copyright year to 2018 of spec
+- Remove duplicate LICENSE files in package
+
+-------------------------------------------------------------------
+Sun Dec 31 01:57:31 UTC 2017 - jengelh@inai.de
+
+- Trim redundant filler words and notes for other operating systems.
+
+-------------------------------------------------------------------
+Sat Dec 30 16:18:28 UTC 2017 - matthias.eliasson@gmail.com
+
+- Update to 20171223
+  * Added several icons for Deepin DE
+  * Rename icons for apps by @artemanufrij (gh#PapirusDevelopmentTeam/papirus-icon-theme#925,#931)
+  * Removed help-about icon from apps (gh#PapirusDevelopmentTeam/papirus-icon-theme#926)
+
+-------------------------------------------------------------------
+Sun Dec 10 00:06:14 UTC 2017 - matthias.eliasson@gmail.com
+
+- Initial commit 

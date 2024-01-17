@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d8c8742afc5fd2f8d8eefc632b6c2dd9</srcmd5>
+    <version>0.1.2</version>
+    <time>1551113878</time>
+    <user>coolo</user>
+    <comment>- Add %license
+- Remove devel build dependency
+- Remove bcond test, and note there are no tests available
+- Initial version
+</comment>
+    <requestid>678795</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e8f686ec86acf2ea8a4c99ea2abbd159</srcmd5>
+    <version>0.1.2</version>
+    <time>1590650269</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809409</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a7e3755b73d2946b757ff6e96036f559</srcmd5>
+    <version>0.1.2</version>
+    <time>1645998190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957880</requestid>
+  </revision>
+</revisionlist>

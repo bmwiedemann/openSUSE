@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ec10b2dd06dc39f1f3ebd20aa4a71be</srcmd5>
+    <version>0.4.0</version>
+    <time>1259336395</time>
+    <user>autobuild</user>
+    <comment>Copy from home:lnussel/peksystray based on submit request 24980 from user lnussel
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>08176b027a147114e5d8accc708b499b</srcmd5>
+    <version>0.4.0</version>
+    <time>1268925350</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>08176b027a147114e5d8accc708b499b</srcmd5>
+    <version>0.4.0</version>
+    <time>1278667376</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>08176b027a147114e5d8accc708b499b</srcmd5>
+    <version>0.4.0</version>
+    <time>1278678608</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>08176b027a147114e5d8accc708b499b</srcmd5>
+    <version>0.4.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>08176b027a147114e5d8accc708b499b</srcmd5>
+    <version>0.4.0</version>
+    <time>1319182237</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>96d31eee483b468c3785d50642beed4c</srcmd5>
+    <version>0.4.0</version>
+    <time>1323193018</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>f16264d3bc22b39e328ce4231e0b3485</srcmd5>
+    <version>0.4.0</version>
+    <time>1323340238</time>
+    <user>coolo</user>
+    <comment>- add automake as buildrequire to avoid implicit dependency (forwarded request 95632 from coolo)</comment>
+    <requestid>95864</requestid>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>7de27be93e3ed71fbac5de9c6e39e7ae</srcmd5>
+    <version>0.4.0</version>
+    <time>1334229915</time>
+    <user>coolo</user>
+    <comment>Just a spec file cleanup, also checked builds against gcc47 fine. (forwarded request 113256 from malcolmlewis)</comment>
+    <requestid>113274</requestid>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>7de27be93e3ed71fbac5de9c6e39e7ae</srcmd5>
+    <version>0.4.0</version>
+    <time>1340183787</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>7de27be93e3ed71fbac5de9c6e39e7ae</srcmd5>
+    <version>0.4.0</version>
+    <time>1359109590</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>7de27be93e3ed71fbac5de9c6e39e7ae</srcmd5>
+    <version>0.4.0</version>
+    <time>1379663539</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="21">
+    <srcmd5>7de27be93e3ed71fbac5de9c6e39e7ae</srcmd5>
+    <version>0.4.0</version>
+    <time>1409302145</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="22">
+    <srcmd5>7abc23e5fcd69a7bc46b626b31d6d2b2</srcmd5>
+    <version>0.4.0</version>
+    <time>1523616567</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594791</requestid>
+  </revision>
+</revisionlist>

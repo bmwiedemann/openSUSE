@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Thu Dec 28 11:15:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.2:
+  * FIX khal `at` also uses `event_format` not
+    `agenda_event_format`
+  * FIX duplicating an event using `p` in ikhal
+  * NEW Add ability to change the minimum number of months
+    displayed with `min_calendar_display`
+  * FIX ikhal don't crash when jumping long distances in time
+  * FIX do not use urwid's private methods, would crash with
+    latest urwid version
+  * FIX light colorscheme in ikhal, would crash with recent urwid
+    versions
+  * FIX better error messages when we cannot import an event
+  * FIX README.rst formatting to allow upload to PyPI
+  * DROPPED support for python versions < 3.8
+  * UPDATED REQUIREMENT pytz is now required >= 2018.7
+  * NEW test REQUIREMENT: packaging
+  * FIX support in tests for pytz version numbers of the format
+    year.month.minor
+  * FIX deleting of instances of recurring events in ikhal
+  * FIX if a `discover` collection is set to "readonly",
+    discovered collections will now inherit the readonly property
+  * FIX ikhal will not wrap date headers into the next line in
+    narrow terminals
+  * FIX `configure` should only suggest valid default collection
+    names
+  * NEW the `configure` command can now set up vdirsyncer
+  * NEW better error message for misuses of `at` and `list`
+  * NEW `discover` collection type now supports `**` (arbitrary
+    depths)
+  * NEW Add testing for Python 3.11
+- drop fix-pytz-tests.patch (upstream)
+
+-------------------------------------------------------------------
+Wed Dec 21 00:46:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add generated shell completion scripts.
+
+-------------------------------------------------------------------
+Tue Dec 20 11:45:22 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable test_bogota and test_event_no_dst because are broken with the latests
+  pytz versions
+
+-------------------------------------------------------------------
+Thu Oct  6 07:07:28 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.10.5:
+  * FIX support for tzlocal >= 4.0
+  * FIX ability to show an event's calendar in ikhal
+  * FIX an error logging for certain broken icalendar events that made ikhal crash
+    after editing those events
+  * NEW Add widget to interactive event editor that allows adding attendees as
+    comma separated list of email addresses
+  * FIX event creation for events after the second next DST transition
+  * NEW Add support for Python 3.10
+  * CHANGE search, at, and list don't print "No events" anymore if no matching
+    events are found
+  * NEW Add option to use multiple color only when not all calendar colors can
+    be displayed.
+- Add fix-pytz-tests.patch to fix tests with latest pytz version
+
+-------------------------------------------------------------------
+Tue Jan 11 09:52:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add python-rpm-macros
+
+-------------------------------------------------------------------
+Thu Aug 12 13:50:58 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Initial package
+

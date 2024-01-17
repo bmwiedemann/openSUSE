@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>739c07ee25da4c162a706edb493cd12c</srcmd5>
+    <version>1.8.21</version>
+    <time>1663935296</time>
+    <user>dimstar_suse</user>
+    <comment>direct dependency of a lot (162) of geo packages, c.f. https://www.wheelodex.org/projects/fiona/rdepends/
+Especially geopandas, which is also a dependency of even more (605) geo packages, c.f. https://www.wheelodex.org/projects/geopandas/rdepends/
+Notable dependencies of geopandas includes several commonly used OpenStreetMap libraries and tools such as https://www.wheelodex.org/projects/osmnx/ (43 projects use this, including quite useful https://github.com/giswqs/leafmap)</comment>
+    <requestid>1005030</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>73c2b41f74364d7b71761fc161a1930e</srcmd5>
+    <version>1.8.21</version>
+    <time>1669983198</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039416</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cf5b21249b79454eaf41cf536a43f8fd</srcmd5>
+    <version>1.9.1</version>
+    <time>1677498908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067801</requestid>
+  </revision>
+</revisionlist>

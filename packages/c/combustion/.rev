@@ -1,0 +1,231 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2876f9b5a11085d588c6c7089af5fa7a</srcmd5>
+    <version>0.1</version>
+    <time>1595577573</time>
+    <user>dimstar_suse</user>
+    <comment>New package, to be used by openSUSE-MicroOS</comment>
+    <requestid>822194</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cf9dc560694aee937199605b18df611e</srcmd5>
+    <version>0.1</version>
+    <time>1599862255</time>
+    <user>dimstar_suse</user>
+    <comment>- Add combustion-prepare.service to enable network if needed:
+  M combustion
+  A combustion-prepare.service
+  M combustion.service
+  M module-setup.sh
+- Don't fail if no config drive found to not break ignition with
+  fw_cfg
+</comment>
+    <requestid>833734</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8d64d03edf0c7ab760790b53a731e922</srcmd5>
+    <version>0.1</version>
+    <time>1600079796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834262</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9d6d09f87c63e7c65f09cd8108ba176d</srcmd5>
+    <version>0.2</version>
+    <time>1600701903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835349</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>67d393ce9b6b7f7277f995e90f02bb93</srcmd5>
+    <version>0.2</version>
+    <time>1602073060</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839821</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>51f3416162276dd5a66ef7d7d7f60b63</srcmd5>
+    <version>0.2</version>
+    <time>1602596851</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841545</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>9d96cd9ccc5df0fc2eb9d531a69eaf3d</srcmd5>
+    <version>0.2</version>
+    <time>1603961364</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>844727</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>895bad25f658886f0f845680fd3b2d45</srcmd5>
+    <version>0.2</version>
+    <time>1611595502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866597</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>cf6b7f7f3a1ecfc2bf297a57b593f0e8</srcmd5>
+    <version>0.2</version>
+    <time>1624136601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900741</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>5d5183916b8fd46b5ae5850ceadd7339</srcmd5>
+    <version>0.2</version>
+    <time>1624260749</time>
+    <user>dimstar_suse</user>
+    <comment>- Set the exit status explicitly (forwarded request 901093 from favogt)</comment>
+    <requestid>901094</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>2a995e1201ec821f6f5e2e97b04969fd</srcmd5>
+    <version>0.2</version>
+    <time>1627492904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908901</requestid>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>aa5be0340a98ceea5b9917d7cb404e3f</srcmd5>
+    <version>0.2</version>
+    <time>1637794470</time>
+    <user>dimstar_suse</user>
+    <comment>- Look for filesystems with uppercase labels as well</comment>
+    <requestid>933441</requestid>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>ae6e06cc6f24fd068dc65e8317e57e35</srcmd5>
+    <version>0.2</version>
+    <time>1646671534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959827</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>15d95ab187e84616d79e98d236247308</srcmd5>
+    <version>0.3</version>
+    <time>1648479517</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964654</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>096aa4130d5ccc4796abcf6261c7e450</srcmd5>
+    <version>1.0+git0</version>
+    <time>1657191393</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987242</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5f6e5660f6342043d1d3363d04c77ac6</srcmd5>
+    <version>1.0+git1</version>
+    <time>1659554188</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992324</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5d291d4231b6c8b93915f14b00fb3200</srcmd5>
+    <version>1.0+git2</version>
+    <time>1660924412</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>997978</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5c3b2837952db3182f07c9dc92eb3882</srcmd5>
+    <version>1.0+git4</version>
+    <time>1689175588</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git4:
+  * Handle uppercase filesystem labels in combustion.rules as well
+  * Update README.md to explain the current mechanism of firstboot_happened</comment>
+    <requestid>1098144</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5ee4616230a2685ef2ad2f229e8a69a7</srcmd5>
+    <version>1.1+git0</version>
+    <time>1691154172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102122</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f0ab9bc0deadfcab3714173f3bc6a588</srcmd5>
+    <version>1.2+git2</version>
+    <time>1693383460</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105495</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d2734efdf03b4d24fc46365b28ce71c2</srcmd5>
+    <version>1.2+git5</version>
+    <time>1694200513</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109552</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>469f165c4712221a38b7461865469a47</srcmd5>
+    <version>1.2+git6</version>
+    <time>1694630609</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110652</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>761f7e3aca2e35aea0811719e146975c</srcmd5>
+    <version>1.2+git7</version>
+    <time>1695664809</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1111859</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6c54199c121286efcd707f66106d0dfe</srcmd5>
+    <version>1.2+git8</version>
+    <time>1697231616</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117161</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c4df782bfcbac18767468532c8cfa058</srcmd5>
+    <version>1.2+git9</version>
+    <time>1697657114</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118463</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f9800255f75834cc8d8566110759e920</srcmd5>
+    <version>1.3</version>
+    <time>1700771916</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128312</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>00968d54b2e81d2b665a62e4645a67fd</srcmd5>
+    <version>1.3+git3</version>
+    <time>1703281256</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.3+git3:
+  * 30firstboot: Do not detect firstboot in the zipl initrd &quot;initgrub&quot; mode
+    (bsc#1218065)
+  * Handle absence of NM and wicked properly
+  * Use dracut $hookdir instead of hardcoding</comment>
+    <requestid>1134516</requestid>
+  </revision>
+</revisionlist>

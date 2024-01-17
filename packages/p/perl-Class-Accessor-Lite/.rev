@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>493551319595b270536236524bb9553d</srcmd5>
+    <version>0.05</version>
+    <time>1371814261</time>
+    <user>coolo</user>
+    <comment>deps for JSON-RPC</comment>
+    <requestid>179386</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>493551319595b270536236524bb9553d</srcmd5>
+    <version>0.05</version>
+    <time>1379663577</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d86055ac0f6aec458f386a27288b7eae</srcmd5>
+    <version>0.06</version>
+    <time>1394386447</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>224967</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d86055ac0f6aec458f386a27288b7eae</srcmd5>
+    <version>0.06</version>
+    <time>1409302192</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2a4cbf38585b434ae3d78d7b094a7dad</srcmd5>
+    <version>0.07</version>
+    <time>1430595242</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304314</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1ddcb437e0d517200fa12d0a10a7559d</srcmd5>
+    <version>0.08</version>
+    <time>1431247631</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305903</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>910e9e58964a98e1254a9430e93a28d9</srcmd5>
+    <version>0.08</version>
+    <time>1507065509</time>
+    <user>dimstar_suse</user>
+    <comment>- patch makefile to build with perl 5.26</comment>
+    <requestid>530644</requestid>
+  </revision>
+</revisionlist>

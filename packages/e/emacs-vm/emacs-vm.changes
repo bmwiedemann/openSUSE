@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Wed Mar 29 05:10:07 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Update to latest launchpad trunk version.
+  Delete obsolete patches:
+  * U_rev-1313.patch
+  * U_Require-vm-reply.el-from-vm-compose-mail.patch
+- Fix vcard parser to handle broken vcards better
+  vcard-Make-vcard-parser-more-robust-to-invalid-vcards.patch
+- Limit %install_info and %install_info_delete macros to Leap/SLE.
+
+-------------------------------------------------------------------
+Thu Dec  7 12:43:45 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Fix rpm group
+
+-------------------------------------------------------------------
+Thu Dec  7 11:06:49 UTC 2017 - dimstar@opensuse.org
+
+- Escape the usage of %{VERSION} when calling out to rpm.
+  RPM 4.14 has %{VERSION} defined as 'the main packages version'.
+
+-------------------------------------------------------------------
+Thu Jan 21 14:26:04 UTC 2016 - eich@suse.com
+
+- U_Require-vm-reply.el-from-vm-compose-mail.patch
+  Require vm-reply.el from vm-compose-mail (lp#913005)
+  (bsc#939497).
+
+-------------------------------------------------------------------
+Mon Jul 27 08:51:54 UTC 2015 - eich@suse.com
+
+- U_rev-1313.patch:
+  - Added a variable `vm-confirm-for-auto-archive' that controls the
+    confirmation dialogue for `vm-auto-archive-messages'. (lp#793541)
+  - Add autoload for `vm-select-recipient-from-sender'.  (lp#907286)
+    (bsc#939497).
+
+-------------------------------------------------------------------
+Wed Mar 11 12:47:08 UTC 2015 - dimstar@opensuse.org
+
+- Use makeinfo --force to ignore the errors in vm.texinfo.
+
+-------------------------------------------------------------------
+Thu Oct 24 14:39:54 UTC 2013 - eich@suse.com
+
+- Fixed up paths to make them package private
+- Removed duplicate files from package
+
+-------------------------------------------------------------------
+Thu Oct 10 15:55:25 UTC 2013 - eich@suse.com
+
+- Updated package to version 8.2.0b.
+  * Fixes warnings about missing hooks removed from GNU emacs after being
+    deprecated for over 10 years
+  * Fixes performance penalties caused by bidi being activated by default
+    on GNU emacs 24.
+  * Updates from version 7.19 - released in 2004, 24 releases ago.
+    Numerous changes and bug fixes, file 'NEWS' in the package docs list 
+    the changes since 7.19.
+- Project now hosted at https://launchpad.net/vm.
+  Upstream maintainership package has been transferred from Kyle Jones
+  to the 'VM development team'.
+- vm-Makefile.patch:
+  Removed, matching Makefile no longer required since build uses autotools 
+  now.
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Tue Aug 25 07:06:05 UTC 2009 - aj@suse.de
+
+- Fix build, handle just one info file.
+
+-------------------------------------------------------------------
+Sun Apr 22 17:25:44 CEST 2007 - aj@suse.de
+
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:41 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 19 11:34:05 CET 2006 - hare@suse.de
+
+- prepared for autobuild
+- Using vm-7.19 as initial package
+

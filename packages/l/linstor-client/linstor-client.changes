@@ -1,0 +1,161 @@
+-------------------------------------------------------------------
+Wed Jan 12 05:54:54 UTC 2022 - nick wang <nwang@suse.com>
+
+- bsc#1194567, update to 1.12.0
+ * Added node evacuate command
+ * Added external files commands
+ * Fixed parsing exos create ctrl_b_ip
+ * Fixed backup machine readable outputs shouldn't be wrapped in list
+ * Resource group added adjust command
+ * Added snapshot delete --nodes parameter
+ * Node list show optional eviction time
+ * Node restore added delete resources/snapshots options
+ * Resource group added adjust command
+ * add client user-agent info
+ * node info: show also info for combined nodes
+ * Resource involved: remove debug output and an error while filtering
+ * Fixed deprecated setup.cfg variable
+ * New resource involved command: Show involved resources from a node
+ * Added exos commands
+ * interactive: fixed help with a command
+ * Fixed incorrect git-hash shown in version output
+
+-------------------------------------------------------------------
+Thu Dec 23 09:01:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require python-linstor instead of python-module linstor: the
+  python singlespec macors will rewrite this to the coresponding
+  version, as opposed to python_module, which requires all flavors.
+
+-------------------------------------------------------------------
+Tue Jan 26 06:23:29 UTC 2021 - nick wang <nwang@suse.com>
+
+- bsc#1181397, update to 1.6.1
+ * Fix reconnect on timeout error in interactive mode
+ * Fix incorrect resource toggle-disk short option -dflt -> --dflt
+ * Toggle disk storage pool options are now optional
+ * node list now shows DELETING and EVICTED nodes
+ * Added diskless placement and additional placement count for auto-place
+ * Added node restore command for evicted nodes
+ * depend on python-linstor v1.6.0
+ * migrate: remove unused AllowLargerVolumeSize property
+ * fix incorrect use of argparse.ArgumentTypeError
+ * drbd-options: add units to error message
+ * Allow setting options via environment variables, prefix is `LS_CLIENT_`
+ * Added error-report delete command
+ * Commandline choices(enums) are now mostly case insensitive
+
+-------------------------------------------------------------------
+Tue Sep 22 07:28:50 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1176790, update to 1.3.0
+ * Added snapshot shipping list command
+ * correctly show inactive resources
+
+-------------------------------------------------------------------
+Mon Jun  1 04:34:15 UTC 2020 - nick wang <nwang@suse.com>
+
+- Update to 1.1.2
+  * api: support storage-pool list argument for auto select filters
+  * rsc-create: fix storage pool argument
+  * snapshot list: add resources and nodes filter
+  * use gitlab-ci and update tests to use a pre started controller
+  * crypt-create-pass: let the user enter passphrase twice
+  * property filter support
+  * main: remove unused format argument
+  * node-list: add option to show aux properties for node
+  * drbd-opts: correctly show drbd unit
+  * resource-list: add --faulty option, to only show faulty resources
+  * node-describe: fix locale/utf8 check
+  * add auto-select test and improve diskless on remaining description
+  * rsc-grp-spawn: support external name
+  * resource-groups: fix missing completers
+  * node: improve node ip resolving
+  * node: only show satellite nodes info
+  * improve: table column headers
+  * Add drbd-connection info to resource and volume list output
+  * add openflex node create and storage pool create
+  * tests: fix suite not returning correct exit code
+  * use new ConnectionStatus enum const
+  * Fix set property if key with '=' is given
+  * rsc-dfn: add auto-place command
+  * tests: fix client unittests
+  * dm-migrate: fix py2/3 input()
+  * dm-migrate: 0-pad current GI
+  * dm-migrate: fix overindentation
+  * write interactive errors to stderr
+  * vlm_dfn: show gross size in list
+  * vlm_grp: support gross sizes
+  * rsc/vlm-list: do not show unused if state is unknown
+  * Added support for SPDK in Physical Storage commands
+  * commands: unhide physical storage commands
+  * physical-storage: allow storage pool creation
+  * commands: remove swordfish support
+  * unittest: fix test execution in py3.6 >=
+  * packaging: use python3 per default
+  * prepare py2/3 pkg split
+  [...]
+  - Update to 0.9.9-1
+  * controller/version: fix --curl mode
+  * add linstor authentication arguments
+  * add allow-insecure-auth to global args filter
+  * tests: better assert for api success
+  * Add file and filethin providers
+  * Make argument 'ip' of 'n i m' optional
+  * Add new conn status for node without stlt conn
+  * Allow node to set active stlt conn on netIf crt or mod
+  * node_cmds: display only active ip in 'n l'
+  [...]
+
+-------------------------------------------------------------------
+Tue May 28 06:41:25 UTC 2019 - nwang@suse.com
+
+- Update to 0.9.5
+ - linstor-client/python-linstor 0.9.5
+  * Fixed: combined query filters are incorrectly concatenated
+  * Fixed: keep-alive (interactive) mode
+  * High-Level API: Resource class now works with external names
+ - linstor-client/python-linstor 0.9.4
+  * API/Client now uses REST-API
+  * Added curl command output mode
+  * Updated to latest drbd options
+  * DRBDManage migrate generator now uses resource transactions
+  * Package support for RHEL8
+ - linstor-client/python-linstor 0.9.3
+  * Support nvme layers
+
+-------------------------------------------------------------------
+Tue Apr  9 01:08:05 UTC 2019 - nwang@suse.com
+
+- Update to 0.9.2
+ * Create node IP address will be resolved if not given
+ * Removed all name checks, they are checked by the controller anyway
+ * Resource definition peer-slots can now be modified
+ * DRBD-handlers can now be specified for controller and resource-definition 
+
+-------------------------------------------------------------------
+Thu Apr  4 07:05:10 UTC 2019 - nwang@suse.com
+
+- Update to 0.9.1 
+ * Global compatibility machine readable output 
+ * Resource definition can now store an unrestricted user name
+ * Client fixes to work with py3
+ * Improvements on the higher level API Resource object
+
+-------------------------------------------------------------------
+Wed Oct 31 01:47:19 UTC 2018 - nwang@suse.com
+
+- Update to new release 0.7.0
+ * Added Proxy configuration commands
+ * Synchronous auto-place and storage-pool create commands
+ * Resource connection commands (list, props, drbd options)
+ * Improved table rendering
+ * error list --since allows now hours to be specified 
+
+-------------------------------------------------------------------
+Wed Sep 26 08:00:27 UTC 2018 - nwang@suse.com
+
+- bsc#1095668. First version, 0.6.2
+  Add patch change-location-of-bash-completion.patch for rpmlint
+    warning suse-filelist-forbidden-bashcomp-userdirs
+

@@ -1,0 +1,13 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://versioncontrolseidl.in.tum.de/parsergenerators/cup.git</param>
+		<param name="revision">d69c8321fab81759df10e2d74087a9514b5b56da</param>
+		<param name="versionformat">%h</param>
+		<param name="filename">java-cup</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+</services>

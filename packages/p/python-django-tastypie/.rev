@@ -1,0 +1,183 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>724d78afa37ebe1164d8682fa3a81dd7</srcmd5>
+    <version>0.9.11</version>
+    <time>1332752704</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>110512</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>724d78afa37ebe1164d8682fa3a81dd7</srcmd5>
+    <version>0.9.11</version>
+    <time>1340184049</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>724d78afa37ebe1164d8682fa3a81dd7</srcmd5>
+    <version>0.9.11</version>
+    <time>1359110022</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>52a05fed332767ba62db47516bc0c7bc</srcmd5>
+    <version>0.9.12</version>
+    <time>1360872811</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 155424 from posophe)</comment>
+    <requestid>155425</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>39be1ca42742fb8411624e6031f11be0</srcmd5>
+    <version>0.9.15</version>
+    <time>1374046252</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.9.15:
+  * No changelog available (forwarded request 183125 from Nijel)</comment>
+    <requestid>183449</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>39be1ca42742fb8411624e6031f11be0</srcmd5>
+    <version>0.9.15</version>
+    <time>1379664164</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cf7c224e857f38630ba1826f7e14e4f6</srcmd5>
+    <version>0.10.0</version>
+    <time>1380608973</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 201310 from posophe)</comment>
+    <requestid>201424</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>931f54df3c33e61d45fd898f80f1c793</srcmd5>
+    <version>0.11.1</version>
+    <time>1404996962</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240148</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>931f54df3c33e61d45fd898f80f1c793</srcmd5>
+    <version>0.11.1</version>
+    <time>1409302855</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b401e2d1aaa1eb9f4aaff4f6e928074f</srcmd5>
+    <version>0.12.1</version>
+    <time>1429769080</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298541</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>5111029656159ff3610291697de820b2</srcmd5>
+    <version>0.12.1</version>
+    <time>1457353394</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361838</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>027db3aeaeabcbc2cb87305e436e047d</srcmd5>
+    <version>0.14.1</version>
+    <time>1535123459</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace useless description.
+
+- Version update to 0.14.1:
+  * Fixes to support latest django
+- Run tests
+- Add patch for django 2.1:
+  * django-tastypie-django21.patch</comment>
+    <requestid>631083</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8dfc5514565b2902a033855810678d2e</srcmd5>
+    <version>0.14.2</version>
+    <time>1551455215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>678837</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>97dc9baf42de0d25e124939132ac0ac8</srcmd5>
+    <version>0.14.3</version>
+    <time>1578606706</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.3:
+  * no upstream changelog</comment>
+    <requestid>762088</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>732e642eba76ae5300cac1807c966606</srcmd5>
+    <version>0.14.3</version>
+    <time>1614108047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>874333</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>60266316e55bbba6be0431606a85fbb7</srcmd5>
+    <version>0.14.3</version>
+    <time>1623268368</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898569</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1c5aca124e8beaa296201535629ae3f5</srcmd5>
+    <version>0.14.4</version>
+    <time>1645891332</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.4:
+  - Django 4.0 support
+- Fix testing of the package.
+- Remove upstreamed patch merged_pr_1624_chunk.patch
+</comment>
+    <requestid>957670</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>7b5751c8c94931ea4c59dd35722e11ca</srcmd5>
+    <version>0.14.4</version>
+    <time>1652389200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976399</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>3cacc19e8f3aa35139f75994282aa1a6</srcmd5>
+    <version>0.14.4</version>
+    <time>1665034908</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008059</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0825a0abd3b6dda0b54d41ef80dc1691</srcmd5>
+    <version>0.14.5</version>
+    <time>1674810993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061431</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0469127fd90cec6bc03498008fcb7d9a</srcmd5>
+    <version>0.14.6</version>
+    <time>1695209203</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.6:
+  * Remove unused mock library from test requirements
+  * Django 4.2 compatibility
+  * Fixed crash when missing CSRF token cookie in
+    SessionAuthentication
+  * Fix flake8, update docs, fix RTD builds</comment>
+    <requestid>1111936</requestid>
+  </revision>
+</revisionlist>

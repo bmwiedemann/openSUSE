@@ -1,0 +1,167 @@
+-------------------------------------------------------------------
+Wed Jan 10 17:23:31 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- Make buildable on Leap.
+
+-------------------------------------------------------------------
+Wed Dec 20 11:43:07 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Do not write non-deterministic .pyc files in tests
+
+-------------------------------------------------------------------
+Sat Mar 04 13:16:37 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 2022.12.11+git.1675870044.c7a87f3:
+  * Fix versioning consistency
+  * Bugfix #61 (#84)
+  * Simplify logic
+  * Bump version to v2022.12.11
+  * Fix issue #73
+  * Ignore .envrc
+  * A suggestion for enhancing the Readme file (#69)
+  * Update tests trigger path
+  * Update tests and Makefile
+  * Update tests
+
+-------------------------------------------------------------------
+Wed Oct 05 22:19:22 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 2022.4.18+git.1664754357.6dd1860:
+  * Update tests trigger path
+  * Update tests and Makefile
+  * Update tests
+  * Restore and update setup.py for AUR pkg compatibility
+  * Major refactor: breakdown epy.py script into package project structure for easier development Squashed commit of the following:
+  * Setup debugger: debugpy
+  * Revert "Add user setting for indenting paragraphs (#63)" Issue with inline style (italic, bold)
+  * Add user setting for indenting paragraphs (#63)
+
+-------------------------------------------------------------------
+Mon Apr 25 07:37:33 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 2022.4.18+git.1650237821.50dd4fa:
+  * Bugfix #57: Unresolved relative path for epub contents
+  * Update dev env configurations
+  * Add wkdict to supported dict backends
+  * docs: define word setup (#55)
+  * Add signal handler
+  * Breakdown parse_cli_args into its own method
+  * Remove body: from workflow
+  * Move sponsor to FUNDING
+  * Update changelog in README
+  * Add debugger on parallel letter counting process
+  * Fix process.join() issue for unstarted process
+  * Bugfix #51: Stop/prevent scrolling at the end of ebook
+  * Add 'force_wait' for letters counting process
+  * Add library menu
+  * Verbose loader
+  * Fixed url parser with pathlib.PurePosixPath
+  * CLI help interface
+  * More explicit 'content_path'
+  * Hotfix: image location reference issue
+  * Hotfix: url meta window issue and update version
+  * URL early support
+  * Improve cli help interface
+  * New implementation of cli args parser
+  * Restructured tests
+  * Add vim config
+- Run tests
+
+-------------------------------------------------------------------
+Sat Jan 08 23:30:07 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 2022.1.8+git.1641653565.c1f9b4e:
+  * Update README.md: added AUR installation
+  * Delete .mkpkg script
+
+-------------------------------------------------------------------
+Sat Jan 08 07:31:46 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 2021.10.23+git.1641627031.7bd659d:
+  * .mkpkg -> Makefile
+  * Patch PKGBUILD
+
+-------------------------------------------------------------------
+Sat Jan 08 07:19:58 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 2021.10.23+git.1641622438.69c2f80:
+  * Hotfix: curses has no attrib window in termux
+  * Added default color config
+  * Added PKGBUILD for Arch
+  * Adjust setup.py and pyproject.toml to include epy_extras
+  * Cleanup on failed ebook initialization
+  * Initial prepackaging kindleunpack with epy
+  * Use setuptools as setup backend instead of poetry
+  * Update version and README.md
+  * Change history matching key from filepath to title author
+  * Initial library implementation
+  * Always calculate reading_progress whenever possible, just not always shown
+  * Refactor attribute name
+  * Fixed book metadata
+  * Add (sup|sub)script lookup table
+  * Implement HTMLtoLines._group_spans_by_row()
+  * Hotfix: adjust starting_line for inline style
+  * Add text mark/span grouper method
+  * Initial refactor: inline styling
+  * Add ipdb dev dependency
+  * Hotfix: Skip adding toc entry for empty label name
+  * Update development env using poetry
+  * Fix path resolver for Mobi.get_img_bytstr()
+  * Add tests
+  * Add requirements-dev.txt
+  * Add support for Epub==v1.0 and simplify path resolver
+  * Remove bad try-except block
+  * Refactor Epub and Mobi object
+  * Hotfix: Update docstr
+  * Fixed plethora type issues
+  * Added SpeakerBaseModel as TTS engine wrapper
+  * Use mimic instead of pico2wave. (#44)
+  * Update README.md: remove AUR installation instruction
+  * Update .gitignore
+  * Fixed unavailable curses.A_ITALIC and update version
+  * Update LICENSE
+  * Allow setting language for TTS. (#43)
+- Remove upstreamed mimic.patch.
+
+-------------------------------------------------------------------
+Mon Dec 20 19:39:29 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Replace tts_lang.patch with mimic.patch, switching the TTS engine to
+  free mimic (svox is non-free), and allowing inclusion into openSUSE.
+
+-------------------------------------------------------------------
+Fri Dec 17 10:13:56 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add tts_lang.patch to allow setting language of TTS
+  (gh#wustho/epy#43).
+
+-------------------------------------------------------------------
+Sat Nov 27 10:19:32 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 2021.10.23+git.1636702550.2ab1584:
+  * Fixed reset to beginning of row when resizing term and Seamless==True
+  * Implement SeamlessBetweenChapters Squashed commit of the following:
+  * Minor annotation & prevent next page animation on edge of book
+  * Removed Board class
+  * Added TextStructure dataclass
+  * Give styling to images
+  * Better image opening scheme
+  * Refactor parser.get_lines(width) to get_lines(textwidth)
+  * Fixed image cursor on double spread and progress pctg in double spread
+  * Refactor variables
+
+-------------------------------------------------------------------
+Wed Jul 28 23:20:26 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Simplify spec, remove differing python versions from initial package generation
+- Change package name to epy as it better reflects the acutal package name on GitHub 
+
+-------------------------------------------------------------------
+Wed Jul 28 22:33:02 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Add Suggests for supported dictionary applications
+
+-------------------------------------------------------------------
+Wed Jul 28 22:12:31 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Initial package version

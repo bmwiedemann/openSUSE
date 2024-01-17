@@ -1,0 +1,698 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>19997603c81c76c25becf84c4e50abf1</srcmd5>
+    <version>0.9.18</version>
+    <time>1493235786</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>486533</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ed723a2ba7be995bd6f5e170faee046f</srcmd5>
+    <version>0.9.18</version>
+    <time>1494088217</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>492741</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b499f53288f487b7e325e906cce81620</srcmd5>
+    <version>0.9.18</version>
+    <time>1509105677</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536902</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ea321e1a1d6b6ef1459e0b9cd94952d0</srcmd5>
+    <version>1.0~alpha0</version>
+    <time>1510232351</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0-alpha0:
+  * mu4e: add mu4e-msg-changed-hook to mu4e-index-updated-hook globally
+  * mu4e: Fix outdated docstring for `mu4e-headers-actions'
+  * Add some improvements in attachment actions
+  * mu4e: killing instead of interrupting update process
+  * Use re-search-forward to find message signatures 
+  * mu4e: Add possibility to forward messages as attachments 
+  * mu: add 'tickle' command, for renaming messages
+  * mu4e: allow for message body rewriting
+  * mu4e: mu4e-message: allow for bodyless messages
+  * mu4e: show inline text/plain as attachment
+  * mu4e: don't require user-agent string 
+  * mu4e: Added new mu4e-split-view mode: single-window
+  * mu: include signers in signature report
+  * mu4e: display signers in signature header
+  * bug fixes and documentation updates</comment>
+    <requestid>537839</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b2c0a00d652bd883016619ed5cbbb504</srcmd5>
+    <version>1.0~alpha2</version>
+    <time>1510660631</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0-alpha2:
+  * Ensure mu4e-view-mode-hook run after text insertion
+  * mu4e: fix bug preventing mu4e-headers-change-sorting to sort by list
+  * mu4e: add mu4e-query-rewrite-functio
+  * proc: ensure query string is utf-8
+  * documentation fixes</comment>
+    <requestid>541242</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2ba944b6816a350b20301428baf90037</srcmd5>
+    <version>1.0~alpha3</version>
+    <time>1513677524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0-alpha3:
+  * parser: promote single value to a range for range-fields 
+  * mu: support 'raw' query (internally) 
+  * mu: handle funny msgids 
+  * mu4e: improve msgid quoting 
+  * mu4e: fix typo in mu4e~docid-msgid-param</comment>
+    <requestid>558069</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>50b155c88b549f2cda538f653983b1f4</srcmd5>
+    <version>1.0~alpha3</version>
+    <time>1516804268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568541</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>81975433dc8e508b533c4d79bcb7f936</srcmd5>
+    <version>1.0</version>
+    <time>1517932137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573001</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b284b6a47dca101d66f4c7ac82ddd4c1</srcmd5>
+    <version>1.0</version>
+    <time>1551883628</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1111950: Build lib in paralell the rest on one core</comment>
+    <requestid>681670</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>520a38e4023002c7df6e6703411a5c5b</srcmd5>
+    <version>1.2</version>
+    <time>1554749624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2:
+  mu:
+  * Substantial (algorithmic) speed-up of message-threading
+  * The query-parser now generates better queries for wildcard
+    searches, by using the Xapian machinery for that (when available)
+    rather than tranforming into regexp queries
+  * The perl backend is hardly used and will be removed; for now we
+    just disable it in the build
+  * Allow outputing messages in json format, closely following the sexp
+    output. This adds an (optional) dependency on the Json-Glib library
+  mu4e:
+  * Bump the minimal required emacs version to 24.4. This was already
+    de-facto true, now it is enforced
+  * In mu4e-bookmarks, allow the `:query` element to take a function
+    (or lambda) to dynamically generate the query string.
+  * There is a new message-view for mu4e, based on the Gnus' article-view.
+    This bring a lot of (but not all) of the very rich Gnus article-mode
+    feature-set to mu4e, such as S/MIME-support, syntax-highlighting.
+    Enable it with: (setq mu4e-view-use-gnus t)
+  * Bug fixes</comment>
+    <requestid>692237</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>37aefbb8008d76a57b6f358555a7f1dd</srcmd5>
+    <version>1.4.1</version>
+    <time>1587581531</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.1:
+  * ~/.mu -&gt; ~/.cache/mu
+  * remove mentions of --rebuild
+  * properly close config group
+
+-Update to 1.4:
+  mu:
+  * Defaults to XDG Base Directory Specification
+  * New subcommand `mu init` to initialize database -- takes
+    `--my-address` and `--maildir` parameters, `mu index` does not
+    accept them anymore
+  * New subcommand `mu info` to display information about the database
+  * Contacts are now saved in the database instead of in a separate
+    file
+  * `--xbatchsize` and `--autoupgrade` (for `mu index`) are removed,
+    both are implicit now
+  mu4e:
+  * Does not use `mu4e-maildir` and `mu4e-user-mail-address-list`
+    variables anymore, uses information from `mu init`
+  * Performance improvements related to contacts handling
+  * Added gnus' calendar-invitation handling
+  * Added support for custom headers
+  * Added experimental &quot;Account Setup Handler&quot;
+  * Org-mode support is enabled by default
+  * Speedbar support is disabled by default
+  * Messaged-id are added to draft messages (can be found with
+    `mu4e-headers-skip-duplicates` enabled)
+  * Bookmarks are simple plists now (`make-mu4e-bookmark` was updated)
+  * Specific bookmarks can be hidden from main menu
+  * `mu4e-maildir-shortcuts` are simple plists now (old format is still</comment>
+    <requestid>795668</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7ef3d0bf90b554aa71178a26ba69978a</srcmd5>
+    <version>1.4.3</version>
+    <time>1588186327</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.3:
+  * mu4e-view: fix gnus-button click for emacs 26
+  * mu4e: Don't use (mu4e-root-maildir) with easy-accounts
+  * fix `mu4e-main-buffer-hide-personal-addresses'
+  * mu4e-proc: ensure some booleans are nil
+  * mu4e: ask for context in mu4e~start</comment>
+    <requestid>798806</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>04a53145c9e3fe4d20d934499693da46</srcmd5>
+    <version>1.4.4</version>
+    <time>1588610453</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.4:
+  * mu: do a full index when the database is empty
+  * mu4e-proc: only rename when maildir is set
+  * mu-store: enlarge buffer for strftime
+  * mu4e: centralize mode-line context setting code
+  * mu4e: update documentation
+  * mu4e: start mu4e in compose-handler, when necessary</comment>
+    <requestid>799965</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c3831187fc7d296fb2a72660f8fc4c51</srcmd5>
+    <version>1.4.5</version>
+    <time>1589197470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.5:
+  * typo in mu-query manpage 
+  * mu4e: use :hide-unread in doc
+  * mu4e: better error when mu4e-mu-binary is not set 
+  * mu: support --eval for server testing 
+  * mu: don't verify signatures when it's not needed 
+  * mu4e-bookmarks: improve documentation 
+  * Make mu4e~view-message available to mu4e-view-mode-hook
+  * mu4e: change spacing in main view for info section 
+  * mu4e.texi: Add note about s/mime</comment>
+    <requestid>802601</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b04155f6a0728527d32dfa427bf58362</srcmd5>
+    <version>1.4.6</version>
+    <time>1589892324</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.6:
+  * mu: always sort descending within threads
+  * mu-server: disable readline support for now 
+  * Fix make-mu4e-context-account 
+  * mu4e-compose: fix external use (`compose-mail') 
+  * mu4e: support 'no trash flag' for all mark-for-trash</comment>
+    <requestid>806278</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b34663fed0c662cb222dd2baa5e7729c</srcmd5>
+    <version>1.4.8</version>
+    <time>1591101555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.8:
+  * Strip properties from mu4e-completing-read-function results
+  * mu4e: remove easy-accounts / no-trash-providers for now
+  * Add missing space between signature verification and signers 
+  * mu4e-maildir-shortcuts: update for today's functionality 
+  * mu4e-maildir-shortcuts: update for today's functionality</comment>
+    <requestid>810523</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>730b3dcb01885f6213579e3fd2ea3e81</srcmd5>
+    <version>1.4.9</version>
+    <time>1591653973</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.9:
+  * mu4e: avoid trouble with truncate-string-to-width</comment>
+    <requestid>812445</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6b72277440b907e312337ebd6c3c93b9</srcmd5>
+    <version>1.4.10</version>
+    <time>1591862740</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.10:
+  * mu4e-headers: require mule-util for truncate-string-ellipsis</comment>
+    <requestid>813122</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>376d43a8140c10af237a5a2ba39d3341</srcmd5>
+    <version>1.4.12</version>
+    <time>1595864749</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.12:
+  * Bugfix release, no changes provided</comment>
+    <requestid>822925</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>27aab492e56fff6d3ee74df5d9868361</srcmd5>
+    <version>1.4.13</version>
+    <time>1597064576</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.13:
+  * Bugfix release, no changes provided</comment>
+    <requestid>825263</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b9a95590a4760dc2be807c9f30c5b736</srcmd5>
+    <version>1.4.14</version>
+    <time>1609783735</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.14:
+  * lib: fix mu-msg-json build
+  * mu4e-view: Use 'mu4e not &quot;mu4e&quot; when extracting
+  * Fix `mu help` doesn't show the `init` command
+  * mu4e: avoid calendar charset error
+  * Disable `mm-verify-option` let-bounded in `mu4e~view-gnus`</comment>
+    <requestid>860126</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d4806634e6bc3a7a4d2dd3d2771dea69</srcmd5>
+    <version>1.4.15</version>
+    <time>1611595476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.15:
+  * Fix 'mu4e-interrupt-update-mail alias definition
+  * mu-msg-sexp: Improve list-post regexp</comment>
+    <requestid>866501</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>460906450d8a7b1e7e01ac61b6cdbd75</srcmd5>
+    <version>1.6.1</version>
+    <time>1628675234</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911241</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d7151c2f81dd51bf45b37e3f3a18fa63</srcmd5>
+    <version>1.6.3</version>
+    <time>1629269757</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 1.6.3:
+  * A few more updates -- lazy indexing and thread-subjects, org
+    link config.
+
+- Update to 1.6.2:
+  * Some more fixes for problems found in the 1.6 series.
+
+- Update to 1.6.1:
+  * Fixes for some problems found by early adopters.
+  NOTE: After upgrading, you need to call mu init, with your preferred
+  parameters before you can use mu/mu4e. This is because the underlying
+  database-schema has changed.</comment>
+    <requestid>912426</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9e4af7c936c515c5bbd54e0f9fd12d4a</srcmd5>
+    <version>1.6.4</version>
+    <time>1629795274</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.4:
+  * mu4e: Add back the `h' keybinding to toggle HTML view in a gnus article
+  * mu4e: toggle-html: use if-let/seq-find
+  * mu4e-view-gnus: Fix some flycheck warnings (doc)
+  * Create numbered backup of attached file when already exists #2090
+  * Use and instead of progn and fix some long lines
+  * mu4e-compose: regenerate Date: when user removes it</comment>
+    <requestid>913628</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>45282ea94cb48b0ef9f6a160721cda15</srcmd5>
+    <version>1.6.5</version>
+    <time>1630093450</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.5:
+  * Create numbered backup of attached file when already exists (#2090)
+  * Use and instead of progn and fix some long lines
+  * Fix mu4e-view-save-attachments void variable
+  * mu4e-headers: restore mark after update
+  * view-gnus: Add S-SPC to scroll-down binding</comment>
+    <requestid>914603</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>99976ecc47a888f76a20b8985ac976b7</srcmd5>
+    <version>1.6.9</version>
+    <time>1635956784</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.9:
+  * Just a version bump because 1.6.8 had a mistake in them
+
+- Update to 1.6.8:
+  * mu-query: honor maxnum for threaded queries
+  * lib/mu: fix a few leaks
+  * guile: fix user script path detection
+
+- Update to 1.6.7:
+  * Add Emacs v29 support for enabling mu4e
+  * mu-find: unbreak json output
+  * build: detect wordexp
+  * mu4e.texi: improve regexp example
+  * mu int: improve docs for regexp addresses
+  * mu4e.texi: Add regexp --my-address example
+
+- Update to 1.6.6:
+  * Fix mu-init manpage markup
+  * Extracting attachments #2116
+  * mu4e-view: remove overlays before erasing
+  * mu4e-view: remove overlays when erasing
+  * mu4e-server: rename from mu4e-proc
+  * mu4e-utils: refactor into mu4e-helpers, separate files
+  * mu4e-view: remove old view
+  * vars: refactor variables
+  * mu4e-search: split off search functionality in minor-mode
+  * build: update coding-style settings
+  * mu4e-context: make it a minor-mode
+  * mu4e-context: fix some flycheck warnings
+  * mu4e-helpers: split off from mu4e-utils</comment>
+    <requestid>928957</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0100afe2055aee3848e9a417f8f8f447</srcmd5>
+    <version>1.6.10</version>
+    <time>1638740750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.10:
+  * fix --terminate help display
+  * make undo work across compose saves
+  * ignore .update when store is empty
+  * add xapian deps</comment>
+    <requestid>935567</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>fe423a0c2056d2231ecd7a0797b54d47</srcmd5>
+    <version>1.6.11</version>
+    <time>1654457318</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.11:
+  * mu-init: update manpage #2200.
+  * indexer: don't wait when indexing does not progress #2233.
+  * guile: add XAPIAN_CXXFLAGS #2236.
+  * mu4e: don't loop mu4e-update-index when index is empty #2240.</comment>
+    <requestid>980883</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4705ff713d1d9e5327e6a40f30b2d0ee</srcmd5>
+    <version>1.8.3</version>
+    <time>1657015751</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.3:
+  * properly install info files
+  * allow for alternative emacs binaries
+  * extra tests
+  * mu: propagate read marks to all with same message-id
+  * small doc updates
+
+- Update to 1.8.2:
+  * handle some corner-case queries with special characters
+  * allow searching for email address components
+  * fix find with links generations
+  * update doc versioning
+
+- Update to 1.8.1:
+  mu:
+  * The server protocol (as used my mu4e) has seen a number of updates, to allow for faster rendering. As before, there’s no compatibility between minor release numbers (1.4 vs 1.6 vs 1.8) nor within development series (such as 1.7). However, within a stable release (such as all 1.6.x) the protocol won’t change (except if required to fix some severe bug; never happened in practice)
+  * The processed number in the indexing statistics has been renamed into checked and describes the number of message files considered for updating, which is a bit more useful that the old value, which was more-or-less synonymous with the updated number (which are the message that got (re)parsed / (re)added to the database.  Basically, it counts all the messages for which we checked their timestamp.
+  * The internals of the message handling in mu have been heavily reworked; much of this is not immediately visible but is an enabler for some new features.
+  * Instead of passing --muhome, you can now also set an environment variable MUHOME.
+  * The info command now includes information about the last indexing operation and the last database change that took place; note that the information may be slightly delayed due to database caching.
+  * the verify command for checking signatures has been updated, and is more informative
+  * a new command fields provides information about the message fields and flags for use in queries. The information is the same information that mu uses and so stays up to date.
+  * a new message field changed, which refers to the time/date of the last time a message was changed (the file ctime)
+  * new message flags personal to search for “personal” messages, which are defined as a message with at least one personal contact, and calendar for messages with calendar-invitations.
+  * message sexps are now cached in the store, which makes delivering sexp-based search results (as used by mu4e) much faster.
+  mu4e:
+  * the old mu4e-view is gone; only the gnus-based one remains. This allowed for removing quite a bit of old code.
+  * the mu4e headers rendering is much faster (a factor of 3+), which makes displaying big results snappier. This required some updates in the headers handling and in the server protocol. Separate from that, the cached message sexps (see the mu section) make getting the results much faster. This becomes esp. clear when there are a lot of query results.
+  * “related” messages are now recognizable as such in the headers-view, with their own face, mu4e-related-face; by default with an italic slant.
+  * For performance testing, you can set the variable mu4e-headers-report-render-time to t and mu4e will report the search/rendering speed of each query operation.</comment>
+    <requestid>986622</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>82f9f59cd8a14a3bb5d6409ca93e9617</srcmd5>
+    <version>1.8.5</version>
+    <time>1657114934</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.5:
+  * some minor build updates
+  * add a lispdir option
+  * the 1.8.4 release &amp; tag got mixed up, so we're going straight to 1.8.5</comment>
+    <requestid>986973</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1e134c188a4ccbaf7ecdece8af4e3c68</srcmd5>
+    <version>1.8.6</version>
+    <time>1657809272</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.6:
+  * Fix the the minimized main menu
+  * Be less picky with maildirs with trailing /
+  * Add mu4e-copy-thing-at-point, bind to c in view
+  * Add more matching tests</comment>
+    <requestid>989100</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>d24569f732a67c2cb66a06d16272dfa9</srcmd5>
+    <version>1.8.7</version>
+    <time>1658857462</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.8.7:
+  * ensure the the &quot;current message&quot; is cleared with clearing the
+    headers-view; also update mu4e-message-at-point to be stricter
+  * only show messages in mu-find that exist
+  * load mu4e-view earlier</comment>
+    <requestid>990950</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>33c13e425464b3a98b71117f835f7c9a</srcmd5>
+    <version>1.8.8</version>
+    <time>1659951779</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.8:
+  * Update mu4e-action-add-org-contact for new contact format (#2306)
+  * Ensure non-nil works (rather than only t) in mu4e-server (#2310)
+  * Add some more unit tests for skipdups / related messages.</comment>
+    <requestid>993675</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>4caec613bb92b8258a8529e45de18190</srcmd5>
+    <version>1.8.9</version>
+    <time>1660662486</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.9:
+  * Work around some Protonmail-specific (mis)behavior with messages
+    References; add some tests
+  * Fix probleem with mu4e~view-message being nillified when it shouldn't.</comment>
+    <requestid>996446</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a95a0714cea3c0b4c504cd9a4ef38150</srcmd5>
+    <version>1.8.10</version>
+    <time>1663275539</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.10:
+  * Fix build with emacs 29 snapshots
+  * Use save-excursion around toggling html
+  * Install guile scripts and fix bindings</comment>
+    <requestid>1003709</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>28f407508912b3cb5c6d84fb437c8fb6</srcmd5>
+    <version>1.8.11</version>
+    <time>1666689620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.11:
+  * Use fake message-ids when empty
+  * Add explicit check for charconv header
+  * Fix outdated doc for mime part actions
+  * mu-view: be clearer when no text-body found
+  * Fix mu4e-header-thread-first-child-prefix copy-pasta
+  * Ensure mime-parts are utf8</comment>
+    <requestid>1031034</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c00670d279deb016e806b1fac1350081</srcmd5>
+    <version>1.8.13</version>
+    <time>1670333055</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.13:
+  * Make server buffer invisible
+
+- Update to 1.8.12:
+  * Fix mu-headers-toggle-setting user feedback
+  * Improve browse-url-handlers
+  * Update some tests, avoid compiler warnings</comment>
+    <requestid>1040532</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5d4bae867fb147257ed05a1f9e040d2a</srcmd5>
+    <version>1.8.14</version>
+    <time>1675095003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.14:
+  * create mu cache path if needed
+  * fix empty 'To:' header on reply to icalendar invitation
+  * use const char* from for time_to_string (avoids crash in some configs)
+  * mu4e-headers: appease byte-compiler
+  * mu4e-headers: fallback to :subject for :thread-subject
+  * mu-query-match-decider: add 'Related' to flags (rather than replace)</comment>
+    <requestid>1061865</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a902ec59bf65acf90a1bfa97361ecef2</srcmd5>
+    <version>1.10.0</version>
+    <time>1679933798</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.0:
+  mu:
+  * a new command-line parser, which allows (hopefully!) for a better user
+    interaction; better error checking and more
+  * Invalid e-mail addresses are no longer added to the contacts-cache.
+  * The cfind command gained --format=json, which makes it easy to further
+    process contact information, e.g. using jq. See the manpage for more details.
+  * The init command learned --reinit to reinitialize the database
+    with the setings of an exisitng one
+  * The script command is gone, and integrated with mu directly, i.e. the
+    scripts (when enabled) are directly visible in the mu output. Also see
+    the Guile section.
+  * The extract command gained the --uncooked option to tell it to not replace
+    spaces with dashes in extracted filenames (and a few other things).
+  * Revamped manpages which are now generated from org descriptions
+  * Standardize on PCRE-flavored regular expressions throughout mu.
+  * Experimental: as bit of a hack, html message bodies are processed as if
+    they were plain text, similar how “old mu” would do it (1.6.x and earlier).
+    A nicer solution would be to convert to text, but this something for the future.
+  * the MSYS2 (Windows) builds is experimental now; some things may not work;
+    see e.g. https://github.com/djcb/mu/issues?q=is%3Aissue+label%3Amsys, but
+    we welcome efforts to fix those things.
+  mu4e:
+  * emacs 26.3 or higher is now required for mu4e
+  * mu4e-view-mode-hook now fires before the message is rendered. If you have
+    hook-functions that depend on the message contents, you should use the new mu4e-view-rendered-hook.
+  * mu4e window management has been completely reworked and cleaned up, affecting
+    the message loading as well as the window-layout. As a user-visible feature, there’s
+    now the z binding (mu4e-view-detach), to ‘detach’ view and alllow for keeping multiple
+    views around; see the manual entry for further details.</comment>
+    <requestid>1074565</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>17fcac49553c2edbddebd66993e18d21</srcmd5>
+    <version>1.10.1</version>
+    <time>1680475919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.1:
+  * defcustom typing updates
+  * re-enable json output for mu-find
+  * restore emacs27 compatibility (buffer-local-boundp)
+  * avoid tramp cornercase for mu4e version check
+  * handle function-type bookmarks again
+  * restore terminal colors after error</comment>
+    <requestid>1076762</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>fb47eb230d9b554ebf4426808ec3192f</srcmd5>
+    <version>1.10.2</version>
+    <time>1681065178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.2:
+  * improve unit tests
+  * fix threading issue with file-based logging
+  * re-enable --after option for mu cfind
+  * allow extracting message-parts from message (mu extract)
+  * allow using relative message paths (view/extract/verify)
+  Mu4e:
+  * by default, don't reuse frame with composing in new frame
+  * allow for disabling global modeline items
+  * create random name for newly detached views
+  * documentation update</comment>
+    <requestid>1078170</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>50b6723ab42c959ecadb6657ca0829d1</srcmd5>
+    <version>1.10.3</version>
+    <time>1682368285</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1082365</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>843193bccf1f5eb409f5834e72721da6</srcmd5>
+    <version>1.10.4</version>
+    <time>1687549970</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.4:
+  * contact/display-name: quote &quot;names&quot; with '@'
+  * gmime-test: fix leak
+  * mu4e: run mu4e-view-rendered-hook non-read-only (#2500)
+  * mu4e: don't error out in mu4e-view-quit (#2487)
+  * mu4e: add mu4e-fetch-field
+  * message: remove control characters from subject (#2477)
+  * meson.build: avoid clang build warning</comment>
+    <requestid>1094747</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>efe9c17464720b31e80dacd26baf7e36</srcmd5>
+    <version>1.10.5</version>
+    <time>1689000013</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.5:
+  * in single-window mode, restore point after quitting headers-mode
+  * check the part-type in Multipart (avoids an error in verifying
+    unsigned messages with a signed attachment)</comment>
+    <requestid>1097858</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>18bc4788d95b7cab4b4576a8ae31969c</srcmd5>
+    <version>1.10.6</version>
+    <time>1691414946</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.6:
+  * mu4e: clarify sortable fields in UI
+  * mu4e: fix mu4e-view-refresh
+  * guile: use the standard guile extension directory
+  * mu: expand file paths in command-line options (e.g.,
+    --maildir=~/Maildir) for shell that don't do so themselves (such as
+    bash)
+  * mu: set default batch-size to 50000 so we won't use too much memory
+    (the old default broke systems with limited memory)</comment>
+    <requestid>1102597</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>42aea2bf24e57026a1ba4f660178ddcf</srcmd5>
+    <version>1.10.7</version>
+    <time>1693570908</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.10.7:
+  * Fix mu4e-compose-complete-addresses defcustom
+  * Allow for specifying the guile dir (useful for distros)
+    meson setup -Dguile-extension-dir= build</comment>
+    <requestid>1108391</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>d57309ee3f02af457bc0193d8840c1e5</srcmd5>
+    <version>1.10.8</version>
+    <time>1699910327</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.10.8:
+  * guile: fix module installation path
+  * infodir: allow passing absolute path
+  * mu4e-view: assign gnus-article-buffer (helps with some external
+    programs)
+  * mu4e: fix completion with non-quick keys (when using completion
+    frameworks)</comment>
+    <requestid>1125110</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,68 @@
+---
+ tests/test_basic.py       |    2 +-
+ tests/test_indentation.py |    2 +-
+ tests/test_line_length.py |    2 +-
+ tests/test_literal.py     |    2 +-
+ tests/test_patma.py       |    2 +-
+ tests/test_precedence.py  |    2 +-
+ tests/test_py3_syntax.py  |    2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
+
+--- a/tests/test_basic.py
++++ b/tests/test_basic.py
+@@ -1,6 +1,6 @@
+ import ast
+ from ast_decompiler import decompile
+-from .tests import assert_decompiles, check, only_on_version
++from tests import assert_decompiles, check, only_on_version
+ 
+ 
+ def test_non_module() -> None:
+--- a/tests/test_indentation.py
++++ b/tests/test_indentation.py
+@@ -1,4 +1,4 @@
+-from .tests import assert_decompiles
++from tests import assert_decompiles
+ 
+ 
+ def test_indentation() -> None:
+--- a/tests/test_line_length.py
++++ b/tests/test_line_length.py
+@@ -1,4 +1,4 @@
+-from .tests import assert_decompiles
++from tests import assert_decompiles
+ 
+ 
+ def check_split(original: str, multiline: str, length_reduction: int = 2) -> None:
+--- a/tests/test_literal.py
++++ b/tests/test_literal.py
+@@ -1,4 +1,4 @@
+-from .tests import assert_decompiles, only_on_version
++from tests import assert_decompiles, only_on_version
+ 
+ 
+ def test_With() -> None:
+--- a/tests/test_patma.py
++++ b/tests/test_patma.py
+@@ -1,4 +1,4 @@
+-from .tests import check, skip_before
++from tests import check, skip_before
+ 
+ 
+ @skip_before((3, 10))
+--- a/tests/test_precedence.py
++++ b/tests/test_precedence.py
+@@ -1,4 +1,4 @@
+-from .tests import check, only_on_version
++from tests import check, only_on_version
+ 
+ 
+ def test_Yield() -> None:
+--- a/tests/test_py3_syntax.py
++++ b/tests/test_py3_syntax.py
+@@ -1,4 +1,4 @@
+-from .tests import check, skip_before, skip_after
++from tests import check, skip_before, skip_after
+ 
+ 
+ @skip_before((3, 5))

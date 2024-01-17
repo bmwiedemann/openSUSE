@@ -1,0 +1,37 @@
+---
+ configure.in |    7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+--- a/configure.in
++++ b/configure.in
+@@ -1,6 +1,7 @@
+ AC_INIT([Icecast], [2.4.4], [icecast@xiph.org])
+ 
+ AC_PREREQ(2.54)
++AC_CONFIG_MACRO_DIR([m4])
+ AC_CONFIG_SRCDIR(src/main.c)
+ dnl Process this file with autoconf to produce a configure script.
+ 
+@@ -8,7 +9,8 @@ AM_INIT_AUTOMAKE
+ AM_CONFIG_HEADER(config.h)
+ AM_MAINTAINER_MODE
+ 
+-AC_PROG_CC
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
+ AC_CANONICAL_HOST
+ AC_PROG_LIBTOOL
+ AC_SYS_LARGEFILE
+@@ -53,9 +55,12 @@ XIPH_NET
+ 
+ dnl -- configure options --
+ 
++XIPH_PATH_XML
+ XIPH_PATH_XSLT
+ XIPH_VAR_APPEND([XIPH_CPPFLAGS],[$XSLT_CFLAGS])
+ XIPH_VAR_PREPEND([XIPH_LIBS],[$XSLT_LIBS])
++XIPH_VAR_APPEND([XIPH_CPPFLAGS],[$XML_CFLAGS])
++XIPH_VAR_PREPEND([XIPH_LIBS],[$XML_LIBS])
+ 
+ XIPH_PATH_VORBIS([
+     XIPH_VAR_APPEND([XIPH_CPPFLAGS],[$VORBIS_CFLAGS])

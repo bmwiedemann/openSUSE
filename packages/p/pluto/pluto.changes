@@ -1,0 +1,494 @@
+-------------------------------------------------------------------
+Mon Dec 18 20:53:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.19.0:
+  * Update Dockerfile (#519)
+
+-------------------------------------------------------------------
+Thu Nov 09 14:48:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.18.6:
+  * Fixing isReplacementAvailableIn logic when field available in
+    is empty (#516)
+
+-------------------------------------------------------------------
+Thu Oct 12 05:31:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.18.5:
+  * change logging for api discovery (#509)
+  * Update dependencies 2023-10 (#511)
+
+-------------------------------------------------------------------
+Thu Sep 07 05:36:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.18.4:
+  * Fix errant files
+  * Fix exit code handling (#508)
+
+-------------------------------------------------------------------
+Tue Sep 05 14:57:02 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.18.3:
+  * udpate dependencies (#505)
+  * update the github action registry (#504)
+
+-------------------------------------------------------------------
+Tue Jul 25 18:03:18 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.18.2:
+  * Fix 501 (#502)
+
+-------------------------------------------------------------------
+Fri Jul 14 05:26:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.18.1:
+  * Fix the exit code documentation (#499)
+
+-------------------------------------------------------------------
+Wed Jul 12 06:36:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.18.0:
+  * Update FAQ with more details about last-applied-configuration
+    issues (#498)
+  * Fix the makefile for local dev (#496)
+  * Add flowcontrol deprecations (#493)
+
+-------------------------------------------------------------------
+Tue Jun 13 18:44:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.17.0:
+  * update the default target version of k8s to v1.25 (#492)
+
+-------------------------------------------------------------------
+Wed May 31 04:46:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.16.4:
+  * udpate deps (#490)
+
+-------------------------------------------------------------------
+Tue May 16 04:46:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.16.3:
+  * Add a cosign 2.x command that works to validate the checksums
+    (#484)
+
+-------------------------------------------------------------------
+Mon May 15 19:36:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.16.2:
+  * update dependencies (#483)
+
+-------------------------------------------------------------------
+Fri Apr 14 18:31:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.16.1:
+  * Update depencies and docker base image (#474)
+
+-------------------------------------------------------------------
+Mon Apr 03 12:05:56 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.16.0:
+  * Update documentation from template (#459)
+  * Suppress footer flag using --no-footer (#467)
+
+-------------------------------------------------------------------
+Thu Feb 23 10:39:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.15.1:
+  * add: set replacement-available-in to existing version. (#457)
+
+-------------------------------------------------------------------
+Thu Feb 23 10:37:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.15.0:
+  * Add a `detect-all-in-cluster` command to run both `detect-helm` and `detect-api-resources` (#455)
+
+-------------------------------------------------------------------
+Wed Feb 22 17:26:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.14.0:
+  * add replacement-available-in (#452)
+
+-------------------------------------------------------------------
+Tue Feb 21 09:26:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.13.4:
+  * Bump golang.org/x/net from 0.6.0 to 0.7.0 (#453)
+
+-------------------------------------------------------------------
+Sun Feb 12 06:10:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.13.3:
+  * fix : rules to load client configuration to connect to a kubernetes cluster (#419)
+
+-------------------------------------------------------------------
+Fri Feb 10 06:15:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.13.2:
+  * Update alpine to latest edge (#451)
+
+-------------------------------------------------------------------
+Fri Feb 10 06:13:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.13.1:
+  * update go modules (#450) (bsc#1208093, CVE-2023-25165)
+
+-------------------------------------------------------------------
+Mon Feb 06 17:27:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.13.0:
+  * fix: add removed-in to storage.k8s.io/v1beta1.CSIStorageCapacity (#448)
+  * feat: add namespace and context to API Resources method (#410)
+  * Fixed a linter error causing lack of compilation in Go 1.19 by removing deprecated io/ioutil functions and replacing them with their Go 1.16 counterparts. (#439)
+  * Update alpine and other build dependencies (#433)
+  * Remove experimental features in build (#429)
+  * feat: allow hiding headers in output (#417)
+  * Bump helm.sh/helm/v3 from 3.10.1 to 3.10.3 (#426)
+
+-------------------------------------------------------------------
+Thu Jan 05 14:01:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.12.0:
+  * Update documentation from template (#428)
+  * sc/rd 71 add plg link (#427)
+  * fix: preserve ordering of custom columns (#412)
+  * Bump k8s.io/api from 0.25.3 to 0.25.4 (#406)
+  * Bump k8s.io/apimachinery from 0.25.3 to 0.25.4 (#405)
+  * Bump sigs.k8s.io/controller-runtime from 0.13.0 to 0.13.1 (#403)
+  * Bump github.com/spf13/viper from 1.13.0 to 1.14.0 (#404)
+  * Bump github.com/stretchr/testify from 1.8.0 to 1.8.1 (#402)
+  * Bump alpine from 3.16.2 to 3.16.3 (#407)
+
+-------------------------------------------------------------------
+Mon Dec 12 12:23:50 UTC 2022 - Robert Munteanu <rombert@apache.org>
+
+- Install completions 
+
+-------------------------------------------------------------------
+Tue Nov 15 09:18:54 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.11.2:
+  * update dependencies (#400)
+
+-------------------------------------------------------------------
+Fri Oct 07 08:57:09 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.11.1:
+  * Update go dependencies (#389)
+  * Update documentation from template (#388)
+
+-------------------------------------------------------------------
+Sun Sep 25 06:54:38 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.11.0:
+  * Feature : Detect depcreated API's on a live cluster resources (#367)
+  * Bump github.com/spf13/viper from 1.12.0 to 1.13.0 (#379)
+  * Bump k8s.io/client-go from 0.25.0 to 0.25.1 (#381)
+  * Bump k8s.io/klog/v2 from 2.70.1 to 2.80.1 (#378)
+
+-------------------------------------------------------------------
+Tue Sep 13 12:44:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.10.7:
+  * Bump sigs.k8s.io/controller-runtime from 0.12.3 to 0.13.0 (#376)
+  * Bump github.com/rogpeppe/go-internal from 1.8.1 to 1.9.0 (#372)
+  * Bump k8s.io/client-go from 0.24.4 to 0.25.0 (#375)
+  * Updated docs for Target Versions (#356)
+
+-------------------------------------------------------------------
+Wed Sep 07 06:20:25 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.10.6:
+  * update helm (#371)
+  * Bump k8s.io/client-go from 0.24.3 to 0.24.4 (#368)
+
+-------------------------------------------------------------------
+Wed Sep 07 06:19:44 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.10.5:
+  * Add CSIStorageCapacity deprecation (#365)
+
+-------------------------------------------------------------------
+Wed Sep 07 06:18:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.10.4:
+  * Update dependencies. Move to insights autoscan (#364)
+  * Bump alpine from 3.16.0 to 3.16.2 (#362)
+  * Bump helm.sh/helm/v3 from 3.9.2 to 3.9.3 (#361)
+
+-------------------------------------------------------------------
+Wed Jul 27 18:17:56 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.10.3:
+  * Detect duplicate deployed helm releases (#360)
+  * Bump helm.sh/helm/v3 from 3.9.0 to 3.9.2 (#358)
+  * Bump sigs.k8s.io/controller-runtime from 0.12.2 to 0.12.3 (#350)
+  * Bump github.com/stretchr/testify from 1.7.4 to 1.8.0 (#344)
+  * Bump k8s.io/klog/v2 from 2.70.0 to 2.70.1 (#349)
+  * Fix repository name in Pluto (#348)
+  * update Insights CI (#346)
+
+-------------------------------------------------------------------
+Wed Jul 06 06:24:00 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.10.2:
+  * Update docs publish step to use new standards (#345)
+
+-------------------------------------------------------------------
+Mon Jul 04 13:12:26 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.10.1:
+  * update docs (#343)
+
+-------------------------------------------------------------------
+Fri Jul 01 10:54:01 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.10.0:
+  * Allow package users to populate `Output.Deprecated|Removed` fields by exporting the `Instance.filterOutput` receiver. (#341)
+  * update dependencies (#342)
+
+-------------------------------------------------------------------
+Mon Jun 27 13:19:56 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.9.0:
+  * Bump github.com/stretchr/testify from 1.7.2 to 1.7.4 (#338)
+  * FWI-2191: Make versions.yaml available to users of Pluto packages, update Go module path with `/v5` (#331)
+  * Bump github.com/stretchr/testify from 1.7.1 to 1.7.2 (#328)
+
+-------------------------------------------------------------------
+Wed Jun 22 08:18:56 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.8.0:
+  * adding deployed state edge case to faq (#329)
+  * Bump helm.sh/helm/v3 from 3.8.2 to 3.9.0 (#326)
+  * Bump sigs.k8s.io/controller-runtime from 0.11.2 to 0.12.1 (#319)
+  * Bump github.com/spf13/viper from 1.10.1 to 1.12.0 (#322)
+  * Bump k8s.io/client-go from 0.23.5 to 0.24.1 (#323)
+  * Bump alpine from 3.15 to 3.16.0 (#325)
+  * Managed by Terraform
+  * Managed by Terraform
+  * Bump helm.sh/helm/v3 from 3.8.1 to 3.8.2 (#308)
+  * Bump sigs.k8s.io/controller-runtime from 0.11.1 to 0.11.2 (#306)
+  * Update license headers (#305)
+  * Remove sonar config (#304)
+
+-------------------------------------------------------------------
+Fri Mar 25 09:06:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.7.0:
+  * Add flag for --kube-context (#302)
+  * updated dependencies (#300)
+
+-------------------------------------------------------------------
+Fri Mar 18 10:18:08 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.6.0:
+  * Enable orb to use environment variables from context (#293)
+  * Update cobra, viper, and helm dependencies (#292)
+
+-------------------------------------------------------------------
+Thu Mar 10 07:42:31 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.5.3:
+  * Feature/support env vars (#288)
+
+-------------------------------------------------------------------
+Tue Mar  8 12:45:17 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go1.17
+
+-------------------------------------------------------------------
+Tue Mar 08 11:58:07 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.5.2:
+  * Add PodSecurityPolicy removal in kube v1.25 (#287)
+  * Managed by Terraform
+  * Update goreleaser to 1.5.0 (#284)
+
+-------------------------------------------------------------------
+Wed Mar 02 05:52:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.5.1:
+  * fix/update versions according to k8s Deprecated API Migration Guide (#283)
+
+-------------------------------------------------------------------
+Fri Feb 25 18:25:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.5.0:
+  * autoscaling/v2beta2 replacement should be autoscaling/v2 (#281)
+  * Add CSV output option (#279)
+
+-------------------------------------------------------------------
+Mon Feb 21 16:14:39 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.4.1:
+  * Update all dependencies (#276)
+  * Update dependencies (#272)
+  * Document cosign, and add to release notes (#264)
+  * Update documentation from template (#262)
+
+-------------------------------------------------------------------
+Wed Feb 16 20:04:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.4.0:
+  * Add support for parsing manifests contained into List objects (#263)
+
+-------------------------------------------------------------------
+Tue Feb 15 15:08:55 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.3.5:
+  * Remove invalid istio version entry (#259)
+
+-------------------------------------------------------------------
+Wed Jan 26 07:15:15 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.3.4:
+  * checking if the deprecation and removal variables are true (#253)
+
+-------------------------------------------------------------------
+Wed Jan 26 07:06:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.3.3:
+  * Fix replacement versions for some APIs (#252)
+
+-------------------------------------------------------------------
+Sat Jan 15 12:37:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.3.2:
+  * install tools for docs publishing (#250)
+  * Managed by Terraform
+
+-------------------------------------------------------------------
+Sat Jan 15 12:34:32 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.3.1:
+  * Delete .github/ISSUE_TEMPLATE/bug_report.md
+  * Managed by Terraform
+  * Delete .github/ISSUE_TEMPLATE/bug.yaml
+  * Fix flags on cosign. Install vault for publishing docs (#249)
+
+-------------------------------------------------------------------
+Sat Jan 15 12:33:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.3.0:
+  * Change variable name
+  * Managed by Terraform
+  * Delete .github/ISSUE_TEMPLATE/bug_report.md
+  * Fix docker login command again
+  * Missing $ in docker login (#248)
+  * Fix docker login for releaes (#247)
+  * Use cosign to sign images and push to GCP artifact registry (#246)
+  * Delete .github/stale.yml
+
+-------------------------------------------------------------------
+Tue Jan 11 07:50:10 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.2.6:
+  * Add deprecated cert-manager versions (#245)
+
+-------------------------------------------------------------------
+Sun Jan 09 06:33:03 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.2.5:
+  * set -e so script exits with proper exit code (#243)
+
+-------------------------------------------------------------------
+Wed Jan 05 14:30:46 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.2.4:
+  * updating scripts to run pluto commands (#241)
+
+-------------------------------------------------------------------
+Wed Jan 05 14:26:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.2.3:
+  * installing pluto command into cimg executor (#240)
+
+-------------------------------------------------------------------
+Wed Jan 05 14:23:36 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.2.2:
+  * Fix release request script (#236)
+
+-------------------------------------------------------------------
+Wed Jan 05 14:21:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.2.1:
+  * Fix orb publish request secret and insights secret (#235)
+
+-------------------------------------------------------------------
+Wed Jan 05 14:16:47 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.2.0:
+  * Add missing storage and apiregistration deprecations (#234)
+  * Work on orb publishing (#232)
+  * creating circleci orb for pluto (#228)
+
+-------------------------------------------------------------------
+Wed Jan  5 14:14:11 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go1.16
+
+-------------------------------------------------------------------
+Wed Jan 05 14:09:54 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.1.1:
+  * Update goreleaser to v1.1.0 (#230)
+  * Managed by Terraform
+  * added github action (#225)
+  * Only pull in klog's v flag for logging (#223)
+  * Add doc for scoop install on Windows (#222)
+  * Managed by Terraform
+  * make sure proper tag is used on release (#220)
+  * Update goreleaser version (#218)
+
+-------------------------------------------------------------------
+Wed Jan 05 14:07:07 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.1.0:
+  * Revert yaml dependence due to panic. Remove pkger (#216)
+  * HPA v2beta2 deprecation should be in k8s 1.23 (#213)
+  * Add optional support for custom columns in markdown output (#206)
+  * temporarily disable sonarqube (#209)
+  * Use go 1.17 and update kube/helm modules (#204)
+
+-------------------------------------------------------------------
+Wed Jan 05 14:04:05 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.0.1:
+  * Windows build support (#203)
+  * Update documentation from template (#201)
+  * Update README.md (#198)
+
+-------------------------------------------------------------------
+Wed Jan 05 14:02:45 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.0.0:
+  * Update versions.yaml (#195)
+
+-------------------------------------------------------------------
+Wed Jan 05 13:54:01 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 4.3.0:
+  * Fix dirty git state on release (#194)
+  * Setup pluto for prerelease. Use bash in relesae (#193)
+  * Fix name in goreleaser (#192)
+  * Multi-arch build. Update goreleaser. Use Docker for goreleaser (#191)
+  * update deps (#170)
+  * Update documentation from template (#187)
+  * Removed unnecessary GO111MODULE=on (#184)
+  * add banner (#179)
+  * Adjust removed-in version for PriorityClass (#183)
+
+-------------------------------------------------------------------
+Wed Jan 05 13:47:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 4.2.0:
+  * add back FAQ link (#171)
+  * Update dependencies. Add Sonarqube (#169)
+  * Update README.md (#168)
+
+-------------------------------------------------------------------
+Wed May 26 17:31:51 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- initial version of package pluto

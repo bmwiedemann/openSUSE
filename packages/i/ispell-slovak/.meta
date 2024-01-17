@@ -1,0 +1,8 @@
+<package name="ispell-slovak" project="openSUSE:Factory">
+  <title>Slovak Ispell Dictionary</title>
+  <description>This packages includes a ready Slovak dictionary for ispell. A short
+usage description for ispell is given in
+/usr/share/doc/packages/ispell/README of the packages ispell. The
+sources for this dictionary are included in the package dicts.</description>
+  <devel project="devel:libraries:c_c++" package="ispell-slovak"/>
+</package>

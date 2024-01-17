@@ -1,0 +1,25 @@
+[Unit]
+Description=Amavisd Milter
+Requires=amavis.service
+Before=mail-transfer-agent.target
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+PIDFile=/var/spool/amavis/amavisd-milter.pid
+ExecStart=/usr/sbin/amavisd-milter
+ExecReload=/usr/bin/kill -HUP $MAINPID
+User=vscan
+Group=vscan
+
+[Install]
+WantedBy=multi-user.target

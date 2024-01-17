@@ -1,0 +1,25 @@
+From 9acc2a9d151ac93e5566b9f0ed62685f36efb7cc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Fri, 9 Oct 2020 14:28:52 +0200
+Subject: [PATCH] declare sys_errlist
+
+---
+ src/smt_libra_execscripts.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/smt_libra_execscripts.c b/src/smt_libra_execscripts.c
+index 1f8e9c98838d..4fbba7a0bfe4 100644
+--- a/src/smt_libra_execscripts.c
++++ b/src/smt_libra_execscripts.c
+@@ -26,7 +26,7 @@
+ #include <sys/wait.h>
+ #include <errno.h>
+ #include "smt_libra_execscripts.h"
+-
++extern const char * const sys_errlist[];
+ /*
+ static int __execScript(const char *script){
+ 
+-- 
+2.26.0
+

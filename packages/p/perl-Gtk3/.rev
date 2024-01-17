@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb46f03ad03514ce8dd4db89e75ee599</srcmd5>
+    <version>0.035</version>
+    <time>1564576305</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmission perl-Cairo-GObject dependency pushed on SR 719898</comment>
+    <requestid>719899</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3bf542812b9b08a1c281a48b9e136b5f</srcmd5>
+    <version>0.036</version>
+    <time>1572180082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743017</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4c7a114e2d2dc261e5b073a783facc54</srcmd5>
+    <version>0.037</version>
+    <time>1584643775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786285</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b38317d9f6c952bf91d8dcbf91d304c7</srcmd5>
+    <version>0.037</version>
+    <time>1598642485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829097</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>67663f1862e1c2a7d47a9842382703fb</srcmd5>
+    <version>0.038</version>
+    <time>1611262659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865447</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Fri Oct  4 09:15:17 UTC 2013 - coolo@suse.com
+
+- updated to 0.008
+    [FIXES]
+    - Compile test could hang on Windows
+
+    [PREREQS]
+    - Dropped configure_requires for ExtUtils::MakeMaker to 6.17
+
+-------------------------------------------------------------------
+Mon Sep  2 11:12:09 UTC 2013 - joschibrauchle@gmx.de
+
+- Update to version 0.007
+  * In some situations, the source of a local warning can have an
+  absolute filename and would not be reported if ALLOW_DEPS were true.
+  Now absolute filenames are made relative to the original cwd before
+  checking if they are local or not.
+  * Fixed synopsis to match new failing test label
+
+-------------------------------------------------------------------
+Tue Aug 27 11:09:18 UTC 2013 - joschibrauchle@gmx.de 
+
+- Update to version 0.006 
+
+-------------------------------------------------------------------
+Wed Jul 17 12:59:05 UTC 2013 - joschibrauchle@gmx.de
+
+- Update to version 0.005
+- Specified version of build requirement Capture::Tiny
+

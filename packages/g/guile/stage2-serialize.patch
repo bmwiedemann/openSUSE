@@ -1,0 +1,12 @@
+Index: guile-3.0.8/stage2/Makefile.am
+===================================================================
+--- guile-3.0.8.orig/stage2/Makefile.am
++++ guile-3.0.8/stage2/Makefile.am
+@@ -21,6 +21,7 @@
+ ##   Fifth Floor, Boston, MA 02110-1301 USA
+ 
+ 
++.NOTPARALLEL:
+ GUILE_WARNINGS = -W1
+ GUILE_OPTIMIZATIONS = -O2
+ GUILE_BOOTSTRAP_STAGE = stage2

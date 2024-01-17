@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Tue Apr 20 00:15:30 UTC 2021 - Nianqing Yao <imbearchild@outlook.com>
+
+- Update to version 20210322
+ * Add support for GTK 4
+ * Add support for gnome-shell 40
+ * Update color scheme
+ * Make dark theme darker
+ * Update scrollbar slider colors
+ * gtk3: Change background/surface rule
+ * gtk3: Drop undershoot styling
+ * gtk3/assistant: Change highlighted label style in sidebar
+ * gtk3: Tone down hover overlay in some widgets
+ * gtk3: Drop transparency from overlay scrollbars
+ * gtk3: Change the direction of the expander arrow
+ * gtk3/combobox: Update the arrow button style
+ * gtk3: Make checked flat button blue
+ * gtk3/pathbar: Make checked button's text/ink color blue
+ * gtk3: Update stacksidebar style
+ * gtk3: Update notebook style
+ * gtk3: Update .keycap style
+ * gtk3: Update focus entry style
+ * cinnamon & gnome-shell: Revamp drop shadows
+ * gnome-shell: Update app folder icon style
+ * meson: Allow specifying micro version in the build option `gnome_shell_version`
+ * meson: Avoid copying configured SCSS files to current_source_dir()
+ * Other various minor improvements and fixes
+
+
+-------------------------------------------------------------------
+Sun Dec 27 22:17:40 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20200916
+  * Add Meson build system
+  * Drop pre-generated CSS files
+  * Add sassc dependency
+  * Drop bc dependency
+  * Improve source file structure
+  * gtk: Add initial support for libhandy
+  * gnome-shell: Add support for version 3.38
+  * gnome-shell: Update calendar style to match Material Design guideline
+  * metacity/unity/xfwm: Update title bars to match the last GTK changes
+  * chrome theme: Improve and simplify
+  * Other various improvements and fixes
+
+-------------------------------------------------------------------
+Fri May 29 19:00:15 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20200320
+  * Make dark variant even darker
+  * Don't change button text color on focus, hover, active
+  * gtk: Rewrite ripple implementation
+  * gtk: Change checked raised button style
+  * gtk: Lighten up switch slider color on dark variant
+  * gtk: Use primary color for spinner
+  * gtk: Use primary color for caret-color (experimentally)
+  * gtk: Add various improvements of Budgie styling
+  * gnome-shell: Add support for version 3.36
+  * gnome-shell: Drop support for versions 3.18 - 3.24
+  * gnome-shell: Drop support for legacy Ubuntu-specific sessions
+  * gnome-shell: Land massive Sass rewrite
+  * Other various improvements, fixes, refactors, and cleanups
+
+-------------------------------------------------------------------
+Fri Mar 15 20:23:44 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20190315
+  * Add support for GNOME 3.32
+  * Various improvements of source Sass code
+
+-------------------------------------------------------------------
+Sat Feb  2 11:59:34 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 20190201
+  * Added support for Plank
+  * Added support for Xfce >=4.13
+  * Dropped support for Budgie <10.4
+  * Dropped (teal) secondary color
+  * Changed entry style (as per refreshed Material Design Guidelines)
+  * Changed combo button style (as per refreshed Material Design Guidelines)
+  * Changed selected state style (as per refreshed Material Design Guidelines)
+  * Changed sidebar style (as per refreshed Material Design Guidelines)
+  * Changed headerbar's separator style
+  * Tweaked button colors
+  * Changed progress bar background-color to neutral gray
+  * Changed disabled check/radio colors
+  * Dropped excessive check/radio animations
+  * budgie: Changed raven's tab bar colors
+  * gnome-shell: Fixed .workspace-thumbnail-indicator position
+  * gnome-shell: Tweaked transitions
+  * Applied various style improvements for Budgie and Cinnamon
+
+-------------------------------------------------------------------
+Tue Dec 11 22:03:28 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Fix typo in source url 
+
+-------------------------------------------------------------------
+Sun Dec  2 22:14:23 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Initial package of version 20181125

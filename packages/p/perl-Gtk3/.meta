@@ -1,0 +1,5 @@
+<package name="perl-Gtk3" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Gtk3"/>
+</package>
