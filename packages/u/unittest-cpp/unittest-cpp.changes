@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Sun Aug 28 14:52:43 UTC 2022 - antoine.belvire@opensuse.org
+
+- Add unittest-cpp-2.0.0-gcc12.patch: Fix build with GCC 12.
+- Remove unittest-cpp-2.0.0.tar.xz: It is created at build time
+  from obscpio.
+- Remove unused project.diff.
+- Refresh spec file.
+
+-------------------------------------------------------------------
+Thu Mar  8 10:08:28 UTC 2018 - jengelh@inai.de
+
+- Add shared.patch to build shared libraries.
+
+-------------------------------------------------------------------
+Thu Mar  8 08:28:27 UTC 2018 - adrian@suse.de
+
+- update to version 2.0.0 (No upstream ChangeLog anymore)
+- use git service because upstream tar ball lacks cmake files
+
+-------------------------------------------------------------------
+Fri Oct 21 21:01:14 UTC 2016 - avvissu@yandex.by
+
+- Update to 1.6.1:
+  * see: /usr/share/doc/packages/unittest-cpp/ChangeLog
+- Create a new spec file for building RPM
+
+-------------------------------------------------------------------
+Sun Dec 16 12:44:56 UTC 2012 - joop.boonen@opensuse.org
+
+- Build UnitTest++ 1.4
+

@@ -1,0 +1,38 @@
+From 45c9f9249a863f46a85888679730c49f1b7f7bda Mon Sep 17 00:00:00 2001
+From: Mat Booth <mat.booth@redhat.com>
+Date: Mon, 11 Mar 2019 13:50:10 +0000
+Subject: [PATCH 2/3] Port to glassfish/jsonp 1.0
+
+---
+ .../org/glassfish/jersey/jsonp/JsonProcessingFeature.java | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/media/json-processing/src/main/java/org/glassfish/jersey/jsonp/JsonProcessingFeature.java b/media/json-processing/src/main/java/org/glassfish/jersey/jsonp/JsonProcessingFeature.java
+index c065770..226dc59 100644
+--- a/media/json-processing/src/main/java/org/glassfish/jersey/jsonp/JsonProcessingFeature.java
++++ b/media/json-processing/src/main/java/org/glassfish/jersey/jsonp/JsonProcessingFeature.java
+@@ -22,8 +22,8 @@ import javax.ws.rs.core.FeatureContext;
+ 
+ import org.glassfish.jersey.CommonProperties;
+ 
+-import org.glassfish.json.jaxrs.JsonValueBodyReader;
+-import org.glassfish.json.jaxrs.JsonValueBodyWriter;
++import org.glassfish.json.jaxrs.JsonStructureBodyReader;
++import org.glassfish.json.jaxrs.JsonStructureBodyWriter;
+ 
+ /**
+  * {@link Feature} used to register JSON-P providers.
+@@ -41,8 +41,8 @@ public class JsonProcessingFeature implements Feature {
+ 
+         // Make sure JSON-P workers have higher priority than other Json providers (in case there is a need to use JSON-P and some
+         // other provider in an application).
+-        context.register(JsonValueBodyReader.class, Priorities.USER + 1000);
+-        context.register(JsonValueBodyWriter.class, Priorities.USER + 1000);
++        context.register(JsonStructureBodyReader.class, Priorities.USER + 1000);
++        context.register(JsonStructureBodyWriter.class, Priorities.USER + 1000);
+ 
+         return true;
+     }
+-- 
+2.20.1
+

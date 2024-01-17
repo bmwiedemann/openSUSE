@@ -1,0 +1,42 @@
+Index: python-nss-1.0.1/test/setup_certs.py
+===================================================================
+--- python-nss-1.0.1.orig/test/setup_certs.py
++++ python-nss-1.0.1/test/setup_certs.py
+@@ -10,7 +10,6 @@ import subprocess
+ import sys
+ from string import Template
+ import tempfile
+-import six
+ 
+ #-------------------------------------------------------------------------------
+ logger = None
+@@ -510,7 +509,7 @@ def setup_certs(args):
+             continue
+         value = getattr(options, key)
+         # Can't substitue on non-string values
+-        if not isinstance(value, six.string_types):
++        if not isinstance(value, str):
+             continue
+         # Don't bother trying to substitute if $ substitution character isn't present
+         if '$' not in value:
+Index: python-nss-1.0.1/test/test_misc.py
+===================================================================
+--- python-nss-1.0.1.orig/test/test_misc.py
++++ python-nss-1.0.1/test/test_misc.py
+@@ -5,7 +5,6 @@ import os
+ import unittest
+ 
+ import nss.nss as nss
+-import six
+ 
+ #-------------------------------------------------------------------------------
+ class TestVersion(unittest.TestCase):
+@@ -27,7 +26,7 @@ class TestShutdownCallback(unittest.Test
+             self.assertEqual(isinstance(i, int), True)
+             self.assertEqual(i, int_value)
+ 
+-            self.assertEqual(isinstance(s, six.string_types), True)
++            self.assertTrue(isinstance(s, str))
+             self.assertEqual(s, str_value)
+ 
+             self.assertEqual(isinstance(d, dict), True)

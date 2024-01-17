@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Thu Nov 23 13:43:40 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Tue Dec 10 19:29:45 UTC 2013 - dvaleev@suse.com
+
+- enable ppc64le 
+
+-------------------------------------------------------------------
+Wed Oct 15 12:26:40 CEST 2008 - ro@suse.de
+
+- added ExclusiveArch 
+
+-------------------------------------------------------------------
+Mon Nov 26 10:51:34 CET 2007 - olh@suse.de
+
+- add mode argument to open() call
+
+-------------------------------------------------------------------
+Tue Nov  7 09:43:13 CET 2006 - olh@suse.de
+
+- add Should-Start: $remote_fs to runlevel script
+
+-------------------------------------------------------------------
+Tue Nov  7 09:37:09 CET 2006 - olh@suse.de
+
+- rename rtasdispd.1 to rtasdispd.8 (184627 - LTC24650)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:44:58 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Aug 20 13:39:28 CEST 2002 - olh@suse.de
+
+- PreReq:       insserv_prereq fillup_prereq
+
+-------------------------------------------------------------------
+Thu Feb 14 15:57:19 CET 2002 - rnhodek@suse.de
+
+- initial package
+

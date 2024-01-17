@@ -1,0 +1,5 @@
+<package name="libsearpc" project="openSUSE:Factory">
+  <title></title>
+  <description>A simple and easy-to-use C language RPC framework (including both server side &amp; client side) based on GObject System. Python binding is also provided</description>
+  <devel project="Cloud:Seafile" package="libsearpc"/>
+</package>

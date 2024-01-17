@@ -1,0 +1,3 @@
+# o2sclpy-devel is needed, yet python package does not install any devel
+# files and so should not be named as python-o2sclpy-devel
+addFilter("python[0-9]*-o2sclpy.*: E: devel-dependency o2scl-devel")

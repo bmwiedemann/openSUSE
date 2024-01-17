@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e60d10b77e1924aff98d4c3a1ccc4fe1</srcmd5>
+    <version>2.7</version>
+    <time>1585667841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790097</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b5675dfd2b85e117ce8c17d25d0ac083</srcmd5>
+    <version>2.7</version>
+    <time>1634331823</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925211</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c9b1915d6ba007cc01d5b1c1034ff782</srcmd5>
+    <version>2.8</version>
+    <time>1640808656</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942991</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>36205f2e4772a15570d1a9b770ec4600</srcmd5>
+    <version>2.8.4</version>
+    <time>1672859914</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.4:
+  * Fix problem when thumbnailing images of type TIFF. PIL's
+    ``TiffImagePlugin`` doesn't like argument ``quality``.
+  * Replace deprecated Pillow constants against newer counterparts. Check
+  https://pillow.readthedocs.io/en/stable/releasenotes/9.1.0.html#deprecations for details.</comment>
+    <requestid>1055965</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>73bdc4f9a91a1f26747ac5a88cf73761</srcmd5>
+    <version>2.8.5</version>
+    <time>1673650991</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.5:
+  * Fix regression introduced in version 2.8.4. Argument ``quality`` is not
+    removed for images of type ``.webp``.</comment>
+    <requestid>1058179</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,26 @@
+# CoreFreq
+# Copyright (C) 2015-2022 CYRIL COURTIAT
+# Licenses: GPL2
+
+[Unit]
+Description=CoreFreq Daemon
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+#
+Type=simple
+ExecStartPre=/sbin/modprobe corefreqk
+ExecStart=corefreqd -q
+ExecStop=/bin/kill -QUIT $MAINPID
+ExecStopPost=-/sbin/modprobe -r corefreqk
+RemainAfterExit=no
+SuccessExitStatus=SIGQUIT SIGUSR1 SIGTERM
+Slice=-.slice
+
+[Install]
+WantedBy=multi-user.target

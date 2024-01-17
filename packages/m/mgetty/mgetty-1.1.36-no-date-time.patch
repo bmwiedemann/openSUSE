@@ -1,0 +1,26 @@
+Index: mgetty.c
+===================================================================
+--- mgetty.c.orig	2006-01-01 14:13:18.000000000 -0300
++++ mgetty.c	2010-08-29 13:16:06.330122665 -0400
+@@ -361,7 +361,7 @@ int main _P2((argc, argv), int argc, cha
+     lprintf( L_MESG, "vgetty: %s", vgetty_version);
+ #endif
+     lprintf( L_MESG, "mgetty: %s", mgetty_version);
+-    lprintf( L_NOISE, "%s compiled at %s, %s", __FILE__, __DATE__, __TIME__ );
++    /* lprintf( L_NOISE, "%s compiled at %s, %s", __FILE__, __DATE__, __TIME__ ); */
+     i=getppid();
+     lprintf( L_NOISE, "user id: %d, pid: %d, parent pid: %d", getuid(), getpid(), i);
+     if ( i != 1 )
+Index: sendfax.c
+===================================================================
+--- sendfax.c.orig	2007-01-19 04:38:21.000000000 -0300
++++ sendfax.c	2010-08-29 13:16:37.702183926 -0400
+@@ -314,7 +314,7 @@ int main _P2( (argc, argv),
+     sendfax_get_config( NULL );
+ 
+     lprintf( L_MESG, "sendfax: %s", mgetty_version );
+-    lprintf( L_NOISE, "%s compiled at %s, %s", __FILE__, __DATE__, __TIME__ );
++    /* lprintf( L_NOISE, "%s compiled at %s, %s", __FILE__, __DATE__, __TIME__ ); */
+ 
+     /* for simplicity, put a few config things into global variables */
+     verbose = c_bool( verbose );

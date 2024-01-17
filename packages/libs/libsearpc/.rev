@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>7f3b874ceeb77e6a899614f6eee889fa</srcmd5>
+    <version>3.2+20191101</version>
+    <time>1583948981</time>
+    <user>dimstar_suse</user>
+    <comment>New package see https://lists.opensuse.org/opensuse-factory/2020-03/msg00116.html</comment>
+    <requestid>783615</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a8f924d64938522405e89c9c279101ec</srcmd5>
+    <version>3.2.0.20200320</version>
+    <time>1586555609</time>
+    <user>dimstar_suse</user>
+    <comment>- Use _service and _servicedata since upstream has the bad habit
+  of issuing a new release by overwriting the old one
+</comment>
+    <requestid>792888</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9f2aca22e5a1fe2e1375a1fb48f4db52</srcmd5>
+    <version>3.2.0.20200618</version>
+    <time>1593090579</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0.20200618 (no changelog) 
+</comment>
+    <requestid>816978</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>abef132ca55fd66ee99d0164754628cc</srcmd5>
+    <version>3.2.0.20200618</version>
+    <time>1619653076</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libsearpc-fix-compilation-glib2_68.patch
+</comment>
+    <requestid>888927</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c085a56ddcfafbe6d68bc358f9f9e1c2</srcmd5>
+    <version>3.2.0.20211008</version>
+    <time>1639169573</time>
+    <user>dimstar_suse</user>
+    <comment>- New release, no changelog
+</comment>
+    <requestid>939133</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>685d9cad8daef8400cdb0660e3e3b7b3</srcmd5>
+    <version>3.2.0.20220425</version>
+    <time>1652114674</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0.20220425, no changelog
+- Rebase 01-fix-includes.patch
+- Drop libsearpc-fix-compilation-glib2_68.patch
+</comment>
+    <requestid>975836</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cfcdf09bc0915e9fed50565f89a29b1a</srcmd5>
+    <version>3.3.0.20220902</version>
+    <time>1667995005</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.0.20220902:
+  * Filter rpc slow log include password.
+  * Add C++ support.
+</comment>
+    <requestid>1034487</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>078616a52fbe804d0e20010b768ae3d9</srcmd5>
+    <version>3.3.0.20230224</version>
+    <time>1681296751</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.0.20230224:
+  * Waiting with WaitNamedPipe() if a named pipe is busy (#62)
+  * Filter rpc slow log include password (#61)
+  * Add support c++ compile (#60)
+  * Change slow log format (#58)
+  * Configure x64-debug build (#56)
+  * add --with-python3 option (#55)
+  * only use python3 in linux (#54)
+  * remove python3 future
+  * configure with python3 (#53)
+  * Fixed python-searpc installation place (#52)
+</comment>
+    <requestid>1078617</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c0daaa4d1612acef48f9b93278859e44</srcmd5>
+    <version>3.3.0.20230527</version>
+    <time>1688399045</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.0.20230527:
+  * Close socket when failed to connect name pipe (#65)
+  * Support compile universal (#64)
+</comment>
+    <requestid>1096511</requestid>
+  </revision>
+</revisionlist>

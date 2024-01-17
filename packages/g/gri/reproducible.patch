@@ -1,0 +1,14 @@
+--- gri-2.12.23/doc/examples/Makefile.in.orig	2011-07-06 14:09:14.000000000 +0000
++++ gri-2.12.23/doc/examples/Makefile.in	2016-03-08 18:48:39.552917451 +0000
+@@ -377,9 +377,9 @@
+ 	cp $< $@
+ 	chmod +w $@
+ %.png : %.ps
+-	-convert $< $@
++	-convert -strip $< $@
+ %-tiny.png : %.png
+-	-convert -geometry 90x999 $< $@
++	-convert -strip -geometry 90x999 $< $@
+ %.pdf : %.ps
+ 	convert $< $@ 
+ #	ps2pdf $< $@

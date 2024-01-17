@@ -1,0 +1,15 @@
+---
+ rtasdispd.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/rtasdispd.c
++++ b/rtasdispd.c
+@@ -495,7 +495,7 @@ int write_pid_file(unsigned newpid)
+     FILE *f;
+     int fd;
+ 
+-    if ((fd = open(PIDFILE, O_WRONLY|O_CREAT|O_TRUNC|O_EXCL)) < 0) {
++    if ((fd = open(PIDFILE, O_WRONLY|O_CREAT|O_TRUNC|O_EXCL, 0644)) < 0) {
+ 	perror(PIDFILE);
+ 	return -1;
+     }

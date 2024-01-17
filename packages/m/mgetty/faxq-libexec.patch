@@ -1,0 +1,118 @@
+Index: mgetty-1.2.1/Makefile
+===================================================================
+--- mgetty-1.2.1.orig/Makefile
++++ mgetty-1.2.1/Makefile
+@@ -199,6 +199,10 @@ BINDIR=$(prefix)/bin
+ #
+ LIBDIR=$(prefix)/lib/mgetty+sendfax
+ #
++# for specialized binaries (faxq-helper)
++#
++LIBEXECDIR=$(prefix)/libexec/mgetty+sendfax
++#
+ # where the configuration files (*.config, aliases, fax.allow/deny) go to
+ #
+ CONFDIR=/etc/mgetty+sendfax
+@@ -372,7 +376,7 @@ mgetty-launchd: mgetty-launchd.o io.o ut
+ subdirs:
+ 	cd g3 &&    $(MAKE) "CC=$(CC)" "CFLAGS=$(CFLAGS) -I.." "LDFLAGS=$(LDFLAGS)" "LIBS=$(LIBS)" all
+ 	cd tools && $(MAKE) "CC=$(CC)" "CFLAGS=$(CFLAGS) -I.." "LDFLAGS=$(LDFLAGS)" "LIBS=$(LIBS)" all
+-	cd fax &&   $(MAKE) "CC=$(CC)" "CFLAGS=$(CFLAGS) -I.." "LDFLAGS=$(LDFLAGS)" "LIBS=$(LIBS)" "FAX_SPOOL_OUT=$(FAX_SPOOL_OUT)" "FAX_OUT_USER=$(FAX_OUT_USER)" "CONFDIR=$(CONFDIR)" all
++	cd fax &&   $(MAKE) "CC=$(CC)" "CFLAGS=$(CFLAGS) -I.." "LDFLAGS=$(LDFLAGS)" "LIBS=$(LIBS)" "FAX_SPOOL_OUT=$(FAX_SPOOL_OUT)" "FAX_OUT_USER=$(FAX_OUT_USER)" "CONFDIR=$(CONFDIR)" "LIBEXECDIR=$(LIBEXECDIR)" all
+ 
+ call-back:
+ 	@$(MAKE) mgetty
+@@ -382,7 +386,7 @@ contrib-all:
+ 	cd contrib ; $(MAKE) "CC=$(CC)" "CFLAGS=$(CFLAGS) -I.." "LDFLAGS=$(LDFLAGS)" "LIBS=$(LIBS)" all
+ 
+ doc-all: 
+-	cd doc ; $(MAKE) "CC=$(CC)" "CFLAGS=$(CFLAGS) -I.." "LDFLAGS=$(LDFLAGS)" "LIBS=$(LIBS)" doc-all
++	cd doc ; $(MAKE) "CC=$(CC)" "CFLAGS=$(CFLAGS) -I.." "LDFLAGS=$(LDFLAGS)" "LIBS=$(LIBS)" "LIBEXECDIR=$(LIBEXECDIR)" doc-all
+ 
+ doc-man-only:
+ 	cd doc ; $(MAKE) "CC=$(CC)" "CFLAGS=$(CFLAGS) -I.." "LDFLAGS=$(LDFLAGS)" "LIBS=$(LIBS)" all
+@@ -436,6 +440,7 @@ sedscript: mksed
+ mksed: mksed.c policy.h Makefile 
+ 	$(HOSTCC) $(CFLAGS) -DBINDIR=\"$(BINDIR)\" -DSBINDIR=\"$(SBINDIR)\" \
+ 		-DLIBDIR=\"$(LIBDIR)\" \
++		-DLIBEXECDIR=\"$(LIBEXECDIR)\" \
+ 		-DCONFDIR=\"$(CONFDIR)\" \
+ 		-DFAX_SPOOL=\"$(FAX_SPOOL)\" \
+ 		-DFAX_SPOOL_IN=\"$(FAX_SPOOL_IN)\" \
+@@ -662,7 +667,8 @@ install.bin: mgetty sendfax newslock \
+ 	cd fax && $(MAKE) install INSTALL="$(INSTALL)" \
+ 				FAX_OUT_USER=$(FAX_OUT_USER) DESTDIR=$(DESTDIR) \
+ 				BINDIR=$(BINDIR) SBINDIR=$(SBINDIR) \
+-				LIBDIR=$(LIBDIR) CONFDIR=$(CONFDIR)
++				LIBDIR=$(LIBDIR) CONFDIR=$(CONFDIR) \
++				LIBEXECDIR=$(LIBEXECDIR)
+ #
+ # callback tool
+ #
+Index: mgetty-1.2.1/doc/faxspool.1in
+===================================================================
+--- mgetty-1.2.1.orig/doc/faxspool.1in
++++ mgetty-1.2.1/doc/faxspool.1in
+@@ -207,7 +207,7 @@ program to create fax cover page (see co
+ program to control which file extentions are recognized (.txt, .ps, ...)
+ and how those file formats should be converted to G3.
+ .TP
+-.B @LIBDIR@/faxq-helper
++.B @LIBEXECDIR@/faxq-helper
+ this a small C helper program that facilitates access to the fax spool
+ queue (which is since mgetty 1.1.29 no longer world-writeable)
+ .fi
+Index: mgetty-1.2.1/fax/Makefile
+===================================================================
+--- mgetty-1.2.1.orig/fax/Makefile
++++ mgetty-1.2.1/fax/Makefile
+@@ -58,8 +58,9 @@ install: all
+ 		$(INSTALL) -m 755 $$i $(DESTDIR)$(BINDIR) ; \
+ 	done
+ 	$(INSTALL) -m 755 faxrunqd $(DESTDIR)$(SBINDIR)
+-	$(INSTALL) faxq-helper $(DESTDIR)$(LIBDIR)
+-	chmod 4711 $(DESTDIR)$(LIBDIR)/faxq-helper
++	-test -d $(DESTDIR)$(LIBEXECDIR) || mkdir -p $(DESTDIR)$(LIBEXECDIR)
++	$(INSTALL) faxq-helper $(DESTDIR)$(LIBEXECDIR)
++	chmod 4711 $(DESTDIR)$(LIBEXECDIR)/faxq-helper
+ #
+ # data files
+ #
+Index: mgetty-1.2.1/fax/faxq.in
+===================================================================
+--- mgetty-1.2.1.orig/fax/faxq.in
++++ mgetty-1.2.1/fax/faxq.in
+@@ -30,7 +30,7 @@ AWK=@AWK@
+ 
+ #
+ # helper program for privileged queue access
+-FAXQ_HELPER=@LIBDIR@/faxq-helper
++FAXQ_HELPER=@LIBEXECDIR@/faxq-helper
+ 
+ # ------------- subroutines -----------
+ do_faxq_stop()
+Index: mgetty-1.2.1/fax/faxspool.in
+===================================================================
+--- mgetty-1.2.1.orig/fax/faxspool.in
++++ mgetty-1.2.1/fax/faxspool.in
+@@ -130,7 +130,7 @@ FAX_SEQ_LOCK=$FAX_SEQ_LOCKDIR/LCK..seq
+ LAST_RUN=@FAX_SPOOL_OUT@/faxqueue_done
+ 
+ # helper program for privileged queue access
+-FAXQ_HELPER=@LIBDIR@/faxq-helper
++FAXQ_HELPER=@LIBEXECDIR@/faxq-helper
+ 
+ # fax phone directories - format: <alias> <fax phone number>
+ GLOBAL_PHONE_DIR=@CONFDIR@/faxaliases
+Index: mgetty-1.2.1/mksed.c
+===================================================================
+--- mgetty-1.2.1.orig/mksed.c
++++ mgetty-1.2.1/mksed.c
+@@ -49,6 +49,7 @@ int main _P0( void )
+     printf( "      -e 's;@BINDIR@;%s;g'\\\n", BINDIR );
+     printf( "      -e 's;@SBINDIR@;%s;g'\\\n", SBINDIR );
+     printf( "      -e 's;@LIBDIR@;%s;g'\\\n", LIBDIR );
++    printf( "      -e 's;@LIBEXECDIR@;%s;g'\\\n", LIBEXECDIR );
+     printf( "      -e 's;@CONFDIR@;%s;g'\\\n", CONFDIR );
+     printf( "      -e 's;@LOGIN@;%s;g'\n", DEFAULT_LOGIN_PROGRAM );
+     return 0;

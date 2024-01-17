@@ -1,0 +1,8 @@
+<package name="st" project="openSUSE:Factory">
+  <title>Simple Terminal Implementation for X</title>
+  <description>Simple and lightweight and unbloated X11 terminal.
+
+</description>
+  <devel project="X11:terminals" package="st"/>
+  <url>http://st.suckless.org/</url>
+</package>

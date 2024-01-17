@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>14fbf6092ff2bc5ea557e8d97ba8d170</srcmd5>
+    <version>0.14</version>
+    <time>1533412425</time>
+    <user>dimstar_suse</user>
+    <comment>Add xmonad, xmobar, and their dependencies to Factory.</comment>
+    <requestid>627273</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4b89aadbe03647142b6ea3332034518d</srcmd5>
+    <version>0.15</version>
+    <time>1540448376</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642908</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0130c1aba65764864e91b6d147ac6f41</srcmd5>
+    <version>0.16</version>
+    <time>1571402124</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>737227</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2592e8f5dccd06c87e8c65d1a3ed6f5c</srcmd5>
+    <version>0.16</version>
+    <time>1577451561</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759567</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9157e13591c16bcca9b21f924bc9fcd2</srcmd5>
+    <version>0.16</version>
+    <time>1589197013</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801066</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>1ea48726b89e37ce9b62a62a2355950b</srcmd5>
+    <version>0.16</version>
+    <time>1592580097</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815225</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>2be39b261e66bd486b58f572c8848290</srcmd5>
+    <version>0.16</version>
+    <time>1597746293</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>825804</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>5d816a77c1f88516584ba85050cd7f11</srcmd5>
+    <version>0.16</version>
+    <time>1598643702</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829506</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>d134c786af707dc5a0c5b2c56eff926d</srcmd5>
+    <version>0.16</version>
+    <time>1608634172</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857673</requestid>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>862fce4a1a064a5ef421b012ef2a9c5f</srcmd5>
+    <version>0.16</version>
+    <time>1622759624</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>897106</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>83ddee454ebf890e78c86815747ca9a1</srcmd5>
+    <version>0.17.0</version>
+    <time>1636663029</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>930376</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>40d1ccbc7859384db4805f336ed755fa</srcmd5>
+    <version>0.17.1</version>
+    <time>1665668617</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1008548</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4ac8d76de8ebab1813eeffa046b48004</srcmd5>
+    <version>0.17.1</version>
+    <time>1674043861</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1059129</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>b43c7ce3cc265ba53b21d1833b565e8e</srcmd5>
+    <version>0.17.1</version>
+    <time>1680636304</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076138</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>ba8e4b48e0da3977009355a1b844addf</srcmd5>
+    <version>0.17.1</version>
+    <time>1700772049</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1128092</requestid>
+  </revision>
+</revisionlist>

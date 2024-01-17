@@ -1,0 +1,64 @@
+From 8907dedc858cc344d770a2e826d6acc516429540 Mon Sep 17 00:00:00 2001
+From: Marc Mutz <marc.mutz@qt.io>
+Date: Tue, 19 Dec 2023 14:22:37 +0100
+Subject: [PATCH] Http2: fix potential overflow in assemble_hpack_block()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The function is given a vector of Http2::Frame's and flattens it into
+a vector<uchar>. While each Frame can contain a maximum of 16GiB of
+data (24-bit size field), one "only" needs 257 of them to overflow the
+quint32 variable's range.
+
+So make sure any overflow does not go undetected.
+
+Keep the limited uint32_t range for now, as we don't know whether all
+consumers of the result can deal with more than 4GiB of data.
+
+Since all these frames must be in memory, this cannot overflow in
+practice on 32-bit machines.
+
+Pick-to: 6.7 6.6 6.5 6.2 5.15
+Change-Id: Iafaa7d1c870cba9100e75065db11d95934f86213
+Reviewed-by: Mårten Nordheim <marten.nordheim@qt.io>
+(cherry picked from commit 1e6bb61af3ae29755f93b92f157df026f934ae61)
+
+* asturmlechner 2024-01-02: Use correct include for 5.15
+---
+ src/network/access/qhttp2protocolhandler.cpp | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/network/access/qhttp2protocolhandler.cpp b/src/network/access/qhttp2protocolhandler.cpp
+index 39dd460881a..ead88d781ae 100644
+--- a/src/network/access/qhttp2protocolhandler.cpp
++++ b/src/network/access/qhttp2protocolhandler.cpp
+@@ -10,10 +10,12 @@
+ #include <private/qnoncontiguousbytedevice_p.h>
+ 
+ #include <QtNetwork/qabstractsocket.h>
++
+ #include <QtCore/qloggingcategory.h>
+ #include <QtCore/qendian.h>
+ #include <QtCore/qdebug.h>
+ #include <QtCore/qlist.h>
++#include <QtCore/private/qnumeric_p.h>
+ #include <QtCore/qurl.h>
+ 
+ #include <qhttp2configuration.h>
+@@ -90,8 +92,10 @@ std::vector<uchar> assemble_hpack_block(const std::vector<Http2::Frame> &frames)
+     std::vector<uchar> hpackBlock;
+ 
+     quint32 total = 0;
+-    for (const auto &frame : frames)
+-        total += frame.hpackBlockSize();
++    for (const auto &frame : frames) {
++        if (add_overflow(total, frame.hpackBlockSize(), &total))
++            return hpackBlock;
++    }
+ 
+     if (!total)
+         return hpackBlock;
+-- 
+GitLab
+

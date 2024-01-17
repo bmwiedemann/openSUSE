@@ -1,0 +1,42 @@
+Index: SOAP-Lite-1.27/bin/SOAPsh.pl
+===================================================================
+--- SOAP-Lite-1.27.orig/bin/SOAPsh.pl
++++ SOAP-Lite-1.27/bin/SOAPsh.pl
+@@ -1,5 +1,4 @@
+-#!/usr/bin/env perl
+-#!d:\perl\bin\perl.exe
++#!perl
+ 
+ # -- SOAP::Lite -- soaplite.com -- Copyright (C) 2001 Paul Kulchenko --
+ 
+Index: SOAP-Lite-1.27/bin/stubmaker.pl
+===================================================================
+--- SOAP-Lite-1.27.orig/bin/stubmaker.pl
++++ SOAP-Lite-1.27/bin/stubmaker.pl
+@@ -1,5 +1,4 @@
+-#!/usr/bin/env perl
+-#!d:\perl\bin\perl.exe
++#!perl
+ #
+ # Filename: stubmaker.pl
+ # Authors: Byrne Reese <byrne at majordojo dot com>
+Index: SOAP-Lite-1.27/examples/XMLRPC/xmlrpc.cgi
+===================================================================
+--- SOAP-Lite-1.27.orig/examples/XMLRPC/xmlrpc.cgi
++++ SOAP-Lite-1.27/examples/XMLRPC/xmlrpc.cgi
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ 
+ # -- XMLRPC::Lite -- services.soaplite.com -- Copyright (C) 2001 Paul Kulchenko --
+ 
+Index: SOAP-Lite-1.27/examples/XMLRPC/xmlrpc.daemon
+===================================================================
+--- SOAP-Lite-1.27.orig/examples/XMLRPC/xmlrpc.daemon
++++ SOAP-Lite-1.27/examples/XMLRPC/xmlrpc.daemon
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ 
+ # -- XMLRPC::Lite -- services.soaplite.com -- Copyright (C) 2001 Paul Kulchenko --
+ 

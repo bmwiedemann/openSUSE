@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dbba7fad90d4c47f73211ddd45095531</srcmd5>
+    <version>0.16.0</version>
+    <time>1434383254</time>
+    <user>dimstar_suse</user>
+    <comment>New package - a python binding for NSS (Network Security Services) and NSPR (Netscape Portable Runtime).</comment>
+    <requestid>309888</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2c5b0318948de38467f1571969f9ecdc</srcmd5>
+    <version>1.0.1</version>
+    <time>1525779404</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix SOURCE link to be fetchable
+
+- update to 1.0.1
+  see installed /usr/share/doc/packages/python*-nss/ChangeLog
+
+- convert so single spec</comment>
+    <requestid>603103</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6b41edb56b767f3dffd52fb8f95549d5</srcmd5>
+    <version>1.0.1</version>
+    <time>1551687102</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable tests.</comment>
+    <requestid>680645</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f8bc67b36e2d4d6b777e442b138e8555</srcmd5>
+    <version>1.0.1</version>
+    <time>1608112891</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing patches from Fedora package
+  (https://src.fedoraproject.org/rpms/python-nss/tree/master):
+  - 0001-Rename-DSA-RSA-PublicKey-to-Py-DSA-RSA-PublicKey.patch
+    (bmo#1474274)
+  - sphinx.patch
+- Add generated documentation to -doc subpackage.
+</comment>
+    <requestid>856065</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>9ebd09f922246da06860b4341b09c4e3</srcmd5>
+    <version>1.0.1</version>
+    <time>1641940967</time>
+    <user>dimstar_suse</user>
+    <comment>- add python-rpm-macros</comment>
+    <requestid>945689</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>452ada3d643c43600be777dd7bfee417</srcmd5>
+    <version>1.0.1</version>
+    <time>1686753007</time>
+    <user>dimstar_suse</user>
+    <comment>- Rejig sphinx.patch to not require Sphinx's setuptools machinery.
+- Add patch new-setuptools.patch, remove-six.patch.
+- Declare -doc subpackage as noarch.</comment>
+    <requestid>1093016</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>64a1145c16ac5438fd95476687c6cf60</srcmd5>
+    <version>1.0.1</version>
+    <time>1687469205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094650</requestid>
+  </revision>
+</revisionlist>

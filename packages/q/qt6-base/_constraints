@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="G">12</size>
+    </disk>
+    <memory>
+      <size unit="G">4</size>
+    </memory>
+    <processors>4</processors>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>ppc64</arch>
+      <arch>ppc64le</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">5</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <!-- relax constraints for qt6-base:docs -->
+  <overwrite>
+    <conditions>
+      <package>qt6-base:docs</package>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">3</size>
+      </disk>
+      <memory>
+        <size unit="G">2</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>

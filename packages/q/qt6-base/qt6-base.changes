@@ -1,0 +1,520 @@
+-------------------------------------------------------------------
+Wed Jan  3 08:52:06 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add upstream patches to fix an incorrect integer overflow check
+  (boo#1218413, CVE-2023-51714):
+  * 0001-HPack-fix-a-Yoda-Condition.patch
+  * 0002-HPack-fix-incorrect-integer-overflow-check.patch
+- Add upstream patch to fix a potential overflow in
+  assemble_hpack_block():
+  * 0001-Http2-fix-potential-overflow-in-assemble_hpack_block.patch
+
+-------------------------------------------------------------------
+Sat Dec 30 14:51:31 UTC 2023 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patch for a bug in QMimeDatabase which makes
+  impossible to save JPEG files in Qt6 applications:
+  * 0001-QMimeDatabase-collect-glob-patterns-from.patch
+  * https://code.qt.io/cgit/qt/qtbase.git/commit/?id=4e9944e6c8a456353d243ab268cb0f01ff006faa
+
+-------------------------------------------------------------------
+Mon Dec  4 19:11:49 UTC 2023 - Kacper Koniuszy <kacper.koniuszy@tuta.io>
+
+- Add upstream patch for a bug in QMimeDatabase that causes some
+  applications to hang:
+  * 0001-QMimeDatabase-handle-buggy-type-definitions.patch
+  * https://code.qt.io/cgit/qt/qtbase.git/commit/?id=54656da9ace06caf4a0eeb1832989c0ab211a4a0
+
+-------------------------------------------------------------------
+Mon Nov 27 14:00:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.1:
+  * https://www.qt.io/blog/qt-6.6.1-released
+- Drop patches, merged upstream:
+  * 0001-xcb-replace-a-warning-with-debug-info-in-qxcbconnect.patch
+  * 0001-a11y-fix-race-condition-on-atspi-startup-on-Wayland.patch
+  * 0001-xkb-fix-build-with-libxkbcommon-1.6.0-and-later.patch
+
+-------------------------------------------------------------------
+Thu Nov 16 09:14:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Make libQt6Network6 require the network plugins
+
+-------------------------------------------------------------------
+Fri Nov  3 11:34:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes:
+  * 0001-xcb-replace-a-warning-with-debug-info-in-qxcbconnect.patch (QTBUG-117820)
+  * 0001-a11y-fix-race-condition-on-atspi-startup-on-Wayland.patch
+- Turn FEATURE_forkfd_pidfd off until QTBUG-117954 gets fixed
+
+-------------------------------------------------------------------
+Wed Oct 25 14:16:30 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-xkb-fix-build-with-libxkbcommon-1.6.0-and-later.patch
+
+-------------------------------------------------------------------
+Tue Oct 10 09:39:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * https://www.qt.io/blog/qt-6.6-released
+
+-------------------------------------------------------------------
+Wed Oct  4 07:25:51 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix creation of -debuginfo packages for qmake builds:
+  * 0001-Don-t-strip-binaries-when-building-with-qmake.patch
+
+-------------------------------------------------------------------
+Thu Sep 28 07:34:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.3
+  * https://www.qt.io/blog/qt-6.5.3-released
+- Drop patch, merged upstream:
+  * CVE-2023-38197-qtbase-6.5.diff
+- Enable the experimental native painting feature to improve
+  remote desktop performances (boo#1214915)
+  exporting QT_XCB_NATIVE_PAINTING is required to use the feature.
+
+-------------------------------------------------------------------
+Thu Jul 20 08:34:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Use a mirror to download sources for all Qt packages. Upstream
+  servers are very slow since a couple weeks.
+- Update to 6.5.2
+  * https://www.qt.io/blog/qt-6.5.2-released-1
+  * Includes fix for a buffer overflow in QXmlStreamReader
+    (boo#1214327, CVE-2023-37369).
+- Drop patches, merged upstream:
+  * 0001-Schannel-Reject-certificate-not-signed-by-a-configur.patch
+  * 0001-Ssl-Copy-the-on-demand-cert-loading-bool-from-defaul.patch
+  * 0001-tabbar-fix.patch
+- Add patch:
+  * CVE-2023-38197-qtbase-6.5.diff (boo#1213326, CVE-2023-38197)
+
+-------------------------------------------------------------------
+Fri Jun 30 15:13:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update subpackages requirements
+
+-------------------------------------------------------------------
+Thu Jun 29 11:13:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Replace 0001-Require-GCC-10.patch with 0001-Require-GCC-12.patch
+
+-------------------------------------------------------------------
+Wed Jun  7 17:58:46 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Add patch for QTabBar regression in Qt 6.5.1 (QTBUG-114204)
+  * 0001-tabbar-fix.patch
+
+-------------------------------------------------------------------
+Mon Jun  5 08:59:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes (CVE-2023-34410, boo#1211994):
+  * 0001-Schannel-Reject-certificate-not-signed-by-a-configur.patch
+  * 0001-Ssl-Copy-the-on-demand-cert-loading-bool-from-defaul.patch
+
+-------------------------------------------------------------------
+Wed May 24 07:45:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.1
+  * https://www.qt.io/blog/qt-6.5.1-released
+  * Includes fix for a buffer overflow in QTextLayout (boo#1211798,
+    CVE-2023-32763).
+  * Includes fix for incorrect parsing of strict-transport-security
+    (HSTS) header (boo#1211797, CVE-2023-32762)
+  * Includes fix for a buffer overflow in QDnsLookup
+    (CVE-2023-33285, bsc#1211642)
+- Drop patches, merged upstream:
+  * 0001-QApplication-Fix-DEPRECATED_VERSION-for-setActiveWin.patch
+  * 0001-QVariant-Fix-support-for-metatypes-created-by-Qt-6.5.patch
+- Add patch
+  * 0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
+
+-------------------------------------------------------------------
+Fri Apr 28 13:56:55 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change to fix boo#1210849:
+  * 0001-QVariant-Fix-support-for-metatypes-created-by-Qt-6.5.patch
+
+-------------------------------------------------------------------
+Sat Apr  8 10:42:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-QApplication-Fix-DEPRECATED_VERSION-for-setActiveWin.patch
+
+-------------------------------------------------------------------
+Mon Apr  3 10:01:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0
+  * https://www.qt.io/blog/qt-6.5-lts-released
+  * Includes fix for boo#1215178, QTBUG-109474, QTCREATORBUG-28593
+- Drop patch, merged upstream:
+  * 0001-Avoid-resetting-CMAKE_AUTOMOC_MACRO_NAMES.patch
+
+-------------------------------------------------------------------
+Thu Mar 16 09:59:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.3:
+  * https://www.qt.io/blog/qt-6.4.3-released
+- Drop patch, merged upstream:
+  * CVE-2023-24607-qtbase-6.4.diff
+- Add patch to silence moc warnings:
+  * 0001-Avoid-resetting-CMAKE_AUTOMOC_MACRO_NAMES.patch
+
+-------------------------------------------------------------------
+Wed Feb  8 17:48:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Fix a possible DOS in the Qt ODBC driver plugin (CVE-2023-24607,
+  bsc#1209616):
+  * CVE-2023-24607-qtbase-6.4.diff
+
+-------------------------------------------------------------------
+Fri Jan  6 16:46:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.2:
+  * https://www.qt.io/blog/qt-6.4.2-released
+
+-------------------------------------------------------------------
+Tue Nov 15 11:53:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.1:
+  * https://www.qt.io/blog/qt-6.4.1-released
+
+-------------------------------------------------------------------
+Sun Oct 16 07:39:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Make sure the QPA and wayland-related plugins are installed if
+  needed
+
+-------------------------------------------------------------------
+Thu Sep 29 10:35:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.0:
+  * https://www.qt.io/blog/qt-6.4-released
+
+-------------------------------------------------------------------
+Fri Sep 16 08:29:02 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.0 RC
+
+-------------------------------------------------------------------
+Fri Sep  9 12:41:32 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.2:
+  * https://www.qt.io/blog/qt-6.3.2-released
+
+-------------------------------------------------------------------
+Fri Jun 17 15:15:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.1:
+  * https://www.qt.io/blog/qt-6.3.1-released
+- Drop patches, now upstream:
+  * 0001-CMake-Don-t-hardcode-the-library-directory-name.patch
+  * 0001-XCB-fix-GCC-12-warning-about-uninitialized-variable-.patch
+  * 0001-Fix-build-with-GCC12-avoid-QCborStreamReader-prepars.patch
+  * 0001-QtOpenGL-Fix-build-with-GCC-12-qt_imageForBrush-is-i.patch
+
+-------------------------------------------------------------------
+Tue May 10 07:30:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add GCC 12 compatibility changes:
+  * 0001-XCB-fix-GCC-12-warning-about-uninitialized-variable-.patch
+  * 0001-Fix-build-with-GCC12-avoid-QCborStreamReader-prepars.patch
+  * 0001-QtOpenGL-Fix-build-with-GCC-12-qt_imageForBrush-is-i.patch
+
+-------------------------------------------------------------------
+Tue May  3 11:25:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Require the SSL devel package it was built with, not just any
+  pkgconfig(openssl). Otherwise it is satisfied with libressl-devel
+  even if it was built with openssl-devel.
+
+-------------------------------------------------------------------
+Fri Apr  8 11:56:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0:
+  * https://www.qt.io/blog/qt-6.3-released
+
+-------------------------------------------------------------------
+Tue Mar 29 12:28:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0-rc
+- Add patch:
+  * 0001-CMake-Don-t-hardcode-the-library-directory-name.patch
+- Update build constraints
+
+-------------------------------------------------------------------
+Mon Mar 21 08:46:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.4
+  * https://www.qt.io/blog/qt-6.2.4-released
+- Drop 0001-QProcess-Unix-ensure-we-don-t-accidentally-execute-s.patch
+  Merged upstream.
+
+-------------------------------------------------------------------
+Wed Mar  2 09:16:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream change (boo#1196501, CVE-2022-25255):
+  * 0001-QProcess-Unix-ensure-we-don-t-accidentally-execute-s.patch
+- Install qt6-core-private-devel when installing qt6-core-devel
+  (boo#1195368)
+
+-------------------------------------------------------------------
+Mon Jan 31 08:54:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.3:
+  * https://www.qt.io/blog/qt-6.2.3-released
+
+-------------------------------------------------------------------
+Wed Dec 22 13:47:40 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Increase the memory constraint to fix a oom failure
+
+-------------------------------------------------------------------
+Wed Dec  1 10:05:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.2
+  * https://www.qt.io/blog/qt-6.2.2-released
+- Make sure all dependencies are present when installing devel
+  packages. Qt >= 6.2.2 is much less permissive.
+- Drop 0001-qscrollarea-performance-fix.patch. Merged upstream.
+
+-------------------------------------------------------------------
+Thu Nov  4 20:59:52 UTC 2021 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Add patch for critical performance regression in qscrollarea
+  * 0001-qscrollarea-performance-fix.patch
+
+-------------------------------------------------------------------
+Tue Oct 26 11:22:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.1
+  * https://www.qt.io/blog/qt-6.2.1-released
+
+
+-------------------------------------------------------------------
+Thu Sep 30 12:25:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0:
+  * https://www.qt.io/blog/qt-6.2-lts-released
+
+-------------------------------------------------------------------
+Sat Sep 25 07:18:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0-rc2
+
+-------------------------------------------------------------------
+Thu Sep 16 14:07:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0-rc
+
+-------------------------------------------------------------------
+Thu Sep  9 14:04:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0-beta4
+
+-------------------------------------------------------------------
+Wed Sep  1 13:03:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.3:
+  * https://www.qt.io/blog/qt-6.1.3-released
+
+-------------------------------------------------------------------
+Fri Jul  2 14:07:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.2. New bugfix release:
+  * https://www.qt.io/blog/qt-6.1.2-released
+
+-------------------------------------------------------------------
+Tue Jun  8 05:54:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.1:
+  * https://www.qt.io/blog/qt-6.1.1-released
+
+-------------------------------------------------------------------
+Sat Jun  5 15:50:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the minimum disk size. Leap 15.3 needs more than 13G.
+- Also require at least 4 cores.
+
+-------------------------------------------------------------------
+Thu May  6 17:10:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.0:
+  * https://www.qt.io/blog/qt-6.1-released
+
+-------------------------------------------------------------------
+Fri Apr 23 14:11:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.0-rc.
+
+-------------------------------------------------------------------
+Sat Apr 17 08:04:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Stop owning directories provided by the filesystem package (boo#1184786)
+
+-------------------------------------------------------------------
+Tue Apr 13 06:29:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.0-beta3.
+
+-------------------------------------------------------------------
+Wed Mar 31 13:29:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.3
+  * https://www.qt.io/blog/qt-6.0.3-released
+
+-------------------------------------------------------------------
+Sat Mar 20 17:12:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.0-beta2
+- Drop fix-fixqt4headers.patch. No longer needed.
+
+-------------------------------------------------------------------
+Fri Mar  5 17:23:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.1.0-beta1
+  https://www.qt.io/blog/qt-6.1-beta-released
+
+-------------------------------------------------------------------
+Fri Mar  5 09:31:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.2:
+  https://www.qt.io/blog/qt-6.0.2-released
+
+-------------------------------------------------------------------
+Wed Feb  3 16:54:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.1
+  https://www.qt.io/blog/qt-6.0.1-released
+- Drop patches:
+  * 0001-Fix-QCache-Crash.patch
+  * 0001-CMake-Fix-conditions-for-some-subarch-features.patch
+  * 0001-CMake-strip-the-executable-bit-from-qt-cmake-private.patch
+- Enable ltcg where possible.
+
+-------------------------------------------------------------------
+Sat Jan 23 20:24:22 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Remove uikit qmake spec to avoid automatic dep on python2
+
+-------------------------------------------------------------------
+Wed Dec 16 11:26:03 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use a different 'Name' when building the docs flavor.
+
+-------------------------------------------------------------------
+Fri Dec 11 15:56:51 UTC 2020 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Add patch for critical bug: QCache related crashes.
+  * 0001-Fix-QCache-Crash.patch
+
+-------------------------------------------------------------------
+Tue Dec  8 14:09:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.0:
+  * https://www.qt.io/blog/qt-6.0-released
+
+-------------------------------------------------------------------
+Mon Dec  7 18:42:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- libQt6Core6 now owns most of runtime folders and
+  qt6-base-common-devel owns development ones.
+
+-------------------------------------------------------------------
+Thu Dec  3 17:59:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Disable the reduce_relocations option. (boo#1175278, QTBUG-86173)
+
+-------------------------------------------------------------------
+Wed Dec  2 12:08:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Qt 6.0.0 RC2
+
+-------------------------------------------------------------------
+Wed Dec  2 11:06:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add the missing openssl dependency for qt6-network-private-devel
+
+-------------------------------------------------------------------
+Mon Nov 30 16:55:57 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patches:
+  * 0001-CMake-strip-the-executable-bit-from-qt-cmake-private.patch
+  * 0001-CMake-Fix-conditions-for-some-subarch-features.patch
+
+-------------------------------------------------------------------
+Wed Nov 25 14:19:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.0~rc1
+
+-------------------------------------------------------------------
+Tue Nov 17 07:26:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.0~beta5
+- Drop upstream patches:
+  * 0001-CMake-Potentially-use-INSTALL_LIBDIR-in-qt6_extract_.patch
+  * 0001-CMake-Allow-using-DESTDIR-when-installing-documentat.patch
+  * 0001-CMake-Make-zstd-config-based-lookup-quiet.patch
+
+-------------------------------------------------------------------
+Tue Nov 10 18:40:31 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.0~beta4
+- Replace patches:
+  * 0001-CMake-Allow-using-DESTDIR-when-installing-documentat.patch
+    (replaces 0001-cmake-Fix-doc-installation.patch)
+  * 0001-CMake-Potentially-use-INSTALL_LIBDIR-in-qt6_extract_.patch
+    (replaces 0001-cmake-Don-t-hardcode-the-library-directory-name.patch)
+- Add upstream patch:
+  * 0001-CMake-Locate-zstd-using-CONFIG.patch
+
+-------------------------------------------------------------------
+Tue Oct 20 07:47:07 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.0beta1
+  https://www.qt.io/blog/qt-6.0-beta-released
+
+-------------------------------------------------------------------
+Wed Oct  7 12:24:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Turn more options on:
+  * link to openSSL
+  * libproxy usage
+
+-------------------------------------------------------------------
+Tue Oct  6 19:41:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.0-alpha
+  https://www.qt.io/blog/qt-6.0-alpha-released
+- Import fix-fixqt4headers.patch from libqt5-qtbase
+- Add patches:
+  * 0001-cmake-Fix-doc-installation.patch
+  * 0001-cmake-Don-t-hardcode-the-library-directory-name.patch
+
+-------------------------------------------------------------------
+Sun Sep 20 08:25:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Resurrect 0001-Tell-the-truth-about-private-API.patch from
+  libqt5-qtbase
+
+-------------------------------------------------------------------
+Tue Jan 21 22:38:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add a qt6-printsupport-cups package for the cups plugin
+- Add the journald option back
+
+-------------------------------------------------------------------
+Tue Jan 21 22:19:11 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Split the changes into smaller commits
+- Fixed the wrong paths in CMake config files
+- Fixed the mkspecs install dir. Everything is in qt6_mkspecsdir now.
+
+-------------------------------------------------------------------
+Tue Dec 31 09:06:08 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Experimental qt6-qtbase package

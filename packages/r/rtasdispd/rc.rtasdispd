@@ -1,0 +1,156 @@
+#! /bin/sh
+# Copyright (c) 2002 SuSE GmbH Nuernberg, Germany.
+#
+# Author: Roman Hodek <rnhodek@suse.de>, 2002
+#
+# /etc/init.d/rtasdispd
+#   and its symbolic link
+# /usr/sbin/rcrtasdispd
+#
+# System startup script for pSeries front panel display (rtasdispd)
+#
+### BEGIN INIT INFO
+# Provides:       rtasdispd
+# Required-Start: 
+# Should-Start:   $remote_fs
+# Required-Stop:  
+# Default-Start:  2 3 5
+# Default-Stop:   0 1 6
+# Description:    Start pSeries display daemon
+### END INIT INFO
+
+
+DAEMON="rtas display daemon"
+DAEMON_BIN=/usr/sbin/rtasdispd
+DAEMON_CONF=/etc/sysconfig/rtasdispd
+DAEMON_PIDFILE=/var/run/rtasdispd.pid
+DAEMON_PROCFILE=/proc/device-tree/rtas/set-indicator
+DAEMON_PROGRESS=/proc/rtas/progress
+STARTPROC_LOGFILE=
+
+# source our configuration
+test -f $DAEMON_CONF || exit 6
+
+test -x $DAEMON_BIN || exit 5
+
+# Shell functions sourced from /etc/rc.status:
+#      rc_check         check and set local and overall rc status
+#      rc_status        check and set local and overall rc status
+#      rc_status -v     ditto but be verbose in local rc status
+#      rc_status -v -r  ditto and clear the local rc status
+#      rc_failed        set local and overall rc status to failed
+#      rc_failed <num>  set local and overall rc status to <num><num>
+#      rc_reset         clear local rc status (overall remains)
+#      rc_exit          exit appropriate to overall rc status
+. /etc/rc.status
+. $DAEMON_CONF
+RTASDISPD_OPTIONS=""
+if [ -n "$RTASDISPD_DISPLAYS" ]; then
+	RTASDISPD_OPTIONS="-d $RTASDISPD_DISPLAYS"
+fi
+if [ -n "$RTASDISPD_UPDATE" ]; then
+	RTASDISPD_OPTIONS="$RTASDISPD_OPTIONS -u $RTASDISPD_UPDATE"
+fi
+if [ -n "$RTASDISPD_TITLE" ]; then
+	RTASDISPD_OPTIONS="$RTASDISPD_OPTIONS -t "'"'$RTASDISPD_TITLE'"'
+fi
+
+# First reset status of this service
+rc_reset
+
+# Return values acc. to LSB for all commands but status:
+# 0 - success
+# 1 - generic or unspecified error
+# 2 - invalid or excess argument(s)
+# 3 - unimplemented feature (e.g. "reload")
+# 4 - insufficient privilege
+# 5 - program is not installed
+# 6 - program is not configured
+# 7 - program is not running
+# 
+# Note that starting an already running service, stopping
+# or restarting a not-running service as well as the restart
+# with force-reload (in case signalling is not supported) are
+# considered a success.
+
+case "$1" in
+
+    start)
+	echo -n "Starting $DAEMON"
+	if [ ! -e $DAEMON_PROCFILE -o ! -e $DAEMON_PROGRESS ]; then
+		rc_status -s
+		exit 3
+	fi
+	eval $DAEMON_BIN "$RTASDISPD_OPTIONS"
+	# Remember status and be verbose
+	rc_status -v
+	;;
+
+    stop)
+	echo -n "Shutting down $DAEMON"
+	killproc -p $DAEMON_PIDFILE $DAEMON_BIN
+	# Remember status and be verbose
+	rc_status -v
+	;;
+
+    try-restart)
+	## Stop the service and if this succeeds (i.e. the 
+	## service was running before), start it again.
+	$0 stop  &&  $0 start
+	# Remember status and be quiet
+	rc_status
+	;;
+
+    restart)
+	## Stop the service and regardless of whether it was
+	## running or not, start it again.
+	$0 stop
+	$0 start
+	# Remember status and be quiet
+	rc_status
+	;;
+
+    force-reload)
+	## Signal the daemon to reload its config. Most daemons
+	## do this on signal 1 (SIGHUP).
+	## If it does not support it, restart.
+	$0 stop  &&  $0 start
+	rc_status 
+	;;
+
+    reload)
+	## Like force-reload, but if daemon does not support
+	## signalling, do nothing (!)
+	rc_failed 3
+	rc_status -v
+	;;
+
+    status)
+	echo -n "Checking for $DAEMON: "
+	## Check status with checkproc(8), if process is running
+	## checkproc will return with exit status 0.
+
+	# Status has a slightly different for the status command:
+	# 0 - service running
+	# 1 - service dead, but /var/run/  pid  file exists
+	# 2 - service dead, but /var/lock/ lock file exists
+	# 3 - service not running
+	# NOTE: checkproc returns LSB compliant status values.
+	checkproc -p $DAEMON_PIDFILE $DAEMON_BIN
+	rc_status -v
+	;;
+
+    probe)
+	## Optional: Probe for the necessity of a reload,
+	## give out the argument which is required for a reload.
+	if [ "$DAEMON_CONF" -nt "$DAEMON_PIDFILE" ]; then 
+		echo restart
+	fi
+	;;
+
+    *)
+	echo "Usage: $0 {start|stop|status|try-restart|restart|force-reload|reload|probe}"
+	exit 1
+	;;
+esac
+rc_exit

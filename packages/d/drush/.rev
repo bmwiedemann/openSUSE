@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ec3e3ee8809ed215dda0a9c97c6b2f3</srcmd5>
+    <version>8.1.12</version>
+    <time>1503592882</time>
+    <user>dimstar_suse</user>
+    <comment>Drush is a command line shell and scripting interface for Drupal, a veritable Swiss Army knife designed to make life easier for those of us who spend some of our working hours hacking away at the command prompt.
+
+See http://drush.ws, the homepage for the drush project.</comment>
+    <requestid>512096</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bf3cc581eff543a24d364ca6bd827a17</srcmd5>
+    <version>8.1.13</version>
+    <time>1503926141</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.1.13:
+  * Prep for 8.1.13-dev
+  * Fix #2753: Prevent loops when unable to download extensions (#2797)
+  * Fix #2817. bash autocomplete via .bashrc only works on the second .bashrc inclusion.
+  * Disable the psysh version check.
+  * Fixes #2831: create_function is deprecated in php 7.2; might as well use an anonymous function instead.
+  * Fix drush docs, link to 8.x docs from within the 8.x documentation (#2842)
+  * Add php lint operation via CircleCI.
+  * Respect disable_functions list in  use_pcntl_exec check (#2857)
+  * fix namespace for Drush command sql-query with option &quot;--db-prefix&quot; in use (#2882)
+  * Just assert that disabled module's command can't be run. The actual error is not important, and seems to be variable based on phases of the moon.
+  * Prep for 8.1.13.</comment>
+    <requestid>518607</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8371e35b50b67c66b1afd286fd207009</srcmd5>
+    <version>8.1.14</version>
+    <time>1507197570</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>531013</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ea5f93f4219c8e3cfebeff0f8436c98a</srcmd5>
+    <version>8.1.15</version>
+    <time>1507896868</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532924</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e60691fe06fad5770b9c2546b188e28a</srcmd5>
+    <version>8.1.15</version>
+    <time>1509036287</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>536612</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>259ad0beb1665b790d615d9cf75de2bb</srcmd5>
+    <version>8.1.16</version>
+    <time>1520588837</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584559</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dc29149701cddf822065ead625ebd3b1</srcmd5>
+    <version>8.1.17</version>
+    <time>1527675845</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612955</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a63bd5d2a174ea50aad6c1ad4b5edfbf</srcmd5>
+    <version>8.1.18</version>
+    <time>1542889638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650789</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>711adf085d599b43fe981009ca0172a3</srcmd5>
+    <version>8.2.0</version>
+    <time>1552380957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684129</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2b6d7a2512097908b0f2bb1791db73be</srcmd5>
+    <version>8.2.1</version>
+    <time>1552643551</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685178</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>46e4ec84757e99105cf27878dcc617d0</srcmd5>
+    <version>8.2.2</version>
+    <time>1553700091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688907</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8b564435618ec4e9ff5eb02b9c13c106</srcmd5>
+    <version>8.3.0</version>
+    <time>1563223439</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714515</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cc5585b4307fb9a4ccf80eb9ad153379</srcmd5>
+    <version>8.3.1</version>
+    <time>1572180037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742961</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>21fcf56f3ad0a8d78ace0ef49874da9e</srcmd5>
+    <version>8.3.2</version>
+    <time>1574859341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751166</requestid>
+  </revision>
+</revisionlist>

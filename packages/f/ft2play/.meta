@@ -1,0 +1,9 @@
+<package name="ft2play" project="openSUSE:Factory">
+  <title>Bit-accurate C port of Fasttracker's XM replayer</title>
+  <description>Bit-accurate C port of Fasttracker's XM replayer (SB16/WAV render mode).
+This is a direct port of the original asm/Pascal source codes.
+
+</description>
+  <devel project="multimedia:apps" package="ft2play"/>
+  <url>https://github.com/8bitbubsy/ft2play</url>
+</package>

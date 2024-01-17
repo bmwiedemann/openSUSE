@@ -1,0 +1,14 @@
+<package name="mgetty" project="openSUSE:Factory">
+  <title>Mgetty Listens for Data, Fax, or Voice Calls on a Serial Line</title>
+  <description>This package turns your computer into a fax machine. With some voice
+modems (Zyxel, Rockwell, and USR), you can even use your computer as an
+answering machine.
+
+Mgetty recognizes what kind of call it is receiving and does everything
+else automatically. It is able to accept data (login/PPP), fax, and
+(depending on your modem) voice calls. Find the documentation in
+/usr/share/doc/packages/mgetty and TeX Info files in /usr/share/info.
+
+The configuration files are in /etc/mgetty+sendfax.</description>
+  <devel project="Base:System" package="mgetty"/>
+</package>

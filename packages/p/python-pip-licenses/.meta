@@ -1,0 +1,5 @@
+<package name="python-pip-licenses" project="openSUSE:Factory">
+  <title>python-pip-licenses</title>
+  <description>Dump the software license list of Python packages installed with pip</description>
+  <devel project="devel:languages:python" package="python-pip-licenses"/>
+</package>

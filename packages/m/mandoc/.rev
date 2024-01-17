@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>abd1592a372819b5450618b12a3efd8e</srcmd5>
+    <version>1.14.5</version>
+    <time>1579463761</time>
+    <user>dimstar_suse</user>
+    <comment>Add putting /usr/sbin/makewhatis to alternatives.</comment>
+    <requestid>757359</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>18637c152e786d28a9fdba5e5b8b880d</srcmd5>
+    <version>1.14.5</version>
+    <time>1580724753</time>
+    <user>dimstar_suse</user>
+    <comment>- get rid of alternatives altogether, just conflict (boo#1160568)
+
+- update-alternatives --remove must be in %postun
+- own mandoc.db
+- add file triggers to update mandoc.db</comment>
+    <requestid>769150</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bc6a5c74065bbb3b1fcce1de9f3d9bd0</srcmd5>
+    <version>1.14.5</version>
+    <time>1584446857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784376</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>43112a093786f4effbdc46f13aeb7169</srcmd5>
+    <version>1.14.5</version>
+    <time>1600956849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836372</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>26ff5fdbe41f0d2fc7ae59395d356e68</srcmd5>
+    <version>1.14.6</version>
+    <time>1632603095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921446</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>db70bd92df849341de3eb2aa6b1c9e44</srcmd5>
+    <version>1.14.6</version>
+    <time>1646948765</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960904</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>03b6ab91f346b902b633b8c963b2636a</srcmd5>
+    <version>1.14.6</version>
+    <time>1670332982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040379</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>754f3d282aec4368ba33f7287bb1cd0f</srcmd5>
+    <version>1.14.6</version>
+    <time>1686505964</time>
+    <user>dimstar_suse</user>
+    <comment>- Add boo1209830-endless-loop.patch (boo1209830) avoid endless
+  loop on processing some mandoc files.
+</comment>
+    <requestid>1091826</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>23daca9220f4018b54c94c3f58c2b22e</srcmd5>
+    <version>1.14.6</version>
+    <time>1691762122</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103482</requestid>
+  </revision>
+</revisionlist>

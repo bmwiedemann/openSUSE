@@ -1,0 +1,19 @@
+diff -Ndur mgetty-1.1.36/voice/scripts/faxback.sh mgetty-1.1.36-fix-bashisms/voice/scripts/faxback.sh
+--- mgetty-1.1.36/voice/scripts/faxback.sh	1997-06-17 07:31:50.000000000 +0300
++++ mgetty-1.1.36-fix-bashisms/voice/scripts/faxback.sh	2014-11-27 04:20:56.541910627 +0200
+@@ -1,13 +1,13 @@
+ #!/bin/sh
+ #
+ 
+-function receive
++receive()
+      {
+      read -r INPUT <&$VOICE_INPUT;
+      echo "$INPUT";
+      }
+ 
+-function send
++send()
+      {
+      echo $1 >&$VOICE_OUTPUT;
+      kill -PIPE $VOICE_PID

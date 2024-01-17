@@ -1,0 +1,198 @@
+Author:     pertusus
+Date:   Sun May 18 23:34:07 2014 UTC (8 months, 2 weeks ago)
+Log Message:    
+
+Make tests reproducible.
+
+---
+ T2h_l2h.pm                       |    5 +++--
+ TODO                             |   15 +++++++++++++++
+ test/coverage/tests.txt          |    1 +
+ test/many_input_files/tex_l2h.sh |    7 ++++---
+ test/run_test_all.sh             |    8 +++++---
+ texi2html.pl                     |   18 +++++++++++-------
+ 6 files changed, 39 insertions(+), 15 deletions(-)
+
+--- T2h_l2h.pm
++++ T2h_l2h.pm	2014-05-18 23:34:07.000000000 +0000
+@@ -582,8 +582,9 @@ sub store_cache
+         main::document_error ("l2h: could not open $docu_rdir$l2h_cache_file for writing: $!");
+         return;
+     }
+-    while (($key, $value) = each %l2h_cache)
+-    {
++    #while (($key, $value) = each %l2h_cache)
++    foreach my $key(sort(keys(%l2h_cache))) {
++        $value = $l2h_cache{$key};
+         # escape stuff
+         $key =~ s|/|\\/|g;
+         $key =~ s|\\\\/|\\/|g;
+--- TODO
++++ TODO	2015-02-05 12:28:22.893519431 +0000
+@@ -1,3 +1,18 @@
++Regenerate tests:
++sh autogen.sh
++./configure
++make
++make check-local
++cd test
++./manage_test_archives.sh get
++cd ..
++tar xzvf t2h_tests_files.tar.gz
++cd test
++./base_tests
++./long_tests
++./tex_html_tests 
++make copy-tests copy-tex-html
++
+ This file contains a list of things yet to be done (see also in doc/TODO):
+ 
+ Before next release
+--- test/coverage/tests.txt
++++ test/coverage/tests.txt	2015-02-05 12:37:37.289522855 +0000
+@@ -5,6 +5,7 @@ texi float.texi
+ texi imbrications.texi
+ texi formats_titles.texi
+ texi delcomment.texi
++# result is incorrect, in menu end of line is swallowed.
+ #texi line_commands_comment.texi
+ comments comments.texi
+ formatting formatting.texi --internal-links=@OUT_DIR@internal_links_formatting.txt
+--- test/many_input_files/tex_l2h.sh
++++ test/many_input_files/tex_l2h.sh	2015-02-05 12:41:31.989519079 +0000
+@@ -27,8 +27,8 @@ fi
+ 
+ [ -d $basename ] && rm -rf $basename
+ mkdir $basename
+-echo "perl -w -x $srcdir/../../texi2html.pl -test -init l2h_tmp_dir.init -conf-dir $srcdir/../../examples -l2h -expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2" >> $logfile
+-perl -w -x $srcdir/../../texi2html.pl -test -init l2h_tmp_dir.init -conf-dir $srcdir/../../examples -l2h -expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2
++echo "perl -w -x $srcdir/../../texi2html.pl -test -init l2h_tmp_dir.init --set-init-var 'TEST 1' --set-init-var 'L2H_CLEAN 0' --set-init-var 'L2H_TMP $tmp_dir' -conf-dir $srcdir/../../examples -l2h -expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2" >> $logfile
++perl -w -x $srcdir/../../texi2html.pl -test -init l2h_tmp_dir.init --set-init-var 'TEST 1' --set-init-var 'L2H_CLEAN 0' --set-init-var 'L2H_TMP $tmp_dir' -conf-dir $srcdir/../../examples -l2h -expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2
+ 
+ return_code=0
+ ret=$?
+@@ -43,7 +43,8 @@ else
+    's/with LaTeX2HTML.*/with LaTeX2HTML/' "$basename/"*"_l2h.html"
+   sed -i -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$basename/"*"_l2h_images.pl"  "$basename/"*"_l2h_labels.pl"
+   sed -i -e 's/WIDTH="\([0-9]*\)\([0-9]\)"/WIDTH="100"/' "$basename/"*"_l2h_images.pl" "$basename/"*.html "$basename/"*-l2h_cache.pm
+-  rm -f "$basename/"*".aux"  "$basename/"*"_l2h_images.out"
++  # order of entries in *_l2h_images is not reproducible
++  rm -f "$basename/"*".aux"  "$basename/"*"_l2h_images.out" "$basename/"*"_l2h_images.pl"
+   for dir in ${basename}; do
+     if [ -d $srcdir/${dir}_res ]; then
+       diff -u --exclude=CVS --exclude='*.png' -r "$srcdir/${dir}_res" "${dir}" 2>>$logfile > "$diffs_dir/$dir.diff"
+--- test/run_test_all.sh
++++ test/run_test_all.sh	2015-02-05 12:40:53.738059178 +0000
+@@ -223,10 +223,12 @@ do
+       mkdir "${outdir}$dir"
+       remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
+       echo "$command $dir" >> $logfile
+-      echo "perl -w -x $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../maintained_extra --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --test --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2" >> $logfile
+-      eval "perl -w -x $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../maintained_extra --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --test --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
++      echo "perl -w -x $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../maintained_extra --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-init-var L2H_FILE=$testdir/$srcdir_test/../../examples/l2h.init --error-limit=1000 --set-init-var TEST=1 --set-init-var L2H_CLEAN=0 $l2h_tmp_dir --test --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2" >> $logfile
++      eval "perl -w -x $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../maintained_extra --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-init-var L2H_FILE=$testdir/$srcdir_test/../../examples/l2h.init --error-limit=1000 --set-init-var TEST=1 --set-init-var L2H_CLEAN=0 $l2h_tmp_dir --test --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
+       ret=$?
+-      rm -f ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
++      # *_l2h_images.pl has not reproducible cached entries
++      rm -f ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_l2h_images.pl \
++        ${outdir}$dir/*_tex4ht_*.log \
+         ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
+         ${outdir}$dir/*_tex4ht_tex.html* ${outdir}$dir/*_l2h.html.*
+     fi
+--- texi2html.pl
++++ texi2html.pl	2015-02-05 12:43:54.114019286 +0000
+@@ -4994,6 +4994,7 @@ my @all_elements;           # sectioning
+                             # in reading order. Each member is a reference
+                             # on a hash which also appears in %nodes,
+                             # @sections_list @nodes_list, @elements_list
++my @headings_list;          # headings in reading order.
+ my @elements_list;          # all the resulting elements in document order
+ my %sections;               # sections hash. The key is the section number
+ my %headings;               # headings hash. The key is the heading number
+@@ -6374,7 +6375,7 @@ sub cross_manual_links()
+     my $style_kept = $Texi2HTML::Config::style;
+     $Texi2HTML::Config::style = \&Texi2HTML::Config::T2H_GPL_style;
+ 
+-    foreach my $key (keys(%nodes))
++    foreach my $key (sort(keys(%nodes)))
+     {
+         my $node = $nodes{$key};
+         #print STDERR "CROSS_MANUAL:$key,$node\n";
+@@ -6710,7 +6711,7 @@ sub rearrange_elements()
+     # correct level if raisesections or lowersections overflowed
+     # and find toplevel level
+     # use %sections and %headings to modify also the headings
+-    foreach my $section (values(%sections), values(%headings))
++    foreach my $section (@sections_list, @headings_list)
+     {
+         my $level = $section->{'level'};
+         if ($level > $MAX_LEVEL)
+@@ -6961,7 +6962,7 @@ sub rearrange_elements()
+     print STDERR "# Resolve nodes directions\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
+     foreach my $node (@nodes_list)
+     {
+-        foreach my $direction (keys(%node_directions))
++        foreach my $direction (sort(keys(%node_directions)))
+         {
+             if (defined($node->{$direction}))
+             {
+@@ -7005,7 +7006,7 @@ sub rearrange_elements()
+     # (have same node id) than an existing node
+     foreach my $node (@nodes_with_unknown_directions)
+     {
+-        foreach my $direction (keys(%node_directions))
++        foreach my $direction (sort(keys(%node_directions)))
+         { 
+             if (defined($node->{$direction}) and !$node->{$node_directions{$direction}})
+             {
+@@ -8200,7 +8201,7 @@ sub do_names()
+    # This seems right, however, as we don't want @refs or @footnotes
+    # or @anchors within nodes, section commands or anchors.
+    $global_pass = '2 node names';
+-   foreach my $node (keys(%nodes))
++   foreach my $node (sort(keys(%nodes)))
+    {
+        my $texi = &$Texi2HTML::Config::heading_texi($nodes{$node}->{'tag'}, 
+           $nodes{$node}->{'texi'}, undef);
+@@ -9127,7 +9128,7 @@ sub finish_element($$$$)
+ # write to files with name the node name for cross manual references.
+ sub do_node_files()
+ {
+-    foreach my $key (keys(%nodes))
++    foreach my $key (sort(keys(%nodes)))
+     {
+         my $node = $nodes{$key};
+         next unless ($node->{'node_file'});
+@@ -12039,6 +12040,7 @@ sub do_index_summary_file($$)
+ 
+     foreach my $letter_entries (@{$Texi2HTML::THISDOC{'index_letters_array'}->{$name}})
+     {
++      #print STDERR "$name: $letter_entries->{'letter'}\n";
+       foreach my $entry (@{$letter_entries->{'entries'}})
+       {
+         #my $entry = $entries->{$key};
+@@ -13437,6 +13439,7 @@ sub scan_structure($$$$;$)
+                     $state->{'heading_element'} = $heading_ref;
+                     push @{$state->{'place'}}, $heading_ref;
+                     $headings{$heading_ref->{'sec_num'}} = $heading_ref;
++                    push @headings_list, $heading_ref;
+                 }
+                 add_prev ($text, $stack, "\@$macro" .  $cline);
+                 last;
+@@ -16894,6 +16897,7 @@ while(@input_files)
+                             # in reading order. Each member is a reference
+                             # on a hash which also appears in %nodes,
+                             # @sections_list @nodes_list, @elements_list
++   @headings_list = ();     # headings in reading order.
+    @elements_list = ();     # all the resulting elements in document order
+    %sections = ();          # sections hash. The key is the section number
+    %headings = ();          # headings hash. The key is the heading number
+@@ -16997,7 +17001,7 @@ while(@input_files)
+    }
+    if ($Texi2HTML::Config::IDX_SUMMARY)
+    {
+-      foreach my $entry (keys(%index_names))
++      foreach my $entry (sort(keys(%index_names)))
+       {
+          do_index_summary_file($entry, $docu_name);
+       }

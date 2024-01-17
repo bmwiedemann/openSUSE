@@ -1,0 +1,4 @@
+# Type Name     ID GECOS                   Home directory  Shell
+u      kismet   -  "Kismet packet sniffer" /var/lib/kismet /sbin/nologin
+g      kismet   -  
+m      kismet   kismet

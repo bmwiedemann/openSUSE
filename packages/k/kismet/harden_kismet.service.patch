@@ -1,0 +1,27 @@
+Index: kismet-kismet-2022-08-R1/packaging/systemd/kismet.service.in
+===================================================================
+--- kismet-kismet-2022-08-R1.orig/packaging/systemd/kismet.service.in
++++ kismet-kismet-2022-08-R1/packaging/systemd/kismet.service.in
+@@ -4,8 +4,20 @@ ConditionPathExists=@prefix@/bin/kismet
+ After=network.target auditd.service
+ 
+ [Service]
+-User=root
+-Group=root
++ProtectSystem=full
++ProtectHome=true
++ProtectControlGroups=true
++
++# The following hardenings break capture plug-ins
++# with elevated filesystem capabilities.
++# ProtectHostname=true
++# ProtectKernelModules=true
++# ProtectKernelLogs=true
++# RestrictRealtime=true
++
++User=kismet
++Group=kismet
++WorkingDirectory=/var/lib/kismet
+ Type=simple
+ ExecStart=@prefix@/bin/kismet --no-ncurses-wrapper
+ KillMode=process

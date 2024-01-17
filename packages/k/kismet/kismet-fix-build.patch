@@ -1,0 +1,16 @@
+Index: kismet-kismet-2020-12-R3/Makefile.in
+===================================================================
+--- kismet-kismet-2020-12-R3.orig/Makefile.in
++++ kismet-kismet-2020-12-R3/Makefile.in
+@@ -250,9 +250,9 @@ all-with-plugins:
+ 
+ # Autogen the version file
+ ifdef SOURCE_DATE_EPOCH
+-	BUILD_DATE ?= $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" 2>/dev/null || date -u)
++BUILD_DATE = $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" 2>/dev/null || date -u)
+ else
+-	BUILD_DATE ?= $(shell date)
++BUILD_DATE = $(shell date)
+ endif
+ version.c:	FORCE
+ 	@{ $(GIT) rev-parse --short HEAD 2>/dev/null || echo "non-git-release"; } | awk ' BEGIN {print "#include \"version.h\""} {print "const char *VERSION_GIT_COMMIT = \"" $$0"\";"} END {}' > version.c

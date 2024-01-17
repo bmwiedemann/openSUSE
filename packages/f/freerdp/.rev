@@ -1,0 +1,645 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c0832435deade0c2a605720474d7f30a</srcmd5>
+    <version>0.8.2</version>
+    <time>1317740209</time>
+    <user>oertel</user>
+    <comment>Please add freerdp (prerequisite to adding remmina)</comment>
+    <requestid>85437</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c0832435deade0c2a605720474d7f30a</srcmd5>
+    <version>0.8.2</version>
+    <time>1319181884</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>bacc8b1cda7f5d9fd15a55b5ff388451</srcmd5>
+    <version>0.8.2</version>
+    <time>1323085411</time>
+    <user>coolo</user>
+    <comment>- add explicit dependency on libtool
+
+- add automake as buildrequire to avoid implicit dependency</comment>
+    <requestid>95024</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>9005920082825cd57e875f6058deba4f</srcmd5>
+    <version>0.8.2</version>
+    <time>1323191409</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cb3a7d8812840809e87135e402dc2187</srcmd5>
+    <version>1.0.1</version>
+    <time>1333388924</time>
+    <user>coolo</user>
+    <comment>- added freerdp-fix-bitmap-cache.patch fixing a problem with the
+  bitmap cache resulting in garbled images
+  (https://github.com/FreeRDP/FreeRDP/issues/348)
+
+- split off -plugins subpackage
+- specfile cleanup
+
+- rewrote spec for using cmake.
+- update to version 1.0.1
+  - FreeRDP 1.x series is a complete rewrite now licensed under
+    the Apache License 2.0
+  - RemoteFX
+    - Both encoder and decoder
+    - SSE2 and NEON optimization
+  - NSCodec
+  - RemoteApp
+    - Working, minor glitches
+  - Multimedia Redirection
+    - ffmpeg support
+  - Network Level Authentication (NLA)
+    - NTLMv2
+  - Certificate validation
+  - FIPS-compliant RDP security
+  - new build system (cmake)
+  - added official logo and icon</comment>
+    <requestid>112052</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>60853eff977592b4c0dc21b69b69d6c0</srcmd5>
+    <version>1.0.1</version>
+    <time>1335195602</time>
+    <user>coolo</user>
+    <comment>- added freerdp-fix-FindPCSC-macro.patch which fixes the build by
+  setting PCSC_LIBRARIES and PCSC_INCLUDE_DIRS variables explicitly
+  which are otherwise empty
+  (https://github.com/FreeRDP/FreeRDP/issues/562)
+
+- applied fix for a bug in freerdp-fix-bitmap-cache.patch from
+  upstream git</comment>
+    <requestid>114977</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>675bad60e4cf0a7dd315b7862dbcafd3</srcmd5>
+    <version>1.0.1</version>
+    <time>1336423533</time>
+    <user>coolo</user>
+    <comment>- added freerdp-fix-incorrect-numlock-state.patch which fixes
+  incorrect num lock state when connecting
+  (https://github.com/FreeRDP/FreeRDP/pull/564)</comment>
+    <requestid>116099</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>675bad60e4cf0a7dd315b7862dbcafd3</srcmd5>
+    <version>1.0.1</version>
+    <time>1340183338</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>67da73cc8e6633851088424798fdfda5</srcmd5>
+    <version>1.0.1</version>
+    <time>1351159772</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>139180</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>5825ac93c44cf1d7b7848043c1fd22b5</srcmd5>
+    <version>1.0.1</version>
+    <time>1352618117</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>140660</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>328f5d0733f90c02ada63da0c68d295c</srcmd5>
+    <version>1.0.1</version>
+    <time>1356703203</time>
+    <user>namtrac</user>
+    <comment>- build with WITH_SSE2=ON as freerdp now uses runtime detection
+  (bnc#793611)</comment>
+    <requestid>146509</requestid>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>6d8f4a6f810088518187e1bd7b266030</srcmd5>
+    <version>1.0.1</version>
+    <time>1356731035</time>
+    <user>namtrac</user>
+    <comment>- disable SSE2 for powerpc (forwarded request 146586 from k0da)</comment>
+    <requestid>146588</requestid>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>58c3f39a16bc95626567aa4f74012402</srcmd5>
+    <version>1.0.1</version>
+    <time>1357127779</time>
+    <user>namtrac</user>
+    <comment>- only enable SSE2 on x86*
+
+- disable SSE2 for ARM as well</comment>
+    <requestid>146603</requestid>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>58c3f39a16bc95626567aa4f74012402</srcmd5>
+    <version>1.0.1</version>
+    <time>1359108890</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3e5c0fb1b23d2f13ca95bc8c25e8c23b</srcmd5>
+    <version>1.0.2</version>
+    <time>1363946797</time>
+    <user>coolo</user>
+    <comment>Update to 1.0.2</comment>
+    <requestid>158713</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ca72082b629ffebfcdf07cb380f941bb</srcmd5>
+    <version>1.0.2</version>
+    <time>1379009038</time>
+    <user>scarabeus_factory</user>
+    <comment>- build with -DOPENSSL_LOAD_CONF so among other things 
+ the application respects the system's openSSL configuration. (forwarded request 198611 from elvigia)</comment>
+    <requestid>198652</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>ca72082b629ffebfcdf07cb380f941bb</srcmd5>
+    <version>1.0.2</version>
+    <time>1379662365</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>9f00628788d1ba06e86433231600c0a3</srcmd5>
+    <version>1.0.2</version>
+    <time>1383573169</time>
+    <user>coolo</user>
+    <comment>- Allow build on SLES11:
+  * converted pkgconfig() BuildRequires to package names
+  * added FindALSA.cmake
+  * use 'make install' instead of '%make_install' macro
+
+This is a less intrusive change than the original https://build.opensuse.org/request/show/155396
+ (forwarded request 205447 from lnt-sysadmin)</comment>
+    <requestid>205710</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>590f08b42b5f61ebf715ef0b9bc123c4</srcmd5>
+    <version>1.0.2</version>
+    <time>1403176788</time>
+    <user>coolo</user>
+    <comment>fix bnc#880317, CVE-2014-0250 (forwarded request 237029 from dliang)</comment>
+    <requestid>237030</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>bdbc1050f407ff1974a591b2c93a2507</srcmd5>
+    <version>1.0.2</version>
+    <time>1403702650</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238454</requestid>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>bdbc1050f407ff1974a591b2c93a2507</srcmd5>
+    <version>1.0.2</version>
+    <time>1409300901</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7a1d518ee80f0aa8de107077ad5284b3</srcmd5>
+    <version>2.0.0~git.1463131968.4e66df7</version>
+    <time>1464075255</time>
+    <user>dimstar_suse</user>
+    <comment>- Kill off __DATE__ from built sources. (forwarded request 396579 from jengelh)</comment>
+    <requestid>396582</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>0bf14eee83ca29f6555f60ce18b2d726</srcmd5>
+    <version>2.0.0~git.1463131968.4e66df7</version>
+    <time>1470217184</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415583</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>58bd67b71ab992feb3020aebdd696a70</srcmd5>
+    <version>2.0.0~git.1497095982.1dbd2d28d</version>
+    <time>1497687469</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503201</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>83eb7a002c704de92f58bbeea439197d</srcmd5>
+    <version>2.0.0~rc0</version>
+    <time>1504815076</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520787</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>57ba08e15d720b34794a90c9df3cc8a6</srcmd5>
+    <version>2.0.0~rc1</version>
+    <time>1512546834</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547012</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>84127d8de2d748d58636ff919549a433</srcmd5>
+    <version>2.0.0~rc1</version>
+    <time>1516092042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563664</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>4314a2ac51f93c2a253fbfc25bb0e14d</srcmd5>
+    <version>2.0.0~rc1</version>
+    <time>1521498776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587433</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>338f57106dde5745a9a147accdd4f17f</srcmd5>
+    <version>2.0.0~rc1</version>
+    <time>1524741778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600361</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>557df8538ac75c289212f2a8e55c775d</srcmd5>
+    <version>2.0.0~rc2</version>
+    <time>1526737205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607302</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d07fbb729cd708a8188b370b36ee174e</srcmd5>
+    <version>2.0.0~rc3</version>
+    <time>1533887115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628227</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e68c690a379f6e64a9c82a1d9ca9eed6</srcmd5>
+    <version>2.0.0~rc4</version>
+    <time>1542889401</time>
+    <user>dimstar_suse</user>
+    <comment>- upgrade to version 2.0.0-rc4
+  * Fixes for CVE-2018-8789, CVE-2018-8785, CVE-2018-8786, CVE-2018-8787,
+    CVE-2018-8788, CVE-2018-8784, boo#1116708
+  * Security and stability improvements, including boo#1103557 and boo#1112028
+  * Refactored ntlm_av_pairs API
+  * gateway: multiple fixes and improvements
+  * client/X11: support for rail (remote app) icons was added
+  * the licensing code was re-worked: Per-device licenses are now saved on the
+    client and used on re-connect: WARNING: this is a change in FreeRDP
+    behavior regarding licensing
+      WARNING: this is a change in FreeRDP behavior regarding licensing. If the old
+      behavior is required, or no licenses should be saved use the
+      new command line option +old-license (gh#/FreeRDP/FreeRDP#4979)
+  * improve order handling -  only orders that were enabled
+    during capability exchange are accepted.
+      WARNING and NOTE: some servers do improperly send orders that weren't negotiated,
+      for such cases the new command line option /relax-order-checks was added to
+      disable the strict order checking. If connecting to xrdp the options
+      /relax-order-checks *and* +glyph-cache are required. (gh#/FreeRDP/FreeRDP#4926)
+  * /smartcard has now support for substring filters (gh#/FreeRDP/FreeRDP#4840)
+    for details see https://github.com/FreeRDP/FreeRDP/wiki/smartcard-logon
+  * add new command line option /smartcard-logon to allow
+    smartcard login (currently only with RDP security)
+  * add support to set tls security level (for openssl &gt;= 1.1.0)
+    - default level is set to 1
+    - the new command line option /tls-seclevel:[LEVEL] allows to set
+      a different level if required
+  * new command line option: /window-position to allow positioning
+    the window on startup
+  * client/X11: set window title before mapping
+  * rdpsnd/audin (mostly server side) add support for audio re-sampling using soxr or ffmpeg
+</comment>
+    <requestid>650375</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>215c6f9c56f30f8034c553ae96ac50fd</srcmd5>
+    <version>2.0.0~rc4</version>
+    <time>1543828118</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652282</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>8640a3c5711b6c8e8805b05cd8542a44</srcmd5>
+    <version>2.0.0~rc4</version>
+    <time>1547554471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663571</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>399cab2e3c7b4de3a7b9b496ef57ba2f</srcmd5>
+    <version>2.0.0~rc4</version>
+    <time>1549311662</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>666409</requestid>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>f36084b832eb41d30ee3bc318004c61a</srcmd5>
+    <version>2.0.0~rc4</version>
+    <time>1555691758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694953</requestid>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>ee54d2780ef747cee3ebfd37879662d7</srcmd5>
+    <version>2.0.0~rc4</version>
+    <time>1572773700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743737</requestid>
+  </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>cd2c5e3b18fe5252ea38629f5700da3e</srcmd5>
+    <version>2.0.0~rc4</version>
+    <time>1584744911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786780</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>f4c73476ef6d64969bda9297be22a09c</srcmd5>
+    <version>2.0.0</version>
+    <time>1586973231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793863</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>6072c340bfc0c6d5718be791af242720</srcmd5>
+    <version>2.0.0</version>
+    <time>1587580946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794909</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>38cc9fd2acbf2be11dc7fa4f67c38473</srcmd5>
+    <version>2.1.0</version>
+    <time>1589046574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801823</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>eb0385d7f332239e0e9febd0573c8e0f</srcmd5>
+    <version>2.1.1</version>
+    <time>1590779604</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808914</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e4bcc1458ea5b925e67b4faf4b6e94d1</srcmd5>
+    <version>2.1.2</version>
+    <time>1592938930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816472</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>63ba72f5a080ed961e05c8af72f74098</srcmd5>
+    <version>2.1.2</version>
+    <time>1593006534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816781</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>e3cda667ab505316953d543617095c3b</srcmd5>
+    <version>2.1.2</version>
+    <time>1594044937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818280</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>f1376a2bd24dc154a7ee3887cc122af4</srcmd5>
+    <version>2.2.0</version>
+    <time>1595577131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821928</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>4b0ee902ada48a6b5076637c6721e6e4</srcmd5>
+    <version>2.3.0</version>
+    <time>1614684365</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875136</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>12bf3375ed910b5f4903a665d4cea99e</srcmd5>
+    <version>2.3.2</version>
+    <time>1616168409</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879584</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>ccd6ecc39ad107a15e82d6e4f07a92a9</srcmd5>
+    <version>2.4.0</version>
+    <time>1629101332</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911432</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>71d39a23f62aca3db46cf4c9df579fea</srcmd5>
+    <version>2.4.0</version>
+    <time>1632522892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920538</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>b8986f3902dd44e4ed3855222ccc3b4a</srcmd5>
+    <version>2.4.0</version>
+    <time>1633959029</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924155</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>29a40bbae29f27b11991f0faa11393ea</srcmd5>
+    <version>2.4.1</version>
+    <time>1635167835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926760</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>7ec3b4eceee14c16c6752fc036de7e7c</srcmd5>
+    <version>2.4.1</version>
+    <time>1638831568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935219</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>d1b17dbf413f334f5a5ba188f9f8c457</srcmd5>
+    <version>2.5.0</version>
+    <time>1642198358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946136</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>a3a0564b80013bad38139952861bc4fa</srcmd5>
+    <version>2.5.0</version>
+    <time>1643228800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948440</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>76015f3a7318d0b8d5486218b5d28c6f</srcmd5>
+    <version>2.6.0</version>
+    <time>1645891306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957571</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>f6086de038f87da18d869ff145518e31</srcmd5>
+    <version>2.6.1</version>
+    <time>1647031184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960237</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>eb5f3a380489387312375953352a219d</srcmd5>
+    <version>2.7.0</version>
+    <time>1651180019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972779</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>a8796a3373cf89496c7c91171c42bac0</srcmd5>
+    <version>2.8.0</version>
+    <time>1660051561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993757</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>e125801bdf83e9de378216aba4047e3f</srcmd5>
+    <version>2.8.1</version>
+    <time>1668609749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035869</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>142c03f793bf85440db9d974ffa3dfc4</srcmd5>
+    <version>2.9.0</version>
+    <time>1668782592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036476</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>a66b54c9a729f857db8ab029df6655b5</srcmd5>
+    <version>2.9.0</version>
+    <time>1670863028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042079</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>f364f0216e81f1b279ea929e0d546e6a</srcmd5>
+    <version>2.9.0</version>
+    <time>1671380545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043598</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>a9d7a2a8ff6c20408133f22b8217ae95</srcmd5>
+    <version>2.10.0</version>
+    <time>1677966137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069135</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>37bc8bc44c6c32e593b131b471304b08</srcmd5>
+    <version>2.10.0</version>
+    <time>1683559432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083951</requestid>
+  </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>1c5c27f74629ad2e53b83f7197079953</srcmd5>
+    <version>2.10.0</version>
+    <time>1685743588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090038</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>c7bdb296049a6dbc159e3e9e828f9306</srcmd5>
+    <version>2.11.0</version>
+    <time>1693685232</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1108337</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>a6b3f67eb61151be1d71c7d43bb7fa24</srcmd5>
+    <version>2.11.2</version>
+    <time>1698001262</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119254</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>b22bdf328e4a03dd90498d7d93a6af03</srcmd5>
+    <version>2.11.2</version>
+    <time>1700250528</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127261</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>7efa7f7a5fb80dc8802337fcd9bdbb6c</srcmd5>
+    <version>2.11.2</version>
+    <time>1702488927</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132898</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>07143cdeb85a76d06e21bfe648fabdfc</srcmd5>
+    <version>3.0.0</version>
+    <time>1703102469</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134047</requestid>
+  </revision>
+  <revision rev="72" vrev="4">
+    <srcmd5>7efa7f7a5fb80dc8802337fcd9bdbb6c</srcmd5>
+    <version>2.11.2</version>
+    <time>1703144610</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1218290</comment>
+  </revision>
+</revisionlist>

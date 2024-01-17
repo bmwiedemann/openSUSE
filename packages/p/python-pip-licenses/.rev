@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2e65c6b5565a5caf9da7dcdc7ce074cd</srcmd5>
+    <version>1.18.0</version>
+    <time>1577972639</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>760379</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c945d573b53e747d49a068a6efdeaf45</srcmd5>
+    <version>2.1.1</version>
+    <time>1584530923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785586</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>62f0c3fbf9a711692751d4d582ec8497</srcmd5>
+    <version>2.1.1</version>
+    <time>1589893013</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use %python3_only command, but properly use alternatives.</comment>
+    <requestid>807304</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>57bd53f97aba79b2c3f7fd4549112175</srcmd5>
+    <version>2.3.0</version>
+    <time>1603448470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839485</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d1a545cffc17e75436b386c888040beb</srcmd5>
+    <version>3.0.0</version>
+    <time>1606252635</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850560</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4fde58c3c84c27c29ade31552da21e35</srcmd5>
+    <version>3.5.2</version>
+    <time>1645891337</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.5.2:
+  - Ignore spaces around --fail-on and --allow-only parameters
+  - Fix the order in which multiple licenses are output
+  - Handle multiple licenses better with options --fail-on and
+      --allow-only
+  - Small change in output method for multiple licenses, change
+    the separator from comma to semicolon
+        Up to 3.4.0: Python Software Foundation License, MIT License
+        3.5.0 or later: Python Software Foundation License; MIT License
+  - Implement new option --packages
+  - Fix license summary refer to --from option
+  - Improves the readability of the help command
+  - Implement new option --from=all
+  - Change license notation under SPDX license identifier style
+  - Implement new option for use in continuous integration
+      --fail-on
+      --allow-only
+- Skip failing tests gh#raimon49/pip-licenses#120
+- Add no-pip-internal.patch replace missing
+  get_installed_distributions() method in modern pip.</comment>
+    <requestid>957738</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c0426cf1dc12d752674cd2755e92748c</srcmd5>
+    <version>4.0.0</version>
+    <time>1667734941</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.0:
+  - Support for Python 3.11
+  - Dropped support Python 3.7
+  - Migrate Docker base image from Alpine to Debian 11-slim
+  - Breaking changes
+    - Does not work with PTable and depends on prettytable
+    - Depend on importlib_metadata rather than pip
+- Remove unnecessary no-pip-internal.patch.
+</comment>
+    <requestid>1033784</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ffb2348282443e8765a6b73d7dc9aaf1</srcmd5>
+    <version>4.0.1</version>
+    <time>1670162332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039909</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a82b7635493645538065d93b80ffe94c</srcmd5>
+    <version>4.0.3</version>
+    <time>1675689333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.3:
+  * Escape unicode output (to e.g. &amp;#123;) in the html output
+  * Add type annotations and code formatter 
+- Add missing BuildRequires to fix test failures.</comment>
+    <requestid>1063338</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>02c7b5fb6cd56914d6f50503293a2e44</srcmd5>
+    <version>4.2.0</version>
+    <time>1681307302</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.0:
+  - Implement new option --with-maintainers
+  - Implement new option --python
+  - Allow version spec in --ignore-packages parameters
+  - When the Author field is UNKNOWN, the output is automatically
+    completed from Author-email
+  - When the home-page field is UNKNOWN, the output is
+    automatically completed from Project-URL
+- Update to 4.1.0:
+  - Support case-insensitive license name matching around
+    --fail-on and --allow-only parameters
+</comment>
+    <requestid>1078727</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1de2886243ca545ee18659ebcc87b20c</srcmd5>
+    <version>4.3.1</version>
+    <time>1683295057</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.3.1:
+  * Fix to treat package names as normalized as in PEP 503 with
+    --packages and --ignore-packages option
+- 4.3.0:
+  * Implement new option --no-version
+</comment>
+    <requestid>1084817</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fd9e6c2cc8211942a2b3b4aa31c2c1a1</srcmd5>
+    <version>4.3.2</version>
+    <time>1685743642</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.2:
+  * Better Handling extracting URLs from `Project-URL`</comment>
+    <requestid>1090383</requestid>
+  </revision>
+</revisionlist>

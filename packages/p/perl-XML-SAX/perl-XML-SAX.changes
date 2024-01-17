@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Mon Jun 17 14:46:40 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- update to 1.02
+   see /usr/share/doc/packages/perl-XML-SAX/Changes
+
+  1.02  14 Jun 2019  Grant McLean
+      - Spelling fixes (patch from Ville Skyttä)
+      - Add repo location to metadata (patches from Ville Skytta & Martin McGrath)
+      - Reorganise module files under lib/XML
+      - Regenerate MANIFEST using 'make manifest' to include missing test files
+- Updated URL to MetaCPAN
+- Rebased perl-XML-SAX-0.96-utf8.diff
+
+-------------------------------------------------------------------
+Thu Jul 19 12:07:09 UTC 2018 - coolo@suse.com
+
+- Install a %ghost ParserDetails.ini and add pureperl to it
+
+-------------------------------------------------------------------
+Fri Feb 16 07:20:19 UTC 2018 - coolo@suse.com
+
+- updated to 1.00
+   see /usr/share/doc/packages/perl-XML-SAX/Changes
+
+  1.00  15 Feb 2018  Grant McLean
+      - Add makefile dependency to fix order of build steps RT#62289 (patch from
+        Ed J)
+  
+-------------------------------------------------------------------
+Mon Apr 15 10:31:20 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Mon Sep 12 01:35:08 UTC 2011 - vcizek@suse.com
+
+- licence correction to same as Perl
+- update to 0.99
+  - functionally identical to 0.96
+  - requires XML::SAX::Base (not bundled within since 0.99)
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:47 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:32:29 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Thu Jan 15 22:50:00 CET 2009 - anicka@suse.cz
+
+- add patch fixing utf8 parsing (bnc#459794) 
+
+-------------------------------------------------------------------
+Thu Jan 15 13:35:37 CET 2009 - anicka@suse.cz
+
+- enable testsuite (bnc#466010) 
+
+-------------------------------------------------------------------
+Wed Sep 10 17:03:21 CEST 2008 - anicka@suse.cz
+
+- update to 0.96
+ * Fix handling of numeric character entities in attribute 
+   values
+ * Fix for numeric character entities spanning end of buffer
+ * Performance fix for parsing from large strings
+ * Fix for UTF8 bytes in first 4096 bytes of document not being
+   decoded to Perl-UTF8-characters
+ * incorrect operator precedence breaks single quotes around
+   DTD entity declarations
+ * Fix test in ParserFactory.pm for parser module loaded
+ * Fix XML::SAX::PurePerl versioning
+
+-------------------------------------------------------------------
+Fri Dec 14 15:51:36 CET 2007 - anicka@suse.cz
+
+- update to 0.16
+ * Applied patch for PI handling from RT#19173
+ * Fixed handling of entities in attribute values
+ * Cleaned up some benign warnings
+ * Fixed CDATA section parsing
+ * Fix Makefile.PL for VMS
+ * Support calling set_handler() mid-parse
+ * Fix for when random modules overload UNIVERSAL::AUTOLOAD()
+ * Fix case when ParserDetails.ini isn't being updated but 
+   we are doing an upgrade.
+ * Complete re-write of XML::SAX::PurePerl for performance
+ * Support Encoding & XMLVersion in DocumentLocator interface
+ * A few conformance tweaks to match perl SAX 2.1.
+
+-------------------------------------------------------------------
+Fri Jun  1 15:49:26 CEST 2007 - coolo@suse.de
+
+- remove libxml2-test from buildrequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:04 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Nov 15 15:37:55 CET 2004 - ro@suse.de
+
+- added perl-XML-NamespaceSupport to nfb and requires
+
+-------------------------------------------------------------------
+Thu Jul 29 16:17:31 CEST 2004 - ro@suse.de
+
+- initial version 0.12 
+

@@ -1,0 +1,5 @@
+<package name="python-rpcq" project="openSUSE:Factory">
+  <title>python-rpcq</title>
+  <description>The asynchronous RPC client-server framework and message specification for Rigetti Quantum Cloud Services (QCS).</description>
+  <devel project="devel:languages:python:numeric" package="python-rpcq"/>
+</package>

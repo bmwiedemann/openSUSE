@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Wed Feb 15 12:10:19 UTC 2023 - mardnh@gmx.de
+
+- Update to version 0~git20230215:
+  * Added CMakeLists.txt by roox
+- Drop not longer needed patch:
+  * 0001-Create-CMakeLists.txt.patch
+
+-------------------------------------------------------------------
+Tue Feb 14 22:10:18 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0~git20220407
+- Use _service file to generate tarball from git
+
+-------------------------------------------------------------------
+Mon Oct 11 14:01:50 UTC 2021 - Arachnos
+
+- Initial package with ft2play git20210713.e997a5c
+

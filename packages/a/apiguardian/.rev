@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>56713e5eacb11aab97a188390765d3d2</srcmd5>
+    <version>1.0.0</version>
+    <time>1549140594</time>
+    <user>coolo</user>
+    <comment>New package for apiguardian</comment>
+    <requestid>670528</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>486bb6ec1ce14097949de38fff50b19c</srcmd5>
+    <version>1.0.0</version>
+    <time>1648159061</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964401</requestid>
+  </revision>
+</revisionlist>

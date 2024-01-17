@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Mon Jul 03 08:48:37 UTC 2023 - info@paolostivanin.com
+
+- Update to version 3.3.0.20230527:
+  * Close socket when failed to connect name pipe (#65)
+  * Support compile universal (#64)
+
+-------------------------------------------------------------------
+Wed Apr 12 09:47:50 UTC 2023 - info@paolostivanin.com
+
+- Update to version 3.3.0.20230224:
+  * Waiting with WaitNamedPipe() if a named pipe is busy (#62)
+  * Filter rpc slow log include password (#61)
+  * Add support c++ compile (#60)
+  * Change slow log format (#58)
+  * Configure x64-debug build (#56)
+  * add --with-python3 option (#55)
+  * only use python3 in linux (#54)
+  * remove python3 future
+  * configure with python3 (#53)
+  * Fixed python-searpc installation place (#52)
+
+-------------------------------------------------------------------
+Mon Nov  7 16:10:47 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.3.0.20220902:
+  * Filter rpc slow log include password.
+  * Add C++ support.
+
+-------------------------------------------------------------------
+Mon May  9 12:47:06 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.2.0.20220425, no changelog
+- Rebase 01-fix-includes.patch
+- Drop libsearpc-fix-compilation-glib2_68.patch
+
+-------------------------------------------------------------------
+Fri Dec 10 13:23:54 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- New release, no changelog
+
+-------------------------------------------------------------------
+Wed Apr 28 05:49:23 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add libsearpc-fix-compilation-glib2_68.patch
+
+-------------------------------------------------------------------
+Thu Jun 25 08:28:10 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.2.0.20200618 (no changelog) 
+
+-------------------------------------------------------------------
+Fri Apr 10 06:23:44 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Use _service and _servicedata since upstream has the bad habit
+  of issuing a new release by overwriting the old one
+
+-------------------------------------------------------------------
+Tue Mar 10 13:44:57 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- change package name to libsearpc and improve spec file 
+
+-------------------------------------------------------------------
+Mon Dec  9 14:44:00 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Use latest master which brings a fix for a memory leak 
+
+-------------------------------------------------------------------
+Fri Nov 15 13:37:08 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- run spec-cleaner 
+
+-------------------------------------------------------------------
+Tue Nov 12 09:46:48 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.2.0 
+
+-------------------------------------------------------------------
+Fri Jan 18 20:11:25 UTC 2019 - Pierre Bonamy <flyos@mailoo.org>
+
+- Update to latest version of 3.1
+- As upstream did not increment version, added date in version
+
+-------------------------------------------------------------------
+Wed Mar 28 09:04:04 UTC 2018 - christoph@stop.pe
+
+- Fixed build errors on CentOS 7
+
+-------------------------------------------------------------------
+Sat Feb 25 12:02:14 UTC 2017 - christoph@stop.pe
+
+- Updated source link to official github.com release page
+
+-------------------------------------------------------------------
+Sat Sep 24 20:02:24 UTC 2016 - christoph@stop.pe
+
+- Moved code generation script to devel package
+
+-------------------------------------------------------------------
+Sat Sep 24 18:39:05 UTC 2016 - christoph@stop.pe
+
+- Fix and added libsearpc.pc to devel package
+
+-------------------------------------------------------------------
+Sat Sep 24 13:43:30 UTC 2016 - christoph@stop.pe
+
+- Initial packaging
+

@@ -1,0 +1,113 @@
+-------------------------------------------------------------------
+Sun Jun  2 18:03:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim name repetition from summary.
+
+-------------------------------------------------------------------
+Wed May 22 13:42:27 UTC 2019 - Doug Miller <dgm816@gmail.com>
+
+- Corect download url 
+- Clarify changelog
+
+-------------------------------------------------------------------
+Wed May 22 11:48:54 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update previou changelog entry
+- Fix download url
+
+-------------------------------------------------------------------
+Sat May 11 02:14:14 UTC 2019 - Doug Miller <dgm816@gmail.com>
+
+- Revert pacakge to build 'par' using the parchive sources.
+
+  On 2016-11-23 this package was updated to be built from the
+  'par2cmdline' sources instead of the 'parchive' sources. These
+  are different projects (although worked on by some of the same
+  people, which probably led to some confusion).
+
+  This change converts this project from building par2cmdline
+  v0.8.0 to building the correct project of parchive v1.2.
+
+  In conjunction with this package fix, a new package called
+  'par2cmdline' will be made available to return par2cmdline
+  v0.8.0 to the repos.
+- Re-add par.diff
+
+-------------------------------------------------------------------
+Mon Feb 19 11:37:23 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.8.0
+  * improved parallelisation on input files
+  version 0.7.4
+  * performance improvement when not using quiet mode
+  version 0.7.3
+  * fixed critical issue on windows where created parfiles were
+    corrupt
+  version 0.7.2
+  * fixed tests on NetBSD, #102
+  * fixed failing tests when dir contains whitespace, #103
+  * added automake.sh to the files, #104
+  * changed some flags related to windows build, #94
+  * cleaned up compiler warnings for mingw build
+  version 0.7.1
+  * fixed basepath issues #93
+  * made distcheck behaviour consistent with different
+    --srcdir #96
+  * properly package distribution package #98
+  * cross compile for windows to get redistributable exe #94
+  * change distribution format to tar.gz and tar.bz2 for unix
+    and keep zip for windows #97
+  version 0.7.0
+  * Merged OpenMP version and so enabled multithreading
+    + added -t flag to set the number of threads (all possible
+      threads used by default)
+  * Added -B flag to set the basepath for difficult to guess
+    situations
+  * bugfixes
+  version 0.6.5
+  * fix blocksize calculation
+  * lintian warning spelling fix
+  * add manfile for par2
+  * README in Markdown
+  * add spelling fixes to cmdline output
+  * fixed some spelling
+  * simplify FindFiles
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Wed Nov 23 07:56:30 UTC 2016 - mpluskal@suse.com
+
+- Change upstream source to more active one
+  * This includes change of version from 1.1 to 0.6.15
+- Update to version 0.6.14:
+  * For comprehensive list of changes see ChangeLog
+- Enable tests
+- Drop par.diff
+
+-------------------------------------------------------------------
+Thu Feb 26 08:12:58 UTC 2015 - mpluskal@suse.com
+
+- Correct source url
+
+-------------------------------------------------------------------
+Tue Feb 24 19:35:36 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-clener
+- Use url for source
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:16 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Feb  8 20:44:50 CET 2004 - adrian@suse.de
+
+- initial package of version 1.1
+

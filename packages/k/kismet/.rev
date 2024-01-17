@@ -1,0 +1,615 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6d29c6d2580ace1684c6fb53cc229731</srcmd5>
+    <version>2006_04_R1</version>
+    <time>1168903219</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>367c6790e687840eb10fe910a9665f0a</srcmd5>
+    <version>2007_01_R1b</version>
+    <time>1170979846</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>9852b85c7aa706eccef7c3adfd39bd70</srcmd5>
+    <version>2007_01_R1b</version>
+    <time>1172778638</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="9">
+    <srcmd5>fc97f9b671636f7d422485a24a58c296</srcmd5>
+    <version>2007_01_R1b</version>
+    <time>1175248255</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="69">
+    <srcmd5>49abfacc0be71cadd63512f098b13126</srcmd5>
+    <version>2007_01_R1b</version>
+    <time>1190382569</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b46e05f521ce4f1b557bc348e23a96c2</srcmd5>
+    <version>2007_10_R1</version>
+    <time>1193846761</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>21ee2f97b97d3a97220f3102aef79b19</srcmd5>
+    <version>2007_10_R1</version>
+    <time>1196899188</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="23">
+    <srcmd5>9b50a88f8521dbb054446fb0f9275772</srcmd5>
+    <version>2007_10_R1</version>
+    <time>1203035048</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="27">
+    <srcmd5>e075304f94f25787e76d9b56b3ee4e50</srcmd5>
+    <version>2007_10_R1</version>
+    <time>1203640482</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8d6944778c94de1681da1051931a3ad5</srcmd5>
+    <version>2008_05_R1</version>
+    <time>1217644161</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>3257282cfaede3f758040f1625e11f42</srcmd5>
+    <version>2008_05_R1</version>
+    <time>1220274390</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="26">
+    <srcmd5>679b5084e4020e00c2b590be087c8d3a</srcmd5>
+    <version>2008_05_R1</version>
+    <time>1231435731</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="27">
+    <srcmd5>0eaf0327b89b6b1de3d765aae808faed</srcmd5>
+    <version>2008_05_R1</version>
+    <time>1244543197</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9d14ebda47574ece9de9d6b41f58d3ec</srcmd5>
+    <version>2009_06_R1</version>
+    <time>1249513385</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>47fd1bb0dbe4cac5e98293a231b8c5d4</srcmd5>
+    <version>2009_06_R1</version>
+    <time>1251496801</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/kismet based on submit request 19027 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>47fd1bb0dbe4cac5e98293a231b8c5d4</srcmd5>
+    <version>2009_06_R1</version>
+    <time>1251496801</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/kismet based on submit request 19027 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>01210e947d00c06ae59bc41a486e5544</srcmd5>
+    <version>2009_06_R1</version>
+    <time>1268924291</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e99ce32fdb5350625d5ac6aab2a74446</srcmd5>
+    <version>2010_01_R1</version>
+    <time>1272585202</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/kismet based on submit request 39156 from user prusnak
+</comment>
+    <requestid>39156</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e99ce32fdb5350625d5ac6aab2a74446</srcmd5>
+    <version>2010_01_R1</version>
+    <time>1278667355</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>e99ce32fdb5350625d5ac6aab2a74446</srcmd5>
+    <version>2010_01_R1</version>
+    <time>1278678586</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>e99ce32fdb5350625d5ac6aab2a74446</srcmd5>
+    <version>2010_01_R1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>309c2e882378e999ac6d5906d81e342e</srcmd5>
+    <version>2010_01_R1</version>
+    <time>1317212688</time>
+    <user>saschpe</user>
+    <comment>- Cleanup spec file and fix build for &lt; openSUSE 12.1 (forwarded request 85122 from namtrac)</comment>
+    <requestid>85196</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a64f24bfd441fed3c7ce34235be18112</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1317543217</time>
+    <user>lrupp</user>
+    <comment>updated to 2011-03-R2 (forwarded request 85424 from msmeissn)</comment>
+    <requestid>85493</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>a64f24bfd441fed3c7ce34235be18112</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1319182048</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>2b35d6043487804e45f6e4b2b2254e84</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1323192106</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>2b35d6043487804e45f6e4b2b2254e84</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1340183529</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>5d73c686ed1690ae94943320531094ed</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1342866584</time>
+    <user>namtrac</user>
+    <comment>- fix ppc64 build (forwarded request 128461 from k0da)</comment>
+    <requestid>128506</requestid>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>beecf5cf9c4f5345b7df2ae4f4e6233d</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1355473586</time>
+    <user>coolo</user>
+    <comment>Verify GPG signature: Perform build-time offline GPG verification.
+Please verify that included keyring matches your needs.
+For manipulation with the offline keyring, please use gpg-offline tool from openSUSE:Factory, devel-tools-building or Base:System.
+See the man page and/or /usr/share/doc/packages/gpg-offline/PACKAGING.HOWTO.
+
+If you need to build your package for older products and don't want to mess spec file with ifs, please follow PACKAGING.HOWTO:
+you can link or aggregate gpg-offline from
+devel:tools:building or use following trick with &quot;osc meta prjconf&quot;:
+
+--- Cut here ----
+%if 0%{?suse_version} &lt;= 1220
+Substitute: gpg-offline
+%endif
+
+Macros:
+%gpg_verify(dnf) \
+%if 0%{?suse_version} &gt; 1220\
+echo &quot;WARNING: Using %%gpg_verify macro from prjconf, not from gpg-offline package.&quot;\
+gpg-offline --directory=&quot;%{-d:%{-d*}}%{!-d:%{_sourcedir}}&quot; --package=&quot;%{-n:%{-n*}}%{!-n:%{name}}&quot;&quot;%{-f: %{-f*}}&quot; --verify %{**}\
+%else\
+echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping %{**} GPG signature verification!&quot;\
+%endif\
+%nil
+-----------------
+ (forwarded request 143889 from sbrabec)</comment>
+    <requestid>143970</requestid>
+  </revision>
+  <revision rev="29" vrev="10">
+    <srcmd5>beecf5cf9c4f5345b7df2ae4f4e6233d</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1359109191</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="11">
+    <srcmd5>09f4db444011d6d8c7a43032658b0357</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1361633744</time>
+    <user>coolo</user>
+    <comment>- Verify GPG signature only for 12.3 and up, fixing 12.2 build
+- verify in prep section, and only if macro is available (forwarded request 156190 from AndreasStieger)</comment>
+    <requestid>156191</requestid>
+  </revision>
+  <revision rev="31" vrev="12">
+    <srcmd5>2b08fefa04df8a3e0ddb6de5b07f2792</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1370431704</time>
+    <user>coolo</user>
+    <comment>- do not hardcode automake 1.12 (forwarded request 177033 from coolo)</comment>
+    <requestid>177037</requestid>
+  </revision>
+  <revision rev="32" vrev="14">
+    <srcmd5>2b08fefa04df8a3e0ddb6de5b07f2792</srcmd5>
+    <version>2011_03_R2</version>
+    <time>1379662812</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>23be13a9cb9ef2bce204a30551050ac6</srcmd5>
+    <version>2013_03_R1b</version>
+    <time>1401644466</time>
+    <user>coolo</user>
+    <comment>- version 2013-03-R1b 
+* While this does not have major new features 
+(phy-neutral is still in development) 
+it includes a long list of bugfixes, 
+including better ncurses color support, radiotap fixes, 
+better interface control when setting channels, memory leak fixes, 
+better packaging for distros, and various other quirks.
+- Switch build to libnl3. (forwarded request 235594 from elvigia)</comment>
+    <requestid>235784</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>23be13a9cb9ef2bce204a30551050ac6</srcmd5>
+    <version>2013_03_R1b</version>
+    <time>1409301391</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>0265982934d11953d1d61a63f6fa5d05</srcmd5>
+    <version>2013_03_R1b</version>
+    <time>1411926862</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>252636</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>4314723b3c34f42349877c57fa674dd6</srcmd5>
+    <version>2016_01_R1</version>
+    <time>1461855382</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>391419</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7474f416e365f2a445bf8721ee642a9a</srcmd5>
+    <version>2016_07_R1</version>
+    <time>1467897032</time>
+    <user>dimstar_suse</user>
+    <comment>- Kismet 2016-07-R1:
+ * nl8011 support is fixed so finding the vif device works again
+ * full 5GHz channel discovery works now
+ * memory leaks in the drone are fixed 
+ * some ncurses compile bugs are resolved (forwarded request 406872 from mnhauke)</comment>
+    <requestid>406877</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b22dcd110be9a76424a30f8afe7ec7e7</srcmd5>
+    <version>2019_09_R1</version>
+    <time>1575282885</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752704</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7a65b3dc923d8a25a53d03b0a11676d5</srcmd5>
+    <version>2019_12_R2</version>
+    <time>1578437492</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2019-12-R2
+  A bugfix release for Kismet 2019-12, R2 solves a number of quirks
+  which were quite annoying:
+  * Solve a race condition in Linux with interface naming. Due to
+    how the nl80211 layer handles interface naming, combined with
+    how systemd can name interfaces on some systems, it was
+    possible to have a race condition when Kismet defaulted to
+    kismonX interface names, resulting in either errors or Kismet
+    ignoring one of the interfaces.
+  * Solve a free on an unused pointer in nl80211 vif creation. The
+    new vif creation code doesn’t use the nl80211 flags
+    sub-message when there are no flags to add, but tried to free
+    it. This could cause a crash the first time trying to open a
+    source, but the second time would succeed.
+  * Fix TICC2540 USB devices. Some systems were very unhappy with
+    the order in which the USB device was initialized; now it
+    should be fine.
+  * Work around the very broken RTL8812BU driver. While we don’t
+    recommend this driver or these cards, due to a HUGE number of
+    issues, Kismet will now do its best to open one and get it
+    into monitor mode.
+  * Much smoother operation with very very large numbers of
+    sources. A side effect of the vif naming fix, interfaces are
+    now initialized and opened one at a time. While this may take
+    much longer to open huge numbers (dozens or more) of
+    interfaces, it is much more reliable and much less likely to
+    cause Kismet or kernel problems during the initial bring-up
+    and firmware load of interfaces.
+  * Minor output text fixes. Capture interface and base
+    interface were swapped in some messages to the user.</comment>
+    <requestid>761085</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d19430dd9840f9476a8a7a3eff9166db</srcmd5>
+    <version>2020_03_R1</version>
+    <time>1584350309</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020-03-R1
+  Bugfix release
+  * RTL433 changing command line arguments
+  * Extreme memory use compiling bluetooth_ids code
+  * Fixes to kismetexternal python code used by rtladsb and rtlamr
+  * Fixes to handling “weird” rtl433 serial numbers, like 000000001
+  * Fixes for ubertooth remote cap
+  * Updates to the kw41z capture code
+  * Support for multiple phys on a single interface
+  * Fix for buffer size calculation which could impact gps handling
+  * Smarter error handling with channel tuning failures
+  * Support for CORS cross-side negotiation for running Kismet
+    behind a proxy
+- Introduce new subpackages
+  * kismet-capture-ti-cc-2531
+    + TICC2531 802.15.4 Zigbee Sniffer capture helper
+  * kismet-capture-nrf-nxp-kw41z
+    + NXP KW41Z BTLE and Zigbee Sniffer capture helper</comment>
+    <requestid>785043</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>24b7d8e7839b583950429d253e327e11</srcmd5>
+    <version>2020_03_R1</version>
+    <time>1585667797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790009</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>26124507c2027fedae73b3d0abb23ba0</srcmd5>
+    <version>2020_04_R1</version>
+    <time>1587581935</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020-04-R1
+  * New web-based UI with searching, device notes, realtime
+    graphs, and more.
+  * A REST-like API
+  * Expanded support for non-WiFi capture types
+  * New remote capture
+  * Massive data set support
+  * New KismetDB logs
+  * Multithreaded optimizations
+  * Kismet will now take advantage of multi-core systems, both on
+    large servers, and on small systems like the Raspberry Pi;
+  * Live packet export
+  * Packets can now be streamed live via the export endpoints, as
+    a pcapng stream of all packets or with live filtering by data
+    source, device, and more.
+  * Scriptable alerts
+  * Alerts can be defined (and triggered) via REST endpoints (forwarded request 796131 from mnhauke)</comment>
+    <requestid>796267</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e2eaffaa437d758e3d1904a8e16ef751</srcmd5>
+    <version>2020_04_R2</version>
+    <time>1588023712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798200</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f181224fe434762a5116855737c7d1c5</srcmd5>
+    <version>2020_04_R3</version>
+    <time>1588538902</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020-04-R3
+  * fix a possible crash in Kismet and associated tools when
+    compiled with GCC; there are no other changes. (forwarded request 799860 from mnhauke)</comment>
+    <requestid>799862</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>b4790838328b8239ec449c38b2caada5</srcmd5>
+    <version>2020_09_R3</version>
+    <time>1601044273</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020-09-R3
+  * Properly show messages from datasources
+  * Properly show error and status messages from opening
+    datasources, which previously were ignored. This should make
+    seeing errors opening datasources much easier.
+  * Fix bluetooth capture on some platforms
+  * Some platforms / kernels / setups appear to not enable rfkill.
+    The bluetooth hci capture source erroneously failed when no
+    rfkill information was available.
+  * Remove 221 IE tag subtype match requirement
+  * Remove requiring a subtype of 0 on an IE221 tag for matching
+    the manufacturer of otherwise unknown devices.
+  * Fix potential crash in datasource panel
+  * Fix a long-standing potential crash when the datasource panel
+    is open in the UI caused by a race condition with the
+    constructor and callbacks.
+  * Fix race condition in launching datasources
+  * Fix a long-standing race condition which could lead to some
+    datasources not being opened properly or their types
+    autodetected properly due to a race condition with the type
+    probe code.
+  * Increase precision of some doubles in JSON for GPS
+  * Found some legacy serialization code which reduced the
+    precision of some doubles (double-vector) which would cause
+    GPS to display with less precision.
+  * Don’t shut down messagebus processing thread until Kismet is
+    fully exiting
+  * The messagebus service thread could shut down before Kismet
+    had finished spinning down, causing it to not show some of
+    the errors causing the shutdown. (forwarded request 835703 from mnhauke)</comment>
+    <requestid>835714</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>4f74b9628854c3bc7ce810e88ce4869a</srcmd5>
+    <version>2020_09_R4</version>
+    <time>1602155671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840196</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>cda533219782e5fce71a3dffacf5a972</srcmd5>
+    <version>2020_12_R3</version>
+    <time>1609253309</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020-12-R3
+  * A bugfix release which solves a possible infinite loop until
+    crash due to how GCC handles C++ templates differently than
+    Clang. (forwarded request 853617 from mnhauke)</comment>
+    <requestid>853621</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>3bc9774960773fe2a3587e3ca63c8537</srcmd5>
+    <version>2020_12_R3</version>
+    <time>1614684912</time>
+    <user>RBrownSUSE</user>
+    <comment>Update kismet-fix-build.patch to drop build date again (boo#1047218) (forwarded request 875888 from bmwiedemann)</comment>
+    <requestid>875986</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>0c74eac82807b782f0219f790c0a0011</srcmd5>
+    <version>2021_08_R1</version>
+    <time>1629706104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913592</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>b6b47e1d3782759623eead428d587ca2</srcmd5>
+    <version>2022_01_R1</version>
+    <time>1642724730</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2022-01-R1
+  New features
+  * Significantly reduced RAM requirements
+  * Additional packet tags
+  * Additional eventbus events
+  * New packet deduplication system
+  * More info in the UI
+  * Show more collected information in the UI, like GPScoordinates
+    per SSID.
+  * Better column alignment in the UI
+  * Columns in the main device list are now better formatted and
+    aligned, with right-aligned numeric columns and proper
+    scrolling of the headers.
+  * Able to disable sources in the UI
+  * More log filtering
+  * Direct Wigle logging
+  * Direct logging to Wigle CSV format.
+  * Wardriving mode
+  Changes and Fixes
+  * New memory model for packet contents
+  * New pooled memory for packet contents
+  * New packet data handling
+  * New IPC &amp; remote capture protocol
+  * New pooled memory for tracked components
+  * New dynamic element contents
+  * Optimized Adler32 checksums
+  * Update robinhood hash and transition more pools to it
+  * Reworked kismetdb database writing
+  * Squeeze more memory out of tracked components
+  * Fix Linux monitor mode creation (forwarded request 947569 from mnhauke)</comment>
+    <requestid>947629</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>2240e9fc242fd8505dfd63731d36857a</srcmd5>
+    <version>2022_01_R2</version>
+    <time>1643321807</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2022-01-R1
+  * Fix alert-syslog plugin
+  * Remove outdated docs
+  * Fix webserver stall
+  * Add regex to the devices view-by-time endpoint
+- Drop patch:
+  * 0001-Update-FetchGlobal-usage.patch (forwarded request 947987 from mnhauke)</comment>
+    <requestid>947990</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>df954c365793dfca1e62b051753782cb</srcmd5>
+    <version>2022_01_R2</version>
+    <time>1645629973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957031</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>cd89a4cf1411fe2204f2d2262bd3e617</srcmd5>
+    <version>2022_02_R1</version>
+    <time>1646349497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2022-02-R1
+  This is primarily a maintenance release to fix a number of bugs
+  discovered in the 2022-01 releases, including:
+  * Some datasources not appearing on arm32 (rpi)
+  * Fix segfault due to “smart” pointers and legacy api
+  * Check for zero-sized broken frames
+  * Give IE127 alerts a little more headroom
+  * Fix override config append not appending
+  * Merge patch to trim GPS coordinates in logs
+  * Fix old mutex in datasource serialization
+  * Detect binary in NMEA GPS streams
+
+- Update to version 2022-01-R3a
+  * Install missing kismet_wardrive.conf
+
+- Update to version 2022-01-R3
+  * Minor fixes on top of 2022-01-R1 and 2022-01-R2
+  * Fixing compilation on some old compilers and distributions
+  * Fixing a javascript race condition that caused some of the
+    tabs in the UI to not appear sometimes.
+
+- Update to version 2022-01-R2</comment>
+    <requestid>959254</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>a12ddae587c7413ce52b1c11b6c5c498</srcmd5>
+    <version>2022_02_R1</version>
+    <time>1656321947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985223</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>8ef28eba7bdb495397a93d9e714c73db</srcmd5>
+    <version>2022_08_R1</version>
+    <time>1661863731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999878</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>7e8a2e1a3d8a929e805bb6980d2e8dec</srcmd5>
+    <version>2022_08_R1</version>
+    <time>1676149014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064256</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>d3cdd344ea6d7a002ba13baed00986a7</srcmd5>
+    <version>2023_07_R1</version>
+    <time>1692294230</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104173</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>e63726c4ef0fede51255937f70c9a1e4</srcmd5>
+    <version>2023_07_R1</version>
+    <time>1696964359</time>
+    <user>anag+factory</user>
+    <comment>- add the sysuser pre section to %package common.</comment>
+    <requestid>1116402</requestid>
+  </revision>
+</revisionlist>

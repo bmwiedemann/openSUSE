@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Mon Mar 28 10:45:39 UTC 2016 - mpluskal@suse.com
+
+- Add gpg signature
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Sun Jan  4 14:28:46 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.18
+  + Gnulib infrastructure updates.
+  + Regenerate Makefile.in files using a version of automake that
+    is not susceptible to CVE-2009-4029 or CVE-2012-3386.
+- Get rid of old stuff
+  + Remove BuildRoot: tag
+  + Remove xz requirement
+  + Remove redundant %clean section
+- cppi provides translations yet; add a lang subpackage
+
+-------------------------------------------------------------------
+Mon Feb 13 10:45:25 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Thu Jun  9 14:01:04 UTC 2011 - lnussel@suse.de
+
+- initial package version 1.15
+

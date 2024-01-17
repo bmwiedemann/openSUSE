@@ -1,0 +1,434 @@
+--- contrib/faxdvi2.perl
++++ contrib/faxdvi2.perl
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ # faxdvi2 -- pass a DVI file to the FAX subsystem.
+ #
+@@ -21,7 +21,7 @@
+ # rs@purple.PNoF.sub.org
+ 
+ 
+-$config_file = '/usr/local/lib/mgetty+sendfax/faxdvi.config';
++$config_file = '/usr/lib/mgetty+sendfax/faxdvi.config';
+ $user_file = "$ENV{'HOME'}/.faxdvirc";
+ 
+ $dvips = 'dvips -t letter -P fax';
+--- contrib/faxiobe.sh
++++ contrib/faxiobe.sh
+@@ -35,8 +35,8 @@
+ X
+ X# define GHOSTSCRIPT and SENDFAX correct for you site
+ X
+-XGHOSTSCRIPT=\"/usr/local/bin/gs\"
+-XSENDFAX=\"/usr/local/sbin/sendfax -v\"
++XGHOSTSCRIPT=\"/usr/bin/gs\"
++XSENDFAX=\"/usr/sbin/sendfax -v\"
+ X
+ X# define NOFAX for a dummy program instead of sendfax
+ X# this is for debugging. A sample "nofax" is in the distribution.
+@@ -160,11 +160,11 @@
+ X#define SLEEPTIME 300   /* make multiple of 10 please */
+ X
+ X#ifndef GHOSTSCRIPT
+-X#define GHOSTSCRIPT "/usr/local/bin/gs"
++X#define GHOSTSCRIPT "/usr/bin/gs"
+ X#endif
+ X
+ X#ifndef SENDFAX
+-X#define SENDFAX "/usr/local/sbin/sendfax"
++X#define SENDFAX "/usr/sbin/sendfax"
+ X#endif
+ X
+ X#ifndef NOFAX
+--- contrib/lp-fax
++++ contrib/lp-fax
+@@ -81,7 +81,7 @@
+ # send the file(s) to the standard out $copies times
+ while	[ "$copies" -gt 0 ]
+ do
+-	/usr/local/bin/faxspool -u $name -f "$name ($user)" $fax_no $*
++	/usr/bin/faxspool -u $name -f "$name ($user)" $fax_no $*
+ #	for file
+ #	do
+ #		0<${file} eval ${FILTER} 2>&1 
+--- contrib/mgetty-to-flexfax.sh
++++ contrib/mgetty-to-flexfax.sh
+@@ -28,7 +28,7 @@
+ --- new_fax ---
+ #! /bin/sh
+ 
+-PATH=/usr/local/bin:/usr/ucb:/bin:/usr/local/lib/mgetty+sendfax:$PATH
++PATH=/usr/local/bin:/usr/ucb:/bin:/usr/lib/mgetty+sendfax:$PATH
+ export PATH
+ 
+ FILE=/var/spool/fax/recvq/mgetty.$$
+--- contrib/watchit.pl
++++ contrib/watchit.pl
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl5
++#!/usr/bin/perl
+ #
+ # watchit.pl
+ #
+--- doc/Makefile
++++ doc/Makefile
+@@ -12,11 +12,11 @@
+ MAN5PAGES=faxqueue.5
+ MAN8PAGES=sendfax.8 mgetty.8 callback.8 faxrunqd.8 faxq-helper.8
+ MANSRC=$(MAN1PAGES) $(MAN4PAGES) $(MAN5PAGES) $(MAN8PAGES)
+-MAN1DIR=/usr/local/man/man1
+-MAN4DIR=/usr/local/man/man4
+-MAN5DIR=/usr/local/man/man5
+-MAN8DIR=/usr/local/man/man8
+-INFODIR=/usr/local/info
++MAN1DIR=/usr/share/man/man1
++MAN4DIR=/usr/share/man/man4
++MAN5DIR=/usr/share/man/man5
++MAN8DIR=/usr/share/man/man8
++INFODIR=/usr/share/info
+ 
+ #
+ # formatted man pages
+--- doc/loginv2.txt
++++ doc/loginv2.txt
+@@ -29,7 +29,7 @@
+ #
+ # this is the dummy user name, it's allowed to login only if this 
+ # is not already an ongoing callback
+-callback	N	-	-	/usr/local/sbin/callback -S 12345
++callback	N	-	-	/usr/sbin/callback -S 12345
+ #
+ # these are the real users: only allowed if it's a callback ("Y")
+ *		Y	-	- 	/bin/login @
+--- doc/mgetty.texi-in
++++ doc/mgetty.texi-in
+@@ -2449,7 +2449,7 @@
+ do
+    sleep 60
+    done
+-exec /usr/local/sbin/mgetty ttyS1
++exec /usr/sbin/mgetty ttyS1
+ @end example
+ 
+ @item
+@@ -3691,7 +3691,7 @@
+ add an entry to @file{/etc/inittab} like the following:
+ 
+ @example
+-ya:234:respawn:/usr/local/sbin/mgetty -s 38400 -x 3 term/a
++ya:234:respawn:/usr/sbin/mgetty -s 38400 -x 3 term/a
+ @end example
+ 
+ @emph{Don't use the Solaris @code{admintool} to create any port monitoring
+--- doc/scanner.txt
++++ doc/scanner.txt
+@@ -44,7 +44,7 @@
+ Of course you should set up mgetty for the terminal port of Fax modem as
+ follows.
+ 
+-/usr/local/sbin/mgetty -x 9 ttym0
++/usr/sbin/mgetty -x 9 ttym0
+ 
+ As you know, "push data/voice button of Fax modem" can be substituted by
+ kill -USR1 <mgetty-pid>.
+@@ -174,7 +174,7 @@
+ 07/03 17:58:49 m0  (Normal and proper end of connection)** found **
+ 07/03 17:58:49 m0  fax receiver: hangup & end
+ 07/03 17:58:49 m0  fax_notify_mail: sending mail to: faxadmin
+-07/03 17:58:51 m0  notify: '/usr/local/lib/mgetty+sendfax/new_fax 0 '                     ' 1  /usr/spool/fax/incoming/ffe167d6am0.01 >/dev/console 2>&1 </dev/null'
++07/03 17:58:51 m0  notify: '/usr/lib/mgetty+sendfax/new_fax 0 '                     ' 1  /usr/spool/fax/incoming/ffe167d6am0.01 >/dev/console 2>&1 </dev/null'
+ 07/03 17:58:51 ##### fax dev=ttym0, pid=1342, caller=none, name='', id='                     ', +FHNG=000, pages=1, time=00:01:35
+ 
+ 
+--- faxrunq.config
++++ faxrunq.config
+@@ -21,10 +21,10 @@
+ 
+ #  here you can specify a program that will be called for each fax that
+ #  has successfully been sent... (default: no program)
+-#success-call-program /usr/local/lib/mgetty+sendfax/fax-success
++#success-call-program /usr/lib/mgetty+sendfax/fax-success
+ 
+ #  and this program is run for each failed fax... (default: no program)
+-#failure-call-program /usr/local/lib/mgetty+sendfax/fax-fail
++#failure-call-program /usr/lib/mgetty+sendfax/fax-fail
+ 
+ #  how often should faxrunq retry "costly" errors (NO CARRIER, aborted
+ #  transmission, whatever - something that did cost telephone bill)?
+@@ -58,7 +58,7 @@
+ 
+ #  configuration file for policy routing, see faxrunqd man page for
+ #  details (default: none, i.e. don't use policy routing)
+-#policy-config /usr/local/lib/mgetty+sendfax/policy.config
++#policy-config /etc/mgetty+sendfax/policy.config
+ 
+ #  call an external script if the fax queue length goes over threshold
+ #  (default: off)
+--- samples/answer_fax.sh
++++ samples/answer_fax.sh
+@@ -17,7 +17,7 @@
+ then
+ 	:
+ else
+-	/usr/local/sbin/mgetty $port < /dev/null &
++	/usr/sbin/mgetty $port < /dev/null &
+ 	echo "starting mgetty..."
+ 	sleep 4
+ 	pid=`cat /etc/mg-pid.$port`
+--- samples/coverpg-pl.ps
++++ samples/coverpg-pl.ps
+@@ -21,7 +21,7 @@
+ #
+ #-------------------------------------------------------------------------
+ 
+-#!/usr/local/bin/perl 
++#!/usr/bin/perl 
+ # 
+ # make.coverpg -- slightly advanced version, use ghostscript 
+ #                 (just a sample, naturally you have to adapt all the texts!) 
+--- samples/coverpg.pbm
++++ samples/coverpg.pbm
+@@ -21,9 +21,9 @@
+ # select font according to resolution
+ if [ X$normal_res = X ]
+ then
+-    font=/usr/local/lib/mgetty+sendfax/cour25.pbm
++    font=/usr/lib/mgetty+sendfax/cour25.pbm
+ else
+-    font=/usr/local/lib/mgetty+sendfax/cour25n.pbm
++    font=/usr/lib/mgetty+sendfax/cour25n.pbm
+ fi
+ 
+ tmp=/tmp/coverpg.$$
+--- samples/fax
++++ samples/fax
+@@ -1,10 +1,11 @@
+-#!/bin/ksh
++#!/bin/bash
++## ! /bin/ksh
+ #
+ # fax - interactive tool for creating fax memos
+ #
+ # relies on "faxmemo" being in the PATH and set up properly
+ #
+-echo=/usr/local/bin/mg.echo
++#echo=/usr/local/bin/mg.echo
+ 
+ input()
+ {
+--- samples/faxmemo
++++ samples/faxmemo
+@@ -13,7 +13,7 @@
+ # this is the cover page to use for memo. Faxspool will call
+ # "$COVER_PAGE -m <memo-text> <standard options as of coverpg(1)>
+ #
+-COVER_PAGE=/usr/local/lib/mgetty+sendfax/make.coverpg
++COVER_PAGE=/usr/lib/mgetty+sendfax/make.coverpg
+ 
+ if [ $# -lt 2 ]
+ then
+--- samples/new_fax.all/README
++++ samples/new_fax.all/README
+@@ -43,7 +43,7 @@
+ 
+ THE CONFIGURATION FILE
+ 
+-The configuration file usually has the name /usr/etc/mgetty+sendfax/faxlist
++The configuration file usually has the name /etc/mgetty+sendfax/faxlist
+ but can be moved to any destination. The file is referenced inside new_fax
+ with the variable "config" in the header. The config file consists of
+ sections. Each section contains at least one identifier which must be a
+--- samples/new_fax.all/new_fax
++++ samples/new_fax.all/new_fax
+@@ -1,4 +1,5 @@
+-#!/bin/ksh
++#!/bin/bash
++## ! /bin/ksh
+ #
+ # Written 1996 by Darko Krizic
+ #
+--- samples/new_fax.lj
++++ samples/new_fax.lj
+@@ -16,7 +16,7 @@
+ SENDER="$2"
+ PAGES="$3"
+ 
+-G3TOPBM=/usr/local/bin/g32pbm
++G3TOPBM=/usr/bin/g32pbm
+ shift 3
+ P=1
+ 
+--- samples/new_fax.mime1
++++ samples/new_fax.mime1
+@@ -1,4 +1,4 @@
+-#!/bin/ksh
++#!/bin/bash
+ #
+ # new_fax.mime
+ #
+@@ -13,7 +13,7 @@
+ # The script needs the ``mh'' mailer installed
+ #
+ #
+-#! /bin/ksh
++## ! /bin/ksh
+ 
+ FAX_DIR=/var/spool/fax
+ 
+@@ -52,7 +52,7 @@
+     let page=page+1
+   done
+ ) >$TMP
+-echo 'send' | comp -use -editor /usr/local/bin/mh/mhn -file $TMP >/dev/null
++echo 'send' | comp -use -editor /usr/bin/mh/mhn -file $TMP >/dev/null
+ rm -f $TMP
+ 
+ ## Alternative method (using metamail directly)
+--- samples/new_fax.mime3
++++ samples/new_fax.mime3
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ #
+-# /usr/local/lib/mgetty+sendfax/new_fax
++# /usr/lib/mgetty+sendfax/new_fax
+ #
+ # new_fax <getty-exit-code> <fax-sender-id> <number-of-pages> <page> [<page>..]
+ #
+@@ -75,4 +75,4 @@
+ # Send out the created mail:
+ sendmail $ADMIN < $TMPMAIL
+ 
+-exit 0
+\ No newline at end of file
++exit 0
+--- samples/new_fax.pbm
++++ samples/new_fax.pbm
+@@ -28,7 +28,7 @@
+ id=
+ for i in $@
+ do
+-  /usr/local/bin/g32pbm $STRETCH $i | compress > $i.pbm.Z
++  /usr/bin/g32pbm $STRETCH $i | compress > $i.pbm.Z
+   # our compress is faster than gzip, so use this here.
+   # this make preview faster....
+   [ $? -eq 0 -a -f $i.pbm.Z ] && /bin/rm -f $i
+--- samples/new_fax.th
++++ samples/new_fax.th
+@@ -15,13 +15,13 @@
+ # The user to receive the fax and the get the fax viewer on its display
+ my $user = 'torsten';
+ 
+-my $faxviewer = '/usr/local/bin/faxview';
++my $faxviewer = '/usr/bin/faxview';
+ 
+ my $sendmail = '/usr/sbin/sendmail';
+ my $tar = '/bin/tar';
+ my $gzip = '/bin/gzip';
+ my $su = '/bin/su';
+-my $mmencode = '/usr/local/bin/mmencode';
++my $mmencode = '/usr/bin/mmencode';
+ 
+ # Information received from mgetty
+ my $hangup_code = shift;
+--- samples/new_fax.vacation
++++ samples/new_fax.vacation
+@@ -25,13 +25,13 @@
+                                ,,,
+                               (o o)
+ ---------------------------oOO-(_)-OOo---------------------------
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ # Ralph Schleicher
+ # rs@purple.in-ulm.de
+ 
+ 
+-$message = '/usr/local/lib/mgetty+sendfax/vacation.tex';
++$message = '/usr/lib/mgetty+sendfax/vacation.tex';
+ 
+ exit 0
+   if ! -r $message;	# Do nothing.
+--- voice/contrib/Mark_Haun
++++ voice/contrib/Mark_Haun
+@@ -28,7 +28,7 @@
+ current call-out script (a modified version of the "notify.sh" distributed
+ with vgetty), in the hope that it will prove useful to someone: 
+ 
+-#! /usr/local/bin/vm shell
++#! /usr/bin/vm shell
+ 
+ function receive
+      {
+--- voice/doc/Readme.Beginners
++++ voice/doc/Readme.Beginners
+@@ -36,7 +36,7 @@
+ 
+ 2. Replace the invocation of mgetty in your /etc/inittab with vgetty if
+    there is one. If there is no mgetty invocation you just have to insert
+-   a line like that: "S1:345:respawn:/usr/local/sbin/vgetty ttyxx" in your
++   a line like that: "S1:345:respawn:/usr/sbin/vgetty ttyxx" in your
+    /etc/inittab file. (like that vgetty is running at runlevels 3 4 and 5
+    see inittab(5) man page for more)
+ 
+--- voice/scripts/button.sh
++++ voice/scripts/button.sh
+@@ -1,4 +1,4 @@
+-#! /usr/local/bin/vm shell
++#! /usr/bin/vm shell
+ 
+ #
+ # This is the button script. It is called by vgetty when
+--- voice/scripts/demo.pl
++++ voice/scripts/demo.pl
+@@ -1,6 +1,6 @@
+-#! /usr/local/bin/vm shell
+-exec /usr/local/bin/perl -x $0
+-#! /usr/local/bin/perl
++#! /usr/bin/vm shell
++exec /usr/bin/perl -x $0
++#! /usr/bin/perl
+ 
+ #
+ # This is a demo script for the new interface between shell scripts and
+--- voice/scripts/demo.sh
++++ voice/scripts/demo.sh
+@@ -1,4 +1,4 @@
+-#! /usr/local/bin/vm shell
++#! /usr/bin/vm shell
+ 
+ #
+ # This is a demo script for the new interface between shell scripts and
+--- voice/scripts/dtmf.sh
++++ voice/scripts/dtmf.sh
+@@ -1,4 +1,4 @@
+-#! /usr/local/bin/vm shell
++#! /usr/bin/vm shell
+ 
+ #
+ # This is the dtmf script. It is called by vgetty when a dtmf code was
+--- voice/scripts/events.sh
++++ voice/scripts/events.sh
+@@ -1,4 +1,4 @@
+-#! /usr/local/bin/vm shell
++#! /usr/bin/vm shell
+ 
+ #
+ # This is a demo script for the new event handling interface between
+--- voice/scripts/message.sh
++++ voice/scripts/message.sh
+@@ -1,4 +1,4 @@
+-#! /usr/local/bin/vm shell
++#! /usr/bin/vm shell
+ 
+ #
+ # This script calls the given phone number and plays a message.
+--- voice/scripts/vmtest.sh
++++ voice/scripts/vmtest.sh
+@@ -1,4 +1,4 @@
+-#! /usr/local/bin/vm shell
++#! /usr/bin/vm shell
+ 
+ #
+ # This is the vmtest script. You can call this script to test voice shell

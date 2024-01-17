@@ -1,0 +1,45 @@
+From bc97696afb69d2b7c4d33f5f94d6cd51e0044128 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Fri, 20 Jan 2023 10:27:14 +0100
+Subject: [PATCH] Use the openSUSE wallpaper
+
+This is unfortunately hardcoded. Use our default to more likely match what
+the user sees.
+---
+ src/contents/ui/pages/Network.qml | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/contents/ui/pages/Network.qml b/src/contents/ui/pages/Network.qml
+index df77243..dcde30f 100644
+--- a/src/contents/ui/pages/Network.qml
++++ b/src/contents/ui/pages/Network.qml
+@@ -73,10 +73,10 @@ GenericPage {
+             Image {
+                 anchors.fill: parent
+                 fillMode: Image.PreserveAspectCrop
+-                source: "file:/usr/share/wallpapers/Next/contents/images/1024x768.png"
++                source: "file:/usr/share/wallpapers/openSUSEdefault/contents/images/1280x1024.jpg"
+                 // anchor the image to the bottom-right corner of the "screen"
+-                sourceClipRect: Qt.rect(1024-parent.width,
+-                                        768-parent.height,
++                sourceClipRect: Qt.rect(1280-parent.width,
++                                        1024-parent.height,
+                                         parent.width,
+                                         parent.height)
+             }
+@@ -85,9 +85,9 @@ GenericPage {
+             Image {
+                 anchors.fill: panelContainer
+                 fillMode: Image.PreserveAspectCrop
+-                source: "file:/usr/share/wallpapers/Next/contents/images/1024x768.png"
+-                sourceClipRect: Qt.rect(1024-panelContainer.width,
+-                                        768-panelContainer.height,
++                source: "file:/usr/share/wallpapers/openSUSEdefault/contents/images/1280x1024.jpg"
++                sourceClipRect: Qt.rect(1280-panelContainer.width,
++                                        1024-panelContainer.height,
+                                         panelContainer.width,
+                                         panelContainer.height)
+ 
+-- 
+2.39.0
+

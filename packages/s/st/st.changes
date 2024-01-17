@@ -1,0 +1,234 @@
+-------------------------------------------------------------------
+Wed Apr 26 15:10:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace BuildRequire on xorg-x11-devel by pkgconfig(...)
+
+-------------------------------------------------------------------
+Mon Jan  2 13:40:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9:
+  * avoid potential UB when using isprint()
+  * make underlines and strikethroughs respect `chscale`
+  * Delay redrawals on palette changes
+  * 10/SGR mouse: use alt as meta key instead of super/windows key
+  * Fix mousereport
+  * Fix overtyping wide characters.
+  * Fix null pointer access in strhandle
+  * Add support for OSC color sequences
+  * Fix possible rare crash when Xutf8TextPropertyToTextList fails
+  * fix a problem that the standard streams are unexpectedly closed
+  * Add 14th bit to XK_SWITCH_MOD bitmask
+  * fix: correctly encode mouse buttons >= 8 in X10 and SGR mode
+  * ST: Add WM_ICON_NAME property support
+- add compose-buffer-overflow.patch
+
+-------------------------------------------------------------------
+Mon Jun 22 09:14:45 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Update to version 0.8.4
+
+  Security
+  --------
+
+  * config.def.h: add an option allowwindowops, by default off (secure).
+
+    Similar to the xterm AllowWindowOps option.
+    The sequence for base64-encoded clipboard copy is now guarded and off by
+    default because it allows a sequence written to the terminal to manipulate the
+    clipboard of the (other) running user non-interactively.
+
+  Features
+  --------
+
+  * Integrate auto-sync: draw on idle to avoid flicker/tearing by avih.
+    st could easily tear/flicker with animation or other unattended
+    output. This commit eliminates most of the tear/flicker.
+
+  * Optimize column width calculation and UTF-8 encode for the common-case ASCII.
+    In particular on glibc and OpenBSD the wcwidth() call is more expensive.
+    On musl there is no/little difference.
+
+  * Add support for REP (repeat) escape sequence and xterm compatibility, by
+    avih.  The capability is not exposed yet due to some issues with
+    applications.
+
+  * Call xsetcursor to set win.cursor in main, by Steve Ward.
+    Allowing to set the st snowman cursor extension dynamically.
+
+  Fixes and other changes
+  -----------------------
+
+  * Fix unicode glitch in DCS strings, by Tim Allen.
+    The related sixel stub code is now removed also.
+
+  * Fix for incorrect (partial) written sequences when libc wcwidth() == -1
+    and using st -o.
+
+  * Mouse selection fixes, by Jakub
+
+  * Make shift+wheel behaves as shift+Prev/Next, patch by k0ga
+    This patch adds a new hack, making shift+wheel returning the
+    same sequences than shift+Prev/Next, meaning that scroll or
+    any other similar program will not be able to differentiate
+    between them.
+
+  * Expose rin terminfo capability.
+    Tianlin Qu discovered that st is missing rin (scroll back #1 lines).
+
+  * Replace exit(3) by _exit(2) in signal handler sigchld(), by Jan.
+    This change prevents st to crash and dump core in some situations.
+
+  * FAQ: add details and a patch example for single-buffering (for the w3mimg
+    hack).
+
+- Update to version 0.8.3
+  * Update XIM cursor position only if changed
+  * just remove the EOF message
+  * Add st-mono terminfo entry
+  * config.def.h: add a comment for the scroll variable
+  * Fix small typos
+  * Launch scroll program with the default shell
+  * Update FAQ with the last modifications
+  * Add terminfo entries for backspace mode
+  * Fix style issue
+  * ttyread: test for EOF while reading tty
+  * Add support for scroll(1)
+  * make argv0 not static, fixes a warning with tcc
+  * mouseshortcuts: fix custom modifier on release
+  * Remove explicit XNFocusWindow
+  * x: fix XIM handling
+  * x: check we still have an XIC context before accessing it
+  * x: do not instantiate a new nested list on each cursor move
+  * x: move IME variables into XWindow ime embedded struct
+  * Increase XmbLookupString buffer
+  * update FAQ
+  * OSC 52 - copy to clipboard: don't limit to 382 bytes
+  * CSIEscape, STREscape: use size_t for buffer length
+  * STREscape: don't trim prematurely
+  * base64dec: don't read out of bounds
+  * Fix tmux terminfo extensions Se and Ss
+  * apply hints before initial mapping (ICCCM)
+  * mouse shortcuts: allow using forcemousemod (e.g. shift)
+  * mouse shortcuts: don't hardcode selpaste
+  * mouse shortcuts: allow override for all shortcuts
+  * mouse shortcuts: allow same functions as kb shortcuts
+  * config.def.h: remove crlf value section
+  * FAQ: add entry about color emoji Xft bug
+  * selection: fix view to match actual selection on first cell
+  * revert part of commit add0211522737b79dad990ccd65c8af63b5cc1dd
+  * dont print color warning on color reset OSC 104 without parameter
+  * minor code-style, initialize var at the top of function
+  * config.def.h: tweak extra worddelimiters
+  * use iswspace()/iswpunct() to find word delimiters
+  * replace utf8strchr with wcschr
+  * be silent about explicitly unhandled mouse modes
+  * simplify (greedy) font caching allocating a bit
+  * style: remove double empty newlines
+  * fix use after free in font caching algorithm
+  * better Input Method Editor (IME) support
+
+-------------------------------------------------------------------
+Wed Mar 25 14:54:40 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Update to version 0.8.2
+  * config: add Shift+Insert as selpaste() again
+  * Let the user specify CPPFLAGS
+  * Set the path of pkg-config in a variable instead of hardcoding it
+  * Makefile: fix dependencies on config.h
+  * output child WEXITSTATUS/WTERMSIG on abnormal termination
+  * fix memory leak in xloadcols()
+  * st: small typofix in comment
+  * small code-style fix
+  * Remove the ISO 14755 feature
+  * Revert "Simplify cursor color handling"
+  * Revert "Make cursor follow text color"
+  * Revert "Fix crash when cursor color is truecolor"
+  * Fix crash when cursor color is truecolor
+  * Make cursor follow text color
+  * Simplify cursor color handling
+  * Fix crash on resize
+  * config.mk: remove extra newline before EOF
+  * code-style for pledge(2)
+  * Pledge on OpenBSD
+  * error message style and use strerror in a few places
+  * st -v: remove years and copyright text
+  * set sel.alt in selstart instead of selextend
+- drop st-optflags.patch
+- do not install development files LEGACY and README
+- drop compat code with opensuse/sle <= 11
+- do not install the terminfo, these are provided by the terminfo package (from ncurses)
+
+-------------------------------------------------------------------
+Fri Dec 21 14:50:52 UTC 2018 - malcolmlewis@opensuse.org
+
+- Update to version 0.8.1:
+  + Fix regression by selecting clipboard text.
+  + Don't modify argv, use a counter.
+  + Selextend: clarify: !sel.mode == SEL_IDLE.
+  + Clipcopy: no need to check for free(NULL), set to NULL after
+    free.
+  + Whitespace fixes.
+  + Fix title initialization.
+  + Fix regression from 69e32a6 when setting title.
+  + LICENCE update year(s) and major contributors.
+  + Makefile: add all files to make dist.
+
+-------------------------------------------------------------------
+Sun Mar 18 21:15:56 UTC 2018 - avindra@opensuse.org
+
+- Update to version 0.8
+  * Change default keybindings
+  * Add support for iso14755
+  * Add support for enabling/disabling utf
+  * use math.h for ceilf
+  * xhints: no need to initialize sizeh
+  * Reduce visibility wherever possible
+  * Limit usage of extern to config.h globals
+  * Split mode bits between Term and TermWindow
+  * Have selected() check whether selection exists
+  * Rely on ttyresize to set tty size
+  * Remove x.c dependency on term
+  * Remove Time argument from xsetsel
+  * Make win variable internal to x.c
+  * Factor out equivalent code from ttyread/ttysend
+  * Pass new dimensions into ttyresize
+  * Call xsetenv() in main process instead of child
+  * Fix color with FAINT attribute
+  * Apply ATTR_REVERSE after ATTR_FAINT
+  * Handle XftFontOpenPattern failure.
+  * base64dec: skip non-printable characters like \r\n
+  * Add dim/smxx/rmxx to terminfo, remove duplicate kich1
+  * Add color change terminfo capabilities
+  * Simplify how we keep ATTRs under cursor
+  * keep some glyph modes for the cursor
+  * Support xterm Ms feature to set clipboard
+  * Split X-specific code into x.c
+  * Fixed 'missing glyph doesn't use fontconfig config substitutions' bug
+  * make the various combinations of arrow keys and shift/control/meta work
+  * tic -s -> tic -sx (Treat unknown capabilities as user-defined.)
+  * Add tmux capabilities to st.info
+  * Make strdump(), csidump(), print to stderr
+  * Do not use color when font attributes are supported
+  * Add missing device path to '-l' example
+  * Add parsing of DCS q sequences
+  * Delete ncv capability from terminfo
+  * st.info: do not prevent st from displaying attributes
+- cleanup with spec-cleaner
+- drop st-verbose_makefile.patch
+  * fixed upstream in fabd4602b3223666165c76c397644a081b9a97e5
+- rebase st-optflags.patch
+- use https urls
+- renumber patch
+
+-------------------------------------------------------------------
+Thu Feb  2 12:23:46 UTC 2017 - aloisio@gmx.com
+
+- Update to version 0.7
+- Refreshed st-optflags.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
+Thu Jul 25 06:44:18 CET 2013 - pascal.bleser@opensuse.org
+
+- initial version (0.4.1)
+
