@@ -1,0 +1,274 @@
+-------------------------------------------------------------------
+Fri Jul  7 16:20:20 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.3.4
+  * Update translations: Portugese(Brazil), Russian,
+    Norwegian Bokmal
+  * Add translations: Swedish
+  * Fix and refactor adding default autoprofile
+  * Fix GUI does not recognize super + action
+  * Fix /dev/uinput static device node access pull
+  * Fix building for SDL version between 2.0.12 and 2.0.16
+
+-------------------------------------------------------------------
+Mon Jan 30 19:53:38 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.3.3
+  * Add checkbox enabling numeric keypad in ButtonEditDialog
+  * Update translations: Spanish, Korean, Russian
+  * Add translations: Rusyn, Portugese(Brazil)
+  * Name mismatch in set selector list
+  * Shebang ignored in execute bind
+  * Mouse spring mode not working in wayland session
+  * Some code refactors and docs updates
+  * Logs improvements
+  
+-------------------------------------------------------------------
+Tue Nov 22 18:33:08 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.3.2
+  * Use proper theme-based color for tab text
+  * Show joystick battery level in tab
+  * Fix broken obtaining path of active window by auto profile
+  * Fix auto profile dialog does not populate title and
+    application fields
+  * Fix misspeled __BIG_ENDIAN constant
+  * Fix advanced settings dialog freezes when pressing join on Linux
+  * Remove disabling Auto-profile title box
+  * don't minimize to taskbar by default on Linux
+
+-------------------------------------------------------------------
+Tue Oct 25 04:55:40 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.3.1
+  - Hotfix release reverting PR #555 which can cause segfaults
+- Changes in version 3.3.0
+  - Add support for DualSense trigger haptic feedback
+  - Selection "None" Preset does not change button labels
+  - Multiple problems caused by invalid thread handling
+    - Saving PS4 Controller setup stops set toggle from working
+    - Saving Breaks Set Switching
+    - Saving config breaks turbo
+    - Warnings QObject: Cannot create children for a parent that
+      is in a different thread
+  - Fix some code warnings
+  - Remove some unused code
+  - Limit number of logged events
+  - Some refactors and docs updates
+  - Update SDL mappings database
+  - Update translations: Korean, Ukrainian, Spanish
+
+-------------------------------------------------------------------
+Tue Jul 19 17:31:46 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.2.5
+  - Implement motion sensor support. Motion sensor support is
+    enabled, when build with SDL2 >= 2.0.14.
+  - Allow storing calibration for multiple controllers in a profile
+  - Crash on close after copying set.
+  - Remove unused "Game Controller Mapping" button.
+  
+-------------------------------------------------------------------
+Fri Jun 24 10:43:40 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.2.4
+  - Implement modifier button threshold zone
+    This allows mapping the analog range of a stick to walk/run in
+    game without dedicated spring button.
+  - Fix mouse calculations for multiple mice
+  - Fix flickering JoyControlStickEditDialog layout
+  - Implement proper offset and gain stick calibration
+  - Increase minimum size of ButtonEditDialog
+  - Fixes in translation utulities
+    - Rename flag TRANS_KEEP_OBSOLETE to TRANS_REMOVE_OBSOLETE to
+      improve readability
+    - Fix wrong argument for utility deleting obsolete translations
+  - Update translations: Russian, Finnish, French, Chinese,
+    Portuguese   
+
+-------------------------------------------------------------------
+Mon Apr 25 04:35:29 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.2.3
+  - Fixed bug: auto profile not saved when exe path is not defined
+  - Added missing license for SDL_GameControllerDB
+  - Many updates in translations:
+    - Added Finnish translation by heidiwenger
+    - Added Norwegian Bokmål translation bu comradekingu
+    - Updated German, French, Italian and Polish translations
+    - update translation files
+  - Always show battery level in joystick status window
+    (even when unknown)
+  - Multiple refactors and cleanups removing deprecated code
+- Add License Zlib: missing license for SDL_GameControllerDB
+
+-------------------------------------------------------------------
+Fri Feb 25 17:21:12 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.2.2
+  - Change default working directory of launched executables
+  - Fix typo (setting->settings)
+  - Random Crashes during longer sessions
+  - File with gamecontroller mappings not found
+  - Empty application path in autoprofile
+  - Enable checking for updates in Debian builds from GitHub
+  - Log improvements and cleanup
+  - Daemon mode support removed
+  - Remove unused "map" and "display" argument options
+  - Remove unused files With icons, resources and pertially
+  - implemented importing utility
+  - Use colourful antimicrox icon in tray by default
+  - Update building docs
+- Rebase fix_xcb_linker.patch and remove_datetime_aboutdialog.patch
+
+-------------------------------------------------------------------
+Mon Jan  3 16:58:23 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.2.1
+  - Add database of SDL gamepad mappings (more gamepads will
+    be enabled by default)
+  - Add proper printing information about connected devices to logs
+  - Add handling SIGABRT (with printing stack)
+  - Crashes linked with deleting child objects
+  - Broken Auto Profile list on Windows
+  - Auto Profile Wrongly Shows Languages
+  - Add note about lack of AutoProfiles for Wayland users
+  - Add message informaing about solutions in case of problems
+    with uinput
+  - Log improvements
+  - Disable calibration for devices without joysticks
+  - Clarification of names and --profile flag description
+  - Update copyright date
+  - Cleanup daemon launching
+  - Make Changelog links clickable
+  - Print descriptions of devices in logs
+  - Add experimental support for clang
+  - CI: Add concurrency and remove redundant lines
+  - CI: Add CodeQL and infer static code analysis
+
+-------------------------------------------------------------------
+Mon Nov  1 20:26:57 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.2.0
+  - Prepare installer for Windows
+  - Handle segfaults and other crashes in code
+  - Create config for debug builds
+  - Allow unhiding app window when second instance of AntiMicroX is launched
+  - Typo in udev rule name: 60-antimicrox-uinput.rules instead
+    60-antimcrox-uinput.rules
+  - Move gui-related files to separate directory
+  - Logging system improvements
+  - Some additional logs and notes
+  - Fix compile warnings
+  - Set homepage url for packages
+  - Create config for debug build
+  - Cmake cleanup
+- Rebase remove_datetime_aboutdialog.patch
+
+-------------------------------------------------------------------
+Sat Sep 11 04:41:12 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.1.7
+  - Wayland support for keyboard emulation rocket
+  - Load save dialogue window won't show saved configs = can't
+    open saves
+  - Segmentation Fault when change profile from command line
+  - Include Appstream information into AppImage Build
+  - fix: Remove warning "QLocalSocket::waitForDisconnected()
+    is not allow…
+  - Crash-related fixes linked with memory management
+  - refactor: Improve log showing gamepad name
+  - refactor: Refactor executing commands
+  - Allow regular users using uinput
+  - feat: switch from xtest to uinput when wayland is detected
+- Update BuildRequires: cmake >= 3.12 is needed
+- Fix some rpmlint warnings
+
+-------------------------------------------------------------------
+Sat Aug 28 07:25:32 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.1.6
+  - Saving logs into file doesn't work properly
+  - Doesn't save my configurations/Wont auto load
+  - Refactor logging system
+  - Add new logs associated with loading profile files
+  - Refactor arguments parsing
+  - docs: Add information about commandline for flatpak packages
+  - Added openSUSE instruction
+
+-------------------------------------------------------------------
+Sun Mar 14 18:22:03 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.1.5
+  - Migrate DEB packages to antimicrox #87
+  - Integrate builds marking with docs cmake and CI #143
+  - Allow cleaner marking package builds #143 (mirabilos)
+  - fix appdata formatting #142 (mirabilos)
+  - apply lintian-provided spelling fixes #141 (mirabilos)
+  - fix the manpage (hyphen as minus sign) #140 (mirabilos)
+  - fix: change deb arch prefix for building AppImage #135 (pktiuk)
+- Rebase remove_datetime_aboutdialog.patch
+- Drop devel package
+
+-------------------------------------------------------------------
+Fri Jan 15 18:44:56 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.1.4
+  - Remove qglobalshortcuts #106
+  - File cleanup #104
+  - Cmakefile fixes #102
+  - Add dark tray icon #66
+  - Icons overhaul #61
+  - Automate generating changelogs #10
+  - Clear shortcut not working #116
+  - Assigning Text Entry to button doesn't assign proper string. #79
+  - The uninstallation leaves several folders and files behind
+    (cmake) #68
+  - Remove antilib shared object because it's not really shared! #98
+  - feat: improve mime type definition #132 (Janfel)
+  - docs: update building and installation instructions #129 (pktiuk)
+  - feat: antimicro config migration #120 (gombosg)
+- Rebase fix_xcb_linker.patch
+- Clean up because of remove of antilib #98
+  - Drop antilib-lib package
+  - Drop antimicrox.rpmlintrc
+
+-------------------------------------------------------------------
+Sat Dec 12 07:11:04 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Fix rpmlintrc: Instead setBadness now addFilter is used.
+  For Factory submissions setBadness can not be used.
+
+-------------------------------------------------------------------
+Sat Dec 12 05:48:53 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Fix BuildRequires: cmake >= 3.6 is needed
+
+-------------------------------------------------------------------
+Sat Nov 28 06:32:10 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.1.3
+  - ARM build failure #80
+  - AntiMicroX system tray icon not appearing in flatpak 
+    package #58
+  - Icons in tray menu only showing up as "X" #56
+  - Outdated information in the "Credits" tab in the "About"
+    window #67
+  - Consistent style of code #25
+  - Icons overhaul #73 (pktiuk)
+  - Fix: Use system icons in common cases to avoid incompatibility
+    issues #62 (pktiuk)
+  - General cleanup of repository #18 (pktiuk)
+- Addded full source URL in spec file
+
+-------------------------------------------------------------------
+Wed Nov 11 18:19:30 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.1.2
+  - Right click - Turbo and Clear not working properly #7
+  - Wrong order for setting sets #6
+
+-------------------------------------------------------------------
+Sun Sep 13 11:30:28 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Initial package version in OBS

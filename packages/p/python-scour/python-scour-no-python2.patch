@@ -1,0 +1,624 @@
+Index: scour-0.38.2/README.md
+===================================================================
+--- scour-0.38.2.orig/README.md
++++ scour-0.38.2/README.md
+@@ -20,7 +20,7 @@ The project moved to GitLab in 2013 an i
+ 
+ ## Installation
+ 
+-Scour requires [Python](https://www.python.org) 2.7 or 3.4+. Further, for installation, [pip](https://pip.pypa.io) should be used.
++Scour requires [Python](https://www.python.org) 3.4+. Further, for installation, [pip](https://pip.pypa.io) should be used.
+ 
+ To install the [latest release](https://pypi.python.org/pypi/scour) of Scour from PyPI:
+ 
+Index: scour-0.38.2/scour/__init__.py
+===================================================================
+--- scour-0.38.2.orig/scour/__init__.py
++++ scour-0.38.2/scour/__init__.py
+@@ -16,4 +16,4 @@
+ #
+ ###############################################################################
+ 
+-__version__ = u'0.38.2'
++__version__ = '0.38.2'
+Index: scour-0.38.2/scour/scour.py
+===================================================================
+--- scour-0.38.2.orig/scour/scour.py
++++ scour-0.38.2/scour/scour.py
+@@ -44,23 +44,19 @@
+ # - if a <g> has only one element in it, collapse the <g> (ensure transform, etc are carried down)
+ 
+ 
+-from __future__ import division         # use "true" division instead of integer division in Python 2 (see PEP 238)
+-from __future__ import print_function   # use print() as a function in Python 2 (see PEP 3105)
+-from __future__ import absolute_import  # use absolute imports by default in Python 2 (see PEP 328)
+-
+ import math
+ import optparse
+ import os
+ import re
+ import sys
+ import time
++import urllib.parse
++import urllib.request
+ import xml.dom.minidom
+ from xml.dom import Node, NotFoundErr
+ from collections import namedtuple, defaultdict
+ from decimal import Context, Decimal, InvalidOperation, getcontext
+ 
+-import six
+-from six.moves import range, urllib
+ 
+ from scour.svg_regex import svg_parser
+ from scour.svg_transform import svg_transform_parser
+@@ -68,9 +64,9 @@ from scour.yocto_css import parseCssStri
+ from scour import __version__
+ 
+ 
+-APP = u'scour'
++APP = 'scour'
+ VER = __version__
+-COPYRIGHT = u'Copyright Jeff Schiller, Louis Simard, 2010'
++COPYRIGHT = 'Copyright Jeff Schiller, Louis Simard, 2010'
+ 
+ 
+ XML_ENTS_NO_QUOTES = {'<': '&lt;', '>': '&gt;', '&': '&amp;'}
+@@ -423,7 +419,7 @@ sciExponent = re.compile(r"[eE]([-+]?\d+
+ unit = re.compile("(em|ex|px|pt|pc|cm|mm|in|%){1,1}$")
+ 
+ 
+-class Unit(object):
++class Unit:
+     # Integer constants for units.
+     INVALID = -1
+     NONE = 0
+@@ -485,7 +481,7 @@ class Unit(object):
+     str = staticmethod(str)
+ 
+ 
+-class SVGLength(object):
++class SVGLength:
+ 
+     def __init__(self, str):
+         try:  # simple unitless and no scientific notation
+@@ -927,7 +923,7 @@ def protected_ids(seenIDs, options):
+ 
+ 
+ def unprotected_ids(doc, options):
+-    u"""Returns a list of unprotected IDs within the document doc."""
++    """Returns a list of unprotected IDs within the document doc."""
+     identifiedElements = findElementsWithId(doc.documentElement)
+     protectedIDs = protected_ids(identifiedElements, options)
+     if protectedIDs:
+@@ -1445,7 +1441,7 @@ def collapseSinglyReferencedGradients(do
+     identifiedElements = findElementsWithId(doc.documentElement)
+ 
+     # make sure to reset the ref'ed ids for when we are running this in testscour
+-    for rid, nodes in six.iteritems(findReferencedElements(doc.documentElement)):
++    for rid, nodes in findReferencedElements(doc.documentElement).items():
+         # Make sure that there's actually a defining element for the current ID name.
+         # (Cyn: I've seen documents with #id references but no element with that ID!)
+         if len(nodes) == 1 and rid in identifiedElements:
+@@ -1551,7 +1547,7 @@ def detect_duplicate_gradients(*grad_lis
+             key = computeGradientBucketKey(grad)
+             grad_buckets[key].append(grad)
+ 
+-        for bucket in six.itervalues(grad_buckets):
++        for bucket in grad_buckets.values():
+             if len(bucket) < 2:
+                 # The gradient must be unique if it is the only one in
+                 # this bucket.
+@@ -1656,7 +1652,7 @@ def removeDuplicateGradients(doc):
+ 
+ 
+ def _getStyle(node):
+-    u"""Returns the style attribute of a node as a dictionary."""
++    """Returns the style attribute of a node as a dictionary."""
+     if node.nodeType != Node.ELEMENT_NODE:
+         return {}
+     style_attribute = node.getAttribute('style')
+@@ -1673,7 +1669,7 @@ def _getStyle(node):
+ 
+ 
+ def _setStyle(node, styleMap):
+-    u"""Sets the style attribute of a node to the dictionary ``styleMap``."""
++    """Sets the style attribute of a node to the dictionary ``styleMap``."""
+     fixedStyle = ';'.join(prop + ':' + styleMap[prop] for prop in styleMap)
+     if fixedStyle != '':
+         node.setAttribute('style', fixedStyle)
+@@ -2101,12 +2097,12 @@ for default_attribute in default_attribu
+ 
+ 
+ def taint(taintedSet, taintedAttribute):
+-    u"""Adds an attribute to a set of attributes.
++    """Adds an attribute to a set of attributes.
+ 
+     Related attributes are also included."""
+     taintedSet.add(taintedAttribute)
+     if taintedAttribute == 'marker':
+-        taintedSet |= set(['marker-start', 'marker-mid', 'marker-end'])
++        taintedSet |= {'marker-start', 'marker-mid', 'marker-end'}
+     if taintedAttribute in ['marker-start', 'marker-mid', 'marker-end']:
+         taintedSet.add('marker')
+     return taintedSet
+@@ -2142,7 +2138,7 @@ def removeDefaultAttributeValue(node, at
+ 
+ 
+ def removeDefaultAttributeValues(node, options, tainted=set()):
+-    u"""'tainted' keeps a set of attributes defined in parent nodes.
++    """'tainted' keeps a set of attributes defined in parent nodes.
+ 
+     For such attributes, we don't delete attributes with default values."""
+     num = 0
+@@ -2207,14 +2203,14 @@ def convertColor(value):
+         r = int(float(rgbpMatch.group(1)) * 255.0 / 100.0)
+         g = int(float(rgbpMatch.group(2)) * 255.0 / 100.0)
+         b = int(float(rgbpMatch.group(3)) * 255.0 / 100.0)
+-        s = '#%02x%02x%02x' % (r, g, b)
++        s = '#{:02x}{:02x}{:02x}'.format(r, g, b)
+     else:
+         rgbMatch = rgb.match(s)
+         if rgbMatch is not None:
+             r = int(rgbMatch.group(1))
+             g = int(rgbMatch.group(2))
+             b = int(rgbMatch.group(3))
+-            s = '#%02x%02x%02x' % (r, g, b)
++            s = '#{:02x}{:02x}{:02x}'.format(r, g, b)
+ 
+     if s[0] == '#':
+         s = s.lower()
+@@ -2997,8 +2993,8 @@ def scourUnitlessLength(length, renderer
+     # Gather the non-scientific notation version of the coordinate.
+     # Re-quantize from the initial value to prevent unnecessary loss of precision
+     # (e.g. 123.4 should become 123, not 120 or even 100)
+-    nonsci = '{0:f}'.format(length)
+-    nonsci = '{0:f}'.format(initial_length.quantize(Decimal(nonsci)))
++    nonsci = '{:f}'.format(length)
++    nonsci = '{:f}'.format(initial_length.quantize(Decimal(nonsci)))
+     if not renderer_workaround:
+         if len(nonsci) > 2 and nonsci[:2] == '0.':
+             nonsci = nonsci[1:]  # remove the 0, leave the dot
+@@ -3014,7 +3010,7 @@ def scourUnitlessLength(length, renderer
+         exponent = length.adjusted()  # how far do we have to shift the dot?
+         length = length.scaleb(-exponent).normalize()  # shift the dot and remove potential trailing zeroes
+ 
+-        sci = six.text_type(length) + 'e' + six.text_type(exponent)
++        sci = str(length) + 'e' + str(exponent)
+ 
+         if len(sci) < len(nonsci):
+             return_value = sci
+@@ -3419,7 +3415,7 @@ def properlySizeDoc(docElement, options)
+             pass
+ 
+     # at this point it's safe to set the viewBox and remove width/height
+-    docElement.setAttribute('viewBox', '0 0 %s %s' % (w.value, h.value))
++    docElement.setAttribute('viewBox', '0 0 {} {}'.format(w.value, h.value))
+     docElement.removeAttribute('width')
+     docElement.removeAttribute('height')
+ 
+@@ -3939,8 +3935,8 @@ class HeaderedFormatter(optparse.Indente
+     """
+ 
+     def format_usage(self, usage):
+-        return "%s %s\n%s\n%s" % (APP, VER, COPYRIGHT,
+-                                  optparse.IndentedHelpFormatter.format_usage(self, usage))
++        return "{} {}\n{}\n{}".format(APP, VER, COPYRIGHT,
++                                      optparse.IndentedHelpFormatter.format_usage(self, usage))
+ 
+ 
+ # GZ: would prefer this to be in a function or class scope, but tests etc need
+@@ -4112,7 +4108,7 @@ def generateDefaultOptions():
+ 
+ # sanitizes options by updating attributes in a set of defaults options while discarding unknown attributes
+ def sanitizeOptions(options=None):
+-    optionsDict = dict((key, getattr(options, key)) for key in dir(options) if not key.startswith('__'))
++    optionsDict = {key: getattr(options, key) for key in dir(options) if not key.startswith('__')}
+ 
+     sanitizedOptions = _options_parser.get_default_values()
+     sanitizedOptions._update_careful(optionsDict)
+Index: scour-0.38.2/scour/svg_regex.py
+===================================================================
+--- scour-0.38.2.orig/scour/svg_regex.py
++++ scour-0.38.2/scour/svg_regex.py
+@@ -41,7 +41,6 @@ Out[4]: [('M', [(0.60509999999999997, 0.
+ In [5]: svg_parser.parse('M 100-200')  # Another edge case
+ Out[5]: [('M', [(100.0, -200.0)])]
+ """
+-from __future__ import absolute_import
+ 
+ import re
+ from decimal import Decimal, getcontext
+@@ -51,7 +50,7 @@ from functools import partial
+ # Sentinel.
+ 
+ 
+-class _EOF(object):
++class _EOF:
+ 
+     def __repr__(self):
+         return 'EOF'
+@@ -66,7 +65,7 @@ lexicon = [
+ ]
+ 
+ 
+-class Lexer(object):
++class Lexer:
+     """ Break SVG path data into tokens.
+ 
+     The SVG spec requires that tokens are greedy. This lexer relies on Python's
+@@ -81,7 +80,7 @@ class Lexer(object):
+         self.lexicon = lexicon
+         parts = []
+         for name, regex in lexicon:
+-            parts.append('(?P<%s>%s)' % (name, regex))
++            parts.append('(?P<{}>{})'.format(name, regex))
+         self.regex_string = '|'.join(parts)
+         self.regex = re.compile(self.regex_string)
+ 
+@@ -103,7 +102,7 @@ class Lexer(object):
+ svg_lexer = Lexer(lexicon)
+ 
+ 
+-class SVGPathParser(object):
++class SVGPathParser:
+     """ Parse SVG <path> data into a list of commands.
+ 
+     Each distinct command will take the form of a tuple (command, data). The
+@@ -163,7 +162,7 @@ class SVGPathParser(object):
+         commands = []
+         while token[0] is not EOF:
+             if token[0] != 'command':
+-                raise SyntaxError("expecting a command; got %r" % (token,))
++                raise SyntaxError("expecting a command; got {!r}".format(token))
+             rule = self.command_dispatch[token[1]]
+             command_group, token = rule(next_val_fn, token)
+             commands.append(command_group)
+@@ -232,23 +231,23 @@ class SVGPathParser(object):
+         while token[0] in self.number_tokens:
+             rx = Decimal(token[1]) * 1
+             if rx < Decimal("0.0"):
+-                raise SyntaxError("expecting a nonnegative number; got %r" % (token,))
++                raise SyntaxError("expecting a nonnegative number; got {!r}".format(token))
+ 
+             token = next_val_fn()
+             if token[0] not in self.number_tokens:
+-                raise SyntaxError("expecting a number; got %r" % (token,))
++                raise SyntaxError("expecting a number; got {!r}".format(token))
+             ry = Decimal(token[1]) * 1
+             if ry < Decimal("0.0"):
+-                raise SyntaxError("expecting a nonnegative number; got %r" % (token,))
++                raise SyntaxError("expecting a nonnegative number; got {!r}".format(token))
+ 
+             token = next_val_fn()
+             if token[0] not in self.number_tokens:
+-                raise SyntaxError("expecting a number; got %r" % (token,))
++                raise SyntaxError("expecting a number; got {!r}".format(token))
+             axis_rotation = Decimal(token[1]) * 1
+ 
+             token = next_val_fn()
+             if token[1][0] not in ('0', '1'):
+-                raise SyntaxError("expecting a boolean flag; got %r" % (token,))
++                raise SyntaxError("expecting a boolean flag; got {!r}".format(token))
+             large_arc_flag = Decimal(token[1][0]) * 1
+ 
+             if len(token[1]) > 1:
+@@ -257,7 +256,7 @@ class SVGPathParser(object):
+             else:
+                 token = next_val_fn()
+             if token[1][0] not in ('0', '1'):
+-                raise SyntaxError("expecting a boolean flag; got %r" % (token,))
++                raise SyntaxError("expecting a boolean flag; got {!r}".format(token))
+             sweep_flag = Decimal(token[1][0]) * 1
+ 
+             if len(token[1]) > 1:
+@@ -266,12 +265,12 @@ class SVGPathParser(object):
+             else:
+                 token = next_val_fn()
+             if token[0] not in self.number_tokens:
+-                raise SyntaxError("expecting a number; got %r" % (token,))
++                raise SyntaxError("expecting a number; got {!r}".format(token))
+             x = Decimal(token[1]) * 1
+ 
+             token = next_val_fn()
+             if token[0] not in self.number_tokens:
+-                raise SyntaxError("expecting a number; got %r" % (token,))
++                raise SyntaxError("expecting a number; got {!r}".format(token))
+             y = Decimal(token[1]) * 1
+ 
+             token = next_val_fn()
+@@ -281,7 +280,7 @@ class SVGPathParser(object):
+ 
+     def rule_coordinate(self, next_val_fn, token):
+         if token[0] not in self.number_tokens:
+-            raise SyntaxError("expecting a number; got %r" % (token,))
++            raise SyntaxError("expecting a number; got {!r}".format(token))
+         x = getcontext().create_decimal(token[1])
+         token = next_val_fn()
+         return x, token
+@@ -289,11 +288,11 @@ class SVGPathParser(object):
+     def rule_coordinate_pair(self, next_val_fn, token):
+         # Inline these since this rule is so common.
+         if token[0] not in self.number_tokens:
+-            raise SyntaxError("expecting a number; got %r" % (token,))
++            raise SyntaxError("expecting a number; got {!r}".format(token))
+         x = getcontext().create_decimal(token[1])
+         token = next_val_fn()
+         if token[0] not in self.number_tokens:
+-            raise SyntaxError("expecting a number; got %r" % (token,))
++            raise SyntaxError("expecting a number; got {!r}".format(token))
+         y = getcontext().create_decimal(token[1])
+         token = next_val_fn()
+         return [x, y], token
+Index: scour-0.38.2/scour/svg_transform.py
+===================================================================
+--- scour-0.38.2.orig/scour/svg_transform.py
++++ scour-0.38.2/scour/svg_transform.py
+@@ -55,17 +55,14 @@ Multiple transformations are supported:
+ In [12]: svg_transform_parser.parse('translate(30 -30) rotate(36)')
+ Out[12]: [('translate', [30.0, -30.0]), ('rotate', [36.0])]
+ """
+-from __future__ import absolute_import
+ 
+ import re
+ from decimal import Decimal
+ from functools import partial
+ 
+-from six.moves import range
+-
+ 
+ # Sentinel.
+-class _EOF(object):
++class _EOF:
+ 
+     def __repr__(self):
+         return 'EOF'
+@@ -82,7 +79,7 @@ lexicon = [
+ ]
+ 
+ 
+-class Lexer(object):
++class Lexer:
+     """ Break SVG path data into tokens.
+ 
+     The SVG spec requires that tokens are greedy. This lexer relies on Python's
+@@ -97,7 +94,7 @@ class Lexer(object):
+         self.lexicon = lexicon
+         parts = []
+         for name, regex in lexicon:
+-            parts.append('(?P<%s>%s)' % (name, regex))
++            parts.append('(?P<{}>{})'.format(name, regex))
+         self.regex_string = '|'.join(parts)
+         self.regex = re.compile(self.regex_string)
+ 
+@@ -119,7 +116,7 @@ class Lexer(object):
+ svg_lexer = Lexer(lexicon)
+ 
+ 
+-class SVGTransformationParser(object):
++class SVGTransformationParser:
+     """ Parse SVG transform="" data into a list of commands.
+ 
+     Each distinct command will take the form of a tuple (type, data). The
+@@ -165,15 +162,15 @@ class SVGTransformationParser(object):
+ 
+     def rule_svg_transform(self, next_val_fn, token):
+         if token[0] != 'command':
+-            raise SyntaxError("expecting a transformation type; got %r" % (token,))
++            raise SyntaxError("expecting a transformation type; got {!r}".format(token))
+         command = token[1]
+         rule = self.command_dispatch[command]
+         token = next_val_fn()
+         if token[0] != 'coordstart':
+-            raise SyntaxError("expecting '('; got %r" % (token,))
++            raise SyntaxError("expecting '('; got {!r}".format(token))
+         numbers, token = rule(next_val_fn, token)
+         if token[0] != 'coordend':
+-            raise SyntaxError("expecting ')'; got %r" % (token,))
++            raise SyntaxError("expecting ')'; got {!r}".format(token))
+         token = next_val_fn()
+         return (command, numbers), token
+ 
+@@ -226,7 +223,7 @@ class SVGTransformationParser(object):
+ 
+     def rule_number(self, next_val_fn, token):
+         if token[0] not in self.number_tokens:
+-            raise SyntaxError("expecting a number; got %r" % (token,))
++            raise SyntaxError("expecting a number; got {!r}".format(token))
+         x = Decimal(token[1]) * 1
+         token = next_val_fn()
+         return x, token
+Index: scour-0.38.2/setup.py
+===================================================================
+--- scour-0.38.2.orig/setup.py
++++ scour-0.38.2/setup.py
+@@ -44,13 +44,13 @@ Authors:
+ """
+ 
+ VERSIONFILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), "scour", "__init__.py")
+-verstrline = open(VERSIONFILE, "rt").read()
+-VSRE = r"^__version__ = u['\"]([^'\"]*)['\"]"
++verstrline = open(VERSIONFILE).read()
++VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
+ mo = re.search(VSRE, verstrline, re.M)
+ if mo:
+     verstr = mo.group(1)
+ else:
+-    raise RuntimeError("Unable to find version string in %s." % (VERSIONFILE,))
++    raise RuntimeError("Unable to find version string in {}.".format(VERSIONFILE))
+ 
+ 
+ setup(
+@@ -64,7 +64,7 @@ setup(
+     author_email='codedread@gmail.com',
+     url='https://github.com/scour-project/scour',
+     platforms=('Any'),
+-    install_requires=['six>=1.9.0'],
++    install_requires=[],
+     packages=find_packages(),
+     zip_safe=True,
+     entry_points={
+Index: scour-0.38.2/test_css.py
+===================================================================
+--- scour-0.38.2.orig/test_css.py
++++ scour-0.38.2/test_css.py
+@@ -1,5 +1,4 @@
+ #!/usr/bin/env python
+-# -*- coding: utf-8 -*-
+ 
+ #  Test Harness for Scour
+ #
+@@ -19,7 +18,6 @@
+ #   See the License for the specific language governing permissions and
+ #   limitations under the License.
+ 
+-from __future__ import absolute_import
+ 
+ import unittest
+ 
+Index: scour-0.38.2/test_scour.py
+===================================================================
+--- scour-0.38.2.orig/test_scour.py
++++ scour-0.38.2/test_scour.py
+@@ -20,16 +20,12 @@
+ #   See the License for the specific language governing permissions and
+ #   limitations under the License.
+ 
+-from __future__ import print_function   # use print() as a function in Python 2 (see PEP 3105)
+-from __future__ import absolute_import  # use absolute imports by default in Python 2 (see PEP 328)
+ 
++import io
+ import os
+ import sys
+ import unittest
+ 
+-import six
+-from six.moves import map, range
+-
+ from scour.scour import (make_well_formed, parse_args, scourString, scourXmlFile, start, run,
+                          XML_ENTS_ESCAPE_APOS, XML_ENTS_ESCAPE_QUOT)
+ from scour.svg_regex import svg_parser
+@@ -1149,30 +1145,30 @@ class HandleEncodingUTF8(unittest.TestCa
+ 
+     def runTest(self):
+         doc = scourXmlFile('unittests/encoding-utf8.svg')
+-        text = u'Hello in many languages:\n' \
+-               u'ar: أهلا\n' \
+-               u'bn: হ্যালো\n' \
+-               u'el: Χαίρετε\n' \
+-               u'en: Hello\n' \
+-               u'hi: नमस्ते\n' \
+-               u'iw: שלום\n' \
+-               u'ja: こんにちは\n' \
+-               u'km: ជំរាបសួរ\n' \
+-               u'ml: ഹലോ\n' \
+-               u'ru: Здравствуйте\n' \
+-               u'ur: ہیلو\n' \
+-               u'zh: 您好'
+-        desc = six.text_type(doc.getElementsByTagNameNS(SVGNS, 'desc')[0].firstChild.wholeText).strip()
++        text = 'Hello in many languages:\n' \
++               'ar: أهلا\n' \
++               'bn: হ্যালো\n' \
++               'el: Χαίρετε\n' \
++               'en: Hello\n' \
++               'hi: नमस्ते\n' \
++               'iw: שלום\n' \
++               'ja: こんにちは\n' \
++               'km: ជំរាបសួរ\n' \
++               'ml: ഹലോ\n' \
++               'ru: Здравствуйте\n' \
++               'ur: ہیلو\n' \
++               'zh: 您好'
++        desc = str(doc.getElementsByTagNameNS(SVGNS, 'desc')[0].firstChild.wholeText).strip()
+         self.assertEqual(desc, text,
+                          'Did not handle international UTF8 characters')
+-        desc = six.text_type(doc.getElementsByTagNameNS(SVGNS, 'desc')[1].firstChild.wholeText).strip()
+-        self.assertEqual(desc, u'“”‘’–—…‐‒°©®™•½¼¾⅓⅔†‡µ¢£€«»♠♣♥♦¿�',
++        desc = str(doc.getElementsByTagNameNS(SVGNS, 'desc')[1].firstChild.wholeText).strip()
++        self.assertEqual(desc, '“”‘’–—…‐‒°©®™•½¼¾⅓⅔†‡µ¢£€«»♠♣♥♦¿�',
+                          'Did not handle common UTF8 characters')
+-        desc = six.text_type(doc.getElementsByTagNameNS(SVGNS, 'desc')[2].firstChild.wholeText).strip()
+-        self.assertEqual(desc, u':-×÷±∞π∅≤≥≠≈∧∨∩∪∈∀∃∄∑∏←↑→↓↔↕↖↗↘↙↺↻⇒⇔',
++        desc = str(doc.getElementsByTagNameNS(SVGNS, 'desc')[2].firstChild.wholeText).strip()
++        self.assertEqual(desc, ':-×÷±∞π∅≤≥≠≈∧∨∩∪∈∀∃∄∑∏←↑→↓↔↕↖↗↘↙↺↻⇒⇔',
+                          'Did not handle mathematical UTF8 characters')
+-        desc = six.text_type(doc.getElementsByTagNameNS(SVGNS, 'desc')[3].firstChild.wholeText).strip()
+-        self.assertEqual(desc, u'⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁽⁾ⁿⁱ₀₁₂₃₄₅₆₇₈₉₊₋₌₍₎',
++        desc = str(doc.getElementsByTagNameNS(SVGNS, 'desc')[3].firstChild.wholeText).strip()
++        self.assertEqual(desc, '⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁽⁾ⁿⁱ₀₁₂₃₄₅₆₇₈₉₊₋₌₍₎',
+                          'Did not handle superscript/subscript UTF8 characters')
+ 
+ 
+@@ -1180,8 +1176,8 @@ class HandleEncodingISO_8859_15(unittest
+ 
+     def runTest(self):
+         doc = scourXmlFile('unittests/encoding-iso-8859-15.svg')
+-        desc = six.text_type(doc.getElementsByTagNameNS(SVGNS, 'desc')[0].firstChild.wholeText).strip()
+-        self.assertEqual(desc, u'áèîäöüß€ŠšŽžŒœŸ', 'Did not handle ISO 8859-15 encoded characters')
++        desc = str(doc.getElementsByTagNameNS(SVGNS, 'desc')[0].firstChild.wholeText).strip()
++        self.assertEqual(desc, 'áèîäöüß€ŠšŽžŒœŸ', 'Did not handle ISO 8859-15 encoded characters')
+ 
+ 
+ class HandleSciNoInPathData(unittest.TestCase):
+@@ -2231,7 +2227,7 @@ class PathCommandRewrites(unittest.TestC
+             expected_path, message = expected_paths[i]
+             self.assertEqual(actual_path,
+                              expected_path,
+-                             '%s: "%s" != "%s"' % (message, actual_path, expected_path))
++                             '{}: "{}" != "{}"'.format(message, actual_path, expected_path))
+ 
+ 
+ class DefaultsRemovalToplevel(unittest.TestCase):
+@@ -2553,7 +2549,7 @@ class CommandLineUsage(unittest.TestCase
+     #     stdout: a string representing the combined output to 'stdout'
+     #     stderr: a string representing the combined output to 'stderr'
+     def _run_scour(self):
+-        class Result(object):
++        class Result:
+             pass
+ 
+         result = Result()
+@@ -2581,12 +2577,12 @@ class CommandLineUsage(unittest.TestCase
+         # TODO: can we create file objects that behave *exactly* like the original?
+         #       this is a mess since we have to ensure compatibility across Python 2 and 3 and it seems impossible
+         #       to replicate all the details of 'stdin', 'stdout' and 'stderr'
+-        class InOutBuffer(six.StringIO, object):
++        class InOutBuffer(io.StringIO):
+             def write(self, string):
+                 try:
+-                    return super(InOutBuffer, self).write(string)
++                    return super().write(string)
+                 except TypeError:
+-                    return super(InOutBuffer, self).write(string.decode())
++                    return super().write(string.decode())
+ 
+         sys.stdin = self.temp_stdin = InOutBuffer()
+         sys.stdout = self.temp_stdout = InOutBuffer()
+@@ -2740,7 +2736,7 @@ class EmbedRasters(unittest.TestCase):
+                             "Raster image from local path '" + href + "' not embedded.")
+ 
+     def test_raster_paths_local_absolute(self):
+-        with open('unittests/raster-formats.svg', 'r') as f:
++        with open('unittests/raster-formats.svg') as f:
+             svg = f.read()
+ 
+         # create a reference string by scouring the original file with relative links
+Index: scour-0.38.2/tox.ini
+===================================================================
+--- scour-0.38.2.orig/tox.ini
++++ scour-0.38.2/tox.ini
+@@ -1,7 +1,6 @@
+ [tox]
+ envlist =
+     pypy
+-    py27
+     py34
+     py35
+     py36
+@@ -15,7 +14,6 @@ envlist =
+ 
+ [testenv]
+ deps =
+-    six
+     coverage
+ 
+ commands =

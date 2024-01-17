@@ -1,0 +1,8 @@
+<package name="emil" project="openSUSE:Factory">
+  <title>E-Mail Filter</title>
+  <description>This program enables you to convert MIME, SUN mailtool, and 'plain old
+style RFC822'.
+
+It is especially useful for elm users.</description>
+  <devel project="server:mail" package="emil"/>
+</package>

@@ -1,0 +1,29 @@
+--- getoption.y	1996-06-04 13:17:35.000000000 +0000
++++ getoption.y@	2004-08-24 11:58:21.000000000 +0000
+@@ -162,6 +162,7 @@
+ }
+ 
+ extern 	char	* yytext;	/* defined by flex */
++int yylex();
+ 
+ /* static	int	yywrap()
+ 	{
+@@ -169,8 +170,6 @@
+ 	}
+ */
+ 
+-#define	yywrap()	1
+-
+ static	void	yyerror(char * msg)
+ {
+ 	char	ebuf[2048];
+--- getoption.l	1996-02-08 11:11:14.000000000 +0000
++++ getoption.l@	2004-08-24 11:58:28.000000000 +0000
+@@ -1,3 +1,7 @@
++%option noyywrap
++%option noyymore
++%option nounput
++
+ %a 4000
+ %o 8000
+ %k 100

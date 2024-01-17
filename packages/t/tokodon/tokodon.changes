@@ -1,0 +1,209 @@
+-------------------------------------------------------------------
+Fri Dec 15 21:31:51 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Require extra-cmake-modules at build time
+
+-------------------------------------------------------------------
+Tue Dec  5 14:20:45 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.4/
+- Changes since 23.08.3:
+  * Force the fullscreen image viewer focus so keybinds work
+  * Protect against a notification missing a post (kde#475825)
+
+-------------------------------------------------------------------
+Tue Nov  7 17:05:45 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * Fix account switcher not working in certain sections (kde#475897)
+  * snapcraft: fix package, gnome-keyring not gnome-keychain
+  * snapcraft: Bundle gnome-keychain for libsecret. New content pack.
+    Use kirigami-addons meta package.
+  * Add CI template for building APKs on invent
+  * snapcraft: Add missing qml module for purpose.
+  * snapcraft: remove quote accidently placed at the end of LD_LIBRARY_PATH..
+  * snapcraft: Set LD_LIBRARY_PATH at runtime to include libs in subdirs
+    not found. Add missing qml module.
+  * snapcraft: add missing libblas and add to LD search path. Add libsecret dep.
+  * Remove _L1 from cherry-picking error
+  * Fix some weird attachment issues if they don't exist locally
+  * snapcraft: add missing dep libmpv.
+  * snapcraft: initial import snapcraft files.
+
+-------------------------------------------------------------------
+Tue Oct 10 18:28:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * Protect against notifications that don't have a post associated (kde#475057)
+  * Require kirigami-addons 0.11
+  * Fix the follows page in notifications not working at all
+  * Use the TextArea's implicitHeight when calculating composer height (kde#471519)
+
+-------------------------------------------------------------------
+Tue Sep 12 11:56:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- Changes since 23.08.0:
+  * Add release note for the past two versions
+
+-------------------------------------------------------------------
+Sun Aug 20 14:00:32 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- Changes since 23.07.90:
+  * Add fake identity so the timeline test works again
+  * Use upload icons instead of download icons in the profile editor
+  * You did implement account editing, uncomment the arrow
+  * Use display name instead of the username in the timeline name
+  * Stop Qt Quick from complaining because "there's no place to replace"
+  * Improve Poll, by removing the invalid state and registering it properly
+  * Stop UserInfo from reading the pageStack if nothing has been added to it
+  * Fix AbstractAccount::apiUrl to strip slashes
+  * Stop interactions with posts causing the entire delegate to reload
+  * Improve default language selection when the preference is missing
+  * Add support for more poll options, if Pleroma/Akkoma reports it
+  * Handle Pleroma/Akkoma storing max post characters differently
+  * Fix my dumb mistake of adding two of the same property
+  * Set a maximum line count so link descriptions elide properly
+  * Fix the instance name sometimes getting out of sync in switcher
+  * Overhaul status composer attachment grid to match expected behavior
+
+-------------------------------------------------------------------
+Mon Aug 14 08:03:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Fix spacing in LinkPreview
+  * Show Link Preview only when Post Content is visible.
+
+-------------------------------------------------------------------
+Tue Aug  1 10:14:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes since 23.04.3, only listing bugfixes:
+  * Open account links inside Tokodon (kde#472496)
+  * Respect the filter action, so users can completely hide filtered posts (kde#471211)
+  * Set the custom icon theme to the main icon theme, not the fallback (kde#467143)
+  * Squash yet another duplicate accounts bug (kde#466440)
+  * Better communique state of search progress (kde#467206)
+  * Add a loading placeholder for searching (kde#467206)
+  * When user hides media, automatically pause the video (kde#467214)
+  * Fix -v arg not working when tokodon is already running (kde#467205)
+  * Allow submitting posts by pressing CTRL+ENTER or CTRL+RETURN (kde#467164)
+  * Make the composer text automatically focused (kde#467162)
+
+-------------------------------------------------------------------
+Tue Jul  4 10:20:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.3/
+- No code change since 23.04.2
+
+-------------------------------------------------------------------
+Tue Jun  6 20:02:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * Fix obvious copy/paste mistakes
+  * When going to separate app pages, clear the whole pageStack
+  * Squash yet another duplicate accounts bug (kde#466440)
+  * Fix reading invalid accounts from conf
+
+-------------------------------------------------------------------
+Wed May 24 12:17:27 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Require kirigami-addons
+
+-------------------------------------------------------------------
+Tue May  9 10:48:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * fix full screen image preview on NotificationPage
+  * fix new post action on NotificationPage
+  * Fix visible binding loop on TimelinePage
+
+-------------------------------------------------------------------
+Sat Apr 15 08:46:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.0/
+
+-------------------------------------------------------------------
+Fri Mar 31 16:42:51 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Mar 18 18:19:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.80
+  * New feature release
+
+-------------------------------------------------------------------
+Fri Feb 17 11:29:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.02.0:
+  * https://carlschwan.eu/2023/02/17/tokodon-23.02.0-release/
+  * Post composer revamp
+  * The models for timelines has been completely refactored
+  * The search field introduced during the last released got a
+    nice visual refresh
+  * It is now possible to configure the color scheme used by
+    Tokodon independently from the Plasma color scheme
+
+-------------------------------------------------------------------
+Mon Jan  2 08:51:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.01.0
+  * New timeline design
+  * Searching post, accounts, tags is now possible
+  * Hashtag Handling
+  * Conversation View
+  * Poll Support
+  * Account Editor
+  * Real-Time Timeline Update
+
+-------------------------------------------------------------------
+Tue Dec 20 12:06:07 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.11.2
+  * New account switcher
+  * Image previews are now contained inside the window
+  * Improvements in loading media
+  * Support for custom emojis
+
+-------------------------------------------------------------------
+Fri Nov 18 06:43:18 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Init tokodon

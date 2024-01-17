@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c795feba4199f3a903788225cf4df7e8</srcmd5>
+    <version>0.5.1</version>
+    <time>1516092121</time>
+    <user>dimstar_suse</user>
+    <comment>fixed license</comment>
+    <requestid>563555</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fc51f71bb8d5415473dbe152a6a30f2c</srcmd5>
+    <version>0.5.1</version>
+    <time>1572558364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744502</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>18db8d4ba0d36b28eeaa53530f022fba</srcmd5>
+    <version>0.5.1</version>
+    <time>1582209464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777698</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6eed4be108cd7a3ad2abab154eeda7f3</srcmd5>
+    <version>0.6.0</version>
+    <time>1593727331</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807063</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>14d987147abb1b54a2158f65e35876e0</srcmd5>
+    <version>0.7.0</version>
+    <time>1617130719</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>869496</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>961e8995c66791f4b0c576df5304c8bb</srcmd5>
+    <version>0.7.2</version>
+    <time>1643666228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950034</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5a0318890a78e6d153994479748e563a</srcmd5>
+    <version>0.7.2</version>
+    <time>1661346666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998909</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8ec9da0d56a972161532171396e9b243</srcmd5>
+    <version>0.7.3</version>
+    <time>1671023499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042821</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>761716e87fdd5a2b13559341e3296a1b</srcmd5>
+    <version>0.8.0</version>
+    <time>1693235562</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105587</requestid>
+  </revision>
+</revisionlist>

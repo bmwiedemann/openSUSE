@@ -1,0 +1,25 @@
+Index: Makefile.in
+===================================================================
+--- Makefile.in.orig	2009-06-02 13:34:20.000000000 +0200
++++ Makefile.in	2009-06-02 13:47:39.000000000 +0200
+@@ -212,14 +212,14 @@ test:
+ 	./emiltest Misc;
+ 
+ install: installdirs
+-	$(INSTALL_PROGRAM) emil $(bindir)/emil
+-	$(INSTALL_DATA) emil.cf $(MAINCF)
+-	$(INSTALL_DATA) charset/charsets.cpl $(CHARFILE)
+-	$(INSTALL_DATA) emil.$(manext) $(mandir)/man$(manext)
+-	$(INSTALL_DATA) emil.cf.$(manext) $(mandir)/man$(manext)
++	$(INSTALL_PROGRAM) emil $(DESTDIR)$(bindir)/emil
++	$(INSTALL_DATA) emil.cf $(DESTDIR)$(MAINCF)
++	$(INSTALL_DATA) charset/charsets.cpl $(DESTDIR)$(CHARFILE)
++	$(INSTALL_DATA) emil.$(manext) $(DESTDIR)$(mandir)/man$(manext)
++	$(INSTALL_DATA) emil.cf.$(manext) $(DESTDIR)$(mandir)/man$(manext)
+ 
+ installdirs:
+-	$(srcdir)/mkinstalldirs $(bindir) $(libdir) $(mandir)/man$(manext)
++	$(srcdir)/mkinstalldirs $(DESTDIR)$(bindir) $(DESTDIR)$(libdir) $(DESTDIR)$(mandir)/man$(manext)
+ 
+ uninstall: 
+ 	if test -f $(bindir)/emil ; then \
