@@ -1,0 +1,23 @@
+Index: coveralls-check-1.2.1/tests.py
+===================================================================
+--- coveralls-check-1.2.1.orig/tests.py	2018-07-11 09:48:59.000000000 +0200
++++ coveralls-check-1.2.1/tests.py	2022-03-09 10:15:55.872201780 +0100
+@@ -2,7 +2,6 @@ import json
+ import sys
+ 
+ import pytest
+-from mock import Mock
+ from responses import RequestsMock
+ from testfixtures import ShouldRaise, OutputCapture, Replacer, compare
+ 
+@@ -10,8 +9,10 @@ from coveralls_check import main
+ 
+ if sys.version_info[0] == 2:
+     PY2 = True
++    from mock import Mock
+ else:
+     PY2 = False
++    from unittest.mock import Mock
+ 
+ SAMPLE_JSON = {
+     "commit_sha": "xyz",

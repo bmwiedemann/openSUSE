@@ -1,0 +1,52 @@
+Index: cairocffi-1.5.1/cairocffi/test_cairo.py
+===================================================================
+--- cairocffi-1.5.1.orig/cairocffi/test_cairo.py
++++ cairocffi-1.5.1/cairocffi/test_cairo.py
+@@ -21,7 +21,6 @@ import sys
+ import tempfile
+ 
+ import cairocffi
+-import pikepdf
+ import pytest
+ 
+ from . import (
+@@ -239,6 +238,7 @@ def test_device_scale():
+ 
+ @pytest.mark.xfail(cairo_version() < 11504,
+                    reason='Cairo version too low')
++@pytest.mark.skip(reason="No pikepdf")
+ def test_metadata():
+     file_obj = io.BytesIO()
+     surface = PDFSurface(file_obj, 1, 1)
+@@ -264,6 +264,7 @@ def test_metadata():
+ 
+ @pytest.mark.xfail(cairo_version() < 11504,
+                    reason='Cairo version too low')
++@pytest.mark.skip(reason="No pikepdf")
+ def test_outline():
+     file_obj = io.BytesIO()
+     surface = PDFSurface(file_obj, 1, 1)
+@@ -280,6 +281,7 @@ def test_outline():
+ 
+ @pytest.mark.xfail(cairo_version() < 11504,
+                    reason='Cairo version too low')
++@pytest.mark.skip(reason="No pikepdf")
+ def test_page_label():
+     file_obj = io.BytesIO()
+     surface = PDFSurface(file_obj, 1, 1)
+@@ -291,6 +293,7 @@ def test_page_label():
+ 
+ @pytest.mark.xfail(cairo_version() < 11504,
+                    reason='Cairo version too low')
++@pytest.mark.skip(reason="No pikepdf")
+ def test_tag():
+     file_obj = io.BytesIO()
+     surface = PDFSurface(file_obj, 10, 10)
+@@ -419,6 +422,7 @@ def test_pdf_versions():
+     assert file_obj.getvalue().startswith(b'%PDF-1.4')
+ 
+ 
++@pytest.mark.skip(reason="No pikepdf")
+ def test_pdf_surface():
+     with temp_directory() as tempdir:
+         filename = os.path.join(tempdir, 'foo.pdf')

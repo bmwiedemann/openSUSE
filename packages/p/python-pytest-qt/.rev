@@ -1,0 +1,169 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b2e89ffdbc5f539cd7f2b942b313fefc</srcmd5>
+    <version>2.1.2</version>
+    <time>1504102932</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by the latest version of spyder and spyder3</comment>
+    <requestid>519217</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ac890166528f44b55af9d3206c62bf51</srcmd5>
+    <version>2.3.1</version>
+    <time>1526372067</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable tests
+- Add patch skip-timeout-tests.patch to skip test randomly
+  failing in OBS
+
+- specfile:
+  * update copyright year
+- update to version 2.3.1:
+  * PYTEST_QT_API environment variable correctly wins over qt_api ini
+    variable if both are set at the same time (#196). Thanks @mochick
+    for the PR.
+- changes from version 2.3.0:
+  * New qapp_args fixture which can be used to pass custom arguments
+    to QApplication. Thanks @The-Compiler for the PR.
+- changes from version 2.2.1:
+  * modeltester now accepts QBrush for BackgroundColorRole and
+    TextColorRole (#189). Thanks @p0las for the PR.
+- changes from version 2.2.0:
+  * pytest-qt now supports PySide2 thanks to @rth!</comment>
+    <requestid>606759</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eaf75cd1f5a896504eae803733141379</srcmd5>
+    <version>2.4.0</version>
+    <time>1527934368</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613325</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>14935f3b3c7b7390257ded1f8414c0c3</srcmd5>
+    <version>3.2.1</version>
+    <time>1544441342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656135</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cbde8e354335f48bb6d151543ff4e480</srcmd5>
+    <version>3.2.2</version>
+    <time>1549018064</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.2:
+  * Fix Off-by-one error in modeltester (#249). Thanks @ext-jmmugnes for the PR.</comment>
+    <requestid>670279</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>54dff06a367e81f518f64c208aaec58f</srcmd5>
+    <version>3.3.0</version>
+    <time>1578320682</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.0:
+  * Improve message in uncaught exceptions by mentioning the Qt event loop instead of Qt virtual methods (#255).
+  * pytest-qt now requires pytest version &gt;= 3.0.
+  * qtbot.addWiget now supports an optional before_close_func keyword-only argument, which if given is a function which is called before the widget is closed, with the widget as first argument.</comment>
+    <requestid>761148</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>28306464c9891ee1d6b46f16e399cb9e</srcmd5>
+    <version>3.3.0</version>
+    <time>1601044611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>837379</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>03b31099bb15a3ba6eb83491adfebe22</srcmd5>
+    <version>4.0.2</version>
+    <time>1626208653</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906055</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>beb7ea478d88815a0e11c9d90643d661</srcmd5>
+    <version>4.1.0</version>
+    <time>1657015789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986733</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fd6e829c86e62a1c4d0295a4049223bc</srcmd5>
+    <version>4.2.0</version>
+    <time>1669816828</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition
+- Update to 4.2.0:
+  * Import the code sub-package from the correct location rather than the
+    deprecated py package, restoring compatibility with pytest 7.2.0, where py
+    was dropped. Thanks @The-Compiler for the PR.
+  * Use pytest.hookimpl to configure hooks, avoiding a deprecation warning in
+    pytest 7.2.0. Thanks @The-Compiler for the PR.
+  * Now pytest-qt will check if any of the Qt libraries is already imported by
+    the time the plugin loads, and use it if that is the case (#412). Thanks
+    @eyllanesc for the PR.
+  * Most custom pytest-qt exceptions can be accessed via qtbot (for example
+    qtbot.TimeoutError), but it was not always explicit in the documentation
+    that this is the recommended way to access those exceptions, instead of
+    importing them from pytestqt.exceptions. This is now clarified in the
+    documentation and examples, and an alias to ScreenshotError has been added
+    to qtbot so it can be accessed in the same way (#460).
+</comment>
+    <requestid>1039106</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4dace0c4da0989f7defe3c842f753452</srcmd5>
+    <version>4.2.0</version>
+    <time>1684596251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088038</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>da762f8548524efd0afa302190c9a20c</srcmd5>
+    <version>4.2.0</version>
+    <time>1686506163</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092225</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>36316788cf20e5a81475a374522de7a5</srcmd5>
+    <version>4.2.0</version>
+    <time>1687796156</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1094952 from bnavigator
+
+- Remove xfail_strict from pytest config
+    * pyside2 and py311 XPASS a test, gh#pytest-dev/pytest-qt#419</comment>
+    <requestid>1095240</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1eb1ab27e615e522848d9db10ee793d5</srcmd5>
+    <version>4.3.1</version>
+    <time>1704487553</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.1:
+  * Added official support for Python 3.12.
+  * Python 3.7 is no longer supported.
+  * qapp now sets up the QApplication instance with a command
+    line argument like this QApplication([prog_name]) instead of
+    using an empty list QApplication([]). Here prog_name is the
+    name of the app which defaults to pytest-qt-app, but can be
+    redefined in the pytest.ini file, see :ref:`qapp
+    fixture&lt;setting-qapp-name&gt;`. Alternatively, the arguments
+    that will be passed to QApplication can be defined explicitly
+    using the qapp_args fixture. This means that the default
+    behavior of the qapp_args fixture is now also changed
+    accordingly: it now returns the list [prog_name] instead of
+    an empty list.
+
+    `@The-Compiler`_ for the PR.</comment>
+    <requestid>1137115</requestid>
+  </revision>
+</revisionlist>

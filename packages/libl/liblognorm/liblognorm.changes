@@ -1,0 +1,186 @@
+-------------------------------------------------------------------
+Mon Jan 14 15:52:24 CET 2019 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Mon Nov 12 15:57:19 UTC 2018 - kdalamagkidis@suse.com
+
+- liblognorm 2.0.6:
+  * added Checkpoint LEA transfer format
+  * added lazy matching mode to string parser
+  * suppress invalid param error for field name "-" for hexnumber,
+    float, number, date-rfc3164 and date-rfc5424
+  * fix cisco-interface-spec failure when at end of line
+- removed liblognorm-2.0.4-no-return-in-nonvoid-function.patch
+
+-------------------------------------------------------------------
+Tue Nov 14 13:59:35 UTC 2017 - astieger@suse.com
+
+- liblognorm 2.0.4:
+  * added support for native JSON number formats
+    supported by parsers: number, float, hex
+  * added support for creating unix timestamps
+    supported by parsers: date-rfc3164, date-rfc5424
+- add liblognorm-2.0.4-no-return-in-nonvoid-function.patch
+
+-------------------------------------------------------------------
+Fri May  5 11:27:00 UTC 2017 - jmatejek@suse.com
+
+- drop HTML docs and python-Sphinx dependency
+- use pkgconfig always
+
+-------------------------------------------------------------------
+Tue Apr  4 09:32:33 UTC 2017 - astieger@suse.com
+
+- liblognorm 2.0.3:
+  * add ability to load rulebase from a string
+  * string parser did not correctly parse word at end of line
+  * literal parser did not always store value if name is specified
+
+-------------------------------------------------------------------
+Mon Jan 30 17:31:03 CET 2017 - ndas@suse.com
+
+- This updated library is needed for latest rsyslog(fate#320546)
+
+-------------------------------------------------------------------
+Sun Dec  4 20:26:49 UTC 2016 - astieger@suse.com
+
+- liblognorm 2.0.2:
+  * bugfix: no error was emitted on invalid "annotate" line
+  * "annnotate": permit inline comments
+  * bugfix: abort in literal path compaction when using
+    "alternative" parser
+  * bugfix: lognormalizer could loop
+  
+-------------------------------------------------------------------
+Thu Aug  4 08:04:19 UTC 2016 - astieger@suse.com
+
+- liblognorm 2.0.1:
+  * fix public headers, which invalidly contained a strndup()
+    definition
+  * fix some issues in pkgconfig file
+
+-------------------------------------------------------------------
+Sat Jul 23 10:47:17 UTC 2016 - astieger@suse.com
+
+- liblognorm 2.0.0 (liblognorm5):
+  *  completely rewritten, much feature-enhanced version
+  *  requires libfastjson instead of json-c
+  *  lognormalizer tool can now handle lines larger 10k characters
+
+-------------------------------------------------------------------
+Sun Mar 13 06:44:13 UTC 2016 - astieger@suse.com
+
+- liblognorm 1.1.3:
+  * add support for libfastjson
+  * check for runaway rules
+  * fix: process last line if it misses the terminating LF
+
+-------------------------------------------------------------------
+Wed Jul 22 19:51:41 UTC 2015 - astieger@suse.com
+
+- liblognorm 1.1.2:
+  * permit newline inside parser definition
+  * new parser "cisco-interface-spec"
+  * new parser "json" to process json parts of the message
+  * new parser "mac48" to process mac layer addresses
+  * new parser "name-value-list" (currently inofficial, experimental)
+  * some parsers did incorrectly report success when an error occurred
+  * call "rest" parser only if nothing else matches.
+  * new API to support error callbacks 
+  * testbench is now enabled by default
+  * bugfix: misadressing on some constant values
+  * bugfix: add missing function prototypes
+
+-------------------------------------------------------------------
+Tue Mar 10 19:47:48 UTC 2015 - astieger@suse.com
+
+- liblognorm 1.1.1
+  * fixed library version numbering (2)
+  * added new parser syntaxes
+  * bugfix: function ln_parseFieldDescr() returns state value
+    due to unitialized variable. This can also lead to invalid
+    returning no sample node where one would have to be created.
+- add configuration to continue to build documentation
+- new tests added in this release are APACHE-2.0 licenced
+
+-------------------------------------------------------------------
+Thu Jan 22 21:45:26 UTC 2015 - andreas.stieger@gmx.de
+
+- liblognorm 1.1.0:
+  + added regular expression support
+- fix SLE11/12 build
+
+-------------------------------------------------------------------
+Wed Oct 22 01:31:11 UTC 2014 - heinemannj66@gmail.com
+
+- Changed BuildRequires dependencies for SLES11SP3
+  - BuildRequires:  libjson-c-devel
+  - BuildRequires:  libestr-devel 
+
+-------------------------------------------------------------------
+Fri Apr 11 21:24:37 UTC 2014 - andreas.stieger@gmx.de
+
+- liblognorm 1.0.1:
+  - improved doc (via RST/Sphinx)
+  - bugfix: unparsed fields were copied incorrectly
+    from non-terminated string
+  - bugfix: mandatory tag did not work in lognormalizeri
+
+-------------------------------------------------------------------
+Wed Jan 29 04:25:32 UTC 2014 - e.istomin@edss.ee
+
+- Changed BuildRequires dependency from "pkgconfig(json)" to pkgconfig(json-c)
+
+-------------------------------------------------------------------
+Thu Jan 16 13:43:49 UTC 2014 - andreas.stieger@gmx.de
+
+- liblognorm 1.0.0:
+  * incompatible interface and older programs will not compile with it
+  * libestr is not used any more in interface functions. Traditional
+    C strings are used instead. Internally, libestr is still used,
+    but scheduled for removal.
+  * libee is not used any more. JSON-C is used for object handling
+    instead. Parsers and formatters are now part of liblognorm.
+  * added new field type “rest”, which simply sinks all up to end of
+    the string.
+  * added support for glueing two fields together, without literal
+    between them. It allows for constructs like:
+    %volume:number%%unit:word%  which matches string “1000Kbps”
+  * Fix incorrect merging of trees with empty literal at end
+- packaging changes:
+  * parallel build working again
+  * move some documentation into -devel package
+  * conflict with devel package of previous liblognorm0-devel as per
+    shared library packaging policy
+
+-------------------------------------------------------------------
+Fri Jul 19 23:20:02 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 0.3.7
+  - added support to load single samples
+
+-------------------------------------------------------------------
+Fri Apr 19 09:34:21 UTC 2013 - mt@suse.de
+
+- update to 0.3.6:
+  - bugfix: unitialized variable could lead to rulebase load error
+
+-------------------------------------------------------------------
+Mon Nov 12 09:26:38 UTC 2012 - mt@suse.com
+
+- Defined rpm build root to fix build on SLE-11
+
+-------------------------------------------------------------------
+Thu Sep 20 22:02:57 UTC 2012 - andreas.stieger@gmx.de
+
+- update to 0.3.5:
+  renamed "normalizer" tool to "lognormalizer to solve name clashes
+
+-------------------------------------------------------------------
+Fri Aug 24 20:20:43 UTC 2012 - andreas.stieger@gmx.de
+
+- liblognorm 0.3.4
+- licence is LGPL-2.1+
+- parallel build not working

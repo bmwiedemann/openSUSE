@@ -1,0 +1,17 @@
+Index: python-ligo-lw-1.7.0/ligo/lw/utils/segments.py
+===================================================================
+--- python-ligo-lw-1.7.0.orig/ligo/lw/utils/segments.py
++++ python-ligo-lw-1.7.0/ligo/lw/utils/segments.py
+@@ -397,8 +397,10 @@ class LigolwSegments(set):
+ 		</Table>
+ 	</LIGO_LW>
+ 	>>> xmlsegments = LigolwSegments(xmldoc)
+-	>>> xmlsegments.get_by_name("test")
+-	{'H1': [segment(LIGOTimeGPS(0, 0), LIGOTimeGPS(10, 0))], 'L1': [segment(LIGOTimeGPS(5, 0), LIGOTimeGPS(15, 0))]}
++	>>> xmlsegments.get_by_name("test")['H1']
++	[segment(LIGOTimeGPS(0, 0), LIGOTimeGPS(10, 0))]
++	>>> xmlsegments.get_by_name("test")['L1']
++	[segment(LIGOTimeGPS(5, 0), LIGOTimeGPS(15, 0))]
+ 	>>> xmlsegments.get_by_name("wrong name")
+ 	Traceback (most recent call last):
+ 		...

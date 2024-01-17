@@ -1,0 +1,1630 @@
+-------------------------------------------------------------------
+Tue Dec  5 14:19:28 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.4/
+- Changes since 23.08.3:
+  * Add default ews base url
+  * Correctly reload configuration (kde#473897)
+  * Don't destroy save password job before closing the save dialog
+  * Do not read google password from wallet when account is not configured
+
+-------------------------------------------------------------------
+Tue Nov  7 17:04:32 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- No code change since 23.08.2
+
+-------------------------------------------------------------------
+Tue Oct 10 18:27:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * Fix reading DAV provider properties
+  * Fix kpimtextedit dependency
+  * Actually start job to read secret key (kde#470820)
+  * Revert "Revert "Fix race condition when building""
+  * Revert "Revert "Use config plugin instead of out of process config dialog""
+  * Fix signal/slot
+- Drop patches, merged upstream:
+  * 0001-Revert-Revert-Use-config-plugin-instead-of-out-of-pr.patch
+  * 0002-Revert-Revert-Fix-race-condition-when-building.patch
+  * 0003-Actually-start-job-to-read-secret-key.patch
+
+-------------------------------------------------------------------
+Tue Sep 26 11:43:01 UTC 2023 - Bob Haley <fawz@use.startmail.com>
+
+- Add libetebase-devel to BuildRequires to enable the etesync resource for
+  factory builds
+
+-------------------------------------------------------------------
+Wed Sep 20 10:18:14 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes to fix issues with the google resource
+  (boo#1214714, kde#470820)
+  * 0001-Revert-Revert-Use-config-plugin-instead-of-out-of-pr.patch
+  * 0002-Revert-Revert-Fix-race-condition-when-building.patch
+  * 0003-Actually-start-job-to-read-secret-key.patch
+
+-------------------------------------------------------------------
+Tue Sep 12 11:55:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- Changes since 23.08.0:
+  * Revert "Use config plugin instead of out of process config dialog" (kde#473897)
+  * Revert "Fix race condition when building"
+  * vcarddirresource: fix directory not being configured on start
+  * icaldirresource: fix directory not being configured on start
+
+-------------------------------------------------------------------
+Sun Aug 20 13:59:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- Changes since 23.07.90:
+  * Fix race condition when building
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- No code change since 23.07.80
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:41 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes since 23.04.3, only listing bugfixes:
+  * Implement retrieveItems(Item::List) for googleresource (kde#448106)
+  * Fix crash trying to access password of empty account (kde#435427)
+  * Skip EWS items where there is no registered handler (kde#440831)
+  * Fix Bug 467719 Font is erroneously hardcoded. (kde#467719)
+
+-------------------------------------------------------------------
+Tue Jul  4 10:19:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.3/
+- No code change since 23.04.2
+
+-------------------------------------------------------------------
+Tue Jun  6 20:00:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * Implement retrieveItems(Item::List) for googleresource (kde#448106)
+
+-------------------------------------------------------------------
+Tue May  9 10:46:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Fix crash trying to access password of empty account (kde#435427)
+  * Ignore infinite set
+  * Skip EWS items where there is no registered handler (kde#440831)
+  * Fix single-file-resources not reloading configuration at runtime (kde#425460)
+- Drop patches, merged upstream:
+  * 0001-Fix-single-file-resources-not-reloading-configuratio.patch
+  * 0004-Skip-EWS-items-where-there-is-no-registered-handler.patch
+  * 0006-Ignore-infite-set.patch
+  * 0001-Fix-crash-trying-to-access-password-of-empty-account.patch
+
+-------------------------------------------------------------------
+Sat Apr 29 08:52:14 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fixes:
+  * 0001-Fix-single-file-resources-not-reloading-configuratio.patch
+    (kde#425460)
+  * 0004-Skip-EWS-items-where-there-is-no-registered-handler.patch
+    (kde#440831)
+  * 0006-Ignore-infite-set.patch (related: kde#445746, kde#454322)
+  * 0001-Fix-crash-trying-to-access-password-of-empty-account.patch
+    (kde#435427, boo#1187119)
+
+-------------------------------------------------------------------
+Sat Apr 15 08:45:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.0/
+
+-------------------------------------------------------------------
+Fri Mar 31 16:41:55 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Fri Mar 17 20:43:23 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.80
+  * New feature release
+
+-------------------------------------------------------------------
+Thu Mar 16 20:05:19 UTC 2023 - Enrico Belleri <idesmi@protonmail.com>
+
+- Requires akonadi-server
+
+-------------------------------------------------------------------
+Tue Feb 28 09:45:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.3/
+
+-------------------------------------------------------------------
+Tue Jan 31 10:33:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.2/
+
+-------------------------------------------------------------------
+Tue Jan  3 10:19:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.1/
+
+-------------------------------------------------------------------
+Fri Dec  2 12:25:11 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.0/
+
+-------------------------------------------------------------------
+Sat Nov 26 16:44:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Nov 12 08:53:59 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Nov  1 11:20:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.3/
+
+-------------------------------------------------------------------
+Tue Oct 11 14:32:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.2/
+
+-------------------------------------------------------------------
+Tue Sep  6 15:19:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.1/
+
+-------------------------------------------------------------------
+Sun Aug 14 09:42:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.0/
+
+-------------------------------------------------------------------
+Fri Aug  5 12:10:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Jul 16 08:27:59 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Jul  5 17:03:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.3/
+
+-------------------------------------------------------------------
+Wed Jun  8 09:53:53 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.2/
+
+-------------------------------------------------------------------
+Tue May 10 16:29:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.1/
+
+-------------------------------------------------------------------
+Mon Apr 18 07:51:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:18:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:14:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Tue Mar  1 09:57:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Changes since 21.12.2:
+  * Apply patch for disable sync contact as it don't ported yet. (kde#449024)
+- Drop patch, now upstream:
+  * 0001-Apply-patch-for-disable-sync-contact-as-it-don-t-por.patch
+
+-------------------------------------------------------------------
+Wed Feb 16 10:06:06 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to Work around google calendar events breaking due to
+  dropped Contacts API (kde#449024):
+  * 0001-Apply-patch-for-disable-sync-contact-as-it-don-t-por.patch
+
+-------------------------------------------------------------------
+Tue Feb  1 13:02:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- No code change since 21.12.1
+
+-------------------------------------------------------------------
+Tue Jan  4 10:25:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.12.0:
+  * pop3: Properly reload settings on configuration change (kde#447005)
+  * POP3: Fix SSL connections (kde#446751)
+  * Use QFormLayout here
+- Drop upstream patch:
+  * 0001-POP3-Fix-SSL-connections.patch
+
+-------------------------------------------------------------------
+Sun Dec 12 11:52:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream change to fix pop3 connections:
+  * 0001-POP3-Fix-SSL-connections.patch (kde#446751)
+
+-------------------------------------------------------------------
+Fri Dec  3 19:21:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Enable new GitLab CI on stable branch.
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Fix POP3 setup wizard defaults to unencrypted connections. (kde#423426)
+  * const'ify pointer
+
+-------------------------------------------------------------------
+Sat Nov 13 17:55:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Too many changes since 21.08.3, only listing bugfixes:
+  * Fix 444985: Wrong ports in akonadi_pop3_resource.pot (kde#444985)
+  * BUG 442884: Fix DSN support (kde#442884)
+  * fix UI elements being used before initialization (kde#439991)
+
+-------------------------------------------------------------------
+Tue Nov  2 21:33:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.3/
+- No code change since 21.08.2
+
+-------------------------------------------------------------------
+Tue Oct  5 16:28:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Changes since 21.08.1:
+  * Consider the online state when attempting to reconnect
+  * DAV resource: support exception incidences
+
+-------------------------------------------------------------------
+Wed Sep  1 12:38:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * It seems that code was not build before adding to MR
+
+-------------------------------------------------------------------
+Fri Aug  6 09:37:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Changes since 21.07.90:
+  * Revert "Start to port to qt5keychain"
+  * Drop X-KDE-Keywords entries from kcm desktop files
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * fix UI elements being used before initialization (kde#439991)
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Port Google Groupware resources to QFormLayout
+  * Improve wording in singlefileresource dialog
+  * Remove frame from openxchange config dialog
+  * Port Ical dir resources dialog to QFormLayout
+  * Port SingleFileResource Config UI to QFormLayout
+  * Define if we want to reply to all or reply to author
+  * Use new NewMailNotifierReplyMessageJob
+  * Add job for replying message
+  * Allow to reply message
+  * Clean up unneeded JSON parameter in kcoreaddons_add_plugin
+  * Honor KDE Kiosk setting lineedit_reveal_password
+  * std::chrono_literals
+  * not necessary to search in each sub folder
+  * Use more centric cmake code
+  * Install in "pim/kcms/kaddressbook"
+  * Embed JSON metadata in KIOSlaves
+  * Remove obsolete .protocol files
+  * Convert protocol files to JSON
+  * Start to port to qt5keychain
+  * Make compile with last kf5
+  * Fix clazy warning
+  * Unbreak Build
+  * Modernize code
+  * use forward declaration here
+  * Remove unused includes
+  * Make it compile with last kf5 version
+  * Make doctools optional
+  * In kf6 kde4 migration code will be removed
+  * Port to QButtonGroup::idToggled
+  * Remove unused include
+  * Use QLineEdit here
+  * Add a missing KService linkage
+- Only install the license files once
+
+-------------------------------------------------------------------
+Wed Jul  7 08:57:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.3
+- No code change since 21.04.2
+
+-------------------------------------------------------------------
+Tue Jun  8 12:39:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.2
+- Changes since 21.04.1:
+  * Make the EWS Configuration dialog fit on small screens (kde#436841)
+  * Adjust the size of the iCal Calendar File properties dialog (kde#435871)
+
+-------------------------------------------------------------------
+Wed May 12 06:07:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- No code change since 21.04.0
+
+-------------------------------------------------------------------
+Fri Apr 16 16:11:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- No code change since 21.03.90
+
+-------------------------------------------------------------------
+Fri Apr  9 17:40:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- No code change since 21.03.80
+
+-------------------------------------------------------------------
+Sun Mar 21 13:27:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Thu Mar  4 06:10:12 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.12.3
+- No code change since 20.12.2
+
+-------------------------------------------------------------------
+Wed Feb  3 08:28:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- No code change since 20.12.1
+
+-------------------------------------------------------------------
+Tue Jan  5 12:25:27 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- No code change since 20.12.0
+
+-------------------------------------------------------------------
+Sat Dec  5 23:16:07 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- Changes since 20.11.90:
+  * Fix Google Groupware segfault
+
+-------------------------------------------------------------------
+Fri Nov 27 15:16:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- No code change since 20.11.80
+
+-------------------------------------------------------------------
+Sat Nov 14 00:01:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes since 20.08.3, only listing bugfixes:
+  * Fix crash in SessionPool::requestPassword (kde#415339)
+
+-------------------------------------------------------------------
+Thu Nov  5 22:46:09 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-11-apps-update
+- No code change since 20.08.2
+
+-------------------------------------------------------------------
+Fri Oct  9 05:43:41 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-10-apps-update
+- Changes since 20.08.1:
+  * Also set Internal Date in ChangeItemTask::doStart AppendJob
+
+-------------------------------------------------------------------
+Tue Sep  1 20:49:44 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-09-apps-update
+- No code change since 20.08.0
+
+-------------------------------------------------------------------
+Sun Aug  9 09:08:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- No code change since 20.07.90
+
+-------------------------------------------------------------------
+Sun Aug  2 07:59:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- Changes since 20.07.80:
+  * Fix Bug 423426 - POP3 setup wizard defaults to unencrypted connections
+  * Setup widget first
+
+-------------------------------------------------------------------
+Sun Jul 19 10:04:29 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Too many changes since 20.04.3, only listing bugfixes:
+  * POP3: Remove the singleton pattern from Settings (kde#419726)
+  * [resources/ews] Adjust name of root collection to the name of the resource (kde#413078)
+  * [resources/ews] Save password to wallet (kde#393002)
+
+-------------------------------------------------------------------
+Thu Jul  9 20:09:20 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-07-apps-update
+- Changes since 20.04.2:
+  * Reduce kf5
+
+-------------------------------------------------------------------
+Tue Jun  9 12:14:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-06-apps-update
+- No code change since 20.04.1
+
+-------------------------------------------------------------------
+Fri May 15 15:41:22 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * [resources/maildir] Reload configuraton on configuration change (kde#416287)
+  * IMAP: fix use-after free in ChangeItemTask
+
+-------------------------------------------------------------------
+Thu Apr 23 12:22:18 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * IMAP: fix use-after free in ChangeItemTask
+  * Register IMAP D-Bus interfaces before the service gets registered
+  * Adapt to KDAV changes
+  * Fix compilation with more recent Qt 5.15
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:59 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+- Changes since 20.03.80:
+  * Fix cppcheck warning
+  * Disable for the moment
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:54 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+- Too many changes since 19.12.3, only listing bugfixes:
+  * [resources/maildir] Don't save "file:" schema to the config (kde#408354)
+- Dropped patches, now upstream:
+  * 0001-resources-maildir-Don-t-save-file-schema-to-the-conf.patch
+
+-------------------------------------------------------------------
+Thu Mar  5 20:36:01 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-03-apps-update
+- No code change since 19.12.2
+
+-------------------------------------------------------------------
+Mon Mar  2 06:17:54 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patch to fix issues with "file:/" being prepended
+  to maildir resources (kde#408354,kde#411269,kde#413588):
+  * 0001-resources-maildir-Don-t-save-file-schema-to-the-conf.patch
+
+-------------------------------------------------------------------
+Fri Feb  7 08:37:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Wed Feb  5 06:29:04 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-02-apps-update
+- No code change since 19.12.1
+
+-------------------------------------------------------------------
+Tue Jan  7 10:00:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.1
+- No code change since 19.12.0
+
+-------------------------------------------------------------------
+Tue Dec 10 06:38:27 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12
+- Changes since 19.11.90:
+  * Don't use nullptr as flag value
+
+-------------------------------------------------------------------
+Sat Nov 30 09:11:48 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Changes since 19.11.80:
+  * IMAP resource: do not prompt for password with GSSAPI auth (kde#383279)
+  * Link to Qt5::Xml since this code uses QDomDocument.
+  * Sanity-check collection path before performing recursive deletion
+  * Set deprecation versions to Qt 5.13 and KF 5.63 for the release branch
+- Dropped patches, now upstream:
+  * 0001-Sanity-check-collection-path-before-performing-recur.patch
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:20 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Mon Nov 18 11:43:51 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add 0001-Sanity-check-collection-path-before-performing-recur.patch to fix
+  a potential data loss issue (kde#414178)
+
+-------------------------------------------------------------------
+Thu Nov  7 23:12:52 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.3.php
+- Changes since 19.08.2:
+  * Prevent writing to calendar file if not in current KAlarm format
+
+-------------------------------------------------------------------
+Thu Oct 17 14:15:30 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update build requirements
+
+-------------------------------------------------------------------
+Fri Oct 11 07:42:42 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.2.php
+- Changes since 19.08.1:
+  * Fix the dependencies on generated files differently. (kde#410474)
+  * ews: fix unnecessary reauthentication prompts
+
+-------------------------------------------------------------------
+Thu Sep  5 14:00:25 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- No code change since 19.08.0
+
+-------------------------------------------------------------------
+Fri Aug  9 08:30:47 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- Changes since 19.07.90:
+  * Adapt to KCalendarCore namespace change
+  * Fix a build time race condition
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:49 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- Changes since 19.07.80:
+  * Fix the license file.
+- Dropped patches, now upstream:
+  * fix-the-license-file.patch
+
+-------------------------------------------------------------------
+Mon Aug  5 11:20:29 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix a copy of the LGPLv3:
+  * fix-the-license-file.patch
+
+-------------------------------------------------------------------
+Tue Jul 23 11:58:59 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Fri Jul 19 08:33:36 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use %_kf5_debugdir for logging categories.
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:34 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- Changes since 19.04.2:
+  * Improve debug
+  * Bug 407882: For a new resource, attempt to read existing calendar file
+  * Bug 407882: configure new KAlarm file resource correctly
+  * Try to fix a race condition.
+  * Fix configure lockfile settings
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:53 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- Changes since 19.04.1:
+  * Make sure that we reload settings
+  * Remove unused class member
+  * Improve debug messages
+  * Bug 407544: Fix crash when creating new KAlarm resource
+
+-------------------------------------------------------------------
+Fri May 10 05:37:13 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- No code changes since 19.04.0
+
+-------------------------------------------------------------------
+Wed May  8 06:05:50 UTC 2019 - wbauer@tmo.at
+
+- Add Qca-qt5 BuildRequires to enable public key authentification
+  in the EWS resource
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:54 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- No code changes since 19.03.90
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:40 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * Convert to camelcase include
+  * Revert the kalarm changes and fix the race condition differently.
+  * IMAPResource: Defer task if we get disconnected during login
+  * Fix constness of Attributes, in preparation for changes in Akonadi
+  * Update the comment.
+  * Allow running the pimkolab tests.
+  * Try to fix the FreeBSD build when ECM_ENABLE_SANITIZERS is enabled.
+
+-------------------------------------------------------------------
+Wed Mar 27 06:41:00 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:16 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * No code changes since 18.12.2
+
+-------------------------------------------------------------------
+Sat Feb 09 08:25:01 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * No code changes since 18.12.1
+
+-------------------------------------------------------------------
+Fri Jan 11 05:42:10 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * Fix sort element
+  * Make sure to delete it when action was done
+
+-------------------------------------------------------------------
+Fri Dec 14 06:09:07 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * Fix mem leak
+  * Fix Bug 396820 - Buttons in new mail notifications don't work. (kde#396820)
+  * Fix extract i18n
+
+-------------------------------------------------------------------
+Mon Dec 03 20:55:55 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * No code changes since 18.11.80
+
+-------------------------------------------------------------------
+Tue Nov 20 06:22:13 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:56:56 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:35 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * Fix Bug 399231 - Kmail uses a low resolution icon for the notification (kde#399231)
+
+-------------------------------------------------------------------
+Thu Oct 11 20:06:51 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * Remove not necessary header when we send mail
+  * Maildispatcher: escape '<' and '>' in error messages.
+  * Fix compilation with Qt 5.12
+
+-------------------------------------------------------------------
+Thu Sep 20 09:01:20 UTC 2018 - lbeltrame@kde.org
+
+- Unversion the syndication requirement now that it has been moved
+  to Frameworks
+
+-------------------------------------------------------------------
+Thu Sep 06 18:43:00 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * Fix crash when we didn't select a agent
+  * USe nullptr
+  * Fix gmail auth dialog popping up over and over again.
+  * Remove these ones
+  * Process IMAP Quota roots with associated quotas only
+  * Fix array access bounds in IMAP resource (kde#396980)
+
+-------------------------------------------------------------------
+Sat Sep  1 09:30:31 UTC 2018 - fabian@ritter-vogt.de
+
+- Disable unnecessary WebKitWidgets dependency
+
+-------------------------------------------------------------------
+Thu Aug 16 22:03:41 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * None
+
+-------------------------------------------------------------------
+Thu Jul 26 13:00:38 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * Too many changes to list here
+- Dropped patches, now upstream:
+  * 0001-Always-add-domain-delimiter-if-Domain-checkbox-is-se.patch
+
+-------------------------------------------------------------------
+Fri Jul 13 04:49:55 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * Don't try to EXPUNGE read-only mailboxes (kde#395417)
+  * IMAP: pre-fill current password in the password dialog (kde#395964)
+
+-------------------------------------------------------------------
+Mon Jul  2 09:46:18 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Fix EWS connection when server needs an empty domain, fix kde#388496, backport:
+  Add 0001-Always-add-domain-delimiter-if-Domain-checkbox-is-se.patch
+
+-------------------------------------------------------------------
+Fri Jun 08 05:06:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * resources/ews: Fix saving passwords to KWallet (kde#393002)
+
+-------------------------------------------------------------------
+Fri May 11 05:17:52 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * IMAP resource: fix data loss on connection lost, depending on the current task
+  * IMAP: Collection removal should be replayed on error.
+  * IMAP Resource: handle disconnection before initial "OK" from server
+  * Fix IMAP resource stuck if connection lost during Login.
+  * Fix a bunch of typos in comments
+  * Fix version
+
+-------------------------------------------------------------------
+Wed Apr 18 07:49:08 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * make sure to create unique filename in maildir resource
+
+-------------------------------------------------------------------
+Fri Apr 06 07:09:19 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04-rc.php
+- Changes since 17.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Mar 08 23:51:37 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.3.php
+- Changes since 17.12.2:
+  * Fix method name
+
+-------------------------------------------------------------------
+Wed Feb 07 08:47:59 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * Maildir: upload empty email bodies as a whitespace
+  * Don't insert invalid google accounts into the access list
+  * Fix duplicated entries in Google Calendar and Tasks resource settings dialog
+
+-------------------------------------------------------------------
+Thu Jan 11 23:41:06 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * DAV: fix Next button not enabled when typing password.
+  * Add Sasl2_INCLUDE_DIRS to the inlclude directories of kdexoauth2
+  * cmake: Strip comments from else()/endif()
+  * Use ecm_install_icons instead of a loop
+  * Use KDE_INSTALL_ICONDIR instead of CMAKE_INSTALL_PREFIX
+
+-------------------------------------------------------------------
+Thu Dec 14 10:38:41 UTC 2017 - christophe@krop.fr
+
+- Update license to GPL-2.0+ and GPL-3.0+
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:05 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * Adapt to Qt 5.10 rc2 API changes
+  * Remove duplicate find_package(KPimGAPI ...) call
+
+-------------------------------------------------------------------
+Fri Dec  8 15:46:46 UTC 2017 - fabian@ritter-vogt.de
+
+- Remove libkolab-qt5-devel BuildDep
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:36 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * Fix error when generate contact
+  * Fix POP3 mail fetch not finishing if there are no new messages but some old ones
+  * IMAP: always set merge mode in RetrieveItemsTask
+  * Fix check version
+  * Recreate full URLs from partial URLs (kde#386985)
+  * Fix message extraction in kdepim-runtime/resources/ews/wizard/
+
+-------------------------------------------------------------------
+Mon Nov 20 06:59:07 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 09 23:11:32 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * IMAP: add folder name in error message about select.
+
+-------------------------------------------------------------------
+Tue Oct 17 00:31:57 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * Fix i18n
+  * DAV: fix crash if Collection disappears during Item fetch (kde#360792)
+
+-------------------------------------------------------------------
+Thu Sep 07 07:02:02 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * IMAP: handle when RetrieveItemTask fails to find the message (kde#383951)
+  * Kolab: fix warning "Object type not handled" for each tag/relation
+  * Add missing HasLocalStorage attribute to mbox resource
+
+-------------------------------------------------------------------
+Sat Aug 12 19:23:19 UTC 2017 - christophe@krop.fr
+
+- Update summary and description
+
+-------------------------------------------------------------------
+Fri Aug 11 22:45:21 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Aug  5 18:17:33 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sat Jul 15 22:59:47 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * Remove not necessary includes
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:47 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * IMAP: allow creating top-level folders it User namespace is empty (kde#339567)
+  * Fix Bug 379155 - Imap resources crash when trying to open settings (kde#379155)
+  * Add missing include
+  * Enable by default store locally emails
+- Drop upstreamed patches:
+  * add-missing-include.patch
+  * fix-crash-when-configuring-IMAP-resources.patch
+  * IMAP-allow-creating-top-level-folders-if-User-namespace-is-empty.patch
+
+-------------------------------------------------------------------
+Sun Jun  4 07:33:21 UTC 2017 - wbauer@tmo.at
+
+- Add IMAP-allow-creating-top-level-folders-if-User-namespace-is-empty.patch
+  to fix creating/deleting top-level folders on certain IMAP servers
+  (kde#339576)
+
+-------------------------------------------------------------------
+Mon May 22 12:32:34 UTC 2017 - wbauer@tmo.at
+
+- Add add-missing-include.patch and
+  fix-crash-when-configuring-IMAP-resources.patch to fix IMAP
+  resources crashing when trying to open settings
+  (kde#379155, boo#1040086)
+
+-------------------------------------------------------------------
+Wed May 17 20:36:12 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * Fix build with CMake 3.8.
+  * [IMAP] Fix migration to new Gmail authentication
+  * [IMAP] Disable the Gmail special cases when compiled without XOAUTH
+  * hide doc help item.
+  * [IMAP] Fix missing connect() when restarting IDLE job
+  * [IMAP] Fix IDLE support with GSSAPI authentication (kde#311456)
+- Drop upstreamed patches:
+  * disable-gmail-when-compiled-without-xoauth.patch
+  * fix-idle-support-with-gssapi.patch
+  * fix-migration-to-new-gmail-authentication.patch
+  * fix-missing-connect-when-restarting-idle.patch
+
+-------------------------------------------------------------------
+Tue May  9 09:02:31 UTC 2017 - wbauer@tmo.at
+
+- Unconditionally obsolete kdepim4-runtime on all distributions, we
+  don't support kdepim4 any more
+
+-------------------------------------------------------------------
+Sat Apr 22 12:30:21 UTC 2017 - lbeltrame@kde.org
+
+- Add upstream patches to fix different issues with IMAP:
+  * disable-gmail-when-compiled-without-xoauth.patch
+  * fix-idle-support-with-gssapi.patch
+  * fix-migration-to-new-gmail-authentication.patch
+  * fix-missing-connect-when-restarting-idle.patch
+
+-------------------------------------------------------------------
+Sun Apr 16 10:44:56 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * not necessary to use += operator here
+  * Use directly QFileInfo::exists here
+  * Remove unused method
+  * Minor optimization
+  * Add remote ID information to "Corrupt Event", to make debugging possible.
+  * using QFileInfo::exists( ) here too
+  * Improve debug message
+  * Improve debug output for the MyRights noise (which shouldn't happen anymore ;)
+  * SessionPool: set the namespaces variables from the namespace job.
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:31 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * None
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:24 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+- Changes since 16.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Mar  9 12:37:07 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * Preserve icaldir resource/collection display name (kde#376379)
+
+
+-------------------------------------------------------------------
+Thu Feb  9 06:52:19 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Sat Jan 14 08:54:50 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+- Drop fix-data-loss-bug-in-ical.patch due to upstream inclusion
+
+-------------------------------------------------------------------
+Sat Dec 24 13:53:50 UTC 2016 - tittiatcoke@gmail.com
+
+- Add fix-data-loss-bug-in-ical.patch to prevent an critical
+  data loss. The ical resource failed to create std.ics if it
+  didn't exists.
+
+-------------------------------------------------------------------
+Tue Dec 13 19:41:10 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Sat Dec  3 16:22:48 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:27:32 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+
+-------------------------------------------------------------------
+Wed Nov  9 06:16:48 UTC 2016 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.08.3
+  * KDE Applications 16.08.3
+  * https://www.kde.org/announcements/announce-applications-16.08.3.php
+
+-------------------------------------------------------------------
+Tue Oct 11 20:54:52 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+-------------------------------------------------------------------
+Fri Sep  9 08:21:54 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.1
+   * KDE Applications 16.08.1
+   * https://www.kde.org/announcements/announce-applications-16.08.1.php
+
+
+-------------------------------------------------------------------
+Thu Aug 25 12:36:22 UTC 2016 - fabian@ritter-vogt.de
+
+- Provide/Obsolete kio-pimlibs
+
+-------------------------------------------------------------------
+Tue Aug 23 13:49:10 UTC 2016 - fabian@ritter-vogt.de
+
+- Build only on architectures supported by libqt5-qtwebengine
+
+-------------------------------------------------------------------
+Fri Aug 12 10:14:56 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.0
+   * KDE Applications 16.08.0
+   * https://www.kde.org/announcements/announce-applications-16.08.0.php
+
+
+-------------------------------------------------------------------
+Mon Aug  8 14:57:39 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.07.90
+   * KDE Applications 16.07.90 (16.08-RC)
+   * https://www.kde.org/announcements/announce-applications-16.08-rc.php
+
+
+-------------------------------------------------------------------
+Wed Jul 27 20:13:03 UTC 2016 - wbauer@tmo.at
+
+- Cleanup build requirements
+
+-------------------------------------------------------------------
+Thu Jul  7 23:48:32 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.3
+   * KDE Applications 16.04.3
+   * https://www.kde.org/announcements/announce-applications-16.04.3.php
+
+
+-------------------------------------------------------------------
+Tue Jun 14 21:31:14 UTC 2016 - wbauer@tmo.at
+
+- Use shared-mime-info macros (boo#979301)
+
+-------------------------------------------------------------------
+Fri Jun 10 17:56:01 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.2
+   * KDE Applications 16.04.2
+   * https://www.kde.org/announcements/announce-applications-16.04.2.php
+
+
+-------------------------------------------------------------------
+Sat May  7 10:24:02 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.1
+   * KDE Applications 16.04.1
+   * https://www.kde.org/announcements/announce-applications-16.04.1.php
+
+
+-------------------------------------------------------------------
+Sun Apr 17 06:01:45 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.0
+   * KDE Applications 16.04.0
+   * https://www.kde.org/announcements/announce-applications-16.04.0.php
+
+
+-------------------------------------------------------------------
+Mon Apr 11 06:38:23 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.03.90
+   * KDE Applications 16.04.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.04-rc.php
+
+- Drop bko354056.diff due to upstream inclusion
+
+-------------------------------------------------------------------
+Wed Mar 30 08:42:37 UTC 2016 - tittiatcoke@gmail.com
+
+- Add upstream patch bko354056.diff to resolve issues with
+  Courier IMAP servers (bko#354056)
+
+-------------------------------------------------------------------
+Sun Mar 13 15:41:53 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.3
+   * KDE Applications 15.12.3
+   * https://www.kde.org/announcements/announce-applications-15.12.3.php
+   * boo#970855
+
+
+-------------------------------------------------------------------
+Sat Feb 13 08:08:54 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.2
+   * KDE Applications 15.12.2
+   * https://www.kde.org/announcements/announce-applications-15.12.2.php
+   * boo#966605
+
+
+-------------------------------------------------------------------
+Sat Jan  9 18:17:43 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.1
+   * KDE Applications 15.12.1
+   * https://www.kde.org/announcements/announce-applications-15.12.1.php
+   * boo#961265
+
+
+-------------------------------------------------------------------
+Sun Dec 13 13:16:35 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.0
+   * KDE Applications 15.12.0
+   * https://www.kde.org/announcements/announce-applications-15.12.0.php
+   * boo#958887
+
+
+-------------------------------------------------------------------
+Tue Nov 10 20:06:12 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.3
+   * KDE Applications 15.08.3
+   * https://www.kde.org/announcements/announce-applications-15.08.3.php
+   * boo#954531
+
+
+-------------------------------------------------------------------
+Sun Oct 11 13:29:13 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.2
+   * KDE Applications 15.08.2
+   * https://www.kde.org/announcements/announce-applications-15.08.2.php
+
+- Drop patch due to upstream inclusion
+  * switch-to-gid-based-merge.diff
+
+-------------------------------------------------------------------
+Mon Sep 14 18:17:48 UTC 2015 - lbeltrame@kde.org
+
+- Add switch-to-gid-based-merge.diff: upstream changes to fix IMAP
+  syncing of non-email objects (fixes email syncing with Kolab
+  servers)
+
+-------------------------------------------------------------------
+Sun Sep 13 19:12:11 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.1
+   * KDE Applications 15.08.1
+   * https://www.kde.org/announcements/announce-applications-15.08.1.php
+
+
+-------------------------------------------------------------------
+Sat Aug 29 08:36:58 UTC 2015 - cgiboudeaux@gmx.com
+
+- Change the license tag to GPL-2.0
+
+-------------------------------------------------------------------
+Wed Aug 19 19:43:06 UTC 2015 - cgiboudeaux@gmx.com
+
+- Update to KDE Applications 15.08.0
+   * KDE Applications 15.08.0
+   * https://www.kde.org/announcements/announce-applications-15.08.0.php
+
+-------------------------------------------------------------------
+Fri Aug  7 10:45:53 UTC 2015 - tittiatcoke@gmail.com
+
+- Initial version based on KDE Applications 15.07.90
+   * KDE Applications 15.08.0 RC1
+   * https://www.kde.org/announcements/announce-applications-15.08-rc.php
+
+

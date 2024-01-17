@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Fail on errors:
+set -e
+
+# Read the config:
+. ./gnome-patch-translation.conf
+BRANCH=$LCN_BRANCH
+if test "$BRANCH" = trunk ; then
+    BRANCH_PATH="$BRANCH"
+else
+    BRANCH_PATH="branches/$BRANCH"
+fi
+if test -z "$NAME" ; then
+    NAME="$USER"
+fi
+
+# First of all, read set of update tools from SVN:
+eval svn co $LCN_SVN_URI/50-tools
+
+export CALLING_FROM_G_P_T=1
+RPM_OSC_REPOSITORIES="${OSC_REPOSITORIES[*]}"
+export LCN_SVN_URI LCN_BRANCH RPM_OSC_REPOSITORIES GPT_PACKAGES OSC_APIURL
+
+# And then run gnome-patch-translation-from-lcn
+exec 50-tools/gnome-patch-translation-from-lcn

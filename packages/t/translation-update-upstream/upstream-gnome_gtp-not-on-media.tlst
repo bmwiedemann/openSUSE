@@ -1,0 +1,6 @@
+# Resources on GNOME GTP that are not on DVD, and thus not found by create-tlst-step2-create-gnome_gtp.sh.
+# package                   domain                                      method repository                       dir                        branch
+gnome-themes                gnome-themes                                   gtp l10n.gnome.org/POT               gnome-themes/po
+#NOT-IN-SLE: lasem                       lasem-0.4                                      gtp l10n.gnome.org/POT               lasem/po
+libepc                      libepc                                         gtp l10n.gnome.org/POT               libepc/po
+#NOT-IN-SLE: shotwell                    shotwell-extras                                gtp l10n.gnome.org/POT               shotwell/po

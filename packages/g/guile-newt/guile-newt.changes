@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Fri Nov 17 20:33:30 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- do sequential build for reproducible .go files (boo#1102408)
+
+-------------------------------------------------------------------
+Sat Sep 17 08:40:47 UTC 2022 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- remove unused RPM lint filters, add one for devel dependency 
+
+-------------------------------------------------------------------
+Fri Sep 16 17:58:08 UTC 2022 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.0.3
+  * add cross-compilation support
+  * prevent dlopen at compile time 
+
+-------------------------------------------------------------------
+Fri Nov  6 17:36:27 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.0.2:
+  * Allow builds with Guile 3.0.
+  * Add help callback support.
+  * components: Make sure callback is not GC'd.
+  * Add 'form-watch-fd'.
+* remove patch:
+  * support-guile-3.0.patch: Guile 3.0 support added by upstream
+
+-------------------------------------------------------------------
+Mon Jan 13 22:37:09 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Add patch:
+  * support-guile-3.0.patch: Add support for Guile 3.0. Proposed to
+    upstream.
+- Remove unrecognized configure flag.
+- Adapt guile-newt-rpmlintrc to Guile 3.0
+
+-------------------------------------------------------------------
+Fri Apr 26 12:48:15 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- add missing guile-newt-rpmlintrc as source file 
+
+-------------------------------------------------------------------
+Thu Apr 18 12:24:19 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- let there be guile-newt 

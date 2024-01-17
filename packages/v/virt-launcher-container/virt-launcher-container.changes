@@ -1,0 +1,168 @@
+-------------------------------------------------------------------
+Wed Jan  3 12:29:33 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Fix firmware path for aarch64 (/usr/share/AAVMF)
+
+-------------------------------------------------------------------
+Wed Nov  8 14:08:15 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Do not chown /var/run
+
+-------------------------------------------------------------------
+Mon Oct 23 12:28:27 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add license header
+
+-------------------------------------------------------------------
+Fri Oct 13 15:27:52 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Install qemu-img explicitly
+
+-------------------------------------------------------------------
+Wed Jul 12 06:53:31 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Drop TARGETARCH argument (detect arch during build)
+
+-------------------------------------------------------------------
+Thu Jun 15 16:59:48 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Install virtiofsd explicitly instead of qemu-tools
+
+-------------------------------------------------------------------
+Thu Mar  2 07:49:24 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update the container image for KubeVirt v0.59.0
+
+-------------------------------------------------------------------
+Wed Dec 21 08:26:09 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Allow qemu/slirp to bind sockets to privileged ports
+- Install ncat, curl, ethtool and gawk (required for network tests)
+
+-------------------------------------------------------------------
+Mon Oct 10 13:49:10 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Ensure /usr/libexec/virtiofsd is present
+
+-------------------------------------------------------------------
+Thu Sep  1 08:23:01 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Install only libvirt-daemon-driver-qemu and do not pull unneeded deps
+
+-------------------------------------------------------------------
+Thu Aug  4 06:27:58 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use standard LABEL directive to add mandatory labels
+
+-------------------------------------------------------------------
+Wed Apr 27 16:30:17 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Setup permissions and capabilities for non-root VMIs
+
+-------------------------------------------------------------------
+Fri Apr 15 10:50:30 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Install vim-small instread of vim
+- Cleanup redundant stuff
+
+-------------------------------------------------------------------
+Sun Mar  6 16:55:26 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add _constraints (storage)
+
+-------------------------------------------------------------------
+Wed Feb 23 13:42:52 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Enable USB redirection support for QEMU
+
+-------------------------------------------------------------------
+Tue Feb 22 11:46:38 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Fix 'have choice for systemd-container...' build error
+
+-------------------------------------------------------------------
+Wed Jan 19 06:48:50 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Set default TARGETARCH=amd64
+- Adjust indent
+
+-------------------------------------------------------------------
+Mon Jan 10 10:56:39 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Handle aarch64
+- Enable build only on aarch64 and x86_64
+
+-------------------------------------------------------------------
+Mon Jan 10 09:52:56 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Symlink UEFI firmware with AMD SEV support
+
+-------------------------------------------------------------------
+Fri Nov 26 05:42:11 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Install tar package to enable kubectl cp ...
+
+-------------------------------------------------------------------
+Wed Sep 29 11:26:27 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Install timezone package (bsc#1190587)
+
+-------------------------------------------------------------------
+Wed Sep 29 08:35:32 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Send libvirtd debug logs to stderr (bsc#1190839)
+
+-------------------------------------------------------------------
+Tue Aug  3 08:23:50 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Reset cgroup_controllers in /etc/libvirt/qemu.conf
+
+-------------------------------------------------------------------
+Mon Jul 12 14:40:33 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Install xorriso instead of mkisofs
+
+-------------------------------------------------------------------
+Fri Jun  4 12:20:51 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Include the registry in org.opensuse.reference
+
+-------------------------------------------------------------------
+Fri Apr 23 06:59:34 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Tag the image with <version>-<release>
+- Create symlinks for OVMF binaries in expected location
+
+-------------------------------------------------------------------
+Sun Apr 18 07:57:40 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Run zypper clean after installation
+- Sort installed packages alphabetically
+
+-------------------------------------------------------------------
+Wed Mar 17 07:08:54 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add placeholder vars to be replaced during build
+- Fix mixed tabs and spaces
+
+-------------------------------------------------------------------
+Tue Nov 17 23:03:31 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- use ARG for defining base image
+
+-------------------------------------------------------------------
+Tue Sep 15 03:21:06 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Adjust Dockerfile to conform to "Building Official Container
+  Images" documentation
+
+-------------------------------------------------------------------
+Wed Jul 22 19:59:10 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Install kubevirt-container-disk package to get the container-disk
+  binary
+
+-------------------------------------------------------------------
+Mon Jun 22 21:48:23 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+-  Initial container for virt-launcher

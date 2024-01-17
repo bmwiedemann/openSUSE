@@ -1,0 +1,84 @@
+diff -ur farstream/common/glib-gen.mak farstream.patched/common/glib-gen.mak
+--- farstream/common/glib-gen.mak	2021-05-12 16:13:24.779979698 +0200
++++ farstream.patched/common/glib-gen.mak	2021-05-12 16:12:47.923729843 +0200
+@@ -30,7 +30,7 @@
+ 	$(AM_V_GEN)glib-mkenums \
+ 	--fhead "#include \"$*-enumtypes.h\"\n$(enum_headers)" \
+ 	--fprod "\n/* enumerations from \"@filename@\" */" \
+-	--vhead "GType\n@enum_name@_get_type (void)\n{\n  static volatile gsize g_define_type_id__volatile = 0;\n  if (g_once_init_enter (&g_define_type_id__volatile)) {\n    static const G@Type@Value values[] = {"     \
++	--vhead "GType\n@enum_name@_get_type (void)\n{\n  static gsize g_define_type_id__volatile = 0;\n  if (g_once_init_enter (&g_define_type_id__volatile)) {\n    static const G@Type@Value values[] = {"     \
+ 	--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
+ 	--vtail "      { 0, NULL, NULL }\n    };\n    GType g_define_type_id = g_@type@_register_static (\"@EnumName@\", values);\n    g_once_init_leave (&g_define_type_id__volatile, g_define_type_id);\n  }\n  return g_define_type_id__volatile;\n}\n" \
+ 	$^ > $@
+diff -ur farstream/common/gst-glib-gen.mak farstream.patched/common/gst-glib-gen.mak
+--- farstream/common/gst-glib-gen.mak	2021-05-12 16:13:24.779979698 +0200
++++ farstream.patched/common/gst-glib-gen.mak	2021-05-12 16:12:55.283779724 +0200
+@@ -33,7 +33,7 @@
+ 	$(AM_V_GEN)$(GLIB_MKENUMS) \
+ 	--fhead "#ifdef HAVE_CONFIG_H\n#include \"config.h\"\n#endif\n\n#include \"$(glib_gen_basename)-enumtypes.h\"\n$(enum_headers)" \
+ 	--fprod "\n/* enumerations from \"@filename@\" */" \
+-	--vhead "GType\n@enum_name@_get_type (void)\n{\n  static volatile gsize g_define_type_id__volatile = 0;\n  if (g_once_init_enter (&g_define_type_id__volatile)) {\n    static const G@Type@Value values[] = {"     \
++	--vhead "GType\n@enum_name@_get_type (void)\n{\n  static gsize g_define_type_id__volatile = 0;\n  if (g_once_init_enter (&g_define_type_id__volatile)) {\n    static const G@Type@Value values[] = {"     \
+ 	--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
+ 	--vtail "      { 0, NULL, NULL }\n    };\n    GType g_define_type_id = g_@type@_register_static (\"@EnumName@\", values);\n    g_once_init_leave (&g_define_type_id__volatile, g_define_type_id);\n  }\n  return g_define_type_id__volatile;\n}\n" \
+ 	$^ > $@
+diff -ur farstream/common-modified/gst-glib-gen.mak farstream.patched/common-modified/gst-glib-gen.mak
+--- farstream/common-modified/gst-glib-gen.mak	2021-05-12 16:13:22.471964046 +0200
++++ farstream.patched/common-modified/gst-glib-gen.mak	2021-05-12 16:10:16.058702161 +0200
+@@ -23,7 +23,7 @@
+ 	$(AM_V_GEN)$(GLIB_MKENUMS) \
+ 	--fhead "#ifdef HAVE_CONFIG_H\n#include \"config.h\"\n#endif\n\n#include \"$(glib_gen_basename)-enumtypes.h\"\n$(enum_headers)" \
+ 	--fprod "\n/* enumerations from \"@filename@\" */" \
+-	--vhead "GType\n@enum_name@_get_type (void)\n{\n  static volatile gsize g_define_type_id__volatile = 0;\n  if (g_once_init_enter (&g_define_type_id__volatile)) {\n    static const G@Type@Value values[] = {"     \
++	--vhead "GType\n@enum_name@_get_type (void)\n{\n  static gsize g_define_type_id__volatile = 0;\n  if (g_once_init_enter (&g_define_type_id__volatile)) {\n    static const G@Type@Value values[] = {"     \
+ 	--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
+ 	--vtail "      { 0, NULL, NULL }\n    };\n    GType g_define_type_id = g_@type@_register_static (\"@EnumName@\", values);\n    g_once_init_leave (&g_define_type_id__volatile, g_define_type_id);\n  }\n  return g_define_type_id__volatile;\n}\n" \
+ 	$^ > $@
+diff -ur farstream/tests/check/transmitter/nice.c farstream.patched/tests/check/transmitter/nice.c
+--- farstream/tests/check/transmitter/nice.c	2021-05-12 16:13:22.491964183 +0200
++++ farstream.patched/tests/check/transmitter/nice.c	2021-05-12 16:10:37.914849857 +0200
+@@ -44,7 +44,7 @@
+ gint buffer_count[2][2] = {{0,0}, {0,0}};
+ guint received_known[2][2] = {{0,0}, {0,0}};
+ GMainLoop *loop = NULL;
+-volatile gint running = TRUE;
++gint running = TRUE;
+ gboolean associate_on_source = TRUE;
+ gboolean is_address_local = FALSE;
+ gboolean force_candidates = FALSE;
+diff -ur farstream/tests/check/transmitter/rawudp.c farstream.patched/tests/check/transmitter/rawudp.c
+--- farstream/tests/check/transmitter/rawudp.c	2021-05-12 16:13:22.515964345 +0200
++++ farstream.patched/tests/check/transmitter/rawudp.c	2021-05-12 16:10:43.882890201 +0200
+@@ -44,7 +44,7 @@
+ gint candidates[2] = {0, 0};
+ GstElement *pipeline = NULL;
+ gboolean src_setup[2] = {FALSE, FALSE};
+-volatile gint running = TRUE;
++gint running = TRUE;
+ guint received_known[2] = {0, 0};
+ gboolean has_stun = FALSE;
+ gboolean associate_on_source = TRUE;
+diff -ur farstream/transmitters/multicast/fs-multicast-transmitter.c farstream.patched/transmitters/multicast/fs-multicast-transmitter.c
+--- farstream/transmitters/multicast/fs-multicast-transmitter.c	2021-05-12 16:13:22.491964183 +0200
++++ farstream.patched/transmitters/multicast/fs-multicast-transmitter.c	2021-05-12 16:10:48.874923951 +0200
+@@ -541,7 +541,7 @@
+ 
+   guint component_id;
+ 
+-  volatile gint sendcount;
++  gint sendcount;
+ };
+ 
+ static gboolean
+diff -ur farstream/transmitters/nice/fs-nice-stream-transmitter.c farstream.patched/transmitters/nice/fs-nice-stream-transmitter.c
+--- farstream/transmitters/nice/fs-nice-stream-transmitter.c	2021-05-12 16:13:22.491964183 +0200
++++ farstream.patched/transmitters/nice/fs-nice-stream-transmitter.c	2021-05-12 16:10:54.438961572 +0200
+@@ -110,7 +110,7 @@
+ 
+   GPtrArray *relay_info;
+ 
+-  volatile gint associate_on_source;
++  gint associate_on_source;
+ 
+   gboolean *component_has_been_ready; /* only from NiceAgent main thread */
+ 

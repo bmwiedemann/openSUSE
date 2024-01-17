@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3960e5bd31c454b9056f6fc2880d1da7</srcmd5>
+    <version>0.1.2</version>
+    <time>1511274806</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package
+</comment>
+    <requestid>543906</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>655b075826459edd4fb870c3b6d27450</srcmd5>
+    <version>0.1.2</version>
+    <time>1526372007</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606542</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd53dc67064fa4b8462bba7576ff4844</srcmd5>
+    <version>0.2.0</version>
+    <time>1551785037</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.0
+ * Add crayons.enable()
+ * color funcs generated from __all__ var
+ * Disable colors on TERM=dumb</comment>
+    <requestid>681480</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b677213f0fe1254093bdafbf28e5edbd</srcmd5>
+    <version>0.3.0</version>
+    <time>1582556071</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0 
+  * Rewrites clean to just remove ANSI codes, not whatever it was doing before (which seemed to be stripping all characters from the string)
+  * Adds random function to get a random color (thanks @azillion)
+  * Adds replace_color function to allow setting replacement for a given color (e.g. replace blue with magneta) (thanks @frostming)
+  * Adds reset_replace_color to reset any replacement colors set
+- Update URL in the spec to be correct
+- Write a description</comment>
+    <requestid>778646</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4e9c3830f283db2c472cd4ed6dbe619f</srcmd5>
+    <version>0.4.0</version>
+    <time>1609959397</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0
+  * Check that sys.stdout object has isatty attribute in addition to it
+    being True
+    + If using a custom object that does not have the isatty attribute and
+      you would still like color, you can set the CLINT_FORCE_COLOR environment
+      variable
+  * Explicitly set incoming parameter to crayons to string (so that len, etc.
+    work as expected) 
+- Drop LICENSE as a separate source, now included in the upstream tarball.</comment>
+    <requestid>860570</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>84bda5150bab0c020ae9bb5ba5d63031</srcmd5>
+    <version>0.4.0</version>
+    <time>1623868493</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't own everything under sitelib.
+- Run some tests (and use GitHub tarball to get it)</comment>
+    <requestid>900355</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>1d597c334948a546d35fe13dc15804cb</srcmd5>
+    <version>0.4.0</version>
+    <time>1624136654</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Source URL</comment>
+    <requestid>900783</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b6507553b85b84f69b2797a4ba02e2ed</srcmd5>
+    <version>1.7.0</version>
+    <time>1604510741</time>
+    <user>dimstar_suse</user>
+    <comment>Python LIGO Light-Weight XML I/O Library </comment>
+    <requestid>845647</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>89e92a23e5f269acb489d6ec59b87fd9</srcmd5>
+    <version>1.7.0</version>
+    <time>1613427254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871643</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3f4e51080413d363e6a32605f2c29e9b</srcmd5>
+    <version>1.8.0</version>
+    <time>1642029751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945825</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>98f01cdb2ad9f2ea309249642c5fb7db</srcmd5>
+    <version>1.8.0</version>
+    <time>1648570578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965657</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7b987879bc05cb36b8882c3faf2d5cf9</srcmd5>
+    <version>1.8.3</version>
+    <time>1662063139</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000640</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4f0b87f6ca2e1a78bbc3f224e585c73c</srcmd5>
+    <version>1.8.3</version>
+    <time>1678814177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071139</requestid>
+  </revision>
+</revisionlist>

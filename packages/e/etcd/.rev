@@ -1,0 +1,312 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec547f75b32c58330011893d5bdf8bcf</srcmd5>
+    <version>3.1.0</version>
+    <time>1485862773</time>
+    <user>dimstar_suse</user>
+    <comment>this exclude i586</comment>
+    <requestid>452165</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>46c7d771f79160f1f0c87c55093d7fdf</srcmd5>
+    <version>3.1.0</version>
+    <time>1488480220</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>461889</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>774f243c167b659075991e8a9b11a7d3</srcmd5>
+    <version>3.1.0</version>
+    <time>1492714493</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487805</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>091d23dc859fca437d61f73c18db7c59</srcmd5>
+    <version>3.2.4</version>
+    <time>1502629176</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>516098</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7826498a1d0db5762c603a27b92e9dad</srcmd5>
+    <version>3.2.4</version>
+    <time>1504617391</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520609</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>0223bf294b2f12eab6c42a45784da0e7</srcmd5>
+    <version>3.2.4</version>
+    <time>1512042299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546258</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>697d04965a05cdbdc2500af3f5f6c096</srcmd5>
+    <version>3.2.4</version>
+    <time>1517606538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571976</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>08d1981c5bfbcfe857682b0dc4a4b68f</srcmd5>
+    <version>3.3.1</version>
+    <time>1520021489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581721</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>de4909a34ecabe679d2e9ed01e482f9f</srcmd5>
+    <version>3.3.1</version>
+    <time>1527684360</time>
+    <user>dimstar_suse</user>
+    <comment>fix changelog to include bsc numbers so this can also be submitted to sle15 
+- Update to version 3.3.1 (bsc#1095184):</comment>
+    <requestid>613030</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>f5519f4db6888036fe5368d3aa11128e</srcmd5>
+    <version>3.3.1</version>
+    <time>1528195975</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>614019</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>cfef9546ef36834294c32007e8d20fbb</srcmd5>
+    <version>3.3.1</version>
+    <time>1528492455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614219</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b32682cfa0a2a9325b9c8dc880bd34a3</srcmd5>
+    <version>3.3.10</version>
+    <time>1542124824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648446</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>8362771f1c9affd89d51c0b6ee656608</srcmd5>
+    <version>3.3.10</version>
+    <time>1544726937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657541</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>397661710b8bbf462e66836d3bab961e</srcmd5>
+    <version>3.3.10</version>
+    <time>1545996836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660070</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3d0ae83204dd5183a4e50f449b9d8a02</srcmd5>
+    <version>3.3.11</version>
+    <time>1549017975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670117</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>269a448bd8bbff5bf606899956acb474</srcmd5>
+    <version>3.3.11</version>
+    <time>1560459704</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708040</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>0d2dc382b81d6715952f1a600e19da8b</srcmd5>
+    <version>3.3.11</version>
+    <time>1560537767</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for aarch64</comment>
+    <requestid>709924</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>d87f2777bc06e7512f3196a579874737</srcmd5>
+    <version>3.3.11</version>
+    <time>1563993382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718153</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8ab78a6e107311238ae0a0dd1b69919f</srcmd5>
+    <version>3.3.15</version>
+    <time>1571838473</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for k8s 1.16</comment>
+    <requestid>736836</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fd77403ce62a172ce84cc06d74f71f95</srcmd5>
+    <version>3.4.3</version>
+    <time>1581694051</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>770502</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>27bf72878e075d0e3b7b342c9aee6e57</srcmd5>
+    <version>3.4.3</version>
+    <time>1591742055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812416</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9a66b6d4d1db40d511019ebfd8486f62</srcmd5>
+    <version>3.4.10</version>
+    <time>1597222636</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825830</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>833d4a84672f77a6f60534340cefdf0a</srcmd5>
+    <version>3.4.13</version>
+    <time>1600078903</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.13:
+  * version: 3.4.13
+  * pkg: file stat warning
+  * Automated cherry pick of #12243 on release 3.4
+  * version: 3.4.12
+  * etcdserver: Avoid panics logging slow v2 requests in integration tests
+  * version: 3.4.11
+  * Revert &quot;etcdserver/api/v3rpc: &quot;MemberList&quot; never return non-empty ClientURLs&quot;
+  * *: fix backport of PR12216
+  * *: add experimental flag for watch notify interval
+  * clientv3: remove excessive watch cancel logging
+  * etcdserver: add OS level FD metrics
+  * pkg/runtime: optimize FDUsage by removing sort
+  * clientv3: log warning in case of error sending request
+  * etcdserver/api/v3rpc: &quot;MemberList&quot; never return non-empty ClientURLs</comment>
+    <requestid>833433</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a990fcb2c144f7efa4294953fa1e39de</srcmd5>
+    <version>3.4.14</version>
+    <time>1610381502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861699</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2d2d1db7d951b27c163cf094f494a032</srcmd5>
+    <version>3.4.15</version>
+    <time>1615212944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.15:
+  * version: 3.4.15
+  * [Backport-3.4] etcdserver/api/etcdhttp: log successful etcd server side health check in debug level
+  * etcdserver: Fix 64 KB websocket notification message limit
+  * vendor: bump gorilla/websocket
+  * pkg/fileutil: fix F_OFD_ constants</comment>
+    <requestid>876798</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>280d84628efaf25d416b9f64983b8ec1</srcmd5>
+    <version>3.4.15</version>
+    <time>1619107417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886605</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1507034ba1d495cccc2df439f05963c7</srcmd5>
+    <version>3.4.16</version>
+    <time>1621439339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893672</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>974be764ab390b9222456f7dd0efce09</srcmd5>
+    <version>3.4.16</version>
+    <time>1628751669</time>
+    <user>RBrownSUSE</user>
+    <comment>- Don't require systemd (works without, too)
+
+- Change to sysuser-tools to create system user</comment>
+    <requestid>911064</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>c286952e6d48257650975215e8be9212</srcmd5>
+    <version>3.4.16</version>
+    <time>1632251550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919709</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>36d6c1e54978a6ce91a3d7baddcb83d3</srcmd5>
+    <version>3.5.2</version>
+    <time>1647199497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960752</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>23024115b86d07ea46d2949f08c49d01</srcmd5>
+    <version>3.5.3</version>
+    <time>1650666309</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971732</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>c408d40acb9f005a4daad4340af5adc8</srcmd5>
+    <version>3.5.3</version>
+    <time>1651424014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973908</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>93548688e69671e873d4ff6b69ab3b74</srcmd5>
+    <version>3.5.4</version>
+    <time>1658162044</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>989817</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2f55f564833e01a3c3b5f38578a29f92</srcmd5>
+    <version>3.5.7</version>
+    <time>1674737939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061153</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c8a14f061d0d59ec887c5970d1abcc0d</srcmd5>
+    <version>3.5.8</version>
+    <time>1682691850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083469</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e58e510df0f0962210c76cf47cc02375</srcmd5>
+    <version>3.5.9</version>
+    <time>1685051563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088994</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,15 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="revision">4cd68545e5584d130fed398448dcd43bf7025267</param>
+    <param name="versionformat">@PARENT_TAG@+git%h</param>
+    <param name="url">git://github.com/lanceshelton/irqstat</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>  

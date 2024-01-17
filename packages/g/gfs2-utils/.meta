@@ -1,0 +1,9 @@
+<package name="gfs2-utils" project="openSUSE:Factory">
+  <title>GFS2 Utilities</title>
+  <description>
+	  The gfs2-utils package contains a number of utilities for creating,
+	  checking, modifying, and correcting any inconsistencies in GFS2
+	  file systems.
+  </description>
+  <devel project="network:ha-clustering:Factory" package="gfs2-utils"/>
+</package>

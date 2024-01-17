@@ -1,0 +1,586 @@
+-------------------------------------------------------------------
+Fri Dec 15 20:14:10 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.32:
+  * prepare 0.0.32
+  * change on font order
+  * fix: add default values to keyboard config (#382)
+  * refactor(cross-winit): remove unnecessary cloning of key events (#381)
+  * disable deb build for nightly for now
+  * update sugarloaf/Cargo.toml
+  * update sugarloaf/Cargo.toml
+  * update sugarloaf/Cargo.toml
+  * prepare version 0.0.31
+  * disable clippy for Keyboard since it will fail for linux case but pass for the rest
+  * change font order priority
+  * disable_ctlseqs_alt
+  * keyboard config
+  * add Hide the cursor while typing info on docs
+  * implement [renderer] configuration property
+  * updat changelog
+  * fix: update padding top on config change (#378)
+  * update changelog
+  * fix: trim unix program name (#377)
+  * fix: remove duplicate kitty backspace keybinds (#375)
+  * fix order of modifiers
+  * move install-terminfo to outside make release-macos
+  * prepare 0.0.30
+  * remove canary from docs
+  * rename macos zip to unsigned
+  * update nightly release to keep there
+  * update canary name
+  * update logic for native tabs calculation
+  * move to nightly releases
+  * feat(i18n): add polish translation to landing page (#369)
+  * feat(i18n): add spanish translation to landing page (#368)
+  * feat(i18n): add spanish translation to landing page (#368)
+  * fix rustfmt after correct for ansi regression
+  * fix regression made with transaprency work
+  * fix regression with dynamic_background
+  * macos-hide-toolbar-buttons
+
+-------------------------------------------------------------------
+Wed Dec 06 20:04:53 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.29:
+  * prepare 0.0.29
+  * fix command key + left and right strange behavior (closes #359 and #366)
+  * corrections on linux for EventLoopExtStartupNotify
+  * configure startup_notify
+  * remove APPLICATION_ID
+  * move APPLICATION_ID out of screen
+  * move window to router
+  * remove key.key_without_modifiers but keep Key::Character
+  * corrections for tmux and new scroll api
+  * docs(config): mention blur requires restart (#358)
+  * add info about iTerm2 image protocol
+  * add description to rioterm
+  * update workspace.dependencies
+  * update version to 0.0.28
+  * prepare release
+  * breadcrumb isn't windows
+  * raw_window_handle is only used in macos
+  * close last tab for native tab too
+  * fix NativeTab for macos
+  * wip OSC 1337
+  * disable sugarloaf warn errors when find the font
+  * fix broken link
+  * remove shadow for whenever have shadow
+  * set blur in the defaults
+  * update info about bg image
+  * add blur support
+  * add editor back
+  * remove settings UI (going back to the window with editor)
+  * update test script
+  * update scripts and docs
+  * set default for macos padding-x as 5.0
+  * update pt-br text for docs
+  * update docs regarding window.background-image
+  * fix broken link and start pt-br translation
+  * update CHANGELOG
+  * remove render in calculate_bounds and additional line render
+  * rename title for docs
+  * transparency partially working (named_colors should load transparency)
+  * small refactor suggestions (#351)
+  * bumping `winit` (#349)
+  * disable wa examples for lint
+  * renaming `rust-toolchain` to `rust-toolchain.toml` (#350)
+  * set target_os for graphics
+  * disable clippy for now in WA
+  * add more info about WA
+  * RenderableSugarloaf trait
+  * update multi to cross-winit
+  * update documentation
+  * introduce sugarloaf void and sugarloaffn trait
+  * use webgpu with wa
+  * start wa project
+  * More `PathBuf` (#342)
+  * Some refactors (#341)
+  * Add basic translations for Korean (#339)
+  * correction for route.window.winit_window.set_cursor_visible happening on mouse moving
+  * fix broken link docs
+  * NativeTab is macos default navigation mode
+  * separate by frontend and backend
+  * hide_cursor_when_typing config
+  * update derive for default
+  * hide-cursor-when-typing config
+  * update links
+  * using raphamorim/winit fork
+  * add swift-ui as backend
+  * cleaning up
+  * config to lib
+  * initial version of multi build
+  * docs in main level
+  * introduce backends concept and drop wa project
+  * swift start rio project
+  * swift gitignore
+  * fmt to CloseWindow
+  * macos-enable-close-last-tab for non-native tabs
+  * implement confirm-before-quit
+  * update imports
+  * default_macos_enable_close_last_tab is true
+  * rename to macos-enable-close-last-tab to keep consistency
+  * introduce macos_allow_close_last_tab for native tabs only (closes #296)
+  * Update configuration-file.md (#320)
+  * update CHANGELOG.md
+  * osc 8 (hyperlinks) (ref #60)
+  * update CHANGELOG.md
+  * implement use_current_path for native tabs close #323
+  * Fix some issues for docs (#334)
+  * Redesign docs index page (#333)
+  * update to references to wa
+  * update README.md
+  * add info
+  * correct files and add README.md
+  * move CompositeAlphaMode to Auto and PresentMode to AutoVsync
+  * Add web font (#332)
+  * migrate winit to winit fork (wa)
+  * save alpha_mode and present_mode from capabilities
+  * move to wa
+  * introduce wa (winit/tao wrapper)
+  * update ab_glyph
+  * change POLLING_TIMEOUT to 2s
+  * update changelog
+  * re add className around RioLogo
+  * Simplify logo (#329)
+  * Bit improve docs (#330)
+  * add an extra step for publish-crates to ensure build before publish
+  * prepare 0.0.27
+  * lock and update dependencies
+  * update then() message
+  * rio-wasm should be just an index.html that loads the js/wasm rio file
+  * lib only exist for wasm context, so renaming it for wasm
+  * webassembly support for rio (reorganization folders)
+  * Activate the hyperlink check whenever a modifier is changed ( for windows/linux/bsd and  for macos)
+  * update comments
+  * Update docs (#326)
+  * add link to Void Linux package in install docs (#325)
+  * update changelog
+  * fix Error when Double click on terminal side (close #316)
+  * Update configuration-file.md (#319)
+  * Fix typo in error messages (#317)
+
+-------------------------------------------------------------------
+Sun Oct 29 07:16:31 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.26:
+  * prepare 0.0.26
+  * upgrade winit to 0.29.3
+  * (docs)terminfo.md: add instructions to install when not cloned (#302)
+  * hyperlink support in docs
+  * drop vec usage on open_hyperlink
+  * avoid to_string with exec on windows
+  * avoid to_string with exec on windows
+  * add CommandExt for windows spawn_daemon
+  * correct lint for windows
+  * fix windows imports
+  * run action/link support for windows
+  * support for alt key in linux/windows for hyperlinks
+  * set multiple lines support for hyperlink
+  * correction of assert! for hyperlink test
+  * only for unix now trigger_hyperlink_from_position
+  * move back update_selection_scrolling
+  * update changelog about current hyperlink status (closes #60)
+  * update info about hyperlink in changelog
+  * fixes for lifecycle
+  * links working for macos/linux only
+  * add link processing
+  * underline straight once is found
+  * search for nearest hyperlink
+  * update mentions
+  * Fix typos on the key bindings documentation (#315)
+
+-------------------------------------------------------------------
+Wed Oct 25 19:29:48 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.25:
+  * prepare 0.0.25
+  * use wgpu 0.18.0
+  * use += for vi_cursor pos control
+  * update changelog regarding #311
+  * fix vi cursor disappear when scroll
+  * Add program (shell) name to the window_title (#312)
+  * fix flagged dimmed named colors (cases where it does not comes from rgb index). closes #308
+  * add Jai mention
+  * fix MacOS fullscreen empty space on margin top (fmt)
+  * fix MacOS fullscreen empty space on margin top
+  * update to Named keys for windows/linux
+  * upgrade winit 0.29.2 (take 4 - last)
+  * upgrade winit 0.29.2 (take 3)
+  * upgrade winit 0.29.2 (take 2)
+  * upgrade winit 0.29.2 (take 1)
+  * update image vi mode
+  * update index.md link
+  * rename docs
+
+-------------------------------------------------------------------
+Fri Oct 20 19:54:36 UTC 2023 - androw95220@gmail.com
+
+- Update to version v0.0.24:
+  * move self.state.set_selection back to start_selection
+  * correction for cursor
+  * prepare 0.0.24
+  * update CHANGELOG.md
+  * improve calculate_mouse_position and add tests
+  * implementation of copy mode (alacritty vi mode) close #186
+  * add documentation regarding alacritty vi mode
+  * implement cursor color for vi mode
+  * add Rio logo to README.md
+  * Update build-from-source.md (#298)
+  * redraw per key release
+  * stop inline render fn and render once key is released
+
+-------------------------------------------------------------------
+Wed Oct 18 20:44:26 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.23:
+  * disable toggle VI mode for now
+  * prepare release 0.0.23
+  * correct keybindings
+  * put kitty keyboard protocol back but being optional
+  * update docs
+  * use tempdir 0.3.7
+  * update regex to 1.10.2
+  * update information regarding use_kitty_keyboard_protocol
+  * docs: fix typo in tagline (#297)
+  * disable kitty keyboard protocol temporarily
+  * fix bold lookup
+  * long width bound for text builder
+  * text builder logic
+  * text builder sugarloaf
+  * update CHANGELOG.md
+  * logic for repeated background
+  * repeated bg rect
+  * docs: uniform style in configuration sample (#291)
+  * docs: add scroll-multiplier configuration parameter (#290)
+  * keep pattern for string creation for pre-str
+  * Delete old canary release
+  * keep pattern whenever creating strings in welcome.rs
+  * re-add delete tag-and-release to canary pipeline
+  * create a canary release
+  * use canary release naming/tag and delete previous canary release before submit a new one
+  * feat: added scroll_modifier to Config with default 2.0 (#288)
+  * requires_restart for new tabs using current path settings UI
+  * fix padding_x changes through settings UI
+  * update changelog
+  * Navigation: Remove magic strings (#285)
+  * write simple simple test for calculate_mouse_position #182
+  * newline at end of file
+  * floor() on cell_dimension for mouse_position
+  * move logic to mouse.rs and prepare to start writing tests (#182)
+  * remove unnecessary check after use scaled_margin_x (#182)
+  * improve mouse position calculation for scales >=2.0 (#182)
+  * improve mouse position calculation ref (#182)
+  * add a comment regarding backspace+control for windows and update CHANGELOG
+  * enable powershell shortcut for windows (close #220)
+  * add clearhistory support
+  * update CHANGELOG regarding reverse order of collapsedTabs
+  * fix CHANGELOG syntax
+  * fix order of tab moving and apply reverse on collapsed tabs
+  * correct tabs move shortcut
+  * vi mode wip
+  * clear_selection implementation as action
+  * docs escape sequence support
+  * new Scroll api with docs escape sequence support
+  * fix  Cursor shape isn't restored (close #279)
+  * Fix color automation for breadcrumb mode
+  * introduce scaled_sugarwidth and scaled_sugarheight
+  * sugarloaf: adding `repository` to `Cargo.toml` (#280)
+  * Fix link to build from source in Linux install (#277)
+  * updating rust-version to 1.73.0 (#275)
+  * remove multiplier
+  * remove round from spaces
+  * comment println
+  * update CHANGELOG.md
+  * fix OSC52 (closes #276)
+  * support 7.0 as minimum font-size with shortcut and fix change font size function
+  * fix in progress for tab overlaping text
+  * update CHANGELOG.md
+  * fmt fix lines calculation
+  * fix for calculate lines
+  * update changelog and add a comment
+  * fix bug whenever is not closing terminal for non native tabs (ref #255)
+  * use term UNRELEASED instead of In Progress
+  * support to new Run and Scroll API
+  * update docs to use ignore-selection-fg-color
+  * undo fixed scaledwidth/height
+  * exec and Act::Command(program) are unix exclusives
+  * sugarwidth now has fixed weight (as it should have been since beginning). The font bounds now needs to be scaled to match the fixed sugarwidth (ref #167 #264 #182)
+
+-------------------------------------------------------------------
+Wed Oct 11 12:24:57 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace freetype-devel BuildRequires with freetype2: this is
+  actually what is needed, but as fontconfig happened to pull it in
+  already, things happened to work. Freetype 1 is not needed here.
+
+-------------------------------------------------------------------
+Mon Oct 02 17:22:11 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.22:
+  * update CHANGELOG.md
+  * move back 0.0.22 sugarloaf
+  * use 0.0.22-1 for sugarloaf
+  * try to find glyph from font vec
+  * update commands
+  * move sugarloaf fontes to test-fonts folder
+  * update lockfile
+  * prepare 0.0.22
+  * fix wasm builds
+  * format code and fix wasm build
+  * update CHANGELOG regarding support to extra fonts
+  * implement extra fonts
+  * use Ms jhenghei
+  * update windows unicode and symbols fonts
+  * use arial unicode ms for windows
+  * update docs regarding shell program examples
+  * update default examples for shell (ref #263)
+  * bump few more deps
+  * bump few dependencies
+  * update CHANGELOG.md
+  * add scroll actions to bindings/mod.rs (close #265)
+  * move back to font_spec usage
+  * use first of filtered_formats and update CHANGELOG
+  * use queue rendering instead of use staging_belt
+  * update brush and calculator imports
+  * rename glyph_brush and glyph_calculator mods
+  * port glyph-brush into glyph mod.rs
+  * test sugarloaf height
+
+-------------------------------------------------------------------
+Sat Sep 30 09:53:09 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.21:
+  * fmt unsupported_formats.contains
+  * add publish-crates to make
+  * lock to 0.0.21
+  * prepare 0.0.21
+  * move wegpu upgrade to next version bump
+  * rollback with webgpu upgrade
+  * use wgpu 0.17.1
+  * update lockfile
+  * remove comments
+  * use npm ci instead of install for ci
+  * remove index.md of HomepageFeatures
+  * remove working-directory
+  * update docs flow
+  * check if is_srgb
+  * comment ligatures feature for now in docs
+  * update changelog
+  * workflow: automatically deploy documentation site using GitHub Actions (#261)
+  * Hide other applications in MacOS (#262)
+  * implement --working-dir on cli (closes #258)
+  * update broken links in the README
+  * skip_serializing for some fields in navigation
+  * docs: markdown (#257)
+  * update version docs
+  * remove legacy icns icons
+  * use version from workspace
+
+-------------------------------------------------------------------
+Sun Sep 24 13:24:14 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.20:
+  * update changelog.md
+  * prepare 0.0.20
+  * Fix cursor disappearing in the first tab whenever a new tab is created with NativeTab
+  * add log error to not found font
+  * update docs
+  * fmt performer/handler
+  * switch sync escape from DCS to CSI (changes originally implemented in alacritty/vte that's licensed under MIT)
+  * update documentation
+  * update docs with default documentation file and add themes section (close #250)
+  * update colors and remove screen rendering from state mod
+  * update rio-colors
+  * update changelog
+  * remove RIO_CONFIG variable from init (Ref #243)
+  * keep original license and copyright from alacritty take2 #246
+  * update fmt for screen/mod.rs
+  * keep original license and copyright from alacritty #246
+  * update website
+  * migration to docasaurus
+  * select specific dependencies
+  * add fontconfig-parser dep to sugarloaf
+  * add fontconfig-parser dep to sugarloaf
+  * add fontconfig search for unix (non-macos)
+  * add fontconfig
+  * Add ToggleFullscreen Action #229 (#249)
+  * Update configuration-file.md: fix broken link (#248)
+  * fix: Command + H can't hide rio on macOS #240 (#244)
+  * fix fmt for standalone colors
+  * start to use fixed colors for screens (avoid issues with themes and specific configs
+  * update default colors
+  * update colors
+  * [Draft] Docs migration (#241)
+  * fmt LOGO_ICON
+  * update website
+  * update new logo
+  * new logo
+  * updating rust-version to 1.72.1 (#238)
+  * update CHANGELOG.md
+  * use specific version #198
+  * Feature/chocolatey (#239)
+  * refactor: enable full optimizations for release profile (#236)
+  * refactor: enable CPU-specific optimizations on aarch64-apple-darwin (#235)
+  * update docs
+
+-------------------------------------------------------------------
+Tue Sep 19 12:58:51 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.19:
+  * wrap up post release 0.0.19
+  * update CHANGELOG.md
+  * update package versions
+  * prepare 0.0.19
+  * disable menu macos
+  * update image example
+  * use TriangleList as PrimitiveTopology
+  * update config with undercased
+  * update fmt dynamic change
+  * dynamic background color
+  * remove renderable trait
+  * update config tests
+  * implementation of image background without opacity
+  * work in progress image rendering
+  * compute fg/bg colors
+  * new docs
+  * teach sugarloaf how render layer image and start docs 2.0
+  * feat: option for ignoring theme foreground selection color (#227)
+  * remove backspace with modifierState
+  * remove DISAMBIGUATE_KEYS from arrows bindings
+  * split update counter per x/y on settings menu
+  * update sugarloaf api for wasm32
+  * map the rest of the configuration
+  * write configuration from settings UI
+  * reuse font reference in all screens (yey) and link font faces to settings
+  * ignore loader on wasm32
+  * incluse font loader to sugarloaf with normalization of the name
+  * font loader
+  * docs: add opensuse linux package (#224)
+  * use fixed font width
+  * update fmt teleypewriter
+  * treat errors from teletypewriter
+  * turn off testing settings route
+  * update character position for column whenever has a selection (related #182)
+  * remove settings representation
+  * settings ui work in progress
+  * remove x icon on error ui
+  * update fmt for &error.report
+  * update window dead context
+  * create dead_context and report now is splitted in two levels warning and error (closes #212)
+  * update env variables
+  * read from working_directory in flatpak
+  * use spawn as default for flatpak
+  * flatpak support
+  * Rename Regular window mode to Windowed (#219)
+  * custom impl Default for Window
+  * add window mode default for mode
+  * fmt window rio-config
+  * add window.rs in rio-config
+  * new window API that allow configure maximized or fullscreen (closes #215)
+  * fmt unix/mod.rs
+  * if runs inside a flatpak sandbox retrieve /bin/zsh from flatpak-spawn
+  * docs: add alpine linux package (#218)
+  * move style code back
+  * teletypewriter validate if is a flatpak sandbox to retrieve SHELL
+  * remove duplicate get_pw_entry calls
+  * retrieve-shell-outside-box-for-flatpak
+  * Add navigation Plain mode (closes #213)
+  * demo/emacs: better screenshot (#211)
+  * disable NavigationHasChanged warn (todo for next release)
+  * fix: change package name from rio to rioterm (#210)
+  * update changelog
+  * update Cargo.toml files and published a rc version to crates.io
+  * has_regained_focus redraw window for idle windows
+  * update rules for blinking cursor
+  * partial support to blinking cursor (has few incosistencies yet like selection and VI mode switchs
+  * add font name variant for cascadia code
+  * fix breadcrumbs id
+  * error UI for fonts
+  * use crate::ui::Error
+  * update target_arch for sugarloaf
+  * minor fixes for docs styles
+  * linux doesn't use .0 since is font_arc straight
+  * clear comments
+  * implementation of event for UI component that shows the error of configuration file (closes #168)
+  * update lock file
+  * make docs and docs-prod
+  * add jekyll-minifier
+  * update CHANGELOG.md
+  * migrated font-kit to fontdb
+  * move scripts to inside misc folder
+  * rename rio_proc_macros to rio-proc-macro and reuse version from workspace
+  * merge config and colors into rio-config
+  * move create toolbar to ui::appkit::mod
+  * remove silkscreen
+  * update images
+  * update website wip
+  * update docs
+  * add top to other sections
+  * go to top button docs
+  * update docs (on-going)
+  * update ui mod (code originally came from madsmtm/menubar
+  * ui kit
+  * add initial support to menubar
+  * block rgba16float to prevent nvidia driver to enable hdr (#209)
+  * adaptive theme support (close #207)
+  * correct std::fmt::Display for Breadcrumb
+  * update settings function
+  * provide settings from builder
+  * finish layout UI for settings
+  * colors and config load version from workspaces
+  * use workspace
+  * update cargo.toml
+  * copa 0.12
+  * update changelog
+  * implemented ScrollPageUp, ScrollPageDown, ScrollHalfPageUp, ScrollHalfPageDown, ScrollToTop, ScrollToBottom, ScrollLineUp, ScrollLineDown (close #206)
+  * support fonts.family to overwrite all other font families
+  * create_native_tab only for macos
+  * fix shift key with arrow
+  * update CHANGELOG.md
+  * connect router with windows and native tabs
+  * welcome screen
+  * use .to_string
+  * update identation
+  * cover legacy modifiers
+  * wip settings ui
+  * update styles for settings ui
+  * mockup settings UI
+  * introduce Router
+  * fix literal with an empty format string
+  * release on enter
+  * update message config
+  * add assistant
+  * NativeTab is MacOS default now
+  * add errors to assistant if have configuration error whenever updating the config
+  * assistant UI
+  * corcovado use Rc instead of Arc due to Sync trait
+  * update lint for rust 1.72
+  * Update CHANGELOG.md
+  * update rust and fix 'Backspace' keypress triggers Ctrl+h keybinding in Zellij (closes #197)
+  * update CHANGELOG.md
+  * implement TERM_PROGRAM and TERM_PROGRAM_VERSION variables
+  * chore: fix typo (#199)
+  * only apply check for native tab deadzone in cursor updates
+  * Whenever native tabs is on disable macos deadzone logic
+  * docs: update the link for Arch Linux package (#195)
+
+-------------------------------------------------------------------
+Sun Sep 10 16:43:45 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.18~0:
+  * update to 0.0.18
+  * 0.0.18
+  * fix delete key
+  * fix breadcrumb navigation crash
+  * fix breadcrumb navigation (closes #193)
+  * fix wasmbuild with font spec
+  * update docs regarding release
+  * prepare 0.0.17 release
+  * update repology badge
+  * update font API
+
+-------------------------------------------------------------------
+Sun Sep 10 16:11:59 UTC 2023 - Nicolas Lorin <androw95220@gmail.com>
+
+new package- 

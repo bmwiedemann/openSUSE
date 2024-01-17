@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Thu May  4 18:59:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * Drop official support for Python version 3.5 and 3.6, which
+    have reached end-of-life.
+  * Remove pytz dependency (#49)
+
+-------------------------------------------------------------------
+Fri Apr 21 12:23:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Wed Mar 17 05:48:21 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.3.2:
+  * Switch Persian calendar to astronomical computation (was non-canonical algorithmic method)
+  * Fix inappropriate uses of trunc, which caused several errors before the Julian Day epoch (#39, #40, #42)
+  * Fix bug in julian.leap (#43)
+  * Add official suppport and tests for Python 3.9
+  * Raise ValueError for attempted conversion of dates before the Mayan epoch
+  * Fix bug in Bahai calculations during Ayyám-i-Há (#32). Thanks @chiuczek
+  * Regularize variable names:
+  * coptic: rename MONTH_NAMES to MONTHS, rename DAY_NAMES to WEEKDAYS
+  * french_republican: add MONTHS
+  * mayan: rename HAAB_MONTHS to HAAB, rename TZOLKIN_NAMES to TZOLKIN
+  * Add some Jewish and Islamic holidays to holidays: shemini_azeret, lag_baomer, tu_beshvat, tisha_bav, ramadan, ashura, eid_alfitr, eid_aladha
+  * Add docs. See https://convertdate.readthedocs.io/
+  * Fix December 31st bug in ordinal (#34)
+  * Add Indigenous Peoples' Day and Juneteenth to holidays, deprecate Columbus day
+- Switch to using pytest
+
+-------------------------------------------------------------------
+Mon May  4 10:38:40 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not restrict upper version on pytz for no reason.
+
+-------------------------------------------------------------------
+Wed Apr  1 12:16:15 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.2.0
+  * Repair Bahai intercalary days bug (#13, thanks @bchurchill)
+  * Replace pyephem, which is now in maintenance mode, with pymeeus.
+  * Remove shebangs and regularize licenses (thanks @fabaff)
+  * Convert readme to ascii (#16)
+
+-------------------------------------------------------------------
+Fri Oct 18 06:56:11 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- fix execution of tests on anything older than Tumbleweed
+
+-------------------------------------------------------------------
+Fri Sep 13 13:31:50 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase.
+
+-------------------------------------------------------------------
+Fri Sep 13 12:20:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Enable tests
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Apr  3 02:20:14 PM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v2.1.3

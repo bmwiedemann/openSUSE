@@ -1,0 +1,5 @@
+<package name="plexus-components-pom" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="plexus-components-pom"/>
+</package>

@@ -1,0 +1,30 @@
+--- Makefile
++++ Makefile
+@@ -19,7 +19,7 @@
+ ## a local version (non-root).
+ ## Standard distros should comment that option to save space and to
+ ## build libiw.so used by third parties...
+-BUILD_STATIC = y
++#BUILD_STATIC = y
+ 
+ ## Uncomment this to build without using libm (less efficient).
+ ## This is mostly useful for embedded platforms without maths.
+@@ -105,7 +105,7 @@
+ 
+ # Other flags
+ CFLAGS=-Os -W -Wall -Wstrict-prototypes -Wmissing-prototypes -Wshadow \
+-	-Wpointer-arith -Wcast-qual -Winline -I.
++	-Wpointer-arith -Wcast-qual -Winline -I. $(RPM_OPT_FLAGS) -fno-strict-aliasing
+ #CFLAGS=-O2 -W -Wall -Wstrict-prototypes -I.
+ DEPFLAGS=-MMD
+ XCFLAGS=$(CFLAGS) $(DEPFLAGS) $(WARN) $(HEADERS) $(WELIB_FLAG) $(WEDEF_FLAG)
+@@ -121,6 +121,9 @@
+ %.so: %.c wireless.h
+ 	$(CC) $(XCFLAGS) $(PICFLAG) -c -o $@ $<
+ 
++iwlib.o:	iwlib.c
++	$(CC) $(XCFLAGS) $(PICFLAG) -c -o $@ $<
++
+ iwconfig: iwconfig.o $(IWLIB)
+ 
+ iwlist: iwlist.o $(IWLIB)

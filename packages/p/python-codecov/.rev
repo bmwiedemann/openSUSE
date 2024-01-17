@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>406c8bc05ccb3ded7e6237944a3b7ee5</srcmd5>
+    <version>2.0.15</version>
+    <time>1528492374</time>
+    <user>dimstar_suse</user>
+    <comment>Required by python-coala</comment>
+    <requestid>613313</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>710d0eb98f82e36df025b58c414e83aa</srcmd5>
+    <version>2.0.15</version>
+    <time>1535123053</time>
+    <user>dimstar_suse</user>
+    <comment>Remove dependency on unittest2
+(tests are not run at all, because they depend on network)</comment>
+    <requestid>629005</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>18001c3e3f815e26735556e7007b17f5</srcmd5>
+    <version>2.0.15</version>
+    <time>1544726485</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653977</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>64566f5eccca418ee79839016e96e9a9</srcmd5>
+    <version>2.1.7</version>
+    <time>1594293618</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.7:
+  * Fix pinned coverage version
+  * Fix GitHub Actions implementation
+  * Implement retries on Codecov API calls
+  * Add GitHub Actions CI detection
+  * Add CODECOV_NAME as default for name
+  * Fix command line quoting on Windows
+  * Fix GitLab CI project directory detection on Windows
+  * Fix GitLab CI post version 9
+  * Check text for NoneType on writes
+  * Include the cacert in the PUT call when uploading to S3
+  * Fixed gcov not being found in certain instances
+  * Fix find command not working on Windows
+  * Add support for gzipping reports
+  * Dynamic syncing of version
+  * Fix command when neither hg or git are not available
+  * Remove x-amz-acl header
+  * Cleaning TOC generation
+  * fixed string issues
+  * fixed broken subprocess handling
+  * fixed reported command injection vulnerability.
+- Drop LICENSE file, included directly in the tarball</comment>
+    <requestid>819627</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3ab454d029415fec91d7866bdf002b97</srcmd5>
+    <version>2.1.9</version>
+    <time>1600347150</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.9:
+  * Remove token restriction as it is changed server-side
+  * support for CODECOV_FLAGS
+  * ability to specify number of upload retries</comment>
+    <requestid>835104</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6280efde94153cc52d70f22b630a54d7</srcmd5>
+    <version>2.1.12</version>
+    <time>1630265633</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.12
+  - Add Cirrus CI
+  - Bump coverage from 5.3 to 5.3.1
+  - Bump coverage from 5.3.1 to 5.4
+  - Bump coverage from 5.4 to 5.5
+  - Upgrade to GitHub-native Dependabot
+- from version 2.1.11
+  - Added option to disable printing of gcov-out
+  - Handle exceptions that don't have a returncode
+  - Update to Python 3.9
+- from version 2.1.10
+  - Output elapsed time with S3 upload
+  - Improve error reporting in the &quot;try_run&quot; function and correctly
+    include original command output in the error message
+  - Added sleep between upload retries.
+  - Ignore emacs lisp files
+  - Fix error try_to_run using | without shell=True (fix #284)
+  - Bump coverage from 4.5.4 to 5.2.1
+  - Update python versions
+  - Add license scan report and status
+  - Update README with accurate links
+  - Bump coverage from 5.2.1 to 5.3</comment>
+    <requestid>914826</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>495e727c3fe3c7f89c7279d724e3f2b0</srcmd5>
+    <version>2.1.13</version>
+    <time>1683559443</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.13:
+  * Add deprecation notice
+  * Add migration guide link</comment>
+    <requestid>1085333</requestid>
+  </revision>
+</revisionlist>

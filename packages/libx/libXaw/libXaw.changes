@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Thu Mar 16 09:09:26 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.15
+  * gitlab CI: add a basic build test
+  * Fix spelling/wording issues
+  * Stop memory leak in GetResourcePixmapPath()
+  * Stop memory leak in error paths in XawTextSinkConvertPropertyList()
+  * Remove "All rights reserved" from Oracle copyright notices
+  * Add .git-blame-ignore-revs to hide whitespace commits from git blame
+  * Replace calls to index() with strchr()
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * Fix ctype(3) users.
+  * issue #6: fix typo in XawMax parameter in GetBlockBoundaries
+
+-------------------------------------------------------------------
+Tue Mar 30 15:06:37 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.14
+  * bugfix release 
+- supersedes U_NULL-pointer-dereference-in-XawAsciiSinkInitialize.patch
+
+-------------------------------------------------------------------
+Thu Jun 21 08:46:58 UTC 2018 - msrb@suse.com
+
+- U_NULL-pointer-dereference-in-XawAsciiSinkInitialize.patch
+  * Fix crash when required font is not installed. (bsc#1098411)
+
+-------------------------------------------------------------------
+Mon May  4 14:11:30 UTC 2015 - sndirsch@suse.com
+
+- Update to version 1.0.13
+  * Fix build with gcc -Werror=format-security
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Use autoconf HAVE_UNISTD_H instead of imake X_NOT_POSIX to find <unistd.h>
+  * Just use C89 size_t instead of rolling our own Size_t
+  * Use SEEK_* names instead of raw numbers for fseek whence argument
+  * Makefile: use AM_V_GEN and AM_V_at to implement automake silent rules
+  * Makefile: use $(LN_S) for better code portability
+  * Include <unistd.h>
+  * Fix abs() usage.
+
+-------------------------------------------------------------------
+Thu Sep 12 17:50:17 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.12:
+  + Replace TXT16 with XChar2b inline.
+  + Remove CRAY/WORD64 support.
+  + Fix fd leak when write() fails in WriteToFile().
+  + Fix fd leak when fdopen() fails in InitStringOrFile().
+  + Include winsock header on WIN32 to provide fd_set etc.
+
+-------------------------------------------------------------------
+Fri Jun 14 23:26:12 UTC 2013 - jengelh@inai.de
+
+- Add proper bit-type symbols for sparc64
+
+-------------------------------------------------------------------
+Sun Feb 17 17:21:53 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+
+-------------------------------------------------------------------
+Wed Sep 19 22:21:17 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.0.11:
+  + Only call XawStackFree if XawStackAlloc was used for allocation
+  + Correct order of arguments to XawStackFree()
+  + Correct undefined behavior access to out of scope pointer
+    contents
+
+-------------------------------------------------------------------
+Thu Apr 12 06:24:19 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.0.10:
+  + Fix potential infinte loop in XawBoxQueryGeometry()
+  + Fixes for compiler warnings
+  + General cleanups
+  + Build configuration and documentation improvements
+- Changes from version 1.0.9:
+  + Fix build issues
+  + Minor documentation cleanups
+  + Build configuration improvements
+
+-------------------------------------------------------------------
+Tue Feb  7 22:17:49 UTC 2012 - jengelh@medozas.de
+
+- Split xorg-x11-libs into separate packages

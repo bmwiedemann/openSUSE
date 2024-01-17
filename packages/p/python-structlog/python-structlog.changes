@@ -1,0 +1,386 @@
+-------------------------------------------------------------------
+Sun Jan 14 15:12:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.1.0:
+  * The lazy logger proxy returned by `structlog.get_logger()`
+    now returns its initial values when asked for context.
+  * When asked for context before binding for the first time, it
+    returned an empty dictionary in 23.3.0.
+  * The displayed level name when using
+    `structlog.stdlib.BoundLogger.exception()` is `"error"`
+    instead of `"exception"`.
+  * Don't ignore the `width` argument of
+    `RichTracebackFormatter`.
+  * Implementing the output on top of the new columns API has
+    changed the default very slightly, but shouldn't be
+    noticeable.
+  * Async log methods (those starting with an `a`) now also
+    support the collection of callsite information using
+    `structlog.processors.CallsiteParameterAdder`.
+  * `structlog.stdlib.recreate_defaults()` now also adds
+    `structlog.stdlib.add_logger_name` to the processors.
+  * The return value from `get_logger()` (a
+    `BoundLoggerLazyProxy`) now passes `isinstance`-checks
+    against `structlog.typing.BindableLogger` on Python 3.12.
+  * `structlog.threadlocal.tmp_bind()` now also works with
+    `BoundLoggerLazyProxy` (in other words: before anything is
+    bound to a bound logger).
+  * stdlib: `ProcessorFormatter` can now be told to not render
+    the log record message using `getMessage` and just
+    `str(record.msg)` instead.
+  * stdlib: `structlog.stdlib.BoundLogger.exception()`'s handling
+    of`LogRecord.exc_info` is now set consistent with `logging`.
+  * Official support for Python 3.12.
+  * `structlog.processors.MaybeTimeStamper` that only adds a
+    timestamp if there isn't one already.
+  * `structlog.dev.ConsoleRenderer` now supports renamed
+    timestamp keys using the *timestamp_key* parameter.
+  * `structlog.dev.RichTracebackFormatter` that allows to
+    configure the traceback formatting.
+  * `FilteringBoundLogger.exception()` and
+    `FilteringBoundLogger.aexception()` now support positional
+    argument formatting like the rest of the methods.
+  * `structlog.processors.format_exc_info()` and
+    `structlog.dev.ConsoleRenderer` do not crash anymore when
+    told to format a non-existent exception.
+  * `structlog.stdlib.BoundLogger` now has, analogously to our
+    native logger, a full set of async log methods prefixed with
+    an `a`: `await log.ainfo("event!")`
+  * The default configuration now respects the presence of
+    `FORCE_COLOR` (regardless of its value, unless an empty
+    string).
+  * This disables all heuristics whether it makes sense to use
+    colors.
+  * The default configuration now respects the presence of
+    `NO_COLOR` (regardless of its value, unless an empty string).
+  * This disables all heuristics whether it makes sense to use
+    colors and overrides `FORCE_COLOR`.
+  * Accessing package metadata as attributes on the *structlog*
+    module is deprecated (for example, `structlog.__version__`).
+  * Please use `importlib.metadata` instead (for Python 3.7: the
+    *importlib-metadata* PyPI package).
+  * The `structlog.types` module is now deprecated in favor of
+    the `structlog.typing` module.
+  * It seems like the Python typing community is settling on this
+    name.
+  * The timestamps in the default configuration now use the
+    correct separator (`:`) for seconds.
+
+-------------------------------------------------------------------
+Fri Nov 11 13:14:31 UTC 2022 - pgajdos@suse.com
+
+- silent rpmlint
+
+-------------------------------------------------------------------
+Fri Nov 11 12:02:17 UTC 2022 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
+Thu Jul 21 07:12:29 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 22.1.0:
+  Removed:
+  * Python 3.6 is not supported anymore.
+  * Pickling is now only possible with protocol version 3 and newer.
+  Deprecated:
+  * The entire structlog.threadlocal module is deprecated. Please use the
+    primitives from structlog.contextvars instead.
+  * If you're using the modern APIs (bind_threadlocal() / merge_threadlocal())
+    it's enough to replace them 1:1 with their contextvars counterparts. The old
+    approach around wrap_dict() has been discouraged for a while.
+  * Currently there are no concrete plans to remove the module, but no patches
+    against it will be accepted from now on. #409
+  Added:
+  * structlog.processors.StackInfoRenderer now has an additional_ignores
+    parameter that allows you to filter out your own logging layer. #396
+  * Added structlog.WriteLogger, a faster – but more low-level – alternative to
+    structlog.PrintLogger. It works the way PrintLogger used to work in previous
+    versions. #403 #404
+  * structlog.make_filtering_bound_logger()-returned loggers now also have a
+    log() method to match the structlog.stdlib.BoundLogger signature closer. #413
+  * Added structured logging of tracebacks via the structlog.tracebacks module,
+    and most notably the structlog.tracebacks.ExceptionDictTransformer which can be
+    used with the new structlog.processors.ExceptionRenderer to render JSON
+    tracebacks. #407
+  * structlog.stdlib.recreate_defaults(log_level=logging.NOTSET) that recreates
+    structlog's defaults on top of standard library's logging. It optionally also
+    configures logging to log to standard out at the passed log level. #428
+  * structlog.processors.EventRenamer allows you to rename the hitherto
+    hard-coded event dict key event to something else. Optionally, you can rename
+    another key to event at the same time, too. So adding EventRenamer(to="msg",
+    replace_by="_event") to your processor pipeline will rename the standard event
+    key to msg and then rename the _event key to event. This allows you to use the
+    event key in your own log files and to have consistent log message keys across
+    languages.
+  * structlog.dev.ConsoleRenderer(event_key="event") now allows to customize
+    the name of the key that is used for the log message.
+  Changed:
+  * structlog.make_filtering_bound_logger() now returns a method with the same
+    signature for all log levels, whether they are active or not. This ensures that
+    invalid calls to inactive log levels are caught immediately and don't explode
+    once the log level changes. #401
+  * structlog.PrintLogger – that is used by default – now uses print() for
+    printing, making it a better citizen for interactive terminal applications. #399
+  * structlog.testing.capture_logs now works for already initialized bound loggers. #408
+  * structlog.processors.format_exc_info() is no longer a function, but an
+    instance of structlog.processors.ExceptionRenderer. Its behavior has not
+    changed. #407
+  * The default configuration now includes the
+    structlog.contextvars.merge_contextvars processor. That means you can use
+    structlog.contextvars features without configuring structlog.
+  Fixed:
+  * Overloaded the bind, unbind, try_unbind and new methods in the
+    FilteringBoundLogger Protocol. This makes it easier to use objects of type
+    FilteringBoundLogger in a typed context. #392
+  * Monkeypatched sys.stdouts are now handled more gracefully by
+    ConsoleRenderer (that's used by default). #404
+  * structlog.stdlib.render_to_log_kwargs() now correctly handles the presence
+    of exc_info, stack_info, and stackLevel in the event dictionary. They are
+    transformed into proper keyword arguments instead of putting them into the
+    extra dictionary. #424, #427
+
+-------------------------------------------------------------------
+Tue Mar  1 10:55:24 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 21.5.0:
+  * Added the structlog.processors.LogfmtRenderer processor to render
+    log lines using the logfmt format. #376
+  * Added the structlog.stdlib.ExtraAdder processor that adds extra
+    attributes of logging.LogRecord objects to the event dictionary.
+    This processor can be used for adding data passed in the extra
+    parameter of the logging module's log methods to the event
+    dictionary. #209 #377
+  * Added the structlog.processor.CallsiteParameterAdder processor that
+    adds parameters of the callsite that an event dictionary orginated
+    from to the event dictionary. This processor can be used to enrich
+    events dictionaries with information such as the function name,
+    line number and filename that an event dictionary orignated from. #380
+
+-------------------------------------------------------------------
+Tue Mar  1 10:50:45 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 21.4.0:
+  * Fixed import when running in optimized mode (PYTHONOPTIMIZE=2
+    or python -OO). #373
+  * Added the structlog.threadlocal.bound_threadlocal and
+    structlog.contextvars.bound_contextvars decorator/context managers
+    to temporarily bind key/value pairs to a thread-local and context-local
+    context. #371
+
+-------------------------------------------------------------------
+Tue Mar  1 10:49:07 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 21.3.0:
+  * structlog.dev.ConsoleRenderer now has sort_keys boolean parameter
+    that allows to disable the sorting of keys on output. #358
+  * structlog.processors.TimeStamper now works well with FreezeGun
+    even when it gets applied before the loggers are configured. #364
+  * structlog.stdlib.AsyncBoundLogger now determines the running loop
+    when logging, not on instantiation. That has a minor performance
+    impact, but makes it more robust when loops change
+    (e.g. aiohttp.web.run_app()), or you want to use sync_bl before a
+    loop has started.
+  * structlog.stdlib.ProcessorFormatter now has a processors argument
+    that allows to define a processor chain to run over all log entries.
+  * Before running the chain, two additional keys are added to the event
+    dictionary: _record and _from_structlog. With them it's possible to
+    extract information from logging.LogRecords and differentiate between
+    structlog and logging log entries while processing them.
+  * The old processor (singular) parameter is now deprecated, but no
+    plans exist to remove it. #365
+
+-------------------------------------------------------------------
+Wed Oct 13 08:36:18 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 21.2.0:
+  Highlights:
+  * Support for for beautiful (and helpful!) exceptions by integrating
+    ConsoleRenderer with rich or better-exceptions.
+  * Helpers to access thread-local and context-local context.
+  * Deeper contextvars support.
+  Backward-incompatible changes:
+  * To implement pretty exceptions (see Changes below),
+    structlog.dev.ConsoleRenderer now formats exceptions itself.
+    Make sure to remove format_exc_info from your processor chain if you
+    configure structlog manually. This change is not really breaking
+    because the old use-case will keep working as before. However if
+    you pass pretty_exceptions=True (which is the default if either
+    rich or better-exceptions is installed), a warning will be raised
+    and the exception will be renderered without prettyfication.
+  Changes:
+  * structlog is now importable if sys.stdout is None (e.g. when
+    running using pythonw). #313
+  * structlog.threadlocal.get_threadlocal() and
+    structlog.contextvars.get_contextvars() can now be used to get a copy
+    of the current thread-local/context-local context that has been bound
+    using structlog.threadlocal.bind_threadlocal() and
+    structlog.contextvars.bind_contextvars(). #331 #337
+  * structlog.threadlocal.get_merged_threadlocal(bl) and
+    structlog.contextvars.get_merged_contextvars(bl) do the same, but
+    also merge the context from a bound logger bl. Same pull requests as
+    previous change.
+  * structlog.contextvars.bind_contextvars() now returns a mapping of
+    keys to contextvars.Tokens, allowing you to reset values using the
+    new structlog.contextvars.reset_contextvars(). #339
+  * Exception rendering in structlog.dev.ConsoleLogger is now configurable
+    using the exception_formatter setting. If either the rich or the
+    better-exceptions package is present, structlog will use them for
+    pretty-printing tracebacks. rich takes precedence over
+    better-exceptions if both are present.
+    This only works if format_exc_info is absent in the processor chain.
+    #330 #349
+  * All use of colorama on non-Windows systems has been excised. Thus,
+    colors are now enabled by default in structlog.dev.ConsoleRenderer
+    on non-Windows systems. You can keep using colorama to customize
+    colors, of course. #345
+  * The final processor can now return a bytearray (additionally to str
+    and bytes). #344
+
+-------------------------------------------------------------------
+Fri Feb 19 08:07:55 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 21.1.0:
+  * structlog.threadlocal.wrap_dict() now has a correct type
+    annotation. #290
+  * Fix isolation in structlog.contextvars. #302
+  * The default configuration and loggers are pickleable again. #301
+  * structlog.dev.ConsoleRenderer will now look for a logger_name
+     key if no logger key is set. #295
+
+-------------------------------------------------------------------
+Mon Jan  4 11:16:18 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20.2.0:
+  Backward-incompatible changes:
+  * Python 2.7 and 3.5 aren't supported anymore. The package meta
+    data should ensure that you keep getting 20.1.0 on those versions. #244
+  * structlog is now fully type-annotated. This won't break your
+    applications, but if you use Mypy, it will most likely break your CI.
+  Deprecations:
+  * Accessing the _context attribute of a bound logger is now deprecated.
+    Please use the new structlog.get_context().
+  Changes:
+  * structlog has now type hints for all of its APIs! Since structlog
+    is highly dynamic and configurable, this led to a few concessions
+    like a specialized structlog.stdlib.get_logger() whose only difference
+    to structlog.get_logger() is that it has the correct type hints.
+    We consider them provisional for the time being – i.e. the backward
+    compatibility does not apply to them in its full strength until we
+    feel we got it right. Please feel free to provide feedback! #223, #282
+  * Added structlog.make_filtering_logger that can be used like
+    configure(wrapper_class=make_filtering_bound_logger(logging.INFO)).
+    It creates a highly optimized bound logger whose inactive methods
+    only consist of a return None. This is now also the default logger.
+  * As a complement, structlog.stdlib.add_log_level() can now
+    additionally be imported as structlog.processors.add_log_level
+    since it just adds the method name to the event dict.
+  * structlog.processors.add_log_level() is now part of the default configuration.
+  * structlog.stdlib.ProcessorFormatter no longer uses exceptions for
+    control flow, allowing foreign_pre_chain processors to use
+    sys.exc_info() to access the real exception.
+  * Added structlog.BytesLogger to avoid unnecessary encoding round trips.
+    Concretely this is useful with orjson which returns bytes. #271
+  * The final processor now also may return bytes that are passed
+    untouched to the wrapped logger.
+  * structlog.get_context() allows you to retrieve the original
+    context of a bound logger. #266,
+  * structlog.PrintLogger now supports copy.deepcopy(). #268
+  * Added structlog.testing.CapturingLogger for more unit testing goodness.
+  * Added structlog.stdlib.AsyncBoundLogger that executes logging
+    calls in a thread executor and therefore doesn't block. #245
+
+-------------------------------------------------------------------
+Tue Mar 17 11:33:05 UTC 2020 - pgajdos@suse.com
+
+- version update to 20.1.0
+  - This is the last version to support Python 2.7 (including PyPy) and 3.5.
+    All following versions will only support Python 3.6 or later.
+  - Added a new module ``structlog.contextvars`` that allows to have a global but context-local ``structlog`` context the same way as with ``structlog.threadlocal`` since 19.2.0.
+    `#201 <https://github.com/hynek/structlog/issues/201>`_,
+    `#236 <https://github.com/hynek/structlog/pull/236>`_
+  - Added a new module ``structlog.testing`` for first class testing support.
+    The first entry is the context manager ``capture_logs()`` that allows to make assertions about structured log calls.
+    `#14 <https://github.com/hynek/structlog/issues/14>`_,
+    `#234 <https://github.com/hynek/structlog/pull/234>`_
+  - Added ``structlog.threadlocal.unbind_threadlocal()``.
+    `#239 <https://github.com/hynek/structlog/pull/239>`_
+  - The logger created by ``structlog.get_logger()`` is not detected as an abstract method anymore, when attached to an abstract base class.
+    `#229 <https://github.com/hynek/structlog/issues/229>`_
+  - ``colorama`` isn't initialized lazily on Windows anymore because it breaks rendering.
+    `#232 <https://github.com/hynek/structlog/issues/232>`_,
+    `#242 <https://github.com/hynek/structlog/pull/242>`_
+
+-------------------------------------------------------------------
+Thu Oct 17 06:35:14 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 19.2.0:
+  Backward-incompatible changes:
+  * Python 3.4 is not supported anymore. It has been unsupported by
+    the Python core team for a while now and its PyPI downloads are negligible.
+    It's very unlikely that structlog will break under 3.4 anytime soon,
+    but we don't test it anymore.
+  Changes:
+  * Full Python 3.8 support for structlog.stdlib.
+  * Added more pass-through properties to structlog.stdlib.BoundLogger.
+    To makes it easier to use it as a drop-in replacement for logging.Logger. #198
+  * structlog.stdlib.ProcessorFormatter now takes a logger object as an
+    optional keyword argument. This makes ProcessorFormatter work properly
+    with stuctlog.stdlib.filter_by_level(). #219
+  * structlog.dev.ConsoleRenderer now uses no colors by default, if
+    colorama is not available. #215
+  * structlog.dev.ConsoleRenderer now initializes colorama lazily, to
+    prevent accidental side-effects just by importing structlog. #210
+  * Added new processor structlog.dev.set_exc_info() that will set
+    exc_info=True if the method's name is exception and exc_info isn't
+    set at all. This is only necessary when the standard library integration
+    is not used. It fixes the problem that in the default configuration,
+    structlog.get_logger().exception("hi") in an except block would not print the
+    exception without passing exc_info=True to it explicitly. #130, #173, #200, #204
+  * A best effort has been made to make as much of structlog pickleable as possible
+    to make it friendlier with multiprocessing and similar libraries.
+    Some classes can only be pickled on Python 3 or using the dill library
+    though and that is very unlikely to change.
+  * So far, the configuration proxy, structlog.processor.TimeStamper,
+    structlog.BoundLogger, structlog.PrintLogger and structlog.dev.ConsoleRenderer
+    have been made pickelable. Please report if you need any another class fixed. #126
+  * Added a new thread-local API that allows binding values to a thread-local
+    context explicitly without affecting the default behavior of bind(). #222, #225
+  * Added pass_foreign_args argument to structlog.stdlib.ProcessorFormatter.
+    It allows to pass a foreign log record's args attribute to the event
+    dictionary under the positional_args key. #228
+  * structlog.dev.ConsoleRenderer now calls str() on the event value. #221
+
+-------------------------------------------------------------------
+Tue Apr  2 11:12:35 UTC 2019 - mvetter@suse.com
+
+- Update to 19.1.0:
+  * structlog.ReturnLogger and structlog.PrintLogger now have
+    a fatal() log method. #181
+  * Under certain (rather unclear) circumstances, the frame
+    extraction could throw an SystemError: error return without
+    exception set. A workaround has been added. #174
+  * structlog now tolerates passing through dicts to stdlib
+    logging. #187 #188 #189
+- Use pytest macro
+
+-------------------------------------------------------------------
+Thu Nov 29 08:06:43 UTC 2018 - ecsos@opensuse.org
+
+- Fix source address and add missing source.
+
+-------------------------------------------------------------------
+Thu Nov 22 13:28:52 UTC 2018 - Karol Babioch <kbabioch@suse.de>
+
+- Version update to 18.2.0
+  * Added structlog.stdlib.add_log_level_number() processor that adds the level
+    number to the event dictionary. Can be used to simplify log filtering.
+  * structlog.processors.JSONRenderer now allows for overwriting the default
+    argument of its serializer.
+  * Added try_unbind() that works like unbind() but doesn't raise a KeyError if
+    one of the keys is missing. #171
+
+-------------------------------------------------------------------
+Tue Jul 31 12:37:20 UTC 2018 - kbabioch@suse.com
+
+- Initial packaging of version 18.1.0

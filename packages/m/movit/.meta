@@ -1,0 +1,6 @@
+<package name="movit" project="openSUSE:Factory">
+  <title></title>
+  <description>Movit is a high-quality, high performance, open-source library for video filters. It uses the GPU present in almost any modern computer to accelerate computation of common filters and transitions, facilitating real-time HD video editing even on modest hardware.</description>
+  <devel project="multimedia:libs" package="movit"/>
+  <url>https://movit.sesse.net</url>
+</package>

@@ -1,0 +1,165 @@
+From 48b3b61154389b377f6cd20ea72e57b62c9256e8 Mon Sep 17 00:00:00 2001
+From: Philip Withnall <pwithnall@endlessos.org>
+Date: Thu, 13 Apr 2023 12:32:04 +0100
+Subject: [PATCH] lib: Add names to various GSources
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This helps in identifying what’s attached to a `GMainContext` when
+debugging runtime problems with libsoup.
+
+The names added in `soup-misc.c` are fairly rough; if they turn out to
+not be specific enough, those methods could be changed to accept a
+`const gchar *name` argument so the caller can provide a more specific
+name.
+
+Signed-off-by: Philip Withnall <pwithnall@endlessos.org>
+---
+ libsoup/soup-message-io.c           |  4 ++++
+ libsoup/soup-misc.c                 | 20 ++++++++++++++++++++
+ libsoup/soup-socket.c               |  7 +++++++
+ libsoup/soup-websocket-connection.c | 20 ++++++++++++++++++++
+ 4 files changed, 51 insertions(+)
+
+diff --git a/libsoup/soup-message-io.c b/libsoup/soup-message-io.c
+index c5412abb2..8d69f18d6 100644
+--- a/libsoup/soup-message-io.c
++++ b/libsoup/soup-message-io.c
+@@ -927,7 +927,11 @@ soup_message_io_get_source (SoupMessage *msg, GCancellable *cancellable,
+ 
+ 	source = g_source_new (&message_source_funcs,
+ 			       sizeof (SoupMessageSource));
++#if GLIB_CHECK_VERSION(2, 70, 0)
++	g_source_set_static_name (source, "SoupMessageSource");
++#else
+ 	g_source_set_name (source, "SoupMessageSource");
++#endif
+ 	message_source = (SoupMessageSource *)source;
+ 	message_source->msg = g_object_ref (msg);
+ 	message_source->paused = io && io->paused;
+diff --git a/libsoup/soup-misc.c b/libsoup/soup-misc.c
+index 2cf6b0f6a..170fa15a2 100644
+--- a/libsoup/soup-misc.c
++++ b/libsoup/soup-misc.c
+@@ -83,6 +83,11 @@ soup_add_io_watch (GMainContext *async_context,
+ 		   GIOFunc function, gpointer data)
+ {
+ 	GSource *watch = g_io_create_watch (chan, condition);
++#if GLIB_CHECK_VERSION(2, 70, 0)
++	g_source_set_static_name (watch, "SoupIOWatch");
++#else
++	g_source_set_name (watch, "SoupIOWatch");
++#endif
+ 	g_source_set_callback (watch, (GSourceFunc) function, data, NULL);
+ 	g_source_attach (watch, async_context);
+ 	g_source_unref (watch);
+@@ -111,6 +116,11 @@ soup_add_idle (GMainContext *async_context,
+ 	       GSourceFunc function, gpointer data)
+ {
+ 	GSource *source = g_idle_source_new ();
++#if GLIB_CHECK_VERSION(2, 70, 0)
++	g_source_set_static_name (source, "SoupIdle");
++#else
++	g_source_set_name (source, "SoupIdle");
++#endif
+ 	g_source_set_callback (source, function, data, NULL);
+ 	g_source_attach (source, async_context);
+ 	g_source_unref (source);
+@@ -125,6 +135,11 @@ soup_add_completion_reffed (GMainContext   *async_context,
+ {
+ 	GSource *source = g_idle_source_new ();
+ 
++#if GLIB_CHECK_VERSION(2, 70, 0)
++	g_source_set_static_name (source, "SoupCompletion");
++#else
++	g_source_set_name (source, "SoupCompletion");
++#endif
+ 	g_source_set_priority (source, G_PRIORITY_DEFAULT);
+ 	g_source_set_callback (source, function, data, dnotify);
+ 	g_source_attach (source, async_context);
+@@ -178,6 +193,11 @@ soup_add_timeout (GMainContext *async_context,
+ 		  GSourceFunc function, gpointer data)
+ {
+ 	GSource *source = g_timeout_source_new (interval);
++#if GLIB_CHECK_VERSION(2, 70, 0)
++	g_source_set_static_name (source, "SoupTimeout");
++#else
++	g_source_set_name (source, "SoupTimeout");
++#endif
+ 	g_source_set_callback (source, function, data, NULL);
+ 	g_source_attach (source, async_context);
+ 	g_source_unref (source);
+diff --git a/libsoup/soup-socket.c b/libsoup/soup-socket.c
+index 0ec451032..53b5c584b 100644
+--- a/libsoup/soup-socket.c
++++ b/libsoup/soup-socket.c
+@@ -1203,6 +1203,13 @@ soup_socket_create_watch (SoupSocketPrivate *priv, GIOCondition cond,
+ 		watch = g_pollable_input_stream_create_source (G_POLLABLE_INPUT_STREAM (priv->istream), cancellable);
+ 	else
+ 		watch = g_pollable_output_stream_create_source (G_POLLABLE_OUTPUT_STREAM (priv->ostream), cancellable);
++
++#if GLIB_CHECK_VERSION(2, 70, 0)
++	g_source_set_static_name (watch, "SoupSocket watch");
++#else
++	g_source_set_name (watch, "SoupSocket watch");
++#endif
++
+ 	g_source_set_callback (watch, (GSourceFunc)callback, user_data, NULL);
+ 
+ 	g_source_attach (watch, priv->async_context);
+diff --git a/libsoup/soup-websocket-connection.c b/libsoup/soup-websocket-connection.c
+index a4095e1c9..6d136d411 100644
+--- a/libsoup/soup-websocket-connection.c
++++ b/libsoup/soup-websocket-connection.c
+@@ -306,6 +306,11 @@ soup_websocket_connection_start_input_source (SoupWebsocketConnection *self)
+ 		return;
+ 
+ 	pv->input_source = g_pollable_input_stream_create_source (pv->input, NULL);
++#if GLIB_CHECK_VERSION(2, 70, 0)
++	g_source_set_static_name (pv->input_source, "SoupWebsocketConnection input");
++#else
++	g_source_set_name (pv->input_source, "SoupWebsocketConnection input");
++#endif
+ 	g_source_set_callback (pv->input_source, (GSourceFunc)on_web_socket_input, self, NULL);
+ 	g_source_attach (pv->input_source, pv->main_context);
+ }
+@@ -332,6 +337,11 @@ soup_websocket_connection_start_output_source (SoupWebsocketConnection *self)
+ 		return;
+ 
+ 	pv->output_source = g_pollable_output_stream_create_source (pv->output, NULL);
++#if GLIB_CHECK_VERSION(2, 70, 0)
++	g_source_set_static_name (pv->output_source, "SoupWebsocketConnection output");
++#else
++	g_source_set_name (pv->output_source, "SoupWebsocketConnection output");
++#endif
+ 	g_source_set_callback (pv->output_source, (GSourceFunc)on_web_socket_output, self, NULL);
+ 	g_source_attach (pv->output_source, pv->main_context);
+ }
+@@ -444,6 +454,11 @@ close_io_after_timeout (SoupWebsocketConnection *self)
+ 
+ 	g_debug ("waiting %d seconds for peer to close io", timeout);
+ 	pv->close_timeout = g_timeout_source_new_seconds (timeout);
++#if GLIB_CHECK_VERSION(2, 70, 0)
++	g_source_set_static_name (pv->close_timeout, "SoupWebsocketConnection close timeout");
++#else
++	g_source_set_name (pv->close_timeout, "SoupWebsocketConnection close timeout");
++#endif
+ 	g_source_set_callback (pv->close_timeout, on_timeout_close_io, self, NULL);
+ 	g_source_attach (pv->close_timeout, pv->main_context);
+ }
+@@ -2207,6 +2222,11 @@ soup_websocket_connection_set_keepalive_interval (SoupWebsocketConnection *self,
+ 
+ 		if (interval > 0) {
+ 			pv->keepalive_timeout = g_timeout_source_new_seconds (interval);
++#if GLIB_CHECK_VERSION(2, 70, 0)
++			g_source_set_static_name (pv->keepalive_timeout, "SoupWebsocketConnection keepalive timeout");
++#else
++			g_source_set_name (pv->keepalive_timeout, "SoupWebsocketConnection keepalive timeout");
++#endif
+ 			g_source_set_callback (pv->keepalive_timeout, on_queue_ping, self, NULL);
+ 			g_source_attach (pv->keepalive_timeout, pv->main_context);
+ 		}
+-- 
+GitLab
+

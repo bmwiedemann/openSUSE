@@ -1,0 +1,17 @@
+translation-update-upstream-embedded.sh is a script that can be used
+without translation-update-upstream package.
+
+How to use it:
+
+1. Create .tlst and .hook files and run ./upstream-collect.sh as you do
+with translation-update-upstream.
+
+2. Create an archive that contains:
+   - directory translation-update-upstream with:
+     - translation-update-upstream-embedded.sh
+     - msgheadermerge*
+     - directory po that contains contents of the archive created in step 1.
+
+3. Instead of call of translation-update-upstream in the spec file use
+translation-update-upstream/translation-update-upstream-embedded.sh.
+Arguments and style of use are the same.

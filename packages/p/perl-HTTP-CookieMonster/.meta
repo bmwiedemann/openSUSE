@@ -1,0 +1,6 @@
+<package name="perl-HTTP-CookieMonster" project="openSUSE:Factory">
+  <title>Easy read/write access to your jar of HTTP::Cookies</title>
+  <description>This module was created because messing around with HTTP::Cookies is non-trivial. HTTP::Cookies a very useful module, but using it is not always as easy and clean as it could be. For instance, if you want to find a particular cookie, you can't just ask for it by name.</description>
+  <devel project="devel:languages:perl" package="perl-HTTP-CookieMonster"/>
+  <url>https://metacpan.org/release/HTTP-CookieMonster</url>
+</package>

@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>525a861023532faa0763bbd81062b6af</srcmd5>
+    <version>0.5.0</version>
+    <time>1687630432</time>
+    <user>dimstar_suse</user>
+    <comment>VHS is a utility for creating videos out of CLI tools.</comment>
+    <requestid>1094992</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3840ff509c5b0be817065793ab50a1b4</srcmd5>
+    <version>0.6.0</version>
+    <time>1690215953</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.6.0:
+  * examples: glow.tape
+  * feat: add Apple Symbols font fallback for braille characters
+  * feat: add alt + shift modifiers (#316)
+  * feat(deps): bump golang.org/x/crypto from 0.8.0 to 0.10.0 (#328)
+  * add note on TypingSpeed for new users in `demo.tape` (#327)
+  * docs: fix CursorBlink example sizing
+  * docs: Set CursorBlink examples
+  * feat: setting to control cursor blinking (#324)
+  * fix: hint linguist to highlight tape files as elixir
+  * fix: set color in fish shell using correct syntax
+</comment>
+    <requestid>1099855</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>867d395c7d71630d0d203cf30b9ab643</srcmd5>
+    <version>0.7.1</version>
+    <time>1702488935</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132782</requestid>
+  </revision>
+</revisionlist>

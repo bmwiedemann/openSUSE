@@ -1,0 +1,15 @@
+From: Paul Slootman <paul@debian.org>
+Subject: Fix for future reserved word warning
+
+diff -urN dirvish-1.2.1/dirvish-expire.pl dirvish-1.2.1.debian/dirvish-expire.pl
+--- dirvish-1.2.1/dirvish-expire.pl	2005-02-19 01:52:31.000000000 +0100
++++ dirvish-1.2.1.debian/dirvish-expire.pl	2006-07-07 11:46:46.000000000 +0200
+@@ -140,7 +140,7 @@
+ 		qw(VAULT:BRANCH IMAGE CREATED EXPIRED);
+ }
+ 
+-for $expire (sort(imsort @expires))
++for $expire (sort {imsort()} @expires)
+ {
+ 	my ($created, $expired);
+ 	($created = $$expire{created}) =~ s/:\d\d$//;

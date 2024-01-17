@@ -1,0 +1,5 @@
+<package name="cozette-fonts" project="openSUSE:Factory">
+  <title>cozette-fonts</title>
+  <description>Cozette is based on Dina, which itself is based on Proggy. It's also heavily inspired by Creep. I absolutely adore Creep, and was using it up until I got a higher-DPI screen for which it was slightly too small. That prompted me to make the bitmap font I always wished existed: Cozette; a small-but-not-tiny bitmap font with great coverage of all the glyphs you might encounter in the terminal.</description>
+  <devel project="M17N:fonts" package="cozette-fonts"/>
+</package>

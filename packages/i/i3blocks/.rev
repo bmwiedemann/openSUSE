@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a7dc8c2b72bf565c3f3af6c3ff8fc60</srcmd5>
+    <version>1.4</version>
+    <time>1524838059</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace future aims, and ensure neutrality of description.
+- Fix build on Leap 42.3
+- Initial package
+</comment>
+    <requestid>599919</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2f56d4fd67251778e06d4211cc118ede</srcmd5>
+    <version>1.5</version>
+    <time>1601044109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update i3blocks to version 1.5
+- Set sysstat as recommends as sysstat is buggy and not a hard
+  requirement (depending on user configuration)
+</comment>
+    <requestid>831633</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>628ab4a079e9467baf34a10693e6425c</srcmd5>
+    <version>1.5</version>
+    <time>1622536700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895993</requestid>
+  </revision>
+</revisionlist>

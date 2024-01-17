@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Tue Mar 27 12:37:54 UTC 2012 - cfarrell@suse.com
+
+- license update: PostgreSQL
+  SPDX format as per spdx.org/licenses/PostgreSQL
+
+-------------------------------------------------------------------
+Thu Nov 26 15:50:56 CET 2009 - max@suse.de
+
+- Version 0.99.0-20040219
+- Package cleanup
+- Fix startup problem (bnc#414190).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:47:22 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Feb  5 14:54:00 CET 2004 - hmacht@suse.de
+
+- added option # norootforbuild in specfile
+
+-------------------------------------------------------------------
+Fri Aug  8 15:40:21 CEST 2003 - max@suse.de
+
+- New version: 0.98.8.20030520.
+
+-------------------------------------------------------------------
+Mon Apr 28 17:14:56 CEST 2003 - max@suse.de
+
+- PgAccess was a subpackage of PostgreSQL before (postgresql-tk),
+  but recently became a project of it's own.
+
+- New snapshot version 0.98.8.20030117 .

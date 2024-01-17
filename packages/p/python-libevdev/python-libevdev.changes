@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Sat Sep 24 10:52:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- upadte to 0.11:
+  * doc updates
+  * fix broken link 
+- use pypi tarballs
+
+-------------------------------------------------------------------
+Mon Nov 22 14:59:29 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- BuildRequires on a binary library package is a bad idea as well
+  as the required SOVER needs to be calculated.
+
+-------------------------------------------------------------------
+Fri Nov 19 09:14:29 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- initial packaging required by libwacom (bsc#1192852)

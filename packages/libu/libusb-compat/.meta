@@ -1,0 +1,7 @@
+<package name="libusb-compat" project="openSUSE:Factory">
+  <title>libusb-1.0 Compatibility Layer for libusb-0.1</title>
+  <description>A compatibility layer allowing applications written for libusb-0.1 to
+work with libusb-1.0. libusb-compat-0.1 attempts to look, feel, smell
+and walk like libusb-0.1.</description>
+  <devel project="hardware" package="libusb-compat"/>
+</package>

@@ -1,0 +1,26 @@
+From d26a6ad01bd046e318dd3ca4512bcf09f8bf9568 Mon Sep 17 00:00:00 2001
+From: "Gao,Yan" <ygao@suse.com>
+Date: Fri, 29 Jan 2021 13:32:23 +0100
+Subject: [PATCH] Log: pacemakerd: downgrade the warning about
+ SBD_SYNC_RESOURCE_STARTUP to notice
+
+---
+ daemons/pacemakerd/pacemakerd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/daemons/pacemakerd/pacemakerd.c b/daemons/pacemakerd/pacemakerd.c
+index 509b0f824..157df72ad 100644
+--- a/daemons/pacemakerd/pacemakerd.c
++++ b/daemons/pacemakerd/pacemakerd.c
+@@ -1325,7 +1325,7 @@ main(int argc, char **argv)
+         startup_trigger = mainloop_add_trigger(G_PRIORITY_HIGH, init_children_processes, NULL);
+     } else {
+         if (running_with_sbd) {
+-            crm_warn("Enabling SBD_SYNC_RESOURCE_STARTUP would (if supported "
++            crm_notice("Enabling SBD_SYNC_RESOURCE_STARTUP would (if supported "
+                      "by your SBD version) improve reliability of "
+                      "interworking between SBD & pacemaker.");
+         }
+-- 
+2.26.2
+

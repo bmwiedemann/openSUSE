@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f9c2855060f83e8d2eb9bf3fdc6b9aef</srcmd5>
+    <version>0.2.0</version>
+    <time>1535122953</time>
+    <user>dimstar_suse</user>
+    <comment>javascript engine for python</comment>
+    <requestid>628460</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3cdf1c7f1157ca8017ad40ee330f4ed5</srcmd5>
+    <version>0.2.0</version>
+    <time>1535367528</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631406</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>69391304102ac5273a01163c02dae12b</srcmd5>
+    <version>0.2.2</version>
+    <time>1552985907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.2:
+  * State compatibility with Python 3.7
+  * Provide wheels for Python 3.7
+  * Fix building wheel from source distribution
+  * Fix a memory leak in dukpy.evaljs
+- Add patch from upstream to work well with pytest:
+  * pytest.patch</comment>
+    <requestid>682894</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1db7f756bd1649277e68b844d2f0147a</srcmd5>
+    <version>0.2.2</version>
+    <time>1590650265</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809401</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>10c486fa981b22021da516435186ab06</srcmd5>
+    <version>0.2.3</version>
+    <time>1626299935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906312</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2aad81728ccfe7b6a0086bc31b11cfa6</srcmd5>
+    <version>0.2.3</version>
+    <time>1651272320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973773</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9af807007d78f9313fb68e68afec957b</srcmd5>
+    <version>0.3.0</version>
+    <time>1671023472</time>
+    <user>dimstar_suse</user>
+    <comment> - Remove python_module macro definition
+ - Use %pytest_arch instead of custom command
+ - More specific python_sitelib in %files
+- Update to version 0.3.0 
+  * Upgrade to duktape engine 2.7.0
+  * Support for installing nodejs modules where the root distribution directory is not named package.
+  * Better error message when a Python function is not found
+  * GitHub Actions based release workflow, wheels are now automatically generated for more versions.
+  * Wheels for Apple Silicon (M1) are now provided.
+  * Support for Python 2.7, 3.5 and 3.6 is deprecated. DukPy might still work, but it's untested.
+</comment>
+    <requestid>1042819</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>863dfd0e4e6140a52e520d735842d7fb</srcmd5>
+    <version>5.0.0</version>
+    <time>1563914425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717875</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8e3bcf771b41b5261035f709023920dd</srcmd5>
+    <version>6.0.0</version>
+    <time>1599088511</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unnecessary 'v' prefix in version tag
+
+- Rework package to use kubernetes-coredns metapackage</comment>
+    <requestid>831462</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1a937cef028b920b23e910734ebf7f75</srcmd5>
+    <version>6.0.0</version>
+    <time>1619447935</time>
+    <user>dimstar_suse</user>
+    <comment>- Return v prefix in version tag to match (restored) upstream
+  behaviour</comment>
+    <requestid>888500</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ddc2ea1af85b7b67f79a30b52a5fd355</srcmd5>
+    <version>6.0.0</version>
+    <time>1623268283</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>897457</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>d10741c16f13d66e062aa0d7fd984de0</srcmd5>
+    <version>6.0.0</version>
+    <time>1659106099</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991677</requestid>
+  </revision>
+</revisionlist>

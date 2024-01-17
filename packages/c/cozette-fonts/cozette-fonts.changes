@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Wed Dec 20 13:44:44 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove _service file
+- Remove otf font
+- Add README.md and CHANGELOG.md as sources.
+- Update to version 1.23.1:
+  * v.1.23.1 Emoji bugfix, new images
+  * v.1.23.0: the Uiua update.
+  * v.1.22.2 More math symbols
+  * docs: Add FreeBSD pkg
+  * v.1.22.1 Caron fixes
+  * v.1.22.0 the zodiac update
+  * v.1.21.0-woff - Fix OS/2 tables, add woff/woff2 export
+  * v.1.21.0 The BQN update
+  * Added BQN glyphs + some miscellaneous glyphs
+
+-------------------------------------------------------------------
+Wed Jul 19 22:32:22 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1.21.0:
+  * v.1.21.0 The BQN update
+  * Added BQN glyphs + some miscellaneous glyphs
+  * v.1.20.1 Sunglasses emoji
+  * v.1.20.0 The APL update
+  * v.1.19.3 Strikethrough rendering fix
+  * v.1.19.2-hidpi2 HiDpi fixes
+  * HiDpi builds
+  * docs: Add FreeBSD port
+
+-------------------------------------------------------------------
+Wed Jul 19 22:28:41 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1.19.0:
+  * v.1.19.0 The yoshiyoshyosh update - versioning, repo meta
+  * Changes, New glyphs, etc.
+  * v.1.18.1 images
+  * v.1.18.1 Bluetooth icons
+  * Add note about dmenu
+  * v.1.18.0 Add some logical and set operators
+  * v.1.17.2 Umlaut fixes
+  * v.1.17.1
+  * Update README.md
+
+-------------------------------------------------------------------
+Fri Dec 16 13:41:51 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.19.0:
+  * Changes, New glyphs, etc.
+  * v.1.18.1 images
+  * v.1.18.1 Bluetooth icons
+  * Add note about dmenu
+  * v.1.18.0 Add some logical and set operators
+  * v.1.17.2 Umlaut fixes
+  * v.1.17.1
+  * Update README.md
+
+-------------------------------------------------------------------
+Thu Nov 26 09:14:07 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.9.3.
+  * Added
+    * (U+21B0 UPWARDS ARROW WITH TIP LEFTWARDS)
+    * (U+21B1 UPWARDS ARROW WITH TIP RIGHTWARDS)
+    * (U+21B2 DOWNWARDS ARROW WITH TIP LEFTWARDS)
+    * (U+21B3 DOWNWARDS ARROW WITH TIP RIGHTWARDS)
+  * Fixed
+    * Changed U+220F N-ARY PRODUCT and U+2210 N-ARY COPRODUCT 
+      to make them taller
+    * Extended the descender of U+04CC CYRILLIC SMALL LETTER 
+      KHAKASSIAN CHE
+- Minor spec file clean up.
+      
+-------------------------------------------------------------------
+Mon Oct 19 15:35:41 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.9.2.
+  * Added
+    * U+221A SQUARE ROOT
+    * U+2116 NUMERO SIGN 
+  * Fixed 
+    * U+0506 CYRILLIC CAPITAL LETTER KOMI DZJE now has an actual 
+      glyph
+    * U+0507 CYRILLIC SMALL LETTER KOMI DZJE now has an actual 
+      glyph 
+
+-------------------------------------------------------------------
+Sat Aug 29 10:31:37 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.9.0.
+  * Added
+    * U+0166 LATIN CAPITAL LETTER T WITH STROKE
+    * U+0167 LATIN SMALL LETTER T WITH STROKE
+    * U+0172 LATIN CAPITAL LETTER U WITH OGONEK
+    * U+0173 LATIN SMALL LETTER U WITH OGONEK
+    * U+0174 LATIN CAPITAL LETTER W WITH CIRCUMFLEX
+    * U+0175 LATIN SMALL LETTER W WITH CIRCUMFLEX
+    * U+0176 LATIN CAPITAL LETTER Y WITH CIRCUMFLEX
+    * U+0177 LATIN SMALL LETTER Y WITH CIRCUMFLEX
+  * Changed
+    * snake is now fullwidth to make starship prompts look less ugly
+
+-------------------------------------------------------------------
+Tue May 12 03:11:52 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.8.0. (see CHANGELOG.md)
+  * Add Pomicons glyphs. 
+
+-------------------------------------------------------------------
+Fri Mar 27 03:16:57 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.7.0. (See CHANGELOG.md)
+- Added
+  * U+263A WHITE SMILING FACE 
+  * U+2669 QUARTER NOTE 
+  * U+266A EIGHTH NOTE 
+  * U+266B BEAMED EIGHTH NOTES 
+  * U+266C BEAMED SIXTEENTH NOTES 
+  * flats and sharps too
+
+-------------------------------------------------------------------
+Sun Feb 16 00:22:51 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial release. 
+
+ 

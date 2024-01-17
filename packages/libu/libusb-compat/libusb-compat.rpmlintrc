@@ -1,0 +1,6 @@
+# We really don't want to capitalize "libusb".
+addFilter("summary-not-capitalized")
+# The library name does not match for a good reason.
+addFilter("no-dependency-on")
+# It is OK because versioning does not match.
+addFilter("conflicts-with-provides")

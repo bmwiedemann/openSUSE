@@ -1,0 +1,6 @@
+<package name="wmutils" project="openSUSE:Factory">
+  <title>Set of tools for X windows manipulation</title>
+  <description>wmutils' core is a set of tools for X windows manipulation.
+Each tool only has one purpose, to make it as flexible and reliable as possible.</description>
+  <devel project="X11:Utilities" package="wmutils"/>
+</package>

@@ -1,0 +1,6 @@
+<package name="python-icalendar" project="openSUSE:Factory">
+  <title>Parser/generator of iCalendar files package for Python</title>
+  <description>The iCalendar package is a parser/generator of iCalendar files for use with Python. It follows the RFC 2445 (iCalendar) specification.</description>
+  <devel project="devel:languages:python" package="python-icalendar"/>
+  <url>http://www.codespeak.net/icalendar</url>
+</package>

@@ -1,0 +1,31 @@
+<constraints>
+  <hardware>
+    <physicalmemory>
+      <size unit="M">8000</size>
+    </physicalmemory>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
+      <arch>aarch64</arch>
+      <arch>riscv64</arch>
+    </conditions>
+     <hardware>
+     <physicalmemory>
+        <size unit="M">3500</size>
+     </physicalmemory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>s390x</arch>
+    </conditions>
+     <hardware>
+     <physicalmemory>
+        <size unit="M">2000</size>
+     </physicalmemory>
+    </hardware>
+  </overwrite>
+</constraints> 
+

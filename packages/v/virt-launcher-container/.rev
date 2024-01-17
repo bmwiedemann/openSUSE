@@ -1,0 +1,218 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e9cf458e1585d76df358456731c22b5d</srcmd5>
+    <version>unknown</version>
+    <time>1618694685</time>
+    <user>dimstar_suse</user>
+    <comment>Kubevirt virt-launcher container</comment>
+    <requestid>885359</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bc13cce1898efdd659c214b0b468a160</srcmd5>
+    <version>unknown</version>
+    <time>1619378847</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>888297</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6f8ad35f638f6418ebec3464e06e2cde</srcmd5>
+    <version>unknown</version>
+    <time>1620239993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890456</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>2cf68514f80746fe590c00aa20d9f30c</srcmd5>
+    <version>unknown</version>
+    <time>1623705053</time>
+    <user>dimstar_suse</user>
+    <comment>- Include the registry in org.opensuse.reference</comment>
+    <requestid>898424</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9a039b47113c2a8c0632febded86de3d</srcmd5>
+    <version>unknown</version>
+    <time>1626208643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905981</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>90aee9ca7770548d6da2fdc2d0c0aef0</srcmd5>
+    <version>unknown</version>
+    <time>1628282690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>910428</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>c583129148fb18b7e283defb8f7a7b3a</srcmd5>
+    <version>unknown</version>
+    <time>1633038202</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922213</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>0416c6caabdc36e7d5dd3f997770de18</srcmd5>
+    <version>unknown</version>
+    <time>1637970688</time>
+    <user>dimstar_suse</user>
+    <comment>- Install tar package to enable kubectl cp ...</comment>
+    <requestid>933996</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>3f04858ee348f30caa65fe4d4f50afb1</srcmd5>
+    <version>unknown</version>
+    <time>1642029741</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945741</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>26395554a0bb06f52912327d6482f1e2</srcmd5>
+    <version>unknown</version>
+    <time>1642548924</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947223</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>e5bac1316f9a6c3e7dd3ecfdfaa7f588</srcmd5>
+    <version>unknown</version>
+    <time>1642633936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947346</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>957cc4417423f3a3bc481f53de08d1e8</srcmd5>
+    <version>unknown</version>
+    <time>1645561105</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956684</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>0bc9505ded118e6407d1598450855da6</srcmd5>
+    <version>unknown</version>
+    <time>1645639621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957106</requestid>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>66b181b1408586599cdf3f08a8b0c6e3</srcmd5>
+    <version>unknown</version>
+    <time>1647199539</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>961478</requestid>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>a6ea0e271cb47975dcab6636413aabb9</srcmd5>
+    <version>unknown</version>
+    <time>1651088536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973240</requestid>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>21eef65af031086e04605dc55b03233d</srcmd5>
+    <version>unknown</version>
+    <time>1652389117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976177</requestid>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>cd61d5c41211fcea540ea5712e3c3793</srcmd5>
+    <version>unknown</version>
+    <time>1659721876</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993186</requestid>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>783935b8b371e02a85c091af029c99f0</srcmd5>
+    <version>unknown</version>
+    <time>1662063129</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000631</requestid>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>3b8587d0d9bf128c19391708efacd106</srcmd5>
+    <version>unknown</version>
+    <time>1665504182</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1009590</requestid>
+  </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>1e074431550775da266cf85704a117c9</srcmd5>
+    <version>unknown</version>
+    <time>1671635245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1044066</requestid>
+  </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>4606e50451da725c83106e0a2356baef</srcmd5>
+    <version>unknown</version>
+    <time>1677794641</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the container image for KubeVirt v0.59.0</comment>
+    <requestid>1068967</requestid>
+  </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>fe4cfd1205232cfa82f887cefdc37842</srcmd5>
+    <version>unknown</version>
+    <time>1688399025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096475</requestid>
+  </revision>
+  <revision rev="23" vrev="23">
+    <srcmd5>2ed1d3e4730700e742974a6cd278e795</srcmd5>
+    <version>unknown</version>
+    <time>1689261547</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098523</requestid>
+  </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>8c2e0630cb98f685814338078c75a63b</srcmd5>
+    <version>unknown</version>
+    <time>1697488413</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117959</requestid>
+  </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>946fe2a6c4277bd908bf8d09f32c8e32</srcmd5>
+    <version>unknown</version>
+    <time>1698170915</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119856</requestid>
+  </revision>
+  <revision rev="26" vrev="26">
+    <srcmd5>ca04716b1ac3f39e7b5effae5193e9be</srcmd5>
+    <version>unknown</version>
+    <time>1699562129</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1124361</requestid>
+  </revision>
+  <revision rev="27" vrev="27">
+    <srcmd5>9873f307cd6199067e25539c69e31e90</srcmd5>
+    <version>unknown</version>
+    <time>1704290044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136524</requestid>
+  </revision>
+</revisionlist>

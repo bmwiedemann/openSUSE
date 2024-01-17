@@ -1,0 +1,46 @@
+Index: libtermkey-0.17/termkey.c
+===================================================================
+--- libtermkey-0.17.orig/termkey.c
++++ libtermkey-0.17/termkey.c
+@@ -283,7 +283,8 @@ static TermKey *termkey_alloc(void)
+   tk->nkeynames = 64;
+   tk->keynames  = NULL;
+ 
+-  for(int i = 0; i < 32; i++)
++  int i;
++  for(i = 0; i < 32; i++)
+     tk->c0[i].sym = TERMKEY_SYM_NONE;
+ 
+   tk->drivers = NULL;
+@@ -356,8 +357,9 @@ static int termkey_init(TermKey *tk, con
+ 
+   return 1;
+ 
++  struct TermKeyDriverNode *p;
+ abort_free_drivers:
+-  for(struct TermKeyDriverNode *p = tk->drivers; p; ) {
++  for(p = tk->drivers; p; ) {
+     (*p->driver->free_driver)(p->info);
+     struct TermKeyDriverNode *next = p->next;
+     free(p);
+@@ -686,7 +688,8 @@ static TermKeyResult parse_utf8(const un
+     return TERMKEY_RES_KEY;
+   }
+ 
+-  for(unsigned int b = 1; b < nbytes; b++) {
++  unsigned int b;
++  for(b = 1; b < nbytes; b++) {
+     unsigned char cb;
+ 
+     if(b >= len)
+@@ -1146,8 +1149,9 @@ TermKeySym termkey_register_keyname(Term
+ 
+     tk->keynames = new_keynames;
+ 
++    int i;
+     // Fill in the hole
+-    for(int i = tk->nkeynames; i < sym; i++)
++    for(i = tk->nkeynames; i < sym; i++)
+       tk->keynames[i] = NULL;
+ 
+     tk->nkeynames = sym + 1;

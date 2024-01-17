@@ -1,0 +1,2 @@
+# special library loader
+addFilter("libonnxifi_dummy.* lto-no-text-in-archive")

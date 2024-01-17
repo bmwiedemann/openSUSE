@@ -1,0 +1,112 @@
+-------------------------------------------------------------------
+Thu Nov  9 10:28:51 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.6.2
+  * OAS30Validator readonly writeonly fix #135
+- Disable test_validators to fix build error.
+
+-------------------------------------------------------------------
+Sat Sep 23 10:37:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.1
+  * Jsonschema package keywords module rename fix #132
+
+-------------------------------------------------------------------
+Sat Jul 29 21:58:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix requirements
+
+-------------------------------------------------------------------
+Tue Jul 25 06:06:43 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.0:
+  * Compatibility with jsonschema 4.18 #72
+  * Python 3.7 support dropped #84
+  * OAS30Validator no longer accept read and write properties. Use
+    OASReadValidator and OAS30WriteValidator instead. #85
+  * Formats raise error for other types fix #67
+  * Format validators ignore other types and pass (in accordance with the
+    specification)
+
+-------------------------------------------------------------------
+Tue Jun 13 12:13:08 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Tue May  9 19:01:39 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.4.4
+  * Include tests in sdist archives #71
+  * jsonschema 4.17 dependency limit #73
+  * add python 3.11 support #74
+- Release 0.4.3
+  * test required formats only #62
+- Release 0.4.2
+  * Rely on jsonschema date date-time and uuid format checkers.
+    Format checkers assigned to validators #60
+  * Backward incompatibility: Missing format checker for format no
+    longer raise FormatError
+- Release 0.4.1
+  * OAS30 read write validators #59
+- Release 0.4.0
+  * Drop no longer used runtime dependency on attrs #54
+  * Re-implemented nullable based on OAS 3.0.3 definition. #57
+
+-------------------------------------------------------------------
+Tue Mar 28 07:52:05 UTC 2023 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
+Wed Nov  9 16:16:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v0.3.4 
+  * OASValidator 3.0 read write pass with evolve #52
+
+-------------------------------------------------------------------
+Mon Sep  5 03:08:04 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.3.3
+  * Static types and Mypy static type check
+- from v0.3.2
+  * type validator error msg formatting fix
+- from v0.3.1
+  * OpenAPI 3.1 validator's JSONSchema subclassing deprecation fix
+  * OpenAPI 3.0 validator's JSONSchema subclassing deprecation workaround
+- from v0.3.0
+  * OpenAPI 3.1 validator #18
+  * drop python 3.6 support #18
+  * make jsonschema4 compatible (DeprecationWarning fix) reintroduced
+  * 0.2.1 changes
+    + Revert "make jsonschema4 compatible (DeprecationWarning fix)"
+    + drop python 3.6 support part 2
+    + Limit jsonschema dependency
+  * Validate oneOf, anyOf and allOf with discriminator OAS30 and OAS31
+
+-------------------------------------------------------------------
+Mon Mar 28 10:45:14 UTC 2022 - pgajdos@suse.com
+
+- version update to 0.2.3
+  * readOnly and writeOnly on jsonschema4 fix #41
+  * Validate oneOf, anyOf and allOf with discriminator (cherry-pick from 0.3.x) #30
+  * Revert "make jsonschema4 compatible (DeprecationWarning fix)" #34
+  * Drop python 3.6 support (cherry-pick from 0.3.x and part 2) #35
+  * Limit jsonschema dependency #36
+  * switch to poetry #27
+  * drop python 2.7 and 3.5 support #27 #28
+  * make jsonschema4 compatible (DeprecationWarning fix) #25
+  * Fix required in composition #16
+  * Prevent Schema Mutation #26
+  * Stop assigning a version to our Validator (#12)
+  * Switch to a MIT-licensed dependency (#4)
+  * Pypi license fix (#10)
+  * jsonschema dependency fix
+  * Permit uppercase characters in UUID (#8)
+- python-mock is not required for build
+
+-------------------------------------------------------------------
+Tue Mar 31 06:52:02 UTC 2020 - pgajdos@suse.com
+
+- initial version 0.1.1, required by openapi-core
+

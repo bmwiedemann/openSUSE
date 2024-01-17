@@ -1,0 +1,10 @@
+--- commons-email-1.5-src/maven-build.xml	2018-05-15 11:35:50.295897337 +0200
++++ commons-email-1.5-src/maven-build.xml	2018-05-15 11:36:43.873065976 +0200
+@@ -228,7 +228,6 @@
+              source="8" 
+              linksource="true" 
+              breakiterator="false">
+-      <link href="http://docs.oracle.com/javase/8/docs/api/"/>
+     </javadoc>
+   </target>
+ 

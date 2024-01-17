@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>425e70091a9194aa72d783d792487ce8</srcmd5>
+    <version>5.2.4</version>
+    <time>1503592706</time>
+    <user>dimstar_suse</user>
+    <comment>Namespacing of lua (will need one staging)</comment>
+    <requestid>510373</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4aaef45a0c7191a0eb196350dc39d20a</srcmd5>
+    <version>5.2.4</version>
+    <time>1618061270</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>884025</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>92577f9a25e1546bcc14c5f47ee349fc</srcmd5>
+    <version>5.2.4</version>
+    <time>1629101476</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911838</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ded4b67e2c1e1bc05fde63cf271579c7</srcmd5>
+    <version>5.2.4</version>
+    <time>1661346657</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998860</requestid>
+  </revision>
+</revisionlist>

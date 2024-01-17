@@ -1,0 +1,5 @@
+<package name="libsixel" project="openSUSE:Factory">
+  <title>libsixel</title>
+  <description>A SIXEL encoder/decoder implementation derived from kmiya's sixel.</description>
+  <devel project="devel:libraries:c_c++" package="libsixel"/>
+</package>

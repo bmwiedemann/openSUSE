@@ -1,0 +1,8 @@
+<package name="gstreamer-docs" project="openSUSE:Factory">
+  <title>GStreamer documentation</title>
+  <description>GStreamer documentation.
+
+</description>
+  <devel project="multimedia:libs" package="gstreamer-docs"/>
+  <url>https://gstreamer.freedesktop.org/</url>
+</package>

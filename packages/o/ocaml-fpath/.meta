@@ -1,0 +1,8 @@
+<package name="ocaml-fpath" project="openSUSE:Factory">
+  <title>File paths for OCaml</title>
+  <description>Fpath is an OCaml module for handling file system paths with POSIX or Windows conventions. Fpath processes paths without accessing the file system and is independent from any system library.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-fpath"/>
+  <url>https://opam.ocaml.org/packages/fpath</url>
+</package>

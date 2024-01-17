@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Fail on errors:
+set -e
+
+if ! test -x 50-tools/gnome-patch-translation-collect ; then
+    echo "ERROR: 50-tools/gnome-patch-translation-collect is missing.
+Please call update-step1-update-translations-from-lcn."
+    exit 1
+fi
+
+. ./gnome-patch-translation.conf
+
+export CALLING_FROM_G_P_T=1
+RPM_OSC_REPOSITORIES="${OSC_REPOSITORIES[*]}"
+export LCN_SVN_URI LCN_BRANCH RPM_OSC_REPOSITORIES GPT_PACKAGES OSC_APIURL
+
+# Delete the old LCN snapshot.
+rm -rf LCN-${LCN_BRANCH//\//-}
+# And then run needed scripts:
+50-tools/gnome-patch-translation-from-lcn
+exec 50-tools/gnome-patch-translation-remerge

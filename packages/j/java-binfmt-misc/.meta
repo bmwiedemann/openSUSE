@@ -1,0 +1,9 @@
+<package name="java-binfmt-misc" project="openSUSE:Factory">
+  <title>The binfmt_misc support for Java</title>
+  <description>Linux beats them ALL! While all other OS's are TALKING about direct
+support of Java Binaries in the OS, Linux is doing it!
+
+You can execute Java applications and Java Applets just like any other
+program after you have installed this package.</description>
+  <devel project="Java:packages" package="java-binfmt-misc"/>
+</package>

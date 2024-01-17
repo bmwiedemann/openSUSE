@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8cd30b362127239f843263a0b112bce1</srcmd5>
+    <version>0.11.4</version>
+    <time>1674664969</time>
+    <user>dimstar_suse</user>
+    <comment>Migrate from obscpio to classical tar.gz sources archive for properly debugsource package building</comment>
+    <requestid>1060703</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d90cb7e9c13b724f60f9321aded4ac3e</srcmd5>
+    <version>0.12.0</version>
+    <time>1676563018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.0
+- Drop headers-only flavor  (gh#yhirose/cpp-httplib#1491)
+- Add examples to devel subpackage
+- Enable tests</comment>
+    <requestid>1066113</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>faa09acd3c7018fd70a5e3f926495623</srcmd5>
+    <version>0.12.5</version>
+    <time>1685562892</time>
+    <user>dimstar_suse</user>
+    <comment>bnc#123456 fixed.</comment>
+    <requestid>1089978</requestid>
+  </revision>
+</revisionlist>

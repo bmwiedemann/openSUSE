@@ -1,0 +1,215 @@
+-------------------------------------------------------------------
+Sun Nov 26 10:29:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.7.0:
+  * drop support for python 3.6
+  - drop
+    0001-Removing-unused-urllib3-dependency-loosening-request.patch
+    (upstream)
+
+-------------------------------------------------------------------
+Fri Jun  9 11:46:37 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Wed Feb 15 19:57:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- fix tests on python 3.8 as well with newer python-mocket by skipping
+  the tests/test_webservice which need porting to new python-mocket
+
+-------------------------------------------------------------------
+Mon Jan 23 16:42:49 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken tests for python 3.11. python-mocket currently does not work
+  with python 3.11, so we should disable tests that uses it until it's
+  supported.
+
+  See these issues:
+  gh#maxmind/GeoIP2-python@3b0dbb1eb990
+  gh#mindflayer/python-mocket#181
+  gh#benoitc/http-parser#95
+
+-------------------------------------------------------------------
+Mon Jul  4 07:11:02 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 4.6.0:
+  - The AddressNotFoundError class now has an ip_address attribute
+    with the lookup address and network property for the empty network
+    in the database containing the IP address. These are only available
+    when using a database, not the web service.
+- Rebase 0001-Removing-unused-urllib3-dependency-loosening-request.patch
+
+-------------------------------------------------------------------
+Thu Nov 18 19:55:34 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 4.5.0:
+ - Support for mobile country code (MCC) and mobile network codes (MNC) was
+   added for the GeoIP2 ISP and Enterprise databases as well as the GeoIP2
+   City and Insights web services. ``mobile_country_code`` and
+   ``mobile_network_code`` attributes were added to ``geoip2.model.ISP``
+   for the GeoIP2 ISP database and ``geoip2.record.Traits`` for the
+   Enterprise database and the GeoIP2 City and Insights web services.
+   We expect this data to be available by late January, 2022.
+
+-------------------------------------------------------------------
+Fri Sep 24 19:10:31 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 4.4.0:
+ - The public API on ``geoip2.database`` is now explicitly defined by
+   setting ``__all__``.
+ - The return type of the ``metadata()`` method on ``Reader`` is now
+   ``maxminddb.reader.Metadata`` rather than a union type.
+- update to version 4.3.0:
+ - Previously, the ``py.typed`` file was not being added to the source
+   distribution. It is now explicitly specified in the manifest.
+ - The type hints for the database file in the ``Reader`` constructor have
+   been expanded to match those specified by ``maxmindb.open_database``. In
+   particular, ``os.PathLike`` and ``IO`` have been added.
+ - Corrected the type hint for the ``metadata()`` method on ``Reader``. It
+   will return a ``maxminddb.extension.Metadata`` if the C extension is being
+   used.
+
+-------------------------------------------------------------------
+Tue Jul 13 09:58:29 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to remove urllib3 and relax requests dependencies
+  + 0001-Removing-unused-urllib3-dependency-loosening-request.patch
+- Update BuildRequires and Requires from requirements.txt and setup.py
+
+-------------------------------------------------------------------
+Fri May 14 16:10:51 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 4.2.0:
+ - You may now set a proxy to use when making web service requests by passing
+   the ``proxy`` parameter to the ``AsyncClient`` or ``Client`` constructor.
+
+-------------------------------------------------------------------
+Thu Dec 10 01:27:35 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- replace deprecated setup.py test call by pyunittest macro so that
+  pip does not try to download stuff
+
+-------------------------------------------------------------------
+Wed Nov  4 15:56:32 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to version 4.1.0:
+  * Added the is_residential_proxy attribute to geoip2.model.AnonymousIP
+    and geoip2.record.Traits.
+  * HTTPError now provides the decoded response content in the
+    decoded_content attribute.
+
+-------------------------------------------------------------------
+Tue Jul 28 18:55:20 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 4.0.2:
+  - Added ``py.typed`` file per PEP 561. Reported by Árni Már Jónsson.
+
+-------------------------------------------------------------------
+Thu Jul 23 20:21:35 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 4.0.1:
+  - Re-release to fix bad reStructuredText in ``README.md``. No substantive
+    changes.
+- update to version 4.0.0:
+  - IMPORTANT: Python 2.7 and 3.5 support has been dropped. Python 3.6 or greater
+    is required.
+  - Asyncio support has been added for web service requests. To make async
+    requests, use ``geoip.webservice.AsyncClient``.
+  - ``geoip.webservice.Client`` now provides a ``close()`` method and associated
+    context managers to be used in ``with`` statements.
+  - Type hints have been added.
+  - The attributes ``postal_code`` and ``postal_confidence`` have been removed
+    from ``geoip2.record.Location``. These would previously always be ``None``.
+  - ``user_id`` is no longer supported as a named argument for the constructor
+    on ``geoip2.webservice.Client``. Use ``account_id`` or a positional
+    parameter instead.
+  - For both ``Client`` and ``AsyncClient`` requests, the default timeout is
+    now 60 seconds.
+
+-------------------------------------------------------------------
+Thu Apr 16 17:45:00 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- match buildrequires to requirements.txt
+
+-------------------------------------------------------------------
+Wed Mar  4 07:46:22 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.0
+  * BREAKING CHANGE: The geoip2.record.* classes have been refactored to
+    improve performance. This refactoring may break classes that inherit from
+    them. The public API should otherwise be compatible.
+  * The network attribute was added to geoip2.record.Traits,
+    geoip2.model.AnonymousIP, geoip2.model.ASN,
+    geoip2.model.ConnectionType, geoip2.model.Domain,
+    and geoip2.model.ISP. This is an ipaddress.IPv4Network or an
+    ipaddress.IPv6Network. This is the largest network where all of the
+    fields besides ip_address have the same value. GitHub #79.
+  * Python 3.3 and 3.4 are no longer supported.
+  * Updated documentation of anonymizer attributes - is_anonymous_vpn and
+    is_hosting_provider - to be more descriptive.
+  * Added support for the user_count trait for the GeoIP2 Precision webservice.
+  * Added the static_ip_score attribute to geoip2.record.Traits for
+  * GeoIP2 Precision Insights. This is a float which indicates how static or dynamic
+    an IP address is.
+
+
+-------------------------------------------------------------------
+Mon Mar 11 07:07:04 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix minimum build dependency of maxminddb
+- Fix fdupes
+- Use more useful GitHub repo as URL
+- Add HISTORY.rst to %doc
+
+-------------------------------------------------------------------
+Tue Dec  4 12:48:25 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun May 27 08:28:33 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 2.9.0:
+ * You may now pass in the database via a file descriptor rather than a file
+   name when creating a new ``geoip2.database.Reader`` object using ``MODE_FD``.
+   This will read the database from the file descriptor into memory. Pull
+   request by nkinkade. GitHub #53.
+
+-------------------------------------------------------------------
+Wed May  2 12:02:32 UTC 2018 - tchvatal@suse.com
+
+- Use license macro for license
+
+-------------------------------------------------------------------
+Thu Apr 12 19:32:15 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 2.8.0:
+ * Renamed user ID to account ID in the code and added support for the new
+   ``ACCOUNT_ID_REQUIRED`` AND ``ACCOUNT_ID_UNKNOWN`` error codes.
+- update to version 2.7.0:
+ * The ``is_in_european_union`` attribute was added to
+   ``geoip2.record.Country`` and ``geoip2.record.RepresentedCountry``. This
+   attribute is ``True`` if the country is a member state of the European
+   Union.
+
+-------------------------------------------------------------------
+Sat Mar  3 18:36:30 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+  * don't use python_module for Requires
+
+-------------------------------------------------------------------
+Fri Oct 27 21:10:06 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to version 2.6.0:
+ * The following new anonymizer attributes were added to ``geoip2.record.Traits``
+   for use with GeoIP2 Precision Insights: ``is_anonymous``,
+   ``is_anonymous_vpn``, ``is_hosting_provider``, ``is_public_proxy``, and
+   ``is_tor_exit_node``.
+
+-------------------------------------------------------------------
+Thu May 25 16:30:03 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package

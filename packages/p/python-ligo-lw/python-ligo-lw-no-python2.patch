@@ -1,0 +1,385 @@
+Index: python-ligo-lw-1.8.3/bin/ligolw_cut
+===================================================================
+--- python-ligo-lw-1.8.3.orig/bin/ligolw_cut
++++ python-ligo-lw-1.8.3/bin/ligolw_cut
+@@ -31,7 +31,6 @@ Cut pieces out of LIGO LW XML files cont
+ """
+ 
+ 
+-from __future__ import print_function
+ from optparse import OptionParser
+ import sys
+ 
+Index: python-ligo-lw-1.8.3/bin/ligolw_run_sqlite
+===================================================================
+--- python-ligo-lw-1.8.3.orig/bin/ligolw_run_sqlite
++++ python-ligo-lw-1.8.3/bin/ligolw_run_sqlite
+@@ -17,8 +17,6 @@
+ # 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ 
+ 
+-from __future__ import print_function
+-
+ from optparse import OptionParser
+ import sqlite3
+ import sys
+Index: python-ligo-lw-1.8.3/bin/ligolw_sqlite
+===================================================================
+--- python-ligo-lw-1.8.3.orig/bin/ligolw_sqlite
++++ python-ligo-lw-1.8.3/bin/ligolw_sqlite
+@@ -32,7 +32,6 @@ databases.
+ """
+ 
+ 
+-from __future__ import print_function
+ from optparse import OptionParser
+ import os
+ import sqlite3
+Index: python-ligo-lw-1.8.3/debian/control
+===================================================================
+--- python-ligo-lw-1.8.3.orig/debian/control
++++ python-ligo-lw-1.8.3/debian/control
+@@ -14,9 +14,7 @@ Build-Depends:
+  python-six,
+  python3-all,
+  python3-all-dev,
+- python3-setuptools,
+- python3-six
+-X-Python-Version: >= 2.7
++ python3-setuptools
+ X-Python3-Version: >= 3.4
+ Standards-Version: 3.9.3
+ 
+@@ -78,7 +76,6 @@ Depends:
+  python3-dateutil,
+  python3-ligo-segments,
+  python3-numpy (>= 1.6),
+- python3-six,
+  python3-tqdm,
+  python3-yaml
+ Recommends:
+Index: python-ligo-lw-1.8.3/ligo/lw/ligolw.py
+===================================================================
+--- python-ligo-lw-1.8.3.orig/ligo/lw/ligolw.py
++++ python-ligo-lw-1.8.3/ligo/lw/ligolw.py
+@@ -44,7 +44,6 @@ from xml.sax.saxutils import unescape as
+ 
+ from . import __author__, __date__, __version__
+ from . import types as ligolwtypes
+-import six
+ from functools import reduce
+ 
+ 
+@@ -147,7 +146,7 @@ class attributeproxy(property):
+ 	>>> x.Scale
+ 	1.0
+ 	"""
+-	def __init__(self, name, enc = six.text_type, dec = six.text_type, default = None, doc = None):
++	def __init__(self, name, enc = str, dec = str, default = None, doc = None):
+ 		# define get/set/del implementations, relying on Python's
+ 		# closure mechanism to remember values for name, default,
+ 		# etc.
+@@ -340,7 +339,7 @@ class Element(object):
+ 		# modifies its internal data.  probably not a good idea,
+ 		# but I don't know how else to edit an attribute because
+ 		# the stupid things don't export a method to do it.
+-		self.attributes._attrs[attrname] = six.text_type(value)
++		self.attributes._attrs[attrname] = str(value)
+ 
+ 	def removeAttribute(self, attrname):
+ 		# cafeful:  this digs inside an AttributesImpl object and
+@@ -422,7 +421,7 @@ def WalkChildren(elem):
+ #
+ 
+ 
+-class LLWNameAttr(six.text_type):
++class LLWNameAttr(str):
+ 	"""
+ 	Baseclass to hide pattern-matching of various element names.
+ 	Subclasses must provide a .dec_pattern compiled regular expression
+@@ -746,9 +745,9 @@ class Time(Element):
+ 		fileobj.write(self.start_tag(indent))
+ 		if self.pcdata is not None:
+ 			if self.Type == u"ISO-8601":
+-				fileobj.write(xmlescape(six.text_type(self.pcdata.isoformat())))
++				fileobj.write(xmlescape(str(self.pcdata.isoformat())))
+ 			elif self.Type == u"GPS":
+-				fileobj.write(xmlescape(six.text_type(self.pcdata)))
++				fileobj.write(xmlescape(str(self.pcdata)))
+ 			elif self.Type == u"Unix":
+ 				fileobj.write(xmlescape(u"%.16g" % self.pcdata))
+ 			else:
+@@ -757,7 +756,7 @@ class Time(Element):
+ 				# unicode and let calling code figure out
+ 				# how to ensure that does the correct
+ 				# thing.
+-				fileobj.write(xmlescape(six.text_type(self.pcdata)))
++				fileobj.write(xmlescape(str(self.pcdata)))
+ 		fileobj.write(self.end_tag(u""))
+ 		fileobj.write(u"\n")
+ 
+Index: python-ligo-lw-1.8.3/ligo/lw/tokenizer.Tokenizer.c
+===================================================================
+--- python-ligo-lw-1.8.3.orig/ligo/lw/tokenizer.Tokenizer.c
++++ python-ligo-lw-1.8.3/ligo/lw/tokenizer.Tokenizer.c
+@@ -199,21 +199,11 @@ static void parse_error(PyObject *except
+ 	PyObject *buffer_str;
+ 	PyObject *pos_str;
+ 
+-	/* FIXME: remove when we require 3 */
+-#if PY_MAJOR_VERSION < 3
+-	buffer_str = PyUnicode_Encode(buffer, buffer_length, NULL, NULL);
+-	pos_str = PyUnicode_Encode(pos, 1, NULL, NULL);
+-#else
+ 	buffer_str = PyUnicode_FromWideChar(buffer, buffer_length);
+ 	pos_str = PyUnicode_FromWideChar(pos, 1);
+-#endif
+ 
+ 	if(buffer_str && pos_str)
+-#if PY_MAJOR_VERSION < 3
+-		PyErr_Format(exception, "parse error in '%s' near '%s' at position %td: %s", PyString_AS_STRING(buffer_str), PyString_AS_STRING(pos_str), pos - buffer + 1, msg);
+-#else
+ 		PyErr_Format(exception, "parse error in '%U' near '%U' at position %zd: %s", buffer_str, pos_str, (Py_ssize_t) (pos - buffer + 1), msg);
+-#endif
+ 	else
+ 		PyErr_Format(exception, "parse error (details not available): %s", msg);
+ 
+@@ -453,14 +443,6 @@ static PyObject *append(PyObject *self,
+ 		PyUnicode_READY(data);
+ #endif
+ 		fail = add_to_data((ligolw_Tokenizer *) self, data);
+-	/* FIXME:  remove when we require >= 3 */
+-#if PY_MAJOR_VERSION < 3
+-	} else if(PyString_Check(data)) {
+-		if(!(data = PyUnicode_FromObject(data)))
+-			return NULL;
+-		fail = add_to_data((ligolw_Tokenizer *) self, data);
+-		Py_DECREF(data);
+-#endif
+ 	} else {
+ 		PyErr_SetObject(PyExc_TypeError, data);
+ 		return NULL;
+@@ -607,13 +589,6 @@ static PyObject *next(PyObject *self)
+ 		}
+ 	} else if(type == (PyObject *) &PyUnicode_Type) {
+ 		token = PyUnicode_FromWideChar(start, end - start);
+-	/* FIXME:  remove when we require >= 3 */
+-#if PY_MAJOR_VERSION < 3
+-	} else if(type == (PyObject *) &PyString_Type) {
+-		token = PyUnicode_Encode(start, end - start, NULL, NULL);
+-	} else if(type == (PyObject *) &PyInt_Type) {
+-		token = PyInt_FromUnicode(start, end - start, 0);
+-#endif
+ 	} else if(type == (PyObject *) &PyLong_Type) {
+ 		wchar_t buffer[end - start + 1];
+ 		wchar_t *buffer_end;
+@@ -776,11 +751,7 @@ PyTypeObject ligolw_Tokenizer_Type = {
+ "with only whitespace between them) is returned as None regardless of the\n" \
+ "requested type.  To prevent a zero-length string token from being interpreted\n" \
+ "as None, place it in quotes.",
+-	.tp_flags = Py_TPFLAGS_DEFAULT
+-#if PY_MAJOR_VERSION < 3
+-	| Py_TPFLAGS_CHECKTYPES
+-#endif
+-	,
++	.tp_flags = Py_TPFLAGS_DEFAULT,
+ 	.tp_init = __init__,
+ 	.tp_iter = __iter__,
+ 	.tp_iternext = next,
+Index: python-ligo-lw-1.8.3/ligo/lw/tokenizer.c
+===================================================================
+--- python-ligo-lw-1.8.3.orig/ligo/lw/tokenizer.c
++++ python-ligo-lw-1.8.3/ligo/lw/tokenizer.c
+@@ -110,27 +110,18 @@ PyObject *llwtokenizer_build_formats(PyO
+ "various data storage units."
+ 
+ 
+-#if PY_MAJOR_VERSION < 3
+-PyMODINIT_FUNC inittokenizer(void); /* Silence -Wmissing-prototypes */
+-PyMODINIT_FUNC inittokenizer(void)
+-#else
+ PyMODINIT_FUNC PyInit_tokenizer(void); /* Silence -Wmissing-prototypes */
+ PyMODINIT_FUNC PyInit_tokenizer(void)
+-#endif
+ {
+ 	/*
+ 	 * Create the module.
+ 	 */
+ 
+-#if PY_MAJOR_VERSION < 3
+-	PyObject *module = Py_InitModule3(MODULE_NAME, NULL, MODULE_DOC);
+-#else
+ 	static PyModuleDef moduledef = {
+ 		PyModuleDef_HEAD_INIT,
+ 		MODULE_NAME, MODULE_DOC, -1, NULL
+ 	};
+ 	PyObject *module = PyModule_Create(&moduledef);
+-#endif
+ 	if (!module)
+ 		goto done;
+ 
+@@ -171,9 +162,5 @@ PyMODINIT_FUNC PyInit_tokenizer(void)
+ 	 */
+ 
+ done:
+-#if PY_MAJOR_VERSION < 3
+-	return;
+-#else
+ 	return module;
+-#endif
+ }
+Index: python-ligo-lw-1.8.3/ligo/lw/types.py
+===================================================================
+--- python-ligo-lw-1.8.3.orig/ligo/lw/types.py
++++ python-ligo-lw-1.8.3/ligo/lw/types.py
+@@ -70,13 +70,6 @@ import base64
+ 
+ 
+ from . import __author__, __date__, __version__
+-import six
+-
+-
+-try:  # python < 3
+-	long
+-except NameError:  # python >= 3
+-	long = int
+ 
+ 
+ #
+@@ -128,7 +121,7 @@ def string_format_func(s):
+ 	Escapes back-slashes and quotes, and wraps the resulting string in
+ 	quotes.
+ 	"""
+-	return u"\"%s\"" % six.text_type(s).replace(u"\\", u"\\\\").replace(u"\"", u"\\\"")
++	return u"\"%s\"" % str(s).replace(u"\\", u"\\\\").replace(u"\"", u"\\\"")
+ 
+ 
+ def blob_format_func(b):
+@@ -189,13 +182,13 @@ ligo.lw XML writing codes.
+ 
+ 
+ ToPyType = {
+-	u"char_s": six.text_type,
+-	u"char_v": six.text_type,
+-	u"ilwd:char": six.text_type,
++	u"char_s": str,
++	u"char_v": str,
++	u"ilwd:char": str,
+ 	u"ilwd:char_u": lambda s: memoryview(base64.b64decode(s)),
+ 	u"blob": lambda s: memoryview(base64.b64decode(s)),
+-	u"lstring": six.text_type,
+-	u"string": six.text_type,
++	u"lstring": str,
++	u"string": str,
+ 	u"int_2s": int,
+ 	u"int_2u": int,
+ 	u"int_4s": int,
+@@ -231,10 +224,9 @@ class FromPyTypeCls(dict):
+ FromPyType = FromPyTypeCls({
+ 	memoryview: u"blob",
+ 	str: u"lstring",
+-	six.text_type: u"lstring",
++	str: u"lstring",
+ 	bool: u"int_4s",
+ 	int: u"int_8s",
+-	long: u"int_8s",
+ 	float: u"real_8",
+ 	complex: u"complex_16"
+ })
+Index: python-ligo-lw-1.8.3/ligo/lw/utils/__init__.py
+===================================================================
+--- python-ligo-lw-1.8.3.orig/ligo/lw/utils/__init__.py
++++ python-ligo-lw-1.8.3/ligo/lw/utils/__init__.py
+@@ -35,10 +35,11 @@ import contextlib
+ import gzip
+ import lzma
+ import os
+-from six.moves import urllib
+ import signal
+ import stat
+ import sys
++import urllib.parse
++import urllib.request
+ 
+ 
+ from .. import __author__, __date__, __version__
+@@ -452,9 +453,7 @@ def load_url(url, verbose = False, **kwa
+ 		sys.stderr.write("reading %s ...\n" % (("'%s'" % url) if url is not None else "stdin"))
+ 	urlopen_kwargs = dict((kwarg, kwargs.pop(kwarg)) for kwarg in ("context", "timeout") if kwarg in kwargs)
+ 	if url is None:
+-		# In Python 3, ``sys.stdin`` has an attribute called
+-		# ``buffer`` that is the underyling byte-oriented stream.
+-		return load_fileobj(sys.stdin.buffer if hasattr(sys.stdin, "buffer") else sys.stdin, **kwargs)
++		return load_fileobj(sys.stdin.buffer, **kwargs)
+ 	scheme, host, path = urllib.parse.urlparse(url)[:3]
+ 	if scheme.lower() in ("", "file") and host.lower() in ("", "localhost"):
+ 		with open(path, "rb") as fileobj:
+@@ -624,9 +623,7 @@ def write_filename(xmldoc, filename, ver
+ 		sys.stderr.write("writing %s ...\n" % (("'%s'" % filename) if filename is not None else "stdout"))
+ 	with SignalsTrap(trap_signals):
+ 		if filename is None:
+-			# In Python 3, sys.stdout has a .buffer attribute
+-			# that is the underyling byte-oriented stream.
+-			write_fileobj(xmldoc, sys.stdout.buffer if hasattr(sys.stdout, "buffer") else sys.stdout, compress = compress, **kwargs)
++			write_fileobj(xmldoc, sys.stdout.buffer, compress = compress, **kwargs)
+ 		else:
+ 			binary_open = lambda filename: open(filename, "wb")
+ 			with (binary_open if not with_mv else tildefile)(filename) as fileobj:
+Index: python-ligo-lw-1.8.3/ligo/lw/utils/ligolw_add.py
+===================================================================
+--- python-ligo-lw-1.8.3.orig/ligo/lw/utils/ligolw_add.py
++++ python-ligo-lw-1.8.3/ligo/lw/utils/ligolw_add.py
+@@ -30,8 +30,8 @@ Add (merge) LIGO LW XML files containing
+ 
+ 
+ import os
++import urllib.parse
+ import sys
+-from six.moves import urllib
+ 
+ 
+ from tqdm import tqdm
+Index: python-ligo-lw-1.8.3/python-ligo-lw.spec.in
+===================================================================
+--- python-ligo-lw-1.8.3.orig/python-ligo-lw.spec.in
++++ python-ligo-lw-1.8.3/python-ligo-lw.spec.in
+@@ -62,7 +62,6 @@ Requires:	python%{python3_pkgversion}-da
+ #Requires:	python%{python3_pkgversion}-lalburst
+ Requires:	python%{python3_pkgversion}-ligo-segments
+ Requires:	python%{python3_pkgversion}-numpy >= 1.6
+-Requires:	python%{python3_pkgversion}-six
+ Requires:	python%{python3_pkgversion}-tqdm
+ Requires:	python%{python3_pkgversion}-PyYAML
+ %{?python_provide:%python_provide python%{python3_pkgversion}-%{shortname}}
+Index: python-ligo-lw-1.8.3/setup.py
+===================================================================
+--- python-ligo-lw-1.8.3.orig/setup.py
++++ python-ligo-lw-1.8.3/setup.py
+@@ -76,7 +76,6 @@ setup(
+ 		"License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)",
+ 		"Natural Language :: English",
+ 		"Operating System :: POSIX",
+-		"Programming Language :: Python :: 2.7",
+ 		"Programming Language :: Python :: 3",
+ 		"Topic :: Scientific/Engineering :: Astronomy",
+ 		"Topic :: Scientific/Engineering :: Physics",
+@@ -89,7 +88,6 @@ setup(
+ 		"numpy",
+ 		"python-dateutil",
+ 		"pyyaml",
+-		"six",
+ 		"tqdm"
+ 	]
+ )
+Index: python-ligo-lw-1.8.3/test/ligo_lw_test_01.py
+===================================================================
+--- python-ligo-lw-1.8.3.orig/test/ligo_lw_test_01.py
++++ python-ligo-lw-1.8.3/test/ligo_lw_test_01.py
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env python3
+ 
+-from __future__ import print_function
++
+ import matplotlib
+ matplotlib.use("Agg")
+ from matplotlib import figure

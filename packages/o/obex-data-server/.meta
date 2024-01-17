@@ -1,0 +1,6 @@
+<package name="obex-data-server" project="openSUSE:Factory">
+  <title>Obex DBus API</title>
+  <description>Obex-Data-Server provides a obex dbus api. Used for bluetooth
+applications to transfer and receive data.</description>
+  <devel project="Base:System" package="obex-data-server"/>
+</package>

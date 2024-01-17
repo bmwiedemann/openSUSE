@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c0982eea3022aa18e18f586171162386</srcmd5>
+    <version>2.0.1</version>
+    <time>1407753034</time>
+    <user>lnussel</user>
+    <comment></comment>
+    <requestid>244066</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c0982eea3022aa18e18f586171162386</srcmd5>
+    <version>2.0.1</version>
+    <time>1409300785</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ef5867135eaed96bf00c2d90854ecf1b</srcmd5>
+    <version>2.0.1</version>
+    <time>1454491201</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357294</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>0f87bc1f98570d74182be8a1adb2402b</srcmd5>
+    <version>2.0.1</version>
+    <time>1476113307</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433536</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>1fa8b7e41fcf06e6dd063f86f9a934a8</srcmd5>
+    <version>2.0.1</version>
+    <time>1501406648</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510890</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f32f0b054c29d2cb8937c45141b6951e</srcmd5>
+    <version>3.0.3</version>
+    <time>1551687237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680145</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bf33a34703198cf4ecd78e532ae897d9</srcmd5>
+    <version>3.1.5</version>
+    <time>1564575212</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.5
+  * Fix `0x` for string-&gt;double conversion when Hex Floats are allowed.
+    Avoid integer overflow when exponents for hex floats were too big.
+    Update version number.
+  * Fixed warning in gcc4.9.
+  * Merged changes to install libraries in the correct place when
+    using 64-bit libraries.
+  * Use relative includes in the library. This shouldn't have any visible effect
+    for consumers of the library.
+  * Fix typo in test.
+  * Fix separator characters when they they don't fit into 8 bits.
+  * Check correctly for _MSC_VER.
+  * Allow the library to be compiled for Emscripten.</comment>
+    <requestid>718475</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>67858298784f7b245f69e158448fd69f</srcmd5>
+    <version>3.1.5</version>
+    <time>1581801789</time>
+    <user>dimstar_suse</user>
+    <comment>- Use proper cmake calls
+- Do not pull in py2 that is EOL but use python3 for build
+
+- Update to version 3.1.5 jsc#ECO-1190 (forwarded request 770656 from scarabeus_iv)</comment>
+    <requestid>770685</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>5a1131551fb9f74efe569fb79646b95a</srcmd5>
+    <version>3.1.5</version>
+    <time>1582112372</time>
+    <user>dimstar_suse</user>
+    <comment>- extend changelog entry</comment>
+    <requestid>776248</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6da7633e98a1ea8ec5f0539b3979a949</srcmd5>
+    <version>3.1.6</version>
+    <time>1638997711</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.6:
+  * Features some code cleanups.
+  * Adds the following new architectures: loongarch, xtensa, nios2, e2k. (forwarded request 935845 from dirkmueller)</comment>
+    <requestid>935947</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>415f032fe2d11394824237b24a62c710</srcmd5>
+    <version>3.1.7</version>
+    <time>1641386348</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.7:
+  * Reintroduce macros, if DOUBLE_CONVERSION_NON_PREFIXED_MACROS is set
+  * Also add support for Synopsys ARC64 architecture (forwarded request 943179 from dirkmueller)</comment>
+    <requestid>943528</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ba1ddd674e9fb77315e3cc35d3ff0c04</srcmd5>
+    <version>3.2.0</version>
+    <time>1649949792</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0:
+  * Fix quiet NANs on MIPS* and PA-RISC architectures. (forwarded request 968073 from dirkmueller)</comment>
+    <requestid>969261</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a860f8b901945839ca54d58090f79639</srcmd5>
+    <version>3.2.1</version>
+    <time>1661020079</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.1
+  * Disable quiet nan test on windows
+  * Test on all platforms.
+  * Fix warnings on Windows
+  * Run ctests first.
+  * Give shared-lib option and test install
+  * Install Windows debbuger (pdb) files.
+  * Add a cast to silence a signedness conversion warning.
+  * Issue #184 : Fixed all -Wzero-as-null-pointer-constant warnings (forwarded request 997609 from dirkmueller)</comment>
+    <requestid>998147</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f075556aaabd27da05ff8016fe2ab23a</srcmd5>
+    <version>3.3.0</version>
+    <time>1687379827</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.0:
+  * Fix some compile warnings in Visual Studio
+  * Set permissions for github workflows
+  * Add flags to control trailing decimal and zero in exponent
+    form when input has one significant digit (forwarded request 1093823 from dirkmueller)</comment>
+    <requestid>1093988</requestid>
+  </revision>
+</revisionlist>

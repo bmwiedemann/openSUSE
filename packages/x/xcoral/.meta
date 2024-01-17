@@ -1,0 +1,13 @@
+<package name="xcoral" project="openSUSE:Factory">
+  <title>X11 Editor with C/C++/Java Browser and lots more ;)</title>
+  <description>Half of the YaST developers swear on it, not only because of the built
+in C/C++/Java browser. Xcoral provides support for the work with C,
+C++, Java, Perl, Ada, and Fortran programs and for the creation of
+LaTeX and HTML documents. With the help of the built in 'SMall Ansi C
+Interpreter' (SMAC), xcoral can be configured and extended in almost
+arbitrary ways. Examples can be found in the directory /usr/lib/xcoral.
+
+Further information about Xcoral and SMAC is available in the detailed
+online help system (also available Postscript format).</description>
+  <devel project="editors" package="xcoral"/>
+</package>

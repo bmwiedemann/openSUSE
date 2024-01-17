@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd010dc0afb4dc48da4689c059a3be9e</srcmd5>
+    <version>2.0.3</version>
+    <time>1568065314</time>
+    <user>dimstar_suse</user>
+    <comment>remove %post and remove recommends which are already in the generated spotify rpm. Require rpm-build and createrepo otherwise the script won't function</comment>
+    <requestid>723388</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3d211d77a1eb6c6c1b97ba0d2ff2ba7a</srcmd5>
+    <version>2.1.0</version>
+    <time>1575282817</time>
+    <user>dimstar_suse</user>
+    <comment>replace requires createrepo with createrepo_c</comment>
+    <requestid>752659</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e61af2b8948e3ec61fad4c954078c5e7</srcmd5>
+    <version>2.1.1</version>
+    <time>1585995919</time>
+    <user>dimstar_suse</user>
+    <comment>Please accept v2.1.1 into Factory</comment>
+    <requestid>791025</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e7f40bcb35c301080941a8f411eca503</srcmd5>
+    <version>2.1.2</version>
+    <time>1606649277</time>
+    <user>dimstar_suse</user>
+    <comment>new release v2.1.2</comment>
+    <requestid>851166</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5021c8d7847fa44696302ad46e060fcc</srcmd5>
+    <version>3.0.1</version>
+    <time>1615802088</time>
+    <user>dimstar_suse</user>
+    <comment>hi please accept v 3.0.1 into Factory</comment>
+    <requestid>878605</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d5ecee84e07382c10ddeef6383aade55</srcmd5>
+    <version>3.0.2</version>
+    <time>1633542590</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase the dependencies of the generated spotify-client rpm from the debian package</comment>
+    <requestid>923352</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>94469c27ab2cf5c3994c40d5f3c2adb9</srcmd5>
+    <version>3.0.3</version>
+    <time>1651088466</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove dependency on gconf2
+</comment>
+    <requestid>972981</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>221b2107b1475f8a656c29e9326ddcfb</srcmd5>
+    <version>3.0.4</version>
+    <time>1681479606</time>
+    <user>dimstar_suse</user>
+    <comment>- Snap package no longer includes share/doc directory. Thanks @LeoniePhiline</comment>
+    <requestid>1079435</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3eba7d46b84b5a523e293843cbf9e447</srcmd5>
+    <version>3.0.5</version>
+    <time>1701206357</time>
+    <user>anag+factory</user>
+    <comment>- spotify now requires libayatana-appindicator3-1 installed to run</comment>
+    <requestid>1129259</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5c7eff987a2e8d6e06222c2ae51dbbed</srcmd5>
+    <version>1.1.0</version>
+    <time>1576014259</time>
+    <user>dimstar_suse</user>
+    <comment>SLE-7686</comment>
+    <requestid>755538</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>831618f1a018c014b044c1baabda2a66</srcmd5>
+    <version>1.1.0</version>
+    <time>1620653893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890487</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>11dd83e6219855865028d225c2d2149c</srcmd5>
+    <version>1.2.0</version>
+    <time>1637372329</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932256</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b9cf0e64d265b09fd5d9c9857c04eeab</srcmd5>
+    <version>1.2.0</version>
+    <time>1653583454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979359</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>fb1c199f6cd83419aaa3215d33b63329</srcmd5>
+    <version>1.2.0</version>
+    <time>1655118174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982318</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>d4407574742f4b5a31598a6e43c4864c</srcmd5>
+    <version>1.2.0</version>
+    <time>1659034660</time>
+    <user>RBrownFactory</user>
+    <comment>- Go back to python39 -- highest supported Python by mailman3 (forwarded request 986653 from bnavigator)</comment>
+    <requestid>986716</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8c1bad57aa873552c16a9fb031dba86e</srcmd5>
+    <version>1.2.1</version>
+    <time>1687900607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095548</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6f5314717507193620451bea5df38f24</srcmd5>
+    <version>1.2.1</version>
+    <time>1688246297</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096267</requestid>
+  </revision>
+</revisionlist>

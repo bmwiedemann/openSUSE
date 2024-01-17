@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/libyal/libagdb</param>
+		<param name="revision">cd6fd273fe781128d6b563feb0a13bf203d4c576</param>
+		<!-- see configure.ac -->
+		<param name="versionformat">20210429</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

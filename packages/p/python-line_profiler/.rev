@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0dc64eeb24e918194ad6c891a7284807</srcmd5>
+    <version>2.1.2</version>
+    <time>1526371991</time>
+    <user>dimstar_suse</user>
+    <comment>A key python performance-tuning tool</comment>
+    <requestid>606244</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>336a80d34861ca92de6964a953dc301a</srcmd5>
+    <version>2.1.2</version>
+    <time>1533045395</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch off tests (they are broken,
+  https://github.com/rkern/line_profiler/issues/128)</comment>
+    <requestid>624297</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a04f7284e946f3872e80eee2d0ed9d67</srcmd5>
+    <version>2.1.2</version>
+    <time>1541865437</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645309</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>bb38188274102e28e7c6ed9934f957e4</srcmd5>
+    <version>2.1.2</version>
+    <time>1546535318</time>
+    <user>dimstar_suse</user>
+    <comment>- Regenerate cython files to fix build under python 3.7</comment>
+    <requestid>662442</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c2dcaa7f7f1fcbfc49eab8e651a5fc91</srcmd5>
+    <version>3.1.0</version>
+    <time>1619107478</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887569</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>76bfb399230034fa905bee6885308b5f</srcmd5>
+    <version>3.4.0</version>
+    <time>1641680612</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.0
+  * Drop support for Python &lt;= 3.5.x
+  * FIX: #104 issue with new IPython kernels
+  * Wheels for musllinux are now included
+  * FIX: Fix bug where lines were not displayed in Jupyter&gt;=6.0 via
+    #93
+- Release 3.3.1
+  * CHANGE: moving forward, new pypi releases will be signed with
+    the GPG key 2A290272C174D28EA9CA48E9D7224DAF0347B114 for
+    PyUtils-CI openpyutils@gmail.com. For reference, older versions
+    were signed with either
+    262A1DF005BE5D2D5210237C85CD61514641325F or
+    1636DAF294BA22B89DBB354374F166CFA2F39C18.
+- Release 3.2.5
+  * Include c source files in manifest (#74)
+- Fix IPython requirements
+- Fix platform install dir</comment>
+    <requestid>944765</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fcafdf24057eaecb3d28c7f5e5f22b39</srcmd5>
+    <version>3.5.1</version>
+    <time>1664553472</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007071</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f9d036614a4259fd738d39dcf8ee9e1e</srcmd5>
+    <version>4.0.2</version>
+    <time>1676911567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.2:
+  * FIX: AttributeError on certain methods. #191
+  * FIX: Profiling classmethods works again. #183
+  * ENH: Python 3.11 is now supported.
+  * ENH: Profiling overhead is now drastically smaller, thanks to
+    reimplementing almost all of the tracing callback in C++.
+  * ENH: Added the ``-i &lt;# of seconds&gt;`` option to the ``kernprof`` script.
+  * CHANGE: Cython's native cythonize function is now used to compile the
+    project, instead of scikit-build's convoluted process.
+  * CHANGE: Due to optimizations done while reimplementing the callback in
+    C++, the profiler's code_map and last_time attributes now are indexed by
+    a hash of the code block's bytecode and its line number.
+  * FIX: filepath test in is_ipython_kernel_cell for Windows #161
+  * ADD: setup.py now checks LINE_PROFILER_BUILD_METHOD to determine how
+    to build binaries
+  * ADD: LineProfiler.add_function warns if an added function has a
+    __wrapped__ attribute
+- Due to build system change, massively simplify %build.</comment>
+    <requestid>1066713</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a05819f6e82871fb8c67f038441e0eec</srcmd5>
+    <version>4.0.3</version>
+    <time>1679933776</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.3:
+  * FIX: Stop requiring bleeding-edge Cython unless necesasry
+    (for Python 3.12).  #206</comment>
+    <requestid>1074511</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>e1d6efaba8dcfcadac484fe05c4df3bb</srcmd5>
+    <version>4.0.3</version>
+    <time>1692045337</time>
+    <user>dimstar_suse</user>
+    <comment>- restrict to older Cython release</comment>
+    <requestid>1103743</requestid>
+  </revision>
+</revisionlist>

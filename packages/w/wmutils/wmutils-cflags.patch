@@ -1,0 +1,20 @@
+Index: core-1.4/Makefile
+===================================================================
+--- core-1.4.orig/Makefile
++++ core-1.4/Makefile
+@@ -30,12 +30,12 @@ binutils: $(BIN)
+ $(OBJ): $(HDR) util.o
+ 
+ .o:
+-	@echo "LD $@"
++	@echo "LD $@ -o $@ $(LDFLAGS)"
+ 	@$(LD) $< util.o -o $@ $(LDFLAGS)
+ 
+ .c.o:
+-	@echo "CC $<"
+-	@$(CC) -c $< -o $@ $(CFLAGS)
++	@echo "CC $< -o $@ $(CFLAGS) $(RPM_OPT_FLAGS)"
++	@$(CC) -c $< -o $@ $(CFLAGS) $(RPM_OPT_FLAGS)
+ 
+ install: $(BIN)
+ 	mkdir -p $(DESTDIR)$(PREFIX)/bin/

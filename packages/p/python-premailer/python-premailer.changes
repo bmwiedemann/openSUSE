@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Tue Oct  4 23:14:00 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.10.0
+  New option session=None to provide the session used for making http requests.
+  Bug fix: inlined styles are no longer sorted alphabetically. This preserves the input rule order so that premailer does not break style
+  precedence where order is significant, e.g.
+  div {
+    /* Padding on all sides is 10px. */
+    padding-left: 5px;
+    padding: 10px;
+  }
+  div {
+    /* Padding on the left side is 5px, on other sides is 10px. */
+    padding: 10px;
+    padding-left: 5px;
+  }
+  Prior to this fix premailer would swap the rules in the first example to look like the second.
+
+  Other version change log https://github.com/peterbe/premailer/blob/master/CHANGES.rst
+
+-------------------------------------------------------------------
+Tue Aug 27 01:12:33 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.

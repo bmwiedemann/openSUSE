@@ -1,0 +1,9 @@
+<package name="ckermit" project="openSUSE:Factory">
+  <title>A Combined Serial and Network Communication Software Package</title>
+  <description>C-Kermit is a combined serial and network communication software
+package offering a consistent, medium-independent, and cross-platform
+approach to connection establishment, terminal sessions, file transfer,
+character-set translation, and automation of communication tasks.
+</description>
+  <devel project="hardware" package="ckermit"/>
+</package>

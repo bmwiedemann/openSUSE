@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Sat Jun 24 07:29:53 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Fix build on armv7l
+- Fix the conflict in versioned library package content
+
+-------------------------------------------------------------------
+Sat Jun  3 14:27:09 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- added patch exclude_mtime_aiostat_test_on_32bit.patch to exclude mtime test on 32bit platforms
+
+-------------------------------------------------------------------
+Tue May 30 08:42:59 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.82
+  * Bugs fixed:
+    + dict - under some circumstances it was possible to add duplicate keys to a dict
+    + file delete - -force and -- were handled incorrectly
+    + aio: ssl - fix eof detection with openssl3
+    + getref and setref - now accept fully qualified references
+    + unset - don’t return a result with -nocomplain
+    + Garbage collection - sometimes GC was overly zealous
+    + regexp - builtin regexp fix for end of word check
+    + dict with - now correctly returns the script result
+    + Unicode ranges are closed intervals. This affected the character class of the end character of each range.
+  * Features and improvements added:
+    + aio gets - improve behaviour for non-blocking streams
+    + aio TIP 603 - implement stat of an open file handle
+    + aio socket pty - filename is now available
+    + Included sqlite updated to version 3.38.0
+    + redis extension - enable TCP_KEEPALIVE, add support for -type and -async
+    + try - add support for trap
+    + oo constructor is now more flexible (possible incompatibility with 0.81)
+    + socket - add support for -async
+    + Updated linenoise now has support for word forward, word backward
+    + Updated Unicode to 14.0.0
+    + file normalize - now supported on Windows
+    + aio copyto - performance improvement for large copies
+    + Memory allocator is now replaceable
+    + info frame is now more Tcl compatible (incompatibility with 0.81)
+    + New timerate command for improved benchmarking - largely compatible with TIP 527
+    + vwait - add support for -signal for improved handling of signals in the event loop
+    + clock millis and clock micros - now use monotonic time if possible (not affected by system time changes)
+    + ensemble and namespace ensemble simplify creation of ensemble commands
+  * Possible incompatibilities in version 0.82
+    + New approach to oo constructor means some existing code may need to be altered
+    + info frame now returns a dict rather than a list and can access non-proc frames. stacktrace will continue to work and should be preferred when retrieving a live stack trace
+    + New ABI version means that compiled extensions will need to be rebuilt to work with this version
+- excluded ssl test from running inside build environment 
+
+-------------------------------------------------------------------
+Thu Aug 18 10:15:19 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to version 0.81
+  Drop jimtcl-fix_doc_paths.patch
+
+-------------------------------------------------------------------
+Sun Mar 30 10:11:45 UTC 2014 - matwey.kornilov@gmail.com
+
+- Split .so into separate package
+
+-------------------------------------------------------------------
+Sun Mar 30 10:05:37 UTC 2014 - matwey.kornilov@gmail.com
+
+- Delete jimtcl-add_soname.patch: not required for 0.75 anymore
+
+-------------------------------------------------------------------
+Thu Mar 13 15:52:23 UTC 2014 - matwey.kornilov@gmail.com
+
+- update to 0.75
+- fix license and add copyright to spec
+
+-------------------------------------------------------------------
+Fri Jul 12 16:33:05 UTC 2013 - prusnak@opensuse.org
+
+- created package based on Fedora package (version 0.73)
+

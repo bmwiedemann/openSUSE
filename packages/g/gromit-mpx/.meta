@@ -1,0 +1,5 @@
+<package name="gromit-mpx" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Apps" package="gromit-mpx"/>
+</package>

@@ -1,0 +1,376 @@
+-------------------------------------------------------------------
+Mon Nov 27 13:05:40 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Nov 27 08:03:06 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 3.1.1:
+  - Display Flags values in their repr.
+  - ~SelectField and SelectMultipleField choices can be None if
+    validate_choice is False
+  - Documentation improvements
+  - Unit tests improvements
+  - Python 3.12 support
+  - Restored support for 3-items tuple return value from
+    iter_choices
+
+- Update to 3.1.0:
+  - Documentation improvements
+  - Translation improvements
+  - Implement :class:~fields.ColorField
+  - Delayed import of email_validator.
+  - <option> attributes can be passed by the
+    :class:~fields.SelectField choices parameter
+  - Use the standard datetime formats by default for
+    :class:~fields.DateTimeLocalField
+  - Python 3.11 support
+  - Added shorter format to
+    :class:~fields.DateTimeLocalField defaults
+  - Stop support for python 3.7
+  - Added shorter format to :class:~fields.WeekField defaults
+  - Move to pyproject.toml
+  - URL validator takes a allow_ip parameter
+  - Implement :class:~validators.ReadOnly and
+    :class:~validators.Disabled
+
+-------------------------------------------------------------------
+Tue Sep 26 03:05:55 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+- We no longer need to skip any tests.
+
+-------------------------------------------------------------------
+Tue Apr 19 17:56:40 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Follow the change of the email_validator -> email-validator
+  Python package.
+
+-------------------------------------------------------------------
+Sat Apr 16 12:47:20 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.0.1:
+  - Fixed ~fields.DateTimeField and other similar fields can
+    handle multiple formats.
+  - Fixed ~fields.RadioField validators.
+  - ~fields.FormField.populate_obj always calls :func:setattr
+  - WTForms has a new logo.
+  - Fixed ~fields.RadioField render_kw rendering.
+  - Support for optgroups in ~fields.SelectField and
+    ~fields.SelectMultipleField.
+  - Minor documentation fix.
+  - Custom separators for ~fields.FieldList.
+  - ~fields.DateTimeField, ~fields.DateField and
+    ~fields.TimeField support time formats that removes leading
+    zeros.
+  - Refactoring: split fields/core.py and fields/simple.py
+  - Drop support for Python < 3.6.
+  - ~fields.StringField sets data to None when form data is empty
+    and an initial value was not provided. Although it previously
+    set an empty string, None is consistent with the behavior of
+    other fields.
+  - Specified version of Babel required for setup to avoid
+    errors.
+  - Replaced use of getattr/setattr with regular variable access.
+  - ValueError raised by a validator are handled like regular
+    exceptions. Validators need to raise
+    ~validators.ValidationError or ~validators.StopValidation to
+    make a validation fail.
+  - ~fields.SelectField, ~fields.SelectMultipleField and
+    ~fields.RadioField choices parameter can be a callable.
+  - Choices shortcut for ~fields.core.SelectMultipleField.
+  - Forms can have form-level errors.
+  - Implemented ~wtforms.fields.core.MonthField.
+  - Filters can be inline. :meth:form.BaseForm.process takes
+    a extra_filters parameter.
+  - Fields can be passed the name argument to use a HTML name
+    different than their Python name.
+  - Render attribute names like for_ and class_ are normalized
+    consistently so later values override those specified
+    earlier.
+  - Flags can take non-boolean values.
+  - Widgets are HTML5 by default.
+  - Fixed a bug when the ~wtforms.fields.core.SelectField choices
+    are list of strings.
+  - Error messages standardization.
+  - ~wtforms.fields.core.SelectMultipleField validate_choice
+    bugfix.
+  - Fixed SelectMultipleField validation when using choices list
+    shortcut.
+
+-------------------------------------------------------------------
+Mon Sep  6 17:16:46 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Put translated catalogs in -lang subpackages for each python
+  flavor.
+
+-------------------------------------------------------------------
+Fri Sep  3 10:25:00 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Build the translations catalogs so builtin messages can be
+  translated (this is needed to run the test_wtform_xlation test
+  in python-Flask-Security-Too 4.1.0)
+
+-------------------------------------------------------------------
+Sat Jun 05 19:37:37 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 2.3.3+git.1621448902.a55be54:
+  * Changelog
+  * render_kw tests for SelectField and MultipleSelectField
+  * moved test to test_radio
+  * pass RadioField (SelectFieldBase) render_kw dict in _Option class
+  * Changelog
+  * Logo integration
+  * Changelog
+  * Changelog
+  * Always call setattr in FormField.populate
+  * move test
+  * add test
+  * fix radiofield required bug
+- Skip failing tests with localization file (gh#wtforms/wtforms#697)
+
+-------------------------------------------------------------------
+Thu Sep 10 05:49:47 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop Requires on the code package on the doc package. 
+
+-------------------------------------------------------------------
+Wed Sep  2 00:53:12 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.3.3:
+  * This release includes the translation files that were missing in the 2.3.2
+    release.
+  * Fixed a bug with :class:`~fields.SelectField` choices shortcut at form
+    submission.
+
+-------------------------------------------------------------------
+Thu Jul 30 06:57:03 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.3.1:
+  * All modules in ``wtforms.ext`` show a deprecation warning on import.
+  * Fixed a bug when :class:`~fields.SelectField` choices is ``None``.
+  * Restored ``HTMLString`` and ``escape_html`` as aliases for
+    MarkupSafe functions. Their use shows a ``DeprecationWarning``.
+  * ``Form.validate`` takes an ``extra_validators`` parameter, mapping
+    field names to lists of extra validator functions. This matches
+    ``BaseForm.validate``.
+  * Update locale catalogs.
+  * Drop support for Python 2.6, 3.3, and 3.4.
+  * :class:`~fields.SelectField` uses ``list()`` to construct a new list
+    of choices.
+  * Permitted underscores in ``HostnameValidation``.
+  * :class:`~validators.URL` validator now allows query parameters in
+    the URL.
+  * Updated ``false_values`` param in ``BooleanField`` docs.
+  * Fixed broken format string in Arabic translation
+  * Updated French and Japanese translations.
+  * Updated Ukrainian translation.
+  * ``FieldList`` error list keeps entries in order for easier
+    identification of which fields had errors.
+  * :class:`~validators.Length` gives a more helpful error message when
+    ``min`` and ``max`` are the same value.
+  * :class:`~fields.SelectField` no longer coerces ``None`` to
+    ``"None"`` allowing use of ``"None"`` as an option.
+  * The :class:`~widgets.TextArea` widget prepends a ``\r\n`` newline
+    when rendering to account for browsers stripping an initial line for
+    display. This does not affect the value.
+  * HTML5 :class:`~fields.html5.IntegerField` and
+    :class:`~fields.html5.RangeInput` don't render the ``step="1"``
+    attribute by default.
+  * ``aria_`` args are rendered the same way as ``data_`` args, by
+    converting underscores to hyphens. ``aria_describedby="name*help"``
+    becomes ``aria*describedby="name-help"``.
+  * Added a ``check_validators`` method to :class:`~fields.Field` which
+    checks if the given validators are both callable, and not classes.
+  * ``form.errors`` is not cached and will update if an error is
+    appended to a field after access.
+  * :class:`~wtforms.validators.NumberRange` correctly handle NaN
+    values.
+  * :class:`~fields.IntegerField` checks input type when processing data.
+  * Added a parameter to :class:`~fields.SelectField` to skip choice
+    validation.
+  * Choices which name and data are the same do not need to use tuples.
+  * Added more documentation on HTML5 fields.
+  * HTML is escaped using MarkupSafe instead of the previous internal
+    implementation. :func:`~widgets.core.escape_html` is removed,
+    replaced by :func:`markupsafe.escape`.
+    :class:`~widgets.core.HTMLString` is removed, replaced by
+    :class:`markupsafe.Markup`.
+  * Fixed broken IPv6 validator, validation now uses the ``ipaddress``
+    package.
+  * :class:`~fields.core.Label` text is escaped before rendering.
+  * Email validation is now handled by an optional library,
+  ``email_validator``.
+
+-------------------------------------------------------------------
+Mon Jul 29 12:02:19 UTC 2019 - pgajdos@suse.com
+
+- version update to 2.2.1
+  * :class:`~fields.StringField` only sets ``data = ''` when form data
+    is empty and an initial value was not provided. This fixes an issue
+    where the default value wasn't rendered with the initial form.
+    (`#291`_, `#355`_, `#401`_)
+  * Merged new and updated translations from the community.
+  * Passing ``data_`` args to render a field converts all the
+    underscores to hyphens when rendering the HTML attribute, not just
+    the first one. ``data_foo_bar`` becomes ``data-foo-bar``. (`#248`_)
+  * The :class:`~validators.UUID` validator uses the :class:`uuid.UUID`
+    class instead of a regex. (`#251`_)
+  * :class:`~fields.SelectField` copies the list of ``choices`` passed
+    to it so modifying an instance's choices will not modify the global
+    form definition. (`#286`_)
+  * Fields call :meth:`~fields.Field.process_formdata` even if the raw
+    data is empty. (`#280`_)
+  * Added a :class:`~fields.MultipleFileField` to handle a multi-file
+    input. :class:`~fields.FileField` continues to handle only one
+    value. The underlying :class:`~widgets.FileInput` widget gained a
+    ``multiple`` argument. (`#281`_)
+  * :class:`~fields.SelectField` choices can contain HTML (MarkupSafe
+    ``Markup`` object or equivalent API) and will be rendered properly.
+    (`#302`_)
+  * :class:`~fields.TimeField` and
+    :class:`html5.TimeField <fields.html5.TimeField>` were added.
+    (`#254`_)
+  * Improved :class:`~validators.Email`. Note that it is still
+    unreasonable to validate all emails with a regex and you should
+    prefer validating by actually sending an email. (`#294`_)
+  * Widgets render the ``required`` attribute when using a validator
+    that provides the ``'required'`` flag, such as
+    :class:`~validators.DataRequired`. (`#361`_)
+  * Fix a compatibility issue with SQLAlchemy 2.1 that caused
+    :class:`~ext.sqlalchemy.fields.QuerySelectField` to fail with
+    ``ValueError: too many values to unpack``. (`#391`_)
+- drop lang packages
+- test package
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:14 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Sep  2 16:47:57 UTC 2017 - jengelh@inai.de
+
+- Don't let description assume any particular user.
+
+-------------------------------------------------------------------
+Thu Aug 31 16:26:15 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 2.1
+  * Added `render_kw` to allow default rendering time options.
+  * Updated / added a number of localizations
+  * Updated docs
+  * Allow widgets to set flags
+
+-------------------------------------------------------------------
+Thu Aug 24 13:57:47 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Thu May 14 15:17:12 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 2.0.2:
+  * Added more localizations and updated some
+  * Validators for email and URL can validate IDNA-encoded domain
+    names and new TLDs
+  * Better DeprecationWarnings
+  * Support localization files in /usr/share/locale (for distro
+    packaging)
+- additional changes from version 2.0.1
+  * Released July 1, 2014
+  * Update wheel install to conditionally install ordereddict for
+    python 2.6
+  * Doc improvements
+- additional changes from version 2.0
+  * Add new class Meta paradigm for much more powerful
+    customization of WTForms
+  * Move i18n into core. Deprecate wtforms.ext.i18n
+  * Move CSRF into core. Deprecate wtforms.ext.csrf
+  * Fix issue rendering SelectFields with value=True
+  * Make DecimalField able to use babel locale-based number
+    formatting
+  * Drop Python 3.2 support (Python3 support for 3.3+ only)
+  * passing attr=False to WTForms widgets causes the value to be
+    ignored
+  * Unique validator in wtforms.ext.sqlalchemy has been removed
+- add new dependency python-ordereddict for SLE11
+- update the list of files to fix end of line encoding
+- use %find_lang for the lang subpackage: paths changed upstream
+- run the tests during build
+- rename CHANGES.txt to CHANGES.rst: changed upstream
+- rename README.txt to README.md: changed upstream
+
+-------------------------------------------------------------------
+Thu Apr 10 19:40:40 UTC 2014 - aboe76@gmail.com
+
+- Updated to version 1.0.5:
+  + Fix a bug in validators which causes translations to happen once then clobber any future translations.
+  + ext.sqlalchemy / ext.appengine: minor cleanups / deprecation.
+  + Allow blank string and the string 'false' to be considered false values for BooleanField (configurable). This is technically a breaking change, but it is not likey to affect the majority of users adversely.
+  + ext.i18n form allows passing LANGUAGES to the constructor.
+- from version 1.0.4:
+  + Add widgets and field implementations for HTML5 specialty input types.
+  + ext.appengine: Add NDB support.
+  + Add translations: Korean, Traditional Chinese
+- cleaned up spec file:
+  + created a doc package
+  + rpmlint lang warnings script taken from python-wxWidgets
+-------------------------------------------------------------------
+Thu Oct 24 11:17:32 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Sun Apr 14 15:08:35 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.0.3
+  + Tests complete in python 3.2/3.3.
+  + Localization for ru, fr.
+  + Minor fixes in documentation for clarity.
+  + FieldList now can take validators on the entire FieldList.
+  + ext.sqlalchemy model_form:
+    * Fix issue with QuerySelectField
+    * Fix issue in ColumnDefault conversion
+    * Support Enum type
+  + Field class now allows traversal in Django 1.4 templates.
+- Initial python3 support
+
+-------------------------------------------------------------------
+Tue Sep 27 09:20:43 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.6.3:
+  * Documentation: Substantial documentation improvements, including adding
+    Crash Course as a sphinx document.
+  * ext.django: QuerySetSelectField (and ModelSelectField) now accept get_label
+    similar to sqlalchemy equivalents.
+  * ext.appengine:
+    + model_form fixes: FloatField(#50), TimeField, DateTimeField(#55)
+    + ReferencePropertyField: now properly stores model object, not key. (#48)
+- Changes from version 0.6.2:
+  * ext.appengine: various field fixes (#34, #48), model_form changes (#41)
+  * Fix issue in Optional with non-string input.
+  * Make numeric fields more consistent.
+  * Tests: Improve test coverage substantially.
+- Recommend python-django, python-SQLAlchemy & python-google-appengine,
+  WTForms provides optional integration for each
+- Package documentation
+
+-------------------------------------------------------------------
+Tue Oct 26 14:27:30 UTC 2010 - kianseong@gmail.com
+
+- Further changes to spec based on review
+
+-------------------------------------------------------------------
+Tue Oct 26 11:01:37 UTC 2010 - kianseong@gmail.com
+
+- Changes to spec file based on review
+
+-------------------------------------------------------------------
+Tue Oct 26 03:20:45 UTC 2010 - kianseong@gmail.com
+
+- New package wtforms
+
+

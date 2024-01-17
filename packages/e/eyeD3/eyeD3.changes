@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Fri Nov 10 17:19:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Implement multipython build
+
+-------------------------------------------------------------------
+Thu Nov  9 18:14:57 CET 2023 - marec@detebe.org
+
+- explicitly use python 3.11
+
+-------------------------------------------------------------------
+Sun Dec  4 18:12:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.7:
+  - [fixup-plugin] Added --no-dir-rename.
+  - Add remove-all-unknown to classic plugin. <gobater@users.noreply.github.com>
+  - Track/disc number support for JSON/YAML plugins (and tests)
+  - CountAndTotalTuple named tuple for count/total values.
+  - EyeD3 __all__ includes core.AudioFile.
+  - AudioFile.__str__ returns path.
+  - Strict render Frame flag to continue on render errors. Applied to RelVolAdjFrameV24, etc
+  - Track unsupported frames and add `--remove-all-unknown` classic plugin
+    option (#586) <gobater@users.noreply.github.com>
+  - Removed display-plugin due to Grako EOL (#585)
+  - [stats] Print bytes as text and filter private members.
+  - Remove Python 3.6 support, EOL. (#560)
+  - Doc grammar fixed (#537) <74979584+piatrashkakanstantinass@users.noreply.github.com>
+  - Fix problem when frame file format invalid, and input.read() returns
+    no more data at all - this had the potential to loop endlessly. (#539)
+    <gerson.kurz@ng-branch-technology.com, gerson.kurz@gmail.com>
+
+-------------------------------------------------------------------
+Wed Aug 25 06:48:44 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to 0.9.6
+  * prepare for python 3.9
+- dependency fixes
+
+-------------------------------------------------------------------
+Fri Jan 15 07:51:11 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- add minimal runtime requires
+- add some recommends needed for plugins
+
+-------------------------------------------------------------------
+Mon Jan 11 16:58:52 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add missing BuildRequires: python3-filetype python3-deprecation
+  * Fix: pkg_resources.DistributionNotFound: filetype, deprecation distribution not found
+
+-------------------------------------------------------------------
+Fri Aug 21 19:53:35 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.9.5:
+  - Dropped support for Python versions 2.7, 3.4, and 3.5.
+  - File scanning is no longer recursive by default; use `-r / --recursive`.
+  - Default log-level changed from WARNING to ERROR.
+  - Mime-type detection uses filetype.py (libmagic no longer required)
+  - setFileScannerOpts function accepts `default_recursive` option.
+  - A new `jsontag` plugin for converting tags to JSON.
+  - A new `extract` plugin for extracting tags from media.
+  - A new `yamltag` plugin for converting tags to YAML.
+  - A new `mimetypes` plugin for listing file mime-types / measuring performance
+  - Original artist support (TOPE frame, --orig-artist)
+  - Added support for Python 3.8 and pypy3.
+  - Log warning when ID3 v1.x text truncation occurs. Fixes #299.
+  - Accept (invalid) date strings for the form YYYYMMDD. Fixes #379
+  - Adjust replay gain correctly for lame >= 3.95.1 headers.
+  - Added -r/--recursive argument. eyeD3 is no longer recursive by default (#378)
+  - Regenerated grako parser.
+  - New ValueError for _setNum when unknown type/values are passed.
+  - Moved src/* to top-level repo directory.
+  - PRIV data type checking, fixed examples, etc.
+  - Use tox for `make test`
+  - ID3 v2.3 to v2.4 date conversion.
+  - Match mp3 mime-types against all possible mime-types.
+    Specifically, application/x-font-gdos. Fixes #338
+  - Fix simple typo: titel -> title. <tim.gates@iress.com>
+  - Fixed: load the right config file in arguments. <zhumumu@gmail.com>
+  - Fix issue tracker link. Fixes #333.
+  - Fixed art plugin when `pylast` is not installed.
+  - Unbound variable for track num/total.  Fixes #327.
+  - Fixed MP3 header search to not false match on BOMs.
+  - Honor APIC text encoding when description is "".  #200.
+  - Fixed bug with improper types when re-rendering unique file ID. (#324)
+    <gabrieldiegoteixeira@gmail.com>
+  - UFID fixes, update (#325) <gabrieldiegoteixeira@gmail.com>
+
+-------------------------------------------------------------------
+Sat Jul 27 23:13:08 UTC 2019 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 0.8.10:
+  * See HISTORY.rst for list of changes.
+- Switch to python3.
+- Update license.
+- Improve spec file.
+
+-------------------------------------------------------------------
+Mon Dec 28 14:40:05 UTC 2015 - adrian@suse.de
+
+- initial package of version 0.7.9
+

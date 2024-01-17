@@ -1,0 +1,13 @@
+<package name="translation-update-upstream" project="openSUSE:Factory">
+  <title>Tool for Translation Update from Upstream</title>
+  <description>This is a tool providing update of translations using available
+upstream resources.
+
+The tool tool is intended for use during package compilation as a first
+command after unpacking of source code.
+
+For more see README and HOWTO.
+
+This package also includes translation update data files.</description>
+  <devel project="Base:System" package="translation-update-upstream"/>
+</package>

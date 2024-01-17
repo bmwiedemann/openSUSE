@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6bd58b5fcd94c09a521fd9ac9a635308</srcmd5>
+    <version>0.15</version>
+    <time>1306413980</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66776</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ce0e7232e8f5769ff23f139e0b8acff6</srcmd5>
+    <version>0.15</version>
+    <time>1306413989</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66776
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ce0e7232e8f5769ff23f139e0b8acff6</srcmd5>
+    <version>0.15</version>
+    <time>1319182313</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5bf5c755af0ce103a6476f889c2b408a</srcmd5>
+    <version>0.18</version>
+    <time>1321876089</time>
+    <user>coolo</user>
+    <comment>- update to 0.18
+   - More fixes for failure locations(hoelzro)
+   - fixed test level(hoelzro)
+   - doc tweaks</comment>
+    <requestid>92412</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>75506d1756f03521b2447c37a1f1dc4f</srcmd5>
+    <version>0.18</version>
+    <time>1323193716</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c58329a2c5106d8181f3d64bf68862c2</srcmd5>
+    <version>0.20</version>
+    <time>1329751010</time>
+    <user>coolo</user>
+    <comment>- updated to 0.20
+  - test_requires Time::HiRes for redhat.
+    (berekuk++)
+  - fixed TB2 support(tokuhirom)</comment>
+    <requestid>105947</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c58329a2c5106d8181f3d64bf68862c2</srcmd5>
+    <version>0.20</version>
+    <time>1340183934</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9466d5cd548be07aca9aea9ff451fd6b</srcmd5>
+    <version>0.21</version>
+    <time>1357128018</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146748</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>9466d5cd548be07aca9aea9ff451fd6b</srcmd5>
+    <version>0.21</version>
+    <time>1359109821</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>9466d5cd548be07aca9aea9ff451fd6b</srcmd5>
+    <version>0.21</version>
+    <time>1379663881</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>182d844affa11b3a907bc9e08ac32920</srcmd5>
+    <version>0.23</version>
+    <time>1395148616</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>226359</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>182d844affa11b3a907bc9e08ac32920</srcmd5>
+    <version>0.23</version>
+    <time>1409302524</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e92eb24c654b49756cfab50319915540</srcmd5>
+    <version>0.29</version>
+    <time>1429108035</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296699</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d62797cf81177f98d86ea6e961f34185</srcmd5>
+    <version>0.31</version>
+    <time>1430581476</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304748</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cf12e6433632572e6eb1328376e87b03</srcmd5>
+    <version>0.33</version>
+    <time>1433845491</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311222</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>744870ea8235c3c602340cc630dd8228</srcmd5>
+    <version>0.34</version>
+    <time>1444833844</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335898</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f6120dbea93db2f740701412bc8df6b5</srcmd5>
+    <version>0.35</version>
+    <time>1451390379</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350876</requestid>
+  </revision>
+</revisionlist>

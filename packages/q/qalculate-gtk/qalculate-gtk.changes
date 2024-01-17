@@ -1,0 +1,373 @@
+-------------------------------------------------------------------
+Thu Apr 20 09:22:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.6.1:
+  * Use Unicode symbol for minus in scientific e notation
+  * Option to change symbols used for output of digits 10 and 11 in
+    duodecimal numbers (use A and B as default digits)
+  * Fixes for output of scientific notation using number bases other
+    than decimal
+
+-------------------------------------------------------------------
+Tue Dec 27 10:00:34 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.5.0:
+  * Use history font for RPN stack list (GTK, Qt)
+  * Fix factorization conversion specified in expression, and conversion performed using a separate expression (GTK)
+  * Fix unit names dialog (GTK)
+
+-------------------------------------------------------------------
+Thu Nov 10 09:17:00 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.4.0:
+  * Add "Clear history" to available keyboard shortcut and
+    button actions
+  * Show exchange rates source, and update time, for current
+    calculation in tooltip
+  * Fix "Set Prefix" for auto-calculated result
+  * Fix copying of result during delay before calculate-as-you-type
+    result is added to history
+  * Allow use of curly brackets as alternative parentheses
+
+-------------------------------------------------------------------
+Fri Oct 14 17:37:21 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.3.0:
+  * Fix handling of Unicode powers for units in denominator, with
+    adaptive parsing enabled (e.g. parse 10m/s² the same as 10m/s^2)
+  * Fix "+" ignored after "E" in number bases where "E" is a digit
+  * Fix scientific E notation with sign in argument when function
+    is used without parentheses
+  * Fix lambertw() for values very close to zero
+  * Fix a × b^x + cx = d when a and c have different signs and d
+    is non-zero
+  * Fix a^x × b^x = c when a and b is negative, and c is positive
+  * Fix segfaults in some corner cases
+  * Fix potential issues in handling of leap seconds (e.g. during
+    subtraction of seconds from date)
+  * var=a syntax for variable assignment with calculated expression
+  * Replace ounce with fluid ounce during conversion to volume unit
+  * Solve a^x + b^x + … = c in more cases
+  * Improve remainder/modulus for numerators with large exponents
+  * Truncate number in output of parsed expression and end with
+    ellipsis if unable to display all decimals
+  * Improved floating point calculation and output speed,
+    particularly for simple expressions with very high precision
+  * New functions: clip(), qFormat(), qError()
+  * "clear history" command and option to clear (not save) history
+    on exit (CLI)
+  * Replace selection (instead of wrap in parentheses) on operator
+    input if selection ends with operator (GTK, Qt)
+  * Act as if two arguments are required when applying base-N
+    logarithm to expression (GTK, Qt)
+  * When applying function to expression, exclude to/where
+    expression and place cursor before closing parenthesis if
+    operator is last in selection (GTK)
+  * Show padlock (or "[P]") after protected expression (Qt)
+  * Fix name field not working in argument edit dialog (Qt)
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
+Sun Jun  5 21:27:25 UTC 2022 - Haochuan Chen <yjcoshc@mail.nankai.edu.cn>
+
+- libqalculate is updated to 4.2.0 and the current version (3.20.1) of
+  qalculate-gtk is incompatible with it, so GTK frontend should be updated
+  too. The following changelog is the same as libqalculate:
+- Update to 4.2.0:
+  - Option to plot real and imaginary parts separately (enabled
+    by default)
+  - Variable spacing of x values in plot (unless step size is used)
+  - Updated plot() function with arguments for specification of
+    plot options (in any order after the third argument)
+  - Polar plot style
+  - Ask the user for the desired sinc() variant (unnormalized or
+    normalized)
+  - Support for binary-coded decimals (BCD)
+  - Show names with underscore capitalized and with underscore
+    removed (with some exceptions)
+  - Additional information units
+  - Units for volumetric flow rate
+  - Tradtional numbers (e.g. dozen, score)
+  - Show warning when log() is used with a single argument, and
+    always show second argument of log()
+  - Show single digit suffixes using Unicode subscript (CLI)
+  - Make names with a single character followed by digits
+    case-sensitive with suffix by default
+  - Accept more than two arguments in gcd() and lcm()
+  - Interpret a single vector argument as a list of arguments if
+    function requires more than one argument
+  - Fix limit of floor(), ceil(), and trunc()
+  - Fix plotting of derivatives and integrals
+  - Fix randpoisson()
+  - Fix reactivation of object, after object that caused
+    deactivation is removed
+- Update to 4.1.1:
+  - Restrict use of reciprocal in unit conversion, e.g. invert in
+    "5m/s to s/m" (= 0.2 s/m) but not in "500/lb to g" (= 1.1/g)
+  - New mHg unit (allows use with prefixes other than milli)
+  - Always display abbreviated unit name (symbol) with
+    abbreviated prefix (when unit only has short name)
+  - Minor improvements to automatic unit conversion
+  - Fix display of (1 + f(x))/n
+  - Save definitions on exit (only) if definitions has changed
+    regardless of interactive mode status (qalc)
+- Update to 4.1:
+  - Use non-breaking narrow space as digit separator in
+    reasonably short numbers, and between quantity and unit
+  - Update value of austronomical unit
+  - Fix segfault (when compiled with -D_GLIBCXX_ASSERTIONS) with
+    local digit grouping when separator is empty (e.g. with
+    ignore locale)
+  - Fix freezes and crashes with extrememly large vectors and
+    matrices
+  - Fix segfault (when compiled with -D_GLIBCXX_ASSERTIONS) in
+    matrix multiplication
+  - Minor bug fixes and feature improvements (see the ChangeLog
+    for more details)
+- Update to 4.0:
+  - New matrix syntax (column separated by space or comma, rows
+    separated by semicolon, as in matlab)
+  - Do not make any difference between a vector and a matrix with
+    a single row, or between a scalar and matrix with a single
+    element
+  - Support input of functions, units, and variables with
+    underscores omitted in names (e.g. µ0 = µ_0, FermiCoupling
+    = fermi_coupling), with some exceptions
+  - Option to disable "simplified" percentage calculations (e.g.
+    interpret 100 + 20% as 100 + 0.2 instead of 100 × 120%)
+  - Option to truncate numbers (instead of round to nearest) in
+    result
+  - Convert K, Hz, and 1/m to J (and derived units) using
+    conversion factor constants (e.g. 1/(550nm) to eV ? 2.25
+    eV)
+  - Allow use of M as 10^6 without unit
+  - New ksi unit
+  - New functions: divisors(), rate(), vertcat(), horzcat()
+  - New plastic number (?) constant, and new "hbar" name for
+    reduced Planck constant, and add second Unicode codepoint for
+    µ-sign in constants
+  - Allow zero (1st and/or 2nd argument) in comb() and perm(),
+    and return zero if second argument (k) is greater than the
+    first (n)
+  - Calculate statistical functions (e.g. mode(), min(), max(),
+    percentile()) separately for each column of matrix
+  - Return the lowest value if there are multiple values with
+    equal frequency in mode()
+  - Parse text argument as expression if concatenate function
+    name is found in text string, and fix concatenate returning
+    date
+  - New layout for output of result of matrices and equations
+    (qalc)
+  - Fix Unicode handling on platforms where char is not signed
+  - Fix bitrot()
+  - Fix segfault in multisolve() when initial order of equations
+    is not optimal
+  - Fix segfault with empty sqrt inside sqrt, e.g. sqrt(1+sqrt())
+  - Fix incompletely calculated nounit(), e.g. in unit conversion
+- Update to 3.22.0:
+  - New functions: linearfit(), quadraticfit(), cubicfit(),
+    ramlatency(), parallel()
+  - Merged inv() and inverse() functions
+  - Improved and extended parallel operator (|| is interpreted as
+    parallel if units are used)
+  - Allow nested subfunctions
+  - Do not stop testing function argument values after first failure
+  - Solve x^(x^(-a))=b
+  - Improved simplification: Im(-x)=-Im(x), Re(-x)=-Re(x)
+  - Handle units in plot data (remove and set as y-axis label)
+  - Avoid precision loss on output of interval when saving
+    approximate variable
+  - Fix pearson() and spearman()
+  - Fix display of incompletely solved equation with dual
+    approximation in some cases
+  - Fix genvector() when step size requires evaluation
+  - Fix a%%-b (interpret %% as mod, not percent)
+  - Fix asin(x)+bcos(x)=c
+  - Minor bug fixes and feature improvements
+  - [qacalc] Support "--" as end of options
+  - [qacalc] New --defaults command line option
+  - [qacalc] Configurable SIGINT (Ctrl+C) action (exit orderly by
+    default)
+  - [qacalc] Vertical space option (vspace)
+  - [qacalc] Clear command with Ctrl+L shortcut
+  - [qacalc] Apply same logic with separate to command, as with "to" at
+    end of expression, when result contains no unit
+  - [qacalc] Fix "to unicode"
+- Update to 3.21.0:
+  - Ask (once) for correct interpretation of ambiguous implicit
+    multiplication
+  - Fix crash when using the dock menu to show the RPN dock stack
+    for the first time
+  - Fix link in new version dialog
+  - Fix parenthesis highlighting when cursor is at end of
+    expression
+  - Fix initial value of interval display in preferences dialog
+  - Fix saving of approximation mode
+  - Improved simplification of radical expressions
+  - Improved Im(), Re(), and arg() functions
+  - Improved output of complex forms (other than the default
+    rectangular) in exact mode
+  - Function for drill bit size conversion
+  - Fixes for equations with complex inverse trigonometric and
+    hyperbolic functions with no solution
+  - Fixes for complex x^(ax)=b
+
+-------------------------------------------------------------------
+Thu Jul 29 11:46:40 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.20.1:
+  * Fix segfault when Gnuplot is not installed
+  * Updated insert function dialog layout 
+  * Add description field to variables and units dialogs
+  * Add customizable keyboard shortcut for insert result 
+  * Add language option to configuration file 
+  * Fix background color of expression entry in inactive window
+  * Add translator credits to about dialog
+    
+-------------------------------------------------------------------
+Sat Jul  3 19:35:41 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 3.19.0:
+  * Customizable text color and button padding
+  * Option to keep the main window above other windows
+  * Activate first (or selected) completion item using Tab key
+  * Fix custom keyboard shortcuts without modifier
+
+-------------------------------------------------------------------
+Tue Apr  6 14:05:53 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.18.0:
+  * Save chain mode setting (GUI)
+  * Handle SIGTERM signal (GUI)
+  * System tray improvements (GUI)
+  * Add convert to mixed units to result context menu (GUI)
+  * Redesigned expression, status, and result widgets (GUI)
+  * Chain mode (GUI) and syntax (e.g. 1+2*3=(1+2)*3=6)
+  * Configurable calculate-as-you-type add to history delay (GUI)
+  * Option to use a system tray icon (hides the application when
+    the main window is closed) on Windows (GUI)
+  * Improved completion (GUI)
+  * Support for qalc commands in GUI (expression is interpreted
+    as command if it begins with '/')
+  * Use arrow instead of "to" by default (GUI)
+
+-------------------------------------------------------------------
+Thu Dec 10 07:38:05 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 3.15.0:
+  * Replace equals button with a clickable icon in the upper right
+    corner of the expression entry
+  * Optional extra column of customizable keypad buttons
+  * Use icons for "Value", "Text", and "Copy" in history view and
+    hide all buttons when keypad is shown simultaneously
+  * Add "Exact" menu item to result popup menu when appropriate
+  * Fix segfault in unit manager
+
+-------------------------------------------------------------------
+Thu Nov  5 22:54:01 UTC 2020 - Matthew Trescott <matthewtrescott@gmail.com>
+
+- Update to version 3.14.0:
+  * Customizable keypad buttons—change labels and actions for
+    all buttons on the right-hand side of the keypad
+  * Notifications for invisible actions, e.g. result left-click
+    copy
+  * Use v1, v2, … as default variable names
+  * Improvements and fixes in insert function dialog
+  * Fix input of circumflex on Windows with dead circumflex
+    without modifier, e.g. German and Swiss keyboard layouts
+  * Fix programming keypad base conversion for negative integers
+
+-------------------------------------------------------------------
+Fri Aug 21 14:19:01 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 3.12.1:
+  * Fix display of negative numbers with scientific notation
+
+-------------------------------------------------------------------
+Wed Jul 29 12:00:21 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 3.12.0:
+  * Option to hide left or right part of the keypad
+  * Replace fraction mode combo box with a single toggle button
+  * Disable prefixes by default in scientific, engineering,
+    and pure modes, and change behaviour of composite modes when
+    user changes separate options
+  * Auto completion for objects and properites in data set functions
+  * Split long numerical results in two lines and show bit position
+    for binary number that does not fit in window
+  * Improved text layout in result 
+  * Fix Insert button in insert function dialog 
+
+-------------------------------------------------------------------
+Tue Jun 23 09:17:22 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 3.11.0:
+  * Option to clear history on exit (GUI)
+  * Fix removal of history items, and move to top, when
+    calculate-as-you-type is activated (GUI)
+  * Reduce the height of the result widget (GUI)
+  * Hide tooltip after keypad button click (GUI)
+  * Check for updates menu item (GUI)
+  * Slovenian translation (GUI)
+  * Configurable number of lines in expression entry (GUI)
+  * Add angle unit selection to sin, cos, and tan button menus
+    and an new status popup menu,
+    and make it possible to set keyboard shortcut for angle units
+  * Improved keyboard shortcuts dialog (GUI)
+  * New parentheses and other improvements in display of results
+  * Dark theme setting on Windows (GUI)
+  * Improved handling of vectors and matrices in insert function
+    dialog
+  * Configurable time limit for plot (GUI)
+  * Ellipsize long variable values used as title in completion
+    popup
+  * Persistent keypad option, which makes it possible to show
+    the keypad and the history simultaneously
+  * Minimal window mode, which hides everything but the expression
+    entry and, when not empty, the result
+  * Optional (disabled by default at compile time) internal help
+    viewer using WebKitGTK
+- Update version of libqalculate in BuildRequires: at least
+  version 3.8.0 now required.
+
+-------------------------------------------------------------------
+Sat Feb  8 13:52:27 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.7.0:
+  + Configurable keyboard shortcuts
+  + New functions: bernoulli(), erfi(), fresnels(), fresnelc()
+  + Improved zeta(), with exact values for negative and even
+    integers, support for all real values, and optional second
+    argument for calculation of Hurwitz zeta
+  + Support for complex numbers in Ei(), li(), Si(), Ci(), Shi(),
+    and Chi()
+  + Support for all branches and complex numbers in lambertw()
+  + Extended argument support in Li()
+  + Add base units (or local currency) for unit conversion when
+    units are missing in original expression (e.g. 5 to ft = 5 m
+    to ft)
+  + Improvements and fixes for integrals
+  + Fix crash when used in Cantor (caused by conflict with Poppler
+    library)
+  + Minor bug fixes and feature improvements
+
+-------------------------------------------------------------------
+Wed Sep  4 17:19:13 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix Source url so the tarball gets a nice name-version format.
+- Use autosetup and make_build macros.
+
+-------------------------------------------------------------------
+Fri Jun 28 08:37:39 UTC 2019 - Андрей Алыпов <and.november@opensuse.org>
+
+- added full URL to the source and _service
+
+-------------------------------------------------------------------
+Wed Jun 19 08:22:56 UTC 2019 - Андрей Алыпов <and.november@opensuse.org>
+
+- release version 3.2.0
+
+-------------------------------------------------------------------
+Wed Jun 19 07:03:45 UTC 2019 - Андрей Алыпов <and.november@opensuse.org>
+
+- Git version

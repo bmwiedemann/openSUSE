@@ -1,0 +1,15 @@
+From: Ondřej Surý <ondrej@debian.org>
+Subject: Fix typo in docs about rsync-options which was deprecated
+
+diff -urN dirvish-1.2.1/dirvish.conf.5 dirvish-1.2.1.debian/dirvish.conf.5
+--- dirvish-1.2.1/dirvish.conf.5	2006-05-10 19:17:58.000000000 +0200
++++ dirvish-1.2.1.debian/dirvish.conf.5	2006-07-07 11:46:46.000000000 +0200
+@@ -537,7 +537,7 @@
+ .B dirvish
+ supplied mechanism for setting it.
+ 
+-.multiple rsync\-options
++.multiple rsync\-option
+ .TP
+ .Br sparse: (B)
+ Try to handle sparse files efficiently so they take up

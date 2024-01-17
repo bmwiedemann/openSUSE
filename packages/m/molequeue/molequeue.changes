@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Thu Aug 19 06:20:26 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python-devel. 
+
+-------------------------------------------------------------------
+Sat May  2 12:06:15 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Simplify spec file and use correct macros
+
+-------------------------------------------------------------------
+Fri Feb 14 17:26:23 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Fix dependencies.
+
+-------------------------------------------------------------------
+Fri Feb 14 14:53:39 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 0.9.0
+- Clean spec file. 
+
+-------------------------------------------------------------------
+Sat Feb 17 00:00:00 UTC 2018 - Antonio Trande <sagitter@fedoraproject.org>
+
+- Use %%ldconfig_scriptlets
+
+
+-------------------------------------------------------------------
+Thu Feb  8 00:00:00 UTC 2018 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
+
+-------------------------------------------------------------------
+Wed Jan 31 00:00:00 UTC 2018 - Antonio Trande <sagitter@fedoraproject.org>
+
+- Update to version 0.9.0
+- Run icon-cache scriptlets on rhel only
+- Remove patch for GCC-7
+- Rebuild for GCC-8
+
+
+-------------------------------------------------------------------
+Thu Aug  3 00:00:00 UTC 2017 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
+
+
+-------------------------------------------------------------------
+Wed Jul 26 00:00:00 UTC 2017 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
+
+-------------------------------------------------------------------
+Sun Jul  2 00:00:00 UTC 2017 - Antonio Trande <sagitter@fedoraproject.org>
+
+- Unbundle qjson-libqt5 on fedora only
+
+
+-------------------------------------------------------------------
+Thu Jun 22 00:00:00 UTC 2017 - Antonio Trande <sagitter@fedoraproject.org>
+
+- Modified for epel builds
+
+
+-------------------------------------------------------------------
+Fri Mar 17 00:00:00 UTC 2017 - Antonio Trande <sagitter@fedoraproject.org>
+
+- Add a .desktop file
+
+
+-------------------------------------------------------------------
+Sat Mar 11 00:00:00 UTC 2017 - Antonio Trande <sagitter@fedoraproject.org>
+
+- First package
+

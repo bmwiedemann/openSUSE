@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Sun Jan  7 17:31:10 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add qstylizer-pr17-fix-py12-mock.patch gh#blambright/qstylizer#17
+- Move to PEP517 build
+
+-------------------------------------------------------------------
+Fri Oct  7 03:46:52 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update to 0.2.2 
+  Merge pull request #16 from ccordoba12/missing-properties
+      Add a couple of missing properties
+
+-------------------------------------------------------------------
+Tue Dec 14 08:34:36 UTC 2021 - pgajdos@suse.com
+
+- version update to 0.2.1
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Sat Apr 24 20:03:53 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.2
+  * use tinycss2 instead of tinycss
+- drop qstylizer-tinycss2.patch merged upstream (in the updated
+  version)
+
+-------------------------------------------------------------------
+Sat Apr 24 14:38:59 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Our patch doesn't correspond to the upstream patch anymore.
+
+-------------------------------------------------------------------
+Sat Apr 24 13:04:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- fix bug in qstylizer-tinycss2.patch gh#blambright/qstylizer#10
+  so that spyder does not look as ugly
+
+-------------------------------------------------------------------
+Mon Apr 19 16:22:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- refresh qstylizer-tinycss2.patch gh#blambright/qstylizer#10
+  because the egg-info/requires.txt is checked upon start by spyder
+
+-------------------------------------------------------------------
+Thu Apr  8 17:24:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for version 0.1.10
+- Required by spyder 5.0.0
+- replace tinycss with tinycss2
+  * qstylizer-tinycss2.patch
+  * gh#blambright/qstylizer#10

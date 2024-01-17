@@ -1,0 +1,179 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e3987fc726f8e2d4c6a18d88801cba9d</srcmd5>
+    <version>1.0.10</version>
+    <time>1521579365</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package for version 1.0.10
+</comment>
+    <requestid>586251</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2f6167c390191cb593c859cec42a3796</srcmd5>
+    <version>1.0.11</version>
+    <time>1533549275</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>627540</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>949e8e66545ff632bc1ff9f42800bdf3</srcmd5>
+    <version>1.0.11</version>
+    <time>1545648214</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659656</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5817fd8972865c0998df31c263db654c</srcmd5>
+    <version>1.0.12</version>
+    <time>1575463996</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.12:
+ - Travis CI Docker tests
+ - RT 4.4 fixes
+ - Support multiline CF values in create_ticket and edit_ticket.
+ - Fix support for custom field names containing colons
+ - In search(), replace splitlines() with lines array split on \n.
+ - Add debug_mode flag for response logging
+ - Add platform independent url joining / Allow testing on Windows
+ - Add numerical_id to get_ticket result
+</comment>
+    <requestid>753272</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9ef09fcaae7403164fead4c9684bd399</srcmd5>
+    <version>2.0.0</version>
+    <time>1584883057</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>787234</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9c387943b977ca1f245f34f590190a56</srcmd5>
+    <version>2.0.1</version>
+    <time>1597755886</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.0.1:
+ - Documentation: add search example
+ - edit_ticket: handle empty responses
+ - fix UnicodeDecodeError in logging code for non-text attachments</comment>
+    <requestid>825344</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>40fc6d4c82fba5ccfc3944a6a12260f1</srcmd5>
+    <version>2.0.1</version>
+    <time>1598726481</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>830127</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>55a2ca27dcb0ec36553e4c586d1bcef5</srcmd5>
+    <version>2.1.0</version>
+    <time>1614948484</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>876821</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>69a9f58465292b51bead0380225885f2</srcmd5>
+    <version>2.1.1</version>
+    <time>1618859210</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>886730</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>aa3446ba7890978ff5838bc89e47cae1</srcmd5>
+    <version>2.2.0</version>
+    <time>1637618682</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>933166</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2f50e8f137ce49e75d18b49363f648f6</srcmd5>
+    <version>2.2.1</version>
+    <time>1638740761</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>935652</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>31851889aa6067df262bc501d77e251e</srcmd5>
+    <version>2.2.2</version>
+    <time>1650232214</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>970418</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fa5d61c5b7ebc30d514a489f8f0c3b28</srcmd5>
+    <version>3.0.1</version>
+    <time>1654258616</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>980581</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>17bd5d20d62a6d4d11c86fd18a865b9d</srcmd5>
+    <version>3.0.3</version>
+    <time>1656422576</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>985526</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>eb281c546f3152e8094130b7ffde80ce</srcmd5>
+    <version>3.0.3</version>
+    <time>1657559384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988323</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>942ff2d8c1e8ff41ead786a326d0025f</srcmd5>
+    <version>3.0.4</version>
+    <time>1670068111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039758</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>325fce8c292677ac0ba52237f153f150</srcmd5>
+    <version>3.0.6</version>
+    <time>1689786617</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099329</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1c239306d2532e9dc1cc4dd6889e6e77</srcmd5>
+    <version>3.0.7</version>
+    <time>1692379746</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1104646</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7e135d1400b87a3a20cab344eaddaa57</srcmd5>
+    <version>3.1.3</version>
+    <time>1702488968</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.3:
+  * Fix an issue where no e-mail was sent on ticket creation due
+    to suggesting to use **Requestors** instead of **Requestor**
+  * Revert breaking change for python3.8
+    (collections.abc.AsyncIterator is not subscriptable).
+  * In AsyncRt, instead of returning sequences, return
+    AsyncIterators.
+  * Replace *requests* with *httpx* for the REST2 part.
+  * Add a new *AsyncRt* class which implements the RT REST2 API
+    in asnyc.
+  * Adapt tests to include thew new async parts of this library.
+
+-  Update to version 3.0.4:</comment>
+    <requestid>1132843</requestid>
+  </revision>
+</revisionlist>

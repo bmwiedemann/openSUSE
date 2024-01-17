@@ -1,0 +1,6 @@
+<package name="python-mwclient" project="openSUSE:Factory">
+  <title>Python client library to interface with the MediaWiki API</title>
+  <description>mwclient is a lightweight Python client library to the MediaWiki API which provides access to most API functionality. It works with Python 2.7 as well as 3.5 and above, and supports MediaWiki 1.16 and above. For functions not available in the current MediaWiki, a MediaWikiVersionError is raised.</description>
+  <devel project="devel:languages:python" package="python-mwclient"/>
+  <url>https://github.com/mwclient/mwclient</url>
+</package>

@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Tue Sep 30 11:53:25 UTC 2014 - mrueckert@suse.de
+
+- update to new packaging scheme
+
+-------------------------------------------------------------------
+Fri Jan  4 08:50:11 UTC 2013 - coolo@suse.com
+
+- remove version suffix
+
+-------------------------------------------------------------------
+Thu Aug  2 13:03:14 UTC 2012 - cfarrell@suse.com
+
+- license update: MIT
+  See the license in the data/ directory
+
+-------------------------------------------------------------------
+Tue Jul 31 13:48:42 UTC 2012 - jreidinger@suse.com
+
+- use new gem2rpm to provide new provisions 
+
+-------------------------------------------------------------------
+Thu Feb 23 08:53:16 UTC 2012 - saschpe@suse.de
+
+- Ran spec-cleaner
+
+-------------------------------------------------------------------
+Wed Dec 14 18:44:51 UTC 2011 - jreidinger@suse.com
+
+- move another documentation to doc subpackage to save space at
+  runtime 
+
+-------------------------------------------------------------------
+Mon Jun 20 20:02:55 UTC 2011 - mrueckert@suse.de
+
+- initial package for the 2.7 branch (2.7.0)
+

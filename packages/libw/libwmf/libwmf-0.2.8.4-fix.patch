@@ -1,0 +1,41 @@
+Index: src/api.c
+===================================================================
+--- src/api.c.orig
++++ src/api.c
+@@ -156,6 +156,12 @@ wmf_error_t wmf_lite_create (wmfAPI** AP
+ 	}
+ 
+ 	API->write_data = 0;
++	
++	API->user_data = 0;
++	API->store.attrlist = 0;
++	API->store.count = 0;
++	API->store.max = 0;
++	
+ 
+ 	API->MetaHeader.pmh = &(API->PlaceableMetaHeader);
+ 	API->MetaHeader.wmfheader = &(API->Head);
+Index: src/extra/gd/gd.c
+===================================================================
+--- src/extra/gd/gd.c.orig
++++ src/extra/gd/gd.c
+@@ -810,6 +810,7 @@ gdImageTileApply (gdImagePtr im, int x,
+     }
+   else
+     {
++      p = gdImageGetPixel (im->tile, srcx, srcy);
+       /* Allow for transparency */
+       if (p != gdImageGetTransparent (im->tile))
+ 	{
+Index: src/extra/gd/gd.h
+===================================================================
+--- src/extra/gd/gd.h.orig
++++ src/extra/gd/gd.h
+@@ -22,6 +22,7 @@ extern "C" {
+ 
+ /* stdio is needed for file I/O. */
+ #include <stdio.h>
++#include <string.h>
+ #include <gd_io.h>
+ #include <gd_clip.h>
+ 

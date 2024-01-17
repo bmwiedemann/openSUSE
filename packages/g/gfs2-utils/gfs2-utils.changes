@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Mon Aug 21 01:22:00 UTC 2023 - Heming Zhao <heming.zhao@suse.com>
+
+- Update to version 3.5.1 (jsc#PED-6362)
+  * Don't use char arrays as temporary buffers
+  * libgfs2: Separate gfs and gfs2 code in lgfs2_sb_out()
+  * Re-enable -Wstrict-aliasing
+  * gfs2_convert: Clean up strict-aliasing warnings
+  * libgfs2: Fix strict-aliasing warning in lgfs2_rgrp_bitbuf_alloc
+  * gfs2_jadd: Fix format string warnings on 32-bit
+  * gfs2_edit: Fix savemeta test failures in 32-bit environments
+
+- Back port bugfix patch after tag 3.5.1
+  + 0001-fsck.gfs2-Tighten-offset-check-in-check_eattr_entrie.patch
+  + 0002-fsck.gfs2-Fix-max-xattr-record-length-check.patch
+  + 0003-fsck.gfs2-Fix-xattr-offset-checks-in-p1_check_eattr_.patch
+
+- Update rpm build file
+  * _service
+  * _servicedata
+
+-------------------------------------------------------------------
+Mon Mar  6 15:28:16 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 3.5.0:
+  * Update translation template
+  * Fix uninitialized memory coverity warnings
+  * gfs2_grow: Don't free rgs when it's NULL
+  * libgfs2: Fix potential NULL deref in lgfs2_lookupi()
+  * libgfs2: Add lgfs2_bfree(), lgfs2_inode_free()
+  * Free per_node in build_per_node error paths
+  * fsck.gfs2: Fix wrong entry used in dentry comparison 
+  * added unit tests
+  * Remove lgfs2_breadm()
+  * libgfs2: Make sure block_alloc() fails when out of space
+  * Remove dependency on linux/limits.h
+  * mkfs.gfs2: Improve journal write error reporting
+  * mkfs.gfs2: Add -U UUID option
+
+-------------------------------------------------------------------
+Wed Nov 24 16:23:38 UTC 2021 - varkoly@suse.com
+
+- Update to version 3.4.1+git.87.c0ea1bc4:
+  * libgfs2: Remove new_rgrps from struct gfs2_sbd
+  * tests: Increase the size of the sparse file used by tests
+  * gfs2/edit: always use "%s"-style format for printf()-style functions
+  * tunegfs2: Use O_EXCL when opening the device rw
+  * Make sure i_bh is set after lgfs2_gfs_inode_get()
+  * libgfs2: Avoid potential gfs/gfs2 superblock update clash
+  * gfs2_edit: Fix segfault in hexdump()
+  * libgfs2: Add NULL-checking for ip->i_bh in inode_put()
+  * fsck.gfs2: Fix remaining endianness sparse warnings
+  * gfs2_edit: Fix remaining endianness sparse warnings
+
+-------------------------------------------------------------------
+Wed Aug  3 03:27:36 UTC 2016 - zren@suse.com
+
+- Update to version 3.1.9 
+- Fix RPM building error due to upstream putting all binaries
+  into /usr/sbin now
+
+-------------------------------------------------------------------
+Wed Jan 14 22:00:09 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.1.7
+  + No changelog available
+- Use download Url as source
+- Use official tarball
+- Specfile cleanup
+- Pass NOCONFIGURE to autogen.sh
+
+-------------------------------------------------------------------
+Tue Sep 17 15:37:28 UTC 2013 - lmb@suse.com
+
+- Update spec file copyright
+- Remove unnecessary clean section
+
+-------------------------------------------------------------------
+Fri Sep 13 09:15:03 UTC 2013 - lmb@suse.com
+
+- Update to 3.1.6+git.1378394292.fa32906
+- Remove source URL from spec file, since there are no downloadable tar
+  balls for the git version
+
+------------------------------------------------------------------
+Sat Aug  3 11:39:43 CDT 2013 - rgoldwyn@suse.com
+
+- Initial package gfs2-utils
+

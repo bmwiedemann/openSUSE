@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7bbcaf4c4abde285d825e5b649d3eca5</srcmd5>
+    <version>1.0.0</version>
+    <time>1510837380</time>
+    <user>dimstar_suse</user>
+    <comment>Pytest-relaxed for test discovery/organization</comment>
+    <requestid>542123</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>11e08594aa96ffb1948d23e245d460f2</srcmd5>
+    <version>1.1.4</version>
+    <time>1553611019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.4:
+  * Various tiny fixes in formating/metadata/etc.
+- Drop patch python3_fix.patch</comment>
+    <requestid>687591</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3e083b31a045fac20b7e647f9cf91186</srcmd5>
+    <version>1.1.5</version>
+    <time>1564484389</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.5:
+  * Fix compatibility with pytest versions 3.3 and above.</comment>
+    <requestid>710328</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a8dfe785c2bbce9e8c065d8c59338082</srcmd5>
+    <version>1.1.5</version>
+    <time>1579194984</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test test_tests_are_colorized_by_test_result as pytest 5.3
+  tweaked color output a bit</comment>
+    <requestid>764658</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6fa2bf85f630d04cded904405b4a984d</srcmd5>
+    <version>1.1.5</version>
+    <time>1590649626</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>805998</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>b6e12e722cb742cfb3a636ecf4b4a73a</srcmd5>
+    <version>1.1.5</version>
+    <time>1603961295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842099</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>ea772afaae3fe893b876af94d6e07576</srcmd5>
+    <version>1.1.5</version>
+    <time>1637535102</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on six.</comment>
+    <requestid>931875</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>8a5590eda8bf9b4b91e1ee868879ee3d</srcmd5>
+    <version>1.1.5</version>
+    <time>1640876127</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943004</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>46e72b7ebee6db97c7bdd2d8c1ffdb50</srcmd5>
+    <version>1.1.5</version>
+    <time>1647199509</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch no-makeitem-method.patch:
+  * Support pytest &gt; 6.1 
+- No longer skip python310.</comment>
+    <requestid>960645</requestid>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>3b74f76982b7c2ba771defe177e70baf</srcmd5>
+    <version>1.1.5</version>
+    <time>1650060833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969758</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7197a6598f47105ee00451b7fe34f485</srcmd5>
+    <version>2.0.0</version>
+    <time>1673801871</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  * Prior to version 2, we failed to correctly support true Pytest
+    setup/teardown methods (i.e. setup_method and teardown_method) and
+    these would not get copied to inner class scopes. This has been fixed.
+    We still support old nose-style setup/teardown for now, despite them
+    going away in Pytest 8.
+  * Modernize codebase/project a bunch:
+    + Dropped support for Python &lt;3.6 (including 2.7)
+    + Pytest support upgraded to support, and require, Pytest &gt;=7.
+    + Behavioral changes in Pytest internals have fixed a handful of
+      sorta-bugs present in pytest-relaxed under Pytest versions 3 and 4.
+- Dropped patches pytest-6.1-and-7.patch, pytest-relaxed-pr10.patch:
+  * No longer required.
+- Removed six from BuildRequires, is no longer used.</comment>
+    <requestid>1057683</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>22d65c4cf5c96c97c44540d0c2ef4729</srcmd5>
+    <version>2.0.0</version>
+    <time>1682434409</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082430</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>000a972dd86fadd829d3c694a035bc3a</srcmd5>
+    <version>2.0.1</version>
+    <time>1685743596</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  * Don't try loading Pytest fixture functions as if
+    they were test functions. Classifying this as a bug even
+    though it's a moderately sized change in behavior; 
+    it's vanishingly unlikely anybody was relying on this
+    somehow!</comment>
+    <requestid>1090085</requestid>
+  </revision>
+</revisionlist>

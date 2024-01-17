@@ -1,0 +1,314 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>585c9eeaad14ad45f841169975cdb0c7</srcmd5>
+    <version>1.0+git20190218.9e72dd7</version>
+    <time>1551024894</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677164</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>27292b804acf66cbba29a95451e1df4b</srcmd5>
+    <version>1.0+git20190218.9e72dd7</version>
+    <time>1551298325</time>
+    <user>coolo</user>
+    <comment>- Re-add requires for perl-JSON, required by create_autoyast_profile</comment>
+    <requestid>679784</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>473e6634c1bd9c88745c649eb27edead</srcmd5>
+    <version>1.0+git20190611.6211f74</version>
+    <time>1561405743</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20190611.6211f74:
+  * Rename 51-corefiles.conf to 30-corefiles.conf, so that an user
+    can override it by installing telemectrics-client or
+    systemd-coredump.</comment>
+    <requestid>709171</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>202ac92397e26ea6fc0f2434eb02dad2</srcmd5>
+    <version>1.0+git20190812.97ca0ee</version>
+    <time>1567423118</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove create_autoyast_profile from sources
+
+- Update to version 1.0+git20190812.97ca0ee:
+  * Add create_autoyast_profile to caasp section for reference</comment>
+    <requestid>722653</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e97c839980b3b86c6959c250b60753c6</srcmd5>
+    <version>1.0+git20200214.c7654a7</version>
+    <time>1582112401</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20200214.c7654a7:
+  * Remove btrfsQuota, snapper list provides now the same informations
+  * Adjust README.md</comment>
+    <requestid>774346</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>145f4d3f09834927fac95b1bd0159ec4</srcmd5>
+    <version>2.0</version>
+    <time>1589196358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0
+  - use autoconf tools to support libexecdir (forwarded request 802477 from kukuk)</comment>
+    <requestid>802478</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ce670c9b351d890ff9df2d3f7710375d</srcmd5>
+    <version>2.1</version>
+    <time>1591742026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1
+  - Provide support to use tmpfs for /tmp</comment>
+    <requestid>811737</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>65c09bba4f9ccc82bf79f6dda0bb293e</srcmd5>
+    <version>2.2</version>
+    <time>1596703117</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2
+  - tmpfs support got moved to systemd
+</comment>
+    <requestid>824150</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>412b1cccd5c9a6a6b7bd3d9e9f3a50ef</srcmd5>
+    <version>2.3</version>
+    <time>1597390312</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3
+  - overwrite tmp.mount options with SELinux label for /tmp
+  - Add generator to label mount points if required
+  - Add dracut module to relabel core system if required
+  - Add locale-check to reset locale to system default if the one
+    set by SSH does not exist [bsc#1156175]
+  - Set TMPDIR for salt to not use /tmp (preparation for noexec) (forwarded request 826035 from kukuk)</comment>
+    <requestid>826036</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>05f9d44dabbe7cc43487d6bd09819a80</srcmd5>
+    <version>2.4</version>
+    <time>1597955248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4
+  - fixes for autorelabel in initrd
+  - Use systemds tmpfiles.d/tmp.conf to relabel /tmp and cleanup
+    /tmp after 10 days and /var/tmp after 30 days
+
+- Don't install tmp.mount.d/selinux.conf on Factory [bsc#1175379]
+
+- Add tmp.mount for SUSE MicroOS 5.0 [jsc#SMO-2]
+
+  - SELinux support [jsc#SMO-15]
+    - overwrite tmp.mount options with SELinux label for /tmp
+    - Add generator to label mount points if required
+    - Add dracut module to relabel core system if required</comment>
+    <requestid>827614</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>aeebf305a74aeb646c73756b502d485e</srcmd5>
+    <version>2.5</version>
+    <time>1601743923</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5 
+  - tmp.conf now part of filesystem package for Factory
+- Include tmp.conf for SUSE MicroOS</comment>
+    <requestid>838213</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6ba24a8f97db1caf65b0096f51552e78</srcmd5>
+    <version>2.6</version>
+    <time>1603724868</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6
+  - Don't delete autorelabel file in initrd</comment>
+    <requestid>843263</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>73d7499f906808e0330c7ae76de5591d</srcmd5>
+    <version>2.7</version>
+    <time>1604306434</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7
+  - Add workaround if /.autorelabel is used, don't ignore it
+- Rename tmp.conf to microos-tmp.conf on SUSE MicroOS
+
+- Fix building on SUSE MicroOS</comment>
+    <requestid>844898</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>16454033118de90af1b17896837d5963</srcmd5>
+    <version>2.9</version>
+    <time>1605217062</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9
+  - Use absolute path for selinuxenabled in systemd generator
+
+- Update to version 2.8
+  - Don't propagate umounts into the real root
+  - Use content of .autorelabel only if it exists</comment>
+    <requestid>847432</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>33a0d9a38101c5546e56e1f7ab3271ed</srcmd5>
+    <version>2.10</version>
+    <time>1620840701</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10
+  - Fixes and improvements for SELinux support
+  - Add devel tools</comment>
+    <requestid>892029</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f4e71f125c0402c1af4a0e09c95de476</srcmd5>
+    <version>2.11</version>
+    <time>1624300490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900527</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>9a02f2c222f591e26a9dc2738f004791</srcmd5>
+    <version>2.11</version>
+    <time>1625225222</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>902856</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2aebfbbc9e2b105c72a8c7b9c5ab9204</srcmd5>
+    <version>2.12</version>
+    <time>1631391864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.12
+  - Remove special MicroOS firstboot script
+  - Remove locale-check, replaced by another aaa_base implementation</comment>
+    <requestid>917715</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>98e7ad6bf66ac6b9628833d7761eb7b9</srcmd5>
+    <version>2.15</version>
+    <time>1662062965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000393</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b026a8c20b8438fc4c6513a40803999c</srcmd5>
+    <version>2.16</version>
+    <time>1662541523</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001364</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>11048a4653fb28ded39a1e796636a5bb</srcmd5>
+    <version>2.17</version>
+    <time>1663438215</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.17:
+  - selinux-autorelabel-generator: Don't cross partition boundaries
+  for /.snapshots when relabeling [issue#11]</comment>
+    <requestid>1004140</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>36f40c3d9d779d539b572f89476f75ec</srcmd5>
+    <version>2.18</version>
+    <time>1674232695</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059616</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>eb2349bdfc77574fd7b5742ebdcf1c4a</srcmd5>
+    <version>2.17</version>
+    <time>1674460828</time>
+    <user>favogt_factory</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1207366</comment>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>36f40c3d9d779d539b572f89476f75ec</srcmd5>
+    <version>2.18</version>
+    <time>1674585743</time>
+    <user>dimstar_suse</user>
+    <comment>REQUIRES https://build.opensuse.org/request/show/1060452.
+
+- Update to version 2.18:
+  - Add TMPDIR to tukit binddirs for Salt
+  - 98selinux-microos: Add chroot as dependency
+  - Fix spelling error in warning</comment>
+    <requestid>1060456</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>1f98a0c01fcd16e1141686a67f72a838</srcmd5>
+    <version>2.19</version>
+    <time>1678814130</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071802</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>caad5560416dee7cb5c783509e369065</srcmd5>
+    <version>2.20</version>
+    <time>1679520556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072387</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>1812fdaed35e33b4eed0e2825c6ddd8c</srcmd5>
+    <version>2.20</version>
+    <time>1680968328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077738</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ee1263644e855f9acdeaa0846213bffd</srcmd5>
+    <version>2.20+git20230413.2a43cdb</version>
+    <time>1681470743</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.20+git20230413.2a43cdb:
+  * Drop extra sysctl file for coredumps (boo#1091684)</comment>
+    <requestid>1079104</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>63b49ec6c2d85f38f28c94a0fba05ca3</srcmd5>
+    <version>2.21+git0</version>
+    <time>1682079358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080853</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>6027a5b5a2ced43c7dba7891b93bb3fe</srcmd5>
+    <version>2.21+git0</version>
+    <time>1687207811</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1093732</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>18211524b939e3a72c281b715984b714</srcmd5>
+    <version>2.21+git5</version>
+    <time>1697231618</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117456</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b7ce33beec59640ffd76246a945759f6</srcmd5>
+    <version>2.21+git9</version>
+    <time>1705099490</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.21+git9:
+  * Add man-online command
+  * Drop support for sle15 builds
+  * Add OBS CI workflow</comment>
+    <requestid>1137938</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,386 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eeaca56a7f6fc3bd8420a2a4594e6a8b</srcmd5>
+    <version>0.32.0</version>
+    <time>1495883675</time>
+    <user>dimstar_suse</user>
+    <comment>replaces python3-numba</comment>
+    <requestid>492720</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1e0b82418fd9e6fa5dec41a021ecbec9</srcmd5>
+    <version>0.35.0</version>
+    <time>1507570991</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>531381</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>af51fc274163530702119a6f628b270b</srcmd5>
+    <version>0.36.1</version>
+    <time>1513245304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555395</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>67d8bac74da5362789ad1ff0c78cecd8</srcmd5>
+    <version>0.36.2</version>
+    <time>1515505903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561310</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f2fe286ae82170a537f56c0e6194ebb1</srcmd5>
+    <version>0.36.2</version>
+    <time>1515876491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563677</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>055145e3f313707f9ca367fa44129f97</srcmd5>
+    <version>0.37.0</version>
+    <time>1520253892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582528</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e8ac341946903ca93c9d3e7f62b5bc62</srcmd5>
+    <version>0.37.0</version>
+    <time>1524576839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600094</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>86376b30505445d20e94c00827c4d7be</srcmd5>
+    <version>0.38.0</version>
+    <time>1526463575</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606683</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9a6d7c9d785670d670b2965cac6d935c</srcmd5>
+    <version>0.38.0</version>
+    <time>1527582591</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependencies to match reality
+- Add more items to make python2 build</comment>
+    <requestid>610271</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5be4c64dc0fd04e12132a9b5b4d01107</srcmd5>
+    <version>0.38.1</version>
+    <time>1529919772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618811</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f268c0abafb1bb681233f43192e6b32a</srcmd5>
+    <version>0.39.0</version>
+    <time>1531470086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622244</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>7bbdd02a80443669e3df24a805ecded6</srcmd5>
+    <version>0.39.0</version>
+    <time>1532161528</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>624240</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>b9eadc006110c12c70cc769b3be4b0b6</srcmd5>
+    <version>0.39.0</version>
+    <time>1532774733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625840</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>22275b1c311198b5c305526ad736f8d7</srcmd5>
+    <version>0.40.1</version>
+    <time>1540819345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644977</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ff831b81d4cb172f9c5d354c228eca83</srcmd5>
+    <version>0.41.0</version>
+    <time>1543828336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653423</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c1435d80ca2b87e5ad9a4e91287efacd</srcmd5>
+    <version>0.42.0</version>
+    <time>1551024589</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>668985</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>00fabeac149632598697b425ef759d1a</srcmd5>
+    <version>0.43.0</version>
+    <time>1553084551</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686900</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7cd84aab09a0d836648d2fe95d3f4768</srcmd5>
+    <version>0.43.1</version>
+    <time>1555053454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693357</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>aca79382957c5f9f85569361c0b60e23</srcmd5>
+    <version>0.45.1</version>
+    <time>1569523393</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.45.1:
+  * Many fixes and changes for llvm/cuda updates
+    See CHANGE_LOG file for details
+- Update skip-failing-tests.patch to skip one more failing test</comment>
+    <requestid>733400</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>08031d8d6d95d520aeddbedecbdf607d</srcmd5>
+    <version>0.46.0</version>
+    <time>1571951373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742269</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>c6f4a1e66efcea417bd79d289645123d</srcmd5>
+    <version>0.46.0</version>
+    <time>1572021791</time>
+    <user>dimstar_suse</user>
+    <comment>Restore python2 support
+
+Python2 support was turned off by accident.  I don't go out of my way to support Python 2, but when it requires no additional work like here I don't see the point in manually turning it off.</comment>
+    <requestid>742877</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>b215de79345d6e43e2d3441824a55046</srcmd5>
+    <version>0.46.0</version>
+    <time>1576676715</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757638</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4c24f236341f6b0c5cd15312247b518c</srcmd5>
+    <version>0.48.0</version>
+    <time>1582299785</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.48.0:
+  * Many fixes for llvm/cuda updates; see CHANGE_LOG for details
+  * Drop python2 support
+- Add one more failing test to skip:
+  * skip-failing-tests.patch</comment>
+    <requestid>777950</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>9d9aa12ea70e881769ab17a42ab8b61a</srcmd5>
+    <version>0.48.0</version>
+    <time>1586248234</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuilt as the tests take ages to build and we
+  could speed things up in 2 loops</comment>
+    <requestid>791732</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6dd826d2dc46a38417564f7728091c3b</srcmd5>
+    <version>0.49.0</version>
+    <time>1588105833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798393</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1947b921ecdea3ca606b73815c53c8d2</srcmd5>
+    <version>0.49.1</version>
+    <time>1590650133</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809224</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>39cf4692e93758099632a6eaa33ed091</srcmd5>
+    <version>0.51.2</version>
+    <time>1604510783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845716</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e57c8781434ba2d1d203a3f8175fa053</srcmd5>
+    <version>0.53.0</version>
+    <time>1616598837</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880619</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a81637527ea000f51ff4b83f8ed78bc3</srcmd5>
+    <version>0.54.1</version>
+    <time>1637397473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932339</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>e012d42d07430e35ca5b560771b0dedf</srcmd5>
+    <version>0.54.1</version>
+    <time>1641855235</time>
+    <user>dimstar_suse</user>
+    <comment>- Numba &lt;0.55 is not compatible with Python 3.10 or NumPy 1.22
+  gh#numba/numba#7557
+- Add test skip to numba-pr7483-numpy1_21.patch due to numpy update
+  gh#numpy/numpy#20376
+</comment>
+    <requestid>945418</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1841e6f03109feeb509e923e85fc7418</srcmd5>
+    <version>0.55.0</version>
+    <time>1642273510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946610</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c9d6ba8dbd59ba35edbeecc4446b9ae8</srcmd5>
+    <version>0.55.1</version>
+    <time>1643838007</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950311</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>d4c658b0a6f10f0b85412794669a9018</srcmd5>
+    <version>0.55.2</version>
+    <time>1657712709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988613</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6b6e43afe7b0c9c05d8251222456fc87</srcmd5>
+    <version>0.56.2</version>
+    <time>1664908678</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.56.2
+  This release continues to add new features, bug fixes and stability
+  improvements to Numba. Please note that this will be the last release that
+  has support for Python 3.7 as the next release series (Numba 0.57) will
+  support Python 3.11! Also note that, this will be the last release to support
+  linux-32 packages produced by the Numba team.
+- Remove fix-max-name-size.patch, it's included in the new version.
+- Add update-tbb-backend-calls-2021.6.patch to make it compatible with the
+  latest tbb-devel version.
+- Add fix-cli-test.patch to disable one test that fails with OBS.
+</comment>
+    <requestid>1007810</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>8fed89412945f3fd7db59e88e0dde610</srcmd5>
+    <version>0.56.2</version>
+    <time>1665504171</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1009378</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>cf29a2543e82f0859226985810ff0e97</srcmd5>
+    <version>0.56.4</version>
+    <time>1672851069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046630</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>91a780ea4849bf2a3b08f03fe0894b42</srcmd5>
+    <version>0.56.4</version>
+    <time>1681296736</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up leftover Python 3.8 gubbins, look forward to Python 3.11 support. 
+
+- Remove test-py38 flavor from multibuild: Python 3.8 is no longer
+  supported.</comment>
+    <requestid>1078560</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>026bad8633361ab8e8fd724c5db26554</srcmd5>
+    <version>0.57.0</version>
+    <time>1685124952</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.57.0:
+  * Support for Python 3.11 (minimum is moved to 3.8)
+  * Support for NumPy 1.24 (minimum is moved to 1.21)
+  * Python language support enhancements:
+    + Exception classes now support arguments that are not compile time
+      constant.
+    + The built-in functions hasattr and getattr are supported for compile
+      time constant attributes.
+    + The built-in functions str and repr are now implemented similarly to
+      their Python implementations. Custom __str__ and __repr__ functions
+      can be associated with types and work as expected.
+    + Numba’s unicode functionality in str.startswith now supports kwargs
+      start and end.
+    + min and max now support boolean types.
+    + Support is added for the dict(iterable) constructor. 
+- Dropped patches:
+  * numba-pr8620-np1.24.patch
+  * update-tbb-backend-calls-2021.6.patch
+- Rebased existing patch.</comment>
+    <requestid>1089198</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>a66304993dbfa376ec16f9456f99c5fd</srcmd5>
+    <version>0.57.1</version>
+    <time>1692045349</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.57.1:
+  * fix regressions with 0.57.0 
+- remove upper bound on numpy - upstream does not have it either</comment>
+    <requestid>1103793</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>717a55daf5b59b530b104e1e65888d99</srcmd5>
+    <version>0.57.1</version>
+    <time>1692795463</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105200</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>a705d4680566b9cceb5022a9224301cd</srcmd5>
+    <version>0.57.1</version>
+    <time>1695209432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112351</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>fadabde06dc471ea8ec9754f1f0463a5</srcmd5>
+    <version>0.58.1</version>
+    <time>1700598736</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127835</requestid>
+  </revision>
+</revisionlist>

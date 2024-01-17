@@ -1,0 +1,7 @@
+<package name="python-csvkit" project="openSUSE:Factory">
+  <title>csvkit is a library of utilities for working with CSV</title>
+  <description>csvkit is a library of utilities for working with CSV, the king of tabular file formats.
+
+It is inspired by pdftk, gdal and the original csvcut utility by Joe Germuska and Aaron Bycoffe.</description>
+  <devel project="devel:languages:python:numeric" package="python-csvkit"/>
+</package>

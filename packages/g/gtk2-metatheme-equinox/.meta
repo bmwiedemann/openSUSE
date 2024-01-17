@@ -1,0 +1,6 @@
+<package name="gtk2-metatheme-equinox" project="openSUSE:Factory">
+  <title>Equinox Metathemes for GTK+</title>
+  <description>This package provides a set of elegant GTK+ themes that use the Equinox
+engine.</description>
+  <devel project="GNOME:Apps" package="gtk2-metatheme-equinox"/>
+</package>

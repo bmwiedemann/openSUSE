@@ -1,0 +1,7 @@
+<package name="perl-Glib-Object-Introspection" project="openSUSE:Factory">
+  <title>GObject Introspection bindings for Perl</title>
+  <description>This package provides perl bindings for GObject Introspection.
+Glib::Object::Introspection uses the gobject-introspection and libffi projects to dynamically create Perl bindings for a wide variety of libraries.
+Examples include GTK+, WebKit, libsoup and many more.</description>
+  <devel project="devel:languages:perl" package="perl-Glib-Object-Introspection"/>
+</package>

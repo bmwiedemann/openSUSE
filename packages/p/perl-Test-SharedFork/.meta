@@ -1,0 +1,7 @@
+<package name="perl-Test-SharedFork" project="openSUSE:Factory">
+  <title>Fork test</title>
+  <description>Test::SharedFork is utility module for Test::Builder. This module makes
+forking test!</description>
+  <devel project="devel:languages:perl" package="perl-Test-SharedFork"/>
+  <url>http://search.cpan.org/dist/Test-SharedFork/</url>
+</package>

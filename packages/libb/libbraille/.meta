@@ -1,0 +1,8 @@
+<package name="libbraille" project="openSUSE:Factory">
+  <title>Easy access to Braille displays and terminals</title>
+  <description>Libbraille is a computer shared library which makes it possible to
+easily develop for Braille displays. It provides a simple API to
+write text on the display, directly draw dots, or get the value of
+keys pressed on the Braille keyboard.</description>
+  <devel project="devel:libraries:c_c++" package="libbraille"/>
+</package>

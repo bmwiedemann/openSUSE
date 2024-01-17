@@ -1,0 +1,26 @@
+diff -Naur ckermit-9.0.302.orig/ckcmai.c ckermit-9.0.302/ckcmai.c
+--- ckermit-9.0.302.orig/ckcmai.c	2011-08-20 23:20:42.000000000 +0200
++++ ckermit-9.0.302/ckcmai.c	2019-03-07 21:01:18.107350463 +0100
+@@ -11,6 +11,10 @@
+ */
+ #include "ckcsym.h"
+ /*
++time.h is needed for the time function.
++*/
++#include <time.h>
++/*
+   Consolidated program C-Kermit version information for all platforms
+   (but for UNIX also see ckuver.h).  See makever() below for how they are used.
+ */
+diff -Naur ckermit-9.0.302.orig/ckucmd.c ckermit-9.0.302/ckucmd.c
+--- ckermit-9.0.302.orig/ckucmd.c	2011-07-14 14:14:37.000000000 +0200
++++ ckermit-9.0.302/ckucmd.c	2019-03-07 21:01:47.635417479 +0100
+@@ -7370,7 +7370,7 @@
+ 
+ /* Here we must look inside the stdin buffer - highly platform dependent */
+ 
+-#ifdef _IO_file_flags			/* Linux */
++#ifdef _IO_EOF_SEEN			/* Linux */
+     x = (int) ((stdin->_IO_read_end) - (stdin->_IO_read_ptr));
+     debug(F101,"cmdconchk _IO_file_flags","",x);
+ #else  /* _IO_file_flags */

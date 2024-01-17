@@ -1,0 +1,177 @@
+-------------------------------------------------------------------
+Fri Dec  8 16:08:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.3:
+  * Fix an issue where no e-mail was sent on ticket creation due
+    to suggesting to use **Requestors** instead of **Requestor**
+  * Revert breaking change for python3.8
+    (collections.abc.AsyncIterator is not subscriptable).
+  * In AsyncRt, instead of returning sequences, return
+    AsyncIterators.
+  * Replace *requests* with *httpx* for the REST2 part.
+  * Add a new *AsyncRt* class which implements the RT REST2 API
+    in asnyc.
+  * Adapt tests to include thew new async parts of this library.
+
+-------------------------------------------------------------------
+Fri Aug 11 07:39:10 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 3.0.7:
+ - Fix sorting when using search() method (#90)
+
+-------------------------------------------------------------------
+Tue Jul 18 18:39:29 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 3.0.6:
+  * Added support for specifying custom fields on user creation/edit (#82).
+  * Fixed bug in rest1 (#86).
+
+-------------------------------------------------------------------
+Sat Dec  3 00:27:47 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+-  Update to version 3.0.4:
+   * Workaround for parsing issues with tickets with only 1 attachment (#80), due to probably an upstream bug.
+
+-------------------------------------------------------------------
+Fri Jul  8 09:36:12 UTC 2022 - Duarte Pousa <pousaduarte@gmail.com>
+
+- fix regression in version 3.0.3:
+  - Temporary revert to setup.cfg from 3.0.2, due to: https://github.com/pypa/setuptools/issues/3269
+
+-------------------------------------------------------------------
+Tue Jun 21 08:49:07 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 3.0.3:
+ - Move package metadata and configuration from setup.cfg to pyproject.toml.
+- update to version 3.0.2:
+ - Fix edit_user() response handling in case a user_id name (str) was passed instead of a number.
+
+-------------------------------------------------------------------
+Fri May 27 06:53:41 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 3.0.1:
+ - Fixes
+  - Make sure to include _hyperlinks in history items
+  - On edit ticket, raise exception if user/queue does not exist
+ - Added
+  - Add helper method for deleting tickets
+  - Add tests
+
+-------------------------------------------------------------------
+Sun May 22 10:18:29 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 3.0.0
+ - The following is a major release of the `rt` library.
+  - There is support for the REST API version 1 as well as version 2.
+  - Please note that this release contains breaking changes and requires adaptations to existing code, even if you are sticking to version 1 of the API.
+  - These changes were necessary in order to properly support both API versions.
+ - Added
+  - RT REST2 support was added and is mostly on par with the REST1 support (differences are a result of the REST2 API implementation differences in RT).
+  - REST2 is a modern API based on JSON exchanges and thus the complex parsing of responses and request construction are no longer needed.
+ - Changes
+  - Existing exception classes were renamed to adhere to the naming convention (https://peps.python.org/pep-0008/#exception-names).
+   - In case you do catch specific `rt` exceptions, a simple search/replace will do, see the changelog page in the documentation for details.
+  - Importing the `rt` class changed in order to better accommodate the new `rest2` implementation.
+   - Where one use to be able to import `rt` using:
+     `from rt import Rt`
+     you now have to use the following syntax:
+     `from rt.rest1 import Rt`
+  - Importing the `rt` module does no longer import all exceptions but only the core `RtError` exception.
+  - If you require other exceptions, please import them from `rt.exceptions`.
+  - Use pytest instead of nose.
+
+-------------------------------------------------------------------
+Sat Apr  9 07:30:39 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.2.2:
+ - Fix bug in the get_ticket would omit certain fields in case they were empty instead of returning an empty list as was the previous behavior (#70).
+ - Add tests for verifying correct return result for AdminCc, Cc and Requestor fields.
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:12 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.2.1:
+ - Fix bug in get_attachment_content which was a workaround for a bug in RT <=4.2 (trailing new-lines) but which was fixed in RT >=4.2. This made tests fail and return falsely stripped attachment content.
+
+-------------------------------------------------------------------
+Mon Nov 15 20:53:35 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.2.0:
+ - Search has a parameter fields that can be used to return only particular fields for tickets. In some cases I noticed it will improve the speed of the query completion if you only need specific fields (#65 by @kimmoal).
+
+-------------------------------------------------------------------
+Thu Apr  8 11:38:15 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.1.1:
+ - Fix support for custom field values containing newlines in API responses (#10, #11)
+   (the previous change in v1.0.11 fixed API requests) (#64)
+
+-------------------------------------------------------------------
+Thu Feb 25 19:44:00 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.1.0:
+ - Add the possibility to provide cookies as dict to authenticate (#60)
+ - Add IS and IS NOT operators to search (#57)
+
+-------------------------------------------------------------------
+Sun Aug 16 15:54:38 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Remove Requires for nose, not used.
+
+-------------------------------------------------------------------
+Sat Aug  8 12:16:55 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.0.1:
+ - Documentation: add search example
+ - edit_ticket: handle empty responses
+ - fix UnicodeDecodeError in logging code for non-text attachments
+
+-------------------------------------------------------------------
+Sun Mar 15 10:43:52 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.0.0:
+ - Drop Python2 support
+ - Adjust Travis tests for Python3-only, and add v3.8
+ - Add inline typing
+ - Remove "debug_mode" parameter
+ - Add "logging" support (basically replacing "debug_mode" and the various "print"s)
+ - Fix "no-else-after-return" and "no-else-after-raise"
+ - Fix "startswitch" typos / bugs
+ - Removed deprecated "basic_auth" and "digest_auth" paramters. The same functionality is given by specifying the
+   "http_auth" with an instance of either object. This allows for more flexibility with various other alternative
+   authentication methods.
+- update to version 1.0.13:
+ - Add deprecation warning for in the next major release unsupported parameters (basic_auth, digest_auth).
+   They are now replaced with http_auth.
+ - Fix problematic default method parameters ("{}" and "[]").
+
+-------------------------------------------------------------------
+Tue Nov 26 14:36:32 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.0.12:
+ - Travis CI Docker tests
+ - RT 4.4 fixes
+ - Support multiline CF values in create_ticket and edit_ticket.
+ - Fix support for custom field names containing colons
+ - In search(), replace splitlines() with lines array split on \n.
+ - Add debug_mode flag for response logging
+ - Add platform independent url joining / Allow testing on Windows
+ - Add numerical_id to get_ticket result
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:59 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Jul 29 17:34:16 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 1.0.11:
+ - Added parameter to set the content type in reply() and comment() (#12).
+ - Added parameter Format to search() (#17).
+ - Tests: Update to new demo instance, fixing tests.
+
+-------------------------------------------------------------------
+Mon Mar 12 19:42:10 UTC 2018 - sebix+novell.com@sebix.at
+
+- initial package for version 1.0.10

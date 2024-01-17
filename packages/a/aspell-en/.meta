@@ -1,0 +1,6 @@
+<package name="aspell-en" project="openSUSE:Factory">
+  <title>English Dictionaries for ASpell</title>
+  <description>An English, Canadian English and British English dictionary for the ASpell
+spell checker.</description>
+  <devel project="devel:libraries:c_c++" package="aspell-en"/>
+</package>

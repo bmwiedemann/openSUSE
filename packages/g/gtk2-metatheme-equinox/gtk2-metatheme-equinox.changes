@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Fri Jan 13 13:07:34 UTC 2012 - vuntz@opensuse.org
+
+- Add dmz-icon-theme-cursors and faenza-icon-theme Requires to main
+  subpackage, as those are needed by the metathemes.
+
+-------------------------------------------------------------------
+Thu Jan  5 10:44:10 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.50:
+  + New option resizegripstyle
+  + New value for menubaritemstyle option
+  + Support of global menu (must be manually enabled, see README
+    file)
+  + Better support of Ubuntu One Client and Software Center
+  + Some fixes for Metacity themes in Ubuntu 11.04
+- Changes from version 1.40:
+  + New options menubaritemstyle, scrollbartrough, textstyle and
+    textshade
+  + Rendering of progressbars improved
+  + Better support of dark themes
+  + Some changes in displaying focuses
+  + Fix some crashes with Evolution
+- Drop equinox-no-return-value.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Nov 30 19:51:22 UTC 2011 - dimstar@opensuse.org
+
+- Add gtk2-metatheme-equinox-glib-2.31.patch: Fix build with glib
+  2.31.
+
+-------------------------------------------------------------------
+Fri Feb 11 09:38:20 CET 2011 - vuntz@opensuse.org
+
+- Add back useful comment that was lost when entering Factory.
+
+-------------------------------------------------------------------
+Thu Jan 27 10:52:46 CET 2011 - vuntz@opensuse.org
+
+- Cleanup for inclusion in Factory. In particular, use only one
+  source package for both the engine and the metatheme.
+
+-------------------------------------------------------------------
+Mon Jan 10 19:09:35 UTC 2011 - fisiu@opensuse.org
+
+- Update to version 1.30.2:
+  + Engine:
+    - Better rendering for gradient listitems
+  + Themes:
+    - Windows can be dragged from menubar
+    - Include userChrome.css to fix Firefox/Thunderbird menu issue
+    - Include Chromium/Chrome theme for Equinox Evolution
+    - Some fixes
+- Changes from version 1.30.1:
+  + Engine:
+    - Fix missing parameters in function equinox_style_copy
+- Changes from version 1.30:
+  + Engine:
+    - New options menubarborders and listviewitemstyle
+    - New values for menubarstyle and scrollbarstyle options
+    - Some fixes
+  + Themes:
+    - New themes Evolution and Evolution Light
+    - Fix bug with Inkscape palette
+    - Workspace switcher and menubar items more lighter in dark
+      panels
+    - Fix bugs with some applets: CPU scaling, network monitor,
+      dictionary.
+  + Metacity:
+    - Bottom border of all themes reduced
+    - New themes Evolution Rounded and Evolution Squared
+
+-------------------------------------------------------------------
+Wed Aug 11 12:03:53 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (1.20)
+

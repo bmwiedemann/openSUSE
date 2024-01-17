@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9a300ed703807324a5f2558c0d9abc14</srcmd5>
+    <version>0.3.0</version>
+    <time>1601652789</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Add Provides and Obsoletes for the python-azure-synapse package</comment>
+    <requestid>838962</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3814ac16ec261dd15efe810e8275ec98</srcmd5>
+    <version>0.3.0</version>
+    <time>1607548882</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>854016</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4ac11fcc0a4964a7c0b92c70485032ed</srcmd5>
+    <version>0.4.0</version>
+    <time>1610051289</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 861370 from glaubitz)</comment>
+    <requestid>861450</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b5f6e0ea5c7218cffab721fb7a10da81</srcmd5>
+    <version>0.5.0</version>
+    <time>1618235370</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.5.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 881906 from glaubitz)</comment>
+    <requestid>881986</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c900c418a861759ad26f380f8427d485</srcmd5>
+    <version>0.6.0</version>
+    <time>1631913933</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 917463 from glaubitz)</comment>
+    <requestid>917556</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d3c499c9eded4cea99a8be2b9b6968ee</srcmd5>
+    <version>0.7.0</version>
+    <time>1639169549</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.7.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 936035 from glaubitz)</comment>
+    <requestid>938294</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,152 @@
+-------------------------------------------------------------------
+Tue Oct 3 13:06:52 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Fix dependency on Cpython
+
+-------------------------------------------------------------------
+Fri Feb 10 13:06:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.4:
+  * Fix calling PlotContainer.set_font to set font color,
+  * Fix a regression in yt.load where '$HOME' and '~' path
+    weren't expanded
+  * (partial) Fix issue #4286 SDF frontend breaks load() if
+    target file lacks read permission
+  * (FLASH) Fix domain edges padding in reduced dimensions
+  * (partial) Delay expensive imports
+  * Cleanup calls to private methods _setup_plots in
+    cookbook
+
+-------------------------------------------------------------------
+Mon Jan  2 14:12:44 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 4.1.3:
+  This is the third bugfix release in the yt 4.1.x series. It
+  contains fixes to bugs discovered since the 4.1.2 release. Most
+  importantly, it reverts a unstable patch that was accidentally
+  included in yt 4.1.2 (#4198). EWAH files should now behave as
+  in yt 4.1.1, and we're aiming at re-releasing the new behaviour
+  (with fixes) in yt 4.2.0
+  - Bug fixes
+    - #4231 Fix pixel size calculation for density option in
+      particle projection plots and FITS images, by @jzuhone
+    - #4239 Fix a broken docs example, by @neutrinoceros
+  - Build and testing
+    - #4247 ignore a deprecation warning triggered from cartopy,
+      by @neutrinoceros
+    - #4250 Revert "Backport PR #4198 on branch yt-4.1.x
+      (Automatically find EWAH files with increased
+      index_order2)", by @neutrinoceros
+    - #4258 on branch yt-4.1.x, by @neutrinoceros
+  - There are no new features or deprecations in this version,
+    all users are encouraged to upgrade.
+
+-------------------------------------------------------------------
+Sat Dec  3 09:21:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+DO NOT SUBMIT TO FACTORY, CFLAGS includes "-freport-bug"
+
+- Upgrade to 4.1.2:
+  It contains fixes to bugs discovered since the 4.1.1
+  release. There are no new features or deprecations in this
+  version, all users are encouraged to upgrade.
+- Upgrade to 4.1.1:
+  It contains a couple of critical fixes to bugs discovered since
+  the 4.1.0 release. Most importantly, it resolves a memory leak
+  that was affecting octree-based frontends (RAMSES and ART).
+  There are no new features or deprecations in this version, all
+  users are encouraged to upgrade.
+- Upgrade to 4.1.0:
+  It contains about a year of work by many contributors, with
+  many new features and improvements to the code base. It is also
+  the first release to officially supported Python 3.11.
+  Some deprecations from yt < 4 are now expired, some minor
+  backwards incompatibilities are expected. Anything broken on
+  purpose in this version should correspond to a warning in yt
+  4.0.x, anything beyond that should be considered a regression;
+  please report any unexpected breaking change.
+
+Complete releases changelog is available at
+https://github.com/yt-project/yt/releases.
+
+-------------------------------------------------------------------
+Fri Jul 17 12:57:19 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 3.6.1
+  * The angular momentum has been reversed compared to previous versions of yt. 
+    See `PR 2043 <https://github.com/yt-project/yt/pull/2043>`__.
+  * New frontend support for the code AMRVAC. Many thanks to Clement Robert 
+    and Niels Claes who were major contributors to this initiative. Relevant PRs include:
+  * Support for the AdaptaHOP halo finder code 
+    `PR 2385 <https://github.com/yt*project/yt/pull/2385>`__.
+  * yt now supports geographic transforms and projections of data with 
+    cartopy with support from `PR 1966 <https://github.com/yt*project/yt/pull/1966>`__.
+  * annotations used to work for only a single point, they now work for multiple points 
+    on a plot, see `PR 2122 <https://github.com/yt*project/yt/pull/2122>`__.
+  * cosmology calculations now have support for the relativistic energy density of the 
+    universe, see `PR 1714 <https://github.com/yt*project/yt/pull/1714>`__. 
+    This feature is accessible to cosmology datasets and was added to the Enzo frontend. 
+  * the eps writer now allows for arrow rotation. this is accessible with 
+    the ``rotate`` kwarg in the ``arrow`` function. 
+    See `PR 2151 <https://github.com/yt*project/yt/pull/2151>`__.
+  * allow for dynamic load balancing with parallel loading of timeseries 
+    data using the ``dynamic`` kwarg. `PR 2149 <https://github.com/yt*project/yt/pull/2149>`__.
+  * show/hide colorbar and show/hide axes are now available for 
+    ``ProfilePlot`` s. These functions were also moved from the PlotWindow to the 
+    PlotContainer class. `PR 2169 <https://github.com/yt*project/yt/pull/2169>`__.
+  * add support for ipywidgets with an ``__ipython_display__`` method on the 
+    FieldTypeContainer. Field variables, source, and the field array can be 
+    viewed with this widget. See PRs `PR 1844 <https://github.com/yt*project/yt/pull/1844>`__ 
+    and `PR 1848 <https://github.com/yt*project/yt/pull/1848>`__, 
+    or try ``display(ds.fields)`` in a Jupyter notebook.
+  * cut regions can now be made with ``exclude_`` and ``include_`` on a number of objects, 
+    including above and below values, inside or outside regions, equal values, or nans. 
+    See `PR 1964 <https://github.com/yt*project/yt/pull/1964>`__ and supporting 
+    documentation fix at `PR 2262 <https://github.com/yt*project/yt/pull/2262>`__.
+  * previously aliased fluid vector fields in curvilinear geometries were not 
+    converted to curvilinear coordinates, this was addressed in 
+    `PR 2105 <https://github.com/yt*project/yt/pull/2105>`__.
+  * 2d polar and 3d cylindrical geometries now support annotate_quivers, 
+    streamlines, line integral convolutions, see 
+    `PR 2105 <https://github.com/yt*project/yt/pull/2105>`__.
+  * add support for exporting data to firefly `PR 2190 <https://github.com/yt-project/yt/pull/2190>`__.
+  * gradient fields are now supported in curvilinear geometries. See 
+    `PR 2483 <https://github.com/yt*project/yt/pull/2483>`__.
+  * plotwindow colorbars now utilize mathtext in their labels, 
+    from `PR 2516 <https://github.com/yt*project/yt/pull/2516>`__.
+  * raise deprecation warning when using ``mylog.warn``. Instead use 
+    ``mylog.warning``. See `PR 2285 <https://github.com/yt*project/yt/pull/2285>`__.
+  * extend support of the ``marker``, ``text``, ``line`` and ``sphere`` annotation 
+    callbacks to polar geometries  `PR 2466 <https://github.com/yt*project/yt/pull/2466>`__.
+  * Support MHD in the GAMER frontend  `PR 2306 <https://github.com/yt-project/yt/pull/2306>`__.
+  * Export data container and profile fields to AstroPy QTables and 
+    pandas DataFrames  `PR 2418 <https://github.com/yt*project/yt/pull/2418>`__.
+  * Add turbo colormap, a colorblind safe version of jet.  See 
+    `PR 2339 <https://github.com/yt*project/yt/pull/2339>`__.
+  * Enable exporting regular grids (i.e., covering grids, arbitrary grids and 
+    smoothed grids) to ``xarray`` `PR 2294 <https://github.com/yt*project/yt/pull/2294>`__.
+  * add automatic loading of ``namelist.txt``, which contains the parameter file 
+    RAMSES uses to produce output `PR 2347 <https://github.com/yt*project/yt/pull/2347>`__.
+  * adds support for a nearest neighbor value field, accessible with 
+    the ``add_nearest_neighbor_value_field`` function for particle fields. See 
+    `PR 2301 <https://github.com/yt*project/yt/pull/2301>`__.
+  * speed up mesh deposition (uses caching) `PR 2136 <https://github.com/yt-project/yt/pull/2136>`__.
+  * speed up ghost zone generation.  `PR 2403 <https://github.com/yt-project/yt/pull/2403>`__.
+  * ensure that a series dataset has kwargs passed down to data objects `PR 2366 <https://github.com/yt-project/yt/pull/2366>`__.
+- skip python36 because of numpy
+
+-------------------------------------------------------------------
+Fri May 15 12:52:19 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Wed Mar 13 11:13:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.5.1:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Tue Jan  8 19:36:17 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- initial version

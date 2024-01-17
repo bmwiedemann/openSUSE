@@ -1,0 +1,191 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90b678220d8a1712140ce46d5c747942</srcmd5>
+    <version>0.3.4</version>
+    <time>1346076719</time>
+    <user>coolo</user>
+    <comment>liblognorm, dependency for Base:System / rsyslog, please review.</comment>
+    <requestid>131551</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>53dd05c6e848cf03d48476f144f6f717</srcmd5>
+    <version>0.3.5</version>
+    <time>1348231287</time>
+    <user>coolo</user>
+    <comment>update to 0.3.5 (forwarded request 135193 from AndreasStieger)</comment>
+    <requestid>135195</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fe1b7205bb3708c255de3b5c5af27108</srcmd5>
+    <version>0.3.5</version>
+    <time>1352796887</time>
+    <user>coolo</user>
+    <comment>- Defined rpm build root to fix build on SLE-11 (forwarded request 140930 from mtomaschewski)</comment>
+    <requestid>140935</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>fe1b7205bb3708c255de3b5c5af27108</srcmd5>
+    <version>0.3.5</version>
+    <time>1359109299</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>413c036878ccda571e62c8bc673c5c99</srcmd5>
+    <version>0.3.6</version>
+    <time>1366984326</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>173504</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>891c9f51a3a26304aea87410632c297f</srcmd5>
+    <version>0.3.7</version>
+    <time>1374387038</time>
+    <user>coolo</user>
+    <comment>update to 0.3.7 (forwarded request 183787 from AndreasStieger)</comment>
+    <requestid>183788</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>891c9f51a3a26304aea87410632c297f</srcmd5>
+    <version>0.3.7</version>
+    <time>1379662996</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e346b2cb435f8f7c3d8aa9dc1b6ba2e8</srcmd5>
+    <version>1.0.0</version>
+    <time>1391077803</time>
+    <user>coolo</user>
+    <comment>Changed BuildRequires dependency from &quot;pkgconfig(json)&quot; to pkgconfig(json-c) (forwarded request 215452 from edssvirt)</comment>
+    <requestid>215480</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>20c00efbdc9482c175c5c711c650f66a</srcmd5>
+    <version>1.0.1</version>
+    <time>1397387720</time>
+    <user>coolo</user>
+    <comment>liblognorm 1.0.1 (forwarded request 229787 from AndreasStieger)</comment>
+    <requestid>229788</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>20c00efbdc9482c175c5c711c650f66a</srcmd5>
+    <version>1.0.1</version>
+    <time>1409301612</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>76663cdf79d459c51ef754869f65b233</srcmd5>
+    <version>1.0.1</version>
+    <time>1414066821</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257960</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>61beae8ad6175d762093cae21161a5d8</srcmd5>
+    <version>1.1.0</version>
+    <time>1422024451</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282496</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>63e87481a4a78ab424cc8fc92081eb76</srcmd5>
+    <version>1.1.1</version>
+    <time>1426680231</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290231</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6a0ce011b11812b401b1522e9c802c07</srcmd5>
+    <version>1.1.2</version>
+    <time>1437657791</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317999</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c306d5de47c053fc82304919f2da97ad</srcmd5>
+    <version>1.1.3</version>
+    <time>1458120955</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>370827</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a0c7d3edd21f90b1dbbca6a385d2ae52</srcmd5>
+    <version>2.0.0</version>
+    <time>1469742357</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>414595</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a6fca99c6e13d4cea2199c22a01c3837</srcmd5>
+    <version>2.0.1</version>
+    <time>1470413862</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416900</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ce9b9cae18b8c8e4d6f69de344c0dd1c</srcmd5>
+    <version>2.0.2</version>
+    <time>1480952044</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443726</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>5def034674d82739deaef961016efbb1</srcmd5>
+    <version>2.0.2</version>
+    <time>1486217832</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453472</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>419cd08e03c86ff6382617184a36097e</srcmd5>
+    <version>2.0.3</version>
+    <time>1491907259</time>
+    <user>maxlin_factory</user>
+    <comment>liblognorm 2.0.3 (forwarded request 485074 from AndreasStieger)</comment>
+    <requestid>485076</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>9f742903e3ed44dcce48077b533e83a6</srcmd5>
+    <version>2.0.3</version>
+    <time>1494937759</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493004</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4fe982393885190afeaefe89c0c5dd23</srcmd5>
+    <version>2.0.4</version>
+    <time>1510837126</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541825</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>dfd89e3a6c923865df1980ff1a1efdfa</srcmd5>
+    <version>2.0.6</version>
+    <time>1543223732</time>
+    <user>dimstar_suse</user>
+    <comment>bumped version from 2.0.4 to 2.0.6 (forwarded request 648688 from kdalai)</comment>
+    <requestid>648693</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>4a10d5cf1da8054ed478008f731dbf42</srcmd5>
+    <version>2.0.6</version>
+    <time>1548452489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>665997</requestid>
+  </revision>
+</revisionlist>

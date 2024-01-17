@@ -1,0 +1,17 @@
+Index: pacemaker-2.1.4+20220825.b676a8701/configure.ac
+===================================================================
+--- pacemaker-2.1.4+20220825.b676a8701.orig/configure.ac
++++ pacemaker-2.1.4+20220825.b676a8701/configure.ac
+@@ -1778,10 +1778,10 @@ dnl otherwise none of both
+           [
+               AC_DEFINE([HAVE_FORMAT_NONLITERAL], [],
+                         [gcc can complain about nonliterals in format])
+-              EXTRA_FLAGS="$EXTRA_FLAGS -Wformat=2 -Wformat-nonliteral"
++              EXTRA_FLAGS="$EXTRA_FLAGS -Wformat=2 -Wformat-nonliteral -Wno-format-signedness"
+           ],
+           [test x"$gcc_format_nonliteral" = x"yes"],
+-          [EXTRA_FLAGS="$EXTRA_FLAGS -Wformat=2"])
++          [EXTRA_FLAGS="$EXTRA_FLAGS -Wformat=2 -Wno-format-signedness"])
+ 
+ # Additional warnings it might be nice to enable one day
+ #                -Wshadow

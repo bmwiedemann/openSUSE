@@ -1,0 +1,11 @@
+<package name="python-ligo-lw" project="openSUSE:Factory">
+  <title>Python LIGO Light-Weight XML I/O Library</title>
+  <description>The LIGO Light-Weight XML format is used extensively by compact object
+detection pipeline and associated tool sets.  This package provides a Python
+I/O library for reading, writing, and interacting with documents in this
+format.
+
+</description>
+  <devel project="science" package="python-ligo-lw"/>
+  <url>https://git.ligo.org/lscsoft/ligo-lw</url>
+</package>

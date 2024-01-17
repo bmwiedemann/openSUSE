@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Wed Dec 14 08:24:37 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+ - Remove python_module macro definition
+ - Use %pytest_arch instead of custom command
+ - More specific python_sitelib in %files
+
+-------------------------------------------------------------------
+Tue Dec 13 15:19:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.3.0 
+  * Upgrade to duktape engine 2.7.0
+  * Support for installing nodejs modules where the root distribution directory is not named package.
+  * Better error message when a Python function is not found
+  * GitHub Actions based release workflow, wheels are now automatically generated for more versions.
+  * Wheels for Apple Silicon (M1) are now provided.
+  * Support for Python 2.7, 3.5 and 3.6 is deprecated. DukPy might still work, but it's untested.
+
+-------------------------------------------------------------------
+Thu Apr 28 15:05:56 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+
+-------------------------------------------------------------------
+Tue Jul 13 00:05:40 UTC 2021 - Jason Craig <os@jacraig.com>
+
+- Update to 0.2.3
+  * Support for Python 3.8
+  * Testuite now based on pytest instead of nose
+  * Deprecated support for Python 2.6 and 3.4
+  * Updated included babel version to 6.26.0
+- Drop pytest.patch, upstream has integrated those changes.
+
+-------------------------------------------------------------------
+Tue May 26 07:22:47 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Fri Mar  8 14:55:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.2.2:
+  * State compatibility with Python 3.7
+  * Provide wheels for Python 3.7
+  * Fix building wheel from source distribution
+  * Fix a memory leak in dukpy.evaljs
+- Add patch from upstream to work well with pytest:
+  * pytest.patch
+
+-------------------------------------------------------------------
+Thu Aug 16 09:42:12 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Tue Aug  7 15:40:54 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

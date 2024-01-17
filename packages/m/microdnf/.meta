@@ -1,0 +1,11 @@
+<package name="microdnf" project="openSUSE:Factory">
+  <title>microdnf - Lightweight implementation of DNF in C</title>
+  <description>Micro DNF is a lightweight C implementation of DNF, designed to be used
+for doing simple packaging actions when you don't need full-blown DNF and
+you want the tiniest useful environments possible.
+
+That is, you don't want any interpreter stack and you want the most
+minimal environment possible so you can build up to exactly what you need.
+</description>
+  <devel project="system:packagemanager:dnf" package="microdnf"/>
+</package>

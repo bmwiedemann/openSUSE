@@ -1,0 +1,5 @@
+<package name="scim-uim" project="openSUSE:Factory">
+  <title>UIM Input Method Engine for SCIM</title>
+  <description>UIM Input Method Engine for SCIM.</description>
+  <devel project="M17N" package="scim-uim"/>
+</package>

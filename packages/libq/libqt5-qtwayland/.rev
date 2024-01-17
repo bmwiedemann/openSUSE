@@ -1,0 +1,494 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b5a3b85a74d46cb019033701b00f40b4</srcmd5>
+    <version>5.4.0~alpha</version>
+    <time>1410508989</time>
+    <user>coolo</user>
+    <comment>Activate libqt5-qtwayland package.
+This is a part of the 5.4 release, but can be built and used with older Qt releases (such as 5.3.2 which we have in Factory)</comment>
+    <requestid>248253</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a1f482095853086358fb52ad8864adf9</srcmd5>
+    <version>5.4.0~beta</version>
+    <time>1413616151</time>
+    <user>coolo</user>
+    <comment>- Update to 5.4.0 beta
+  * New feature release, please see
+  http://blog.qt.digia.com/blog/2014/10/17/qt-5-4-beta-available/
+  and http://qt-project.org/wiki/New-Features-in-Qt-5.4
+- Added adjust_api.diff, to guard QPA usage found in 5.3 and 5.4</comment>
+    <requestid>257318</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6f17ff9347e8087cead7ccb9b229f9b3</srcmd5>
+    <version>5.4.0</version>
+    <time>1419159463</time>
+    <user>coolo</user>
+    <comment>Update to 5.4.0</comment>
+    <requestid>264871</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>86f478b50386cdeda399f641d0f784c5</srcmd5>
+    <version>5.4.1</version>
+    <time>1425220008</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.4.1</comment>
+    <requestid>287892</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0e720fbfc703c82a7fa42c08e9b4b184</srcmd5>
+    <version>5.4.2</version>
+    <time>1433577130</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.4.2</comment>
+    <requestid>310380</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0db0ee244a17f37a7b67c6fb70ddbf2f</srcmd5>
+    <version>5.5.0</version>
+    <time>1443335858</time>
+    <user>coolo</user>
+    <comment>Update to 5.5.0</comment>
+    <requestid>323369</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7682fc7e0e3d68b5741024e220aa621f</srcmd5>
+    <version>5.5.1</version>
+    <time>1445287566</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix 5.5.1 update</comment>
+    <requestid>339534</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8be24e31e0a697a461e039db846a2ae4</srcmd5>
+    <version>5.6.0</version>
+    <time>1463497554</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.6.0</comment>
+    <requestid>379845</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3c5a03c303f528702ffd9bbb4fc33532</srcmd5>
+    <version>5.6.1</version>
+    <time>1466812511</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.6.1</comment>
+    <requestid>401313</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>470c2ad73d6e90c938057bb84b996be4</srcmd5>
+    <version>5.7.0</version>
+    <time>1475358605</time>
+    <user>dimstar_suse</user>
+    <comment>The Time Has Come to Shoot You Down... What a Sound</comment>
+    <requestid>429996</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>424362a60c5aba2bc8244e342d7650c2</srcmd5>
+    <version>5.7.1</version>
+    <time>1482419262</time>
+    <user>lnussel_factory</user>
+    <comment>Update to 5.7.1</comment>
+    <requestid>446453</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9a7428d45934d54645484be2a850f7d6</srcmd5>
+    <version>5.9.0</version>
+    <time>1497362682</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.9.0 final</comment>
+    <requestid>500010</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>aa015e7276684ed7d1f471bfc5828b6d</srcmd5>
+    <version>5.9.1</version>
+    <time>1499509484</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.9.1</comment>
+    <requestid>507710</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>f26dab00990386419cc7d05cd7f89bfe</srcmd5>
+    <version>5.9.1</version>
+    <time>1505680623</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526018</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dcaadf3af926e77bb26319601ba44f3d</srcmd5>
+    <version>5.9.2</version>
+    <time>1508768461</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.9.2</comment>
+    <requestid>533926</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f25fd0e508ca88ac1394d5e34f2a23b5</srcmd5>
+    <version>5.9.3</version>
+    <time>1512733980</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.9.3</comment>
+    <requestid>545963</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>27c30214918c92bd51edb0b9a575821f</srcmd5>
+    <version>5.10.0</version>
+    <time>1514027669</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.10.0</comment>
+    <requestid>557407</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>a930e95f72cecf9aa1e75e91ff7e06a0</srcmd5>
+    <version>5.10.0</version>
+    <time>1515505614</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch from upstream dev branch for compose key support:
+  * 0001-Implement-basic-key-composition-support.patch
+- Add fix from upstream dev branch:
+  * 0002-Automatically-change-scale-when-entering-a-new-outpu.patch</comment>
+    <requestid>561009</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>db3e7b403b07c5df9b95dd30f409a0de</srcmd5>
+    <version>5.10.0</version>
+    <time>1516091582</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch (pending upstream) to fix destruction of hidden surfaces (kde#381630):
+  * Dont-recreate-hidden-egl-surfaces.patch
+- Keep workaround-null-object.patch as it can in theory prevent
+  crashes and has no effect otherwise</comment>
+    <requestid>562917</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>799568308abcdb82016c8e29e4a82ac4</srcmd5>
+    <version>5.11.0</version>
+    <time>1527933117</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.11.0 (forwarded request 611399 from Vogtinator)</comment>
+    <requestid>611689</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>28325f86ca26e9ddbec867ee2c3194a8</srcmd5>
+    <version>5.11.1</version>
+    <time>1530001906</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.11.1</comment>
+    <requestid>618689</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>536fd05dbde5776cdc09d30985293223</srcmd5>
+    <version>5.11.1</version>
+    <time>1531379850</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patch as it causes a regression with resizing windows:
+  * 0001-Handle-maximize-minimize-fullscreen-xdgshellv6.patch</comment>
+    <requestid>622055</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>65d73aa5434b7f956bd62dbee1c941d5</srcmd5>
+    <version>5.11.2</version>
+    <time>1538374373</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.11.2</comment>
+    <requestid>637854</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5d7e2e2ba3da813218873e2995049068</srcmd5>
+    <version>5.12.0</version>
+    <time>1544817144</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.12.0 final</comment>
+    <requestid>656576</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c5ca19b3e5efc1af21036ce0322c938b</srcmd5>
+    <version>5.12.2</version>
+    <time>1553157692</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.12.2</comment>
+    <requestid>685650</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f66423d951bed025ba7772c170cd1f1e</srcmd5>
+    <version>5.12.3</version>
+    <time>1556312032</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.12.3</comment>
+    <requestid>697081</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e05c72b41a4c28d7af64d956b626580a</srcmd5>
+    <version>5.13.0</version>
+    <time>1561732261</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.13.0</comment>
+    <requestid>711201</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>c461c6b01ace367eabb2ca3917e54826</srcmd5>
+    <version>5.13.0</version>
+    <time>1563018306</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch from upstream 5.13 branch to fix crashes:
+  * 0001-Don-t-crash-if-we-start-a-drag-without-dragFocus.patch
+- Add patch from upstream 5.12 branch to improve performance:
+  * 0002-Client-Fix-stuttering-when-the-GUI-thread-is-busy.patch
+- Add patches from upstream code reviews to fix various issues:
+  * 0003-Client-Don-t-send-fake-SurfaceCreated-Destroyed-even.patch
+  * 0004-Client-Make-handleUpdate-aware-of-exposure-changes.patch
+  * 0005-Client-Reset-frame-callback-timer-when-hiding-a-wind.patch</comment>
+    <requestid>713225</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>4d734183ca7bf644b083f1ded86986f0</srcmd5>
+    <version>5.13.0</version>
+    <time>1566240414</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix deps in Qt5WaylandClient.pc and .cmake:
+  * 0001-Fix-use-of-private-dependency.patch</comment>
+    <requestid>723518</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8e3647155d929dd444d78395cfd20acc</srcmd5>
+    <version>5.13.1</version>
+    <time>1568025065</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.13.1</comment>
+    <requestid>729225</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ba29de6ad40fd6f40a220fb4b9db7b2d</srcmd5>
+    <version>5.14.0</version>
+    <time>1579463712</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.14.0</comment>
+    <requestid>758900</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9c5295553b4b44a7925fbf4380ec799a</srcmd5>
+    <version>5.14.1</version>
+    <time>1580373575</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.14.1</comment>
+    <requestid>768130</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>25aca4b793cea22445cb5e87da57b0f0</srcmd5>
+    <version>5.15.0</version>
+    <time>1590779730</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.15.0</comment>
+    <requestid>809418</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3109dd3fadfadcca7c61747850e7d37e</srcmd5>
+    <version>5.15.1</version>
+    <time>1600078197</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.1</comment>
+    <requestid>833663</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>62c0e05268d3be527cee445526801630</srcmd5>
+    <version>5.15.2</version>
+    <time>1606328956</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.2</comment>
+    <requestid>850039</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>8b7b66b7ffdda4e2587e97ea8374b9a7</srcmd5>
+    <version>5.15.2</version>
+    <time>1607017274</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch to fix a regression:
+  * 0001-Scanner-Avoid-accessing-dangling-pointers-in-destroy.patch</comment>
+    <requestid>852329</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>a39d7fe63fca6a0041dba7c5193e83f3</srcmd5>
+    <version>5.15.2</version>
+    <time>1611668652</time>
+    <user>dimstar_suse</user>
+    <comment>Add compatibility with qml-autoreqprov</comment>
+    <requestid>866048</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>f16742ba9bacff60f39b4fcad4ab0866</srcmd5>
+    <version>5.15.2</version>
+    <time>1621531463</time>
+    <user>dimstar_suse</user>
+    <comment>- Add more commits from KDE's 5.15 branch:
+  * 0008-Fix-memory-leak-in-QWaylandGLContext.patch (QTBUG-85608)
+  * 0009-Client-Send-set_window_geometry-only-once-configured.patch
+  * 0010-Translate-opaque-area-with-frame-margins.patch
+  * 0011-Client-Send-exposeEvent-to-parent-on-subsurface-posi.patch
+    (QTBUG-86177)
+  * 0012-Get-correct-decoration-margins-region.patch
+  * 0013-xdgshell-Tell-the-compositor-the-screen-we-re-expect.patch
+  * 0014-Fix-compilation.patch
+  * 0015-client-Allow-QWaylandInputContext-to-accept-composed.patch
+    (kde#405388)
+  * 0016-Client-Announce-an-output-after-receiving-more-compl.patch
+    (kde#435124)
+  * 0017-Fix-issue-with-repeated-window-size-changes.patch
+  * 0018-Include-locale.h-for-setlocale-LC_CTYPE.patch
+
+- Add commits from upstream's 5.15 branch:
+  * 0002-Make-setting-QT_SCALE_FACTOR-work-on-Wayland.patch (QTBUG-87762)
+  * 0003-Do-not-try-to-eglMakeCurrent-for-unintended-case.patch (QTBUG-88277)
+  * 0004-Make-setting-QT_SCALE_FACTOR-work-on-Wayland.patch (QTBUG-87762, QTBUG-88064)
+  * 0005-Ensure-that-grabbing-is-performed-in-correct-context.patch (QTBUG-87597)
+  * 0006-Fix-leaked-subsurface-wayland-items.patch (QTBUG-88782)
+- Add commit from KDE's 5.15 branch:
+  * 0007-Use-qWarning-and-_exit-instead-of-qFatal-for-wayland.patch</comment>
+    <requestid>893822</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3fdeda9b19ed81b7cfb52757a55d7aaf</srcmd5>
+    <version>5.15.2+kde28</version>
+    <time>1624813129</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.2 + KDE patch collection</comment>
+    <requestid>902327</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>46c0c1d8f2d4f273f7a52d8f1a025b0a</srcmd5>
+    <version>5.15.2+kde34</version>
+    <time>1635717327</time>
+    <user>dimstar_suse</user>
+    <comment>Qt updates from KDE git</comment>
+    <requestid>928085</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>e1d0844963759e81d320dfa45e6cde86</srcmd5>
+    <version>5.15.2+kde37</version>
+    <time>1640108418</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.15.2+kde37:
+  * Fix backport, context destruction was omitted
+  * Client: do not empty clipboard when a new popup/window is opened
+  * Wayland client: use wl_keyboard to determine active state
+- Add patch to fix crashes triggered by unintentional actions when
+  showing a window (kde#421700):
+  * 0001-Client-Avoid-processing-of-events-when-showing-windo.patch</comment>
+    <requestid>941642</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f23f8e103b8937cac9388bea75606e79</srcmd5>
+    <version>5.15.2+kde44</version>
+    <time>1643128542</time>
+    <user>dimstar_suse</user>
+    <comment>New snapshots</comment>
+    <requestid>948155</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>66ac9a6f9b14a9d484e6d95ea299bc8f</srcmd5>
+    <version>5.15.2+kde44</version>
+    <time>1644188051</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to fix applications not updating after some time (kde#449163):
+  * 0001-Client-Remove-mWaitingForUpdateDelivery.patch
+  * 0002-Guard-mResizeDirty-by-the-correctMutex.patch
+  * 0003-Fix-up-mutexes-for-frame-callbacks.patch
+- Add patch to fix several feature detection tests:
+  * 0001-Use-proper-dependencies-in-compile-tests.patch</comment>
+    <requestid>951557</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>31763c65fd882f5536cbbf78ab327f8e</srcmd5>
+    <version>5.15.2+kde54</version>
+    <time>1645723117</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.15.2+kde54:
+  * Use proper dependencies in compile tests
+  * Client: Fix opaque region setter
+  * client: Simplify round trip behavior (boo#1196302)
+  * Update the preedit styling mapping
+  * Cursor position == 0 should still show the cursor
+  * Client: Remove mWaitingForUpdateDelivery
+  * Fix crash if no input method module could be loaded
+  * Use wl_surface.damage_buffer on the client side
+  * Do not create decorations when the shellSurface is not ready
+  * Check pointer for null before use in ASSERT
+- Drop patches, now upstream:
+  * 0001-Client-Remove-mWaitingForUpdateDelivery.patch
+  * 0001-Use-proper-dependencies-in-compile-tests.patch</comment>
+    <requestid>956939</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0eb74c3474c34f7b26d85d9d7fbbf86c</srcmd5>
+    <version>5.15.5+kde39</version>
+    <time>1656511245</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
+    <requestid>985498</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>dceb5e00007fd26a864419897c9a9c7d</srcmd5>
+    <version>5.15.6+kde49</version>
+    <time>1664302186</time>
+    <user>RBrownFactory</user>
+    <comment>Qt 5.15.6</comment>
+    <requestid>1006242</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>a8e80bf84e16b14df3d926e2449bf49e</srcmd5>
+    <version>5.15.7+kde49</version>
+    <time>1667579527</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.7, untested (forwarded request 1033058 from favogt)</comment>
+    <requestid>1033121</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>74ed9b120a9e089ae99d1e20d9e0d79d</srcmd5>
+    <version>5.15.8+kde57</version>
+    <time>1673443991</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.8, untested as usual. qtdoc not included yet. (forwarded request 1057153 from Vogtinator)</comment>
+    <requestid>1057247</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>ec499f35b90d5668a7199c45e5afbd49</srcmd5>
+    <version>5.15.8+kde63</version>
+    <time>1679238969</time>
+    <user>dimstar_suse</user>
+    <comment>Update from git. qtlocation i586 not built yet. (forwarded request 1072558 from favogt)</comment>
+    <requestid>1072582</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>3c50acd6b3c5ae4400f0a94e11f6e2e9</srcmd5>
+    <version>5.15.9+kde55</version>
+    <time>1682282610</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.9. Not built yet but submitting anyway. (forwarded request 1081228 from favogt)</comment>
+    <requestid>1082092</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>08b7b4c92bc7e460195ae5ed5963130e</srcmd5>
+    <version>5.15.10+kde51</version>
+    <time>1686927152</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.10, fixed libqt5-qtscript (forwarded request 1092905 from favogt)</comment>
+    <requestid>1092953</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>61eb32f307930c70b8abec38a15eda9f</srcmd5>
+    <version>5.15.11+kde59</version>
+    <time>1696760222</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.11. Not fully built yet, qtlocation needed a fix. (forwarded request 1116057 from favogt)</comment>
+    <requestid>1116131</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>8e53468c103834873d96aebdeded957d</srcmd5>
+    <version>5.15.12+kde60</version>
+    <time>1704380102</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.12 (+ some .16), untested (forwarded request 1135706 from favogt)</comment>
+    <requestid>1136127</requestid>
+  </revision>
+</revisionlist>

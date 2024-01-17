@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ca9d63d85feff14088682b60ce8d108</srcmd5>
+    <version>0.0.1</version>
+    <time>1557263794</time>
+    <user>dimstar_suse</user>
+    <comment>- add missing guile-newt-rpmlintrc as source file 
+- let there be guile-newt 
+
+dependency of guix</comment>
+    <requestid>698223</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9669f2b8a6fdd52b9d9676f43fd90368</srcmd5>
+    <version>0.0.1</version>
+    <time>1579557381</time>
+    <user>dimstar_suse</user>
+    <comment>make compatible with Guile 3.0</comment>
+    <requestid>765846</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7e437855dc413e70a39e4097e0742ba7</srcmd5>
+    <version>0.0.2</version>
+    <time>1606428893</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.0.2:
+  * Allow builds with Guile 3.0.
+  * Add help callback support.
+  * components: Make sure callback is not GC'd.
+  * Add 'form-watch-fd'.
+* remove patch:
+  * support-guile-3.0.patch: Guile 3.0 support added by upstream
+</comment>
+    <requestid>850992</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e56bcf542cdbacd605d9446a39a9e4e1</srcmd5>
+    <version>0.0.3</version>
+    <time>1664112919</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1005736</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5c6e632db9d4b2cbaa54b066c547ab9f</srcmd5>
+    <version>0.0.3</version>
+    <time>1702327826</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132350</requestid>
+  </revision>
+</revisionlist>

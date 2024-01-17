@@ -1,0 +1,9 @@
+<package name="python-emcee" project="openSUSE:Factory">
+  <title></title>
+  <description>Emcee is a  Python implementation of the affine-invariant
+ensemble sampler for Markov chain Monte Carlo (MCMC)
+proposed by Goodman &amp; Weare (2010)
+
+http://cims.nyu.edu/~weare/papers/d13.pdf</description>
+  <devel project="devel:languages:python:numeric" package="python-emcee"/>
+</package>

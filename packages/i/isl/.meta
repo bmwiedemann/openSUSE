@@ -1,0 +1,8 @@
+<package name="isl" project="openSUSE:Factory">
+  <title>Integer Set Library</title>
+  <description>ISL is a library for manipulating sets and relations of integer points
+      bounded by linear constraints.
+  It is used by Cloog and the GCC Graphite optimization framework.</description>
+  <devel project="devel:libraries:c_c++" package="isl"/>
+  <url>http://www.kotnet.org/~skimo/isl/</url>
+</package>

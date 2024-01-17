@@ -1,0 +1,10 @@
+<package name="jshon" project="openSUSE:Factory">
+  <title>A JSON parser for the shell</title>
+  <description>Jshon parses, reads and creates JSON. It is designed to be as usable as possible
+from within the shell and replaces fragile adhoc parsers made from grep/sed/awk
+as well as heavyweight one-line parsers made from perl/python.
+
+</description>
+  <devel project="utilities" package="jshon"/>
+  <url>http://kmkeen.com/jshon</url>
+</package>

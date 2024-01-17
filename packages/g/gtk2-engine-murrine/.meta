@@ -1,0 +1,7 @@
+<package name="gtk2-engine-murrine" project="openSUSE:Factory">
+  <title>Murrine GTK Theme Engine</title>
+  <description>Murrine is a GTK+ 2 theme engine, that uses the Cairo vector drawing
+library to render widgets. It features a modern glassy look, is elegant
+and clean on the eyes, and is extremely customizable.</description>
+  <devel project="GNOME:Factory" package="gtk2-engine-murrine"/>
+</package>

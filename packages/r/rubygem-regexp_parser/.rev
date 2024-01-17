@@ -1,0 +1,179 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cd9611f3414e38ba053bde44ad2b181d</srcmd5>
+    <version>1.7.1</version>
+    <time>1592840817</time>
+    <user>dimstar_suse</user>
+    <comment>Submission of a new dependency of rubocop</comment>
+    <requestid>816379</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c754bc529bf23c99598df252d0484bf3</srcmd5>
+    <version>1.8.0</version>
+    <time>1601919192</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838073</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1e48fa14d60eed6e47461d9298591c0d</srcmd5>
+    <version>1.8.2</version>
+    <time>1605124031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847723</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b27854f98463962eb80413ff264594f2</srcmd5>
+    <version>2.0.3</version>
+    <time>1611262587</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.0.3
+ see installed CHANGELOG.md
+  ## [2.0.3] - 2020-12-28 - [Janosch Müller](mailto:janosch84@gmail.com)
+  
+  ### Fixed
+  
+  - fixed error when scanning some unlikely and redundant but valid charset patterns
+    - e.g. `/[[.a-b.]]/`, `/[[=e=]]/`,
+  - fixed ancestry of some error classes related to syntax version lookup
+    - `NotImplementedError`, `InvalidVersionNameError`, `UnknownSyntaxNameError`
+    - they now correctly inherit from `Regexp::Syntax::SyntaxError` instead of Rubys `::SyntaxError`
+  
+  ## [2.0.2] - 2020-12-25 - [Janosch Müller](mailto:janosch84@gmail.com)
+  
+  ### Fixed
+  
+  - fixed `FrozenError` when calling `#to_s` on a frozen `Group::Passive`
+    * thanks to [Daniel Gollahon](https://github.com/dgollahon)
+  
+  ## [2.0.1] - 2020-12-20 - [Janosch Müller](mailto:janosch84@gmail.com)
+  
+  ### Fixed
+  
+  - fixed error when scanning some group names
+    * this affected names containing hyphens, digits or multibyte chars, e.g. `/(?&lt;a1&gt;a)/`
+    * thanks to [Daniel Gollahon](https://github.com/dgollahon) for the report
+  - fixed error when scanning hex escapes with just one hex digit
+    * e.g. `/\x0A/` was scanned correctly, but the equivalent `/\xA/` was not
+    * thanks to [Daniel Gollahon](https://github.com/dgollahon) for the report
+  
+  ## [2.0.0] - 2020-11-25 - [Janosch Müller](mailto:janosch84@gmail.com)
+  
+  ### Changed
+  
+  - some methods that used to return byte-based indices now return char-based indices
+    * the returned values have only changed for Regexps that contain multibyte chars
+    * this is only a breaking change if you used such methods directly AND relied on them pointing to bytes
+    * affected methods:
+    * `Regexp::Token` `#length`, `#offset`, `#te`, `#ts`
+    * `Regexp::Expression::Base` `#full_length`, `#offset`, `#starts_at`, `#te`, `#ts`
+    * thanks to [Akinori MUSHA](https://github.com/knu) for the report
+  - removed some deprecated methods/signatures
+    * these are rarely used and have been showing deprecation warnings for a long time
+    * `Regexp::Expression::Subexpression.new` with 3 arguments
+    * `Regexp::Expression::Root.new` without a token argument
+    * `Regexp::Expression.parsed`
+  
+  ### Added
+  
+  - `Regexp::Expression::Base#base_length`
+    * returns the character count of an expression body, ignoring any quantifier
+  - pragmatic, experimental support for chained quantifiers
+    * e.g.: `/^a{10}{4,6}$/` matches exactly 40, 50 or 60 `a`s
+    * successive quantifiers used to be silently dropped by the parser
+    * they are now wrapped with passive groups as if they were written `(?:a{10}){4,6}`
+    * thanks to [calfeld](https://github.com/calfeld) for reporting this a while back
+  
+  ### Fixed
+  
+  - incorrect encoding output for non-ascii comments
+    * this led to a crash when calling `#to_s` on parse results containing such comments
+    * thanks to [Michael Glass](https://github.com/michaelglass) for the report
+  - some crashes when scanning contrived patterns such as `'\😋'`
+  
+</comment>
+    <requestid>865235</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aec42fcb59d8f06b5d0b3e20094dff55</srcmd5>
+    <version>2.1.1</version>
+    <time>1615905957</time>
+    <user>RBrownSUSE</user>
+    <comment>update (forwarded request 879328 from mschnitzer)</comment>
+    <requestid>879330</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c76387431b5b22d7f5227c1d902262c7</srcmd5>
+    <version>2.2.0</version>
+    <time>1640473813</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942475</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3bfabe7e73cb677764840528807ef5fa</srcmd5>
+    <version>2.2.1</version>
+    <time>1645723221</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>956124</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a95b561d5d59ff0748142bf160fd0b51</srcmd5>
+    <version>2.3.1</version>
+    <time>1651351964</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>974070</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e98f701e0133b99c3d889cf897b341bb</srcmd5>
+    <version>2.4.0</version>
+    <time>1652717314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977458</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0f80fcafd47d05a07b98c7822bac97fb</srcmd5>
+    <version>2.5.0</version>
+    <time>1655245957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982535</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>24fb86cac473227b0f2b0a395be3ed46</srcmd5>
+    <version>2.6.0</version>
+    <time>1665591921</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.6.0
+ see installed CHANGELOG.md
+  # Changelog
+  
+  All notable changes to this project will be documented in this file.
+  
+  The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+  and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+  
+</comment>
+    <requestid>1010081</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>01764e8edc841daafb3aa288f87f1bd4</srcmd5>
+    <version>2.6.1</version>
+    <time>1670954216</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1042657</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d6a230285bfb884eacb7e148ca5ffe54</srcmd5>
+    <version>2.8.2</version>
+    <time>1700078887</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126418</requestid>
+  </revision>
+</revisionlist>

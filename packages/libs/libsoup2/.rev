@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>45d909a5d955f7fe7347f4a2461d088e</srcmd5>
+    <version>2.74.0</version>
+    <time>1632939500</time>
+    <user>dimstar_suse</user>
+    <comment>lang package installable</comment>
+    <requestid>922160</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3ff4e02156333b45109c8b53145f47fc</srcmd5>
+    <version>2.74.0</version>
+    <time>1633723490</time>
+    <user>RBrownSUSE</user>
+    <comment>Add libsoup2-extend-test-cert.patch to fix tests after 2027 (boo#1102840) (forwarded request 922724 from bmwiedemann)</comment>
+    <requestid>923218</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fff315c0f09403b7dd7ab89cea8e37d2</srcmd5>
+    <version>2.74.1</version>
+    <time>1635539624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.74.1:
+  + Fix support for older versions of Vala.
+  + Fix trying to build sysprof as a subproject on Windows.
+  + Fix missing `extern &quot;C&quot;` in an installed header.
+  + Improve `gssapi` dependency handling.
+  + Fix `libsoup-doc` build target.
+  + Updated translations. (forwarded request 927207 from iznogood)</comment>
+    <requestid>927471</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cf6c532146a8b8d670b0c1de057fc87d</srcmd5>
+    <version>2.74.2</version>
+    <time>1638203298</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.74.2:
+  + Error when libsoup3 is already loaded before libsoup2. (forwarded request 933592 from iznogood)</comment>
+    <requestid>934069</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>267bcf702076a53c5165fc24c30ea995</srcmd5>
+    <version>2.74.3</version>
+    <time>1665754811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010290</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b05114664d850e050514743a4d60dfae</srcmd5>
+    <version>2.74.3</version>
+    <time>1691414922</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1102257 from luc14n0
+
+Forwarded request #1101518 from iznogood
+
+- Add upstream bug fixes:
+  + 4d12c3e5.patch: lib: Add g_task_set_source_tag() everywhere
+  + 48b3b611.patch: lib: Add names to various GSources
+- Drop no longer valid translation-update-upstream BuildRequires
+  and macro.
+- Use ldconfig_scriptlets macro for post(un) handling.</comment>
+    <requestid>1102517</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b7e03545979d2003799f63066cdf8212</srcmd5>
+    <version>2.74.3</version>
+    <time>1702673217</time>
+    <user>anag+factory</user>
+    <comment>- Add ced3c5d8.patch: Fix build with libxml2-2.12.0 and clang-17. (forwarded request 1133090 from dimstar)</comment>
+    <requestid>1133102</requestid>
+  </revision>
+</revisionlist>

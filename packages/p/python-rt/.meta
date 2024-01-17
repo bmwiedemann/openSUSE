@@ -1,0 +1,8 @@
+<package name="python-rt" project="openSUSE:Factory">
+  <title>Python interface to Request Tracker API</title>
+  <description>Python implementation of Request Tracker (a ticketing system) REST API described here: https://rt-wiki.bestpractical.com/wiki/REST
+
+</description>
+  <devel project="devel:languages:python" package="python-rt"/>
+  <url>https://github.com/CZ-NIC/python-rt</url>
+</package>

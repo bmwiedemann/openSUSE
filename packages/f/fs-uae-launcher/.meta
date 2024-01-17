@@ -1,0 +1,8 @@
+<package name="fs-uae-launcher" project="openSUSE:Factory">
+  <title>Graphical configuration frontend and launcher for FS-UAE</title>
+  <description>FS-UAE Launcher is a graphical configuration program and launcher for FS-UAE.
+
+</description>
+  <devel project="Emulators" package="fs-uae-launcher"/>
+  <url>http://fs-uae.net/</url>
+</package>

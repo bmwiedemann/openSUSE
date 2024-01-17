@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Sat Jan 28 14:36:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.4:
+  * Handling updated kstest interface in scipy 1.10
+
+-------------------------------------------------------------------
+Wed Sep 28 14:06:25 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %file section
+
+- update to version 3.1.3:
+  * Pass on random generator to KDE resample method
+  * seed longdouble test
+
+-------------------------------------------------------------------
+Sun May 29 15:29:08 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.2:
+  - Make the sample state indexable [gh#dfm/emcee#425].
+  - Remove NumPy from SETUP_REQUIRES [gh#dfm/emcee#427].
+
+-------------------------------------------------------------------
+Sat Sep 18 19:58:41 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.1:
+  * Added support for a progress bar description
+    (gh#dfm/emcee#401).
+
+-------------------------------------------------------------------
+Sat Jul  3 04:55:24 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.0:
+  * Added preliminary support for named parameters
+    (gh#dfm/emcee#386).
+  * Improved handling of blob dtypes (gh#dfm/emcee#363).
+  * Fixed various small bugs and documentation issues
+- New BuildRequires: python-pip, python-wheel, and
+  python-setuptool_scm.
+
+-------------------------------------------------------------------
+Fri Feb 12 23:50:34 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- NEP 29: python36-numpy and -scipy are no longer available in TW
+  skip python36 build
+
+-------------------------------------------------------------------
+Sun Aug  9 00:02:17 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Tidy spec
+
+-------------------------------------------------------------------
+Sat Aug  1 17:33:10 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.0.2:
+  * Added tutorial for moves interface
+  * Added information about contributions to documentation
+  * Improved documentation for installation and testing
+  * Fixed dtype issues and instability in linear dependence test
+- Changes from version 3.0.1:
+  * Added support for long double dtypes
+  * Improved packaging and release infrastructure
+  * Fixed bug in initial linear dependence test
+- Changes from version 3.0.2:
+  * Added progress bars using `tqdm
+    <https://github.com/tqdm/tqdm>`_.
+  * Added HDF5 backend using `h5py <http://www.h5py.org/>`_.
+  * Added new ``Move`` interface for more flexible specification
+    of proposals.
+  * Improved autocorrelation time estimation algorithm.
+  * Switched documentation to using Jupyter notebooks for
+    tutorials.
+  * More details can be found `on the docs
+    <https://emcee.readthedocs.io/en/v3.0.0/user/upgrade/>`_.
+- Add Requires: python-scipy, python-h5py.
+- Implement %check section to run tests; needs BuildRequires:
+  python-numpy, python-scipy, python-h5py, and python-pytest.
+
+-------------------------------------------------------------------
+Thu Mar 22 05:46:39 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

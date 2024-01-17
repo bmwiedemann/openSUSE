@@ -1,0 +1,5 @@
+<package name="rubygem-regexp_parser" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-regexp_parser"/>
+</package>
