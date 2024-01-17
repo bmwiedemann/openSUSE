@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 16 15:16:22 UTC 2024 - Wolfgang Engel <wolfgang.engel@suse.com>
+
+- Fix %if statement in spec file to require php8 when building 
+  for SLE-15 > SP3 (bsc#1215534)
+
+-------------------------------------------------------------------
 Thu Dec  8 09:35:32 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add fix-CVE-2022-40704.patch that fixes boo#1206079.
