@@ -1268,4 +1268,15 @@
     <comment>- updated to latest repository</comment>
     <requestid>1111482</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>6a008014f98f25899b3ec0ff4e86a5ea</srcmd5>
+    <version>0.10.7</version>
+    <time>1701462304</time>
+    <user>anag+factory</user>
+    <comment>- report plugin failures (gh#openSUSE/snapper#846)
+- fix building with libxml 2.12.0 (gh#openSUSE/snapper#848)
+- fix diff for lvm based configs (bsc#1216191)
+- make SystemCmd take vector of strings</comment>
+    <requestid>1130172</requestid>
+  </revision>
 </revisionlist>
