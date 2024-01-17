@@ -1,0 +1,87 @@
+From 206df42bb9026a93fecf3ed515e90fe5b21533e7 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Fri, 17 Jun 2016 12:24:38 +0200
+Subject: [PATCH 1/2] Fix -Wnarrowing compiler warnings/errors
+Upstream: https://github.com/sfzhi/fbterm/pull/1
+
+Fix the following compiler warnings new in gcc 6.x and onwards:
+
+vterm_states.cpp:136:1: error: narrowing conversion of "-1" from "int"
+to "u16" {aka "short unsigned int"} [-Wnarrowing]
+---
+ src/lib/vterm_states.cpp | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/src/lib/vterm_states.cpp b/src/lib/vterm_states.cpp
+index 49e7588..91413d0 100644
+--- a/src/lib/vterm_states.cpp
++++ b/src/lib/vterm_states.cpp
+@@ -39,14 +39,14 @@ const VTerm::Sequence VTerm::control_sequences[] = {
+ 	{ 0x1B, 0,	ESesc },
+ 	{ 0x7F, 0,	ESkeep },
+ 	{ 0x9B, 0,	ESsquare },
+-	{ -1}
++	{ (u16)-1}
+ };
+ 
+ const VTerm::Sequence VTerm::escape_sequences[] = {
+ 	{   0, 0, ESnormal },
+ 
+ 	// ESnormal
+-	{ -1 },
++	{ (u16)-1 },
+ 
+ 	// ESesc
+ 	{ '[', &VTerm::clear_param,	ESsquare },
+@@ -65,7 +65,7 @@ const VTerm::Sequence VTerm::escape_sequences[] = {
+ 	{ '8', &VTerm::restore_cursor,	ESnormal },
+ 	{ '>', &VTerm::keypad_numeric,	ESnormal },
+ 	{ '=', &VTerm::keypad_application,	ESnormal },
+-	{ -1 },
++	{ (u16)-1 },
+ 
+ 	// ESsquare
+ 	{ '[', 0,	ESfunckey },
+@@ -104,7 +104,7 @@ const VTerm::Sequence VTerm::escape_sequences[] = {
+ 	{ '`', &VTerm::cursor_position_col,	ESnormal },
+ 	{ ']', &VTerm::linux_specific, ESnormal },
+ 	{ '}', &VTerm::fbterm_specific, ESnormal },
+-	{ -1 },
++	{ (u16)-1 },
+ 
+ 	// ESnonstd
+ 	{ '0' | ADDSAME(9), &VTerm::set_palette,    ESkeep },
+@@ -112,25 +112,25 @@ const VTerm::Sequence VTerm::escape_sequences[] = {
+ 	{ 'a' | ADDSAME(5), &VTerm::set_palette,    ESkeep },
+ 	{ 'P', &VTerm::begin_set_palette, ESkeep },
+ 	{ 'R', &VTerm::reset_palette, ESnormal },
+-	{ -1 },
++	{ (u16)-1 },
+ 
+ 	// ESpercent
+ 	{ '@', &VTerm::clear_utf8,	ESnormal },
+ 	{ 'G', &VTerm::set_utf8,	ESnormal },
+ 	{ '8', &VTerm::set_utf8,	ESnormal },
+-	{ -1 },
++	{ (u16)-1 },
+ 
+ 	// EScharset
+ 	{ '0', &VTerm::set_charset, ESnormal },
+ 	{ 'B', &VTerm::set_charset, ESnormal },
+ 	{ 'U', &VTerm::set_charset, ESnormal },
+ 	{ 'K', &VTerm::set_charset, ESnormal },
+-	{ -1 },
++	{ (u16)-1 },
+ 
+ 	// EShash
+ 	{ '8', &VTerm::screen_align,	ESnormal },
+-	{ -1 },
++	{ (u16)-1 },
+ 
+ 	// ESfunckey
+-	{ -1 },
++	{ (u16)-1 },
+ };
+-- 
+2.28.0
+

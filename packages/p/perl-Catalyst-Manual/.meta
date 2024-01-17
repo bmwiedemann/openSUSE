@@ -1,0 +1,5 @@
+<package name="perl-Catalyst-Manual" project="openSUSE:Factory">
+  <title>The Catalyst developer's manual</title>
+  <description>The Catalyst developer's manual</description>
+  <devel project="devel:languages:perl" package="perl-Catalyst-Manual"/>
+</package>

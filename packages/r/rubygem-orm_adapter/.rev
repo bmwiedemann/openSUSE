@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d1ce347530e2a4732e473f0bc0bcc0e3</srcmd5>
+    <version>0.0.6</version>
+    <time>1332752821</time>
+    <user>coolo</user>
+    <comment>needed for WebYaST</comment>
+    <requestid>110594</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4d94eb8977cf113a6019a9862c26c51a</srcmd5>
+    <version>0.0.7</version>
+    <time>1338903311</time>
+    <user>coolo</user>
+    <comment>Updated *.changes (forwarded request 123494 from lslezak)</comment>
+    <requestid>123499</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4d94eb8977cf113a6019a9862c26c51a</srcmd5>
+    <version>0.0.7</version>
+    <time>1340184169</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>56fee34b8bc495fc0a3217d1779c5e68</srcmd5>
+    <version>0.4.0</version>
+    <time>1346691378</time>
+    <user>namtrac</user>
+    <comment> - v0.4.0
+    * Adds :limit, and :offset options to #find_all
+ - v0.3.0
+    * Removes OrmAdapter::Base.model_classes and friends.
+    * Add note about the scope of ORM Adapter re: model instance methods
+  
+ - v0.2.0
+    * Normalise :id in find conditions
+    * Allow find_first and find_all to take no arguments
+ 
+ - v0.1.0
+    * Add #destroy(object) to the API (forwarded request 132290 from namtrac)</comment>
+    <requestid>132370</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>56fee34b8bc495fc0a3217d1779c5e68</srcmd5>
+    <version>0.4.0</version>
+    <time>1359110333</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>56fee34b8bc495fc0a3217d1779c5e68</srcmd5>
+    <version>0.4.0</version>
+    <time>1379664552</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>98f095144374e8c08de6019c0290b95b</srcmd5>
+    <version>0.5.0</version>
+    <time>1385313171</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208122</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>98f095144374e8c08de6019c0290b95b</srcmd5>
+    <version>0.5.0</version>
+    <time>1409303262</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>caf5c0bbc7cd215f2c9b79761534cab0</srcmd5>
+    <version>0.5.0</version>
+    <time>1468360413</time>
+    <user>dimstar_suse</user>
+    <comment>- adapt to new template</comment>
+    <requestid>407687</requestid>
+  </revision>
+</revisionlist>

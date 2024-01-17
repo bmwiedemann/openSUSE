@@ -1,0 +1,5 @@
+<package name="pidgin-xmpp-receipts" project="openSUSE:Factory">
+  <title>Implementation of XMPP message delivery receipts for Pidgin</title>
+  <description>This plugin for Pidgin implements XMPP message delivery receipts (XEP-0184).</description>
+  <devel project="network:pidgin" package="pidgin-xmpp-receipts"/>
+</package>

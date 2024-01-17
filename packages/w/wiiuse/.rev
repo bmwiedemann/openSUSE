@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d4fdf773804cf08af989c1a144f81eb6</srcmd5>
+    <version>0.14.0_p20150515</version>
+    <time>1432888688</time>
+    <user>dimstar_suse</user>
+    <comment>required for supertuxkart</comment>
+    <requestid>307354</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>78d7599c9df722c173179248fb959b5b</srcmd5>
+    <version>0.15.5</version>
+    <time>1618387884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885058</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>edbe12ee60e9ce45e40969406a829fe6</srcmd5>
+    <version>0.15.5</version>
+    <time>1675458324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062653</requestid>
+  </revision>
+</revisionlist>

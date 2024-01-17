@@ -1,0 +1,2 @@
+# Silence rpmlint error. The libraries SONAME won't change
+addFilter("shlib-policy-name-error .*")

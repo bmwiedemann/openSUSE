@@ -1,0 +1,48 @@
+                                                                                                                                                                                                                                                               
+Delivered-To: miro@hroncok.cz
+Received: by 10.66.139.137 with SMTP id qy9csp485197pab;
+        Sun, 14 Oct 2012 05:54:50 -0700 (PDT)
+Received: by 10.182.108.69 with SMTP id hi5mr7619990obb.43.1350219289580;
+        Sun, 14 Oct 2012 05:54:49 -0700 (PDT)
+Return-Path: <lewart3@gmail.com>
+Received: from mail-ob0-f173.google.com (mail-ob0-f173.google.com [209.85.214.173])
+        by mx.google.com with ESMTPS id mg8si13725444obb.111.2012.10.14.05.54.48
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 14 Oct 2012 05:54:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lewart3@gmail.com designates 209.85.214.173 as permitted sender) client-ip=209.85.214.173;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of lewart3@gmail.com designates 209.85.214.173 as permitted sender) smtp.mail=lewart3@gmail.com; dkim=pass header.i=@gmail.com
+Received: by mail-ob0-f173.google.com with SMTP id wc18so3983144obb.4
+        for <miro@hroncok.cz>; Sun, 14 Oct 2012 05:54:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :content-type;
+        bh=XkCQpO07LbyaDxSU0ELKnWykNrzBZxwycR88alPaegA=;
+        b=s7GXMQQQqD940wudifGWm+yQqozWwBdEQDchuj55pU3gVjpfF31YGSY5UeVI9Told/
+         iiQb9M5tBm95vCEym/Jzai9k5v+xRTh+ebOlqaeKJZ90lZsx4R54gE0MzIGqOu+WkeKi
+         1iYMDZpKDktQjUpvvJXGnClNc91XwN+ktyGM8MOHStPX+SCn34Zoo1jAJUNiiD/wBVf1
+         0ol1vqMuJIxeBG+JUd2oMqkLPfJqyg6QBsMlXq9oIj4mZVpjZ/I5ZjeSNHIfVznS3NDv
+         kiYs1OoX9q19pXKrJslXW6MCser5mfbuX4n+8ROcGl4fA6Ato7hrH7VWS5X3YnRjRitB
+         0Rqg==
+MIME-Version: 1.0
+Received: by 10.182.207.71 with SMTP id lu7mr7218614obc.78.1350219288140; Sun,
+ 14 Oct 2012 05:54:48 -0700 (PDT)
+Received: by 10.76.143.1 with HTTP; Sun, 14 Oct 2012 05:54:48 -0700 (PDT)
+In-Reply-To: <CAG7fsRRsDfeEe+AMwX1H8JXTUfeoOW90UdRxvw5m63E3_UJrQA@mail.gmail.com>
+References: <CALE_k2Fh+jHypacxjUspmtjM0Ow0moR8WQ3NOayY5pauiCF8cw@mail.gmail.com>
+	<CAG7fsRRsDfeEe+AMwX1H8JXTUfeoOW90UdRxvw5m63E3_UJrQA@mail.gmail.com>
+Date: Sun, 14 Oct 2012 07:54:48 -0500
+Message-ID: <CALE_k2FR9JKYSkKY-ZtwRWJd=kDcaapiNDcm9FAHfYyMHrs7EA@mail.gmail.com>
+Subject: Re: Fwd: License of Math::Libm
+From: Daniel Lewart <lewart3@gmail.com>
+To: =?UTF-8?Q?Miro_Hron=C4=8Dok?= <miro@hroncok.cz>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Miro,
+
+Perl module Math::Libm is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.6 or,
+at your option, any later version of Perl 5 you may have available.
+
+Peace!
+Dan

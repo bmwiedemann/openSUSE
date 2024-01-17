@@ -1,0 +1,15 @@
+Index: hardening-check/hardening-wrapper/Makefile
+===================================================================
+--- hardening-wrapper.orig/Makefile
++++ hardening-wrapper/Makefile
+@@ -19,8 +19,8 @@ $(BUILD_TREE)/stamp-build: $(WRAPPERS) $
+ 	install $(WRAPPERS) $(BUILD_TREE)/
+ 	# Set defaults, based on OS and ARCH.
+ 	perl -pi -e 's/ #OS#/ '"$(DEB_HOST_ARCH_OS)"'/; s/ #ARCH#/ '"$(DEB_HOST_ARCH)"'/;' $(BUILD_TREE)/hardened-cc $(BUILD_TREE)/hardened-ld
+-	perl -pi -e "s/default{'DEB_BUILD_HARDENING_PIE'}=1;/default{'DEB_BUILD_HARDENING_PIE'}=$(DEFAULT_PIE);/;" $(BUILD_TREE)/hardened-cc $(BUILD_TREE)/hardened-ld
+-	perl -pi -e "s/default{'DEB_BUILD_HARDENING_STACKPROTECTOR'}=1;/default{'DEB_BUILD_HARDENING_STACKPROTECTOR'}=$(DEFAULT_STACKPROT);/;" $(BUILD_TREE)/hardened-cc $(BUILD_TREE)/hardened-ld
++	perl -pi -e "s/default\{'DEB_BUILD_HARDENING_PIE'}=1;/default{'DEB_BUILD_HARDENING_PIE'}=$(DEFAULT_PIE);/;" $(BUILD_TREE)/hardened-cc $(BUILD_TREE)/hardened-ld
++	perl -pi -e "s/default\{'DEB_BUILD_HARDENING_STACKPROTECTOR'}=1;/default{'DEB_BUILD_HARDENING_STACKPROTECTOR'}=$(DEFAULT_STACKPROT);/;" $(BUILD_TREE)/hardened-cc $(BUILD_TREE)/hardened-ld
+ 	# Duplicate cc wrapper to c++.
+ 	install $(BUILD_TREE)/hardened-cc $(BUILD_TREE)/hardened-c++
+ 	perl -pi -e 's/hardened-cc/hardened-c++/g; s|/usr/bin/cc|/usr/bin/c++|g;' $(BUILD_TREE)/hardened-c++

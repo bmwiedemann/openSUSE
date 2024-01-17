@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Mon Jul 11 05:28:56 UTC 2016 - coolo@suse.com
+
+- adapt to new template
+
+-------------------------------------------------------------------
+Fri Nov 22 08:40:33 UTC 2013 - coolo@suse.com
+
+- updated to version 0.5.0
+  * Only send relation modifiers to ActiveRecord if they apply (don't send #order, #limit, #offset unless specified)
+    Fixes plataformatec/devise#2711, ianwhite/orm_adapter#22
+  * Adds activerecord 4 to the test suite
+
+-------------------------------------------------------------------
+Sun Jul 29 17:22:24 UTC 2012 - coolo@suse.com
+ - v0.4.0
+    * Adds :limit, and :offset options to #find_all
+
+ - v0.3.0
+    * Removes OrmAdapter::Base.model_classes and friends.
+    * Add note about the scope of ORM Adapter re: model instance methods
+  
+ - v0.2.0
+    * Normalise :id in find conditions
+    * Allow find_first and find_all to take no arguments
+ 
+ - v0.1.0
+    * Add #destroy(object) to the API
+
+-------------------------------------------------------------------
+Thu May 31 10:16:59 UTC 2012 - lslezak@suse.cz
+
+- updated to 0.0.7:
+  * Lazy load Active Record
+
+-------------------------------------------------------------------
+Tue Jan 31 16:27:59 UTC 2012 - lslezak@suse.cz
+
+- initial version
+- 0.0.6
+

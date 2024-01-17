@@ -1,0 +1,443 @@
+-------------------------------------------------------------------
+Tue Oct 17 14:38:25 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 1.6+5.g68c6ffb:
+  * avoid stack corruption by unaligned DMA to user space buffers
+    (bsc#1216344, gh#linux-nvme/libnvme#727)
+
+-------------------------------------------------------------------
+Thu Oct 12 16:50:55 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Add missing jsc# tracking references to changelog
+
+-------------------------------------------------------------------
+Mon Oct  9 10:00:13 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Use glob for python3-libnvme file listening. Workaround pycache_only
+  problems for SLE/Leap builds.
+- Drop usused libuuid dependency
+
+-------------------------------------------------------------------
+Wed Oct  4 14:31:09 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Enable tests during build
+- Set git version tag
+- Drop unused make dependency
+
+-------------------------------------------------------------------
+Wed Oct  4 10:32:55 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Drop unencessary minimum version depedency on meson.
+- Re-enable libdbus feature. Upstream defaults changed.
+
+-------------------------------------------------------------------
+Fri Sep 29 11:42:15 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.6: (jsc#PED-3610 jsc#PED-4879 jsc#PED-5061)
+  * docs: Fix Read-the-Docs configuration (deprecated config param)
+  * mi-mctp: Fix free() in error path of mi_open_mctp
+  * types: Use NVME_SET for status type mask to get status value
+  * types: Define FLBAS MASK and SHIFT to use NVME_GET
+  * types: Support Phy Rx Eye Opening Measurement Log
+  * log: Add nvme root global variable to set for default output
+  * types: Add support for the OAQD ID controller field
+  * test: use non deprecated API
+  * test: add tests for Get/Set Features functions
+  * ioctl: implement nvme_set_features_lba_range()
+  * ioctl: pass NSID in Get/Set Features commands that use it
+  * ioctl: fix swapped parameters in nvme_set_features_host_id()
+  * ioctl: export nvme_{g,s}et_features_iocs_profile()
+  * ioctl: pass ENDGID in nvme_get_features_endurance_event_cfg()
+  * ioctl: don't set SAVE bit on unsaveable features
+  * ioctl: avoid sending uninitialized timestamp
+  * ioctl: pass data for Get/Set Features commands
+  * ioctl: set correct bits in Set Features commands
+  * ioctl: correct feature IDs in Get/Set Features commands
+  * tree: Add 2 new public functions to lookup existing controllers
+  * ioctl: Add debugging feature to show command outputs
+  * Fix incorrect article 'an' as 'a' to use for a description
+  * linux: Added functions to enable faster telemetry data retrieval. Moved telemetry data area support detection into separate function. Added possibility to modify data transfer chunk size. Enable telemetry extraction up to specified data area. Removed some printf() and perror().
+  * test: account for discovery log page entry stripping
+  * fabrics: unconditionally strip discovery entry strings
+  * fabrics: only look for spaces in strchomp()
+  * tree: Use early return instead of else statements
+  * test: fix lookup test case
+  * test: make all function static
+  * test: add tests for new tcp controller matching algorithm
+  * tree: Improve TCP controller matching algorithm
+  * util: Add functions to parse the system's interfaces
+  * types: Add support for EGFEAT, Domain Identifier, TEGCAP and UEGCAP
+  * mi: remove nsid from nvme_mi_admin_identify_secondary_ctrl_list()
+  * test: add tests for nvme_ctrl_get_src_addr()
+  * tree: Add nvme_ctrl_get_src_addr() to get the controller's src_addr
+  * util: Split _nvme_ipaddrs_eq() from nvme_ipaddrs_eq()
+  * test: add tests for Identify functions
+  * ioctl: use available Identify helper functions
+  * test: pass a large enough buffer to nvme_identify_ns_descs()
+  * ioctl: remove nsid from nvme_identify_secondary_ctrl_list()
+  * meson: Don't hard-code path to "internal/config.h"
+  * fabrics: Do not pass disable_sqflow if not supported
+  * fabrics: Read the supported options lazy
+  * test: add discovery log page tests
+  * test: add infra for mocking passthru ioctls
+  * tree: fix segfault in nvme_scan_subsystem() (bsc#1213993)
+  * src/nvme/tree.c: make __nvme_scan_subsystem() returning bool (bsc#1213993)
+  * doc: fix minor mistake in README.md about dependencies
+  * nvme-tree: avoid warning in 'list-subsys' (bsc#1212598)
+  * tree: Add getter for subsystem iopolicy (bsc#1124564)
+  * fabrics: Consider also all hosts settings for context match
+  * tree: Scan all subsystems (bsc#1212598)
+  * doc: Fixing compile instruction in README
+  * mi: allow non-4-byte-aligned responses
+  * mi-mctp: use a linear response buffer
+  * mi: implement length and offset alignment checks in admin_xfer()
+  * tree: Don't open nvme devices until it's absolutely required
+    (bsc#1213527 bsc#1213686)
+  * tree: missing closedir() causes fd leak for "/sys/bus/pci/slots"
+  * mi: don't return from mi_mctp_submit with a tag held
+  * util: Provide empty nvme_ipaddrs_eq for static builds
+  * fabrics: Relax match on well known disc ctrl lookup
+  * tree: Ignore NULL address pointer for phy slot lookup
+  * fabrics: Filter discovery ctrls out during application context check
+  * util: Add ignored error code
+  * json: Use memory block allocated by realloc() instead printbuf
+  * util: Use HAVE_NETDB instead of HAVE_LIBNSS
+  * tree: Add PCI physical slot number for controller
+  * tree: Use nvme_ipaddrs_eq() to compare IP addresses
+  * fabrics: Add EADDRNOTAVAIL error mapping
+  * fabrics: filter out subsystems with non-matching application string
+  * libnvme: add 'application' setting to nvme_root
+  * libnvme: add 'application' setting to the subsystem
+  * test: Add more code coverage for nvme_ipaddrs_eq()
+  * util: rename ipaddrs_eq() to nvme_ipaddrs_eq() and make public.
+  * util: Add ipaddrs_eq() to check whether two IP addresses are equal
+  * test: Add unit test for ctrl lookups
+  * ioctl: fix RAE bit on last Get Log Page command (bsc#1213618)
+  * fabrics: check genctr after getting discovery entries (bsc#1213618)
+  * fabrics: handle /dev/nvme-fabrics read failure
+  * fabrics: fix potential invalid memory access in __nvmf_supported_option()
+  * Python: Fix crash during garbage collection
+  * python/swig: Check swig version to determine whether -py3 is needed
+  * python/swig: Wrap swig-sensitive struct inside #ifwdef SWIG
+  * mi: Add nvme_mi_ctrl_id to retrieve controller ID
+  * Python: Suppress swig warnings about unnamed struct
+  * examples: fix incorrect controller status in MI info output
+  * ioctl: Explicitly initialize all members of struct nvme_ns_mgmt_args
+  * Python: make NBFT data more pythonic
+  * ioctl: io management send, receive args fix
+  * python: Update test data
+  * NBFT: Remove documentation from nbft.c since it's also in nbft.h
+  * Python: Add NBFT support
+  * nbft: Doc typo - Use nvme_nbft_free() instead of nbft_free()
+  * nbft: Parse the {HOSTID,HOSTNQN}_CONFIGURED flags
+  * nbft: Fix nbft_ssns_flags endianness test
+  * nbft: Add a simple unit test
+  * doc: Update README
+  * build: Simple muon build configuration
+  * build: Extend summary section
+  * build: Make json-c dependency lookup not fail
+  * nbft: Move added symbols to LIBNVME_1_5
+  * build: Update wrap mode defaults
+  * build: Disable fallback on default
+  * tree: Fix offset argument check in nvme_bytes_to_lba
+  * nbft: add NBFT v1.0 table support (jsc#PED-1449)
+  * types: Add IO command set specific field on nsmgmt
+  * fabrics: Do not pass unsupported options to kernel
+  * types: Add ns-mgmt host software specified fields
+  * types.h: Add FDP related Status Code
+  * tree: Fix argument check in nvme_bytes_to_lba
+
+-------------------------------------------------------------------
+Thu Jul 27 13:10:34 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Fix build with meson 1.2.0 
+
+-------------------------------------------------------------------
+Fri Mar 31 15:38:35 UTC 2023 - Daniel Wagnrer <daniel.wagner@suse.com>
+
+- Update to version 1.4: (jsc#PED-553 jsc#PED-3884)
+  * fabrics: Filter out invalid UUIDs from DMI
+  * fabrics: Add define for DMI sysinfo
+  * Print out correct TREQ strings for discovery
+  * tree: fix generic device open failure
+  * fabrics: add configuration option 'tls_key'
+  * fabrics: add configuration option 'keyring'
+  * linux: add key helper functions
+  * nvme: add 'nvme_insert_tls_key()' function
+  * linux: add nvme_lookup_keyring()
+  * python: Change python option from combo to feature
+  * types: add opcode field to error log page (TP4113)
+  * python: Add setter property for controller DHCHAP Key
+  * python: Remove redundant host.set_key() method
+  * build, meson: Print option summary
+  * Python: Add support for setting/getting Host DHCHAP key
+  * Python: Add hostnqn_from_file() and hostid_from_file()
+  * types: Update position of elbatm in struct nvme_copy_range{_f1}
+  * doc: fix kernel-doc-check warning
+  * python, meson: Assert that deps are present for -Dpython=true
+  * python: Reformat SWIG input file
+  * python test: Check there is no SIGSEGV during garbage collection
+  * python: Return PyObject* from __str__() instead of a static char[]
+  * python: Fix segmentation fault during garbage collection
+  * build: Enable test in muon minimal build
+  * build: Streamline workflows with nvme-cli
+  * mi: Add nvme_mi_admin_get_log_page
+  * ioctl: Set file descriptor in nvme_get_log_page()
+  * fix endians
+  * fabrics: Do not ignore one char whitespace when string sanitizing
+- Enabled unit test on s390x again (bsc#1207687, bsc#1207686)
+- Fix invalid string lenght calculcation for UUID (bsc#1209906)
+- Fix segmentation fault during garbage collection (bsc#1209905)
+- Always sanitize traddr and trsvcid entries (bsc#1207435)
+- Allow tracking unique discover controllers (bsc#1186689)
+
+-------------------------------------------------------------------
+Mon Jan 30 14:46:55 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- temporarily disable unit tests on s390x (bsc#1207687, bsc#1207686)
+
+-------------------------------------------------------------------
+Mon Jan 30 13:51:19 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.3:
+ * Support added for Flexible Data Placement (TP4146)
+ * Fabrics: added support for Persistent Discovery Controllers.
+ * libnvme-mi added a quirk framework to workaround special behavior of
+   certain devices
+ * The python binding behaves more friendly in a threading environment
+   by release the GIL on blocking calls.
+ * Replaced  3the libsystemd dependency with libdbus
+ * A lot of small fixes everywhere (leaks, wrong ordering of arguments, ...)
+- Update spec file
+  * Project depends on meson >= 0.50.0
+
+-------------------------------------------------------------------
+Wed Nov 02 16:06:21 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.2:
+  * Add more details for return code of MI admin cmds
+  * Parse dhchap_host_key on controller level
+  * Update json config schema for missing dhchap host key
+  * fabrics: Add new TP8010 definitions
+  * fabrics: Add nvmf_get_discovery_wargs()
+  * fabrics: Duplicate strings when merging configs
+  * fabrics: Filter out empty strings in add_argument()
+  * fabrics: Use fallthrough statement
+  * ioctl: Set log page offset for nvme_get_log_telemetry_host
+  * json-schema: add dhchap_key details to host section
+  * json: Enforce correctly formatted JSON config files
+  * json: Verify JSON config file starts with an array
+  * mi: Add Get Log Page helpers
+  * mi: Add Identify function for secondary controller list
+  * mi: Add Identify helper for ns-descs and primary-ctrl-caps
+  * mi: Add firmware download and commit commands
+  * mi: Add identify helper for nsid-capable Controller List
+  * mi: Add identify helpers for namespace lists
+  * mi: Add identify helpers for namespaces
+  * mi: Allow Admin-message sized More Processing Required responses
+  * mi: Distinguish MI status from NVMe (CDW3) status
+  * mi: Fix C++ compiler errors
+  * mi: Implement Format NVM command
+  * mi: Implement Get & Set Features Admin commands
+  * mi: Implement NS attach command and helpers
+  * mi: Implement Namespace Management command and create/delete helpers
+  * mi: Implement Sanitize command
+  * mi: Init ctrl_id within xfer
+  * mi: Introduce a helper for response status, unify values with ioctls
+  * mi: Set log page offset for nvme_get_log_telemetry_host
+  * mi: add nvme_mi_status_to_string()
+  * mi: fix a memory leak in nvme_mi_open_mctp()
+  * mi: fix get_log_page chunked offset check
+  * nvme-tree: avoid segfault if auth keys are unavailable
+  * python: Use nvmf_get_discovery_wargs()
+  * tree: rename controller 'dhchap_key' to 'dhchap_ctrl_key'
+  * types: Move enum nvme_data_tfr to types
+  * util: Add LINE_MAX define
+  * util: Add get feature length 2 API to support direction parameter
+  * util: Add simple UUID type
+  * util: Do not expose fallthrough defines
+- Make man page build conditiional. Install man page location has been
+  fixed upstream.
+- Mark the Python directory own by the libnvme3-python package
+
+-------------------------------------------------------------------
+Mon Oct 31 19:06:17 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use fixed manpage build date (boo#1047218)
+
+-------------------------------------------------------------------
+Fri Aug 26 06:32:07 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix installation of manual pages to make them accessible
+
+-------------------------------------------------------------------
+Tue Aug  2 18:55:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 1.1:
+  * Regenerate all documentation
+  * json: fixup dhchap_ctrl_key definitions
+  * fabrics: Fix build_options() return values
+  * fabrics: sanitize dump-config output
+  * Fix poll.h includes
+  * build: Drop -nostdinc for LibreSSL header checks
+  * ioctl: Honor rae in nvme_get_nsid_log
+  * build: Add support to build against LibreSSL
+  * rpmbuild: Enable 'make rpm' to build rpm pkgs #408
+  * mi: unify MI Get Log Page function with ioctl API
+  * python: add missing ctrl attrs to Python bindings
+  * mi-mctp: Add timeout support to MCTP transport
+  * mi: Add maximum More Processing Required limit API
+  * mi: Add endpoint get/set timeout API
+  * tree: Factor lookup code for controller (bsc#1199503)
+  * fabrics: Consider config from file when adding new controller (bsc#1199503)
+  * fabrics: Lower log level in __nvmf_add_ctrl (bsc#1199994 bsc#1199503)
+  * fabrics: Remove double connection error logging (bsc#1199994 bsc#1199503)
+  * Fixes for controller authentication (bsc#1201501 bsc#1201700 bsc#1201701 bsc#1201717)
+
+-------------------------------------------------------------------
+Thu Jul 14 14:00:41 UTC 2022 - daniel.wagner@suse.com
+
+- Update to version v1.1-rc0:
+  * update/cleanup of documentation
+  * various build fixes
+  * various fixes reported by coverity
+  * 64-bit Reference Tags and TP-4068 changes
+  * libnvme-mi: Introduce NVMe Managament Interface library
+
+-------------------------------------------------------------------
+Fri Apr 08 17:04:22 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0:
+  * tree: Remove default port setting for TCP and RDMA ports
+  * tree: add 'f_args' argument to pass user data to the filter function
+  * tree: remove 'ctrl_get_ana_state()'
+  * tree: add namespace path iterators
+  * tree: filter out namespaces
+  * tree: update nvme_scan_filter_t usage
+
+-------------------------------------------------------------------
+Fri Apr 01 13:22:12 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0-rc8:
+  * types: Add support for get log - MI Command Supported
+  * types: Add new Identify constant
+  * types: Update persistent event entry struct added new fields
+  * types: Add Host Initiated Data Gen Number to telemetry log struct
+  * tree: always allocate config file in nvme_read_config()
+  * tree: rework nvme_scan_subsystem()
+  * tree: make subsystem name mandatory in nvme_scan_ctrl()
+  * tree: move nvme_init_subsystem() into nvme_lookup_subsystem()
+  * tree: do not return error when filtering out subsystems
+  * tree: add debugging messages during scanning
+  * tree: Handle NULL subsysname in nvme_scan_ctrl()
+  * tree: Fix subsystem initialization in nvme_scan_ctrl()
+  * tree: Fix leaking 'name' in nvme_subsystem_lookup_namespace()
+  * tree: Avoid dereferencing nvme_subsystem_t before its check for NULL
+  * tree: Clarify NULL return values from nvme_get_attr()
+  * fabrics: Invoke nvmf_dim() with provided tas argument
+  * fabrics: add 'nvmf_update_config()'
+  * fabrics: Avoid out of bounds string chomping
+  * fabrics: Free old traddr in nvmf_add_ctrl
+  * fabrics: update log level for write failures
+  * fabrics: Streamlining documentation
+  * fabrics: Fix leaking ctrl in nvmf_connect_disc_entry()
+  * fabrics: Add missing break in a switch
+  * ioctl: Remove attribute packed and alignedof for args structs
+  * ioctl: Align arguments indentation with braces
+  * json: fix endless loop scanning for controllers
+  * Remove nvme_init_id_ns
+  * Add lbstm support for create-ns
+  * documentation updates
+
+-------------------------------------------------------------------
+Fri Mar 18 19:08:52 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0-rc7:
+  * linux: fixup log page offset in nvme_get_log_page()
+  * tree: Add support for default trsvcid for all controllers (bsc#1195858)
+  * tree: fixup coredump during nvme discover
+
+-------------------------------------------------------------------
+Fri Mar 11 17:58:36 UTC 2022 - Daniel Wagnrer <daniel.wagner@suse.com>
+
+- Update to version 1.0-rc6:
+  * tree: add nvme_ctrl_get_ana_state() (bsc#1195938)
+  * tree: link paths to namespaces in nvme_subsystem_scan_namespace() (bsc#1195938)
+  * ioctl.h: ns list bug fix (wrong cns value)
+  * types.h: Key Value Command Set Identifier added (NVME_CSI_KV)
+  * types: fix status code type bug (wrong masking)
+
+-------------------------------------------------------------------
+Tue Mar  8 09:30:25 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update License information. The library is released under
+  LGPL-2.1-or-later and not LGPL-2.1-only.
+
+-------------------------------------------------------------------
+Thu Mar 03 18:54:35 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0-rc5:
+  * ioctl: Set lsp to action in nvme_get_log_persistent_event (bsc#1196121)
+  * tree: Ignore traddr case in nvme_lookup_ctrl() (bsc#1194025)
+  * fabrics: Do not swap bytes for system uuid (bsc#1196565)
+  * documentation updates
+
+-------------------------------------------------------------------
+Tue Feb 22 17:40:44 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0-rc4:
+  * fabrics: add default port number for NVMe/TCP I/O controllers
+  * linux: Update size when telemetry controller initiated data is unavailable
+  * add cdw13 for set_feature_args structure
+  * Add support for TP8010
+  * Documentation cleanups
+
+-------------------------------------------------------------------
+Fri Feb 11 13:29:54 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version v1.0-rc3:
+  * Properly create manuals/documentation
+  * Fix memleaks in __nvme_free_ns() and nvme_scan_subsystem()
+  * nvme: get log domain id included in Log Specific Identifier
+  * nvme: Add nulbaf(Number of Unique Capability LBA Formats) field on nvmd_id_ns
+  * ioctl: Add identify ioctl for CNS 09h, 0Ah
+  * nvme: Add Enhanced Controller Meta Data(FID: 0x7D)
+  * nvme: Add Supported Capacity Configuration List log page(LID: 0x11)
+  * tree: do not set dhchap_key to 'none'
+  * tree: restart controller lookup
+  * tree: fixup memory leak in nvme_scan_ctrl()
+  * Rename nvme_path_get_subsystem()
+  * Remove nvme_reset_topology()
+- Use precompiled documentation instead regenerating it
+
+-------------------------------------------------------------------
+Tue Feb 01 11:26:39 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0~2:
+  * Add fabrics config option 'tls'
+  * Logging infrastructure reworked (API break)
+  * Changed argument structs layout (API break)
+  * Changed scan API (API break)
+  * Fixed ctrl_loss_tmo handling concerning values of '-1'
+  * Various build fixes
+
+-------------------------------------------------------------------
+Wed Jan 19 11:13:42 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Remove Provide for python package.
+- Remove explicit tar file name for setup step.
+
+-------------------------------------------------------------------
+Tue Jan 18 14:26:47 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Use osc_scm to manage upstream input source.
+
+-------------------------------------------------------------------
+Tue Jan 18 12:53:02 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Fix Source URL
+
+-------------------------------------------------------------------
+Fri Jan 14 17:54:47 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Initial package creation for libnvme

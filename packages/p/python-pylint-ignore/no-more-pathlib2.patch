@@ -1,0 +1,104 @@
+From 16370c44b65acf5e53c4d27a9ce298ca25df6fc6 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 3 Aug 2022 15:03:39 +1000
+Subject: [PATCH] Remove use of pathlib2
+
+pathlib has been included in the Python standard library since 3.4,
+and since the lowest supported version of Python is now above that, we
+can remove the external dependency and use pathlib directly. As a
+drive-by, also remove a bunch of __future__ imports.
+---
+ requirements/pypi.txt           | 1 -
+ setup.cfg                       | 2 +-
+ src/pylint_ignore/__main__.py   | 2 +-
+ src/pylint_ignore/ignorefile.py | 2 +-
+ test/test_ignorefile.py         | 7 +------
+ test/test_main.py               | 7 +------
+ 6 files changed, 5 insertions(+), 16 deletions(-)
+
+diff --git a/requirements/pypi.txt b/requirements/pypi.txt
+index e652814..392001a 100644
+--- a/requirements/pypi.txt
++++ b/requirements/pypi.txt
+@@ -9,5 +9,4 @@
+ 
+ astroid>2.1.0
+ pylint<2.13
+-pathlib2
+ pylev
+diff --git a/src/pylint_ignore/__main__.py b/src/pylint_ignore/__main__.py
+index f17c12b..03021a5 100755
+--- a/src/pylint_ignore/__main__.py
++++ b/src/pylint_ignore/__main__.py
+@@ -23,8 +23,8 @@
+ import functools as ft
+ import subprocess as sp
+ import multiprocessing as mp
++import pathlib as pl
+ 
+-import pathlib2 as pl
+ import pylint.lint
+ from pylint.lint.pylinter import PyLinter
+ 
+diff --git a/src/pylint_ignore/ignorefile.py b/src/pylint_ignore/ignorefile.py
+index a26139b..df2c5a7 100644
+--- a/src/pylint_ignore/ignorefile.py
++++ b/src/pylint_ignore/ignorefile.py
+@@ -9,9 +9,9 @@
+ import hashlib
+ import logging
+ import collections
++import pathlib as pl
+ 
+ import pylev
+-import pathlib2 as pl
+ 
+ logger = logging.getLogger('pylint_ignore')
+ 
+diff --git a/test/test_ignorefile.py b/test/test_ignorefile.py
+index d7835a4..5b4fd3f 100644
+--- a/test/test_ignorefile.py
++++ b/test/test_ignorefile.py
+@@ -2,18 +2,13 @@
+ # pylint:disable=redefined-outer-name ; pytest.fixture tmp_ignorefile
+ # pylint:disable=protected-access ; ok for testing
+ 
+-from __future__ import division
+-from __future__ import print_function
+-from __future__ import absolute_import
+-from __future__ import unicode_literals
+-
+ import os
+ import time
+ import shutil
+ import textwrap
++import pathlib as pl
+ 
+ import pytest
+-import pathlib2 as pl
+ 
+ from pylint_ignore import ignorefile
+ 
+diff --git a/test/test_main.py b/test/test_main.py
+index f224a6e..5215bc7 100644
+--- a/test/test_main.py
++++ b/test/test_main.py
+@@ -2,17 +2,12 @@
+ # pylint:disable=redefined-outer-name ; pytest.fixture ignore_file
+ # pylint:disable=protected-access ; ok for testing
+ 
+-from __future__ import division
+-from __future__ import print_function
+-from __future__ import absolute_import
+-from __future__ import unicode_literals
+-
+ import os
+ import sys
+ import shutil
++import pathlib as pl
+ 
+ import pytest
+-import pathlib2 as pl
+ 
+ import pylint_ignore.__main__ as main
+ 

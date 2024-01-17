@@ -1,0 +1,24 @@
+Index: deepin-turbo-0.0.5/src/booster-dtkwidget/deepin-turbo-booster-dtkwidget.service
+===================================================================
+--- deepin-turbo-0.0.5.orig/src/booster-dtkwidget/deepin-turbo-booster-dtkwidget.service
++++ deepin-turbo-0.0.5/src/booster-dtkwidget/deepin-turbo-booster-dtkwidget.service
+@@ -3,6 +3,19 @@ Description=DTK widget application launc
+ After=display-manager.service
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=notify
+ ExecStart=/usr/lib/deepin-turbo/booster-dtkwidget --systemd
+ Restart=always

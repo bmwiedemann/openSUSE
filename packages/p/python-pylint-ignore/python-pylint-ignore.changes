@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Thu Apr 27 06:55:16 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on typing_extensions. 
+
+-------------------------------------------------------------------
+Fri Oct 14 11:44:33 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add update-alternatives requires
+- Remove glob %{python_sitelib}/* files, use package specific
+- Disable broken tests for python38 and python39
+
+-------------------------------------------------------------------
+Wed Aug  3 05:32:29 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2022.1025:
+  * Pin pylint to <2.13
+- Add patch no-more-pathlib2.patch:
+  * Use pathlib rather than pathlib2.
+- Drop {Build,}Requires on pathlib2 
+
+-------------------------------------------------------------------
+Wed Feb 23 14:35:03 UTC 2022 - pgajdos@suse.com
+
+- version update to 2021.1024
+  - Add/document support for [pre-commit](https://pre-commit.com/).
+    Thank you James Quilty for this contribution [github/issue/9][gh_i9]
+    [github/pull/10][gh_i10] :heart:.
+  - Fix [github #11][gh_i11]: MessagesHandlerMixIn has been removed in pylint 2.12
+  - Breaking: Drop support for `Python<3.7`
+  - Breaking: Drop support for `pylint<2.4`
+  
+    Due to internal API changes in pylint, older versions of pylint
+    are no longer supported. If you need to use an older version of
+    pylint, you will have to pin `pylint-ignore==2021.1021`.
+
+-------------------------------------------------------------------
+Thu Jun 24 17:42:26 UTC 2021 - Alexander Graul <alexander.graul@suse.com>
+
+- Inital package of pylint-ignore

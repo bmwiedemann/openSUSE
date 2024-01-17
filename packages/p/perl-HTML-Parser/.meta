@@ -1,0 +1,22 @@
+<package name="perl-HTML-Parser" project="openSUSE:Factory">
+  <title>HTML parser class</title>
+  <description>Objects of the HTML::Parser class will recognize markup and separate it
+from plain text (alias data content) in HTML documents. As different
+kinds of markup and text are recognized, the corresponding event handlers
+are invoked.
+
+HTML::Parser is not a generic SGML parser. We have tried to make it able to
+deal with the HTML that is actually &quot;out there&quot;, and it normally parses as
+closely as possible to the way the popular web browsers do it instead of
+strictly following one of the many HTML specifications from W3C. Where
+there is disagreement, there is often an option that you can enable to
+get the official behaviour.
+
+The document to be parsed may be supplied in arbitrary chunks. This makes
+on-the-fly parsing as documents are received from the network possible.
+
+If event driven parsing does not feel right for your application, you might
+want to use HTML::PullParser. This is an HTML::Parser subclass that allows
+a more conventional program structure.</description>
+  <devel project="devel:languages:perl" package="perl-HTML-Parser"/>
+</package>

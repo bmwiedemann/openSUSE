@@ -1,0 +1,5 @@
+<package name="mate-themes" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:MATE:Factory" package="mate-themes"/>
+</package>

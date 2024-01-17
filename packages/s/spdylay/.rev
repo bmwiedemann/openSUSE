@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f626caa870b21727fab397d7fd024efe</srcmd5>
+    <version>1.3.2</version>
+    <time>1447234189</time>
+    <user>dimstar_suse</user>
+    <comment>New package, dependency of several http2 related packages</comment>
+    <requestid>339366</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8a317ab925c65b0d475144be6bf2ae4b</srcmd5>
+    <version>1.4.0</version>
+    <time>1477134030</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0:</comment>
+    <requestid>435472</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6b5c72727ca5b8f8ae69ae0c7c6f512d</srcmd5>
+    <version>1.4.0</version>
+    <time>1477903923</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436891</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>45e6f2c28509f390c1434a8734be8fda</srcmd5>
+    <version>1.4.0</version>
+    <time>1500669387</time>
+    <user>dimstar_suse</user>
+    <comment>- Tiny packaging adjustemenets</comment>
+    <requestid>510275</requestid>
+  </revision>
+</revisionlist>
