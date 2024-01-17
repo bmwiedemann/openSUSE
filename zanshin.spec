@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           zanshin
-Version:        23.08.3
+Version:        23.08.4
 Release:        0
 Summary:        TODO Application
 License:        GPL-2.0-only
@@ -29,7 +29,7 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  boost-devel
-BuildRequires:  kf5-filesystem
+BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5Runner)
