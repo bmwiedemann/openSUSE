@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 17 07:36:12 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.42.1:
+  * Add Webi as an option for installation (#8555)
+  * Align devcontainer Go version with go.mod (#8570)
+  * Move create codespace permission opt out behind `else` to fix token permissions
+  * chore: Unify calling gh in examples (#8560)
+
+-------------------------------------------------------------------
 Mon Jan 15 08:20:38 UTC 2024 - pdostal@suse.com
 
 - Update to version 2.42.0:
