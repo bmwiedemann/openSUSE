@@ -1,0 +1,234 @@
+-------------------------------------------------------------------
+Mon Jul 17 10:51:58 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Update to 4.4.36
+  * Fix left over bits failing with Perl v5.38.0
+
+-------------------------------------------------------------------
+Sat Jul  1 22:32:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.35:
+  * Fix build with Perl v5.38.0 (issue #170).
+  * Fix build with MinGW-w(32|64).
+
+-------------------------------------------------------------------
+Thu Jun  1 13:36:26 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Update to 4.4.34
+  * Optimize some cast operation for performance in
+    lib/alg-yescrypt-platform.c.
+  * Add SHA-2 Maj() optimization proposed by Wei Dai in lib/alg-sha512.c.
+  * Explicitly clean the stack and context state after computation in
+    lib/alg-gost3411-2012-hmac.c, lib/alg-hmac-sha1.c, and lib/alg-sha256.c
+    (issue #168).
+
+-------------------------------------------------------------------
+Thu Mar 23 12:58:47 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO now (boo#1138833) and use FAT LTO objects for static libs.
+
+-------------------------------------------------------------------
+Fri Mar 10 20:29:48 UTC 2023 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- Enable livepatching support on x86_64.
+
+-------------------------------------------------------------------
+Wed Nov 30 15:02:10 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Update to 4.4.33
+  * Fix variable name in crypt(3) for a datamember of 'struct crypt_data'
+  * Fix -Werror=strict-overflow in lib/crypt-des.c, which is seen
+    by GCC 12.x
+  * Add some SHA-2 Maj() optimization in lib/alg-sha256.c
+  * Fix -Werror=conversion in lib/alg-yescrypt-opt.c
+  * Improvements to huge page handling in lib/alg-yescrypt-platform.c
+  * Fix -Werror=sign-conversion in lib/alg-yescrypt-platform.c
+
+-------------------------------------------------------------------
+Sun Apr 10 09:34:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.28:
+  No changes whatsoever.
+
+-------------------------------------------------------------------
+Mon Dec 20 22:45:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.27:
+  * Limit the maximum amount of rbytes to 64 bytes (512 bits) for yescrypt,
+    gost-yescrypt, and scrypt 
+
+-------------------------------------------------------------------
+Sun Nov 28 19:44:05 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.4.26:
+  * fix compilation on system with gcc >= 10 that do not support
+    declarations with __attribute__((symver))
+- switch to bootstrapped tarball, add upstream signing key and
+  verify source signature
+
+-------------------------------------------------------------------
+Wed Aug 18 10:22:27 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Update to 4.4.25
+  * Fix several issues found by Covscan in the testsuite.  These include:
+    - CWE-170: String not null terminated (STRING_NULL)
+    - CWE-188: Reliance on integer endianness (INCOMPATIBLE_CAST)
+    - CWE-190: Unintentional integer overflow (OVERFLOW_BEFORE_WIDEN)
+    - CWE-569: Wrong sizeof argument (SIZEOF_MISMATCH)
+    - CWE-573: Missing varargs init or cleanup (VARARGS)
+    - CWE-687: Argument cannot be negative (NEGATIVE_RETURNS)
+  * Stricter checking of invalid salt characters (issue #135).
+
+-------------------------------------------------------------------
+Thu Jun 24 08:48:06 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.4.23
+  * Fix output calculation for gensalt_yescrypt_rn().
+  * Fix -Werror=conversion in lib/crypt-des-obsolete.c,
+    test/des-obsolete.c, and test/des-obsolete_r.c.
+  * The crypt_checksalt() function has been fixed to correctly return
+    with 'CRYPT_SALT_INVALID', in case the setting, that is passed
+    to be checked, represents an empty passphrase or an uncomputed
+    setting for descrypt without any salt characters.
+  * The crypt_checksalt() function will now return the value
+    'CRYPT_SALT_METHOD_LEGACY' in case the setting, that is passed
+    to be checked, uses a hashing method, which is considered to be
+    too weak for use with new passphrases.
+  * Fix build when the CFLAGS variable, that is passed into the
+    configure script, has a leading whitespace character in it
+    (issue #123).
+
+-------------------------------------------------------------------
+Tue Apr 13 14:59:57 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.4.19 
+  * Improve fallback implementation of explicit_bzero.
+  * Add glibc-on-CSKY, ARC, and RISCV-32 entries to libcrypt.minver.
+    These were added in GNU libc 2.29, 2.32, and 2.33 respectively
+  * Do not build xcrypt.h if we’re not going to install it.
+  * Do not apply --enable-obsolete-api-enosys mode to fcrypt.
+  * Compilation fix for NetBSD.  NetBSD’s <unistd.h> declares encrypt
+    and setkey to return int, contrary to POSIX (which says they return
+    void).  Rename those declarations out of the way with macros.
+  * Compilation fixes for building with GCC 11.
+    Basically fixes for explicit type-casting.
+  * Force update of existing symlinks during installation 
+
+-------------------------------------------------------------------
+Mon Feb 22 10:41:24 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Update to version 4.4.18
+  * Fix conversion error in lib/alg-gost3411-core.c
+
+-------------------------------------------------------------------
+Tue Sep  1 14:47:37 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Add compatibility provides for SLE15
+- Update to version 4.4.17
+  * Salt string compatibility with generic implementations
+
+-------------------------------------------------------------------
+Mon Mar  2 09:50:17 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Update to version 4.4.15
+  * The compatibility symbols crypt_gensalt_r, xcrypt, xcrypt_r,
+    xcrypt_gensalt, and xcrypt_gensalt_r are deprecated further
+  * Speed up ka-sunmd5 by skipping most of the test phrases
+- Package README.md and TODO.md (bsc#1165389)
+
+-------------------------------------------------------------------
+Thu Jan 30 13:34:00 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Update to version 4.4.12
+  * Another fix for GCC v10.x, which occurs on s390 architectures only.
+
+-------------------------------------------------------------------
+Wed Jan 22 11:35:17 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Update to version 4.4.11
+  * Fixes for GCC v10.x
+  * Change how the known-answer tests are parallelized
+- gcc10.patch: remove
+
+-------------------------------------------------------------------
+Thu Dec 12 08:23:08 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- gcc10.patch: fix build with gcc10 (bsc#1158192)
+
+-------------------------------------------------------------------
+Sat Dec  7 14:19:35 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Update to version 4.4.10
+  * Fix alignment problem for GOST 34.11 (Streebog) in gost-yestcrypt.
+  * The crypt_* functions will now all fail and set errno to ERANGE if
+    their 'phrase' argument is longer than CRYPT_MAX_PASSPHRASE_SIZE
+    characters (this is currently 512)
+  * The NT hashing method no longer truncates passphrases at 128
+    characters; Windows does not do this.
+- format-overflow.patch: remove
+
+-------------------------------------------------------------------
+Thu Jun 20 11:49:28 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO due to symbol versioning (boo#1138833).
+
+-------------------------------------------------------------------
+Tue Feb 19 10:49:30 UTC 2019 - schwab@suse.de
+
+- format-overflow.patch: Fix -Werror=format-overflow
+
+-------------------------------------------------------------------
+Thu Feb 14 13:54:55 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update to version 4.4.3:
+  * Add libxcrypt.so, libxcrypt.a and xcrypt.h.
+  * Add new man3 manual pages.
+
+-------------------------------------------------------------------
+Tue Oct  9 11:43:13 UTC 2018 - schwab@suse.de
+
+- Set compatibility level to suse
+
+-------------------------------------------------------------------
+Wed Aug  8 11:44:16 UTC 2018 - schwab@suse.de
+
+- Add conflicts with glibc-devel < 2.28
+
+-------------------------------------------------------------------
+Mon Aug  6 16:34:12 UTC 2018 - jengelh@inai.de
+
+- Fix RPM groups for Factory.
+
+-------------------------------------------------------------------
+Wed Aug  1 08:50:25 UTC 2018 - schwab@suse.de
+
+- Update to libxcrypt 4.1.0
+  * Fix spelling of SUSE.
+  * Lower the minimum required automake version to 1.14.
+  * Fix build with USE_SWAPCONTEXT turned off.
+  * Extend --enable-weak-hashes configure option to accept optional
+    "glibc" parameter.
+  * Fix the leak of obtained random bytes.
+  * Check expected output strings for deterministic methods.
+  * Fix memory leak in crypt_sha1_rn.
+  * Fix read of random bytes out of bounds in gensalt_sha1_rn.
+  * Make it possible to disable individual hashes at configure time.
+  * Make salt validation pickier.
+  * Replace crypt-sunmd5.c with BSD-licensed cleanroom reimplementation.
+  * Make crypt_gensalt for $sha1 deterministic.
+  * Fix incorrect output-size computation in crypt_sha1_rn.
+  * Add docs for SHA1, MD5/Sun, NTHASH.
+  * Introduce CRYPT_GENSALT_IMPLEMENTS_* feature test macros.
+  * Install libcrypt.pc symlink along with libxcrypt.pc.
+  * Extend --enable-obsolete-api configure option.
+  * Extend overall test coverage.
+
+-------------------------------------------------------------------
+Wed May 23 10:01:29 UTC 2018 - schwab@suse.de
+
+- Update to libxcrypt 4.0.1
+
+-------------------------------------------------------------------
+Wed May  9 13:51:35 UTC 2018 - schwab@suse.de
+
+- ABI compatible replacement for libcypt from glibc

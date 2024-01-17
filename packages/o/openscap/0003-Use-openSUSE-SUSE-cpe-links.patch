@@ -1,0 +1,100 @@
+From 815356039b16d5abba9cdebc07c23aa967947ef3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Tue, 28 Mar 2023 12:05:37 +0200
+Subject: [PATCH 3/5] Use openSUSE/SUSE cpe links
+
+---
+ utils/oscap_docker_python/get_cve_input.py    | 21 ++++++++++---
+ .../oscap_docker_common.py                    | 31 ++++++++++++++++++-
+ 2 files changed, 46 insertions(+), 6 deletions(-)
+
+diff --git a/utils/oscap_docker_python/get_cve_input.py b/utils/oscap_docker_python/get_cve_input.py
+index 6d77bdb..bb38e77 100644
+--- a/utils/oscap_docker_python/get_cve_input.py
++++ b/utils/oscap_docker_python/get_cve_input.py
+@@ -31,9 +31,12 @@ class getInputCVE(object):
+ 
+     hdr = {'User-agent': 'Mozilla/5.0'}
+     hdr2 = [('User-agent', 'Mozilla/5.0')]
+-    url = "https://www.redhat.com/security/data/oval/"
+-    dist_cve_name = "com.redhat.rhsa-RHEL{0}.xml.bz2"
+-    dists = [5, 6, 7]
++    rhel_url = "https://www.redhat.com/security/data/oval/"
++    rhel_dist_cve_name = "com.redhat.rhsa-RHEL{0}.xml.bz2"
++    rhel_dists = [5, 6, 7]
++    suse_url = "https://ftp.suse.com/pub/projects/security/oval/"
++    suse_dist_cve_name = "suse.linux.enterprise.{0}.xml"
++    suse_dists = [12, 15]
+     remote_pattern = '%a, %d %b %Y %H:%M:%S %Z'
+ 
+     def __init__(self, fs_dest, DEBUG=False):
+@@ -46,10 +49,18 @@ class getInputCVE(object):
+         Given a distribution number (i.e. 7), it will fetch the
+         distribution specific data file if upstream has a newer
+         input file.  Returns the path of file.
++        We just hack that SUSE has versions above 10 to mean SUSE
+         '''
+-        cve_file = self.dist_cve_name.format(dist)
++        if dist == "12" or dist == "15":
++            cve_file = self.suse_dist_cve_name.format(dist)
++            dist_url = urllib.parse.urljoin(self.suse_url, cve_file)
++        else:
++            cve_file = self.rhel_dist_cve_name.format(dist)
++            dist_url = urllib.parse.urljoin(self.rhel_url, cve_file)
++
++        # stderr.write("URL {0} cve_file {1}\n".format(dist_url,cve_file))
+         dest_file = join(self.dest, cve_file)
+-        dist_url = urllib.parse.urljoin(self.url, cve_file)
++
+         if self._is_cache_same(dest_file, dist_url):
+             return dest_file
+ 
+diff --git a/utils/oscap_docker_python/oscap_docker_common.py b/utils/oscap_docker_python/oscap_docker_common.py
+index c9afd6b..30289fd 100644
+--- a/utils/oscap_docker_python/oscap_docker_common.py
++++ b/utils/oscap_docker_python/oscap_docker_common.py
+@@ -55,7 +55,7 @@ def get_dist(mountpoint, oscap_binary, local_env):
+ 
+     '''
+     Test the chroot and determine what RHEL dist it is; returns
+-    an integer representing the dist
++    an integer representing the dist (5 - 8 for RHEL, 12 and 15 for SLES)
+     '''
+ 
+     cpe_dict = '/usr/share/openscap/cpe/openscap-cpe-oval.xml'
+@@ -77,3 +77,32 @@ def get_dist(mountpoint, oscap_binary, local_env):
+         if "{0}{1}: true".format(CPE_RHEL, dist) in result.stdout:
+             print("This system seems based on RHEL{0}.".format(dist))
+             return dist
++
++    CPE_SLES = 'oval:org.open-scap.cpe.sles:def:'
++    DISTS = ["12", "15"]
++
++    '''
++    Test the chroot and determine what SUSE dist it is; returns
++    an integer representing the dist (12 and 15 for SUSE)
++    '''
++
++    cpe_dict = '/usr/share/openscap/cpe/openscap-cpe-oval.xml'
++    if not os.path.exists(cpe_dict):
++        # sometime it's installed into /usr/local/share instead of /usr/local
++        cpe_dict = '/usr/local/share/openscap/cpe/openscap-cpe-oval.xml'
++        if not os.path.exists(cpe_dict):
++            raise OscapError()
++
++    for dist in DISTS:
++        result = oscap_chroot(
++            mountpoint, oscap_binary,
++            ("oval", "eval", "--id", CPE_SLES + dist, cpe_dict,
++             mountpoint, "2>&1", ">", "/dev/null"),
++            '*',
++            local_env
++        )
++
++        if "{0}{1}: true".format(CPE_SLES, dist) in result.stdout:
++            print("This system seems based on SLES {0}.".format(dist))
++            return dist
++    print("System version not detected.")
+-- 
+2.40.0
+

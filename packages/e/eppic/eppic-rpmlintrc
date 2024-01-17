@@ -1,0 +1,2 @@
+# These files are interpreted by the eppic extension at run-time
+addFilter("devel-file-in-non-devel-package .*/usr/share/eppic/crash.*")

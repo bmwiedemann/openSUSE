@@ -1,0 +1,16 @@
+---
+ src/Makefile.am |    3 +++
+ 1 file changed, 3 insertions(+)
+
+--- src/Makefile.am.orig
++++ src/Makefile.am
+@@ -69,6 +69,9 @@
+ tracker_2025_so_DEPENDENCIES = include/common.h
+ triangle_1649_so_DEPENDENCIES = include/wavedata.h
+ 
++%.c: %.so.c
++	ln -s $*.so.c $*.c
++
+ clean:
+ 	rm -f *.so *.so.o
+ 

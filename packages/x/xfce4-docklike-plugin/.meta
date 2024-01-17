@@ -1,0 +1,6 @@
+<package name="xfce4-docklike-plugin" project="openSUSE:Factory">
+  <title>Docklike Taskbar</title>
+  <description>Docklike Taskbar behaves similarly to many other desktop environments and operating systems. Wherein all application windows are grouped together as an icon and can be pinned to act as a launcher when the application is not running. Commonly referred to as a dock.</description>
+  <devel project="X11:xfce" package="xfce4-docklike-plugin"/>
+  <url>https://docs.xfce.org/panel-plugins/xfce4-docklike-plugin/start</url>
+</package>

@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Tue Aug 15 22:15:08 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Update to version 2.2.0:
+  * The errors wl-clipboard emits are now less terse and more 
+    friendly to a casual user
+  * A revised and improved man page
+  * wl-clipboard now attempts even more hacks to grab focus on 
+    certain compositors
+  * wl-paste --watch mode gained basic support for the "clipboard 
+    state" mini-protocol
+  * Temporary files that wl-copy creates are now unlinked much sooner
+  * wl-clipboard will now detect when it is launched with closed 
+    stdio file descriptors
+  See full changelog here: 
+    https://github.com/bugaevc/wl-clipboard/releases/tag/v2.2.0
+
+-------------------------------------------------------------------
+Tue Mar 29 12:57:53 UTC 2022 - Timothy Brown <stimut@gmail.com>
+
+- Update to version 2.1.0:
+  * fixed wl-copy hang when followed by a pipe
+    (e.g. echo "text to copy" | wl-copy | cat)
+  * fixed an occasional crash
+  * added fish completions
+
+-------------------------------------------------------------------
+Mon Nov 11 15:34:38 UTC 2019 - Martin Rey <mrey@suse.com>
+
+- Update to version 2.0.0:
+  * Multiseat support: use the new --seat option to pass seat name.
+  * A new --trim-newline option for wl-copy to go with the existing
+    --no-newline option of wl-paste.
+  * Support for wlr-data-control and wp-primary-selection protocol
+    extensions.
+  * Add Bash and Zsh shell completion
+  * Allow continuously watching the clipboard for changes,
+    also known as wl-paste --watch.

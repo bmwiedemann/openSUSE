@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sat Jun 17 12:54:34 UTC 2023 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 0.9.8:
+  * Added
+    + Add list of string tunings (#149)
+  * Changed
+    + Add LilyPond 2.24 words (#151)
+    + Require Python 3.8 (#156)
+    + Move packaging metadata to pyproject.toml (#155)
+  * Fixed
+    + Fix \set highlighted on its own in \set-abcd and similar cases (#150)
+
+-------------------------------------------------------------------
+Fri May  6 14:31:08 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Intial separate package (was part of frescobaldi)

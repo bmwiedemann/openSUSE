@@ -1,0 +1,11 @@
+## Path:                System/Security
+## Description:         oscap-scan command line options
+
+## Type:                string
+## Default:             ""
+## ServiceRestart:      oscap-scan
+#
+# oscap-scan command line options
+# Example: OPTIONS="-q xccdf eval --profile F14-Desktop --report /var/log/oscap-scan-log.html --results /var/log/oscap-scan-log.xml /usr/share/openscap/scap-xccdf.xml"
+#
+OPTIONS=""

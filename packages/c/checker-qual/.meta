@@ -1,0 +1,5 @@
+<package name="checker-qual" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="checker-qual"/>
+</package>

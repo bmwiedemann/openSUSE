@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Mon Apr 24 08:26:22 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Update to c294e5bf89cab01f3c5316474cfc5104af7e6a60
+  o Build on RISC-V64 and 32-bit Arm and IBM POWER.
+- Drop upstreamed patches:
+  o eppic-Fix-eppic_getnxtfct.patch
+  o eppic-crash-INCDIR.patch
+
+-------------------------------------------------------------------
+Thu Apr 13 14:03:26 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Build the crash extension.
+- Package the eppic code.
+- eppic-crash-INCDIR.patch: Use make variable INCDIR to find crash
+  include files.
+
+-------------------------------------------------------------------
+Thu Apr 13 09:59:44 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- eppic-Fix-eppic_getnxtfct.patch: Fix name length condition in
+  eppic_getnxtfct().
+
+-------------------------------------------------------------------
+Thu Apr 13 09:35:52 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Switch upstream branch to v5.0.
+- Update to commit e0a3b03
+  o Assorted bug fixes.
+
+-------------------------------------------------------------------
+Wed Feb  3 13:57:25 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
+
+- Update upstream URL.
+- Convert to obs_scm source service.
+- Upgrade to git commit e8844d3.
+- Drop patches that have been merged into upstream:
+  o eppic-no-return.patch
+  o eppic-use-extern-in-devel-declaration.patch
+  o eppic-binutils-fix.patch
+
+-------------------------------------------------------------------
+Tue Feb  2 08:29:23 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add eppic-binutils-fix.patch in order to not used 'l' option for
+  ar. It has a new meaning.
+
+-------------------------------------------------------------------
+Tue Jun  9 13:58:20 UTC 2020 - David Mair <dmair@suse.com>
+
+- eppic-use-extern-in-devel-declaration.patch: Use extern for
+  declaration of lastv in libeppic/eppic.h. The file is used as the
+  devel eppic.h and if used in multiple sources for the same devel
+  link target and using gcc 10 the default behavior is to treat the
+  mutiple declarations as a link error.
+
+-------------------------------------------------------------------
+Fri Aug  2 06:59:17 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
+Fri Jul 15 01:09:33 UTC 2016 - jengelh@inai.de
+
+- Update RPM groups
+
+-------------------------------------------------------------------
+Thu May  5 12:37:38 UTC 2016 - ptesarik@suse.com
+
+- update to commit 5391d3d
+  o support for ARM64 (FATE#320844).
+
+-------------------------------------------------------------------
+Fri Nov 22 09:36:46 UTC 2013 - ptesarik@suse.cz
+
+- update to commit 09e8b97
+  o fix a few compile issues 
+
+-------------------------------------------------------------------
+Wed Apr  3 09:12:54 UTC 2013 - ptesarik@suse.cz
+
+- update to commit c2a2564 
+  o update planned upstream version to 4.0
+- fix package versioning
+
+-------------------------------------------------------------------
+Thu Feb 14 09:17:43 UTC 2013 - ptesarik@suse.cz
+
+- update to commit fdf153d 
+  o cleanup eppic_type_islocal
+  o fix a Bison warning
+- compile with -fPIC, so the resulting library can be used to
+  produce a dynamical shared object (e.g. a crash extension or a
+  makedumpfile extension)
+
+-------------------------------------------------------------------
+Fri Nov 16 16:10:24 UTC 2012 - ptesarik@suse.cz
+
+- eppic-fix-install.patch: Fix an endless loop in 'make install'.
+- eppic-no-return.patch: Fix return types of void functions.
+
+-------------------------------------------------------------------
+Fri Nov 16 14:56:34 UTC 2012 - ptesarik@suse.cz
+
+- Initial submission.
+

@@ -1,0 +1,6 @@
+<package name="mutter" project="openSUSE:Factory">
+  <title>Window and compositing manager based on Clutter</title>
+  <description>Mutter is a window and compositing manager based on Clutter, forked
+from Metacity.</description>
+  <devel project="GNOME:Factory" package="mutter"/>
+</package>

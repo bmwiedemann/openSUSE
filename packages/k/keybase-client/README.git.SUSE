@@ -1,0 +1,12 @@
+Using the Git Remote Helper for Keybase
+=======================================
+
+The remote helper will automatically be enabled in Git. However, it requires the
+Keybase Filesystem to be mounted to work. See
+/usr/share/doc/packages/kbfs/README.SUSE on how to mount the Keybase Filesystem.
+
+Managing Git Repositories on Keybase
+------------------------------------
+
+Git repositories on Keybase can be managed using the `git` subcommand of the
+Keybase command line client.

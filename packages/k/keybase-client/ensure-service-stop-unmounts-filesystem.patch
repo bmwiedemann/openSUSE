@@ -1,0 +1,32 @@
+From: Matthias Bach <marix@marix.org>
+Date: 2018-11-09 21:15:00 +0100
+Subject: Ensure stopping the kbfs service also unmounts the filesystem
+Upstream: never
+
+Stopping the service will leave the filesystem in an unmounted but non-
+working state. Explicitly unmounting it when stopping the service solves
+this.
+
+This patch can't be upstreamed in this form as it includes the hardcoded
+mountpoint assumption which mirrors usptreams assumption, but they would
+always have the mountdir config filled.
+
+diff --git a/packaging/linux/systemd/kbfs.service b/packaging/linux/systemd/kbfs.service
+--- a/packaging/linux/systemd/kbfs.service
++++ b/packaging/linux/systemd/kbfs.service
+@@ -19,12 +19,12 @@ EnvironmentFile=-%h/.config/keybase/keybase.env
+ # means that error codes from this command are ignored. Without this line,
+ # `systemctl --user restart kbfs.service` will hit mount failures if there
+ # are any running shells cd'd into a Keybase folder.
+-ExecStartPre=-/bin/sh -c 'fusermount -uz "$(keybase config get -d -b mountdir)"'
++ExecStartPre=-/bin/sh -c 'SERVICE=$(keybase config get -d -b mountdir); fusermount -uz "${SERVICE:-%t/keybase/kbfs}"'
+
+ ExecStart=/usr/bin/kbfsfuse -debug -log-to-file
+
+ # This should have already occurred in the signal handler in kbfsfuse.
+-ExecStop=-/bin/sh -c 'fusermount -uz "$(keybase config get -d -b mountdir)"'
++ExecStop=/bin/sh -c 'SERVICE=$(keybase config get -d -b mountdir); fusermount -uz "${SERVICE:-%t/keybase/kbfs}"'
+
+ Restart=on-failure
+ # Ensure the default mountdir exists
+

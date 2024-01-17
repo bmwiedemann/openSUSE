@@ -1,0 +1,5 @@
+<package name="wl-clipboard" project="openSUSE:Factory">
+  <title>Wayland clipboard utilities</title>
+  <description>https://github.com/bugaevc/wl-clipboard</description>
+  <devel project="X11:Wayland" package="wl-clipboard"/>
+</package>

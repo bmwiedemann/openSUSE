@@ -1,0 +1,262 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>27d9bd8b78270643a7a7f2857ebcb401</srcmd5>
+    <version>2.9.0</version>
+    <time>1541865644</time>
+    <user>dimstar_suse</user>
+    <comment>New package, see https://lists.opensuse.org/opensuse-factory/2018-11/msg00020.html</comment>
+    <requestid>647076</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bbfd7bde733c50382959604270c47e76</srcmd5>
+    <version>2.10.1</version>
+    <time>1543311654</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 2.10.1</comment>
+    <requestid>651452</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ec4e762cf6f3c2c802e7377a64180012</srcmd5>
+    <version>2.11.0</version>
+    <time>1546946853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662539</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>276b6451c45daae33b9f0b2299408531</srcmd5>
+    <version>3.2.2</version>
+    <time>1558515472</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 3.2.2
+  * Support for Mastodon social proofs.
+  * New slash commands.
+  * Set short term retention policies on teams and direct messages.</comment>
+    <requestid>693811</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>471a24462ed0555f1afa01df8221667d</srcmd5>
+    <version>3.2.2</version>
+    <time>1559837933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708027</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bf0871f91ef451d85512d89a61036083</srcmd5>
+    <version>4.2.1</version>
+    <time>1564137607</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 4.2.1
+  * Search across all chat conversations.
+  * Team mentions in chat.</comment>
+    <requestid>718334</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f759fce0b7d623d4231cc32d05d6cb4b</srcmd5>
+    <version>4.3.1</version>
+    <time>1566243548</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 4.3.1
+  * Replies will automatically notify who you're replying to.
+  * Support user lookup by phone number.</comment>
+    <requestid>724256</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a7b2b7b12315734f0de1ee22b14ec42a</srcmd5>
+    <version>4.6.0</version>
+    <time>1571049733</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 4.6.0
+  * Added bot managment commands.
+  * Better support for federated addresses in Stellar feature.
+  * Miscellaneous bug fixes.</comment>
+    <requestid>738086</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f36b3b47c248ef1d575347e3e32aa5db</srcmd5>
+    <version>4.7.2</version>
+    <time>1572443219</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 4.7.2
+  * Fix an issue with device provisioning.
+  * Fix account deletion.
+  * Better account-reset workflow.
+  * Faster inbox loading.</comment>
+    <requestid>743897</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9eb3e16d52a4c08a28ae0ad1529cab96</srcmd5>
+    <version>5.1.1</version>
+    <time>1577536853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759770</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e494b9354f3fe16a8c7dabd16c8a0115</srcmd5>
+    <version>5.2.0</version>
+    <time>1580842312</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 5.2.0
+  * Bots: you can now install bots into your conversations. Kick
+    off a meeting with Google Meet Bot, watch for commits with
+    GitHub Bot, create new issues in JIRA, and more, all without
+    leaving Keybase.
+- Limit source file to the `go` subdirectory of the repository as
+  we only build the command line client and the GUI sources contain
+  files with problematic licenses.</comment>
+    <requestid>769870</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>adeb5aa19b8c42698328b469c08c36ed</srcmd5>
+    <version>5.4.1</version>
+    <time>1589660863</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805915</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ef40310196ed16786f0aaa1ade2a7093</srcmd5>
+    <version>5.5.1</version>
+    <time>1591558811</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 5.5.1
+  * Improved file sharing with email addresses
+  * Fix a panic when KEYBASE_DISABLE_FAVORITES is set. This should
+    not affect typical use cases.
+
+- Explicity use go1.14 as the client won't build with older
+  versions.</comment>
+    <requestid>812197</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>014423fc7d02e399e40fac653e5bbefe</srcmd5>
+    <version>5.5.2</version>
+    <time>1603031842</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 5.5.2
+  * Miscellaneous bugfixes</comment>
+    <requestid>842311</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4ad83834d1896b0168902b532e0327dc</srcmd5>
+    <version>5.5.2</version>
+    <time>1609532041</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>859623</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>73e3f4a849e21440fa787500d9a3cd2a</srcmd5>
+    <version>5.6.1</version>
+    <time>1612781250</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 5.6.1
+  * Various bug fixes, security enhancements</comment>
+    <requestid>870078</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>15ab3cc02ae2176538a45717db69ea11</srcmd5>
+    <version>5.7.1</version>
+    <time>1624626086</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 5.7.1
+  * Security enhancements</comment>
+    <requestid>902208</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8b1f105dd5ff8a8a978308ca9547c36f</srcmd5>
+    <version>5.8.1</version>
+    <time>1633365614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922775</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d75db32f69ea8246c45b71cbbc974997</srcmd5>
+    <version>5.9.0</version>
+    <time>1641203357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943303</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5a945b11cd171993beb1b63780729183</srcmd5>
+    <version>5.9.1</version>
+    <time>1642947934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948216</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ef34ac632e7c86ddd8d89c526da506c3</srcmd5>
+    <version>6.0.2</version>
+    <time>1656321930</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 6.0.2
+  * Bug fixes</comment>
+    <requestid>985139</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>1e89b2063a32a9e5f218ab5d10cd66a9</srcmd5>
+    <version>6.0.2</version>
+    <time>1674495221</time>
+    <user>dimstar_suse</user>
+    <comment>- Integrate KBFS packages previously build via own source package
+  * Upstream integrated these into the same source.
+  * Also includes adding kbfs-related patches
+    ensure-mount-dir-exists.patch and
+    ensure-service-stop-unmounts-filesystem.patch.
+- Upgrade Go version used for compilation to 1.19.
+- Use Systemd unit file from upstream source.
+- Replace deprecated tar_scm source service by obs_scm.
+- Drop the no longer required go_nostrip macro.
+- Drop unnessecary use of gofilelist macro.</comment>
+    <requestid>1060407</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>4b4b78a6b9182567056fd86d75a05963</srcmd5>
+    <version>6.0.2</version>
+    <time>1674665041</time>
+    <user>dimstar_suse</user>
+    <comment>- Limit parallel test execution as that seems to cause failing
+  builds on OBS that don't occur locally.
+</comment>
+    <requestid>1060798</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9f9d6aa46fb1c0f6e31109ab6f0cfa89</srcmd5>
+    <version>6.2.2</version>
+    <time>1690575622</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 6.2.2
+  * No change log provided</comment>
+    <requestid>1101115</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>7000bef1a1da23e9eaa62720a633eb84</srcmd5>
+    <version>6.2.2</version>
+    <time>1691332180</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the Image dependency to address CVE-2023-29408 /
+  bsc#1213928. This is done via the new update-image-tiff.patch.</comment>
+    <requestid>1102488</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a46c5b6b6ffce932c9c331858005fee3</srcmd5>
+    <version>6.2.3</version>
+    <time>1696964426</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116527</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c1741f0b917289880d3a63082cb94b7a</srcmd5>
+    <version>6.2.4</version>
+    <time>1704380338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136669</requestid>
+  </revision>
+</revisionlist>

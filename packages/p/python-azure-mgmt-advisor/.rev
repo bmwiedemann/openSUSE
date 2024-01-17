@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa5fc5c8d01cd0a45f33de1941e6b9fa</srcmd5>
+    <version>1.0.0</version>
+    <time>1518601777</time>
+    <user>dimstar_suse</user>
+    <comment>New azure sdk component</comment>
+    <requestid>575909</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>559345ed93a104eab24938bccc88fb93</srcmd5>
+    <version>1.0.1</version>
+    <time>1524144541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596348</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c95793444518332154d243e179da129c</srcmd5>
+    <version>2.0.1</version>
+    <time>1557833498</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 694268 from glaubitz)</comment>
+    <requestid>694389</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e70a8848c473780cee34b501db66ba05</srcmd5>
+    <version>2.0.1</version>
+    <time>1570710531</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 735169 from glaubitz)</comment>
+    <requestid>735682</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>886c19dec54ba31267439f12b3a379e9</srcmd5>
+    <version>3.0.0</version>
+    <time>1580205342</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.0.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package (forwarded request 767734 from glaubitz)</comment>
+    <requestid>767793</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>18692f50ce96bbfdb59e168084523235</srcmd5>
+    <version>4.0.0</version>
+    <time>1601652315</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 833088 from glaubitz)</comment>
+    <requestid>833111</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>aee0abb958ea0517b234a4e7b6f5e8c1</srcmd5>
+    <version>4.0.0</version>
+    <time>1607548576</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853884</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0a52e97f27bfa6ef6ee827cf19570b07</srcmd5>
+    <version>9.0.0</version>
+    <time>1611348624</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 9.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 862093 from glaubitz)</comment>
+    <requestid>862338</requestid>
+  </revision>
+</revisionlist>

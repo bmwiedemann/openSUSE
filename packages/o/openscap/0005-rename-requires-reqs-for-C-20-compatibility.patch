@@ -1,0 +1,66 @@
+From f276794e7395cf3805e32ab3b86508f933471537 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Tue, 28 Mar 2023 13:09:59 +0200
+Subject: [PATCH 5/5] rename requires -> reqs for C++20 compatibility
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Klaus Kämpf <kkaempf@suse.de>
+---
+ src/XCCDF/public/xccdf_benchmark.h |  6 +++---
+ src/XCCDF/rule.c                   | 10 +++++-----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/src/XCCDF/public/xccdf_benchmark.h b/src/XCCDF/public/xccdf_benchmark.h
+index db65873..74e3920 100644
+--- a/src/XCCDF/public/xccdf_benchmark.h
++++ b/src/XCCDF/public/xccdf_benchmark.h
+@@ -3343,11 +3343,11 @@ OSCAP_API bool xccdf_item_add_warning(struct xccdf_item *item, struct xccdf_warn
+ OSCAP_API bool xccdf_refine_rule_add_remark(struct xccdf_refine_rule *obj, struct oscap_text *item);
+ 
+ /// @memberof xccdf_rule
+-OSCAP_API bool xccdf_rule_add_requires(struct xccdf_rule *rule, struct oscap_stringlist *requires);
++OSCAP_API bool xccdf_rule_add_requires(struct xccdf_rule *rule, struct oscap_stringlist *reqs);
+ /// @memberof xccdf_group
+-OSCAP_API bool xccdf_group_add_requires(struct xccdf_group *group, struct oscap_stringlist *requires);
++OSCAP_API bool xccdf_group_add_requires(struct xccdf_group *group, struct oscap_stringlist *reqs);
+ /// @memberof xccdf_item
+-OSCAP_API bool xccdf_item_add_requires(struct xccdf_item *item, struct oscap_stringlist *requires);
++OSCAP_API bool xccdf_item_add_requires(struct xccdf_item *item, struct oscap_stringlist *reqs);
+ /// @memberof xccdf_rule
+ OSCAP_API bool xccdf_rule_add_conflicts(struct xccdf_rule *rule, const char *conflicts);
+ /// @memberof xccdf_group
+diff --git a/src/XCCDF/rule.c b/src/XCCDF/rule.c
+index b16b69e..0ec1643 100644
+--- a/src/XCCDF/rule.c
++++ b/src/XCCDF/rule.c
+@@ -76,20 +76,20 @@ bool xccdf_content_parse(xmlTextReaderPtr reader, struct xccdf_item *parent)
+ 	return false;
+ }
+ 
+-static void xccdf_deps_get(struct xccdf_item *item, struct oscap_list **conflicts, struct oscap_list **requires)
++static void xccdf_deps_get(struct xccdf_item *item, struct oscap_list **conflicts, struct oscap_list **reqs)
+ {
+ 	switch (item->type) {
+ 	case XCCDF_RULE:
+ 		if (conflicts)
+ 			*conflicts = item->sub.rule.conflicts;
+-		if (requires)
+-			*requires = item->sub.rule.requires;
++		if (reqs)
++			*reqs = item->sub.rule.requires;
+ 		break;
+ 	case XCCDF_GROUP:
+ 		if (conflicts)
+ 			*conflicts = item->sub.group.conflicts;
+-		if (requires)
+-			*requires = item->sub.group.requires;
++		if (reqs)
++			*reqs = item->sub.group.requires;
+ 		break;
+ 	default:
+ 		assert(false);
+-- 
+2.40.0
+

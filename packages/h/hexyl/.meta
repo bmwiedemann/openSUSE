@@ -1,0 +1,11 @@
+<package name="hexyl" project="openSUSE:Factory">
+  <title>A command-line hex viewer</title>
+  <description>hexyl is a simple hex viewer for the terminal. It uses a colored output
+to distinguish different categories of bytes (NUL bytes, printable
+ASCII characters, ASCII whitespace characters, other ASCII characters
+and non-ASCII).
+
+</description>
+  <devel project="editors" package="hexyl"/>
+  <url>https://github.com/sharkdp/hexyl</url>
+</package>

@@ -1,0 +1,10 @@
+--- bluemoon.desktop.orig	2014-05-21 14:26:29.000000000 +0200
++++ bluemoon.desktop	2014-12-14 01:13:45.260418326 +0100
+@@ -5,6 +5,6 @@
+ GenericName=Blue Moon game
+ Comment=Blue Moon card solitaire
+ Icon=bluemoon
+-Exec=bluemoon
++Exec=bluemoon-catb
+ Categories=Game;CardGame;
+ Terminal=true
