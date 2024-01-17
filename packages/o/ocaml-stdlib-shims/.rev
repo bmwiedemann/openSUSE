@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f196f7c0fae114493b9e1db90501b7e5</srcmd5>
+    <version>0.1.0</version>
+    <time>1570799727</time>
+    <user>dimstar_suse</user>
+    <comment>stdlib-shims became a BuildRequires for other ocaml packages.</comment>
+    <requestid>735313</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>accaa862dbaaf34afc9db4ac87b8b856</srcmd5>
+    <version>0.1.0</version>
+    <time>1573504226</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>746714</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>821e0991b0d315f1f50018805edccf7b</srcmd5>
+    <version>0.3.0</version>
+    <time>1619653039</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.0
+  See included CHANGES.md for details</comment>
+    <requestid>885041</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+<package name="spamassassin" project="openSUSE:Factory">
+  <title>Extensible email filter which is used to identify spam</title>
+  <description>spamassassin adds a header line that shows if the mail has been
+determined spam or not. This way, you can decide what to do with the
+mail within the scope of your own filtering rules in your MUA (Mail
+User Agent, your mail program) or your LDA (Local Delivery Agent).
+
+See the files in the documentation directory
+/usr/share/doc/packages/spamassassin/ for more information on how to
+use the filter.</description>
+  <devel project="devel:languages:perl" package="spamassassin"/>
+</package>

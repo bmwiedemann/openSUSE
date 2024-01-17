@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>765585870f18b56450e30425d66e35e9</srcmd5>
+    <version>0.10.0</version>
+    <time>1547211841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662910</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>84dd25cad8ee836ccba04c8eaf3557c2</srcmd5>
+    <version>1.0.0</version>
+    <time>1558690406</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Fixes for new djangos/python releases
+- Remove merged patches:
+  * django-sekizai-py37.patch
+  * django-sekizai-django2.patch</comment>
+    <requestid>705177</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>88777e441993cb1d9ca8013f47287c84</srcmd5>
+    <version>1.1.0</version>
+    <time>1582207174</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Added support for Django 3.0
+  * Added support for Python 3.8
+  * Extended test matrix
+  * Added isort and adapted imports
+  * Adapted code base to align with other supported addons
+  * Adapted README.rst instructions
+- Rebase patch django-sekizai-pycodestyle.patch</comment>
+    <requestid>777604</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0e8187336c120e46ebadfdc6e5896fec</srcmd5>
+    <version>2.0.0</version>
+    <time>1599862290</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0
+  * Added support for Django 3.1
+  * Dropped support for Python 2.7 and Python 3.4
+  * Dropped support for Django &lt; 2.2
+  * Replaced pep8 with flake8
+  * Adapted documentation
+- Drop django-sekizai-pycodestyle.patch</comment>
+    <requestid>833763</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>416c6dfeb69f303e2f77646840ff6305</srcmd5>
+    <version>2.0.0</version>
+    <time>1621531520</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894549</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>53840b9f6dc62ea59c8287fe5746e826</srcmd5>
+    <version>2.0.0</version>
+    <time>1622536543</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895356</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b30e1d4c7d41fa7600bdcde0e827d2a6</srcmd5>
+    <version>4.1.0</version>
+    <time>1687469219</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.0
+  * https://github.com/django-cms/django-sekizai/releases
+- Use sle15_python_module_pythons
+</comment>
+    <requestid>1094658</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,265 @@
+-------------------------------------------------------------------
+Sun Nov 20 16:04:19 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Make PGO training independent from number of build machine cores
+  (boo#1040589)
+
+-------------------------------------------------------------------
+Mon Nov  7 08:09:38 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to 0.15 release:
+  * Uses xxHash hashing algorithm. A 8% ~ 14% speedup.
+  * Set endianity of multifile using -e, --multifile-endian.
+  * Set pointer size of multifile using -p, --multifile-pointer-size
+  * Process files in parallel using -j N --jobs N. The default is
+    processors / 2.  Disabled when multifile is used.
+  * Prints abbrev or DIE offset for Unknown DWARF error messages.
+  * All testcases have been updated to work against the binutils 2.39.
+- Remove upstreamed patches:
+  * dwz-fix-another-reference-from-pu-to-cu-for-odr.patch
+  * dwz-handle-reordered-dup-chains-in-create-import-tree.patch
+  * dwz-testsuite-fix-pr27463.sh-on-riscv64.patch
+  * dwz-use-grep-E-instead-of-egrep.patch
+- Rebased patches:
+  * dwz-remove-odr-struct-multifile.sh.patch
+  * dwz-enable-odr-by-default.patch
+
+-------------------------------------------------------------------
+Thu Sep  8 17:53:27 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add dwz-use-grep-E-instead-of-egrep.patch in order
+  to fix build with latest grep package.
+
+-------------------------------------------------------------------
+Thu Apr 28 10:08:03 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Drop binutils-gold dependency for testsuite as binutils-gold
+  is deprecated and will be removed in the future.
+
+-------------------------------------------------------------------
+Wed Feb  2 09:20:10 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Silent warnings for tramp3d compilation.
+
+-------------------------------------------------------------------
+Wed Jan  5 06:20:01 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add dwz-remove-odr-struct-multifile.sh.patch that removes problematic
+  testcase.
+
+-------------------------------------------------------------------
+Thu Dec 23 10:59:49 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Start using -O3 and PGO with tramp3d as training binary.
+
+-------------------------------------------------------------------
+Wed Mar 17 15:54:22 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Backport fixes for odr PR [swo#27578]:
+  * dwz-fix-another-reference-from-pu-to-cu-for-odr.patch
+  * dwz-handle-reordered-dup-chains-in-create-import-tree.patch
+- Backport testsuite fix:
+  * dwz-testsuite-fix-pr27463.sh-on-riscv64.patch
+
+-------------------------------------------------------------------
+Wed Mar 17 15:38:20 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- DWZ 0.14 update:
+  * Dropped patches:
+    - dwz-add-assert-checking-that-cu-is-not-referenced-from-pu.patch
+    - dwz-call-reorder_dups-asap.patch
+    - dwz-document-experimental-status-of-odr.patch
+    - dwz-fix-reference-of-pu-to-cu-for-odr.patch
+    - dwz-precompute-partitions.patch
+    - dwz-testsuite-fix-pr25109.sh-on-riscv64.patch
+    - dwz-update-suse-copyright-years.patch
+    - dwz-update-version.patch
+  * Updated patch:
+    - dwz-enable-odr-by-default.patch
+
+-------------------------------------------------------------------
+Fri Feb 26 12:07:30 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Change Version tag from 0.14rc1 to 0.14~rc1
+  * Rename dwz-0.14rc1.tar.xz to dwz-0.14~rc1.tar.xz
+
+-------------------------------------------------------------------
+Fri Feb 26 09:31:00 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Fix testsuite build fail on riscv64:
+  * dwz-testsuite-fix-pr25109.sh-on-riscv64.patch
+
+-------------------------------------------------------------------
+Fri Feb 26 08:38:53 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Update reported dwz version
+  * dwz-update-version.patch
+
+-------------------------------------------------------------------
+Fri Feb 26 07:52:22 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- DWZ 0.14-rc1 (master branch commit 0d391bf) update:
+  * Dropped patches:
+    - dwz-fix-assertion-off-cu_size-in-recompute_abbrevs.patch
+    - dwz-fix-die-no-multifile-propagation.patch
+    - dwz-fix-refd-NULL-assertion-in-write_die.patch
+    - dwz-fix-reference-from-pu-to-cu.patch
+    - dwz-fix-segfault-in-die_cu.patch
+    - dwz-testsuite-adjust-pr24468-sh-test-case-for-readelf-with-follow-links.patch
+    - dwz-testsuite-detect-when-devel-ignore-size-sh-is-unsupported.patch
+    - dwz-testsuite-fix-partial-unit-grepping-in-pr24468-sh.patch
+    - dwz-update-version-copyright-message.patch
+  * Added patches:
+    - dwz-add-assert-checking-that-cu-is-not-referenced-from-pu.patch
+    - dwz-call-reorder_dups-asap.patch
+    - dwz-document-experimental-status-of-odr.patch
+    - dwz-enable-odr-by-default.patch
+    - dwz-fix-reference-of-pu-to-cu-for-odr.patch
+    - dwz-precompute-partitions.patch
+    - dwz-update-suse-copyright-years.patch
+  * Added BuildRequires gcc-c++
+-------------------------------------------------------------------
+Thu Jan  7 10:21:31 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Fix pr24468.sh test-case with newer readelf.
+  * dwz-testsuite-adjust-pr24468-sh-test-case-for-readelf-with-follow-links.patch
+  * dwz-testsuite-fix-partial-unit-grepping-in-pr24468-sh.patch
+
+-------------------------------------------------------------------
+Thu Jan  7 09:15:48 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Detect when devel-ignore-size.sh is unsupported [swo#27115].
+  * dwz-testsuite-detect-when-devel-ignore-size-sh-is-unsupported.patch
+
+-------------------------------------------------------------------
+Wed Aug  5 08:16:04 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix error: source 0 defined multiple times.
+
+-------------------------------------------------------------------
+Wed Aug  5 08:00:30 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Silence warning "dwz-rpmlintrc is not mentioned in spec files".
+
+-------------------------------------------------------------------
+Wed Aug  5 06:49:52 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Add dwz-rpmlintrc.  Add comment to NoSource directive.
+
+-------------------------------------------------------------------
+Fri Jan 24 17:08:55 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix segfault in die_cu [swo#25456].
+  * dwz-fix-segfault-in-die_cu.patch
+
+-------------------------------------------------------------------
+Fri Jan 17 06:30:58 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix reference from compilation unit to partial unit [swo#25398].
+  * dwz-fix-reference-from-pu-to-cu.patch
+
+-------------------------------------------------------------------
+Thu Nov 28 12:56:34 UTC 2019 - Tom de Vries <tdevries@suse.com>
+
+- Fix assertion failure 'refd != NULL' in write_die [swo#24169].
+  * dwz-fix-refd-NULL-assertion-in-write_die.patch
+
+-------------------------------------------------------------------
+Wed Nov 27 18:50:07 UTC 2019 - Tom de Vries <tdevries@suse.com>
+
+- Fix assertion failure 'off == cu_size' in recompute_abbrevs
+  [swo#24764].
+  * dwz-fix-assertion-off-cu_size-in-recompute_abbrevs.patch
+
+-------------------------------------------------------------------
+Tue Nov  5 09:55:50 UTC 2019 - Tom de Vries <tdevries@suse.com>
+
+- Fix die_no_multifile propagation [swo#25109].
+  * dwz-fix-die-no-multifile-propagation.patch
+
+-------------------------------------------------------------------
+Wed Aug 28 12:47:09 UTC 2019 - Tom de Vries <tdevries@suse.com>
+
+- Disable dwz:testsuite if %{with ringdisabled}
+
+-------------------------------------------------------------------
+Fri Aug 16 11:26:06 UTC 2019 - Tom de Vries <tdevries@suse.de>
+
+- Fix copyright years in --version message:
+  * dwz-update-version-copyright-message.patch
+
+-------------------------------------------------------------------
+Tue Aug 13 09:29:02 UTC 2019 - Tom de Vries <tdevries@suse.de>
+
+- Split off dwz-testsuite package using multibuild, to remove build
+  cycle
+- Don't require binutils-gold for riscv64
+
+-------------------------------------------------------------------
+Fri Aug  2 10:43:02 UTC 2019 - Tom de Vries <tdevries@suse.de>
+
+- DWZ 0.13 update:
+  * Dropped patches:
+    - dwz-0.12-ignore-nobits.patch
+    - dwz-0.12-DW_OP_GNU_variable_value.patch
+    - dwz-low-mem-Fix-DW_OP_GNU_parameter_ref-handling-in-read_exprloc.patch
+  * Added BuildRequires for dejagnu, elfutils, gdb and binutils-gold.
+  * Add %check
+- Add URL tag
+
+-------------------------------------------------------------------
+Mon Feb 18 14:31:42 UTC 2019 - tdevries@suse.com
+
+- Add dwz-low-mem-Fix-DW_OP_GNU_parameter_ref-handling-in-read_exprloc.patch
+  to fix assert on cc1 binary from gcc bootstrap-lto [swo#24195].
+
+-------------------------------------------------------------------
+Wed Apr 11 11:02:06 UTC 2018 - rguenther@suse.com
+
+- Add dwz-0.12-DW_OP_GNU_variable_value.patch to handle
+  DW_OP_GNU_variable_value.
+
+-------------------------------------------------------------------
+Wed Mar 14 13:32:56 UTC 2018 - mliska@suse.cz
+
+- Run spec-cleaner on the package.
+
+-------------------------------------------------------------------
+Tue Mar  7 09:57:14 UTC 2017 - rguenther@suse.com
+
+- Adjust dwz-0.12-ignore-nobits.patch to also handle non-monotonically
+  increasing sh_offset as created by the kernel linker script.
+
+-------------------------------------------------------------------
+Tue Feb 21 13:35:26 UTC 2017 - rguenther@suse.com
+
+- Add dwz-0.12-ignore-nobits.patch to ignore SHT_NOBITS sections
+  that are placed out-of-order by objcopy when extracting debuginfo
+  and place them at sh_offset zero.
+
+-------------------------------------------------------------------
+Tue Nov 29 08:51:04 UTC 2016 - rguenther@suse.com
+
+- Update to new upstream version 0.12
+* Fix up alignment of non-allocated sections and section header table
+  after sections which have changed size.
+
+-------------------------------------------------------------------
+Wed Dec 10 15:38:40 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream version 0.11
+* fix iterative hashing on big-endian targets
+* optimize DW_FORM_data[48] DW_AT_high_pc that GCC 4.8 produces
+* fix up handling of DIE equality if more than one DIE in the same
+  CU compare equal
+* check DW_FORM_ref_addr properly during fi_multifile phase
+* when creating DW_AT_stmt_list, use DW_FORM_sec_offset for dwarf4
+  and DW_FORM_data4 for dwarf[23] rather than vice versa
+* handle .gdb_index version 7 and 8
+
+-------------------------------------------------------------------
+Wed Jun 27 14:04:01 CEST 2012 - pth@suse.de
+
+- Initial package
+
+

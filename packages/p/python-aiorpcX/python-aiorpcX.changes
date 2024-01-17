@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Mon May  2 07:49:45 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.22.1
+  * Consume group tasks as they complete
+  * Attempt to make tests more robust to timing issues
+  * join() waits for tasks to finish
+  * Set joined at end of finally clause, just in case
+  * Remove obsolete uvloop workaround
+  * peername can be None in rare cases it seems
+  * Try CRT
+  * save some bandwidth: strip redundant whitespaces from json encoding
+  * Final updates to TaskGroup() to bring it in line with curio's latest changes
+  * Rework cancel_remaining() and expose blocking argument.
+  * TaskGroup.join(): don't wait for tasks to cancel if exiting by exception
+  * Make TaskGroup.result, exception etc. properties
+  * Don't log failed tasks; asyncio does that
+  * Add daemonic task tests
+  * Bring TaskGroup into line with curio
+  * Fix timing issue in test
+  * Use a Semaphore not an Event to wake TaskGroup
+  * Remove superstitous sleeps.
+  * Reduce reliance on timing issues
+  * Failed tests must fail the script
+  * Require python3.8
+
+-------------------------------------------------------------------
+Fri Sep 17 06:18:35 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- skip python 3.6. uvloop is not provided there and newer aiorpcx
+  requires py >= 3.8 anyway. (But is API incomatible with electrum
+  so far.)
+
+-------------------------------------------------------------------
+Mon Apr 19 06:50:31 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.18.7
+  * don't wait for tasks to cancel if exiting by exception
+  * Fix tests for Python3.8 (we reenable them)
+  * Merge pull request #34
+  * SOCKS: Fix random auth on Python 3.8+
+  * Merge pull request #33
+  * session: add method on_disconnect_due_to_excessive_session_cost
+
+-------------------------------------------------------------------
+Fri Apr 24 18:13:36 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Skip over tests failing on Python 3.8 (gh#kyuupichan/aiorpcX#30)
+
+-------------------------------------------------------------------
+Thu Jan 16 16:55:12 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.18.4
+  * handle time.time() not making progress
+  * handle SOCKSError in _connect_one 
+  * socks.py: Add SOCKSRandomAuth
+
+-------------------------------------------------------------------
+Wed Jul 31 09:51:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip tests that actually can poll network
+
+-------------------------------------------------------------------
+Fri Jun  7 14:34:18 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.18.3
+  * Add websocket support as client and server by using Aymeric 
+    Augustin's excellent websockets package.
+  * small bugfixes and improvements
+
+-------------------------------------------------------------------
+Wed Mar  6 11:20:11 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.10.5:
+  * batches: fix handling of session loss
+  * Export normalize_corofunc
+
+-------------------------------------------------------------------
+Mon Feb 25 14:07:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip flaky test
+
+-------------------------------------------------------------------
+Mon Feb 11 12:00:43 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- add tests and license
+
+-------------------------------------------------------------------
+Wed Feb  6 07:23:09 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- initial package

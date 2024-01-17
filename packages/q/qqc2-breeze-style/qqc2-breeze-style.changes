@@ -1,0 +1,568 @@
+-------------------------------------------------------------------
+Wed Dec  6 11:47:47 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.10
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.10
+- No code changes since 5.27.9
+
+-------------------------------------------------------------------
+Tue Oct 24 14:27:13 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.9
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.9
+- No code changes since 5.27.8
+
+-------------------------------------------------------------------
+Tue Sep 12 11:22:33 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.8
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.8
+- No code changes since 5.27.7
+
+-------------------------------------------------------------------
+Tue Aug  1 11:19:45 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.7
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.7
+- No code changes since 5.27.6
+
+-------------------------------------------------------------------
+Tue Jun 20 17:15:07 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.6
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.6
+- No code changes since 5.27.5
+
+-------------------------------------------------------------------
+Tue May  9 13:44:18 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- No code changes since 5.27.4
+
+-------------------------------------------------------------------
+Tue Apr  4 15:05:45 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- Changes since 5.27.3:
+  * Fix font rendering on android
+
+-------------------------------------------------------------------
+Tue Mar 14 15:06:07 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.3
+- No code changes since 5.27.2
+
+-------------------------------------------------------------------
+Tue Feb 28 17:34:20 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.2
+- No code changes since 5.27.1
+
+-------------------------------------------------------------------
+Tue Feb 21 14:09:27 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.1
+- No code changes since 5.27.0
+
+-------------------------------------------------------------------
+Thu Feb  9 14:19:54 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- No code changes since 5.26.90
+
+-------------------------------------------------------------------
+Thu Jan 19 14:43:45 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Changes since 5.26.5:
+  * ScrollView: Enable clip
+  * DialogButtonBox: Remove separator to be consistent with desktop style Applications are drawing their own separators since they assume none is drawn, so we end up with lots of double separators.
+  * remove unused ecm_qt_declare_logging_categories() code
+  * Use ecm_add_qml_module() from ECM
+  * Add Qt 6 Android CI
+  * ScrollBar & ScrollIndicator: Show over content even if it loaded after
+  * Simplify StyleSingleton
+
+-------------------------------------------------------------------
+Wed Jan  4 14:06:23 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.5
+- Changes since 5.26.4:
+  * ScrollView: Enable clip
+
+-------------------------------------------------------------------
+Tue Nov 29 14:47:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.4
+- Changes since 5.26.3:
+  * DialogButtonBox: Remove separator to be consistent with desktop style Applications are drawing their own separators since they assume none is drawn, so we end up with lots of double separators.
+
+-------------------------------------------------------------------
+Tue Nov  8 17:26:08 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.3
+- No code changes since 5.26.2
+
+-------------------------------------------------------------------
+Wed Oct 26 14:16:41 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.2
+- No code changes since 5.26.1
+
+-------------------------------------------------------------------
+Tue Oct 18 11:27:37 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- Changes since 5.26.0:
+  * ScrollBar & ScrollIndicator: Show over content even if it loaded after
+  * Revert "Install po folder"
+- Drop patches, now upstream:
+  * 0001-Revert-Install-po-folder.patch
+
+-------------------------------------------------------------------
+Thu Oct  6 14:48:50 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * Install po folder
+- Add patch to drop an unneeded dependency:
+  * 0001-Revert-Install-po-folder.patch
+
+-------------------------------------------------------------------
+Thu Sep 15 20:48:06 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Changes since 5.25.5:
+  * Add FreeBSD Qt6 CI support
+  * Add missing license file
+  * Add missing license files and remove unused one
+  * Make Menu highlight consistent with desktop style (add padding)
+  * Request passing unit tests on Linux and BSD
+  * Connect visibleChanged signal to syncColors
+  * Revert "PlasmaDesktopTheme: Do not compute the colors for invisible items"
+  * Replace SmallShadow with SmallBoxShadow
+  * Make SmallShadow less intense
+  * Remove button gradient
+
+-------------------------------------------------------------------
+Tue Sep  6 16:56:56 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.5
+- No code changes since 5.25.4
+
+-------------------------------------------------------------------
+Tue Aug  2 14:07:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.4
+- No code changes since 5.25.3
+
+-------------------------------------------------------------------
+Tue Jul 12 11:29:06 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.3
+- No code changes since 5.25.2
+
+-------------------------------------------------------------------
+Tue Jun 28 13:03:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.2
+- No code changes since 5.25.1
+
+-------------------------------------------------------------------
+Tue Jun 21 11:39:49 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.1
+- Changes since 5.25.0:
+  * Connect visibleChanged signal to syncColors
+  * Revert "PlasmaDesktopTheme: Do not compute the colors for invisible items"
+
+-------------------------------------------------------------------
+Thu Jun  9 11:15:07 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- Changes since 5.24.90:
+  * Replace SmallShadow with SmallBoxShadow
+  * Make SmallShadow less intense
+  * Remove button gradient
+
+-------------------------------------------------------------------
+Thu May 19 19:46:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Changes since 5.24.5:
+  * Compile with Qt6
+  * PlasmaDesktopTheme: Do not compute the colors for invisible items
+  * Remove unneeded impl/Units properties, update to Kirigami 2.19
+  * Use correct DBus signal for listening for font changes
+  * Avoid needlessly reading font settings
+  * Use raw pointer instead of QPointer to track watchers
+
+-------------------------------------------------------------------
+Tue May  3 13:00:27 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.5
+- No code changes since 5.24.4
+
+-------------------------------------------------------------------
+Tue Mar 29 16:04:41 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.4
+- No code changes since 5.24.3
+
+-------------------------------------------------------------------
+Tue Mar  8 18:10:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.3
+- No code changes since 5.24.2
+
+-------------------------------------------------------------------
+Tue Feb 22 16:21:06 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.2
+- No code changes since 5.24.1
+
+-------------------------------------------------------------------
+Tue Feb 15 19:18:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.1
+- Changes since 5.24.0:
+  * Use correct DBus signal for listening for font changes
+  * Avoid needlessly reading font settings
+  * Use raw pointer instead of QPointer to track watchers
+
+-------------------------------------------------------------------
+Sat Feb  5 19:51:04 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- No code changes since 5.23.90
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Changes since 5.23.5:
+  * TextArea/TextField: Select by words on mobile
+  * Don't include KIconColors on Android
+  * Remove indirect dep from CI file
+  * Add Android CI
+  * Add FreeBSD CI
+  * Use KIconColors to color icons
+  * Add Linux CI
+  * Add .kde-ci.yml
+
+-------------------------------------------------------------------
+Tue Jan  4 14:58:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.5
+- No code changes since 5.23.4
+
+-------------------------------------------------------------------
+Tue Nov 30 14:59:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.4
+- No code changes since 5.23.3
+
+-------------------------------------------------------------------
+Tue Nov  9 15:43:28 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.3
+- No code changes since 5.23.2
+
+-------------------------------------------------------------------
+Tue Oct 26 14:56:03 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.2
+- No code changes since 5.23.1
+
+-------------------------------------------------------------------
+Tue Oct 19 14:05:45 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.1
+- No code changes since 5.23.0
+
+-------------------------------------------------------------------
+Thu Oct  7 13:50:13 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- No code changes since 5.22.90
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:05:21 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Changes since 5.22.5:
+  * Fix padding for items without indicators in menus with
+  * Use a Loader to avoid unnecessarily loading indicator components
+  * Use RadioIndicator in MenuItem when autoExclusive
+  * Enable hover effects for Button, CheckBox, ComboBox, RadioButton, Slider, SpinBox, ToolButton
+  * Port to the new C++ units plugin in Kirigami
+  * Remove x1.5 mobile icon sizing
+  * Do not create an extra KIconLoader just for custom palettes
+  * DialogButtonBox: Set icons for standard buttons
+  * Always build kirigami plugin
+  * Build without KIconThemes on Android
+  * Use kcoreaddons macro for kirigami plugin
+  * Fix previous commit
+  * Disable slider ticks
+  * Build without QtDBus on Android
+  * Dial: use dot instead of pointy bit, use more dynamic sizing, use vertical input on desktop
+
+-------------------------------------------------------------------
+Tue Aug 31 19:08:55 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.5
+- No code changes since 5.22.4
+
+-------------------------------------------------------------------
+Tue Jul 27 12:35:08 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.4
+- No code changes since 5.22.3
+
+-------------------------------------------------------------------
+Tue Jul  6 12:01:52 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.3
+- Changes since 5.22.2.1:
+  * Fix previous commit
+  * Disable slider ticks
+
+-------------------------------------------------------------------
+Wed Jun 23 08:24:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.2.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.2
+- No code changes since 5.22.1
+
+-------------------------------------------------------------------
+Tue Jun 15 13:17:30 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.1
+- No code changes since 5.22.0
+
+-------------------------------------------------------------------
+Thu Jun  3 13:06:19 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- No code changes since 5.21.90
+
+-------------------------------------------------------------------
+Thu May 13 18:15:53 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue May  4 14:15:44 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.5
+- No code changes since 5.21.4
+
+-------------------------------------------------------------------
+Tue Apr  6 14:00:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.4
+- No code changes since 5.21.3
+
+-------------------------------------------------------------------
+Tue Mar 16 13:55:28 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.3
+- Changes since 5.21.2:
+  * [RangeSlider] Lower Kirigami version to 2.14
+- Drop patches, now upstream:
+  * 0001-RangeSlider-Lower-Kirigami-version-to-2.14.patch
+
+-------------------------------------------------------------------
+Sat Mar 13 16:22:30 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix wrong kirigami dependency:
+  * 0001-RangeSlider-Lower-Kirigami-version-to-2.14.patch
+
+-------------------------------------------------------------------
+Tue Mar  2 15:01:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.2
+- Changes since 5.21.1:
+  * Remove ApplicationWindow
+  * [RangeSlider] Remove inset, endVisualPosition and palette
+
+-------------------------------------------------------------------
+Tue Feb 23 14:52:12 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.1
+- Changes since 5.21.0:
+  * use Templates.RangeSlider to not crash
+  * [Slider] Remove endVisualPosition
+  * [SliderGroove] Rework sizing
+  * [SliderHandle] Adjust x/y animation velocity and color animation
+  * [Slider] Remove inset
+
+-------------------------------------------------------------------
+Thu Feb 11 18:23:16 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * Set mobile text handles and actions popup Z positions to 999
+  * [ComboBox] Fix missing component crash and clean up code
+  * Fix wrong property for low power spinner size in BusyIndicator
+  * Add mobile text actions menu and text selection handles
+
+-------------------------------------------------------------------
+Sat Jan 23 13:27:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Initial commit

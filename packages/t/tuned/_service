@@ -1,0 +1,20 @@
+<services>
+  <service name="obs_scm" mode="localonly">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/redhat-performance/tuned</param>
+<!--
+    Use this for non rc candidates, -rc is not allowed
+    <param name="versionformat">2.19.0+git.%h</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+-->
+    <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@+git.%h</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="localonly"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

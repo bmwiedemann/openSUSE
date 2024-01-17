@@ -1,0 +1,10 @@
+There is a sa-update.timer which can start daily the sa-update.service
+You can enable this timer by:
+	systemctl enable sa-update.timer
+	systemctl start sa-update.timer
+
+In /etc/sysconfig/spamd You can enable or disable some functionality of sa-update.service:
+	* SPAM_SA_COMPILE
+	* SPAM_SPAMD_RESTART
+	* SPAM_AMAVISD_RESTART
+

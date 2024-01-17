@@ -1,0 +1,30 @@
+# Add your own customisations to this file.  See 'man Mail::SpamAssassin::Conf'
+# for details of what can be tweaked.
+# 
+
+
+# do not change the subject
+# to change the subject, e.g. use
+# rewrite_header Subject ****SPAM(_SCORE_)****
+rewrite_header Subject ****SPAM(_SCORE_)****
+
+# Set the score required before a mail is considered spam.
+# required_score 5.00
+
+# uncomment, if you do not want spamassassin to create a new message
+# in case of detecting spam
+# report_safe 0
+
+# Enhance the uridnsbl_skip_domain list with some usefull entries
+# Do not block the web-sites of Novell and SUSE
+ifplugin Mail::SpamAssassin::Plugin::URIDNSBL
+uridnsbl_skip_domain suse.de opensuse.org suse.com suse.org
+uridnsbl_skip_domain novell.com novell.org novell.ru novell.de novell.hu novell.co.uk
+endif   # Mail::SpamAssassin::Plugin::URIDNSBL
+
+#The combination of SpamAssassin + The Bat! as mail client can cause false positives.
+#The reason for the high spam rating is the Reply-To header inserted by mailman,
+#which seems to have more quoting than The Bat! can do.
+#If you have such problem activate the next two lines
+#header IS_MAILMAN exists:X-Mailman-Version
+#score IS_MAILMAN -2

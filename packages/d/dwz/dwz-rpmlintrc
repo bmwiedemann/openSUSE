@@ -1,0 +1,25 @@
+# The package should _not_ be noarch, testresults differ from architecture
+# to architecture.
+addFilter("dwz-testsuite.* no-binary")
+
+# The rpmlint warning is:
+#   dwz-testsuite.nosrc: W: invalid-spec-name
+#   The spec file name (without the .spec suffix) must match the package name
+#   ("Name:" tag). Either rename your package or the specfile.
+# This seems to be a multibuild artifact.  The package name is dwz-testsuite,
+# but the specfile filename is dwz.spec.  The only way we can fix this is by
+# reverting to a two-specfile setup.
+# 
+# FTR, the warning comes paired with these grep failures in the "Preparing
+# packages log":
+# ... testing for empty debuginfo packages
+# grep: SOURCES/dwz-testsuite.spec: No such file or directory
+# ... running 50-check-filelist
+#   ...
+# ... testing devel dependencies required by libtool .la files
+# grep: SOURCES/dwz-testsuite.spec: No such file or directory
+#      (can be skipped by "skip-check-libtool-deps" anywhere in spec)
+# ... running 50-check-packaged-twice
+#
+# So, skip the rpmlint warning.  This doesn't fix the grep fails.
+addFilter("dwz-testsuite.* invalid-spec-name")

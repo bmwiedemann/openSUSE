@@ -1,0 +1,13 @@
+Index: Mail-SpamAssassin-4.0.0/lib/Mail/SpamAssassin/Plugin/URIDNSBL.pm
+===================================================================
+--- Mail-SpamAssassin-4.0.0.orig/lib/Mail/SpamAssassin/Plugin/URIDNSBL.pm
++++ Mail-SpamAssassin-4.0.0/lib/Mail/SpamAssassin/Plugin/URIDNSBL.pm
+@@ -422,6 +422,8 @@ sub check_dnsbl {
+   while (my($uri, $info) = each %{$uris}) {
+     # we want to skip mailto: uris
+     next if ($uri =~ /^mailto:/i);
++    # we want to skip so-files, they are not url's
++    next if ($uri =~ /\.so$/);
+ 
+     # no hosts/domains were found via this uri, so skip
+     next unless ($info->{hosts});

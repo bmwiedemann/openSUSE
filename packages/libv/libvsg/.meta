@@ -1,0 +1,5 @@
+<package name="libvsg" project="openSUSE:Factory">
+  <title></title>
+  <description>VulkanSceneGraph (VSG), is a modern, cross platform, high performance scene graph library built upon Vulkan graphics/compute API. The software is written in C++17, and follows the CppCoreGuidlines and FOSS Best Practices. The source code is published under the MIT License.</description>
+  <devel project="games" package="libvsg"/>
+</package>

@@ -1,0 +1,35 @@
+diff --git a/args.c b/args.c
+index e93c24d..3e1113f 100644
+--- a/args.c
++++ b/args.c
+@@ -66,7 +66,7 @@ int gen_cu_p = 0;
+ 
+ enum die_count_methods die_count_method = estimate;
+ 
+-int odr = 0;
++int odr = 1;
+ enum odr_mode odr_mode = ODR_LINK;
+ 
+ /* Filename if inter-file size optimization should be performed.  */
+@@ -202,7 +202,7 @@ static struct option_help dwz_common_options_help[] =
+     "Don't optimize files larger than this limit." },
+   { NULL, "odr", NULL, NULL,
+     NULL },
+-  { NULL, "no-odr", NULL, "Disabled",
++  { NULL, "no-odr", NULL, "Enabled",
+     "Enable/disable one definition rule optimization." },
+   { NULL, "odr-mode", "<basic|link>", "link",
+     "Set aggressiveness level of one definition rule optimization." },
+diff --git a/dwz.1 b/dwz.1
+index 1cff329..f3cd3dd 100644
+--- a/dwz.1
++++ b/dwz.1
+@@ -133,7 +133,7 @@ considered equal.  This has the effect that DIEs referring to distinct DIEs
+ representing the same type (like f.i. pointer type DIEs) are considered equal,
+ and may be deduplicated.  The status of this optimization is experimental.
+ It's disabled in low-mem mode.
+-Disabled by default.
++Enabled by default.
+ .TP
+ .B \-\-odr-mode=<basic|link>
+ Set the One-Definition-Rule optimization aggressiveness: basic or link.
