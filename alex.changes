@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Oct 29 08:11:28 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update alex to version 3.4.0.1.
+  ## Changes in 3.4.0.1
+
+   * Address new `x-partial` warning of GHC 9.8.
+   * Alex 3.4.0.1 needs GHC 8.0 or higher to build.
+     The code it generates is the same as 3.4.0.0, so it will likely work for older GHCs.
+   * Tested with GHC 8.0 - 9.8.1.
+
+  _Andreas Abel, 2023-10-29_
+
+  ## Changes in 3.4.0.0
+
+   * New wrappers to lex strict `Text`:
+     `strict-text`, `posn-strict-text`, `monad-strict-text` and `monadUserState-strict-text`
+     (PR [#240](https://github.com/haskell/alex/pull/240)).
+     These complement the existing wrappers for `String` and `ByteString`.
+   * Tested with GHC 7.0 - 9.6.2.
+
+  _Andreas Abel, 2023-06-20_
+
+  ## Changes in 3.3.0.0
+
+   * Add an `Ord` instance to `AlexPosn` (Issue [#233](https://github.com/haskell/alex/issues/233)).
+     This breaks developments that define their own (orphan) `instance Ord AlexPosn`.
+     If this is the derived stock instance, the fix is to delete the orphan instance and require
+     `build-tool-depends: alex:alex >= 3.3.0.0`.
+   * Switch to Haskell PVP versioning with four digits.
+   * Tested with GHC 7.0 - 9.6.1.
+
+  _Andreas Abel, 2023-05-25_
+
+-------------------------------------------------------------------
 Wed Aug  2 09:42:48 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Drop constraints for riscv64
