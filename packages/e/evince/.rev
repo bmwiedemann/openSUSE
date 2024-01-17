@@ -1349,4 +1349,12 @@ New stable release</comment>
     <comment></comment>
     <requestid>1129183</requestid>
   </revision>
+  <revision rev="174" vrev="3">
+    <srcmd5>0b8e53deb586754df0f5e084a8addc1a</srcmd5>
+    <version>45.0</version>
+    <time>1705526128</time>
+    <user>anag+factory</user>
+    <comment>- Convert to source service for easier updating. (forwarded request 1139274 from dimstar)</comment>
+    <requestid>1139290</requestid>
+  </revision>
 </revisionlist>
