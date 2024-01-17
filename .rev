@@ -379,4 +379,50 @@
 </comment>
     <requestid>1068351</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>51cb145a1ab9ebff21eadec801f031ff</srcmd5>
+    <version>4.9.1</version>
+    <time>1701023871</time>
+    <user>anag+factory</user>
+    <comment>- reference github tarball
+- cleanup dependencies
+
+- update to version 4.9.1:
+  * Ensure tzdata dependency is installed on Windows
+- additional changes from 4.9.0:
+  * Upgrade code to new minimum supported Python version: 3.8
+  * Settings support for pathlib.Path (#2758)
+  * Various improvements to Simple theme (#2976 &amp; #3234)
+  * Use Furo as Sphinx documentation theme (#3023)
+  * Default to 100 articles maximum in feeds (#3127)
+  * Add period_archives common context variable (#3148)
+  * Use watchfiles as the file-watching backend (#3151)
+  * Add GitHub Actions workflow for GitHub Pages (#3189)
+  * Allow dataclasses in settings (#3204)
+  * Switch build tool to PDM instead of Setuptools/Poetry (#3220)
+  * Provide a plugin_enabled Jinja test for themes (#3235)
+  * Preserve connection order in Blinker (#3238)
+  * Remove social icons from default notmyidea theme (#3240)
+  * Remove unreliable WRITE_SELECTED feature (#3243)
+  * Importer: Report broken embedded video links when importing
+    from Tumblr (#3177)
+  * Importer: Remove newline addition when iterating Photo post
+    types (#3178)
+  * Importer: Force timestamp conversion in Tumblr importer to be
+    UTC with offset (#3221)
+  * Importer: Use tempfile for intermediate HTML file for Pandoc
+    (#3221)
+  * Switch linters to Ruff (#3223)
+- drop python-311.patch: fixed upstream</comment>
+    <requestid>1128876</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>4d7f0644125d8c2da3550055c6c2650a</srcmd5>
+    <version>4.9.1</version>
+    <time>1701533583</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Recommends: make
+</comment>
+    <requestid>1130340</requestid>
+  </revision>
 </revisionlist>

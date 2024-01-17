@@ -16,65 +16,65 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pelican
-Version:        4.8.0
+Version:        4.9.1
 Release:        0
 Summary:        A tool to generate a static blog from reStructuredText or Markdown input files
 License:        AGPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://getpelican.com/
-# Use the source instead of the pypi release for the tests
-# Source:         https://github.com/getpelican/pelican/archive/%%{version}.tar.gz
-Source:         pelican-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-311.patch gh#getpelican/pelican#3055
-Patch0:         python-311.patch
-BuildRequires:  %{python_module Jinja2 >= 2.11}
-BuildRequires:  %{python_module Markdown >= 3.1.1}
-BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module Unidecode}
-BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module black}
-BuildRequires:  %{python_module blinker >= 1.4}
-BuildRequires:  %{python_module docutils >= 0.16}
-BuildRequires:  %{python_module feedgenerator >= 1.9}
-BuildRequires:  %{python_module flake8-import-order}
-BuildRequires:  %{python_module flake8}
-BuildRequires:  %{python_module invoke}
-BuildRequires:  %{python_module isort}
-BuildRequires:  %{python_module livereload}
-BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module pytz >= 0a}
-BuildRequires:  %{python_module rich >= 10.1}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sphinx_rtd_theme}
-BuildRequires:  %{python_module typogrify}
+Source:         https://github.com/getpelican/pelican/archive/refs/tags/%{version}.tar.gz#/pelican-%{version}-gh.tar.gz
+BuildRequires:  %{python_module Jinja2 >= 3.1.2}
+BuildRequires:  %{python_module Pygments >= 2.16.1}
+BuildRequires:  %{python_module Unidecode >= 1.3.7}
+BuildRequires:  %{python_module base >= 3.8.1}
+BuildRequires:  %{python_module blinker >= 1.7.0}
+BuildRequires:  %{python_module docutils >= 0.20.1}
+BuildRequires:  %{python_module feedgenerator >= 2.1.0}
+BuildRequires:  %{python_module ordered-set >= 4.1.0}
+BuildRequires:  %{python_module pdm}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module python-dateutil >= 2.8.2}
+BuildRequires:  %{python_module rich >= 13.6.0}
+BuildRequires:  %{python_module watchfiles >= 0.21.0}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  pandoc
 BuildRequires:  python-rpm-macros
-Requires:       python-Jinja2 >= 2.11
-Requires:       python-Pygments
-Requires:       python-Unidecode
-Requires:       python-blinker
-Requires:       python-docutils >= 0.15
-Requires:       python-feedgenerator >= 1.9
-Requires:       python-python-dateutil
-Requires:       python-pytz >= 0a
-Requires:       python-rich >= 10.1
+Requires:       python-Jinja2 >= 3.1.2
+Requires:       python-Pygments >= 2.16.1
+Requires:       python-Unidecode >= 1.3.7
+Requires:       python-blinker >= 1.7.0
+Requires:       python-docutils >= 0.20.1
+Requires:       python-feedgenerator >= 2.1.0
+Requires:       python-ordered-set >= 4.1.0
+Requires:       python-python-dateutil >= 2.8.2
+Requires:       python-rich >= 13.6.0
+Requires:       python-watchfiles >= 0.21.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Recommends:     make
 Suggests:       asciidoc
-Suggests:       python-Markdown >= 3.1.1
-Suggests:       python-typogrify
+Suggests:       python-Markdown >= 3.5.1
+Suggests:       python-typogrify >= 2.0.7
 BuildArch:      noarch
 ExcludeArch:    %{ix86}
+# SECTION test
+BuildRequires:  %{python_module Markdown >= 3.5.1}
+BuildRequires:  %{python_module Sphinx >= 7.1.2}
+BuildRequires:  %{python_module beautifulsoup4 >= 4.12.2}
+BuildRequires:  %{python_module invoke >= 2.2.0}
+BuildRequires:  %{python_module livereload >= 2.6.3}
+BuildRequires:  %{python_module lxml >= 4.9.3}
+BuildRequires:  %{python_module psutil >= 5.9.6}
+BuildRequires:  %{python_module pytest >= 7.4.3}
+BuildRequires:  %{python_module pytest-cov >= 4.1.0}
+BuildRequires:  %{python_module pytest-sugar >= 0.9.7}
+BuildRequires:  %{python_module pytest-xdist >= 3.4.0}
+BuildRequires:  %{python_module tomli >= 2.0.1 if %python_base < 3.11}
+BuildRequires:  %{python_module typogrify >= 2.0.7}
+# /SECTION
 %python_subpackages
 
 %description
@@ -107,13 +107,17 @@ sed -i '1d' \
     pelican/tools/pelican_themes.py \
     pelican/tools/pelican_quickstart.py
 # remove executable bit, this is not a script
-chmod -x pelican/tools/templates/publishconf.py.jinja2
+chmod -x \
+    pelican/tools/pelican_import.py \
+    pelican/tools/pelican_themes.py \
+    pelican/tools/pelican_quickstart.py \
+    pelican/tools/templates/publishconf.py.jinja2
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 for p in pelican pelican-import pelican-plugins pelican-quickstart pelican-themes; do
@@ -141,6 +145,6 @@ export PYTHONPATH=.
 %python_alternative %{_bindir}/pelican-quickstart
 %python_alternative %{_bindir}/pelican-themes
 %{python_sitelib}/pelican
-%{python_sitelib}/pelican-*.egg-info
+%{python_sitelib}/pelican-*.dist-info
 
 %changelog
