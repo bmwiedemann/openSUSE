@@ -1,2 +1,0 @@
-# Bogus warning - dependency on tcllib isn't added automatically
-addFilter ("explicit-lib-dependency tcllib")

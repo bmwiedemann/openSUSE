@@ -1,8 +1,0 @@
-<package name="rubygem-nori" project="openSUSE:Factory">
-  <title>nori</title>
-  <description>
-XML to Hash translator
-  </description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-nori"/>
-  <url>http://github.com/rubiii/nori</url>
-</package>

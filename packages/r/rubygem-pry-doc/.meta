@@ -1,8 +1,0 @@
-<package name="rubygem-pry-doc" project="openSUSE:Factory">
-  <title>Provides YARD and extended documentation support for Pry</title>
-  <description>Provides YARD and extended documentation support for Pry
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-pry-doc"/>
-  <url>http://banisterfiend.wordpress.com</url>
-</package>

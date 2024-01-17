@@ -1,6 +1,0 @@
-<package name="rubygem-prawn-core" project="openSUSE:Factory">
-  <title></title>
-  <description>https://rubygems.org/gems/prawn-core/</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-prawn-core"/>
-  <url>PUT_UPSTREAM_URL_HERE</url>
-</package>

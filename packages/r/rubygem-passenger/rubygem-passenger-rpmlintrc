@@ -1,8 +1,0 @@
-addFilter("devel-file-in-non-devel-package")
-addFilter("hidden-file-or-dir")
-addFilter("version-control-internal-file")
-addFilter("script-without-shebang")
-addFilter("non-executable-script")
-addFilter("zero-length")
-addFilter("files-duplicate")
-addFilter("non-executable-script")

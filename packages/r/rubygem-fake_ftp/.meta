@@ -1,7 +1,0 @@
-<package name="rubygem-fake_ftp" project="openSUSE:Factory">
-  <title>A fake FTP server for use with RSpec</title>
-  <description>This is a gem that allows you to test FTP implementations in ruby. It is a minimal single-client FTP server that can be bound to any arbitrary port on localhost.
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-fake_ftp"/>
-  <url>http://rubygems.org/gems/fake_ftp</url>
-</package>

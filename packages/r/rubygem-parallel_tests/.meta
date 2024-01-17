@@ -1,8 +1,0 @@
-<package name="rubygem-parallel_tests" project="openSUSE:Factory">
-  <title>rubygem-parallel_tests</title>
-  <description>
-    Run tests / specs / features in parallel
-  </description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-parallel_tests"/>
-  <url>http://github.com/grosser/parallel_tests</url>
-</package>

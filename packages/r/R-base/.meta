@@ -1,8 +1,0 @@
-<package name="R-base" project="openSUSE:Factory">
-  <title>R - statistics package (S-Plus like)</title>
-  <description>R is a language which is not entirely unlike the S language developed at
-AT&amp;T Bell Laboratories by Rick Becker, John Chambers and Allan Wilks.
-AUTHORS: R Core Team</description>
-  <devel project="devel:languages:R:released" package="R-base"/>
-  <url>http://cran.r-project.org/</url>
-</package>

@@ -1,8 +1,0 @@
-<package name="rcs" project="openSUSE:Factory">
-  <title>Revision Control System</title>
-  <description>RCS, the Revision Control System, manages multiple revisions of files.
-RCS can store, retrieve, log, identify, and merge revisions. It is
-useful for files that are frequently revised, for example: programs,
-documentation, graphics, and papers.</description>
-  <devel project="devel:tools:scm" package="rcs"/>
-</package>

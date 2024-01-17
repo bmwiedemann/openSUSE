@@ -1,5 +1,0 @@
-<package name="rfbplaymacro" project="openSUSE:Factory">
-  <title>Replays VNC macros</title>
-  <description>rfbplaymacro replays VNC macros as created by rfbproxy to a VNC server.</description>
-  <devel project="M17N" package="rfbplaymacro"/>
-</package>

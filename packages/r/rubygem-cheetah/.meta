@@ -1,5 +1,0 @@
-<package name="rubygem-cheetah" project="openSUSE:Factory">
-  <title>Cheetah</title>
-  <description>Cheetah is a simple library for executing external commands safely and conveniently.</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-cheetah"/>
-</package>

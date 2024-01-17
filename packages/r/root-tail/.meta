@@ -1,7 +1,0 @@
-<package name="root-tail" project="openSUSE:Factory">
-  <title>Print Text Directly to the X Window System Root Window</title>
-  <description>Tails a given file anywhere on your X Window System root window with a
-transparent background. It is customizable with regards to font, color,
-and more.</description>
-  <devel project="X11:Utilities" package="root-tail"/>
-</package>

@@ -1,6 +1,0 @@
-:preamble: |-
-  Source2:        rice-rpmlintrc
-  BuildRequires:  autoconf
-  BuildRequires:  automake
-  BuildRequires:  gcc-c++
-  BuildRequires:  gettext-devel

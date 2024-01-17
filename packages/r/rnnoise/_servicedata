@@ -1,6 +1,0 @@
-<servicedata>
-<service name="tar_scm">
-                <param name="url">https://github.com/xiph/rnnoise.git</param>
-              <param name="changesrevision">1cbdbcf1283499bbb2230a6b0f126eb9b236defd</param></service><service name="tar_scm">
-                <param name="url">https://gitlab.xiph.org/xiph/rnnoise.git</param>
-              <param name="changesrevision">7f449bf8bd3b933891d12c30112268c4090e4d59</param></service></servicedata>

@@ -1,5 +1,0 @@
-<package name="rrep" project="openSUSE:Factory">
-  <title>Recursive pattern replacement utility</title>
-  <description>rrep is a pattern replacement utility.  It comes with support for regular expressions, recursive directory processing, backup, simulation and prompting.  The replacement string may contain special characters to refer to portions of the matched pattern.</description>
-  <devel project="utilities" package="rrep"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="restool" project="openSUSE:Factory">
-  <title></title>
-  <description>restool is a user space application providing the ability to dynamically create and manage DPAA2 containers and objects from Linux.</description>
-  <devel project="network:utilities" package="restool"/>
-  <url>https://source.codeaurora.org/external/qoriq/qoriq-components/restool/about/</url>
-</package>

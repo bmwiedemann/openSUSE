@@ -1,5 +1,0 @@
-<package name="ristretto" project="openSUSE:Factory">
-  <title>Fast and Lightweight Image-viewer for the Xfce desktop environment</title>
-  <description>Ristretto is a fast and lightweight picture-viewer for the Xfce desktop environment.</description>
-  <devel project="X11:xfce" package="ristretto"/>
-</package>

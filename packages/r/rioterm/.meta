@@ -1,5 +1,0 @@
-<package name="rioterm" project="openSUSE:Factory">
-  <title>rio</title>
-  <description>A hardware-accelerated GPU terminal emulator powered by WebGPU, focusing to run in desktops and browsers. </description>
-  <devel project="X11:terminals" package="rioterm"/>
-</package>

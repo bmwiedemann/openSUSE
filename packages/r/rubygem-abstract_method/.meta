@@ -1,5 +1,0 @@
-<package name="rubygem-abstract_method" project="openSUSE:Factory">
-  <title></title>
-  <description>Abstract Method is a tiny library enabling you to define abstract methods in Ruby classes and modules.</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-abstract_method"/>
-</package>

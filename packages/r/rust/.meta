@@ -1,8 +1,0 @@
-<package name="rust" project="openSUSE:Factory">
-  <title>The Rust Programming Language</title>
-  <description></description>
-  <devel project="devel:languages:rust" package="rust"/>
-  <build>
-    <disable repository="images"/>
-  </build>
-</package>

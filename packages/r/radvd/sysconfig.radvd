@@ -1,7 +1,0 @@
-## Path:        Network/RADVD
-## Description: Router ADVertisement Daemon for IPv6
-## Type:        string
-## Default:     "-u daemon"
-## ServiceRestart: radvd
-# No chroot; /var/run/radvd must be owned by the user radvd is running as.
-RADVD_OPTIONS=""

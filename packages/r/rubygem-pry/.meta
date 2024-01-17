@@ -1,8 +1,0 @@
-<package name="rubygem-pry" project="openSUSE:Factory">
-  <title>attach an irb-like session to any object at runtime</title>
-  <description>attach an irb-like session to any object at runtime
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-pry"/>
-  <url>http://banisterfiend.wordpress.com</url>
-</package>

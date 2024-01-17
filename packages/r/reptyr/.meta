@@ -1,9 +1,0 @@
-<package name="reptyr" project="openSUSE:Factory">
-  <title>Reparent a running program to a new terminal</title>
-  <description>reptyr is a utility for taking an existing running program and
-attaching it to a new terminal. Started a long-running process over
-ssh, but have to leave and don't want to interrupt it? Just start a
-screen, use reptyr to grab it, and then kill the ssh session and head
-on home.</description>
-  <devel project="utilities" package="reptyr"/>
-</package>

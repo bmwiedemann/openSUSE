@@ -1,8 +1,0 @@
-<package name="rubygem-multi_json" project="openSUSE:Factory">
-  <title>A gem to provide swappable JSON backends</title>
-  <description>A gem to provide swappable JSON backends utilizing Yajl::Ruby, the JSON gem, ActiveSupport, or JSON pure.
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-multi_json"/>
-  <url>http://github.com/intridea/multi_json</url>
-</package>

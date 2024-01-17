@@ -1,8 +1,0 @@
-<package name="rubygem-oauth2" project="openSUSE:Factory">
-  <title>A Ruby wrapper for the OAuth 2.0 protocol</title>
-  <description>A Ruby wrapper for the OAuth 2.0 protocol built with a similar style to the original OAuth gem.
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-oauth2"/>
-  <url>http://github.com/intridea/oauth2</url>
-</package>

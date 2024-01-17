@@ -1,5 +1,0 @@
-<package name="rofi" project="openSUSE:Factory">
-  <title></title>
-  <description>A window switcher, run dialog and dmenu replacement</description>
-  <devel project="X11:Utilities" package="rofi"/>
-</package>

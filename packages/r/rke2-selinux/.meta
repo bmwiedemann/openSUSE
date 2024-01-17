@@ -1,6 +1,0 @@
-<package name="rke2-selinux" project="openSUSE:Factory">
-  <title>rke2-selinux</title>
-  <description>RKE2 selinux + RPM packaging for selinux </description>
-  <devel project="devel:microos" package="rke2-selinux"/>
-  <url>https://github.com/rancher/rke2-selinux</url>
-</package>

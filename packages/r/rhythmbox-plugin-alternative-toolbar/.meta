@@ -1,6 +1,0 @@
-<package name="rhythmbox-plugin-alternative-toolbar" project="openSUSE:Factory">
-  <title>Modern, minimal and music-focused interface for Rhythmbox</title>
-  <description>Alternative Toolbar replaces the Rhythmbox large toolbar with a Client-Side Decorated or Compact toolbar which can be hidden.</description>
-  <devel project="GNOME:Apps" package="rhythmbox-plugin-alternative-toolbar"/>
-  <url>https://github.com/fossfreedom/alternative-toolbar</url>
-</package>

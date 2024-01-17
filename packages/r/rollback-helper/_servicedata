@@ -1,6 +1,0 @@
-<servicedata>
-  <service name="tar_scm">
-    <param name="url">git://github.com/openSUSE/rollback-helper.git</param>
-    <param name="changesrevision">a885e163ddcf545ad418751f007305625bdfc192</param>
- </service>
-</servicedata>

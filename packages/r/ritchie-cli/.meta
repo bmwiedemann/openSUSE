@@ -1,5 +1,0 @@
-<package name="ritchie-cli" project="openSUSE:Factory">
-  <title>One CLI to rule them all</title>
-  <description>Ritchie is an open source framework that creates and tweaks a CLI for your team. It allows you to easily create, build and share formulas. This package contains the CLI core, which can execute formulas stored inside other repositories such as ritchie-formulas.</description>
-  <devel project="devel:tools" package="ritchie-cli"/>
-</package>

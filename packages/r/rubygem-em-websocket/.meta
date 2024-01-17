@@ -1,8 +1,0 @@
-<package name="rubygem-em-websocket" project="openSUSE:Factory">
-  <title>EventMachine based WebSocket server</title>
-  <description>EventMachine based WebSocket server
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-em-websocket"/>
-  <url>http://github.com/igrigorik/em-websocket</url>
-</package>

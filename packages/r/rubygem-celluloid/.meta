@@ -1,8 +1,0 @@
-<package name="rubygem-celluloid" project="openSUSE:Factory">
-  <title>Ruby concurrency made easy! Or at least, easier..</title>
-  <description>Celluloid is a concurrent object framework inspired by the Actor Model
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-celluloid"/>
-  <url>http://github.com/tarcieri/celluloid</url>
-</package>

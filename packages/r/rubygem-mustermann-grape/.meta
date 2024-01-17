@@ -1,5 +1,0 @@
-<package name="rubygem-mustermann-grape" project="openSUSE:Factory">
-  <title></title>
-  <description>Adds Grape style patterns to Mustermman</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-mustermann-grape"/>
-</package>

@@ -1,8 +1,0 @@
-<package name="rbutil" project="openSUSE:Factory">
-  <title>Rockbox Firmware Manager</title>
-  <description>Rockbox opensource firmware manager for mp3 players.
-
-</description>
-  <devel project="multimedia:apps" package="rbutil"/>
-  <url>https://www.rockbox.org/wiki/RockboxUtility</url>
-</package>

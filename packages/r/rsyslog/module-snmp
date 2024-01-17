@@ -1,7 +1,0 @@
-  # for logging to (rsyslog-module-snmp)
-  #include <abstractions/wutmp>
-  /proc/uptime r,
-  /usr/share/snmp/mibs/ r,
-  /usr/share/snmp/mibs/*.txt r,
-  /var/lib/net-snmp/mib_indexes/ rw,
-  /var/lib/net-snmp/mib_indexes/* rw,

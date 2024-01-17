@@ -1,9 +1,0 @@
-<package name="rook" project="openSUSE:Factory">
-  <title>Rook</title>
-  <description>Storage Orchestration for Kubernetes
-
-Rook is an open source cloud-native storage orchestrator for Kubernetes, providing the platform, framework, and support for a diverse set of storage solutions to natively integrate with cloud-native environments.
-
-This RPM is meant to be installed into container images.</description>
-  <devel project="filesystems:ceph" package="rook"/>
-</package>

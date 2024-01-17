@@ -1,5 +1,0 @@
-<package name="rinstall" project="openSUSE:Factory">
-  <title>rinstall</title>
-  <description>Declarative install for programs </description>
-  <devel project="Base:System" package="rinstall"/>
-</package>

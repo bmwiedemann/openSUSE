@@ -1,8 +1,0 @@
-<package name="rpmrebuild" project="openSUSE:Factory">
-  <title>A tool to build a rpm file from the rpm database</title>
-  <description>rpmrebuild allows to build an rpm file from an installed rpm, or from
-another rpm file, with or without changes (batch or interactive). It
-can be extended by a plugin system. A typical use is to easy repackage
-a software after some configuration's change.</description>
-  <devel project="devel:tools" package="rpmrebuild"/>
-</package>

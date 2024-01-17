@@ -1,7 +1,0 @@
-<package name="rng-tools" project="openSUSE:Factory">
-  <title>Support daemon for hardware random device</title>
-  <description>This  daemon  feeds data from a random number generator to the kernel's
- random  number  entropy  pool,  after	first checking the data to
-ensure that it is properly random.</description>
-  <devel project="Base:System" package="rng-tools"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="rubygem-net-ldap" project="openSUSE:Factory">
-  <title>rubygem-net-ldap</title>
-  <description>Net::LDAP is an LDAP support library written in pure Ruby. It supports all
-LDAP client features, and a subset of server features as well.
-
-(The gem was generated from a svn checkout of http://net-ldap.rubyforge.org/svn/branches/experimental_netldap on 2007-08-18)</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-net-ldap"/>
-  <url>http://rubyforge.org/projects/net-ldap/</url>
-</package>

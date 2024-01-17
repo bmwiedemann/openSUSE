@@ -1,6 +1,0 @@
-<package name="radvd" project="openSUSE:Factory">
-  <title>Router ADVertisement Daemon for IPv6</title>
-  <description>RADVD is the Router ADVertisement Daemon. It is used for automated
-configuration of IPv6 networks. Most people will not need this.</description>
-  <devel project="network" package="radvd"/>
-</package>

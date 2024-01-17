@@ -1,5 +1,0 @@
-<package name="restorecond" project="openSUSE:Factory">
-  <title></title>
-  <description>Daemon that watches for file creation and then sets the default SELinux file context</description>
-  <devel project="security:SELinux" package="restorecond"/>
-</package>

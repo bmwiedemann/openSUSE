@@ -1,6 +1,0 @@
-<package name="rhythmbox" project="openSUSE:Factory">
-  <title>GNOME Music Management Application</title>
-  <description>Music Management application with support for ripping audio-CD's,
-playback of Ogg Vorbis and MP3 and burning of CD-ROMs.</description>
-  <devel project="GNOME:Apps" package="rhythmbox"/>
-</package>

@@ -1,8 +1,0 @@
-<package name="rubygem-bundler" project="openSUSE:Factory">
-  <title>An easy way to vendor gem dependencies</title>
-  <description>An easy way to vendor gem dependencies
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-bundler"/>
-  <url>http://github.com/wycats/bundler</url>
-</package>

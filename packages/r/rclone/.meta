@@ -1,5 +1,0 @@
-<package name="rclone" project="openSUSE:Factory">
-  <title>rclone</title>
-  <description>&quot;rsync for cloud storage&quot;</description>
-  <devel project="network" package="rclone"/>
-</package>

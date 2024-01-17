@@ -1,7 +1,0 @@
-<package name="release-notes-openSUSE" project="openSUSE:Factory">
-  <title>Most Important Changes for This openSUSE Release</title>
-  <description>This package contains the description of the most important changes for
-this openSUSE release. In HTML format, they are available in the help
-center.</description>
-  <devel project="Documentation" package="release-notes-openSUSE"/>
-</package>

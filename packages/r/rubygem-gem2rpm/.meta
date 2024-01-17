@@ -1,9 +1,0 @@
-<package name="rubygem-gem2rpm" project="openSUSE:Factory">
-  <title>Generate rpm specfiles from gems</title>
-  <description>Generate source rpms and rpm spec files from a Ruby Gem.  The spec file tries
-to follow the gem as closely as possible
-
-</description>
-  <devel project="devel:languages:ruby" package="rubygem-gem2rpm"/>
-  <url>http://rubyforge.org/projects/gem2rpm/</url>
-</package>

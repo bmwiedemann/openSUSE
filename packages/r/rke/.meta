@@ -1,6 +1,0 @@
-<package name="rke" project="openSUSE:Factory">
-  <title>Rancher rke</title>
-  <description>Rancher Kubernetes Engine, an extremely simple, lightning fast Kubernetes installer that works everywhere.</description>
-  <devel project="devel:kubic" package="rke"/>
-  <url>https://github.com/rancher/rke</url>
-</package>

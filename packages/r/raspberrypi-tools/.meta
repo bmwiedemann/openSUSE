@@ -1,5 +1,0 @@
-<package name="raspberrypi-tools" project="openSUSE:Factory">
-  <title>Tools for the Raspberry Pi boards</title>
-  <description></description>
-  <devel project="hardware:boot" package="raspberrypi-tools"/>
-</package>

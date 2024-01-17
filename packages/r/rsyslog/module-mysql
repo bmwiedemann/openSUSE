@@ -1,6 +1,0 @@
-  # for logging to mysql DB (rsyslog-module-mysql)
-  #include <abstractions/mysql>
-  #include <abstractions/p11-kit>
-  /etc/my.cnf r,
-  /etc/my.cnf.d/ r,
-  /etc/my.cnf.d/* r,

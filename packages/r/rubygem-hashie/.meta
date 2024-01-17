@@ -1,6 +1,0 @@
-<package name="rubygem-hashie" project="openSUSE:Factory">
-  <title>rubygem-hashie</title>
-  <description>Hashie is a small collection of tools that make hashes more powerful. Currently includes Mash (Mocking Hash) and Dash (Discrete Hash).</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-hashie"/>
-  <url>https://github.com/intridea/hashie</url>
-</package>

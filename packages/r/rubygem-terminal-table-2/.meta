@@ -1,8 +1,0 @@
-<package name="rubygem-terminal-table-2" project="openSUSE:Factory">
-  <title>rubygem-terminal-table</title>
-  <description>
-    Simple, feature rich ASCII table generator. 
-  </description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-terminal-table-2"/>
-  <url>http://github.com/visionmedia/terminal-table/tree</url>
-</package>
