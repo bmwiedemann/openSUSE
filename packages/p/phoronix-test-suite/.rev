@@ -146,4 +146,12 @@
     <comment>- Add fix-CVE-2022-40704.patch that fixes boo#1206079.</comment>
     <requestid>1041351</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>2e28c1f2fcd3b93349a105758d2c9eec</srcmd5>
+    <version>10.8.4</version>
+    <time>1705526290</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139424</requestid>
+  </revision>
 </revisionlist>

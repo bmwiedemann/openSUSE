@@ -1,7 +1,7 @@
 #
 # spec file for package phoronix-test-suite
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  shared-mime-info
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || ( 0%{?suse_version} >= 1500 && 0%{?sle_version} > 150300 )
 Requires:       php8
 Requires:       php8-curl
 Requires:       php8-dom
