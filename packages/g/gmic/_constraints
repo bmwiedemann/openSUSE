@@ -1,0 +1,17 @@
+<constraints>
+ <hardware>
+  <memory>
+   <size unit="G">9</size>
+  </memory>
+ </hardware>
+  <overwrite>
+    <conditions>
+      <arch>ppc64le</arch>
+    </conditions>
+    <hardware>
+     <memory>
+      <size unit="G">7</size>
+     </memory>
+    </hardware>
+  </overwrite>
+</constraints>

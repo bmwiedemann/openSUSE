@@ -1,0 +1,8 @@
+<package name="sox" project="openSUSE:Factory">
+  <title>Sound Conversion Tools and Library</title>
+  <description>SOX is intended to be the Swiss Army knife of sound processing tools.
+It does many things, it just does not do them all well. Sooner or later
+it will come in very handy. SOX is really only usable day-to-day if you
+hide the wacky options with one-line shell scripts.</description>
+  <devel project="multimedia:apps" package="sox"/>
+</package>

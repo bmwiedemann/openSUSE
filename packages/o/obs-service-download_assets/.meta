@@ -1,0 +1,5 @@
+<package name="obs-service-download_assets" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Tools" package="obs-service-download_assets"/>
+</package>

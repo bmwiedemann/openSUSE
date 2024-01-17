@@ -1,0 +1,6 @@
+<package name="arp-scan" project="openSUSE:Factory">
+  <title>ARP scanning and fingerprinting tool</title>
+  <description>arp-scan is a command-line tool that uses the ARP protocol to discover and fingerprint IP hosts on the local network.</description>
+  <devel project="security" package="arp-scan"/>
+  <url>http://www.nta-monitor.com/tools/arp-scan/</url>
+</package>

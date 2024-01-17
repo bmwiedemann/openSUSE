@@ -1,0 +1,5 @@
+<package name="python-unittest2pytest" project="openSUSE:Factory">
+  <title></title>
+  <description>Convert unittest test-cases to pytest</description>
+  <devel project="devel:languages:python:pytest" package="python-unittest2pytest"/>
+</package>

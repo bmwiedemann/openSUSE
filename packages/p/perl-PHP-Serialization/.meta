@@ -1,0 +1,12 @@
+<package name="perl-PHP-Serialization" project="openSUSE:Factory">
+  <title>De-/serialize() PHP output into Perl</title>
+  <description>Provides a simple, quick means of serializing perl memory structures
+(including object data!) into a format that PHP can deserialize() and
+access, and vice versa.
+
+NOTE: Converts PHP arrays into Perl Arrays when the PHP array used
+exclusively numeric indexes, and into Perl Hashes then the PHP array did
+not.</description>
+  <devel project="devel:languages:perl" package="perl-PHP-Serialization"/>
+  <url>http://search.cpan.org/dist/PHP-Serialization/</url>
+</package>

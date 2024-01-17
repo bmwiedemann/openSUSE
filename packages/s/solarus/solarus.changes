@@ -1,0 +1,302 @@
+-------------------------------------------------------------------
+Sat Apr 10 10:06:15 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Remove compatibility bits for openSUSE Leap < 15.2.
+
+-------------------------------------------------------------------
+Tue Apr  6 19:11:40 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.6.5:
+  * Engine changes:
+    + Add support for suspending the simulation on Window Focus
+      events (gl#solarus-games/solarus#1536).
+    + Reconnect to another audio device after a device
+      disconnection (gl#solarus-games/solarus#1499).
+    + Fix joystick hot-plug/unplug (gl#solarus-games/solarus#1501,
+      gl#solarus-games/solarus#1387).
+    + Fix crash when calling command functions before the game is
+      started (gl#solarus-games/solarus#1476).
+    + Fix shader compilation on OpenGL ES 3.10 and 3.20
+      (gl#solarus-games/solarus#1537).
+    + Fix TTF fonts using wrong color for antialiasing
+      (gl#solarus-games/solarus#1390).
+    + Fix TTF Fonts not rendering correctly
+      (gl#solarus-games/solarus#1389).
+    + Fix a possible crash when starting a timer on a removed
+      entity (gl#solarus-games/solarus#1469).
+    + Fix pickables not falling on negative layers.
+    + Fix string literals in savegames not being properly escaped
+      (gl#solarus-games/solarus#1533).
+    + Fix Unicode filename support on Windows.
+  * Lua API changes:
+    + This release adds new features but does not introduce any
+      incompatibility.
+    + Add methods `destructible:get/set_cut_method()`
+      (gl#solarus-games/solarus#1526).
+  * Solarus launcher GUI changes:
+    + Add option to control suspension on Window Focus events.
+    + Rename "Force Software" to "Force software rendering".
+    + Disable force-software and suspend-unfocused options when
+      quest is running.
+- Add solarus-1.6.5-ldl.patch: Fix linking of solarus library
+  (gl#solarus-games/solarus#1539).
+- Update some file locations.
+
+-------------------------------------------------------------------
+Tue Jan  5 21:58:09 UTC 2021 - antoine.belvire@opensuse.org
+
+- Move _service from tar_scm to obs_scm and obscpio format.
+
+-------------------------------------------------------------------
+Sun Apr 12 15:27:07 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 1.6.4:
+  * Fix desktop file validation warning.
+- Remove solarus-1.6.3-desktop-version.patch: Merged upstream.
+
+-------------------------------------------------------------------
+Sat Apr 11 15:40:26 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 1.6.3:
+  * Engine changes:
+    + Fix macOS port not working since 1.6.1 due to OpenGL.
+    + Fix shaders compilation in some OpenGL ES 3.0 platforms
+      (gl#solarus-games/solarus#1437).
+    + Fix UTF-8 quest path encoding handling
+      (gl#solarus-games/solarus#1429).
+    + Fix UTF-8 file names in Lua Open File API for Windows
+      (gl#solarus-games/solarus#1413).
+    + Fix memory usage when visiting very large maps
+      (gl#solarus-games/solarus#1395).
+    + Fix crash when removing the shadow of a carried object
+      (gl#solarus-games/solarus#1423).
+    + Fix crash when stopping the movement of a thrown object
+      (gl#solarus-games/solarus#1452).
+    + Fix carried object shadow still displayed after removing it
+      (gl#solarus-games/solarus#1436).
+    + Fix animating hero sprites dynamically created
+      (gl#solarus-games/solarus#1348).
+    + Fix hero speed when going from deep water to shallow water
+      (gl#solarus-games/solarus#1186).
+    + Fix trail sprite not taking the hero's direction
+      (gl#solarus-games/solarus#1464).
+    + Fix ground sprite still displayed while jumping
+      (gl#solarus-games/solarus#1458).
+    + Fix custom states wrongly affected by ground speeds
+      (gl#solarus-games/solarus#1416).
+    + Fix custom states not activating side teletransporters
+      (gl#solarus-games/solarus#1448).
+    + Fix streams continuing to act when the layer has changed.
+    + Fix enemy:on_dying() not called when setting enemies life to
+      zero (gl#solarus-games/solarus#1440).
+    + Fix talking to NPCs while swimming
+      (gl#solarus-games/solarus#1043).
+    + Fix creating dynamic sprite with tileset anims
+      (gl#solarus-games/solarus#1461).
+  * GUI changes:
+    + Fix UTF-8 quest path encoding handling
+      (gl#solarus-games/solarus#1429).
+    + Add drag and drop functionality to add new quests
+      (gl#solarus-games/solarus#1420).
+- Remove merged patches:
+  * solarus-1.6.2-install-gui-translations.patch.
+  * 0001-Use-pkg-config-to-get-more-search-paths.patch.
+- Add solarus-1.6.3-desktop-version.patch: Fix desktop file
+  validation warning.
+- Add system's glm as build dependency: It's not bundled anymore.
+- Enable test 1269: It's back to stable.
+- Handle some file name changes.
+
+-------------------------------------------------------------------
+Tue Mar 24 18:38:22 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to find moonjit:
+  * 0001-Use-pkg-config-to-get-more-search-paths.patch
+
+-------------------------------------------------------------------
+Sun Sep  1 10:01:01 UTC 2019 - antoine.belvire@opensuse.org
+
+- Fix translation loading:
+  * Update solarus-1.6.2-install-gui-translations.patch with
+    final version pushed to upstream.
+
+-------------------------------------------------------------------
+Wed Aug 21 07:46:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Package description updates.
+
+-------------------------------------------------------------------
+Fri Aug 16 16:48:12 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 1.6.2:
+  * Fix scrolling teletransporters with a square size (#1412).
+  * Fix hero displayed above stairs walls.
+- Install translations for solarus-gui:
+  * Add solarus-1.6.2-install-gui-translations.patch.
+  * Create solarus-gui-lang subpackage.
+- Add _service file to create a tarball without the big
+  'libraries' folder which is relevant only for Windows/Mac builds.
+- Disable check section on Leap <= 15.1 to fix build.
+- Disable test "lua/bugs/1269_coroutines" as it is unstable.
+- Remove obsolete build dependency on update-desktop-files.
+
+-------------------------------------------------------------------
+Sat Aug 10 16:04:10 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to 1.6.1:
+  * Engine changes:
+    + Add `-force-software-rendering` switch to solarus-run.
+    + Add argument to set mouse cursor visibility on start (#1263).
+    + Add simple performance counters to the engine (#1280).
+    + Add argument to set fullscreen mode on start (#1281).
+    + Add joypad buttons combo for quitting the engine (#1283).
+    + Add git revision information to build and main loop startup
+      (#1292).
+    + Add argument to set the joypad axis deadzone (#1293).
+    + Add debug warning if a surface is larger than 2048 x 2048
+      (#1294).
+    + Add support of carried object sprites with multiple
+      directions (#1392).
+    + Improve CMake build (#1270, #1276, #1277, #1288, #1320).
+    + Fix several crashes (#1354, #1371, #1353, #1366, #1374,
+      #1361).
+    + Other bugfixes. See installed changelog.txt for more details.
+  * Lua API changes:
+    + This release adds new features but does not introduce any
+      incompatibility.
+    + Add methods game:get/set_transition_style() (#1368).
+    + Add methods state:get/set_can_use_teletransporter/switch/
+      stream() (#1363).
+    + Make surface, text_surface and timer userdata types indexable
+      (#1394).
+- Remove solarus-1.6.0-fix-desktop-exec.patch: Fixed upstream.
+- Update spec file:
+  * Split GUI and GUI library from main package.
+  * Update URL, Source and Description fields.
+  * Remove obsolete desktop_database_post(un) macros.
+  * Use cmake_build macro.
+  * Add check section.
+
+-------------------------------------------------------------------
+Sat Dec 22 20:21:07 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to 1.6.0:
+  * Engine changes:
+    + Solarus 1.5 quests are still supported by Solarus 1.6.
+    + Add support of OpenGL shaders.
+    + Replaced SDL renderer by a custom GL backend.
+    + Improve the performance of loading images.
+    + Maps can now use multiple tilesets.
+    + Animated tile patterns can now have any frame number and
+      delay.
+    + Treasure dialogs are now optional.
+    + Allow entities to have a non-multiple of 8 size.
+    + Don't center the hero on non-blocking streams.
+    + Allow pickables to follow streams.
+    + Blocks can now be moved multiple times.
+    + Add support of .otf fonts.
+    + Improve Lua error messages.
+    + CLI can accept an archive's path as argument.
+    + Bug fixes.
+  * Solarus launcher GUI changes:
+    + Show the path and the compatibility format of each quest.
+    + Lua console: provide variables game, map, entities and tp
+      function.
+    + Clear the console when a quest is started.
+    + FileDialog now expects a file, either quest.dat or an
+      archive (.solarus, .zip).
+  * Lua API changes:
+    + This release adds new features and deprecates a few ones but
+      does not introduce any incompatibility.
+    + See installed changelog.txt for full changelog.
+- Update build dependencies:
+  * Add pkgconfig(gl): Was already pulled by other dependencies
+    but now it's actually used.
+- Update patches:
+  * Drop appdata.patch: Fixed upstream.
+  * Add solarus-1.6.0-fix-desktop-exec.patch: Fix executable name
+    in desktop file.
+
+-------------------------------------------------------------------
+Mon Aug 14 10:39:41 UTC 2017 - aloisio@gmx.com
+
+- Update to 1.5.3
+  * Speed up loading maps by keeping tilesets in a cache (#1019).
+  * Fix text_surface:set_horizontal/vertical_alignment() not
+    working.
+  * Fix parallax dynamic tiles still displayed when disabled or
+    invisible.
+  * Improve error message of non-square tile patterns with diagonal
+    obstacles.
+
+- Dropped luajit-5_1-2.1.patch and icons-desktop-man.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
+Sat Feb 18 08:45:46 UTC 2017 - mailaender@opensuse.org
+
+- Add appdata.patch for https://en.opensuse.org/openSUSE:AppStore
+
+-------------------------------------------------------------------
+Wed Jan 25 09:09:53 UTC 2017 - jengelh@inai.de
+
+- Implement shared library packaging guideline.
+  Trim filler words from description.
+
+-------------------------------------------------------------------
+Tue Jan 24 07:55:45 UTC 2017 - mailaender@opensuse.org
+
+- New upstream version 1.5.1
+- build the Qt5 quest launcher GUI
+- remove fix-libsuffix.patch (included upstream)
+- remove fix-luajit-cmake.patch (included upstream)
+- add luajit-5_1-2.1.patch to fix the build with LuaJIT 2.1
+- add icons-desktop-man.patch to complete the cmake installation
+
+-------------------------------------------------------------------
+Mon Jan 25 01:34:54 UTC 2016 - rpm@fthiessen.de
+
+- New upstream version 1.4.5:
+  * Fix file name not shown when there is an error in dialogs file.
+  * Fix saving special characters in data files.
+  * Fix sol.main.load_file() returning a string instead of
+    nil on error.
+  * Fix performance issue when sprites have huge frame delays.
+  * Fix collisions triggered for removed entities.
+  * Fix hero disappearing if lifting animation has less
+    than 5 frames.
+  * Fix collisions with diagonal dynamic tiles larger than 8x8.
+  * Fix path finding movement not working with NPCs.
+  * Fix stuck on non-traversable dynamic tiles covered
+    by traversables.
+  * Fix collision detection of custom entities that do not move.
+  * Fix pickables with special movement falling in holes too early.
+  * Fix blocking streams not working when the hero's
+    speed is greater.
+
+-------------------------------------------------------------------
+Sat Nov 21 12:33:31 UTC 2015 - rpm@fthiessen.de
+
+- Updated to 1.4.4:
+  * spec file clean up
+  * Added fix-libsuffix.patch to install library into /usr/lib64
+    on e.g. x86_64 instead /usr/lib
+  * Added fix-luajit-cmake.patch to detect luajit headers in
+    include path with lua_suffix.
+
+-------------------------------------------------------------------
+Wed Jul  2 19:04:21 UTC 2014 - mailaender@opensuse.org
+
+- Adapted for SUSE
+- Update to 1.2.0
+
+-------------------------------------------------------------------
+Fri Jan  3 00:00:00 UTC 2014 - huaren.zhong@gmail.com
+
+- Rebuild for Fedora
+
+-------------------------------------------------------------------
+Wed Dec 28 00:00:00 UTC 2011 - giacomosrv@gmail.com
+
+- packaged solarus version 0.9.0
+

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=CutterFF
+GenericName=CutterFF
+Comment=Video Editor
+Exec=cutterff
+MimeType=video/mpeg;video/x-flv;video/mp4;video/quicktime;video/x-msvideo;video/x-ms-wmv;
+Icon=cutterff
+Terminal=false
+Type=Application
+Categories=AudioVideo;AudioVideoEditing;
+X-KDE-StartupNotify=true
+X-SuSE-translate=true

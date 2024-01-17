@@ -1,0 +1,227 @@
+-------------------------------------------------------------------
+Sat Nov  4 18:23:32 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 2.15.0
+  + Add support for decompressing Zstandard-compressed YAML files
+  + Remove a dependency on "file" library (libmagic)
+  + Add a XML specification for in-YUM-repository metadata
+  + Deprecate intents in modulemd-defaults specification
+  + Fix a crash when converting a modulemd-packager object with a default
+profile and without a module name or stream to a module index
+  + Fix parsing empty profiles
+  + A specification for modulemd-v2 format was corrected to require a "content"
+license subtree only if the module build contains artifacts.
+  + Double-quote strings in scalar YAML values when they look like a number
+  + Warnings from g_str_equal() macro of glib2 about passing an unsigned
+char * to strcmp() were fixed
+
+-------------------------------------------------------------------
+Sat Oct 15 19:41:24 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.14.0:
+  * New functions for stripping XMD from an index
+  * developer visible fixes and documentation updates
+  * Fix a crash when updating an index with an invalid subdocument
+    and a NULL error parameter.
+  * Reject duplicate contexts in modulemd-packager-v3 documents.
+  * Report an error if modulemd-validator tool is invoked with both
+    --version option and an unknown option.
+  * Fix an undefined behaviour when comparing integers of different
+    signs.
+
+-------------------------------------------------------------------
+Fri Mar 18 11:48:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire glib2-doc when building against glib2 more recent
+  than 2.70.4: the documentation was split out (after it was
+  earlier merged; so for older distros we don't have to worry, as
+  glib2-devel provides glib2-doc there).
+
+-------------------------------------------------------------------
+Wed Jan  5 11:06:07 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop unknown meson parameters: developer_build,
+  with_py2_overrides, with_py3_overrides.
+
+-------------------------------------------------------------------
+Fri Aug 27 02:33:44 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 2.13.0
+  + Add /data/demodularized/rpms list to modulemd and modulemd-packager
+    formats.
+  + modulemd-validator enables you to constrain a document type with
+    a new "--type" option.
+  + Reject invalid integers. Purely non-numeric values and negative
+    numbers where an unsigned type is mandated by a specification
+    raise a parser error now.
+  + Handle a failed g_setenv() call in modulemd-validator.
+  + Prevent from dereferencing a NULL pointer when reporting invalid
+    subdocuments.
+  + "modulemd-validator --version" command returns 0 exit code now.
+
+-------------------------------------------------------------------
+Mon May 31 08:36:31 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 2.12.1
+  This is a bug-fix release fully compatible with the previous 2.12.0
+  version. Notable changes:
+
+  Enhancements:
+
+  - Improve diagnostic messages for compression tests.
+  - Tests performed in a GitHub continues integration are faster.
+  - Use GitHub actions to perform CI tests also on ArchLinux, Mageia,
+    Mandriva, and OpenSUSE.
+
+  Fixes:
+
+  - Relax context value up to 13 characters including an underscore
+    character in modulemd v2 format. This reenables scratch-builds in MBS.
+    Migrate Packit tests from a deprecated current_version_command to
+    a newer actions/get-current-version.
+
+-------------------------------------------------------------------
+Tue Feb  2 23:20:15 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 2.12.0
+  + Add support for 'buildorder' to Packager documents
+  + Fix issue with ModuleIndex when input contains only Obsoletes documents
+  + Extend read_packager_[file|string]() to support overriding the module name
+    and stream.
+  + Ignore Packager documents when running ModuleIndex.update_from_*()
+  + Add python overrides for XMD in PackagerV3
+  + Add python override to ignore the GType return when reading packager files
+  + Add PackagerV3.get_mdversion()
+- Drop patch incorporated in this release
+  + Patch: 0001-Fix-integer-size-issue-on-32-bit-platforms.patch
+
+-------------------------------------------------------------------
+Sun Nov 29 22:03:09 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 2.10.0
+  + Add modulemd-obsoletes
+  + Add modulemd v3 format
+- Fix build for 32-bit architectures with patch from upstream
+  + Patch: 0001-Fix-integer-size-issue-on-32-bit-platforms.patch
+
+-------------------------------------------------------------------
+Tue Jul  7 10:43:34 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Rebase to 2.9.4
+  + Deprecate reset methods in favor of clear methods
+  + Add modulemd-validator man page
+  + Add Module.search_streams_by_glob()
+  + Add ModuleIndex.search_streams() method
+  + Add Modulemd.Module.search_streams_by_nsvca_glob()
+  + Add ModuleIndex.search_streams_by_nsvca_glob()
+  + Add ModuleIndex.search_rpms()
+  + Add ModuleStreamV2.search_profiles()
+  + Add framework for handling modulemd-packager YAML documents
+  + Return appropriate error when parsing a ModulemdStream doc fails
+  + Rework ModulemdError and ModulemdYamlError
+  + Improve Modulemd*ErrorEnum deprecations
+  + Use the new error enums everywhere
+  + Fix inconsistent error setting
+  + Make SKIP_UNKNOWN return UNKNOWN_ATTR in strict mode
+  + modulemd-packager: Check for extraneous attributes
+  + Fix bug printing negative buildorder values
+  + Handle NULL nsvca_patterns for globs
+  + Relax handling of differing content for the same NSVCA
+
+-------------------------------------------------------------------
+Sun Jan 19 14:55:59 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 2.8.3
+  + Detect GDate autoptr when available to fix build with glib2 >= 2.63.3
+  + Correct typo in MODULEMD_REPLACE_SET()
+  + Fix modulemd_buildopts_copy() to make a deep copy of the rpm whitelist
+  + Add support for new ModulemdBuildopts arches attribute
+
+-------------------------------------------------------------------
+Sun Dec  1 15:04:32 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 2.8.2
+  + modulemd v1 has been split out into is own tarball
+  + Add ModuleIndexMerger.resolve_ext()
+  + Fix transfer type for Module.search_streams()
+  + Correct typo in ModulemdModuleStream.arch property nickname
+  + Add gtk-doc descriptions for ModulemdModuleStream object properties
+  + Fix modulemd_yaml_parse_bool() comparisons so return value is correct
+  + Make ModulemdErrorEnum and ModulemdYamlErrorEnum into public enums
+  + Move modulemd_module_stream_v2_replace_*() method definitions
+    to correct header file and add documentation
+  + Refactor stream copy/upgrade helper macros
+  + Add Modulemd.Module.get_translation()
+  + Add ModuleIndex.update_from_defaults_directory()
+  + Modulemd.ModuleIndex.update_from_file() now supports reading files
+    compressed with gzip, bzip2 or xz
+- libmodulemd1 has been split into its own package
+
+-------------------------------------------------------------------
+Fri May 24 03:25:00 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 2.5.0 (v2) and 1.8.11 (v1)
+  + Ensure that XMD is always emitted in the same order
+  + Add .clear_*() functions for all .add_*() functions
+  + Add ModuleStream.equals()
+  + Add ModuleIndex.get_default_streams()
+  + Add ModuleStreamV2.clear_dependencies() and .remove_dependencies()
+  + Fix bugs and memory issues with the XMD python bindings
+  + Assorted documentation enhancements
+
+-------------------------------------------------------------------
+Fri May 10 14:30:36 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 2.3.1 (v2) and 1.8.8 (v1)
+  + Make Modulemd.Component.set_*() functions accept NULL (gh#fedora-modularity/libmodulemd#279)
+  + Fix segmentation fault in XMD code due to improper memory management (gh#fedora-modularity/libmodulemd#274)
+  + Fix assorted documentation issues
+- Disable executing test suite on ARM and RISC-V due to performance issues with builders
+
+-------------------------------------------------------------------
+Sun Apr 28 14:06:18 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Add missing dependency on six module for Python 3 bindings subpackage
+
+-------------------------------------------------------------------
+Tue Apr 23 03:54:08 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 2.3.0 (v2) and 1.8.7 (v1)
+  + Add ModuleIndex.update_from_custom()
+  + Add ModuleIndex.dump_to_custom()
+  + Add Component.equals()
+  + Add Module.remove_streams_by_NSVCA()
+  + Fix bug with emitting lists of scalars in XMD
+  + Fix bug with deduplication in the ModuleIndexMerger
+  + Fix serious memory leak
+- Drop patch included in upstream release
+  * 0001-Only-require-python2-if-installing-overrides.patch
+
+-------------------------------------------------------------------
+Sun Mar 31 14:23:59 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 2.2.2 (v2) and 1.8.5 (v1)
+  + Fix documentation for ModuleStream.depends_on_stream()
+  + Update APIs to handling full NSVCA of modules
+  + Add new APIs for handling full NSVCA of modules
+  + Add 'buildonly' option for components
+  + Add 'buildafter' component
+  + Add config option for python overrides
+- Drop patches included in upstream release
+  * 0001-V2-Add-missing-include-for-string.h-to-modulemd-util.patch
+  * 0002-Tests-Use-bin-bash-for-interpreter-shebangs-for-shel.patch
+- Add patch backported from upstream to avoid Python 2 dependency
+  * 0001-Only-require-python2-if-installing-overrides.patch
+
+-------------------------------------------------------------------
+Tue Feb  5 12:24:46 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Add patches backported from upstream to fix build on openSUSE
+  * 0001-V2-Add-missing-include-for-string.h-to-modulemd-util.patch
+  * 0002-Tests-Use-bin-bash-for-interpreter-shebangs-for-shel.patch
+- Run tests during package builds
+
+-------------------------------------------------------------------
+Sun Feb  3 16:27:25 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Initial packaging based on Mageia package

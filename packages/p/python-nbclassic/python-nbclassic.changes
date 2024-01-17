@@ -1,0 +1,291 @@
+-------------------------------------------------------------------
+Thu Aug 17 15:59:44 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Suggest primary python package -- boo#1214354
+
+-------------------------------------------------------------------
+Sun Jun 11 19:50:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.0
+  * only documentation changes despite the big version bump
+
+-------------------------------------------------------------------
+Mon May  1 17:46:44 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.6
+  * Add show_banner trait to control the banner display #243
+    (@echarles)
+  * Use the correct icon to display the application #245
+    (@befeleme)
+  * State the correct name of the application in the desktop entry
+    #244 (@befeleme)
+
+-------------------------------------------------------------------
+Sun Apr 23 20:25:35 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.5
+  * Remove redirect from /notebooks to /files #235 (@mwouts)
+- Release 0.5.4
+  * Copy marked.umd.js to marked.js and revert loading #236
+    (@echarles)
+
+-------------------------------------------------------------------
+Sun Mar 19 16:11:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.3
+  * Fix generating of .mo and .json files for nl translation #221
+    (@frenzymadness)
+  * Fix banner icons #220 (@echarles)
+- Release 0.5.2
+  * Add news banner and log #215 (@echarles)
+  * Update get_rendered_contents further marked javascript upgrade
+    #210 (@echarles)
+  * Update security concerns link #218 (@RRosio)
+  * Don't require two different minimal versions of jupyter_server
+    #208 (@hroncok)
+
+-------------------------------------------------------------------
+Thu Feb  9 16:16:06 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.5.1:
+  * Bugs fixed
+    + Add packages and package_data back in the setup_args #206
+      (@echarles)
+    + Add static and templates as artifact for hatch build #205
+      (@echarles)
+
+- changes from version 0.5.0:
+  * Enhancements made
+    + Upgrade to marked 4.0.10 #201 (@echarles)
+  * Bugs fixed
+    + Ci test fixes round1 #202 (@ericsnekbytes)
+    + fix loading of static and template path config #192 (@minrk)
+    + Add pytest_jupyter to the list of test deps #190 (@echarles)
+    + Align setup.py and setup.cfg #181 (@echarles)
+  * Maintenance and upkeep improvements
+    + Ci test fixes round1 #202 (@ericsnekbytes)
+    + Remove duplicate notebook_shim from setup.cfg #197
+      (@frenzymadness)
+    + Upgrade moment javascript package #186 (@echarles)
+    + Add dependabot config #175 (@blink1073)
+  * Documentation improvements
+    + Update documentation #196 (@RRosio)
+    + Update the project URL #194 (@jtpio)
+  * Other merged PRs
+    + Fix the jupyter server base.handlers import #187 (@echarles)
+    + Revert pull request 168 #184 (@echarles)
+
+-------------------------------------------------------------------
+Sat Dec 31 13:05:25 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- Add pytest-jupyter to test requirenents. Testing with
+  jupyter-server pulls it in now gh#jupyter/nbclassic#190
+
+-------------------------------------------------------------------
+Sat Nov  5 19:48:55 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.4.8:
+  * Enhancements made
+    + Playwright Testing Conversion #170 (@ericsnekbytes)
+  * Bugs fixed
+    + Handle async and sync contents managers #172 (@blink1073)
+  * Maintenance and upkeep improvements
+    + Playwright port #139 (@ericsnekbytes)
+  * Documentation improvements
+    + Documentation for the extensions configurator #174 (@echarles)
+    + Updating contributing docs for playwright tests #171 (@RRosio)
+  * Other merged PRs
+    + Update docs to remove install command #173 (@dleen)
+
+-------------------------------------------------------------------
+Sat Oct 22 03:38:13 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.4.7:
+  * New features added
+    + Fix/nbclassic base url #168 (@mcrutch)
+  * Enhancements made
+    + Add a redirect from /nbclassic to /nbclassic/tree if both
+      notebook>=7 if both notebook>=7 and nbclassic are installed #166
+      (@echarles)
+  * Bugs fixed
+    + Allow NBClassic to work with NB7 and ServerApp.base_url #165
+      (@mcrutch)
+
+- changes from version 0.4.6:
+  * New features added
+    + Adds new file custom-preload that is loaded in a different order
+      than custom.js before the main.js script is executed #155
+      (@lneves12)
+  * Bugs fixed
+    + Use var instead of const to ensure js-test succeed #159
+      (@echarles)
+  * Documentation improvements
+    + add badge for documentation #160 (@RRosio)
+
+-------------------------------------------------------------------
+Sun Oct  9 17:11:52 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.4.5:
+  * Bugs fixed
+    + fix: display the correct about box if jupyter notebook command
+      is used #156 (@echarles)
+
+-------------------------------------------------------------------
+Sat Oct  1 19:17:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove duplicates workaround
+
+-------------------------------------------------------------------
+Fri Sep 30 15:15:04 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+ * jupyter-nbclassic-bundlerextension,
+   jupyter-nbclassic-extension, jupyter-nbclassic-serverextension
+   gained the "-nbclassic-" part of the name; updated binary-names for
+   update-alterantives
+
+- update to version 0.4.4:
+  * Enhancements made
+    + Stop looking in the old IPython directory for nbextensions #153
+      (@minrk)
+    + Handlers under nbclassic if notebook 7 is found #141 (@echarles)
+  * Bugs fixed
+    + Fix resource display when redirecting from /notebooks/* #148
+      (@echarles)
+    + Rename duplicate entrypoints #138 (@echarles)
+    + Point nbclassic at the classic jupyter_notebook_config path #137
+      (@Zsailer)
+  * Maintenance and upkeep improvements
+    + Updating JS Dependencies #152 (@RRosio)
+    + Get the notebook version from notebook._version #133 (@echarles)
+  * Documentation improvements
+    + Updating documentation for nbclassic #134 (@RRosio)
+  * Other merged PRs
+    + UI: About box to display nbclassic instead of notebook #147
+      (@echarles)
+
+-------------------------------------------------------------------
+Tue Aug  2 15:59:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.4.3
+  * Handle execution errors with empty traceback entries similar to
+    Lab #126 (@kevin-bates)
+  * fix some import errors in 0.4 #130 (@minrk)
+  * fix enable-on-install #127 (@minrk)
+  * Fix notebook shim version check #129 (@minrk)
+- Release 0.4.2
+  * Don't shim notebook if notebook<7 is available #123 (@echarles)
+  * Relax assert for IPythonHandler in case of notebook<6 #122
+    (@echarles)
+  * Fix executable name in desktop file #119 (@antonio-rojas)
+- Release 0.4.0
+  * Shim to support the notebook extensions #113 (@echarles)
+  * nbclassic to use its own static assets #96 (@echarles)
+  * Add the notebook 6.4.x tests, docs and companion files (with
+    git history) #94 (@echarles)
+  * Add the notebook static assets (with git history) #93
+    (@echarles)
+- Use the pure wheel for install which has the JS stuff.
+- Override notebook entrypoints with higer priority libalternatives
+  configurations gh#jupyter/notebook#6501
+- Test in multibuild for all the dependencies. Stay with nbclassic
+  tests only, not the notebook tests further down in the tree.
+
+-------------------------------------------------------------------
+Sun Jun  5 17:18:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.3.7
+  * Clean up packaging and CI #91 (@blink1073)
+- Release 0.3.6
+  * Depend on notebook_shim package for server-side shim layer #88
+    (@Zsailer)
+
+-------------------------------------------------------------------
+Thu Feb 17 16:37:03 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.3.5:
+  * Bugs fixed
+    + ensure extension name is passed to TerminalHandler #79 (@minrk)
+  * Maintenance and upkeep improvements
+    + Clean up downstream tests #82 (@blink1073)
+    + Enforce labels on PRs #80 (@blink1073)
+
+-------------------------------------------------------------------
+Sun Nov 21 09:15:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Accomodate moved config to distconfig
+
+-------------------------------------------------------------------
+Sun Nov 14 15:53:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.3.4
+  * Monkeypatch IPythonHandler to find nbclassic's jinja templates
+    #77 (@Zsailer)
+  * Run JupyterLab browser tests as downstream tests #76 (@Zsailer)
+  * add check-release workflow #75 (@Zsailer)
+- Release 0.3.3
+  * Use Jupyter Packaging and other cleanup #68 (@Zsailer)
+  * add missing lines to manifest #72 (@Zsailer)
+  * add changelog comments for jupyter-releaser #70 (@Zsailer)
+  * add setup.py back to enable jupyter_releaser #69 (@Zsailer)
+  * Add workflow to test JupyterLab #67 (@Zsailer)
+  * Expose classic notebook's static assets from their original
+    endpoints #63 (@Zsailer)
+- Release 0.32.2
+  * ExtensionManager's link_extension changed call signature #64
+    (@athornton)
+  * Fix link to the Jupyter Notebook repo in README #62
+    (@saiwing-yeung)
+- Reenable libalternatives
+
+-------------------------------------------------------------------
+Thu Oct 28 19:14:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- revert the usage of libalternatives due to
+  gh#openSUSE/libalternatives#11
+
+-------------------------------------------------------------------
+Wed Sep  8 10:31:31 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
+Mon Aug 16 12:20:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- reenable python36 build (uses python-ipykernel5 package)
+
+-------------------------------------------------------------------
+Fri Jul 23 08:15:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.3.1
+  * bump jupyter_server dependency to 1.8 #58 (@Zsailer)
+- Release 0.3.0
+  * Support creating terminal with a given name. #52 (@cailiang9)
+  * BUG fix: correct redirection to {base_url}/edit/*. #55
+    (@cailiang9)
+  * patch server's sorted_extensions to prioritize nbclassic #56
+    (@Zsailer)
+- Release 0.2.8
+ * Remove forced sorting of extensions #49 (@minrk)
+ * Add Changelog #48 (@blink1073)
+- Release 0.2.7
+  * Fix deprecation warning when importing
+    jupyter_server.transutils._ #47 (@martinRenou)
+  * Add a redirect handler to open non-notebook files from the cli
+    #45 (@jtpio)
+  * Add default_url trait to NotebookApp #42 (@afshin)
+  * Fix GitHub Actions badge #40 (@jtpio)
+  * Run jupyter nbclassic -h on CI #29 (@jtpio)
+- Skip python2 and python36 (no ipykernel 6 on python36)
+
+-------------------------------------------------------------------
+Tue Feb  2 21:09:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- initial specfile for 0.2.6
+- required by jupyterlab 3 

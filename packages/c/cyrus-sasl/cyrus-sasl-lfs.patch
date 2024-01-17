@@ -1,0 +1,13 @@
+--- cyrus-sasl-2.1.27.orig/configure.ac	2018-10-09 16:58:04.000000000 +0200
++++ cyrus-sasl-2.1.27/configure.ac	2018-11-17 13:05:26.475631124 +0100
+@@ -95,7 +95,9 @@
+               enable_obsolete_digest_attr=$enableval,
+               enable_obsolete_digest_attr=yes)
+ 
+-AC_PROG_CC
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
+ AX_PROG_CC_FOR_BUILD
+ AC_PROG_CPP
+ AC_PROG_AWK

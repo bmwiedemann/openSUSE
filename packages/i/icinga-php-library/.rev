@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f1d2d6ec1ed18c6c19329191a74e0d02</srcmd5>
+    <version>0.6.1</version>
+    <time>1637877931</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for icingaweb2 &gt;= 2.9.0</comment>
+    <requestid>933742</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0b7a2a5589ca405f0db1685658a8cd59</srcmd5>
+    <version>0.7.0</version>
+    <time>1645221775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955788</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b5ec39392f2d662c47d2ab9edad4749c</srcmd5>
+    <version>0.8.0</version>
+    <time>1648241704</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964879</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>106ee0bf0f47427b199c528eac4a2c05</srcmd5>
+    <version>0.9.0</version>
+    <time>1656675908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986196</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>be924eafb38b951bfa4b15fd1b0f4bf3</srcmd5>
+    <version>0.10.0</version>
+    <time>1664908691</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007875</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>885e9361a3ae871d7f130458e2739941</srcmd5>
+    <version>0.11.0</version>
+    <time>1683728386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1086002</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>806abc3f8cde8eea558dee0402990b06</srcmd5>
+    <version>0.12.0</version>
+    <time>1689614635</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098907</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>318e469323507d4e340a488fad40b1ea</srcmd5>
+    <version>0.13.0</version>
+    <time>1696269862</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114253</requestid>
+  </revision>
+</revisionlist>

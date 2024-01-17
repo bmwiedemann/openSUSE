@@ -1,0 +1,5 @@
+<package name="scitokens-cpp" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:libraries:c_c++" package="scitokens-cpp"/>
+</package>

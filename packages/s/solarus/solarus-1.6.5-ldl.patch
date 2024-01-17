@@ -1,0 +1,11 @@
+diff -up solarus/cmake/AddSolarusLibrary.cmake.orig solarus/cmake/AddSolarusLibrary.cmake
+--- solarus/cmake/AddSolarusLibrary.cmake.orig	2021-04-06 22:02:58.271946569 +0200
++++ solarus/cmake/AddSolarusLibrary.cmake	2021-04-06 22:03:09.967947054 +0200
+@@ -26,6 +26,7 @@ target_link_libraries(solarus
+     Vorbis::File
+     Ogg::Ogg
+     ModPlug::ModPlug
++    ${CMAKE_DL_LIBS}
+ )
+ 
+ # Add OpenGL imported target to "solarus" declared dependencies

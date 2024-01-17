@@ -1,0 +1,249 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>30b7be610cfbef2fa5498f52fc370732</srcmd5>
+    <version>unknown</version>
+    <time>1550668192</time>
+    <user>maxlin_factory</user>
+    <comment>- Initial packaging for openSUSE</comment>
+    <requestid>672446</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f620925013a51b3320ea5deb2c88e683</srcmd5>
+    <version>unknown</version>
+    <time>1554115185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.2 (v2) and 1.8.5 (v1)
+  + Fix documentation for ModuleStream.depends_on_stream()
+  + Update APIs to handling full NSVCA of modules
+  + Add new APIs for handling full NSVCA of modules
+  + Add 'buildonly' option for components
+  + Add 'buildafter' component
+  + Add config option for python overrides
+- Drop patches included in upstream release
+  * 0001-V2-Add-missing-include-for-string.h-to-modulemd-util.patch
+  * 0002-Tests-Use-bin-bash-for-interpreter-shebangs-for-shel.patch
+- Add patch backported from upstream to avoid Python 2 dependency
+  * 0001-Only-require-python2-if-installing-overrides.patch
+</comment>
+    <requestid>690190</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5a6aa9e9ae7547010ebda50620c2b997</srcmd5>
+    <version>unknown</version>
+    <time>1556023015</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.3.0 (v2) and 1.8.7 (v1)
+  + Add ModuleIndex.update_from_custom()
+  + Add ModuleIndex.dump_to_custom()
+  + Add Component.equals()
+  + Add Module.remove_streams_by_NSVCA()
+  + Fix bug with emitting lists of scalars in XMD
+  + Fix bug with deduplication in the ModuleIndexMerger
+  + Fix serious memory leak
+- Drop patch included in upstream release
+  * 0001-Only-require-python2-if-installing-overrides.patch
+</comment>
+    <requestid>696921</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>2e3d26f6bbe19c3ccba5acc2a5ac9aeb</srcmd5>
+    <version>unknown</version>
+    <time>1556622316</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing dependency on six module for Python 3 bindings subpackage
+</comment>
+    <requestid>698915</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ce345d51d9d06b712548681b9f0b6a5f</srcmd5>
+    <version>unknown</version>
+    <time>1557654258</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.1 (v2) and 1.8.8 (v1)
+  + Make Modulemd.Component.set_*() functions accept NULL (gh#fedora-modularity/libmodulemd#279)
+  + Fix segmentation fault in XMD code due to improper memory management (gh#fedora-modularity/libmodulemd#274)
+  + Fix assorted documentation issues
+- Disable executing test suite on ARM and RISC-V due to performance issues with builders
+</comment>
+    <requestid>702039</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>9083351698d295329c0f33b6afa012a6</srcmd5>
+    <version>unknown</version>
+    <time>1558690403</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.0 (v2) and 1.8.11 (v1)
+  + Ensure that XMD is always emitted in the same order
+  + Add .clear_*() functions for all .add_*() functions
+  + Add ModuleStream.equals()
+  + Add ModuleIndex.get_default_streams()
+  + Add ModuleStreamV2.clear_dependencies() and .remove_dependencies()
+  + Fix bugs and memory issues with the XMD python bindings
+  + Assorted documentation enhancements
+</comment>
+    <requestid>705109</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>c8dcdaee4e6d738910eb717f5ea92985</srcmd5>
+    <version>2.8.2</version>
+    <time>1575728466</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8.2
+  + modulemd v1 has been split out into is own tarball
+  + Add ModuleIndexMerger.resolve_ext()
+  + Fix transfer type for Module.search_streams()
+  + Correct typo in ModulemdModuleStream.arch property nickname
+  + Add gtk-doc descriptions for ModulemdModuleStream object properties
+  + Fix modulemd_yaml_parse_bool() comparisons so return value is correct
+  + Make ModulemdErrorEnum and ModulemdYamlErrorEnum into public enums
+  + Move modulemd_module_stream_v2_replace_*() method definitions
+    to correct header file and add documentation
+  + Refactor stream copy/upgrade helper macros
+  + Add Modulemd.Module.get_translation()
+  + Add ModuleIndex.update_from_defaults_directory()
+  + Modulemd.ModuleIndex.update_from_file() now supports reading files
+    compressed with gzip, bzip2 or xz
+- libmodulemd1 has been split into its own package</comment>
+    <requestid>752746</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ef7dd6f5f103468cb8779afbf4954d6a</srcmd5>
+    <version>2.8.3</version>
+    <time>1579636682</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8.3
+  + Detect GDate autoptr when available to fix build with glib2 &gt;= 2.63.3
+  + Correct typo in MODULEMD_REPLACE_SET()
+  + Fix modulemd_buildopts_copy() to make a deep copy of the rpm whitelist
+  + Add support for new ModulemdBuildopts arches attribute</comment>
+    <requestid>765592</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9b761fb64059d86a787082bc18cc0bc3</srcmd5>
+    <version>2.9.4</version>
+    <time>1594804962</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase to 2.9.4
+  + Deprecate reset methods in favor of clear methods
+  + Add modulemd-validator man page
+  + Add Module.search_streams_by_glob()
+  + Add ModuleIndex.search_streams() method
+  + Add Modulemd.Module.search_streams_by_nsvca_glob()
+  + Add ModuleIndex.search_streams_by_nsvca_glob()
+  + Add ModuleIndex.search_rpms()
+  + Add ModuleStreamV2.search_profiles()
+  + Add framework for handling modulemd-packager YAML documents
+  + Return appropriate error when parsing a ModulemdStream doc fails
+  + Rework ModulemdError and ModulemdYamlError
+  + Improve Modulemd*ErrorEnum deprecations
+  + Use the new error enums everywhere
+  + Fix inconsistent error setting
+  + Make SKIP_UNKNOWN return UNKNOWN_ATTR in strict mode
+  + modulemd-packager: Check for extraneous attributes
+  + Fix bug printing negative buildorder values
+  + Handle NULL nsvca_patterns for globs
+  + Relax handling of differing content for the same NSVCA</comment>
+    <requestid>819221</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9a539098114018f6ed600b3fcd3abac5</srcmd5>
+    <version>2.10.0</version>
+    <time>1606913836</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.10.0
+  + Add modulemd-obsoletes
+  + Add modulemd v3 format
+- Fix build for 32-bit architectures with patch from upstream
+  + Patch: 0001-Fix-integer-size-issue-on-32-bit-platforms.patch</comment>
+    <requestid>851720</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fce34b511b83d497e00268e2219b3275</srcmd5>
+    <version>2.12.0</version>
+    <time>1612707387</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.12.0
+  + Add support for 'buildorder' to Packager documents
+  + Fix issue with ModuleIndex when input contains only Obsoletes documents
+  + Extend read_packager_[file|string]() to support overriding the module name
+    and stream.
+  + Ignore Packager documents when running ModuleIndex.update_from_*()
+  + Add python overrides for XMD in PackagerV3
+  + Add python override to ignore the GType return when reading packager files
+  + Add PackagerV3.get_mdversion()
+- Drop patch incorporated in this release
+  + Patch: 0001-Fix-integer-size-issue-on-32-bit-platforms.patch</comment>
+    <requestid>868780</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a8e0ac65a014ff78e468a149962f7278</srcmd5>
+    <version>2.12.1</version>
+    <time>1622928617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896309</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>93a9b3bdedc86a4c37a48dc4ed882067</srcmd5>
+    <version>2.13.0</version>
+    <time>1630432492</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.13.0
+  + Add /data/demodularized/rpms list to modulemd and modulemd-packager
+    formats.
+  + modulemd-validator enables you to constrain a document type with
+    a new &quot;--type&quot; option.
+  + Reject invalid integers. Purely non-numeric values and negative
+    numbers where an unsigned type is mandated by a specification
+    raise a parser error now.
+  + Handle a failed g_setenv() call in modulemd-validator.
+  + Prevent from dereferencing a NULL pointer when reporting invalid
+    subdocuments.
+  + &quot;modulemd-validator --version&quot; command returns 0 exit code now.</comment>
+    <requestid>914471</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>9da80bcac851e651ae7cc2b06a8c774b</srcmd5>
+    <version>2.13.0</version>
+    <time>1641555867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944021</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>2f2a746558a963fa50e9a01a0ba2ff6d</srcmd5>
+    <version>2.13.0</version>
+    <time>1648063024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963691</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>70554e4ef725efb8bbf8bca089b43872</srcmd5>
+    <version>2.14.0</version>
+    <time>1666011440</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1011173</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>74e3e372df9942a5a96dd16b2ee6a80e</srcmd5>
+    <version>2.15.0</version>
+    <time>1699183147</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.15.0
+  + Add support for decompressing Zstandard-compressed YAML files
+  + Remove a dependency on &quot;file&quot; library (libmagic)
+  + Add a XML specification for in-YUM-repository metadata
+  + Deprecate intents in modulemd-defaults specification
+  + Fix a crash when converting a modulemd-packager object with a default
+profile and without a module name or stream to a module index
+  + Fix parsing empty profiles
+  + A specification for modulemd-v2 format was corrected to require a &quot;content&quot;
+license subtree only if the module build contains artifacts.
+  + Double-quote strings in scalar YAML values when they look like a number
+  + Warnings from g_str_equal() macro of glib2 about passing an unsigned
+char * to strcmp() were fixed</comment>
+    <requestid>1123352</requestid>
+  </revision>
+</revisionlist>

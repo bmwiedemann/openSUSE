@@ -1,0 +1,227 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>090a366050a5270a80e2f339af289a0a</srcmd5>
+    <version>0.2.6</version>
+    <time>1612989010</time>
+    <user>dimstar_suse</user>
+    <comment>required by jupyterlab 3</comment>
+    <requestid>868949</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5ece28d6d2f2e49b0b933b84f193c1ea</srcmd5>
+    <version>0.3.1</version>
+    <time>1627389136</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908538</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>93e600b37407ecae626538fd4b7a5dca</srcmd5>
+    <version>0.3.1</version>
+    <time>1629706072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>912674</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c868d03acf12d9b335909f2bc27adbba</srcmd5>
+    <version>0.3.1</version>
+    <time>1635366077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927760</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>1a87e34f7c404d92b8a240405fa464b7</srcmd5>
+    <version>0.3.1</version>
+    <time>1635539650</time>
+    <user>dimstar_suse</user>
+    <comment>- revert the usage of libalternatives due to
+  gh#openSUSE/libalternatives#11</comment>
+    <requestid>928026</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4eccb7f54496dcc01e0a00007b19694b</srcmd5>
+    <version>0.3.4</version>
+    <time>1637535124</time>
+    <user>dimstar_suse</user>
+    <comment>- Accomodate moved config to distconfig
+
+- Update to 0.3.4
+  * Monkeypatch IPythonHandler to find nbclassic's jinja templates
+    #77 (@Zsailer)
+  * Run JupyterLab browser tests as downstream tests #76 (@Zsailer)
+  * add check-release workflow #75 (@Zsailer)
+- Release 0.3.3
+  * Use Jupyter Packaging and other cleanup #68 (@Zsailer)
+  * add missing lines to manifest #72 (@Zsailer)
+  * add changelog comments for jupyter-releaser #70 (@Zsailer)
+  * add setup.py back to enable jupyter_releaser #69 (@Zsailer)
+  * Add workflow to test JupyterLab #67 (@Zsailer)
+  * Expose classic notebook's static assets from their original
+    endpoints #63 (@Zsailer)
+- Release 0.32.2
+  * ExtensionManager's link_extension changed call signature #64
+    (@athornton)
+  * Fix link to the Jupyter Notebook repo in README #62
+    (@saiwing-yeung)
+- Reenable libalternatives</comment>
+    <requestid>932754</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b388ea6447a8a0471b226c400cd6eb31</srcmd5>
+    <version>0.3.5</version>
+    <time>1645221773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955751</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6e91ce4a67ba4a6d23cbf8e055e678cc</srcmd5>
+    <version>0.3.7</version>
+    <time>1654506644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980922</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>acc7212ca7a484bf0cea9bd4543f7cd8</srcmd5>
+    <version>0.4.3</version>
+    <time>1659554198</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.3
+  * Handle execution errors with empty traceback entries similar to
+    Lab #126 (@kevin-bates)
+  * fix some import errors in 0.4 #130 (@minrk)
+  * fix enable-on-install #127 (@minrk)
+  * Fix notebook shim version check #129 (@minrk)
+- Release 0.4.2
+  * Don't shim notebook if notebook&lt;7 is available #123 (@echarles)
+  * Relax assert for IPythonHandler in case of notebook&lt;6 #122
+    (@echarles)
+  * Fix executable name in desktop file #119 (@antonio-rojas)
+- Release 0.4.0
+  * Shim to support the notebook extensions #113 (@echarles)
+  * nbclassic to use its own static assets #96 (@echarles)
+  * Add the notebook 6.4.x tests, docs and companion files (with
+    git history) #94 (@echarles)
+  * Add the notebook static assets (with git history) #93
+    (@echarles)
+- Use the pure wheel for install which has the JS stuff.
+- Override notebook entrypoints with higer priority libalternatives
+  configurations gh#jupyter/notebook#6501
+- Test in multibuild for all the dependencies. Stay with nbclassic
+  tests only, not the notebook tests further down in the tree.</comment>
+    <requestid>992400</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>406fd18d47cdd870ad7f6d76f5f2a4c6</srcmd5>
+    <version>0.4.4</version>
+    <time>1664639036</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007398</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>703472fa59b97b6877fe71373f0f0384</srcmd5>
+    <version>0.4.4</version>
+    <time>1664797546</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove duplicates workaround
+</comment>
+    <requestid>1007481</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2e9db014ae0fb24e82cdaa2a53779ef7</srcmd5>
+    <version>0.4.5</version>
+    <time>1665591831</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009182</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c67413bf9d5a5e59c467b7154bb8068c</srcmd5>
+    <version>0.4.7</version>
+    <time>1666459386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030542</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e680f76057dee7dc94ec2690bbbd1f4a</srcmd5>
+    <version>0.4.8</version>
+    <time>1667734984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033839</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>2b917feeaa6813252e1be41853121eb6</srcmd5>
+    <version>0.4.8</version>
+    <time>1672754695</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pytest-jupyter to test requirenents. Testing with
+  jupyter-server pulls it in now gh#jupyter/nbclassic#190
+</comment>
+    <requestid>1046207</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e2246690fa4c6697f92925709c85a9a1</srcmd5>
+    <version>0.5.1</version>
+    <time>1676302843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064696</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>af2c592b043863542bde227c8f355016</srcmd5>
+    <version>0.5.3</version>
+    <time>1679416828</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.3
+  * Fix generating of .mo and .json files for nl translation #221
+    (@frenzymadness)
+  * Fix banner icons #220 (@echarles)
+- Release 0.5.2
+  * Add news banner and log #215 (@echarles)
+  * Update get_rendered_contents further marked javascript upgrade
+    #210 (@echarles)
+  * Update security concerns link #218 (@RRosio)
+  * Don't require two different minimal versions of jupyter_server
+    #208 (@hroncok)</comment>
+    <requestid>1072952</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a743d7ed83fa6f5ac64607f7de31ed3a</srcmd5>
+    <version>0.5.5</version>
+    <time>1682368271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082326</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>677ef2e8d1a2fb268812d2095c136520</srcmd5>
+    <version>0.5.6</version>
+    <time>1683037126</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083890</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f1011b3cfc3ca2f98b22f3c1e771cea7</srcmd5>
+    <version>1.0.0</version>
+    <time>1686576368</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0
+  * only documentation changes despite the big version bump (forwarded request 1092360 from bnavigator)</comment>
+    <requestid>1092361</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>bb3276c3389b84b274757bfc2e6f47d1</srcmd5>
+    <version>1.0.0</version>
+    <time>1692379707</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354</comment>
+    <requestid>1104446</requestid>
+  </revision>
+</revisionlist>

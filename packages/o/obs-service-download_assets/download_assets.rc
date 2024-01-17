@@ -1,0 +1,5 @@
+#
+# Define a cache directory here to avoid repeating downloads of the
+# same file. This works on the server and on the client side.
+#
+#CACHEDIRECTORY="/var/cache/obs/download_assets/"

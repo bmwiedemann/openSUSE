@@ -1,0 +1,590 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eafd3215d6a85a1aa3bf9f845bad86a8</srcmd5>
+    <version>0.1.2</version>
+    <time>1556622402</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.1.2
+  * Fixed
+    - Fixed lost of &quot;noarch&quot; packages
+    - Be able to search with dashes in keywords
+- Version 0.1.1
+  * Fixed
+    - Removed XML dump which may cause problems.
+- Version 0.1.0
+  * Added
+    - Search packages from OBS
+    - List properly sorted search result
+    - Use different colors for official, experimental and personal projects
+    - Choose package and install
+    - Keep or remove repository after installation
+</comment>
+    <requestid>699488</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1325f665600dbe17f984fff81f465339</srcmd5>
+    <version>0.2.0</version>
+    <time>1557084082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700365</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d0b77ef74b13a538be9f4703de8547ca</srcmd5>
+    <version>0.3.2</version>
+    <time>1557472778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701786</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a24c70073f93f99c229afb12e1603b5d</srcmd5>
+    <version>0.5.0</version>
+    <time>1558690205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704744</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8b69a14abca9daa18e658385dcf2f733</srcmd5>
+    <version>0.5.1</version>
+    <time>1559581113</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.5.1
+  * Fixed
+    - Fix dependency not found issue
+</comment>
+    <requestid>707221</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eefb3d87aca8ab001105087a8ff20e87</srcmd5>
+    <version>0.5.2</version>
+    <time>1560338197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709064</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f7264b6e8367b3c755c6260749c7ba12</srcmd5>
+    <version>0.6.0</version>
+    <time>1566243701</time>
+    <user>dimstar_suse</user>
+    <comment>Version 0.6.0</comment>
+    <requestid>724415</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>738ebcc5c73542d8fee0cfe072ada8c3</srcmd5>
+    <version>0.7.0</version>
+    <time>1567168907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727073</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5c50d46b6979fef679138192a818b28e</srcmd5>
+    <version>0.7.1</version>
+    <time>1573223307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746561</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0c2aa02df2200c9feaa6d6b80c37c364</srcmd5>
+    <version>0.8.0</version>
+    <time>1583007898</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.8.0
+  * Changed
+    - Type number 0 to exit
+</comment>
+    <requestid>780487</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>51eb641f21f175ac103c5a7bbb74a922</srcmd5>
+    <version>0.8.1</version>
+    <time>1585995923</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.8.1
+  * Fixed
+    - OBS limit error when searching php, test, etc.
+</comment>
+    <requestid>791120</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>eefd404f272a5be4c9b061e7730199c8</srcmd5>
+    <version>0.8.2</version>
+    <time>1589660894</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.8.2
+  * Fixed
+    - Ghost process on XML parsing failure
+</comment>
+    <requestid>806021</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ce1a31fe645bb8801caaa70c7b878352</srcmd5>
+    <version>0.8.3</version>
+    <time>1595864654</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.8.3
+  * Fixed
+    - ffmpeg/libav packages due to Packman update
+</comment>
+    <requestid>822764</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>da4143aa33a18214909acd22f6660061</srcmd5>
+    <version>0.9.0</version>
+    <time>1601919690</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.9.0
+  * Added
+    - Help (-h, --help) and version (-v, --version) option
+  * Changed
+    - Filter out -devel, -docs and -lang packages
+    - Don't show i586 packages on x86_64 system
+</comment>
+    <requestid>839334</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>6bfe5b60e123f8af6f1ababe61fc0601</srcmd5>
+    <version>0.9.0</version>
+    <time>1604309802</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix appstream file location
+</comment>
+    <requestid>845320</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0bf3e37ec58e9088d5d612b936240ddf</srcmd5>
+    <version>0.10.0</version>
+    <time>1610965759</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.10.0
+  * Added
+    - Microsoft Teams installer
+    - Warning for personal repository
+</comment>
+    <requestid>863812</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>1bca791523d1907c468c2116758033b6</srcmd5>
+    <version>0.10.0</version>
+    <time>1619107483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887810</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0f7a66d89c96521572843ffc69e83499</srcmd5>
+    <version>2.0.0</version>
+    <time>1620334389</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891085</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e1782b503bf630e9f2bdd9c11387fcfc</srcmd5>
+    <version>2.1.0</version>
+    <time>1625777360</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904731</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bf130e6127bb73e3060db7767e43995f</srcmd5>
+    <version>2.1.1</version>
+    <time>1628675233</time>
+    <user>RBrownSUSE</user>
+    <comment>- Version 2.1.1
+  * Added
+    - Plugin for Brave Browser
+</comment>
+    <requestid>911223</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b41549fb41b460620e26e60dc2cb8402</srcmd5>
+    <version>2.2.0</version>
+    <time>1629706086</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.2.0
+  * Added
+    - Plugin for MEGA
+    - Plugin for Edge Beta
+    - Argument parser with option for reverse output order
+</comment>
+    <requestid>913371</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>df276b76e352ed5b3691caaf052260e2</srcmd5>
+    <version>2.3.0</version>
+    <time>1631042487</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.3.0
+  * Changed
+    - Fixed gpgcheck entry in add_repo()
+    - Allowed using multiple query keywords that are combined using AND
+  * Added
+    - Plugin for sublime text
+    - Plugin for yandex-disk
+</comment>
+    <requestid>917142</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>133f75e390d371053ee481030d19022a</srcmd5>
+    <version>2.4.0</version>
+    <time>1634068172</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.4.1
+  * Changed
+    - Don't expect output to be a tty
+- Version 2.4.0
+  * Added
+    - Scrolling of results
+	- Plugin for atom editor
+</comment>
+    <requestid>924765</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2ac489330dd9faeff00304afe0b10664</srcmd5>
+    <version>2.4.1</version>
+    <time>1634587181</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.4.1
+  * Changed
+    - Don't expect output to be a tty
+</comment>
+    <requestid>925968</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>96a818e019438b0b28493ad17391ea16</srcmd5>
+    <version>2.4.2</version>
+    <time>1635167860</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.4.2
+  * Changed
+    - Switched to opensuse provided opi proxy
+</comment>
+    <requestid>927292</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d46b306aed4ee7f7bcbdc379c093aa16</srcmd5>
+    <version>2.4.3</version>
+    <time>1643062203</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.4.3
+- Fix for tumbleweed based MicroOS
+</comment>
+    <requestid>948388</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d0dc74965109c25929195a0597871614</srcmd5>
+    <version>2.4.4</version>
+    <time>1643404362</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.4.4
+- Fix for Alpha/Beta dist versions (boo#1195206)
+</comment>
+    <requestid>949668</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>95a6431dc9762bd987c7aab82563ef71</srcmd5>
+    <version>2.4.5</version>
+    <time>1646159594</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.4.5
+- Packman codec changes
+</comment>
+    <requestid>958321</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>bce5f41df8a63963f2eb51aa7566c06d</srcmd5>
+    <version>2.4.6</version>
+    <time>1650657304</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.4.6
+- Update .NET SDK to 6.0</comment>
+    <requestid>972187</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>66319e5e5693ecc1ed8cf8fade0cd0ac</srcmd5>
+    <version>2.4.7</version>
+    <time>1650922539</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.4.7
+- Fix release script
+- Fix numbering in --help
+- Update README.md
+- Add release helper script</comment>
+    <requestid>972524</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d716b916a3807f9d18bb39ec741e0912</srcmd5>
+    <version>2.5.0</version>
+    <time>1652717342</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.5.0</comment>
+    <requestid>977555</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>016b097fdefebdc5f4cf3d0479e06cfe</srcmd5>
+    <version>2.6.0</version>
+    <time>1654012063</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.6.0
+- Move to global config in /etc/opi.cfg
+- Check if desired repo is already added instead of relying on prefix
+- Add config option use_releasever_var</comment>
+    <requestid>980108</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>c245f67862278cd8bd6d794a5c9b06fb</srcmd5>
+    <version>2.6.0</version>
+    <time>1654595124</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981091</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2df28e957bc868fac119ae731e375aac</srcmd5>
+    <version>2.7.0</version>
+    <time>1655118186</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.7.0
+- Make repo parsing more stable and improve error handling</comment>
+    <requestid>982384</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>7a694def42192bec1495c4099b90d0b4</srcmd5>
+    <version>2.8.0</version>
+    <time>1660144452</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.8.0
+- add anydesk
+- add yandex browser
+- Use list for plugin queries and check for conflicts
+- Don't show projects with non-matching repo</comment>
+    <requestid>994150</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>37ca897dbf5906dae81425c1b0cad10c</srcmd5>
+    <version>2.9.0</version>
+    <time>1672668155</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.9.0
+- Install selected package explicitly from the selected repo
+- Switch to resilio-sync for testsuite
+- add resilio-sync</comment>
+    <requestid>1046145</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c357584509c9bedf9c72f8ce3210268f</srcmd5>
+    <version>2.10.0</version>
+    <time>1674737951</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.10.0
+- Ask for submit in release.sh
+- Fix packman plugin for 15.4
+- Introduce repo key handling (bsc#1207334)</comment>
+    <requestid>1061194</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>60189180d993f7174076f416cbd9c74b</srcmd5>
+    <version>2.11.0</version>
+    <time>1675095103</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.11.0
+- Handle repos with multiple keys in key file (fixes #118)</comment>
+    <requestid>1062072</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>8ebc90bc1a1c799e4346287101906afe</srcmd5>
+    <version>2.13.0</version>
+    <time>1676302876</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.13.0
+- Add openh264 (#119)
+
+- Version 2.12.0
+- Enforce ffmpeg&gt;=5 on tumbleweed</comment>
+    <requestid>1065419</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>16542f386ee88f36b127fac466d054eb</srcmd5>
+    <version>2.14.0</version>
+    <time>1676389652</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.14.0
+- Install openh264 according to arch
+- Use http instead of https for openh264 repo</comment>
+    <requestid>1065545</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>7b42de5dd4477423f02509816d9e93af</srcmd5>
+    <version>2.15.0</version>
+    <time>1676827154</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.15.0
+- Fix repo name encoding when asking for new key addition</comment>
+    <requestid>1066575</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>080a92ad913331294c709135fe897a95</srcmd5>
+    <version>2.17.0</version>
+    <time>1680536798</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.17.0
+- Codecs: Don't force ffmpeg&gt;=5 on leap 15.5
+- Use new checkout version in ci.yaml
+
+- Version 2.16.0
+- dotnet: Install dotnet-sdk-7.0 (#124)
+- Add jami p2p messenger plugin (#121)</comment>
+    <requestid>1076984</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>884cda2c79fe87721a4954bf1c6a0fd4</srcmd5>
+    <version>3.0.0</version>
+    <time>1687207844</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 3.0.0
+- Use best repo for each project (fixes #113)
+- Use new rpm signing key for zoom (fixes #133)
+- cleanup code
+- Remove MS teams as it is discontinued</comment>
+    <requestid>1093751</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>4496bf648a3f297769fac6551736c3be</srcmd5>
+    <version>3.1.0</version>
+    <time>1689175656</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 3.1.0
+- Add MapTool RPM tool</comment>
+    <requestid>1098237</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>b8768607ec5ae11ea753734960455ca2</srcmd5>
+    <version>3.2.0</version>
+    <time>1689261537</time>
+    <user>anag+factory</user>
+    <comment>- Version 3.2.0
+- fix: add missing format string marks, remove empty lines
+- Make release.sh more robust</comment>
+    <requestid>1098487</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>88b210498ddc2e5bcb054f48b64f61be</srcmd5>
+    <version>3.3.0</version>
+    <time>1690575637</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 3.3.0
+- Add tests and tweak weighting algorithm for non interactive mode
+- Allow running without user interaction
+- Add config option to disable auto refresh</comment>
+    <requestid>1101179</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>bcb9e5a64cac860462ea4508ad1f1b97</srcmd5>
+    <version>3.4.0</version>
+    <time>1693482359</time>
+    <user>anag+factory</user>
+    <comment>- Version 3.4.0
+- Add unofficial Teams-for-linux client
+- Improve non interactive tests
+- Strip test module name
+- chore: fix indentation
+- docs: add config options, update opi help page</comment>
+    <requestid>1108126</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>011c375e8ad179e53b53679c96685760</srcmd5>
+    <version>3.5.0</version>
+    <time>1695758487</time>
+    <user>anag+factory</user>
+    <comment>- Version 3.5.0
+- Expand releasever for local repo names
+- Make resilio comment shorter
+- Add option to skip plugins
+- Update repo URL for MEGASync</comment>
+    <requestid>1113461</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>6450d06aeab5c1c8dbc594f862d7fcce</srcmd5>
+    <version>3.6.0</version>
+    <time>1697061375</time>
+    <user>anag+factory</user>
+    <comment>- Version 3.6.0
+- Increase timeouts in testsuite and improve output
+- test: remove yandex-disk from multi-install test
+- Run testsuite for (fake) MicroOS
+- Fix repo URL generation for MicroOS and Leap Micro (fixes #158)
+- Add multi package option
+- Add ocenaudio audio editor (fixes #155)
+- Ignore gpg check for unsigned pkgs (or pkgs without published key)</comment>
+    <requestid>1116886</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>e30edaaa8987a494e702de7ea93d4e69</srcmd5>
+    <version>4.0.0</version>
+    <time>1700250669</time>
+    <user>anag+factory</user>
+    <comment>- Version 4.0.0
+  * Simplify rpmbuild by removing %install
+  * Add opi new dependencies to testsuite: rpm-build, squashfs
+  * Rename rpmbuild internal dirs to uppercase
+  * Fix building RPMs for Leap 15.5
+  * Update opi-proxy .service file to listen on IPv6 as well
+  * Add Snap library and Spotify plugin
+  * Allow installing non-rpm applications (add OrcaSlicer)
+  * chore: update multi_install description
+  * Indent changes in changelog further than version</comment>
+    <requestid>1127322</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>48fb957bce1f161d0596454ea3cf3101</srcmd5>
+    <version>4.1.0</version>
+    <time>1701972679</time>
+    <user>anag+factory</user>
+    <comment>- Version 4.1.0
+  * Add support for Slowroll
+  * Replace $releasever also with ${releasever} syntax
+  * Update changelog prefix to *</comment>
+    <requestid>1131583</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>7b08cfc99baa2cc17b18cb7a36f45d67</srcmd5>
+    <version>4.2.0</version>
+    <time>1702405956</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.2.0
+  * Support multiple repos defined in a single .repo file
+  * Automatically import packman key in non-interactive mode
+  * Restructure code: Add classes for Repository, OBSPackage and LocalPackage
+  * Hide package release for pkgs from local repos (same as with OBS pkgs)
+  * Use tumbleweed repo for openh264 on Slowroll
+  * Expand repovar $basearch (to e.g. x86_64 or aarch64)</comment>
+    <requestid>1132666</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>fb314a53b9537ac43725d5ef31984ae4</srcmd5>
+    <version>4.3.0</version>
+    <time>1702673457</time>
+    <user>anag+factory</user>
+    <comment>- Version 4.3.0
+  * Hint open source alternatives
+  * Fix issue with installing from existing openh264 repo</comment>
+    <requestid>1133488</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>8b347a316daee720d0d9d4b9d11d5812</srcmd5>
+    <version>4.4.0</version>
+    <time>1704281421</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.4.0
+  * Match repos by alias when searching local repos
+  * Rephrase OSS alternative hints
+  * Fix typo in rpmbuild.py</comment>
+    <requestid>1136186</requestid>
+  </revision>
+</revisionlist>

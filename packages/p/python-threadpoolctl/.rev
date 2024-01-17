@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ac19447822c47ea49dfd6bb95c255154</srcmd5>
+    <version>2.0.0</version>
+    <time>1583447077</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>781869</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8adee18f37f23e5f50b0c58a4169476b</srcmd5>
+    <version>2.1.0</version>
+    <time>1595773146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822657</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ba41871f05089820c317b0a9f7892232</srcmd5>
+    <version>2.2.0</version>
+    <time>1626887144</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0:
+  - Report the architecture of the CPU cores detected by OpenBLAS
+    (`openblas_get_corename`) in `threadpool_info()` and BLIS
+    (`bli_arch_query_id` and `bli_arch_string`).
+  - Fixed a bug when the version of MKL was not found. The
+    &quot;version&quot; field is now set to None in that case.
+    https://github.com/joblib/threadpoolctl/pull/82
+- drop python_executable.patch (upstream)</comment>
+    <requestid>907015</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cb25eef4e56e64987890c9bd21bf3920</srcmd5>
+    <version>3.0.0</version>
+    <time>1634754217</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  - New object `threadpooctl.ThreadpoolController` which holds controllers for all the
+    supported native libraries. The states of these libraries is accessible through the
+    `info` method (equivalent to `threadpoolctl.threadpool_info()`) and their number of
+    threads can be limited with the `limit` method which can be used as a context
+    manager (equivalent to `threadpoolctl.threadpool_limits()`). 
+  - Added support for OpenBLAS built for 64bit integers in Fortran.
+  - Added the possibility to use `threadpoolctl.threadpool_limits` and
+    `threadpooctl.ThreadpoolController` as decorators through their `wrap` method.
+  - Fixed an attribute error when using old versions of OpenBLAS or BLIS that are
+    missing version query functions.
+  - Fixed an attribute error when python is run with -OO.</comment>
+    <requestid>925765</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8b4bfa96770713bcd7746eb6fa729692</srcmd5>
+    <version>3.1.0</version>
+    <time>1658857324</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 3.1.0:
+  * Fixed a detection issue of the BLAS libraires packaged by conda-forge on Windows.
+    https://github.com/joblib/threadpoolctl/pull/112
+  * `threadpool_limits` and `ThreadpoolController.limit` now accept the string
+    &quot;sequential_blas_under_openmp&quot; for the `limits` parameter. It should only be used for
+    the specific case when one wants to have sequential BLAS calls within an OpenMP
+    parallel region. It takes into account the unexpected behavior of OpenBLAS with the
+    OpenMP threading layer.</comment>
+    <requestid>990867</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>62099a4dca6a64bea9b9aacc06e5dddd</srcmd5>
+    <version>3.1.0</version>
+    <time>1680635818</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on numpy.
+- Remove unneeded BuildRequires on pep517.
+- Stop using python_sitelib/*.</comment>
+    <requestid>1076794</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c924b8b174c9e3032b5b178072d1887f</srcmd5>
+    <version>3.1.0</version>
+    <time>1686576267</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092206</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>64f711e12c50e3480d39eccaf3493466</srcmd5>
+    <version>3.2.0</version>
+    <time>1702158572</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0:
+  * Dropped support for Python 3.6 and 3.7.
+  * Added support for custom library controllers. Custom
+    controllers must inherit from the `threadpoolctl.LibController`
+    class and be registered to threadpoolctl using the
+    `threadpoolctl.register` function.
+
+    manager (equivalent to `threadpoolctl.threadpool_limits()`).</comment>
+    <requestid>1132143</requestid>
+  </revision>
+</revisionlist>

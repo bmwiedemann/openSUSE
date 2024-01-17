@@ -1,0 +1,21 @@
+Index: usbmuxd-1.1.1/systemd/usbmuxd.service.in
+===================================================================
+--- usbmuxd-1.1.1.orig/systemd/usbmuxd.service.in
++++ usbmuxd-1.1.1/systemd/usbmuxd.service.in
+@@ -3,5 +3,16 @@ Description=Socket daemon for the usbmux
+ Documentation=man:usbmuxd(8)
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ ExecStart=@sbindir@/usbmuxd --user usbmux --systemd -S /run/usbmuxd -P /run/usbmuxd.pid
+ PIDFile=/run/usbmuxd.pid

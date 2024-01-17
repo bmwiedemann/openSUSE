@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sat Aug  4 07:17:36 UTC 2018 - egdfree@opensuse.org
+
+- update to 688715b349f7661f55347252850839e85e0a5e00
+  * add const to x11 isValid 
+
+-------------------------------------------------------------------
+Sun Feb 11 01:15:59 UTC 2018 - jengelh@inai.de
+
+- Fix RPM groups. Trim other-OS parts from description.
+
+-------------------------------------------------------------------
+Tue Nov 21 19:32:47 UTC 2017 - egdfree@opensuse.org
+
+- Initial build

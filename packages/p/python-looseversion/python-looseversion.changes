@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Dec  7 22:42:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * Restore Python 3 semantics for `LooseVersion`, creating
+    `LooseVersion2` to restore Python 2 semantics.
+  * Test on Python 3.12
+  * Enable installation on Python 2+
+  * Ensure consistent semantics between Python 2 and 3
+
+-------------------------------------------------------------------
+Fri Mar 17 16:08:00 UTC 2023 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Initial package: looseversion 1.1.2

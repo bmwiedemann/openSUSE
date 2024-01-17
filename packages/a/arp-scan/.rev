@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51a06d5c15b3c502b6974b0eb7831880</srcmd5>
+    <version>1.9</version>
+    <time>1431668570</time>
+    <user>coolo</user>
+    <comment>Cool new package</comment>
+    <requestid>305836</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5025b1eda603e2db007216003fb6d4d7</srcmd5>
+    <version>1.9</version>
+    <time>1455701158</time>
+    <user>dimstar_suse</user>
+    <comment>- Update project and download url</comment>
+    <requestid>359365</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d0fed9df58f30b64682c60bdb7e65659</srcmd5>
+    <version>1.9</version>
+    <time>1463038433</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394764</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>71dfe6d28a110418c79384613cd37ce2</srcmd5>
+    <version>1.9</version>
+    <time>1527583032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610986</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ef9cb492997dec50f8e0e5e94fb5788f</srcmd5>
+    <version>1.9.5</version>
+    <time>1553611145</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.5:
+  * Updated IEEE OUI and IAB MAC/Vendor files.
+  * Added new --plain (-x) option to surpress printing of header
+    and footer text, and only display one output line for each
+    responding host.
+  * Use LWP::UserAgent instead of LWP::Simple in get-oui and
+    get-iab to enable the raw content to be obtained, which avoids
+    Unicode/UTF-8 issues.
+  * Added arp-finherprint patterns for WIZnet W5100 and Cisco IOS
+    15.0.
+- Drop no longer needed arp-scan-avoid-crash.patch</comment>
+    <requestid>681692</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bcd1ce88b30d54b1c7bcadb75f59ac3a</srcmd5>
+    <version>1.9.6</version>
+    <time>1572021781</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.6 (boo#1154552):
+  * Use libpcap function pcap_set_immediate_mode() instead of ioctl
+    calls to ensure packets are delivered immediately. This means
+    that arp-scan now requires libpcap 1.5.0 or later and will
+    not work with earlier libpcap versions</comment>
+    <requestid>742832</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d187b132a454463d5a95c130f8305cd6</srcmd5>
+    <version>1.9.7</version>
+    <time>1573773488</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.7:
+  * Internal changes only</comment>
+    <requestid>748657</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d4c22a5966a23ef67e9a529558759dea</srcmd5>
+    <version>1.9.8</version>
+    <time>1670333104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040616</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3125da00c8efb9ca1682e63daa7f8ede</srcmd5>
+    <version>1.10.0</version>
+    <time>1677794669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068705</requestid>
+  </revision>
+</revisionlist>

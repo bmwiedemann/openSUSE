@@ -1,0 +1,9 @@
+<package name="usbmuxd" project="openSUSE:Factory">
+  <title>Socket daemon for the usbmux protocol of iPhone/iPod Touch devices</title>
+  <description>This package provides the usbmuxd daemon for software to use through the
+libusbmuxd library to talk with iPhone/iPod Touch devices.
+
+Usbmux is an encapsulation protocol (think IP, ATM, PPP) that allows
+multiplexing several conversations onto a single pair of wires.</description>
+  <devel project="hardware" package="usbmuxd"/>
+</package>

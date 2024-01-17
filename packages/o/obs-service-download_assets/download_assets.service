@@ -1,0 +1,5 @@
+<service name="download_assets">
+  <summary>Asset Downloader</summary>
+  <description>This service can be used to download all remote assets specified in build descriptions (eg. spec or kiwi files). This service is not needed when working with git based sources via the scmsync mechanism, only when the classic OBS source storage is used. This service has no further options.</description>
+</service>
+

@@ -1,0 +1,10 @@
+<package name="perl-Class-Container" project="openSUSE:Factory">
+  <title>Glues object frameworks together transparently</title>
+  <description>This class facilitates building frameworks of several classes that inter-
+operate. It was first designed and built for HTML::Mason, in which the
+Compiler, Lexer, Interpreter, Resolver, Component, Buffer, and several
+other objects must create each other transparently, passing the appropriate
+parameters to the right class, possibly substituting other subclasses for
+any of these objects.</description>
+  <devel project="devel:languages:perl" package="perl-Class-Container"/>
+</package>

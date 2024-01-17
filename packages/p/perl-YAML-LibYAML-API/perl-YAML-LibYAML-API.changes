@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Fri Jan  5 03:09:03 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.14.0
+   see /usr/share/doc/packages/perl-YAML-LibYAML-API/Changes
+
+  v0.14.0 2024-01-04 23:06:22+01:00
+
+      - Add unicode option to emitter functions (before broken
+        unicode was emitted)
+      - Change module versioning scheme
+
+-------------------------------------------------------------------
+Tue Apr 12 03:07:01 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.013
+   see /usr/share/doc/packages/perl-YAML-LibYAML-API/Changes
+
+  0.013 2022-04-11 23:58:42+02:00
+
+      - Change License to MIT because of included libyaml
+      - Add tag_directives entry to events (needed by yamltidy)
+
+-------------------------------------------------------------------
+Wed Sep  9 03:11:16 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.012
+   see /usr/share/doc/packages/perl-YAML-LibYAML-API/Changes
+
+  0.012 2020-09-08 12:55:03+02:00
+      - Remove local/ directory from tarball
+  0.011 2020-09-07 19:41:56+02:00
+      - Pass new option 'width' to libyaml
+
+-------------------------------------------------------------------
+Thu Aug 20 03:11:33 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.010
+   see /usr/share/doc/packages/perl-YAML-LibYAML-API/Changes
+
+  0.010 2020-08-19 22:39:12+02:00
+
+      - Update to libyaml 0.2.5
+      - Fix constants for flow style/block style
+      - Emitter: Support flow style collections
+
+-------------------------------------------------------------------
+Sun May 17 03:14:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 0.009
+   see /usr/share/doc/packages/perl-YAML-LibYAML-API/Changes
+
+  0.009 2020-05-16 15:28:05+02:00
+  
+      - Support emitting version directives
+      - Update libyaml sources to 0.2.4. Changes affecting this module:
+      - Output '...' at the stream end after a block scalar with trailing empty lines
+      - Accept '%YAML 1.2' directives
+  
+
+-------------------------------------------------------------------
+Thu Feb 20 03:15:41 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.008
+   see /usr/share/doc/packages/perl-YAML-LibYAML-API/Changes
+
+  0.008 2020-02-19 13:55:40+01:00
+  
+      - Support numeric anchors (before strings were required)
+
+-------------------------------------------------------------------
+Thu Aug 15 18:45:01 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- initial package 0.007
+ * created by cpanspec 1.78.09

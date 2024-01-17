@@ -1,0 +1,5 @@
+<package name="perl-YAML-LibYAML-API" project="openSUSE:Factory">
+  <title>perl-YAML-LibYAML-API</title>
+  <description>Wrapper around the C libyaml library</description>
+  <devel project="devel:languages:perl" package="perl-YAML-LibYAML-API"/>
+</package>

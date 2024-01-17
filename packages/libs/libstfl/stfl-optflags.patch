@@ -1,0 +1,14 @@
+--- Makefile.orig
++++ Makefile
+@@ -21,7 +21,8 @@
+ include Makefile.cfg
+ 
+-export CC = gcc -pthread
+-export CFLAGS += -I. -Wall -Os -ggdb -D_GNU_SOURCE -fPIC
+-export LDLIBS += -lncursesw
++export CC = gcc
++OPTFLAGS=-Os -ggdb
++export CFLAGS += -pthread -I. -Wall -D_GNU_SOURCE -fPIC $(OPTFLAGS)
++export LDLIBS += -pthread -lncursesw
+ 
+ SONAME  := libstfl.so.0

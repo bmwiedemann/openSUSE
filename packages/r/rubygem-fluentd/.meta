@@ -1,0 +1,7 @@
+<package name="rubygem-fluentd" project="openSUSE:Factory">
+  <title></title>
+  <description>Fluentd is an open source data collector designed to scale and simplify log
+management. It can collect, process and ship many kinds of data in near
+real-time.</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-fluentd"/>
+</package>

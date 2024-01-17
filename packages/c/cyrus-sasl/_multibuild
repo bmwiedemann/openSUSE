@@ -1,0 +1,6 @@
+<multibuild>
+  <package>cyrus-sasl-bdb</package>
+  <package>cyrus-sasl-saslauthd</package>
+  <package>cyrus-sasl-saslauthd-bdb</package>
+</multibuild>
+

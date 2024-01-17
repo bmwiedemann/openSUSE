@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>072295e3827c251c1805fc1052a30622</srcmd5>
+    <version>0.0.1+git20171021.1644620</version>
+    <time>1518697521</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix RPM groups. Trim other-OS parts from description.
+- Initial build
+</comment>
+    <requestid>575399</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dc388b6f1fd834f5b0014c6c49cb801d</srcmd5>
+    <version>0.0.1+git1533120914.688715b</version>
+    <time>1533412506</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 688715b349f7661f55347252850839e85e0a5e00
+  * add const to x11 isValid 
+</comment>
+    <requestid>627430</requestid>
+  </revision>
+</revisionlist>
