@@ -1,5 +1,0 @@
-<package name="python-click-help-colors" project="openSUSE:Factory">
-  <title>python-click-help-colors</title>
-  <description>Colorization of help messages in Click</description>
-  <devel project="devel:languages:python" package="python-click-help-colors"/>
-</package>

@@ -1,8 +1,0 @@
-<package name="portaudio" project="openSUSE:Factory">
-  <title>Portable Real-Time Audio Library</title>
-  <description>PortAudio is a portable audio I/O library designed for cross-platform
-support of audio. It uses a callback mechanism to request audio
-processing. Audio can be generated in various formats, including 32 bit
-floating point, and will be converted to the native format internally.</description>
-  <devel project="multimedia:libs" package="portaudio"/>
-</package>

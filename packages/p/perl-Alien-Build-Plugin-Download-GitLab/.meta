@@ -1,6 +1,0 @@
-<package name="perl-Alien-Build-Plugin-Download-GitLab" project="openSUSE:Factory">
-  <title>Alien::Build plugin to download from GitLab</title>
-  <description>This plugin is designed for downloading assets from a GitLab instance.</description>
-  <devel project="devel:languages:perl" package="perl-Alien-Build-Plugin-Download-GitLab"/>
-  <url>https://metacpan.org/pod/Alien::Build::Plugin::Download::GitLab</url>
-</package>

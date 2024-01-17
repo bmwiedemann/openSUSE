@@ -1,8 +1,0 @@
-<package name="perl-IPC-Run" project="openSUSE:Factory">
-  <title>System() and Background Procs with Piping, Redirs, and PTYs</title>
-  <description>IPC::Run allows you run and interact with child processes using files,
-pipes, and pseudo-ttys.  Both system()-style and scripted usages are
-supported and may be mixed. Like-wise, functional and OO API styles are
-both supported and may be mixed.</description>
-  <devel project="devel:languages:perl" package="perl-IPC-Run"/>
-</package>

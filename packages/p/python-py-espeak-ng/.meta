@@ -1,8 +1,0 @@
-<package name="python-py-espeak-ng" project="openSUSE:Factory">
-  <title>Python interface for eSpeak NG</title>
-  <description>Python interface for eSpeak NG, a speech synthesis library.
-
-</description>
-  <devel project="devel:languages:python" package="python-py-espeak-ng"/>
-  <url>https://github.com/gooofy/py-espeak-ng</url>
-</package>

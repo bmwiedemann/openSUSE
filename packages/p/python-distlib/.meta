@@ -1,5 +1,0 @@
-<package name="python-distlib" project="openSUSE:Factory">
-  <title></title>
-  <description>Python Distribution utilities</description>
-  <devel project="devel:languages:python" package="python-distlib"/>
-</package>

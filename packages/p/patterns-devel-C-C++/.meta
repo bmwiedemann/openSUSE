@@ -1,9 +1,0 @@
-<package name="patterns-devel-C-C++" project="openSUSE:Factory">
-  <title>Patterns for Installation (Devel C/C++) </title>
-  <description>This is an internal package that is used to create the patterns as part
-of the installation source setup.  Installation of this package does
-not make sense. 
-
-This particular package contains the pattern for C and C++ Development</description>
-  <devel project="devel:libraries:c_c++" package="patterns-devel-C-C++"/>
-</package>

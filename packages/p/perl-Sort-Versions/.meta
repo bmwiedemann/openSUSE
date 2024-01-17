@@ -1,7 +1,0 @@
-<package name="perl-Sort-Versions" project="openSUSE:Factory">
-  <title>A perl 5 module for sorting of revision (and similar) numbers</title>
-  <description>This module allows easy sorting (via comparisons) of mixed text and numeric
-strings, similar to the complex &quot;version numbers&quot; that many revision control
-packages and shared library systems use.</description>
-  <devel project="devel:languages:perl" package="perl-Sort-Versions"/>
-</package>

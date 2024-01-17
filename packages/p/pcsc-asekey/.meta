@@ -1,8 +1,0 @@
-<package name="pcsc-asekey" project="openSUSE:Factory">
-  <title>ASEKey USB Token Driver</title>
-  <description>This package contains a driver for the ASEKey USB Token.
-
-This driver is meant to be used with the PCSC-Lite daemon from the
-pcsc-lite package.</description>
-  <devel project="security:chipcard" package="pcsc-asekey"/>
-</package>

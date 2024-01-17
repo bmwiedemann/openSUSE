@@ -1,6 +1,0 @@
-<package name="pam_krb5" project="openSUSE:Factory">
-  <title>PAM Module for Kerberos Authentication</title>
-  <description>This PAM module supports authentication against a Kerberos KDC. It also
-supports updating your Kerberos password.</description>
-  <devel project="Linux-PAM" package="pam_krb5"/>
-</package>

@@ -1,6 +1,0 @@
-# rpmlint thinks this has to be /etc/alternatives/PyQt5,
-# but we use pyqt5-sip as slave link name
-addFilter("alternative-link-missing /etc/alternatives/PyQt5")
-# rpmlint does not consider the Python/SIP internals.
-# similar to https://github.com/rpm-software-management/rpmlint/issues/361
-addFilter("shared-library-without-dependency-information .*Qt.abi3.so")

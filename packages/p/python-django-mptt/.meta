@@ -1,5 +1,0 @@
-<package name="python-django-mptt" project="openSUSE:Factory">
-  <title></title>
-  <description>Utilities for implementing Modified Preorder Tree Traversal (MPTT) with your Django Model classes and working with trees of Model instances. </description>
-  <devel project="devel:languages:python:django" package="python-django-mptt"/>
-</package>

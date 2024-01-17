@@ -1,5 +1,0 @@
-<package name="python-pytest-spec" project="openSUSE:Factory">
-  <title></title>
-  <description>Display pytest test execution output like a specification</description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-spec"/>
-</package>

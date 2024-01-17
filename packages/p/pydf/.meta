@@ -1,6 +1,0 @@
-<package name="pydf" project="openSUSE:Factory">
-  <title>pydf</title>
-  <description>pydf displays the amount of used and available space on your file systems,
-just like df, but in colors. The output format is completely customizable.</description>
-  <devel project="server:monitoring" package="pydf"/>
-</package>
