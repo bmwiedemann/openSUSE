@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 13 11:48:35 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update digest to version 0.0.2.0.
+  ## 0.0.2.0 — 13th December 2023
+  - Add CRC32C (Thanks to @4eUep): <https://github.com/TeofilC/digest/pull/18>
+  - Support latest GHC versions: <https://github.com/TeofilC/digest/pull/19>
+
+-------------------------------------------------------------------
 Sun Sep  3 19:18:40 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update digest to version 0.0.1.7 revision 1.
