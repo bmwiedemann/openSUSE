@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-ghc-lib-parser
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name ghc-lib-parser
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        9.6.3.20231121
+Version:        9.6.4.20240109
 Release:        0
 Summary:        The GHC API, decoupled from GHC versions
 License:        BSD-3-Clause

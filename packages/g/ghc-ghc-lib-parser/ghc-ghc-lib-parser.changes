@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  9 12:14:44 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update ghc-lib-parser to version 9.6.4.20240109.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Tue Nov 21 13:56:03 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update ghc-lib-parser to version 9.6.3.20231121.
