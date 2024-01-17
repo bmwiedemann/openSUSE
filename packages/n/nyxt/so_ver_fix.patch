@@ -1,0 +1,15 @@
+diff -ruN orig/_build/iolib/src/syscalls/ffi-functions-unix.lisp tmp/_build/iolib/src/syscalls/ffi-functions-unix.lisp
+--- orig/_build/iolib/src/syscalls/ffi-functions-unix.lisp	2023-06-19 16:56:47.000000000 +0200
++++ tmp/_build/iolib/src/syscalls/ffi-functions-unix.lisp	2023-06-22 17:31:00.838629568 +0200
+@@ -10,10 +10,7 @@
+ 
+ ;; FIXME: move this into an ASDF operation
+ (eval-when (:compile-toplevel :load-toplevel :execute)
+-  (define-foreign-library
+-      (libfixposix :canary "lfp_buildinfo")
+-    (t (:default "libfixposix")))
+-  (load-foreign-library 'libfixposix))
++  (load-foreign-library "libfixposix.so.4"))
+ 
+ 
+ ;;;-------------------------------------------------------------------------

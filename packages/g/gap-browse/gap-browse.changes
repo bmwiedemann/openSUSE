@@ -1,0 +1,128 @@
+-------------------------------------------------------------------
+Sun Jun 25 06:00:03 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.21
+  * Fixed another problem when running the tests in 'tst/tests.tst'
+    in the background.
+  * Support the package extensions feature of GAP 4.13
+
+-------------------------------------------------------------------
+Sun Jan 29 13:12:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.20
+  * Added the new application "BrowseWizard".
+
+-------------------------------------------------------------------
+Tue Dec 20 21:38:54 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.19
+  * Use `IsKernelExtensionAvailable` and `LoadKernelExtension`
+    instead of 'LOAD_DYN'.
+
+-------------------------------------------------------------------
+Sat Nov 19 03:30:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.18
+  * Browse does no longer assume that
+    'GAPInfo.SystemEnvironment.TERM' is available, in particular
+    Browse does not try to set this component.
+  * Drop the support for the '.zoo' archive format.
+  * Support JSON format for files that belong to database
+    attributes, document 'DatabaseAttributeString' and related
+    functions.
+  * Make Browse more robust when called with bad setting of the
+    TERM environment variable, in particular it should now no
+    longer crash GAP during initialization.
+  * Support columns of orthogonal discriminants (OD) and character
+    field degrees (d) in 'Browse' for character tables.
+
+-------------------------------------------------------------------
+Wed Aug 29 21:08:17 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.8.8
+  * Blocks in demo files can now be separated by lines starting
+    with #% which makes testing demo files easier.
+  * Fixed a bug in the 'Browse' method for character tables: The
+    shown centralizer orders and power map information were not
+    correct when a set of characters or class positions was
+    prescribed.
+  * Fixed a bug in 'BrowseConwayPolynomials': In the displayed
+    polynomials, the exponents of those monomials whose
+    coefficient is different from 1 were erroneously increased
+    by 1.
+
+-------------------------------------------------------------------
+Fri Sep  8 16:48:18 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.8.7
+  * Removed the example application 'BrowseTransitiveGroupsInfo',
+    because of changes in the underlying library of transitive
+    groups.
+  * Added the new application 'BrowseBibliographyGapPackages'.
+    (This is experimental, strange *.bib files in package
+    distributions may cause error messages.)
+  * Added a new application that facilitates demos of GAP code,
+    see '?Browse: Utility for GAP Demos' for details.
+  * The input code 127 is assumed to denote the backspace key
+    also if 'NCurses.keys.BACKSPACE' has a different value, which
+    apparently happens for some Mac operating systems; up to now,
+    entering backspace had no effect with such systems.
+  * 'NCurses.Select' now supports the replay and log features of
+    'NCurses.BrowseGeneric'. Note that meanwhile several
+    applications call 'NCurses.Select', now we can provide
+    examples for them that are processed automatically, and
+    debugging is easier.
+
+-------------------------------------------------------------------
+Fri Dec  5 18:27:10 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.8.6
+* "NCurses.EditFields" now deals with long input strings by
+  scrolling horizontally.
+* "BrowseAtlasInfo" now uses the improved setup of AtlasRep 1.6:
+* Symbolic values are now supported in selections that are offered
+  by "BrowseUserPreferences", for example "PACKAGE_ERROR" in the
+  case of "InfoPackageLoadingLevel".
+* Use the precomputed data for "IsPerfectGroup" etc. also when
+  "TransitiveGroupsData.OneTransitiveGroup" is called;
+
+-------------------------------------------------------------------
+Wed Jun 18 16:44:09 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.8.5
+* Fixed two problems with non-breakable spaces in
+  gap-publishednicer.bib.
+* Fixed the handling of the 'version' component of database
+  attributes; before the fix, it was possible that an attribute
+  was regarded as up-to-date, without checking the version number
+  in the data file.
+* Avoid literal Ctrl-M characters to work around a bug in Windows 8.
+
+-------------------------------------------------------------------
+Tue Feb  4 17:35:54 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.8.3
+* The new user preference 'EnableMouseEvents' sets the default
+  behavior for the GAP session. Enabling/disabling mouse events is
+  now regarded as one global status in the current GAP session, and
+  browse applications should not set this status when they are
+  entered.
+* Fixed 'BrowseGapMethods', 'BrowsePackageVariables', and
+  'BrowseProfile': Up to now, the attempt to show the code of a
+  function in a pager ran into an error if the file in question
+  is not available
+* Case of unset TERM env variable is now handled
+* Extended 'NCurses.Select', as follows:
+  - support mouse events (and to enable/disable mouse events)
+  - admit "fit" as the value of the 'size' component,
+    meaning the smallest possible window size
+  - admit an optional 'align' component,
+    meaning the alignment of the window in the terminal
+  - admit an attribute number instead of 'true'
+    for the optional 'border' component
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split browse (version 1.8.2) off the gap RPM package
+- Add browse-make.diff to correct include paths for build

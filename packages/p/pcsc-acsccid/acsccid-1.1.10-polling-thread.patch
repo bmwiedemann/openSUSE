@@ -1,0 +1,102 @@
+Index: acsccid-1.1.10/src/ifdhandler.c
+===================================================================
+--- acsccid-1.1.10.orig/src/ifdhandler.c
++++ acsccid-1.1.10/src/ifdhandler.c
+@@ -433,7 +433,7 @@ EXTERNAL RESPONSECODE IFDHCloseChannel(D
+ 
+ 
+ #if !defined(TWIN_SERIAL)
+-static RESPONSECODE IFDHPolling(DWORD Lun, int timeout)
++static RESPONSECODE IFDHPollingWithTimeout(DWORD Lun, int timeout)
+ {
+ 	int reader_index;
+ 
+@@ -450,7 +450,7 @@ static RESPONSECODE IFDHPolling(DWORD Lu
+ 
+ /* on an ICCD device the card is always inserted
+  * so no card movement will ever happen: just do nothing */
+-static RESPONSECODE IFDHSleep(DWORD Lun, int timeout)
++static RESPONSECODE IFDHSleepWithTimeout(DWORD Lun, int timeout)
+ {
+ 	int reader_index;
+ 
+@@ -484,6 +484,16 @@ static RESPONSECODE IFDHStopPolling(DWOR
+ 	(void)InterruptStop(reader_index);
+ 	return IFD_SUCCESS;
+ }
++
++static RESPONSECODE IFDHPolling(DWORD Lun)
++{
++	return IFDHPollingWithTimeout(Lun, 2 * 1000);	/* 2 seconds */
++}
++
++static RESPONSECODE IFDHSleep(DWORD Lun)
++{
++	return IFDHSleepWithTimeout(Lun, 10 * 60 * 1000);	/* 10 minutes */
++}
+ #endif
+ 
+ 
+@@ -701,7 +711,7 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
+ 				{
+ 					*Length = sizeof(void *);
+ 					if (Value)
+-						*(void **)Value = IFDHPolling;
++						*(void **)Value = IFDHPollingWithTimeout;
+ 				}
+ 
+ 				if ((PROTOCOL_ICCD_A == ccid_desc->bInterfaceProtocol)
+@@ -709,7 +719,7 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
+ 				{
+ 					*Length = sizeof(void *);
+ 					if (Value)
+-						*(void **)Value = IFDHSleep;
++						*(void **)Value = IFDHSleepWithTimeout;
+ 				}
+ 			}
+ 			break;
+@@ -761,6 +771,44 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
+ 				}
+ 			}
+ 			break;
++
++		case TAG_IFD_POLLING_THREAD:
++			{
++				_ccid_descriptor *ccid_desc;
++
++				/* default value: not supported */
++				*Length = 0;
++
++				ccid_desc = get_ccid_descriptor(reader_index);
++
++				/* Disable polling thread. */
++				if ((ccid_desc->readerID == ACS_APG8201_B2)
++					|| (ccid_desc->readerID == ACS_APG8201_B2RO)
++					|| ccid_desc->isSamSlot)
++				{
++					break;
++				}
++
++				/* CCID and not ICCD */
++				if (((PROTOCOL_CCID == ccid_desc -> bInterfaceProtocol)
++					|| (PROTOCOL_ACR38 == ccid_desc -> bInterfaceProtocol))
++					/* 3 end points */
++					&& (3 == ccid_desc -> bNumEndpoints))
++				{
++					*Length = sizeof(void *);
++					if (Value)
++						*(void **)Value = IFDHPolling;
++				}
++
++				if ((PROTOCOL_ICCD_A == ccid_desc->bInterfaceProtocol)
++					|| (PROTOCOL_ICCD_B == ccid_desc->bInterfaceProtocol))
++				{
++					*Length = sizeof(void *);
++					if (Value)
++						*(void **)Value = IFDHSleep;
++				}
++			}
++			break;
+ #endif
+ 
+ 		case SCARD_ATTR_VENDOR_IFD_SERIAL_NO:

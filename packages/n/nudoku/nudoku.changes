@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Thu Dec 21 10:46:48 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.0.0:
+  * Fix build failure with ncurses 6.3
+  * Add call to PKG_PROG_PKG_CONFIG and pkg-check ncurses libs #46
+  * Fix build with musl
+  * Add highlighting of user input #56
+  * Fix toggling marks removing solution #51
+
+-------------------------------------------------------------------
+Fri Nov 20 09:53:01 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.0:
+  * Use actual terminal background color (instead of black) as
+    background color (pr #31)
+  * Define minimum gettext version instead of exact one (pr #32)
+  * Require gettext 0.20
+  * Add Japanese translation (pr #40)
+  * Minor code change
+- Drop nudoku-2.0.0-unused-var.patch: upstreamed
+- Drop nudoku-2.0.0-gettext.patch: upstreamed
+
+-------------------------------------------------------------------
+Thu Feb  6 07:47:24 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add nudoku-2.0.0-unused-var.patch:
+  Remove unused variable. Fixes build on TW.
+- Add nudoku-2.0.0-gettext.patch:
+  Require gettext 0.20
+
+-------------------------------------------------------------------
+Tue Jul 30 10:21:51 UTC 2019 - mvetter@suse.com
+
+- Add cairo dependency: enable PDF and PNG creation
+
+-------------------------------------------------------------------
+Tue Jul 30 10:17:52 UTC 2019 - mvetter@suse.com
+
+- Update to 2.0.0:
+  * Translation support
+  * Added translations for: Spanish, German, Russian
+  * Refactoring and code cleanup
+  * Add color difference between provided numbers and the ones
+    entered by the user
+  * Output sudoku PDFs (-p/-n option)
+  * Output sudoku PNG (-i option)
+  * Fix duplicate fields in sudoku generation (pr #28)
+
+-------------------------------------------------------------------
+Thu Apr 19 10:16:32 UTC 2018 - mvetter@suse.com
+
+- Update to 1.0.0:
+  * Add 'mark' command to highlight the currently selected number
+    in all other cells. Thanks to James Warnock.
+  * Redesign commands display.
+  * Display how many hints a person used when the puzzle is solved.
+  * Update maintainer email and man page.
+  * Code cleanup
+
+-------------------------------------------------------------------
+Mon Jun 13 17:08:10 UTC 2016 - mvetter@suse.com
+
+- Update to version 0.2.5
+  * manpage fixes
+
+-------------------------------------------------------------------
+Wed Aug 26 11:05:29 UTC 2015 - mvetter@suse.com
+
+- Version bump to 0.2.4
+  * Fix array out of bound in validity_check
+
+-------------------------------------------------------------------
+Fri Aug 21 16:38:48 UTC 2015 - mvetter@suse.com
+
+- Version bump to 0.2.3
+  * Code cleanup
+
+-------------------------------------------------------------------
+Wed Aug 19 13:00:59 UTC 2015 - mvetter@suse.com
+
+- Change Source to download location
+- Update to version 0.2.2
+  * Add manpage
+  * User can provide sudokus of his own
+  * Major code cleanup
+  * Provide hints based on the users board
+  * Improve feedback for "check" to let the user know if his sudoku is right so far
+
+-------------------------------------------------------------------
+Tue Apr  7 13:51:20 UTC 2015 - g.bluehut@gmail.com
+
+- Add BuildRequires xz to make it work under SLE11 too.
+  Going to add it generally since it is needed anyways, so to make
+  sure it exists.
+
+-------------------------------------------------------------------
+Tue Apr  7 13:28:59 UTC 2015 - g.bluehut@gmail.com
+
+- Clean up spec
+
+-------------------------------------------------------------------
+Wed Mar 25 11:56:50 UTC 2015 - g.bluehut@gmail.com
+
+- Rename and clean up spec file
+

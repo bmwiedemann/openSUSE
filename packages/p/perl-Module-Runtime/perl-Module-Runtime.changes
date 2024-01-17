@@ -1,0 +1,120 @@
+-------------------------------------------------------------------
+Thu Oct 19 05:36:17 UTC 2017 - coolo@suse.com
+
+- updated to 0.016
+   see /usr/share/doc/packages/perl-Module-Runtime/Changes
+
+  version 0.016; 2017-10-17
+  
+    * port t/taint.t to Perl 5.27.5, where re-requiring an already-loaded
+      module doesn't trigger tainting
+  
+    * skip t/taint.t if the perl empirically doesn't perform taint checks
+      but the script got run anyway (which happens with an unsupported
+      configuration of the Perl core which some people are using in the
+      absence of a supported no-taint configuration)
+  
+    * in t/taint.t, use $^X rather than $ENV{PATH} as the primordial
+      tainted value to taint a string being tested
+  
+    * in documentation, use four-column indentation for all verbatim
+      material
+  
+    * in META.{yml,json}, point to public bug tracker
+  
+    * in META.json, specify type of public repository
+
+-------------------------------------------------------------------
+Mon Jul 17 05:49:49 UTC 2017 - coolo@suse.com
+
+- updated to 0.015
+   see /usr/share/doc/packages/perl-Module-Runtime/Changes
+
+  version 0.015; 2017-07-16
+  
+    * update test suite to not rely on . in @INC, which is no longer
+      necessarily there from Perl 5.25.7
+  
+    * in documentation, warn about the security problem with
+      use_package_optimistically()
+  
+    * declare correct version for Test::More dependency
+  
+    * generate "traditional" style of compatibility Makefile.PL, to
+      permit building in environments that don't support Build.PL or
+      configure_requires
+
+-------------------------------------------------------------------
+Mon Feb 24 06:10:39 UTC 2014 - coolo@suse.com
+
+- updated to 0.014
+   * bugfix: suppress any CORE::GLOBAL::require override, where possible,
+     to avoid use_package_optimistically() being misled into treating
+     missing modules as broken
+ 
+   * bugfix: in use_module() and use_package_optimistically(), pass a
+     supplied VERSION parameter through for the version check even if it
+     is undef
+ 
+   * tighten use_package_optimistically()'s recognition of can't-locate
+     errors (the same way that base.pm has recently been tightened),
+     so that, when a module fails to load because a module that it uses
+     isn't available, the outer module will be perceived as broken rather
+     than missing
+ 
+   * update documentation notes about the state of Unicode handling for
+     module names
+ 
+   * in META.{yml,json}, point to public git repository
+
+-------------------------------------------------------------------
+Tue Jun 11 19:41:49 UTC 2013 - coolo@suse.com
+
+- rebuild for perl 5.18
+
+-------------------------------------------------------------------
+Fri Feb 17 08:50:52 UTC 2012 - coolo@suse.com
+
+- updated to 0.013
+  * fix false failure of the test for lack of unintended dependencies
+    that occurred on systems using a sitecustomize.pl
+
+-------------------------------------------------------------------
+Mon Feb 13 09:03:02 UTC 2012 - coolo@suse.com
+
+- updated to 0.012
+   * work around Perl core bug [RT#68590] regarding leakage of %^H
+     into modules being loaded
+ 
+   * work around Perl core bug that made a failed module loading appear
+     successful when re-requiring the same module
+ 
+   * duplicate is_string() from Params::Classify, rather than importing it,
+     to avoid circular dependency problems (affecting both installation
+     and runtime)
+ 
+   * duplicate minimal exporting behaviour from Exporter, and avoid using
+     the "feature", "warnings", "strict", and "parent" pragmata, to allow
+     for possible future use of this module by any infrastructure module
+ 
+   * document core bug workarounds
+ 
+   * document module name syntax more prominently, and discuss the state
+     of Unicode handling
+ 
+   * tweak documentation of use_package_optimistically()
+ 
+   * test behaviour with tainted module name
+ 
+   * test lack of unwanted eval frame around require
+ 
+   * give test modules more meaningful names
+ 
+   * convert .cvsignore to .gitignore
+
+-------------------------------------------------------------------
+Wed Oct 26 17:09:13 UTC 2011 - tabraham@novell.com
+
+- initial package 0.011
+    * created by cpanspec 1.78.06
+

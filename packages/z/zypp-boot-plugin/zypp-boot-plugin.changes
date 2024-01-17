@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Tue Oct 24 09:07:33 UTC 2023 - schubi@suse.com
+
+- Update to version 0.0.6:
+  * Using Boost:child for RPM calls instead of unsecure system()
+    call (bsc#1215988).
+
+-------------------------------------------------------------------
+Wed Oct 11 08:43:53 UTC 2023 - schubi@suse.com
+
+- Update to version 0.0.5:
+  * Fix in checking installhint(reboot-needed) (bsc#1215988).
+
+-------------------------------------------------------------------
+Thu Oct 05 09:39:00 UTC 2023 - schubi@suse.com
+
+- Update to version 0.0.4:
+  * Update README.md
+  * Added libopenssl to soft-reboot, removed openssl from
+    soft-reboot
+
+-------------------------------------------------------------------
+Fri Sep 29 07:05:00 UTC 2023 - schubi@suse.com
+
+- Update to version 0.0.3:
+  * Allowing regex expression for the package name in
+    zypp-boot-plugin.conf.
+
+-------------------------------------------------------------------
+Wed Sep 27 10:25:02 UTC 2023 - schubi@suse.com
+
+- Update to version 0.0.2:
+  * Added "zypper dup" testcase
+  * Reduced logging in order not to overload the communication
+    with libzypp.
+
+-------------------------------------------------------------------
+Fri Aug 25 14:43:17 UTC 2023 - schubi@suse.com
+
+- initial version 0.0.1 

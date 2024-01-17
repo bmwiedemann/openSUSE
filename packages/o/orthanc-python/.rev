@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8263bc9c21d43a5ac88a24766dc9a2b5</srcmd5>
+    <version>3.0</version>
+    <time>1609344755</time>
+    <user>dimstar_suse</user>
+    <comment>new plugin for Orthanc</comment>
+    <requestid>859421</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c39c5688201b00c6529b3bc961216414</srcmd5>
+    <version>3.1</version>
+    <time>1611770259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866879</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>823232c21c986c737bb9409958fdf2dc</srcmd5>
+    <version>3.2</version>
+    <time>1624462694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901370</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>582c9692be81090b254a19b2d51b4c85</srcmd5>
+    <version>3.3</version>
+    <time>1629101507</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912184</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>44329301ed57d9363b7044019ab02e64</srcmd5>
+    <version>3.4</version>
+    <time>1630617627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915797</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f9a69c786a39e05184b40d1ee8c2cb1e</srcmd5>
+    <version>4.0</version>
+    <time>1670259716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040230</requestid>
+  </revision>
+</revisionlist>

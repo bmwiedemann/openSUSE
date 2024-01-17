@@ -1,0 +1,6 @@
+<package name="nyxt" project="openSUSE:Factory">
+  <title>Nyxt</title>
+  <description>Nyxt is a keyboard-oriented, extensible web-browser designed for power users. It has familiar key-bindings (Emacs, VI, CUA), is fully configurable and extensible in Lisp, and has powerful features for productive professionals.</description>
+  <devel project="network" package="nyxt"/>
+  <url>https://nyxt.atlas.engineer/</url>
+</package>

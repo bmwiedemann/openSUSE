@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Wed Nov  9 16:29:57 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.5.0 
+  * use manylinux2014 image for building wheels
+  * Fix typo in docs (#145)
+  * update leveldb links to github
+  * clarify bloom_filter_bits in docs
+  * skip py36 wheels
+  * drop py36 from tox config
+
+-------------------------------------------------------------------
+Sun Jan 16 12:36:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * Build Linux wheels against Snappy 1.1.9, LevelDB 1.22
+  * The minimum LevelDB version is now 1.21
+  * Add support for :py:meth:`WriteBatch.append()`
+  * Add support for :py:meth:`WriteBatch.approximate_size()`
+  * Use manylinux2010 instead of manylinux1 to build wheels
+  * Add Python 3.9 support
+  * Drop Python 3.5 support
+  * Completely drop Python 2 support 
+
+-------------------------------------------------------------------
+Thu May 27 07:28:42 UTC 2021 - pgajdos@suse.com
+
+- %check: do not call setup.py test, use %pytest_arch macro
+
+-------------------------------------------------------------------
+Wed Mar 18 07:35:14 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.2.0
+  * Add Python 3.8 support
+  * Drop Python 3.4 support
+
+-------------------------------------------------------------------
+Mon May 20 14:01:20 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.1.0
+  * Expose :py:attr:`~DB.name` attribute to Python code
+    (`pr #90 <https://github.com/wbolster/plyvel/pull/90>`_)
+
+-------------------------------------------------------------------
+Thu Oct 11 13:37:20 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.5:
+  * Rebuild wheels: build against Snappy 1.1.7, and produce Python
+    3.7 wheels
+
+-------------------------------------------------------------------
+Fri Apr  6 08:41:10 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.0.4:
+  * No relevant change for package users
+
+-------------------------------------------------------------------
+Fri Jan  5 14:25:14 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.0.0:
+  * First 1.x release. This library is quite mature, so there is
+    no reason to keep using 0.x version numbers. While at it,
+    switch to semantic versioning.
+  * Drop support for older Python versions. Minimum versions are
+    now Python 3.4+ for modern Python and Python 2.7+ for legacy
+    Python.
+  * The mimimum LevelDB version is now 1.20, which added an option
+    for the maximum file size, which is now exposed in Plyvel.
+  * The various .put() methods are no longer restricted to just
+    bytes (str in Python 2), but will accept any type implementing
+    Python's buffer protocol, such as bytes, bytearray, and
+    memoryview. Note that this only applies to values; keys must
+    still be bytes. (issue #52)
+
+-------------------------------------------------------------------
+Wed Jun 21 09:31:49 UTC 2017 - jengelh@inai.de
+
+- Trim filler wording from description and replace by a
+  substantiated feature list.
+
+-------------------------------------------------------------------
+Sun Jun 11 10:16:54 UTC 2017 - mpluskal@suse.com
+
+- Switch to python singlespec
+
+-------------------------------------------------------------------
+Sun Jan 31 08:31:40 UTC 2016 - mpluskal@suse.com
+
+- Enable tests
+- Update dependencies
+
+-------------------------------------------------------------------
+Tue Oct 28 16:52:58 UTC 2014 - mpluskal@suse.com
+
+- Initial package 
+

@@ -1,0 +1,18 @@
+README: Orthanc for openSUSE
+============================
+
+Orthanc is a RESTful DICOM server for healthcare and medical research.
+
+This plugin can be used to write Orthanc plugins using the Python programming language instead of the more complex C/C++ programming languages.
+
+Python plugins have access to more features and a more consistent SDK than Lua scripts. The Python API is automatically generated from the Orthanc plugin SDK in C using the Clang compiler front-end.
+
+As of release 2.0 of the plugin, the coverage of the C SDK is about 75% (119 functions are automatically wrapped in Python out of a total of 157 functions in the Orthanc SDK 1.7.2).
+
+Configuration files in json format should be stored in /etc/orthanc.
+
+Check out http://book.orthanc-server.com/plugins/python.html for additional information!
+
+Have fun
+Axel Braun <DocB@openSUSE.org> Tue Dec 22 09:16:26 UTC 2020
+

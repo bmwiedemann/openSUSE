@@ -1,0 +1,8 @@
+<package name="libicns" project="openSUSE:Factory">
+  <title>libicns</title>
+  <description>
+	  libicns is a library providing functionality for easily reading and 
+	  writing Macintosh icns files
+  </description>
+  <devel project="graphics" package="libicns"/>
+</package>

@@ -1,0 +1,14 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="versionformat">0+git.%cd</param>
+    <param name="url">https://chromium.googlesource.com/external/gyp</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="exclude">.*</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

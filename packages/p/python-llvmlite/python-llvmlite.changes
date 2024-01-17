@@ -1,0 +1,480 @@
+-------------------------------------------------------------------
+Mon Nov 20 13:29:12 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Mon Nov 20 12:42:27 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.41.1
+  * Refactor native library loading
+  * Add ORCJITv2 support
+  * Remove support for LLVM < 14
+
+-------------------------------------------------------------------
+Fri May 26 13:34:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.40.0:
+  * This release predominantly upgrades to LLVM 14 and Python 3.11.
+  * Bindings to a large number of passes are added.
+  * The minimum supported Python version is now Python 3.8.
+- Drop patch python311.patch, not required. 
+
+-------------------------------------------------------------------
+Thu Feb 23 15:07:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add python311.patch to build with python 3.11 as well 
+
+-------------------------------------------------------------------
+Wed Sep 28 14:02:23 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.39.1:
+  * PR `#752 <https://github.com/numba/llvmlite/pull/752>`_: Skip test
+    if libm is not found (`Siu Kwan Lam <https://github.com/sklam>`_)
+  * PR `#865 <https://github.com/numba/llvmlite/pull/865>`_: Move
+    Azure to use macos-11 (`stuartarchibald
+    <https://github.com/stuartarchibald>`_)
+  * PR `#874 <https://github.com/numba/llvmlite/pull/874>`_: Add zlib
+    as a dependency for aarch64 (`esc <https://github.com/esc>`_)
+  * PR `#878 <https://github.com/numba/llvmlite/pull/878>`_: Update
+    changelog (`Andre Masella <https://github.com/apmasell>`_)
+
+- changes from version 0.39.0:
+  * This release predominantly adds new features and improves
+    functionality.
+    + It's now possible to directly set LLVM "metadata" on global
+      variables.
+    + Functions and global variables now support the specification of
+      a "section" in which they should be placed.
+    + The attribute "source_file" had been added to the "ModuleRef"
+      class, it returns the module's original file name.
+    + The FFI library binding to LLVM is now loaded with "importlib"
+      to increase compatibility with other projects and improve
+      start-up times.
+    + Linux builds now use the parallel option to "make" to speed up
+      building the FFI library.
+    + Preliminary work to expose LLVM's optimization-remarks interface
+      has been undertaken. The bindings are exposed and tested, but
+      not yet documented for general use (additional work is needed).
+  * Deprecations:
+    + The "llvmlite.llvmpy" module has been deprecated as the
+      functionality it provides is available through the "llvmlite.ir"
+      module. See the deprecation guide in the user documentation for
+      details and recommendations regarding replacement.
+  * Pull-Requests:
+    + PR `#328 <https://github.com/numba/llvmlite/pull/328>`_: Build C
+      files separately on Linux and support parallel make (`Michał
+      Górny <https://github.com/mgorny>`_)
+    + PR `#754 <https://github.com/numba/llvmlite/pull/754>`_:
+      manylinux2014 aarch64 wheels with system compilers (`esc
+      <https://github.com/esc>`_)
+    + PR `#760 <https://github.com/numba/llvmlite/pull/760>`_: add
+      support for attaching metadata to global variables (`Graham
+      Markall <https://github.com/gmarkall>`_ `John Törnblom
+      <https://github.com/john-tornblom>`_)
+    + PR `#786 <https://github.com/numba/llvmlite/pull/786>`_: Update
+      Windows and OSX CI images. (`stuartarchibald
+      <https://github.com/stuartarchibald>`_)
+    + PR `#801 <https://github.com/numba/llvmlite/pull/801>`_: Update
+      ffi.py (`franzhaas <https://github.com/franzhaas>`_)
+    + PR `#803 <https://github.com/numba/llvmlite/pull/803>`_:
+      llvm::Module::GetSourceFileName (`J. Aaron Pendergrass
+      <https://github.com/japendergrass>`_)
+    + PR `#807 <https://github.com/numba/llvmlite/pull/807>`_: Exclude
+      ExecutionEngine tests on linux 32 (`esc
+      <https://github.com/esc>`_)
+    + PR `#813 <https://github.com/numba/llvmlite/pull/813>`_: Add m1
+      support to conda build scripts (`esc <https://github.com/esc>`_
+      `Stan Seibert <https://github.com/seibert>`_)
+    + PR `#815 <https://github.com/numba/llvmlite/pull/815>`_: update
+      local references (`esc <https://github.com/esc>`_)
+    + PR `#816 <https://github.com/numba/llvmlite/pull/816>`_: remove
+      configuration landscape service as it is no longer used (`esc
+      <https://github.com/esc>`_)
+    + PR `#817 <https://github.com/numba/llvmlite/pull/817>`_: remove
+      uppper limit on Python requires (`esc
+      <https://github.com/esc>`_)
+    + PR `#819 <https://github.com/numba/llvmlite/pull/819>`_: adding
+      rc and final release checklist templates (`esc
+      <https://github.com/esc>`_)
+    + PR `#823 <https://github.com/numba/llvmlite/pull/823>`_: Add
+      section to globals (`Andreas Wrisley
+      <https://github.com/anlofw>`_)
+    + PR `#824 <https://github.com/numba/llvmlite/pull/824>`_: add
+      GitHub URL for PyPi (`Andrii Oriekhov
+      <https://github.com/andriyor>`_)
+    + PR `#825 <https://github.com/numba/llvmlite/pull/825>`_: Add
+      flag handling to more instructions. (`stuartarchibald
+      <https://github.com/stuartarchibald>`_ `Andre Masella
+      <https://github.com/apmasell>`_)
+    + PR `#826 <https://github.com/numba/llvmlite/pull/826>`_:
+      Deprecated `llvmlite.llvmpy` (`Andre Masella
+      <https://github.com/apmasell>`_)
+    + PR `#831 <https://github.com/numba/llvmlite/pull/831>`_: Format
+      C++ code (`Andre Masella <https://github.com/apmasell>`_)
+    + PR `#832 <https://github.com/numba/llvmlite/pull/832>`_: DOC:
+      Fix the syntax for the llvmlite discourse topic
+      link. (`stuartarchibald <https://github.com/stuartarchibald>`_)
+    + PR `#835 <https://github.com/numba/llvmlite/pull/835>`_: Add
+      pre-commit hooks for clang-format (`Andre Masella
+      <https://github.com/apmasell>`_)
+    + PR `#837 <https://github.com/numba/llvmlite/pull/837>`_: Add
+      support for optimization remarks in pass managers (`Siu Kwan Lam
+      <https://github.com/sklam>`_ `Andre Masella
+      <https://github.com/apmasell>`_)
+    + PR `#851 <https://github.com/numba/llvmlite/pull/851>`_: adding
+      the llvm_11_consecutive_registers.patch (`esc
+      <https://github.com/esc>`_)
+    + PR `#857 <https://github.com/numba/llvmlite/pull/857>`_:
+      Delegate passmanager remarks methods (`Andre Masella
+      <https://github.com/apmasell>`_)
+
+-------------------------------------------------------------------
+Thu Jun 23 07:17:01 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.38.1:
+  * PR `#841 <https://github.com/numba/llvmlite/pull/841>`_: Merge
+    pull request #813 from seibert/m1_support (`esc
+  * PR `#845 <https://github.com/numba/llvmlite/pull/845>`_: Backport
+    #786 for 0.38.1
+
+-------------------------------------------------------------------
+Fri Jan 14 17:12:17 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.38.0
+  * This release makes llvmlite compatible with Python 3.10. It
+    also adds an ``abiname`` option to the target machine creation
+    interface that mimics the same in LLVM. Further, a large number
+    of functions are added to the IR API to support common uses of
+    constant expressions. Finally, a number of bugs were fixed!
+
+-------------------------------------------------------------------
+Thu Sep 30 09:38:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to 0.37.0
+  * The biggest new feature in this release is LLVM 11
+    support for all platforms! This is important, because
+    the aarch64 platform had been ‘stuck’ on LLVM 9 for
+    several releases. A special thanks to David Spickett
+    from Linaro for supplying the relevant patch.
+
+-------------------------------------------------------------------
+Tue Mar 16 19:59:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to 0.36.0
+  * The main feature in this release is Python 3.9 support.
+    Also, some changes to the build scripts were included:
+    the llvmdev recipe now supports compilation on Windows 10
+    and llvmlite may now be compiled with cmake on POSIX
+    systems. Additionally, both the timings from the LLVM
+    passes themselves and the time spent within the LLVM
+    thread-safe access lock are now available for diagnostic
+    purposes. Lastly, several minor cosmetic changes to the
+    documentation and project files are included.
+
+-------------------------------------------------------------------
+Wed Feb 17 10:37:10 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to 0.35.0
+  * The main feature in this release is a Numba specific
+    LLVM pass for pruning reference-count operations. We
+    plan to generalize this custom LLVM pass once it is
+    proven stable so that it can be configured for other
+    uses. In addition, this release contains an updated SVML
+    patch that fixes an issue for AVX512, and a patch that
+    fixes build issues on Linux and BSD.
+- Drop the condtional for older llvm versions on older distros.
+  This release as well as previous ones only supports llvm10.
+
+-------------------------------------------------------------------
+Mon Nov  2 14:56:24 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.34.0
+  * This release upgrades to LLVM 10 and drops support for LLVM versions older than 9.
+    * except aarch64, which stays on LLVM 9 for some reason
+- Drop support-clang9.patch
+
+-------------------------------------------------------------------
+Sun Oct 25 22:16:52 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Use default compiler (g++) instead of clang++. (boo#1174233)
+- Remove unneeded or not directly needed build dependencies:
+  clangX-devel, llvmX-LTO-devel, llvmX-gold, {ncurses,zlib}-devel.
+
+-------------------------------------------------------------------
+Sun Apr 19 09:37:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Rebase patch support-clang9.patch to include clang 10 support too
+
+-------------------------------------------------------------------
+Sun Apr 19 09:32:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.32.0:
+  * The main changes in this release are the removal of specific code for Python 2
+    and Python <3.6, and making the code base PEP8 compliant.
+
+-------------------------------------------------------------------
+Mon Apr  6 09:11:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use properly llvm9 which is now TW default
+
+-------------------------------------------------------------------
+Sun Jan  5 02:54:55 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.31.0:
+  * This release switches memset/memcpy to use the 4 argument style as
+    per LLVM 7+ and updates some documentation.
+  * Commits:
+    + PR #485: Revert "Revert "LLVM 7 changed memset intrinsic
+      signature, adjust it""
+    + PR #520: Begin development of 0.31.0
+    + PR #528: Add cttz and ctlz to irbuilder docs.
+    + PR #533: Update deprecation docs with full deprecation of 5 arg
+      memset/memcpy
+    + PR #535: Update docs to not report LLVM 3.8 as latest!
+
+-------------------------------------------------------------------
+Tue Dec 17 17:06:49 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Revert previous change, numba doesn't support LLVM 9 yet.
+
+-------------------------------------------------------------------
+Thu Oct 31 15:18:38 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Add support-clang9.patch and apply it for llvm >= 9
+- Bump llvm_major from 8 to 9 
+
+-------------------------------------------------------------------
+Sat Oct 19 17:02:55 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.30.0:
+  This release adds support for half-precision float and
+  schedulesthe deprecation of memset/memcpy accepting 5 arguments
+  (cf. LLVM change).
+  * PR #518: Fix use of -fPIC flag in wheels
+  * PR #513: Remove restriction on sphinx version from Anaconda distro
+  * PR #512: fix for block labels which contain "interesting"
+    characters
+  * PR #511: Deprecate the use of memset/memcpy with alias
+  * PR #510: Add fp16 Intrinsics
+  * PR #509: Add Half-Precision Type
+  * PR #502: Add -fPIC flag for manylinux1 wheel building
+  * PR #491: Fix incorrect hierarchy in the documentation for
+    ir.Constant.
+  * PR #474: Update docs
+  * PR #470: Fix leak on string returning APIs.
+
+-------------------------------------------------------------------
+Wed Jun 19 01:25:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Package examples
+- Make sure tests use installed version
+
+-------------------------------------------------------------------
+Tue Jun 18 19:45:06 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- update to version 0.29.0
+  * This release upgrades to LLVM 8.0 for all supported platforms except PPC64LE.
+    Due to numerous problems with LLVM 8.0 running on PPC64LE,
+    we have decided to use LLVM 7.1, which is more stable on PPC64LE.
+    In addition, non-host LLVM targets, AMDGPU, NVPTX, and WebAssembly, are enabled
+    and they are available in our `llvmlite` builds.
+  * Revert "LLVM 7 changed memset intrinsic signature, adjust it"
+  * Depend on enum34 using PEP 508 environment markers
+  * Upgrade to llvm8
+  * Support loading from current directory and egg files
+  * Add missing fastmath flags from LLVM 7
+  * LLVM 7 changed memset intrinsic signature, adjust it
+
+-------------------------------------------------------------------
+Sat Mar 16 22:33:01 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.28.0:
+  * PR #322: Adding Vector Type
+  * PR #389: Add symbols from static object files
+  * PR #417: Add support for atomic loads/stores
+  * PR #422: Normalize replace_* behaviour and add docs
+  * PR #426: Fix pickling of IR functions and add tests
+  * PR #444: Setup manylinux1 buildscripts and CI
+  * PR #446: Document need for -p1 argument to patch command
+  * PR #448: Fix “SyntaxWarning: invalid escape sequence d”
+  * PR #449: Consolidate the two vector type PRs
+  * PR #452: Some adjustments to pr426
+  * PR #454: Truncate long label names when adding label suffix.
+  * PR #458: Add changelog info about v0.27.1
+
+-------------------------------------------------------------------
+Wed Feb 20 16:18:26 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- update to version 0.27.1:
+  * Just a bugfix release.
+
+-------------------------------------------------------------------
+Wed Feb 13 18:56:34 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- update to version 0.27.0
+  * PR #434: Add another thread for RPi builds.
+  * PR #430: llvm lld integration, merge #428
+  * PR #428: Build LLD as part of the llvmdev package
+  * PR #413: Set up CI with Azure Pipelines
+  * PR #412: LLVM 7 support
+
+-------------------------------------------------------------------
+Sat Dec  1 18:33:44 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.26.0:
+  * The primary new features in this release is support for generation
+    of Intel JIT events, which makes profiling of JIT compiled code in
+    Intel VTune possible. This release also contains some minor build
+    improvements for ARMv7, and some small fixes.
+  * LLVM 7 support was originally slated for this release, but had to
+    be delayed after some issues arose in testing. LLVM 6 is still
+    required for llvmlite.
+  * PR #409: Use native cmake on armv7l
+  * PR #407: Throttle thread count for llvm build on armv7l.
+  * PR #403: Add shutdown detection to ObjectRef __del__ method.
+  * PR #400: conda recipe: add make as build dep
+  * PR #399: Add get_element_offset to TargetData
+  * PR #398: Fix gep method call on Constant objects
+  * PR #395: Fix typo in irbuilder documentation
+  * PR #394: Enable IntelJIT events for LLVM for VTune support
+
+-------------------------------------------------------------------
+Wed Oct 10 01:50:47 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.25.0:
+  * PR #391: Fix broken win32 py2.7 build.
+  * PR #387: protect against empty features in list
+  * PR #384: Read CMAKE_GENERATOR which conda-build sets
+  * PR #382: rewrite of install instructions, calling out LLVM build
+    challenges
+  * PR #380: Add FMA intrinsic support
+  * PR #379: ARM aarch64 test on jetson tx2
+  * PR #378: add slack, drop flowdock
+
+-------------------------------------------------------------------
+Fri Jul 13 09:29:54 UTC 2018 - tchvatal@suse.com
+
+- Version update to 0.24.0:
+  * Various small fixes
+  * ppc64le issues
+
+-------------------------------------------------------------------
+Sun Jun 24 01:18:22 UTC 2018 - arun@gmx.de
+
+- update to version 0.23.2:
+  * PR #361: Add SVML detection and a function to declare support.
+
+- changes from version 0.23.1:
+  * PR #353: PR Fix llvmdev build recipe.
+  * PR #348: llvmdev: enhancements to conda recipe
+
+-------------------------------------------------------------------
+Thu May 17 10:56:57 UTC 2018 - tchvatal@suse.com
+
+- Update to 0.23.0:
+  * PR #343: Fix undefined behavior bug due to Twine usage in LLVM
+  * PR #340: This moves llvmlite to use LLVM 6.0.0 as its backend.
+  * PR #339: Add cttz & ctlz
+  * PR #338: Add 3 Bit Manipulation Intrinsics
+  * PR #330: Add support for LLVM fence instruction
+  * PR #326: Enable Intel SVML-enabled auto-vectorization for all the
+             transcendentals
+
+-------------------------------------------------------------------
+Fri Mar 23 15:28:15 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.22.0
+  * In this release, we have changed the locking strategy that
+    protects LLVM from race conditions.  Before, the llvmlite user
+    (like Numba) was responsible for this locking.  Now, llvmlite
+    imposes a global thread lock on all calls into the LLVM API.
+    This should be significantly less error prone.  Future llvmlite
+    releases may manually exempt some functions from locking once
+    they are determined to be thread-safe.
+
+-------------------------------------------------------------------
+Thu Jan 11 19:18:11 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.21.0
+  * In this release, we upgrade to LLVM 5.
+  * Our build scripts now use conda-build 3.
+  * For our prebuilt binaries, GCC 7 toolchain is used on
+    unix-like systems
+  * The OSX minimum deployment target is 10.9.
+
+-------------------------------------------------------------------
+Mon Nov  6 15:44:28 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 0.20.0
+  * Beginning with this minor release, we support wheels for Linux, OSX and Windows.
+    Pull requests related to enabling wheels are #294, #295, #296 and #297.
+  * There are also fixes to the documentation (#283 and #289).
+- Update to 0.19.0
+  * PR #281, Issue #280: Fix GEP addrspace issue
+  * PR #279: Fix #274 addrspace in gep
+  * PR #278: add Readthedocs badge
+  * PR #275: Add variables to pass through when doing conda-build
+  * PR #273: Fix the behavior of module.get_global
+  * PR #272: cmpop contains comparison type, not lhs
+  * PR #268, Fix #267: Support packed struct
+  * PR #277: Add pass through gcc flags for llvmdev
+  * PR #276: Remove jenkins build scripts
+- Update to 0.18.0
+  * This is a minor release that fixes several issues (#263, #262, #258, #237) with
+    the wheel build.  In addition, we have minor fixes for running on PPC64LE
+    platforms (#261). And, we added CI testing against PyPy (#253).
+
+-------------------------------------------------------------------
+Wed Apr 19 22:06:59 UTC 2017 - toddrme2178@gmail.com
+
+- Remove unneeded disable_unittest_library_detection.patch
+
+-------------------------------------------------------------------
+Tue Apr 18 14:39:51 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 0.17.1
+  * Support LLVM 4
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Tue Jan 10 17:15:23 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+  * update line numbers and reg-exp in patch
+
+- update to version 0.15.0:
+  * Enhancements:
+    + PR #213: Add partial LLVM bindings for ObjectFile.
+    + PR #215: Add inline assembly helpers in the builder.
+    + PR #216: Allow specifying alignment in alloca instructions.
+    + PR #219: Remove unnecessary verify in module linkage.
+  * Fixes:
+    + PR #209, Issue #208: Fix overly restrictive test for library
+      filenames.
+
+-------------------------------------------------------------------
+Sat Nov  5 22:00:25 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * removed hardcoded version in %files section
+
+- update to version 0.14.0:
+  * PR #104: Add binding to get and view function control-flow graph.
+  * PR #210: Improve llvmdev recipe.
+  * PR #212: Add initializer for the native assembly parser.
+
+-------------------------------------------------------------------
+Wed Oct 12 16:36:12 UTC 2016 - toddrme2178@gmail.com
+
+- Use new versioned llvm package names.
+
+-------------------------------------------------------------------
+Wed Aug 24 17:20:08 UTC 2016 - toddrme2178@gmail.com
+
+- Initial version
+

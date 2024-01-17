@@ -1,0 +1,9 @@
+<package name="python-cachy" project="openSUSE:Factory">
+  <title>python-cachy</title>
+  <description>Cachy provides a simple yet effective caching library.
+
+The full documentation is available here: http://cachy.readthedocs.org
+
+</description>
+  <devel project="devel:languages:python" package="python-cachy"/>
+</package>

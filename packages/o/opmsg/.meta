@@ -1,0 +1,10 @@
+<package name="opmsg" project="openSUSE:Factory">
+  <title>A gpg alternative</title>
+  <description>opmsg is a replacement for gpg which can encrypt/sign/verify your mails or
+create/verify detached signatures of local files. Even though the opmsg
+output looks similar, the concept is entirely different.
+
+</description>
+  <devel project="security:privacy" package="opmsg"/>
+  <url>https://github.com/stealth/opmsg</url>
+</package>

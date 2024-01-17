@@ -1,0 +1,10 @@
+<package name="perl-Module-Runtime" project="openSUSE:Factory">
+  <title>runtime module handling</title>
+  <description>
+  This module deals with the examination of the namespace of Perl modules.
+  The contents of the module namespace is split across several physical
+  directory trees, but this module hides that detail, providing instead
+  a view of the abstract namespace.
+  </description>
+  <devel project="devel:languages:perl" package="perl-Module-Runtime"/>
+</package>
