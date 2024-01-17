@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -201,10 +201,6 @@ sed -i '1s/^#!.*$//' numpy/random/_examples/cython/*.pyx
 rm -f PKG-INFO
 
 %build
-%if 0%{?suse_version} <= 1600
-export CC=gcc-12
-export CXX=g++-12
-%endif
 %define _lto_cflags %{nil}
 %if %{with hpc}
 %hpc_setup
@@ -218,6 +214,10 @@ include_dirs = $OPENBLAS_INC
 EOF
 %else
 export CFLAGS="%{optflags} -fno-strict-aliasing"
+%endif
+%if 0%{?suse_version} <= 1600
+export CC=gcc-12
+export CXX=g++-12
 %endif
 
 %pyproject_wheel
@@ -339,8 +339,9 @@ test_failok+=" or (test_umath and test_unary_spurious_fpexception)"
 %ifarch riscv64
 # These tests fail due to non-portable assumptions about the signbit of NaN
 # gh#numpy/numpy#8213
-test_failok+=" or test_fpclass"
-test_failok+=" or test_float"
+test_failok+=" or (test_umath and test_fpclass)"
+test_failok+=" or (test_numeric and TestBoolCmp and test_float)"
+test_failok+=" or (test_umath and test_fp_noncontiguous)"
 %endif
 
 echo "

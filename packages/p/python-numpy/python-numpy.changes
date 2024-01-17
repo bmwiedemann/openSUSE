@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 15 16:35:46 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Update list of expected test failures on riscv64
+
+-------------------------------------------------------------------
+Thu Jan 11 07:33:45 UTC 2024 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Fix gnu-hpc build error for Leap
+
+-------------------------------------------------------------------
 Wed Dec 27 12:57:32 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Fix build error for Leap. Need gcc >= 8.5
