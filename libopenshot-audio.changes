@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 28 17:07:49 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.3.2:
+  * Bumping version to 0.3.2 (SO remains 9 - not changed)
+  * Updating github CI builders to no longer use Ubuntu 18.04, and add 22.04
+
+-------------------------------------------------------------------
 Tue Apr 11 07:36:12 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.3.1:
