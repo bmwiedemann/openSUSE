@@ -1,0 +1,166 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e26b3005550faadb3aea16a7303f07df</srcmd5>
+    <version>0.4.0.3</version>
+    <time>1432280988</time>
+    <user>dimstar_suse</user>
+    <comment>transformers-compat package to bring features from transformers 0.4 to older platforms</comment>
+    <requestid>306777</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ed2051d1e7cced64d6e8208d388003bb</srcmd5>
+    <version>0.4.0.4</version>
+    <time>1440337405</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324495</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2a1e040b0f562b60dd09e666725efd59</srcmd5>
+    <version>0.4.0.4</version>
+    <time>1468999440</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411810</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d957210292caceb77a786c783995acc7</srcmd5>
+    <version>0.5.1.4</version>
+    <time>1476875077</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433421</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e215be55dfd36d54b5ad5411e0ec1d3a</srcmd5>
+    <version>0.5.1.4</version>
+    <time>1505506799</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525560</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>36c0d455a9739ecc0430375e1ec58bf7</srcmd5>
+    <version>0.6.2</version>
+    <time>1527675304</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-transformers-compat to the latest version.</comment>
+    <requestid>607911</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>529fbfa842155474ee5bc6e2c099245c</srcmd5>
+    <version>0.6.2</version>
+    <time>1532161437</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 0.4.0.4
+- initial commit</comment>
+    <requestid>623881</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>3ecda72714927b0d8b5db1cffe613ee8</srcmd5>
+    <version>0.6.2</version>
+    <time>1540451196</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643479</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>77c36f11c78722576c0d1dca00b351d8</srcmd5>
+    <version>0.6.4</version>
+    <time>1556475238</time>
+    <user>maxlin_factory</user>
+    <comment>version update</comment>
+    <requestid>698563</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>32c62ab0e699871a2f6eb0500d6b1574</srcmd5>
+    <version>0.6.5</version>
+    <time>1558129398</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>703480</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>fccb41cb8c22ee9933552c6274ab4474</srcmd5>
+    <version>0.6.5</version>
+    <time>1577451517</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759543</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>8820cb10efdb6424ed8a6267a27bf903</srcmd5>
+    <version>0.6.5</version>
+    <time>1592580009</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815200</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>c648b5a96001a268cf2ed935c68ec183</srcmd5>
+    <version>0.6.5</version>
+    <time>1598643598</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829461</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e17403954943470c5893c5cbe2b51a90</srcmd5>
+    <version>0.6.6</version>
+    <time>1603458910</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>842771</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>38a52b86fdf547ea80f58455a152e373</srcmd5>
+    <version>0.6.6</version>
+    <time>1608634081</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857623</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>54145eb995787bb82cd01deb1d0bbc79</srcmd5>
+    <version>0.7</version>
+    <time>1629917832</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>912639</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a05e9289b398ddf49dbb78c5cee06121</srcmd5>
+    <version>0.7.1</version>
+    <time>1636663024</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>930370</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>12669a8aaf16ecc104986fdf3a2954bf</srcmd5>
+    <version>0.7.1</version>
+    <time>1644617392</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953550</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5f97294304c04f70fb3888f1d6749722</srcmd5>
+    <version>0.7.2</version>
+    <time>1659382242</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>987103</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>2b3e1d05728a5a1b7da6d45ba9871d74</srcmd5>
+    <version>0.7.2</version>
+    <time>1680636251</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076092</requestid>
+  </revision>
+</revisionlist>

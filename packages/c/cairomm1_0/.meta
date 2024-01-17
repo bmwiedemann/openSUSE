@@ -1,0 +1,8 @@
+<package name="cairomm1_0" project="openSUSE:Factory">
+  <title>C++ Interface for Cairo</title>
+  <description>This package provides a C++ interface for Cairo.
+
+</description>
+  <devel project="GNOME:Factory" package="cairomm1_0"/>
+  <url>http://cairographics.org</url>
+</package>

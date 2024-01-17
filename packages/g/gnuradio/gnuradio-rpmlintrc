@@ -1,0 +1,2 @@
+# Template file for gr_newmod
+addFilter("devel-file-in-non-devel-package.*/usr/share/gnuradio/modtool/templates/gr-newmod/include/howto/api.h")

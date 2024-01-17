@@ -1,0 +1,210 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3917c2f21629a41e8bd42cad3d31f986</srcmd5>
+    <version>0.1.4</version>
+    <time>1488322148</time>
+    <user>dimstar_suse</user>
+    <comment>- New dependency for google-cloud-sdk</comment>
+    <requestid>455830</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>855401ba929d3073fd9e2a12e5502bbd</srcmd5>
+    <version>0.1.7</version>
+    <time>1491896460</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>484887</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>da896da6a8b3f2311d23208e295a2860</srcmd5>
+    <version>0.1.7</version>
+    <time>1536327689</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop devel dependency
+- Install license file</comment>
+    <requestid>633706</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>223b130a4a2e594cce30f32b3eabe771</srcmd5>
+    <version>0.1.7</version>
+    <time>1552380274</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix test macro expansion</comment>
+    <requestid>682425</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>8e1e9db1922f407eef867d0afcc46aed</srcmd5>
+    <version>0.1.7</version>
+    <time>1570285162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734571</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7482ebe10b66decedc6b8bb6c2e8ba86</srcmd5>
+    <version>0.1.8</version>
+    <time>1581801771</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770631</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3c068b748f079d637653c29ddb0fd93c</srcmd5>
+    <version>0.1.9</version>
+    <time>1585265373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788241</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>246a4545aa3de91d75757705e184a2fd</srcmd5>
+    <version>0.1.9</version>
+    <time>1589196352</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to multibuild to break a self-requires loop.</comment>
+    <requestid>800655</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>59fd589878a03104fd87a4ff8c19d543</srcmd5>
+    <version>0.2.3</version>
+    <time>1591879335</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.3
+  * add tests
+
+- Add missing python2 dependency for Leap to work
+
+- Update to version 0.2.2
+  * Enhancement: Unicode version may be selected by exporting the 
+    Environment variable UNICODE_VERSION, such as 13.0, or 6.3.0. 
+    See the jquast/ucs-detect CLI utility for automatic detection.
+  * Enhancement: API Documentation is published to readthedocs.org.
+  * Updated tables for all Unicode Specifications with files published 
+    in a programmatically consumable format.</comment>
+    <requestid>812628</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>60cf810927a0eba98585ae748f1ef532</srcmd5>
+    <version>0.2.4</version>
+    <time>1592758241</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.4
+  * minor &quot;bugfix&quot; to avoid using pkg_resources module on import, 7918f58
+  * may help xonsh xonsh/xonsh#3607</comment>
+    <requestid>814544</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8553559300bea2379de93658142db364</srcmd5>
+    <version>0.2.5</version>
+    <time>1595338838</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.5
+  * Do not depend on pkg_resources module for list_versions() function.</comment>
+    <requestid>821443</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>15580514143a38f9255d22fa4662acb8</srcmd5>
+    <version>0.2.5</version>
+    <time>1603961260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841290</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>c2c8d72bc5d5714db7c76e8dac6be6d7</srcmd5>
+    <version>0.2.5</version>
+    <time>1622839366</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896913</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>e26fb8dffe49794b16e7e7b8d6c5b107</srcmd5>
+    <version>0.2.5</version>
+    <time>1659612191</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-pkg_resources.patch:
+  * Use importlib.metadata rather than pkg_resources.
+- Since importlib.metadata is not as a stickler as pkg_resources is, remove
+  multibuild.</comment>
+    <requestid>989970</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>16090d8b3cb5530df795b8ccf21802fb</srcmd5>
+    <version>0.2.5</version>
+    <time>1669288947</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1037583 from ojkastl_buildservice
+
+add explicit Requires for python-importlib_metadata for Python &lt; 3.8</comment>
+    <requestid>1037604</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2d45dc0ae774c5df84686209edc7d220</srcmd5>
+    <version>0.2.6</version>
+    <time>1674043695</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.6:
+  * Fix example for str.rjust(20, '_')
+  * Add CodeQL workflow for GitHub code scanning
+  * Switch to using importlib.metadata
+  * Use a new jinja2 templating process to update library to latest unicode
+- Drop patch remove-pkg_resources.patch.
+- Remove Python 2 gubbins.</comment>
+    <requestid>1058811</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>eab7136ffc1a64b77ba4af0435fcb7d3</srcmd5>
+    <version>0.2.6</version>
+    <time>1682193492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081728</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>811c1b20ee0d168268d8106851ff56e1</srcmd5>
+    <version>0.2.6</version>
+    <time>1691594641</time>
+    <user>dimstar_suse</user>
+    <comment>- use actual package name for importlib-metadata requires</comment>
+    <requestid>1102818</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6751354a45338d8ef0721e2602d57c1d</srcmd5>
+    <version>0.2.12</version>
+    <time>1701206290</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2.12:
+  * Include tests files in the source distribution (PR #98, PR
+  * **Bugfix** accounting of some kinds of emoji sequences using
+    U+FE0F
+  * Variation Selector 16 (PR #97).
+  * **Bugfix** zero-width characters used in Emoji ZWJ sequences,
+    Balinese, Jamo, Devanagari, Tamil, Kannada and others (PR #91).
+  * Include requirements files in the source distibution (PR
+    #83).
+  * Update Unicode version to 15.1.0
+  * Add testing support for Python 3.12
+  * Update README
+  * Update requirements
+  * Enable GitHub Actions CI
+  * Prepare release 0.2.7
+  * Update tox envs in README
+  * Include bin, docs, and tox.ini in the source distribution
+
+  multibuild.
+  * Enhancement: Unicode version may be selected by exporting the
+    Environment variable UNICODE_VERSION, such as 13.0, or 6.3.0.
+  * Updated tables for all Unicode Specifications with files published
+- Convert to multibuild to break a self-requires loop.</comment>
+    <requestid>1129072</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dbbe19f5ed6c3e2e5d90d696333a85a2</srcmd5>
+    <version>0.2.13</version>
+    <time>1705353054</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1138472</requestid>
+  </revision>
+</revisionlist>

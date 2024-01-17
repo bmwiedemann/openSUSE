@@ -1,0 +1,17 @@
+# These are actual dependencies
+addFilter("python3-policycoreutils.noarch: W: python-leftover-require python3-audit")
+addFilter("python3-policycoreutils.noarch: W: python-leftover-require python3-selinux")
+addFilter("python3-policycoreutils.noarch: W: python-leftover-require python3-semanage")
+addFilter("python3-policycoreutils.noarch: W: python-leftover-require python3-setools")
+addFilter("python3-policycoreutils.noarch: W: python-leftover-require python3-setuptools")
+
+# We are not providing this package anymore
+addFilter("policycoreutils-python-utils.noarch: W: obsolete-not-provided policycoreutils-python")
+
+# Two different binaries have the same PAM configuration, they are still
+# separate in principle
+addFilter("policycoreutils-gui.noarch: W: files-duplicate /usr/lib/pam.d/system-config-selinux /usr/lib/pam.d/selinux-polgengui")
+
+# The -gui package provides the .desktop file for the sepolicy GUI, which is
+# part of the normal sepolicy binary distributed in the -devel package
+addFilter("policycoreutils-gui.noarch: W: desktopfile-without-binary /usr/share/applications/sepolicy.desktop /usr/bin/sepolicy")

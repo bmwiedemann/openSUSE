@@ -1,0 +1,5 @@
+<package name="python-docker-pycreds" project="openSUSE:Factory">
+  <title>python-docker-pycreds</title>
+  <description>Python bindings for the docker credentials store API</description>
+  <devel project="devel:languages:python" package="python-docker-pycreds"/>
+</package>

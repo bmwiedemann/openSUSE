@@ -1,0 +1,5 @@
+<package name="gdouros-akkadian-fonts" project="openSUSE:Factory">
+  <title>Font with support for ancient akkadian Scripts</title>
+  <description>Akkadian covers the following scripts and symbols supported by The Unicode Standard: Basic Latin, Greek and Coptic, some Punctuation and other Symbols, Cuneiform, Cuneiform Numbers and Punctuation.</description>
+  <devel project="M17N:fonts" package="gdouros-akkadian-fonts"/>
+</package>

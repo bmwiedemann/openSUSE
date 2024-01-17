@@ -1,0 +1,5 @@
+<package name="deepin-gir-generator" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Deepin" package="deepin-gir-generator"/>
+</package>

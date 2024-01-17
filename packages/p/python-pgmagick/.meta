@@ -1,0 +1,9 @@
+<package name="python-pgmagick" project="openSUSE:Factory">
+  <title>Yet Another Python wrapper for GraphicsMagick</title>
+  <description>pgmagick is a yet another boost.python based wrapper for GraphicsMagick.
+
+
+</description>
+  <devel project="devel:languages:python" package="python-pgmagick"/>
+  <url>http://bitbucket.org/hhatto/pgmagick</url>
+</package>

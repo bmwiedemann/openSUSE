@@ -1,0 +1,6 @@
+<package name="compizconfig-settings-manager" project="openSUSE:Factory">
+  <title>Settings Manager for Compiz (CCSM)</title>
+  <description>Compiz Config and Settings tool (CCSM).
+</description>
+  <devel project="X11:Compiz" package="compizconfig-settings-manager"/>
+</package>

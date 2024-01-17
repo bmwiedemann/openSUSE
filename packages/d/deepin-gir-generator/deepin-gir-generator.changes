@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Sat Apr  2 07:32:39 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.1.0
+  * Change pkg.deepin.io to github.com
+  * Update readme
+
+-------------------------------------------------------------------
+Wed Feb 23 06:25:57 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Use last stable version of go to build
+
+-------------------------------------------------------------------
+Fri Feb 18 08:27:44 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.0.8
+  * add struct SettingsSchema
+  * fix compatibility with glib 2.63+
+- Drop support-glib2_36-and-higher.patch
+
+-------------------------------------------------------------------
+Fri Jan 28 02:10:49 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Keep golang version on 1.15 on Leap15.4+ 
+
+-------------------------------------------------------------------
+Fri May 21 13:50:52 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Keep golang version on 1.15 on Tumbleweed, the project does not support 
+  golang 1.16+ 
+
+-------------------------------------------------------------------
+Mon Jul 29 02:01:11 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.0.2
+  * Fix memory test failed on arm64 arch
+  * Feat: memory test comparing growth
+  * Fix path in Makefile, drop Fix-path.patch
+  * Chore: improve english
+- Add support-glib2_36-and-higher.patch, fix compatibility with glib 2.63+
+
+-------------------------------------------------------------------
+Wed Apr 10 07:36:25 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.0.0
+  * chore: put code into pkg.deepin.io dir
+  * fix: build issues with new glib2/gobject-introspection
+- Add Fix-path.patch, fix path in makefile
+- Remove SettingsBackendLike.patch, merged.
+
+-------------------------------------------------------------------
+Sat Mar  9 07:51:09 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Set two Provides tags for golang-dbus-factory
+  * Set golang(pkg.deepin.io/gir/glib-2.0) as Provides tag
+  * Set golang(pkg.deepin.io/gir/gio-2.0) as Provides tag 
+
+-------------------------------------------------------------------
+Tue Feb 26 01:53:03 UTC 2019 - Aaron Stern <ukbeast89@ptotonmail.com>
+
+- update to 1.2.0
+  * Compile with sw arch no longer needs to use gccgo
+  * Fix dde-api build error with gobject-introspection 1.58+
+  * Fix `sw_64` no export `USE_GCCGO=1`
+  * Fix `sw_64` gccgo720 build failed
+  
+-------------------------------------------------------------------
+Wed Nov  8 08:35:06 UTC 2017 - hillwood@opensuse.org
+
+- update to 1.0.2
+  * Fix gccgo compile failed
+  * Fix map concurrent crashed 
+  * Fix Install missing Typelib file for GUdev
+  * Support g_bytes_get_data()
+- Add SettingsBackendLike.patch.
+  * Add SettingsBackend.
+
+-------------------------------------------------------------------
+Sun Feb 26 08:49:19 UTC 2017 - hillwood@opensuse.org
+
+- Initial package. 
