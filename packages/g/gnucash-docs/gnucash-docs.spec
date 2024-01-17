@@ -1,7 +1,7 @@
 #
 # spec file for package gnucash-docs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnucash-docs
-Version:        4.13
-Release:        9.1
+Version:        5.5
+Release:        0
 Summary:        Documentation Module for GnuCash
 License:        GFDL-1.1-only AND GPL-2.0-or-later
 Group:          Productivity/Office/Finance
 URL:            https://www.gnucash.org/
-Source:         https://sourceforge.net/projects/gnucash/files/gnucash%20(stable)/%{version}/gnucash-docs-%{version}.tar.gz
+Source:         https://github.com/Gnucash/gnucash/releases/download/%{version}/gnucash-docs-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  sgml-skel
@@ -48,14 +48,14 @@ balanced books. This is the documentation module for GnuCash.
 %install
 %cmake_install
 %find_lang gnucash-guide %{?no_lang_C}
-%find_lang gnucash-help %{?no_lang_C}
+%find_lang gnucash-manual %{?no_lang_C}
 %{__rm} -rf %{buildroot}%{_datadir}/gnucash-docs
 %fdupes %{buildroot}%{_datadir}
 
-%files -f gnucash-guide.lang -f gnucash-help.lang
+%files -f gnucash-guide.lang -f gnucash-manual.lang
 %license COPYING
 %doc AUTHORS COPYING-DOCS NEWS README
 %doc %{_datadir}/help/C/gnucash-guide
-%doc %{_datadir}/help/C/gnucash-help
+%doc %{_datadir}/help/C/gnucash-manual
 
 %changelog
