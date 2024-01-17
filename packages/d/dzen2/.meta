@@ -1,7 +1,0 @@
-<package name="dzen2" project="openSUSE:Factory">
-  <title>A general purpose messaging and notification program</title>
-  <description>Dezen is a general purpose messaging, notification and menuing program for X11. It was designed to be scriptable in any language and integrate well with window managers like dwm, wmii and xmonad though it will work with any windowmanger.
-</description>
-  <devel project="X11:windowmanagers" package="dzen2"/>
-  <url>http://sites.google.com/site/gotmor/dzen</url>
-</package>

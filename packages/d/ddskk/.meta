@@ -1,7 +1,0 @@
-<package name="ddskk" project="openSUSE:Factory">
-  <title>SKK (Simple Kana to Kanji Conversion Program) for Emacs</title>
-  <description>SKK (Simple Kana to Kanji conversion program) is a Japanese input
-method for Emacs. ddskk (Daredevil SKK) is a version of SKK that is
-aggressively developed.</description>
-  <devel project="M17N" package="ddskk"/>
-</package>

@@ -1,4 +1,0 @@
-# The .so links are needed for dlopen to work.
-# (The package is not using -avoid-version as it should)
-addFilter("devel-file-in-non-devel-package")
-addFilter("shlib-policy-missing-suffix")

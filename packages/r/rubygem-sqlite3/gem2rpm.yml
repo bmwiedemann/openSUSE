@@ -1,5 +1,0 @@
-:preamble: |-
-  BuildRequires:  sqlite3-devel
-
-:post_install: |-
-  find %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/ -name "*.[h|c|o]" -exec rm {} \;

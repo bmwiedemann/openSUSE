@@ -1,5 +1,0 @@
-<package name="rubygem-validate_email" project="openSUSE:Factory">
-  <title>validate_email</title>
-  <description>Library for validating email addresses in Rails 3 models.</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-validate_email"/>
-</package>

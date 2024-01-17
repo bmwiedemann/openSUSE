@@ -1,9 +1,0 @@
-<package name="rubygem-bcrypt_pbkdf" project="openSUSE:Factory">
-  <title>OpenBSD's bcrypt_pdkfd (a variant of PBKDF2 with bcrypt-based PRF)</title>
-  <description>This gem implements bcrypt_pdkfd (a variant of PBKDF2 with bcrypt-based
-PRF).
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-bcrypt_pbkdf"/>
-  <url>https://github.com/net-ssh/bcrypt_pbkdf-ruby</url>
-</package>

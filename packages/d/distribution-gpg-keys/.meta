@@ -1,5 +1,0 @@
-<package name="distribution-gpg-keys" project="openSUSE:Factory">
-  <title>GPG keys of various Linux distributions</title>
-  <description>GPG keys used by various Linux distributions to sign packages.</description>
-  <devel project="Base:System" package="distribution-gpg-keys"/>
-</package>

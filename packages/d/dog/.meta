@@ -1,5 +1,0 @@
-<package name="dog" project="openSUSE:Factory">
-  <title>dog</title>
-  <description>A command-line DNS client</description>
-  <devel project="network:utilities" package="dog"/>
-</package>

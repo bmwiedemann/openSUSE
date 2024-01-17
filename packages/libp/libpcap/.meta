@@ -1,8 +1,0 @@
-<package name="libpcap" project="openSUSE:Factory">
-  <title>A Library for Network Sniffers</title>
-  <description>libpcap is a library used by packet sniffer programs. It provides an
-interface for them to capture and analyze packets from network devices.
-This package is only needed if you plan to compile or write such a
-program yourself.</description>
-  <devel project="Base:System" package="libpcap"/>
-</package>

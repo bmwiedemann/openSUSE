@@ -1,7 +1,0 @@
-<package name="dex-oidc" project="openSUSE:Factory">
-  <title>dex - A federated OpenID Connect provider</title>
-  <description>Dex is an identity service that uses OpenID Connect to drive authentication for other apps.
-
-Dex acts as a portal to other identity providers through &quot;connectors.&quot; This lets dex defer authentication to LDAP servers, SAML providers, or established identity providers like GitHub, Google, and Active Directory. Clients write their authentication logic once to talk to dex, then dex handles the protocols for a given backend.</description>
-  <devel project="devel:kubic" package="dex-oidc"/>
-</package>

@@ -1,6 +1,0 @@
-<servicedata>
-  <service name="tar_scm">
-    <param name="url">git://github.com/cesanta/docker_auth.git</param>
-    <param name="changesrevision">636c09afecf153f275f9a8b2b1ed09f507891b93</param>
- </service>
-</servicedata>

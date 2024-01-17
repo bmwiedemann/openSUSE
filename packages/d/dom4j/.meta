@@ -1,8 +1,0 @@
-<package name="dom4j" project="openSUSE:Factory">
-  <title>JarJar of dom4j for JBoss</title>
-  <description>A jarjard version of dom4j that moves the classes to the
-org.jboss.dom4j package space and strips the following packages:
-
-org.dom4j.jaxb.* org.dom4j.swing.* org.dom4j.xpath.* org.dom4j.xpp.*</description>
-  <devel project="Java:packages" package="dom4j"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="drpm" project="openSUSE:Factory">
-  <title>drpm - Library for manipulating DeltaRPMs</title>
-  <description></description>
-  <devel project="system:packagemanager" package="drpm"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="qutebrowser" project="openSUSE:Factory">
-  <title>Keyboard-driven vim-like browser on Qt5</title>
-  <description>qutebrowser is a keyboard-focused browser with a minimal GUI.
-It's based on Python, PyQt5 and QtWebKit and is free software.</description>
-  <devel project="network" package="qutebrowser"/>
-</package>

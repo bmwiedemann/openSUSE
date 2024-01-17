@@ -1,8 +1,0 @@
-<package name="docbook_5" project="openSUSE:Factory">
-  <title>DocBook Schemas (DTD, RELAX NG, W3C Schema) for Version 5.x</title>
-  <description>The version 5.0 release is a complete rewrite of DocBook in RELAX NG.
-The intent of this rewrite is to produce a schema that is true to the
-spirit of DocBook while simultaneously removing inconsistencies that
-have arisen as a natural consequence of DocBook's long, slow evolution.</description>
-  <devel project="Publishing" package="docbook_5"/>
-</package>

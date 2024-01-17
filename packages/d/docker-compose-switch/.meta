@@ -1,6 +1,0 @@
-<package name="docker-compose-switch" project="openSUSE:Factory">
-  <title>docker-compose-switch</title>
-  <description>Compose Switch is a replacement to the Compose V1 docker-compose (python) executable. It translates the command line into Compose V2 docker compose then run the latter.</description>
-  <devel project="Virtualization:containers" package="docker-compose-switch"/>
-  <url>https://github.com/docker/compose-switch</url>
-</package>

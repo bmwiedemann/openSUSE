@@ -1,8 +1,0 @@
-<package name="docbook_3" project="openSUSE:Factory">
-  <title>DocBook DTD 3.x</title>
-  <description>This package contains version 3.0 and 3.1 and an XML version.  It is
-suitable for writing technical documentation.
-
-The documentation can be found in /usr/share/doc/packages/docbook_3.</description>
-  <devel project="Publishing" package="docbook_3"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="docbook-simple" project="openSUSE:Factory">
-  <title>Simple DocBook DTD and Documentation</title>
-  <description>This package contains the Simple DocBook DTD.</description>
-  <devel project="Publishing" package="docbook-simple"/>
-</package>

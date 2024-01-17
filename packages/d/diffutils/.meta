@@ -1,6 +1,0 @@
-<package name="diffutils" project="openSUSE:Factory">
-  <title>GNU diff Utilities</title>
-  <description>The GNU diff utilities find differences between files. diff is used to
-make source code patches, for instance.</description>
-  <devel project="Base:System" package="diffutils"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="dracut-pcr-signature" project="openSUSE:Factory">
-  <title>Dracut module to place the PCR signature</title>
-  <description></description>
-  <devel project="devel:microos" package="dracut-pcr-signature"/>
-</package>

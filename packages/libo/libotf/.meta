@@ -1,6 +1,0 @@
-<package name="libotf" project="openSUSE:Factory">
-  <title>Library for Handling OpenType Fonts</title>
-  <description>Library for handling OpenType fonts,especially those needed for CJK and other non-Latin
-languages.</description>
-  <devel project="M17N" package="libotf"/>
-</package>

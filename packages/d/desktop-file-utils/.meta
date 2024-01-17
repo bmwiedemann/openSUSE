@@ -1,9 +1,0 @@
-<package name="desktop-file-utils" project="openSUSE:Factory">
-  <title>Utilities for Manipulating Desktop Files</title>
-  <description>This packages contains a couple of command line utilities for
-working with desktop files.
-
-More information about desktop files can be found at:
-http://freedesktop.org/wiki/Specifications/desktop-entry-spec</description>
-  <devel project="X11:common:Factory" package="desktop-file-utils"/>
-</package>

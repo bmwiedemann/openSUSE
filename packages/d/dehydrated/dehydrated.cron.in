@@ -1,5 +1,0 @@
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-MAILTO=root
-
-25 3 * * *   root    test -e /etc/dehydrated/config && /usr/bin/dehydrated --cron && find -L @POSTRUNHOOKS_DIR@ -maxdepth 1 -executable -type f -exec {} \;

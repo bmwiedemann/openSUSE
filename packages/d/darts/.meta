@@ -1,9 +1,0 @@
-<package name="darts" project="openSUSE:Factory">
-  <title>Double Array Trie System</title>
-  <description>Darts is a simple C++ template library to construct Double-Arrays [Aoe
-1989]. Double-Arrays are data structures to represent Trie. These are
-faster than other Trie implementations.
-
-Darts is used by Chasen.</description>
-  <devel project="M17N" package="darts"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="datamash" project="openSUSE:Factory">
-  <title>Statistical, numerical and textual operations in the command line</title>
-  <description>GNU datamash is a command-line program which performs basic numeric,
-textual and statistical operations on input textual data files.
-
-</description>
-  <devel project="science" package="datamash"/>
-  <url>https://www.gnu.org/software/datamash/</url>
-</package>

@@ -1,5 +1,0 @@
-<package name="qpwgraph" project="openSUSE:Factory">
-  <title>PipeWire Graph Qt GUI Interface</title>
-  <description>qpwgraph is a graph manager dedicated for PipeWire, using the Qt C++ framework, based and pretty much like the same of QjackCtl.</description>
-  <devel project="multimedia:apps" package="qpwgraph"/>
-</package>

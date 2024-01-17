@@ -1,5 +1,0 @@
-<package name="dmenu" project="openSUSE:Factory">
-  <title>dmenu: a suckless dynamic menu</title>
-  <description>The launch menu for the wmii window manager.</description>
-  <devel project="X11:Utilities" package="dmenu"/>
-</package>

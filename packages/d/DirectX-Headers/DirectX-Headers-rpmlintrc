@@ -1,3 +1,0 @@
-# happens irrespective of LTO
-addFilter("lto-no-text-in-archive .*");
-addFilter("devel-file-in-non-devel-package .*");

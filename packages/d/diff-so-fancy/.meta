@@ -1,6 +1,0 @@
-<package name="diff-so-fancy" project="openSUSE:Factory">
-  <title></title>
-  <description>diff-so-fancy strives to make your diffs human readable instead of machine readable. This helps improve code quality and helps you spot defects faster.</description>
-  <devel project="utilities" package="diff-so-fancy"/>
-  <url>https://github.com/so-fancy/diff-so-fancy</url>
-</package>

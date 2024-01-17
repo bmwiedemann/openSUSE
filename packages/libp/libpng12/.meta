@@ -1,6 +1,0 @@
-<package name="libpng12" project="openSUSE:Factory">
-  <title>Library for the Portable Network Graphics Format (PNG)</title>
-  <description>libpng is the official reference library for the Portable Network
-Graphics format (PNG).</description>
-  <devel project="graphics" package="libpng12"/>
-</package>

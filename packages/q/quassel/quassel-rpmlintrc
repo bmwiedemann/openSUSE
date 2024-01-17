@@ -1,2 +1,0 @@
-addFilter("incoherent-logrotate-file /etc/logrotate.d/quasselcore")
-addFilter("explicit-lib-dependency libqt5_sql_backend")

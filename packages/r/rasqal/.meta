@@ -1,9 +1,0 @@
-<package name="rasqal" project="openSUSE:Factory">
-  <title>RDF Parser Toolkit for Redland</title>
-  <description>Rasqal is a library providing full support for querying Resource
-Description Framework (RDF) including parsing query syntaxes,
-constructing the queries, executing them and returning result formats.
-It currently handles the RDF Data Query Language (RDQL) and SPARQL
-Query language.</description>
-  <devel project="X11:common:Factory" package="rasqal"/>
-</package>

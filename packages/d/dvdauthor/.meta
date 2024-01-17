@@ -1,7 +1,0 @@
-<package name="dvdauthor" project="openSUSE:Factory">
-  <title>A set of low-level tools to help you author a DVD</title>
-  <description>dvdauthor is a program that will generate a DVD movie from a valid
-mpeg2 stream that should play when you put it in a DVD player.</description>
-  <devel project="multimedia:apps" package="dvdauthor"/>
-  <url>http://dvdauthor.sourceforge.net/</url>
-</package>

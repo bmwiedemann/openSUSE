@@ -1,5 +1,0 @@
-<package name="deepin-dock" project="openSUSE:Factory">
-  <title>Deepin dock</title>
-  <description>deepin desktop-environment - dock module</description>
-  <devel project="X11:Deepin" package="deepin-dock"/>
-</package>

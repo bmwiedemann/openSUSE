@@ -1,6 +1,0 @@
-<package name="rpmconf" project="openSUSE:Factory">
-  <title>Tool to handle rpmnew and rpmsave files</title>
-  <description>This tool search for .rpmnew, .rpmsave and .rpmorig files and ask you what to do with them:
-Keep current version, place back old version, watch the diff or merge.</description>
-  <devel project="utilities" package="rpmconf"/>
-</package>

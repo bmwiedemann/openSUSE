@@ -1,5 +1,0 @@
-<package name="rubygem-webfinger" project="openSUSE:Factory">
-  <title>webfinger</title>
-  <description>Ruby WebFinger client library</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-webfinger"/>
-</package>

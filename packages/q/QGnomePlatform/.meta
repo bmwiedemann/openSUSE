@@ -1,5 +1,0 @@
-<package name="QGnomePlatform" project="openSUSE:Factory">
-  <title>qgnomeplatform</title>
-  <description></description>
-  <devel project="GNOME:Apps" package="QGnomePlatform"/>
-</package>

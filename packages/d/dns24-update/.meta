@@ -1,5 +1,0 @@
-<package name="dns24-update" project="openSUSE:Factory">
-  <title>Simple update client for dns24 DynDNS service</title>
-  <description>A simple utility for regularly updating one or more dynamic DNS records on the dns24.ch service.</description>
-  <devel project="network" package="dns24-update"/>
-</package>

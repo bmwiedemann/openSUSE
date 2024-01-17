@@ -1,6 +1,0 @@
-<package name="dmd" project="openSUSE:Factory">
-  <title>Digital Mars D Compiler</title>
-  <description>A systems programming language. Its focus is on combining the power and high performance of C and C++ with the programmer productivity of modern languages like Ruby and Python. Special attention is given to the needs of quality assurance, documentation, management, portability and reliability.</description>
-  <devel project="devel:languages:D" package="dmd"/>
-  <url>http://dlang.org/download.html</url>
-</package>

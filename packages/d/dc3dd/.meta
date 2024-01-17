@@ -1,6 +1,0 @@
-<package name="dc3dd" project="openSUSE:Factory">
-  <title>Patched dd with Computer Forensics Features</title>
-  <description>dc3dd is a patched version of GNU dd to include a number of features useful for computer forensics. Many of these features were inspired by dcfldd, but were rewritten for dc3dd.</description>
-  <devel project="security:forensics" package="dc3dd"/>
-  <url>http://dc3dd.sourceforge.net/</url>
-</package>

@@ -1,7 +1,0 @@
-<package name="qtodotxt" project="openSUSE:Factory">
-  <title>Cross-platform UI client for todo.txt files</title>
-  <description>QTodoTxt is a graphical interface for todo.txt format.
-
-Todo.txt is a popular, minimalistic TODO list format in which the data is stored in a simple text file. Since todo.txt is both machine and human-readable, you can check out your tasks with a simple text editor from any OS, synchronize it with cloud sync tools such as ownCloud, etc.</description>
-  <devel project="utilities" package="qtodotxt"/>
-</package>

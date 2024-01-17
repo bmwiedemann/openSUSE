@@ -1,6 +1,0 @@
-<package name="djvulibre-djview4" project="openSUSE:Factory">
-  <title>Portable DjVu Qt4 Based Viewer and Browser Plugin</title>
-  <description>DjView4 is a viewer and browser plugin for DjVu documents,based on the
-DjVuLibre-3.5 library and the Qt4 toolkit.</description>
-  <devel project="graphics" package="djvulibre-djview4"/>
-</package>

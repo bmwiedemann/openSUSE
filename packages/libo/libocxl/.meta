@@ -1,5 +1,0 @@
-<package name="libocxl" project="openSUSE:Factory">
-  <title>Allows to implement a user-space driver for an OpenCAPI accelerator</title>
-  <description>Access library which allows to implement a user-space driver for an OpenCAPI accelerator.</description>
-  <devel project="hardware" package="libocxl"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="rpcbind" project="openSUSE:Factory">
-  <title>Transport independent RPC portmapper</title>
-  <description>Rpcbind is a replacement for portmap. Whereas portmap supports only UDP
-and TCP transports over INET (IPv4), rpcbind can be configured to work
-on various transports supported by the TI-RPC. This includes TCP and
-UDP over IPv6. Moreover, rpcbind provides additional functions in
-regards to portmap.</description>
-  <devel project="network" package="rpcbind"/>
-</package>

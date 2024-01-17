@@ -1,8 +1,0 @@
-<package name="rnp" project="openSUSE:Factory">
-  <title>OpenPGP implementation fully compliant with RFC 4880</title>
-  <description>RNP is a set of OpenPGP (RFC4880) tools, an alternative to GnuPG.
-
-</description>
-  <devel project="security:privacy" package="rnp"/>
-  <url>https://www.rnpgp.com/</url>
-</package>

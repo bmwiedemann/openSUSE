@@ -1,5 +1,0 @@
-<services>
-  <service name="cargo_vendor" mode="disabled">
-    <param name="srcdir">ddnet-17.4.2</param>
-  </service>
-</services>

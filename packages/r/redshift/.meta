@@ -1,5 +1,0 @@
-<package name="redshift" project="openSUSE:Factory">
-  <title>Adjusts the color temperature of your screen</title>
-  <description>Redshift adjusts the color temperature of your screen according to your surroundings. This may help your eyes hurt less if you are working in front of the screen at night.</description>
-  <devel project="X11:Utilities" package="redshift"/>
-</package>

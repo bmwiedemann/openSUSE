@@ -1,9 +1,0 @@
-<package name="dos2unix" project="openSUSE:Factory">
-  <title>Text converters to and from DOS/MAC to UNIX</title>
-  <description>Dos2unix is used to convert plain text from DOS (CR/LF) format. Mac2unix
-converts plain text from MAC (CR) format to UNIX format (LF).
-
-Unix2dos converts plain text files from UNIX
-format to DOS format and unix2dos converts from UNIX to MAC format.</description>
-  <devel project="Base:System" package="dos2unix"/>
-</package>

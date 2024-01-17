@@ -1,7 +1,0 @@
-<package name="qterminal" project="openSUSE:Factory">
-  <title></title>
-  <description>The lightweight Qt terminal emulator
-
-Url: https://github.com/lxde/qterminal</description>
-  <devel project="X11:LXQt" package="qterminal"/>
-</package>

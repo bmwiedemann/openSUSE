@@ -1,8 +1,0 @@
-<package name="qt6-httpserver" project="openSUSE:Factory">
-  <title>Qt HTTP Server</title>
-  <description>QHttpServer is a simplified API for QAbstractHttpServer and QHttpServerRouter
-
-</description>
-  <devel project="KDE:Qt6" package="qt6-httpserver"/>
-  <url>https://www.qt.io</url>
-</package>

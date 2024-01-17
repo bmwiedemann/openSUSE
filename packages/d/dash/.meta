@@ -1,6 +1,0 @@
-<package name="dash" project="openSUSE:Factory">
-  <title>POSIX-compliant Implementation of /bin/sh</title>
-  <description>DASH is a POSIX-compliant implementation of /bin/sh that aims to be as small as
-possible without sacrificing speed where possible.</description>
-  <devel project="shells" package="dash"/>
-</package>

@@ -1,8 +1,0 @@
-<package name="dqlite" project="openSUSE:Factory">
-  <title>Embeddable, replicated, and fault-tolerant SQL engine</title>
-  <description>dqlite is a C library that implements an embeddable and replicated SQL database engine with high-availability and automatic failover.
-
-The acronym &quot;dqlite&quot; stands for &quot;distributed SQLite&quot;, meaning that dqlite extends SQLite with a network protocol that can connect together various instances of your application and have them act as a highly-available cluster, with no dependency on external databases.</description>
-  <devel project="devel:libraries:c_c++" package="dqlite"/>
-  <url>https://github.com/canonical/dqlite</url>
-</package>

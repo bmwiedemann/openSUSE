@@ -1,5 +1,0 @@
-<package name="d0_blind_id" project="openSUSE:Factory">
-  <title>Blind-ID library</title>
-  <description>Blind-ID library for user identification using RSA blind signatures</description>
-  <devel project="games" package="d0_blind_id"/>
-</package>

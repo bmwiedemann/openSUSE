@@ -1,6 +1,0 @@
-<package name="docker-buildx" project="openSUSE:Factory">
-  <title>docker-buildx</title>
-  <description>Docker CLI plugin for extended build capabilities with BuildKit</description>
-  <devel project="Virtualization:containers" package="docker-buildx"/>
-  <url>https://github.com/docker/buildx</url>
-</package>

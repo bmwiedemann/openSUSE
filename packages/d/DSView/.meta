@@ -1,5 +1,0 @@
-<package name="DSView" project="openSUSE:Factory">
-  <title>DSView</title>
-  <description>GUI for DreamSourceLab USB-based instruments</description>
-  <devel project="electronics" package="DSView"/>
-</package>

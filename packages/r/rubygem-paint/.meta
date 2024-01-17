@@ -1,5 +1,0 @@
-<package name="rubygem-paint" project="openSUSE:Factory">
-  <title>rubygem-paint</title>
-  <description>Terminal painter: No string extensions / 256 color support / effect support. Usage: Paint['string', :red, :bright]</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-paint"/>
-</package>

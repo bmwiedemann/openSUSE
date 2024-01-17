@@ -1,6 +1,0 @@
-<package name="docbook-xml-website" project="openSUSE:Factory">
-  <title>DTD and Stylesheets for Web Site Development</title>
-  <description>A DTD in XML as an extension to DocBook XML and XSL stylesheets to
-process it.</description>
-  <devel project="Publishing" package="docbook-xml-website"/>
-</package>

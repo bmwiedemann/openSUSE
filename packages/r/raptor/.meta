@@ -1,6 +1,0 @@
-<package name="raptor" project="openSUSE:Factory">
-  <title>RDF Parser Toolkit</title>
-  <description>Raptor is the RDF Parser Toolkit for Redland that provides a set of
-standalone RDF parsers, generating triples from RDF/XML or N-Triples.</description>
-  <devel project="X11:common:Factory" package="raptor"/>
-</package>

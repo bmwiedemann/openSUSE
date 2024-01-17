@@ -1,5 +1,0 @@
-<package name="liborcus" project="openSUSE:Factory">
-  <title>Orcus - spreadsheet file processing library.</title>
-  <description>Standalone file import filter library for spreadsheet documents. Currently under development are ODS, XLSX and CSV import filters.</description>
-  <devel project="LibreOffice:Factory" package="liborcus"/>
-</package>

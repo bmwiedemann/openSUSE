@@ -1,6 +1,0 @@
-<package name="doomsday" project="openSUSE:Factory">
-  <title></title>
-  <description>The Doomsday Engine is a source port with support for Doom, Heretic, and Hexen. It does not support BOOM extensions.
-</description>
-  <devel project="games" package="doomsday"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="quilter" project="openSUSE:Factory">
-  <title>Quilter</title>
-  <description>simple fullscreen word processor</description>
-  <devel project="X11:Pantheon:Apps" package="quilter"/>
-</package>

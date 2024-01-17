@@ -1,7 +1,0 @@
-<package name="rtasdispd" project="openSUSE:Factory">
-  <title>Shows System Status Messages on pSeries Panel Displays</title>
-  <description>This daemon can show system status information, such as load, uptime,
-memory usage, and more on the 2 line front panel display of IBM pSeries
-machines.</description>
-  <devel project="hardware" package="rtasdispd"/>
-</package>

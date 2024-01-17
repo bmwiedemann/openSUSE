@@ -1,6 +1,0 @@
-#!/bin/sh
-
-export APP_DIR=##libdir##/ROX-Filer
-export BIN=ROX-Filer
-
-exec $APP_DIR/$BIN "$@"

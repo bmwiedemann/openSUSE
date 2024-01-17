@@ -1,5 +1,0 @@
-<package name="libopenraw" project="openSUSE:Factory">
-  <title>A library to decode digital camera RAW files</title>
-  <description>libopenraw is a library that aim at decoding digital camera RAW files.</description>
-  <devel project="multimedia:libs" package="libopenraw"/>
-</package>

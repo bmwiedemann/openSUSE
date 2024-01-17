@@ -1,8 +1,0 @@
-<package name="duply" project="openSUSE:Factory">
-  <title>A frontend for the mighty duplicity magic</title>
-  <description>A shell front end to duplicity that simplifies the usage by managing
-settings for backup jobs in profiles. It supports executing multiple
-commands in a batch mode to enable single line cron entries and executes
-pre/post backup scripts.</description>
-  <devel project="utilities" package="duply"/>
-</package>
