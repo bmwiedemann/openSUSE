@@ -1,5 +1,0 @@
-<package name="python-pytest-click" project="openSUSE:Factory">
-  <title></title>
-  <description>Pytest plugin for Click</description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-click"/>
-</package>

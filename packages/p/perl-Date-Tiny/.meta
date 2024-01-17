@@ -1,5 +1,0 @@
-<package name="perl-Date-Tiny" project="openSUSE:Factory">
-  <title>A date object with as little code as possible</title>
-  <description>A date object with as little code as possible</description>
-  <devel project="devel:languages:perl" package="perl-Date-Tiny"/>
-</package>

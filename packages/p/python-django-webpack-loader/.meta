@@ -1,6 +1,0 @@
-<package name="python-django-webpack-loader" project="openSUSE:Factory">
-  <title>Transparently use webpack with django</title>
-  <description>Use webpack to generate your static bundles without Django's
-staticfiles or opaque wrappers.</description>
-  <devel project="devel:languages:python:django" package="python-django-webpack-loader"/>
-</package>

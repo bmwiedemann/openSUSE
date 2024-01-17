@@ -1,8 +1,0 @@
-<package name="patterns-mate" project="openSUSE:Factory">
-  <title> Patterns for Installation (MATE) </title>
-  <description>This is an internal package that is used to create the patterns as part of the installation source setup.
-Installation of this package does not make sense. 
-
-This particular package contains the MATE Desktop patterns.</description>
-  <devel project="X11:MATE:Factory" package="patterns-mate"/>
-</package>

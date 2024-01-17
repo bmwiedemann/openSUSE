@@ -1,6 +1,0 @@
-<package name="perl-DBD-ODBC" project="openSUSE:Factory">
-  <title>ODBC Driver for DBI</title>
-  <description>This module is needed to access ODBC databases from within Perl. The
-module uses the unixODBC manager to connect to the database.</description>
-  <devel project="devel:languages:perl" package="perl-DBD-ODBC"/>
-</package>

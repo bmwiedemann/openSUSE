@@ -1,5 +1,0 @@
-<package name="perl-UNIVERSAL-require" project="openSUSE:Factory">
-  <title>UNIVERSAL::require - require() modules from a variable</title>
-  <description>UNIVERSAL::require - require() modules from a variable</description>
-  <devel project="devel:languages:perl" package="perl-UNIVERSAL-require"/>
-</package>

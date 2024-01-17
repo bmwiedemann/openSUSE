@@ -1,9 +1,0 @@
-<package name="python-ansible-compat" project="openSUSE:Factory">
-  <title>Ansible compatibility goodies</title>
-  <description>A python package contains functions that facilitate working with various
-versions of Ansible 2.9 and newer.
-
-</description>
-  <devel project="systemsmanagement:ansible" package="python-ansible-compat"/>
-  <url>https://github.com/ansible-community/ansible-compat</url>
-</package>

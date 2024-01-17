@@ -1,8 +1,0 @@
-<package name="perl-IO-Tee" project="openSUSE:Factory">
-  <title>Multiplex output to multiple handles</title>
-  <description>Multiplex output to multiple output handles.
-
-</description>
-  <devel project="devel:languages:perl" package="perl-IO-Tee"/>
-  <url>http://search.cpan.org/dist/IO-Tee</url>
-</package>

@@ -1,5 +1,0 @@
-<package name="python-hypothesis-fspaths" project="openSUSE:Factory">
-  <title></title>
-  <description>Hypothesis extension for generating filesystem paths</description>
-  <devel project="devel:languages:python" package="python-hypothesis-fspaths"/>
-</package>

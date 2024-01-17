@@ -1,8 +1,0 @@
-<package name="python-pytaglib" project="openSUSE:Factory">
-  <title>Metadata &quot;tagging&quot; library based on TagLib</title>
-  <description>pytaglib is an audio metadata (“tag”) library for Python).
-It relies on the popular TagLib C++ library.
-
-</description>
-  <devel project="devel:languages:python" package="python-pytaglib"/>
-</package>

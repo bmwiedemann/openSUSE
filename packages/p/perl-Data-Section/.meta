@@ -1,8 +1,0 @@
-<package name="perl-Data-Section" project="openSUSE:Factory">
-  <title>Read multiple hunks of data out of your DATA section</title>
-  <description>Data::Section provides an easy way to access multiple named chunks of line-
-oriented data in your module's DATA section. It was written to allow
-modules to store their own templates, but probably has other uses.</description>
-  <devel project="devel:languages:perl" package="perl-Data-Section"/>
-  <url>http://search.cpan.org/dist/Data-Section/</url>
-</package>

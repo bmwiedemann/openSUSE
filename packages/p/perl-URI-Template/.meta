@@ -1,5 +1,0 @@
-<package name="perl-URI-Template" project="openSUSE:Factory">
-  <title>Perl Module for handling URI Templates</title>
-  <description>This is an initial attempt to provide a wrapper around URI templates as described at http://www.ietf.org/internet-drafts/draft-gregorio-uritemplate-01.txt</description>
-  <devel project="devel:languages:perl" package="perl-URI-Template"/>
-</package>

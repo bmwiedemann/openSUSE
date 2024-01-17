@@ -1,9 +1,0 @@
-<package name="perl-Libssh-Session" project="openSUSE:Factory">
-  <title>Support for the SSH protocol via libssh</title>
-  <description>
-    'Libssh::Session' is a perl interface to the libssh (http://www.libssh.org)
-    library. It doesn't support all the library. It's working in progress.
-  </description>
-  <devel project="devel:languages:perl" package="perl-Libssh-Session"/>
-  <url>https://metacpan.org/release/Libssh-Session</url>
-</package>

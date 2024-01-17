@@ -1,5 +1,0 @@
----
-ignore_requires: Net::HTTP
-preamble: |-
- BuildRequires: perl(Net::HTTP) > 6.05
- Requires: perl(Net::HTTP) > 6.05

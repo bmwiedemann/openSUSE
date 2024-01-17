@@ -1,6 +1,0 @@
-<package name="purple-mattermost" project="openSUSE:Factory">
-  <title>A libpurple/Pidgin plugin to connect to Mattermost</title>
-  <description>A third-party plugin for the Pidgin multi-protocol instant messenger.
-It connects libpurple-based instant messaging clients with the Mattermost server.</description>
-  <devel project="network:pidgin" package="purple-mattermost"/>
-</package>

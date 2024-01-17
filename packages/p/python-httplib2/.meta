@@ -1,6 +1,0 @@
-<package name="python-httplib2" project="openSUSE:Factory">
-  <title>A Python HTTP library</title>
-  <description>A comprehensive python HTTP client library, which supports many
-features left out of other HTTP libraries.</description>
-  <devel project="devel:languages:python" package="python-httplib2"/>
-</package>

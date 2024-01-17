@@ -1,8 +1,0 @@
-<package name="perl-Inline" project="openSUSE:Factory">
-  <title>Write Perl subroutines in other programming languages</title>
-  <description>Inline lets you write Perl subroutines in other programming languages,
-like C, C++, Java, Python, Tcl and even Assembly. You don't need to
-compile anything. All the details are handled transparently, so you can
-just run your Perl script like normal.</description>
-  <devel project="devel:languages:perl" package="perl-Inline"/>
-</package>

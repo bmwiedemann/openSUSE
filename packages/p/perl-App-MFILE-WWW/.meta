@@ -1,8 +1,0 @@
-<package name="perl-App-MFILE-WWW" project="openSUSE:Factory">
-  <title>generic web front-end with demo app</title>
-  <description>This distro contains a generic framework for developing web front-ends to REST resources. The framework includes a web server (based on Plack and Web::Machine), CSS and HTML for the &quot;frame&quot; where the application displays its screens, and &quot;widgets&quot; for defining the application's login dialog, menus, forms, and actions. 
-
-For illustration, the distro contains a demo app that works with App::Dochazka::REST.
-</description>
-  <devel project="devel:languages:perl" package="perl-App-MFILE-WWW"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="python-easygui" project="openSUSE:Factory">
-  <title>Function-driven python GUI programming</title>
-  <description>EasyGui provides an interface for simple GUI interaction with a user.
-It's not event-driven and it does not require the programmer to know
-anything about tkinter, frames, widgets, callbacks or lambda.
-
-</description>
-  <devel project="devel:languages:python" package="python-easygui"/>
-</package>

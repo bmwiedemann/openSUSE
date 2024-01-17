@@ -1,8 +1,0 @@
-<package name="python-latexcodec" project="openSUSE:Factory">
-  <title>A lexer and codec to work with LaTeX code in Python</title>
-  <description>A lexer and codec to work with LaTeX code in Python.
-
-</description>
-  <devel project="Publishing" package="python-latexcodec"/>
-  <url>https://github.com/mcmtroffaes/latexcodec</url>
-</package>

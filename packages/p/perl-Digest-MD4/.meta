@@ -1,6 +1,0 @@
-<package name="perl-Digest-MD4" project="openSUSE:Factory">
-  <title>RSA MD4 Message Digest Algorithm (Perl Module)</title>
-  <description>Perl interface to the RSA Data Security Inc. MD4 Message-Digest
-Algorithm.</description>
-  <devel project="devel:languages:perl" package="perl-Digest-MD4"/>
-</package>
