@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b48635294af7a2c49394f29629698580</srcmd5>
+    <version>13</version>
+    <time>1601652888</time>
+    <user>dimstar_suse</user>
+    <comment>OK</comment>
+    <requestid>836091</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6e65f0d4ea0512a8779153e8ea211129</srcmd5>
+    <version>13</version>
+    <time>1660051757</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %_pam_vendordir (forwarded request 994128 from kukuk)</comment>
+    <requestid>994129</requestid>
+  </revision>
+</revisionlist>

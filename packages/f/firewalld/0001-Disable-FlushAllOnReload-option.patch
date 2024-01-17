@@ -1,0 +1,68 @@
+From 98c87acce02c1963644455933ce7c2d40015d295 Mon Sep 17 00:00:00 2001
+From: Mohd Saquib <mohd.saquib@suse.com>
+Date: Mon, 8 Jan 2024 12:34:35 +0530
+Subject: [PATCH] Disable FlushAllOnReload option by default
+
+Disabling the FlushAllOnReload option restores the old behavior where
+--reload does not retain interface to zone assignmnets and direct rules.
+We want to keep that behavior in openSUSE and SLE
+
+Signed-off-by: Michal Rostecki <mrostecki@opensuse.org>
+Signed-off-by: Mohd Saquib <mohd.saquib@suse.com>
+
+---
+ config/firewalld.conf              | 8 ++++----
+ doc/xml/firewalld.conf.xml         | 4 ++--
+ src/firewall/config/__init__.py.in | 2 +-
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/config/firewalld.conf b/config/firewalld.conf
+index 2d1a0cb..af42478 100644
+--- a/config/firewalld.conf
++++ b/config/firewalld.conf
+@@ -61,10 +61,10 @@ FirewallBackend=nftables
+ # FlushAllOnReload
+ # Flush all runtime rules on a reload. In previous releases some runtime
+ # configuration was retained during a reload, namely; interface to zone
+-# assignment, and direct rules. This was confusing to users. To get the old
+-# behavior set this to "no".
+-# Default: yes
+-FlushAllOnReload=yes
++# assignment, and direct rules. This was confusing to users. To override this
++# behavior set this to "yes".
++# Default: no
++FlushAllOnReload=no
+ 
+ # ReloadPolicy
+ # Policy during reload. By default all traffic except for established
+diff --git a/doc/xml/firewalld.conf.xml b/doc/xml/firewalld.conf.xml
+index 6bb8069..e226113 100644
+--- a/doc/xml/firewalld.conf.xml
++++ b/doc/xml/firewalld.conf.xml
+@@ -179,8 +179,8 @@
+                 Flush all runtime rules on a reload. In previous releases some
+                 runtime configuration was retained during a reload, namely;
+                 interface to zone assignment, and direct rules. This was
+-                confusing to users. To get the old behavior set this to "no".
+-                Defaults to "yes".
++                confusing to users. To override this behavior set this to "yes".
++                Defaults to "no".
+                 </para>
+             </listitem>
+         </varlistentry>
+diff --git a/src/firewall/config/__init__.py.in b/src/firewall/config/__init__.py.in
+index 12b694e..2c7be57 100644
+--- a/src/firewall/config/__init__.py.in
++++ b/src/firewall/config/__init__.py.in
+@@ -124,7 +124,7 @@ FALLBACK_INDIVIDUAL_CALLS = False
+ FALLBACK_LOG_DENIED = "off"
+ FALLBACK_AUTOMATIC_HELPERS = "no"
+ FALLBACK_FIREWALL_BACKEND = "nftables"
+-FALLBACK_FLUSH_ALL_ON_RELOAD = True
++FALLBACK_FLUSH_ALL_ON_RELOAD = False
+ FALLBACK_RELOAD_POLICY = "INPUT:DROP,FORWARD:DROP,OUTPUT:DROP"
+ FALLBACK_RFC3964_IPV4 = True
+ FALLBACK_ALLOW_ZONE_DRIFTING = False
+-- 
+2.35.3
+

@@ -1,0 +1,15 @@
+---
+ Makefile |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- Makefile
++++ Makefile	2020-08-25 10:30:25.254766478 +0000
+@@ -52,7 +52,7 @@ clean:
+ 
+ install: all
+ 	@echo "INSTALL bin/physlock"
+-	install -D -m 4755 -o root -g root physlock $(DESTDIR)$(PREFIX)/bin/physlock
++	install -D -m 4755 physlock $(DESTDIR)$(PREFIX)/bin/physlock
+ 	@echo "INSTALL physlock.1"
+ 	mkdir -p $(DESTDIR)$(MANPREFIX)/man1
+ 	sed "s/VERSION/$(version)/g" physlock.1 > $(DESTDIR)$(MANPREFIX)/man1/physlock.1

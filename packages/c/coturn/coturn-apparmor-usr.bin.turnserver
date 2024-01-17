@@ -1,0 +1,25 @@
+abi <abi/3.0>,
+
+#include <tunables/global>
+
+profile coturn /usr/{bin,sbin}/turnserver flags=(attach_disconnected) {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+  #include <abstractions/user-tmp>
+
+  /etc/coturn/*.conf r,
+  /etc/coturn/tls/* r,
+  /etc/letsencrypt/archive/** r,
+
+  /usr/bin/turnserver mr,
+  owner /run/coturn/* w,
+  owner /var/lib/coturn r,
+  owner /var/lib/coturn/* rwk,
+  owner /var/log/coturn/*.log rw,
+  owner /var/log/turn*.log w,
+
+  deny /etc/ssl/openssl.cnf r,
+
+  # Site-specific additions and overrides. See local/README for details.
+  #include <local/usr.bin.turnserver>
+}

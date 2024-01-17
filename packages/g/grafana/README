@@ -1,0 +1,38 @@
+
+The tarball is generated via the OBS source service, but Grafana
+needs to ship the compiled frontend assets as well, which have to
+be built by running yarn inside the source tree (see
+https://github.com/grafana/grafana/blob/master/contribute/developer-guide.md#frontend).
+This can't be done at build time on OBS, because it involves
+downloading and installing packages from the internet, so instead
+we have a Makefile which does the following:
+
+- Runs `osc service disabledrun` to get the latest source tarball
+- Unpacks the tarball to a temporary directory
+- Runs `yarn install --pure-lockfile && yarn build`
+- Adds the generated "vendor" and "public" content to the tarball,
+  then compresses it with xz.
+- The tarball can then be used by OBS to build an RPM.
+
+In order for this to work you need to have npm >= 14 and yarn installed.
+
+  # zypper in npm14
+  # zypper in obs-service-download_files obs-service-go_modules \
+        obs-service-obs_scm
+  # npm install -g yarn
+
+Then, to package a new release of Grafana, run `make` then `osc ci`
+and you should be good.
+
+If you have a patch for the Javascript frontend to apply you need
+to do the following:
+
+- Create the patch and add it with `osc add <PATCH>` to the repo
+- Open the Makefile
+- Add after the `cd $$basename && \` the patch with:
+  `patch -p1 < ../../000x-<NAME>.patch && \`
+- Do NOT add the patch to the Specfile.
+- Then use the process of building Grafana as described above.
+
+Please direct any questions to Tim Serong <tserong@suse.com>
+If Tim is not available you may also contact Enno Gotthold <egotthold@suse.de>

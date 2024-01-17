@@ -1,0 +1,11 @@
+--- test/socket.c.orig	2018-03-19 14:39:27.095824143 +0100
++++ test/socket.c	2018-03-19 15:14:52.733528116 +0100
+@@ -835,7 +835,7 @@
+ {
+     to_finish = time(NULL);
+     reap_server(); /* hopefully it's hung. */
+-    ONN("timeout ignored, or very slow machine", to_finish - to_start > 3);
++    ONN("timeout ignored, or very slow machine", to_finish - to_start > 10);
+     ONN("close failed", ne_sock_close(sock));
+     return OK;
+ }

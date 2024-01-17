@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Wed Aug 16 02:47:15 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-correct-assertions.patch:
+  * Use current and correct method names.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:37:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Tue Apr 18 12:39:35 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Switch to single spec version build for PSP
+
+-------------------------------------------------------------------
+Wed Jan 13 13:12:54 UTC 2021 - pgajdos@suse.com
+
+- use %pytest macro
+
+-------------------------------------------------------------------
+Mon Oct 14 14:45:15 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
+Wed Aug  8 12:29:15 UTC 2018 - jengelh@inai.de
+
+- Trim repeated name from summary (rpmlint).
+
+-------------------------------------------------------------------
+Tue Aug  7 10:33:15 UTC 2018 - tchvatal@suse.com
+
+- Add patch testresources-flaky-tests.patch to disable flaky test
+- Drop PR-8.patch as it is obsolete by the above patch
+
+-------------------------------------------------------------------
+Tue Aug  7 10:17:11 UTC 2018 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner
+- Simplify the tests execution
+- Install license files
+
+-------------------------------------------------------------------
+Thu Sep 21 09:04:38 UTC 2017 - tbechtold@suse.com
+
+- Add PR-8.patch . This skips a flaky test during python3 test runs
+
+-------------------------------------------------------------------
+Sun Apr  9 13:28:52 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+- Fixed source URL
+
+-------------------------------------------------------------------
+Mon Nov 14 14:13:03 UTC 2016 - dmueller@suse.com
+
+- update to 2.0.1:
+  * Fix #1590536 classifiers not reported in PyPI
+  * Drop support for Python 2.4, 2.5, 3.2
+  * Bug #1524048: depend on pbr at runtime
+  * Handle unittest2 test suites as well
+  * Use pbr for versions as well
+  * More diagnostics on sort failures
+  * Cleanup old helper we don't need anymore
+  * Add a tox.ini for convenience
+  * Add a Travis config
+  * Ignore more files
+  * Build and ship wheels
+  * Migrate to pbr
+
+-------------------------------------------------------------------
+Thu Jun 12 08:42:01 UTC 2014 - cdenicolo@suse.com
+
+- license update: (Apache-2.0 or BSD-3-Clause) and GPL-2.0+
+  missing BSD-license
+
+-------------------------------------------------------------------
+Thu Oct 24 11:15:49 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Wed Apr  3 09:15:08 UTC 2013 - speilicke@suse.com
+
+- Fix license according to what sr#159597 intended
+
+-------------------------------------------------------------------
+Fri Mar 15 14:29:27 UTC 2013 - speilicke@suse.com
+
+- Initial version
+

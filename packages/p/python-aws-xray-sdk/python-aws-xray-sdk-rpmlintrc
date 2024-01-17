@@ -1,0 +1,2 @@
+# all false positives; initial word in summary is often a proper noun
+addFilter("summary-not-capitalized")

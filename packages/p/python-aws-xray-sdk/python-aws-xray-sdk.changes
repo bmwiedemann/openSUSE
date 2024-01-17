@@ -1,0 +1,247 @@
+-------------------------------------------------------------------
+Tue Jun 13 10:59:56 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Sat May 20 10:44:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.12.0
+  * improvement: Default Context Missing Strategy set to Log Error
+    PR372 #372
+  * improvement: Sample app dependency update PR373 #373, PR380
+    #380
+  * bugfix: Fix pynamodb tests for Python < 3.6 PR375 #375
+  * improvement: Simplify setup script PR363 #363
+  * bugfix: Fix deprecation warnings related to asyncio PR364 #364
+  * bugfix: Pin sqlalchemy version to 1.x to fix tests PR381 #381
+  * bugfix: Fix sample app dependencies incompatibility with XRay
+    SDK PR382 #382
+  * bugfix: Start MySQL from GH Actions, upgrade Ubuntu, and remove
+    Python versions for unit tests PR384 #384
+
+-------------------------------------------------------------------
+Wed Feb  1 11:02:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.11.0
+  * bugfix: Fix TypeError by patching register_default_jsonb from
+    psycopg2 PR350 #350
+  * improvement: Add annotations PR348 #348
+  * bugfix: Use service parameter to match centralized sampling
+    rules PR 353 #353
+  * bugfix: Implement PEP3134 to discover underlying problems with
+    python3 PR355 #355
+  * improvement: Allow list TopicArn for SNS PublishBatch request
+    PR358 #358
+  * bugfix: Version pinning flask-sqlalchemy version to 2.5.1 or
+    less PR360 #360
+  * bugfix: Fix UnboundLocalError when aiohttp server raises a
+    CancelledError PR356 #356
+  * improvement: Instrument httpx >= 0.20 PR357 #357
+  * improvement: [LambdaContext] persist original trace header
+    PR362 #362
+  * bugfix: Run tests against Django 4.x PR361 #361
+  * improvement: Oversampling Mitigation PR366 #366
+- Disable Flask-SQLAlchemy subpackage due to
+  gh#aws/aws-xray-sdk-python#359
+- Add Flask subpackage
+- Fix multibuild packagename for test src.rpm
+
+-------------------------------------------------------------------
+Fri Oct 14 21:49:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.10.0
+  * bugfix: Only import future for py2. PR343.
+  * bugfix: Defensively copy context entities to async thread.
+    PR340.
+  * improvement: Added support for IGNORE_ERROR option when context
+    is missing. PR338.
+- Release 2.9.0
+  * bugfix: Change logging behavior to avoid overflow. PR302.
+  * improvement: Lazy load samplers to speed up cold start in
+    lambda. PR312.
+  * improvement: Replace slow json file name resolver. PR 306.
+- Remove aiobotocore from Tumbleweed -- gh#aio-libs/aiobotocore#971
+- Enable parts of the test suite
+  * multibuild: checks runtime requirements directly
+  * use github archive: contains the test files
+  * exclude tests which do not have compatible packages or require
+    network connection
+- Add extra subpackage for bottle
+- Fix mysql subpackage recommendation
+
+-------------------------------------------------------------------
+Tue Jul 27 10:19:14 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.8.0
+  * improvement: feat(sqla-core): Add support for rendering Database Specific queries.
+    `PR291 <https://github.com/aws/aws-xray-sdk-python/pull/291>`_.
+  * bugfix: Fixing broken instrumentation for sqlalchemy >= 1.4.0.
+    `PR289 <https://github.com/aws/aws-xray-sdk-python/pull/289>`_.
+  * feature: no op trace id generation.
+    `PR293 <https://github.com/aws/aws-xray-sdk-python/pull/293>`_.
+  * bugfix: Handle exception when sending entity to Daemon.
+    `PR292 <https://github.com/aws/aws-xray-sdk-python/pull/292>`_.
+  * bugfix: Fixed serialization issue when cause is a string.
+    `PR284 <https://github.com/aws/aws-xray-sdk-python/pull/284>`_.
+  * improvement: Publish metric on distribution availability.
+    `PR279 <https://github.com/aws/aws-xray-sdk-python/pull/279>`_.
+
+-------------------------------------------------------------------
+Thu Apr  8 09:35:29 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.7.0
+  * many bugfixes and small improvements
+- Do not care about SLE-12, it does not build anyway
+
+-------------------------------------------------------------------
+Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Only build Python3 flavors for distributions 15 and greater
+
+-------------------------------------------------------------------
+Thu Oct  8 11:59:24 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.0
+  * bugfix: asyncio.Task.current_task PendingDeprecation fix.
+    `PR217 <https://github.com/aws/aws-xray-sdk-python/pull/217>`_.
+  * bugfix: Added proper TraceID in dummy segments.
+    `PR223 <https://github.com/aws/aws-xray-sdk-python/pull/223>`_.
+  * improvement: Add testing for current Django versions.
+    `PR200 <https://github.com/aws/aws-xray-sdk-python/pull/200>`_.
+  * improvement: IMDSv2 support for EC2 plugin.
+    `PR226 <https://github.com/aws/aws-xray-sdk-python/pull/226>`_.
+  * improvement: Using instance doc to fetch EC2 metadata. Added 2 additional fields.
+    `PR227 <https://github.com/aws/aws-xray-sdk-python/pull/227>`_.
+  * improvement: Added StaleBot.
+    `PR228 <https://github.com/aws/aws-xray-sdk-python/pull/228>`_.
+- from 2.5.0
+  * bugfix: Downgrade Coverage to 4.5.4.
+    `PR197 <https://github.com/aws/aws-xray-sdk-python/pull/197>`_.
+  * bugfix: Unwrap context provided to psycopg2.extensions.quote_ident.
+    `PR198 <https://github.com/aws/aws-xray-sdk-python/pull/198>`_.
+  * feature: extension support as Bottle plugin.
+    `PR204 <https://github.com/aws/aws-xray-sdk-python/pull/204>`_.
+  * bugfix: streaming_threshold not None check.
+    `PR205 <https://github.com/aws/aws-xray-sdk-python/pull/205>`_.
+  * bugfix: Add support for Django 2.0 to 3.0.
+    `PR206 <https://github.com/aws/aws-xray-sdk-python/pull/206>`_.
+  * bugfix: add puttracesegments to boto whitelist avoid a catch 22.
+    `PR210 <https://github.com/aws/aws-xray-sdk-python/pull/210>`_.
+  * feature: Add patch support for pymysql.
+    `PR215 <https://github.com/aws/aws-xray-sdk-python/pull/215>`_.
+- from 2.4.3
+  * bugfix: Downstream Http Calls should use hostname rather than full URL as subsegment name.
+    `PR192 <https://github.com/aws/aws-xray-sdk-python/pull/192>`_.
+  * improvement: Whitelist SageMakerRuntime InvokeEndpoint operation.
+    `PR183 <https://github.com/aws/aws-xray-sdk-python/pull/183>`_.
+  * bugfix: Fix patching for PynamoDB4 with botocore 1.13.
+    `PR181 <https://github.com/aws/aws-xray-sdk-python/pull/181>`_.
+  * bugfix: Add X-Ray client with default empty credentials.
+    `PR180 <https://github.com/aws/aws-xray-sdk-python/pull/180>`_.
+  * improvement: Faster implementation of Wildcard Matching.
+    `PR178 <https://github.com/aws/aws-xray-sdk-python/pull/178>`_.
+  * bugfix: Make patch compatible with PynamoDB4.
+    `PR177 <https://github.com/aws/aws-xray-sdk-python/pull/177>`_.
+  * bugfix: Fix unit tests for newer versions of psycopg2.
+    `PR163 <https://github.com/aws/aws-xray-sdk-python/pull/163>`_.
+  * improvement: Enable tests with python 3.7.
+    `PR157 <https://github.com/aws/aws-xray-sdk-python/pull/157>`_.
+- from 2.4.2
+  * bugfix: Fix exception processing in Django running in Lambda.
+    `PR145 <https://github.com/aws/aws-xray-sdk-python/pull/145>`_.
+  * bugfix: Poller threads block main thread from exiting bug.
+    `PR144 <https://github.com/aws/aws-xray-sdk-python/pull/144>`_.
+- from 2.4.1
+  * bugfix: Middlewares should create subsegments only when in the Lambda context running
+    under a Lambda environment. `PR139 <https://github.com/aws/aws-xray-sdk-python/pull/139>`_.
+- from 2.4.0
+  * feature: Add ability to enable/disable the SDK.
+    `PR119 <https://github.com/aws/aws-xray-sdk-python/pull/119>`_.
+  * feature: Add Serverless Framework Support
+    `PR127 <https://github.com/aws/aws-xray-sdk-python/pull/127>`_.
+  * feature: Bring aiobotocore support back.
+    `PR125 <https://github.com/aws/aws-xray-sdk-python/pull/125>`_.
+  * bugfix: Fix httplib invalid scheme detection for HTTPS.
+    `PR122 <https://github.com/aws/aws-xray-sdk-python/pull/122>`_.
+  * bugfix: Max_trace_back = 0 returns full exception stack trace bug fix.
+    `PR123 <https://github.com/aws/aws-xray-sdk-python/pull/123>`_.
+  * bugfix: Rename incorrect config module name to the correct global name.
+    `PR130 <https://github.com/aws/aws-xray-sdk-python/pull/130>`_.
+  * bugfix: Correctly remove password component from SQLAlchemy URLs, preventing...
+    `PR132 <https://github.com/aws/aws-xray-sdk-python/pull/132>`_.
+- from 2.3.0
+  * feature: Stream Django ORM SQL queries and add flag to toggle their streaming.
+    `PR111 <https://github.com/aws/aws-xray-sdk-python/pull/111>`_.
+  * feature: Recursively patch any given module functions with capture.
+    `PR113 <https://github.com/aws/aws-xray-sdk-python/pull/113>`_.
+  * feature: Add patch support for pg8000 (Pure Python Driver).
+    `PR115 <https://github.com/aws/aws-xray-sdk-python/pull/115>`_.
+  * improvement: Remove the dependency on Requests.
+    `PR112 <https://github.com/aws/aws-xray-sdk-python/pull/112>`_.
+  * bugfix: Fix psycop2 register type.
+    `PR95 <https://github.com/aws/aws-xray-sdk-python/pull/95>`_.
+
+-------------------------------------------------------------------
+Wed Jan  9 22:22:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Do summaries without em dashes
+
+-------------------------------------------------------------------
+Thu Jan  3 21:56:07 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix handling of python3-only packages.
+
+-------------------------------------------------------------------
+Thu Nov 29 16:40:01 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Split backends into their own packages, with proper dependency
+  handling.
+- Add missing jsonpickle dependency.
+
+-------------------------------------------------------------------
+Thu Nov 15 04:59:53 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to 2.2.0
+  * feature: Added context managers on segment/subsegment capture. `PR97 <https://github.com/aws/aws-xray-sdk-python/pull/97>`_.
+  * feature: Added AWS SNS topic ARN to the default whitelist file. `PR93 <https://github.com/aws/aws-xray-sdk-python/pull/93>`_.
+  * bugfix: Fixed an issue on `psycopg2` to support all keywords. `PR91 <https://github.com/aws/aws-xray-sdk-python/pull/91>`_.
+  * bugfix: Fixed an issue on `endSegment` when there is context missing. `ISSUE98 <https://github.com/aws/aws-xray-sdk-python/issues/98>`_.
+  * bugfix: Fixed the package description rendered on PyPI. `PR101 <https://github.com/aws/aws-xray-sdk-python/pull/101>`_.
+  * bugfix: Fixed an issue where `patch_all` could patch the same module multiple times. `ISSUE99 <https://github.com/aws/aws-xray-sdk-python/issues/99>`_.
+  * bugfix: Fixed the `datetime` to `epoch` conversion on Windows OS. `ISSUE103 <https://github.com/aws/aws-xray-sdk-python/issues/103>`_.
+  * bugfix: Fixed a wrong segment json key where it should be `sampling_rule_name` rather than `rule_name`.
+- Update to 2.1.0
+  * feature: Added support for `psycopg2`. `PR83 <https://github.com/aws/aws-xray-sdk-python/pull/83>`_.
+  * feature: Added support for `pynamodb` >= 3.3.1. `PR88 <https://github.com/aws/aws-xray-sdk-python/pull/88>`_.
+  * improvement: Improved stack trace recording when exception is thrown in decorators. `PR70 <https://github.com/aws/aws-xray-sdk-python/pull/70>`_.
+  * bugfix: Argument `sampling_req` in LocalSampler `should_trace` method now becomes optional. `PR89 <https://github.com/aws/aws-xray-sdk-python/pull/89>`_.
+  * bugfix: Fixed a wrong test setup and leftover poller threads in recorder unit test.
+- Update to 2.0.1
+  * bugfix: Fixed a issue where manually `begin_segment` might break when making sampling decisions. `PR82 <https://github.com/aws/aws-xray-sdk-python/pull/82>`_.
+- Update to 2.0.0
+  * **Breaking**: The default sampler now launches background tasks to poll sampling rules from X-Ray backend. See the new default sampling strategy in more details here: https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-python-configuration.html#xray-sdk-python-configuration-sampling.
+  * **Breaking**: The `should_trace` function in the sampler now takes a dictionary for sampling rule matching.
+  * **Breaking**: The original sampling modules for local defined rules are moved from `models.sampling` to `models.sampling.local`.
+  * **Breaking**: The default behavior of `patch_all` changed to selectively patches libraries to avoid double patching. You can use `patch_all(double_patch=True)` to force it to patch ALL supported libraries. See more details on `ISSUE63 <https://github.com/aws/aws-xray-sdk-python/issues/63>`_
+  * **Breaking**: The latest `botocore` that has new X-Ray service API `GetSamplingRules` and `GetSamplingTargets` are required.
+  * **Breaking**: Version 2.x doesn't support pynamodb and aiobotocore as it requires botocore >= 1.11.3 which isn’t currently supported by the pynamodb and aiobotocore libraries. Please continue to use version 1.x if you’re using pynamodb or aiobotocore until those haven been updated to use botocore > = 1.11.3. 
+  * feature: Environment variable `AWS_XRAY_DAEMON_ADDRESS` now takes an additional notation in `tcp:127.0.0.1:2000 udp:127.0.0.2:2001` to set TCP and UDP destination separately. By default it assumes a X-Ray daemon listening to both UDP and TCP traffic on `127.0.0.1:2000`.
+  * feature: Added MongoDB python client support. `PR65 <https://github.com/aws/aws-xray-sdk-python/pull/65>`_.
+  * bugfix: Support binding connection in sqlalchemy as well as engine. `PR78 <https://github.com/aws/aws-xray-sdk-python/pull/78>`_. 
+  * bugfix: Flask middleware safe request teardown. `ISSUE75 <https://github.com/aws/aws-xray-sdk-python/issues/75>`_. 
+- Update to 1.1.2
+  * bugfix: Fixed an issue on PynamoDB patcher where the capture didn't handle client timeout.
+- Update to 1.1.1
+  * bugfix: Handle Aiohttp Exceptions as valid responses `PR59 <https://github.com/aws/aws-xray-sdk-python/pull/59>`_.
+- Update to 1.1
+  * feature: Added Sqlalchemy parameterized query capture. `PR34 <https://github.com/aws/aws-xray-sdk-python/pull/34>`_
+  * bugfix: Allow standalone sqlalchemy integrations without flask_sqlalchemy. `PR53 <https://github.com/aws/aws-xray-sdk-python/pull/53>`_
+  * bugfix: Give up aiohttp client tracing when there is no open segment and LOG_ERROR is configured. `PR58 <https://github.com/aws/aws-xray-sdk-python/pull/58>`_
+  * bugfix: Handle missing subsegment when rendering a Django template. `PR54 <https://github.com/aws/aws-xray-sdk-python/pull/54>`_
+  * Typo fixes on comments and docs.
+
+-------------------------------------------------------------------
+Tue May  8 18:33:47 UTC 2018 - tchvatal@suse.com
+
+- Initial commit, needed by python-moto

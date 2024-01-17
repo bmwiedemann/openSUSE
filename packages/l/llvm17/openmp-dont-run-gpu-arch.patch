@@ -1,0 +1,18 @@
+--- openmp-17.0.0rc1.src/libomptarget/cmake/Modules/LibomptargetGetDependencies.cmake
++++ openmp-17.0.0rc1.src/libomptarget/cmake/Modules/LibomptargetGetDependencies.cmake
+@@ -104,6 +104,8 @@
+ find_package(CUDAToolkit QUIET)
+ set(LIBOMPTARGET_DEP_CUDA_FOUND ${CUDAToolkit_FOUND})
+ 
++if(FALSE)
++
+ ################################################################################
+ # Looking for NVIDIA GPUs...
+ ################################################################################
+@@ -151,4 +153,6 @@
+   endif()
+ endif()
+ 
++endif()
++
+ set(OPENMP_PTHREAD_LIB ${LLVM_PTHREAD_LIB})

@@ -1,0 +1,321 @@
+-------------------------------------------------------------------
+Fri Oct 13 18:49:29 UTC 2023 - chris@computersalat.de
+
+- Update coturn-turnserver_conf.patch
+  * Fix comment for listening-ip
+- enable 'verbose' log to see listening IPs and more, not just
+  server start/stop
+
+-------------------------------------------------------------------
+Mon Oct  9 07:19:06 UTC 2023 - chris@computersalat.de
+
+- add coturn-turnserver_conf.patch
+  * to have a meaningful turnserver.conf.default
+- create a ready-to-run turnserver.conf
+- fix logrotate script
+- Update README.SUSE for Let's Encrypt Certificates
+- move certs to /etc/coturn/tls
+- Update apparmor profile
+- rework sysusers.d config file
+
+-------------------------------------------------------------------
+Tue May  2 05:19:33 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 4.6.2
+  * Make sure microhttpd starts using epoll if supported
+  * Add sessioncount to prometheus metrics
+  * Add STUN request/response/error prometheus counters
+  * Cleanup logs on turnserver start
+  * Fix duplicate stdout log output
+  * Log threadId to logs to aid in multi-threaded debugging
+  * Optional build info compiled into turnserver binary
+  * Fix arguments expansion in docker-entrypoint.sh
+  * Santise database connection strings before printing to log
+  * Support Windows MSVC
+  * Add configuration option for TLS 1.3 ciphersuites
+  * Improve openssl3 and FIPS support
+  * Use single SSL_CTX for TLS and DTLS support
+  * Update openssl API use to non-deprecated version
+  * Set string bytes to null to prevent random origin
+  * Fix memory corruption on socket close
+  * Fix packet backlog fifo that processed packets in reverse
+    order in some scenarios
+  * Fix off-by-one when terminating gcm_nonce
+  * Fixes to Redis memleaks and socketleaks
+  * Fix malformed response to mobility refresh request
+  * Fuzzing support
+  * Ignore raw UDP if no_udp is enabled
+  * Better detect availability of SCTP protocol
+- Drop coturn-no-FIPS-140-mode.patch, fixed upstream, see
+  https://github.com/coturn/coturn/issues/1170
+
+-------------------------------------------------------------------
+Mon Mar  6 17:09:44 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add coturn-no-FIPS-140-mode.patch, fixes build against OpenSSL 3.0
+
+-------------------------------------------------------------------
+Sun Dec  4 12:27:54 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Version 4.6.1
+  - Fix memory corruption on socket close (#1113)
+- Version 4.6.0
+  - merge PR #967 (eakraly)
+    * fix small issues reported by cppcheck
+  - merge PR #974 (eakraly)
+    * fix long log line printing
+  - merge PR #973 (eakraly)
+    * Print turnserver version with --version
+  - merge PR #972 (eakraly)
+    * do not write outside of a buffer in admin interface
+  - merge PR #970 (eakraly)
+    * fix uclient certificate loading bug
+  - merge PR #971 (eakraly)
+    * fix duplicate TCP flag in run_tests.sh script
+    - merge PR #962 (huhaipeng)
+    * fix turn session leak
+    - merge PR #963 (eakraly)
+    * Document dependency of new-log-timestamp-format on new-log-timestamp
+    - merge PR #951 (steffen-moser)
+    * Enable compilation of coturn on Solaris 11.4
+    - merge PR #949 (eakraly)
+    * First step to re-enable compilation with OpenSSL 1.0.x
+    - merge PR #949 (eakraly)
+    * Fix cmake build on macOS
+    - merge PR #942 (eakraly)
+    * Disable SSL renegotiation
+    - merge PR #792 (yfaker)
+    * Fix user quota release #786
+    - merge PR #829 (fancycode)
+    * add more info to redis allocation status
+    - merge PR #938 (eakraly)
+    * update turnserver.conf comment
+    - merge PR #773 (haseebq)
+    * fix performance regression
+    - merge PR #773 (korayvt)
+    * add syslog facility config
+    - merge PR #897 (unicode-it)
+    * add support for dual-stack prom listener
+    - merge PR #984 (rozhuk-im)
+    * fix build with libressl 3.4.0+
+    - merge PR #926 (ggarber)
+    * add ci tests workflow
+    - merge PR #934 (neocat)
+    * show error on invalid config
+    - merge PR #787 (dsmeytis)
+    * add new prom allocations metric
+    - merge PR #869 (micmac1)
+    * don't link in libintl
+    - merge PR #895 (alexnedo)
+    * fix access to freed memory
+    - merge PR #919 (sysvinit)
+    * configurable prom username labels
+    - merge PR #840 (sysvinit)
+    * configurable prometheus listener port
+    - merge PR #870 (micmac1)
+    * fix build mariadb connector
+    - merge PR #851 (freedomben)
+    * fix README typo
+    - merge PR #877 (davel)
+    * correct doc typo
+  - merge PR #755(moznuy) and #825(by argggh)
+    * fix sqlite3_shutdown and sqlite3_config race
+  - merge PR #826 (by giavac)
+    * prom server better
+  - merge PR #684 (by brevilo)
+    * Define OPENSSL_VERSION_1_1_1 on systems where it doesn't (yet) exist
+    * Regression in 4.5.2 that cause issues in openssl version < 1.1.1.
+  - typo fix in prometheus (by fcecagno)
+  - merge PR #687 (by Wuelber Castillo)
+    * Add hash algorithm for hmackey value to redis userdb schema docs
+  - replace keep-address-family with allocation-default-address-family (keep-address-family deprecated and will be removed!!)
+  - merge PR #703 (by j4zzc4t)
+    * Restore no_stdout_log behavior
+  - merge PR #727 (by JoKoT3)
+    * Support older mysql client version in configure
+  - merge PR #721 (by KangLin)
+    * Add to support cmake
+  - merge PR #717 (by marcoschum)
+    * Fix typo in turnserver.conf
+  - merge PR #704 (by hills)
+    * Packaging scripts can miss out on these errors (exit code)
+  - merge PR #679 (by rubo77)
+    * Readme.turnserver: how to run server as a daemon
+  - merge PR #739 (by hills)
+    * SSL reload has hidden bugs which cause crashes
+  - Fix regression in PR #739
+  - Try to mitigate STUN amplification attatck
+    * Add new option --no-rfc5780 to force disable RFC8750
+    * Add new option --no-stun-backward-compatibility
+      Disable handling old STUN Binding requests and disable
+      MAPPED-ADDRESS attribute in binding response (use only the
+      XOR-MAPPED-ADDRESS)
+    * Add new option --response-origin-only-with-rfc5780
+      Add RESPONSE_ORIGIN attribute only if rfc5780 is enabled
+    * Don't send SOFTWARE attribute if --no-software-attribute set on (BREAKING CHANGE)
+  - merge PR #767 (by ggalperi)
+      * fix for log_binding (regression)
+
+-------------------------------------------------------------------
+Fri Aug 19 19:25:35 UTC 2022 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Drop @privileged SystemCallFilter, can prevent service from starting (status=31/SYS)
+
+-------------------------------------------------------------------
+Mon Oct 18 14:55:57 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Dropped harden_coturn.service.patch because systemd units are
+  created from own source anyway and are proven to work
+
+-------------------------------------------------------------------
+Fri Oct 15 12:11:35 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop ProtectClock hardening, can cause issues if other device acceess is needed
+
+-------------------------------------------------------------------
+Mon Aug 30 11:55:53 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_coturn.service.patch
+  Modified:
+  * coturn.service
+  * coturn@.service
+
+-------------------------------------------------------------------
+Mon Jan 11 10:27:20 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 4.5.2
+  * Fix for CVE-2020-26262 (boo#1180764)
+    - Fix ipv6 ::1 loopback check
+    - Not allow allocate peer address 0.0.0.0/8 and ::/128
+    - For more details see the github security advisory:
+      https://github.com/coturn/coturn/security/advisories/GHSA-6g6j-r9rf-cm7p
+
+  * fix null pointer dereference in case of out of memory.
+  * Fix: Null pointer dereference on tcp_client_input_handler_rfc6062data function
+  * Fix: use-after-free vulnerability on write_to_peerchannel function
+  * Fix: use-after-free vulnerability on write_client_connection function
+
+  * add prometheus metrics
+  * Delete trailing whitespace in example configuration files
+  * Add architecture ppc64le to travis build
+  * Fix misleading option in doc (prometheus)
+  * Allow RFC6062 TCP relay data to look like TLS
+  * Add support for proxy protocol V1
+  * Print full date and time in logs
+  * Add new options: "new-log-timestamp" and "new-log-timestamp-format"
+  * Do not use FIPS and remove hardcode OPENSSL_VERSION_NUMBER with LibreSSL
+  * Add ACME redirect url
+  * support of --acme-redirect <URL>
+  * fix acme security, redundancy, consistency
+  * Add new --log-binding option to enable binding request logging
+  * Fix stale-nonce documentation
+  * Version number is changed to semver 2.0
+  * pkg-config, and various cleanups in configure file
+  * Add systemd notification for better systemd integration
+  * Fix c++ support
+  * Remove session id/allocation labels
+  * Remove per session metrics. We should later add more counters.
+
+-------------------------------------------------------------------
+Sun Dec 27 15:42:09 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- AppArmor profile has ABI 3.0 and some minor changes
+- Modified systemd unit:
+  * do not use daemon mode
+  * Type=simple
+  * added security settings
+- added multi-instance systemd unit
+
+-------------------------------------------------------------------
+Wed Aug 19 10:48:41 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
+Tue Jun 30 07:54:01 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 4.5.1.3:
+  * Remove reference to SSLv3: gh#coturn/coturn#566
+  * Ignore MD5 for BoringSSL: gh#coturn/coturn#579
+  * STUN response buffer not initialized properly; he issue found and 
+    reported gh#coturn/coturn#583 by Felix Dörre all credits belongs to 
+    him. CVE-2020-4067, boo#1173510
+
+- Let coturn allow binding to ports below 1024 per default
+
+-------------------------------------------------------------------
+Mon May  4 12:58:39 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Extended Readme.SUSE with description on how to bind to ports below 1024
+- Fixes and enhancements in service-file
+- /etc/sysconfig/coturn defaults now to not show software's version to the public
+
+- Version 4.5.1.2:
+  * Do not display empty CLI passwd alert if CLI is not enabled
+  * Removed several functions: gh#coturn/coturn#359
+  * Fix webadmin IP permission and possible SQL-injections: gh#coturn/coturn#386
+  * Fix Mongo driver crash on invalid connection string: gh#coturn/coturn#390
+  * enhanced fread return length check: gh#coturn/coturn#392
+  * disconnect database gracefully: #367
+  * Using SSL_get_version method for BoringSSL compatibility: 
+    turn_session_info->tls_method returns real TLS version:
+    gh#coturn/coturn#382
+  * Added systemd service example: gh#coturn/coturn#276
+  * Add bandwidth usage reporting packet/bandwidth usage by peers:
+    gh#coturn/coturn#284
+  * Modifying configure to enable compile with private libraries:
+    gh#coturn/coturn#381
+  * Append to log files rather than overriding them: gh#coturn/coturn#417
+  * Updated incorrect string length check for 'ssh': gh#coturn/coturn#442
+  * Fix Dockerfile for latest Debian: gh#coturn/coturn#449
+  * CVE-2020-6061, CVE-2020-6062: specially crafted HTTP POST request can lead
+    to heap overflow which can result in information leak:
+    gh#coturn/coturn#489
+  * STUN input validation: gh#coturn/coturn#472
+  * Allow MD5 in FIPS mode: gh#coturn/coturn#398
+  * update travis config ubuntu/mac images
+  * added null check for second char: gh#coturn/coturn#466
+  * compiler warning fixes: gh#coturn/coturn#470
+  * Fix a memory leak when an SHATYPE isn't supported: gh#coturn/coturn#471
+  * fix compiler warning comparison between signed and unsigned integer expressions
+  * fix compiler warning string truncation
+  * change Diffie Hellman default key length from 1066 to 2066
+  * drop of supplementary group IDs: gh#coturn/coturn#522
+  * Unify spelling of Coturn: gh#coturn/coturn#514
+  * Rename "prod" config option to "no-software-attribute": gh#coturn/coturn#506
+    gh#coturn/coturn#478
+  * change sql data dir in docker-compose-all.yml: gh#coturn/coturn#516
+  * add flags to disable periodic use of dynamic tables: gh#coturn/coturn#525
+
+  * fix typos and grammar: gh#coturn/coturn#463, gh#coturn/coturn#488
+  * Update README.docker: gh#coturn/coturn#475
+  * fix config extension in README.docker: gh#coturn/coturn#519
+  * Code beautifications: gh#coturn/coturn#327, gh#coturn/coturn#455,
+    gh#coturn/coturn#513
+
+- Removed patches now included in upstream: coturn-4.5.1.0-append-log.patch, 
+  coturn-4.5.1.1-cve-2020-6061.patch, coturn-4.5.1.1-cve-2020-6062.patch and 
+  coturn-4.5.1.1.missing-call-to-setgroups-before-setuid.patch
+
+-------------------------------------------------------------------
+Tue Apr 14 18:38:59 UTC 2020 - lars@linux-schulserver.de
+
+- added apparmor profile (coturn-apparmor-usr.bin.turnserver)
+- fix executable permissions in devel package by using defattr
+
+-------------------------------------------------------------------
+Sun Apr 12 05:47:04 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Use pkgconfig(systemd) for packaging
+
+-------------------------------------------------------------------
+Sat Apr 11 20:17:07 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Shorten description by stripping the long list of all RFCs.
+- Drop %defattr; use %autosetup.
+
+-------------------------------------------------------------------
+Thu Apr  9 10:57:37 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Initial release of coturn 4.5.1.1

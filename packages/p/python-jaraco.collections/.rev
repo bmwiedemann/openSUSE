@@ -1,0 +1,136 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ae086201ed7c1c63b1b71035d69ec49e</srcmd5>
+    <version>1.5.3</version>
+    <time>1537787471</time>
+    <user>dimstar_suse</user>
+    <comment>- enable tests
+- filelist cleanup
+- Initial Package
+</comment>
+    <requestid>635002</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9638552898dafffc0710177f1d86184b</srcmd5>
+    <version>2.0</version>
+    <time>1551687692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>679746</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>250217ff84d1ddfbc5c40238e087f6a7</srcmd5>
+    <version>2.1</version>
+    <time>1579195027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1:
+  * Added pop_all function.</comment>
+    <requestid>764935</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6b77438f443e01fbf2240a6be2bd3013</srcmd5>
+    <version>3.0.0</version>
+    <time>1587325170</time>
+    <user>dimstar_suse</user>
+    <comment>Staging:I</comment>
+    <requestid>784207</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9741c7ba5d0e08e5968d5c0722bf18b6</srcmd5>
+    <version>3.0.0</version>
+    <time>1607801328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853440</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ff3d23b7d1c160cbda2947eab16a89d4</srcmd5>
+    <version>3.5.2</version>
+    <time>1661962109</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000110</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9ef1009b61840ee30863380d1a09af83</srcmd5>
+    <version>3.6.0</version>
+    <time>1666871532</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 3.6.0:
+  - Revised DictFilter:
+    - Fixed issue where DictFilter.__contains__ would raise a
+      KeyError.
+    - Relies heavily now on collections.abc.Mapping base class.
+- Remove conditional definition of python_module.
+</comment>
+    <requestid>1031198</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ce557cc94c3f3671b2191543497f42fd</srcmd5>
+    <version>3.7.0</version>
+    <time>1668086484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034615</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9b1ef9b326728f30ac8a902d013d36cd</srcmd5>
+    <version>3.8.0</version>
+    <time>1670162255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039668</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>152aa96517b9162c735fe785c30b0e65</srcmd5>
+    <version>3.8.0</version>
+    <time>1678380275</time>
+    <user>dimstar_suse</user>
+    <comment>- prepare test environment: correctly provide jaraco modules locally
+  %{python3_sitelib} might not be available</comment>
+    <requestid>1069981</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a1cc845b66277c69f925f92753179da3</srcmd5>
+    <version>4.1.0</version>
+    <time>1684162442</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.0:
+  * ``Projection`` now accepts an iterable or callable or pattern
+    for matching keys.  ``Projection`` now retains order of keys
+    from the underlying mapping.
+  * ``DictFilter`` is now deprecated in favor of ``Projection``.
+  * ``DictFilter`` no longer accepts ``include_keys`` and
+    requires ``include_pattern`` as a keyword argument.
+  * In ``DictFilter``, deprecated ``include_keys`` parameter and
+    usage without ``include_pattern``. Future versions will honor
+    ``include_pattern`` as a required keyword argument. All other
+    uses are deprecated. For uses that currently rely on
+    ``include_keys``, use ``Projection`` instead/in addition.
+  * ``DictFilter.__len__`` no longer relies on the iterable.
+    Improves efficiency and fixes ``RecursionError`` on PyPy (#12).</comment>
+    <requestid>1087121</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a1c39cfff27c4fe4061ffb92b833b0e2</srcmd5>
+    <version>4.3.0</version>
+    <time>1697061216</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116435</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e1222e029ff1fa977c70f56ff368f943</srcmd5>
+    <version>5.0.0</version>
+    <time>1702844941</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.0:
+  * Moved collections into a package and declared as typed.
+  * Deprecations and Removals
+  * Removed DictFilter.
+
+- Update to 3.8.0
+- Update to 3.7.0:</comment>
+    <requestid>1133653</requestid>
+  </revision>
+</revisionlist>

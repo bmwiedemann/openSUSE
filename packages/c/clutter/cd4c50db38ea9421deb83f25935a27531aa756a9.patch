@@ -1,0 +1,43 @@
+From cd4c50db38ea9421deb83f25935a27531aa756a9 Mon Sep 17 00:00:00 2001
+From: Emmanuele Bassi <ebassi@gnome.org>
+Date: Fri, 20 Mar 2020 16:08:21 +0000
+Subject: [PATCH] wayland: Protect against enter events for empty surfaces
+
+The `leave` handler checks for NULL surfaces, but the `enter` handler
+does not.
+
+Fixes: #17
+---
+ clutter/wayland/clutter-input-device-wayland.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/clutter/wayland/clutter-input-device-wayland.c b/clutter/wayland/clutter-input-device-wayland.c
+index 7bfb615b7..3dab22070 100644
+--- a/clutter/wayland/clutter-input-device-wayland.c
++++ b/clutter/wayland/clutter-input-device-wayland.c
+@@ -472,7 +472,10 @@ clutter_wayland_handle_keyboard_enter (void *data,
+                                        struct wl_array *keys)
+ {
+   ClutterInputDeviceWayland *device = data;
+-  ClutterStageCogl          *stage_cogl;
++  ClutterStageCogl *stage_cogl;
++
++  if (surface == NULL)
++    return;
+ 
+   if (!CLUTTER_IS_STAGE_COGL (wl_surface_get_user_data (surface)))
+     return;
+@@ -495,8 +498,9 @@ clutter_wayland_handle_keyboard_leave (void *data,
+   ClutterInputDeviceWayland *device = data;
+   ClutterStageCogl          *stage_cogl;
+ 
+-  if (!surface)
++  if (surface == NULL)
+     return;
++
+   if (!CLUTTER_IS_STAGE_COGL (wl_surface_get_user_data (surface)))
+     return;
+ 
+-- 
+GitLab
+

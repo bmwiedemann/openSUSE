@@ -1,0 +1,7 @@
+<package name="indic-fonts" project="openSUSE:Factory">
+  <title>Professional Indian Language TrueType Fonts</title>
+  <description>This package contains many professional Indian language TrueType fonts
+contributed by the community and some also donated by organizations to
+open source. All fonts are available under GPL.</description>
+  <devel project="M17N:fonts" package="indic-fonts"/>
+</package>

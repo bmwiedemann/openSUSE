@@ -1,0 +1,337 @@
+#! /bin/bash
+
+#set -x
+
+#Requires: zypper, rpm, SUSEConnect, coreutils, sed bash
+
+SUSECONNECT=/usr/bin/SUSEConnect
+
+usage() {
+    echo "`basename $0` [-h | -e <email> -r <regcode> [-y]]"
+    echo -e "\t-y: run in batch mode, do not ask questions"
+}
+
+die() {
+    echo $1 >&2; exit 1
+}
+
+error() {
+    echo $i >&2
+}
+
+log() {
+    echo "$(date) $i" >> "/var/log/$(basename $0)"
+}
+
+rpm_e() {
+    local list="" opt=""
+
+    [ "$1" = "--nodeps" ] && { opt="--nodeps"; shift; }
+    while [ $1 ]; do
+	rpm -q $1 &> /dev/null && list="${list:+$list }$1"
+	shift
+    done
+    [ -n "$list" ] && { echo "Uninstalling $list"; rpm -e $opt $list || return 1; }
+    return 0
+}
+
+zypp_in() {
+    local list=""
+
+    while [ $1 ]; do
+	rpm -q $1 &> /dev/null || list="${list:+$list }$1"
+	shift
+    done
+    [ -n "$list" ] && { echo "Installing $list"; zypper -q in -y $list > /dev/null || return 1; }
+    return 0
+}
+
+read_suseconnect() {
+    OFS=$IFS
+    IFS='
+'
+    for i in `${SUSECONNECT} -s | sed -ne "s/[^{]*{\([^}]\+\)}[^{]*/\1\n/pg" || die "Cannot read from SUSEConnect"`; do
+	unset identifier version status arch regcode subscription_status
+	eval $(echo $i | \
+	    sed -n  -e "h" -e "s@.*\"identifier\":\"\([^\"]\+\)\".*@identifier=\1@p" \
+    	    -e "g" -e "s@.*\"version\":\"\([^\"]\+\)\".*@version=\1@p"  \
+    	    -e "g" -e "s@.*\"status\":\"\([^\"]\+\)\".*@status=\1@p" \
+    	    -e "g" -e "s@.*\"arch\":\"\([^\"]\+\)\".*@arch=\1@p" \
+    	    -e "g" -e "s@.*\"regcode\":\"\([^\"]\+\)\".*@regcode=\1@p" \
+    	    -e "g" -e "s@.*\"subscription_status\":\"\([^\"]\+\)\".*@subscription_status=\1@p");
+	echo "$identifier:$version:$status:$arch:$regcode:$subscription_status"
+    done
+    IFS=$OFS
+    return 0
+}
+
+get_base_info() {
+    local data=$1
+    local base=$2
+    local what=$3
+    local identifier version status arch regcode s_status
+    declare -i local ret=1
+    OFS=$IFS
+    IFS='
+'
+    for i in $data; do
+	IFS=: read identifier version status arch regcode s_status <<< $i
+	if [ "$identifier" = "$base" ]; then
+	    echo $(eval echo \$$what); ret=0; break;
+	fi
+    done
+    IFS=$OFS
+    return $ret
+}
+
+reregister_modules_extensions() {
+    local data=$1
+    local base=$2
+    local identifier version status arch regcode s_status
+    declare -i local ret=0
+    OFS=$IFS
+    IFS='
+'
+    for i in $data; do
+	IFS=: read identifier version status arch regcode s_status <<< $i
+	if [ "$identifier" != "$base" ]; then
+	    if [ "$status" == "Registered" ]; then
+		if [ -z "$s_status" -o "$s_status" = "ACTIVE" ]; then
+		    ${SUSECONNECT} -p $identifier/$version/$arch ${regcode:+-r} $regcode || ret=1
+		fi
+	    fi
+	fi
+    done
+    IFS=$OFS
+    return $ret
+}
+
+deregister_modules_extensions() {
+    local data=$1
+    local base=$2
+    local identifier version status arch regcode s_status
+    declare -i local ret=0
+    OFS=$IFS
+    IFS='
+'
+    for i in $data; do
+	IFS=: read identifier version status arch regcode s_status <<< $i
+	if [ "$identifier" != "$base" ]; then
+	    if [ "$status" == "Registered" ]; then
+		${SUSECONNECT} -d -p $identifier/$version/$arch || ret=1
+	    fi
+	fi
+    done
+    IFS=$OFS
+    return $ret
+}
+
+switch_to_sle_hpc() {
+    local arch=$1
+    local regcode=$2
+    local old_regcode=$3
+    local error=$4
+    [ -z "$error" ] && error=0
+    if [ $error -eq 0 ]; then
+	echo "Switching to SLE-HPC"
+    elif [ $error -eq 1 ]; then
+	echo "Restorting SLE-HPC"
+    else
+	die "Giving up!";
+    fi
+    let $(( ++error ))
+
+    [ "$base_status" = "Registered" ] && { ${SUSECONNECT} --de-register 2>/dev/null || { [ $error -eq 0 ] && \
+	die "Cannot deregister product"; }; }
+    rpm_e --nodeps sles-release || { echo "Cannot uninstall sles-release";
+	switch_to_sles $arch $old_regcode $regcode $error; return 1;  }
+    rm -f /etc/products.d/baseproduct; [ -d /etc/products.d/ ] && rm -f /var/cache/zypp/solv/@System/cookie
+    [ $old ] && { rpm_e --nodeps patterns-sles-Minimal patterns-sles-base || \
+        { echo "Cannot uninstall patterns"; switch_to_sles $arch $old_regcode $regcode $error; return 1; }; }
+    ${SUSECONNECT} -p SLE-HPC/12.${SP}/${arch} -r ${regcode} -e ${email} || \
+	{ echo "Cannot register SLE-HPC"; switch_to_sles $arch $old_regcode $regcode $error; return 1; }
+    ln -sf SLE-HPC.prod /etc/products.d/baseproduct; [ -d /etc/products.d/ ] && rm -rf /var/cache/zypp/solv/@System/cookie
+    [ $old ] && zypp_in patterns-sle-hpc-Minimal patterns-sles-base
+    return 0
+}
+
+switch_to_sles() {
+    local arch=$1
+    local regcode=$2
+    local old_regcode=$3
+    local error=$4
+    [ -z "$error" ] && error=0
+    if [ $error -eq 0 ]; then
+	echo "Switching to SLES"
+    elif [ $error -eq 1 ]; then
+	echo "Restorting SLES"
+    else
+	die "Giving up!";
+    fi
+    let $(( ++error ))
+
+    [ "$base_status" = "Registered" ] && { ${SUSECONNECT} --de-register 2>/dev/null || { [ $error -eq 0 ] && \
+	die "Cannot deregister product"; }; }
+    rpm_e --nodeps SLE-HPC-release SLE-HPC-release-POOL || { echo "Cannot uninstall SLE-HPC-release"; \
+	switch_to_sle_hpc $arch $old_regcode $regcode $error; return 1; }
+    rm -f /etc/products.d/baseproduct; [ -d /etc/products.d/ ] && rm -rf /var/cache/zypp/solv/@System/cookie
+    ${SUSECONNECT} -p SLES/12.${SP}/${arch} -r ${regcode} -e ${email} || \
+	{ echo "Cannot register SLES"; switch_to_sle_hpc $arch $old_regcode $regcode $error; return 1; }
+    ln -sf SLES.prod /etc/products.d/baseproduct; [ -d /etc/products.d/ ] && rm -rf /var/cache/zypp/solv/@System/cookie
+    [ $old ] && rpm_e --nodeps patterns-sle-hpc-Minimal
+    [ $old ] && zypp_in patterns-sles-Minimal
+    return 0
+}
+
+validate_warn()
+{
+    local data=$1
+    local base=$2
+    local target=$3
+    local newreg=$4
+    local identifier version status arch regcode s_status
+    local i answ
+
+    # First check for expired base product
+    for i in $data; do
+	IFS=: read identifier version status arch regcode s_status <<< $i
+	if [ "$identifier" = "$base" ]; then
+	    if [ "$s_status" != "ACTIVE" ]; then
+		if [ "$regcode" == "$newreg" ]; then
+		    cat <<EOF
+
+Your current registration has expired, you cannot use your current
+registration key to register a product. Exiting.
+EOF
+		    exit 1
+		elif [ -z "$yes" ]
+		then
+		    cat <<EOF
+
+Your current subscripiton has expired. In case the registration
+as $target fails - for instance if the new registration key is
+incorrect - the previous state cannot be restored.
+EOF
+		    read -p "Are you sure you would like to continue? [y|N]:" answ
+		    [ "$answ" = "y" -o "$answ" = "Y" ] || exit
+		fi
+	    fi
+	    break;
+	fi
+    done
+
+    [ -n "$yes" ] && return
+
+    for i in $data; do
+	IFS=: read identifier version status arch regcode s_status <<< $i
+	if [ "$identifier" != "$base" -a  "$status" == "Registered" -a  -n "$regcode" -a "$s_status" != "ACTIVE" ]
+	then
+	    cat <<EOF
+
+Extension $identifier has expired. It needs to be deregistered to change
+the base product and cannot be reregistered afterwards. You will have to
+renew the registration and reregister it manually by calling
+ ${SUSECONNECT} -p $identifier/$version/$arch -r <regcode> .
+EOF
+	    read -p "Do you wish to continue? [y|N]:" answ
+	    [ "$answ" = "y" -o "$answ" = "Y" ] || exit
+	fi
+    done
+}
+
+while [ $1 ]
+do
+    case $1 in
+	-r) shift; regcode=$1; shift ;;
+	-e) shift; email=$1; shift ;;
+	-y) shift; yes=1 ;;
+	-h) usage; shift ;;
+	*) usage; die "Unknown option $1"
+    esac
+done
+[ -n "$email" ] || die "please provide email"
+
+suseconnect="$(read_suseconnect)" || die "Cannot read from SUSEConnect"
+[ -n "$suseconnect" ] || die "Not registered"
+
+TYPE=$(sed -ne "s/^NAME=\"\([^\"]\+\)\"/\1/p" < /etc/os-release)
+base_reg=$(get_base_info "$suseconnect" $TYPE regcode || die "cannot get Base regcode")
+base_arch=$(get_base_info "$suseconnect" $TYPE arch || die "cannot get Base arch")
+base_version=$(get_base_info "$suseconnect" $TYPE version || die "cannot get Base version")
+base_status=$(get_base_info "$suseconnect" $TYPE status || die "cannot get Base status")
+SP=${base_version##*.}
+VERS=${base_version%%.*}
+if [ "$base_arch" == "x86_64" ]
+then
+   min_sp=2
+elif [ "$base_arch" == "aarch64" ]
+then
+   min_sp=3
+else
+    die "Only supported for x86_64 and aarch64"
+fi
+[ $VERS -eq 12 ] || die "Only for SLES12 or SLE-HPC12"
+[ $SP -ge $min_sp ] || die "only supported for SP${min_sp} or higher"
+[ "$TYPE" = "SLES" -o "$TYPE" = "SLE-HPC" ] || die "only for SLES or SLE-HPC"
+[ $SP -lt 4 ] && old=1
+
+if [ "$(basename $0)" = "switch_sles_sle-hpc" -o \
+     "$(basename $0)" = "switch_to_sle-hpc" ]
+then
+    if [ "$TYPE" = "SLES" ]; then
+	target="SLE-HPC"
+	func=switch_to_sle_hpc
+    else
+	die "Already SLE-HPC"
+    fi
+elif  [ "$(basename $0)" = "switch_sle-hpc_sles" -o \
+        "$(basename $0)" = "switch_to_sles" ]
+then
+    if [ "$TYPE" = "SLE-HPC" ]; then
+	target="SLES"
+	func=switch_to_sles
+    else
+	die "Already SLES"
+    fi
+else
+    die "Unkown function: $(basename $0)"
+fi
+
+if [ -z "$regcode" ]
+then
+    if [ -z "$yes" ]
+    then
+	cat <<EOF
+
+You have not supplied a registration code to register $target.
+It is possible to reuse the registration code of your
+current subscription if this is also valid for $target.
+This is usually the case for codes valid for a SLES subscription.
+EOF
+	if [ "$target" = "SLE-HPC" ]
+	then
+	    cat <<EOF
+
+If you wish to change your registration key for SLE-HPC please
+provide a new key using the '-r' option.
+For details check 'man 8 switch_sles_sle-hpc'.
+EOF
+	fi
+	read -p "Do you wish to reuse the $TYPE registration key? [y|N]:" answ
+	[ "$answ" = "y" -o "$answ" = "Y" ] || exit
+    fi
+    regcode=$base_reg
+    [ -n "$regcode" ] || die "You must supply a regcode for the base product"
+fi
+
+validate_warn $suseconnect $base $target $regcode || exit 1
+
+log "$suseconnect"
+
+msg=""
+declare -i ret=0
+deregister_modules_extensions "$suseconnect" ${TYPE}
+$func $base_arch $regcode $base_reg 0 || { msg="Registration of $target failed, please check your reg-code and messages above.\n$TYPE restored\n."; ret=1; }
+reregister_modules_extensions "$suseconnect" ${TYPE}
+echo -en "$msg"
+exit $ret

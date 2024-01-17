@@ -1,0 +1,20 @@
+Open($argv[1])
+
+i = 0x20
+while (i < 0x2FF)
+  Select(i)
+  ClearInstrs()
+  ++i
+endloop
+
+i = 0x2000
+while (i < 0x206F)
+  Select(i)
+  ClearInstrs()
+  ++i
+endloop
+
+SetFontNames($fontname, $familyname, $fullname, $weight, $copyright + " SUSE removed instructions for non-gujarati glyphs [bsc#977195].", $fontversion + ".suse")
+
+Generate('fixed.' + $argv[1])
+

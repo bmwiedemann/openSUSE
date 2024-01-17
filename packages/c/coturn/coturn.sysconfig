@@ -1,0 +1,8 @@
+## Path:           coturn/TURN
+## Type:           string
+## Default:        ""
+## ServiceRestart: coturn
+#
+# TURN Server startup options
+#
+EXTRA_OPTIONS="--no-software-attribute"

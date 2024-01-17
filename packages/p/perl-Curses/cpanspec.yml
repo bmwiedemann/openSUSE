@@ -1,0 +1,33 @@
+---
+#description_paragraphs: 3
+#description: |-
+#  override description from CPAN
+#summary: override summary from CPAN
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+preamble: |-
+ BuildRequires:  ncurses5-devel
+post_prep: |-
+ sed -i '1s| /usr//bin/perl|%{__perl}|' demo.form
+ sed -i '1s| /usr/bin/perl|%{__perl}|' demo* gdc testsyms
+ chmod +x makeConfig
+#post_build: |-
+# rm unused.files
+#post_install: |-
+# sed on %{name}.files
+license: Perl
+#skip_noarch: 1
+custom_build: |-
+ export CURSES_CFLAGS="-I/usr/include/ncurses5/ncursesw"
+ export CURSES_LDFLAGS="-L%{_libdir}/ncurses5 -lncursesw"
+ perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}" PANELS MENUS FORMS
+ %make_build
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module
+skip_doc: gdc gen.tar list.syms makeConfig testcurses testsyms

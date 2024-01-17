@@ -1,0 +1,5 @@
+<package name="cinnamon-settings-daemon" project="openSUSE:Factory">
+  <title>The session manager for the Cinnamon Desktop</title>
+  <description>This packages contains the session manager for the Cinnamon Desktop.</description>
+  <devel project="X11:Cinnamon:Factory" package="cinnamon-settings-daemon"/>
+</package>

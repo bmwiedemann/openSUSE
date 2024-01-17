@@ -1,0 +1,40 @@
+
+Switch from SLES 12 to SLE-HPC 12
+=================================
+
+This script lets you switch from a subscription of the SUSE Linux Enterprise
+Server (SLES) to subscription for SUSE Linux Enterprise High Performance
+Computing (SLE-HPC).
+
+Migration to later Service Pack Levels
+--------------------------------------
+This tool is only meant to run on SLES-12 with service pack level 2 or
+higher. It will not change your service pack level. If you wish to migrate
+to a later service pack you may do so either before or after running this
+tool.
+
+On SUSE Linux Enterprise 15 the HPC module is no longer available for
+SLES. This module can only be activated on SUSE Linux Enterprise HPC 15.
+Therefore, on migration to SUSE Linux Enterprise 15 or later, the target
+product depends on whether the HPC module activated prior to migration:
+SLES 12 systems with activated HPC module will be migrated to SUSE Linux
+Enterprise HPC 15, while systems without this module will be migrated to
+SUSE Linux Enterprise Server 15.
+Any SLE-HPC 12 system will be migrated to SUSE Linux Enterprise HPC 15
+regardless of the activation status of the HPC module.
+
+Usage
+-----
+If you have been supplied with a new key for the SLE-HPC subscription, you
+may provide this when running this tool.
+Registration keys for SLES subscriptions are also valid for SLE-HPC. If you
+have a SLES subscription which you plan to re-use you may do so by omitting
+the key from the command line.
+If you have recieved a registration key for a SLE-HPC subscription when you
+have renewed your subscription, you need to supply this.
+This tool may run in batch mode not requiring any interactive input by the
+user.
+
+Usage:
+  switch_sles_sle-hpc [-h | -e <email> -r <regcode>] [-y]
+              -y: run in batch mode, do not ask questions

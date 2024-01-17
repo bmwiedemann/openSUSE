@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9bf5ceb364ddc492605af0265a29f826</srcmd5>
+    <version>0.5.4</version>
+    <time>1518597945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575577</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3d6b16a634c9f9a2a0f58969fed48960</srcmd5>
+    <version>0.5.4</version>
+    <time>1519684030</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580264</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d9fc7dcb6264c5ece43825ae29b4416f</srcmd5>
+    <version>0.5.6</version>
+    <time>1520021556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581923</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5f5a6c747cc95a4f4717b45009a47efd</srcmd5>
+    <version>0.5.6</version>
+    <time>1549140338</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>669953</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>64b2dfd5b2dafd4d93561f609d296607</srcmd5>
+    <version>0.6.1</version>
+    <time>1552380325</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.1
+ * unpackb(data) configures max_*_len options from len(data), instead
+    of static default sizes.
+ * Unpacker(max_buffer_len=N) configures max_*_len options from N, instead
+    of static default sizes.
+ * max_bin_len, max_str_len, and max_ext_len are deprecated.
+ * unpacker: Default value of input limits are smaller than before to 
+    avoid DoS attack
+ * Unpacker doesn't wrap underlaying ValueError (including UnicodeError)
+    into UnpackValueError. If you want to catch all exception during unpack, 
+    you need to use try ... except Exception with minimum try code block.
+ * PackValueError and PackOverflowError are also removed. You need to catch
+    normal ValueError and OverflowError.
+ * Unpacker has strict_map_key option now. When it is true, only bytes
+    and str (unicode in Python 2) are allowed for map keys.
+ * Extension modules are merged. There is msgpack._cmsgpack instead
+    of msgpack._packer and msgpack._unpacker.
+ * Add Unpacker.getbuffer() method.
+ * unpacker: msgpack.StackError is raised when input data contains too nested data
+ * unpacker: msgpack.FormatError is raised when input data is not valid msgpack format.</comment>
+    <requestid>682645</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ac9e55ddcda15dc6cc7edec81e46fe7a</srcmd5>
+    <version>0.6.2</version>
+    <time>1569390172</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.2:
+  * Support Python 3.8.
+  * Update Cython to 0.29.13 for support Python 3.8.
+  * Some small optimizations.</comment>
+    <requestid>732174</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>848b8de8e7ca2d5f38e8335139d7d0c4</srcmd5>
+    <version>0.6.2</version>
+    <time>1585264847</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>784149</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cd938d95fb588975645302244d89f259</srcmd5>
+    <version>1.0.0</version>
+    <time>1587325717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790161</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>14f38fcc6b4ddb3c6cc96bd139ffd756</srcmd5>
+    <version>1.0.2</version>
+    <time>1608729570</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2:
+  * Python 3.9 support
+  * bugfixes</comment>
+    <requestid>857153</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e48a1abdcdda199d111e9937fb4fb859</srcmd5>
+    <version>1.0.3</version>
+    <time>1641932239</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.3:
+  * add python 3.10 support
+  * bugfixes</comment>
+    <requestid>945449</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>43589d1535dca29f1b1f7726f654e166</srcmd5>
+    <version>1.0.4</version>
+    <time>1655732224</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.4:
+  * Support Python 3.11 (beta)
+  * refresh ci settings.
+  * Don't define _*ENDIAN macro on Unix.
+  * Update setuptools and black
+  * Use PyFloat_Pack8() on Python 3.11a7
+  * Upgrade black to fix CI
+  * Fix Unpacker max_buffer_length handling
+  * ci: Update action versions.</comment>
+    <requestid>983773</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>970f2cfb418406e9718402dbf4925e34</srcmd5>
+    <version>1.0.5</version>
+    <time>1680125176</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.5:
+  * Fallback to compiler defines when __BYTE_ORDER is not
+    available
+  * Fix build error caused by ntohs, ntohl
+  * Add python 3.11 wheels
+  * fallback: Fix packing multidim memoryview
+  * minor type in exception message</comment>
+    <requestid>1074518</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d433759b3f14642165638df7e6475161</srcmd5>
+    <version>1.0.5</version>
+    <time>1683630466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085450</requestid>
+  </revision>
+</revisionlist>

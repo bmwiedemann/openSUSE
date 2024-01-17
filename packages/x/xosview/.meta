@@ -1,0 +1,7 @@
+<package name="xosview" project="openSUSE:Factory">
+  <title>System Load Information</title>
+  <description>A small program which is mostly configurable using resources via
+~/.Xresources. It shows actual CPU, swap, memory, active interrupts,
+and, if desired, netpacket statistics in a graphical manner.</description>
+  <devel project="X11:Utilities" package="xosview"/>
+</package>

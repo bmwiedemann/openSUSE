@@ -1,0 +1,8 @@
+<package name="switch_sles_sle-hpc" project="openSUSE:Factory">
+  <title>Reregister SLES as SLE-HPC on SLE-12</title>
+  <description>                                                                                                                                                                               
+    Tool to change and reregister a SLES-12 Product to a SLE-HPC-12 of                                                                                                                        
+    the same Service Pack Level                                                                                                                                                               
+  </description>
+  <devel project="systemsmanagement:SCC" package="switch_sles_sle-hpc"/>
+</package>

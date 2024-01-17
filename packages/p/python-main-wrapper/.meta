@@ -1,0 +1,5 @@
+<package name="python-main-wrapper" project="openSUSE:Factory">
+  <title></title>
+  <description>Use main-wrapper either as a command-line script or as a library to make Python scripts that set up or change some global Python environment and then run another script within that environment. It seeks to combine into one library all the gloss and polish of other Python software that does this, such as using python -m with pdb and profile in the standard library or the coverage package's command-line run command.</description>
+  <devel project="devel:languages:python" package="python-main-wrapper"/>
+</package>
