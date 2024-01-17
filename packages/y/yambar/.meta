@@ -1,0 +1,6 @@
+<package name="yambar" project="openSUSE:Factory">
+  <title>yambar</title>
+  <description>Modular status panel for X11 and Wayland, inspired by https://github.com/jaagr/polybar</description>
+  <devel project="X11:Utilities" package="yambar"/>
+  <url>https://codeberg.org/dnkl/yambar</url>
+</package>

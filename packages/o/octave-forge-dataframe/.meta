@@ -1,0 +1,6 @@
+<package name="octave-forge-dataframe" project="openSUSE:Factory">
+  <title></title>
+  <description>Data manipulation toolbox similar to R data.frame.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-dataframe"/>
+</package>

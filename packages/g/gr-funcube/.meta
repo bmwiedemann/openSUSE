@@ -1,0 +1,7 @@
+<package name="gr-funcube" project="openSUSE:Factory">
+  <title>FUNcube Dongle and a FUNcube Dongle PRO+ source blocks for GNU Radio</title>
+  <description>gr-funcube is an linux oot-module for gnuradio to implement a FUNcube Dongle and a FUNcube Dongle PRO+ source. It utodetects the correct soundcard from /proc/asound/cards. This idea was taken from the osmosdr drivers. To control the device, the hidraw code of the HID API is used.
+</description>
+  <devel project="hardware:sdr" package="gr-funcube"/>
+  <url>https://github.com/dl1ksv/gr-funcube</url>
+</package>

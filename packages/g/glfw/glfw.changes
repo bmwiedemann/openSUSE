@@ -1,0 +1,437 @@
+-------------------------------------------------------------------
+Wed Jan 10 15:15:37 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Make the geany tags build optional again to fix SLE.
+
+-------------------------------------------------------------------
+Fri Dec 15 10:55:19 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.9
+  * Bugfix: glfwGetKeyScancode returned 0 on error when initialized
+    instead of -1.
+  * Bugfix: Failure to make a newly created context current could
+    cause segfault.
+  * [Wayland] Added improved fallback window decorations via
+    libdecor.
+  * [Wayland] Bugfix: Connecting a mouse after glfwInit would
+    segfault.
+  * [Wayland] Disabled alpha channel for opaque windows on systems
+    lacking EGL_EXT_present_opaque.
+  * [Wayland] Bugfix: Buffer would overrun when storing received
+    drag offer.
+  * [Wayland] Bugfix: Joysticks connected after glfwInit were not
+    detected.
+  * [Wayland] Bugfix: Fallback decorations emitted
+    GLFW_CURSOR_UNAVAILABLE errors.
+  * [Wayland] Bugfix: Some events could fail to end wait for new
+    events.
+  * [Linux] Bugfix: Joysticks without buttons were ignored.
+  * [Linux] Bugfix: A small amount of memory could leak if
+    initialization failed.
+  * [EGL] Added loading of glvnd libOpenGL.so.0 where available for
+    OpenGL.
+  * [EGL] Bugfix: EGL_EXT_present_opaque caused issues on X11 with
+    Nvidia blob.
+  * [EGL] Bugfix: Setting GLFW_CONTEXT_DEBUG caused creation to
+    fail.
+  * [GLX] Added loading of glvnd libGLX.so.0 where available.
+
+-------------------------------------------------------------------
+Mon May  8 14:41:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix Name tag: the two source builds must be uniquely identified,
+  thus add %{flavor} to the Name.
+
+-------------------------------------------------------------------
+Wed Sep 14 09:26:04 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- update to 3.3.8:
+  * Added GLFW_NATIVE_INCLUDE_NONE for disabling inclusion of native headers (#1348)
+  * Bugfix: glfwMakeContextCurrent would access TLS slot before initialization
+  * Bugfix: glfwSetGammaRamp could emit GLFW_INVALID_VALUE before initialization
+  * Bugfix: glfwGetJoystickUserPointer returned NULL during disconnection (#2092)
+  * [X11] Bugfix: The OSMesa libray was not unloaded on termination
+  * [X11] Bugfix: A malformed response during selection transfer could cause a segfault
+  * [X11] Bugfix: Some calls would reset Xlib to the default error handler (#2108)
+  * [Wayland] Added support for file path drop events (#2040)
+  * [Wayland] Added support for more human-readable monitor names where available
+  * [Wayland] Removed support for the deprecated wl_shell protocol
+  * [Wayland] Bugfix: glfwSetClipboardString would fail if set to result of glfwGetClipboardString
+  * [Wayland] Bugfix: Data source creation error would cause double free at termination
+  * [Wayland] Bugfix: Partial writes of clipboard string would cause beginning to repeat
+  * [Wayland] Bugfix: Some errors would cause clipboard string transfer to hang
+  * [Wayland] Bugfix: Drag and drop data was misinterpreted as clipboard string
+  * [Wayland] Bugfix: MIME type matching was not performed for clipboard string
+  * [Wayland] Bugfix: The OSMesa library was not unloaded on termination
+  * [Wayland] Bugfix: glfwCreateWindow could emit GLFW_PLATFORM_ERROR
+  * [Wayland] Bugfix: Lock key modifier bits were only set when lock keys were pressed
+  * [Wayland] Bugfix: A window leaving full screen mode would be iconified (#1995)
+  * [Wayland] Bugfix: A window leaving full screen mode ignored its desired size
+  * [Wayland] Bugfix: glfwSetWindowMonitor did not update windowed mode size
+  * [Wayland] Bugfix: glfwRestoreWindow would make a full screen window windowed
+  * [Wayland] Bugfix: A window maximized or restored by the user would enter an inconsistent state
+  * [Wayland] Bugfix: Window maximization events were not emitted
+  * [Wayland] Bugfix: glfwRestoreWindow assumed it was always in windowed mode
+  * [Wayland] Bugfix: glfwSetWindowSize would resize a full screen window
+  * [Wayland] Bugfix: A window content scale event would be emitted every time the window resized
+  * [Wayland] Bugfix: If glfwInit failed it would close stdin
+  * [Wayland] Bugfix: Manual resizing with fallback decorations behaved erratically (#1991,#2115,#2127)
+  * [Wayland] Bugfix: Size limits included frame size for fallback decorations
+  * [Wayland] Bugfix: Updating GLFW_DECORATED had no effect on server-side decorations
+  * [Wayland] Bugfix: A monitor would be reported as connected again if its scale changed
+  * [Wayland] Bugfix: glfwTerminate would segfault if any monitor had changed scale
+  * [Wayland] Bugfix: Window content scale events were not emitted when monitor scale changed
+  * [Wayland] Bugfix: glfwSetWindowAspectRatio reported an error instead of applying the specified ratio
+  * [Wayland] Bugfix: GLFW_MAXIMIZED window hint had no effect
+  * [Wayland] Bugfix: glfwRestoreWindow had no effect before first show
+  * [Wayland] Bugfix: Hiding and then showing a window caused program abort on wlroots compositors (#1268)
+  * [Wayland] Bugfix: GLFW_DECORATED was ignored when showing a window with XDG decorations
+
+-------------------------------------------------------------------
+Sat Apr  9 22:42:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.7:
+  * [X11] Bugfix: Dynamic loading on OpenBSD failed due to soname differences
+  * [X11] Bugfix: Waiting for events would fail if file descriptor was too large (#2024)
+  * [X11] Bugfix: Joystick events could lead to busy-waiting (#1872)
+  * [X11] Bugfix: glfwWaitEvents* did not continue for joystick events
+  * [X11] Bugfix: glfwPostEmptyEvent could be ignored due to race condition (#379,#1281,#1285,#2033)
+  * [X11] Bugfix: Dynamic loading on NetBSD failed due to soname differences
+  * [X11] Bugfix: Left shift of int constant relied on undefined behavior (#1951)
+  * [Wayland] Added support for key names via xkbcommon
+  * [Wayland] Bugfix: Key repeat could lead to a race condition (#1710)
+  * [Wayland] Bugfix: Activating a window would emit two input focus events
+  * [Wayland] Bugfix: Disable key repeat mechanism when window loses input focus
+  * [Wayland] Bugfix: Window hiding and showing did not work (#1492,#1731)
+  * [Wayland] Bugfix: A key being repeated was not released when window lost focus
+  * [Wayland] Bugfix: Showing a hidden window did not emit a window refresh event
+  * [Wayland] Bugfix: Full screen window creation did not ignore GLFW_VISIBLE
+  * [Wayland] Bugfix: Some keys were reported as wrong key or GLFW_KEY_UNKNOWN
+  * [Wayland] Bugfix: Text input did not repeat along with key repeat
+  * [Wayland] Bugfix: glfwPostEmptyEvent sometimes had no effect (#1520,#1521)
+  * [GLX] Bugfix: Context creation failed if GLX 1.4 was not exported by GLX library 
+
+-------------------------------------------------------------------
+Thu Dec 16 15:36:13 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.3.6:
+  * Bugfix: Joysticks connected before init did not get gamepad mappings (#1996)
+  * [X11] Bugfix: Icon pixel format conversion worked only by accident,
+    relying on undefined behavior (#1986)
+
+
+-------------------------------------------------------------------
+Fri Oct 29 18:55:53 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.5
+  * Updated gamepad mappings from upstream.
+  Bugfixes:
+  * Buffers were swapped at creation on single-buffered windows.
+  * Gamepad mapping updates could spam GLFW_INVALID_VALUE due to
+    incompatible controllers sharing hardware ID.
+  * Native access functions for context handles did not check that
+    the API matched.
+  Bugfixes [X11]
+  * Changing GLFW_FLOATING could leak memory
+  Bugfixes [Wayland]
+  * Some keys were not repeating in Wayland.
+  * Non-arrow cursors are offset from the hotspot.
+  Bugfixes [EGL]
+  * The GLFW_DOUBLEBUFFER context attribute was ignored.
+
+-------------------------------------------------------------------
+Sat Jun 12 15:36:33 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.3.4
+  * X11 bugfix: Some window attributes were not applied on
+    leaving fullscreen
+
+-------------------------------------------------------------------
+Mon Mar 22 04:31:59 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Added wayland build flavor
+  * New -wayland library package
+
+-------------------------------------------------------------------
+Sun Feb 28 13:00:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.3
+  [Common] bugfixes:
+  * Some extension loader headers did not prevent default
+    OpenGL header inclusion.
+  [X11] bugfixes:
+  * IME input of CJK was broken for “C” locale.
+  * Xlib errors caused by other parts of the application could be
+    reported as GLFW errors.
+  * A handle race condition could cause a BadWindow error.
+  * XKB path used keysyms instead of physical locations for
+    non-printable keys.
+  * Function keys were mapped to GLFW_KEY_UNKNOWN for some layout
+    combinaitons.
+  * Keys pressed simultaneously with others were not always
+    reported.
+  [Wayland] bugfixes:
+  * Repeated keys could be reported with NULL window.
+  * Retrieving partial framebuffer size would segfault.
+  * Scrolling offsets were inverted compared to other platforms.
+  * Client-Side Decorations were destroyed in the wrong worder.
+  * Monitors physical size could report zero.
+
+-------------------------------------------------------------------
+Wed Aug 26 08:43:06 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Require pkgconfig(gl) for the devel package to supply needed
+  include GL/gl.h
+
+-------------------------------------------------------------------
+Wed Mar 25 21:26:36 UTC 2020 - Simon Puchert <simonpuchert@alice.de>
+
+- Update to version 3.3.2
+  * [X11] bugfixes:
+  * glfwFocusWindow could terminate on older WMs or without a WM
+  * Creating an undecorated window could fail with BadMatch (#1620)
+  * Querying a disconnected monitor could segfault (#1602)
+- Update to version 3.3.1
+  * General bugfixes:
+  * The CMake config-file package used an absolute path and was not
+    relocatable (#1470)
+  * Video modes with a duplicate screen area were discarded
+    (#1555,#1556)
+  * Compiling with -Wextra-semi caused warnings (#1440)
+  * Built-in mappings failed because some OEMs re-used VID/PID
+    (#1583)
+  * [X11] bugfixes:
+  * The CMake files did not check for the XInput headers (#1480)
+  * Key names were not updated when the keyboard layout changed
+    (#1462,#1528)
+  * Decorations could not be enabled after window creation (#1566)
+  * Content scale fallback value could be inconsistent (#1578)
+  * glfwMaximizeWindow had no effect on hidden windows
+  * Clearing GLFW_FLOATING on a hidden window caused invalid read
+  * Changing GLFW_FLOATING on a hidden window could silently fail
+  * Disabled cursor mode was interrupted by indicator windows
+  * Monitor physical dimensions could be reported as zero mm
+  * Window position events were not emitted during resizing (#1613)
+  * [Wayland] Bugfix: The GLFW_HAND_CURSOR shape used the wrong
+    image (#1432)
+- See also: https://www.glfw.org/changelog.html
+
+-------------------------------------------------------------------
+Tue Apr 16 20:32:44 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.3
+  * Changes too numerous to list, see
+    https://www.glfw.org/docs/latest/news.html#news_33
+
+-------------------------------------------------------------------
+Fri Feb  1 09:44:47 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Sort list of input files to geany for reproducible builds
+  (boo#1049382, boo#1041090)
+
+-------------------------------------------------------------------
+Sun Feb 12 11:48:30 UTC 2017 - mpluskal@suse.com
+
+- Update to version 3.2.1:
+  * Added on-demand loading of Vulkan and context creation API
+    libraries
+  * Added _GLFW_VULKAN_STATIC build macro to make the library use
+    the Vulkan loader linked statically into the application (#820)
+  * Bugfix: Single compilation unit builds failed due to naming
+    conflicts (#783)
+  * Bugfix: The range checks for glfwSetCursorPos used the wrong
+    minimum (#773)
+  * Bugfix: Defining GLFW_INCLUDE_VULKAN when compiling the library
+    did not fail with the expected error message (#823)
+  * Bugfix: Inherited value of CMAKE_MODULE_PATH was clobbered
+    (#822)
+  * [X11] Bugfix: Window size limits were ignored if the minimum or
+    maximum size was set to GLFW_DONT_CARE (#805)
+  * [X11] Bugfix: Input focus was set before window was visible,
+    causing BadMatch on some non-reparenting WMs (#789,#798)
+  * [X11] Bugfix: glfwGetWindowPos and glfwSetWindowPos operated on
+    the window frame instead of the client area (#800)
+  * [WGL] Added reporting of errors from WGL_ARB_create_context
+    extension
+  * [GLX] Bugfix: Dynamically loaded entry points were not verified
+  * [EGL] Added lib prefix matching between EGL and OpenGL ES
+    library binaries
+  * [EGL] Bugfix: Dynamically loaded entry points were not verified
+- Enable vulkan on Tumbleweed
+
+-------------------------------------------------------------------
+Thu Aug 11 17:05:34 UTC 2016 - rpm@fthiessen.de
+
+- Update to new upstream release 3.2
+
+-------------------------------------------------------------------
+Sun Jul 17 08:16:16 UTC 2016 - jengelh@inai.de
+
+- Trim irrelevant parts from %description
+
+-------------------------------------------------------------------
+Wed May 18 13:14:46 UTC 2016 - rpm@fthiessen.de
+
+- Made build of geany-tags optional (fix SLE).
+
+-------------------------------------------------------------------
+Sat Oct 24 12:41:17 UTC 2015 - mimi.vx@gmail.com
+
+- Update to version 3.1.2
+* bugfix release, full changelog on http://www.glfw.org/changelog.html
+
+-------------------------------------------------------------------
+Thu Sep 17 20:24:01 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 3.1.1
+* This release adds fixes for a number of bugs that together affect
+  all supported platforms, most notably workarounds for bugs in
+  some popular window managers.
+- Reduce overly explicit filelist
+
+-------------------------------------------------------------------
+Tue Feb  3 21:34:30 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.1:
+  + Added GLFWcursor custom system cursor handle
+  + Added glfwCreateCursor, glfwCreateStandardCursor, glfwDestroyCursor and glfwSetCursor for managing system cursor images
+  + Added GLFWimage struct for passing 32-bit RGBA images
+  + Added monitor and adapter identifier access to native API
+  + Added glfwSetDropCallback and GLFWdropfun for receiving dropped files
+  + Added glfwPostEmptyEvent for allowing secondary threads to cause glfwWaitEvents to return
+  + Added empty test program for verifying posting of empty events
+  + Added glfwSetCharModsCallback for receiving character events with modifiers
+  + Added glfwGetWindowFrameSize for retrieving the size of the frame around the client area of a window
+  + Added GLFW_AUTO_ICONIFY for controlling whether full screen windows automatically iconify (and restore the previous video mode) on focus loss
+  + Added GLFW_DONT_CARE for indicating that any value is acceptable
+  + Added GLFW_DOUBLEBUFFER for controlling whether to use double buffering
+  + Added GLFW_CONTEXT_RELEASE_BEHAVIOR and values GLFW_ANY_RELEASE_BEHAVIOR, GLFW_RELEASE_BEHAVIOR_FLUSH and GLFW_RELEASE_BEHAVIOR_NONE for GL_KHR_context_flush_control support
+  + Added GLFW_INCLUDE_ES31 for including the OpenGL ES 3.1 header
+  + Added GLFW_FLOATING for creating always-on-top windowed mode windows
+  + Added GLFW_FOCUSED window hint for controlling initial input focus
+  + Added partial and experimental support for Wayland
+  + Added partial and experimental support for Mir
+  + Changed the window state attributes (focused, iconified and visible) to query the system directly
+  + Changed the default of GLFW_REFRESH_RATE to GLFW_DONT_CARE to maintain the default behavior
+  + Changed static library to build as position independent code for easier use from the Rust language
+  + Changed glfwGetCursorPos to query the system directly for all cursor modes except captured mode
+  + Bugfix: The debug context attribute was set from GL_ARB_debug_output even when a debug context had not been requested
+  + Bugfix: The particles example was not linked against the threading library
+  + Bugfix: The cursor was not positioned over newly created full screen windows
+  + Bugfix: The queried cursor position was not always up-to-date
+  + Bugfix: glfwExtensionSupported always failed for OpenGL ES 3.0 and later if the library was compiled for OpenGL ES
+  + [X11] Added run-time support for systems lacking the XKB extension
+  + [X11] Made GLX 1.3 the minimum supported version
+  + [X11] Replaced XRRGetScreenResources with XRRGetScreenResourcesCurrent for monitor property retrieval
+  + [X11] Bugfix: The case of finding no usable CRTCs was not detected
+  + [X11] Bugfix: Detection of broken Nvidia RandR gamma support did not verify that at least one CRTC was present
+  + [X11] Bugfix: A stale _NET_SUPPORTING_WM_CHECK root window property would cause an uncaught BadWindow error
+  + [X11] Bugfix: No check was made for the presence of GLX 1.3 when GLX_SGIX_fbconfig was unavailable
+  + [X11] Bugfix: The message type of ICCCM protocol events was not checked
+  + [X11] Bugfix: glfwDestroyWindow did not flush the output buffer
+  + [X11] Bugfix: Window frame interactions were reported as focus events
+  + [X11] Bugfix: Workaround for legacy Compiz caused flickering during resize
+  + [X11] Bugfix: The name pointer of joysticks were not cleared on disconnection
+  + [X11] Bugfix: Video mode resolutions and monitor physical sizes were not corrected for rotated CRTCs
+  + [X11] Bugfix: Unicode character input ignored dead keys
+  + [X11] Bugfix: X-axis scroll offsets were inverted
+  + [X11] Bugfix: Full screen override redirect windows were not always positioned over the specified monitor
+  + [X11] Bugfix: Character input did not work for the default "C" locale
+  + [X11] Bugfix: Joysticks connected after glfwInit were not detected (temporary inotify solution until proper libudev solution)
+- Add pkgconfig(xinerama), pkgconfig(xcursor) BuildRequires: New dependencies.
+
+-------------------------------------------------------------------
+Thu Jan 15 00:12:44 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 3.0.4
+  +Added the GLFW_BUILD_DOCS CMake option for controlling whether
+   the documentation is built
+  +Added the _GLFW_USE_CONFIG_H configuration macro for controlling
+   whether to include the configuration header
+  +Moved version number macro to internal.h for easier manual compilation
+  +Renamed configuration header to glfw_config.h to avoid conflicts
+  +Bugfix: The glfw3.pc file did not respect the LIB_SUFFIX CMake option
+  +Bugfix: The joysticks test would segfault if a controller had no axes
+  +[Win32] Allowed swap interval to be explicitly set to zero on DWM systems
+  +[Win32] Bugfix: Removed joystick axis value negation left over from GLFW 2
+  +[Win32] Bugfix: Restoring windows using the Win+D hot key did not 
+   trigger the focus callback
+  +[Win32] Bugfix: The disabled cursor mode clip rectangle was updated
+   for unfocused windows
+  +[Win32] Bugfix: Cursor was not properly re-centered over odd-sized windows
+  +[Win32] Bugfix: Negative window positions were reported incorrectly
+  +[Win32] Bugfix: The iconify callback was not triggered when switching
+   away from a full screen window using Alt+Tab
+  +[Win32] Bugfix: Resizing a window with glfwSetWindowSize gave it focus
+  +[Cocoa] Added dependency on CoreVideo framework for refresh rate retrieval
+  +[Cocoa] Enabled Lion full screen for resizable windowed mode windows
+  +[Cocoa] Moved to Cocoa API for application transformation and activation
+  +[Cocoa] Bugfix: The GLFW_KEY_GRAVE_ACCENT key was reported as 
+   GLFW_KEY_WORLD_1 and vice versa
+  +[Cocoa] Bugfix: The GLFW_KEY_F13 key was reported as GLFW_KEY_PRINT_SCREEN
+  +[Cocoa] Bugfix: Implicit conversion from NSUInteger to int caused 
+   warnings with Xcode 5
+  +[Cocoa] Bugfix: Use of undeclared selectors with @selector caused
+   warnings with Xcode 5
+  +[Cocoa] Bugfix: The cursor remained visible if moved onto client
+   area after having been set to hidden outside it
+  +[Cocoa] Bugfix: The refresh rate was zero for all modes of certain monitors
+  +[Cocoa] Bugfix: The install_name field of the dynamic library was not set
+  +[Cocoa] Bugfix: Full screen windows were never reported as having focus
+  +[Cocoa] Bugfix: A superfluous I/O flag test prevented video modes from
+   being listed for Thunderbolt monitor
+  +[Cocoa] Bugfix: Retrieving the name of some external displays caused segfault
+  +[Cocoa] Bugfix: The 10.9 SDK defines GLintptrARB and GLsizeiptrARB 
+   differently from the Khronos glext.h
+  +[Cocoa] Bugfix: Creating hidden windows would steal application focus
+  +[Cocoa] Bugfix: Controllers were reported as having zero buttons and axes
+  +[Cocoa] Bugfix: Removed joystick axis value negation left over from GLFW 2
+  +[X11] Added setting of the WM_CLASS property to the initial window title
+  +[X11] Added support for _NET_WM_BYPASS_COMPOSITOR
+  +[X11] Bugfix: Removed joystick axis value negation left over from GLFW 2
+  +[X11] Bugfix: The position of hidden windows was ignored by Metacity and Compiz
+  +[X11] Bugfix: The pthread.h header was not included by the GLX platform header.
+- Add upstream new dependencies: cmake, gcc-c++, doxygen, geany, 
+  pkgconfig(xi)
+- Add a dependency to cmake in devel subpackage
+- Build the geany tags
+- Package README.md into doc directory
+- Package examples code in devel subpackage
+- Remove the static devel subpackage; not provided anymore
+- Fix the home page Url
+- Bump so version to 3
+
+-------------------------------------------------------------------
+Tue Oct  8 11:18:10 UTC 2013 - lnussel@suse.de
+
+- install COPYING.txt as well
+
+-------------------------------------------------------------------
+Tue Sep 25 12:08:14 UTC 2012 - adam@mizerski.pl
+
+- update to 2.7.6
+- spec improvement and cleanup
+  - updated license information
+  - changed "BuildRequires: package-name" into
+    "BuildRequires: pkgconfig(name)" (fixes Factory build)
+- dropped glfw-force_sysctl_support.patch
+- dropped glfw-rpmlintrc - there was nothing useful
+
+-------------------------------------------------------------------
+Sat Mar 24 02:39:16 UTC 2012 - jengelh@medozas.de
+
+- Parallel build with %_smp_mflags; strip redundant spec sections
+
+-------------------------------------------------------------------
+Mon Nov  7 16:41:27 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.7.2
+- package shlib too
+- shared library naming policy
+- static lib moved to libglfw-devel-static
+
+-------------------------------------------------------------------
+Thu Jun 14 11:30:38 CEST 2007 - prusnak@suse.cz
+
+- initial version (2.5.0)
+

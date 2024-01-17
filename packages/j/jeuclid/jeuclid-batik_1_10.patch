@@ -1,0 +1,15 @@
+Index: jeuclid-parent-3.1.9/jeuclid-core/src/main/java/net/sourceforge/jeuclid/elements/presentation/token/Mo.java
+===================================================================
+--- jeuclid-parent-3.1.9.orig/jeuclid-core/src/main/java/net/sourceforge/jeuclid/elements/presentation/token/Mo.java
++++ jeuclid-parent-3.1.9/jeuclid-core/src/main/java/net/sourceforge/jeuclid/elements/presentation/token/Mo.java
+@@ -45,9 +45,9 @@ import net.sourceforge.jeuclid.layout.Te
+ 
+ import org.apache.batik.dom.AbstractDocument;
+ import org.apache.batik.dom.events.DOMCustomEvent;
++import org.apache.batik.w3c.dom.events.CustomEvent;
+ import org.w3c.dom.Attr;
+ import org.w3c.dom.Node;
+-import org.w3c.dom.events.CustomEvent;
+ import org.w3c.dom.events.Event;
+ import org.w3c.dom.events.EventListener;
+ import org.w3c.dom.events.EventTarget;

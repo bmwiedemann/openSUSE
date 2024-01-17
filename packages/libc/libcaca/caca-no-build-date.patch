@@ -1,0 +1,47 @@
+---
+ src/cacaclock.c |    4 ++--
+ src/img2txt.c   |    4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+Index: src/cacaclock.c
+===================================================================
+--- src/cacaclock.c.orig
++++ src/cacaclock.c
+@@ -40,14 +40,14 @@ static void version(void)
+ {
+     printf(
+             "cacaclock Copyright 2011-2012 Jean-Yves Lamoureux\n"
+-            "Internet: <jylam@lnxscene.org> Version: %s (libcaca %s), date: %s\n"
++            "Internet: <jylam@lnxscene.org> Version: %s (libcaca %s)\n"
+             "\n"
+             "cacaclock, along with its documentation, may be freely copied and distributed.\n"
+             "\n"
+             "The latest version of cacaclock is available from the web site,\n"
+             "        http://caca.zoy.org/wiki/libcaca in the libcaca package.\n"
+             "\n",
+-            CACACLOCKVERSION, caca_get_version(), __DATE__);
++            CACACLOCKVERSION, caca_get_version());
+ }
+ 
+ 
+Index: src/img2txt.c
+===================================================================
+--- src/img2txt.c.orig
++++ src/img2txt.c
+@@ -67,14 +67,14 @@ static void version(void)
+ {
+     printf(
+     "img2txt Copyright 2006-2007 Sam Hocevar and Jean-Yves Lamoureux\n"
+-    "Internet: <sam@hocevar.net> <jylam@lnxscene.org> Version: %s, date: %s\n"
++    "Internet: <sam@hocevar.net> <jylam@lnxscene.org> Version: %s\n"
+     "\n"
+     "img2txt, along with its documentation, may be freely copied and distributed.\n"
+     "\n"
+     "The latest version of img2txt is available from the web site,\n"
+     "        http://caca.zoy.org/wiki/libcaca in the libcaca package.\n"
+     "\n",
+-    caca_get_version(), __DATE__);
++    caca_get_version());
+ }
+ int main(int argc, char **argv)
+ {

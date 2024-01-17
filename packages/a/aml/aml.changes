@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Mon Jan 23 16:46:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.0:
+  * The time unit has been changed from milliseconds to microseconds
+  * The global object registry has been replaced with weak references
+  * It is now guaranteed that a callback will not be called after aml_stop().
+  * Worker threads now keep references to work objects that are being
+    executed. This ensures that they cannot be freed while they
+    are being worked
+
+-------------------------------------------------------------------
+Sun Dec  4 11:25:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v0.2.2:
+  * aml: Don't put the same item onto the event queue more than once
+
+-------------------------------------------------------------------
+Thu Oct 21 14:52:13 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.2.1
+  * epoll: Fix fd deletion
+
+-------------------------------------------------------------------
+Tue Apr 13 23:18:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.2.0
+  * A kqueue backend has been added, run natively without epoll-shim
+
+-------------------------------------------------------------------
+Wed Sep 16 07:27:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use %meson_build before calling %meson_install. The RPM macros
+  changed in meson 0.55.
+
+-------------------------------------------------------------------
+Thu Aug  6 15:43:07 UTC 2020 - Alexander Graul <alexander.graul@suse.com>
+
+- Initial aml package

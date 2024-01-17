@@ -1,0 +1,9 @@
+<package name="pcapplusplus" project="openSUSE:Factory">
+  <title></title>
+  <description>PcapPlusPlus is a C++ network sniffing and packet parsing and
+manipulation framework.
+
+</description>
+  <devel project="network" package="pcapplusplus"/>
+  <url>https://pcapplusplus.github.io/</url>
+</package>

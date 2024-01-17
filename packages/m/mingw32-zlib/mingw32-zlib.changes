@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Tue Mar 28 04:50:54 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Use absolute path to change into minizp source dir to be independent
+  from the current path used by mingw32-cross-cmake provided
+  macros
+- Drop obsolete build dependencies (boo#1201119)
+
+-------------------------------------------------------------------
+Tue Mar 28 04:48:52 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Use mingw32-cross-cmake package (boo#1209611)
+
+-------------------------------------------------------------------
+Fri Mar 17 08:59:44 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fix not finding zconf.h and libz.dll.a with autotools submodule build
+- Use cmake provided macros
+- Fix warning that package obsoletes itself
+
+-------------------------------------------------------------------
+Mon Jan  2 09:14:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.13:
+  * Fix configure issue that discarded provided CC definition
+  * Correct incorrect inputs provided to the CRC functions
+  * Repair prototypes and exporting of new CRC functions
+  * Fix inflateBack to detect invalid input with distances too far
+  * Have infback() deliver all of the available output up to any error
+  * Fix a bug when getting a gzip header extra field with inflate
+  * Fix bug in block type selection when Z_FIXED used
+  * Tighten deflateBound bounds
+  * Remove deleted assembler code references
+  * Various portability and appearance improvements
+
+-------------------------------------------------------------------
+Mon Apr  4 10:15:19 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to 1.2.12
+  * Fix a deflate bug when using the Z_FIXED strategy that can
+    result in out-of-bound accesses. (bsc#1197459)
+  * Fix a deflate bug when the window is full in deflate_stored().
+  * Speed up CRC-32 computations by a factor of 1.5 to 3.
+  * Use the hardware CRC-32 instruction on ARMv8 processors.
+  * Speed up crc32_combine() with powers of x tables.
+  * Add crc32_combine_gen() and crc32_combine_op() for fast combines. 
+
+-------------------------------------------------------------------
+Mon Jan 10 10:36:41 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add runtime package as dependency to development package to fix
+  running cross compiled application (boo#1194430)
+
+-------------------------------------------------------------------
+Thu Sep 30 15:18:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile for Factory resubmission:
+  * trim rpmlintrc/post-build-checks ignores to minimum
+  * apply descriptions from main zlib.spec
+  * replace old specfile constructs like %defattr
+
+-------------------------------------------------------------------
+Sun May  5 15:02:38 UTC 2019 - ralf.habacker@freenet.de
+
+- migrate to cmake to support static library
+   (Adapting the custom configure script required too much effort)
+- use mingw filename pattern for shared library (libz.dll) to
+   prevent conflicts with preinstalled z libraries on native Windows
+- let zlib1.dll still be existant for compatibility

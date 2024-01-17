@@ -1,0 +1,517 @@
+-------------------------------------------------------------------
+Fri Apr  7 20:30:59 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * RigelEngine-fix-build-with-gcc13.patch
+
+-------------------------------------------------------------------
+Sat Dec 10 19:13:00 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.1
+  Bug fixes
+  * Fixed a crash that could occur in level 1 of episode 2, in
+    theory also in other levels but it was so far only observed in
+    E2L1.
+  * Fixed being able to shoot destructible walls through 4-tile
+    wide walls using the regular shot.
+- Update to version 0.9.0
+  New features
+  * Added a "Classic" gameplay style/mode. It doesn't support
+    widescreen mode or smooth motion, but is 100% accurate to the
+    original. Quick-saving and high-resolution mods are still
+    supported. See Classic Mode vs. Enhanced Mode for more details.
+  * Implemented the gameplay demo (plays during the attract mode
+    loop at the beginning of the game or after waiting for
+    30 seconds in the main menu).
+  * Implemented the original game's cloak effect, replacing the
+    previously used alpha transparency.
+  * Implemented the original game's slide-in animation when
+    showing message boxes.
+  * Added an option to disable the radar overlay when using the
+    "Remixed 1" HUD style.
+  * Added an option to disable aspect ratio correction when using
+    pixel-perfect upscaling (aka integer scaling). This is to
+    allow running RigelEngine on a 4:3 CRT at original (or close
+    to) resolution.
+  * It's now possible to confirm quitting by pressing enter instead
+    of Y (but the latter also still works).
+  * Pressing ESC while in-game now brings up the in-game menu (this
+    was previously only accessible by using a gamepad). Pressing Q
+    now does what ESC used to do, i.e. bringing up the "Quit"
+    dialog without going through the menu.
+  Parity improvements
+  * Fixed (very) minor discrepancies in the color palette.
+  * Added missing horizontal parallax for vertically autoscrolling
+    backdrops.
+  * Fixed oversight in player movement: In the original, Duke cannot
+    move left/right when hanging from a pipe as long as the fire
+    button is held down.
+  * It was possible for an enemy to get hit by multiple player shots
+    per frame, but this isn't possible in the original. Now Rigel
+    doesn't allow that anymore either.
+  * Hint machine messages cannot be interrupted by other messages
+    in the original game, but this was possible in Rigel-now fixed.
+  * Handling of shootable walls now matches the original.
+  * The watchbot (jumpy robot with a big eye) was jumping too
+    frequently, it now matches the original.
+  * Fixed discrepancies in behavior for the wall walker enemy.
+  * Fixed discrepancies in behavior for the green cat/dog creature.
+  * Fixed discrepancies in behavior for the spiked dragon/lizard
+    creature.
+  * Fixed discrepancy in the cooldown period for manual scrolling
+    after firing a shot.
+  * Fixed player starting location being off by one in levels where
+    the player starts out facing left.
+  * Fixed incorrect animation speeds for Rigelatin space ship
+    engine fire, shallow water, and rotating floor spikes.
+  * After being released from their box, certain items have a brief
+    period during which they can't be picked up yet. This was
+    missing in RigelEngine.
+  Bug fixes
+  * Fixed graphical glitches (bright lines appearing next to certain
+    sprites) that could occur on some systems when high-res graphic
+    replacements were used.
+  * Fixed being able to walk through walls under specific
+    circumstances.
+  * In widescreen mode, when using one of the remixed HUD options,
+    the classic HUD will be shown as fallback in case the current
+    screen resolution's aspect ratio is not wide enough for the
+    selected HUD style. In that case, it was possible to walk
+    behind the right side of the HUD (i.e., the gameplay area
+    extended beyond the HUD). This is now fixed.
+  * Framerate drops could cause the game to advance a few frames
+    into the future without respecting player input. This is now
+    improved.
+- Drop patch
+  * fix-build.patch
+
+-------------------------------------------------------------------
+Sun May 29 12:43:47 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.5
+  New features
+  * Implemented a mod manager. Mods can now be organized into
+    directories, and each mod can be enabled/disabled in the
+    options menu. See Modding Support for more details.
+  * Added additional "remixed" HUD styles in widescreen mode.
+  * Added additional upscaling filters: Sharp bilinear, pixel
+    perfect (integer scaling). Note that using mods with high-res
+    replacement graphics currently forces nearest neighbor
+    filtering.
+  * The game now writes a log file into the user directory.
+  * Gamepad controls are now explained in the options menu.
+  * The top-level in-game menu (reachable via gamepad) now shows
+    the current episode, level and difficulty in the title.
+  Improvements
+  * Improved the look of the classic HUD in widescreen mode, by
+    extending the left side to cover the length of the screen.
+  * Reworked quick saving/loading gamepad controls, to make
+    loading quick saves possible without needing to open the menu.
+    The select/back button now acts as a modifier. When pressed
+    together with shoot, a quick save is made. Pressing the
+    button together with jump loads the last quick save.
+  Bug fixes
+  * Fixed destructible level geometry remaining visible after
+    being destroyed in certain cases
+  * Fixed brief camera movement after turning wide-screen mode
+    on/off or changing the window size
+  * Fixed slime blob containers sometimes not animating.
+  * Fixed sprites flickering in and out of existence in certain
+    circumstances
+  * The episode 2 boss would keep flying when killed in mid-flight
+    This is now fixed.
+- Add patch:
+  * fix-build.patch
+
+-------------------------------------------------------------------
+Fri Apr  1 11:34:17 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.4
+  Smooth motion mode improvements
+  * Moving parts of the level (falling rocks, doors, ...) are now
+    moving smoothly as well.
+  * Fixed glitches (jittering top part) with the smash hammer and
+    grabber claw.
+  Modding support improvements
+  * It's now possible to replace STATUS.MNI with a PNG image that
+    can be original or higher resolution. This allows changing
+    various fonts and UI elements, including parts of the HUD.
+  * Replacements for actors used by the HUD can now be high
+    resolution.
+  Other improvements
+  * Improved performance on Raspberry Pi, especially when under
+    water areas are visible.
+  * Blocked off the area to the left of the HUD in widescreen
+    mode to avoid potentially showing out-of-bounds parts of the
+    map.
+  * Further improved digitized sound effect quality by replacing
+    the ADPCM decoding code with the exact same algorithm as
+    implemented in the SoundBlaster firmware, based on disassembly
+    of the latter
+  * Improved the sound test UI
+  Bug fixes
+  * Fixed camera moving too far down when falling into a
+    bottomless pit in widescreen mode
+  * Fixed important parts at the bottom of the level (like lava
+    pools) being hidden in certain cases in widescreen mode (e.g.
+    in E3L1)
+  * Fixed visual glitches on GL ES devices like Raspberry Pi and
+    Odroid Go (overly pixelated backdrop during scrolling, white
+    lines visible next to certain enemies during the damage
+    flash effect)
+  * Fixed missing fade-in effect when using the teleporter
+  * Fixed incorrect rendering of high-res replacement backdrops
+    when vertical auto-scrolling is used
+  * Fixed position of dialog boxes (quit confirm, game paused
+    etc.) in widescreen mode
+  * Fixed visual glitch when entering a menu while smooth motion
+    is enabled
+
+-------------------------------------------------------------------
+Sat Jan  1 17:29:22 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.3
+  New features
+  * Added the Nuked OPL3 AdLib emulator as an alternative to DBOPL
+    (selectable in the Sound options). Nuked OPL3 is more
+    accurate but also uses more CPU. The difference in CPU load has
+    little impact on most systems, but it does matter on low-end
+    devices like Raspberry Pi Zero.
+  * Added a "sound test" button to the Sound options (play a chosen
+    sound effect)
+  Improvements
+  * Improved sound effect quality for certain digital sounds
+    (SB_nn.MNI files in VOC format) by using a more accurate ADPCM
+    decoding algorithm (same as DosBox's SoundBlaster emulation).
+  * Slightly improved sound effect quality for AdLib sounds by
+    running the emulator at the native OPL2 frequency (49716 Hz).
+  * In widescreen mode, the camera now tries to avoid showing
+    out-of-bounds parts of the map if possible, by restricting
+    downward scrolling unless it's necessary to keep the player on
+    screen.
+  * Added 75 to the list of pre-defined FPS limits for the FPS
+    limiter.
+  Bug fixes
+  * Fixed a soft-lock that could occur when killing a ceiling
+    sucker at exactly the same time as it sucked up Duke.
+  * When dying due to shooting an airlock and then respawning at a
+    checkpoint, Duke would remain in the spinning animation. This
+    is now fixed.
+  * Fixed a small visual glitch appearing during the fade-out of
+    the intro movie.
+  * The credits screen shown during the attract mode loop didn't
+    react to any key press aside from ESC, this is now fixed.
+  * Under certain circumstances, the main menu would respond to a
+    keypress that happened during the intro or another menu. This
+    is now fixed.
+  * Fixed visual glitches (bright lines between tiles) that could
+    occur at certain resolutions/window sizes when using high-res
+    replacement graphics.
+  * Fixed an issue that made high-resolution backdrop replacements
+    appear as low resolution under certain circumstances.
+  * Fixed right side of the HUD being partially cut off at certain
+    window sizes/resolutions.
+- Drop not longer needed patches:
+  * fix-find-boost-program_options.patch
+
+-------------------------------------------------------------------
+Sun Nov 21 17:58:50 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.2
+  New features
+  * Added a smooth scrolling and movement mode. When this is
+    enabled, the game is taking full advantage of the display
+    framerate (60 FPS or higher) by interpolating object and
+    camera movement during rendering (internal game logic is
+    still running at 15 FPS). This is currently still work in
+    progress, see known issues.
+  * The engine has a built-in screenshot function now. Press F12
+    to take a screenshot. It will be saved as PNG in either your
+    Duke Nukem II game files directory, or in the user profile
+    directory if the former is not writable.
+  * It's now possible to skip the bonus screen after finishing a
+    level by pressing Enter or Esc (or controller button A or B).
+  * Added an option to the Enhancements tab to skip the intro
+    when RigelEngine starts (same as the -s command line option).
+  * Added information about currently active gamepads to the
+    options menu
+  Improvements
+  * In widescreen mode, out of bounds areas are now drawn in
+    black instead of showing the background.
+  * Replacement backgrounds (mods) can now be wider than the
+    original art they are replacing, and will be displayed
+    correctly (without distortion)
+  * For auto-scrolling backgrounds, the scroll position is now
+    saved/restored when quick saving/loading.
+  * The game will now run even if the intro movie files
+    (NUKEM2.F1, .F2 etc.) are missing. The movies will be
+    skipped instead of exiting the game.
+  * Game physics are more correct now w.r.t. the original code
+    when it comes to items falling down.
+  Bug fixes
+  * Fixed the "wall dance" glitch. This glitch allows Duke to move
+    through walls using a specific sequence of moves.
+  * Fixed spiders sometimes not latching on to Duke when touching
+    him.
+  * Fixed items getting stuck in the ceiling when the box was shot
+    while hidden behind a rock that would later fall down (e.g. in
+    N2).
+  * Fixed missing animation for the Computer merchandise pickup.
+  * Fixed a glitch when starting a level while having high
+    resolution mods enabled, where the graphics would briefly show
+    as low resolution.
+  * Fixed in-game messages not being affected by screen shake when
+    in widescreen mode.
+- Remove patches:
+  * 749.patch
+
+-------------------------------------------------------------------
+Sun Sep 26 09:30:00 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Add patches:
+  * 749.patch  (Fix threads not found on Tumbleweed)
+  * fix-find-boost-program_options.patch
+
+-------------------------------------------------------------------
+Mon Aug 23 19:39:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.1
+  * Fixed laser turrets beings destructible with Duke's regular
+    weapon after loading a quick save.
+
+-------------------------------------------------------------------
+Sun Aug 22 19:40:19 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 0.8.0
+  https://github.com/lethal-guitar/RigelEngine/releases/tag/v0.8.0
+  Highlights:
+  * extended modding support (swap in high fidelity replacements
+    for graphics and sound)
+  * more sound options (AdLib only, combined AdLib/SoundBlaster).
+- Drop patch:
+  * RigelEngine-fix-build.patch (not longer needed)
+
+-------------------------------------------------------------------
+Sun Feb 28 19:21:30 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.7.2
+  New features
+  * Added a "Keyboard controls" tab to the options menu, to allow
+    customizing key bindings for in-game controls. On first launch,
+    key bindings from the original game are imported (if present).
+  * Added the Duke Nukem 3D teaser screen that appears after
+    beating episode 4.
+  * Added the "hype" message shown when launching the game for the
+    first time.
+  * Added switch to intro/demo sequence after sitting on the main
+    menu without any input for a while.
+  Enhancements
+  * Temporary quick saving: Press F5 to quick save, F7 to load. On
+    a gamepad, press "back" (small button left of Xbox
+    button/Dualshock touchpad/...) to quick save, and load via the
+    in-game menu. For now, quick saves are not stored on disk,
+    meaning quitting or finishing the current level will delete the
+    last quick save. Permanently storing quick saves is planned for
+    a future update. Quick saving is an optional enhancement that
+    needs to be enabled in the options menu first.
+  * Improved menu navigation: Pressing ESC (or button B on a
+    gamepad) while on the saved game name entry goes back to the
+    save slot selection, instead of leaving the menu entirely like
+    in the original.
+  Bug fixes
+  * Duke's ship was incorrectly drawn behind other objects like
+    item boxes.
+  * Fixed sporadic time skips that could occur on some platforms
+    (e.g. Odroid Go Advance).
+  * Fixed incorrect starting position for rockets fired downwards
+    by the player while hanging on a pipe.
+  * Fixed incorrect rocket smoke position for downwards-facing
+    rockets fired by Duke.
+  * Fixed a discrepancy in behavior for the Blue Guard
+  * Fixed a player control discrepancy: It was possible to fire a
+    shot during the first frame of a jump and during landing,
+    which is not possible in the original.
+  * Player movement now more accurately matches the original with
+    regards to changing direction while looking up/crouching/aiming
+    down from a pipe.
+* Drop patch (included upstream):
+  * b413133c6b6e7837a4204f347cdaeccd41e187dc.patch
+
+-------------------------------------------------------------------
+Tue Sep  8 13:33:51 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix build on aarch64 and %arm:
+  * b413133c6b6e7837a4204f347cdaeccd41e187dc.patch
+  See: https://github.com/lethal-guitar/RigelEngine/pull/588
+
+-------------------------------------------------------------------
+Sat Sep  5 18:49:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.2
+  General improvements
+  * More robust sound format handling, fixing issues on some
+    platforms where the audio device does not support 16-bit signed
+    integer PCM output (e.g. web browsers)
+  * It's now possible to navigate the options menu using a keyboard
+  Gamepad support improvements
+  * All menus, including the options menu, can now be navigated via
+    gamepad.
+  * The highscore name entry screen can now be exited using a
+    gamepad.
+  * When in-game, the "start" button on a gamepad now brings up a
+    pause menu, allowing saving, loading, modifying options etc.
+    without needing a keyboard.
+  * When saving the game using a gamepad, a name is automatically
+    generated for the saved game to avoid the need for a keyboard.
+    The name contains episode, level, and difficulty.
+  Bug fixes
+  * When dying in a boss level after activating the boss, the music
+    was not reset back to the pre-boss music.
+  * The hint machine could be activated even without having the
+    hint globe (by pressing up)
+- Drop patch:
+  * rigelengine-fix-nlohmann-json-hpp.patch (included upstream)
+
+-------------------------------------------------------------------
+Mon Aug 31 12:23:10 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use openGL ES on %arm and aarch64
+- Fix build on %arm and aarch64 with:
+  * rigelengine-fix-nlohmann-json-hpp.patch
+
+-------------------------------------------------------------------
+Sat Jun 27 10:26:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.1
+  General improvements
+  * It's now possible to set the difficulty when launching into a
+    specific level via the command line
+    (example: -l L2 --difficulty easy)
+  OpenGL support improvements
+  * The minimum required GLSL version is now 130 instead of 150,
+    allowing the game to run on older GPUs which support
+    OpenGL 3.0 but not GLSL 150.
+  * More robust OpenGL initialization error handling
+  * OpenGL ES support was broken and is now fixed, allowing the
+    game to run on some older GPUs and on a Raspberry Pi (not
+    optimized yet)
+  * Fixed a crash when running the game on Linux with Mesa
+    software rendering
+  Bug fixes
+  * Fixed camera position being wrong upon respawning
+  * Fixed missing animation for walking turkey
+
+-------------------------------------------------------------------
+Fri Jun 26 10:43:48 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Adjust BR: cmake >= 3.12 is needed
+- Limit gcc9 usage to Leap 15
+
+-------------------------------------------------------------------
+Sun Jun 14 18:23:48 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Use gcc9 on Leap systems
+
+-------------------------------------------------------------------
+Sat Jun 13 10:42:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.0-beta
+  Overview
+  * As of this release, the full game (Shareware and registered
+    version content) can be completed without any known issues,
+    making RigelEngine feature complete in terms of gameplay.
+  * In addition, gamepad/controller support was further improved.
+  Gamepad support improvements
+  * Force field card readers, door locks, and teleporters can be
+    triggered by moving the analog stick up. Previously, this
+    worked only with the D-Pad
+  * Improved analog stick sensitivity for piloting Duke's ship
+  * It's now possible to use the analog stick for menu navigation,
+    in addition to the D-Pad
+  Bug fixes
+  * It was possible for a ceiling sucker to try to eat Duke while
+    he was already dying, which would lead to a crash. This is now
+    fixed.
+  * Fixed an inconsistency in the way blowing fans work. This was
+    making certain areas in the game harder to reach than intended
+    (e.g. the upper left edge allowing access to a laser pickup
+    near the exit of O7)
+  * Duke would fail to attach to climbing pipes in certain
+    circumstances, making some jumps in O1 harder than intended.
+  * Fixed initial camera offset being slightly wrong on some levels
+  * Fixed red birds sometimes getting stuck after reaching the
+    ground
+  * Fixed some inconsistencies in how the red bird behaves
+  * The water effect shader did not compile for OpenGL ES, making
+    the game unplayable in GL ES mode (e.g. on a Raspberry Pi).
+  * Fixed cloak not being removed when dying while cloaked
+- Update to version 0.5.3-beta
+  General improvements
+  * Debugging functionality is now disabled by default. This
+    prevents accidentally hitting one of the debug feature keys
+    (like single step mode) during gameplay. It can be reenabled
+    with a command line option (-d).
+  Gamepad support improvements
+  * Analog stick movement is more reliable, especially on a PS4
+    ontroller, and there is much less unintended up/down motion
+  * The trigger buttons (LT/RT aka L2/R2) can now be used for
+    jumping/shooting in addition to LB/RB (aka L1/R1)
+  * The game will now detect a gamepad if it's plugged in or
+    turned on during gameplay
+  Bug fixes
+  * Conveyor belts with an upward slope (as found in level N7)
+    did not work
+  * Cloak was not effective when eaten by a snake or ceiling sucker
+  * When cloaked, enemy shots were flying through the player
+    instead of disappearing
+  * Enemy rocket shots were missing acceleration
+  * Explosion effect was missing for enemy rocket shots
+  * Nuclear waste barrels were not affected by gravity or conveyor
+    belts
+  * Inconsistencies in climbing pipe movement which caused
+    problems in level O1 are now fixed
+  * Hover bot spawn machine was spawning indefinitely, instead of
+    stopping after 30 bots
+  * Bonuses 2 and 7 were potentially given incorrectly if the
+    player died before reaching a checkpoint
+  * Watchbot container would disappear if the carrier was
+    destroyed after it had released the container
+  * Stair stepping movement wasn't fully matching the original,
+    causing an inconsistency with the conveyor belts found in O5
+    and O6
+  * Physics for items released from item boxes were incorrect,
+    causing problems in O5 and O6
+
+-------------------------------------------------------------------
+Sat Apr  4 16:31:46 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.2-beta
+  New features
+  * When starting RigelEngine for the first time, a graphical file
+    browser UI is shown. This allows choosing the location of the
+    Duke Nukem II data files required for playing the game. The
+    chosen location is stored in the user profile, so this only
+    has to be done once.
+  * Adds a button to the options menu to choose a different Duke
+    Nukem II installation (only in main menu's options menu).
+  Bug fixes
+  * Added missing rocket fire sounds for episode 3 boss enemy
+  * Stopped explosion sprites from incorrectly appearing in N4
+    and N8
+  * Fix
+    and ed missing water animations
+  * Fixed collision detection for player shots, which makes it
+    possible to properly shoot the first burnable wall in M5 with
+    a rocket launcher
+  * Fixed collision detection for dynamic geometry, which fixed
+    issues in N5
+- Drop patch:
+  * 0001-Fix-building-with-Gcc-9.patch
+
+-------------------------------------------------------------------
+Sat Feb 15 18:08:04 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.5.1-beta
+- Add patch:
+  * RigelEngine-fix-build.patch
+  * 0001-Fix-building-with-Gcc-9.patch

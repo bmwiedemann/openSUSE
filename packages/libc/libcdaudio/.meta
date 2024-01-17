@@ -1,0 +1,7 @@
+<package name="libcdaudio" project="openSUSE:Factory">
+  <title>Functions to Control Operation of a CD-ROM When Playing Audio CDs</title>
+  <description>libcdaudio is a library designed to provide functions to control
+operation of a CD-ROM when playing audio CDs.  It also contains
+functions for CDDB and CD index lookup.</description>
+  <devel project="multimedia:libs" package="libcdaudio"/>
+</package>

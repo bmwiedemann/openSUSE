@@ -1,0 +1,11 @@
+--- src/cddb.c
++++ src/cddb.c
+@@ -2348,7 +2348,7 @@
+     fgets(outbuffer, 512, cddb_entry);
+     send(sock, outbuffer, strlen(outbuffer), 0);
+   }
+-   
++  fclose(cddb_entry); 
+   cddb_read_line(sock, inbuffer, 512);
+   if(strncmp(inbuffer + 9, "200", 3) != 0) {
+     if(use_cddb_message)

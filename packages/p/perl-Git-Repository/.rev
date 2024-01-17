@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>452f0f48714b77bd6fb3acf1469c117a</srcmd5>
+    <version>1.324</version>
+    <time>1596116783</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submit to Factory</comment>
+    <requestid>823133</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>10206d39b32e7205d7470d450216bd0a</srcmd5>
+    <version>1.324</version>
+    <time>1613774699</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build issues with git 2.30 (git-2.30.0.patch)
+</comment>
+    <requestid>873662</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>681aec6b1b00bc9805a559c4e1cc919a</srcmd5>
+    <version>1.325</version>
+    <time>1622664732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896826</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>92d5c46db1931d844f963babd117680f</srcmd5>
+    <version>1.325</version>
+    <time>1670068114</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix from https://github.com/book/Git-Repository/pull/22 to work
+  around git 2.38.1's new default behaviour (22.patch)</comment>
+    <requestid>1039783</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6ad299b267c472f7a721feabdd81f618</srcmd5>
+    <version>1.325</version>
+    <time>1679766968</time>
+    <user>dimstar_suse</user>
+    <comment>- add patch git-2.40.0.patch to adapt to git 2.40 changes
+</comment>
+    <requestid>1074316</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="octave-forge-data-smoothing" project="openSUSE:Factory">
+  <title></title>
+  <description>Algorithms for smoothing noisy data.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-data-smoothing"/>
+</package>

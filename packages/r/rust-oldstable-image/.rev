@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e8fefd43d0f2450cb985abcfc90f0ee7</srcmd5>
+    <version>unknown</version>
+    <time>1688476969</time>
+    <user>dimstar_suse</user>
+    <comment>Add rolling rust (BCI based) container</comment>
+    <requestid>1096691</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d372778a94b3f18b620291228668bb47</srcmd5>
+    <version>unknown</version>
+    <time>1689786710</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1099517</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a4ffee65e9533f97fa2befaa834e070e</srcmd5>
+    <version>unknown</version>
+    <time>1690987852</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1101932</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c980175d6f93df64659897199429f25b</srcmd5>
+    <version>unknown</version>
+    <time>1696188126</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1114208</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>319f6078c7f3510273d3ba42d8b2ceb7</srcmd5>
+    <version>unknown</version>
+    <time>1697390835</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1117740</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>a10ef90adc10d0f92f25f5885cf073ac</srcmd5>
+    <version>unknown</version>
+    <time>1701378008</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1129680</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>f32fb248fb3a4c1e8ade20473cbcfaa7</srcmd5>
+    <version>unknown</version>
+    <time>1704281539</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1136369</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>77d87deb498e194a08bfe58993ac1593</srcmd5>
+    <version>unknown</version>
+    <time>1705003531</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1138086</requestid>
+  </revision>
+</revisionlist>

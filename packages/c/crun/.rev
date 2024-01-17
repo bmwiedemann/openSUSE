@@ -1,0 +1,171 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>10da564c0fbc942b45935923975ab0db</srcmd5>
+    <version>0.18</version>
+    <time>1616598946</time>
+    <user>dimstar_suse</user>
+    <comment>crun is a simple and fast OCI runtime, written in C. It is build (in this package) with libkrun support so that we can run OCI container images as lightweight VMs, directly via podman</comment>
+    <requestid>880784</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9548a11a817d1db555bd5e2adc71e00c</srcmd5>
+    <version>0.21</version>
+    <time>1628282699</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>910492</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>112392971fdc21617ea3b57a9153a59d</srcmd5>
+    <version>0.21</version>
+    <time>1628675228</time>
+    <user>RBrownSUSE</user>
+    <comment>- Drop libkrun-dlopen.patch and adapt to libkrun new package name,
+  it is a plugin, not a regular shared library.
+</comment>
+    <requestid>911076</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>194e607fcef861c182baa7c7a47bbe2f</srcmd5>
+    <version>0.21</version>
+    <time>1629917881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914071</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>b1eade84a7227f56ecb89ff2406f14ac</srcmd5>
+    <version>0.21</version>
+    <time>1636498484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930201</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8fb6350d3780b021396ab0912aaaf75f</srcmd5>
+    <version>1.4.4</version>
+    <time>1649876695</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969579</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>05c7f61850f1b18a26defba32b4545d0</srcmd5>
+    <version>1.4.5</version>
+    <time>1652188353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976025</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>884d14ce2751704c68bec2c14bcefe1e</srcmd5>
+    <version>1.6</version>
+    <time>1664553482</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007084</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>55f30b6ce22050b7b319fea3561c46a1</srcmd5>
+    <version>1.7.2</version>
+    <time>1670514647</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041192</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>054fcb8a03b760d4d4eac56fb4633967</srcmd5>
+    <version>1.8.1</version>
+    <time>1677794661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068702</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fefb3ccf337566549678d710c89cef0f</srcmd5>
+    <version>1.8.3</version>
+    <time>1680018706</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.3:
+  * update: initialize the rt limits only on cgroup v1.
+  * lua bindings for libcrun.
+  * wasmedge: add current directory to preopen paths.
+  * linux: inherit parent mount flags when making a path masked.
+  * libcrun: custom annotation to set the scheduler for the
+    container process.
+  * cgroup: fallback to blkio.bfq files if blkio is not available
+    on cgroup v1.
+  * cgroup: initialize rt limits when using systemd.
+  * tty: chown the tty to the exec user instead of the user
+    specified to create the container.
+  * cgroup: fallback to create cgroupfs as sibling of the current
+    cgroup if there is none specified and it cannot be created in
+    the root cgroup.
+- add keyring for GPG validation</comment>
+    <requestid>1074967</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>28eea77cdda2e4ac9609f91a4ea49e5a</srcmd5>
+    <version>1.8.5</version>
+    <time>1686927224</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093193</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ba96f8bf7757f2a84d2a3a55c4d6f76a</srcmd5>
+    <version>1.8.6</version>
+    <time>1692795456</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105192</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>e8304c1d1f3492e276779e42209bbb2c</srcmd5>
+    <version>1.8.6</version>
+    <time>1694114045</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109555</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e20b5fad55d199df79331a8a378ab5de</srcmd5>
+    <version>1.9</version>
+    <time>1694630749</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110850</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>5313073c698811ecb3927abed6fa1917</srcmd5>
+    <version>1.9</version>
+    <time>1697061383</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116922</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d18e5754a2c6475a6b1aeb583b7fed23</srcmd5>
+    <version>1.9.2</version>
+    <time>1697231712</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117581</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c1ace47f2cb2e3ed8efdd921eaf3cadf</srcmd5>
+    <version>1.11.1</version>
+    <time>1700162830</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126650</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d0542b9dbc5a6d0df3114d870606b865</srcmd5>
+    <version>1.12</version>
+    <time>1701792054</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130688</requestid>
+  </revision>
+</revisionlist>

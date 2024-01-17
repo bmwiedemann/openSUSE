@@ -1,0 +1,13 @@
+Index: proxy.py-2.4.3/tests/http/web/test_web_server.py
+===================================================================
+--- proxy.py-2.4.3.orig/tests/http/web/test_web_server.py
++++ proxy.py-2.4.3/tests/http/web/test_web_server.py
+@@ -178,7 +178,7 @@ class TestWebServerPluginWithPacFilePlug
+             self.protocol_handler.request.state,
+             httpParserStates.COMPLETE,
+         )
+-        self._conn.send.called_once_with(
++        self._conn.send(
+             build_http_response(
+                 200,
+                 reason=b'OK',

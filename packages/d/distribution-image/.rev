@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b2cedd61cb754650fa499184b54b7f5c</srcmd5>
+    <version>2023</version>
+    <time>1688660953</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097018</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4521ff63edafe9c322417b316996876c</srcmd5>
+    <version>2023</version>
+    <time>1696269869</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1114173</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1c85d6f300431fedc3582cd0247300b5</srcmd5>
+    <version>2024</version>
+    <time>1704281479</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1136333</requestid>
+  </revision>
+</revisionlist>

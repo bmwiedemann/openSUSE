@@ -1,0 +1,5 @@
+<package name="gudev-sharp" project="openSUSE:Factory">
+  <title>.NET/C# Bindings for GUDev</title>
+  <description>C#/CLI bindings for GUDev</description>
+  <devel project="Mono:Factory" package="gudev-sharp"/>
+</package>

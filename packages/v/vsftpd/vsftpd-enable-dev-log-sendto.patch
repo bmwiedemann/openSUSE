@@ -1,0 +1,33 @@
+From: mvyskocil@suse.com
+Subject: enable sendto to /dev/log
+
+vsftpd is killed once a file is downloaded and it try to log the success to
+/dev/log. This patch enables a sendto on fd 4, in a case the syslog logging is
+enabled.
+
+Fixes: https://bugzilla.novell.com/show_bug.cgi?id=812406
+
+---
+ seccompsandbox.c |   17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+Index: vsftpd-3.0.2/seccompsandbox.c
+===================================================================
+--- vsftpd-3.0.2.orig/seccompsandbox.c
++++ vsftpd-3.0.2/seccompsandbox.c
+@@ -503,6 +501,15 @@ seccomp_sandbox_setup_postlogin(const st
+       allow_nr(__NR_chmod);
+     }
+   }
++
++  /*
++   * MV: this enables logging to the syslog - the vsf_log_do_log are in postlogin.c and privops.c, but hopefully this is enough
++   */
++  if (tunable_syslog_enable)
++  {
++    allow_nr_1_arg_mask(__NR_sendto, 1, 4);
++  }
++
+ }
+ 
+ void

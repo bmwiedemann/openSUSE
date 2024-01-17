@@ -1,0 +1,44 @@
+Index: src/diagnose.cpp
+===================================================================
+--- src/diagnose.cpp.orig
++++ src/diagnose.cpp
+@@ -380,10 +380,10 @@ RepairCandidate DiagnoseParser::ErrorRec
+ /*****************************************************************/
+ RepairCandidate DiagnoseParser::PrimaryPhase(TokenObject error_token)
+ {
+-    PrimaryRepairInfo repair,
+-                      new_repair;
++    PrimaryRepairInfo repair      = { ERROR_CODE, 0, 0, 0, 0 };
++    PrimaryRepairInfo new_repair  = { ERROR_CODE, 0, 0, 0, 0 };
+ 
+-    RepairCandidate candidate;
++    RepairCandidate candidate = { 0, 0 };
+ 
+     repair.distance = 0;
+     repair.misspell_index = 0;
+@@ -1449,8 +1449,10 @@ bool DiagnoseParser::SecondaryCheck(int 
+ /*****************************************************************/
+ RepairCandidate DiagnoseParser::SecondaryPhase(TokenObject error_token)
+ {
+-    SecondaryRepairInfo repair,
+-                          misplaced;
++    SecondaryRepairInfo repair    = { ERROR_CODE, 0, 0, 0, 0, 0, false };
++    SecondaryRepairInfo misplaced = { ERROR_CODE, 0, 0, 0, 0, 0, false };
++
++    
+ 
+     RepairCandidate candidate;
+ 
+Index: src/parser.cpp
+===================================================================
+--- src/parser.cpp.orig
++++ src/parser.cpp
+@@ -506,7 +506,7 @@ void Parser::RepairParse(TokenObject cur
+ //
+ void Parser::ErrorRepair(TokenObject error_token)
+ {
+-    SecondaryRepairInfo repair;
++    SecondaryRepairInfo repair = { ERROR_CODE, 0, 0, 0, 0, 0, false };
+ 
+     repair.code = ERROR_CODE;
+     do

@@ -1,0 +1,7 @@
+<package name="smc-tools" project="openSUSE:Factory">
+  <title>smc-tools - Shared Memory Communication tools</title>
+  <description>Shared Memory Communication via RDMA (SMC) is a socket over RDMA communication protocol that allows existing TCP socket applications to transparently benefit from RDMA when exchanging data over an RDMA over Converged Ethernet (RoCE) network.
+
+The tools provided in this package allow existing TCP applications to use a RoCE network without needing to make changes in them.</description>
+  <devel project="network" package="smc-tools"/>
+</package>

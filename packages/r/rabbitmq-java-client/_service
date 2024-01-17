@@ -1,0 +1,23 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/rabbitmq/rabbitmq-java-client.git</param>
+		<param name="revision">rabbitmq_v3_5_0</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">rabbitmq_v(\d+)_(\d+)_(\d+)</param>
+		<param name="versionrewrite-replacement">\1.\2.\3</param>
+	</service>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/rabbitmq/rabbitmq-codegen.git</param>
+		<param name="revision">rabbitmq_v3_5_0</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">rabbitmq_v(\d+)_(\d+)_(\d+)</param>
+		<param name="versionrewrite-replacement">\1.\2.\3</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

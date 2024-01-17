@@ -1,0 +1,5 @@
+<package name="distribution-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed OCI Container Registry using the OCI Image Specification (Distribution) Container Image</title>
+  <description>Open Source Registry implementation using the OCI Distribution Specification</description>
+  <devel project="devel:BCI:Tumbleweed" package="distribution-image"/>
+</package>

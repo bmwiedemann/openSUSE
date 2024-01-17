@@ -1,0 +1,10 @@
+<package name="zsh" project="openSUSE:Factory">
+  <title>Shell with comprehensive completion</title>
+  <description>Zsh is a UNIX command interpreter (shell) that resembles the Korn shell
+(ksh). It is not completely compatible. It includes many enhancements,
+notably in the command-line editor, options for customizing its
+behavior, file name globbing, features to make C-shell (csh) users feel
+at home, and extra features drawn from tcsh (another `custom' shell).
+Zsh is well known for its command line completion.</description>
+  <devel project="shells" package="zsh"/>
+</package>

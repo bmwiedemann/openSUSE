@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Thu Sep 28 10:23:00 UTC 2017 - badshah400@gmail.com
+
+- Update to version 1.2.0:
+  * Most of the mapping functions are
+    now supported: abs, acosh, acos, all, and, angle, any, arg,...
+    They are simple proxies to the corresponding Octave functions.
+  * The display function now supports 3.8, 4.0, 4.2, and upcoming
+    4.4 Octave major release.
+  * if some specific output format is requested, it must come
+    first, e.g. x.dataframe([1:10]) instead of x([1:10].dataframe.
+  * a longstanding bug on default separator was corrected. If more
+    than one are used, they must be grouped into a cellstr instead
+    of a str.
+  * a dataframe may now contain 'pages' corresponding to a third
+    dimension. The inner mechanism uses a "copy-on-write" scheme
+    and avoid duplicating content repeated over many pages.
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 1.1.0
+

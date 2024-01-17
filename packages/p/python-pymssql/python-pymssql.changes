@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Thu Dec 14 13:31:54 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.11
+  General
+  * Add datetime.date to SQLDATE conversion.
+  * Add encryption parameter to connect.
+  Bug fixes
+  * Fix version parsing in development.
+  * Add missing charset parameter when formatting query.
+  * Use four digits for the year in SP args binding.
+  * Fix convert_python_value to work with datetime.date.
+
+-------------------------------------------------------------------
+Mon Oct 30 20:52:41 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.10
+  * Add python 3.12 support.
+  * Do not try to drop temporary tables in clear_db().
+  * test_sqlalchemy: update for compatibility with SQLAlchemy >2.0.
+- Update to version 2.2.9
+  * Update changelog.
+
+-------------------------------------------------------------------
+Sun Aug 13 19:43:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.8:
+  * Compatibility with Cython.
+  * Fix build on Alpine Linux (fix #762).
+  * Fill in result description in cursor.callproc (fix #772).
+  * Add explicit link to krb5 (fix #776)
+  * Added bytes and bytearray to support bulk_copy types, thanks
+    to steve-strickland (#756).
+  * Fix UnicodeEncodeError for non-ascii database name (#484).
+  * Fix pymssql.Binary (#504).
+  * On macOS check for FreeTDS in homebrew prefix when building.
+  * Some documentation changes.
+  * Drop support for Python2 and Python3 < 3.6.
+  * Fixed a deadlock caused by a missing release of GIL (#540),
+  * Prevents memory leak on login failure. Thanks to caogtaa and
+    Simon.StJG (PR-690).
+  * Fix check for TDS version (#652 and #669).
+
+-------------------------------------------------------------------
+Wed Oct 28 21:39:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.5
+  * Revert deprecation
+  * Support Python-3.8. Update tests for Python-3.8 compatibility.
+  * Use correct language level for building Cython extension.
+  * Fix FreeTDS version checks. Add check for version 7.4.
+  * Drop bundled FreeTDS-0.95 binaries.
+
+-------------------------------------------------------------------
+Tue Oct  2 13:05:31 UTC 2018 - mardnh@gmx.de
+
+- Convert to singlespec
+- Update to version 2.1.4
+
+-------------------------------------------------------------------
+Fri Apr 10 06:50:00 UTC 2015 - hanke@rzg.mpg.de
+
+- Update to version 2.1.1
+  * Buildrequire python-setuptools-git
+
+-------------------------------------------------------------------
+Thu Dec  5 01:17:46 UTC 2013 - termim@gmail.com
+
+- Update to release version (2.0.0)
+
+-------------------------------------------------------------------
+Thu Oct 24 11:12:09 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Wed Jun 19 12:41:25 UTC 2013 - speilicke@suse.com
+
+- Many spec fixes
+
+-------------------------------------------------------------------
+Wed Jun 12 02:34:06 UTC 2013 - termim@gmail.com
+
+- Initial checkin
+
+

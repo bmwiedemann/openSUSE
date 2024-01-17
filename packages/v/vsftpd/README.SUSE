@@ -1,0 +1,12 @@
+vsftpd-3.0.0 made the listen mode default. In order to maintain backward
+compatibility, default /etc/vsftpd.conf in SUSE contains
+
+listen=NO
+listen_ipv6=YES
+
+if you plan to use xinetd (/etc/xinetd.d/vsftp) you don't need to change
+anything by default, but if you have ipv6 available you have to set
+listen_ipv6=NO too in order for xinetd to work.
+Alternatively you can also use systemd socket service that listens on
+port 21 and starts the server like xinetd would. This service does
+not require you to change ANY variable in the /etc/vsftpd.conf.

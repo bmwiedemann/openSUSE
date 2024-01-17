@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Sun Nov 26 13:52:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.3:
+  * Fixed a bug introduced in v1.14.0 where non-ASCII characters
+    stopped being accepted in image names and descriptions.
+    This bug only affected UNIX-like systems that use `signed char`
+    e.g. x86 Linux systems.
+  * Fixed a bug introduced in v1.14.0 where a crash would
+    sometimes occur
+  * Fixed an issue where some WIM images written by wimlib
+    weren't accepted by some MS software versions.
+  * Commands passed to wimupdate on standard input are now
+    interpreted as UTF-8 or UTF-16LE (autodetected), just like
+    wimcapture config files and wimextract path list files.
+
+-------------------------------------------------------------------
+Mon Jun  5 05:46:25 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- update to 1.14.1:
+  * fuse3 support
+  * wimupdate now supports the --ref option for updating delta WIM
+  * better default behavior when converting to and from solid
+    archives: wimoptimize --solid, and wimoptimize --compress=LZX
+
+-------------------------------------------------------------------
+Mon Sep 12 19:54:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.6:
+  * wimsplit no longer prints a success message on failure.
+  * wimlib_iterate_dir_tree() no longer hashes files that haven't yet been
+  * written to the WIM file.
+  * Reduced the maximum number of file descriptors that wimlib can use when
+  * extracting files from a WIM image on macOS.
+  * The files that used the CC0 public domain dedication now use the MIT
+  * license instead.
+  * Removed some configuration options (--disable-assertions,
+  * --disable-error-messages, and --disable-multithreaded-compression)
+  * that probably weren't being used by anyone.
+
+-------------------------------------------------------------------
+Mon Jan 24 22:14:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.5:
+  * Exporting "all" images from a WIM file no longer fails if multiple
+    images in that WIM file have the same name.
+  * wimlib now warns rather than aborts if two files have the same SHA-1
+    hash but different sizes.
+  * Fixed build errors with the latest version of Mingw-w64.
+
+-------------------------------------------------------------------
+Mon Jul  5 07:36:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.4:
+  * wimsplit now prints progress messages regularly rather than just once
+    per WIM part.
+
+  * Added support for a data recovery mode which causes files to be
+    extracted even if they are corrupted.  The option is --recover-data for
+    wimapply and wimextract, and WIMLIB_EXTRACT_FLAG_RECOVER_DATA for the
+    library.  Note that this option won't help with all types of corruption;
+    some types of corruption will still cause a fatal error.
+
+-------------------------------------------------------------------
+Thu Nov 26 19:01:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.13.3:
+  * windows specific fixes
+  * clarified license text
+
+-------------------------------------------------------------------
+Sun Aug 16 11:43:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.13.2:
+  Prevented miscompilation with gcc 10 at -O3
+  Avoided some compiler warnings with gcc 9 and later.
+  The 'mkwinpeimg' script now also looks for syslinux modules in
+  /usr/share/syslinux, to handle where openSUSE installs them.
+  Removed obsolete packaging files from the source tree.
+- remove mkwinpeimg-syslinux-modules-may-be-in-usr-share-sysl.patch (upstream)
+
+-------------------------------------------------------------------
+Thu Jul 18 06:27:58 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- add mkwinpeimg-syslinux-modules-may-be-in-usr-share-sysl.patch
+
+-------------------------------------------------------------------
+Fri May 31 09:55:14 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to v1.13.1 stable
+
+-------------------------------------------------------------------
+Wed Apr 24 12:49:22 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Initial packaging for openSUSE

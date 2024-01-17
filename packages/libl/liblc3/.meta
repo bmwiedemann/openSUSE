@@ -1,0 +1,9 @@
+<package name="liblc3" project="openSUSE:Factory">
+  <title>Low Complexity Communication Codec (LC3)</title>
+  <description>Low Complexity Communication Codec (LC3).
+The LC3 is an low latency audio codec.
+
+</description>
+  <devel project="multimedia:libs" package="liblc3"/>
+  <url>https://github.com/google/liblc3</url>
+</package>

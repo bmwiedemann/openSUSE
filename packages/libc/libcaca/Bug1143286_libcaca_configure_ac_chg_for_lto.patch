@@ -1,0 +1,36 @@
+From: Michel Normand <normand@linux.vnet.ibm.com>
+Subject: Bug1143286 libcaca configure ac chg for lto
+Date: Thu, 01 Aug 2019 11:43:35 +0200
+
+Bug1143286 libcaca configure ac chg for lto
+
+bypass to avoid  PowerPC/ARM build failures
+now that LTO is default build option for openSUSE.
+
+Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
+---
+ configure.ac |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: libcaca-0.99.beta20/configure.ac
+===================================================================
+--- libcaca-0.99.beta20.orig/configure.ac
++++ libcaca-0.99.beta20/configure.ac
+@@ -146,7 +146,7 @@ AC_COMPILE_IFELSE(
+  [AC_MSG_RESULT(no)])
+ 
+ AC_MSG_CHECKING(for fsin/fcos)
+-AC_COMPILE_IFELSE(
++AC_LINK_IFELSE(
+  [AC_LANG_PROGRAM(
+    [[]],
+    [[double x; asm volatile("fsin; fcos":"=t"(x):);]])],
+@@ -155,7 +155,7 @@ AC_COMPILE_IFELSE(
+  [AC_MSG_RESULT(no)])
+ 
+ AC_MSG_CHECKING(for fldln2/fxch/fyl2x)
+-AC_COMPILE_IFELSE(
++AC_LINK_IFELSE(
+  [AC_LANG_PROGRAM(
+    [[]],
+    [[double x; asm volatile("fldln2; fldln2; fxch; fyl2x":"=t"(x):);]])],

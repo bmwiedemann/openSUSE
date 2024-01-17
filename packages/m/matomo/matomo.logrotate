@@ -1,0 +1,10 @@
+/var/log/matomo/matomo-archive.log
+{
+su @APACHE_USER@ @APACHE_GROUP@
+rotate 30
+daily
+missingok
+notifempty
+delaycompress
+compress
+}

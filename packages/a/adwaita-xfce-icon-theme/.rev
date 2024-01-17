@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d34d699d05458ec9bd636327f1f1f27f</srcmd5>
+    <version>0.0.1+git0.e151182</version>
+    <time>1656511276</time>
+    <user>dimstar_suse</user>
+    <comment>replacement for openSUSE-xfce-icon-theme</comment>
+    <requestid>985559</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c1706822014fc6e59977e7f229783510</srcmd5>
+    <version>0.0.2+git0.ee9b710</version>
+    <time>1656865624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986457</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6ff69dc4ed596af2474cb1ac4e8a2ed8</srcmd5>
+    <version>0.0.3+git0.e0f73b9</version>
+    <time>1674143061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.3+git0.e0f73b9:
+  * Add properly scaled phone icon
+  * Fix up entries in index.theme (forwarded request 1059531 from mauriziogalli)</comment>
+    <requestid>1059534</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7a901c719ed8b5ebd5251d2f2d9e6f58</srcmd5>
+    <version>0.0.3+git0.e0f73b9</version>
+    <time>1676149083</time>
+    <user>dimstar_suse</user>
+    <comment>- Dependency adwaita-icon-theme needs to be explicit (forwarded request 1064419 from mauriziogalli)</comment>
+    <requestid>1064422</requestid>
+  </revision>
+</revisionlist>

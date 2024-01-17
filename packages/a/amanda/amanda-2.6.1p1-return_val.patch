@@ -1,0 +1,12 @@
+Index: perl/Amanda/MainLoop.swg
+===================================================================
+--- perl/Amanda/MainLoop.swg.orig
++++ perl/Amanda/MainLoop.swg
+@@ -362,6 +362,7 @@ typedef struct {
+ 	/* Constructor: use one of the package-level functions, below */
+ 	amglue_Source() {
+ 	    die("Amanda::MainLoop::Source is an abstract base class");
++	    return NULL;
+ 	}
+ 
+ 	/* Destructor: just unref the object */

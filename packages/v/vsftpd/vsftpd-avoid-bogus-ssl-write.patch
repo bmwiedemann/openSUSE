@@ -1,0 +1,19 @@
+Index: vsftpd-3.0.2/utility.c
+===================================================================
+--- vsftpd-3.0.2.orig/utility.c
++++ vsftpd-3.0.2/utility.c
+@@ -104,11 +104,13 @@ bug(const char* p_text)
+   {
+     if (s_p_sess->ssl_slave_active)
+     {
++      /* Write error through ssl_slave process */
+       priv_sock_send_cmd(s_p_sess->ssl_consumer_fd, PRIV_SOCK_WRITE_USER_RESP);
+       priv_sock_send_buf(s_p_sess->ssl_consumer_fd, text_buffer, text_len);
+     }
+-    else
++    else if (s_p_sess->p_control_ssl)
+     {
++      /* From ssl_slave write the message directly */
+       (void)ssl_write(s_p_sess->p_control_ssl, text_buffer, text_len);
+     }
+   }

@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cbd217ae4cc466e0a0253fdd9cfbba87</srcmd5>
+    <version>3.3.4</version>
+    <time>1405685042</time>
+    <user>coolo</user>
+    <comment>Another not submitted package in Java:packages</comment>
+    <requestid>241420</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>cbd217ae4cc466e0a0253fdd9cfbba87</srcmd5>
+    <version>3.3.4</version>
+    <time>1409303159</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d8c161e254c9ac4d35ed08aacdcce4e2</srcmd5>
+    <version>3.5.0</version>
+    <time>1426680309</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290945</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ec057a5f171747fb0cdd693010e42051</srcmd5>
+    <version>3.5.0</version>
+    <time>1496327535</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496732</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>5a16c1c0e2702ab5937eae84d17c278d</srcmd5>
+    <version>3.5.0</version>
+    <time>1648063090</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964131</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>ecb4cad3d97d09f68e845c9a73ac9e37</srcmd5>
+    <version>3.5.0</version>
+    <time>1666011515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1012067</requestid>
+  </revision>
+</revisionlist>

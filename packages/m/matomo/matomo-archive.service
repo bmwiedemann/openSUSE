@@ -1,0 +1,10 @@
+[Unit]
+Description=Auto-Archiving of matomo Reports
+
+[Service]
+Type=oneshot
+User=@APACHE_USER@
+Group=@APACHE_GROUP@
+ExecStart=/bin/bash -ce "/usr/bin/php @APACHE_SERVERROOT@/matomo/console core:archive --url=http://localhost/matomo/ >> /var/log/matomo/matomo-archive.log 2>&1"
+#StandardOutput=file:/var/log/matomo/matomo-archive.log
+#StandardError=file:/var/log/matomo/matomo-archive.log

@@ -1,0 +1,12 @@
+<package name="newsboat" project="openSUSE:Factory">
+  <title>RSS/Atom Feed Reader for Text Terminals</title>
+  <description>newsboat is an open-source RSS/Atom feed reader for text terminals. It runs
+on Linux, FreeBSD, Mac OS X and other Unix-like operating systems.
+newsboat's configurability and vast number of features make it a
+perfect choice for people that need a slick and fast feed reader that can
+be completely controlled via keyboard.
+
+</description>
+  <devel project="network:utilities" package="newsboat"/>
+  <url>https://newsboat.org</url>
+</package>

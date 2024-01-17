@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Tue Jun  7 20:17:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.0
+  * As of Dash 2, the development of dash-html-components has been
+    moved to the main Dash repo
+  * This package exists for backward compatibility as Dash still
+    lists it as requirement. It has no further functionality than
+    displaying a deprecation message. 
+
+-------------------------------------------------------------------
+Fri Apr  9 21:25:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.1.3
+  * #179 - Fixes #77 Added allow and referrerPolicy properties to
+    html.Iframe
+  * #178 - Fix #161 data property, and fix #129 obsolete,
+    deprecated, and discouraged elements. No elements were
+    removed, but comments were added to the documentation about
+    these elements detailing their limitations.
+  * #169 - part of fixing dash import bug
+     https://github.com/plotly/dash/issues/1143
+- Skip python36 buildrequire for pandas tests: No numpy, no pandas 
+  (we don't test it right now anyway)
+
+-------------------------------------------------------------------
+Sun Jan  3 20:01:14 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Cleanup Andy's version for submission
+  * stay on (non-tagged) github archive
+  * drop requirement on dash (build cycle dependency)
+
+-------------------------------------------------------------------
+Mon Dec 21 12:29:55 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.1.1.
+  * Dash.jl Julia component generation
+
+-------------------------------------------------------------------
+Wed Nov 11 15:23:42 UTC 2020 - Marketa Machova <mmachova@suse.com>
+
+- Update to 1.1.0
+  * Add support for Dash.jl Julia component generation.
+
+-------------------------------------------------------------------
+Sat Apr 18 20:54:40 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+
+- update to version 1.0.3:
+  * Updated
+    + Update generated props
+    + Update generated R artifacts
+
+-------------------------------------------------------------------
+Tue Mar 31 07:11:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix buildrequires
+- Install license
+- Run tests
+
+-------------------------------------------------------------------
+Mon Mar 30 02:50:26 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.0.2

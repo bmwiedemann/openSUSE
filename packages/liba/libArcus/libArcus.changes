@@ -1,0 +1,245 @@
+-------------------------------------------------------------------
+Wed Oct 11 07:18:50 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add Conflict between libArcus3 and libArcus1: (libArcus.so.1.1.0
+  symlinks to libArcus.so.3), which seems 'odd' but is not invalid
+  per se. libArcus-lulzbot is a fork of this library, which should
+  probably better have been renamed.
+
+-------------------------------------------------------------------
+Tue Sep 26 15:32:19 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Reverting previous "fix", issues caused by improper named lulzbot
+  libArcus fork.
+  * Deleting set-soname.patch (which does not even set the soname,
+    but renames the version link.
+
+-------------------------------------------------------------------
+Wed Sep 13 10:53:44 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- fix wrong library versioning 3 -> 1.1.0. (bsc#1215305)
+  Also solves a file conflict to libArcus-lulzbot
+  Adding set-soname.patch
+
+-------------------------------------------------------------------
+Thu Jul  6 14:26:42 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove explicit --std=c++11 in example compile flags, keep c++17
+  default required by absl.
+
+-------------------------------------------------------------------
+Sat Jul  1 00:14:47 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Depend on python3-sip4-devel explicitly, as it no longer
+  provides python3-sip-devel.
+
+-------------------------------------------------------------------
+Tue Jun 21 15:49:04 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add egg-info, to enable automatic creation of versioned python
+  dependency provides.
+
+-------------------------------------------------------------------
+Sat Feb 26 14:19:47 UTC 2022 - Max Lin <mlin@suse.com>
+
+- Use BuildRequires python3-qt5-sip for Leap 15.4
+
+-------------------------------------------------------------------
+Sun Feb  6 21:15:44 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.13.1
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.13.1
+
+-------------------------------------------------------------------
+Sun Jan 30 08:43:54 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with protobuf >= 3.18, add
+  0001-Use-single-parameter-SetTotalBytesLimit-fix-protobuf.patch
+
+-------------------------------------------------------------------
+Fri Jan 14 13:59:54 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 4.13.0
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.13.0
+- Delete 0001-Fix-build-with-Python-3.8-and-no-undefined-linker-flags.patch
+- Refresh libArcus-3.5.1-PyQt5.sip.patch
+
+-------------------------------------------------------------------
+Mon Apr 26 19:31:52 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.9.0
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.9
+
+-------------------------------------------------------------------
+Sun Nov 22 18:25:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Require the sip module (under PyQt5.sip namespace as per patch)
+
+-------------------------------------------------------------------
+Sat Nov 21 00:38:15 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Depend on python3-sip < 5, as libArcus build is incompatible with
+  SIP 5 and upstream currently has no intention to update, see
+  gh#Ultimaker/libSavitar#26.
+- Move the python bindings to a separate package which can be used
+  as a dependency elsewhere.
+
+-------------------------------------------------------------------
+Tue Nov 10 18:06:37 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.8.0
+  * no code changes, just some build system churn.
+- Fix build error with Python 3.8, add
+  0001-Fix-build-with-Python-3.8-and-no-undefined-linker-flags.patch
+
+-------------------------------------------------------------------
+Tue Sep 15 21:08:49 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.7.1
+  * Do not link to libpython with Python >= 3.8
+
+-------------------------------------------------------------------
+Mon Aug 17 21:16:30 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.6.2
+  * no code changes
+
+-------------------------------------------------------------------
+Sun Jun  7 17:55:54 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to version 4.6.1
+  * no code changes
+- Fix Arcus python import error with current PyQt5, add
+  libArcus-3.5.1-PyQt5.sip.patch
+
+-------------------------------------------------------------------
+Thu Jan  2 11:38:33 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to version 4.4.1
+  * no code changes
+
+-------------------------------------------------------------------
+Fri Nov 22 14:13:57 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 4.4.0
+  obsoletes
+   0001-Install-the-Python-extension-module-to-Python-sitear.patch
+   0002-Fix-Python3_SITEARCH-for-old-cmake.patch
+
+-------------------------------------------------------------------
+Sun Oct 13 00:26:40 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Make sure the package actually builds, add
+  0001-Install-the-Python-extension-module-to-Python-sitear.patch
+  0002-Fix-Python3_SITEARCH-for-old-cmake.patch
+
+-------------------------------------------------------------------
+Fri Sep 27 06:25:31 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 4.3.0
+  * no code changes
+
+-------------------------------------------------------------------
+Thu Sep  5 07:42:23 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- fix build for factory
+
+-------------------------------------------------------------------
+Mon Aug 12 06:49:54 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- udpate to version 4.2.0
+  * just build env changes
+
+-------------------------------------------------------------------
+Thu Jun 13 06:58:41 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 4.1.0
+  * https://ultimaker.com/en/products/ultimaker-cura-software/release-notes
+
+-------------------------------------------------------------------
+Fri Jan 18 10:12:18 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- obsolete libArcus3-lulzbot
+  (patched lulzbot edition to work with upstream libArcus)
+
+-------------------------------------------------------------------
+Fri Nov 16 13:35:11 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- version update to 3.6.0
+  * version change only
+
+-------------------------------------------------------------------
+Wed Oct 17 07:06:35 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- version update to 3.5.1
+  * version change only
+
+-------------------------------------------------------------------
+Fri Jul 27 07:16:07 UTC 2018 - jengelh@inai.de
+
+- Rename %soname to %sover to better reflect its use.
+- Fix RPM groups.
+
+-------------------------------------------------------------------
+Mon Jul 16 06:24:20 UTC 2018 - adrian@suse.de
+
+- update to version 3.4.1
+  * version update only
+
+-------------------------------------------------------------------
+Mon Jul  9 12:52:57 UTC 2018 - adrian@suse.de
+
+- update to version 3.3.0
+  * no release notes
+
+-------------------------------------------------------------------
+Sat Jan 27 18:04:40 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- adapt directories, the binary python module is installed in the
+  correct location now, i.e. %{python_sitearch}
+
+-------------------------------------------------------------------
+Thu Jan 25 08:28:56 UTC 2018 - adrian@suse.de
+
+- update to 3.1.0
+
+-------------------------------------------------------------------
+Fri Dec  8 17:47:20 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Fix License, Cura 3.0 and libraries are LGPL-3.0 now
+
+-------------------------------------------------------------------
+Thu Dec  7 02:27:51 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Revert majority of previos changes, which not only updated the
+  version, but reverted the previous cleanup
+
+-------------------------------------------------------------------
+Fri Nov  3 07:21:31 UTC 2017 - adrian@suse.de
+
+- update to version 3.0.3
+
+-------------------------------------------------------------------
+Tue Sep 12 16:45:11 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Mon Sep  4 07:09:11 UTC 2017 - adrian@suse.de
+
+- update to version 2.7.0
+
+-------------------------------------------------------------------
+Mon Jun 26 07:00:52 UTC 2017 - adrian@suse.de
+
+- switch to stable version 2.6.0
+
+-------------------------------------------------------------------
+Mon Jun 20 07:38:38 UTC 2016 - adrian@suse.de
+
+- initial package of git master version
+  (stable ones need old development snapshots for protobuf)
+

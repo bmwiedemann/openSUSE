@@ -1,0 +1,12 @@
+diff -Nru guest-agent-20200630.00.orig/instance_configs.cfg guest-agent-20200630.00/instance_configs.cfg
+--- guest-agent-20200630.00.orig/instance_configs.cfg	2020-06-30 18:49:09.000000000 +0200
++++ guest-agent-20200630.00/instance_configs.cfg	2020-07-03 11:21:39.728045873 +0200
+@@ -32,7 +32,7 @@
+ startup = true
+ 
+ [NetworkInterfaces]
+-dhclient_script = /sbin/google-dhclient-script
++dhclient_script = 
+ dhcp_command = 
+ ip_forwarding = true
+ setup = true

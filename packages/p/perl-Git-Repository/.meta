@@ -1,0 +1,15 @@
+<package name="perl-Git-Repository" project="openSUSE:Factory">
+  <title>Perl Interface to Git Repositories</title>
+  <description>Git::Repository is a Perl interface to Git, allowing scripted interactions with
+one or more repositories. It's a low-level interface, allowing to call any Git
+command, either porcelain  or plumbing, including bidirectional commands such
+as git commit-tree.
+
+Since it is a low-level interface, it doesn't provide any fancy way to call Git
+commands. It is up to the programmer to setup any environment variables that
+the underlying Git command may need and use.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Git-Repository"/>
+  <url>http://search.cpan.org/dist/Git-Repository/</url>
+</package>

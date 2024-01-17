@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>44c79e90f165373b3eff12b6de025031</srcmd5>
+    <version>1.6.0</version>
+    <time>1571210278</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738549</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bf945122b845c5a97cb1caedf510b256</srcmd5>
+    <version>2.0.0</version>
+    <time>1585667727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789963</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>86b97efa91c8c160e54fa25892e56577</srcmd5>
+    <version>2.0.0</version>
+    <time>1590506560</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808669</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>03ba8649b0afed15bbb6ba31e9549d37</srcmd5>
+    <version>2.0.0</version>
+    <time>1612781236</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 (hammett requires python 3.7 or later)</comment>
+    <requestid>868660</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>aedb3549cdb00cb558c10622e8a6cfcb</srcmd5>
+    <version>2.0.0</version>
+    <time>1648159109</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964657</requestid>
+  </revision>
+</revisionlist>

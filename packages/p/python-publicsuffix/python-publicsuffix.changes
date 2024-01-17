@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Thu Mar 19 09:15:40 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.1.1
+  * Add deprecation notice to README.
+  * Fix UnicodeDecodeError in setup.py when building or installing
+    package with LC_ALL=C (thanks to Evgeni Golov).
+  * Update the built-in list and fix tests (thanks to Evgeni Golov).
+  * Fetch the public suffix list using https.
+  * Add public_suffix_list.dat to MANIFEST.in.
+
+-------------------------------------------------------------------
+Fri Jan 10 17:54:55 UTC 2020 - pgajdos@suse.com
+
+- fix build in SLE-15: set en_US.UTF-8 encoding by exporting LANG
+
+-------------------------------------------------------------------
+Mon Dec  2 10:47:16 UTC 2019 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Wed Sep 25 11:51:54 UTC 2019 - pgajdos@suse.com
+
+- initial version 1.1.0, requires by python-authheaders [SLE-7686]
+

@@ -1,0 +1,13 @@
+Index: vsftpd-3.0.2/sysdeputil.c
+===================================================================
+--- vsftpd-3.0.2.orig/sysdeputil.c	2014-08-21 16:12:59.845872489 +0200
++++ vsftpd-3.0.2/sysdeputil.c	2014-08-21 16:14:59.641431931 +0200
+@@ -66,7 +66,7 @@
+ #include <utmpx.h>
+ 
+ /* BEGIN config */
+-#if defined(__linux__)
++#if defined(__linux__) && !defined(__s390__)
+   #include <errno.h>
+   #include <syscall.h>
+   #define VSF_SYSDEP_HAVE_LINUX_CLONE

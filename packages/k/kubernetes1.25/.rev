@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>974a79347509524feca58dbc00b86efa</srcmd5>
+    <version>1.25.7</version>
+    <time>1679520569</time>
+    <user>dimstar_suse</user>
+    <comment>New K8s</comment>
+    <requestid>1070756</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e92e315137e9e28f56cd098ab8cdc488</srcmd5>
+    <version>1.25.8</version>
+    <time>1680018665</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1074912</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>367a16c1a6a69b62fe4aa8b21c9ad982</srcmd5>
+    <version>1.25.8</version>
+    <time>1680209472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075487</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8c42799917d95197bc1b2acbf87e4546</srcmd5>
+    <version>1.25.9</version>
+    <time>1681398164</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079130</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ca4528220c53b624d3b2c1a817056506</srcmd5>
+    <version>1.25.10</version>
+    <time>1686576411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092437</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6533891621714ca8b85bf72e0eca2d8c</srcmd5>
+    <version>1.25.11</version>
+    <time>1687379972</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094263</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>84a9e42f624420d55d275f278426e83e</srcmd5>
+    <version>1.25.12</version>
+    <time>1690469495</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100844</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2755d4e8bc626dd9b4c7a32bbc5c266f</srcmd5>
+    <version>1.25.14</version>
+    <time>1696188121</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112624</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9045259f25dcf02cdce1a7c3fd5d3523</srcmd5>
+    <version>1.25.15</version>
+    <time>1698438483</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120466</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>45e7a3593607f3b9e733cbc150d7e41d</srcmd5>
+    <version>1.25.16</version>
+    <time>1700865279</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128507</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>66990021dd55193171895f09e75d8ff6</srcmd5>
+    <version>1.25.16</version>
+    <time>1704753918</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137477</requestid>
+  </revision>
+</revisionlist>

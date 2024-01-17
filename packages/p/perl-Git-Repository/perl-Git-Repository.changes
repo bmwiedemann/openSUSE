@@ -1,0 +1,646 @@
+-------------------------------------------------------------------
+Sat Mar 25 11:27:20 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- add patch git-2.40.0.patch to adapt to git 2.40 changes
+
+-------------------------------------------------------------------
+Sat Dec  3 11:00:22 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Add fix from https://github.com/book/Git-Repository/pull/22 to work
+  around git 2.38.1's new default behaviour (22.patch)
+
+-------------------------------------------------------------------
+Tue Jun  1 03:07:11 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.325
+   see /usr/share/doc/packages/perl-Git-Repository/Changes
+
+  1.325 2021-06-01 BOOK
+      [ENHANCEMENTS]
+      - Prevent Test::Git from clobbering its arguments in some cases
+      [TESTS]
+      - Stop t/24-errors.t from failing with git >= 2.30.0-rc0
+        (Fix RT #133951, RT #134115, GH #20)
+
+-------------------------------------------------------------------
+Fri Feb 19 08:16:19 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- fix build issues with git 2.30 (git-2.30.0.patch)
+
+-------------------------------------------------------------------
+Mon Sep  2 08:05:22 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.324
+   see /usr/share/doc/packages/perl-Git-Repository/Changes
+
+  1.324 2019-09-01 BOOK
+      [DOCUMENTATION]
+      - Minor documentation updates
+      [EXAMPLES]
+      - Add --force and --docs options to build-git
+
+-------------------------------------------------------------------
+Thu Dec  6 15:42:47 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.323
+   see /usr/share/doc/packages/perl-Git-Repository/Changes
+
+  1.323 2018-11-22 BOOK
+
+-------------------------------------------------------------------
+Sun Apr 22 05:25:37 UTC 2018 - coolo@suse.com
+
+- updated to 1.322
+   see /usr/share/doc/packages/perl-Git-Repository/Changes
+
+  1.322 2018-04-21 BOOK
+      [DOCUMENTATION]
+      - Detail what Git::Repository::Command does to the environment
+      [TESTS]
+      - Match new error message format in git 2.17. (HMBRAND and JANPAZ)
+      - Fixed the 'git-collection' link for extended ("all gits") tests
+
+-------------------------------------------------------------------
+Sun Oct  8 08:07:47 UTC 2017 - coolo@suse.com
+
+- updated to 1.321
+   see /usr/share/doc/packages/perl-Git-Repository/Changes
+
+  1.321 2017-10-01 BOOK
+      - Various small improvements to the Tutorial (with help from Ron Savage)
+      - Minor code changes (with help from E. Choroba)
+      - Minor fix to eg/build-git
+
+-------------------------------------------------------------------
+Fri Jun 24 05:51:59 UTC 2016 - coolo@suse.com
+
+- updated to 1.320
+   see /usr/share/doc/packages/perl-Git-Repository/Changes
+
+-------------------------------------------------------------------
+Tue Mar  8 10:20:31 UTC 2016 - coolo@suse.com
+
+- updated to 1.317
+   see /usr/share/doc/packages/perl-Git-Repository/Changes
+
+  1.317 Sat Feb 13 2016
+      [ENHANCEMENTS]
+      - improved git binary detection in Git::Repository::Command
+      - fixed version comparisons for 1.0.0a and 1.0.0b under Perl 5.6
+      - test_repository( clone => ... ) now dies with a useful message
+        when trying to call it with a broken Git
+      - Git::Repository::Util provides utility functions for Git stuff
+      - eg/build-git: a utility to build and install any Git version
+      [DOCUMENTATION]
+      - Tutorial entry: "Ignore the system and global configuration files"
+      - spelling fix (Gregor Herrmann)
+      [TEST]
+      - fix RT #89086 (reported by Alex Raguero)
+      - new test: t/test-all-git.t to run the test suite against a directory
+        full of git builds (if available)
+      - tested against 513 versions of git (including all RC),
+        from 1.0.0 to 2.7.1
+
+-------------------------------------------------------------------
+Wed Dec  2 09:46:38 UTC 2015 - coolo@suse.com
+
+- updated to 1.316
+   see /usr/share/doc/packages/perl-Git-Repository/Changes
+
+  1.316 Wed Dec 2 2015
+      [ENHANCEMENTS]
+      - avoid a warning if the filehandles have already been closed
+        (related to System::Command 1.114 'interactive' option)
+      [DOCUMENTATION]
+      - add examples for `git log` and using callbacks with `$r->run`
+        in Git::Repository::Tutorial
+      [TESTS]
+      - git-2.5.2 test suite compatibility fix (Petr Šabata)
+
+-------------------------------------------------------------------
+Mon Aug 31 08:59:45 UTC 2015 - coolo@suse.com
+
+- updated to 1.315
+   see /usr/share/doc/packages/perl-Git-Repository/Changes
+
+  1.315 Wed Jul 29 2015
+      [ENHANCEMENTS]
+      - Show exit status in 'unknown git error' message (TIMB)
+
+-------------------------------------------------------------------
+Sun Jun  7 08:34:44 UTC 2015 - coolo@suse.com
+
+- updated to 1.314
+   see /usr/share/doc/packages/perl-Git-Repository/Changes
+
+  1.314 Sat May 23 2015
+      [ENHANCEMENTS]
+      - simplified the internals of version comparisons
+      - give the correct result for comparisons involving 1.0.0a and 1.0.0b
+
+-------------------------------------------------------------------
+Fri Apr 17 17:27:55 UTC 2015 - coolo@suse.com
+
+- updated to 1.313
+   see /usr/share/doc/packages/perl-Git-Repository/Changes
+
+  1.313 Sat Mar 21 2015
+      [DOCUMENTATION]
+      - add a section about Git::Raw in the SEE ALSO (written by its author)
+      - document the availability of Git.pm on CPAN
+      - added the list of contributors to the META file
+  
+  1.312 Sun Aug 3 2014
+      [ENHANCEMENTS]
+      - test_repository() uses `git init-db` for init under older git
+        versions (although the test suite hasn't yet been adapted to
+        support really old versions of git)
+      - fixed a typo in the error message for test_repository()
+      [TESTS]
+      - made some tests for failure a little more lax when looking for
+        the "fatal:" string in the errput (i.e. look for it at the beginning
+        of any line, not just the firts)
+      [DOCUMENTATION]
+      - various minor documentation improvements
+      - the "OTHER GIT WRAPPERS" is really a "SEE ALSO" section
+  
+  1.311 Sun Mar 9 2014
+      [ENHANCEMENTS]
+      - avoid warnings from _is_git() when we get nothing out of "git"
+      [DOCUMENTATION]
+      - pod syntax fix
+      - fix typo in Todd Rinaldo's name
+      - acknowledge Nathan Nutter's help in designing the clone option
+        to test_repository()
+  
+  1.310 Fri Jan 17 2014
+      [ENHANCEMENTS]
+      - add support for a 'clone' option in test_repository()
+      [DOCUMENTATION]
+      - better document the test_repository() options
+      - better document the options hash
+      - make method names easier to link to throughout the documentation
+      [TESTS]
+      - tested against 350 versions of git (including all RC),
+        from 1.5.0.rc0 to 1.8.5.3
+  
+  1.309 Sat Nov 2 2013
+      [TESTS]
+      - replace use_ok by simply running perl -M$module -e1
+      [DOCUMENTATION]
+      - some guidelines for naming attributes in plugins
+      [PACKAGING]
+      - split Git::Repository::Plugin::Log and its supporting modules
+        (Git::Repository::Log and Git::Repository::Log::Iterator) out
+        in their own distribution (Git-Repository-Plugin-Log) as of
+        version 1.309 of both distributions
+  
+  1.308 Thu Aug 8 2013
+      [ENHANCEMENTS]
+      - require System-Command 1.103, since 1.102 was somewhat broken
+      [DOCUMENTATION]
+      - new tutorial item based on RT#87334
+  
+  1.307 Fri Jul 26 2013
+      [ENHANCEMENTS]
+      - avoid creating zombie processes in _is_git
+      - require the latest System-Command, as it properly works with
+        FCGI, Plack et al.
+      [DOCUMENTATION]
+      - various minor documentation improvements
+  
+  1.306 Tue Jul 2 2013
+      [DOCUMENTATION]
+      - document how to run git from cwd in Git::Repository::Tutorial
+        (follow-up of RT #86154, thanks to Daniel B. Boorstein (DANBOO))
+      - document how to avoid the translation of Git messages by using
+        LC_ALL=C in Git::Repository::Tutorial
+      [TESTS]
+      - made tests more robust no matter which locale is defined
+        (thanks to Lars Dieckow (DAXIM))
+  
+  1.305 Sun Jun 16 2013
+      [DOCUMENTATION]
+      - list the 'fatal' option in the documentation for run()
+      [TESTS]
+      - various fixes for t/24-errors.t
+        (mostly for Win32, thanks to Christian Walde (MITHALDU))
+  
+  1.304 Sat May 25 2013
+      [ENHANCEMENTS]
+      - the new 'fatal' option makes it possible to define in detail
+        which exit status codes will make run() die, in addition to
+        the defaults 128 and 129 (many thanks to Grant McLean for
+        a great discussion about this, which inspired the feature)
+      [DOCUMENTATION]
+      - add a section about 'fatal' in Git::Repository::Tutorial
+      [TESTS]
+      - let Dist::Zilla manage the author tests
+      - fixed tests with older gits, and also moved requirements
+        for some tests a little bit further in the past
+      - tested against 326 versions of git (including all RC),
+        from 1.5.0.rc0 to 1.8.3.rc3
+  
+  1.303 Sun Apr 28 2013
+      [ENHANCEMENTS]
+      - now depends on System::Command 1.100 for proper Win32 support
+      - thanks to a lot of testing help from Christian Walde (MITHALDU)
+        the test suite passes on Win32 (by skipping tests of little
+        importance)
+  
+  1.302 Fri Mar 1 2013
+      [ENHANCEMENTS]
+      - Git::Repository::Plugin::Log is now able to parse commits
+        with completely empty log messages
+      - Git::Repository::Plugin::Log is now able to parse commits
+        containing multiline headers (like gpgsig and mergetag)
+  
+  1.301 Mon Jan 21 2013
+      [DEPRECATION]
+      - the following Git::Repository methods are obsolete,
+        and will die when called: create, wc_path, repo_path
+      - the following parameters to Git::Repository->new are obsolete,
+        and will cause the constructor to die: repository, working_copy
+      [PACKAGING]
+      - switch to Dist::Zilla for maintaining the distribution
+  
+  1.300 Mon Jan  7 2013
+      [ENHANCEMENTS]
+      - fixed support for overloaded objects (e.g. Path::Class objects)
+        in Git::Repository::Command (RT #82373)
+      - fixed Git::Repository::Log::Iterator to work with older gits
+        when disabling colored output (thanks to Dominic Humphries)
+      - fixed some cases where Git::Repository::Command and Git::Repository
+        new() methods ignored some of their parameters. They now die when
+        passed ambiguous or unexpected parameters.
+        (follow-up of RT #82373, thanks to Michael G. Schwern)
+  
+  1.29 Tue Dec 4 2012
+      [ENHANCEMENTS]
+      - added support for callbacks in run()
+      [DOCUMENTATION]
+      - minor documentation improvements
+  
+  1.28 Sun Nov  4 2012
+      [ENHANCEMENTS]
+      - disabled colored output from logs in Git::Repository::Log::Iterator
+      - wc_path() and repo_path() accessors are deprecated and now warn
+      - improved the inter-documentation links by liberal use of L<>
+      [TESTS]
+      - ignore commit hooks that may be included with templates (RT #80593)
+      - test for quiet won't fail if no identity is defined (RT #80321)
+  
+  1.27 Thu Oct 11 2012
+      [ENHANCEMENTS]
+      - Git::Repository::Command skips non-executable files when searching
+        for a git command in the PATH
+      [TEST]
+      - Fixed tests failing with a directory named git in the PATH (RT #80117)
+  
+  1.26 Tue Aug  1 2012
+      [ENHANCEMENTS]
+      - added a 'quiet' option to silence warnings
+      - improved carp level for the run() method
+      [DOCUMENTATION]
+      - provide an example for the 'quiet' option in
+        Git::Repository::Tutorial
+  
+  1.25 Tue Dec 27 23:07:11 CET 2011
+      [ENHANCEMENTS]
+      - None. It's as good as 1.24, without the stupid test fail.
+      [TESTS]
+      - fixed a test plan when a git binary is not available
+  
+  1.24 Mon Dec 26 14:51:36 CET 2011
+      [ENHANCEMENTS]
+      - the command cache for _is_git() is now properly populated
+        when the git option is a command with options (e.g. sudo)
+      - _is_git() still finds git when the PATH contains a directory
+        named git in a better position (RT #72154)
+      - Fix spelling errors fixed in Debian (RT #73079)
+      - Defend against changes to $/ (RT #71621)
+  
+  1.23 Sun Dec  4 16:06:08 CET 2011
+      [TESTS]
+      - made t/07-version.t pass when /tmp is mounted noexec (RT #72610)
+  
+  1.22 Tue Sep  6 23:39:54 CEST 2011
+      [TESTS]
+      - made t/21-submodule.t pass with git > 1.7.6.0 (RT #70585)
+      - made t/21-submodule.t pass with git < 1.5.4.4
+  
+  1.21 Mon Jul 11 23:34:47 CEST 2011
+      [ENHANCEMENTS]
+      - fix a deep recursion caused by a change in System::Command 1.05
+        (thanks to Thomas Klausner)
+      [TESTS]
+      - made t/21-submodule.t pass when git is not available or too old
+        or no identity is configured
+  
+  1.20 Thu Jun  9 14:08:43 CEST 2011
+      [ENHANCEMENTS]
+      - None. It's as good as 1.19, without the stupid test fail.
+      [TESTS]
+      - one test always failed if run outside of a git repository,
+        so I didn't detect it, but all testers did :-(
+        Kazuhiro Shibuya provided a patch!
+  
+  1.19 Wed Jun  8 23:39:22 CEST 2011
+      [ENHANCEMENTS]
+      - new final_output() method to Git::Repository::Command,
+        that does the git-specific error checking when collecting
+        the final output
+      - Git::Repository::Log::Iterator will now properly die/warn
+        when the log command is incorrect (thanks to Lasse Makholm
+        for the bug report and proposed patch)
+      - Git::Repository::Command now supports an arrayref as the 'git'
+        option value, thus allowing calling wrappers like sudo
+        (thanks to Dominic Humphries for the initial patch)
+      [DOCUMENTATION]
+      - moved the HOWTO part of the doc to Git::Repository::Tutorial
+  
+  1.18 Sat Apr 16 13:47:26 CEST 2011
+      [ENHANCEMENTS]
+      - the create() method was fragile (parsing the output of
+        porcelain commands) and is now obsolete
+      [DOCUMENTATION]
+      - added an example for running git shortlog (RT #66783)
+  
+  1.17 Tue Feb  1 01:01:10 CET 2011
+      [ENHANCEMENTS]
+      - Git::Repository::Command now uses System::Command internally
+      [TESTS]
+      - skip some tests that needed a specific version of git
+      - delete GIT_EDITOR in tests that check it (Nigel Metheringham)
+      [BUGS]
+      - getting a working Win32 implementation is now delegated
+        to System::Command
+  
+  1.16 Sun Jan 16 12:23:42 CET 2011
+      [ENHANCEMENTS]
+      - the reaping of the child process is now delegated to a special
+        Git::Repository::Command::Reaper object.
+        Code such as my $fh = Git::Repository::Command->new(@cmd)->stdout()
+        will now work as expected.
+      [TESTS]
+      - Test::Git::has_git() now accepts the usual options hash
+      - fixed tests to pass again under Perl 5.6.2
+  
+  1.15 Tue Jan 11 22:42:35 CET 2011
+      [ENHANCEMENTS]
+      - experimental MSWin32 full support using pipes
+        (thanks to BinGOs for pointing me to a perlmonks post by ikegami,
+        that contained working code)
+      - Git::Repository::Log now has a raw_message() accessor, that
+        returns the message with 4-space indent output by git log
+        (Note that this change is INCOMPATIBLE with previous versions,
+        in which message() returned the indented log message, and you
+        had to make up your own "clean" version).
+      [TESTS]
+      - no more skipping tests under MSWin32, but there are some issues
+        with the win32 code, as sometimes the output or errput of the git
+        command is lost (HELP!)
+      - bundle Test::Git, a module providing a few utility functions
+        for testing code requiring a git repository
+  
+  1.14 Wed Oct 27 21:49:45 CEST 2010
+      [ENHANCEMENTS]
+      - complete rewrite of _has_git, which was renamed to _is_git,
+        with a much improved cache for the "is this git valid?" info
+      - calling new() with the 'git' option will now work correctly
+        when there is no git in the PATH (fixes RT bug #62283,
+        reported by Todd Rinaldo)
+      - improved the plugin system design (thanks to Aristotle Pagaltzis)
+      - fixes for making Git::Repository work with modules that do
+        bad things to STDIN, STDOUT and STDERR (thanks to Todd Rinaldo)
+      [TESTS]
+      - improved tests on Win32 (thanks to Olivier Raginel (BABAR)
+        for giving me access to a Win32 VM with Git installed)
+      [BUGS]
+      - sadly, the work on Win32 showed that Git::Repository doesn't
+        fully support that platform, but the test suite safely skips
+        the tests that hang under Win32. I hope to fix this over time.
+  
+  1.13 Mon Oct 18 22:36:17 CEST 2010
+      [ENHANCEMENTS]
+      - using 'git' as an option of a Git::Repository object now works
+        as expected
+      - version() also accepts option hashes
+      - plugin system to load new keywords in the Git::Repository namespace
+      - Git::Repository::Plugin::Log provides the log() method with the
+        help of Git::Repository::Log and Git::Repository::Log::Iterator
+        (Thanks to Todd Rinaldo and Aristotle Pagaltzis for discussions
+        and ideas about what became the plugin system.)
+      [TESTS]
+      - tested against 120+ versions of git, including all versions
+        of the 1.6.* and 1.7.* branches up until 1.7.3.1
+
+-------------------------------------------------------------------
+Fri Apr 17 17:27:54 UTC 2015 - coolo@suse.com
+
+- updated to 1.22
+   see /usr/share/doc/packages/perl-Git-Repository/Changes
+
+  1.22 Tue Sep  6 23:39:54 CEST 2011
+          [TESTS]
+          - made t/21-submodule.t pass with git > 1.7.6.0 (RT #70585)
+          - made t/21-submodule.t pass with git < 1.5.4.4
+  
+  1.21 Mon Jul 11 23:34:47 CEST 2011
+          [ENHANCEMENTS]
+          - fix a deep recursion caused by a change in System::Command 1.05
+            (thanks to Thomas Klausner)
+          [TESTS]
+          - made t/21-submodule.t pass when git is not available or too old
+            or no identity is configured
+  
+  1.20 Thu Jun  9 14:08:43 CEST 2011
+          [ENHANCEMENTS]
+          - None. It's as good as 1.19, without the stupid test fail.
+          [TESTS]
+          - one test always failed if run outside of a git repository,
+            so I didn't detect it, but all testers did :-(
+            Kazuhiro Shibuya provided a patch!
+  
+  1.19 Wed Jun  8 23:39:22 CEST 2011
+          [ENHANCEMENTS]
+          - new final_output() method to Git::Repository::Command,
+            that does the git-specific error checking when collecting
+            the final output
+          - Git::Repository::Log::Iterator will now properly die/warn
+            when the log command is incorrect (thanks to Lasse Makholm
+            for the bug report and proposed patch)
+          - Git::Repository::Command now supports an arrayref as the 'git'
+            option value, thus allowing calling wrappers like sudo
+            (thanks to Dominic Humphries for the initial patch)
+          [DOCUMENTATION]
+          - moved the HOWTO part of the doc to Git::Repository::Tutorial
+  
+  1.18 Sat Apr 16 13:47:26 CEST 2011
+          [ENHANCEMENTS]
+          - the create() method was fragile (parsing the output of
+            porcelain commands) and is now obsolete
+          [DOCUMENTATION]
+          - added an example for running git shortlog (RT #66783)
+  
+  1.17 Tue Feb  1 01:01:10 CET 2011
+          [ENHANCEMENTS]
+          - Git::Repository::Command now uses System::Command internally
+          [TESTS]
+          - skip some tests that needed a specific version of git
+          - delete GIT_EDITOR in tests that check it (Nigel Metheringham)
+          [BUGS]
+          - getting a working Win32 implementation is now delegated
+            to System::Command
+  
+  1.16 Sun Jan 16 12:23:42 CET 2011
+          [ENHANCEMENTS]
+          - the reaping of the child process is now delegated to a special
+            Git::Repository::Command::Reaper object.
+            Code such as my $fh = Git::Repository::Command->new(@cmd)->stdout()
+            will now work as expected.
+          [TESTS]
+          - Test::Git::has_git() now accepts the usual options hash
+          - fixed tests to pass again under Perl 5.6.2
+  
+  1.15 Tue Jan 11 22:42:35 CET 2011
+          [ENHANCEMENTS]
+          - experimental MSWin32 full support using pipes
+            (thanks to BinGOs for pointing me to a perlmonks post by ikegami,
+            that contained working code)
+          - Git::Repository::Log now has a raw_message() accessor, that
+            returns the message with 4-space indent output by git log
+            (Note that this change is INCOMPATIBLE with previous versions,
+            in which message() returned the indented log message, and you
+            had to make up your own "clean" version).
+          [TESTS]
+          - no more skipping tests under MSWin32, but there are some issues
+            with the win32 code, as sometimes the output or errput of the git
+            command is lost (HELP!)
+          - bundle Test::Git, a module providing a few utility functions
+            for testing code requiring a git repository
+  
+  1.14 Wed Oct 27 21:49:45 CEST 2010
+          [ENHANCEMENTS]
+          - complete rewrite of _has_git, which was renamed to _is_git,
+            with a much improved cache for the "is this git valid?" info
+          - calling new() with the 'git' option will now work correctly
+            when there is no git in the PATH (fixes RT bug #62283,
+            reported by Todd Rinaldo)
+          - improved the plugin system design (thanks to Aristotle Pagaltzis)
+          - fixes for making Git::Repository work with modules that do
+            bad things to STDIN, STDOUT and STDERR (thanks to Todd Rinaldo)
+          [TESTS]
+          - improved tests on Win32 (thanks to Olivier Raginel (BABAR)
+            for giving me access to a Win32 VM with Git installed)
+          [BUGS]
+          - sadly, the work on Win32 showed that Git::Repository doesn't
+            fully support that platform, but the test suite safely skips
+            the tests that hang under Win32. I hope to fix this over time.
+  
+  1.13 Mon Oct 18 22:36:17 CEST 2010
+          [ENHANCEMENTS]
+          - using 'git' as an option of a Git::Repository object now works
+            as expected
+          - version() also accepts option hashes
+          - plugin system to load new keywords in the Git::Repository namespace
+          - Git::Repository::Plugin::Log provides the log() method with the
+            help of Git::Repository::Log and Git::Repository::Log::Iterator
+            (Thanks to Todd Rinaldo and Aristotle Pagaltzis for discussions
+            and ideas about what became the plugin system.)
+          [TESTS]
+          - tested against 120+ versions of git, including all versions
+            of the 1.6.* and 1.7.* branches up until 1.7.3.1
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:37 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Oct 14 13:40:26 UTC 2010 - chris@computersalat.de
+
+- update to 1.12
+  o [ENHANCEMENTS]
+    - the input option can now be empty: it means "close stdin first"
+    - if the input option is undef, it still means "don't touch stdin"
+- 1.11 Sat Oct  2 18:17:33 CEST 2010
+  o [ENHANCEMENTS]
+    - fixed a bug in version comparison
+      (version 1.7.1.209.gd60ad81 is smaller than 1.7.1.1.1.g66bd8ab)
+  o [TESTS]
+    - skip tests that fail between between versions 1.7.1 and 1.7.1.1
+      (thanks to Sébastien Aperghis-Tramoni for the private report)
+    - fix abs_path dying on Win32 with a path to a non-existent file
+      (again)
+- 1.10 Fri Sep 24 18:04:05 CEST 2010
+  o [ENHANCEMENTS]
+    - Git::Repository::Command doesn't write to the command stdin
+      if the input option is set to something empty
+    - Git::Repository::Command now has a version number too
+  o [DOCUMENTATION]
+    - minor copy editing by Aristotle Pagaltzis
+- 1.09 Thu Aug 19 00:34:47 CEST 2010
+  o [ENHANCEMENTS]
+    - now handle SIGPIPE when writing to git stdin
+      (fixes RT bug #60482, reported by Todd Rinaldo (TODDR))
+    - new() ignores the 'input' option for git commands called
+      during initialization
+  o [TESTS]
+    - t/20-simple.t should stop failing with "Non-zero wait status: 13"
+      as it has been doing since 1.05.
+- 1.08 Tue Aug 17 14:49:11 CEST 2010
+  o [ENHANCEMENTS]
+    - Git::Repository->new() now supports git versions older than 1.5.3
+  o [TESTS]
+    - ensure we have some identity when committing
+    - make tests require the lowest git version they support
+- 1.07 Sat Aug 14 16:52:21 CEST 2010
+  o [ENHANCEMENTS]
+    - support for option hash in create(), which is attached to the
+      returned Git::Repository object
+    - accessors for Git::Repository::Command objects
+      (including a 'cmdline' accessor)
+    - removed the wc_subdir() attribute, which is useless and
+      redundant with the cwd option
+    - completely rewrote the repo_path and wc_path computation in new()
+    - support new (post-v1.7.1) clone output in create()
+    - less confusing names for options and attributes:
+      + new() now takes git_dir and work_tree
+        (instead of repository and working_copy)
+      + the corresponding attributes are now git_dir and work_tree
+        (instead of repo_path and wc_path)
+      + the older options and attributes are being kept for compatibility
+  o [TESTS]
+    - tests for the case when GIT_DIR is not .git (Mark Lawrence)
+    - protect git log tests against format.pretty (Aristotle Pagaltzis)
+    - tests for backward-compatibility with repository, working_copy, etc.
+- 1.06 Sat Jul  3 22:02:59 CEST 2010
+  o [ENHANCEMENTS]
+    - none
+  o [TESTS]
+    - just make sure all tests fail gracefully when git is not installed
+- 1.05 Sat Jul  3 00:40:09 CEST 2010
+  o [ENHANCEMENTS]
+    - version() method returns the git binary version
+    - version_eq(), version_gt(), etc allow simple version comparison
+      for the current git binary
+    - allow providing a default option hash to Git::Repository->new()
+  o [DOCUMENTATION]
+    - Document git init behaviour changed in 1.6.5
+  o [TESTS]
+    - extensive version comparison tests
+- 1.04 Sun Jun 27 17:24:02 CEST 2010
+  o [ENHANCEMENTS]
+    - create() now supports "reinitializing existing Git repository"
+      (thanks to Michael G. Schwern)
+  o [TESTS]
+    - test a few extra cases
+- noarch pkg
+- added bcond_with pod
+- recreated by cpanspec 1.78
+
+-------------------------------------------------------------------
+Sat Jun 19 00:08:20 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (1.03)

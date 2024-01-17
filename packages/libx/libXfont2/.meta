@@ -1,0 +1,5 @@
+<package name="libXfont2" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:XOrg" package="libXfont2"/>
+</package>

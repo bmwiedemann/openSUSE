@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Fri Mar  4 08:04:55 UTC 2022 - pgajdos@suse.com
+
+- disable flaky test_until_time
+
+-------------------------------------------------------------------
+Mon Nov  8 12:18:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 2.7 build 
+
+-------------------------------------------------------------------
+Thu Sep  9 11:43:19 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Use %autosetup macro instead
+
+-------------------------------------------------------------------
+Wed Sep  8 08:54:38 UTC 2021 - pgajdos@suse.com
+
+- version update to 1.1.0
+  1.1.0 (2021-04-09)
+  ++++++++++++++++++
+  - Added @repeat() decorator. See #148. Thanks @rhagenaars!
+  - Added execute .until(). See #195. Thanks @fredthomsen!
+  - Added job retrieval filtered by tags using get_jobs('tag'). See #419. Thanks @skenvy!
+  - Added type annotations. See #427. Thanks @martinthoma!
+  - Bugfix: str() of job when there is no __name__. See #430. Thanks @biggerfisch!
+  - Improved error messages. See #280, #439. Thanks @connorskees and @sosolidkk!
+  - Improved logging. See #193. Thanks @zcking!
+  - Documentation improvements and fix typos. See #424, #435, #436, #453, #437, #448. Thanks @ebllg!
+  1.0.0 (2021-01-20)
+  ++++++++++++++++++
+  Depending on your configuration, the following bugfixes might change schedule's behaviour:
+  - Fix: idle_seconds crashes when no jobs are scheduled. See #401. Thanks @yoonghm!
+  - Fix: day.at('HH:MM:SS') where HMS=now+10s doesn't run today. See #331. Thanks @qmorek!
+  - Fix: hour.at('MM:SS'), the seconds are set to 00. See #290. Thanks @eladbi!
+  - Fix: Long-running jobs skip a day when they finish in the next day #404. Thanks @4379711!
+  Other changes:
+  - Dropped Python 2.7 and 3.5 support, added 3.8 and 3.9 support. See #409
+  - Fix RecursionError when the job is passed to the do function as an arg. See #190. Thanks @connorskees!
+  - Fix DeprecationWarning of 'collections'. See #296. Thanks @gaguirregabiria!
+  - Replaced Travis with Github Actions for automated testing
+  - Revamp and extend documentation. See #395
+  - Improved tests. Thanks @connorskees and @Jamim!
+  - Changed log messages to DEBUG level. Thanks @aisk!
+  - added patches
+    fix https://github.com/dbader/schedule/issues/484
+    + python-schedule-no-mock.patch
+
+-------------------------------------------------------------------
+Tue Mar 26 16:40:26 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.6.0
+  * Make at() accept timestamps with 1 second precision (#267).
+  * Introduce proper exception hierarchy (#271).
+
+-------------------------------------------------------------------
+Tue Dec 18 23:39:12 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace filler wording from description.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:16 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed May 16 15:35:22 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.5.0
+  * Keep partially scheduled jobs from breaking the scheduler (#125)
+  * Add support for random intervals (Thanks @grampajoe and @gilbsgilbs)
+- Update to version 0.4.3
+  * Improve docs & clean up docstrings
+- Update to version 0.4.2
+  * Publish to PyPI as a universal (py2/py3) wheel
+- Update to version 0.4.0
+  * Add proper HTML (Sphinx) docs available at https://schedule.readthedocs.io/
+  * CI builds now run against Python 2.7 and 3.5 (3.3 and 3.4 should work fine but are untested)
+  * Fixed an issue with ``run_all()`` and having more than one job that deletes itself in the same iteration. Thanks @alaingilbert.
+  * Add ability to tag jobs and to cancel jobs by tag. Thanks @Zerrossetto.
+  * Improve schedule docs. Thanks @Zerrossetto.
+  * Additional docs fixes by @fkromer and @yetingsky.
+- Implement single-spec version
+
+-------------------------------------------------------------------
+Tue Jan 19 19:40:31 UTC 2016 - hpj@urpla.net
+
+- reduce log level from info to debug 
+
+-------------------------------------------------------------------
+Tue Jan 19 15:34:57 UTC 2016 - hpj@urpla.net
+
+- version 0.3.2: initial build
+

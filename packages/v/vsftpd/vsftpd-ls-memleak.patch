@@ -1,0 +1,11 @@
+Index: vsftpd-2.0.7/ls.c
+===================================================================
+--- vsftpd-2.0.7.orig/ls.c
++++ vsftpd-2.0.7/ls.c
+@@ -558,5 +559,6 @@ build_dir_line(struct mystr* p_str, cons
+   /* Filename */
+   str_append_str(p_str, p_filename_str);
+   str_append_text(p_str, "\r\n");
++  str_free(&s_tmp_str);
+ }
+ 

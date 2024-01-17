@@ -1,0 +1,309 @@
+-------------------------------------------------------------------
+Thu Dec  7 10:45:37 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to version 2.8.0
+  * Added support for Alpine Linux distribution when is used the apache plugin
+
+-------------------------------------------------------------------
+Thu Nov 16 12:59:57 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to version 2.7.4
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
+Tue Oct 31 08:12:24 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to version 2.7.3
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
+Wed Jun  7 16:04:33 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to version 2.6.0
+  * The Apache plugin no longer supports Apache 2.2.
+  * Support for Python 3.11 was added to Certbot and all of its components.
+  * All Certbot components now require pytest to run tests.
+  * Packaged tests for all Certbot components besides josepy were moved inside the _internal/tests module.
+  * There is now a new Other annotated challenge object to allow plugins to support entirely novel challenges.
+
+-------------------------------------------------------------------
+Thu Oct 27 08:20:35 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.31.0
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
+Wed Sep 21 17:55:48 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.30.0
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
+Mon Jul 11 13:07:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.29.0:
+  * --allow-subset-of-names will now additionally retry in cases where domains
+    are rejected while creating or finalizing orders. This requires subproblem
+    support from the ACME server
+  * The show_account subcommand now uses the "newAccount" ACME endpoint to
+    fetch the account data, so it doesn't rely on the locally stored account URL.
+    This fixes situations where Certbot
+    would use old ACMEv1 registration info with non-functional account URLs.
+  * The generated Certificate Signing Requests are now generated as version 1
+    instead of version 3. This resolves situations in where strict enforcement
+    of PKCS#10 meant that CSRs that were generated as version 3 were rejected
+
+-------------------------------------------------------------------
+Fri Jun 24 19:24:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.28.0:
+  * Updated Apache/NGINX TLS configs to document contents are based on ssl-config.mozilla.org
+  * A change to order finalization has been made to the `acme` module and Certbot:
+    - An order's `certificate` field will only be processed if the order's `status` is `valid`.
+    - An order's `error` field will only be processed if the order's `status` is `invalid`.
+
+-------------------------------------------------------------------
+Mon May 30 09:19:03 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.27.0
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
+Fri Apr  8 06:29:41 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 1.26.0
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
+Tue Dec 21 18:31:04 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 1.22.0
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
+Mon Dec 13 17:32:11 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.19.0
+  * Fixed parsing of Defined values in the Apache plugin to allow
+    for = in the value.
+
+-------------------------------------------------------------------
+Tue Aug 10 13:49:41 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- update to version 1.18.0
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
+Fri Jul 30 08:43:59 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.17.0
+  * Add Void Linux overrides for certbot-apache.
+  * The Apache authenticator now always configures virtual hosts which do not have
+    an explicit ServerName. This should make it work more reliably with the
+    default Apache configuration in Debian-based environments.
+
+-------------------------------------------------------------------
+Thu Jun 24 09:26:08 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.16.0
+  * Require the latest certbot and acme plugins for simplicity
+
+-------------------------------------------------------------------
+Wed May 12 12:06:21 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.15.0
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
+Wed Apr 14 15:16:05 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.14.0
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
+Mon Mar  8 08:36:44 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.13.0
+  * Support for Python 2 has been removed.
+  * Drop merged patch 0001-Change-the-SUSE-override-to-use-apachectl.patch
+
+-------------------------------------------------------------------
+Fri Jan  8 10:37:11 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix the apache2 package not providing apache2ctl
+  any longer (gh#certbot/certbot#8592)
+  * 0001-Change-the-SUSE-override-to-use-apachectl.patch
+
+-------------------------------------------------------------------
+Fri Jan  8 10:19:34 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- update to version 1.11.0
+  * We deprecated support for Apache 2.2 in the certbot-apache
+    plugin and it will be removed in a future release of Certbot.
+
+- update to version 1.10.1
+  * sync with the main certbot package
+
+- update to version 1.10.0
+  * Support for Python 3.9 was added to Certbot and all of its
+    components.
+
+-------------------------------------------------------------------
+Wed Oct  7 08:42:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.9.0
+  * The problem causing the Apache plugin in the Certbot snap on ARM systems to
+    fail to load the Augeas library it depends on has been fixed.
+
+-------------------------------------------------------------------
+Fri Aug 21 08:41:24 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.7.0
+  * Sync with main certbot package.
+
+-------------------------------------------------------------------
+Mon Jul 13 08:38:29 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.6.0
+  * Sync with main certbot package.
+
+-------------------------------------------------------------------
+Thu Jun 11 12:12:06 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.5.0
+  * Improved error message in apache installer when mod_ssl is not available.
+
+-------------------------------------------------------------------
+Thu May 14 08:49:00 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.4.0
+  * Turn off session tickets for apache plugin by default when appropriate.
+
+-------------------------------------------------------------------
+Wed Mar 11 13:43:14 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.3.0
+  * Sync with main certbot package.
+
+-------------------------------------------------------------------
+Fri Feb 21 15:31:41 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.2.0
+  * Disable old SSL versions and ciphersuites and remove SSLCompression off 
+    setting to follow Mozilla recommendations in Apache.
+
+-------------------------------------------------------------------
+Tue Jan 21 09:39:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.1.0
+  * Sync with main certbot package.
+
+-------------------------------------------------------------------
+Fri Jan  3 11:29:27 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.0.0 (boo#1160066)
+  * The docs extras for the certbot-apache and certbot-nginx packages
+    have been removed.
+
+-------------------------------------------------------------------
+Thu Nov 14 11:54:06 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.40.1
+  * Sync with main certbot package.
+
+-------------------------------------------------------------------
+Thu Oct 17 11:20:44 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
+Wed Oct  2 10:07:43 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.39.0
+  * Support for Python 3.8 was added to Certbot and all of its components.
+
+-------------------------------------------------------------------
+Wed Sep 11 12:29:13 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.38.0
+  * Fixed OS detection in the Apache plugin on Scientific Linux.
+
+-------------------------------------------------------------------
+Mon Aug 26 10:40:44 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.37.2
+  * Turn off session tickets for apache plugin by default
+  * Stop disabling TLS session tickets in Apache as it caused TLS 
+    failures on some systems.
+
+-------------------------------------------------------------------
+Wed Jul 17 13:35:38 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.36.0 (bsc#1141928)
+  * The error message when Certbot's Apache plugin is unable to 
+    modify your Apache configuration has been improved.
+
+-------------------------------------------------------------------
+Tue Jun 18 09:47:51 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.35.1
+  * sync with main certbot package
+
+-------------------------------------------------------------------
+Sat May 18 23:26:07 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.34.2:
+  * lockstep with main certbot package
+
+-------------------------------------------------------------------
+Mon Mar 18 09:22:45 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.32.0
+  * Apache plugin now respects CERTBOT_DOCS environment variable
+    when adding command line defaults.
+  * Tests execution for certbot, certbot-apache and certbot-nginx 
+    packages now relies on pytest.
+
+-------------------------------------------------------------------
+Fri Feb  8 10:35:28 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.31.0
+  * Apache plugin now attempts to configure all VirtualHosts matching 
+    requested domain name instead of only a single one when answering 
+    the HTTP-01 challenge.
+
+-------------------------------------------------------------------
+Tue Jan 29 11:43:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.30.2:
+  * Various small fixes
+
+-------------------------------------------------------------------
+Fri Nov 16 17:29:50 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.28.0
+  * Stop preferring TLS-SNI.
+  * The grammar used by Augeas parser in Apache plugin was updated 
+    to fix various parsing errors.
+
+-------------------------------------------------------------------
+Fri Sep 14 08:21:34 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.27.1
+  * parameter name in OpenSUSE overrides for default parameters
+  * several other fixes
+
+-------------------------------------------------------------------
+Mon Sep  3 12:05:48 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update runtime requirements
+
+-------------------------------------------------------------------
+Wed Aug 29 10:37:30 UTC 2018 - mcalabkova@suse.com
+
+- Packaged license and readme
+
+-------------------------------------------------------------------
+Wed Aug 29 09:44:39 UTC 2018 - mcalabkova@suse.com
+
+- Split the module from the main certbot package

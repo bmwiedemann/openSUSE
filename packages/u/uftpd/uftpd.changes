@@ -1,0 +1,143 @@
+-------------------------------------------------------------------
+Mon Dec 20 06:34:46 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.15
+  Changes
+  * Silence some developer debug messages
+  * Always skip . and .. in FTP listings
+  * Internal refactoring and code cleanup
+  Fixes
+  * Fix regression introduced in v2.14, server directory name shown
+    in FTP
+  * listings instead of ., e.g. MLST . showed the directory name
+  * Fix #36: for real this time, now also with a test case to verify
+  * Fix #38: duplicate entries in FTP listings, regression in v2.14
+    Caused by (initially unintentional) removal of sorted listings,
+    where directories prior to v2.14 were listed first. This change,
+    albeit an accident, actually helped clean up the code base and
+    speed up replies
+
+-------------------------------------------------------------------
+Sat Dec 11 11:16:51 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14
+  * Add support for -o pasv_addr=ADDR command line argument to
+    override
+  * Add support for -p PIDFILE command line argument
+  * the address passed to the client in passive mode, useful for
+    some types of NAT setup
+
+-------------------------------------------------------------------
+Mon Oct  4 14:25:47 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Run testsuite only on x86_64
+
+-------------------------------------------------------------------
+Tue Jun 30 22:19:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.13
+  Changes
+  * Unit test framework in place, with regression test for issue
+  Fixes
+  * Socket leak in daemon accept() handling causing "Too many open
+    files". Effectively causing denial of service
+  * Minor memory leak fixed, only allocated once at startup.
+    Affects only non-MMU systems
+- Run testsuite
+
+-------------------------------------------------------------------
+Mon May 25 17:27:46 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.12
+  Changes
+  * Use common log message format and log level when user enters
+    an invalid path. This unfortunately affects changes introduced
+    in v2.11 to increase logging at default log level.
+  * Fixes
+    Issue #30: When entering an invalid directory with the FTP
+    command CWD, a NULL ptr was deref. in a DBG() message even
+    though the log level is set to a value lower than LOG_DEBUG.
+    This caused uftpd to crash and cause denial of service.
+    Depending on the init/inetd system used this could be
+    permanent.
+
+-------------------------------------------------------------------
+Sun Jan  5 09:44:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.11
+  * Increased logging at default log level. Now all relevant
+    interaction is logged. See the man page for how to adjust.
+  * Fix buffer overflow in FTP PORT parser
+  * Fix TFTP/FTP directory traversal regression
+  * Fix potential DOS through non-busy loop and segfault
+  * Fix potential segfault through empty FTP password
+  * Fix potential segfault through FTP PORT command
+
+-------------------------------------------------------------------
+Mon Aug 26 20:56:41 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.10
+  * Add support for TFTP WRQ, i.e. for clients sending files to
+    server
+  * Fix invalid TFTP error codes, now uses custom error string to
+    code 0
+  * Slightly improved debug messages
+
+-------------------------------------------------------------------
+Mon Jul 29 20:02:51 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.9
+  * Check FTP root security after dropping privileges
+  * Revert insecure default: "writable FTP root", introduced in v2.8
+  * Revert part of issue #18 to fix issue #23; "CWD /" doesn't work
+  * Fix spelling errors found by Lintian
+  * Fix package description, more formal and less personal
+
+-------------------------------------------------------------------
+Tue May 28 17:44:15 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8
+  Changes:
+  * The FTP command processor now always converts all inbound
+    commands to uppercase to handle clients sending commands in
+    lowercase
+  * Any arguments to the FTP LIST command are now ignored
+  * Improved user feedback on bad FTP root error message
+  Fixes
+  * Fix #18: KDE Dolphin, FTP client interop problems.
+  * Fix off-by-one regression introduced in v2.5
+
+-------------------------------------------------------------------
+Sun Mar  3 16:50:58 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7
+  Changes
+  * Documentation updates, commands added in v2.5 and writable opt
+  * Require libuEv v2.2, or later
+  Fixes
+  * Issues with relative FTP root when running unpriviliged
+
+-------------------------------------------------------------------
+Fri Jul 27 14:47:13 UTC 2018 - jengelh@inai.de
+
+- Remove rhetoric filler wording from descriptions.
+
+-------------------------------------------------------------------
+Wed Jul  4 15:20:38 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.6
+  Fixes
+  * Issue #16: 100% CPU when client session exits
+  * Add missing include file for `gettimeofday()`
+  * Flush stdout logging when running in the foreground
+
+-------------------------------------------------------------------
+Thu Jun 28 07:49:34 UTC 2018 - mardnh@gmx.de
+
+- Add Conflicts to not interfere with other packages that also
+  provide /usr/sbin/in.tftpd
+
+-------------------------------------------------------------------
+Mon Jun 18 12:07:49 UTC 2018 - mardnh@gmx.de
+
+- Initial package, version 2.5

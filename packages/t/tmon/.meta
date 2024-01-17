@@ -1,0 +1,5 @@
+<package name="tmon" project="openSUSE:Factory">
+  <title>tmon</title>
+  <description>A Monitoring and Testing Tool for Linux kernel thermal subsystem</description>
+  <devel project="hardware" package="tmon"/>
+</package>

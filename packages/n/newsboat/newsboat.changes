@@ -1,0 +1,1086 @@
+-------------------------------------------------------------------
+Tue Dec 26 08:02:05 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.34:
+  Added:
+  * latest_article_age feed attribute; it's similar to the age attribute of an
+    article, and can be used to e.g. hide feeds which were recently updated
+    (#2619)
+  * Updated translations
+  * Updated vendored library json.hpp to 3.11.3
+  * Bumped minimum supported Rust version to 1.70.0
+  Fixed:
+  * Articles in Mastodon feeds having no titles when using Newsboat with NextCloud
+    News (#2573)
+
+-------------------------------------------------------------------
+Mon Sep 25 05:22:29 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.33:
+  Added:
+  * Support for 0..9 keys in dialog overview. If you never used dialog
+    overview, it's invoked by V key by default and is very useful if you also
+    employ ^V/^G/^X to keep multiple dialogs open within Newsboat (Dennis
+    van der Schagt)
+  * Support importing OPML 2.0 with --import-from-opml (#2448)
+  Changed:
+  * Image enclosures are now displayed at the start of the article. This improves
+    support for Mastodon feeds (#2305, #2495)
+  * In feeds that lack title and whose URLs end entirely in digits, use the
+    description as a title instead. This improves support for Mastodon feeds and
+    hopefully doesn't break others (#2530)
+  * Taught contrib/image-preview/nbrun to take Newsboat's CLI arguments
+  * Updated translations
+  * Bumped minimum supported Rust version to 1.68.2
+  Fixed:
+  * Hanging if scripts used by filter:, bookmark-cmd, or html-renderer
+    process their input in a streaming fashion rather than reading it entirely
+    before outputting anything
+  * Slowness in opening and navigating feeds that contain many items (#229)
+  * --export-to-opml producing invalid OPML documents (missing text attribute)
+    (#2518)
+
+-------------------------------------------------------------------
+Sun Jun 25 19:31:42 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 2.32:
+  Added:
+  * contrib: a filter to remove Substack's "Subscribe now" prompts
+    from the posts (NunoSempere)
+  * contrib: an image pager which can spot all the images in a
+    post and display them with either `feh` or `kitty`'s `icat`
+    (whyrgola)
+  * Tags in OPML export. This is implemented as a new option,
+    `--export-to-opml2`, because the output format is OPML version
+    2.0 rather than the 1.0 that `--export-to-opml` produces.
+    We intend to make OPML 2.0 the default in some future major
+    release of Newsboat (#871) (Gwyneth Morgan)
+  Changed:
+  * Enclosures are only enqueued if their MIME type looks like
+    a podcast or is empty. This prevents Newsboat from e.g.
+    enqueueing images from Mastodon feeds (#2367) (Dennis van der
+    Schagt)
+  * Asciidoctor is a truly optional dependency now. `make all`
+    still builds docs, but at least one can `make newsboat`
+    and such without installing Asciidoctor (#2353) (Alexander
+    Batischev)
+  * Newlines are now removed from the author's name (#2434)
+    (blankie)
+  * If the same URL is used in `<a>` and/or `<img>`/`<iframe>`,
+    it's marked as "image" or "iframe" rather than simply a
+    "link" (#2432) (blankie)
+  * `goto-title` operation now searches for the titles *as you
+    see them*, i.e. if a feed doesn't have a title and Newsboat
+    displays its URL instead, `goto-feed` will use that URL rather
+    than the (empty) title (#2451) (blankie)
+  * Updated translations: Dutch (Dennis van der Schagt), German
+    (Lysander Trischler), Italian (Mauro Scomparin), Polish
+    (Carno), Russian and Ukrainian (Alexander Batischev), Swedish
+    (Dennis Öberg), Turkish (Emir SARI)
+  * Updated vendored library expected-lite to 0.6.3
+  * Bumped minimum supported Rust version to 1.66.1
+- Removed newsboat-gcc12.patch due to upstream fix (#2056)
+
+-------------------------------------------------------------------
+Mon Mar 27 07:18:37 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.31:
+  Added:
+  * Operations for scrolling by half a page (`halfpageup`, `halfpagedown`) (#36)
+  * If `--log-level` is specified but `--log-file` isn't, write the log to a file
+    named after the template `newsboat_%Y-%m-%d_%H.%M.%S.log`, i.e. use the
+    current date and time
+  * _contrib/move_url.py_ for moving feeds in Newsboat's database while keeping
+    articles
+  Changed:
+  * Updated translations: Dutch, German, Italian, Polish, Russian and Ukrainian,
+    Spanish and Turkish
+  * Bumped minimum supported Rust version to 1.64.0
+  Fixed:
+  * Inability to exit search mode when `quit` is bound to `BACKSPACE` (#2336)
+
+-------------------------------------------------------------------
+Fri Mar  3 23:15:42 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to 2.30.1:
+  * fixed build failure with curl 7.87. (#2297)
+- Includes 2.30:
+  Added:
+  * In config, long lines can now be broken into multiple ones with.
+    When parsing the config, Newsboat would remove the backslash and
+    append the following line to the current one. Be careful when indenting
+    the lines that follow the backslash, as the indentation will be included
+    in the concatenated string; this can change the meaning of some commands,
+    e.g. if the indentation ends up inside a regex (#2212) (Simon Farre)
+  * article-feed operation, to go to the feed of the currently selected
+    article. This can come in handy in query feeds (phire)
+  * New placeholder for browser, %T, which is replaced by the title
+    of the selected feed or item (#2224) (Aneesh)
+  * Miniflux: fail on startup if credentials are wrong (#2220) (Dennis
+    van der Schagt)
+  * Miniflux: support for API token authentication, which is available
+    since Miniflux 2.0.21 and is the preferred authentication method
+    : https://miniflux.app/docs/api.html#authentication
+    See miniflux-token, miniflux-tokeneval, and miniflux-tokenfile settings (#2122)
+  Changed:
+  * Bumped minimum supported Rust version to 1.62.0
+  * When cleanup-on-quit is disabled and the cache contains unreachable
+    feeds, print their number, and write their URLs to error-log (#1548) (Maximilian Winkler)
+  * If an item contains enclosure(s) but doesn't specify their type(s),
+    pick the last one (as Newsboat only displays a single enclosure
+    per item). This won't always do the right thing, e.g. it could
+    pick cover art instead of the podcast, but sometimes it will, so
+    it's still better than nothing (#2050) (Dennis van der Schagt)
+  * Updated translations: Dutch (Dennis van der Schagt), German (Lysander
+    Trischler), Italian (Mauro Scomparin), Polish (Carno), Russian
+    (Alexander Batischev), Turkish (Emir SARI), Ukrainian (Alexander Batischev)
+  * Updated vendored library Catch2 to 2.13.10
+  Fixed:
+  * Atom: if an item doesn't specify the atom:author, use the field
+    from the contained atom:source; if that's not specified either,
+    use atom:author of the feed itself. This is dictated by RFC 4287
+    §4.2.1 (#2256) (Lysander Trischler)
+  Security:
+  * Remove transitive dependency on the vulnerable time 0.1 crate:
+    CVE-2020-26235 https://osv.dev/vulnerability/RUSTSEC-2020-0071
+    (#2288) (Alexander Batischev, thanks to the prod from critkitten)
+
+-------------------------------------------------------------------
+Mon Oct  3 15:37:07 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.29:
+  Added:
+    * New placeholder for browser, %t, which is replaced by the type of the URL
+    (#1954)
+  * contib: a script to reorder lines in the urls file (#1918)
+  * Support for Brotli compression. In fact, Newsboat will now use all the methods
+    supported by the libcurl it's linked to (#2152)
+  * In tags dialog, put the cursor on the currently selected tag, or the first tag
+    if none is selected at the moment (#2093)
+  Changed:
+  * When rendering an article, put a newline between consecutive <audio> and
+    <video> tags (#2103)
+  * When select-filter is used with an argument (e.g. from a macro), that
+    argument is now used to look up a predefined filter by name. The old
+    behaviour (applying the argument as filter) is still available by using
+    set-filter instead (#2137)
+  * When select-filter is used without an argument, it will now open the filter
+    selection dialog. Previously, set-filter from a macro without arguments
+    was ignored in the article list (#2137)
+  * Docs: use a new style for keys. It should be more readable than the old one,
+    please file issues if you disagree! (#2028)
+  * When reloading feeds in parallel, status line now shows the progress rather
+    than the number of the currently reloaded feed (#2065)
+  * Updated translations: Dutch (Dennis van der Schagt), French (Tonus), German
+    (Lysander Trischler), Italian (Mauro Scomparin), Polish (Carno), Russian and
+    Ukrainian (Alexander Batischev), Spanish (Roboron3042), Turkish (Emir SARI)
+  * Bumped minimum supported Rust version to 1.59.0
+  * Bumped minimum supported GNU Make version to 4.0 (released on
+    October 9th, 2013)
+  * Updated vendored libraries: expected-lite to 0.6.2, json.hpp to 3.11.2
+  Fixed:
+  * Segfault on sqlite3DbMallocRawNN (#1980)
+  * Scrolling when toggling show-read-feeds (#2138)
+  * Feeds not reloading in parallel when reloading only visible feeds (#2067)
+- Refresh:
+  * newsbeuter-makefile.patch
+  * newsboat-gcc12.patch
+
+-------------------------------------------------------------------
+Tue May 24 14:01:33 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Add newsboat-gcc12.patch:
+  Fix build with gcc12
+
+-------------------------------------------------------------------
+Wed Mar 23 07:32:59 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1196972: Bump rust regex to fixed version
+- Update to 2.27:
+  Added:
+  * Support for regexes in `ignore-article`; for example, you can now use
+    `ignore-article "https://nitter.net/.*" "title =~ \"RT by\""` to ignore all
+    retweets in your Nitter feeds. This is more efficient than matching on
+    `feedurl` from the filter expression, because this new form is only
+    evaluated for the feeds that match the regex, while the old form would run
+    for all articles of all feeds (#1913)
+  * A "universal" color scheme
+  * A user-contributed script to show images in Kitty terminal emulator:
+    contrib/kitty-img-pager.sh
+  * Support for XDG directories in contrib/exportOPMLWithTags.py
+  Changed:
+  * Bumped minimum supported Rust version to 1.55.0
+  * We now link to our own STFL fork: https://github.com/newsboat/stfl. The
+    upstream's SVN is down, and we never managed to get any of our bugfixes in
+    there anyway. Since we seem to be the last remaining STFL user, we advise
+    downstream maintainers to rely on our repo instead. Our fork is maintained to
+    the extent necessary for Newsboat
+  * In manpages, command line options are now set in bold and are underlined,
+    while inline code is underlined. These changes improve readability
+  * Clarified error messages in OPML import (#1919)
+  * Updated translations
+  * Updated vendored library json.hpp to 3.10.5, Catch2 to 2.13.8
+  Fixed:
+  * Cursor jumping too far after marking a feed read when hidden feeds are present
+    (#1934)
+  * Newsboat exiting with code 0 when OPML import fails
+  * XML entities not being decoded in "text/plain" entries (#1938)
+  * Crash when "ol" or "ul" tags are closed multiple times (#1974)
+  * Confirmation and Q&A text being almost invisible with "nord" color scheme
+  * Some invalid code in contrib/exportOPMLWithTags.py
+  * Blank lines inside tags not being preserved when inside a "pre" tag (#2003)
+  * A potential crash in HTML entities decoding code
+  Security:
+  * Addressed CVE-2022-24713 (a.k.a. RUSTSEC-2022-0013) by updating "regex" crate
+    to 1.5.5 (#2008)
+
+-------------------------------------------------------------------
+Tue Jan  4 15:58:35 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.26:
+  Added:
+  * `confirm-mark-feed-read` setting (enabled by default) (#1781)
+  * `miniflux-min-items` setting to control how many articles to load for each
+    feed
+  * A script to bookmark articles to buku
+  * A gruvbox color scheme
+  Changed:
+  * Bumped minimum supported Rust version to 1.53.0
+  * Accept empty feed title when bookmarking on autopilot (#243)
+  * `:save` command now uses `save-path` setting to resolve relative paths (#1689)
+  * Updated translations: Dutch (Dennis van der Schagt), German (Lysander
+    Trischler), Italian (Mauro Scomparin), Polish (Michał Siemek), Russian,
+    Ukrainian (Alexander Batischev), and Turkish (Emir Sari)
+  * Updated vendored library optional-lite to 3.5.0, json.hpp to 3.10.4
+  Removed:
+  * Ability to switch away from modal dialogs (e.g. FileBrowser) (#117)
+  Fixed:
+  * Relative URLs in articles are now resolved relative to their permalink when
+    the feed doesn't set the `xml:base` (#1818,
+    https://github.com/akrennmair/newsbeuter/issues/507)
+  * Starred items not being synchronized to NextCloud News (#743)
+
+-------------------------------------------------------------------
+Fri Nov  5 03:59:36 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Add cargo audit service to detect potential security issues
+
+-------------------------------------------------------------------
+Wed Sep 22 08:36:04 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.25:
+  Added:
+  * New elements to style with `color` command: `title`, `hint-key`,
+    `hint-keys-delimiter`, `hint-separator`, and `hint-description`.
+    If there is no style for one of those elements, the style of
+    `info` is used instead. See "Configuring Colors" section in the
+    docs
+  * Podboat: show an error when a podcast can't be renamed (#545)
+  * A note that the urls file can contain comments
+  Changed:
+  * Bumped minimum supported Rust version to 1.51.0
+  * Key hints (at the bottom of the screen) are now styled to make
+    them easier to read. If you're using a custom colorscheme and
+    want to use these new elements, you need to update it;
+    see the "Configuring Colors" section in the docs (#1016)
+  * Podboat: move to the next item after marking a podcast
+    finished or deleted
+  * `purge-deleted` now keeps the cursor near where it was in the
+    list, rather than the *line* it was on (#1728)
+  * Updated translations: Dutch (Dennis van der Schagt),
+    German (Lysander Trischler), Italian (Mauro Scomparin),
+    Polish (Michał Siemek), Russian, Ukrainian (Alexander Batischev),
+    and Turkish (Emir Sari)
+  * Updated vendored library Catch2 to 2.13.7, and json.hpp to 3.10.2
+  Fixed:
+  * A crash when entering a feed with an invalid filter expression (#1665)
+  * Slow scrolling in Podboat (#1375)
+  * Slow `mark-all-read` with remote APIs. It's still slow when a
+    filter is applied, but without a filter it's as fast as possible
+  * A crash when `next-unread` is invoked while viewing a tag with no
+    unread feeds (#1734)
+  * A crash on feeds that contain wide characters (e.g. emojis)
+
+-------------------------------------------------------------------
+Mon Jun 21 07:01:56 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.24:
+  Added:
+  * FreshRSS support
+  * Ability to add descriptions to macros (#228)
+  * Support for plain-text Atom entries (YouTube is the most
+    prominent publisher of those) (#468, #1022, #1010)
+  * restrict-filename setting to control if non-alphanumeric
+    symbols will get replaced by underscores when saving an article (#1110)
+  * highlight-feed setting to highlight feedlist entries according
+    to the filter expressions (same as highlight-article in
+    the article list) (#1510)
+  Changed:
+  * IRC channel moved from Freenode to Libera.Chat network
+  * Newsboat will now fail to start if settings are passed more
+  parameters than
+    they expect. To fix this, read the doc for the setting and try using
+    double
+    quotes as necessary (Alexander Batischev)
+  * Newsboat will now quit if you try to open a query feed whose
+  expression
+    contains an unknown attribute. This is a temporary workaround; the
+    next
+    version will display an error instead. The proper fix couldn't be
+    added to
+    2.24 because that'd disrupt the freeze on translations (#1665)
+  * Updated translations
+  * Bumped minimum supported Rust version to 1.48.0
+  * Updated vendored library Catch2 to 2.13.6
+  Fixed:
+  * Segfault in Podboat when purging the list where the last item is
+    finished or deleted (#1546)
+  * mark-feed-read applying to invisible items (e.g. the ones that are
+    filtered out, or read ones when show-read-articles is in effect) (#1364)
+  * Supplying garbage instead of a correct Newsboat version to FeedHQ
+    and The Old Reader
+  * Sorting in ascending order partially reversing the results of the
+    previous sort (#1561)
+  * Compile errors when building with a stack protector (#1598)
+  * toggle-article-read ignoring its argument in macros when executed
+    from an article view (#1637)
+  * Article view scrolling back to top after opening a link (#1463)
+  * The build system trying to find iconv() in libc instead of linking
+    with libiconv
+
+-------------------------------------------------------------------
+Wed Apr  7 07:20:28 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.23:
+  Added:
+  * open-in-browser-noninteractively operation which is similar to
+    open-in-browser, but doesn't relinquish the terminal to the browser. It
+    still waits for the browser to finish executing, though (Dennis van der
+    Schagt)
+  * Confirmation for delete-all-articles (#1490)
+  * %U specifier for feedlist-title-format which shows the total number of
+    unread articles in all feeds (#1495)
+  * Display images' alternate text in the article view (#1512)
+  * List iframe URLs in the article view (#1153)
+  Changed:
+  * Newsboat now refuses to enqueue a podcast if its filename is already present
+    in the queue. If that happens, you'll have to adjust
+    download-filename-format to make the filenames more distinguishable
+    (#1411)
+  * Reduced message flickering when reloading feeds (Dennis van der Schagt)
+  * Updated translations: Dutch (Dennis van der Schagt), German (Lysander
+    Trischler), Italian (Mauro Scomparin), Polish (Carno), Russian (Alexander
+    Batischev), Turkish (Emir Sari), and Ukrainian (Alexander Batischev)
+  * Bumped minimum supported Rust version to 1.46.0
+  * Updated vendored library Catch2 to 2.13.4
+  Removed:
+  * dumpform command-line command which was only intended for debugging
+    (Dennis van der Schagt)
+  Fixed:
+  * Missing empty lines inside pre tags (#1429)
+  * open-all-unread-in-browser-and-mark-read not synchronizing the "read" status
+    to the remote API (#1449)
+  * Newsboat redrawing the screen once a minute even if idle (#563)
+  * delete-all-articles no longer deletes items that aren't visible (e.g.
+    because of ignore-mode display) (#1360)
+  * Slashes are now replaced by underscores when generating a podcast filename
+    (#836)
+  * File- and dirbrowsers no longer produce invalid paths when user navigates with
+    arrow keys (#1418)
+  * Successful OPML import is no longer misreported as an error (Alexander
+    Batischev)
+  * Descriptions in the help dialog are localized again (#1471)
+  * Added a newline after each div, since it's a block element (#1405)
+  * Re-introduce set x! (toggle) and set x& (reset) (#1491)
+
+-------------------------------------------------------------------
+Mon Jan 11 08:55:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.22.1:
+  * Slow scrolling in the article list (regression) (#1372)
+  * Segfaults if swap-title-and-hints is enabled (regression) (#1399)
+  * Build failure on GCC 9 due to maybe-uninitialized warning which
+    -Werror turns into an error
+
+-------------------------------------------------------------------
+Mon Jan  4 10:26:19 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.22:
+  Added:
+  * confirm-mark-all-feeds-read setting, which makes Newsboat ask for
+    confirmation before marking all the feeds as read (#1215) (Tarishi Jain)
+  * Command line autocompletion in the save dialog (#893) (Dennis van der Schagt)
+  * Support for ^U, ^K, ^G, and ^W editing keys (as in readline and Emacs) in
+    command line in the save dialog (Dennis van der Schagt)
+  * Support for RSS Media extension in Atom feeds (#595) (Dennis van der Schagt)
+  * New, more detailed, documentation chapters on macros and running external
+    commands (A1RO)
+  * User-contributed script that exports feeds with their tags in the OPML format:
+    contrib/exportOPMLWithTags.py (jartigag)
+  * Help dialog in the URLs view (#1218) (Dennis van der Schagt)
+  * Handling of terminal resizes for all dialogs (#389, #390) (Dennis van der
+    Schagt)
+  * goto-title operation, which selects a feed with a given title (#888, #1135)
+    (Dennis van der Schagt)
+  * --cleanup command-line flag, which does the same as cleanup-on-quit
+    option (#1182) (Dennis van der Schagt)
+  * check and ci-check Makefile targets. Both run C++ and Rust test suites
+    consecutively, but the former fails early. Use check locally where
+    re-running tests is quick, and use ci-check in CI where re-running tests
+    usually means re-building everything first (#896) (Alexander Batischev)
+  * Command line support in the help dialog (Dennis van der Schagt)
+  * "(localized)" marks in documentation for all settings with internationalized
+    default values (#1270) (Amrit Brar)
+  * %F placeholder in browser setting, which is always replaced by the
+    feed's URL (unlike %u, which depends on the context in which the browser
+    is invoked) (#423) (Dennis van der Schagt)
+  * Dumping of ignore-article rules with dumpconfig command (in Newsboat's
+    internal command line) (#635) (Dennis van der Schagt)
+  * %L placeholder in datetime-format setting, which turns into "X days ago"
+    string explaining when the article was published (#1323) (Amrit Brar)
+  * Support for escaped double quotes in arguments to set operation when used in
+    macros (#1345) (Dennis van der Schagt)
+  * Podboat: error message if the podcast file can't be written onto disk (#1209)
+    (Nicholas Defranco)
+  Changed:
+  * Abort startup if the urls file or config file is not in UTF-8 encoding. This
+    limitation was effectively in place for a couple releases already, but
+    Newsboat crashed instead of displaying an error message. We intend to relax
+    the requirement again, but for now, we choose to be upfront about it rather
+    than crashing (#723, #844) (Dennis van der Schagt, Alexander Batischev)
+  * save-all operation no longer provides "yes for all" and "no for all" options
+    when there is only one conflict to resolve (#657) (saleh)
+  * Config parser now allows to have tab characters between macro arguments;
+    they will be treated as space (Dennis van der Schagt)
+  * Updated vendored libraries: Catch2 to 2.13.3, martinmoene/optional-lite
+    to 3.4.0, martinmoene/expected-lite to 0.5.0
+  * Updated translations: Dutch (Dennis van der Schagt), French (tkerdonc), German
+    (Lysander Trischler), Italian (Mauro Scomparin), Polish (Carno), Russian
+    (Alexander Batischev), Turkish (Emir Sarı), Ukrainian (Alexander Batischev)
+  Fixed:
+  * Whitespace not being consolidated in item titles (#1227) (Dennis van der
+    Schagt)
+  * Misleading error message when the urls file exists, but can't be opened (#439)
+    (Dennis van der Schagt)
+  * Newsboat processing the leftovers of stdin after running open-in-browser
+    operation (#26, #63, #1094) (Dennis van der Schagt)
+  * mark-feed-read operation not marking articles as read on a remote service
+    when the operation is invoked in the query feed (#220) (Dennis van der
+    Schagt)
+  * run-on-startup setting preventing Podboat from starting (#1288) (Dennis van
+    der Schagt)
+  * scrolloff setting being ignored when opening a feed with lots of read
+    articles before the unread one (#1293) (Dennis van der Schagt)
+  * Memory corruption while rendering an article with JavaScript that contains
+    HTML (#1300) (Alexander Batischev)
+  * Podboat help dialog crashing if BACKSPACE is bound (#1139) (Dennis van der
+    Schagt)
+  * Being unable to run a second Newsboat instance with --cache-file switch if
+    cache-file setting is used (#1318) (Dennis van der Schagt)
+  * Misleading "an instance is already running" message when a lock file can't be
+    created or written to (#314) (Dennis van der Schagt)
+  * Failing to parse macros which contain semicolons in operations' arguments
+    (#1200) (Alexander Batischev)
+  * Not installing some of the contrib scripts (Alexander Batischev)
+
+-------------------------------------------------------------------
+Mon Oct  5 12:05:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.21:
+  Added:
+  * Build dependency on AWK
+  * A note that security vulnerability should be reported to
+    security@newsboat.org preferably encrypted to PGP key 4ED6CD61932B9EBE
+  * Confirmation before marking all feeds as read (#1006) (Dennis van der Schagt)
+  * scrolloff setting which keeps the specified number of lines above and below
+    the selected list item (#1103) (Dennis van der Schagt)
+  * %=[width][identifier] formatting sequence for *-format settings. It
+    centers a given value inside a given width, padded with spaces and slanting
+    to the left if it can't be aligned evenly (Daniel Bauer)
+  * Support for Miniflux (#448) (Galen Abell)
+  * run-on-startup setting which executes a given list of operations when
+    Newsboat starts. This can be used to e.g. open tag dialog on startup, or go
+    to a certain feed (#888) (Dennis van der Schagt)
+  * Documentation for one, two, ..., nine, zero operations that open
+    a corresponding URL in the browser (A1RO)
+  Changed:
+  * It is now a startup error for a macro to have no operations
+  * Bumped minimum supported Rust version to 1.42.0
+  * Updated vendored libraries: Catch2 to 2.13.1, json.hpp to 3.9.1
+  * Empty strings in filter expressions are treated as zero when compared with
+    a numeric attribute like age (Alexander Batischev)
+  * Converted various tables in docs to decorated lists, making them easier to
+    read (#441]) (Spacewalker2)
+  * In macros, no longer require a space between operation and the following
+    semicolon (#702]) (Dennis van der Schagt)
+  * Sorting by first tag now ignores "title tags", i.e. the ones that start with
+    a tilde (#1128]) (José Rui Barros)
+  * contrib/feedgrabber.rb updated to use Newsboat directories instead of
+    Newsbeuter's (Fabian Holler)
+  * Updated translations: Dutch (Dennis van der Schagt), German (Lysander
+    Trischler), Polish (Carno), Russian (Alexander Batischev), Turkish (Emir
+    Sarı), Ukrainian (Alexander Batischev)
+  Fixed:
+  * TT-RSS not taking the MIME type into account when deciding what enclosure to
+    pick (#941]) (chux0519)
+  * Typos in documentation (Edgar Hipp)
+  * History files storing the oldest entries instead of the most recent ones
+    (#1081]) (Dennis van der Schagt)
+  * Search dialogs all displaying results of the last search, not their individual
+    searches (#1087]) (Dennis van der Schagt)
+  * Feeds apparently not being sorted after a reload (#1089]) (Alexander Batischev)
+  * Search dialog displaying the new query even if the search failed (Dennis van
+    der Schagt)
+  * delete-all-articles operation not working in the search dialog (Dennis van
+    der Schagt)
+  * First feed marked as read when deleting all items in search dialog (Dennis van
+    der Schagt)
+  * Arrow keys not working in the tag list (Dennis van der Schagt)
+  * Inoreader not marking items unread (#1109]) (José Rui Barros)
+  * content attribute being unavailable to query feeds (#111]) (Dennis van der
+    Schagt)
+  * Newsboat sometimes opening wrong items (#72], #1126]) (Dennis van der Schagt)
+  * Unread items being double-counted by -x print-unread and notifications
+    (#444], #1120]) (Alexander Batischev)
+  * Nested lists being strung out into a single, non-nested list (#1158]) (Dennis
+    van der Schagt)
+  * Colons sometimes making filter expressions invalid (Alexander Batischev)
+  * Child processes that display notifications not being waited on. We now
+    double-fork them (glacambre)
+
+-------------------------------------------------------------------
+Thu Jun 25 07:46:26 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.20.1:
+  Fixed:
+  * Installation on BSDs (Tobias Kortkamp)
+  * Regression that caused Newsboat to require a space before semicolon in macros,
+    which made set browser "lynx"; open-in-browser invalid (#1013], #1015],
+    #1017], #1018]) (Alexander Batischev)
+  * Possible segfault upon startup (#1025]) (Dennis van der Schagt, Alexander
+    Batischev)
+  * Feed sorting in Spanish locale (#1028]) (Dennis van der Schagt, Alexander
+    Batischev)
+
+-------------------------------------------------------------------
+Thu Jun 25 07:43:10 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.20:
+  Added:
+  * An FAQ item on why TT-RSS authentication might fail (#44[1]) (Alexander
+    Batischev)
+  * An FAQ item on browser failures in Newsboat 2.18 (Alexander Batischev)
+  * Ability to bind multiple keys to the same operation (#110[2]) (Dennis van
+    der Schagt)
+  * Ability to bind operations to Tab key (Dennis van der Schagt)
+  * New format specifiers for articlelist-format: %n (article unread), %d
+    (article deleted), %F (article's flags) (Dennis van der Schagt)
+  * New format specifier for feedlist-title-format,
+    articlelist-title-format, and searchresult-title-format: %F, which
+    contains current filter expression. That specifier is now included into
+    those settings by default (#946[3]) (Dennis van der Schagt)
+  * New setting, switch-focus, which specifies a key that moves the cursor
+    between widgets in File- and DirBrowser (Dennis van der Schagt)
+  * New setting, wrap-scroll, which makes the cursor jump to the last item
+    when scrolling up on the top one, and vice versa (David Pedersen)
+  * exec command-line command, which allows to run an arbitrary operation
+  (#892[4]) (Marco Sirabella)
+  * Dependency on martinmoene/optional-lite and martinmoene/expected-lite
+    libraries, both of which we vendor
+  * Include enclosure URL in the article's urlview (#809[5]) (Spacewalker2,
+  Alexander Batischev)
+  * Allow open-in-browser and open-in-browser-and-mark-read operations in the
+    URL view, where they open the selected URL (David Pedersen)
+  * Open command line when a number key is pressed in a tag-list (#939[6])
+  (Dennis van der Schagt)
+  * Install Newsboat's SVG icon as part of install target (Nikos Tsipinakis)
+  Changed:
+  * Merged es and es_ES translations into one (Marcos Cruz)
+  * Updated translations: Dutch (Dennis van der Schagt), German (Lysander
+    Trischler), Russian (Alexander Batischev), Spanish (Marcos Cruz), Turkish
+    (Emir Sari), Ukrainian (Alexander Batischev)
+  * It's now an error to have always-download or reset-unread-on-update
+    without parameters (Alexander Batischev)
+  * It's now an error to have macro without at least two arguments (Alexander
+    Batischev)
+  * The conditional format sequence (%?[char]?[format]&[format]?) now treats
+    whitespace-only value as empty. This allows changing the formatting of,
+    for example, "unread" and "deleted" fields in articlelist-format (Dennis van
+    der Schagt)
+  * open-in-browser-and-mark-read in feedlist no longer marks articles read
+    if the browser fails (Nikos Tsipinakis)
+  * Macro execution halts if one of the operations fails (Nikos Tsipinakis)
+  * Inoreader now marks articles read on a thread, to hide latency (#710[7])
+    (pi.scateu.me)
+  * Bumped minimum supported Rust version to 1.40.0
+  * Updated vendored libraries: Catch2 to 2.12.2, json.hpp to 3.8.0
+  Removed:
+  * Newsboat's Inoreader API keys. Users need to register their own Inoreader
+    application now, and set them via inoreader-app-id and inoreader-app-key
+    settings. Please see "Inoreader" section in the HTML documentation for
+    details. (Alexander Batischev)
+  Fixed:
+  * Help dialog showing operations as unbound even though they are bound to
+    some keys (#843[8]) (Dennis van der Schagt)
+  * feedlink attribute containing feed title instead of feed URL (Alexander
+    Batischev)
+  * feeddate attribute containing fixed string instead of item's publication
+    date and time (Alexander Batischev)
+  * browser setting not working if it contains < (#917[9]) (Dennis van der
+    Schagt)
+  * up, down, pageup, pagedown, home, and end now working in macros
+    (#890[10]) (Dennis van der Schagt)
+  * Backslash inside double quotes requiring three escapes instead of one,
+    every other time (#536[11], #642[12], #926[13]) (Alexander Batischev)
+  * Users can bind operations to UP, DOWN, HOME, END, NPAGE, and PPAGE
+    keys (#903[14]) (Dennis van der Schagt)
+  * Generate example config as part of doc target, so install-examples can
+    simply copy it instead of generating (Alexander Batischev)
+  * Install manpages via install-docs target, not install-newsboat and
+    install-podboat (#829[15]) (Alexander Batischev)
+  * The wrong feed being opened (#72[16]) turned out to be caused by a bug in
+    libstfl.  A patch for that library is available at dennisschagt/stfl#4
+    (Dennis van der Schagt)
+- Remove newsboat-fix-json-hpp.patch: contained in upstream
+
+-------------------------------------------------------------------
+Tue Jun  9 15:07:47 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on non-x86:
+  * newsboat-fix-json-hpp.patch
+
+-------------------------------------------------------------------
+Mon Mar 23 08:59:21 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.19:
+  Added:
+  * contrib/urls-maintenance.sh: a script that converts HTTP to HTTPS, updates
+    URLs according to HTTP redirects etc. (velaja)
+  * `delete-played-files` setting (#669) (Dennis van der Schagt)
+  * `%K` format for  `podlist-format`. This format specifier is replaced by the
+    human readable download speed (automatically switches between KB/s, MB/s, and
+    GB/s) (Dennis van der Schagt)
+  * Docs on how to synchronize with Bazqux (Jonathan Siddle, Alexander Batischev)
+  * Document that regexes use POSIX extended regular expressions
+  * Document that regexes in filter language are case-insensitive
+  Changed:
+  * Dependency: we now use Asciidoctor instead of Asciidoc
+  *  Dependency on Rust: we now have a schedule for bumping the minimum supported
+     Rust version (#709)
+  * Update vendored version of Catch2 to 2.11.3
+  * Display `<audio>` and `<video>` tags in article view (Ignacio Losiggio)
+  * Update translations: Dutch (Dennis van der Schagt), German (Lysander
+    Trischler), Russian, Ukrainian (Alexander Batischev)
+  * `podlist-format` now uses `%K` instead of `%k` by default (shows human
+    readable speed instead of always using KB/s) (#727) (Dennis van der Schagt)
+  * contrib/pinboard.pl: save description of the article (Donald Merand)
+  * The EOT markers ("~" characters below blocks of text) no longer inherit their
+    style (colors + attributes) from the "article" style. Instead, they can be
+    configured separately, allowing to hide them without hiding the article text
+    (example config line: `color end-of-text-marker default default invis`) (#507)
+    (Dennis van der Schagt)
+  Fixed:
+  * **Breaking change**: `bind-key` context `podbeuter` renamed to `podboat`
+    (Alexander Batischev) (Kudos to Marcos Cruz)
+  * Garbage displayed in empty lines turned out to be a bug in libstfl. Dennis van
+    der Schagt created a patch and submitted it upstream on 7 March 2020, but
+    the upstream maintainer haven't responded. Please apply the patch yourself:
+    https://github.com/newsboat/newsboat/issues/506#issuecomment-596091556
+    (#273, #506) (Dennis van der Schagt)
+  * Podboat now saves and restores "finished" state of the podcast (#714) (Dennis
+    van der Schagt)
+  * Command-line options that take paths as arguments (--cache-file, --url-file
+    etc.) now resolve tilde as path to the home directory (#524) (Alexander
+    Batischev)
+  * `--execute print-unread` now takes `ignore-article` into account (#484)
+    (@Brn9hrd7)
+  * Podboat no longer spuriously creates .part directories (#725) (Dennis van der
+    Schagt)
+  * Incorrect paths in filebrowser and dirbrowser when navigating with arrow keys
+    and Enter (#547) (Dennis van der Schagt)
+  * Incorrect dates parsing on macOS 10.15 Catalina (Alexander Batischev)
+  * `--help` now displays paths to config, urls file, and cache file (#294)
+    (Alexander Batischev)
+  * Documentation now correctly explains that positive padding values add padding
+    on the left (Dennis van der Schagt)
+  * Newsboat not displaying titles of empty feeds (#732) (Dennis van der Schagt)
+  * Newsboat forgetting feed titles if reload brought no new items (#748)
+    (Alexander Batischev)
+  * filebrowser and dirbrowser displaying ".." instead of an actual directory path
+    (#731) (Dennis van der Schagt)
+  * `make -jN` now *really* limits the number of jobs to N (#768) (Anatoly Sablin,
+    Alexander Batischev)
+  * `pb-purge` (`P` in Podboat) no longer removes played files, just as
+    documentation claims (Dennis van der Schagt)
+  * `highlight` in feedlist being overridden after reload (#37) (Dennis van der
+    Schagt)
+  * `highlight` regexes unable to match beginning-of-line (#242, #535) (Dennis van
+    der Schagt)
+  * Search not extending into and across hyperlinks (#331) (Dennis van der Schagt)
+  * `highlight` in articles extending beyond the text that the regex matched
+    (#488) (Dennis van der Schagt)
+  * `highlight` that matches beginning-of-line matching again after the first
+    match (#796) (Dennis van der Schagt)
+  * Feed/article titles are now sanitized, to prevent HTML markup from breaking
+    formatting (#796) (Dennis van der Schagt)
+  * Plain-text rendition of an article no longer contains STFL markup (Dennis van
+    der Schagt)
+  * "Filler sequence" (`%>`) not working in format strings for articlelist,
+    dialogs, help, select-tag, select-filter and urls dialogs (#88) (Dennis van
+    der Schagt)
+  * Cursor in Podboat is hidden (Dennis van der Schagt)
+  * Crash when displaying an article that has double-closed `<ol>` tags (#659)
+    (Dennis van der Schagt)
+  * Alignment of feed- and articlelist broken by wide characters like CJK and
+    emojis (#139, #683) (Dennis van der Schagt)
+  * Whitespace ignored if followed by an HTML tag (#512) (Dennis van der Schagt)
+
+-------------------------------------------------------------------
+Sun Dec 29 16:48:58 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.18:
+  Added:
+  * Logo by noobilanderi
+  Changed:
+  * `open-in-browser-and-mark-read` no longer marks item read if browser returned
+    a non-zero exit code. Similarly, `open-all-unread-in-browser` and
+    `open-all-unread-in-browser-and-mark-read` abort on non-zero exit code
+  * Update vendored version of Catch3 to 2.11.0
+  * Update vendored version of nlohmann/json to 3.7.3
+  * Update translations: German, Russian, Ukrainian
+  Fixed:
+  * `unbind-key -a` breaking cmdline, search and goto-url (#454) (kmws)
+  * Flaky `run_command()` test (Alexander Batischev)
+  Security:
+  * smallvec crate bumped to 0.6.10, to get fixes for RUSTSEC-2019-0009 and
+    RUSTSEC-2019-0012
+- Remove newsboat-no-git-hash.patch
+
+-------------------------------------------------------------------
+Mon Jul  1 11:24:38 UTC 2019 - mvetter@suse.com
+
+- Update to 2.16.1:
+  Added:
+  * Install changelog and contrib/ alongside docs (Alexander Batischev) (#474)
+  * show-title-bar config option to hide the title bar. Defaults to yes, i.e.
+    the behaviour is the same as with Newsboat 2.15 (Sermak) (#375)
+  * Contrib scripts for image preview (Sermak) (#480)
+  * Nord colour scheme (Daryl Manning)
+  * Ability to search withing the search results, narrowing them down (Tumlinh)
+    (#327)
+  * Color scheme based on Adapta-Maia GTK theme (Lucas Parsy)
+  Changed:
+  * Marking feed as read only resets the cursor if article list is sorted by date
+    (Stefan Assmann)
+  * include also accepts relative paths (Marco Sirabella) (#489)
+  * Update vendored version of nlohmann/json to 3.6.1
+  * Update vendored version of Catch2 to 2.9.1
+  Fixed:
+  * Parser breaking on spaces inside backticks (Marco Sirabella) (#492)
+  * Hidden tags changing the title of their feeds (Alexander Batischev) (#498)
+  * Segfaults some time after using an invalid regex in a filter expression
+    (Alexander Batischev) (#501)
+  * Single quotes in podcast names replaced by %27 (屑鉄さらい;Scrap Trawler)
+    (#290, #457)
+  * Out-of-bounds access on empty "author" tag in RSS 0.9x (Alexander Batischev)
+    (#542)
+- Add newsboat-no-git-hash.patch: Don't depend on git. Fix build
+
+-------------------------------------------------------------------
+Thu Feb 14 09:13:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Reduce overly complicated %setup calls.
+
+-------------------------------------------------------------------
+Thu Feb 14 07:55:58 UTC 2019 - mvetter@suse.com
+
+- Update to 2.14.1:
+  Added:
+  * Support for cross-compilation with CARGO_BUILD_TARGET
+    environment variable (maxice8)
+  * %N format for download-path and download-filename-format settings.
+    This format is replaced by item's original feed-title, even when
+    selected through the query feed (Felix Viernickel) (#428)
+  Changed
+  * Translations: Polish (Carno)
+  * When opening a never-fetched feed in the browser,
+    just use the feed's URL (Alexander Batischev)
+  * Update vendored version of Catch2 to 2.6.0
+  Fixed:
+  * Messed-up highlighting when regex matches start-of-line (zaowen) (#401)
+  * Failing to update The Old Reader feeds (Alexander Batischev) (#406)
+  * "NewsBlur" spelling throughout the docs and messages (zaowen) (#409)
+  * Lack of space between podcast URL and its MIME type (Alexander Batischev) (#425)
+  * "rev-sort" command name in docs (Jakob Kogler)
+  * Keybindings not applied in dialogs view (Felix Viernickel) (#431)
+  * Spacer formatter not working in podlist-format (Alexander Batischev) (#434)
+- Add rust dependencies and vendor.tar.xz:
+  Uses rust for libnewsboat now.
+
+-------------------------------------------------------------------
+Mon Sep 24 09:06:01 UTC 2018 - mvetter@suse.com
+
+- Update to 2.13:
+  Added:
+  * Respect TMPDIR environment variable when writing temporary files (#250[1])
+  * delete-all-articles operation that marks all articles in the feed as deleted
+    (Kamil Wsół)
+  Changed:
+  * Require cookie-cache setting if Newsblur API is used (Alexander Batischev)
+  * Translations: Russian, Ukraininan (Alexander Batischev), Swedish (Dennis
+    Öberg), German (Lysander Trischler)
+  * json.hpp updated to version 3.2.0
+  * Natural sort order for article titles, so numbers are put in the expected
+    order (e.g. 1, 2, 5, 10, 11 rather than 1, 10, 11, 2, 5) (Nikos Tsipinakis)
+  Fixed:
+  * Do not create empty files if history is disabled (Nikos Tsipinakis)
+
+-------------------------------------------------------------------
+Mon Jun 25 06:46:32 UTC 2018 - mvetter@suse.com
+
+- Update to 2.12:
+  Added:
+  * Ability to override path to pkg-config (Ali Lown)
+  * Socket support in filebrowser (Sebastian Rakel)
+  * ls --classify-like formatting for filenames in filebrowser (Sebastian Rakel)
+  * Ability to sort feedlist by last update (TwilightSpectre) (#191[1])
+  * :q as alternative to :quit (Franz König)
+  * Support for open-in-browser in URL dialog, thus fixing many
+    user macros in that dialog (Felix Viernickel) (#194[2])
+  * "Author" field for items fetched from Newsblur (Chris Nehren)
+  * Coding style, mostly enforced through clang-format. Non-enforceable things
+    are documented in docs/code-style.markdown (Alexander Batischev)
+  * A check in bind-key that will now throw an error on binding to
+    a non-existent operation (Nikos Tsipinakis)
+  Changed:
+  * The markup in docs, to be consistent throughout (Lysander Trischler)
+  * HTTP to HTTPS in communication with The Old Reader (Richard Quirk)
+  * Translations: Russian, Ukrainian (Alexander Batischev),
+    Italian (Francesco Ariis)
+  Fixed:
+  * Colors for unread items in all contributed colorschemes (@sandersantema[4])
+    (#163[5])
+  * Segfaults in dialogs view when swap-title-and-hints is enabled (Alexander
+    Batischev) (#168[6])
+  * Typo in JSON field name in TT-RSS API (Sebastian Rakel) (#177[7])
+  * Filebrowser displaying "d" filetype for everything but regular files
+    (Sebastian Rakel) (#184[8])
+  * TT-RSS relogin (Sebastian Rakel)
+  * Internal HTML renderer not stripping whitespace in front of text (Alexander
+    Batischev) (#204[9])
+  * Podboat breaking if XDG data dir already exists (Alexander Batischev)
+  * Makefile failing if user overrode ls somehow (Alexander Batischev)
+  * Various problems found by clang-analyzer and Coverity Scan (Alexander
+    Batischev)
+
+-------------------------------------------------------------------
+Sat Mar 31 20:05:56 UTC 2018 - mvetter@suse.com
+
+- Update to 2.11.1:
+  * If built from the tarball, Newsboat 2.11 reported its
+    version as 2.10.2.
+
+-------------------------------------------------------------------
+Mon Mar 26 10:18:40 UTC 2018 - mvetter@suse.com
+
+- Update to 2.11:
+  * Podboat adds ".part" suffix of the files it currently downloads
+  * Support for `CURL_CA_BUNDLE` environment variable
+  * Fix unwanted logging to stdout on `--export-to-opml`
+  * New command: `mark-all-above-as-read`
+  * See https://github.com/newsboat/newsboat/releases/tag/r2.11
+- Remove newsboat-2.10.2-json-c-size_t.patch: upstreamed
+- Remove newsboat-nonexec-man.patch: upstreamed
+- Rebase newsbeuter-makefile.patch
+
+-------------------------------------------------------------------
+Thu Jan 18 14:58:06 UTC 2018 - mvetter@suse.com
+
+- Add newsboat-2.10.2-json-c-size_t.patch: make work with json-c 0.13
+
+-------------------------------------------------------------------
+Fri Dec 29 00:44:33 UTC 2017 - jengelh@inai.de
+
+- Limit description to the openSUSE package context - replace
+  by description from documentation.
+
+-------------------------------------------------------------------
+Thu Dec 28 01:56:12 UTC 2017 - avindra@opensuse.org
+
+- Update to version 2.10.2
+  * Added
+    - HTML anchors for all config commands in docs. You can now
+      link to each command separately
+    - Support for Inoreader
+    - Slovak translation
+  * Changed
+    - Enqueue last audio enclosure
+    - text-width doesn't apply if it's bigger than terminal width
+    - Translations: German, Russian, Ukrainian
+  * Removed
+    - Build dependency on Perl
+    - Test dependency on bc
+  * Fixed
+    - Do not create XDG data dir if not using XDG
+    - When used with Newsblur, check on startup if cookie-cache
+      exists or can be created, because integration doesn't work
+      without cookies
+    - Builds on AARCH64 and ARMHF
+    - Only show an error message once when unknown option is
+      supplied
+    - License header used to say it's MIT/X Consortium License,
+      whereas in reality it's a MIT License
+    - Cross-compilation made possible by conditionally assigning
+      to RANLIB and AR in Makefile
+    - Cookies actually get persisted
+    - CJK text is wrapped at correct code-point boundaries
+    - Don't segfault if error-log points to non-existent file
+    - Spanish translation
+- add newsboat-nonexec-man.patch
+  - this removes executable bits from the man pages
+- rebase newsbeuter-makefile.patch
+- remove newsbeuter-ncurses6.patch
+  - fixed upstream in 317451791b950d7a48b7837995e45efb17ac6b15
+- add dependency on asciidoc
+  - man pages and docs are now packaged
+
+-------------------------------------------------------------------
+Thu Nov 16 17:47:52 UTC 2017 - aavindraa@gmail.com
+
+- rename package to newsboat
+- neutralize description
+- lint .spec file
+- rebase newsbeuter-makefile.patch
+- rebase newsbeuter-ncurses6.patch
+- drop reproducible.patch
+  * upstreamed in 8cf8bd40b449aa5f183f274df490d61e785ea4a6
+
+-------------------------------------------------------------------
+Mon May 22 04:53:00 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort input files to make build fully reproducible
+
+-------------------------------------------------------------------
+Tue Oct 13 02:37:29 UTC 2015 - zaitor@opensuse.org
+
+- Add newsbeuter-ncurses6.patch: Fix build with ncurses 6. Patch
+  taken from Fedora. Apply only for openSUSE newer than 13.2.
+
+-------------------------------------------------------------------
+Thu Mar  5 19:07:04 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.9
+  * Fix custom keybindings in tag and filter selection dialogs (fixes #78).
+  * Fix incorrect reloading of tags after editing the urls file.
+  * Catch an exception that might be thrown by the "killfile" function.
+  * Don't override feed titles for hidden feeds.
+  * Fix dumpconfig.
+  * Add support for FeedHQ (feedhq.org).
+  * Fix missing variable in log output (fixes #124).
+  * Fix type of configuration variables to path where appropriate (fixes #125).
+  * Update to Brazilian Portuguese translation (fixes #126).
+  * Fix crash when GUID is lost (fixes #127).
+  * Fix dependency check (fixes #132).
+  * Fix segfault in jump_to_next_unread_item (fixes #133).
+  * Change code base to C++11.
+  * Don't render inline images (fixes #154).
+  * Fixed bug where feeds would appear empty due to variable shadowing issue.
+- Remove merged patches
+  * newsbeuter-ncurses.patch
+  * newsbeuter-gcc47.patch
+- Use download Url as source
+- Remove obsolete conditional macros
+- Split out translation files
+- Remove depreciated/obsolete AUTHORS and %clean sections
+- Add libjson-c-devel build require; new upstream dependency
+- Cleanup requirements list
+
+-------------------------------------------------------------------
+Sun Mar 25 04:04:54 UTC 2012 - mrdocs@opensuse.org
+
+run -osc service localrun format_spec_file to fix copyright
+
+-------------------------------------------------------------------
+Wed Mar 21 23:05:47 UTC 2012 - dimstar@opensuse.org
+
+- Add newsbeuter-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:51:09 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Wed Feb  2 09:46:27 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 2.4:
+  * support for query feeds in combination with Google Reader was added
+  * it is now possible to configure proxy authentication methods
+  * a quiet startup mode was added
+  * overall memory usage was reduced by loading data from the cache only on
+    demand
+  * Bloglines support was removed
+  * XDG Base Directory support was added
+  * an authentication bug related to Google Reader was fixed
+  * support for HTTP cookies was added
+  * many small issues were fixed
+
+-------------------------------------------------------------------
+Thu Jun 24 22:45:01 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.3:
+  * a number of miscellaneous bugs has been fixed, most notably the
+    Google Reader authentication issue that came up when Google Reader
+    changed its authentication scheme
+
+- built against libstfl 0.21 (statically)
+
+-------------------------------------------------------------------
+Sun Mar 14 15:23:47 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.2:
+  * support for Google Reader was added
+  * a great number of bugs were fixed
+  * the killfile functionality was improved
+  * article highlighting in the article list based on article content
+    was added
+  * a "hard quit" keybinding was added
+  * an HTML table renderer was added
+
+-------------------------------------------------------------------
+Wed Dec 16 21:43:37 UTC 2009 - mrueckert@suse.de
+
+- just recommend lynx
+
+-------------------------------------------------------------------
+Wed Dec  9 23:31:41 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 2.1:
+  * add support for 256 color terminal
+  * the first article is now selected upon entering the article
+    list
+  * the selection is moved to the next feed when a feed is marked
+    as read in the feed list
+  * HTML rendering has been improved
+  * add support for SOCKS proxies
+  * add a new notification type, "notify-beep"
+  * fixes various bugs
+
+-------------------------------------------------------------------
+Tue Apr 21 00:00:00 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 2.0
+
+-------------------------------------------------------------------
+Mon Sep  1 00:00:00 CEST 2008 - guru@unixtech.be
+
+- update to 1.1:
+  * support for wrapping long header lines and links in the article
+    view was added
+  * a security issue where opening specially crafted URLs of articles
+    could lead to execution of shell commands was fixed
+
+-------------------------------------------------------------------
+Thu Aug 21 00:00:00 CEST 2008 - guru@unixtech.be
+
+- new package

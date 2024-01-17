@@ -1,0 +1,175 @@
+-------------------------------------------------------------------
+Mon Jan 15 05:06:39 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.36:
+  * feat: for scikit-hep/pylhe#220 (gh#scikit-hep/uproot5#135).
+
+-------------------------------------------------------------------
+Fri Dec 15 15:52:58 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.35:
+  * feat: for gh#scikit-hep/uproot5#1043.
+
+-------------------------------------------------------------------
+Mon Oct 23 12:56:48 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.34:
+  * feat: add uproot ntuple 6.29/01 files
+    (gh#scikit-hep/scikit-hep-testdata#131).
+
+-------------------------------------------------------------------
+Sun Oct  8 00:58:33 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.33:
+  * Add nano_dy.root file from uproot issue 121
+    [gh#scikit-help/scikit-hep-testdata#130].
+
+-------------------------------------------------------------------
+Mon Jul  3 09:45:35 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.31:
+  * feat: add uproot-issue-880 data
+    [gh#scikit-help/scikit-hep-testdata#123].
+- For checks, some tests now require a writable tmp dir; create
+  one in working dir using mktemp and set PYTEST_DEBUG_TEMPROOT.
+
+-------------------------------------------------------------------
+Thu May  4 14:41:27 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.30:
+  * Increase the pre-commit auto-update frequency to monthly
+    (gh#scikit-hep/scikit-hep-testdata#117).
+  * chore: switch to ruff (gh#scikit-hep/scikit-hep-testdata#118).
+  * Switch to codecov (gh#scikit-hep/scikit-hep-testdata#119).
+  * feat: add uproot-issue-513 data
+    (gh#scikit-hep/scikit-hep-testdata#120).
+
+-------------------------------------------------------------------
+Thu Feb 23 20:50:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.28:
+  * docs: add tomeichlersmith as a contributor for data
+  * feat: Add file for scikit-hep/uproot5#816
+  * add 10-event LHE file with non-standard PDG particle
+
+-------------------------------------------------------------------
+Tue Jan 10 09:27:32 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to versin 0.14.26
+  * removal of Python 3.6 [gh#scikit-hep/scikit-hep-testdata#109].
+  * update rntuple tests to 6.29 and adding more
+    [gh#scikit-hep/scikit-hep-testdata#111].
+- Minor rebasing of scikit-hep-testdata-datadir.patch to apply
+  cleanly.
+
+-------------------------------------------------------------------
+Tue Oct 25 20:11:00 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.14.22:
+  - fix two bugs in gh#scikit-hep/uproot5
+- Remove unnecessary code for building with Python 2.
+
+-------------------------------------------------------------------
+Sat Oct  1 09:11:03 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.14.20:
+  * Added a file for gh#scikit-hep/uproot5#697.
+- Fix versions in previous two changelogs.
+
+-------------------------------------------------------------------
+Tue Aug 23 21:36:10 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.14.19:
+  * modify rntuple stl test file to be more informative
+    [gh#scikit-hep/scikit-hep-testdata#82].
+
+-------------------------------------------------------------------
+Wed Aug 10 21:53:24 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.14.16:
+  * add more RNTuple test files
+    [gh#scikit-hep/scikit-hep-testdata#80].
+  * add singly jagged int/float rntuple
+    [gh#scikit-hep/scikit-hep-testdata#78].
+
+-------------------------------------------------------------------
+Mon Jul  4 15:38:58 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.15:
+  * Update RNTuple using ROOT 6.26/04
+    [gh#scikit-hep/scikit-hep-testdata#76].
+
+-------------------------------------------------------------------
+Tue Jun 21 23:15:37 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.14:
+  * Add an example of a ROOT::VecOps::RVec for
+    gh#scikit-hep/uproot4#589.
+
+-------------------------------------------------------------------
+Sat Mar  5 13:30:28 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.12:
+  * Put "Scikit-HEP Administrators" as copyright holders and
+    update copyright to 2022 by @eduardo-rodrigues in
+    gh#scikit-hep/scikit-hep-testdata#71.
+  * Added uproot-issue-569.root as a test for a fix for
+    gh#scikit-hep/uproot4#569.
+
+-------------------------------------------------------------------
+Thu Jan 20 17:09:37 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.11:
+  * For stability in regression tests and to remove dependency on
+    HEPData uptime and delivery add the probability models for
+    INSPIRE entry 1748602 (published to HEPData) to
+    scikit-hep-testdata for regression tests in pyhf
+    (gh#scikit-hep/scikit-hep-testdata#67).
+
+-------------------------------------------------------------------
+Sat Sep 18 17:15:49 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.8:
+  * New test file for uproot
+    [gh#scikit-hep/scikit-hep-testdata#65].
+- Changes from version 0.4.7:
+  * Fix for scikit-hep/uproot4#418.
+
+-------------------------------------------------------------------
+Mon Aug  9 23:17:52 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.6:
+  * Added uproot-issue-407.root for gh#scikit-hep/uproot4#407
+    (and a C function to generate it).
+
+-------------------------------------------------------------------
+Fri Jul 16 17:33:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Package the test data. We need it on obs.
+  * Add scikit-hep-testdata-datadir.patch for putting the data into
+    a common subpackage in order to avoid multiple mostly identical
+    300MB python flavored packages.
+- Fix build and runtime requirements
+
+-------------------------------------------------------------------
+Sat Jul  3 00:53:03 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.4:
+  * added uproot-issue-350.root.
+- Drop scikit-hep-testdata-no-pep8.patch: no longer needed.
+- Use %python_alternative macro to install multi-flavor binaries.
+
+-------------------------------------------------------------------
+Mon Dec 21 00:59:35 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.3.10:
+  * Add test data related to uproot issue 227
+    (gh#scikit-hep/scikit-hep-testdata#45).
+
+-------------------------------------------------------------------
+Sun Dec 13 16:08:44 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package
+- Add scikit-hep-testdata-no-pep8.patch: Drop pep8 requrements for
+  pytest to avoid depending on outdated, unavailable pytest-pep8
+  module.

@@ -1,0 +1,7 @@
+<package name="b43-fwcutter" project="openSUSE:Factory">
+  <title>Tool for extracting firmware from newer Broadcom WLAN drivers</title>
+  <description>b43-fwcutter can be used to extract firmware from Windows WLAN drivers
+for Broadcom bcm43xx devices. The firmware is necessary to run such a
+card under Linux using the b43 or b43legacy driver.</description>
+  <devel project="hardware" package="b43-fwcutter"/>
+</package>

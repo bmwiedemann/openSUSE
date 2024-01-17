@@ -1,0 +1,11 @@
+<services>
+    <service name="replace_using_package_version" mode="buildtime">
+        <param name="file">rook.spec</param>
+        <param name="regex">%CEPH_VERSION%</param>
+        <param name="parse-version">patch_update</param>
+        <param name="package">ceph</param>
+    </service>
+    <service name="go_modules" mode="disabled">
+        <!-- <param name="compression">xz</param> -->
+    </service>
+</services>

@@ -1,0 +1,12 @@
+<package name="RigelEngine" project="openSUSE:Factory">
+  <title>A modern reimplementation of the game game Duke Nukem II</title>
+  <description>A modern reimplementation of the game Duke Nukem II, originally released in
+1993 for MS-DOS by Apogee Software.
+
+You need the original game's data files in order to play, e.g. the freely
+available shareware version.
+
+</description>
+  <devel project="games" package="RigelEngine"/>
+  <url>https://github.com/lethal-guitar/RigelEngine</url>
+</package>

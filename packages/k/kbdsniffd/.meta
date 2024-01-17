@@ -1,0 +1,10 @@
+<package name="kbdsniffd" project="openSUSE:Factory">
+  <title>Keyboard Grabber Daemon</title>
+  <description>kbdsniffd is a keyboard grabber daemon applications like screenreaders
+(sbl) can connect via network socket to the daemon and set a modifier
+key to enable the grabbing mode if the modifier key is pressed all
+key-strokes are send to the connected application this is useful if a
+blind user wants to use a screenreader without a braille display the
+grabbed keys can be used to trigger special screenreader functions</description>
+  <devel project="Base:System" package="kbdsniffd"/>
+</package>

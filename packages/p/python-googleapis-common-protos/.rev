@@ -1,0 +1,190 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f96291dc1fc10d89db3ea6a0f0f4e0af</srcmd5>
+    <version>1.5.3</version>
+    <time>1526646484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610178</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e06ae2481636cadd834cd92f096ed362</srcmd5>
+    <version>1.5.3</version>
+    <time>1545647856</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659401</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ac8c69999303516b0a6a7320bb36acc4</srcmd5>
+    <version>1.5.8</version>
+    <time>1552985914</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.8:
+  * no upstream changelog</comment>
+    <requestid>685348</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e60e532d75df26d794d6d8bb392e7331</srcmd5>
+    <version>1.5.9</version>
+    <time>1553809714</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.9:
+  * no upstream changelog</comment>
+    <requestid>688738</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a044e547c6b0ad5ee87da3c29853962a</srcmd5>
+    <version>1.6.0</version>
+    <time>1565695478</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722791</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b3cf6329cbc6ff45ce2317c12fed9bd4</srcmd5>
+    <version>1.51.0</version>
+    <time>1586555594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792454</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>547e0d7c21f7f1f21347ce06051f23d6</srcmd5>
+    <version>1.52.0</version>
+    <time>1600879698</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.52.0
+  * create api-common-protos repo for python common protos</comment>
+    <requestid>836322</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9a0858c4398d7f2b74a7ac11b48dc0e5</srcmd5>
+    <version>1.56.0</version>
+    <time>1651272391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973993</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dfc89562481c6f9e942441d97c27fe71</srcmd5>
+    <version>1.56.4</version>
+    <time>1662639826</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.56.4:
+  * require python 3.7+ (#119)
+- from version 1.56.3:
+  * **deps:** allow protobuf &lt; 5.0.0 (#112)
+  * fix changelog header to consistent size (#108)
+- from version 1.56.2:
+  * **deps:** require grpcio &gt;= 1.0.0, &lt;2.0.0dev (4a402ce)
+  * **deps:** require protobuf&gt;= 3.15.0, &lt;4.0.0dev (#105)
+- from version 1.56.1:
+  * **deps:** require protobuf &gt;=1.15.0 (f04ed64)
+  * include tests directory (#103)
+  * regenerate pb2 files using the latest version of grpcio-tools (f04ed64)
+- Rename README.md to README.rst in %doc section
+- Update BuildRequires and Requires from setup.py (forwarded request 1001895 from glaubitz)</comment>
+    <requestid>1001902</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>357b60e0dbbf57d63cf143c4655afd93</srcmd5>
+    <version>1.57.0</version>
+    <time>1669914799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.57.0:
+  * Add support for Python 3.10 (#143)
+  * Add support for Python 3.11 (#145)
+  * Added google.api.JwtLocation.cookie (6af2132)
+  * Added google.api.Service.publishing and client libraries settings (6af2132)
+  * New fields in enum google.api.ErrorReason (6af2132)
+  * Deprecate google.api.BackendRule.min_deadline (6af2132)
+  * **deps:** Require protobuf &gt;=3.19.5 (#141)
+  * Minor updates to comments (6af2132)
+- Update BuildRequires and Requires from setup.py (forwarded request 1039326 from glaubitz)</comment>
+    <requestid>1039346</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e71e9fd4b30a95537c0eff0c4a1222f4</srcmd5>
+    <version>1.57.1</version>
+    <time>1673021146</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v1.57.1:
+  * Mark reference_docs_uri field in google/api/client.proto as deprecated</comment>
+    <requestid>1056274</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c1351adbac11a56769c2a3ede92ed68a</srcmd5>
+    <version>1.58.0</version>
+    <time>1677794660</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.58.0
+  * Add google/rpc/context/audit_context.proto (41f1529)
+  * Add google/rpc/http.proto (41f1529) (forwarded request 1068692 from glaubitz)</comment>
+    <requestid>1068699</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a29322082880a82616dffb56c13f0218</srcmd5>
+    <version>1.59.0</version>
+    <time>1680722943</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.59.0
+  * Add overrides_by_request_protocol to BackendRule
+    in google/api/backend.proto (77376dd)
+  * Add proto_reference_documentation_uri to Publishing
+    in google/api/client.proto (77376dd)
+  * Add SERVICE_NOT_VISIBLE and GCP_SUSPENDED to ErrorReason
+    in google/api/error_reason.proto (77376dd)
+  * Use rst syntax in readme (77376dd) (forwarded request 1077529 from glaubitz)</comment>
+    <requestid>1077585</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>64311c0523c0c6e266e14782ea1d2063</srcmd5>
+    <version>1.59.1</version>
+    <time>1687272581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093960</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>1fee1528a97a1bf3400b035c9233d1a5</srcmd5>
+    <version>1.59.1</version>
+    <time>1688398975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096402</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2b35cdbcedc083ed6824e9fb9ad1cb55</srcmd5>
+    <version>1.60.0</version>
+    <time>1692294285</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104360</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f68cdb0007d596901d7035c93d58af75</srcmd5>
+    <version>1.61.0</version>
+    <time>1701902967</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.61.0
+  * Add `google/api/field_info.proto` (2d39f37)
+  * Add `IDENTIFIER` to `FieldBehavior` enum (2d39f37) (forwarded request 1131366 from glaubitz)</comment>
+    <requestid>1131367</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>76cafa6e508f35845b39d0d6f26de912</srcmd5>
+    <version>1.62.0</version>
+    <time>1702845173</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.62.0:
+  * Add `auto_populated_fields` field of `MethodSettings` in
+    `google/api/client_pb2` (#194)
+  * Add support for Python 3.12 (#192)
+  * Migrate to native namespace packages (#187)
+
+  * create api-common-protos repo for python common protos</comment>
+    <requestid>1133652</requestid>
+  </revision>
+</revisionlist>

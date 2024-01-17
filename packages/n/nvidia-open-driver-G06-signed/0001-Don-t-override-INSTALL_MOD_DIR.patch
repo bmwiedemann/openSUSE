@@ -1,0 +1,25 @@
+From 2382801d11b73d8107c7f13747ebc76921f8d8ea Mon Sep 17 00:00:00 2001
+From: Patrik Jakobsson <patrik.r.jakobsson@gmail.com>
+Date: Fri, 13 May 2022 11:10:34 +0200
+Subject: [PATCH] Don't override INSTALL_MOD_DIR
+
+Signed-off-by: Patrik Jakobsson <pjakobsson@suse.de>
+---
+ kernel-open/Makefile | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/kernel-open/Makefile b/kernel-open/Makefile
+index e0ed5e9..9f54630 100644
+--- a/kernel-open/Makefile
++++ b/kernel-open/Makefile
+@@ -74,7 +74,6 @@ else
+   KBUILD_PARAMS += NV_KERNEL_SOURCES=$(KERNEL_SOURCES)
+   KBUILD_PARAMS += NV_KERNEL_OUTPUT=$(KERNEL_OUTPUT)
+   KBUILD_PARAMS += NV_KERNEL_MODULES="$(NV_KERNEL_MODULES)"
+-  KBUILD_PARAMS += INSTALL_MOD_DIR=kernel/drivers/video
+   KBUILD_PARAMS += NV_SPECTRE_V2=$(SPECTRE_V2_RETPOLINE)
+ 
+   .PHONY: modules module clean clean_conftest modules_install
+-- 
+2.36.1
+

@@ -1,0 +1,10 @@
+<package name="libglade2" project="openSUSE:Factory">
+  <title>Glade Library Compatible with the GNOME 2.x Desktop Platform</title>
+  <description>This library allows you to load Glade interface files in a program at
+runtime. It does not require that you use Glade, but Glade is the
+easiest way to create the interface files.  For an idea of how to use
+the library, see the documentation, especially
+/usr/share/doc/packages/libglade/test-libgladee.c and the glade-xml.h
+include, which is in the libglade package.</description>
+  <devel project="GNOME:Factory" package="libglade2"/>
+</package>

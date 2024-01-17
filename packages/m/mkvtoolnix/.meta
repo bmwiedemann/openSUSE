@@ -1,0 +1,7 @@
+<package name="mkvtoolnix" project="openSUSE:Factory">
+  <title>Tools to Create, Alter, and Inspect Matroska Files</title>
+  <description>Tools to create and manipulate Matroska files (extensions .mkv and .mka), a new
+container format for audio and video files. Includes command line tools
+mkvextract, mkvinfo, mkvmerge, and a graphical front-end for them, mmg.</description>
+  <devel project="multimedia:apps" package="mkvtoolnix"/>
+</package>

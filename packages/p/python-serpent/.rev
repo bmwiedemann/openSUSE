@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cdc1a7803d018f043b83099223feafbc</srcmd5>
+    <version>1.24</version>
+    <time>1527933624</time>
+    <user>dimstar_suse</user>
+    <comment>Serialization based on astliteral_eval</comment>
+    <requestid>612048</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4e3925885e07fe7f2b174b4156c789fb</srcmd5>
+    <version>1.24</version>
+    <time>1545648229</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659666</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d77e059f9f3e2e370b4942e027c8dfc7</srcmd5>
+    <version>1.27</version>
+    <time>1552985879</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.27:
+  * fixed serialization of unicode elements in dicts and sets (this was a regression on Python 2.x)
+  * support for enum34 backport library for enums in older python versions.
+  * Some small tweaks and attempt to fix an inconsistently running unit test
+  * LICENSE file included in release.</comment>
+    <requestid>682071</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5a1d1440d7bf4c8103de08b1cf83f62a</srcmd5>
+    <version>1.28</version>
+    <time>1554379913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690576</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dbd5129688679d9ddf9bdf3ff6a897ac</srcmd5>
+    <version>1.30.2</version>
+    <time>1587325297</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786243</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eb393d1e30532a4665c487b495a78f84</srcmd5>
+    <version>1.41</version>
+    <time>1665185173</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 1.41 
+  * support for python up to 3.11 added (__getstate__ behavior change)
+  * replaced travis CI by Github actions
+  * drop python 3.5 support
+</comment>
+    <requestid>1008877</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>51c05ef27698ee0e552c33bb61385f12</srcmd5>
+    <version>1.41</version>
+    <time>1665844676</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1011027</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>9465a48dd7edcdec29eb763819700a2a</srcmd5>
+    <version>1.41</version>
+    <time>1686576379</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092379</requestid>
+  </revision>
+</revisionlist>

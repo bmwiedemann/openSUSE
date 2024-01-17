@@ -1,0 +1,128 @@
+Index: vsftpd-2.0.7/ls.c
+===================================================================
+--- vsftpd-2.0.7.orig/ls.c
++++ vsftpd-2.0.7/ls.c
+@@ -243,7 +243,7 @@ vsf_filename_passes_filter(const struct
+   int ret = 0;
+   char last_token = 0;
+   int must_match_at_current_pos = 1;
+-  
++  int matched = 0;
+   
+   str_copy(&filter_remain_str, p_filter_str);
+   
+@@ -273,7 +273,7 @@ vsf_filename_passes_filter(const struct
+     static struct mystr s_match_needed_str;
+     /* Locate next special token */
+     struct str_locate_result locate_result =
+-      str_locate_chars(&filter_remain_str, "*?{");
++      str_locate_chars(&filter_remain_str, "*?{[");
+     (*iters)++;
+     /* Isolate text leading up to token (if any) - needs to be matched */
+     if (locate_result.found)
+@@ -291,8 +291,14 @@ vsf_filename_passes_filter(const struct
+       str_empty(&filter_remain_str);
+       last_token = 0;
+     }
++
++    matched = 0;
+     if (!str_isempty(&s_match_needed_str))
+     {
++      if (!matched)
++      {
++        matched = 1;
++      }
+       /* Need to match something.. could be a match which has to start at
+        * current position, or we could allow it to start anywhere
+        */
+@@ -344,13 +350,20 @@ vsf_filename_passes_filter(const struct
+       must_match_at_current_pos = 1;
+       if (end_brace.found)
+       {
++        int entire = (*iters == 1 && last_token == '{');
++
+         str_split_char(&filter_remain_str, &temp_str, '}');
+         str_copy(&brace_list_str, &filter_remain_str);
+         str_copy(&filter_remain_str, &temp_str);
+         str_split_char(&brace_list_str, &temp_str, ',');
+         while (!str_isempty(&brace_list_str))
+         {
+-          str_copy(&new_filter_str, &brace_list_str);
++          str_empty(&new_filter_str);
++          if (!matched && !entire)
++          {
++            str_append_char(&new_filter_str, '*');
++          }
++          str_append_str(&new_filter_str, &brace_list_str);
+           str_append_str(&new_filter_str, &filter_remain_str);
+           if (vsf_filename_passes_filter(&name_remain_str, &new_filter_str,
+                                          iters))
+@@ -368,6 +381,68 @@ vsf_filename_passes_filter(const struct
+       {
+         goto out;
+       }
++      else
++      {
++        str_right(&name_remain_str, &temp_str,
++                  str_getlen(&name_remain_str) - 1);
++        str_copy(&name_remain_str, &temp_str);
++      }
++    }
++    else if (last_token == '[')
++    {
++      struct str_locate_result end_sqb =
++        str_locate_char(&filter_remain_str, ']');
++      must_match_at_current_pos = 1;
++      if (end_sqb.found)
++      {
++        unsigned int cur_pos;
++        char stch, ench;
++        const char *p_brace;
++
++        str_split_char(&filter_remain_str, &temp_str, ']');
++        str_copy(&brace_list_str, &filter_remain_str);
++        str_copy(&filter_remain_str, &temp_str);
++        p_brace = str_getbuf(&brace_list_str);
++        for (cur_pos = 0; cur_pos < str_getlen(&brace_list_str);)
++        {
++          stch = p_brace[cur_pos];
++          // char vers. range
++          if (cur_pos + 2 < str_getlen(&brace_list_str) &&
++              p_brace[cur_pos+1] == '-')
++          {
++            ench = p_brace[cur_pos+2];
++            cur_pos += 3;
++          }
++          else
++          {
++            ench = stch;
++            cur_pos++;
++          }
++          // expand char[s]
++          for (;stch <= ench && !str_isempty(&brace_list_str); stch++)
++          {
++            str_empty(&new_filter_str);
++            if (!matched)
++            {
++              str_append_char(&new_filter_str, '*');
++            }
++            str_append_char(&new_filter_str, stch);
++            str_append_str(&new_filter_str, &filter_remain_str);
++            if (vsf_filename_passes_filter(&name_remain_str, &new_filter_str,
++                                           iters))
++            {
++              ret = 1;
++              goto out;
++            }
++          }
++        }
++        goto out;
++      }
++      else if (str_isempty(&name_remain_str) ||
++               str_get_char_at(&name_remain_str, 0) != '[')
++      {
++        goto out;
++      }
+       else
+       {
+         str_right(&name_remain_str, &temp_str,

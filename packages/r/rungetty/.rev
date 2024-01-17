@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e9fe57cca5964af6fb9b43c3dfc745e1</srcmd5>
+    <version>1.2</version>
+    <time>1341561138</time>
+    <user>coolo</user>
+    <comment>new package</comment>
+    <requestid>127052</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e9fe57cca5964af6fb9b43c3dfc745e1</srcmd5>
+    <version>1.2</version>
+    <time>1359110360</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>e9fe57cca5964af6fb9b43c3dfc745e1</srcmd5>
+    <version>1.2</version>
+    <time>1379664597</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>e9fe57cca5964af6fb9b43c3dfc745e1</srcmd5>
+    <version>1.2</version>
+    <time>1409303302</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>d3fe5de870a82e068290633815c75ebd</srcmd5>
+    <version>1.2</version>
+    <time>1612011426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867911</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>d20d5e5da52b5384a1f3fd574f066bcd</srcmd5>
+    <version>1.2</version>
+    <time>1637108068</time>
+    <user>dimstar_suse</user>
+    <comment>- finish UsrMerge, install to /usr/sbin (boo#1191106)
+- rename rungetty.patch to 01_rungetty-remove_sys_errlist.patch
+- copied patches from Debian: 
+  02_rungetty-manpage.patch to fix some errors in the manpage
+  03_rungetty-disable_path.patch do not hardcode the search path
+  04_rungetty-use_signed_int.patch change type of c in do_prompt to signed int 
+  06_rungetty-get_supplementary_groups_for_process.patch call 
+     initgroups to get supplementary groups for processes
+  07_rungetty-allow_autologin-on-all-ttys.patch allow autologin on 
+     all TTYs (not only tty1)
+- added patch to remove any extraneous groups when dropping root 
+  privileges: 05_rungetty-missing-call-to-setgroups-before-setuid.patch</comment>
+    <requestid>931831</requestid>
+  </revision>
+</revisionlist>

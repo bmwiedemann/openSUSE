@@ -1,0 +1,30 @@
+Index: vsftpd-3.0.5/tunables.c
+===================================================================
+--- vsftpd-3.0.5.orig/tunables.c
++++ vsftpd-3.0.5/tunables.c
+@@ -295,7 +295,7 @@ tunables_load_defaults()
+   install_str_setting("/usr/share/ssl/certs/vsftpd.pem",
+                       &tunable_rsa_cert_file);
+   install_str_setting(0, &tunable_dsa_cert_file);
+-  install_str_setting("DEFAULT_SUSE", &tunable_ssl_ciphers);
++  install_str_setting("PROFILE=SYSTEM", &tunable_ssl_ciphers);
+   install_str_setting(0, &tunable_rsa_private_key_file);
+   install_str_setting(0, &tunable_dsa_private_key_file);
+   install_str_setting(0, &tunable_ca_certs_file);
+Index: vsftpd-3.0.5/vsftpd.conf.5
+===================================================================
+--- vsftpd-3.0.5.orig/vsftpd.conf.5
++++ vsftpd-3.0.5/vsftpd.conf.5
+@@ -1024,7 +1024,11 @@ man page for further details. Note that
+ security precaution as it prevents malicious remote parties forcing a cipher
+ which they have found problems with.
+ 
+-Default: DEFAULT_SUSE
++By default, the system-wide crypto policy is used. See
++.BR update-crypto-policies(8)
++for further details.
++
++Default: PROFILE=SYSTEM
+ .TP
+ .B ssl_sni_hostname
+ If set, SSL connections will be rejected unless the SNI hostname in the

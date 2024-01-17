@@ -1,0 +1,18 @@
+Index: vsftpd-3.0.3/seccompsandbox.c
+===================================================================
+--- vsftpd-3.0.3.orig/seccompsandbox.c	2018-04-25 06:34:52.154728803 +0000
++++ vsftpd-3.0.3/seccompsandbox.c	2018-04-25 06:37:43.071314942 +0000
+@@ -306,6 +306,13 @@ seccomp_sandbox_setup_base()
+   allow_nr(__NR_restart_syscall);
+   allow_nr(__NR_close);
+   
++  /* Required on SLE-15 because of changes in 3rd party libraries.
++   * Reported in bsc#1089088.
++   */
++  allow_nr(__NR_wait4);
++  allow_nr(__NR_sysinfo);
++  allow_nr(__NR_shutdown);
++
+  /*
+   * Calls to alarm and date
+   * Seems to be some part of the logging

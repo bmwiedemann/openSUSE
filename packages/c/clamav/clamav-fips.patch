@@ -1,0 +1,12 @@
+--- libclamav/crypto.c.orig
++++ libclamav/crypto.c
+@@ -145,6 +145,9 @@ int cl_initialize_crypto(void)
+     ERR_load_crypto_strings();
+ #endif
+ 
++    /* avoid fips issues */
++    EVP_add_digest(EVP_md5());
++
+     return 0;
+ }
+ 

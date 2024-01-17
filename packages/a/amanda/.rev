@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c13b13972829a9de7d934a5d8df58f06</srcmd5>
+    <version>3.5.1</version>
+    <time>1551024751</time>
+    <user>coolo</user>
+    <comment>dropping it was a mistake. We fixed our setup to make users
+aware of the risks and this is still in usage</comment>
+    <requestid>672190</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>946e2957eb0e3ed24ed64b3276660222</srcmd5>
+    <version>3.5.1</version>
+    <time>1575923655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755218</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e659f17ec1fff36937f75ebaf6a7e8fa</srcmd5>
+    <version>3.5.1</version>
+    <time>1592245984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814700</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aaf2315699aedf7a25716c615296ba47</srcmd5>
+    <version>3.5.2</version>
+    <time>1661863729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999888</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>54bd6973fca70df8405ce6de6fe0bd10</srcmd5>
+    <version>3.5.2</version>
+    <time>1665592002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010192</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6f434b039d70286da2257609946da83c</srcmd5>
+    <version>3.5.2</version>
+    <time>1676648736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066332</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a251f86fc25383036b8df6b24a251688</srcmd5>
+    <version>3.5.3</version>
+    <time>1679520643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073619</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2d294a65ae32e7b96fa90cb8aca86ba6</srcmd5>
+    <version>3.5.3</version>
+    <time>1688399049</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the user owner of the files in /usr from amanda to root, bsc#1172572 (forwarded request 1096531 from dspinella)</comment>
+    <requestid>1096532</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b40af18ffb3092b16d46f70334d13187</srcmd5>
+    <version>3.5.4</version>
+    <time>1690809879</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>1101484</requestid>
+  </revision>
+</revisionlist>

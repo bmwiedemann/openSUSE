@@ -1,0 +1,134 @@
+-------------------------------------------------------------------
+Thu Dec  7 16:55:02 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update persistent-sqlite to version 2.13.3.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/persistent-sqlite-2.13.3.0/src/ChangeLog.md
+
+-------------------------------------------------------------------
+Tue Oct  3 23:00:41 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update persistent-sqlite to version 2.13.2.0.
+  ## 2.13.2
+
+  * [#1488](https://github.com/yesodweb/persistent/pull/1488)
+      * Add `openRawSqliteConn` for creating `RawSqlite SqlBackend` connections
+        that aren't automatically cleaned-up.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:07:53 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Jan 22 17:06:44 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update persistent-sqlite to version 2.13.1.1.
+  ## 2.13.1.1
+
+  * [#1459](https://github.com/yesodweb/persistent/pull/1459)
+      * Make use of `CautiousMigration` type alias for clarity.
+
+-------------------------------------------------------------------
+Sat Jan 29 00:05:57 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update persistent-sqlite to version 2.13.1.0.
+  ## 2.13.1.0
+
+  * [#1341](https://github.com/yesodweb/persistent/pull/1341)
+      * Add `SqlBackendHooks` to allow for instrumentation of queries.
+  * [#1327](https://github.com/yesodweb/persistent/pull/1327)
+      * Update backend to support new `StatementCache` interface
+
+  ## 2.13.0.4
+
+  * `aeson-2.0` support [#1351](https://github.com/yesodweb/persistent/pull/1351/)
+
+-------------------------------------------------------------------
+Thu May 27 17:15:25 UTC 2021 - psimons@suse.com
+
+- Update persistent-sqlite to version 2.13.0.3.
+  ## 2.13.0.3
+
+  * Somehow failed to properly release the safe-to-remove changes.
+
+  ## 2.13.0.2
+
+  * [#1275](https://github.com/yesodweb/persistent/pull/1275)
+      * Fix SafeToRemove
+
+-------------------------------------------------------------------
+Wed May 26 08:46:17 UTC 2021 - psimons@suse.com
+
+- Update persistent-sqlite to version 2.13.0.2.
+  ## 2.13.0.1
+
+  * [#1265](https://github.com/yesodweb/persistent/pull/1265)
+      * Support GHC 9
+
+-------------------------------------------------------------------
+Sat May  8 10:03:32 UTC 2021 - psimons@suse.com
+
+- Update persistent-sqlite to version 2.13.0.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Fri May  7 09:29:33 UTC 2021 - psimons@suse.com
+
+- Update persistent-sqlite to version 2.13.0.0.
+  ## 2.13.0.0
+
+  * [#1225](https://github.com/yesodweb/persistent/pull/1225)
+      * Support `persistent-2.13` changes for SqlBackend being made internal.
+
+-------------------------------------------------------------------
+Wed Mar 31 14:28:25 UTC 2021 - psimons@suse.com
+
+- Update persistent-sqlite to version 2.12.0.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/persistent-sqlite-2.12.0.0/src/ChangeLog.md
+
+-------------------------------------------------------------------
+Mon Feb  8 05:05:42 UTC 2021 - psimons@suse.com
+
+- Update persistent-sqlite to version 2.11.1.0.
+  ##  2.11.1.0
+
+  * Add `checkForeignKeys` operation to verify no foreign key constraints are
+    violated by the database contents.
+  * Fix the migration for primary keys that was broken in 2.11.0.0
+    [#1184](https://github.com/yesodweb/persistent/issues/1184)
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Sat Nov  7 15:34:22 UTC 2020 - psimons@suse.com
+
+- Update persistent-sqlite to version 2.11.0.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/persistent-sqlite-2.11.0.0/src/ChangeLog.md
+
+-------------------------------------------------------------------
+Wed Aug 19 07:11:25 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 6GB min disk space for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:42 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:13 UTC 2020 - psimons@suse.com
+
+- Add persistent-sqlite at version 2.10.6.2.
+

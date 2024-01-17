@@ -1,0 +1,5 @@
+<package name="python-pyu2f" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-pyu2f"/>
+</package>

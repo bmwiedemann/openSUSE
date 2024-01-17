@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0b10925071ec7d13dd6043cec1b12a50</srcmd5>
+    <version>0.2.2</version>
+    <time>1527605267</time>
+    <user>dimstar_suse</user>
+    <comment>Excel plugin for agate</comment>
+    <requestid>605897</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b19e9a803a5f44aba47336a07d1d321f</srcmd5>
+    <version>0.2.2</version>
+    <time>1551276624</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to github tarball and enable tests
+- Add patches from upstream git to pass the tests:
+  * no-column.patch
+  * row-offset.patch</comment>
+    <requestid>679762</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>149ea8adc7d752a5d2899b1db79b42e2</srcmd5>
+    <version>0.2.3</version>
+    <time>1555574180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695032</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>558147f50d7abc0c0b0a14dbb7bd869f</srcmd5>
+    <version>0.2.3</version>
+    <time>1575373342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752971</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>2f03c2592ffe54e8602008f91349379e</srcmd5>
+    <version>0.2.3</version>
+    <time>1587071233</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from using nosetest runner to pytest</comment>
+    <requestid>794647</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4bae9c3cbd2731876da1eada0f0eac15</srcmd5>
+    <version>0.2.5</version>
+    <time>1629101484</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 0.2.5:
+  * Add ``six`` to ``install_requires``.
+  * Add ``row_limit`` keyword argument to ``from_xls`` and ``from_xlsx``. (#40)
+  * Preserve column types from XLS files. (#36)
+  * Add support for Compound File Binary File (CFBF) XLS files. (#44)
+  * Close XLSX file before raising error for non-existent sheet. (#34)
+  * Use less memory and close XLS files. (#39)
+  * Drop support for Python 3.4 (end-of-life was March 18, 2019). 
+- Update {Build,}Requires.</comment>
+    <requestid>911882</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3cfcdc9fa942c5466deda02fe660cbab</srcmd5>
+    <version>0.2.5</version>
+    <time>1678482431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070526</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c0b1106ae6a16745acc1bc56e170ac8f</srcmd5>
+    <version>0.4.1</version>
+    <time>1701632951</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.1:
+  * fix: :meth:`.Table.from_xlsx` no longer errors on unsized
+    sheets.
+  * The ``reset_dimensions`` argument to :meth:`.Table.from_xlsx`
+    defaults to ``None`` instead of ``False``. If
+    ``reset_dimensions`` is ``None``, and if the worksheet's
+    dimensions are ``A1:A1``, recalculate the worksheet's
+    dimensions. To disable this behavior, set
+    ``reset_dimensions`` to ``False``.
+  * If the ``reset_dimensions`` argument to
+    :meth:`.Table.from_xlsx` is set, recalculate the worksheet's
+    dimensions, instead of assuming that the table's width
+    matches the first row's.
+  * The ``reset_dimensions`` argument to :meth:`.Table.from_xlsx`
+    is ignored if the ``read_only`` argument is false.
+  * Add Python 3.8, 3.9, 3.10, 3.11, 3.12 support.
+  * Drop support for 3.5 (2020-09-13), 3.6 (2021-12-23), 3.7
+- drop python-agate-excel-no-python2.patch (upstream)
+
+  * Drop support for Python 3.4 (end-of-life was March 18, 2019).
+  * Add a header argument to `.Table.from_xls` and</comment>
+    <requestid>1130507</requestid>
+  </revision>
+</revisionlist>

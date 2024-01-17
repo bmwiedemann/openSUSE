@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Sun Apr 30 09:50:32 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Small spec file cleanup
+- Rename python subpackage to python3
+
+-------------------------------------------------------------------
+Fri Sep 16 21:36:51 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to release 3.10.0.rc3
+
+-------------------------------------------------------------------
+Sat Aug 13 21:17:48 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to release 3.10.0.rc2
+
+-------------------------------------------------------------------
+Wed Jul 27 15:19:59 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to git snapshot 20220719
+- use provided udev file
+
+-------------------------------------------------------------------
+Fri Jul  1 19:55:32 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- fixed package dependencies, obsolete fcdproplus
+
+-------------------------------------------------------------------
+Sun Apr 24 22:14:34 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to release 3.10.0.rc1 needed for GNU Radio 3.10
+
+-------------------------------------------------------------------
+Tue Sep 14 11:09:53 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- import into build service

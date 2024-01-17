@@ -1,0 +1,477 @@
+-------------------------------------------------------------------
+Thu Jan  4 11:32:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20231214.00
+  * Fix snapshot test failure (#336)
+- from version 20231212.00
+  * Implement json-based command messaging system for guest-agent (#326)
+- from version 20231118.00
+  * sshca: Remove certificate caching (#334)
+- from version 20231115.00
+  * revert: 3ddd9d4a496f7a9c591ded58c3f541fd9cc7e317 (#333)
+  * Update script runner to use common cfg package (#331)
+
+-------------------------------------------------------------------
+Tue Nov 14 12:13:32 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20231110.00
+  * Update Google UEFI variable (#329)
+  * Update owners (#328)
+- from version 20231103.00
+  * Make config parsing order consistent (#327)
+
+-------------------------------------------------------------------
+Wed Nov  1 14:05:15 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20231031.01 (bsc#1216547, bsc#1216751)
+  * Add prefix to scheduler logs (#325)
+- from version 20231030.00
+  * Test configuration files are loaded in the documented
+    order. Fix initial integration test. (#324)
+  * Enable mTLS by default (#323)
+- from version 20231026.00
+  * Rotate MDS root certificate (#322)
+- from version 20231020.00
+  * Update response struct, add tests (#315)
+  * Don't try to schedule mTLS job twice (#317)
+- from version 20231019.00
+  * snapshot: Add context cancellation handling (#318)
+
+-------------------------------------------------------------------
+Fri Oct 20 06:49:31 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
+
+- Bump the golang compiler version to 1.21 (bsc#1216546)
+
+-------------------------------------------------------------------
+Thu Oct 19 12:12:35 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20231016.00
+  * instance setup: trust/rely on metadata package's retry (#316)
+- from version 20231013.01
+  * Update known cert dirs for updaters (#314)
+- from version 20231011.00
+  * Verify cert refresher is enabled before running (#312)
+- from version 20231009.00
+  * Add support for the SSH key options (#296)
+- from version 20231006.01
+  * Events interface improvement (#290)
+- from version 20231006.00
+  * Refactor script runner to use common metadata package (#311)
+  * Schedule MTLS job before notifying systemd (#310)
+  * Refactor authorized keys to use metadata package (#300)
+- from version 20231005.00
+  * docs update: add configuration and event manager's docs. (#309)
+- from version 20231004.01
+  * Fix license header (#301)
+  * packaging(deb): add epoch to oslogin dep declaration (#308)
+- from version 20231004.00
+  * packaging(deb): ignore suffix of version (#306)
+  * packaging: force epoch and ignore suffix of version (#305)
+- from version 20231003.01
+  * oslogin: declare explicitly dependency (#304)
+  * oslogin: remove Unstable.pamless_auth_stack feature flag (#303)
+- from version 20231003.00
+  * oslogin: resort ssh configuration keys (#299)
+- from version 20230925.00
+  * oslogin: introduce a feature flag to cert auth (#298)
+- from version 20230923.00
+  * gitignore: unify ignore in the root dir (#297)
+- from version 20230921.01
+  * managers: we accidentally disabled addressMgr, bring it back (#295)
+  * cfg: fix typos (#294)
+  * cfg: config typos (#293)
+  * cfg: introduce a configuration management package (#288)
+- from version 20230921.00
+  * mtls: bring it back (#292)
+- from version 20230920.01
+  * Fix permissions on file created by SaferWriteFile() (#291)
+- from version 20230920.00
+  * sshca: re-enable the event watcher & handler (#289)
+- from version 20230919.01
+  * oslogin: add PAMless Authorization Stack configuration (#285)
+- from version 20230919.00
+  * Preparing it for review (#287)
+  * sshca: make sure to restore SELinux context of the pipe (#286)
+  * remove deprecated usage, fix warnings (#282)
+  * Update system store (#278)
+  * Update workload certificate endpoints, use metadata package (#275)
+  * metadata: use url package to form metadata URLs (#284)
+- from version 20230913.00
+  * release prep: disable ssh trusted ca module (#281)
+- from version 20230912.00
+  * New Guest Agent Release (#280)
+- from version 20230909.00
+  * Revert "service: remove the use of the service library (#273)" (#276)
+  * service: remove the use of the service library (#273)
+- from version 20230906.01
+  * Store keys to machine keyset (#272)
+- from version 20230905.00
+  * restorecon: first try to determine if it's installed (#271)
+  * run: change all commands to use CommandContext (#268)
+  * Notify systemd after scheduling required jobs (#270)
+  * Store certs in ProgramData instead of Program Files (#269)
+  * metadata watcher: remove local retry & implement unit tests (#267)
+  * run: split command running utilities into its own package (#265)
+
+-------------------------------------------------------------------
+Thu Aug 31 10:05:11 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230828.00
+  * snapshot: Use main context rather than create its own (#266)
+- from version 20230825.01
+  * Verify if cert was successfully added to certpool (#264)
+- from version 20230825.00
+  * Find previous cert for cleanup using one stored on disk (#263)
+- from version 20230823.00
+  * Revert "sshtrustedca: configure selinux context
+    for sshtrustedca pipe (#256)" (#262)
+  * Update credentials directory on Linux (#260)
+- from version 20230821.00
+  * Update owners (#261)
+- from version 20230819.00
+  * Revert "guest-agent: prepare for public release (#258)" (#259)
+- from version 20230817.00
+  * guest-agent: prepare for public release (#258)
+- from version 20230816.01
+  * Enable telemetry collection by default (#253)
+- from version 20230816.00
+  * Add pkcs12 license and update retry logic (#257)
+  * sshtrustedca: Configure selinux context for sshtrustedca pipe (#256)
+  * Store windows certs in certstore (#255)
+  * events: Multiplex event watchers (#250)
+  * Scheduler fixes (#254)
+  * Update license files (#251)
+  * Run telemetry every 24 hours, record pretty name on linux (#248)
+
+-------------------------------------------------------------------
+Tue Aug 15 13:44:27 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230811.00
+  * sshca: move the event handler to its own package (#247)
+- from version 20230809.02
+  * Move scheduler package to google_guest_agent (#249)
+- from version 20230809.01
+  * Add scheduler utility to run jobs at interval (#244)
+- from version 20230809.00
+  * sshca: transform the format from json to openssh (#246)
+- from version 20230803.00
+  * Add support for reading UEFI variables on windows (#243)
+- from version 20230801.03
+  * sshtrustedca watcher: fix concurrency error (#242)
+- from version 20230801.02
+  * metadata: add a delta between http client timeout and hang (#241)
+- from version 20230801.00
+  * metadata: properly set request config (#240)
+  * main: bring back the mds client initialization (#239)
+  * metadata: don't try to use metadata before agentInit() is done (#238)
+  * Add (disabled) telemetry logic to GuestAgent (#219)
+  * metadata event handler: updates and bug fixes (#235)
+  * Verify client credentials are signed by root CA before writing on disk (#236)
+  * metadata: properly handle context cancelation (#234)
+  * metadata: fix context cancelation error check (#233)
+  * metadata: remove the sleep around metadata in instance setup (#232)
+  * metadata: implement backoff strategy (#231)
+  * Decrypt and store client credentials on disk (#230)
+  * Upgrade Go version 1.20 (#228)
+  * Fetch guest credentials and add MDS response proto (#226)
+  * metadata: pass main context to WriteGuestAttributes() (#227)
+  * Support for reading & writing Root CA cert from UEFI variable (#225)
+  * ssh_trusted_ca: enable the feature (#224)
+  * sshTrustedCA: add pipe event handler (#222)
+  * events: start using events layer (#223)
+- from version 20230726.00
+  * events: introducing a events handling subsystem (#221)
+- from version 20230725.00
+  * metadata: add metadata client interface (#220)
+- from version 20230711.00
+  * metadata: moving to its own package (#218)
+- from version 20230707.00
+  * snapshot: fix request handling error (#217)
+- Bump Go API version to 1.20
+
+-------------------------------------------------------------------
+Tue Jun  6 08:44:31 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230601.00 (bsc#1212418, bsc#1212759)
+  * Revert "Avoid conflict with automated package updates (#212)" (#214)
+  * Don't block google-osconfig-agent (#213)
+- from version 20230531.00
+  * Avoid conflict with automated package updates (#212)
+  * Add a support of TrustedUserCAKeys into sshd configuration (#206)
+
+-------------------------------------------------------------------
+Thu May 11 07:04:49 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230510.00
+  * Fix dependencies after updating go ver to 1.17 (#211)
+  * Update Go version (#210)
+- from version 20230426.00
+  * Fix compilation directives (#207)
+- from version 20230403.00
+  * Mod update (#205)
+  * Update mod: update golang.org/x/net to
+    0.8.0 and its dependencies (#204)
+
+-------------------------------------------------------------------
+Mon Feb 27 20:03:53 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
+
+- Bump go API version to 1.18 (bsc#1208723)
+  + Address CVE-2021-38297 and CVE-2022-23806
+
+-------------------------------------------------------------------
+Mon Feb 27 10:30:35 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230221.00
+  * Allow a comment part of a pub ssh key to have an arbitrary format (#198)
+    + Split GetUserKey() into two functions: get and validate
+    + Correct the name of ValidateUser func as it validates only users
+    + Update tests
+  * Update OWNERS (#201)
+- from version  20230207.00
+  * Update OWNERS file (#199)
+
+-------------------------------------------------------------------
+Wed Jan 18 09:37:52 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230112.00
+  * Updating logging module so cloud logs are flushed prior to exit (#196)
+  * Windows: retry adding MDS route (#194)
+
+-------------------------------------------------------------------
+Wed Nov 16 15:51:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20221109.00
+  * Validate user key for whitespace chars (#188)
+- from version 20221107.00
+  * Fix typo with wsfc agent (#189)
+- from version 20221104.00
+  * Updates to gce-workload-cert-refresh (#186)
+- from version 20221025.00
+  * Add workload cert refresh to preset (#185)
+
+-------------------------------------------------------------------
+Fri Oct 21 11:21:06 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20221018.00
+  * Write workload cert status file (#184)
+- from version 20221017.00
+  * Update workload_cert permissions (#180)
+
+-------------------------------------------------------------------
+Mon Oct 10 12:57:39 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220927.00
+  * Workload certificate refresh (#182)
+
+-------------------------------------------------------------------
+Fri Sep 16 15:27:23 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220824.00
+  * Workload certs (#177)
+- from version 20220823.00
+  * add members to OWNERS (#178)
+  * Expired key tests (#176)
+  * correct expired key handling (#175)
+
+-------------------------------------------------------------------
+Mon Aug 15 19:21:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid bashism in post-install scripts (bsc#1195391)
+
+-------------------------------------------------------------------
+Wed Aug  3 10:24:30 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220713.00 (bsc#1202100, bsc#1202101)
+  * try restoring module mode (#172)
+  * update for golang 1.16 (#171)
+- from version 20220614.00
+  * Remove log that can break startup scripts (#170)
+- from version 20220603.00
+  * repeat fix for arm (#169)
+  * no authorized keys on debian (#168)
+- from version 20220527.00
+  * Add authorized keys command to the Windows agent package. (#167)
+  * Support for Windows SSH (#164)
+- from version 20220523.00
+  * restore double slash metadata url (#166)
+- from version 20220520.00
+  * Support .exe as an option for scripts and refactor runScript (#165)
+
+-------------------------------------------------------------------
+Thu May  5 12:37:36 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220429.00
+  * Move some functionality to a utils module (#162)
+
+-------------------------------------------------------------------
+Wed Apr 13 12:40:04 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220412.00
+  * enable goproxy during build (#163)
+- from version 20220321.00
+  * enable routes for ipv6 (#160)
+
+-------------------------------------------------------------------
+Tue Feb  8 15:46:09 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220204.00 (bsc#1195437, bsc#1195438)
+  * remove han from owners (#154)
+  * Remove extra slash from metadata URL. (#151)
+- from version 20220104.00
+  * List IPv6 routes (#150)
+- from version 20211228.00
+  * add add or remove route integration test, utils (#147)
+- from version 20211214.00
+  * add malformed ssh key unit test  (#142)
+
+-------------------------------------------------------------------
+Thu Nov 18 13:33:12 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20211116.00 (bsc#1193257, bsc#1193258)
+  * dont duplicate logs (#146)
+  * Add WantedBy network dependencies to google-guest-agent service (#136)
+  * dont try dhcpv6 when not needed (#145)
+  * Integration tests: instance setup (#143)
+  * Integration test: test create and remove google user (#128)
+  * handle comm errors in script runner (#140)
+  * enforce script ordering (#138)
+  * enable ipv6 on secondary interfaces (#133)
+- from version 20211103.00
+  * Integration tests: instance setup (#143)
+- from version 20211027.00
+  * Integration test: test create and remove google user (#128)
+
+-------------------------------------------------------------------
+Fri Oct 22 09:38:42 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20211019.00
+  * handle comm errors in script runner (#140)
+- from version 20211015.00
+  * enforce script ordering (#138)
+- from version 20211014.00
+  * enable ipv6 on secondary interfaces (#133)
+- from version 20211013.00
+  * dont open ssh tempfile exclusively (#137)
+- from version 20211011.00
+  * correct linux startup script order (#135)
+  * Emit sshable attribute (#123)
+- from version 20210908.1
+  * restore line (#127)
+- from version 20210908.00
+  * New integ test (#124)
+- from version 20210901.00
+  * support enable-oslogin-sk key (#120)
+  * match script logging to guest agent (#125)
+- from version 20210804.00
+  * Debug logging (#122)
+- Refresh patches for new version
+  * dont_overwrite_ifcfg.patch
+
+-------------------------------------------------------------------
+Tue Jul 27 10:00:06 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Build with go1.15 for reproducible build results (boo#1102408)
+
+-------------------------------------------------------------------
+Mon Jul 19 12:15:35 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210707.00
+  * Use IP address for calling the metadata server. (#116)
+- from version 20210629.00
+  * use IP for MDS (#115)
+
+-------------------------------------------------------------------
+Wed Jun 23 11:25:59 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210603.00
+  * systemd-notify in agentInit (#113)
+  * dont check status (#112)
+- from version 20210524.00
+  * more granular service restarts (#111)
+- from version 20210414.00
+  * (no functional changes)
+
+-------------------------------------------------------------------
+Tue May 11 08:08:42 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210414.00 (bsc#1185848, bsc#1185849)
+  * start sshd (#106)
+  * Add systemd-networkd.service restart dependency. (#104)
+  * Update error message for handleHealthCheckRequest. (#105)
+
+-------------------------------------------------------------------
+Wed Mar 31 12:53:34 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210223.01 (bsc#1183414, bsc#1183415)
+  * add a match block to sshd_config for SAs (#99)
+  * add ipv6 forwarded ip support (#101)
+  * call restorecon on ssh host keys (#98)
+  * Include startup and shutdown in preset (#96)
+  * set metadata URL earlier (#94)
+- Fix activation logic of systemd services (bsc#1182793)
+
+-------------------------------------------------------------------
+Tue Jan 12 01:16:48 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20201211.00
+  * Require snapshot scripts to live under /etc/google/snapshots (#90)
+  * Adding support for Windows user account password lengths
+    between 15 and 255 characters. (#91)
+  * Adding bkatyl to OWNERS (#92)
+
+-------------------------------------------------------------------
+Tue Nov 24 13:05:17 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20201102.00 (bsc#1179031, bsc#1179032)
+  * Only attempt to connect to snapshot service once (#88)
+
+-------------------------------------------------------------------
+Thu Oct 29 13:49:55 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20201026.00
+  * remove old unused workflow files (#86)
+  * fallback to IP for metadata (#82)
+  * getPasswd: Check full prefix of line for username (#81)
+
+-------------------------------------------------------------------
+Fri Oct 23 14:09:16 UTC 2020 - Joachim Gleissner <jgleissner@suse.com>
+
+- dont_overwrite_ifcfg.patch: Do not overwrite existing ifcfg files
+  to allow manual configuration and compatibility with
+  cloud-netconfig (bsc#1159460, bsc#1178486)
+
+-------------------------------------------------------------------
+Thu Oct  1 13:32:08 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20200929.00
+  * correct varname (#75)
+  * don't call dhclient -x on network setup (#77)
+  * add instance id dir override (#78)
+  * update agent systemd service file (#73)
+  * typo, change to noadjfile (#79)
+  * add gaohannk to OWNERS
+  * remove illfelder from OWNERS
+  * Add all license files to packages (#71)
+
+-------------------------------------------------------------------
+Tue Aug 25 15:25:20 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20200819.00 (bsc#1175740, bsc#1175741)
+  * handle oslogin enable/disable cases (#70) (bsc#1175173)
+  * add README (#69)
+  * Fix metric for addIPForwardEntry (#68)
+  * Correctly determine default route index (#67)
+  * oslogin: dont add entry to pam.d/su (#66)
+  * end group.conf with newline (#64)
+  * Add source field in googet spec (#59)
+  * Set route to metadata on interface with default route (#47)
+  * fix typo in boto.cfg (#62)
+- Properly handle enabling of systemd services when upgrading
+  from the old google-compute-engine-init package (bsc#1174745)
+
+-------------------------------------------------------------------
+Wed Jul 22 10:46:57 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build (bsc#1174304, bsc#1174306, jsc#ECO-2099, jsc#PM-1945)
+  + Version 20200630.00
+  + Replaces google-compute-engine-init package

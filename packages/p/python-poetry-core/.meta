@@ -1,0 +1,6 @@
+<package name="python-poetry-core" project="openSUSE:Factory">
+  <title></title>
+  <description>Core utilities for Poetry.
+</description>
+  <devel project="devel:languages:python" package="python-poetry-core"/>
+</package>

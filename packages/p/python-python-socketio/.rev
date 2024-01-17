@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3ad96b78462ba65a866acba6973382d2</srcmd5>
+    <version>4.6.1</version>
+    <time>1607113741</time>
+    <user>dimstar_suse</user>
+    <comment>from :misc</comment>
+    <requestid>852936</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aa7301985185f98a754320533af6dcde</srcmd5>
+    <version>5.3.0</version>
+    <time>1622536628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895563</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>769936e66b15e3a62be4b203ddb430ac</srcmd5>
+    <version>5.4.0</version>
+    <time>1633542596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923480</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>34505e957b285263023a26da7c0db4ed</srcmd5>
+    <version>5.4.1</version>
+    <time>1635272023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927348</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bb52caef58163278142de16346e8ade3</srcmd5>
+    <version>5.5.1</version>
+    <time>1643062212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948409</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>520f733a71585da833f6ca882f9c7178</srcmd5>
+    <version>5.7.1</version>
+    <time>1665185124</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008706</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>affded156087e354a7da05b63ca68312</srcmd5>
+    <version>5.7.2</version>
+    <time>1667217870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032441</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>27b3f2fe8ab54aeacc3c51f36ec84d81</srcmd5>
+    <version>5.7.2</version>
+    <time>1701533596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1130385</requestid>
+  </revision>
+</revisionlist>

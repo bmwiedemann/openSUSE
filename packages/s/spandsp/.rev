@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>868215502f830ec61c635c15ef501943</srcmd5>
+    <version>0.0.6pre20</version>
+    <time>1331579818</time>
+    <user>coolo</user>
+    <comment>Reinstate spandsp (cf. bnc#731943)</comment>
+    <requestid>108776</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>868215502f830ec61c635c15ef501943</srcmd5>
+    <version>0.0.6pre20</version>
+    <time>1340184230</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>868215502f830ec61c635c15ef501943</srcmd5>
+    <version>0.0.6pre20</version>
+    <time>1359110425</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>40584fdee17171fa6abd4307f92af0ba</srcmd5>
+    <version>0.0.6pre21</version>
+    <time>1362732715</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157803</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>40584fdee17171fa6abd4307f92af0ba</srcmd5>
+    <version>0.0.6pre21</version>
+    <time>1379664712</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>40584fdee17171fa6abd4307f92af0ba</srcmd5>
+    <version>0.0.6pre21</version>
+    <time>1409303394</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f41f38b5269bccd83288b83767548300</srcmd5>
+    <version>0.0.6</version>
+    <time>1427652941</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.6</comment>
+    <requestid>293158</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0a7b74816b9af7dac22478a07fa80e71</srcmd5>
+    <version>0.0.6</version>
+    <time>1558938992</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704992</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>81becc9c0ba67493dde226ce27db28e1</srcmd5>
+    <version>0.0.6</version>
+    <time>1563361985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714182</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>522f888d9b6d3923c1bf5de05c96315c</srcmd5>
+    <version>0.0.6</version>
+    <time>1568900767</time>
+    <user>maxlin_factory</user>
+    <comment>- Modernized the specfile.</comment>
+    <requestid>729537</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>9d144c5c3b56e0502c10aff5bfe9fd61</srcmd5>
+    <version>0.0.6</version>
+    <time>1599666484</time>
+    <user>dimstar_suse</user>
+    <comment>- More specfile modernization.</comment>
+    <requestid>832618</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>af8eddf1d2907d91ee3d6bc1a7097d93</srcmd5>
+    <version>3.0.0.g15</version>
+    <time>1649949789</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>967988</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>2a9c4944274e3ab2530b2e4cea434677</srcmd5>
+    <version>3.0.0.g15</version>
+    <time>1650996906</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>972496</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>9bb0cc4a97fdbc4526cab403a517f307</srcmd5>
+    <version>3.0.0.g15</version>
+    <time>1680125164</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074914</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>111817a8160b4a8c074f1c89aac2c33e</srcmd5>
+    <version>3.0.0+g21</version>
+    <time>1687796135</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 3.0.0+g21 (0d2e6ac6)</comment>
+    <requestid>1095164</requestid>
+  </revision>
+</revisionlist>

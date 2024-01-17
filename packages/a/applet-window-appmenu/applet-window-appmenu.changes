@@ -1,0 +1,132 @@
+-------------------------------------------------------------------
+Sun May 29 20:08:49 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 0.8.0:
+  * use applet geometry to accept mouse events when inside latte docks and panels
+  * show menu only after the previous one has already become hidden
+
+-------------------------------------------------------------------
+Wed Jan  5 13:51:31 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix installation (again) when using plasma-framework 5.89
+
+-------------------------------------------------------------------
+Sat Jul 24 18:23:30 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- update to 0.7.1:
+  * do not show any appmenu on empty and inactive screens
+  * improve compact button spacing
+  * show proper popup menu for vertical panels
+
+-------------------------------------------------------------------
+Sun Jul 18 08:38:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the %files section. plasma-framework >= 5.84 doesn't install
+  desktop files in %_kf5_servicesdir anymore.
+
+-------------------------------------------------------------------
+Sun Jun 13 12:43:42 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 0.7.0:
+  * fix occasional crash when menu is hiding
+  * fixes when present in plasma panels
+  * position menus relevant to screen edge
+  * add filter for maximized windows
+  * apply filters properly for compact button scenario
+  * respect Fitt's law for floating latte panels
+  * position menus relevant to entire screen geometry
+  * add option to enable unity behavior in neighbour window title applets
+  * fixes for unity behavior in latte panels
+
+-------------------------------------------------------------------
+Fri May 14 08:38:18 UTC 2021 - Simon Lees <sflees@suse.de>
+
+-  %cmake_build is now the recommended way to build cmake projects
+
+-------------------------------------------------------------------
+Sun Nov 24 15:53:13 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 0.6.0:
+  * new option to support color schemes for menus. For Latte a new
+    option to colorize the menus based on the current window color
+    scheme is already present.
+  * release menu item hovering when not needed any more
+  * new option to maximize/restore active window when used in
+    plasma panels [@ Taras Fomin]
+- Add cmake(KDecoration2) >= 5.12 to BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug  5 19:07:56 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 0.5.1:
+  * fix buttons vertical positioning. Previously there were cases
+    where buttons had 1px. difference with surrounding applets
+
+-------------------------------------------------------------------
+Fri Jul 12 21:39:44 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 0.5.0:
+  * provide a relevant background for window buttons in configuration
+    window to fix contrast issues
+  * support new Latte v0.9 Communicator API
+  * support new Latte v0.9 Windows Tracking interface when in Latte
+    dock/panel
+
+-------------------------------------------------------------------
+Fri Jul 12 21:37:48 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 0.5.0:
+  * show app menus also for inactive windows in multi-screen
+    environment through Latte WindowsTracking v0.9 interface
+  * improve appearance when in Latte edit mode
+  * use new Latte Communicator API for v0.9
+
+-------------------------------------------------------------------
+Sun Jun 30 10:14:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix description grammar.
+
+-------------------------------------------------------------------
+Mon May 20 00:38:44 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 0.4.2:
+  * fix a serious crash for some systems when the user was clicking
+    the menu items Plasma or Latte was crashing
+  * various improvements for Unity style behavior
+  * fix behavior with Latte git version dragging/maximizing/restoring
+    active window from panel empty areas
+  * dont register the global menu service under wayland in order for
+    windows to keep their global menus in their windows
+  * fix warnings on startup
+
+-------------------------------------------------------------------
+Tue Apr  2 12:37:15 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.4.1:
+  * Improve screen filtering
+  * Support horizontal scrolling
+  * Provide a Unity behavior option when used with Window Title
+    0.4 in latest Latte master
+  * Fix RTL menu items alignment
+  * Fix menu items not showing for all applications
+
+-------------------------------------------------------------------
+Mon Mar  4 19:42:25 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to released 0.3.
+
+-------------------------------------------------------------------
+Sun Nov 25 20:47:43 UTC 2018 - cornelis@solcon.nl
+
+- Remove fix-appmenu.patch. Now in git
+- Git is now version 0.2
+
+-------------------------------------------------------------------
+Mon Nov 19 10:10:45 UTC 2018 - Cor Blom <cornelis@solcon.nl>
+
+- Add fix-appmenu.patch to fix menus in Lyx (kde#399975)
+
+-------------------------------------------------------------------
+Sat Nov 17 23:11:01 UTC 2018 - Cor Blom <cornelis@solcon.nl>
+
+- Initial package

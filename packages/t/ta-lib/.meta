@@ -1,0 +1,5 @@
+<package name="ta-lib" project="openSUSE:Factory">
+  <title>ta-lib</title>
+  <description>Technical Analysis Library</description>
+  <devel project="devel:libraries:c_c++" package="ta-lib"/>
+</package>

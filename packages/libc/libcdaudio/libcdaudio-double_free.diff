@@ -1,0 +1,10 @@
+--- src/cddb.c
++++ src/cddb.c
+@@ -1976,6 +1976,7 @@
+   if(cddb_mc_copy_from_data(data, indata) < 0) {
+     free(indata);
+     cddb_mc_free(data);
++    return -1;
+   }
+    
+   free(indata);

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>000ae24a04edf8d5700027f9ca32ab72</srcmd5>
+    <version>20210417</version>
+    <time>1623443441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899366</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>eb3475c3a3c24746ce5a6245abcbd690</srcmd5>
+    <version>20210417</version>
+    <time>1660051715</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993993</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>75625151657cae5d7cddabc9614f83ff</srcmd5>
+    <version>20210417</version>
+    <time>1672851092</time>
+    <user>dimstar_suse</user>
+    <comment>add missing libbfio-devel</comment>
+    <requestid>1046580</requestid>
+  </revision>
+</revisionlist>

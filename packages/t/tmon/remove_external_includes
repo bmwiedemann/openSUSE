@@ -1,0 +1,11 @@
+Index: tmon-1.0.gb61442df748f06e9/Makefile
+===================================================================
+--- tmon-1.0.gb61442df748f06e9.orig/Makefile
++++ tmon-1.0.gb61442df748f06e9/Makefile
+@@ -1,6 +1,4 @@
+ # SPDX-License-Identifier: GPL-2.0
+-# We need this for the "cc-option" macro.
+-include ../../build/Build.include
+ 
+ VERSION = 1.0
+ 

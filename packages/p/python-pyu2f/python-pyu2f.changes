@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Tue Oct 17 07:32:00 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
+
+- Use upstream patches instead of custom one for python312
+  compatibility.
+  - drop python312.patch
+  - add python312-1.patch gh#google/pyu2f@793acd9ff661
+  - add python312-2.patch gh#google/pyu2f@dad654010a03
+
+-------------------------------------------------------------------
+Tue Oct 17 07:18:36 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
+
+- Add python312.patch to fix tests in python3.12
+
+-------------------------------------------------------------------
+Fri Apr 21 12:32:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:44:20 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Mon Dec 12 14:56:04 UTC 2022 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/google/pyu2f/issues/34
+  + python-pyu2f-no-six.patch
+
+-------------------------------------------------------------------
+Tue Nov  1 09:26:18 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream fix-deprecation-warning.patch to fix compatibility
+
+-------------------------------------------------------------------
+Tue Apr 12 08:56:31 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- do not use mock
+
+-------------------------------------------------------------------
+Fri Aug 20 08:28:27 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.1.5a

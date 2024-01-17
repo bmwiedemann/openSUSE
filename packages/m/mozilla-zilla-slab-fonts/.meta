@@ -1,0 +1,6 @@
+<package name="mozilla-zilla-slab-fonts" project="openSUSE:Factory">
+  <title>A Slab Typeface from Mozilla</title>
+  <description>Designer: Typotheque</description>
+  <devel project="M17N:fonts" package="mozilla-zilla-slab-fonts"/>
+  <url>https://github.com/mozilla/zilla-slab</url>
+</package>

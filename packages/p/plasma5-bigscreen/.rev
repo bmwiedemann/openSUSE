@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b42c038b11bbb1e4f2ad3974cbb4ccf2</srcmd5>
+    <version>5.26.2</version>
+    <time>1667209483</time>
+    <user>dimstar_suse</user>
+    <comment>This was missed in the Plasma 5.26 SRs :-/</comment>
+    <requestid>1032320</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>03672ca9506755c3b77c42ae4ed68d0d</srcmd5>
+    <version>5.26.3</version>
+    <time>1668086494</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.3(.1), untested as usual (forwarded request 1034741 from Vogtinator)</comment>
+    <requestid>1034778</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>106327dd0c26b7abb3a6b26d6cd4c24b</srcmd5>
+    <version>5.26.5</version>
+    <time>1673021109</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.5 - untested (forwarded request 1055974 from Vogtinator)</comment>
+    <requestid>1056037</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>14ca64fca38abcd4bc5889b3341e3b9d</srcmd5>
+    <version>5.26.90</version>
+    <time>1676302818</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060808</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6ea402631bd6ec9bfe4b78ee41be71fa</srcmd5>
+    <version>5.27.1</version>
+    <time>1677258449</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.1 (forwarded request 1067115 from Vogtinator)</comment>
+    <requestid>1067246</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>41d7c18a526d0c121f2963b4d712f5ce</srcmd5>
+    <version>5.27.2</version>
+    <time>1677794589</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.2 (forwarded request 1068244 from Vogtinator)</comment>
+    <requestid>1068281</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eb6d32188528dce01c889d0fb70f6c8e</srcmd5>
+    <version>5.27.3</version>
+    <time>1679068965</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.3 (forwarded request 1071929 from Vogtinator)</comment>
+    <requestid>1072010</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1c7d1c2018f95f0fd006c779ae54370e</srcmd5>
+    <version>5.27.5</version>
+    <time>1683801164</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.5. Not built yet. (forwarded request 1085751 from Vogtinator)</comment>
+    <requestid>1085905</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>00b1f205ca14587a93f8d42c1ef98e05</srcmd5>
+    <version>5.27.6</version>
+    <time>1687379945</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.6. plasma5-sdk needed a workaround. On aarch64 something is broken with breeze5-icons, I'm optimistic and triggered a rebuild. (forwarded request 1094155 from Vogtinator)</comment>
+    <requestid>1094200</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>396e5a8dc98fff428fc412a885a6cc3c</srcmd5>
+    <version>5.27.8</version>
+    <time>1694701515</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.8, not built yet (forwarded request 1110693 from Vogtinator)</comment>
+    <requestid>1110732</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e032648873f920afcb7b9a2a60e3912a</srcmd5>
+    <version>5.27.9</version>
+    <time>1698249766</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.9, untested as usual. I'd also submit this as maintenance update to 15.5, thoughts? (forwarded request 1120046 from Vogtinator)</comment>
+    <requestid>1120091</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3e91e36ac4ee4b20f1ba3055a1814db3</srcmd5>
+    <version>5.27.10</version>
+    <time>1701972617</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.10 (forwarded request 1131390 from Vogtinator)</comment>
+    <requestid>1131432</requestid>
+  </revision>
+</revisionlist>

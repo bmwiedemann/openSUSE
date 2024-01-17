@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e129d52fd680ec0b5ed90c6dce815c68</srcmd5>
+    <version>0.1.0rc1</version>
+    <time>1570710787</time>
+    <user>dimstar_suse</user>
+    <comment>- New Python Azure ADK component package</comment>
+    <requestid>735779</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7ff7e9fe21d51a836481b0e02ba51ca2</srcmd5>
+    <version>0.1.0.0</version>
+    <time>1580205345</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.1.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Override upstream version with 0.1.0.0 to ensure
+  proper upgrade from previous version 0.1.0rc1 (forwarded request 767735 from glaubitz)</comment>
+    <requestid>767795</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ccd84c3e1b296b123610cd9f2116452a</srcmd5>
+    <version>0.2.0</version>
+    <time>1606649182</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 850431 from glaubitz)</comment>
+    <requestid>850519</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>71b6697b73d57d7cc58c4a5c6378c699</srcmd5>
+    <version>0.2.0</version>
+    <time>1607548593</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853890</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>901524cf654fbd0789fb59d116338e91</srcmd5>
+    <version>1.0.0b1</version>
+    <time>1610051139</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 861057 from glaubitz)</comment>
+    <requestid>861071</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>938b25d0c6ffefebf31470f012b5e2e4</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1618235346</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b1 (forwarded request 881863 from glaubitz)</comment>
+    <requestid>881935</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>72c4ba1bc84a4fd6f360ea4332feade4</srcmd5>
+    <version>0.6</version>
+    <time>1644273497</time>
+    <user>dimstar_suse</user>
+    <comment>required by required by reproject (required by sunpy)</comment>
+    <requestid>952108</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a69e8979a25c610074254a2a8c443a67</srcmd5>
+    <version>0.7</version>
+    <time>1666978217</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.7
+  * Added new methods ``healpix_to_xyz`` and ``xyz_to_healpix`` to
+    the high level interface. [#153]
+  * The ``frame`` keyword argument for the high-level ``HEALPix``
+    class may now be a frame name, frame instance, or frame class.
+    [#156]
+  * On instantiation, the ``HEALPix`` class checks the ``order``
+    argument. [#162]
+  * Drop support for Python 3.6, which has passed end-of-life.
+    [#166]</comment>
+    <requestid>1031603</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3fad008db7b9ec3228991de3add5e6f0</srcmd5>
+    <version>1.0.0</version>
+    <time>1694545355</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0:
+  * Drop support for Python 3.7 and 3.8, which are not supported
+    by the latest minor release of Numpy (1.25).
+  * Build binary wheels using the Python limited API.
+  * Remove warning about API stability. The API is now considered
+    stable.
+
+- required by python-reproject</comment>
+    <requestid>1110367</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d086fa974cba2aebb86d928cf1993d76</srcmd5>
+    <version>1.0.1</version>
+    <time>1701533600</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.1:
+  * Allow building using any version of Numpy between 1.25 and 2.
+  * Build wheels for PyPI. [#200]</comment>
+    <requestid>1130392</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>99084ace226d5deae20ebc9fdfd3de51</srcmd5>
+    <version>1.0.2</version>
+    <time>1703800878</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.2:
+  * lonlat_to_healpix now correctly returns -1 if the longitude
+    or latitude is NaN or infinite. [#208]</comment>
+    <requestid>1135247</requestid>
+  </revision>
+</revisionlist>

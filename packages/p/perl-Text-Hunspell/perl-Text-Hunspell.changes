@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Sat Jul 16 03:08:55 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.16
+   see /usr/share/doc/packages/perl-Text-Hunspell/Changes
+
+  2.16    2022/07/15 13:04:00 Europe/Oslo (cosimo)
+          Included LICENSE file in distribution manifest.
+  2.15    2022/07/15 12:19:00 Europe/Oslo (cosimo)
+          Documentation and license improvements:
+          - Merged https://github.com/cosimo/perl5-text-hunspell/pull/14 by @manwar (from 2015! Sorry)
+          - Merged https://github.com/cosimo/perl5-text-hunspell/pull/16 by @choroba (from 2016! Sorry)
+          - Merged https://github.com/cosimo/perl5-text-hunspell/pull/18 by @JJ (from a month ago)
+
+-------------------------------------------------------------------
+Thu May  5 10:18:57 UTC 2016 - coolo@suse.com
+
+- updated to 2.14
+   see /usr/share/doc/packages/perl-Text-Hunspell/Changes
+
+  2.14    2016/01/14 08:36:00 Europe/Oslo (cosimo)
+  
+          No functional changes. Now Text::Hunspell depends on Alien::Hunspell
+          version 0.04. Should finally compile nicely on Win32 platform.
+  
+  2.13    2016/01/11 10:59:00 Europe/Oslo (cosimo)
+  
+          Win32 build support added (Graham Ollis, @plicease).
+          This should make Text::Hunspell build correctly on Windows. \o/
+  
+          *** If you're using Win32, make sure you use a recent version of
+          Alien::Base (>= 0.024) and/or Alien::Hunspell (soon-to-be 0.04)
+  
+  2.12    2015/12/18 10:35:00 Europe/Oslo (cosimo)
+  
+          Replaced ExtUtils::PkgConfig with Alien::Hunspell. This should allow
+          Text::Hunspell to build on non-pkgconfig-enabled systems, even though
+          I'm not sure how reliably it works. Will have to evaluate from CPAN
+          testers results. Thanks to Alien* expert Graham Ollis for this
+          contribution.
+
+-------------------------------------------------------------------
+Wed May 13 13:01:16 UTC 2015 - coolo@suse.com
+
+- updated to 2.11
+   see /usr/share/doc/packages/perl-Text-Hunspell/Changes
+
+  2.11    2015/05/12 14:19:07 Europe/Oslo (cosimo)
+  
+          No functional changes, only minor cleanups and a fix for RT#99810
+          (compilation on non-gcc based systems). Thanks to bjakubski for sending
+          in patches on Github.
+
+-------------------------------------------------------------------
+Wed Apr 15 11:54:19 UTC 2015 - coolo@suse.com
+
+- updated to 2.10
+   see /usr/share/doc/packages/perl-Text-Hunspell/Changes
+
+  2.10    2015/03/26 11:24:00 Europe/Oslo (cosimo)
+  
+          Fixed GH#5 (http://github.com/cosimo/perl5-text-hunspell/issues/5).
+          Should make Text::Hunspell installable without pain from CPAN and
+          cpanminus clients. The problem was in the undeclared use of
+          ExtUtils::PkgConfig, which needs to be known even before running
+          the configure (Makefile.PL) step. Thanks to Pavel Shaydo for reporting
+          the problem.
+  
+  2.09    2014/10/20 07:56:00 Europe/Oslo (cosimo)
+  
+          Fixed RT#99548, which should make it easier to install Text::Hunspell
+          on most systems. Basically replace my broken way of checking for
+          libhunspell by looking up pkgconfig using ExtUtils::PkgConfig.
+          Thanks to David Gutteridge for teaching me how to do it!
+
+- obsolete fix-makefile.diff
+
+-------------------------------------------------------------------
+Tue Jun  4 15:16:32 UTC 2013 - coolo@suse.com
+
+- updated to 2.08
+        Improved main POD documentation for Hunspell.pm.
+        Fixes RT#84964. Thanks to Paul Flo Williams for the patch.
+        (https://github.com/cosimo/perl5-text-hunspell/pull/2)
+
+        DEPRECATED the delete() method, and implemented proper
+        object handles in the hunspell XS glue. Again, thanks to
+        Paul Flo Williams for patch and test case. Closes RT#84054.
+
+        Implemented new add_dic() function from hunspell API.
+        Fixes RT#83765. Thanks to Paul Flo Williams for patch
+        and test case.
+
+        Fixed RT#79630 incorrect encoding of Hunspell.pm POD documentation.
+        Thanks to Paul for the patch.
+
+        Fixed t/02_pod.t test due to newest Test::Pod and
+        missing =encoding directive. Thanks to SHLOMIF for
+        the patch.
+
+-------------------------------------------------------------------
+Fri Apr  1 17:18:04 UTC 2011 - coolo@novell.com
+
+- initial package 2.02
+    * created by cpanspec 1.78.03
+

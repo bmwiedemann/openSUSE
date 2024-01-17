@@ -1,0 +1,5 @@
+<package name="python-pysha3" project="openSUSE:Factory">
+  <title></title>
+  <description>SHA-3 wrapper (keccak) for Python.</description>
+  <devel project="devel:languages:python" package="python-pysha3"/>
+</package>

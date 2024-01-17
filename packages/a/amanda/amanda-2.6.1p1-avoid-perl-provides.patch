@@ -1,0 +1,34 @@
+Index: amanda-tag-community-3.5.4/perl/Amanda/BigIntCompat.pm
+===================================================================
+--- amanda-tag-community-3.5.4.orig/perl/Amanda/BigIntCompat.pm
++++ amanda-tag-community-3.5.4/perl/Amanda/BigIntCompat.pm
+@@ -61,7 +61,8 @@ $stringify = $stringify;
+ 
+ if ($test_num =~ /^\+/) {
+     eval <<'EVAL';
+-        package Math::BigInt;
++        package
++            Math::BigInt;
+         use overload 'eq' => sub {
+ 	    my ($self, $other) = @_;
+ 	    return "$self" eq "$other";
+@@ -83,7 +84,8 @@ EVAL
+ # by bigint2uint64().
+ if (!$test_num->can("sign")) {
+     eval <<'EVAL';
+-	package Math::BigInt;
++	package 
++           Math::BigInt;
+ 	sub sign { ($_[0] =~ /^-/)? "-" : "+"; }
+ EVAL
+     die $@ if $@;
+@@ -92,7 +94,8 @@ EVAL
+ # similarly for bstr
+ if (!$test_num->can("bstr")) {
+     eval <<'EVAL';
+-	package Math::BigInt;
++	package 
++           Math::BigInt;
+ 	sub bstr { "$_[0]"; }
+ EVAL
+     die $@ if $@;

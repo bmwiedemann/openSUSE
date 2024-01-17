@@ -1,0 +1,10 @@
+<package name="calindori" project="openSUSE:Factory">
+  <title>Kirigami-based calendar application</title>
+  <description>Calindori is a touch friendly calendar application.
+It has been designed for mobile devices but it can also run on desktop environments.
+Users of Calindori are able to check previous and future dates and manage tasks and events.
+
+</description>
+  <devel project="KDE:Applications" package="calindori"/>
+  <url>https://apps.kde.org/calindori</url>
+</package>

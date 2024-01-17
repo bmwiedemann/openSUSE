@@ -1,0 +1,6 @@
+<package name="pympress" project="openSUSE:Factory">
+  <title>Pympress</title>
+  <description>A simple yet powerful PDF reader designed for dual-screen presentations </description>
+  <devel project="X11:Utilities" package="pympress"/>
+  <url>https://github.com/Cimbali/pympress/</url>
+</package>

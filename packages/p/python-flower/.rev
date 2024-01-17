@@ -1,0 +1,154 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3558e0fec17fc9a1e70f78348aea3718</srcmd5>
+    <version>0.8.3</version>
+    <time>1551276353</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to use single spec for Python 2 &amp; 3 support
+- Add missing build dependency certifi
+- Add missing runtime dependencies
+- Remove unnecessary build dependency python-devel
+- Use %license
+- fixed one of the unit tests that fails with newer python-mock
+- Initial package
+</comment>
+    <requestid>676962</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7a54b5755a93b275396740e2db88094e</srcmd5>
+    <version>0.9.3</version>
+    <time>1553263954</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove no longer needed remove-faulty-test.patch
+- Use backport_run_in_executor.patch to be compatible with Tornado 4
+- Increase minimum dependencies for celery &gt;= 3.1.0 and Tornado &gt;= 4.2.0
+- Update to v0.9.3
+  * Fix numeric sort and sort ordering
+  * Support filtering tasks by received time
+  * Fix &quot;not JSON serializable&quot; `TypeError` for /api/task/info
+  * Fixed Auth redirect when -url_prefix is given
+  * OpenAPI 2.0 swagger spec initial commit
+  * Update tasks datatable to use POST method
+  * Fix hanging issues with tornado 5.0.0
+  * Add 'signal' query parameter to endpoint /api/task/revoke
+  * Use parse_version instead of tuple comparisons
+  * /tasks endpoint fails with 500
+  * Add links for parent and root jobs
+  * Make dropdown font colour white instead of grey
+  * Fix incorrect response body
+  * Removed some legacy code for Python 2.6
+  * Document the GetQueueLengths API endpoint
+  * Enable broker support for redis+socket connections
+  * Fix docs for default inspect_timeout value
+  * Fix typo in Google OAuth 2 redirect uri env variable
+  * Upgrade tornado
+  * Fix the out-dated doc link in Worker.html
+  * Declare futures dependency using environment markers
+  * Fixing GitHub OAuth callback handling 
+  * Correct spelling error
+  * Correct spelling and grammatical errors
+  * Switch away from Google+ OAuth2 
+  * restrict release dependencies with version upper-bound</comment>
+    <requestid>687612</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4c4447069e5ca59c20f0fee1d43ffc7b</srcmd5>
+    <version>0.9.3</version>
+    <time>1573854012</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %pytest instead of python setup.py test combination.</comment>
+    <requestid>748961</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>574d7b6cd23cec3f818891c8b421e62b</srcmd5>
+    <version>0.9.3</version>
+    <time>1587467460</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795818</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a37798d5e932ec9303cc933ca1202793</srcmd5>
+    <version>0.9.7</version>
+    <time>1612378536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868495</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>db6f8748100793998fb76b590c4ac00e</srcmd5>
+    <version>0.9.7</version>
+    <time>1641940958</time>
+    <user>dimstar_suse</user>
+    <comment>- add python-rpm-macros dependency</comment>
+    <requestid>945676</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9017d6717a1a359e79ed9ff63e085f3a</srcmd5>
+    <version>1.0.0</version>
+    <time>1652801094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977777</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e48e9e70282ab70b0e012b605b0126a8</srcmd5>
+    <version>1.1.0</version>
+    <time>1657712729</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Disable authentication of /metrics endpoint. (#1129)
+  * read custom histogram latency buckets from env (#1134)
+  * making PrometheusMetrics class singleton (#1149)
+  * Fix attribute error caused by newest humanize package. (#1156)
+  * pass sentinel_kwargs to Sentinel() broker (#1208)
+  * Fixing CORS support (#1200)
+  * Encode worker and task names in URL (#1204)
+  * Add compatibility with older humanize versions (#1196)
+  * Diable API if auth is enabled (#1225)
+- Remove patch python-flower-new-humanize.patch:
+  * Included upstream.
+- Add patch remove-mock.patch:
+  * Remove dependency on mock.
+- Remove python-mock from BuildRequires
+- Clean up python 2 bcond, it is no longer supported.</comment>
+    <requestid>988794</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>59d4d43a996f88c7dea6f6f4b0208f24</srcmd5>
+    <version>2.0.1</version>
+    <time>1704659983</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  * Ask for safe args strings when calling inspect.active
+  * Enable basic auth for api, fixes
+  * Allow non integer rate limits like 3/m
+  * Provide support for Python 3.10 and 3.11
+  * Drop python 3.6 support
+  * Improve error message
+- drop remove-mock.patch: upstream
+- drop backport_run_in_executor.patch: obsolete
+
+- add python-rpm-macros dependency
+  * Fixing GitHub OAuth callback handling
+  * Switch away from Google+ OAuth2
+  * Fix a bug in humanizing timestamps on the tasks page
+  * Removed 500px height limitation
+  * Fixed Python 3 mistake in Github Login Handler
+  * Support environment variables in tornado 4.2.0 and &gt;=4.3
+  * Fix XSS on tasks page
+  * Replace websokets with ajax
+  * Fix bug in tasks page template
+  * Fix celery version comparsion
+  * Refactor version comparision
+  * Use redis as default broker
+  * Update dashboard counters on worker table updates
+  * Move shut down group button to worker page
+  * Update navbar title
+  * Add a script for calling tasks
+  * Add a link to worker name
+  * Remove active task start time from worker page
+  * Fix py3 json serialization</comment>
+    <requestid>1137292</requestid>
+  </revision>
+</revisionlist>

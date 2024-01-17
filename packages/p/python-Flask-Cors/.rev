@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1842efd0573363cf85ddf655cea2cc09</srcmd5>
+    <version>3.0.6</version>
+    <time>1532033712</time>
+    <user>dimstar_suse</user>
+    <comment>A Flask extension adding a decorator for CORS support
+</comment>
+    <requestid>623401</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3b16b948de7159155b5744273ecf90d7</srcmd5>
+    <version>3.0.7</version>
+    <time>1542124809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648443</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>55e10beddffba135647535a3f0d6ca7a</srcmd5>
+    <version>3.0.8</version>
+    <time>1560537753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709898</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cce4afac337095d9650d13f02152c426</srcmd5>
+    <version>3.0.8</version>
+    <time>1571838878</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch 0001-Disable-ACL_ORIGIN-check.patch to disable failing 
+  ACL_ORIGIN check in test (boo#1154808)
+</comment>
+    <requestid>742134</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b5df2906e35ec9b1b613153a8fcdc386</srcmd5>
+    <version>3.0.9</version>
+    <time>1598983829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831046</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3c03cfd0702691c6afbcbc2bd2635d3d</srcmd5>
+    <version>3.0.10</version>
+    <time>1622536805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896574</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>86157f4d58bbf672182b8b133239ed35</srcmd5>
+    <version>3.0.10</version>
+    <time>1635956760</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pytest to run the testsuite.</comment>
+    <requestid>928895</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>43cd6db2e6de90303c1081721c35ac18</srcmd5>
+    <version>3.0.10</version>
+    <time>1641555971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944538</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>1d203422f158830e5a3063f418300416</srcmd5>
+    <version>3.0.10</version>
+    <time>1686753035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093054</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>950835d761a5120863aa51a08e199c78</srcmd5>
+    <version>4.0.0</version>
+    <time>1696451446</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114847</requestid>
+  </revision>
+</revisionlist>

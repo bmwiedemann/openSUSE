@@ -1,0 +1,22 @@
+gdm_vars() {
+    case "${DISPLAYMANAGER##*/}" in
+        gdm|GDM|Gnome|GNOME)
+            RELOADSIGNAL="-USR1"
+            DISPLAYMANAGER=/usr/sbin/gdm
+            PIDFILE=/run/gdm/gdm.pid
+
+            # let gdm run the Xserver as root if access to /dev/fb*
+            # is required (bsc#1075805)
+            # The GDM_DISABLE_USER_DISPLAY_SERVER variable is added by patch
+            # gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch
+            if [ ! -c /dev/dri/card0 -a \
+                 ! -c /dev/nvidiactl ]; then
+                export GDM_DISABLE_USER_DISPLAY_SERVER=1
+            fi
+
+            return 0 ;;
+       *) return 1 ;;
+    esac
+
+    return 1
+}

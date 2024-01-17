@@ -1,0 +1,2575 @@
+-------------------------------------------------------------------
+Fri Jan  5 11:47:52 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.0.1
+  * matomo-org/device-detector
+    - #7527 TV Detection Improvements
+    - #7528 Various Devices Detection Improvement
+    - #7535 Vestel Production TV Devices
+    - #7536 VIDAA OS / Hisense Production TV Devices
+    - #7537 Android Set-Top-Boxes
+    - #7539 Amazon Fire TV Detection by Build Models
+    - #7540 Adds detection for Altimo, AmazonBasics, Atlantic Electrics,
+      Black Box, Canal+, Cecotec, DIORA, Dinalink, Elektroland, - FITCO,
+      Filimo, Graetz, HOFER, Homatics, Kendo, Maxwell, MEGA VISION, MEO,
+      NABO, NetBox, OCEANIC, Orava, Play Now, PROSONIC, Sagemcom, SEHMAX,
+      Silva Schneider, Solas, Super General, TADAAM, TAUBE, VANGUARD,
+      Walker, We. by Loewe., WONDER brands. improves detection for other brands,
+      improves version detection for Fire OS
+    - #7541 CaptiveNetworkSupport agent not all identified
+    - #7542 Adds detection for Express LUCK, Ooredoo, Tsinghua Tongfang,
+      XGEM brands, Nuanti Meta browser, DIGA, YouView mediaplayers
+      and improves detection for various brands
+    - #7546 Adds detection for OWLer and BBC bots, improves version detection for iOS and macOS
+  * matomo-org/tag-manager
+    - #212 Support variables in Custom JavaScript variable
+    - #731 Added code to support variables in Custom JS variable
+    - #740 [Bug] Unable to use “Publish a new version now” when changing tags or triggers
+    - #741 Fix issue with publish new version link
+  * matomo-org/matomo
+    - #21016 Optimize segment SQL when segment subqueries are used
+    - #21625 Apply max execution time limit to goals live query
+    - #21653 Improve performance of queries for complex custom reports using segments
+    - #21617 Adds new license key section to plugin menu
+    - #21666 Add new diagnostic commands to provide archiving status information
+    - #21413 Fix: strnatcasecmp(): Passing null to parameter #1 ($string1) of type string is deprecated
+    - #21645 [Bug] First/Last visit displayed date doesn’t take website timezone into account.
+    - #21657 [Bug] Transition popover does not work for rows with “%”
+    - #21677 [Bug] mktime(): Argument #1 ($hour) must be of type int,
+      string given in /mnt/efs/plugins/VisitTime/functions.php line 18
+    - #21708 Hide all sites item in site selector for custom dimension management
+    - #21719 Improve escaping of values in CSV exports
+    - #21738 Avoid possible update problem with MyISAM tables on MySQL 8
+
+-------------------------------------------------------------------
+Tue Dec 19 09:41:27 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.0.0
+  Too many changes to list here. See instead:
+  https://matomo.org/changelog/matomo-5-0-0/
+- Rebase matomo-package_update.patch
+
+-------------------------------------------------------------------
+Tue Nov 28 17:11:44 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.16.0
+  * matomo-org/matomo
+    - #19617 Segment with ‘Does not contain’ operand is invalid if comma is in value
+    - #20959 [PHP 8.1 compatibility] Deprecated – trim(): Passing
+      null to parameter #1 ($string) of type string
+    - #21190 Fix for unexpected zero value last edit dates in segment archiving
+    - #21357 Archiving issue in DataTable.php: Deprecated 
+      – Implicit conversion from float 2009.999 to int loses precision
+    - #21569 Fix “revenue per visit” calculation
+    - #21234 Row evolution does not work for reports with special labels
+    - #21266 Process general goal metrics if no conversions, but site is ecommerce enabled
+    - #21403 Add markup and content for premium plugins promos
+    - #21504 Escape underscore in archive name when used in like query
+    - #21512 Add more visually striking marketplace menu item in sidebar
+    - #21522 Fixing PHP 8.3 deprecation error
+  * matomo-org/matomo-log-analytics
+    - #358 Add Traefik json log support
+    - #359 Update test action
+    - #361 Merge 4.x changes into 5.x
+    - #362 fix nginx format detection
+  * matomo-org/searchengine-and-social-list
+    - #89 Add Bluesky to social media list
+  * matomo-org/referrer-spam-list
+    - #1367 Add urlumbrella.com
+    - #1368 Add bonniesblog.online
+    - #1369 Ass bonniesblog.online
+    - #1370 Add jacblog.xyz
+  * matomo-org/tracker-proxy
+    - #84 added JS option to $SUPPORTED_METHODS in opt out
+
+-------------------------------------------------------------------
+Tue Aug  1 15:11:45 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.15.1
+  * matomo-org/matomo
+    - #21039 There are unnecessary extra spaces in the generated campaign builder URL
+    - #21007 Fix tag cloud visualization failing on formatted values
+    - #21063 Some advanced options in tracking code generator do no longer work
+
+-------------------------------------------------------------------
+Fri Jul  7 05:14:46 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.15.0
+  * matomo-org/matomo
+    - #20785 Correctly escape report name in CSV exports
+    - #12165 Submit Matomo to Google Tag Manager Community Template Galleries
+    - #20915 Single click copy button for code snippets
+    - #20636 [PHP 8.1 compatibility] Fix array access warning on float 
+      – /plugins/Goals/DataTable/Filter/CalculateConversionPageRate.php
+    - #20658 [PHP 8.1 compatibility] IPUtils.php(27): Deprecated 
+      – trim(): Passing null to parameter #1 ($string) of type string
+    - #20589 Allow goals processed metrics to appear in API.getProcessedReport output
+    - #20606 Added GTM installation guide in no-data and tracking code pages
+    - #20649 Added WordPress installation guide for no-data and tracking code pages
+    - #20679 Fixed two issues with handling of processing dependent archives
+    - #20681 Don’t show empty categories in widget listing
+    - #20682 Allow reports to override the min/max label width values
+    - #20683 add Live.initializeVisitorActions event to allow plugins 
+      to collapse actions in visitor log if they need to
+    - #20700 Improves UI/UX on no data screen
+    - #20710 Update Google Tag Manager instructions on no data screen
+    - #20748 Improved WordPress instruction tab on the no data screen
+    - #20790 Adds Vue.js instruction tab on no data screen
+    - #20815 Allow reports to specify a column/metadata other than “label” that uniquely identifies a row
+    - #20862 Improvements to notifications under tracking code on no data screen
+    - #20882 Improve handling of deactivating incompatible plugins during update
+    - #20890 Add instruction tab for React.js to no data screen & improve JS code instruction tab
+    - #20928 Adds new SPA/PWA instruction tab for no data screen
+
+-------------------------------------------------------------------
+Tue Apr 18 09:50:40 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.14.2
+  * matomo-org/matomo
+    - #20573 Added site detection for cloudflare and updated noData page to mention cloudflare
+    - #20579 Improve brute force protection checks (#20543)
+    - #20512 Faster archiving for non-day periods by only storing one datatable and blob row at a time in memory
+    - #20594 Improve archiving performance by loading cached actions from
+      a database reader when using a multi-server database environment
+  * matomo-org/tag-manager
+    - #620 Reverting Tag Manager JavaScript Change that caused fewer visits to be tracked
+      when both Tag Manager and JavaScript trackers were used together
+    - #614 Fixed regression of container to set conditionally only if not present
+  * matomo-org/device-detector
+    - #7379 Update README.md
+    - #7380 Detect new brands: Kinstone, ROiK and Detect device for
+      exist brands: Samsung, Huawai, DEXP, TCL, Xiaomi
+    - #7382 Detect new brand HIPER and Detect devices for exits brands:
+      Samsung, Xiaomi, BBK, SUNWIND, Stylo
+    - #7383 Detect new brands: GOODTEL, Viper, VIIPOO, Vityaz, Samtron
+      and Detect devices for exist brands: Huawei, ZTE, Doogee, Realme. OPPO
+    - #7384 Detect new brands: ANXONIT, Ctroniq, Punos, TopDevice
+      and Detect devices for exist brands: OPPO, POCO, Pico, Tecno Mobile, DEXP
+    - #7385 Adds detection for Wavebox browser
+    - #7387 Detect browsers: IVVI Browser, NOMone VR Browser, Opus Browser, Soundy Browser
+    - #7388 Detect new brands: RedLine, HAOQIN, XY Auto and Detect devices
+      for exist brands: Tecno Mobile, Vsmart, Itel, Samsung
+    - #7388 Detect new brands: RedLine, HAOQIN, XY Auto and Detect devices
+      for exist brands: Tecno Mobile, Vsmart, Itel, Samsung
+  * matomo-org/matomo-php-tracker
+    - #115 add support for CURLOPT_CONNECTTIMEOUT
+  * matomo-org/tracker-proxy
+    - #81 Documenting new Safari limitations on setting first party cookies from a subdomain
+  * matomo-org/referrer-spam-list
+    - #1347 Add emicef.com
+    - #1348 Add singularwebs.net
+    - #1349 Add tourburlington.com
+    - #1350 Add nfocusdriver.com
+    - #1351 Add www.chomexun.com
+    - #1352 Add chomexun.com
+    - #1353 Add madisonclothingny.com
+
+-------------------------------------------------------------------
+Wed Mar 22 07:13:49 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.14.1
+  See: https://github.com/matomo-org/matomo/milestone/184?closed=1
+  
+- Update to 4.14.0
+  * matomo-org/matomo
+    - #17399 Add diagnostics command options to list and delete unexpected files
+    - #20285 Tabbing (tab navigation with keyboard) is not working in Matomo 4.13 (regression)
+    - #20306 In accept invitation screen show the email instead of the username
+    - #20380 Improve detection of GA3 and GA4 to more accurately suggest correct tracking set up guides
+    - #20410 Added code to include schedule command for plugins while generating github action
+    - #20343 Feedback success overlay might not be shown
+    - #20404 OptOut: Remove extra twig markings
+    - #20430 Ensure empty widgets are loaded correctly
+    - #20441 Ensure archiving for segments uses correct date ranges
+    - #20370 Slightly improve visits log layout as dashboard widget
+    - #20166 Adjust some archivers to use correct row limit when aggregating periods
+    - #20307 Fix PHP 8.2 deprecations in 2FA plugin
+    - #20312 What’s new icon “on” doesn’t show there is a new entry when never clicked on it previously
+    - #20323 Fix for PHP8 type error on NFS diagnostic check
+    - #20333 Fix non-countable fatal error in the datatable class
+    - #20336 Fix to allow campaign switching during a session
+    - #20339 Harden check for multiple sites
+    - #20356 Fix PHP 8.1 deprecation in DevicesDetection
+    - #20357 Ensure to use int values to determine maximum values in graphs
+    - #20358 Fix compatibility of minimum PHP version check with older versions
+    - #20374 Language is not correctly detected automatically by Matomo
+    - #20391 Fix visits log might show incorrect action for groups
+    - #20399 Fix for unsupported operand error in RowEvolution
+    - #20402 Fixes for PHP 8.2 deprecation warnings
+    - #20426 Fix PHP 8.2 deprecation in event actions
+    - #20098 Avoid errors when trying to create invalid date objects
+    - #20222 Fix for creating a new segment that has some visits will show 2 notifications instead of 1
+    - #20262 Make millisecond dimension grouping less error prone
+    - #20272 Remove unneeded table from query when querying conversions by page view to increase performance
+    - #20296 Trim spaces from login email in password reset process if some are set
+    - #20298 Unset link token when accepting an invite
+    - #20303 Fix Matomo dialog does not close
+    - #20424 Delete log table data in chunks to prevent possible performance issues
+    - #20425 Add new metricTypes report metadata to prepare for LookerStudio integration
+    - #20429 Updated bug report template: moved Context to the top
+    - #20437 Fixed PHP 8.2 deprecation error in CustomDimensions
+    - #20438 Get all numerics in one go for faster goal conversion calculation
+    - #20471 Added new semantic types for date/datetime for CrashAnalytics
+  * matomo-org/tag-manager
+    - #386 Replace Travis.CI tests with GitHub action
+    - #594 Improvements to MTM tracker to allow full _paq functionality
+    - #599 Improve JavaScript reliability
+    - #606 Added code to create default container for idsite:1 if not created
+    - #607 Images and text updated for tags
+  * matomo-org/device-detector
+    - #7344 Detect devices for exists brands: LG, Energy Sistem, SmartBook, Arnova
+    - #7345 Detect new brand BMXC and Detect devices for exist brands
+    - #7346 Detect new brands: V-Gen, Nedaphone and Detect devices for exist brands
+    - #7348 Detect new brands: Frunsi, RelNAT, TeloSystems, MIWANG and Detect devices for exist brands
+    - #7349 Detect new brands: HeadWolf, Great Asia, Zamolxe, ZoomSmart and Detect devices for exist brands
+    - #7350 Fix possible error if an incorrect version list array is provided
+    - #7353 Detect new brands: PC Smart, Ephone, YunSong, SYH, iRobot and Detect devices for exist brands
+    - #7354 Overwrite device type smartphone – if UA contains a’prefix, Pad/APad
+    - #7355 Detect new brands: Roam Cat, DIMO, Everest, SANY and Detect devices for exist brands
+    - #7357 Detect new brands: Attila, BRAVE and Detect devices for exist brands
+    - #7359 Detect new brands: BenWee, BluSlate, Bookeen, Lectrus,
+      LeBest, NOVO, Pano, Surge, Volt and Detect devices for exist brands
+    - #7360 Adds detection for various bots and apps
+    - #7362 Detect new brands: FFF SmartLife, NuVision, Versus and Detect devices for exist brands
+    - #7364 Detect Morning Score bot
+    - #7365 Fir for YamlParser AppHints & BrowserHints
+    - #7366 Detect browsers: YandexBrowser, AlohaBrowser for iOS and Detect apps: Quora, JJ2GO, BonPrix
+    - #7367 Fix: YamlParser for AppHints & BrowserHints
+    - #7373 Detect devices for exist brands: POCO, OPPO, Ravoz,
+      Vivo, Samsung, Huawei, Nubia, OnePlus, Oukitel, Xiaomi
+  * matomo-org/matomo-php-tracker
+    - #113 Add function to set api url
+  * matomo-org/component-ini
+    - #22 Use bash syntax for installation instructions
+  * matomo-org/referrer-spam-list
+    - #1343 Add nutriwestncahi.com
+    - #1344 Add epcpolo.com
+    - #1345 Add 100+ .xyz domains
+- See also https://matomo.org/changelog/matomo-4-14-0/
+
+-------------------------------------------------------------------
+Thu Mar 16 21:59:28 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Fix boo#1209312
+- Fix boo#1209313
+
+-------------------------------------------------------------------
+Mon Jan 30 17:27:12 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.13.3
+  - No really changelog exists, but see:
+    https://github.com/matomo-org/matomo/compare/4.13.2...4.13.3
+
+-------------------------------------------------------------------
+Thu Jan 26 09:08:13 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.13.2
+  * matomo-org/matomo
+    - #20180 Ensure row evolution works in events when switching
+      secondary dimension
+    - #20149 When trying to find a join for segmentation,
+      also look for available ways to join in both directions
+    - #19343 Further PHP 8.2 compatibility improvements
+    - #20234 Fixed PHP 8.1 deprecated warning for Redis::connect()
+      call
+    - #20232 Keep selected site when returning to the dashboard
+      from Tag Manager
+    - #20233 Fixed anchor link issue on the tracking code page of
+      the admin when clicking on MTM
+    - #20256 Fix possible notice in VisitorDetails class
+    - #20209 Add Snapchat to social networks
+    - #20207 Added link to useful FAQ and RAW data information to
+      Live API reference
+  * matomo-org/device-detector
+    - #7330 Detect new brands: MwalimuPlus, OLTO, DSIC, Mascom and
+      Detect devices for existing brands Vivo, Xiaomi, Sharp
+    - #7334 Detect new brands: Vormor, Oangcc, SOSH and Detect
+      devices for existing brands Vivo, Xiaomi, Sharp, ZTE
+    - #7335 Detect mobile apps: Audible, Overcast
+    - #7336 Detect Wolvic VR Browser
+    - #7337 Detect bot: GumGum Verity
+    - #7339 Detect new brands: Everex, GTMEDIA, Guophone, Unitech
+      and Detect devices for existing brands
+
+-------------------------------------------------------------------
+Mon Jan 16 14:31:06 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.13.1
+  * matomo-org/matomo
+    - #20090 Speed up sparklines when larger periods are selected
+      and improve detection of trends as well as fix comparison of dates
+    - #20094 Don’t force using day period for sparkline when comparing
+      to ensure it compares correct periods and is fast
+    - #19974 Performance improvements for goals by pages
+    - #19928 Fix Unknown format specifier in translation in Live plugin
+    - #20176 Fix PHP8.2 Deprecation Warning on module install
+    - #20082 Add countdown redirection to User Invite error page
+    - #20099 Updated Nonce and Token exception message
+    - #20110 Retry establishing DB connection if it fails with MySQL Server Has Gone Away
+    - #20147 Remove outdated misleading comment
+  * matomo-org/tag-manager
+    - #582 Add new trigger user interaction
+  * matomo-org/device-detector
+    - #7302 Detect existing brand: Digma, Condor, Samsung, iDroid, BQ, Gigabyte, Santin
+    - #7304 Detect new brands: DEYI, JoySurf, VIVIMAGE, X-Mobile and
+      Detect devices for existing brands: Vivo, Huawei, Sharp, HTC
+    - #7307 Improves detection for Iridium browser
+    - #7310 Add support for Laravel cache
+    - #7311 Detect new brands: Kapsys, Sunmax, SSKY, Winstar, XCOM, YELLYOUTH
+      and Detect devices for existing brands
+    - #7312 Improves version detection for iOS, iPadOS and macOS
+    - #7313 Adds detection for Movitel, Moxee, Olax, Olympia, Uniqcell, Yestel,
+      Youin brands and improves detection for Alcatel, Andowl, Archos, AT&T,
+      Bmobile, Cellution, Cricket, Crosscall, Facetel, Huawei, iPro, Kalley, 
+      Konrow, LOGIC, Mediacom, Multilaser, neoCore, Nokia, OnePlus, ONN,
+      Positivo, Siragon, TCL, Vivo, Xiaomi, Xtratech, Yezz, Zuum brands
+    - #7315 Detect new brands: Khadas, Youwei and Detect devices for existing brands
+    - #7318 Improving regex rules for browser versions: Chromium GOST, CoolBrowser,
+      Amigo, Opera Mobile etc.
+    - #7320 Adds detection for RedOS
+    - #7322 Improves detection for iPadOS and mobile apps
+    - #7323 Adds detection for Airpha, Brigmton, Cwowdefu, Entity, Mobile Kingdom,
+      SGIN, Wecool brands and improves detection for Alcatel, Blu, Bmobile, Ceibal,
+      CORN, Cricket, Cyrus, Digit4G, Hammer, Hi, Huawei, Konrow, Kurio, Moxee, MTN,
+      ONN, Philco, Realme, Sky, TCL, True, Vivo, Wolki, Xiaomi, Zuum, ZTE brands
+      and Android TV
+    - #7324 Adds detection for Ruggex, Syco brands and improves detection for Huawei,
+      iPro, Kempler & Strauss, MTC, QUBO, Realme, TCL, TOSCIDO, Verizon, Vivo brands
+  * matomo-org/referrer-spam-list
+    - #1335 Add hugblog.xyz
+    - #1336 Add trade365.org
+    - #1337 Add seo-traffic.xyz
+    - #1338 Add shoppinglocation.com
+    - #1339 Add judyandsimon.com
+    - #1340 Add residualforlife.com
+    - #1341 Add thegreensociety.net
+    - #1342 Update spammers.txt
+
+-------------------------------------------------------------------
+Thu Dec  8 09:53:36 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.13.0
+  * matomo-org/matomo
+    - #19917 Harden check for valid redirect urls in logme method
+    - #19887 Ensure Tag Manager update are run on updates
+    - #19957 Detect GA3, GA4 or GTM during installation and suggest migration guides
+    - #19903 Prevent exception possibilities in retrieving columns from previous data row
+    - #19909 Add help icon ability to subcategories in the Twig nav menu template
+    - #9969 Hide widget when not found (goals, custom dimensions, custom reports)
+    - #18550 Fix SQL syntax error due to incorrect parameter
+    - #19512 Improve / fix handling of best converting page on goal overview
+    - #19867 Add exception for invalid limit before grouping in API request
+    - #19879 Fix for opt-out toggling on page load and incorrect default state
+    - #19899 Avoid escaping of characters other than ”
+    - #19914 Handle invalid variable type sent to Period/Range.php
+    - #19970 Avoid double formatting of conversion rate in comparison mode
+    - #19992 Correctly escape email addresses in mailto links
+    - #17371 Ensure performance timings are sent as integer values
+    - #19626 Handle encoding in translation files
+    - #19846 Update Semver dependency
+    - #19872 Update autocomplete values
+    - #19968 Fix flat lines in Sparklines when comparing segments
+    - #19919 Fix value of delete_logs_enable not displayed correctly in UI
+    - #19922 Add help link Vue component
+    - #19948 Allow calls to opcache_reset to be disabled in config
+    - #19960 Fix incomplete tool tip for best converting entry page in goals conversion overview
+    - #19973 Resolve inaccurate charts when comparing 2 segments with week period in the visits overview
+    - #20017 Resolve incorrect archiving error notification
+  * matomo-org/tag-manager
+    - #563 Add custom visitor cookie timeout setting
+    - #568 Add translations for tags,triggers and variables
+    - #559 Resolve translation key is not loaded error on “Versions” page
+    - #311 Update ecommerce tracking in etracker
+    - #560 Fix a translation key not being registered with the client
+    - #571 Update etracker source URL
+    - #574 Add escaping for percent sign for ScrollReachTriggerPercentageDescription key
+  * matomo-org/device-detector
+    - #7268 Detect new brands : UE, Hykker
+    - #7273 Detect new brands : Hiberg, Hartens and detect existing brand : Infinix
+    - #7275 Identify Microsoft Office user agent
+    - #7276 Improved detection of office apps and detect ZorinOS
+    - #7277 Detect existing brand : Vivo, Zebra, Oppo, Xiaomi, Tecno, Samsung
+    - #7280 Detect new brands : AMA, OSCAL and detect existing brand :
+      Philips, Stylo, DEXP, X96, H96, Gionee, Wiko
+    - #7282 Detect new brands : Fluo, Quatro and detect existing brand :
+      iLife, Nvidia, Toshiba, Smooth Mobile, Samsung, Allwinner, China Mobile
+    - #7283 Change client family to null instead of empty string for consistency
+    - #7284 Adds detection for various libraries and improve detection for iPadOS
+    - #7286 Detect new brands : ALLINmobile and detect existing brand : Dell, Coolpad, Mint, Tecno Mobile
+    - #7287 Detect new brands : Uniden and detect existing brand : Vivo, Infinix
+    - #7289 Detect new brands : TETC, Vizmo and detect existing brand :
+      Oppo, Google. Samsung, Huawei, Sony, Cherry, Evercoss
+    - #7290 Adds client hints test for Brave browser
+    - #7291 Detect new brand : 10moons and detect existing brand : iBrit, iVooMi, Samsung, LG
+    - #7292 Detect new brands : Farassoo, Ophone, XWave and detect existing brand : InFone
+    - #7294 Detect new brands : Foxxd, K-Lite and Detect devices for existing brand: Hotwav
+  * matomo-org/component-ini
+    - #21 Avoid escaping of characters other than ”
+  * matomo-org/matomo-php-tracker
+    - #108 Fix possible notices on PHP 8.1
+
+-------------------------------------------------------------------
+Thu Oct 27 19:49:51 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.12.3
+  * matomo-org/matomo
+    - #19905 Fix to apply Tag Manager database update when upgrading from 4.12
+    - #19818 Improve alignment in Visits > real-time by hiding parent of period selector
+
+-------------------------------------------------------------------
+Fri Oct 21 11:32:09 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.12.2
+  This release contains fixes to regressions discovered in the Matomo 4.12.0 and 4.12.1 releases,
+  including performance improvements achieved by avoiding unnecessary, expensive queries, 
+  bug fixes on the new tracking opt out, and a minor security improvement to prevent
+  possible XSS attacks by one super user account on another super user. 
+
+-------------------------------------------------------------------
+Wed Oct 19 05:16:52 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.12.1
+  There is one low impact security fix in this patch release to add
+  missing escaping to prevent a Cross-site Scripting attack by a
+  super user on another super user.
+  * matomo-org/matomo
+    - #19853 Goal visits log query performance improvement – don’t execute the query when no idVisits
+    - #19819 Ensure empty report tables also use max width
+    - #19838 Avoid loading goals data multiple times for goal metrics
+    - #19833 Allow empty excludedReferrers on the global setting
+    - #19863 Adds missing escaping
+    - #19768 Upgrade to Matomo 4.12 breaks Matomo when DeviceDetectorCache plugin is installed
+    - #19870 Fix failures link to Learn More
+    - #19808 Visits Overview accessibility improvement – remove redundant information
+    - #19809 TourEngagement accessibility improvement – Remove redundant information
+    - #19817 Fix Referrers.getKeywordsFromSearchEngineId API for invalid subtable ids
+    - #19869 PHP8 fix – Ensure data retention settings are respected
+    - #19841 Check downloaded referrer spam list for validity
+    - #19827 Return correct parameter divId for JS opt-out
+    - #19852 Fix array to string conversion warning in userOptOut
+    - #19861 Ensure password check can only throw wrong password error
+
+-------------------------------------------------------------------
+Wed Oct  5 05:15:35 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.12.0
+  This is a major security release.
+  * matomo-org/matomo
+    - #16125 Support Sec-CH-UA Client Hints in addition to UserAgent
+    - #17452 Offer opt out without iframe / 3rd party cookies
+    - #19233 Handle 429 response code within UI
+    - #19028 Have a message in the UI after install saying this plugin does not track to Cloud
+    - #19525 Improve password confirmation in UI & API
+    - #15262 Fix average order value graph flattening out to value 0
+    - #19540 Fix sizing of subtables with different column count
+    - #15924 Ensure download urls are encoded correctly in visits log
+    - #18766 Show the selected conversion rate on Goals->Overview evolution graph
+    - #18781 Show correct “Rows to display” on Evolution graph
+    - #19335 Improve password confirmation in UI & API
+    - #19485 Fixes Goal row evolution with double quotes in the goal name resulting in an error
+    - #19550 Ensure API requests with session auth check 2fa status
+    - #19586 Require password confirmation when removing users through UI
+    - #19591 Require password confirmation when removing a site in UI
+    - #19598 Use brute force detection for reset password action
+    - #19611 Require password confirmation when inviting a user in UI
+    - #19302 Provide possibility to configure referrer exclusion list
+    - #19387 Fixes glossary navigation
+    - #19530 Allow custom cookie expiry date for `optUserOut()` & `forgetUserOptOut()` functions
+    - #19572 Add config option for database errors to ignore during updates
+    - #18750 Improve role/capability handling in usermanager
+    - #19254 Fix adjacent elements to dashboard-dropdown-menu-modal overlapping on narrower screens
+    - #19632 Fix CSP header when viewing plugin details
+    - #19446 Fixes different height of selectors
+    - #19456 Fixes icon-menu-hamburger size
+    - #12024 Improve URL detection in mod_pagespeed check
+    - #19319 Fix problem with too long browser version
+    - #19323 Attempt to handle incorrectly prefixed region codes
+    - #19346 Fix FAQ links using # in the link no longer working
+    - #19354 Improve reset password email formatting to fix broken link
+    - #19360 Fix number formatting in additional Y axis in (evolution) charts
+    - #19393 Fix date range handling to prevent evolution graph display being confused when changing the period
+    - #19508 Fixed incorrect Cuban province names on visitor map
+    - #19569 Fix for current year not processed for new custom reports
+    - #19588 Fix placing series / series picker in charts
+    - #19615 Fix for page goals visualization showing hits instead of visits
+    - #19269 Include conversion attribution in visitor details
+    - #19308 Improve debugging via Vardumper overriding
+    - #19333 Login plugin language reworked
+    - #19363 Setting prepare callback before validation
+    - #19374 Fix typo in Revenue Entry Documentation translation string
+    - #19385 Added translation keys for scope titles in custom dimensions
+    - #19420 Implement url parameter to ignore referrer
+    - #19454 Full width field in settings
+    - #19458 Add TikTok to socical networks
+    - #19491 Allow reading consent removed cookie even if cookies are disabled
+    - #19510 Update outdated FAQ and Guide links
+    - #19517 Exclude paypal as referrer in javascript tracker
+    - #19527 Update HTTPs security check, when client is using HTTP just throw a warning on diagnostic
+    - #19532 Implement cookie expire time – forgetConsentGiven
+    - #19594 Do not accept invalid SSL certificates for requests to ASPSMS and Clockwork
+    - #19673 Adds Microsoft and Yandex click ids to default query parameters exclusion list
+  * matomo-org/tag-manager
+    - #503 Add support for `data-matomo-mask` attribute on events
+    - #519 Prevent possible XSS via changeDebugUrl
+    - #249 Add description/comment field to Tags/Triggers/Variables for better documentation of functionality
+    - #543 Handle Click Events correctly in shadowDOM (web components)
+    - #334 Added goal revenue field to tag edit view
+    - #314 Fixed issue when renaming Matomo Configuration variable, its name is not propagated to the tags using it
+    - #511 Improve Start and end date for Tags handling of timezone
+    - #326 Fix for Tagmanager working along with CSP when triggering a HTML tag
+    - #495 Show info icon documentation links when defining triggers
+    - #504 Fixes UI issue by setting container selector max width
+    - #541 Add a link to the documentation about the datalayer when the container tracking code is shown
+  * matomo-org/tracker-proxy
+    - #77 Update # FAQ Links to match new knowledge base structure
+  * matomo-org/matomo-php-tracker
+    - #104 Adds support for client hints
+  * matomo-org/device-detector
+    - #7082 Add detection for postmarket os
+    - #7129 Detect new brands: Intel, PlusStyle, New Bridge, ZIK, Famous, Facetel, HLLO,
+      LNMBBS, Quest, SNAMI, TeachTouch, YUMKEM, TTK-TV, Emporia, GEOZON, iReplace, actiMirror
+    - #7134 Detect devices for several existing brands – Acer, Ulefone, Vodafone, Sony, Xiaomi
+    - #7137 Detect devices for existing brands – RoyQueen, Sico, Digicel, Xolo
+    - #7138 Fix version truncation for client hints
+    - #7140 Detect devices for existing brands – Samsung, QMovile, MyPhone, Huawei
+    - #7141 Detect Petal Search app and Detect Nova 9 SE device for Huawei brand
+    - #7142 Detect devices for existing brands – Nubia, Stylo, Kivi and others
+    - #7143 Add bots: aiHitBot, ADmantX Service Fetcher, DomainCrawler,
+      DNSResearchBot, AdAuth, Faveeo, Kozmonavt, CriteoBot
+    - #7144 Detect bots: aiHitBot, ADmantX Service Fetcher, DomainCrawler,
+      DNSResearchBot, AdAuth, Faveeo, Kozmonavt, CriteoBot
+    - #7145 Detect devices for existing brands – FiGi, Xiaomi, Hotwav, FiGi
+    - #7147 Detect devices for existing brands – Cherry Mobile, Alcatel, Panasonic, Symphony and others
+    - #7148 Add detection LastMod Bot
+    - #7149 Detect app Snapchat for Android
+    - #7150 Detect devices for existing brands – Artel, Allview, Sony, F2 Mobile and others
+    - #7151 Improve performance by skipping device parse if useragent matches desktop pattern
+    - #7152 Detect devices for existing brands – Sharp, Hyundai, Starmobile
+    - #7154 Detect devices for existing brands – Infinix, iBrit, Vivax, Karbonn
+    - #7155 Detect devices for existing brands – Motorola, QMobile, Infinix and others
+    - #7156 Adds detection for apps – Amazon shopping, Snapchat, OkHttp, PayPal IPN and others
+    - #7158 Added Internet Browser Secure, Hexa Web Browser, Browspeed Browser to available browsers
+    - #7160 Detect devices for existing brands – Winnovo, Samsung, Realme, Maxtron and others
+    - #7161 Detect devices for existing brands – iHunt, Aspera, Pixelbook, QMobile
+    - #7162 Improves version detection for iOS, macOS and tvOS
+    - #7163 Improves version detection for iPadOS
+    - #7164 Detect devices for existing brands – QMobile, Fero, Blu, Hometech, Infinix
+    - #7165 Adds detection for various apps and browsers
+    - #7166 Detect browsers: Rabbit Private Browser, Office Browser, Lynket Browser,
+      Vivid Browser Mini, Yo Browser, Yuzu Browser, BF Browser, G Browser
+    - #7167 Adds detection for Nova and improves version detection for Fedora, iOS,
+      macOS, Mandriva, Mint operating systems
+    - #7168 Adds detection for various bots and apps
+    - #7169 Adds detection for Keepsafe Browser, Inspect Browser and improves detection for Seznam Browser
+    - #7171 Detect devices – ClearPHONE, Mintt, Sky Elite D5, and others
+    - #7176 Detect devices for existing brands – Hardkernel, Blu, AT&T, Vivo
+    - #7177 Detect devices for existing brands
+    - #7178 Detect devices Logic L4T, Mastertech, and others
+    - #7179 Adds detection for various devices and improves os detection
+    - #7181 Rename Oculus brand to Meta and improves detection for Meta Quest 2
+    - #7182 Adds detection for Seolyt Bot
+    - #7183 Detect devices for existing brands and new brands – Unistrong, Equator, AXXA
+    - #7184 Detect devices for existing and new brands – D-Tech, OneClick
+    - #7186 Detect devices for existing and new brand – iXTech
+    - #7187 Detect devices for existing and new brands – BlueSky, Legend, Vue Micro
+    - #7190 Detect devices for existing and new brands – NTT West, JREN, Tibuta, ATOL, FILIX
+    - #7191 Adds detection for LinkWalker bot
+    - #7193 Optimise devices detection for apple
+    - #7194 Detect Container-related tools
+    - #7197 Detect new browsers and apps – Tint Browser, hola!, RedReader [by @sanchezzzhak]
+    - #7198 Adds detection for RouterOS
+    - #7199 Adds detection for INETDEX-BOT and NETZZAPPEN
+    - #7201 Detect devices for existing and new brands – HexaByte, CipherLab, BrandCode, Lumitel, Elevate
+    - #7202 Detect mobile app for Microsoft Office Access
+    - #7203 Improves detection for Fairphone devices and Atom, Ecosia, Iridium browsers
+    - #7204 Various consumer electronics detected as bots
+    - #7206 Improves detection for Google and Roku devices
+    - #7208 Detect devices for existing and new brands – Ceibal, Weelikeit
+    - #7209 Improves client hints version detection for Atom, hola! Browser, Opera, Smart Lenovo Browser
+    - #7211 Detect devices for existing and new brands – Boost, Orbsmart, TOX
+    - #7212 Adds detection for Panscient bot
+    - #7213 Detect devices for existing and new brands – HiHi, M3 Mobile, Hugerock, Coopers
+    - #7215 Detect devices for existing and new brands – iStar, ENIE, Dcode
+    - #7216 Adds detection for Smart Kassel, X96Q brands and improves detection for various browsers, os, libraries
+    - #7217 Adds detection for Amerigo, Internet Browser Private, 18+ Privacy, Beyond Private, Black Lion
+    - #7218 Adds detection for Wiseiplay, Always Safe Security 24, Zoe Business
+    - #7219 Detect devices for existing and new brands – Stream
+    - #7220 Detect Open Browser fast 5G
+    - #7221 Adds detection for various apps
+    - #7222 Adds detection for various browsers
+    - #7227 Detect browsers for ClientHints
+  * matomo-org/referrer-spam-list
+    - #1323 Add ucban.xyz
+    - #1324 Add hrtonline.xyz
+    - #1325 Add mytraffic.shop, supertraffic.xyz, trafficdrive.club
+    - #1326 Add bottraffic329.xyz
+    - #1327 Add getbottraffic4free.xyz
+    - #1328 Add goyua.xyz
+    - #1329 Add nanwar.xyz
+    - #1330 Add qtrstar.xyz
+  * matomo-org/searchengine-and-social-list
+    - #83 Adds TikTok to social networks
+  
+-------------------------------------------------------------------
+Thu Aug  4 12:00:56 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.11.0 
+  * matomo-org/matomo
+    - #13321 Invite new users in Matomo, rather than creating them directly
+    - #19081 Notify that requests to matomo.org will soon use HTTPS by default
+    - #2030 Goal tracking: New Report “Top Landing Pages URLs/Titles” for each goal
+      (and also “Pages where goals are triggered”)
+    - #14974 Add Goals visualisation for Pages reports in behaviour category
+    - #19206 Sparklines show correct data in all goals reports
+    - #10716 Show sparkline evolution figures for visits, goals and ecommerce overviews
+    - #11047 Add refresh / reload keyboard shortcut for visualizations (eg tables, pie, bar chart)
+    - #18809 Fix referrer attribution cookie not set if no tracking request is sent, resulting in wrong attribution
+    - #19225 Fix error in php8.1 running console config:get command
+    - #19421 Show a notification if PHP version is end of life
+    - #19244 Ensure Safari browser shows the information notice
+    - #19252 Fix anchor links issue within Matomo
+    - #19275 Fix for undefined array index error when rendering sparklines
+    - #18692 Fixes problem where dashboards can’t be copied to users in certain circumstances
+    - #19011 When a segment is shown, and no data is there, then show accurate error message
+      when segment won’t be archived
+    - #11046 Preserve rows to display on Visits overview (with graph)
+    - #19158 Improve memory management in DataTable/CSV
+    - #19232 Take care to always ‘return request’ in appendAvailablePerformanceMetrics
+    - #19239 Add utility function for pattern that issues a single AJAX request at a time
+    - #19245 Add 429 (rate limited) response code
+    - #19268 Composer: Revise project type from “application” to “project”
+  * matomo-org/tag-manager
+    - #484 Use correct async init method to detect when tracker is loaded
+    - #477 Allow dynamic height on Tag manager preview
+    - #481 “Observe DOM changes” in Visibility Trigger causes JS error on load
+  * matomo-org/tracker-proxy
+    - #70 Add current PHP versions to Travis CI tests
+    - #71 Fix build badge and remove failing images in Travis CI tests
+  * matomo-org/matomo-log-analytics
+    - #335 Import fails when Referrer field is not present using Regex format
+    - #336 Set referrer to empty string if it doesn’t exist
+  * matomo-org/matomo-php-tracker
+    - #103 More virtualization of MatomoTracker class
+  * matomo-org/referrer-spam-list
+    - #1322 Add katrd.xyz
+  * matomo-org/device-detector
+    - #7111 Detect new brands: Sylvania, Future Mobile Technology, MBI, OUJIA, Qware 
+      and Detect devices for several existing brands
+    - #7112 Detect httplib2
+    - #7117 Adds detection for Tesla Browser
+    - #7118 Adds detection for Patchwatch, WhereGoes
+    - #7119 Adds detection for various apps and improves version detection for Windows
+    - #7120 Improves detection for Tesla, Xiaomi devices
+    - #7121 Improvement of condition for detection the platform when using clienthints
+    - #7122 Detect devices for existing brands
+    - #7123 Adds detection for InternetMeasurement, masscan-ng bots
+    - #7124 Adds detection for Sidekick and Wave Browser
+    - #7125 Improves version detection for iOS and improves detection for Opera GX
+    - #7126 Adds detection for various bots
+    - #7128 Detect new brands: AFFIX, Listo, Aquarius and Detect devices for several existing brands
+    - #7130 Detect devices for existing brands
+    - #7131 Detect devices for existing brands and Detect Pi Browser
+    - #7133 Detect devices for existing brands
+
+-------------------------------------------------------------------
+Wed May 25 05:39:32 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.10.1
+  * matomo-org/matomo
+    - #19209 Show spark lines correctly in KPI widget when using segments
+    - #19251 Fix manifest.json sending HTTP-Status 403
+    - #19241 Set default hasExtraPlugin in campaign builder component to true
+    - #19237 Make CustomDimensions available in Segment Editor
+    - #19262 Set default null/falsey value in FieldNumber to 0 to match previous behavior
+
+-------------------------------------------------------------------
+Mon May 16 06:08:42 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.10.0
+  * matomo-org/matomo
+    - #18884 Data protection: Hide visitor id in visits log if profile is disabled
+    - #19157 Make Widgetize page translatable
+    - #18947 Fix console command to disable 2FA for a user
+    - #19125 Fix display issue with z-index for widgets that use tables with embedded dashboards
+    - #18810 Ensure JS tracker unload event is triggered in edge cases to make sure tracking requests are sent
+    - #18128 Make JSON config / package static files unreachable via a GET request
+    - #18967 System check – don’t request private directories when disabled
+    - #19118 Fix error when setting license key from command line
+    - #19124 Fix error when adding new goals if no previous goals exist for website/measurable
+    - #19127 PHP8.1 compatibility fixes in referrers plugin
+    - #19088 Create assets folder if it is missing when writing Report
+    - #19102 Ensure required translations are loaded for Goal management
+    - #19113 Add languageName property to PiwikGlobal type
+    - #19156 Rename MenuDropdown component to avoid any case mismatches
+  * matomo-org/tag-manager
+    - #271 Tag Manager: Change the location of Preview window
+    - #473 Fix typo in getAvailableContainerVariables
+    - #474 Updated MatomoTagDescription to remove piwik
+    - #475 Use TemplateParameters instead of raw window in PageHostname var
+  * matomo-org/device-detector
+    - #7089 Improves detection for generic bots
+    - #7091 Adds detection for Amazon ELB bot
+    - #7093 Detect new brands: X-AGE, QLink and devices for several existing brands
+    - #7095 Detect Open Browser
+    - #7097 Detect browsers: BrowseHere, Midori Lite, Pure Lite Browser,
+      Berry Browser, Fulldive, Hi Browser, SuperFast Browser. Amaze Browser,
+      Smart Search & Web Browser, Aloha Browser Lite
+    - #7098 Detect new brands: Aoro, EBEN, VUCATIMES and Detect devices for several existing brands
+    - #7100 Detect new brands: Zonko, Zeeker, TJC, HOTREALS and Detect devices for several existing brands
+  * matomo-org/referrer-spam-list
+    - #1313 Add socialine.net
+    - #1314 Add glktfw.net
+    - #1315 Add advertisefree.co.uk
+    - #1316 Add hilaryblog.top
+    - #1317 Add goodcoffeepremium.com
+    - #1319 Add kimblog.top
+
+-------------------------------------------------------------------
+Wed Apr 27 05:32:51 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.9.1
+  * matomo-org/matomo
+    - #19106 Perform adblock test after page has finished loading, not immediately
+    - #19103 Fix PHP 8.1 deprecation warning
+    - #19110 [Vue] add polyfill for String.replaceAll
+    - #19102 Ensure required translations are loaded for Goal management
+    - #19094 Fix the saving of setting “Also use the Anonymized IP addresses when enriching visits.”
+
+-------------------------------------------------------------------
+Sun Apr 24 13:27:28 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.9.0
+  * matomo-org/matomo
+    - #15985 New segments for ‘Ecommerce Order Revenue’ and ‘Revenue left in cart’
+    - #18066 Detect when the website is a Single Page App (SPA) or a Progressive Web App (PWA) and link to the relevant guide
+    - #18934 Matomo knowledgebase discoverability improvements
+    - #18618 Improve performance in deleteLogDataForDeletedSites when deleting data for more than one site
+    - #18787 Clarify the Newsletter Opt-in message during installation
+    - #18865 Handle case only file name updates on case insensitive file systems
+    - #19006 Fix Sarawak and Terengganu on Visitors Interactive Map Widget
+    - #18806 Inline Help – show report generation date on “Overview” reports with Evolution Graphs
+    - #17738 Don’t log an error when not supported browser is used
+    - #17892 Don’t create test cookies when cookies are disabled
+    - #18902 Set the _pk_id in the past when deleting cookie.
+    - #18873 Remove subtable tooltip if rows are displayed expanded upon search
+    - #18990 Minor performance improvement for archive invalidator
+    - #18054 Multi server environment in maintenance mode shouldn’t result in 503 response
+    - #18790 Prevent archiving of data for time periods that start in the future
+    - #18852 Apply max execution query time to Live.getCounters API and queryAdjacentVisitorId method
+    - #18883 Migrate Dashboard directive/model to VueJS
+    - #18903 Fix PHP8 Trim Error
+    - #18926 Migrate custom dimension management
+    - #18931 Migrate LanguagesManager to VueJS
+    - #18932 Migrate live widget refresh to VueJS
+    - #18939 Migrate multisites plugin components to VueJS
+    - #18956 Rename dimensions and segments with Server time to Site Time/Time in UTC
+    - #18975 Migrate AnonymizeIpController to VueJS
+    - #18989 Migrate DoNotTrackPreferenceController to VueJS
+    - #18995 Fix issue where date ranges might include too many subperiods
+  * matomo-org/tag-manager
+    - #443 Add new option to Matomo Variable to disable browser feature detection in Matomo Tag
+    - #321 Improve tracking capabilities of visibility events
+    - #450 Fix bug preventing “0” value for trigger condition
+    - #423 Migrate version management to VueJS
+    - #424 Migrate container management to VueJS
+  * matomo-org/device-detector
+    - #5316 Add detection for new device type wearables
+    - #6989 Introduce browser client hint detection
+    - #7018 Detect devices for brands: Teclast, Readboy, Vivo, Xiaomi,
+      Conquest, Huawei, AllDocube, OPPO, Meizu, Newman, Lava, Hisense
+    - #7021 Detect new brands Angelcare, Hamlet, Vorcom and Detect devices for several existing brands
+    - #7022 Add engine for CCleaner and ToGate
+    - #7023 Improve version detection for Chrome OS
+    - #7025 Adds detection for ClearPHONE, Doppio, Jio, Point Mobile, Schok, Vios devices,
+      improves detection for Alcatel, Allview, AT&T, Blu, Crosscall, Digicel, Hipstreet,
+      Hisense, HTC, Huawei, Hurricane, Hyundai, iHunt, Kalley, Kodak, KRIP, LG, Logic,
+      Mione, Motorola, OnePlus, OpelMobile, Pantech, Positivo, Quantum, Realme, Sky, TCL,
+      Techwood, Tecno Mobile, Tigers, Vivo, Wiko, Wolki, Xiaomi, Yes, Yezz, ZTE devices,
+      adds detection for ClearOS Mobile
+    - #7027 Adds detection for CyBrowser, Hi Browser, Navegador, improves detection for Opera,
+      UC Browser, UC Browser Mini
+    - #7028 Adds detection for AdBlock Browser and YouCare
+    - #7029 Adds detection for Decentr browser
+    - #7030 Improve detection of Chromium GOST
+    - #7032 Adds detection for China OS, PocketBook Browser, improves detection for Linux, Android Browser, Tizen Browser
+    - #7033 Adds detection for various bots and libraries
+    - #7035 Detect new brands: Autan, UNNO, VDVD, Shanling, ecom and Detect devices for several existing brands
+    - #7036 Add Detection for Samsung Watch
+    - #7040 Add client hints fixture for Whale Browser
+    - #7045 Improves detection for CentOS, GNU/Linux, PCLinuxOS, Red Hat, adds detection for Amazon Linux,
+      TencentOS, adds detection for cPanel HTTP Client, ALittle Client, PHP cURL Class, SafeIP, NAVER Mail
+      and adds detection for various bots
+    - #7046 Add client hints fixture for Opera GX
+    - #7051 Detect new brands LOKMAT, Joy, iWaylink and Detect devices for several existing brands
+    - #7052 Adds detection for Bittium, EGL, Logic Instrument brands, improves detection for AllDocube,
+      Brondi, Hi, Hot Pepper, Energizer, Huawei, iPro, Sky, X-View brands, adds detection for Bliss OS
+    - #7055 Adds detection for GeoIP Update
+    - #7056 Adds detection for Dolphin Zero, Dolphin, OH Private Browser, Atlas, Jelly browsers
+    - #7057 Detect Flow Browser
+    - #7061 Detect browsers: UC Browser Mini, Soul Browser, Indian UC Mini Browser,
+      Opera, Opera Mini, Fast Explorer, Comfort Browser, CM Mini, SilverMob US
+    - #7062 Improves detection for Delta Browser, Monument Browser, Super Fast Browser
+      and adds detection for APUS Browser, Ask.com, Ayoba, Savannah Browser, SavySoda, SnapU2B,
+      Surf Browser, Ui Browser Mini
+    - #7063 Implement Blink version detection via Chrome/ token.
+    - #7064 Improves detection for generic bots
+    - #7066 TVs detected as smartphone
+    - #7067 Improves detection for EKO, Kogan, Sharp, Sony, Vodafone devices
+    - #7069 Detect new brands: YU Fly, VOGA, Haipai, Huagan, TD Tech and Detect devices for several existing brands
+    - #7070 Adds detection for CentOS Stream, improves detection for CentOS, Roku OS
+
+-------------------------------------------------------------------
+Wed Mar  9 06:09:00 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.8.0
+  * matomo-org/matomo
+    - #18448 Add an option to disable fingerprinting / config_id entirely
+    - #17686 Make Matomo compatible with PHP8.1
+    - #18699 Label shortened when opening multiple subtables
+    - #18819 Fix issues with anonymous user language change not
+      persisting due to incorrect setting of cookies with session lifetime
+    - #18138 Cache whether a DB supports transaction level or not for slight performance improvement
+    - #18783 Comparing two segments in goals, sets the graph to all zeros for the first segment
+    - #18718 Update JQuery UI to 1.13.0
+    - #18758 Fixes incorrect headline when adding a goal
+    - #18479 Minor marketplace tweaks to mention premium features free trial
+    - #18538 Fix page overlay sidebar authentication failure
+    - #18702 Ensure Google SEO metrics are returned with correct type
+    - #18711 Fix handling of invalid limit values for Live.getVisitorProfile
+    - #18720 Fix invalid parameter handling for PHP 8 in API.getBulkRequest
+    - #18785 Check folder & permission before downloading a GeoIP database
+    - #18788 Validate minTimestamp parameter for Live.getLastVisitsDetails
+    - #18798 Ensure Dashboard API methods can’t be performed by or for anonymous user
+    - #18709 Update orange brand color less variable in morpheus theme
+    - #18829 Fix possible dashboard warning
+    - #18564 Migrate sitesmanager controller and twig templates to Vue components
+    - #18566 Migrate capabilities edit component to Vue
+    - #18572 Migrate user-permissions-edit component to vue
+    - #18576 Migrate user edit form directive to Vue component
+    - #18582 Migrate paged users list component to vue
+    - #18583 Migrate usersmanager root component to Vue
+    - #18834 add dummy sitesManagerAPI service back in since it is referenced (but not used) by a premium feature
+    - #18775 Segmented visits log might show incorrect title
+    - #18797 Improve performance of some archiving queries
+    - #18804 Add mechanism to initialize vue components outside of angularjs
+  * matomo-org/device-detector
+    - #6986 Improves many detections, adds detection for various apps and adds detection for various bots
+    - #6987 Detect new brands Horizont and Detect devices for several existing brands
+    - #6990 Fixed minor syntax errors in some of the regular expressions
+    - #6993 Detect new brands iSafe Mobile, Redfox, Tigers, Vinabox, Beista,
+      YOTOPT and Detect devices for several existing brands
+    - #6994 Detect new brand TOSCIDO and Detect devices for several existing brands
+    - #6995 Detect new brands: OMIX, Technopc and Detect devices for several existing brands
+    - #6998 Detect new brands: b2m, Koslam, Orion, Massgo, S2Tel and Detect devices for several existing brands
+    - #6999 Detect new brand Jedi and improve detection of Remix OS
+    - #7001 Adds detection for various apps
+    - #7003 Librem phone is counted as an iOS device
+    - #7004 Adds detection for Purism brand and fix iOS detection
+    - #7005 Adds detection for Plasma Mobile operating system
+    - #7006 Detect Fuchsia OS
+    - #7007 Detect new brands: iPEGTOP, Nexa, Hi Nova and Detect devices for several existing brands
+    - #7010 Adds detection for Noontec brand, improves detection for Google, PocketBook, 
+      Samsung, Sony devices, Android, FreeBSD, Android Browser, Tizen Browser
+    - #7011 Adds detection for Android TV, Foresight Linux, Kanotix, LindowsOS, Linspire,
+      moonOS, Pardus, Zenwalk operating systems [by @liviuconcioiu, @sanchezzzhak]
+    - #7012 Detect new brands China Telecom, Royole, U-Magic, DORLAND and Detect
+      devices for several existing brands
+    - #7014 Improves detection for Samsung devices
+    - #7015 Improves detection for iOS and Apple iPhone
+    - #7017 Improves detection for Samsung devices
+  * matomo-org/tag-manager
+    - #421 Trim whitespace from matomoUrl,idSite,cookieDomain and cookiePath fields
+    - #337 If xdebug is enabled then change limit to prevent self-referencing variable loop
+    - #426 Added changes for tawktotag to work with new widgetID changes
+    - #440 TagManager (variable) values are not reset for tracking, even if they are set to “” or null.
+    - #408 Migrate field templates to field vue components
+    - #418 Migrate variable management to Vue JS
+    - #419 Migrate trigger management to Vue JS
+    - #422 Migrate tag management to Vue JS
+    - #438 Applies some wording improvements suggested for translations
+    - #441 Added code to update dimension even when value is empty or null
+  * matomo-org/referrer-spam-list
+    - #1310 Add essaytags.com
+    - #1311 Add lsitenonrepeat.com
+
+-------------------------------------------------------------------
+Wed Feb  2 06:42:40 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.7.0
+  Changelog see: https://matomo.org/changelog/matomo-4-7-0/
+
+-------------------------------------------------------------------
+Fri Dec 10 06:30:33 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.6.2
+  * matomo-org/matomo
+    - #18444 Ensure UTF8mb4 conversion command always enables tracking again [by @sgiehl]
+    - #18455 Ignore segment errors in update script [by @sgiehl]
+    - #18473 Ensure update to 4.6.2 removes deleted files [by @sgiehl]
+    - #18421 Remove unneeded plugin.json from CoreVue plugin [by @diosmosis]
+
+-------------------------------------------------------------------
+Wed Dec  1 06:21:11 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.6.1
+  - In this release there is no code change but a change to the
+    "Manifest File integrity list" to prevent a warning in the
+    System check for some users.
+
+-------------------------------------------------------------------
+Tue Nov 30 08:42:01 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.6.0
+  * matomo-org/matomo
+    - #6784 Dashboard shows proportional evolution comparison for incomplete periods (rather than absolute values)
+    - #3883 Row Evolution, Support Per-Goals and Ecommerce metrics: conversions, conversion rate, revenue and total revenue
+    - #6032 Transitions reports: export full data as XML/JSON
+    - #10291 Show difference in graphs for data of “unfinished periods” and “complete periods”
+    - #14370 Remember “Rows to display” user preference for Evolution graphs
+    - #17976 Scheduled tasks should not launch archiving
+    - #8444 Ensure that the archive algorithm cannot be triggered multiple times for a same site/period/segment
+    - #11627 JavaScript Tracker: Add possibility to set URL parameters to ignore
+    - #18186 Improve in-app feedback mechanism to gain insight from users about pain points
+    - #18036 Optimise ecommerce life time metric query
+    - #18079 Make error messages not leak potentially sensitive information when tracker db connection fails
+    - #18244 Ensure DNS records are only requested for IP allowlist when needed
+    - #18232 Remove “refer us” feature
+    - #18250 Remove review popup
+    - #18251 Collect feedback about what features people are using?
+    - #3513 Column names could stick to the top of screen when scrolling down report tables
+    - #16607 More verbose error message when login nonce check fails
+    - #18164 Install routine: Fix text contrast for accessibility
+    - #17589 Add config option to disable http requests in System Checks to prevent server crashes with mod_security
+    - #17856 [database_tests] section no longer generated when executing php tests
+    - #18133 JSONp API request (with callback) strips first and last character from result
+    - #18178 Fix segment creation fails when enable_create_realtime_segments = 0
+    - #18313 Newsletter Signup in personal settings, mention Matomo privacy policy applies
+    - #17815 Improve UI of report info icon to show report generation time and help message
+    - #18058 Add system check for 32 bit PHP / OS
+    - #18070 New console command “marketplace:add-license-key” which adds a marketplace license key
+    - #18107 Add more granular access control for segment creation
+    - #18162 Close Tooltip when redirecting to another page
+    - #18152 Improve performance of Process::isSupported by caching it
+    - #18157 Make cli archiving faster if only one concurrent request per website is configured
+    - #18172 Fix initial export option values so checkbox shows correct value
+    - #18211 Updates davaxi/sparkline to 2.0 to PHP8.1 compatible version
+    - #18215 Fix CSP issue when viewing marketplace plugin details
+    - #15429 Mention guides for Wix, WordPress, SquareSpace, Sharepoint in the “No data” email and in the “Tracking code” pag
+    - #17602 Fix 2-lines label overflows the input
+    - #17786 Install routine: language changer line height improvements
+    - #11175 Improve help text on ‘Users’ report when no data
+    - #17010 When “average generation time” is zero, hide the sparkline and “Avg generation time” graphs metric from picker
+    - #17890 Remove “add new segment” selector in segment editor
+    - #17996 Manage Users: When user is admin, mention other users might exist
+    - #17973 Remove Provider and CustomVariables plugin from our core release
+    - #18011 Update list of no longer supported browsers (IE11)
+    - #17923 Make SecurityPolicy methods a public API and fully enable the CSP
+    - #16153 Tracking request may trigger a warning when providing an invalid regex
+    - #14695 Special character apostrophe is not getting printed properly in visits log (campaign url)
+    - #16067 Fix dashboard showing incorrect percentage on increases bigger than 1000%
+    - #17939 Include lox/xhprof in the Matomo build release so Profiling works
+    - #18019 Make the opt out work when a PHP 32 bit is used
+    - #18130 Fixed in place sorting order bug for PHP8+
+    - #18231 Fix annotations for “Behaviour > Performance” StackedBarEvolution charts
+    - #18267 Decode goal top dimension values
+    - #10550 Add field lastSeen in the API for the UsersManager
+    - #17916 Introduce new config setting to set a contact email address
+    - #17940 [Vue] Introduce Vue + Workflow commands
+    - #18071 Provide console command for adding a marketplace license key (#18070)
+    - #18074 Update container factory to allow for sorting plugins
+    - #18110 Use detachEvent when removeEventListener isn’t available
+    - #18123 Don’t browser archive when segment is set to be pre-processed
+    - #18137 Make the Twig cache template path more configurable with a DI entry
+    - #18149 Fix error cannot read property “replace” of undefined in quick search
+    - #18156 Small optimisations to Archiving performance
+    - #18166 [Vue] Migrate content-block, enriched-headline, rate-feature + related
+    - #18187 Fix possible problem with CSP in overlay feature
+    - #18193 [Vue] migrate comparisons service + component
+    - #18204 Always remove hash part from URL when detecting the script name
+    - #18213 [Vue] migrate date-picker and other period-selector related components
+    - #18214 [Vue] migrate dropdown and related directives
+    - #18225 [Vue] migrate notifications directive & service + UI.Notifications
+    - #18235 Changes to keep sorting order consistent across all PHP versions for Live.getLastVisitsDetails API
+    - #18241 Take archive TTL time into consideration for today when browser archiving is enabled
+    - #18255 Fix archiving too many segments that aren’t needed and showing 0 conversions for new visits/returning visitors
+    - #18263 Support downloading system tests from plugins
+    - #18278 Remove cache clearing from forget invalidations loop.
+    - #18300 Corrected paths mentioning “piwik/” to “/path/to/matomo/”.
+    - #18309 Couple of fixes in QuickForm2 for PHP8.1 compatibility
+  * matomo-org/tag-manager
+    - #217 Enable Debugging mode without URL parameter
+    - #375 Right clicks trigger twice for “All Links Click” and “All Elements Click” in Firefox
+    - #378 Fix deprecation warning on PHP 8.1
+  * matomo-org/device-detector
+    - #5773 Add detection for Google Podcasts
+    - #6793 Improvements for the OS parser a second level of regular expressions has been added
+    - #6870 Detect devices for existing brands: Xiaomi, Samsung, Realme, Tecno Mobile, Mobicel, Vivo, Lenovo, ZTE,
+      OPPO, Oukitel, CUBOT, UMIDIGI, OnePlus, Ulefone, Doogee, TCL, Vivo, Vertex, Infinix, Krüger&Matz, Wiko, DEXP, BQ
+    - #6872 Detect new brand Nubia
+    - #6873 Detect new brands: Bluebird, Mara and Detect devices for existing brands: Krüger&Matz, iHunt, Sony, Teclast,
+      Tanix, Logicom, Nubia, Xiaomi, QMobile, DIXON, Zuum, Vodacom, Mobicel, Oukitel, Motorola, Stylo, Tecno Mobile,
+      Chuwi, OnePlus, Vivo, iTel, Doogee, Cat, Homtom, CUBOT, MLS, Blu, Casper, Unonu
+    - #6874 Detect new brands: BMAX, Geotex and Detect devices for existing brands: Telefunken, Asus, Huawei, Lenovo,
+      Tecno Mobile, Nomi, Coolpad, Blu, Navitel, Winnovo, Digiland, DEXP, Sony, Inoi, OPPO, Samsung, Xiaomi, LG, Vivo,
+      UMIDIGI, Mobicel, Teclast, Zuum
+    - #6877 Detect new brand: Rakuten and Detect devices for existing brands: Beelink, Sony, Blackview, Samsung,
+      NUU Mobile, Oukitel, Coolpad, LG, DEXP, Acer, ZTE, TCL, Mobicel, Contixo, BQ, ONYX BOOX, Mecer, Digma, Lenovo,
+      RCA Tablets, Intex, Huawei, Santin, Vivo, NOA, iTel, Sharp, Prestigio, HTC, OnePlus, Wiko, Fly, Meizu, Lava, Gionee
+    - #6878 detect the device type for other browsers (Huawei, Quark, MQQBrowser)
+    - #6879 Detect devices for existing brands: Vivo, Huawei, ZTE, Smartisan, Samsung, OPPO, HTC, Xiaolajiao, POCO, Xiaomi, Blu
+    - #6880 Adds detection for Apple iPhone 13 models
+    - #6881 Detect device type for chrome forks
+    - #6883 Detect devices for existing brands: Vivo, HTC, Hisense, Gionee, Huawei, Samsung, Realme, Blu, NOA
+    - #6885 Detect oss: Java ME, REX
+    - #6886 Detect new brand: DING DING and Detect devices for existing brands: Zopo, F2 Mobile, iBall, Krüger&Matz,
+      Hotwav, Orange, Tecno Mobile, Runbo, Vonino, M4tel, Kempler & Strauss, Rokit, Stylo, DEXP, Prestigio, Mobicel, Santin
+    - #6888 Detect devices for existing brands: X-TIGI, Prestigio, Micromax, LG, DEXP, Oukitel, Hurricane, Alcatel,
+      M4tel, Blackview, S-TELL, Coolpad, HTC, Teclast, Mecer, Huawei, Reeder, Orange, Mobicel, Realme, NUU Mobile,
+      Xiaomi, Huawei, Hisense, Zuum, Krüger&Matz, Motorola
+    - #6889 Adds detection for GitHub Desktop and Logi Options+ apps
+    - #6890 Adds detection for Bonsai, Peeps dBrowser, Flash, Harman, Lagatos, LT, PSI, Spectre and Sushi Browsers
+    - #6891 Adds detection for Roku OS 
+    - #6892 Adds detection for OpenWrt OS and uclient-fetch library
+    - #6894 Adds detection for multiples apps and improves iOS, Windows, iPhone, iPod detection
+    - #6895 Detect devices for existing brands: Nubia, F150, Vivo, Huawei, Realme, Google, Oukitel, TCL, Packard Bell,
+      Xiaomi, Cube, Lenovo, OnePlus, iHunt, Proline, Reeder, Stylo, Hurricane, OPPO, Mobicel, Ugoos, Beeline, 4Good,
+      Teclast, K-Touch, Prestigio, Tecno Mobile, AllDocube, Ravoz, T-Mobile, DIXON, Motorola, Asus
+    - #6897 Detect new brands: Trident, SUNWIND, OKSI, Taiga System and Detect devices for existing brands: TechPad, 
+      Santin, Realme, Meizu, Alcatel, Xiaomi, ONN, UMIDIGI, DEXP, Premio, Oukitel, Coolpad, Sky, Huawei, Stylo, Mobicel,
+      Casper, Infinix, TCL, Qumo
+    - #6899 Adds detection for Apple Watch Series 7
+    - #6900 Improves detection for Apple devices
+    - #6901 Improves detection for Hisense, Samsung and TCL devices
+    - #6902 Improves Android, iPadOS, iOS, macOS version detection
+    - #6903 Improves detection for iOS, iPadOS, macOS, Android, Windows, Apple, Motorola, Samsung and Sony brands,
+      and adds detection for Telco brand and various apps
+    - #6904 Adds detection for Cellution, Juniper Systems, Kazuna, Oculus, STRONG, Topelotek brands and improves detection for 
+      Alcatel, Amazon, ANS, Kocaso, LG, Motorola, Sony, UMIDIGI brands
+    - #6905 Adds detection for various apps
+    - #6906 Detect new brands: Glofiish, Polar, MyGica and Detect devices for existing brands: Cavion, Stylo, Mobicel,
+      Hurricane, Proline, bq, Hisense, Archos, NOA, GOCLEVER, Blackview, Blu
+    - #6907 Adds detection for KRIP brand, improves detection for Alcatel, Blu, BMobile, Epik One, Gateway, Huawei, Hyundai, 
+      IKU Mobile, MobiWire, MicroMax, Positivo, Safaricom, TCL, UMIDIGI, Vivo brands and improves detection for Opera GX,
+      Windows, x86, x64 platforms
+* matomo-org/matomo-php-tracker
+    - #97 Fix for double newline issue when a redirect is used
+    - #98 Couple of fixes for PHP 8.1
+
+-------------------------------------------------------------------
+Thu Oct  7 08:43:05 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.5.0
+  * matomo-org/matomo
+    - #17870 Improve I/O performance by not writing placeholder files when they already exist
+    - #17732 Users can get logged out when many notifications are pending
+    - #17853 Clicking through the following pages in the transition overlay for page titles does not work
+    - #17872 If the period is not enabled in config “The period is not supported” message is shown in cron archiving
+    - #17926 Console error “There was an error setting cookie `mtm_cookie_consent`.
+      Please check domain and path.” when calling ‘rememberCookieConsentGiven’
+    - #17965 In Acquisition > Overview report, the Row selector is missing
+    - #17966 Warning DataCollection.php(381): Notice – Undefined index: 2021-04-26,2021-05-02
+    - #17091 Failing SMTP connection might result in information disclosure in password recovery
+    - #17773 Matomo should be setting content security policy to prevent some XSS
+    - #18030 Remove fallback to mt_rand and always use random_int for secure randomness
+    - #2672 New INI config setting for Custom image to replace default 1×1 GIF image
+    - #16576 New console command config:delete to delete a key
+    - #16859 Add JS tracker methods setPagePerformanceTiming and getCustomPagePerformanceTiming to set
+      specific values for performance metrics
+    - #17738 Don’t log an error when not supported browser is used
+    - #14719 Run OPTIMIZE TABLE on each table in a separate SQL query to work better with replication
+    - #15322 Removed misleading help text from segment dimensions tooltip
+    - #15892 ‘Acquistion/Overview/Evolution over the period’ graph fails when adding more channels
+    - #16529 Old data in log tables without idvisit column are not purged (affects plugins)
+    - #15036 Hide “AND segmented reports are pre-processed (faster, requires cron)” from
+      the UI when enable_create_realtime_segments = 0
+    - #15135 Link to a helpful FAQ in the error message “Oops, there was a problem during the request.”
+    - #15335 When configuring an e-mail report, the selected segment is not saved
+    - #16604 Update RegEx extractions help text to show slashes don’t need escaping
+    - #17577 Split private directories system check into “Required” and “Recommended”
+    - #16834 Use row_format=dynamic by default when creating a table
+    - #18012 Add warning about dropping support for IE11 in Matomo user interface
+    - #18039 Remove not used DB adapters
+    - #16459 Heartbeat timer ping request is not always sent
+      (focusing away from the tab should trigger the ping request)
+    - #17640 Page Overlay ignores token_auth in URL when opened from a Widget
+    - #17752 Automatically delete plugin specific/report specific invalidations that do not need to run
+    - #17787 Javascript console error when clicking Install routine: Download System Check button
+    - #17816 Limiting ecommerce product reports to 10,000 to avoid memory issues with new INI config setting to customise
+    - #17871 Added info message that INI setting archiving_query_max_execution_time may not work for MySQLI
+    - #17883 Possible warning notices during log archive
+    - #17925 The selected [Allow multiple conversions per visit] option is not displayed when editing a goal
+    - #18046 For login allow list add support for IPv6
+    - #17817 When aggregating reports, inflate one expanded datatable at a time
+    - #17818 get rid of stashed datatables before going into safe mode to free up memory
+    - #17846 Remove checking for /proc existence
+    - #17849 Scheduled tasks: Always read timetable from the database and not from memory
+    - #17855 Use Monolog:SyslogHandler syslog default facility
+    - #17867 Do not log a failed login if a valid app token_auth is sent
+    - #17869 Fix a couple a possible warnings in PHP 8.1
+    - #17877 Only set requests in tracking request set when correct value is given
+    - #17891 Ignore overwrite subtable warning for summary rows for old data to avoid re-archiving for a single row
+    - #17905 Update cache component
+    - #17910 Expose methods to disable content security policy or loosen it for embedded iframes
+    - #17937 Load sparkline images only once they are near view port
+    - #17943 When processing a dependent archive for a range, then only process the requested plugin, not all plugins
+    - #17949 try and reconnect database after running each scheduled task (at most once per two hours) during core:archive
+    - #17992 Update doctrine cache to the right version
+    - #18023 Allow social & search definitions to be sourced locally
+    - #18024 Check config file was written correctly
+    - #18033 Allow scheduled report emails to be differentiated from other emails
+    - #18042 removed files related to unsupported databases
+    - #18074 Update container factory to allow for sorting plugins
+  * matomo-org/tag-manager
+    - #217 Enable Debugging mode without URL parameter
+    - #208 Added option to configure cookie domain in configuration
+    - #328 Observe DOM element changes even when a user doesn’t scroll on the page
+    - #339 Visibility trigger add feature to observe DOM changes etc.
+    - #49 Make Matomo tag parameters descriptions translatable
+    - #225 Explain what the Tag Manager “Enable DNT” setting in the Matomo Configuration variable does
+    - #268 New “Click Button” variable and “All Elements Click” and “All Links Click” will trigger on middle and right click also
+    - #349 The `WindowUnload` event should be triggered only once for Microsoft Internet Explorer in Edge mode
+    - #362 Element visibility trigger may trigger too often
+    - #344 Visibility trigger add feature to observe DOM changes
+  * matomo-org/device-detector
+    - #6477 Adds detection for Secure Browser
+    - #6546 Adds detection for tvOS and removes Apple TV
+    - #6812 Added detection for existing brands: AT&T, Tecno Mobile, Vivo, Blu, Philips, Phonemax,
+      Motorola, Ulefone, ZTE, DEXP, JVC, UMIDIGI, F150, Neffos, Nomi, Nomu, NOA, Inoi, Doogee,
+      Senseit, Pixus, Mintt, Mobicel
+    - #6813 Added detection for existing brands: ZTE, HTC, Lenovo, Doogee, Prestigio, GOCLEVER,
+      iLife, Explay, Blu, Vivo, Overmax, Vertex, Blackview
+    - #6815 Added detection for bots: LinkPreview, JungleKeyThumbnail
+    - #6817 Adds detection for various bots
+    - #6818 Added detection for mobile app: NTV Mobil
+    - #6819 Detect devices for existing brands: Infinix, Oukitel, Inoi, Wileyfox, Teclast, Iris,
+      Umax, Sencor, Meizu, Huawei, Blu, MyPhone, Hisense, ZTE, Vivo
+    - #6822 Detect devices for existing brands: Doro, Xiaomi, Turbo-X, Majestic, Energizer,
+      Ulefone, Prestigio, Nomi, NGM, Lenovo, Blu, HTC, ZTE, Motorola, Digma
+    - #6824 Detect devices for existing brands: Santin, Ulefone, DEXP, TrekStor, Teclast, Asus,
+      Neffos, Nobby, Xiaomi, ZTE, OPPO, Wiko, Lenovo, LT Mobile, MLS, Vertex, MyPhone, Lava,
+      HTC, Palm, Jinga, Archos, Bravis, Nomi, Elephone
+    - #6825 Detect bot Turnitin
+    - #6827 Detect devices for existing brands: A1, Huawei, Crosscall, Samsung, Tecno Mobile,
+      Teclast, Realme, Reeder, Leagoo, OPPO, Sony, Asus, Sharp, Fujitsu, Xiaomi, Motorola
+    - #6828 Detect app TikTok for Android
+    - #6829 Adds bot detection Google StoreBot
+    - #6830 Detect new brands Adronix, ProVision and Detect devices for existing brands:
+      AllDocube, Asus, Fujitsu, Huawei, Xiaomi, Lenovo, Motorola, Openbox, Karbonn,
+      Lava, Vivo, Meizu, Hoozo, Realme, Krüger&Matz
+    - #6834 Adds bot detection Dotcom Monitor
+    - #6835 Detect apps: AliExpress, QuickCast, Blue Proxy, COAF SMART Citizen
+    - #6837 Detect devices for existing brands: Alcatel, MTC, HTC, Nokia, Vivo, Samsung,
+      OnePlus, Nomi, ONN, Tecno Mobile, Realme, Blackview, LG, Lenovo, Motorola, Digma,
+      Fairphone, Homtom
+    - #6839 Detect new brand Sirin labs and Detect devices for existing brands:
+      Google, Vivo, POCO, OPPO, Sony, Sharp, Oukitel, Lenco, iVA, Doogee, MyPhone,
+      M-Horse, Dialog, Digma, Energizer, Santin, MDC Store, 4Good, Matrix, Allwinner,
+      Prestigio
+    - #6840 Detect new brands: Anker, Perfeo, CGV and Detect devices for existing brands:
+      Hoffmann, Huawei, Lenovo, Prestigio, Coolpad, Digiland, Reeder, Xiaomi, Realme,
+      Oukitel, Oale, Tecno Mobile, Medion, Teclast, Kyocera, Gionee, MTC, Alcatel,
+      DEXP, Irbis
+    - #6842 Adds browser detection for Stampy Browser
+    - #6843 Add Amazonbot and simplify some bot regexes
+    - #6845 Detect bots: ThinkChaos, DataForSeoBot
+    - #6846 Detect new brands: Telia, Canal Digital and Detect device OPPO A16
+    - #6847 Detect new brand ZIFRO and Detect devices for existing brands:
+      Blu, Prestigio, Bluboo, Leagoo, Motorola, Sigma, Google, Tecno Mobile, Archos,
+      Xiaomi, Ginzzu, Qumo, UMIDIGI, DEXP, EE, CUBOT, Amoi, Xgody, Sony, IconBIT,
+      MegaFon, OPPO
+    - #6850 OS family added to operating system parse result
+    - #6851 Detect brand Google model: Chromecast (2020)
+    - #6852 Detect new brands: SmartBook, Covia, Qubo, Bundy, Sprint, Kiowa and 
+      Detect devices for existing brands: F2 Mobile, QMobile, KINGZONE, Mobicel,
+      Vodafone, HTC, Bmobile, Gome, Cherry Mobile, Oukitel, Alcatel, Sunny,
+      Primux, Sky, Vestel, iView, Realme, Ainol, IconBIT
+    - #6854 Detect brand Huawei model: Nexus 6P
+    - #6856 Detect new brands: Smart, Stylo, Galaxy Innovations, Benzo, Exmart and
+      Detect devices for existing brands: GOCLEVER, Hurricane, Gresso, Mobicel,
+      Riviera, Haier, Alcatel, Kanji, Karbonn, NextBook, Leader Phone, Leotec,
+      TrekStor, Highscreen, Starmobile, Blu, Lava, Gome, Hyundai, Carrefour,
+      F2 Mobile, Xiaomi, Sony, Sico, Amazon, Asus
+    - #6857 Rename brand 2F Mobile to F2 Mobile
+    - #6859 Detect app TikTok for iOS
+    - #6861 Detect OS HarmonyOS
+    - #6863 Detect browser GoBrowser for Symbian
+    - #6865 Improved browser engine detection for Tenta browser
+    - #6866 Detect new brands: Vexia, AIRON, Mymaga, HiMax, Packard Bell, Qnet Mobile and
+      Detect devices for existing brands: Hyundai, Odys, Inco, Amazon, NEC, Sony, iMars,
+      Qubo, Mito, DNS, Lark, Timovi, Masstel, Telefunken, Luna, MyPhone, Leader Phone,
+      Elephone
+    - #6868 Detect New Model: Mi Mix 4
+    - #6870 Detect devices for existing brands: Xiaomi, Samsung, Realme, Tecno Mobile,
+      Mobicel, Vivo, Lenovo, ZTE, OPPO, Oukitel, CUBOT, UMIDIGI, OnePlus, Ulefone,
+      Doogee, TCL, Vivo, Vertex, Infinix, Krüger&Matz, Wiko, DEXP, BQ
+    - #6872 Detect new brand Nubia
+    - #6873 Detect new brands: Bluebird, Mara and Detect devices for existing brands:
+      Krüger&Matz, iHunt, Sony, Teclast, Tanix, Logicom, Nubia, Xiaomi, QMobile, DIXON,
+      Zuum, Vodacom, Mobicel, Oukitel, Motorola, Stylo, Tecno Mobile, Chuwi, OnePlus,
+      Vivo, iTel, Doogee, Cat, Homtom, CUBOT, MLS, Blu, Casper, Unonu
+    - #6874 Detect new brands: BMAX, Geotex and Detect devices for existing brands:
+      Telefunken, Asus, Huawei, Lenovo, Tecno Mobile, Nomi, Coolpad, Blu, Navitel,
+      Winnovo, Digiland, DEXP, Sony, Inoi, OPPO, Samsung, Xiaomi, LG, Vivo, UMIDIGI,
+      Mobicel, Teclast, Zuum
+  * matomo-org/referrer-spam-list
+    - #1284 Add rczhan.com
+    - #1285 Add hsoutdoor.com
+    - #1286 Add czcedu.com
+    - #1287 Add amatocanizalez.net
+    - #1288 Add gcmx.net
+
+-------------------------------------------------------------------
+Mon Aug  2 06:50:01 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.4.1
+  * matomo-org/matomo
+    - #17829 Testcookie causes warning in browser console
+    - #17835 Fix sorting of Geolocation providers
+    - #17838 More warnings about missing shell_exec() since Matomo 4.4.0
+    - #17831 make sure summary rows are serialized with their in-db
+      subtable ID and not in memory one
+    - #17832 Add command to generate a system check
+    - #17842 Revert “more private Referrer-Policy: use 
+      strict-origin-when-cross-origin ”
+  * matomo-org/device-detector
+    - #6811 Detect devices for existing brands: Lenovo, Xiaomi,
+      Samsung, Asus, ZTE, Vivo, Hyundai, Motorola, NYX Mobile,
+       OPPO, LG, Sharp, Realme
+- Fix integrity check for misc/log-analytics/import_logs.py.
+
+-------------------------------------------------------------------
+Wed Jul 28 10:55:31 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.4.0
+  * Breaking Changes
+    - The logme method for automatic logins is now disabled by
+      default for new installations. For existing installations it
+      will be enabled automatically on update. If you do not need
+      it please consider disabling it again for security reasons
+      by setting login_allow_logme = 0 in General section of 
+      config.ini.php.
+    - The redirect using the url param for the automatic
+      login action logme, will no longer do redirects to untrusted
+      hosts. If you need to do redirects to other URLs on purpose,
+      please add the according hosts as trusted_hosts entry in
+      config.ini.php
+  * New config.ini.php settings
+    - When determining the client IP address from proxy headers
+     like X-Forwarded-For, Matomo will by default look at the first
+     IP in the list. If you need to read the last IP instead,
+     the new INI config option [General] proxy_ip_read_last_in_list
+     be set to 1. Using the last IP can be more secure when you are
+     using proxy headers in combination with a load balancer.
+    - Matomo logs can now be written into "errorlog" (logs using
+      the error_log() php function) and "syslog" (logs to the
+      syslog service) (to complement existing log writers: 
+      "screen", "file", "database"). Learn more.
+  * New commands
+    - Added new command core:version which returns the Matomo
+      version number.
+
+-------------------------------------------------------------------
+Tue Jul 27 06:31:06 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Change shebang of misc/log-analytics/import_logs.py to be python3.
+
+-------------------------------------------------------------------
+Wed May 26 17:25:19 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.3.1
+  * New commands
+    - Added new command core:create-security-files which creates
+      some web server security files if they haven't existed 
+      previously (useful when using for example Apache or IIS web
+      server).
+
+-------------------------------------------------------------------
+Mon May 17 08:45:18 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.3.0
+  * Breaking Changes
+    - Before every JS error was tracked, from this version the same
+      JS error will be only tracked once per page view. If the very
+      same error is happening multiple times, then it will be
+      tracked only once within the same page view. If another page
+      view is tracked or when the page reloads, then the error will
+      be tracked again.
+    - It's no longer possible to store any class instances directly
+      in the session object. Please use arrays or plain data instead.
+  * Upcoming Breaking Changes
+    - In Matomo 4.3.0 we have added a 'passwordConfirmation' 
+      parameter to the CorePluginsAdmin.setSystemSettings API 
+      method. It is currently optional, but will become mandatory
+      in version 4.4.0. Plugin developers and users of the API
+      should make sure to update their plugins and apps before this
+      happens.
+  * New config.ini.php settings
+    - The password_hash_algorithm, password_hash_argon2_threads,
+      password_hash_argon2_memory_cost and 
+      password_hash_argon2_time_cost INI config options have been
+      added to allow using specific password_hash algorithms and
+      options if desired.
+    - The enable_php_profiler INI config option was added. This 
+      must now be set to 1 before profiling is allowed in Matomo.
+  For a full changelog, look at:
+  https://github.com/matomo-org/matomo/releases/tag/4.2.1
+  https://matomo.org/changelog/matomo-4-3-0/
+- Rebase matomo-package_update.patch.
+
+-------------------------------------------------------------------
+Mon Mar  1 08:24:34 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.2.1
+  To many changes, so look at:
+  https://github.com/matomo-org/matomo/releases/tag/4.2.1
+
+-------------------------------------------------------------------
+Mon Feb 22 10:22:36 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.2.0
+  To many changes, so look at:
+  https://github.com/matomo-org/matomo/releases/tag/4.2.0
+
+-------------------------------------------------------------------
+Fri Jan 15 06:42:06 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.1.1
+  To many changes, so look at:
+  https://github.com/matomo-org/matomo/releases/tag/4.1.1
+
+-------------------------------------------------------------------
+Tue Dec 22 08:24:09 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.1.0
+  - No changelog from upstream at this time.
+
+-------------------------------------------------------------------
+Mon Dec 14 10:02:54 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Put apache configuration files in separate subpackages.
+- Update cron, service, lograte files with apache macros.
+
+-------------------------------------------------------------------
+Wed Dec  9 06:34:40 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.0.5
+  - Avoid inserting duplicates in invalidation table to reduce IO.
+  - Limit to given sites to not select too much.
+  - fix build
+  - tweaks to duplicate checking query
+  - more pr feedback
+  - fix cron archive test
+
+-------------------------------------------------------------------
+Fri Dec  4 06:54:37 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.0.4
+  - No changelog from upstream.
+
+-------------------------------------------------------------------
+Wed Dec  2 10:46:45 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Use apache-rpm-macros.
+
+-------------------------------------------------------------------
+Sat Nov 28 09:15:51 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.0.2
+  No changelog from upstream but you can see changes since 4.0.1
+  here: https://github.com/matomo-org/matomo/compare/4.0.1...4.0.2
+
+-------------------------------------------------------------------
+Fri Nov 27 06:35:41 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.0.1
+  * matomo-org/matomo
+    - #16778 SEO Plugin broken
+    - #16788 CLI Archive might not stop
+    - #16786 No custom dimensions in Matomo 4.0.0
+    - #16798 Error upgrading db while upgrading to 4.0.0-b1
+      (session update fails)
+    - #16804 Matomo 4.0.0 warns about “ExampleTheme requires 
+      Piwik <4.0.0-b1”
+  * matomo-org/device-detector
+    - #6443 Detect browsers: Slimjet, 7Star, MxNitro
+    - #6444 Detect new brands: Starlight, GEOFOX, Verico, Tinmo, 
+      Matrix and Detect devices for existing brands: Asus, Sharp,
+      Coolpad, Sony, OPPO, Lenovo, Philips, Vivo, Xiaomi,
+      Manta Multimedia, NEC, Vernee, Karbonn, Krüger&Matz, RugGear,
+      DEXP, Digma, MiXzo, Atom, Yu, Acer, Irbis, teXet, Telefunken,
+      Onda, IconBIT, Polaroid, Doogee, Allview, BB Mobile,
+      Touchmate, ArmPhone, Memup, Kazam, ZTE, Odys, Jinga, Ginzzu,
+      iLife, Mobicel, Blu, Blaupunkt
+    #6448 Detect Crazy Browser
+
+-------------------------------------------------------------------
+Tue Nov 24 11:58:12 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.0.0
+  Too many changes to list here. See instead:
+  https://github.com/matomo-org/matomo/releases/tag/4.0.0
+
+- Fix boo#1162178:
+  Add matomo-package_update.patch to not show warning message when
+  auto_update_enable es disable through package installation.
+
+-------------------------------------------------------------------
+Mon Oct  5 05:56:59 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.14.1
+  * matomo-org/matomo
+    - #16223 piwik-php-tracker missed after update
+    - #16382 Urgent update to Danish translation
+    - #16210 Allow plugins to configure custom user preferences
+    - #16291 Official PHP Reporting Client, or at least link those that already exist
+    - #16295 Number formatting may be wrong when eg German language is used
+    - #16322 Fix plugins might not be updated when updating core
+  * matomo-org/matomo-php-tracker
+    - #61 Tracker does not set samesite cookie
+    - #73 Make it possible to configure cookie options for Secure, HTTPOnly and SameSite
+  * matomo-org/matomo-log-analytics
+    - #273 When input is stdin (‘-‘), import_logs.py doesn’t work
+    - #274 always disable queued tracking when sending requests from log import
+  * matomo-org/tag-manager
+    - #252 Improve detection of preview release if it wasn’t detected previously somehow
+  * matomo-org/matomo-package
+    - #112 Ship Matomo with Provider and Custom Variables plugin
+  * matomo-org/device-detecto
+    - #5389 Iceweasel should be tracked as Firefox
+    - #5713 WebOS regex is incorrect.
+    - #6075 Fixed version truncation so one client doesn’t affect the others
+    - #6292 Adds detection for multiple notebooks
+    - #6321 add sistrix crawler
+    - #6324 Detect new brand: 360, Owwo, TD Systems; Detect old devices model for brands: AllDocube, Coolpad, Huawei, Vivo,
+       Mecool, Sony, Samsung, Sharp, Kyocera, Fujitsu, LG, ZTE, NEC, Freetel, OPPO, Realme, Philips, Hoffmann, GOME,
+       Ginzzu, Alcatel, EVOLVEO, Bravis, Condor, Casper, Hisense, Videocon, Walton, IMO, Yu, Own, YEZZ, Nvidia, Medion,
+       BQ, Impression, Ulefon, Aligator;
+    - #6325 Detect new browser Yaani Browser
+    - #6327 Detect new browser: Blue Browser
+    - #6332 Detect new brand: Soundmax; Detect old devices model for brand Samsung
+    - #6333 Detect new brand: Tone, AT&T, BIHEE, Ravoz and Detect old devices model for brands: Realme, Positivo BGH, Blackview,
+       Wiko, Alcatel, Multilaser, Samsung, How, LG, Kyocera, Huawei, Oppo, HTC, Sony, Sharp, Google, Panasonic, ZTE, Coolpad
+    - #6335 Logicom Le Hola FR not detected as smartphone, but detected as hola! browser
+    - #6336 Fix detect browser: hola! Browser and detect brand Logicom model: Le Hola FR
+    - #6337 Update README.md
+    - #6338 Adds detection for client DingTalk
+    - #6342 Detect new brands: Enot, Kooper, Anry, Tinai and detect devices for existing brands: Thomson, Denver, Highscreen,
+      Oppo, O+, Highsense, Lenovo, Cheery Mobile, Unimax and OnePlus
+    - #6345 Support for Seobility
+    - #6346 Detect notebook devices in Facebook useragents
+    - #6347 Detect new brands: Minix, Winds, Asano, MyTab, Phonemax and detect new bot Seobility and Detect devices for 
+      existing brands: Asus, Aligator, BQ, Bravis, Ergo, HTC, Polaroid, Highscreen, Ulefone, Doodgee and Pixus
+    - #6348 Added ReactorNetty library
+    - #6352 improved statistics.php report output
+    - #6354 Detect new brands: Eltex, Neomi, Lumigon, OzoneHD, Kzen, Melrose, Crony, Takara, Amigoo and Detect devices for
+      existing brands: Tecno, Coolpad, Sharp, Sony, Alcatel, BQ, ZTE, Kyocera, Condor, Santin, Own, RugGear, Oukitel,
+      Elephone, Vestel, Oysters, MTC, Umax, Echo mobiles, Beeline, Inoi, Wexler, Asus, Samsung, Bitmore, Ulefone, Krüger&Matz,
+      Nobby, Highscreen, Xiaomi, Leagoo, Starway, 4Good, MLS, Digma, Irbis, LG, Lenovo, Fujitsu, Advan, Google, Turbo, Ainol,
+      Archos, Prestigio, Aligator, Yezz and Detect app: U-Cursos
+    - #6357 Detect new brands: Klipad, Tele2, Alfawise, Senkatel, Bobarry, BB mobile, E2, Wortmann, Billion and Detect devices
+      for existing brands: Teclast, Alcatel, Assistant, Ace, Ergo, DEXP, Aiwa, Irbis, Datsun, Overmax, Logicom, Ravoz, Asus,
+      Blu, Cube, Onda, Oysters, Zidoo, ZTE, Digma, DNS, Sugar, Philips, Ulefone, Fly, Hisense, MicroMax, Brondi, Telefunken,
+      Vivax, Yu, Zidoo, Majestic, Leotec
+    - #6358 Detect Samsung Galaxy Note 20, Galaxy Note 20 Ultra, and Galaxy Note 20 Ultra 5G
+    - #6360 Detect mobile app HeyTabBrowser
+    - #6363 Detect devices for existing brands: Samsung, Sony, Phonemax, Casper, DEXP, Nomi, Essentielb, Acer, Digma,
+      Tele2, Oukitel, Kyocera, Sharp
+  * matomo-org/referrer-spam-list
+    - #1225 Update new repository name referrer-spam-list
+    - #1229 Add foojo.net to spammers list
+    - #1230 Added phimmakinhdi.com
+    - #1231 Add suzanneboswell.top
+    - #1232 Add briankatrine.top
+    - #1233 Added more spammers
+    - #1234 Add shcrose.com
+- Changes from 3.14.0
+  * matomo-org/matomo
+    - #16055 Do not load JS tracking code deferred
+    - #11071 security ‘forget your password’ prone to phishing attacks
+    - #16042 Expose setVisitorId JS tracker method
+    - #16193 JS tracker should support CSS class matomo_ignore as alias of piwik_ignore
+    - #16189 assign _paq to window in tracking code
+    - #15778 Cookie domain config is not applied in ignore cookie preventing opt out to work
+    - #16057 Nonce::verifyNonce() returning FALSE when it should not
+    - #13056 Add possibility to turn cookies back on, JS enableCookies
+    - #13246 ‘requireConsent’ has not effect on cookie setting
+    - #15948 Document “How can I still track a visitor without cookies after they declined the cookie consent?”
+    - #15955 Do not check if any archive is running when a segment is forced
+    - #16006 Removing piwik composer deprecations
+    - #16047 Fix falsely assumes session was already started
+    - #16069 Add legacy autoloader to support Matomo namespaces in 3.X
+    - #16087 wrong escaping of cookie path
+    - #16119 Clarify the “password changed” e-mail notification text
+    - #13109 Fix 3rd party cookie / global visitorid race condition
+    - #16162 GeoLite2-ASN Geolocation not working
+    - #13462 Offer possibility to sync JavaScript tracker with any CDN
+  * matomo-org/matomo-log-analytics
+    - #178 Allow wildcards for importing logs
+    - #184 Adds Incapsula log format
+    - #222 Add haproxy log format
+    - #236 Fix timezone calculation for non-integer timezones
+    - #237 Apply config.options.seconds_to_add_to_date to _…ts tracker params
+  * matomo-org/device-detector
+    - #6140 Can’t detect mobile safari browser version
+    - #6182 iPhone OS 12_4 is not browser
+    - #6209 Ability to use external source
+    - #6303 Detect devices and new browser Quark; Detect new brands: Readme, Sugar, PocketBook, Goophone, Bitmore;
+      Detect old brands: Xiaomi, Huawei, Lenovo, Mio, Oppo, CUBOT, Capser, BQ, Backview, Digma, Oysters, Meitu, Odys, Smartisan, Protruly
+    - #6308 Detect new brand Xshitou and detect old devices model for brands: Xiaomi, Huawei, Oppo, Gionee, Vivo, Walton, Meizu, Teclast
+    - #6310 Added a few Android devices
+    - #6312 Detect new brand TWM, Mito, Gree, VKworld, Vodacom, JKL and detect old devices model for brands: Smartisan, OnePlus, OPPO, Vivo, Sharp, Huawei
+    - #6316 Improves device detection for mobile apps using chrome
+    - #6317 Improves detection for Facebook mobile app
+    - #6318 Added a few Android devices
+    - #6319 Adds detection for Clout and MLS devices
+    - #6320 Detect new brand Contixo, Prixton, Newland, Orbic and detect old devices model for brands: Coolpad, Huawei, Acer, Vivo,
+      Meizu, Smartisan, Samsung, HTC, ZTE, Xiaomi, Hisense, Miscrosoft, Sharp, Alcatel, SUGAR, Evercoss
+  * matomo-org/referrer-spam-blacklist
+    - #1209 Add dreams-works.net
+    - #1210 Add nwrcz.com
+    - #1211 100searchengines.com should not be listed as referral spam
+    - #1212 Added new spammer variant domains
+    - #1213 Add brooklynsays.com
+    - #1214 Add andrewancheta.com
+    - #1215 Add nyinfo.org
+    - #1216 Add eduardoluis.com
+    - #1217 Add ideayz.com
+    - #1218 Add popelina.com
+    - #1219 Add iceton.net
+    - #1220 Add mybestoffers.club
+    - #1221 Add batietiket.com
+    - #1223 Add bottraffic4free.club
+    - #1226 Adding mycollegereview.com
+    - #1227 Added pacobarrero.com
+  * matomo-org/matomo-php-tracker
+    - #69 Fix include_once warning Failed opening ‘./PiwikTracker.php’ for inclusion
+    - #71 Method setRequestMethodNonBulk() added to allow (non bulk) POST requests
+  * matomo-org/tracker-proxy
+    - #61 rename piwik -> matomo
+- Changes from 3.13.6
+  Security release
+  - In this release we have fixed an non-critical issue in the LDAP plugin.
+  * matomo-org/matomo
+    - #13655 Limit visitor fingerprint by default for even better privacy
+    - #15930 Archive Blob Tables bloating in size
+    - #13151 Improve config file and configuration overview in admin
+    - #14579 JS Tracker: add rtf to list of downloads
+    - #15853 Make sure to increase time limit when archiving
+    - #15862 Queue content tracking request
+    - #15869 Update visit only when needed
+    - #15870 Reexpire archive lock less often
+    - #15902 Instagram generates heaps of different referrer urls causing out of memory issues
+    - #15954 Fix a plugin that enriches the tracker needed to mark plugin as tracker
+    - #15978 Real-time visitors live widget don’t refresh after live_widget_refresh_after_seconds “timed out” without new visits/actions on websites
+    - #13783 title-text of JavaScript Tracking option help box shows HTML
+    - #15982 Fix: Logo being displayed too small on IE 11
+    - #15894 Send onboarding email during installation
+    - #15901 Fix Javascript error in JS global template causing side effects
+    - #15910 Add link to shopify tracking installation guide when no data tracked yet
+    - #12685 Change widget category of Realtime Map to Live!
+    - #1931 Translation file cleanups (refactor all html code, commands to type etc.)
+    - #13398 undefined method createTestConfig() in BenchmarkTestCase
+    - #15883 Updates device detector to 3.12.5
+    - #15980 require category and action in logEvent
+    - #16015 Fixes some date comparison issues
+    - #15111 Load more in Visitor Profile doesn’t load actions
+    - #15876 Warning while upgrading “Warning – array_merge(): Argument 2 is not an array”
+    - #15881 No Visitors shown in Brandenburg (state of Germany) on the Map
+    - #15923 Search engines are displayed in the wrong channel type
+    - #15270 Skip password min length checks when disable_checks_usernames_attributes=1
+    - #15854 Keep last 100 characters of archive error message when error is too long
+    - #15865 Cron – Filesystem.php(430): Warning – filesize(): stat failed for […] archive.sharedsiteids.pid
+    - #15867 Fix plugins/Live/Controller.php(99): Notice – Undefined variable: visitors
+    - #15879 Minor performance improvement when invalidating archives
+    - #15915 Search for links on page load as well, not just on ready
+    - #15937 Baidu not considered as a search engine?
+    - #15965 Fix theme rewrite removes src attribute when custom plugin directory is used
+    - #15997 Fix min archive time not correctly respected
+    - #16010 Optional userLogin in getUserPreference API
+  * matomo-org/device-detector
+    - #6169 Google-HTTP-Java-Client is detected as a bot – correctly?
+    - #6244 Adds detection for Light browser
+    - #6245 Adds detection for Elements Browser
+    - #6248 Adds detection for VMware AirWatch browser
+    - #6249 Adds detection for Origin browser
+    - #6250 Adds detection for PlayStation 4 Pro console
+    - #6251 Add Steam Overlay
+    - #6252 Adds detection for Steam browser
+    - #6253 Adds detection for AOL Desktop browser
+    - #6261 Detect devices and apps; Detect brands: Vivo, Umidigi, Teclast, Huawei, Asus, Irbis, Ergo,
+      DEXP, Black Fox, Xiomi, Doogee, Highscreen, NextBook, Ginzzu, Gome, Bravis, Sigma, Qumo, ZTE;
+      Detect apps: Snapchat, TopBuzz; Detect new brand: Wigor
+    - #6266 Improves detection for Apple iPhone devices
+    - #6268 Adds detection for Safe Exam Browser
+    - #6269 Improves detection for Avast Secure Browser
+    - #6270 Adds detection for Colibri browser
+    - #6271 Adds detection for Xvast browser
+    - #6272 Adds detection for Tungsten browser
+    - #6273 Adds detection for Lulumi browser
+    - #6274 Adds detection for Yahoo! Japan Browser
+    - #6275 Improves detection for Lunascape browser
+    - #6276 Adds detection for Lunascape Lite browser
+    - #6277 Adds detection for Jig Browser Plus
+    - #6278 Improves detection for Qwant Mobile browser
+    - #6279 Adds detection for Polypane browser
+    - #6280 Adds detection for Sizzy browser
+    - #6281 Adds detection for OhHai Browser
+    - #6282 Adds detection for Glass Browser
+    - #6283 Improves detection for multiple brands
+    - #6284 Adds detection for TmaxOS and ToGate browser
+    - #6288 Improves detection for Baidu Browser
+    - #6289 Apple Email client is not detecting on v3.12.5
+    - #6293 MatomoDeviceDetector.NET is cloned project from totpero/DeviceDetector.NET
+    - #6294 Adds detection for new brands Datawind, Droxio, NEXON, ONN, Q.Bell and devices from various existing brands
+    - #6295 Update README.md
+    - #6297 Add detect Zvu browser
+    - #6300 Update README.md
+  * matomo-org/referrer-spam-blacklist
+    - #1197 Add leddjc.net
+    - #1199 Add oudallas.net
+    - #1200 add 2 new domains
+    - #1201 Add commentag.com
+    - #1202 Add estdj.com
+    - #1203 Request sites in blacklist
+    - #1204 More spammers
+    - #1205 Add deryie.com
+    - #1206 Add websitebottraffic.host
+    - #1207 Add sxsnjj.com
+    - #1208 Add websitebottraffic.club
+  * matomo-org/searchengine-and-social-list
+    - #73 Adds detection for baidu.com (without subdomain)
+- Changes from 3.13.5
+  * matomo-org/matomo
+    - #15831 Archive Blob Tables bloating in size
+    - #15545 Deadlock found when trying to get lock
+    - #15732 Faster segmented suggested values when browser archiving is disabled
+    - #15747 Archiving status: Reexpire lock only when needed
+    - #15853 Make sure to increase time limit when archiving
+    - #15727 Archiving specific date via console won’t take date as argument.
+    - #15750 Fix displaying of actions when loading additional visits in visitor profile
+    - #15724 Add possibility to silently stop the archiver without an error
+    - #15757 Update device detector to latest 3.12.4
+    - #15644 no popup graph shown after the first in page titles report
+    - #15740 Pagetitle reports “Page Name not defined” although all PageViews do have a title (action_name)
+    - #15764 Realtime visitors “visitsTotal”-div is inserted multiple times
+    - #15773 Notifications with the same id might not be shown at all
+    - #15784 Force POST for bulk requests, fix alwaysUseSendBeacon not respected for bulk requests
+    - #15809 Fix problem when comparing segments or opening popovers
+    - #15688 Ensure stringify/parse is a function
+    - #15696 Better handling of processing uniques for multiple sites
+    - #15729 Codespell report for “Matomo” (on fossies.org)
+    - #15746 Fix inconsistent usage of segment idSites
+    - #15769 Revert detect page view bucket
+    - #15770 One click update in two parts so new code is loaded for second.
+    - #15779 Avoid possible error subtable already exists but not loaded
+    - #15785 Make sure to always set JSON_PIWIK to native JSON when possible
+    - #15798 Make sure to clean up tracking failures before sending email notification
+    - #15800 purge all old archives regardless of done value
+    - #15808 Add more parameters to the computeNbUnique event
+  * matomo-org/device-detector
+    - #6170 Problem detecting Twitter App on iOS
+    - #6203 Improves detection for Alcatel, Allview, Casper, Condor, Crosscall, Doogee, Lanix, OnePlus, Orange,
+      Ulefone, UMIDIGI, Wiko devices
+    - #6205 Adds detection for TV Bro Browser and devices of Shift Phones, RugGear, Aligator, Maxcom, Luna and some existing brands
+    - #6206 Adds detection for Oukitel devices
+    - #6207 Adds detection for Ace device
+    - #6210 Santin BiTBiZ incorrect brand name
+    - #6211 Fix brand Santin name and added other models
+    - #6215 What type of device to use in motamo? if the device is a smartwatch
+    - #6216 Adds detection for Razer device
+    - #6217 Detect devices for brands: iBall, Irbis, Motorola, Huawei, Casper, Qysters, Protruly, RegGear, Runbo, Telefunken, JFone,
+      Ritmix, IconBIT, Samsung, LG, Acer, Assistant, Vonino, UMIDIGI, Philips, Krüger&Matz, Uhans, Overmax, ArmPhone
+    - #6218 Adds detection for Goanna browser engine
+    - #6219 Adds detection for Amazon devices
+    - #6220 Adds detection for Grundig devices
+    - #6221 Adds detection for Insignia devices
+    - #6222 Adds detection for Element device
+    - #6226 Add surf browser
+    - #6229 Adds detection for XenForo service agent
+    - #6231 Update README.md
+    - #6232 Adds detection for Google Duplex on the Web bot
+    - #6234 Adds detection for GTmetrix crawler
+    - #6235 Tests run failed for another lib matthiasmullie\scrapbook\src\Adapters\MemoryStore
+    - #6236 Adds detection for new brands iGet, Soyes, Zfiner and Zidoo and some other devices
+    - #6239 Adds detection for new brands iVa, Phicomm, Gome, Voyo, Huadoo, Ryte, Vontar and some other devices
+    - #6240 Adds detection for Mypal browser
+    - #6241 Adds detection for Centaury browser
+    - #6242 Adds detection for Arctic Fox browser
+    - #6243 Fix Basilisk browser rendering engine
+    - #6246 Adds detection for Atom browser
+    - #6247 Improves detection for Avast Secure Browser
+    - #6254 Adds detection for 115 Browser
+    - #6257 Detect mobile app Twitter
+    - #6258 Add support for AspiegelBot, a new Huawei spider
+  * matomo-org/referrer-spam-blacklist
+    - #1189 add celestepage.xyz
+    - #1190 Four more Referrerspammer
+    - #1192 More spammers
+    - #1193 Add ptfic.org
+    - #1194 Remove from list vk.com
+    - #1195 Update spammers.txt
+    - #1196 Add sneakerfreaker.com
+  * matomo-org/tag-manager
+    - #235 Fix possible error on PHP 7.4
+
+-------------------------------------------------------------------
+Sat Mar 28 09:06:21 UTC 2020 - ecsos@opensuse.org
+
+- Update to 3.13.4
+  This release is rated moderate security release.
+  - Fix a a possible XSS issue.
+  * matomo-org/matomo
+    - #15625 ‘Remember me’ not working because cookie expire is in wrong format [by @sgiehl]
+    - #15598 Set samesite lax instead of None if site is not on https [by @tsteur]
+    - #15623 Mention require PHP 7.2 in admin notification [by @sgiehl]
+    - #15588 slow SQL query using MariaDB causing high CPU load [by @sgiehl]
+    - #15609 Limit max execution time of transitions feature [by @sgiehl]
+    - #15616 Review Archive invalidation code [by @diosmosis]
+    - #15646 Today archive is invalidated too often [by @diosmosis]
+    - #14694 Warning – ucwords() expects exactly 1 parameter, 2 given [by @katebutler, @sgiehl]
+    - #14764 Page Overlay stuck on “Loading…”
+    - #15589 [Geo] Unknown region metrics increased significantly after update to v3.13.1
+    - #15629 Using Opt-Out iFrame twice doesn’t work [by @sgiehl]
+    - #15637 Ecommerce Orders Conversion Rate Rounding Error [by @sgiehl]
+    - #15550 Notice: Trying to access array offset on value of type null in 
+      core/Session/SessionAuth.php on line 63 [by @diosmosis]
+    - #15651 Prevent connection timed out when requesting configs.php file on IIS in web.config
+    - #15672 There is no way to enable ‘secure’ for the 3rd party cookie [by @tsteur]
+    - #15580 Geolocation: automatically download latest paid DB-IP databases [by @sgiehl]
+    - #15614 Remove donation widget from dashboard [by @tsteur]
+    - #15665 Convert range date to date archive if needed [by @tsteur, @sgiehl]
+    - #15673 Always send a referrer-policy header [by @polarbirke, @diosmosis]
+    - #15684 Retry compiling less file if it fails [by @tsteur, @diosmosis]
+    - #15686 Prevent notice in PHP 7.4 Passing glue string after array is deprecated
+    - #15687 Make sure config cache is only used when there is a correct path
+    - #15707 Detect page view bucket [by @tsteur]
+  * matomo-org/device-detector
+    - #6174 Oppo devices not detected (new useragent list & model names)
+    - #6176 Detect devices for brands: Asus, Oppo, Huawei, Sony, Lenovo, LG, Wiko, Nuvo, Alcatel,
+      Irbis, Heair, Motorola, CoolPad, Sunvell, AllDocube, Assistant, DEXP, ZTE, CAT, Xiaomi,
+      Google, Yandex, Hisense, T-Mobile, Allview, ViewSonic, Yxtel, Ginzzu, HTC 
+    - #6178 Add Java port to README.md [by @mngsk, @sgiehl]
+    - #6181 Add ScalaJ HTTP library [by @wallin, @sgiehl]
+    - #6183 Detection of Google Stackdriver Monitoring [by @Pierre-Lannoy, @sgiehl]
+    - #6184 Detection for Google Cloud Scheduler [by @Pierre-Lannoy, @sgiehl]
+    - #6185 Car tablet CarPad
+    - #6186 Panasonic Lumix DMC-CM1
+    - #6189 feat(device) detect new brand NewsMy & CarPad 2, CarPad 3; [by @sanchezzzhak, @sgiehl]
+    - #6191 Detect devices for brands: Wiko, Oysters, Pixus, Cherry Mobile, Vivo, EvroMedia,
+      Allview, ZTE, Lenovo, Kiwi, Spectrum, Vesta, Ritmix, Casper, NUU, Ginzzu, Telefunken,
+      National, Kaiomy, Kanji [by @sanchezzzhak, @sgiehl]
+    - #6195 Added Node Fetch library [by @wallin, @sgiehl]
+    - #6198 Adds detection for Samsung devices [by @liviuconcioiu, @sgiehl]
+    - #6200 Adds detection for iHunt devices [by @liviuconcioiu, @sgiehl]
+    - #6201 Adds detection for Allview devices [by @liviuconcioiu, @sgiehl]
+    - #6202 Adds detection for Wiko devices [by @liviuconcioiu, @sgiehl]
+  * matomo-org/referrer-spam-blacklist
+    - #1181 More spammers [by @AaronVanGeffen, @spmedia]
+    - #1182 Add greentechsy.com [by @ericguirbal, @spmedia]
+    - #1184 Add ingramreed.xyz [by @ericguirbal, @spmedia]
+    - #1185 Add janemill.xyz [by @ericguirbal, @spmedia]
+    - #1186 More spammers [by @AaronVanGeffen, @spmedia]
+    - #1187 Add sabinablog.xyz [by @ericguirbal, @spmedia]
+    - #1188 Add martinahome.xyz [by @ericguirbal, @spmedia]
+  * matomo-org/tag-manager
+    - #229 Set samesite flag (used in “preview mode” in tag manager container)
+    - #232 Remove duplicate index in variables table [by @tsteur]
+  * matomo-org/matomo-php-tracker
+    - #60 Prevent double slashes [by @tsteur, @sgiehl]
+  * matomo-org/matomo-log-analytics
+    - #180 Improve regex for date and time in w3c formats [by @sgiehl]  
+
+-------------------------------------------------------------------
+Mon Feb 24 23:16:59 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Update: 3.13.3
+  In this new release we’re solving a few regressions and making a 
+  few minor improvements. In terms of bugs, an issue in the Overlay
+  report causing sessions to logout has been fixed.
+  Other issues were fixed the Samesite cookies handling and session,
+  and a bug was fixed in the new Date comparison feature.
+  #15513 Loading Page Overlay fails and logs user out [by @diosmosis]
+  #15602 Fix session cookies for Matomo installed in subdirectory
+   [by @sgiehl, @tsteur]
+  #15605 Fix VisitorFrequency.get API for idsites=all [by @sgiehl]
+  #15553 piwik_ignore cookie is blocked on macOS and Chrome 80 [by @diosmosis]
+  #15561 Various fixes for Samesite handling in sessions,
+   iframes [by @diosmosis, @tsteur]
+  #15568 Support tracker js files from custom plugin directories [by @tsteur]
+  #15569 Fix non-numeric value encountered in session recording [by @tsteur]
+  #15576 Do not record the stack trace for user input errors [by @tsteur, @sgiehl]
+  #15577 During archive invalidation clear general cache less often [by @tsteur, @diosmosis]
+  #15590 Fallback to JSON renderer if no valid format is given [by @tsteur]
+  #15592 Try to determine the region iso code based on its name if
+   not available [by @sgiehl, @tsteur]
+
+-------------------------------------------------------------------
+Tue Feb 18 10:21:24 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Update: 3.13.2
+  In this release we’re focusing on fixing a few minor bugs and two 
+  regressions that were introduced in the last release 
+  (tracking IE<9 was not working anymore, and automatic login within
+   an iframe has also been fixed).
+  41 tickets have been closed by more than 12 contributors!
+  Main (core) tickets closed:
+  #15404 Real time map dialog box does not close with x [by @sgiehl]
+  #8505 Visitor map shows info icon but no tooltip when there is no data [by @sgiehl]
+  #15414 Since 3.13.1 autologin in an iframe does not work anymore [by @tsteur]
+  #15422 Fix removing user capabilities [by @sgiehl, @tsteur]
+  #15477 Matomo can’t track IE <9 any more [by @tsteur]
+  #15500 Undefined index: bounce_rate_new [by @sgiehl]
+  #15417 In Update pop up venster Piwik is mentioned instead of Matomo [by @sgiehl]
+  #14549 update mocha
+  #15469 Two YAML parser
+  #15307 Visits log fails without any error [by @tsteur]
+  #15420 Cannot copy a dashboard to a user when the user is not one of
+         the first 100 [by @sgiehl]
+  #15430 VisitorLog.php(225): Trying to access array offset on value 
+         of type null – Matomo 3.13.1 [by @sgiehl]
+  #15441 UserId.getUsers generates warnings: Warning – Illegal 
+         offset type and Notice – Undefined index: label [by @sgiehl]
+  #15452 Trying to access array offset on value of type null [by @sgiehl]
+  #15046 Clarify how to Setup the archiving cronjob using Plesk in the user guide manual
+  #15293 New visit not created after logout
+  #15428 Order of implode() args, avoid E_NOTICE in PHP7.4 [by @PeterUpfold, @sgiehl]
+  #15445 Forward instance_id from local config when reseting config
+         during tests. [by @diosmosis]
+  #15446 silence is_executable call in case user doesn’t have permission
+         to access dir [by @diosmosis]
+  #15457 Add event that allows plugins to disable archiving for certain
+         periods/sites if they want. [by @diosmosis]
+  #15462 Day range archiving issue [by @diosmosis, @tsteur]
+  #15464 Use latest davaxi/sparkline release [by @sgiehl]
+  #15481 Mention Joomla install FAQ [by @tsteur, @diosmosis]
+  #15487 Sort Packages [by @limitstudios, @tsteur]
+  #15489 Make sparklines work when mbstring extension is not installed
+         [by @mattab, @diosmosis]
+- pre-require php-json to make sure the post script works
+
+-------------------------------------------------------------------
+Mon Feb  3 15:05:10 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Sat Jan 18 23:11:37 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Update: 3.13.1
+  In this release we’re focusing on fixing a few bugs, a regression in tracking
+  unique visitors affecting some users, we’re making Matomo tracking slightly
+  faster, and we ensure compatibility with the upcoming Chrome 80 browser.
+  + This release is also rated critical and includes a major security fix.
+  + A regression was introduced in 3.13.0 which could in some cases lead
+    to inflate unique visitors/unique users metrics, when the User ID 
+    feature is used: this regression has been fixed.
+  + Another regression causing some of the number metrics to display 
+    wrongly in some languages such as German has been fixed.
+  + As the default geolocation provider MaxMind is introducing new 
+    complicated licensing terms for their geolocation database, and 
+    broke auto-updating of geolocation databases for Matomo, we’re 
+    introducing a new Geolocation provider by default to replace MaxMind. 
+    Matomo will now use db-ip.com as a geolocation provider and all 
+    Matomo users will automatically download this new geolocation 
+    database starting in 3.13.1.
+  + Chrome 80 is planning to make all cookies that don’t have an explicit
+    `SameSite` option have `SameSite=Lax` by default. So far it has been
+    an optional flag but Chrome 80 (release due in January 2020) will have
+    it enabled by default. 
+    Matomo 3.13.1 will be fully compatible and won’t issue a browser
+    console warning anymore.
+  + The Countries Regions maps should now work again and display data 
+    for most countries regions.
+  + In terms of new features, we’ve improved the Behaviour > Engagement report,
+    which will now clearly display all metrics for both Returning visits and
+    New visits
+
+-------------------------------------------------------------------
+Mon Dec 23 22:56:28 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- (add) more secure PHP settings for:
+  upload_tmp_dir => "/var/cache/apache2" (upload is disabled, but this
+                    makes Matomo's security check happy)
+  session.save_path => "/run/matomo_sessions/", to keep session files 
+                       secure. Added: matomo-tmpfile.conf for this
+- just recommend cron and mariadb:
+  * mariadb can be run on another host (matomo just needs the client)
+  * cron script can be obsoleted by the provided systemd timer
+- pre-require php, to run the commands in post
+- recommend php-openssl for (php) curl requests from matomo
+
+-------------------------------------------------------------------
+Thu Dec 12 11:22:26 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- moved the update message in post to the right position
+- disable some (unused) php functions
+- use open basedir
+- add newly required php modules:
+  php-ctype, php-dom, php-iconv, php-tokenizer, php-xmlreader,
+  php-xmlwriter, php-zlibm 
+- define locations of web-, log- and config directories dynamically 
+- allow to enable compression
+- enhanced README.SUSE
+
+-------------------------------------------------------------------
+Thu Dec 12 07:42:22 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update: 3.13.0
+  * matomo-org/matomo
+    #15030 Adds links to online guides in reports help [by @sgiehl, @diosmosis]
+    #4519 Segment by Product Category, Product name, Product SKU, Product prices [by @diosmosis]
+    #15049 More efficient heart beat timer [by @tsteur]
+    #10439 After updating the 2019_01 archive blob tables are gaining size [by @diosmosis]
+    #15086 Auto Archiving falls back to DEFAULT_DATE_LAST even if last archiving ran until completion [by @katebutler, @diosmosis]
+    #10765 Write a User guide for Custom alerts [by @mattab]
+    #14835 Page Overlay – JavaScript Error – TypeError: location.match(…) is null [by @diosmosis]
+    #15101 Matomo 3.12.0 missing Action in Proxy module
+    #15044 Slight performance improvement when rendering data table visualisations [by @tsteur, @diosmosis]
+    #15000 _pk_testcookies set while using “disableCookies” [by @tsteur]
+    #15070 Matomo 3.12 doesn’t work with open_basedir restrictions [by @tsteur]
+    #15078 Integrity check issue in Matomo 3.12.0
+    #15093 Fix reports by dimensions layout [by @sgiehl, @diosmosis]
+    #15102 Fix Insight visualization layout [by @sgiehl, @tsteur]
+    #15151 E-Mail reports date range error [by @diosmosis]
+    #14945 In Comparison mode, numbers are not formatted (thousands separator) [by @katebutler]
+    #14821 Make Matomo compatible with PHP 7.4 [by @diosmosis]
+    #10373 Excluding IPs doesn’t work on php7
+    #14623 Update message creates empty space in admin and pushes widgets down
+    #14714 JS Tracker: setUserId and addEcommerceItem sku should work when User ID is a number [by @tsteur]
+    #15080 Comparison feature displays segment definition instead of segment name when segmenting action based custom dimensions [by @diosmosis]
+    #15103 Ensure insight reports uses the correct compare period number for periods other than day [by @sgiehl, @tsteur]
+    #15140 [automatic translation update] Updated 173 strings in 10 languages (es-ar, de, el, nl, pl, pt-br, pt, sq, zh-cn, zh-tw) [by @sgiehl]
+    #15195 [automatic translation update] Updated 160 strings in 6 languages (fr, it, ja, lt, pt-br, tr) [by @sgiehl]
+    #12816 Rename “Clicked URL” dimension to “Clicked Outlink” [by @katebutler]
+    #14360 UserID no longer overwrites VisitorId [by @MichaelHeerklotz, @diosmosis]
+    #14827 German title HTML entity encoded [by @sgiehl]
+    #15026 Use thousands separator in single metric view [by @katebutler, @tsteur]
+    #15032 Some overlay improvements [by @tsteur, @diosmosis]
+    #15037 Prevent warning array to string conversion in console renderer [by @tsteur, @diosmosis]
+    #15055 Updates device detector to 3.12.1 [by @sgiehl, @diosmosis]
+    #15057 Prevent notice in tracker code generator [by @tsteur, @diosmosis]
+    #15066 Avoid ‘Trying to add two strings in DataTable\Row::sumRowArray’ warning in SEO API [by @sgiehl, @diosmosis]
+    #15079 Revert umlaut icons [by @Findus23, @tsteur]
+    #15087 3.12.0 (3.12.0-b4 and up) is broken on NixOS
+    #15088 Rename “Clicked URL” dimension to “Clicked Outlink” [by @katebutler, @diosmosis]
+    #15090 Made a few minor grammar changes to the README.md [by @ALucatero03, @tsteur]
+    #15095 Fix zend session hides actual error when there are two or more errors… [by @tsteur]
+    #15098 Invert change comparison when displaying percents in the UI … [by @diosmosis]
+    #15110 Fixes a couple segment handling regressions in the UI [by @diosmosis]
+    #15113 Document that Matomo won’t work with a MySQL load balancer such as ProxySQL unless… [by @mattab]
+    #15114 Better detection of a succesfull start of a session [by @tsteur, @diosmosis]
+    #15116 Show the link to upload a new plugin when enable_plugin_upload=1 [by @mattab, @diosmosis]
+    #15129 Don’t freeze lefthand column of datatable on small screens [by @katebutler, @tsteur]
+    #15147 Adds new event to define if lower metric values are better [by @sgiehl, @tsteur]
+    #15152 Fix manual plugin upload process when Marketplace plugin is disabled [by @diosmosis, @tsteur]
+    #15165 Update FAQ “How do I measure and get reports for my page sections / categories / mini-sites / languages?” to reflect how segment now work [by @tsteur]
+    #15166 Fix socket configuration not applied in MySQLi [by @tsteur, @diosmosis]
+    #15178 API reference doc: fix some of the example links [by @mattab, @diosmosis]
+    #15183 Update spyc to 0.6.X [by @tsteur]
+    #15187 Fix broken dashboard when a new version available and when multi_server_environment = 1 [by @mattab, @diosmosis]
+    #15189 Support CliMulti on OS X and print note about whether CliMulti is used in archive output [by @diosmosis]
+
+  * matomo-org/device-detector
+    #5797 Did not catch “The Knowledge AI”
+    #6070 Add 7 new crawlers and 3 feed readers [by @Kdecherf, @sgiehl]
+    #6078 add new rules and tests for Nokia/Microsoft devices [by @mimmi20, @sgiehl]
+    #6081 Detect devices for brands: Samsung, Vivo, iHunt, Huawei, Ritmix, Ross&Moor [by @sanchezzzhak, @sgiehl]
+    #6083 Fail to Detect Meitu Device
+    #6084 Added detect devices Meitu [by @sanchezzzhak, @sgiehl]
+    #6085 Adds detection for Yandex Browser Lite and improves version detection for Yandex Browser [by @liviuconcioiu, @sgiehl]
+    #6086 Adds detection for Shopify Partner bot [by @liviuconcioiu, @sgiehl]
+    #6087 Added RestSharp library [by @wallin, @sgiehl]
+    #6088 Improves detection for Vonino devices [by @liviuconcioiu, @sgiehl]
+    #6092 Fix detection for AIS [by @liviuconcioiu, @sgiehl]
+    #6093 Adds detection for Servo browser engine [by @liviuconcioiu, @sgiehl]
+    #6096 Not Detecting OnePlus 7 Pro
+
+  * matomo-org/component-network
+    #4 Function getIPRangeBounds doesn’t always work on php7 [by @tsteur]
+    #10 Validate CIDR range is 0..32 (IPv4) or 0..128 (IPv6); ref RFC-4632 [by @robocoder, @tsteur]
+    #12 Test enhancement [by @peter279k, @tsteur]
+    #13 Improving tests for IP class [by @peter279k, @tsteur]
+
+  * matomo-org/tracker-proxy
+    #57 Test enhancement [by @peter279k, @tsteur]
+
+  * matomo-org/tag-manager
+    #176 Adjustments for using TM and classic Tracking Code at the same time [by @MichaelHeerklotz, @tsteur]
+    #184 Do not regenerate containers after core archiving [by @tsteur]
+    #197 Use matomo.js and matomo.php as default if preferred [by @tsteur]
+    #198 Convert empty date to null [by @tsteur]
+    #199 fix: Tag::updateContainerTag setting a wrong startDate and endDate value [by @lockland, @tsteur]
+    #202 Fix first trigger callback when tracker js is already loaded [by @MichaelHeerklotz, @tsteur]
+
+  * matomo-org/matomo-log-analytics
+    #251 Clarified usage of –token-auth=<SECRET> [by @cedwardsmedia, @tsteur]
+
+  * matomo-org/matomo-php-tracker
+    #44 Unlink userId and visitorId logic [by @MichaelHeerklotz, @diosmosis]
+    #48 Fix wrong tracking url generated if tracker API endpoint already contains query search [by @tsteur, @diosmosis]
+    #50 Regression: Wrong header is enabled only for GET. [by @diosmosis]
+
+  * matomo-org/referrer-spam-blacklist
+    #1143 Add 033nachtvandeliteratuur.nl [by @ericguirbal, @spmedia]
+    #1145 Add 350+ spammer in bulk [by @Zodiac1978, @spmedia]
+    #1146 Block billyblog.online [by @jonhenshaw, @spmedia]
+    #1147 Update spammers.txt [by @spmedia]
+    #1148 Add tammyblog.online [by @ericguirbal, @spmedia]
+    #1149 Block monicablog.xyz [by @jonhenshaw, @spmedia]
+
+  * matomo-org/component-ini
+    #11 Test enhancement [by @peter279k, @tsteur]
+    #12 Problem about IniReader::getFileContent method implementation
+
+-------------------------------------------------------------------
+Thu Oct 31 09:47:25 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- js folder needs to be RW for the tag manager plugin
+
+-------------------------------------------------------------------
+Wed Oct 30 14:39:51 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Fixed unsafe permissions for directory js
+- Fixed permissions for piwik.js, matomo.js and js/piwik.min.js
+
+-------------------------------------------------------------------
+Wed Oct 30 11:42:55 UTC 2019 - ecsos@opensuse.org
+
+- Fix wrong permission for directory js.
+- Use original source file.
+
+-------------------------------------------------------------------
+Wed Oct 30 09:37:33 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- piwik.js needs to be writable, too
+
+-------------------------------------------------------------------
+Wed Oct 30 09:34:03 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- more permission fixes
+  * matomo.js needs to be owned by the apache user so that plugins can
+    rewrite it if required
+  * new md5sum for global.ini.php
+
+-------------------------------------------------------------------
+Wed Oct 30 07:59:19 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- disabled the auto updater, doesn't work with this set of permissions
+
+
+-------------------------------------------------------------------
+Wed Oct 30 07:45:02 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update to 3.12.0
+  * new comarison feature for date ranges and visitor segments
+  * several significant performance improvements, usability improvements and fixes to security issues
+  * full changelog is at https://matomo.org/changelog/matomo-3-12-0/
+
+-------------------------------------------------------------------
+Mon Oct 21 18:39:50 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Security fix: BSC#1154324
+  * Have as little as possible owned by, and writable for, the apache user 
+
+-------------------------------------------------------------------
+Thu Jul 25 06:16:08 UTC 2019 - ecsos@opensuse.org
+
+- Update to 3.11.0
+  This release includes security improvements (including a security
+  fix) and also several performance improvements and bug fixes.
+  Details: https://matomo.org/changelog/matomo-3-11-0/
+- Fix fileintegritycheck under systemcheck.
+
+-------------------------------------------------------------------
+Thu Jul  4 06:15:04 UTC 2019 - ecsos@opensuse.org
+
+- Insert configuration for mariadb.
+- Add missing htaccess rules.
+
+-------------------------------------------------------------------
+Tue Jul  2 05:49:07 UTC 2019 - ecsos@opensuse.org
+
+- Update to 3.10.0
+  * Breaking Changes
+    - When giving a user superuser access through the 
+      UsersManager.setSuperUserAccess API, a new parameter 
+      passwordConfirmation needs to be sent along with the request
+      containing the current password of the user issuing the API 
+      request.
+    - Website referrer URLs are now detected using domain only 
+      instead of domain and path. This means if you have two 
+      different websites on the same domain, but different paths,
+      and a visitor visits from one to the other, it won't have 
+      a referrer website set.
+    - Custom Dimensions values set with setCustomDimension are now 
+      URL encoded (they previously weren't). If you were manually
+      URL encoding the custom dimension values before calling 
+      setCustomDimension, your custom dimension values appearing in
+      reports and Visits log/Visitor profile may now be double URL
+      encoded. To solve the double encoding issue, you can remove 
+      your URL encoding and trust that Matomo JavaScript Tracker 
+      will URL encode the values correctly.
+  * New APIs
+    - A new tracker method ping has been added to send a ping 
+      request manually instead of using the heart beat timer.
+    - Added new event ViewDataTable.configure.end, triggered after
+      view configuration properties have been overwritten by saved
+      settings and query parameters.
+
+-------------------------------------------------------------------
+Fri Mar 22 06:17:22 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update to 3.9.1
+  * This release addresses a couple of issues and errors discovered
+    in Matomo 3.9.0. 4 tickets have been closed by 2 contributors.
+    - #14229 Notice – unserialize(): Error at offset 0 of 53988 
+      bytes
+    - #14226 open_basedir restriction AND Support multiple plugin 
+      paths [by @sgiehl]
+    - #14227 One-click upgrade sometimes fails with errors such as 
+      “Call to undefined method 
+      Piwik\Plugin\Manager::getPluginDirectory() ” 
+      (fails only once, works after a refresh)
+    - #14240 Do not send password changed email for automated use 
+      cases. [by @diosmosis, @sgiehl]
+
+-------------------------------------------------------------------
+Wed Mar 20 08:42:35 UTC 2019 - ecsos@opensuse.org
+
+- Update to 3.9.0
+  * Breaking Changes
+    - Referrers.getKeywordsForPageUrl and 
+      Referrers.getKeywordsForPageTitle APIs have been deprecated 
+      and will be removed in Matomo 4.0.0
+    - By default, Matomo application logs will now be logged in 
+      tmp/logs/matomo.log instead of tmp/logs/piwik.log. This log 
+      file path can be edited in your config/config.ini.php in 
+      the INI setting logger_file_path.
+      Not relevant for this suse package.
+  * New Features
+    - It is now possible to locate plugins in a custom directory 
+      by setting an environment variable MATOMO_PLUGIN_DIRS or a 
+      ['MATOMO_PLUGIN_DIRS'] variable in /bootstrap.php.
+    - It is now possible to use monolog's FingersCrossedHandler 
+      which buffers all logs and logs all of them in case of 
+      warning or error.
+  * New APIs
+    - New API methods Piwik\Plugin\Manager::getPluginsDirectories() 
+      and Piwik\Plugin\Manager::getPluginDirectory() have been 
+      added as it is now possible to locate Matomo plugins in 
+      different directories and it should be no longer assumed 
+      a plugin is located in the /plugins directory.
+    - A new tracker method disableQueueRequest has been added to 
+      disable queued requests which may be useful when logs are 
+      imported.
+    - The event LanguageManager.getAvailableLanguages has been 
+      deprecated. Use LanguagesManager.getAvailableLanguages 
+      instead.
+
+-------------------------------------------------------------------
+Tue Jan 29 08:24:20 UTC 2019 - ecsos@opensuse.org
+
+- Update to 3.8.1
+  This release addresses a few minor issues discovered in 3.8.0 and 
+  a few improvements were also added.
+  Detail changelog see: https://matomo.org/changelog/matomo-3-8-1/
+
+-------------------------------------------------------------------
+Thu Jan 24 14:17:44 UTC 2019 - ecsos@opensuse.org
+
+- Fix paths in cron and service file.
+
+-------------------------------------------------------------------
+Tue Jan 22 12:31:47 UTC 2019 - ecsos@opensuse.org
+
+- Update to 3.8.0
+  This is an update and security release.
+  Detail changelog see: https://matomo.org/changelog/matomo-3-8-0/
+
+-------------------------------------------------------------------
+Tue Nov 27 17:55:29 UTC 2018 - ecsos@opensuse.org
+
+- Remove %config from service files. Changes must not do in system
+  location, user must do this changes in /etc/systemd/system.
+
+-------------------------------------------------------------------
+Thu Nov 22 18:07:12 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Join %service_* calls, find calls, everything that iterates
+  (except for fdupes, where /usr files naturally should be
+  separated from /srv).
+- Require user/group package.
+
+-------------------------------------------------------------------
+Tue Nov 20 06:49:47 UTC 2018 - ecsos@opensuse.org
+
+- Update to 3.7.0
+  This is an update and security release.
+  Detail changelog see: https://matomo.org/changelog/matomo-3-7-0/
+
+-------------------------------------------------------------------
+Sat Nov 17 11:23:15 UTC 2018 - ecsos@opensuse.org
+
+- Remove verification for systemd
+- Add systemd-timer for auto archiving of reports.
+  Now you can use cron or systemd.timer.
+- Add core:update during update of package
+- Add logrotate
+- Add rpmlintrc
+- Upgrade README.SUSE
+
+-------------------------------------------------------------------
+Fri Oct 19 10:41:59 UTC 2018 - ecsos@opensuse.org
+
+- update to 3.6.1
+  # New APIs
+    * Added new event `Access.modifyUserAccess` which lets plugins 
+      modify current user's access levels/permissions.
+    * Added new event `CustomMatomoJs.manipulateJsTracker` which 
+      lets plugins modify the JavaScript tracker.
+  # New Developer Features
+    * Logging to a file can now be easily enabled during tests. 
+      A new `[tests] enable_logging` INI option has been added, 
+      which you can set to `1` to enable logging for all tests. 
+      The `tests:run` and `tests:run-ui` commands now both have an
+      `--enable-logging` option to enable logging for a specific
+      run.
+
+-------------------------------------------------------------------
+Thu Aug 30 06:28:11 UTC 2018 - ecsos@opensuse.org
+
+- update to 3.6.0
+  This a update and security release.
+  # New Features
+    * A new role has introduced called "write" which has less 
+      permissions than an admin but more than a view only user 
+      (see FAQ).
+    * Custom currencies can now be added using the currencies[]
+      configuration key.
+    * A new segment eventValue lets you select all users who 
+      tracked a custom event with a given value or range of values.
+  # New config.ini.php settings
+    * archiving_profile = 0, if set to 1, core:archive profiling 
+      information will be recorded in a log file. the log file is 
+      determined by the archive_profiling_log option.
+    * archive_profiling_log =, if set to an absolute path, 
+      core:archive profiling information will be logged 
+      to specified file.
+    * enable_internet_features=0 will now fully disable Internet 
+      access by preventing all outgoing connections. Note: changing 
+      this setting is not recommended for security, because you 
+      will lose the easy auto-update and email notifications.
+    * login_whitelist_ip[] now supports hostnames so you can 
+      whitelist your IP addresses and/or Hostnames and keep your 
+      Matomo secure.
+  # Updated commands
+    * New parameter --concurrent-archivers to define the number of 
+      maximum archivers to run in parallel on this server. 
+      Useful to prevent archiving processes piling up and 
+      ultimately failing.
+  # New APIs
+    * Added new event API.addGlossaryItems which lets you add items 
+      to the glossary.
+    * Added new event Tracker.detectReferrerSocialNetwork which 
+      lets you add custom social network detections
+    * Added new event Report.unsubscribe which is triggered 
+      whenever someone unsubscribe from a report
+    * Added new API method UsersManager.getAvailableRoles to fetch 
+      a list of all available roles that can be granted to a user.
+    * Added new API method UsersManager.getAvailableCapabilities to 
+      fetch a list of all available capabilities that can be 
+      granted to a user.
+    * Added new API method UsersManager.addCapabilities to grant 
+      one or multiple capabilities to a user.
+    * Added new API method UsersManager.removeCapabilities to 
+      remove one or multiple capabilities from a user.
+    * The API method UsersManager.setUserAccess now accepts an 
+      array to pass a role and multiple capabilities at once.
+    * Plugin classes can overwrite the method 
+      requiresInternetConnection to define if they should be 
+      automatically unloaded if no internet connection is available 
+      (enable_internet_features = 0)
+    * Added two new methods to the JS tracker: removeEcommerceItem 
+      and clearEcommerceCart to allow better control over what is 
+      in the ecommerce cart.
+    * Tracking API requests now include &consent=1 in the Tracking 
+      API URL When consent has been given by a user.
+  # Breaking Changes
+    * Changed some menu items to use translation keys instead 
+      (see PR #12885).
+    * The methods assertResponseCode() and assertHttpResponseText()
+      in Piwik\Tests\Framework\TestCase\SystemTestCase have been
+      deprecated and will be removed in Matomo 4.0. Please use 
+      Piwik\Http instead.
+    * The classes PHPUnit\Framework\Constraint\HttpResponseText 
+      and PHPUnit\Framework\Constraint\ResponseCode have been
+      deprecated and will be removed in Matomo 4.0. Please use
+      Piwik\Http instead.
+    * Creating links through the Proxy has been deprecated. 
+      Use rel="nofollow" instead.
+    * The console option --piwik-domain has been deprecated and
+      will be removed in Matomo 4.0. Use --matomo-domain instead
+    * Social networks are now detected as new referrer type (ID=7),
+      which allows improved reports and better segmentation
+    * New settings form field UI component "Field Array" that lets 
+      users enter multiple values for one setting as a flat array
+
+-------------------------------------------------------------------
+Sat May 26 08:20:55 UTC 2018 - ecsos@opensuse.org
+
+- update to 3.5.1
+  # New APIs
+    * Added new method Piwik\API\Request::isRootRequestApiRequest() 
+      to detect if the root request is an API request.
+
+-------------------------------------------------------------------
+Wed May  9 05:46:07 UTC 2018 - ecsos@opensuse.org
+
+- update to 3.5.0
+  # Breaking Changes
+    * Flattened action url reports now always include a leading `/` 
+      and will no longer include the `default_action_name`. 
+      e.g. `path/to/index` will now be `/path/to/`. 
+      This might affect configured custom alerts, as this plugin
+      uses the flattened url reports for comparison.
+  # New APIs
+    * New JavaScript tracker functions to [ask for consent]
+      (https://developer.matomo.org/guides/tracking-javascript-
+      guide#asking-for-consent): `requireConsent`, 
+      `rememberConsentGiven`, `setConsentGiven`, 
+      `forgetConsentGiven`.
+    * New events `PrivacyManager.deleteLogsOlderThan`, 
+      `PrivacyManager.exportDataSubjects` and 
+      `PrivacyManager.deleteDataSubjects` to enable plugins to be
+      GDPR compliant.
+    * New event `AssetManager.addStylesheets` to add additional
+      less styles which are not located in a file.
+    * New event `Archiving.getIdSitesToMarkArchivesAsInvalidated` 
+      that lets plugins customize the behaviour of report 
+      invalidations.
+    * Reports and visualizations can now disable the 'all' rows 
+      limit selector: 
+      `$view->config->disable_all_rows_filter_limit`.
+    * New settings form field UI component "Multi Tuple" that 
+      lets users enter multiple values for one setting
+      
+  Detail changelog see: https://matomo.org/changelog/matomo-3-5-0/
+
+-------------------------------------------------------------------
+Sun Apr  8 12:46:15 UTC 2018 - ecsos@opensuse.org
+
+- update to 3.4.0
+  - `piwik` font is deprecated and will be removed in Matomo 4.0. 
+     Please use new `matomo` font instead
+  - New APIs
+  See https://matomo.org/changelog/matomo-3-4-0/
+
+-------------------------------------------------------------------
+Thu Feb  8 14:33:35 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+- Fix unknown RPM category group.
+- Replace old $RPM_ variables with macros.
+- Avoid %__-type macro indirections.
+- Do not let fdupes cross partitions.
+
+-------------------------------------------------------------------
+Sat Jan 13 19:12:02 UTC 2018 - ecsos@opensuse.org
+
+- Branch package from piwik,
+  because piwik renamed to matomo.
+- update to 3.3.0
+  See https://matomo.org/changelog/matomo-3-3-0/
+
+-------------------------------------------------------------------
+Thu Dec  7 10:53:02 UTC 2017 - ecsos@opensuse.org
+
+- update to 3.2.1
+  see https://piwik.org/changelog/piwik-3-2-1/
+
+-------------------------------------------------------------------
+Fri Oct 13 09:31:26 UTC 2017 - ecsos@opensuse.org
+
+- update to 3.2.0
+  see https://piwik.org/changelog/piwik-3-2-0/
+
+-------------------------------------------------------------------
+Thu Sep 21 05:49:06 UTC 2017 - ecsos@opensuse.org
+
+- update to 3.1.1
+  see https://piwik.org/changelog/piwik-3-1-1/
+  
+-------------------------------------------------------------------
+Tue Sep 12 11:38:50 UTC 2017 - ecsos@opensuse.org
+
+- update to 3.1.0
+  This release is rated important, two XSS issues have bin fixed.
+  Also 120 tickets closed.
+  see https://piwik.org/changelog/piwik-3-1-0/
+
+-------------------------------------------------------------------
+Tue Aug 15 12:15:11 UTC 2017 - ecsos@opensuse.org
+
+- fix spec to use php7 too
+
+-------------------------------------------------------------------
+Tue Aug 15 08:25:16 UTC 2017 - ecsos@opensuse.org
+
+- fix errors in piwik.conf
+
+-------------------------------------------------------------------
+Thu May 18 05:41:43 UTC 2017 - ecsos@opensuse.org
+
+- update to 3.0.4
+  see https://piwik.org/changelog/piwik-3-0-4/
+
+-------------------------------------------------------------------
+Wed Apr  5 07:26:03 UTC 2017 - ecsos@opensuse.org
+
+- update to 3.0.3
+  see https://piwik.org/changelog/piwik-3-0-3/
+
+-------------------------------------------------------------------
+Fri Mar  3 13:13:44 UTC 2017 - ecsos@opensuse.org
+
+- update to 3.0.2
+  see https://piwik.org/changelog/piwik-3-0-2/
+
+-------------------------------------------------------------------
+Tue Jan 10 00:10:44 UTC 2017 - ecsos@opensuse.org
+
+- update to 3.0.1
+  see https://piwik.org/changelog/piwik-3-0-1/
+
+-------------------------------------------------------------------
+Tue Dec 20 07:34:56 UTC 2016 - ecsos@opensuse.org
+
+- update to 3.0.0
+  see https://piwik.org/changelog/piwik-3-0-0/
+
+-------------------------------------------------------------------
+Tue Nov 15 07:24:23 UTC 2016 - ecsos@opensuse.org
+
+- update to 2.17.1
+  see https://piwik.org/changelog/piwik-2-17-1/
+
+-------------------------------------------------------------------
+Fri Oct 28 06:19:47 UTC 2016 - ecsos@opensuse.org
+
+- update to 2.17.0
+  see https://piwik.org/changelog/piwik-2-17-0/
+
+-------------------------------------------------------------------
+Wed Oct  5 04:38:19 UTC 2016 - ecsos@opensuse.org
+
+- update to 2.16.5
+  see https://piwik.org/changelog/piwik-2-16-5/
+
+-------------------------------------------------------------------
+Tue Oct  4 13:35:06 UTC 2016 - ecsos@opensuse.org
+
+- update to 2.16.4
+  see https://piwik.org/changelog/piwik-2-16-4/
+
+-------------------------------------------------------------------
+Tue Oct  4 09:39:50 UTC 2016 - ecsos@opensuse.org
+
+- update to 2.16.3 
+  see https://piwik.org/changelog/piwik-2-16-3/
+  - This is a security release
+
+-------------------------------------------------------------------
+Wed Aug  3 09:20:50 UTC 2016 - ecsos@opensuse.org
+
+- update to 2.16.2
+  see https://piwik.org/changelog/piwik-2-16-2/
+  - This is a security release
+
+-------------------------------------------------------------------
+Tue Apr 12 06:43:52 UTC 2016 - ecsos@opensuse.org
+
+- update to 2.16.1
+  see http://piwik.org/changelog/piwik-2-16-1/
+  - This is a security release
+- Drop piwik-manifest_unneeded_files.patch: It's now in upstream
+
+-------------------------------------------------------------------
+Thu Feb  4 18:02:36 UTC 2016 - ecsos@opensuse.org
+
+- update to 2.16.0
+  see http://piwik.org/changelog/piwik-2-16-0/
+  
+-------------------------------------------------------------------
+Fri Oct 23 09:37:17 UTC 2015 - ecsos@opensuse.org
+
+- update to 2.15.0
+  see http://piwik.org/changelog/piwik-2-15-0/
+- insert attention mark for php caches in README.SUSE
+- activate and update manifest patch
+
+-------------------------------------------------------------------
+Thu Aug  6 06:25:15 UTC 2015 - ecsos@opensuse.org
+
+- update to 2.14.3
+  - #8439 Install of 2.14.2 blocked by permissions check on 
+    piwik/config path [by @mnapoli]
+  - #8431 Overlay improvements [by @sgiehl, @tsteur]
+  - #8352 In Page Overlay sidebar, add icon to let me 
+    “Open segmented visitor log” [by @sgiehl]
+  - #8403 Improve design of Trusted Piwik Hostname setting 
+    [by @barbushin, @tsteur]
+  - #7835 Rename “Widgets & Dashboard” selector or change the 
+    selector [by @tsteur]
+  - #8293 Piwik errors logged in server error log should not have 
+    HTML [by @mnapoli]
+  - #8252 New config entry to set email name in email FROM field 
+    [by @tsteur]
+  - #8472 Fix bug in notification angular directive, do not use 
+    data-binding for noclear attribute… [by @diosmosis]
+  - #8285 UserCountryMap plugin shows wrong options in countries 
+    select [by @mnapoli]
+  - #8432 [automatic translation update] Updated 195 strings in 
+    32 languages (sk, ar, de, ja, nl, nb, sv, be, bg, ca, cs, da, 
+    el, es, fa, fi, fr, hi, hu, id, it, ko, pl, pt, ro, ru, sq, sr, 
+    th, tl, uk, vi) [by @sgiehl]
+  - #8474 [automatic translation update] Updated 254 strings in 
+    37 languages (gl, nb, cs, it, sk, de, el, fr, lt, ar, bg, ca, 
+    da, es, et, fa, fi, he, hi, hr, id, ja, ko, nl, nn, pl, ro, ru,
+    sl, sq, sr, sv, ta, th, tl, tr, vi) [by @sgiehl]
+
+-------------------------------------------------------------------
+Wed Jul 29 07:22:01 UTC 2015 - ecsos@opensuse.org
+
+- update to 2.14.2
+  - #8304 Column not found: 1054 Unknown column 
+    ‘log_visit.location_browser_lang’ in ‘field list'” [by @tsteur]
+  - #8365 renderer format is not valid – fatal php error after 
+    2.14.0
+  - #8316 URL parameter for core:archive console command is ignored 
+    [by @diosmosis, @mattab]
+  - #8307 Limit notifications of not authenticated sessions 
+    [by @tsteur]
+  - #8370 Can’t update GrabGravatar plugin [by @tsteur]
+  - #8346 node.className.split is not a function on tracking click 
+    on/near SVG element [by @dandv, @tsteur]
+  - #8294 CLI plugin generator doesn’t intercept plugin description 
+    [by @tsteur]
+  - #8257 Site Search report does not display tooltips with metrics 
+    documentation
+  - #7768 Browser info tooltip doesn’t hide
+  - #8411 Add System check that checks that shell_exec function is 
+    enabled [by @mattab]
+  - #8407 The string General_Cancel was not loaded in javascript 
+    [by @tsteur]
+  - #8400 Fix emails validation with unknown TLD 
+    [by @barbushin, @mnapoli]
+  - #8379 Travis system extraction part 1 [by @diosmosis]
+  - #8374 Tweaks to .travis.yml generator [by @diosmosis]
+  - #8376 [automatic translation update] Updated 661 strings in 
+    8 languages (nl, sv, de, es, ja, lt, pl, nb) [by @sgiehl]
+
+-------------------------------------------------------------------
+Sat Jun 13 09:20:54 UTC 2015 - ecsos@opensuse.org
+
+- initial version 2.13.1

@@ -1,0 +1,16 @@
+#
+# ftpusers      This file describes the names of the users that may
+#               _*NOT*_ log into the system via the FTP server.
+#               This usually includes "root", "uucp", "news" and the
+#               like, because those users have too much power to be
+#               allowed to do "just" FTP...
+#
+adm
+bin
+daemon
+games
+mail
+news
+nobody
+root
+uucp

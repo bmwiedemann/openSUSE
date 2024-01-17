@@ -1,0 +1,59 @@
+--- vsftpd-3.0.2/sysutil.c.wnohang	2015-08-03 07:35:33.619620425 +0200
++++ vsftpd-3.0.2/sysutil.c	2015-08-03 07:35:33.626620480 +0200
+@@ -608,13 +608,13 @@ vsf_sysutil_exit(int exit_code)
+ }
+ 
+ struct vsf_sysutil_wait_retval
+-vsf_sysutil_wait(void)
++vsf_sysutil_wait(int hang)
+ {
+   struct vsf_sysutil_wait_retval retval;
+   vsf_sysutil_memclr(&retval, sizeof(retval));
+   while (1)
+   {
+-    int sys_ret = wait(&retval.exit_status);
++    int sys_ret = waitpid(-1, &retval.exit_status, hang ? 0 : WNOHANG);
+     if (sys_ret < 0 && errno == EINTR)
+     {
+       vsf_sysutil_check_pending_actions(kVSFSysUtilUnknown, 0, 0);
+--- vsftpd-3.0.2/sysutil.h.wnohang	2015-08-03 07:35:33.610620354 +0200
++++ vsftpd-3.0.2/sysutil.h	2015-08-03 07:35:33.626620480 +0200
+@@ -176,7 +176,7 @@ struct vsf_sysutil_wait_retval
+   int PRIVATE_HANDS_OFF_syscall_retval;
+   int PRIVATE_HANDS_OFF_exit_status;
+ };
+-struct vsf_sysutil_wait_retval vsf_sysutil_wait(void);
++struct vsf_sysutil_wait_retval vsf_sysutil_wait(int hang);
+ int vsf_sysutil_wait_reap_one(void);
+ int vsf_sysutil_wait_get_retval(
+   const struct vsf_sysutil_wait_retval* p_waitret);
+--- vsftpd-3.0.2/twoprocess.c.wnohang	2012-09-16 09:15:49.000000000 +0200
++++ vsftpd-3.0.2/twoprocess.c	2015-08-03 07:35:33.626620480 +0200
+@@ -47,8 +47,17 @@ static void
+ handle_sigchld(void* duff)
+ {
+ 
+-  struct vsf_sysutil_wait_retval wait_retval = vsf_sysutil_wait();
++  struct vsf_sysutil_wait_retval wait_retval = vsf_sysutil_wait(0);
+   (void) duff;
++  if (!vsf_sysutil_wait_get_exitcode(&wait_retval) &&
++      !vsf_sysutil_wait_get_retval(&wait_retval))
++    /* There was nobody to wait for, possibly caused by underlying library
++     * which created a new process through fork()/vfork() and already picked
++     * it up, e.g. by pam_exec.so or integrity check routines for libraries
++     * when FIPS mode is on (nss freebl), which can lead to calling prelink
++     * if the prelink package is installed.
++     */
++    return;
+   /* Child died, so we'll do the same! Report it as an error unless the child
+    * exited normally with zero exit code
+    */
+@@ -390,7 +399,7 @@ common_do_login(struct vsf_session* p_se
+   priv_sock_send_result(p_sess->parent_fd, PRIV_SOCK_RESULT_OK);
+   if (!p_sess->control_use_ssl)
+   {
+-    (void) vsf_sysutil_wait();
++    (void) vsf_sysutil_wait(1);
+   }
+   else
+   {

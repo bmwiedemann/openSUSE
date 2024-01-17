@@ -1,0 +1,6 @@
+<package name="grafana-sap-netweaver-dashboards" project="openSUSE:Factory">
+  <title>Grafana SAP NetWeaver Dashboards</title>
+  <description>Grafana Dashboards displaying metrics about a SAP NetWeaver landscape</description>
+  <devel project="network:ha-clustering:sap-deployments:devel" package="grafana-sap-netweaver-dashboards"/>
+  <url>https://github.com/SUSE/sap_host_exporter/tree/master/dashboards</url>
+</package>

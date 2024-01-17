@@ -1,0 +1,95 @@
+From b881efabd544f34d82410bb937fce1d599dde070 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Tue, 9 Jan 2018 08:41:48 +0100
+Subject: [PATCH] Fix linking with newer tools by getting the library order
+ right
+
+---
+ src/conv/abw/Makefile.am | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/src/conv/abw/Makefile.am b/src/conv/abw/Makefile.am
+index b52d060..3b20f05 100644
+--- a/src/conv/abw/Makefile.am
++++ b/src/conv/abw/Makefile.am
+@@ -23,10 +23,13 @@ libhelperRVNGABW_la_SOURCES = \
+ 
+ wpft2abw_DEPENDENCIES = @WPFT2ABW_WIN32_RESOURCE@ libhelperRVNGABW.la
+ wpft2abw_CPPFLAGS = $(REVENGE_STREAM_CFLAGS)
+-wpft2abw_LDADD = $(REVENGE_STREAM_LIBS)
++wpft2abw_LDADD =
+ wpft2abw_SOURCES = wpft2abw.cxx
+ 
+ if USE_LIBABW
++  wpft2abw_CPPFLAGS += $(ABW_CFLAGS)
++  wpft2abw_LDADD += $(wrapper_dir)/libwpabw.la $(ABW_LIBS)
++
+   bin_PROGRAMS += abw2abw
+ 
+   abw2abw_DEPENDENCIES = @ABW2ABW_WIN32_RESOURCE@ libhelperRVNGABW.la
+@@ -37,7 +40,7 @@ endif
+ 
+ if USE_LIBEBOOK
+   wpft2abw_CPPFLAGS += $(EBOOK_CFLAGS)
+-  wpft2abw_LDADD += $(EBOOK_LIBS) $(wrapper_dir)/libwpebook.la
++  wpft2abw_LDADD += $(wrapper_dir)/libwpebook.la $(EBOOK_LIBS)
+ 
+   bin_PROGRAMS += ebook2abw
+ 
+@@ -49,7 +52,7 @@ endif
+ 
+ if USE_LIBETONYEK
+   wpft2abw_CPPFLAGS += $(ETONYEK_CFLAGS)
+-  wpft2abw_LDADD += $(ETONYEK_LIBS) $(wrapper_dir)/libwpetonyek.la
++  wpft2abw_LDADD += $(wrapper_dir)/libwpetonyek.la $(ETONYEK_LIBS)
+ 
+   bin_PROGRAMS += pages2abw
+ 
+@@ -68,7 +71,7 @@ if USE_LIBMWAW
+ 
+   wpft2abw_DEPENDENCIES += libabwmwaw.la
+   wpft2abw_CPPFLAGS += $(MWAW_CFLAGS)
+-  wpft2abw_LDADD += $(MWAW_LIBS) libabwmwaw.la
++  wpft2abw_LDADD += libabwmwaw.la $(MWAW_LIBS)
+ 
+   bin_PROGRAMS += mwaw2abw
+ 
+@@ -87,7 +90,7 @@ if USE_LIBSTAROFFICE
+ 
+   wpft2abw_DEPENDENCIES += libabwstaroffice.la
+   wpft2abw_CPPFLAGS += $(STAROFFICE_CFLAGS)
+-  wpft2abw_LDADD += $(STAROFFICE_LIBS) libabwstaroffice.la
++  wpft2abw_LDADD += libabwstaroffice.la $(STAROFFICE_LIBS)
+ 
+   bin_PROGRAMS += sd2abw
+ 
+@@ -106,7 +109,7 @@ if USE_LIBWPD
+ 
+   wpft2abw_DEPENDENCIES += libabwwpd.la
+   wpft2abw_CPPFLAGS += $(WPD_CFLAGS) $(WPG_CFLAGS)
+-  wpft2abw_LDADD += $(WPD_LIBS) $(WPG_LIBS) libabwwpd.la
++  wpft2abw_LDADD += libabwwpd.la $(WPD_LIBS) $(WPG_LIBS)
+ 
+   bin_PROGRAMS += wpd2abw
+   wpd2abw_DEPENDENCIES = @WPD2ABW_WIN32_RESOURCE@ libhelperRVNGABW.la libabwwpd.la
+@@ -124,7 +127,7 @@ if USE_LIBWPS
+ 
+   wpft2abw_DEPENDENCIES += libabwwps.la
+   wpft2abw_CPPFLAGS += $(WPS_CFLAGS)
+-  wpft2abw_LDADD += $(WPS_LIBS) libabwwps.la
++  wpft2abw_LDADD += libabwwps.la $(WPS_LIBS)
+ 
+   bin_PROGRAMS += wps2abw
+ 
+@@ -134,7 +137,7 @@ if USE_LIBWPS
+   wps2abw_SOURCES = wps2abw.cxx
+ endif
+ 
+-wpft2abw_LDADD += @WPFT2ABW_WIN32_RESOURCE@ libhelperRVNGABW.la
++wpft2abw_LDADD += @WPFT2ABW_WIN32_RESOURCE@ libhelperRVNGABW.la $(REVENGE_STREAM_LIBS)
+ 
+ if OS_WIN32
+ 
+-- 
+2.15.1
+

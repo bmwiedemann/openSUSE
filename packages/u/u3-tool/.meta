@@ -1,0 +1,9 @@
+<package name="u3-tool" project="openSUSE:Factory">
+  <title>Tool for Controlling the Special Features of an U3 USB Flash disk</title>
+  <description>u3-tool is a tool for unlocking and configuring U3 smart USB Flash devices.  It
+supports changing the virtual CD partition size, replacing the CD image,
+enabling, disabling, and resetting device security, and unlocking the secured
+data partition.</description>
+  <devel project="hardware" package="u3-tool"/>
+  <url>http://u3-tool.sourceforge.net/</url>
+</package>

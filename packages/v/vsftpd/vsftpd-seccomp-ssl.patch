@@ -1,0 +1,15 @@
+SSL initialization calls RAND_load_file() which needs stat() enabled.
+
+Index: vsftpd-3.0.3/seccompsandbox.c
+===================================================================
+--- vsftpd-3.0.3.orig/seccompsandbox.c	2021-12-21 15:33:01.491786690 +0100
++++ vsftpd-3.0.3/seccompsandbox.c	2021-12-21 15:33:01.499786535 +0100
+@@ -559,6 +559,8 @@ seccomp_sandbox_setup_postlogin_broker()
+     allow_nr(__NR_fstat);
+     allow_nr(__NR_fchown);
+     allow_nr_1_arg_match(__NR_recvmsg, 3, 0);
++    // called by RAND_load_file
++    allow_nr(__NR_stat);
+   }
+   if (tunable_syslog_enable)
+   {

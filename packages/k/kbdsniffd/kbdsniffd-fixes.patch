@@ -1,0 +1,18 @@
+Index: kbdsniffd-0.6/Makefile
+===================================================================
+--- kbdsniffd-0.6.orig/Makefile
++++ kbdsniffd-0.6/Makefile
+@@ -27,9 +27,9 @@ clean:
+ 	rm -f $(TRG) *.o *~ jj.jj
+ 
+ install: $(TRG)
+-	install -s -m 744 $(TRG) $(DESTDIR)$(INSTPATH)
+-	install -m 744 suse/$(TRG) $(DESTDIR)/etc/init.d 
+-	install -m 744	$(TRG).conf $(DESTDIR)/etc
++	install -s -m 755 $(TRG) $(DESTDIR)$(INSTPATH)
++	install -m 755 suse/$(TRG) $(DESTDIR)/etc/init.d 
++	install -m 644	$(TRG).conf $(DESTDIR)/etc
+ 	install --directory $(DESTDIR)$(MANDIR)/man8
+-	install -m 744  $(TRG).8 $(DESTDIR)$(MANDIR)/man8
++	install -m 644  $(TRG).8 $(DESTDIR)$(MANDIR)/man8
+ 	ln -sf /etc/init.d/kbdsniffd $(DESTDIR)$(INSTPATH)/rc$(TRG)

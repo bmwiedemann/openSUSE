@@ -1,0 +1,22 @@
+--- bin/specJava
++++ bin/specJava	2000/06/29 08:01:00
+@@ -8,7 +8,7 @@
+ # SCCS: @(#) specJava 1.7 97/06/26 10:06:45
+ 
+ # Change DIR to the directory that contains the SpecTcl source files
+-DIR=../SpecTcl
++DIR=/usr/lib/X11/SpecTcl/SpecTcl
+ 
+ # Change WISH to the pathname of your tk4.1a2 (or >) wish binary
+ WISH=`which wish`
+--- bin/specTcl
++++ bin/specTcl	2000/06/29 08:04:13
+@@ -8,7 +8,7 @@
+ # SCCS: @(#) specTcl 1.9 97/06/26 10:06:06
+ 
+ # Change DIR to the directory that contains the SpecTcl source files
+-DIR=../SpecTcl
++DIR=/usr/lib/X11/SpecTcl/SpecTcl
+ 
+ # Change WISH to the pathname of your tk4.1a2 (or >) wish binary
+ WISH=`which wish`

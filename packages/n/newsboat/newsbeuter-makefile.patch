@@ -1,0 +1,14 @@
+Index: newsboat-2.29/Makefile
+===================================================================
+--- newsboat-2.29.orig/Makefile
++++ newsboat-2.29/Makefile
+@@ -24,7 +24,8 @@ DEFINES=-DLOCALEDIR='"$(localedir)"'
+ 
+ WARNFLAGS=-Werror -Wall -Wextra -Wunreachable-code
+ INCLUDES=-Iinclude -Istfl -Ifilter -I. -Irss -I$(CARGO_TARGET_DIR)/cxxbridge/
+-BARE_CXXFLAGS=-std=c++11 -O2 -ggdb $(INCLUDES)
++OPTFLAGS=-ggdb
++BARE_CXXFLAGS=-std=c++11 $(OPTFLAGS) $(INCLUDES)
+ LDFLAGS+=-L.
+ 
+ # Constants

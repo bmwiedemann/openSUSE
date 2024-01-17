@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Wed Nov 10 11:01:52 UTC 2021 - lars@linux-schulserver.de - 1.2
+
+- finish UsrMerge, install to /usr/sbin (boo#1191106)
+- rename rungetty.patch to 01_rungetty-remove_sys_errlist.patch
+- copied patches from Debian: 
+  02_rungetty-manpage.patch to fix some errors in the manpage
+  03_rungetty-disable_path.patch do not hardcode the search path
+  04_rungetty-use_signed_int.patch change type of c in do_prompt to signed int 
+  06_rungetty-get_supplementary_groups_for_process.patch call 
+     initgroups to get supplementary groups for processes
+  07_rungetty-allow_autologin-on-all-ttys.patch allow autologin on 
+     all TTYs (not only tty1)
+- added patch to remove any extraneous groups when dropping root 
+  privileges: 05_rungetty-missing-call-to-setgroups-before-setuid.patch
+
+-------------------------------------------------------------------
+Sat Nov 14 14:14:14 UTC 2020 - olaf@aepfle.de
+
+- Remove usage of sys_errlist with rungetty.patch
+
+-------------------------------------------------------------------
+Fri Jun 29 08:58:20 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  No GPL-2.0 (i.e. "only") files found in the package
+
+-------------------------------------------------------------------
+Mon Mar 24 21:27:40 CET 2008 - lars@linux-schulserver.de
+
+- initial version 1.2 for openSUSE
+

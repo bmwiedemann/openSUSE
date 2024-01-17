@@ -1,0 +1,19 @@
+Index: pip-api-0.0.30/tests/test_parse_requirements.py
+===================================================================
+--- pip-api-0.0.30.orig/tests/test_parse_requirements.py
++++ pip-api-0.0.30/tests/test_parse_requirements.py
+@@ -75,14 +75,6 @@ PEP508_PIP_EXAMPLE_WHEEL_FILE = "file://
+             "",
+         ),
+         (
+-            # Version and URL can't be combined so this all gets parsed as a legacy version
+-            "pip==1.3.1@{url}\n".format(url=PEP508_PIP_EXAMPLE_URL),
+-            {"pip"},
+-            None,
+-            "pip==1.3.1@" + PEP508_PIP_EXAMPLE_URL,  # Note no extra space after @
+-            "==1.3.1@" + PEP508_PIP_EXAMPLE_URL,
+-        ),
+-        (
+             # VCS markers at the beginning of a URL get stripped away
+             "git+" + PEP508_PIP_EXAMPLE_EGG,
+             {"pip"},

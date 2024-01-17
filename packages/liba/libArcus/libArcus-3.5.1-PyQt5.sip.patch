@@ -1,0 +1,11 @@
+--- libArcus-4.13/cmake/FindSIP.cmake.orig	2022-01-14 14:57:37.563246117 +0100
++++ libArcus-4.13/cmake/FindSIP.cmake	2022-01-14 14:58:20.795439183 +0100
+@@ -72,7 +72,7 @@
+ )
+ 
+ execute_process(
+-    COMMAND ${Python3_EXECUTABLE} -c "import sip; print(sip.SIP_VERSION_STR)"
++    COMMAND ${Python3_EXECUTABLE} -c "import PyQt5.sip; print(PyQt5.sip.SIP_VERSION_STR)"
+     RESULT_VARIABLE _process_status
+     OUTPUT_VARIABLE _process_output
+     OUTPUT_STRIP_TRAILING_WHITESPACE

@@ -1,0 +1,20 @@
+[Unit]
+Description=Clam AntiVirus userspace daemon
+Documentation=man:clamd(8) man:clamd.conf(5) https://www.clamav.net/documents/
+After=network.target
+# Check for database existence
+ConditionPathExistsGlob=/var/lib/clamav/main.{c[vl]d,inc}
+ConditionPathExistsGlob=/var/lib/clamav/daily.{c[vl]d,inc}
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/clamd
+TimeoutStartSec=5min
+Restart=always
+ExecReload=/bin/kill -USR2 $MAINPID
+;User=vscan
+;Group=vscan
+;PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

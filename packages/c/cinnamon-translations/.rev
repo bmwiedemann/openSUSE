@@ -1,0 +1,241 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db37ad56dfd3a61a7b47f675c680fe91</srcmd5>
+    <version>2.8.3</version>
+    <time>1453416130</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>351849</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2da5bc4746b9f894c0415571f9188567</srcmd5>
+    <version>3.0.0</version>
+    <time>1461855435</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>391792</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>76514a79bb8def063eacb932640db009</srcmd5>
+    <version>3.0.2</version>
+    <time>1464484322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>397773</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>22282f9760bdb685c118aa9ca46cff6f</srcmd5>
+    <version>3.0.3</version>
+    <time>1467359943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>405084</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ae01662095fb0150c44c22ff2ca1b83e</srcmd5>
+    <version>3.2.1</version>
+    <time>1479229215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>439960</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>df0a932b085a8865d58ce40ab3b30d0e</srcmd5>
+    <version>3.2.2</version>
+    <time>1484041350</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>446527</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ed33c100a037b84979928ca3b45c1f93</srcmd5>
+    <version>3.4.1</version>
+    <time>1494263028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>493328</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7cddd9cd6e73e3fa889da5c5e64ab888</srcmd5>
+    <version>3.4.2</version>
+    <time>1495883879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>498025</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1886af76b61172f1cfa15ec901579e8b</srcmd5>
+    <version>3.4.3</version>
+    <time>1498742257</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>506908</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>11ce75479c702345dabde9a8748514af</srcmd5>
+    <version>3.6.1</version>
+    <time>1510322169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538956</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a25612d74a6fe196b26e7b789e0c4a0e</srcmd5>
+    <version>3.6.2</version>
+    <time>1510761434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541125</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d04acdb7e31b082711f85478f9733094</srcmd5>
+    <version>3.6.3</version>
+    <time>1511817389</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545326</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7d3387e41be9416b0f457b04ac7e101a</srcmd5>
+    <version>3.6.4</version>
+    <time>1515342236</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562236</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6877d2d16ad8fe7146ce864d144beb2e</srcmd5>
+    <version>3.8.1</version>
+    <time>1527605485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612389</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0f70bf605c786b49dc66091709ab1892</srcmd5>
+    <version>3.8.2</version>
+    <time>1530087800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619282</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b5a75a3fe552b20c3282ab4e622619d8</srcmd5>
+    <version>4.2.0</version>
+    <time>1563455963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713822</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>65336d58218b29b9a51653f16f7a4a20</srcmd5>
+    <version>4.2.1</version>
+    <time>1564414129</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719309</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>473b55bab1d44b63a23ff0b225270482</srcmd5>
+    <version>4.2.2</version>
+    <time>1566665434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725813</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>00cd46096d9f9740f7761c9c8946f840</srcmd5>
+    <version>4.4.2</version>
+    <time>1584447061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785768</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6509651516c617a35794ee68b8a19c8a</srcmd5>
+    <version>4.6.2</version>
+    <time>1599862248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833727</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>87c055736a51f3cb0260077d58bce8aa</srcmd5>
+    <version>4.8.0</version>
+    <time>1607877022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.8.0.
+  * Version bump with no change.
+</comment>
+    <requestid>855393</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>24a8c38d56ecf0687b6e742e3f00e10c</srcmd5>
+    <version>5.2.1</version>
+    <time>1641855179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.1.
+  * Update translations - andy great &lt;andythe_great@pm.me&gt;
+  * Updated copyright year.
+</comment>
+    <requestid>945164</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6301043fb4e74b42e50d8c0c71854d33</srcmd5>
+    <version>5.6.0</version>
+    <time>1670333007</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040423</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>62fc4788e28abf542091c59eaf8d70d4</srcmd5>
+    <version>5.6.1</version>
+    <time>1673724707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058312</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>295c7fee2a56831976e0d184c2508f31</srcmd5>
+    <version>5.8.0</version>
+    <time>1685830366</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.8.0:
+  * Updated translations</comment>
+    <requestid>1090574</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>fdb4d8a20fa3232a47bb74198d66ab0e</srcmd5>
+    <version>5.8.2</version>
+    <time>1689710096</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.8.2:
+  * Update translations</comment>
+    <requestid>1098985</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>42571d467e8ca306e4701abdc4f81718</srcmd5>
+    <version>6.0.0</version>
+    <time>1701632912</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.0:
+  * Update translations
+
+  * Update translations.
+- update to version 2.6.2
+- update version 2.2.3
+- update version 2.2.2
+- Updated to version 2.0.1</comment>
+    <requestid>1128787</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>288ab3a5d2dd0d619b84c1991d1cf872</srcmd5>
+    <version>6.0.1</version>
+    <time>1703198317</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.1:
+  * Update translations</comment>
+    <requestid>1134344</requestid>
+  </revision>
+</revisionlist>

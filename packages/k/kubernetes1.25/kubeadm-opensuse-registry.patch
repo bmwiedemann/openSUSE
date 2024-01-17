@@ -1,0 +1,26 @@
+Index: kubernetes-1.24.11/cmd/kubeadm/app/apis/kubeadm/v1beta2/defaults.go
+===================================================================
+--- kubernetes-1.24.11.orig/cmd/kubeadm/app/apis/kubeadm/v1beta2/defaults.go
++++ kubernetes-1.24.11/cmd/kubeadm/app/apis/kubeadm/v1beta2/defaults.go
+@@ -41,7 +41,7 @@ const (
+ 	DefaultCertificatesDir = "/etc/kubernetes/pki"
+ 	// DefaultImageRepository defines default image registry
+ 	// (previously this defaulted to k8s.gcr.io)
+-	DefaultImageRepository = "registry.k8s.io"
++	DefaultImageRepository = "registry.opensuse.org/kubic"
+ 	// DefaultManifestsDir defines default manifests directory
+ 	DefaultManifestsDir = "/etc/kubernetes/manifests"
+ 	// DefaultClusterName defines the default cluster name
+Index: kubernetes-1.24.11/cmd/kubeadm/app/apis/kubeadm/v1beta3/defaults.go
+===================================================================
+--- kubernetes-1.24.11.orig/cmd/kubeadm/app/apis/kubeadm/v1beta3/defaults.go
++++ kubernetes-1.24.11/cmd/kubeadm/app/apis/kubeadm/v1beta3/defaults.go
+@@ -43,7 +43,7 @@ const (
+ 	DefaultCertificatesDir = "/etc/kubernetes/pki"
+ 	// DefaultImageRepository defines default image registry
+ 	// (previously this defaulted to k8s.gcr.io)
+-	DefaultImageRepository = "registry.k8s.io"
++	DefaultImageRepository = "registry.opensuse.org/kubic"
+ 	// DefaultManifestsDir defines default manifests directory
+ 	DefaultManifestsDir = "/etc/kubernetes/manifests"
+ 	// DefaultClusterName defines the default cluster name

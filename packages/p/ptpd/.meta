@@ -1,0 +1,21 @@
+<package name="ptpd" project="openSUSE:Factory">
+  <title>Implements the Precision Time protocol as defined by IEEE 1588 standard</title>
+  <description>The PTP daemon (PTPd) implements the Precision Time protocol (PTP) as
+defined by the IEEE 1588 standard. PTP was developed to provide very
+precise time coordination of LAN connected computers.
+
+PTPd is a complete implementation of the IEEE 1588 specification for a
+standard (non-boundary) clock. PTPd has been tested with and is known
+to work properly with other IEEE 1588 implementations. The source code
+for PTPd is freely available under a BSD-style license. Thanks to
+contributions from users, PTPd is becoming an increasingly portable,
+interoperable, and stable IEEE 1588 implementation.
+
+PTPd can run on most 32-bit little- or big-endian processors. It does
+not require an FPU, so it is great for embedded processors. PTPd
+currently runs on Linux, uClinux, FreeBSD, and NetBSD. It should also
+be easy to port to other platforms.
+
+PTPd is free. Everyone is invited to use and contribute to PTPd.</description>
+  <devel project="network:time" package="ptpd"/>
+</package>

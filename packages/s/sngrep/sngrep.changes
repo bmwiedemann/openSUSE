@@ -1,0 +1,116 @@
+-------------------------------------------------------------------
+Sun Apr  2 14:45:08 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0
+  * save: add option --text to save captured data to plain text
+  * capture: fix memory overflows while parsing IP headers
+  * hep: fix hep listener enabled in offline mode
+  * core: stop sngrep when parent process has ended
+  * ssl: fix decrypt with AES256 GCM SHA384 cipher
+
+-------------------------------------------------------------------
+Wed Sep  7 10:29:07 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.0
+  * capture: added compatibility with openssl >= 3.5.0
+  * capture: fixed memory leak while rotating dialogs
+  * capture: added save file rotation through SIPHUP signal
+  * capture: added support for opening gzip compressed input files
+  * hep: received HEP packets can now be saved to PCAP files
+  * core: added support for PCRE2 library
+  * cf: raw payload preview now properly displays characters near
+    window borders
+  * cli: properly display captured dialog count when no interface
+    is used
+
+-------------------------------------------------------------------
+Sat May  7 09:11:02 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.0
+  * capture: add support for IP-IP encapsulation
+  * capture: add support for IPv6 fragments reassembly
+  * hep: add support for saving HEP received packets to PCAP
+  * tls: check client TLS version in gnutls code
+  * ui: fixed a crash when leaving ncurses screens
+
+-------------------------------------------------------------------
+Thu Nov 25 23:07:04 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.10
+  * fix compilation errors when using -Werror=format-security
+  * capture: properly set transport as TCP for assembled TCP
+    messages
+  * config: alias keyword now supports IP:PORT format.
+  * filter: increased size of src and dst fields for IPv6 addresses
+- Drop patch:
+  * fix-build-with-recent-ncurses-versions.patch
+
+-------------------------------------------------------------------
+Sat May 22 14:06:46 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.9
+  * capture: add support for HEP/EEP protocol packet capture
+  * capture: fixed a buffer overflow while validating TCP packets
+  * call flow: improved display for B-leg extended flows
+
+-------------------------------------------------------------------
+Wed Nov 11 14:35:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.8
+  * capture: add support for IPv6 SDP connection address
+  * capture: fixed a crash while parsing INVITES without R-URI
+  * capture: fixed a crash while parsing malformed Req/Resp lines
+  * call flow: improved IPv6 RTP columns address display
+  * core: code cleanup removing unused variables
+  * core: fixed multiple snprintf memory overflows
+  * core: avoid crash when linking against ncurses without tinfo
+
+-------------------------------------------------------------------
+Sat May 23 08:03:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.7
+  * capture: fixed a crash with invalid CSeq values
+  * capture: allow configurable libpcap capture buffer
+  * hep: support parsing of HEPv3 headers in any order
+  * ssl: updated code to exclude deprecated OpenSSL functions
+  * call raw: add support to IP alias display
+  * call list: updated diverted Call state conditions
+  * cli: match expression now applies to whole SIP payload
+  * cli: add support to multiple comma separated capture devices
+  * sip: add KDMQ custom method to SIP parser
+- Update to version 1.4.6
+  * capture: fixed pcap reading from stdin
+  * capture: make SIP regexp more tolerant to invalid uris
+  * capture: SIP dialogs can now start with INFO, REFER and UPDATE
+  * call list: Added methods and key bindings for soft clear of
+    call list
+  * call flow: improved performance while displaying a dialog with
+    lots of messages
+  * call flow: arrows are now sorted by time while displaying
+    multiple dialogs
+  * ui: fixed multiples buffer overflows crashes
+  * ui: improve compatibility with newest ncurses version
+- Drop not longer needed patch:
+  * 0001-ui-add-support-for-ncurses-compiled-with-opaque-stru.patch
+- Add patch:
+  * fix-build-with-recent-ncurses-versions.patch
+
+-------------------------------------------------------------------
+Thu Nov 15 20:04:49 UTC 2018 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Switch to ncurses6w.
+- 0001-ui-add-support-for-ncurses-compiled-with-opaque-stru.patch 
+  setting ESCDELAY global can't be done with ncurses6 opaque, must
+  use set_escdelay
+
+-------------------------------------------------------------------
+Tue Apr  3 20:10:56 UTC 2018 - mardnh@gmx.de
+
+- Switch to openssl
+- Add patch:
+  * 0001-ui-add-support-for-ncurses-compiled-with-opaque-stru.patch
+
+-------------------------------------------------------------------
+Fri Mar 30 07:43:42 UTC 2018 - mardnh@gmx.de
+
+- Initial package, version 1.4.5

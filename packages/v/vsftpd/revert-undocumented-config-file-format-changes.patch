@@ -1,0 +1,17 @@
+Index: vsftpd-3.0.5/parseconf.c
+===================================================================
+--- vsftpd-3.0.5.orig/parseconf.c	2022-02-01 20:35:02.703078850 +0100
++++ vsftpd-3.0.5/parseconf.c	2022-02-01 20:35:44.042486850 +0100
+@@ -85,9 +85,9 @@ parseconf_bool_array[] =
+   { "ssl_sslv2", &tunable_sslv2 },
+   { "ssl_sslv3", &tunable_sslv3 },
+   { "ssl_tlsv1", &tunable_tlsv1 },
+-  { "ssl_tlsv11", &tunable_tlsv1_1 },
+-  { "ssl_tlsv12", &tunable_tlsv1_2 },
+-  { "ssl_tlsv13", &tunable_tlsv1_3 },
++  { "ssl_tlsv1_1", &tunable_tlsv1_1 },
++  { "ssl_tlsv1_2", &tunable_tlsv1_2 },
++  { "ssl_tlsv1_3", &tunable_tlsv1_3 },
+   { "tilde_user_enable", &tunable_tilde_user_enable },
+   { "force_anon_logins_ssl", &tunable_force_anon_logins_ssl },
+   { "force_anon_data_ssl", &tunable_force_anon_data_ssl },

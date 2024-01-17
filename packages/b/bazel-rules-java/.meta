@@ -1,0 +1,5 @@
+<package name="bazel-rules-java" project="openSUSE:Factory">
+  <title>bazel-rules-java</title>
+  <description>Java rules for Bazel</description>
+  <devel project="devel:tools:building" package="bazel-rules-java"/>
+</package>

@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0fa133e5429a9d11bfd18e5d42026595</srcmd5>
+    <version>0.02.11</version>
+    <time>1495058074</time>
+    <user>lrupp</user>
+    <comment>I want to maintain powerstat in Factory</comment>
+    <requestid>495702</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1717bf8811cca7e9c30f7c5e98c82141</srcmd5>
+    <version>0.02.12</version>
+    <time>1498485196</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505861</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c8424873c12c0c13282c0226c52b90db</srcmd5>
+    <version>0.02.13</version>
+    <time>1509394725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537434</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9b27ef2dd60c2920bd211d173360b215</srcmd5>
+    <version>0.02.15</version>
+    <time>1517932275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573309</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>73d6c1c3f7f85c7cf098bd39c21c4345</srcmd5>
+    <version>0.02.17</version>
+    <time>1528394200</time>
+    <user>mnhauke</user>
+    <comment></comment>
+    <requestid>614061</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4f5390fb0c9be39ea69229c65c19c06a</srcmd5>
+    <version>0.02.18</version>
+    <time>1532527987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625117</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0aec44168a63e2c571fc2ac759b8c84f</srcmd5>
+    <version>0.02.21</version>
+    <time>1579101304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764447</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>42d7b943fed2f781516b90599303a393</srcmd5>
+    <version>0.02.22</version>
+    <time>1583702686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782690</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2643f87e87d9de90ef6f35c91f5040b5</srcmd5>
+    <version>0.02.23</version>
+    <time>1590650447</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809677</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cc04d8c84e209cef2161d97c1cf1ca65</srcmd5>
+    <version>0.02.24</version>
+    <time>1598274807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828656</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a9317eb7cd793123dfbe842548d6d6c7</srcmd5>
+    <version>0.02.25</version>
+    <time>1614792954</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876538</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>45377d42b14af7b94a42a847246a7465</srcmd5>
+    <version>0.02.26</version>
+    <time>1629101486</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911930</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>32d0f282fc2ae756637eda3553f740fe</srcmd5>
+    <version>0.02.27</version>
+    <time>1667499239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032913</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0e376b317a19f9cc8538632045299014</srcmd5>
+    <version>0.02.28</version>
+    <time>1672754712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046244</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e3224d51148167becc6ab7a0d8b95d4a</srcmd5>
+    <version>0.03.02</version>
+    <time>1682079427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080919</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8f9232f1578ee491920328f29e7d6388</srcmd5>
+    <version>0.03.03</version>
+    <time>1686665380</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092668</requestid>
+  </revision>
+</revisionlist>

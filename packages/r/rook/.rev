@@ -1,0 +1,292 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95134bd487fd0e635dc0ecd97decaf0f</srcmd5>
+    <version>1.0.0+git1615.g26887efd</version>
+    <time>1562843719</time>
+    <user>dimstar_suse</user>
+    <comment>- restore package name and correct unique containers tags
+- changing package name as it couldn't comply to the container tag name
+  + https://github.com/containers/image/issues/649 
+- Ceph added as a requirement to get it version for the container image
+- Added service to strip Ceph version from ceph package
+- Fixed sed for the container images names
+- Update Rook to commit ad89e4f47e744c484b8e264e351f6276a42eedfc
+  + change csi template path to match rook-k8s-yaml package files
+- Fix update-tarball.sh to delete right files
+- Add all manifests to the rook-k8s-yaml packages
+- Fix rook binary location from /usr/local/bin/ to /usr/bin/ 
+- Fix update-tarball.sh to ignore errors where is needed
+- Update spec to include additional ceph-csi config files 
+- Adding additional files as Source to spec 
+- Update tarball generation script to get correct version
+- Correct tarball name, spec version and package name
+- Add new k8s-yaml package to distribute manifests files
+- Update rook to commit 700cdd36fe9107733a717fac934c2bedd91fd290
+- build from https://github.com/SUSE/rook/tree/suse-master
+- based on Rook v1.0.0
+- Ceph:
+  + Ceph Nautilus (v14) is now supported by Rook
+  + The Ceph-CSI driver is available for experimental mode
+  + A CephNFS CRD will start NFS daemon(s) for exporting CephFS volumes or RGW buckets
+  + The number of mons can be increased automatically when new nodes come online
+  + OSDs provisioned by ceph-volume now supports metadataDevice and databaseSizeMB options
+- Update rook to commit c43b57844e37a7909beb362d08ef85fffdd5fed4
+- build from https://github.com/SUSE/rook/tree/suse-master
+- Ceph:
+  + Improve rbd hotplug selection
+  + set default version to nautilus
+  + improved OSD removal
+  + clean shutdown of CephFS
+  + improve logging
+  + improved upgrade ochestration
+- Update rook to commit 69936c170cb3913a539eacf963993e9bb3545e8a
+- Cassandra: Fix the mount point for th
+- Ceph:
+  + Improve mon failover cleanup and operator restart during failover
+  + Enable host ipc for osd encryption
+  + Add missing &quot;host path requires privileged&quot; setting to the helm chart
+- Update rook to commit 8e263cd9c31b0a310b0d1180e58ac843b432b14b
+- Correctly capture and log the stderr output from child processes
+- Allow disabling setting fsgroup when mounting a volume
+- Allow configuration of SELinux relabeling
+- Correctly set the secretKey used for cephfs mounts
+- Set ceph-mgr privileges to prevent the dashboard from failing on rbd mirroring settings
+- Correctly configure the ssl certificate for the RGW service
+- Allow configuration of the dashboard port
+- Allow disabling of ssl on the dashboard
+- Update rook to commit d0cd8cec72176bf28a3ac0ba1457297151004f79
+- Ceph CRDs have been declared stable V1.
+- Ceph versioning is decoupled from the Rook version. Luminous and Mimic can be run in production, or Nautilus in experimental mode.
+- Ceph upgrades are greatly simplified
+- The minimum version of Kubernetes supported by Rook changed from 1.7 to 1.8
+- install to /usr/local/bin as rook hardcodes this path for rookflex
+- Update rook to commit bf2759e317c44c0ad0aaf635e04cbd72a002a5a0
+- Refactor ceph containers to disconnect rook and ceph versions
+-------------
+- Update Rook build to use '-buildmode=pie' flag
+- Version at commit e11b3d863728667ea018aa329f3ad907360473cf
+-------------
+- Initial submission
+- Version at commit 71514921ad8e41ede6f2814e7004f0465e3dd0f7
+- Modifications to upstream Rook to support SLE:
+  - None
+</comment>
+    <requestid>713451</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f5bf8e257555890a0ffcf6b18992213e</srcmd5>
+    <version>1.0.0+git1697.ga265cdfd</version>
+    <time>1563259162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714841</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>28eefb82aad6d5f0dac6862518f57adf</srcmd5>
+    <version>1.0.0+git1783.g7a48482f</version>
+    <time>1564137480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718745</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0bbd64a4ba7e3c942bd6da7334c30e3d</srcmd5>
+    <version>1.0.0+git1862.ge9abbf48</version>
+    <time>1565962192</time>
+    <user>dimstar_suse</user>
+    <comment>Update Rook to commit e9abbf4831673a9a5545971532ae326e95f3ea60</comment>
+    <requestid>723072</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f781dfd166078422bd2d58261c8c322c</srcmd5>
+    <version>1.0.0+git1899.g69255322</version>
+    <time>1567000909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725604</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>42324eb7b47eebc06931b16c56a30d95</srcmd5>
+    <version>1.1.0+git0.g2f9db0e1</version>
+    <time>1568901058</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731406</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>95aaad83899680a9d983177593fd98ed</srcmd5>
+    <version>1.1.1+git0.g9a2641a6</version>
+    <time>1569588326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733524</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>95332ecd528bf287315436ae5c71c7dc</srcmd5>
+    <version>1.1.1+git0.g9a2641a6</version>
+    <time>1570285173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734599</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bcdafc3ada2a5bcefa0868f0291dbbbf</srcmd5>
+    <version>1.1.6+git0.g91d6f635</version>
+    <time>1573473533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746144</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4f086a32ce2007397a80f2c18e0918dc</srcmd5>
+    <version>1.1.7+git0.g50c6ca1f</version>
+    <time>1575728126</time>
+    <user>dimstar_suse</user>
+    <comment>Handle SES 6/7 (forwarded request 754359 from KGronlund)</comment>
+    <requestid>754360</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c23065a2b9cc0910786c7381f83e1eae</srcmd5>
+    <version>1.2.1+git0.gccc10604</version>
+    <time>1578950139</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761907</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>efa5a3f5c3c4b78c90dee6d93706b1eb</srcmd5>
+    <version>1.2.2+git0.g73593a1b</version>
+    <time>1580373354</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.2.2:
+  * Allow multiple clusters to set useAllDevices (#4692)
+  * Operator start all mons before checking quorum if they are all down (#4531)
+  * Ability to disable the crash controller (#4533)
+  * Document monitoring options for the cluster CR (#4698)
+  * Apply node topology labels to PV-backed OSDs in upgrade from v1.1 (#4616)
+  * Update examples to Ceph version v14.2.6 (#4653)
+  * Allow integration tests in minimal config to run on multiple K8s versions (#4674)
+  * Wrong pod name and hostname shown in alert CephMonHighNumberOfLeaderChanges (#4665)
+  * Set hostname properly in the CRUSH map for non-portable OSDs on PVCs (#4658)
+  * Update OpenShift example manifest to watch all namespaces for clusters (#4668)
+  * Use min_size defaults set by Ceph instead of overriding with Rook's defaults (#4638)
+  * CSI driver handling of upgrade from OCP 4.2 to OCP 4.3 (#4650-1)
+  * Add support for the k8s 1.17 failure domain labels (#4626)
+  * Add option to the cluster CR to continue upgrade even with unclean PGs (#4617)
+  * Add K8s 1.11 back to the integration tests as the minimum version (#4673)
+  * Fixed replication factor flag and the master addresses (#4625) (forwarded request 767768 from KGronlund)</comment>
+    <requestid>767773</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>02698040bdc41042b5156ecabb56efb2</srcmd5>
+    <version>1.2.4+git9.gd747507e</version>
+    <time>1582299585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777719</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>817f5ae02825aaa02584dc09d3bfa106</srcmd5>
+    <version>1.2.4+git9.gd747507e</version>
+    <time>1584050326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783397</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bd81db026f538f6ee1eab7ff510a8615</srcmd5>
+    <version>1.2.6+git0.g99024013</version>
+    <time>1585176143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786764</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b9e7466afb2c3262c734fcbc779bf548</srcmd5>
+    <version>1.2.7+git0.g1acfd182</version>
+    <time>1585995624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.2.7 (bsc#1168160):
+  * Apply the expected lower PG count for rgw metadata pools (#5091)
+  * Reject devices smaller than 5GiB for OSDs (#5089)
+  * Add extra check for filesystem to skip boot volumes for OSD configuration (#5022)
+  * Avoid duplication of mon pod anti-affinity (#4998)
+  * Update service monitor definition during upgrade (#5078)
+  * Resizer container fix due to misinterpretation of the cephcsi version (#5073-1)
+  * Set ResourceVersion for Prometheus rules (#4528)
+  * Upgrade doc clarification for RBAC related to the helm chart (#5054)</comment>
+    <requestid>790202</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>226e386b62e815c50debed375677c678</srcmd5>
+    <version>1.3.4+git0.ga5114030</version>
+    <time>1593096372</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>811075</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d1d9c7da24ba646cba71dc778cbf430b</srcmd5>
+    <version>1.4.0+git0.g801c5934</version>
+    <time>1597390225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825694</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f0754fa99a4814b16aa5ab88458c6d36</srcmd5>
+    <version>1.4.3+git18.g42e1675e</version>
+    <time>1601043653</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836113</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9080e37409ef0085c4b138f21fe2be4a</srcmd5>
+    <version>1.4.5+git5.ge3c837f8</version>
+    <time>1602155492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839809</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6e7582e053a08f368f6dc62d11e4ba45</srcmd5>
+    <version>1.5.7+git4.gae949004e</version>
+    <time>1615212920</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>876713</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9432557e98da272211162677454c29dc</srcmd5>
+    <version>1.5.10+git4.g309ad2f64</version>
+    <time>1619447912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887309</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>cfbf3f64369074257a41cf940c094dd1</srcmd5>
+    <version>1.5.10+git4.g309ad2f64</version>
+    <time>1619653025</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>889061</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fdbdfe9f6d643b1183672e8fdefbda24</srcmd5>
+    <version>1.6.2+git0.ge8fd65f08</version>
+    <time>1620937097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892261</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>af12c9df27d7877687765a10bffad05f</srcmd5>
+    <version>1.6.2+git0.ge8fd65f08</version>
+    <time>1645137594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955388</requestid>
+  </revision>
+</revisionlist>

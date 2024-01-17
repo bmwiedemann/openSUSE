@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3fa3403b14d5f60c3f27f5c4bb76e1f8</srcmd5>
+    <version>0.1.5a</version>
+    <time>1629706082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913345</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>054da4b35a572c491b1c7340d0570571</srcmd5>
+    <version>0.1.5a</version>
+    <time>1649949824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969376</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bbb22541f524a0828e4cb54f99bc5e51</srcmd5>
+    <version>0.1.5a</version>
+    <time>1667315437</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032664</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ec38d034cb90a90425a3377fb5e0b7ad</srcmd5>
+    <version>0.1.5a</version>
+    <time>1671023428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042467</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>f2b2945eeefde106b08772a3a7d4df04</srcmd5>
+    <version>0.1.5a</version>
+    <time>1682193460</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081578</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>0c70e84185adef02533048ff5421310f</srcmd5>
+    <version>0.1.5a</version>
+    <time>1697566955</time>
+    <user>anag+factory</user>
+    <comment>- Use upstream patches instead of custom one for python312
+  compatibility.
+  - add python312-1.patch gh#google/pyu2f@793acd9ff661
+  - add python312-2.patch gh#google/pyu2f@dad654010a03
+</comment>
+    <requestid>1118207</requestid>
+  </revision>
+</revisionlist>

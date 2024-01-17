@@ -1,0 +1,12 @@
+diff --git a/src/assets/user_profile_import.hpp b/src/assets/user_profile_import.hpp
+index 55a56d3..8e46adc 100644
+--- a/src/assets/user_profile_import.hpp
++++ b/src/assets/user_profile_import.hpp
+@@ -20,6 +20,7 @@
+ #include "data/saved_game.hpp"
+ 
+ #include <array>
++#include <cstdint>
+ #include <optional>
+ 
+ 

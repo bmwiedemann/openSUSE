@@ -1,0 +1,10 @@
+<package name="mingw32-zlib" project="openSUSE:Factory">
+  <title>Zlib compression library</title>
+  <description>zlib is designed to be a free, general-purpose, legally unencumbered -- that is, not covered by any patents -- lossless
+data-compression library for use on virtually any computer hardware and operating system.
+
+
+</description>
+  <devel project="windows:mingw:win32" package="mingw32-zlib"/>
+  <url>http://www.zlib.net/</url>
+</package>

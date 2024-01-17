@@ -1,0 +1,645 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a77baf612a9ea4f6a3bb5f64b879335d</srcmd5>
+    <version>3.3.0</version>
+    <time>1518426948</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure neutrality of description.
+- Fix unknown RPM category group.
+- Replace old $RPM_ variables with macros.
+- Avoid %__-type macro indirections.
+- Do not let fdupes cross partitions.
+- Branch package from piwik,
+  because piwik renamed to matomo.
+- update to 3.3.0
+  See https://matomo.org/changelog/matomo-3-3-0/
+- update to 3.2.1
+  see https://piwik.org/changelog/piwik-3-2-1/
+- update to 3.2.0
+  see https://piwik.org/changelog/piwik-3-2-0/
+- update to 3.1.1
+  see https://piwik.org/changelog/piwik-3-1-1/
+  
+- update to 3.1.0
+  This release is rated important, two XSS issues have bin fixed.
+  Also 120 tickets closed.
+  see https://piwik.org/changelog/piwik-3-1-0/
+- fix spec to use php7 too
+- fix errors in piwik.conf
+- update to 3.0.4
+  see https://piwik.org/changelog/piwik-3-0-4/
+- update to 3.0.3
+  see https://piwik.org/changelog/piwik-3-0-3/
+- update to 3.0.2
+  see https://piwik.org/changelog/piwik-3-0-2/
+- update to 3.0.1
+  see https://piwik.org/changelog/piwik-3-0-1/
+- update to 3.0.0
+  see https://piwik.org/changelog/piwik-3-0-0/
+- update to 2.17.1
+  see https://piwik.org/changelog/piwik-2-17-1/
+- update to 2.17.0
+  see https://piwik.org/changelog/piwik-2-17-0/
+- update to 2.16.5
+  see https://piwik.org/changelog/piwik-2-16-5/
+- update to 2.16.4
+  see https://piwik.org/changelog/piwik-2-16-4/
+- update to 2.16.3 
+  see https://piwik.org/changelog/piwik-2-16-3/
+  - This is a security release
+- update to 2.16.2
+  see https://piwik.org/changelog/piwik-2-16-2/
+  - This is a security release
+- update to 2.16.1
+  see http://piwik.org/changelog/piwik-2-16-1/
+  - This is a security release
+- Drop piwik-manifest_unneeded_files.patch: It's now in upstream
+- update to 2.16.0
+  see http://piwik.org/changelog/piwik-2-16-0/
+  
+- update to 2.15.0
+  see http://piwik.org/changelog/piwik-2-15-0/
+- insert attention mark for php caches in README.SUSE
+- activate and update manifest patch
+- update to 2.14.3
+  - #8439 Install of 2.14.2 blocked by permissions check on 
+    piwik/config path [by @mnapoli]
+  - #8431 Overlay improvements [by @sgiehl, @tsteur]
+  - #8352 In Page Overlay sidebar, add icon to let me 
+    “Open segmented visitor log” [by @sgiehl]
+  - #8403 Improve design of Trusted Piwik Hostname setting 
+    [by @barbushin, @tsteur]
+  - #7835 Rename “Widgets &amp; Dashboard” selector or change the 
+    selector [by @tsteur]
+  - #8293 Piwik errors logged in server error log should not have 
+    HTML [by @mnapoli]
+  - #8252 New config entry to set email name in email FROM field 
+    [by @tsteur]
+  - #8472 Fix bug in notification angular directive, do not use 
+    data-binding for noclear attribute… [by @diosmosis]
+  - #8285 UserCountryMap plugin shows wrong options in countries 
+    select [by @mnapoli]
+  - #8432 [automatic translation update] Updated 195 strings in 
+    32 languages (sk, ar, de, ja, nl, nb, sv, be, bg, ca, cs, da, 
+    el, es, fa, fi, fr, hi, hu, id, it, ko, pl, pt, ro, ru, sq, sr, 
+    th, tl, uk, vi) [by @sgiehl]
+  - #8474 [automatic translation update] Updated 254 strings in 
+    37 languages (gl, nb, cs, it, sk, de, el, fr, lt, ar, bg, ca, 
+    da, es, et, fa, fi, he, hi, hr, id, ja, ko, nl, nn, pl, ro, ru,
+    sl, sq, sr, sv, ta, th, tl, tr, vi) [by @sgiehl]
+- update to 2.14.2
+  - #8304 Column not found: 1054 Unknown column 
+    ‘log_visit.location_browser_lang’ in ‘field list'” [by @tsteur]
+  - #8365 renderer format is not valid – fatal php error after 
+    2.14.0
+  - #8316 URL parameter for core:archive console command is ignored 
+    [by @diosmosis, @mattab]
+  - #8307 Limit notifications of not authenticated sessions 
+    [by @tsteur]
+  - #8370 Can’t update GrabGravatar plugin [by @tsteur]
+  - #8346 node.className.split is not a function on tracking click 
+    on/near SVG element [by @dandv, @tsteur]
+  - #8294 CLI plugin generator doesn’t intercept plugin description 
+    [by @tsteur]
+  - #8257 Site Search report does not display tooltips with metrics 
+    documentation
+  - #7768 Browser info tooltip doesn’t hide
+  - #8411 Add System check that checks that shell_exec function is 
+    enabled [by @mattab]
+  - #8407 The string General_Cancel was not loaded in javascript 
+    [by @tsteur]
+  - #8400 Fix emails validation with unknown TLD 
+    [by @barbushin, @mnapoli]
+  - #8379 Travis system extraction part 1 [by @diosmosis]
+  - #8374 Tweaks to .travis.yml generator [by @diosmosis]
+  - #8376 [automatic translation update] Updated 661 strings in 
+    8 languages (nl, sv, de, es, ja, lt, pl, nb) [by @sgiehl]
+- initial version 2.13.1
+</comment>
+    <requestid>575404</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dc90e2725d4ad23090962291dba168b6</srcmd5>
+    <version>3.4.0</version>
+    <time>1523447875</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594656</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b388f5e5a761a0b15638db9df692738c</srcmd5>
+    <version>3.5.0</version>
+    <time>1526022861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605633</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>21d198939702e4933df4898fe1f1350c</srcmd5>
+    <version>3.5.1</version>
+    <time>1527583518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612374</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>04cf9dbbb2ba26c57963768f92de6fcd</srcmd5>
+    <version>3.6.0</version>
+    <time>1535705259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632252</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>22d2282eb25444871c57507a86334f3c</srcmd5>
+    <version>3.6.1</version>
+    <time>1540200242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643164</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6271987ce07651a859da5972015194c6</srcmd5>
+    <version>3.7.0</version>
+    <time>1543224690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651455</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ae965f5c4442caef9818463b12a63dc4</srcmd5>
+    <version>3.7.0</version>
+    <time>1543400118</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652221</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0898f857f13238d52ff962efaa0cd819</srcmd5>
+    <version>3.8.0</version>
+    <time>1548335614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667791</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>b130dc8d57d031497e9d5e557b3b11df</srcmd5>
+    <version>3.8.0</version>
+    <time>1548452682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668330</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3cb72b2505da8ace4af0e4d85a9c5327</srcmd5>
+    <version>3.8.1</version>
+    <time>1549017900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>669467</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>711eee3949e594b6c4069b81ba8fcf55</srcmd5>
+    <version>3.9.0</version>
+    <time>1553084562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686903</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>64d918bb3563823829c5de7241d932de</srcmd5>
+    <version>3.9.1</version>
+    <time>1553263941</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.1
+  * This release addresses a couple of issues and errors discovered
+    in Matomo 3.9.0. 4 tickets have been closed by 2 contributors.
+    - #14229 Notice – unserialize(): Error at offset 0 of 53988 
+      bytes
+    - #14226 open_basedir restriction AND Support multiple plugin 
+      paths [by @sgiehl]
+    - #14227 One-click upgrade sometimes fails with errors such as 
+      “Call to undefined method 
+      Piwik\Plugin\Manager::getPluginDirectory() ” 
+      (fails only once, works after a refresh)
+    - #14240 Do not send password changed email for automated use 
+      cases. [by @diosmosis, @sgiehl]
+</comment>
+    <requestid>687585</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2df7583c618aa22ac90d6df40bd4accf</srcmd5>
+    <version>3.10.0</version>
+    <time>1562056779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712941</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>7c7a3f3e37b2e5fd773096803553ae07</srcmd5>
+    <version>3.10.0</version>
+    <time>1562247855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713357</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7ddaceaf7f3b1fb58ca0d6256832eaab</srcmd5>
+    <version>3.11.0</version>
+    <time>1564137745</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718589</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c26021c35e1448e2cf7e0ed42f548770</srcmd5>
+    <version>3.12.0</version>
+    <time>1572443352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744178</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>27d6dffa1d8d3d7c951f60687663badb</srcmd5>
+    <version>3.12.0</version>
+    <time>1572779561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744753</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f65a33fb82828c4c14893af8fd4bfc99</srcmd5>
+    <version>3.13.0</version>
+    <time>1576189203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756045</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>7dc6ab48480e4c37652007b01ce396ea</srcmd5>
+    <version>3.13.0</version>
+    <time>1576928091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758646</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>5e448210aa9e17f143665acd32f6b68d</srcmd5>
+    <version>3.13.0</version>
+    <time>1577194241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759114</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b14e26eacffdef69acf8d364b33a6e36</srcmd5>
+    <version>3.13.1</version>
+    <time>1579463821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765511</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>c1f2cb211a5c342185cf06b05e5fde60</srcmd5>
+    <version>3.13.1</version>
+    <time>1580842501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769781</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8015803ef4e44caa41c7433f73dc29ad</srcmd5>
+    <version>3.13.2</version>
+    <time>1582029040</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>775128</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b3eb98cabf922e7d74de210012a88225</srcmd5>
+    <version>3.13.3</version>
+    <time>1583311475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781188</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>079aab7cc38d2c78f30e4ad96beb0dca</srcmd5>
+    <version>3.13.4</version>
+    <time>1585484774</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.13.4
+  This release is rated moderate security release.
+  - Fix a a possible XSS issue.
+  * matomo-org/matomo
+    - #15625 ‘Remember me’ not working because cookie expire is in wrong format [by @sgiehl]
+    - #15598 Set samesite lax instead of None if site is not on https [by @tsteur]
+    - #15623 Mention require PHP 7.2 in admin notification [by @sgiehl]
+    - #15588 slow SQL query using MariaDB causing high CPU load [by @sgiehl]
+    - #15609 Limit max execution time of transitions feature [by @sgiehl]
+    - #15616 Review Archive invalidation code [by @diosmosis]
+    - #15646 Today archive is invalidated too often [by @diosmosis]
+    - #14694 Warning – ucwords() expects exactly 1 parameter, 2 given [by @katebutler, @sgiehl]
+    - #14764 Page Overlay stuck on “Loading…”
+    - #15589 [Geo] Unknown region metrics increased significantly after update to v3.13.1
+    - #15629 Using Opt-Out iFrame twice doesn’t work [by @sgiehl]
+    - #15637 Ecommerce Orders Conversion Rate Rounding Error [by @sgiehl]
+    - #15550 Notice: Trying to access array offset on value of type null in 
+      core/Session/SessionAuth.php on line 63 [by @diosmosis]
+    - #15651 Prevent connection timed out when requesting configs.php file on IIS in web.config
+    - #15672 There is no way to enable ‘secure’ for the 3rd party cookie [by @tsteur]
+    - #15580 Geolocation: automatically download latest paid DB-IP databases [by @sgiehl]
+    - #15614 Remove donation widget from dashboard [by @tsteur]
+    - #15665 Convert range date to date archive if needed [by @tsteur, @sgiehl]
+    - #15673 Always send a referrer-policy header [by @polarbirke, @diosmosis]
+    - #15684 Retry compiling less file if it fails [by @tsteur, @diosmosis]
+    - #15686 Prevent notice in PHP 7.4 Passing glue string after array is deprecated
+    - #15687 Make sure config cache is only used when there is a correct path
+    - #15707 Detect page view bucket [by @tsteur]
+  * matomo-org/device-detector
+    - #6174 Oppo devices not detected (new useragent list &amp; model names)
+    - #6176 Detect devices for brands: Asus, Oppo, Huawei, Sony, Lenovo, LG, Wiko, Nuvo, Alcatel,
+      Irbis, Heair, Motorola, CoolPad, Sunvell, AllDocube, Assistant, DEXP, ZTE, CAT, Xiaomi,
+      Google, Yandex, Hisense, T-Mobile, Allview, ViewSonic, Yxtel, Ginzzu, HTC 
+    - #6178 Add Java port to README.md [by @mngsk, @sgiehl]
+    - #6181 Add ScalaJ HTTP library [by @wallin, @sgiehl]
+    - #6183 Detection of Google Stackdriver Monitoring [by @Pierre-Lannoy, @sgiehl]
+    - #6184 Detection for Google Cloud Scheduler [by @Pierre-Lannoy, @sgiehl]
+    - #6185 Car tablet CarPad
+    - #6186 Panasonic Lumix DMC-CM1
+    - #6189 feat(device) detect new brand NewsMy &amp; CarPad 2, CarPad 3; [by @sanchezzzhak, @sgiehl]
+    - #6191 Detect devices for brands: Wiko, Oysters, Pixus, Cherry Mobile, Vivo, EvroMedia,
+      Allview, ZTE, Lenovo, Kiwi, Spectrum, Vesta, Ritmix, Casper, NUU, Ginzzu, Telefunken,
+      National, Kaiomy, Kanji [by @sanchezzzhak, @sgiehl]
+    - #6195 Added Node Fetch library [by @wallin, @sgiehl]
+    - #6198 Adds detection for Samsung devices [by @liviuconcioiu, @sgiehl]
+    - #6200 Adds detection for iHunt devices [by @liviuconcioiu, @sgiehl]
+    - #6201 Adds detection for Allview devices [by @liviuconcioiu, @sgiehl]
+    - #6202 Adds detection for Wiko devices [by @liviuconcioiu, @sgiehl]
+  * matomo-org/referrer-spam-blacklist
+    - #1181 More spammers [by @AaronVanGeffen, @spmedia]
+    - #1182 Add greentechsy.com [by @ericguirbal, @spmedia]
+    - #1184 Add ingramreed.xyz [by @ericguirbal, @spmedia]
+    - #1185 Add janemill.xyz [by @ericguirbal, @spmedia]
+    - #1186 More spammers [by @AaronVanGeffen, @spmedia]
+    - #1187 Add sabinablog.xyz [by @ericguirbal, @spmedia]
+    - #1188 Add martinahome.xyz [by @ericguirbal, @spmedia]
+  * matomo-org/tag-manager
+    - #229 Set samesite flag (used in “preview mode” in tag manager container)
+    - #232 Remove duplicate index in variables table [by @tsteur]
+  * matomo-org/matomo-php-tracker
+    - #60 Prevent double slashes [by @tsteur, @sgiehl]
+  * matomo-org/matomo-log-analytics
+    - #180 Improve regex for date and time in w3c formats [by @sgiehl]  
+</comment>
+    <requestid>789243</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b351e7387f66607a4053b2a5f9903d4f</srcmd5>
+    <version>3.14.1</version>
+    <time>1603545418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839490</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2b5cfd26b04e998ae6a2f80c226f0dad</srcmd5>
+    <version>4.2.1</version>
+    <time>1617130299</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875941</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>42248531252fe3a2a16e46917988b4a9</srcmd5>
+    <version>4.3.0</version>
+    <time>1621269917</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.3.0</comment>
+    <requestid>893676</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>35887c580e38ab62b81d8c5c97f1d0d7</srcmd5>
+    <version>4.3.1</version>
+    <time>1622536635</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895593</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>808d4d0bbb7426aa9021e431a057b8db</srcmd5>
+    <version>4.4.0</version>
+    <time>1627492903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908888</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>cb7daece1e30590159201c331f1aa877</srcmd5>
+    <version>4.4.1</version>
+    <time>1627898712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909687</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>142469a97975a9537133fd71f0c39d8e</srcmd5>
+    <version>4.5.0</version>
+    <time>1633644368</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923669</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>24661d2cdb019b85da73121b040eb0df</srcmd5>
+    <version>4.6.1</version>
+    <time>1638388027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934911</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>63dcbaae86d09cce12546205a39081a9</srcmd5>
+    <version>4.6.2</version>
+    <time>1639169554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>939018</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>01efebd3f2000760a41f81a32c53f90b</srcmd5>
+    <version>4.7.0</version>
+    <time>1643838104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950663</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>df86bc27ada3448839fe6ce81adb9b36</srcmd5>
+    <version>4.8.0</version>
+    <time>1646848071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960374</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>08c7599162c732450646d9608ab0d185</srcmd5>
+    <version>4.9.0</version>
+    <time>1650822355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972383</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ba63bbfb9f471c6276fa8c0b33b4e7a8</srcmd5>
+    <version>4.9.1</version>
+    <time>1651088476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973046</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a05005f7fd1ff78566282d464f530694</srcmd5>
+    <version>4.10.0</version>
+    <time>1652717304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977431</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>33641665eac04ebc76ef4b856b1d501e</srcmd5>
+    <version>4.10.1</version>
+    <time>1653503699</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979119</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>b9baa66af6f42ebe563bdd5dc35f9b7f</srcmd5>
+    <version>4.11.0</version>
+    <time>1659721891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993236</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>210fc31fcfcd0502c392986afcdaa107</srcmd5>
+    <version>4.12.0</version>
+    <time>1665034914</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008110</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ab1683fb7990ee6ac518c1816960159b</srcmd5>
+    <version>4.12.1</version>
+    <time>1666178279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029902</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>d0e6ba56d7a977c96b5882d42ae05199</srcmd5>
+    <version>4.12.2</version>
+    <time>1666362021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030401</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>06ab778f1acbd40a5ef8b246265e1505</srcmd5>
+    <version>4.12.3</version>
+    <time>1666978323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031960</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>f8beec775f2bad1529f9fdb9677e099d</srcmd5>
+    <version>4.13.0</version>
+    <time>1670588297</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041790</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>4a007273174cc863aed18b206e81cc14</srcmd5>
+    <version>4.13.1</version>
+    <time>1673888397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058727</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>e790a3cc574b3415cddf4dd4538692f5</srcmd5>
+    <version>4.13.2</version>
+    <time>1674737942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061151</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>a11e7537108b0b0478c56d5aa61ca7e0</srcmd5>
+    <version>4.13.3</version>
+    <time>1675177798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062190</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>894f0bf8ce0f7c13e9cec4eacfde6ffe</srcmd5>
+    <version>4.14.1</version>
+    <time>1679520665</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073701</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>cef49b14d8a8edc5330f98f196fcf038</srcmd5>
+    <version>4.14.2</version>
+    <time>1681826003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080105</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>b40872c516f56416e73040b891a50345</srcmd5>
+    <version>4.15.0</version>
+    <time>1688737670</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097458</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>bc262bc342425f4d64025735b3cccb22</srcmd5>
+    <version>4.15.1</version>
+    <time>1691076645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102153</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>23b9c42518f1d4d27fc8a9f0c2dd5580</srcmd5>
+    <version>4.16.0</version>
+    <time>1701378017</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129707</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>47e69eded48cb5de9c39618f3123c990</srcmd5>
+    <version>5.0.0</version>
+    <time>1703024203</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134024</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>547107d64a7b30a62a134b09a8b8d2df</srcmd5>
+    <version>5.0.1</version>
+    <time>1704487527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137058</requestid>
+  </revision>
+</revisionlist>

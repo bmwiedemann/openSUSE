@@ -1,0 +1,8 @@
+<package name="python-Mathics-Scanner" project="openSUSE:Factory">
+  <title>Character Tables and Tokenizer for Mathics and the Wolfram Language</title>
+  <description>Character Tables and Tokenizer for Mathics and the Wolfram Language.
+
+</description>
+  <devel project="science" package="python-Mathics-Scanner"/>
+  <url>https://mathics.org/</url>
+</package>

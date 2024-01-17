@@ -1,0 +1,7 @@
+<package name="monitoring-plugins-bonding" project="openSUSE:Factory">
+  <title>Network Bonding Check</title>
+  <description>
+Check if physical interfaces are plugged in, and warns when one link is dead.
+  </description>
+  <devel project="server:monitoring" package="monitoring-plugins-bonding"/>
+</package>

@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b4e0016650270ca84eeeda87e857208</srcmd5>
+    <version>0.6.0</version>
+    <time>1495034343</time>
+    <user>dimstar_suse</user>
+    <comment>new package, future dependency of sysbench, now with constraints</comment>
+    <requestid>495529</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5687c68a5ce8bd99011a9986f2b7998d</srcmd5>
+    <version>0.6.0</version>
+    <time>1530866705</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621047</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>323fd0e64ee3b383f6b3ddf177f6a8ea</srcmd5>
+    <version>0.6.0</version>
+    <time>1560971570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710659</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>cd6071010a8726bbb1066b1873d7a2cb</srcmd5>
+    <version>0.6.0</version>
+    <time>1570627211</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable tests as they fail with gcc9</comment>
+    <requestid>736403</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d0f517314465a7e7962fb75d4e305145</srcmd5>
+    <version>0.6.0</version>
+    <time>1572443320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744096</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9c98b6729d752a92b4dc572ea58b3106</srcmd5>
+    <version>0.7.1</version>
+    <time>1625516574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904040</requestid>
+  </revision>
+</revisionlist>

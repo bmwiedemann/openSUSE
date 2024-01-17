@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Mon Oct  2 10:55:56 UTC 2023 - pgajdos@suse.com
+
+- version update to 4.0.0
+  * Remove support for Python versions older than 3.8 by @WAKayser in #330
+  * Add GHA tooling by @corydolphin in #331
+
+-------------------------------------------------------------------
+Tue Jun 13 10:49:41 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Thu Jan  6 19:06:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Six is required unconditionally
+
+-------------------------------------------------------------------
+Wed Nov  3 04:02:47 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pytest to run the testsuite. 
+
+-------------------------------------------------------------------
+Sun Apr  4 23:24:30 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 3.0.10:
+  * Adds support for PPC64 and ARM64 builds for distribution. Thanks
+    @sreekanth370
+
+-------------------------------------------------------------------
+Tue Sep  1 09:23:10 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 3.0.9:
+  * Escape path before evaluating resource rules. Prior to this,
+    flask-cors incorrectly evaluated CORS resource matching before
+    path expansion. E.g. "/api/../foo.txt" would incorrectly match
+    resources for "/api/*" whereas the path actually expands
+    simply to "/foo.txt" (CVE-2020-25032, boo#1175986)
+- Remove patch which is no longer required when using (at least)
+  Flask 1.1, which is the case in Factory:
+  * 0001-Disable-ACL_ORIGIN-check.patch
+
+-------------------------------------------------------------------
+Tue Oct 22 12:20:25 UTC 2019 - Petr Cervinka <petr@cervinka.net>
+
+- Add patch 0001-Disable-ACL_ORIGIN-check.patch to disable failing 
+  ACL_ORIGIN check in test (boo#1154808)
+
+-------------------------------------------------------------------
+Sat Jun  8 23:12:35 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 3.0.8:
+  * DeprecationWarning: Using or importing the ABCs from 'collections'
+    instead of from 'collections.abc' is deprecated, and in 3.8 it
+    will stop working
+
+-------------------------------------------------------------------
+Mon Nov 12 05:59:16 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+
+- update to version 3.0.7:
+  * Updated logging.warn to logging.warning (#234) Thanks Vaibhav
+
+-------------------------------------------------------------------
+Tue Jul 17 08:20:31 UTC 2018 - alarrosa@suse.com
+
+- Require python-six in Leap 42.3 to fix build
+
+-------------------------------------------------------------------
+Mon Jul 16 12:04:30 UTC 2018 - tchvatal@suse.com
+
+- Enable testsuite
+
+-------------------------------------------------------------------
+Thu Jul 12 17:17:41 UTC 2018 - alarrosa@suse.com
+
+- Initial package for python-Flask-Cors 3.0.6

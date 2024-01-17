@@ -1,0 +1,17 @@
+diff -Nru guest-agent-20211019.00.orig/google_guest_agent/addresses.go guest-agent-20211019.00/google_guest_agent/addresses.go
+--- guest-agent-20211019.00.orig/google_guest_agent/addresses.go	2021-10-20 00:09:13.000000000 +0200
++++ guest-agent-20211019.00/google_guest_agent/addresses.go	2021-10-22 11:32:04.447560133 +0200
+@@ -558,7 +558,12 @@
+ 		logger.Debugf("write enabling ifcfg-%s config", iface)
+ 
+ 		var ifcfg *os.File
+-		ifcfg, err = os.Create("/etc/sysconfig/network/ifcfg-" + iface)
++		filename := "/etc/sysconfig/network/ifcfg-" + iface
++		_, err = os.Stat(filename)
++		if ! os.IsNotExist(err) {
++			return nil
++		}
++		ifcfg, err = os.Create(filename)
+ 		if err != nil {
+ 			return err
+ 		}

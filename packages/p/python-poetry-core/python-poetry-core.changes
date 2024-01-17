@@ -1,0 +1,356 @@
+-------------------------------------------------------------------
+Tue Jan  2 19:14:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.1:
+  * Fix an issue where git URLs starting with `git+` could not be
+    parsed anymore (#657).
+  * Add `3.12` to the list of available Python versions (#631).
+  * Add support for creating packages dynamically in the build
+    script
+  * Improve marker logic for `extra` markers (#636).
+  * Update list of supported licenses (#635,
+  * #646).
+  * Deprecate `Dependency.transitive_python_versions` (#648).
+  * Deprecate `Dependency.transitive_python_constraint` (#649).
+  * Fix an issue where projects with extension modules were not
+    installed in editable mode (#633).
+  * Fix an issue where the wrong or no `lib` folder was added to
+    the wheel (#634).
+  * Replace `jsonschema` with `fastjsonschema`.
+  * `lark==1.1.8`
+  * `packaging==23.2`
+
+-------------------------------------------------------------------
+Sat Sep 23 10:06:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.7.0
+  ## Added
+  * Optionally use resolved references when converting a VCS
+    dependency to a PEP 508 dependency specification (#603).
+  * Improve performance of marker handling (#609).
+  ## Changed
+  * Drop support for Python 3.7 (#566).
+  * Remove deprecated poetry.core.constraints.generic and
+    poetry.core.semver (#601).
+  * Allow | as a value separator in markers with the operators in
+    and not in (#608).
+  * Put pretty name (instead of normalized name) in metadata
+    (#620).
+  * Update list of supported licenses (#623).
+  ## Fixed
+  * Fix an issue where the encoding was not handled correctly when
+    calling a subprocess (#602).
+  * Fix an issue where caret constraints with additional whitespace
+    could not be parsed (#606).
+  * Fix an issue where PEP 508 dependency specifications with names
+    starting with a digit could not be parsed (#607).
+  * Fix an issue where Poetry considered an unrelated .gitignore
+    file resulting in an empty wheel (#611).
+
+-------------------------------------------------------------------
+Mon May 29 17:00:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.6.1
+  * Fix an endless recursion in marker handling (#593).
+  * Fix an issue where the wheel tag was not built correctly under
+    certain circumstances (#591).
+  * Fix an issue where the tests included in the sdist failed due
+    to missing files (#589).
+
+-------------------------------------------------------------------
+Mon May 22 20:41:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update description
+
+-------------------------------------------------------------------
+Mon May 22 07:52:37 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.6.0
+  * Improve error message for invalid markers (#569).
+  * Increase robustness when deleting temporary directories on
+    Windows (#460).
+  * Replace tomlkit with tomli, which changes the interface of some
+    internal classes (#483).
+  * Deprecate Package.category (#561).
+  * Fix a performance regression in marker handling (#568).
+  * Fix an issue where wildcard version constraints were not
+    handled correctly (#402).
+  * Fix an issue where poetry build created duplicate Python
+    classifiers if they were specified manually (#578).
+  * Fix an issue where local versions where not handled correctly
+    (#579).
+
+-------------------------------------------------------------------
+Mon Apr 24 17:44:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.5.2
+  * no changes relevant for Linux
+- Release 1.5.1
+  * Improve performance by caching parsed markers, constraints and
+    versions (#556).
+- Release 1.5.0
+  ## Added
+  * Improve marker handling (#528, #534, #530, #546, #547).
+  * Allow overriding the output directory when building dist files
+    (#527).
+  * Validate whether dependencies referenced in extras are defined
+    in the main dependency group (#542).
+  * Improve handling of generic constraints (#515).
+  ## Changed
+  * Deprecate the hash function of FileDependency (#535).
+  * Do not set allows_preleases implicitly anymore if the lower
+    bound of a constraint is a pre-release (#543).
+  * Poetry no longer generates a setup.py file in sdists by default
+    (#318).
+  * Remove the unused platform attribute from Package (#548).
+  * Deprecate the pretty_version parameter when creating a Package
+    (#549).
+  * Validate path dependencies during use instead of during
+    construction (#520).
+  ## Fixed
+  * Fix an issue where the PEP 517 metadata_directory was not
+    respected when building an editable wheel (#537).
+  * Fix an issue where trailing newlines were allowed in
+    tool.poetry.description (#505).
+  * Fix an issue where the name of the data folder in wheels was
+    not normalized (#532).
+  * Fix an issue where the order of entries in the RECORD file was
+    not deterministic (#545).
+  * Fix an issue where parsing of VCS URLs with escaped characters
+    failed (#524).
+  * Fix an issue where the subdirectory parameter of VCS URLs was
+    not respected (#518).
+  * Fix an issue where zero padding was not correctly handled in
+    version comparisons (#540).
+  * Fix an issue where sdist builds did not support multiple
+    READMEs (#486).
+- Remove devendoring: produces too many build dependency cycles as
+  a build backend
+
+-------------------------------------------------------------------
+Fri Apr 21 12:29:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:43:06 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Tue Dec 13 17:40:10 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- Update devendored requirements
+
+-------------------------------------------------------------------
+Tue Dec 13 16:06:09 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.4.0
+  * Added
+  The PEP 517 metadata_directory is now respected as an input to the build_wheel hook (#487).
+  * Changed
+  Sources are now considered more carefully when dealing with dependencies with environment markers (#497).
+  EmptyConstraint is now hashable (#513).
+  ParseConstraintError is now raised on version and constraint parsing errors, and includes information on the package that caused the error (#514).
+  * Fixed
+  Fix an issue where invalid PEP 508 requirements were generated due to a missing space before semicolons (#510).
+  Fix an issue where relative paths were encoded into package requirements, instead of a file:// URL as required by PEP 508 (#512).
+  * Vendoring
+  jsonschema==4.17.0
+  lark==1.1.14
+  pyrsistent==0.19.2
+  tomlkit==0.11.6
+  typing-extensions==4.4.0
+
+-------------------------------------------------------------------
+Tue Oct 11 12:48:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- adjust to lark-parser -> lark rename
+
+-------------------------------------------------------------------
+Sun Oct  9 10:20:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.3.2
+  * Fix an issue where the normalization was not applied to the
+    path of an sdist built using a PEP 517 frontend (#495).
+- Release 1.3.1
+  * Fix an issue where a typing-driven assertion could be false at
+    runtime, causing a failure during
+    prepare_metadata_for_build_wheel (#492).
+- Release 1.3.0
+  * Add 3.11 to the list of available Python versions (#477).
+  * Deprecate poetry.core.constraints.generic, which is replaced by
+    poetry.core.packages.constraints (#482).
+  * Deprecate poetry.core.semver, which is replaced by
+    poetry.core.constraints.version (#482).
+  * Fix an issue where versions were escaped wrongly when building
+    the wheel name (#469).
+  * Fix an issue where caret constraints of pre-releases with a
+    major version of 0 resulted in an empty version range (#475).
+  * Fix an issue where the names of extras were not normalized
+    according to PEP 685 (#476).
+  * Fix an issue where sdist names were not normalized (#484).
+- Release 1.2.0
+  * Added support for subdirectories in url dependencies (#398).
+  * When setting an invalid version constraint an error is raised
+    instead of silently setting "any version" (#461).
+  * Allow more characters in author name (#411).
+  * Fixed an issue where incorrect Requires-Dist information was
+    generated when environment markers where used for optional
+    packages (#462).
+  * Fixed an issue where incorrect python constraints were parsed
+    from environment markers (#457).
+  * Fixed the hashing of markers and constraints (#466).
+  * Fixed an issue where the PEP 508 name of directory dependencies
+    used platform paths (#463).
+- Release 1.1.0
+  * Dropped support for Python 2.7 and 3.6 (#131, #263).
+  * Reorganized imports internally to improve performances (#131).
+  * Directory dependencies are now in non-develop mode by default
+    (#98).
+  * Improved support for PEP 440 specific versions that do not
+    abide by semantic versioning (#140).
+  * Files in source distributions now have a deterministic time to
+    improve reproducibility. (#142)
+  * Added support for script files in addition to standard entry
+    points. (#40)
+  * Added support for dependency groups. (#183)
+  * Add support for most of the guaranteed hashes (#207).
+  * Add support to declare multiple README files (#248).
+  * Add support for git sub directories (#192).
+  * Add hooks according to PEP-660 for editable installs (#182).
+  * Add support for version epochs (#264).
+  * Loose the strictness when parsing version constraint to support
+    invalid use of wildcards, e.g. >=3.* (#186).
+  * No longer assume a default git branch name (#192).
+  * Sort package name in extras to make it reproducible (#280).
+  * Improve marker handling (#208, #282, #283, #284, #286, #291,
+    #293, #294, #297).
+  * Added support for handling git urls with subdirectory (#288).
+  * Added support for metadata files as described in PEP-658 for
+    PEP-503 "simple" API repositories (#333).
+  * Renamed dependency group of runtime dependencies to from
+    default to main (#326).
+  * poetry-core is now completely type checked.
+  * Improved the SemVer constraint parsing (#327).
+  * Improved the speed when cloning git repositories (#290).
+  * Added support for valid PEP 517 projects with another
+    build-system than poetry-core as directory dependencies (#368,
+    #377).
+  * Added support for yanked files and releases according to PEP
+    592 (#400).
+  * Relaxed schema validation to allow additional properties
+    (#369).
+  * Harmonized string representation of dependencies (#393).
+  * Changed wheel name normalization to follow most recent
+    packaging specification (#394).
+  * Changed equality check of direct origin dependencies, so that
+    constraints are not considered anymore (#405).
+  * Deprecated Dependency.set_constraint() and replaced it by a
+    constraint property for consistency (#370).
+  * Removed Package.requires_extras (#374).
+  * Improved marker handling (#380, #383, #384, #390, #395).
+  * Enabled setting version of ProjectPackage to support
+    dynamically setting the project's package version (e.g. from a
+    plugin) (#447).
+
+-------------------------------------------------------------------
+Fri Mar 18 11:05:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.8
+  * Add hooks according to PEP-660 for editable installs (#257).
+
+-------------------------------------------------------------------
+Sat Dec  4 21:06:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.7
+  * Fixed an issue where the wrong git executable could be used on
+    Windows. (#213)
+  * Fixed an issue where the Python 3.10 classifier was not
+    automatically added. (#215)
+
+-------------------------------------------------------------------
+Wed Sep 22 09:47:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.6
+  * Added support for more hash types gen generating hashes. (#207)
+- Release 1.0.5
+  * Fixed the copy of Package instances which led to file hashes
+    not being available. (#193)
+  * Fixed an issue where unsafe parameters could be passed to git
+    commands. (#203)
+  * Fixed an issue where the wrong git executable could be used on
+    Windows. (#205)
+- Release 1.0.4
+  * Fixed an error in the way python markers with a precision >= 3
+    were handled. (#180)
+  * Fixed an error in the evaluation of in/not in markers (#189)
+
+-------------------------------------------------------------------
+Wed Apr 14 21:43:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.3
+  * Fixed an error when handling single-digit Python markers (#156)
+  * Fixed dependency markers not being properly copied when changing the constraint (#163).
+- Release 1.0.2
+  * Fixed a missing import causing an error in Poetry (#134).
+- Release 1.0.1
+  * Fixed PEP 508 representation of dependency without extras
+    (#102).
+  * Fixed an error where development dependencies were being
+    resolved when invoking the PEP-517 backend (#101).
+  * Fixed source distribution not being deterministic (#105).
+  * Fixed an error where zip files were left open when building
+    wheels (#122).
+  * Fixed an error where explicitly included files were still not
+    present in final distributions (#124).
+  * Fixed wheel filename matching for recent architecture (#125,
+    #129).
+  * Fixed an error where the & character was not accepted for
+    author names (#120).
+  * Fixed the PEP-508 representation of some dependencies (#103).
+  * Fixed the Requires-Python metadata generation (#127).
+  * Fixed an error where pre-release versions were accepted in
+    version constraints (#128).
+
+-------------------------------------------------------------------
+Tue Oct 20 11:20:59 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+Remove python2 subpackage:
+python2 requires the typing package as a dependency, but we ship a too recent version of that and thus cannot build it for Leap + Python2 anymore
+
+-------------------------------------------------------------------
+Fri Oct 16 17:01:46 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Let the pyproject_install macro do the compiling
+
+-------------------------------------------------------------------
+Sat Oct 10 20:06:27 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- unbundle vendored packages
+
+-------------------------------------------------------------------
+Thu Oct  8 18:49:33 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- remove dephell dependency. poetry-core can build and install
+  itself as a PEP517 backend (using pip as frontend)
+- precompile the python files as in setuptools
+  * gh#openSUSE/python-rpm-macros#37
+
+-------------------------------------------------------------------
+Mon Oct  5 13:35:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v1.0.0
+  * first stable release. See CHANGLOG.md for changes between a6
+    and release
+- The released PyPI package does not have the tests. Use Github.
+
+-------------------------------------------------------------------
+Sun Jul 12 05:48:29 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.0.0a8
+
+-------------------------------------------------------------------
+Thu May  7 05:58:22 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.0.0a6

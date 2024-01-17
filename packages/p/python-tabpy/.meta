@@ -1,0 +1,5 @@
+<package name="python-tabpy" project="openSUSE:Factory">
+  <title></title>
+  <description>Web server Tableau uses to run Python scripts</description>
+  <devel project="devel:languages:python" package="python-tabpy"/>
+</package>

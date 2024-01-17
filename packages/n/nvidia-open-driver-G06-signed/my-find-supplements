@@ -1,0 +1,45 @@
+#!/bin/bash
+
+PCI_ID_FILE=$1
+shift
+
+tmp=$(mktemp)
+trap 'rm -f "$tmp"' EXIT
+
+/usr/lib/rpm/find-supplements.ksyms "$@" >"$tmp"
+# the system script currently only generates modalias(...) lines, but allow
+# other dependencies just in case
+grep -v '^modalias(' "$tmp"
+
+# determine the kernel flavor
+krel=$(sed -rn 's/modalias\(([^:]*):.*/\1/p; T; q' "$tmp")
+if test -z "$krel"; then
+	exit
+fi
+
+# Tumbleweed
+# pci_ids-390.144_k5.14.0_1.legacy --> pci_ids-390.144.legacy
+# pci_ids-390.144_k5.14.0_1.new    --> pci_ids-390.144.new
+# pci_ids-390.144_k5.14.0_1        --> pci_ids-390.144
+# Leap/SLES
+# pci_ids-390.144.legacy (no changes)
+# pci_ids-390.144.new (no changes)
+# pci_ids-390.144 (no changes) 
+
+legacy=0
+new=0
+echo $PCI_ID_FILE | grep -q legacy && legacy=1
+echo $PCI_ID_FILE | grep -q new    && new=1
+
+PCI_ID_FILE=$(echo $PCI_ID_FILE | sed -e 's/_k.*//g' -e 's/.legacy//g' -e 's/.new//g')
+
+if [ $legacy -eq 1 ]; then
+  PCI_ID_FILE=$PCI_ID_FILE.legacy
+elif [ $new -eq 1 ]; then
+  PCI_ID_FILE=$PCI_ID_FILE.new
+fi
+
+# and create our own list of modalias supplements
+for id in $(cat ${PCI_ID_FILE} | cut -d " " -f 1|sed 's/0x//g'); do
+	echo "modalias(${krel}:pci:v000010DEd0000${id}sv*sd*bc03sc0[02]i00*)"
+done

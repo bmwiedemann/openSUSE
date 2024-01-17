@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Tue Mar 22 16:35:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
+Wed Mar 16 11:52:48 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Updated/rebased patches:
+  - jeuclid-core-FreeHep.patch (updated to use services file)
+  - jeuclid-batik_1_10.patch (rebased)
+  - jeuclid-service-providers.patch (added to prevent wrong 
+    typecasting)
+- Update to 3.1.9:
+  - Workaround for NPE in TextLayout()
+  - Support Content Math without namespace
+  - Added Italian Translation
+  - Improved Documentation
+- Update to 3.1.8:
+  - Operator streching now honors symmetric
+  - New extension for horizontal / vertical stretch
+  - Stretchy behaviour is reworked again
+- Update to 3.1.7:
+  - Reworked Token elements to support mglyhp in all cases.
+  - Reworked Stretchy operators.
+  - Fixed an error in mmultiscript containing whitespace.
+  - MathML 3.0 Testsuite is now available on the website.
+  - MathML 3.0 Testsuite can now be run internally.
+  - Basic SWT Widget is now implemented.
+  - Restored functionality to get null value for attributes. Fixes 
+    mfence
+  - Better support for foreign elements in JEuclid DOM Tree.
+- Update to 3.1.6:
+  - JEuclidView: add method to get bounds of layouted object.
+  - Provide Win32 MathViewer executable.
+  - Moved Resources from root namespace into net/sf/jeuclid.
+  - Internal DOM Tree is now in the MathML Namespace.
+  - jeuclid-core JAR file is now OSGi compatible.
+  - MathViewer: Add simple editor.
+  - MathViewer: PropertyPage: use optionName rather than toString 
+    for consistency with command line App.
+  - Changed internal JEuclid attributes to use optionName rather 
+    than toString for consistency with command line App.
+  - FOP: Added support for ImageConverter needed by newer fop.
+- Update to 3.1.5:
+  - Fixed NPE if mo has no parent.
+  - Font-Cache: repaired support for euler fonts.
+  - MathViewer: Add source view.
+  - jeuclid-core: Mouse position detection (presentation mathml).
+  - jeuclid-fop: Workaround for NPE if an image does not exist.
+- Update to 3.1.4:
+  - Added Regression tests for testsuite.
+  - Removed possible NPE in MGlyph handling.
+  - Better support for font styles.
+  - Added support for float sized fonts.
+  - Font-Caching and loading is now all done using lower case.
+  - Declared current branch as stable.
+
+-------------------------------------------------------------------
+Fri Nov  8 12:16:35 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Add xml-apis explicitely to the build classpath
+
+-------------------------------------------------------------------
+Sun Jan 20 22:36:34 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build against batik >= 1.10
+- Added patch:
+  * jeuclid-batik_1_10.patch
+    + org.w3c.dom.events.CustomEvent -> 
+      -> org.apache.batik.w3c.dom.events.CustomEvent
+
+-------------------------------------------------------------------
+Thu Dec  6 15:26:27 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with xml-commons-apis package
+
+-------------------------------------------------------------------
+Tue Mar  6 09:57:12 UTC 2018 - fstrba@suse.com
+
+- Add to the build.xml file target="6", in order to be sure the
+  right bytecode version is generated
+
+-------------------------------------------------------------------
+Tue Oct 10 06:21:08 UTC 2017 - fstrba@suse.com
+
+- Don't depend on apache-commons-lang that cannot be built with
+  java source and target >= 1.5, but on apache-commons-lang3, that
+  can
+- Added patch:
+  * jeuclid-commons-lang3.patch
+    - Check for org.apache.commons.lang3.StringUtils instead of
+      org.apache.commons.lang.StringUtils
+
+-------------------------------------------------------------------
+Tue Sep 19 05:36:53 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: specify java source and target 6
+
+-------------------------------------------------------------------
+Tue Jul  5 18:15:40 UTC 2016 - toddrme2178@gmail.com
+
+- Spec file cleanups:
+  * Expand descriptions and summaries
+  * Change Group tags
+  * Remove some redundant lines.
+  * Remove unnecessary %{release} dependency.
+
+-------------------------------------------------------------------
+Mon Mar  9 09:40:10 UTC 2015 - tchvatal@suse.com
+
+- Add extra Categories to desktop file to pass on Factory
+
+-------------------------------------------------------------------
+Fri Jun 27 13:58:37 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner a bit.
+- Try to sort out some dependencies to work on SLE11
+
+-------------------------------------------------------------------
+Fri Mar 21 07:22:50 UTC 2014 - badshah400@gmail.com
+
+- Spec file cleanups
+- Mention use of LGPL-2.1 licensing for the FreeHEP component;
+  also package the LICENSE.FreeHEP from the source tarball. 
+
+-------------------------------------------------------------------
+Thu Aug  1 03:54:50 UTC 2013 - ierturk@ieee.org
+
+- Initial version
+- Disable FreeHep optional support
+  * jeuclid-core-FreeHep.patch
+- Allows for compiling code that uses Apple EAWT without the lib
+  * AppleJavaExtensions.patch
+- Remove MacOSX dependences for the viewer
+  * MacOSX.patch

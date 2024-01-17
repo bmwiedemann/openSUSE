@@ -1,0 +1,2 @@
+# This is a source package and /usr/src is a correct path to install files.
+addFilter("bazel-rules-java-source.* suse-filelist-forbidden-fhs23")

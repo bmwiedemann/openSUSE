@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>e40576abff26d9c6c70b39b7df947bf0</srcmd5>
+    <version>1.42.0</version>
+    <time>1617130949</time>
+    <user>RBrownSUSE</user>
+    <comment>Upstream has split virt-p2v from the libguestfs package to become a standalone package.</comment>
+    <requestid>871274</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>a74b3afb4506f20d95d39b68f5d554e6</srcmd5>
+    <version>1.42.0</version>
+    <time>1651088486</time>
+    <user>dimstar_suse</user>
+    <comment>- use https urls
+- use gpg validation</comment>
+    <requestid>973087</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ffab3f45bd29b6f0dcae98c188eb286a</srcmd5>
+    <version>1.42.1</version>
+    <time>1653152773</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>978326</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5a64044a8a8eb97764a3b648ebb3cb3c</srcmd5>
+    <version>1.42.2</version>
+    <time>1660313184</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>994614</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7598e278fa7f30f0ab3bd92e1c78af4c</srcmd5>
+    <version>1.42.2</version>
+    <time>1666978211</time>
+    <user>dimstar_suse</user>
+    <comment>Sync with SLE15-SP5 changelog and spec file.</comment>
+    <requestid>1031598</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f740db64d92dd2fa62211bfd4f2de6cf</srcmd5>
+    <version>1.42.3</version>
+    <time>1668086583</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034957</requestid>
+  </revision>
+</revisionlist>

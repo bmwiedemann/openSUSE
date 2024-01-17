@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c27365af2a53449866d0a1eb730bc51</srcmd5>
+    <version>0.1.0</version>
+    <time>1596802665</time>
+    <user>dimstar_suse</user>
+    <comment>aml</comment>
+    <requestid>824826</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>38e8047da6d15468dbb8f0763f77dec7</srcmd5>
+    <version>0.1.0</version>
+    <time>1601044363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835891</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>19f5d19c448587a12cd74515658c2041</srcmd5>
+    <version>0.2.0</version>
+    <time>1619107482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887812</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dfe78a344a24066fd34eb3a40c74baaa</srcmd5>
+    <version>0.2.1</version>
+    <time>1635877149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928791</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>504265fc5ca21484a91dce02b88ca6a7</srcmd5>
+    <version>0.2.2</version>
+    <time>1670954182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042618</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f05721fd142556f88b3bcd557a9d3f8e</srcmd5>
+    <version>0.3.0</version>
+    <time>1674927764</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0:
+  * The time unit has been changed from milliseconds to microseconds
+  * The global object registry has been replaced with weak references
+  * It is now guaranteed that a callback will not be called after aml_stop().
+  * Worker threads now keep references to work objects that are being
+    executed. This ensures that they cannot be freed while they
+    are being worked</comment>
+    <requestid>1060476</requestid>
+  </revision>
+</revisionlist>

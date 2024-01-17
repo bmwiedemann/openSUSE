@@ -1,0 +1,355 @@
+-------------------------------------------------------------------
+Wed Jan  3 09:56:07 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add kubernetes-trimpath.patch for reproducible builds (boo#1062303)
+
+-------------------------------------------------------------------
+Fri Nov 24 07:42:35 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.25.16:
+  * Use golang library instead of mklink
+
+-------------------------------------------------------------------
+Thu Oct 26 05:58:19 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.20.10`
+- Update to version 1.25.15:
+  * Release commit for Kubernetes v1.25.15
+  * Register UnauthenticatedHTTP2DOSMitigation into kube components
+  * Skip TestUnauthenticatedHTTP2ClientConnectionClose http1 tests
+  * Disable UnauthenticatedHTTP2DOSMitigation by default
+  * Prevent rapid reset http2 DOS on API server
+  * Fix concurrent write when filling PVC labels
+  * Modify test PVC to detect concurrent map write bug
+  * [go] Bump images, dependencies and versions to go 1.20.10
+  * .: bump golang.org/x/net to v0.17.0
+  * [go] Bump images, versions and deps to use Go 1.20.9
+  * bump etcd cluster image to 3.5.9
+  * cronjob controller: ensure already existing jobs are added to Active list of cronjobs
+  * change rolling update logic to exclude sunsetting nodes
+  * vsphere: adapt to govmomi bump
+  * .: bump govmomi to v0.30.6
+  * Increase range of job_sync_duration_seconds
+  * sync Service API status rest storage
+  * Update CHANGELOG/CHANGELOG-1.25.md for v1.25.14
+  * scheduler: start scheduling attempt with clean UnschedulablePlugins
+  * updating dependencies.yaml for etcd v3.5.9 version
+  * use upstream etcd github path instead of redirecting one
+  * update etcd version in install.sh to 3.5.9
+  * move check for noop managed field timestamp updates
+
+-------------------------------------------------------------------
+Wed Sep 20 18:08:15 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- fixes for bsc#1214406
+- update `Wants` directive in [Unit] section of `kubelet.service`:
+  * add: `containerd.service`
+  * remove: `docker.service`
+- updating container runtime prerequisites:
+  (Refer: k8s.io/docs/setup/production-environment/container-runtimes/#install-and-configure-prerequisites)
+  * update `90-kubeadm.conf` to add below iptables rules:
+    - net.bridge.bridge-nf-call-iptables = 1
+    - net.bridge.bridge-nf-call-ip6tables = 1
+  * update `kubeadm.conf` to add `overlay` kernel module
+  * update .spec file to:
+    - add post-installation scriptlet for `kubeadm` package to enable iptables rules defined in `90-kubeadm.conf` using sysctl
+    - add conditional checks to load kernel modules (br_netfilter, overlay) in `kubelet-common` package post-installation scriptlet
+    - update `kubelet-common` post scriptlet to correctly update `KUBELET_VER` var in `/etc/sysconfig/kubelet` file based on fillup template
+- add below to `kubelet` subpackage to recommend installing correct version of package providing `kubernetes-kubelet-common` :
+  * `Recommends: kubernetes-kubelet-common = %{version}`
+- add below to `kubeadm` subpackage to recommend installing correct version of `kubelet` and `kubelet-common` packages:
+  * `Recommends: kubernetes%{baseversion}-kubelet`
+
+-------------------------------------------------------------------
+Wed Sep 20 09:26:00 UTC 2023 - priyanka.saggu@suse.com
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.20.8`
+- Update to version 1.25.14:
+  * Release commit for Kubernetes v1.25.14
+  * [go] Bump images, versions and deps to use Go 1.20.8
+  * Automated cherry pick of #119776: Fix a job quota related deadlock (#120322)
+  * Mark Job onPodConditions as optional in pod failure policy
+  * Update CHANGELOG/CHANGELOG-1.25.md for v1.25.13
+  * Incorporating feedback on 119341
+  * generate ReportingInstance and ReportingController in Event
+  * Pass Pinned field to kubecontainer.Image
+  * prep for go1.21: use -e in go list
+  * Skip apiserver_admission_webhook_request_total during context-canceled
+  * Ignore context canceled from validate and mutate webhook failopen metric
+  * kubeadm: fix nil pointer when etcd member is already removed
+  * update to golangci-lint v1.54.1 + go-ruleguard v0.4.0
+  * run dummy command return status 0
+  * unit test not requiring priviledge
+  * Revert "Revert #114605: its unit test requires root permission"
+  * node: devicemgr: topomgr: add logs
+  * e2e: node: add test to check device-requiring pods are cleaned up
+  * e2e: node: devices: improve the node reboot test
+  * e2e: node: devicemanager: update tests
+  * kubelet: devices: skip allocation for running pods
+
+-------------------------------------------------------------------
+Tue Sep 12 12:36:31 UTC 2023 - priyanka.saggu@suse.com
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.20.7`
+- Update to version 1.25.13:
+  * Release commit for Kubernetes v1.25.13
+  * Use environment varaibles for parameters in Powershell
+  * Use env varaibles for passing path
+  * [release-1.25] releng/go: Bump images, versions and deps to use Go 1.20.7 and bump protoc version
+  * e2e_node: move getSampleDevicePluginPod to device_plugin_test.go
+  * fix 'pod' in kubelet prober metrics
+  * priority & fairness: support dynamically configuring work estimator max seats
+  * events: fix EventSeries starting count discrepancy
+  * tools/events: fix data race when emitting series
+  * tools/events: retry on AlreadyExist for Series
+  * kubeadm: backdate generated CAs by 5 minutes
+  * client-go: allow to set NotBefore in NewSelfSignedCACert()
+  * Fix a data race in TopologyCache
+  * Fix TopologyAwareHint not working when zone label is added after Node creation
+
+-------------------------------------------------------------------
+Wed Jul 26 10:31:32 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update: `BuildRequires:  go >= 1.20.6`
+- Update: `BuildRequires:  golang(API) = 1.20`
+
+- Update to version 1.25.12:
+  * [release-1.25] releng/go: Bump images, versions and deps to use Go 1.20.6
+  * Fix the converts an empty string to nil.
+  * Add unit tests for parallel StatefulSet create & delete
+  * Parallel StatefulSet pod create & delete
+  * Refactor StatefulSet controller update logic
+  * [release-1.25] releng/go: Update images, deps and version to go 1.20.5
+  * Only declare job as finished after removing all finalizers
+  * Hide numberOfMissedSchedules as an algorithm internal number
+  * Update schedule logic to properly calculate missed schedules
+  * kubeadm: set priority for "system-node-critical" Pods
+  * Make etcd component status consistent with health probes
+  * Fix deadlock in ready test
+  * fix the existing problem (0 SerialNumber in all certificate) as part of this PR in a separate commit
+  * update serial number to a valid non-zero number in ca certificate
+  * deps: Bump to cAdvisor v0.45.1
+  * Fix the wrong status returned from `RunPreFilterPlugins`
+  * Fix the git-repo test error caused by the correct use of loop variables
+  * kubeadm: remove function pointer comparison in phase test
+  * Add node check to vSphere cloud provider
+  * Adding additional validations to queried endpoint list iteration.
+  * test server side apply patch
+  * don't process unsupported loadbalancers with mixed protocols
+  * make MixedProtocolNotSupported public
+
+-------------------------------------------------------------------
+Wed Jun 21 04:45:30 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update: `BuildRequires:  go >= 1.19.10`
+- Update to version 1.25.11:
+  * Release commit for Kubernetes v1.25.11
+  * update-vendor: update vendored go.sums
+  * [release-1.25] releng/go: Update images, deps and ver to go 1.19.10
+  * kube-proxy avoid race condition using LocalModeNodeCIDR
+  * Add ephemeralcontainer to imagepolicy securityaccount admission plugin
+  * Switch to assert.ErrorEquals from assert.Equal to check error equality
+  * update webhook test to go 1.21
+  * Test APIService safe handling at startup
+  * Fix waiting for CRD sync at server start
+  * kubeadm: fix a bug where the static pod changes detection logic is inconsistent with kubelet
+  * Update CHANGELOG/CHANGELOG-1.25.md for v1.25.10
+  * kubeadm: Make etcd member removal idempotent
+  * kubeadm: Add etcd client unit tests
+  * kubeadm: Use internal etcd client through an interface
+  * vclib: Modify x509.UnknownAuthorityError unwrap check
+  * vsphere: Adapt to govmomi version bumps
+  * *: Bump version of vmware/govmomi
+  * kubelet/stats: drop makePodStorageStats errors to V(6)
+  * kubelet/stats: deduplicate makePodStorageStats
+
+-------------------------------------------------------------------
+Mon Jun 12 04:41:19 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update BuildRequires:  `go >= 1.19.9`
+- Update to version 1.25.10:
+  * benchmark test to evaluate the overhead of podMatchesScopeFunc
+  * Fix incorrect calculation for ResourceQuota with PriorityClass as its scope
+  * releng/go: Update images, dependencies and version to Go 1.19.9
+  * node: device-plugin: e2e: Additional test cases
+  * node: device-plugin: add node reboot test scenario
+  * node: device-plugin: e2e: Capture pod admission failure
+  * node: device-mgr: e2e: adapt to sample device plugin refactoring
+  * node: device-mgr: e2e: Update the e2e test to reproduce issue:109595
+  * node: device-mgr: e2e: Implement End to end test
+  * node: device-mgr: Handle recovery by checking if healthy devices exist
+  * node: device-plugin: e2e: Add test case for kubelet restart
+  * node: device-plugin: e2e: Provide sleep intervals via constants
+  * node: device-plugin: e2e: Update test description to make it explicit
+  * node: device-plugin: e2e: Isolate test to pod restart scenario
+  * Move glusterfs 1.25 deprecation notice to the deprecation section.
+  * node: device-plugin: e2e: Annotate device check with error message
+  * node: device-plugins: e2e: s/devLen/expectedSampleDevsAmount
+  * node: device-plugins: e2e: Refactor parse log to return string and error
+  * test: Fix path to e2e node sample device plugin
+  * node: device-mgr: sample device plugin: manifest to avoid registration
+  * node: device-mgr: sample device plugin: control registration process
+  * e2e: node: unify sample device plugin utilities
+  * [1.25] vendor: bump runc to 1.1.6
+  * Fix directory mismatch for `volume.SetVolumeOwnership()`
+  * use case-insensitive header keys for http probes
+  * add log includes pod preemption details
+  * fix: the volume is not detached after the pod and PVC objects are deleted
+  * Do not look at VPC-related resources outside the cluster's network
+  * Bump konnectivity-client to 0.0.37
+  * kubelet: Do not mutate pods in the pod manager
+  * Return error for localhost seccomp type with no localhost profile defined
+
+-------------------------------------------------------------------
+Thu Apr 13 11:21:25 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.25.9:
+  * Release commit for Kubernetes v1.25.9
+  * releng/go: Update images, dependencies and version to Go 1.19.8
+  * Drop development dependencies from test targets
+  * Clear front proxy headers after authentication is complete
+  * Make prerelease tag optional in CI versions
+  * Annotate CI version regexes
+  * Drop unused regex grouping
+  * Delete unused version regex function
+  * kubelet: Fix fs quota monitoring on volumes
+  * fsquota: only generate pod uuid is nil
+  * Preserve UID/ResourceVersion in the BindingREST endpoint
+  * Add integration test for DefaultBinder
+  * Change where transformers are called.
+  * wait again on pending state
+  * cacher allow context cancellation if not ready
+  * Route controller should update routes with NodeIP changed When a node reboots or kubelet restarts, it is possible that its IP is changed. In this case, node route should be updated with the correct IP. In this PR, it checks if the IP in an existing route is the same as the actual one. If not, it marks it as "update" so the old route will be deleted and a new one will be created. There's a new field EnableNodeAddresses, which is a feature gate for specific cloud providers to enable after they update their cloud provider code for CreateRoute().
+  * client-go/cache: update Replace comment to be more clear
+  * client-go/cache: rewrite Replace to check queue first
+  * client-go/cache: merge ReplaceMakesDeletionsForObjectsInQueue tests
+  * client-go/cache: fix missing delete event on replace without knownObjects
+  * client-go/cache: fix missing delete event on replace
+  * Bump konnectivity-client to v0.0.36
+  * test: demote service ClientIP affinity timeout tests from conformance
+
+-------------------------------------------------------------------
+Mon Mar 27 09:24:52 UTC 2023 - Robert Munteanu <rombert@apache.org>
+
+- Stronger conflicts for completion packages 
+
+-------------------------------------------------------------------
+Mon Mar 27 08:53:20 UTC 2023 - Robert Munteanu <rombert@apache.org>
+
+- Split individual completions into separate packages
+
+-------------------------------------------------------------------
+Tue Mar 21 08:00:04 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.25.8:
+  * Release commit for Kubernetes v1.25.8
+  * One lock among PodNominator and SchedulingQueue
+  * releng/go: Update images, dependencies and version to Go 1.19.7
+  * Fix for windows kube-proxy: 'externalTrafficPolicy: Local' results in no clusterIP entry in windows node.
+  * Re-enable label selector
+  * Add integration test for diff --prune --selector
+  * Use label selector for filtering out resources when pruning. Matches same behavior as for kubectl apply
+  * scheduler/framework/plugins/volumebinding: fix inaccurate log for when a volume is bound to a claim
+  * Remove check for CSI driver running on node for CSI migration attach operations
+  * Simplify construction of /metrics request
+  * test: remove flaky pod update test in CSIInlineVolumes e2e
+  * Move CSI json file saving to SetUpAt()
+  * Fix for issue with Loadbalancer policy creation for IPV6 endpoints in Dualstack mode.
+  * Invoke gimme from kube::golang::verify_go_version
+  * Defer builds to test-cmd and test-integration targets
+  * Carefully compute request path for metrics
+
+-------------------------------------------------------------------
+Fri Mar  3 04:56:17 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.25.7:
+  * Release commit for Kubernetes v1.25.7
+  * releng: Update images, dependencies and version to Go 1.19.6
+  * Update golang.org/x/net to v0.7.0
+  * Pin golang.org/x/net to v0.4.0 in 1.25
+  * kubelet/client: collapse transport wiring onto standard approach
+  * apiserver: remove 34s from DELETECOLLECTION rest handler
+  * update prev succeeded indexes for indexed jobs unconditionally
+  * Fix nil pointer error in nodevolumelimits csi logging
+  * Fix panic on ClusterIP allocation for /28 subnets
+  * use custom dialer for http probes
+  * use custom dialer for tcp probes
+  * add custom dialer optimized for probes
+  * bump honnef.co/go/tools to support go1.20
+  * Do not include scheduler name in the preemption event message
+  * Do not leak cross namespace pod metadata in preemption events
+  * pkg/controller/job: re-honor exponential backoff
+  * Explicitly call rand.Seed() method
+  * Exports WarningPrinter field in DeleteOptions
+  * Improve vendor verification works for each staging repo
+  * Bump konnectivity-client to v0.0.35
+  * Cherry pick 114857 to release-1.25
+  * Update daemonSet status even if syncDaemonSet fails
+  * Fix issues in volumesnapshot test for ephemeral storage
+  * Add pod to dsw if termination is not completed during reconstruction #issues/113979
+  * Add .go-version file containing build go version
+  * Windows Kube-Proxy implementation for internal traffic policy.
+  * Fix a regression that scheduler always go through all Filter plugins
+  * Fix SPDY proxy authentication with special chars
+  * Improve error message when proxy connection fails
+  * Creating Ingress IP loadbalancer alone when all the endpoints are terminating. KEP1669
+  * Update golang.org/x/net 1e63c2f
+  * image pull event include duration with waiting
+  * kubelet: make the image pull time more accurate in event
+  * use etcd 3.5.6-0 after promotion
+  * changelog: CVE-2022-3294 and CVE-2022-3162 were fixed in v1.23.14
+  * upgrade system-validators to v1.8.0 for a bugfix of cgroupv2 io check
+  * Introducing LoadbalancerPortMapping flags for VipExternalIP
+  * egress_selector: prevent goroutines leak on connect() step.
+  * allow noop-ignoring transformer to be configurable
+  * Add CVE-2022-3162 to CHANGELOG-1.25.md
+  * e2e: use custom timeouts in GetSnapshotContentFromSnapshot()
+  * StatefulSet: Cleanup the complex defer function updating the status
+  * added retries to winkernel proxy rules deletion
+  * added backend hashing to winkernel proxier
+  * kubelet: fix pod log line corruption when using timestamps and long lines
+  * Disable expansion in SC, if driver does not support it
+  * Fixed (CVE-2022-27664) Bump golang.org/x/net to v0.1.1-0.20221027164007-c63010009c80
+  * add GetAllocatableCPUs test in cpumanager
+  * fix GetAllocatableCPUs in cpumanager
+  * NodeLifecycleController: Remove race condition
+  * Merge pull request #113133 from sxllwx:automated-cherry-pick-of-#113133-upstream-release-1.25
+  * kube-proxy wait for cluster cidr skip delete events
+  * kube-proxy handle node PodCIDR changs
+  * kube-proxy: gate topology correctly
+  * service update event should be triggered when appProtocol in port is changed.
+  * remove in-tree volume limits test now that CSIMigration is GA
+  * Fix winkernel proxier setting the wrong HNS loadbalancer ID for ingress IP
+  * Revert "De-duping node "update enqueuing"/sync predicates"
+  * Revert "Avoid re-syncing LBs for ETP=local svc"
+  * Revert "[CCM - service controller] Remove schedulability predicate for LB set"
+  * kubeadm: allow RSA and ECDSA format keys in preflight check
+  * kube-scheduler: add taints filtering logic consistent with TaintToleration plugin for PodTopologySpread plugin
+  * Fix calculating error when adding nominated pods in podTopologySpread
+  * Call SetupDevice only if Volume is not globally Mounted
+  * Add zone field to vsphere test cloudconfig
+  * Ensure metric 'running_managed_controllers' is registered
+  * Reduce default gzip compression level from 4 to 1 in apiserver
+  * Fix the TestRoundTripTypes by adding default to the fuzzer
+  * exec auth: support TLS config caching
+  * Call queueSet::boundNextDispatchLocked enough
+  * Marshal MicroTime to json and proto at the same precision
+  * Avoid propagating `search .` into containers /etc/resolv.conf
+  * Tolerate sub-microsecond eventTime changes on update
+  * e2e: suppress progress messages for custom progress reporter
+  * dependencies: update to ginkgo v2.1.6 and gomega v1.20.1
+  * Run lint-dependencies.sh/pin-dependency.sh/update-vendor.sh.
+  * regression test for exponential recursion bug on CRDs
+  * fix nestedPendingOperations mount and umount parallel bug
+  * Revert "promote LocalStorageCapacityIsolationFSQuotaMonitoring to beta"
+  * client-go/rest: check if url is nil to prevent nil pointer dereference
+  * Revert "client-go: remove no longer used finalURLTemplate"
+
+
+-------------------------------------------------------------------
+Thu Mar  2 13:32:23 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Initial package 

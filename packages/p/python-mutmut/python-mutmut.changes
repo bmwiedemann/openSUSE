@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Thu Mar 24 10:46:05 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
+Tue Feb  2 13:29:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 (hammett requires python 3.7 or later) 
+
+-------------------------------------------------------------------
+Mon May 25 06:50:55 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Mon Mar 30 14:06:25 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.0.0
+  * New execution model. This should result in some modest speed improvements when using pytest.
+  * A special execution mode when using the hammett test runner. This is MUCH MUCH faster. Please try it!
+  * Dropped support for python < 3.7. If you need to use mutmut on older versions of python, please use mutmut 1.9.0
+  * Some other speed improvements.
+  * `mutmut run 7` will always rerun the mutant `7`
+  * `mutmut show <filename>` to show all mutants for that file
+  * `mutmut run <filename>` to run mutation testing on that file
+  * New experimental plugin system: create a file `mutmut_config.py` in your base directory. In it you can have an `init()` function, and a `pre_mutation(context)` function. You can set `context.skip = True` to skip a mutant, and you can modify `context.config.runner`, this is useful to limit the tests. Check out the `Context` class for what information you get.
+  * Better display of `mutmut show`/`mutmut result`
+  * Fixed a spurious mutant on assigning a local variable with type annotations
+  * mutmut now will rerun tests without mutation when tests have changed. This avoids a common pitfall of introducing a failing test and then having all mutants killed incorrectly
+  * Added `mutmut html` report generation.
+  * Bugfix for multiple assignment. Mutmut used to not handle `foo = bar = baz` correctly (Thanks Roxane Bellot!)
+  * Bugfix for incorrect mutation of "in" operator (Thanks Roxane Bellot!)
+  * Fixed bug where a mutant survived in the internal AST too long. This could cause mutmut to apply more than one mutant at a time.
+  * Vastly improved startup performance when resuming a mutation run.
+  * Added new experimental feature for advanced config at runtime of mutations
+- modified patches
+  % pr_134.patch (extended)
+- deleted patches
+  - no-direct-python-call.patch (merged to pr_134.patch)
+
+-------------------------------------------------------------------
+Tue Oct 15 07:51:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.6.0:
+  * Various minor fixes around in the package
+- Remove merged patches pr_148.patch merged_4405bafe.patch
+- Rebase patch pr_134.patch
+- Add patch no-direct-python-call.patch to avoid direct calls
+  to python binary
+
+-------------------------------------------------------------------
+Wed Aug  7 03:15:06 AM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.5.1

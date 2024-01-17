@@ -1,0 +1,16 @@
+Index: vsftpd-3.0.5/postlogin.c
+===================================================================
+--- vsftpd-3.0.5.orig/postlogin.c	2015-07-22 21:03:22.000000000 +0200
++++ vsftpd-3.0.5/postlogin.c	2022-02-01 20:12:02.710908421 +0100
+@@ -1061,6 +1061,11 @@ handle_upload_common(struct vsf_session*
+     {
+       do_truncate = 1;
+     }
++    if (new_file_fd >= 0) {
++      vsf_sysutil_fstat(new_file_fd, &s_p_statbuf);
++      if (vsf_sysutil_statbuf_is_regfile(s_p_statbuf))
++        vsf_sysutil_deactivate_noblock(new_file_fd);
++    } 
+   }
+   if (vsf_sysutil_retval_is_error(new_file_fd))
+   {

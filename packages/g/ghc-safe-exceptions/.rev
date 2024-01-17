@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ad2ac2b5e0ec437a38e8dcafb5b67043</srcmd5>
+    <version>0.1.7.0</version>
+    <time>1592579013</time>
+    <user>dimstar_suse</user>
+    <comment>initial version</comment>
+    <requestid>814961</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8a080da2093da7852b81b862610b7650</srcmd5>
+    <version>0.1.7.1</version>
+    <time>1598643466</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829408</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>eb3b9f48e25adaa5f4bd69418c35b3b5</srcmd5>
+    <version>0.1.7.1</version>
+    <time>1608633942</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857544</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>191d51fdacaff6f0f984845acde018db</srcmd5>
+    <version>0.1.7.2</version>
+    <time>1629917825</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>912624</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0ce54bd770420ff383bbcb2117de8b65</srcmd5>
+    <version>0.1.7.3</version>
+    <time>1660144404</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>994048</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>feab0cc21025f250bfa19f21893e3031</srcmd5>
+    <version>0.1.7.3</version>
+    <time>1680636173</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076023</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2472ca4ca99dd5b47bd4979d9580ffb3</srcmd5>
+    <version>0.1.7.4</version>
+    <time>1688563893</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1096925</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8b3a9067f8e09ede07301bf1a508f0ba</srcmd5>
+    <version>0.1.7.4</version>
+    <time>1697657161</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1118484</requestid>
+  </revision>
+</revisionlist>

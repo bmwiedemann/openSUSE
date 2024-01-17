@@ -1,0 +1,5 @@
+<package name="cinnamon-translations" project="openSUSE:Factory">
+  <title>cinnamon-translations</title>
+  <description>Includes all translations for the Cinnamon Desktop environment, including the nemo file manager.</description>
+  <devel project="X11:Cinnamon:Factory" package="cinnamon-translations"/>
+</package>

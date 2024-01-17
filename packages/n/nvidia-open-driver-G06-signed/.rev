@@ -1,0 +1,260 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>555c46f94e8b62796f89c2a772322cef</srcmd5>
+    <version>525.85.05</version>
+    <time>1674495048</time>
+    <user>dimstar_suse</user>
+    <comment>implements jsc#PED-2658
+
+- Update to version 525.85.05
+  * Fix build problems with Clang 15.0, #377 by @ptr1337</comment>
+    <requestid>1059870</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e827851c691a71b83bc99055f447e051</srcmd5>
+    <version>525.85.05</version>
+    <time>1674664980</time>
+    <user>dimstar_suse</user>
+    <comment>- added pesign-copy-sources, pesign-spec-macros, which are needed
+  to fix repackaging step required for securebooot signing kernel
+  modules (boo#1207520)
+- pesign-spec-macros: used for defining RPM macros; here:
+  %define __kmp_supplements %_sourcedir/my-find-supplements \
+                            %_sourcedir/pci_ids-%{version}
+- pesign-copy-sources: sources needed by the RPM macros above; 
+  here: pci_ids-%{version}, my-find-supplements
+- all above needs changes for pesign-obs-integration first 
+  (SR#1060443)
+
+- added conflicts to nvidia-driver-G06-kmp package (boo#1207495)</comment>
+    <requestid>1060962</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b4f0197ade1ed4a782c72e8f92249dc7</srcmd5>
+    <version>525.85.05</version>
+    <time>1675095014</time>
+    <user>dimstar_suse</user>
+    <comment>- introduce %hardcode_pci_list macro for hardcoding PCI ID 
+  modaliases for Supplements; make it default to *temporarily*
+  workaround boo#1207520
+  * TW: enable only officially supported headless GPUs!
+  * Leap/sle: enable all Turing and Ampere GPUs and set the
+    appropriate modprobe.d option, so we can at least begin
+    testing on sle15-sp5 ...
+- adds pci-table.patch, generati-pci-table.sh</comment>
+    <requestid>1061900</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c83a1034c9cacabb4a8d5cc6b86d46ef</srcmd5>
+    <version>525.85.05</version>
+    <time>1675177757</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer use %hardcode_pci_list macro on TW, since the issue
+  with generating wrong PCI ID modaliases for Supplements
+  has been fixed now in pesign-obs-integration package for TW
+  (boo#1207520)</comment>
+    <requestid>1062105</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>208ab677feb73588174956015b50a3c8</srcmd5>
+    <version>525.89.02</version>
+    <time>1675956168</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 525.89.02</comment>
+    <requestid>1063917</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0b2f5e08291b5b74dcad8f97d571605d</srcmd5>
+    <version>525.89.02</version>
+    <time>1676038113</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer use %hardcode_pci_list macro on sle15/Leap15, since the
+  issue with generating wrong PCI ID modaliases for Supplements
+  has been fixed meanwhile also in pesign-obs-integration package
+  for sle15/Leap15 (boo#1207520)</comment>
+    <requestid>1064248</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9949d9096836ba66baf6fa9ca96afc3c</srcmd5>
+    <version>525.105.17</version>
+    <time>1680209589</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 525.105.17</comment>
+    <requestid>1075670</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a614899b9a2980ceee32d657665cffcd</srcmd5>
+    <version>525.116.03</version>
+    <time>1682522699</time>
+    <user>dimstar_suse</user>
+    <comment>-  Update to version 525.116.03</comment>
+    <requestid>1082832</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b865a073b31daca164eb845233210e98</srcmd5>
+    <version>525.116.04</version>
+    <time>1683728307</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 525.116.04</comment>
+    <requestid>1085805</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ded6c09389b40fb4dc2bb1fefbe03e9d</srcmd5>
+    <version>535.54.03</version>
+    <time>1687272553</time>
+    <user>dimstar_suse</user>
+    <comment>- _constraints: 4GB wasn't enough; trying 8GB now ... 
+
+- _constraints: reserve 4GB of disk space for building in the hope
+  that this will be also sufficient when building for sle15-sp5
+
+- Update to version 535.54.03</comment>
+    <requestid>1093497</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9bc5522ad21cb7f6c4a690a997ae7973</srcmd5>
+    <version>535.86.05</version>
+    <time>1690215884</time>
+    <user>anag+factory</user>
+    <comment>update firmware to version 535.86.05</comment>
+    <requestid>1099549</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>8d6d2856ff16cdb24b403de10f7e51fc</srcmd5>
+    <version>535.86.05</version>
+    <time>1690278678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1100434</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>19446780916d44b9685373b2628415b7</srcmd5>
+    <version>535.86.05</version>
+    <time>1690469453</time>
+    <user>anag+factory</user>
+    <comment>- require one-time renamed package kernel-firmware-nvidia-gspx-G06
+  from now on (boo#1212724)</comment>
+    <requestid>1100623</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7b0b76c00f52e292cf57b08dec9a700a</srcmd5>
+    <version>535.104.05</version>
+    <time>1693860763</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 535.104.05</comment>
+    <requestid>1108717</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b261cee95cb933f74d7c5570c876a3fd</srcmd5>
+    <version>535.104.05</version>
+    <time>1694545429</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1110547</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>218e9447f304215df60dcb5e2c73038e</srcmd5>
+    <version>535.113.01</version>
+    <time>1695412189</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 535.113.01</comment>
+    <requestid>1112976</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b488f23b9d9bc733a6650af39164b528</srcmd5>
+    <version>535.113.01</version>
+    <time>1696964409</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1116509</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>322c97a2905038cb7f890ef162917ab3</srcmd5>
+    <version>535.113.01</version>
+    <time>1697061393</time>
+    <user>anag+factory</user>
+    <comment>- Add a devel package so other modules can be built against this
+  one. [jira#PED-4964]
+
+- disabled build of nvidia-peermem module; it's no longer needed
+  and never worked anyway (it was only a stub) [boo#1211892]</comment>
+    <requestid>1116994</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>2e6e6330538d75b7acd60921c685dddb</srcmd5>
+    <version>535.113.01</version>
+    <time>1698249750</time>
+    <user>anag+factory</user>
+    <comment>- cleanup: get rid of possibiliy to hardcode pci list; it's no
+  longer required anyway; secureboot signing has been fixed ...
+- removed pci-table.patch</comment>
+    <requestid>1120029</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>92cf3c23aedab0eb68e4829f7a6421f4</srcmd5>
+    <version>535.129.03</version>
+    <time>1698952890</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 535.129.03</comment>
+    <requestid>1121705</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>19141bcbc5562442337b931858035123</srcmd5>
+    <version>545.29.02</version>
+    <time>1699994525</time>
+    <user>anag+factory</user>
+    <comment>- Update to 545.29.02
+- added fbdev=1 option for nvidia-drm module, which gives us a proper
+  framebuffer console now ...
+- nosimplefb kernel option no longer needed with usage of nvidia-drm's
+  fbdev=1 option
+- nvidia's NVreg_OpenRmEnableUnsupportedGpus=1 option no longer
+  needed; GeForce and Workstation GPUs now officially supported
+- support added for H100/H800 GPUs (Hopper)
+
+- cleanup; sle12 no longer supported</comment>
+    <requestid>1125886</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>d41cafdfce8773954619392ed5edfe3d</srcmd5>
+    <version>545.29.02</version>
+    <time>1700675720</time>
+    <user>anag+factory</user>
+    <comment>- no longer try to overwrite NVreg_OpenRMEnableSupporteGpus driver
+  option setting; apparently it's ignored by the driver (boo#1215981,
+  comment#26)
+
+- use different modprobe.d config file to resolve conflict with
+  older driver package (boo#1217370); overwrite 
+  NVreg_OpenRMEnableSupporteGpus driver option setting (disable it),
+  since letting it enabled is supposed to break booting (boo#1215981, 
+  comment#23)</comment>
+    <requestid>1128138</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ece5d5450a5396f5854d944145782c50</srcmd5>
+    <version>545.29.06</version>
+    <time>1700865253</time>
+    <user>anag+factory</user>
+    <comment>- Update to 545.29.06 
+
+- The brightness control of NVIDIA seems to be broken, [#573](https://github.com/NVIDIA/open-gpu-kernel-modules/issues/573)</comment>
+    <requestid>1128390</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>49ab13a8840d88f0be29a2fc5f95bdc3</srcmd5>
+    <version>545.29.06</version>
+    <time>1702405974</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1132702</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>e72aa4ada8730fc3b21791cfb28f0892</srcmd5>
+    <version>545.29.06</version>
+    <time>1705437538</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1139143</requestid>
+  </revision>
+</revisionlist>

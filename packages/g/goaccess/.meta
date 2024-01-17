@@ -1,0 +1,10 @@
+<package name="goaccess" project="openSUSE:Factory">
+  <title>Apache Web Log Analyzer</title>
+  <description>GoAccess is a free and open source Apache web log analyzer that provides fast
+and valuable HTTP statistics for system administrators that require a visual
+report on the fly.
+
+</description>
+  <devel project="server:http" package="goaccess"/>
+  <url>http://goaccess.prosoftcorp.com/</url>
+</package>

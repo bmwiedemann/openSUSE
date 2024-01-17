@@ -1,0 +1,5 @@
+<package name="applet-window-appmenu" project="openSUSE:Factory">
+  <title></title>
+  <description>This is a Plasma 5 applet that shows the current window appmenu in your panels. This plasmoid is coming from Latte land but it can also support Plasma panels.</description>
+  <devel project="KDE:Extra" package="applet-window-appmenu"/>
+</package>

@@ -1,0 +1,159 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b57f61a783256d3fbaf862f2eab0ed1</srcmd5>
+    <version>0.6.0beta</version>
+    <time>1593727648</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain RigelEngine in Factory</comment>
+    <requestid>815799</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2c31c1ccb2c9128b84bc8ac030e031bd</srcmd5>
+    <version>0.6.1beta</version>
+    <time>1594045582</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>818731</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>52b4f59bd9693c66ed39d7ae0828b14d</srcmd5>
+    <version>0.6.1beta</version>
+    <time>1598983745</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830848</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c46fa7e466ad2603cab6adbae81d8e49</srcmd5>
+    <version>0.6.2beta</version>
+    <time>1599507369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832729</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4589cdaa26aa8b8c19f4caef1a5b72f6</srcmd5>
+    <version>0.6.2beta</version>
+    <time>1599667332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833067</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0c9704e81f8dea74c090e0f73901fbd3</srcmd5>
+    <version>0.7.1beta</version>
+    <time>1614948467</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876763</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>12f9df43694ddc1ed32ee97675343b4d</srcmd5>
+    <version>0.8.1beta</version>
+    <time>1629795290</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.1
+  * Fixed laser turrets beings destructible with Duke's regular
+    weapon after loading a quick save.
+- Update to versino 0.8.0
+  https://github.com/lethal-guitar/RigelEngine/releases/tag/v0.8.0
+  Highlights:
+  * extended modding support (swap in high fidelity replacements
+    for graphics and sound)
+  * more sound options (AdLib only, combined AdLib/SoundBlaster).
+- Drop patch:
+  * RigelEngine-fix-build.patch (not longer needed)
+</comment>
+    <requestid>913902</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>86a9b9ceaa8796cd7033acb192b95aa5</srcmd5>
+    <version>0.8.1beta</version>
+    <time>1633365629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922950</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>af2acd92798d38ff042652681c70a224</srcmd5>
+    <version>0.8.2beta</version>
+    <time>1637877949</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933893</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>91e0a2d39044d58aa034964774c616d9</srcmd5>
+    <version>0.8.3beta</version>
+    <time>1641321469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943656</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>191d5a45937d547386b5467443bb442e</srcmd5>
+    <version>0.8.4beta</version>
+    <time>1648841778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966429</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>840aff84c2bedf1f7167bc16a79ef410</srcmd5>
+    <version>0.8.5beta</version>
+    <time>1653907448</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.5
+  New features
+  * Implemented a mod manager. Mods can now be organized into
+    directories, and each mod can be enabled/disabled in the
+    options menu. See Modding Support for more details.
+  * Added additional &quot;remixed&quot; HUD styles in widescreen mode.
+  * Added additional upscaling filters: Sharp bilinear, pixel
+    perfect (integer scaling). Note that using mods with high-res
+    replacement graphics currently forces nearest neighbor
+    filtering.
+  * The game now writes a log file into the user directory.
+  * Gamepad controls are now explained in the options menu.
+  * The top-level in-game menu (reachable via gamepad) now shows
+    the current episode, level and difficulty in the title.
+  Improvements
+  * Improved the look of the classic HUD in widescreen mode, by
+    extending the left side to cover the length of the screen.
+  * Reworked quick saving/loading gamepad controls, to make
+    loading quick saves possible without needing to open the menu.
+    The select/back button now acts as a modifier. When pressed
+    together with shoot, a quick save is made. Pressing the
+    button together with jump loads the last quick save.
+  Bug fixes
+  * Fixed destructible level geometry remaining visible after
+    being destroyed in certain cases
+  * Fixed brief camera movement after turning wide-screen mode
+    on/off or changing the window size
+  * Fixed slime blob containers sometimes not animating.
+  * Fixed sprites flickering in and out of existence in certain
+    circumstances
+  * The episode 2 boss would keep flying when killed in mid-flight
+    This is now fixed.
+- Add patch:
+  * fix-build.patch
+</comment>
+    <requestid>979752</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>87f42c1e44684f6732c3f1544e43c026</srcmd5>
+    <version>0.9.1</version>
+    <time>1670863191</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042300</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>15c6663d66929a39fd806919568e8773</srcmd5>
+    <version>0.9.1</version>
+    <time>1680968357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077978</requestid>
+  </revision>
+</revisionlist>

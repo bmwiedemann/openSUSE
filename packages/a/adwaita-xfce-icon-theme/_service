@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="localonly">
+    <param name="url">https://github.com/shimmerproject/adwaita-xfce-icon-theme.git</param>
+    <param name="scm">git</param>
+    <param name="revision">main</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">mauriziogalli@opensuse.org</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="set_version" mode="localonly"/>
+  <service name="tar" mode="localonly"/>
+  <service name="recompress" mode="localonly">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

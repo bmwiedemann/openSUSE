@@ -1,0 +1,13 @@
+Index: amanda-3.5.1/configure.ac
+===================================================================
+--- amanda-3.5.1.orig/configure.ac
++++ amanda-3.5.1/configure.ac
+@@ -25,7 +25,7 @@ dnl These lines *must* be in configure.i
+ AM_GNU_GETTEXT_VERSION([0.15])
+ AM_GNU_GETTEXT([external])
+ AMANDA_PROG_GETTEXT
+-
++AC_SEARCH_LIBS([xdr_void], [tirpc nsl])
+ 
+ dnl
+ dnl Set up files for autoconf substitution.  All files are listed here, in

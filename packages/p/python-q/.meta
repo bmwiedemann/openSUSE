@@ -1,0 +1,5 @@
+<package name="python-q" project="openSUSE:Factory">
+  <title>python-q</title>
+  <description>Quick-and-dirty debugging output for tired programmers</description>
+  <devel project="devel:languages:python" package="python-q"/>
+</package>
