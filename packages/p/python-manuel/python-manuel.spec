@@ -1,7 +1,7 @@
 #
 # spec file for package python-manuel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013-2018 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-manuel
 Version:        1.12.4
 Release:        0
@@ -34,11 +35,13 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+%if 0%{?suse_version} >= 1600
 # SECTION Documentation requirements:
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-myst-parser
 BuildRequires:  python3-sphinxcontrib-copybutton
 # /SECTION
+%endif
 # SECTION Testing requirements:
 BuildRequires:  %{python_module zope.testing}
 # /SECTION
@@ -61,17 +64,21 @@ This package contains documentation files for %{name}.
 
 %build
 %pyproject_wheel
+%if 0%{?suse_version} >= 1600
 sphinx-build -c sphinx/ -a src/manuel docs/
 rm docs/.buildinfo
+%endif
 
 %install
 %pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%if 0%{?suse_version} >= 1600
 %{python_expand #
-%fdupes %{buildroot}%{$python_sitelib}
 mkdir -p %{buildroot}%{_docdir}/%{$python_prefix}-manuel-doc
 cp -r docs/* %{buildroot}%{_docdir}/%{$python_prefix}-manuel-doc
 %fdupes %{buildroot}%{_docdir}/%{$python_prefix}-manuel-doc
 }
+%endif
 
 %check
 %pytest src/manuel/tests.py
@@ -82,7 +89,9 @@ cp -r docs/* %{buildroot}%{_docdir}/%{$python_prefix}-manuel-doc
 %{python_sitelib}/manuel
 %{python_sitelib}/manuel-%{version}.dist-info
 
+%if 0%{?suse_version} >= 1600
 %files %{python_files doc}
 %doc %{_docdir}/%{python_prefix}-manuel-doc
+%endif
 
 %changelog

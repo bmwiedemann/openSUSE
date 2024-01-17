@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 16 10:31:24 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+- Don't build the docs in SLE-based projects
+
+-------------------------------------------------------------------
 Tue May  2 10:14:39 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Replace unsupported setuptoos sphinx_build hook
