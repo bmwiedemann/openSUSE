@@ -1,0 +1,36 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>jmock</groupId>
+    <artifactId>jmock-cglib</artifactId>
+    <version>1.2.0</version>
+    <packaging>jar</packaging>
+    <name>jMock CGLIB extension</name>
+    <url>http://www.jmock.org/</url>
+    <description>jMock is a library for testing Java code using mock objects. The CGLIB extension allows creating of mock objects for classes.</description>
+    <licenses>
+        <license>
+            <name>BSD</name>
+            <url>http://www.jmock.org/license.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <url>http://cvs.jmock.codehaus.org/browse/jmock/jmock</url>
+    </scm>
+    <organization>
+        <name>jMock.org</name>
+        <url>http://www.jmock.org/</url>
+    </organization>
+    <dependencies>
+	    <dependency>
+			<groupId>jmock</groupId>
+			<artifactId>jmock</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+	    <dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>2.1_3</version>
+		</dependency>
+	</dependencies>
+</project>

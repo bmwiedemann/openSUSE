@@ -1,0 +1,9 @@
+<package name="perl-Devel-LexAlias" project="openSUSE:Factory">
+  <title>Alias Lexical Variables</title>
+  <description>Devel::LexAlias provides the ability to alias a lexical variable in a
+subroutines scope to one of your choosing.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Devel-LexAlias"/>
+  <url>http://search.cpan.org/dist/Devel-LexAlias/</url>
+</package>

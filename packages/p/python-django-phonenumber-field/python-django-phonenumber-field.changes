@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Tue Oct 24 12:29:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- use setuptools_scm to get proper version in metadata
+
+-------------------------------------------------------------------
+Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip Tumbleweed Python 3.6 incompatible with Django 4
+
+-------------------------------------------------------------------
+Wed May 26 14:24:47 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.1.0
+  * Add support for Python 3.9 and Django 3.2
+  * Allow sorting PhoneNumbers from Python
+  * Drop support for end-of-life Django 1.11 and 2.1.
+
+-------------------------------------------------------------------
+Sat Jun 27 01:38:05 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+
+-------------------------------------------------------------------
+Wed Apr 15 07:10:13 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v4.0.0
+
+-------------------------------------------------------------------
+Fri Apr 12 01:11:30 AM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v2.3.1

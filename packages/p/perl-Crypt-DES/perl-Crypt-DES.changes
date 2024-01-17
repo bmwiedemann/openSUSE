@@ -1,0 +1,98 @@
+-------------------------------------------------------------------
+Mon Jul 29 12:11:49 UTC 2013 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  See Copyright
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:30 UTC 2013 - coolo@suse.com
+
+- updated to 2.07
+  SvUPGRADE was changed to a statement.
+  a minor bug in META.yml was fixed.
+- remove old svupgrade.patch
+
+
+-------------------------------------------------------------------
+Fri Jun 21 09:02:52 UTC 2013 - coolo@suse.com
+
+- add svupgrade.patch from RT#82943
+
+-------------------------------------------------------------------
+Fri Nov 18 11:07:16 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:16 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Nov 24 16:40:57 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+  o fix deps
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:26 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:35 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan  3 13:33:17 CET 2006 - anicka@suse.cz
+
+- update to 2.05 
+
+-------------------------------------------------------------------
+Sun Jan 11 10:19:24 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 14:19:19 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Thu Aug 21 00:35:57 CEST 2003 - ro@suse.de
+
+- remove perl-Crypt-CBC from neededforbuild (not really used) 
+
+-------------------------------------------------------------------
+Mon Jul 14 13:56:15 CEST 2003 - mls@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Wed Jun 04 19:05:11 CEST 2003 - mjancar@suse.cz
+
+- use $RPM_OPT_FLAGS
+- add missing prototypes
+
+-------------------------------------------------------------------
+Tue May 20 12:42:07 CEST 2003 - mjancar@suse.cz
+
+- remove unpackaged files
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Tue Mar 12 17:39:33 CET 2002 - jantos@suse.cz
+
+- Package created
+ 
+

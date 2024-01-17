@@ -1,0 +1,3 @@
+# false positive
+addFilter("unexpanded-macro.*Opaque.*")	
+

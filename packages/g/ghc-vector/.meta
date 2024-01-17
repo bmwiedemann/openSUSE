@@ -1,0 +1,9 @@
+<package name="ghc-vector" project="openSUSE:Factory">
+  <title>Efficient Arrays</title>
+  <description>
+An efficient implementation of Int-indexed arrays (both mutable and immutable),
+with a powerful loop optimisation framework
+  </description>
+  <devel project="devel:languages:haskell" package="ghc-vector"/>
+  <url>http://hackage.haskell.org/package/vector</url>
+</package>

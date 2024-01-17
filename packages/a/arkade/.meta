@@ -1,0 +1,6 @@
+<package name="arkade" project="openSUSE:Factory">
+  <title>Arkade</title>
+  <description>Open Source Kubernetes Marketplace</description>
+  <devel project="devel:kubic" package="arkade"/>
+  <url>https://github.com/alexellis/arkade</url>
+</package>

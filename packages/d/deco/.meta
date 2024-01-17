@@ -1,0 +1,6 @@
+<package name="deco" project="openSUSE:Factory">
+  <title>Deco Archive File Extractor</title>
+  <description>Deco is a generic archive file extractor that has a consistent command line interface (&quot;deco 1.tar.bz2 2.zip 3.flac 4.rar 5.deb&quot; will just work) and consistent behavior (it never deletes archives after extraction, extracts relative to the current working directory, and extracts just verbosely enough, all unless explicitly requested otherwise). It provides automatic handling of extractor gotchas by creating an extraction directory if there is more than one file or directory at the archive top level and by being able to fix strange permissions. 33 archive file extensions are supported out of the box, and adding support for others requires very little work.</description>
+  <devel project="Archiving" package="deco"/>
+  <url>http://hartlich.com/deco/</url>
+</package>

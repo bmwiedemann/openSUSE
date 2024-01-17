@@ -1,0 +1,3 @@
+It is recommended to use SSL in the communication between agents and server, but it is not enabled by default.
+To configure it, please follow https://www.zabbix.com/documentation/4.0/manual/encryption/using_certificates.
+In other case you are putting yourself into huge risk of leaking sensitive data.

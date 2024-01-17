@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>963f8427e57f0d7b099971ea6be39fe1</srcmd5>
+    <version>0.04</version>
+    <time>1324831117</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>97582</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>264e6a7b4830614c427fc6dccaecb116</srcmd5>
+    <version>0.04</version>
+    <time>1339477780</time>
+    <user>coolo</user>
+    <comment>- require the right version of perl</comment>
+    <requestid>124454</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>264e6a7b4830614c427fc6dccaecb116</srcmd5>
+    <version>0.04</version>
+    <time>1340183830</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>264e6a7b4830614c427fc6dccaecb116</srcmd5>
+    <version>0.04</version>
+    <time>1359109647</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9a77f7d0b43c4a395149eed21843670e</srcmd5>
+    <version>0.05</version>
+    <time>1370789813</time>
+    <user>coolo</user>
+    <comment>- updated to 0.05
+     Apply fix for DEBUGGING perls from Reini Urban RT#74862
+     Apply rewrite for 5.17 pad reorganiztion from ? RT#79267 (forwarded request 177347 from coolo)</comment>
+    <requestid>177410</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9a77f7d0b43c4a395149eed21843670e</srcmd5>
+    <version>0.05</version>
+    <time>1379663644</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>9a77f7d0b43c4a395149eed21843670e</srcmd5>
+    <version>0.05</version>
+    <time>1409302259</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

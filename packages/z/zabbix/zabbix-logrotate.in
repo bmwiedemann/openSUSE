@@ -1,0 +1,8 @@
+/var/log/USER/zabbix_COMPONENT.log {
+	missingok
+	monthly
+	notifempty
+	compress
+	copytruncate
+	su USER USER
+}

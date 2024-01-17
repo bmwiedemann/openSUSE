@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f0d4a90db936ee81aa18f7efa0672e96</srcmd5>
+    <version>4.1.0</version>
+    <time>1613774962</time>
+    <user>dimstar_suse</user>
+    <comment>Rename php7-phalcon to php-phalcon</comment>
+    <requestid>873884</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cf967f591e94831c7e66e933ac2d5371</srcmd5>
+    <version>4.1.2</version>
+    <time>1622759618</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.2
+  * Fixed Logger\Log::log() log to recognize all log levels.
+  * Changed setClaims to be protected so that the
+    Phalcon\Security\JWT\Builder class can be properly extended.
+- Changed to PECL repository
+- Fix specfile typos and include %license
+</comment>
+    <requestid>897090</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5714e2d81e7cff74559985ee9068b7c7</srcmd5>
+    <version>5.0.2</version>
+    <time>1665504199</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1009675</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0c75cdde7efc617a22acaaa805dadf30</srcmd5>
+    <version>5.1.0</version>
+    <time>1667901243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034273</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ce9c10888a6832a72b24133f6b431304</srcmd5>
+    <version>5.1.1</version>
+    <time>1669910327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039179</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>39a1794ac04f50bb59a03087c69af849</srcmd5>
+    <version>5.1.2</version>
+    <time>1670703525</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041988</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7e52838c745b68a16f0950d3dc09990c</srcmd5>
+    <version>5.1.4</version>
+    <time>1673724750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058359</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8ad3c85b10c284292e6d703ea3a1734c</srcmd5>
+    <version>5.2.1</version>
+    <time>1678204233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069855</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a3adb4976052b0cf6568e6b8d555dcff</srcmd5>
+    <version>5.2.2</version>
+    <time>1687796163</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095256</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>18bb416bc77d6c8b0fa6cc05a03fcbf4</srcmd5>
+    <version>5.3.0</version>
+    <time>1692795446</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105146</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>16218990f38dd511d9d514ebbe766324</srcmd5>
+    <version>5.3.1</version>
+    <time>1696188159</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114448</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>66b6d5d627d71d687023390ce546b517</srcmd5>
+    <version>5.4.0</version>
+    <time>1698604898</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120925</requestid>
+  </revision>
+</revisionlist>

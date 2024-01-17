@@ -1,0 +1,178 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>033b52935e31cdc54dae489855b6c6ac</srcmd5>
+    <version>2.05</version>
+    <time>1168903812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="133">
+    <srcmd5>033b52935e31cdc54dae489855b6c6ac</srcmd5>
+    <version>2.05</version>
+    <time>1168903812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="134">
+    <srcmd5>9f3ad2275cd067aa2c58d9163d1d4d79</srcmd5>
+    <version>2.05</version>
+    <time>1245337240</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="136">
+    <srcmd5>9f3ad2275cd067aa2c58d9163d1d4d79</srcmd5>
+    <version>2.05</version>
+    <time>1245337240</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="137">
+    <srcmd5>7a6f6b8d12d42f3317ab776cd17a9d49</srcmd5>
+    <version>2.05</version>
+    <time>1263293349</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Crypt-DES based on submit request 29214 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="138">
+    <srcmd5>2cad6f15fc349d2812bcfe748e1f455d</srcmd5>
+    <version>2.05</version>
+    <time>1268925402</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="140">
+    <srcmd5>2cad6f15fc349d2812bcfe748e1f455d</srcmd5>
+    <version>2.05</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="141">
+    <srcmd5>2cad6f15fc349d2812bcfe748e1f455d</srcmd5>
+    <version>2.05</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="142">
+    <srcmd5>9015d155c71b00a9c757fdcad0d70776</srcmd5>
+    <version>2.05</version>
+    <time>1287485467</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50965 from user coolo
+</comment>
+    <requestid>50965</requestid>
+  </revision>
+  <revision rev="10" vrev="143">
+    <srcmd5>24fead943c428c82a425fc4fd8996760</srcmd5>
+    <version>2.05</version>
+    <time>1287485473</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 50965
+</comment>
+  </revision>
+  <revision rev="11" vrev="144">
+    <srcmd5>9e175787095a11c5b87c3fa9457d1223</srcmd5>
+    <version>2.05</version>
+    <time>1290788725</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53907 from user computersalat
+</comment>
+    <requestid>53907</requestid>
+  </revision>
+  <revision rev="12" vrev="145">
+    <srcmd5>39a266f9be4ef640857c8da60a15cdee</srcmd5>
+    <version>2.05</version>
+    <time>1290788731</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53907
+</comment>
+  </revision>
+  <revision rev="13" vrev="146">
+    <srcmd5>0fdbbf3a6c3fc3d12fc014c89cc3f0f5</srcmd5>
+    <version>2.05</version>
+    <time>1291581829</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54501 from user coolo
+</comment>
+    <requestid>54501</requestid>
+  </revision>
+  <revision rev="14" vrev="147">
+    <srcmd5>722620fd20a6ad4a26b85d3555ec6988</srcmd5>
+    <version>2.05</version>
+    <time>1291581834</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54501
+</comment>
+  </revision>
+  <revision rev="15" vrev="150">
+    <srcmd5>722620fd20a6ad4a26b85d3555ec6988</srcmd5>
+    <version>2.05</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="152">
+    <srcmd5>722620fd20a6ad4a26b85d3555ec6988</srcmd5>
+    <version>2.05</version>
+    <time>1319182253</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="153">
+    <srcmd5>7dc4bd93c711f69d171748bd791007f9</srcmd5>
+    <version>2.05</version>
+    <time>1321875434</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92099</requestid>
+  </revision>
+  <revision rev="18" vrev="154">
+    <srcmd5>a8c4571459f7febea4d1e0d2176f05bc</srcmd5>
+    <version>2.05</version>
+    <time>1323193170</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="156">
+    <srcmd5>a8c4571459f7febea4d1e0d2176f05bc</srcmd5>
+    <version>2.05</version>
+    <time>1340183817</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="158">
+    <srcmd5>a8c4571459f7febea4d1e0d2176f05bc</srcmd5>
+    <version>2.05</version>
+    <time>1359109630</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="159">
+    <srcmd5>8e83ce52571c98776207774577893f62</srcmd5>
+    <version>2.05</version>
+    <time>1372136374</time>
+    <user>coolo</user>
+    <comment>- add svupgrade.patch from RT#82943</comment>
+    <requestid>180402</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>910ec542114ec11514a4d5a5d2078b8e</srcmd5>
+    <version>2.07</version>
+    <time>1375195070</time>
+    <user>coolo</user>
+    <comment>license update: BSD-3-Clause
+See Copyright (forwarded request 184611 from babelworx)</comment>
+    <requestid>184872</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>910ec542114ec11514a4d5a5d2078b8e</srcmd5>
+    <version>2.07</version>
+    <time>1379663604</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>910ec542114ec11514a4d5a5d2078b8e</srcmd5>
+    <version>2.07</version>
+    <time>1409302223</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,20 @@
+Index: q-e-qe-6.8/install/extlibs_makefile
+===================================================================
+--- q-e-qe-6.8.orig/install/extlibs_makefile
++++ q-e-qe-6.8/install/extlibs_makefile
+@@ -93,14 +93,13 @@ CUDA_PATH := $(if $(GPU_ARCH),$(CUDA_PAT
+ libcuda_devxlib :
+ 	cd ../external/devxlib; \
+     if test ! -e configure; then \
+-    wget $(DEVXLIB_URL) -O devxlib.tar.gz || curl $(DEVXLIB_URL) -o devxlib.tar.gz ; \
+     tar xzf devxlib.tar.gz --strip-components=1 -C . ; \
+     rm devxlib.tar.gz ; \
+     fi; \
+     touch make.inc; \
+     $(MAKE) clean; \
+     export F90FLAGS="$(FOX_FLAGS)"; \
+-    ./configure FC=$(F90) CC=$(CC) \
++    ./configure FC=$(FC) CC=$(CC) \
+                 --with-cuda=$(CUDA_PATH) \
+                 --with-cuda-cc=$(GPU_ARCH) \
+                 --with-cuda-runtime=$(CUDA_RUNTIME) \

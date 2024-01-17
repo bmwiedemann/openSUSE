@@ -1,0 +1,5 @@
+<package name="enlightenment-theme-openSUSE-ice" project="openSUSE:Factory">
+  <title>enlightenment-theme-openSUSE-ice</title>
+  <description>Enlightenment ice theme adapted for openSUSE</description>
+  <devel project="X11:Enlightenment:Factory" package="enlightenment-theme-openSUSE-ice"/>
+</package>

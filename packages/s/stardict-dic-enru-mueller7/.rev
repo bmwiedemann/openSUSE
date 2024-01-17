@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3ee23db7cc51c4ca8b25be28c67ab575</srcmd5>
+    <version>unknown</version>
+    <time>1283792709</time>
+    <user>autobuild</user>
+    <comment>Copy from Education/stardict-dic-enru-mueller7 based on submit request 46936 from user kkirill
+</comment>
+    <requestid>46936</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>92c9289b8bfd97f43c80d6758bb1820a</srcmd5>
+    <version>1.2</version>
+    <time>1289866705</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53072 from user kkirill
+</comment>
+    <requestid>53072</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e4cd2f8352ee4e1bbf70cc50835c9cdb</srcmd5>
+    <version>1.2</version>
+    <time>1292757686</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 56258 from user coolo
+</comment>
+    <requestid>56258</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7cdd2c64f7f19a03dbacaa63ea9b2f53</srcmd5>
+    <version>1.2</version>
+    <time>1292757690</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 56258
+</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>7cdd2c64f7f19a03dbacaa63ea9b2f53</srcmd5>
+    <version>1.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>7cdd2c64f7f19a03dbacaa63ea9b2f53</srcmd5>
+    <version>1.2</version>
+    <time>1319182489</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>a3263688c4e4c5cb6f722b4381386f08</srcmd5>
+    <version>1.2</version>
+    <time>1323194753</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>fb5e91371166aa22edcf86460233c52f</srcmd5>
+    <version>1.2</version>
+    <time>1330521099</time>
+    <user>coolo</user>
+    <comment>Removed &quot;Provides: locale(stardict:en)&quot; line to avoid installing the dictionary for English environment. Fixed bnc#693083</comment>
+    <requestid>107460</requestid>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>fb5e91371166aa22edcf86460233c52f</srcmd5>
+    <version>1.2</version>
+    <time>1340184239</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>fb5e91371166aa22edcf86460233c52f</srcmd5>
+    <version>1.2</version>
+    <time>1359110438</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>fb5e91371166aa22edcf86460233c52f</srcmd5>
+    <version>1.2</version>
+    <time>1379664733</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>fb5e91371166aa22edcf86460233c52f</srcmd5>
+    <version>1.2</version>
+    <time>1409303416</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

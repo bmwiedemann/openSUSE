@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Fri Mar  3 13:01:05 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix build with newer rubies, that removed File:exists method
+
+-------------------------------------------------------------------
+Tue Apr 26 12:25:31 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Future proof tupitube.quazip5.patch and fix Factory build
+
+-------------------------------------------------------------------
+Mon Dec  6 10:05:57 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 0.2.18 (no changelog supplied)
+- Removed 0001-Fix-build-with-Qt-5.15.patch
+- Adjusted tupitube.quazip5.patch
+
+-------------------------------------------------------------------
+Tue Mar 30 09:43:54 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.2.17 (no changelog supplied)
+- Refreshed 0001-Fix-build-with-Qt-5.15.patch
+
+-------------------------------------------------------------------
+Sun Nov  8 06:42:17 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.2.16:
+  - no changelog supplied upstream
+- Rebase tupitube.quazip5.patch
+
+-------------------------------------------------------------------
+Tue Jul  7 10:50:01 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add GPL-3.0-or-later license on account of the libqtmypaint and
+  libraster* plugins
+- Add tupitube-rpmlintrc
+- Fix some rpmlint complaints
+
+-------------------------------------------------------------------
+Thu Jun  4 21:14:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.2.15. No changelog.
+- Rebase tupitube.quazip5.patch
+- Drop tupitube.libav.patch. No longer necessary.
+- Add patch to fix build with Qt 5.15:
+  * 0001-Fix-build-with-Qt-5.15.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
+Mon Apr 22 11:35:59 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.2.13 (no changelog supplied)
+
+-------------------------------------------------------------------
+Thu Feb  1 23:41:31 UTC 2018 - jengelh@inai.de
+
+- Fix errors in description.
+
+-------------------------------------------------------------------
+Thu Feb  1 18:48:16 UTC 2018 - aloisio@gmx.com
+
+- Fixed runtime requirements
+
+-------------------------------------------------------------------
+Sat Jan 27 12:21:54 UTC 2018 - aloisio@gmx.com
+
+- Update to 0.2.10
+  * Several critical bugs around the Exposure Sheet module and the
+    Time Line were fixed.
+  * The Color Palette interface was improved, including the
+    interaction with Color Fill tools.
+  * The first phase of the Sound Module implementation has been
+    included to support sound files just as references to animate.
+    In future versions, the sound files will be merged within the
+    animation video files.
+  * The Position Tween was improved by including the Undo option
+    for the path edition mode.
+  * The Stop Motion module was refactored to fix several bugs and
+    to enhance its user experience.
+
+- Changed name to tupitube (as per upstream renaming)
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Tue Jun 20 08:35:10 UTC 2017 - olaf@aepfle.de
+
+- Update to 0.2.9
+
+-------------------------------------------------------------------
+Fri Apr  8 15:58:11 UTC 2016 - avvissu@yandex.by
+
+- Add Requires: plugins
+
+-------------------------------------------------------------------
+Sun Jan  3 11:19:29 UTC 2016 - avvissu@yandex.ru
+
+- Initial build
+
