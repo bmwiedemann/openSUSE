@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 17 03:32:48 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Resolved XFS regression leading to the "not a correct XFS inode" error by
+  temporarily reverting the problematic commit (bsc#1218864)
+  * 0001-Revert-fs-xfs-Fix-XFS-directory-extent-parsing.patch
+
+-------------------------------------------------------------------
 Wed Jan 10 08:13:00 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Version bump to 2.12 (PED-5589)
