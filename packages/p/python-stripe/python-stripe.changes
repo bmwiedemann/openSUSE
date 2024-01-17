@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Jan 17 03:12:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.12.0:
+  * Add support for new resource `CustomerSession`
+  * Add support for `create` method on resource `CustomerSession`
+  * Remove support for values `obligation_inbound`,
+    `obligation_payout_failure`, `obligation_payout`, and
+    `obligation_reversal_outbound` from enum `BalanceTransaction.type`
+  * Remove support for value `obligation` from enum
+    `Reporting.ReportRunCreateParams.parameters.reporting_category`
+  * Mark defunct and internal methods as deprecated
+  * Do not raise a DeprecationWarning in `stripe.app_info`
+  * Fix __getattr__ to raise AttributeError rather than returning None.
+  * Add missing explicit reexport for `OAuth`, `Webhook`, `WebhookSignature`
+  * `stripe.api_version`, `stripe.multipart_data_generator`,
+    `stripe.request_metrics` are deprecated.
+  * Move resource type exports to stripe.
+  * Add support for new resources `Climate.Order`, `Climate.Product`, and
+    `Climate.Supplier`
+  * Add support for `cancel`, `create`, `list`, `modify`, and `retrieve`
+    methods on resource `Order`
+  * Add support for `exemption_indicator` on resource class
+    `Charge.PaymentMethodDetails.Card.ThreeDSecure`
+  * Add support for `Paypal` on `Checkout.Session.PaymentMethodOptions`
+  * Add support for Python 3.11/3.12
+  * Include `py.typed` and enable type annotations for the package
+  * Behavior change: nested json objects will now deserialize into
+    instances of specific classes that subclass `StripeObject`.
+  * Behavior change: `PromotionCode.restrictions.currency_options` will now
+    deserialize into `dict` and not `StripeObject`.
+  * This release changes the pinned API version to `2023-10-16`. Please read
+    https://stripe.com/docs/upgrades#2023-10-16 and carefully review the API
+    changes.
+  * Require typing_extensions >= 4.0.0
+  * Remove support for Python 2.
+  * https://github.com/stripe/stripe-python/wiki/Migration-guide-for-v6 for
+    more detailed instructions for 6.0.0+.
+  * Dropped support for Python version 3.4 and 3.5.
+  * Add `upcoming_lines` method to the `Invoice` resource.
+  * Add support for new resource `CustomerCashBalanceTransaction`
+  * Fix incorrect handling of additional request parameters
+  * Removed deprecated `AlipayAccount`, `BitcoinReceiver`,
+    `BitcoinTransaction`, `IssuerFraudRecord`, `Recipient`,
+    `RecipientTransfer`, and  `ThreeDSecure` classes.
+  * Removed deprecated `Charge.update_dispute` and `Charge.close_dispute`
+    methods that were using legacy REST API endpoint.
+  * https://github.com/stripe/stripe-python/wiki/Migration-Guide-for-v3
+    contains more information for 3.0.0+.
+- Add patch use-sys-executable.patch:
+  * Use sys.executable when checking exports.
+- Add patch also-skip-streaming.patch:
+  * Also skip streaming tests. 
+* Switch to autosetup and pyproject macros.
+
+-------------------------------------------------------------------
 Sat Dec 11 16:24:22 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 2.63.0

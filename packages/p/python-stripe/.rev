@@ -15,4 +15,41 @@
     <comment></comment>
     <requestid>940020</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>118b9bdb09c9cef4946d7cb765df7d20</srcmd5>
+    <version>7.12.0</version>
+    <time>1705526165</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.12.0:
+  * Add support for new resource `CustomerSession`
+  * Add support for `create` method on resource `CustomerSession`
+  * Remove support for values `obligation_inbound`,
+    `obligation_payout_failure`, `obligation_payout`, and
+    `obligation_reversal_outbound` from enum `BalanceTransaction.type`
+  * Remove support for value `obligation` from enum
+    `Reporting.ReportRunCreateParams.parameters.reporting_category`
+  * Mark defunct and internal methods as deprecated
+  * Do not raise a DeprecationWarning in `stripe.app_info`
+  * Fix __getattr__ to raise AttributeError rather than returning None.
+  * Add missing explicit reexport for `OAuth`, `Webhook`, `WebhookSignature`
+  * `stripe.api_version`, `stripe.multipart_data_generator`,
+    `stripe.request_metrics` are deprecated.
+  * Move resource type exports to stripe.
+  * Add support for new resources `Climate.Order`, `Climate.Product`, and
+    `Climate.Supplier`
+  * Add support for `cancel`, `create`, `list`, `modify`, and `retrieve`
+    methods on resource `Order`
+  * Add support for `exemption_indicator` on resource class
+    `Charge.PaymentMethodDetails.Card.ThreeDSecure`
+  * Add support for `Paypal` on `Checkout.Session.PaymentMethodOptions`
+  * Add support for Python 3.11/3.12
+  * Include `py.typed` and enable type annotations for the package
+  * Behavior change: nested json objects will now deserialize into
+    instances of specific classes that subclass `StripeObject`.
+  * Behavior change: `PromotionCode.restrictions.currency_options` will now
+    deserialize into `dict` and not `StripeObject`.
+  * This release changes the pinned API version to `2023-10-16`. Please read
+    https://stripe.com/docs/upgrades#2023-10-16 and carefully review the API</comment>
+    <requestid>1139334</requestid>
+  </revision>
 </revisionlist>
