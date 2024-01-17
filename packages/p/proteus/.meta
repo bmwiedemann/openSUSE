@@ -1,5 +1,0 @@
-<package name="proteus" project="openSUSE:Factory">
-  <title>A library to access Tryton's modules like a client</title>
-  <description></description>
-  <devel project="Application:ERP:GNUHealth:Factory" package="proteus"/>
-</package>

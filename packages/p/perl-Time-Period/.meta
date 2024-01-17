@@ -1,7 +1,0 @@
-<package name="perl-Time-Period" project="openSUSE:Factory">
-  <title>A Perl Module for dealing with Time Periods</title>
-  <description>Period.pm is a Perl module that contains code for dealing with time
-periods. Currently, there is only one function in this module.	That
-function is called inPeriod().</description>
-  <devel project="devel:languages:perl" package="perl-Time-Period"/>
-</package>

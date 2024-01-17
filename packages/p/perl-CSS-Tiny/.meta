@@ -1,9 +1,0 @@
-<package name="perl-CSS-Tiny" project="openSUSE:Factory">
-  <title>Read/Write .css files with as little code as possible</title>
-  <description>CSS::Tiny is a perl class to read and write .css stylesheets with as little
-code as possible, reducing load time and memory overhead. CSS.pm requires
-about 2.6 meg or ram to load, which is a large amount of overhead if you
-only want to do trivial things. Memory usage is normally scoffed at in
-Perl, but in my opinion should be at least kept in mind.</description>
-  <devel project="devel:languages:perl" package="perl-CSS-Tiny"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="perl-PAR-Packer" project="openSUSE:Factory">
-  <title>Implementation of App::Packer::Backend interface</title>
-  <description>
-This module implements the App::Packer::Backend interface, for generating
-stand-alone executables, perl scripts and PAR files.
-  </description>
-  <devel project="devel:languages:perl" package="perl-PAR-Packer"/>
-  <url>http://search.cpan.org/dist/PAR-Packer/</url>
-</package>

@@ -1,7 +1,0 @@
-<package name="perl-Devel-CoreStack" project="openSUSE:Factory">
-  <title>try to generate a stack dump from a core file</title>
-  <description>This module attempts to generate a stack dump from a core file by
-locating the best available debugger (if any) and running it with the
-appropriate arguments and command script.</description>
-  <devel project="devel:languages:perl" package="perl-Devel-CoreStack"/>
-</package>

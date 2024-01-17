@@ -1,8 +1,0 @@
-<package name="perl-Devel-Cover-Report-Codecovbash" project="openSUSE:Factory">
-  <title>Generate a JSON file to be uploaded with the codecov bash script.</title>
-  <description>This is a coverage reporter for Codecov. It generates a JSON file
-    that can be uploaded with the bash script provided by codecov.
-    See https://docs.codecov.io/docs/about-the-codecov-bash-uploader for details.
-  </description>
-  <devel project="devel:languages:perl" package="perl-Devel-Cover-Report-Codecovbash"/>
-</package>

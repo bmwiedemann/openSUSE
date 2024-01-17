@@ -1,6 +1,0 @@
-<package name="pinentry" project="openSUSE:Factory">
-  <title>Collection of Simple PIN or Passphrase Entry Dialogs</title>
-  <description>This is a collection of simple PIN or passphrase entry dialogs which
-utilize the Assuan protocol as described by the Aegypten project.</description>
-  <devel project="Base:System" package="pinentry"/>
-</package>

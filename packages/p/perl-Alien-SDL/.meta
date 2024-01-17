@@ -1,9 +1,0 @@
-<package name="perl-Alien-SDL" project="openSUSE:Factory">
-  <title>Building, finding and using SDL binaries</title>
-  <description>Alien::SDL can be used to detect and get configuration settings from an installed SDL and related libraries. Based on the platform it offers the possibility to download and install prebuilt binaries or to build SDL and co. from source codes.
-
-The important facts: The module does not modify in any way the already existing SDL installation on your system. If you reinstall SDL libs on your system you do not need to reinstall Alien::SDL (providing that you use the same directory for the new installation).
-</description>
-  <devel project="devel:languages:perl" package="perl-Alien-SDL"/>
-  <url>http://search.cpan.org/dist/Alien-SDL/</url>
-</package>

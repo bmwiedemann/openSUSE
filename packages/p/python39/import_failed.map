@@ -1,7 +1,0 @@
-python39-curses: curses _curses _curses_panel
-python39-dbm: dbm _dbm _gdbm
-python39-idle: idlelib
-python39-testsuite: test _ctypes_test _testbuffer _testcapi _testinternalcapi _testimportmultiple _testmultiphase xxlimited
-python39-tk: tkinter _tkinter
-python39-tools: turtledemo
-python39: sqlite3 readline _sqlite3 nis

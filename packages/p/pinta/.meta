@@ -1,6 +1,0 @@
-<package name="pinta" project="openSUSE:Factory">
-  <title>Simple Paint Application</title>
-  <description>Pinta is a drawing/editing program modeled after Paint.NET. It's goal is
-to provide a simplified alternative to GIMP for casual users.</description>
-  <devel project="Mono" package="pinta"/>
-</package>

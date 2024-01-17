@@ -1,5 +1,0 @@
-<package name="python-mbstrdecoder" project="openSUSE:Factory">
-  <title>python-mbstrdecoder</title>
-  <description>Multi-byte character string decoder</description>
-  <devel project="devel:languages:python" package="python-mbstrdecoder"/>
-</package>

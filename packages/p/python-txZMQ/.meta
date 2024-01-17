@@ -1,9 +1,0 @@
-<package name="python-txZMQ" project="openSUSE:Factory">
-  <title>Twisted bindings for ZeroMQ</title>
-  <description>xZMQ allows to integrate easily ØMQ sockets into Twisted event loop (reactor).
-txZMQ supports both CPython and PyPy and ØMQ library version 2.2.x or 3.2.x.
-
-</description>
-  <devel project="devel:languages:python" package="python-txZMQ"/>
-  <url>https://github.com/smira/txZMQ</url>
-</package>

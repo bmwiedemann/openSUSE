@@ -1,6 +1,0 @@
-<package name="python-truststore" project="openSUSE:Factory">
-  <title>Verify certificates using OS trust stores</title>
-  <description>Verify certificates using OS trust stores. Supports macOS, Windows, and Linux (with OpenSSL). This project should be considered experimental.</description>
-  <devel project="devel:languages:python" package="python-truststore"/>
-  <url>https://github.com/sethmlarson/truststore</url>
-</package>

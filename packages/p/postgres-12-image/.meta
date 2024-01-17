@@ -1,5 +1,0 @@
-<package name="postgres-12-image" project="openSUSE:Factory">
-  <title>openSUSE Tumbleweed PostgreSQL 12 Container Image</title>
-  <description>PostgreSQL 12 based on the openSUSE Tumbleweed Base Container Image.</description>
-  <devel project="devel:BCI:Tumbleweed" package="postgres-12-image"/>
-</package>

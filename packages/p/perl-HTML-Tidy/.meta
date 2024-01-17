@@ -1,7 +1,0 @@
-<package name="perl-HTML-Tidy" project="openSUSE:Factory">
-  <title>HTML checker module for Perl</title>
-  <description>HTML::Tidy is an HTML checker in a handy dandy Perl object.  Its meant
-as a replacement for HTML::Lint.
-</description>
-  <devel project="devel:languages:perl" package="perl-HTML-Tidy"/>
-</package>

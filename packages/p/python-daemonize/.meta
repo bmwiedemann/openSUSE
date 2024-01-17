@@ -1,9 +1,0 @@
-<package name="python-daemonize" project="openSUSE:Factory">
-  <title>Library to enable your code run as a daemon process on Unix-like systems</title>
-  <description>daemonize is a library for writing system daemons in Python. It is distributed
-under MIT license. Full documentation can be found at ReadTheDocs.
-
-</description>
-  <devel project="devel:languages:python" package="python-daemonize"/>
-  <url>https://github.com/thesharp/daemonize</url>
-</package>

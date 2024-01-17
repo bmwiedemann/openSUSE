@@ -1,6 +1,0 @@
-<package name="perl-DBD-XBase" project="openSUSE:Factory">
-  <title>Provides Access to XBase Files</title>
-  <description>Module XBase provides access to XBase (dBase, Fox*) database files,
-namely dbf, dbt, fpt, ndx, ntx, mdx, idx and cdx.</description>
-  <devel project="devel:languages:perl" package="perl-DBD-XBase"/>
-</package>

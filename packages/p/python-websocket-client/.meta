@@ -1,7 +1,0 @@
-<package name="python-websocket-client" project="openSUSE:Factory">
-  <title>WebSocket client for python</title>
-  <description>websocket-client module  is WebSocket client for python. This provides the low level APIs for WebSocket. All APIs are synchronous functions.
-
-websocket-client supports only hybi-13.</description>
-  <devel project="devel:languages:python" package="python-websocket-client"/>
-</package>

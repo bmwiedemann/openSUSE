@@ -1,9 +1,0 @@
-<package name="pcsc-acsccid" project="openSUSE:Factory">
-  <title>PCSC Driver for ACS CCID Based Smart Card Readers</title>
-  <description>This package contains a ACS USB CCID (Chip/Smart Card Interface
-Devices) driver.
-
-This driver is meant to be used with the PCSC-Lite daemon from the
-pcsc-lite package.</description>
-  <devel project="security:chipcard" package="pcsc-acsccid"/>
-</package>

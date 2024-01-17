@@ -1,5 +1,0 @@
--------------------------------------------------------------------
-Tue Jul 18 08:53:01 UTC 2023 - Markéta Machová <mmachova@suse.com>
-
-- Initial packaging (v2022.1), needed by django-crispy-forms v2
-- Upstream is slow in releases: upstream patch no-bs3.patch

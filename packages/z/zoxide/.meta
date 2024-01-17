@@ -1,6 +1,0 @@
-<package name="zoxide" project="openSUSE:Factory">
-  <title>A smarter cd command</title>
-  <description>zoxide is a smarter cd command, inspired by z and autojump. It remembers which directories you use most frequently, so you can &quot;jump&quot; to them in just a few keystrokes.</description>
-  <devel project="utilities" package="zoxide"/>
-  <url>https://github.com/ajeetdsouza/zoxide</url>
-</package>

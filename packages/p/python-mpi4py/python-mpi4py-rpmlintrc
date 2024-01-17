@@ -1,5 +1,0 @@
-# devel, common-devel and doc packages are arch dependent, devel and
-# common-devel install in sitearch and the doc could be noarch, but maybe
-it has no sense to have the doc package in archs where the original package
-is not provided.
-addFilter("E: no-binary")

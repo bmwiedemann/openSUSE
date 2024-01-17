@@ -1,5 +1,0 @@
-<package name="python-Flask-Babel" project="openSUSE:Factory">
-  <title>Adds i18n/l10n support to Flask applications</title>
-  <description>Adds i18n/l10n support to Flask applications with the help of the Babel library.</description>
-  <devel project="devel:languages:python:flask" package="python-Flask-Babel"/>
-</package>

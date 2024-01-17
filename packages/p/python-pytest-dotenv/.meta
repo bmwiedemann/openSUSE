@@ -1,5 +1,0 @@
-<package name="python-pytest-dotenv" project="openSUSE:Factory">
-  <title></title>
-  <description>A pytest plugin that parses environment files</description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-dotenv"/>
-</package>

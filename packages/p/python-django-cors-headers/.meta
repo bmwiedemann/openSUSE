@@ -1,8 +1,0 @@
-<package name="python-django-cors-headers" project="openSUSE:Factory">
-  <title>A Django App that adds CORS headers to responses</title>
-  <description>A Django App that adds CORS (Cross-Origin Resource Sharing) headers to
-responses.
-
-</description>
-  <devel project="devel:languages:python:django" package="python-django-cors-headers"/>
-</package>

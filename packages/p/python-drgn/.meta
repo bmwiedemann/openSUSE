@@ -1,6 +1,0 @@
-<package name="python-drgn" project="openSUSE:Factory">
-  <title>drgn scriptable debugger</title>
-  <description>drgn (pronounced “dragon”) is a debugger with an emphasis on programmability. drgn exposes the types and variables in a program for easy, expressive scripting in Python.</description>
-  <devel project="Kernel:kdump" package="python-drgn"/>
-  <url>https://github.com/osandov/drgn</url>
-</package>

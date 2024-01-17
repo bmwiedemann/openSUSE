@@ -1,5 +1,0 @@
-<package name="prosody-community-modules" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="devel:languages:lua" package="prosody-community-modules"/>
-</package>

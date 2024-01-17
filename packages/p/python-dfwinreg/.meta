@@ -1,6 +1,0 @@
-<package name="python-dfwinreg" project="openSUSE:Factory">
-  <title>Digital Forensics Windows Registry</title>
-  <description>dfwinreg, or Digital Forensics Windows Registry, is a Python module that provides read-only access to Windows Registry objects.
-</description>
-  <devel project="security:forensics" package="python-dfwinreg"/>
-</package>

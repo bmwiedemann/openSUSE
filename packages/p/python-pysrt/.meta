@@ -1,5 +1,0 @@
-<package name="python-pysrt" project="openSUSE:Factory">
-  <title>SubRip (.srt) subtitle parser and writer</title>
-  <description>pysrt is a Python library used to edit or create SubRip files.</description>
-  <devel project="devel:languages:python" package="python-pysrt"/>
-</package>

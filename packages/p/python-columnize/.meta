@@ -1,8 +1,0 @@
-<package name="python-columnize" project="openSUSE:Factory">
-  <title>Format a simple (i.e. not nested) list into aligned columns</title>
-  <description>Format a simple (i.e. not nested) list into aligned columns.
-
-</description>
-  <devel project="devel:languages:python" package="python-columnize"/>
-  <url>https://github.com/rocky/pycolumnize</url>
-</package>

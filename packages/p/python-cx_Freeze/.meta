@@ -1,7 +1,0 @@
-<package name="python-cx_Freeze" project="openSUSE:Factory">
-  <title>cx_Freeze is a set of utilities for freezing Python scripts into executables</title>
-  <description>cx_Freeze is a set of utilities for freezing Python scripts into executables
-using many of the techniques found in Thomas Heller's py2exe, Gordon
-McMillan's Installer and the Freeze utility that ships with Python itself.</description>
-  <devel project="devel:languages:python" package="python-cx_Freeze"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="php-redis" project="openSUSE:Factory">
-  <title>API for communicating with Redis servers</title>
-  <description>Extension provides an API for communicating with the Redis servers</description>
-  <devel project="server:php:extensions" package="php-redis"/>
-  <url>https://pecl.php.net/package/redis</url>
-</package>

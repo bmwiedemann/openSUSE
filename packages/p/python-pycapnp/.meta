@@ -1,5 +1,0 @@
-<package name="python-pycapnp" project="openSUSE:Factory">
-  <title></title>
-  <description>Cython wrapping of the C++ Cap'n Proto library</description>
-  <devel project="devel:languages:python" package="python-pycapnp"/>
-</package>

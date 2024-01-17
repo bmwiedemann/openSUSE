@@ -1,5 +1,0 @@
-<package name="python-pyxattr" project="openSUSE:Factory">
-  <title>python-pyxattr</title>
-  <description>A python module for accessing filesystem Extended Attributes http://pyxattr.k1024.org/</description>
-  <devel project="devel:languages:python" package="python-pyxattr"/>
-</package>

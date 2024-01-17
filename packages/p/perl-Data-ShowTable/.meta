@@ -1,8 +1,0 @@
-<package name="perl-Data-ShowTable" project="openSUSE:Factory">
-  <title>A Perl Module that allows Pretty-Printing of Data Arrays</title>
-  <description>ShowTable.pm is a Perl 5 module which defines subroutines to print
-arrays of data in nicely formatted listings. It uses one of four
-possible formats: simple table, boxed table, list style, and
-HTML-formatting.</description>
-  <devel project="devel:languages:perl" package="perl-Data-ShowTable"/>
-</package>

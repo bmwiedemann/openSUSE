@@ -1,7 +1,0 @@
-<package name="pdsh" project="openSUSE:Factory">
-  <title>Parallel remote shell program</title>
-  <description>Pdsh is a multithreaded remote shell client which executes commands on
-multiple remote hosts in parallel.  Pdsh can use several different
-remote shell services, including standard &quot;rsh&quot;, Kerberos IV, and ssh.</description>
-  <devel project="network:utilities" package="pdsh"/>
-</package>

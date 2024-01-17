@@ -1,5 +1,0 @@
-<package name="powerpc-utils" project="openSUSE:Factory">
-  <title>Utilities for PowerPC Hardware</title>
-  <description>The powerpc-utils package provides a set of tools and utilities and utilities for maintaining and enabling certain features of Linux on Power. </description>
-  <devel project="hardware" package="powerpc-utils"/>
-</package>

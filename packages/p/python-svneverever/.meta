@@ -1,5 +1,0 @@
-<package name="python-svneverever" project="openSUSE:Factory">
-  <title>Tool collecting path entries across SVN history</title>
-  <description>Tool collecting path entries across SVN history. It runs through all SVN history collecting additions of directories. In the end it presents a tree of all directories ever having existed in the repository.</description>
-  <devel project="devel:tools:scm:svn" package="python-svneverever"/>
-</package>

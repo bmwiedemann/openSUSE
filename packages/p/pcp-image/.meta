@@ -1,5 +1,0 @@
-<package name="pcp-image" project="openSUSE:Factory">
-  <title>openSUSE Tumbleweed Performance Co-Pilot (pcp) Container Image</title>
-  <description>Performance Co-Pilot (pcp) container image based on the SLE Base Container Image. This container image is not supported when using a container runtime other than podman.</description>
-  <devel project="devel:BCI:Tumbleweed" package="pcp-image"/>
-</package>

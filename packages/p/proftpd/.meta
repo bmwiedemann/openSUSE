@@ -1,8 +1,0 @@
-<package name="proftpd" project="openSUSE:Factory">
-  <title>Highly configurable GPL-licensed FTP server software</title>
-  <description>ProFTPD is a highly configurable FTP daemon for Unix and Unix-like
-operating systems.  See the README.ports file for more details about
-the platforms on which ProFTPD in known or thought to build and run.</description>
-  <devel project="network" package="proftpd"/>
-  <url>http://www.proftpd.org/</url>
-</package>

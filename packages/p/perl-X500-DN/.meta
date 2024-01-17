@@ -1,6 +1,0 @@
-<package name="perl-X500-DN" project="openSUSE:Factory">
-  <title>Provides an interface for RFC 2253 style DN strings</title>
-  <description>X500::DN Provides a pure perl parser and formatter for RFC 2253 style
-DN strings.</description>
-  <devel project="devel:languages:perl" package="perl-X500-DN"/>
-</package>

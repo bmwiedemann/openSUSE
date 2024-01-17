@@ -1,5 +1,0 @@
-<package name="zram-generator" project="openSUSE:Factory">
-  <title>zram-generator</title>
-  <description></description>
-  <devel project="Base:System" package="zram-generator"/>
-</package>

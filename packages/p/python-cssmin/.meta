@@ -1,5 +1,0 @@
-<package name="python-cssmin" project="openSUSE:Factory">
-  <title></title>
-  <description>A Python port of the YUI CSS compression algorithm.</description>
-  <devel project="devel:languages:python" package="python-cssmin"/>
-</package>

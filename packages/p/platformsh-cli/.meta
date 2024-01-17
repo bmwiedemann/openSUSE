@@ -1,5 +1,0 @@
-<package name="platformsh-cli" project="openSUSE:Factory">
-  <title>platformsh-cli</title>
-  <description>The Platform.sh CLI is the official command-line interface for Platform.sh. Use this tool to interact with your Platform.sh projects, and to build them locally for development purposes.</description>
-  <devel project="server:php:applications" package="platformsh-cli"/>
-</package>

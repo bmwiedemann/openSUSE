@@ -1,7 +1,0 @@
-<package name="perl-Mail-SpamAssassin-Plugin-dqs" project="openSUSE:Factory">
-  <title>SpamAssassin plugin for Spamhaus Data Query Service (DQS)</title>
-  <description>The Spamhaus Data Query Service (DQS) plugin for SpamAssassin enhances existing functions by checking HELO/EHLO, From, Reply-To, Envelope-From and Return-Path against Spamhaus DBL/ZRD blacklists. It also scans the e-mail body for e-mail addresses and performs blacklist lookups against the domains or its authoritative nameservers. Further checks cover the reverse DNS matches in DBL/ZRD blacklists or the SBL/CSS lookups for IP addresses or IP addresses of authoritative nameservers of domains being part of the e-mail body.
-While the DQS usage is free under the same terms like when using public mirrors (which are shipped in SpamAssassin as default configuration), a registration procedure for a free DQS key is mandatory nevertheless.</description>
-  <devel project="devel:languages:perl" package="perl-Mail-SpamAssassin-Plugin-dqs"/>
-  <url>https://github.com/spamhaus/spamassassin-dqs</url>
-</package>

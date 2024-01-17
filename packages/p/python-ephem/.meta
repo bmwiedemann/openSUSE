@@ -1,5 +1,0 @@
-<package name="python-ephem" project="openSUSE:Factory">
-  <title></title>
-  <description>Scientific-grade astronomy routines for Python</description>
-  <devel project="devel:languages:python" package="python-ephem"/>
-</package>

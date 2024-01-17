@@ -1,5 +1,0 @@
-<package name="python-pastel" project="openSUSE:Factory">
-  <title>python-pastel</title>
-  <description>Bring colors to your terminal</description>
-  <devel project="devel:languages:python" package="python-pastel"/>
-</package>

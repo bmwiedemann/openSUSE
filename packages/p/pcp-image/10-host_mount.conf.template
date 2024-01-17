@@ -1,6 +1,0 @@
-# SPDX-License-Identifier: (LGPL-2.1+ AND GPL-2.0+)
-
-[Service]
-Environment="PROC_STATSPATH=${HOST_MOUNT}"
-Environment="PCP_PODMAN_DATADIR=${HOST_MOUNT}/var/lib/containers/storage/overlay-containers"
-Environment="PCP_PODMAN_RUNDIR=${HOST_MOUNT}/run/containers/storage/overlay-containers"
