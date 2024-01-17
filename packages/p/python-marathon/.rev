@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f33fce0d39ee4692308392bc38f15ae6</srcmd5>
+    <version>0.9.0</version>
+    <time>1500456087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>510105</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2cfed6acacf0573e03486e4bfd520a40</srcmd5>
+    <version>0.9.0</version>
+    <time>1525426164</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix requires</comment>
+    <requestid>603178</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a8b4de4dbd596e33103abe33d29959c5</srcmd5>
+    <version>0.9.0</version>
+    <time>1545647973</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659489</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2a12dc593a7ebc0ee973cd2779089c91</srcmd5>
+    <version>0.11.0</version>
+    <time>1553700179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689090</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cc1542f0e4df987071389f602e5834a4</srcmd5>
+    <version>0.12.0</version>
+    <time>1583447085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781880</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6e7c444ac5a9f41f2aea4837bda1ca30</srcmd5>
+    <version>0.13.0</version>
+    <time>1600278093</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.0:
+  - about view one instance app logs real time
+  - Fix deserialization for Deploment model
+  - Local tests no longer need docker-compose and rely on &quot;mini-marathon&quot;
+  - Adding support for v1.10.19
+  - Updates for Marathon 1.9.109
+  - Fix return value for kill\_given\_tasks.
+  - Bump requests from 2.11.1 to 2.20.0</comment>
+    <requestid>834882</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5fc32c996cb2c196486a498860eeaf82</srcmd5>
+    <version>0.13.0</version>
+    <time>1646073834</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958056</requestid>
+  </revision>
+</revisionlist>

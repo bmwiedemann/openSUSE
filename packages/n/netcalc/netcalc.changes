@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sat Apr  3 22:13:50 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Don't conflict with ipcalc: Disable installing symlink to
+  ipcalc by passing `--disable-ipcalc-symlink` to configure. 
+- Be more specific about filenames in file-list.
+
+-------------------------------------------------------------------
+Mon Jun  8 16:25:56 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- netcalc 2.1.6, initial package

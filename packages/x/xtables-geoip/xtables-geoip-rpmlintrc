@@ -1,0 +1,5 @@
+# Desired result. The set of "IPv4 countries" is not necessary equal to
+# the set of "IPv6 countries", but we generate .iv* files for each
+# country code, so as to avoid the surprise that e.g. ip6tables fails
+# with "no such country" and iptables does not.
+addFilter("zero-length")

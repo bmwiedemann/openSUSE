@@ -1,0 +1,6 @@
+<package name="perl-App-rsync-retry" project="openSUSE:Factory">
+  <title>Rsync wrapper to retry on transfer errrors</title>
+  <description>This wrapper runs rsync then checks its exit code. If exit code indicates transfer errors (e.g. I/O error, socket error, partial transfers, timeout) it will re-run the rsync. The number of retries to perform is set by the &quot;--retry-times&quot; option, while the number of seconds to wait before each retry is set by the &quot;--retry-delay&quot; option.</description>
+  <devel project="devel:languages:perl" package="perl-App-rsync-retry"/>
+  <url>https://metacpan.org/dist/App-rsync-retry</url>
+</package>

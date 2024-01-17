@@ -1,0 +1,5 @@
+<package name="ghc-ansi-terminal-types" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-ansi-terminal-types"/>
+</package>

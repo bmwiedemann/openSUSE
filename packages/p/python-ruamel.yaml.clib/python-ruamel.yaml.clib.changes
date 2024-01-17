@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Wed Oct  4 08:11:44 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.2.8
+ * regenerated with Cython 3.0.2 for Python 3.12
+
+-------------------------------------------------------------------
+Fri Apr 21 12:33:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Sat Oct 29 00:41:38 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.2.7: 
+  * Python 3.10 support
+  * Python 3.11 support
+  * regenerated with cython 0.29.32
+
+-------------------------------------------------------------------
+Mon Jul 19 06:49:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.6:
+  * Python 3.9 support
+  * regenerated with cython 0.29.23
+  * Python 3.8 support
+
+-------------------------------------------------------------------
+Fri Mar 26 15:25:13 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.2.2
+ * no upstream changelog
+
+-------------------------------------------------------------------
+Tue Oct  1 15:27:58 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.0.0
+  * Use size_t for marks in cython to handle large files.
+  * update .c to incorporate size_t change for marks
+
+-------------------------------------------------------------------
+Sat Aug 24 06:29:11 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use proper sentence structure in description.
+
+-------------------------------------------------------------------
+Thu Aug  8 13:22:24 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.1.2
+ * prevent -nspkg.pth file from being generated
+
+-------------------------------------------------------------------
+Wed Aug  7 13:35:40 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- initial commit ver. 0.1.0

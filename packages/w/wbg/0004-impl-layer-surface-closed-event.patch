@@ -1,0 +1,83 @@
+From fee19f79bb41a9f90c25b3470ec2806be7293607 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Ekl=C3=B6f?= <daniel@ekloef.se>
+Date: Mon, 2 Jan 2023 12:37:02 +0100
+Subject: [PATCH] main: implement layer_surface::closed() event
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Destroy the surface, and clear the ‘configured’ flag.
+
+Note that we need to take care we don’t reference a destroyed output
+object; if the compositor destroyed the output before calling the
+closed() event, the ‘data’ argument will be an invalid pointer.
+
+Since removing the output global _also_ destroys the surface, we can
+handle this by looping all known output globals, and explicitly
+destroy the surface if we find a match.
+
+If we don’t find a match, that means the output has already been
+destroyed, and we don’t have to do anything at all.
+---
+ CHANGELOG.md |  4 ++++
+ main.c       | 35 +++++++++++++++++++++++++++++------
+ 2 files changed, 33 insertions(+), 6 deletions(-)
+
+diff --git a/main.c b/main.c
+index 7831455..03a7df6 100644
+--- a/main.c
++++ b/main.c
+@@ -139,9 +139,32 @@ layer_surface_configure(void *data, struct zwlr_layer_surface_v1 *surface,
+     render(output);
+ }
+ 
++static void
++output_layer_destroy(struct output *output)
++{
++    if (output->layer != NULL)
++        zwlr_layer_surface_v1_destroy(output->layer);
++    if (output->surf != NULL)
++        wl_surface_destroy(output->surf);
++
++    output->layer = NULL;
++    output->surf = NULL;
++    output->configured = false;
++}
++
+ static void
+ layer_surface_closed(void *data, struct zwlr_layer_surface_v1 *surface)
+ {
++    struct output *output = data;
++
++    /* Don’t trust ‘output’ to be valid, in case compositor destroyed
++     * if before calling closed() */
++    tll_foreach(outputs, it) {
++        if (&it->item == output) {
++            output_layer_destroy(output);
++            break;
++        }
++    }
+ }
+ 
+ static const struct zwlr_layer_surface_v1_listener layer_surface_listener = {
+@@ -152,14 +175,14 @@ static const struct zwlr_layer_surface_v1_listener layer_surface_listener = {
+ static void
+ output_destroy(struct output *output)
+ {
+-    free(output->make);
+-    free(output->model);
+-    if (output->layer != NULL)
+-        zwlr_layer_surface_v1_destroy(output->layer);
+-    if (output->surf != NULL)
+-        wl_surface_destroy(output->surf);
++    output_layer_destroy(output);
++
+     if (output->wl_output != NULL)
+         wl_output_release(output->wl_output);
++    output->wl_output = NULL;
++
++    free(output->make);
++    free(output->model);
+ }
+ 
+ static void

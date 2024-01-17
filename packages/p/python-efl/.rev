@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4939a9fa2189314b9f57b9e43f317f0c</srcmd5>
+    <version>1.22.0</version>
+    <time>1560971269</time>
+    <user>dimstar_suse</user>
+    <comment>Replaces python3-efl</comment>
+    <requestid>710031</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>83b981ed5cbce21f3e91dab6be9d6625</srcmd5>
+    <version>1.22.0</version>
+    <time>1562843864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714317</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a0b6fcaaf7768e18d15bc0b62021c615</srcmd5>
+    <version>1.23.0</version>
+    <time>1579636764</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.23.0 in line with efl 
+</comment>
+    <requestid>764490</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4ec4749d44d50bfa45038d5745417651</srcmd5>
+    <version>1.24.0</version>
+    <time>1593904363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817048</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>baf9517d4cc30c1d89ba5e8f64a25c65</srcmd5>
+    <version>1.25.0</version>
+    <time>1614274000</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874943</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>43e077640ee25809c52ca5ba09e3a426</srcmd5>
+    <version>1.25.0</version>
+    <time>1645820702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957462</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3d8aa65358a5443a4735f3ad88b7e46b</srcmd5>
+    <version>1.26.0</version>
+    <time>1693570777</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108352</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>5685985c1dc084e645db96a79cfd44bd</srcmd5>
+    <version>1.26.0</version>
+    <time>1693685244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1108457</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>9cb6b706f19b12b4c3b43ff3480e0fe6</srcmd5>
+    <version>1.26.0</version>
+    <time>1701727271</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130635</requestid>
+  </revision>
+</revisionlist>

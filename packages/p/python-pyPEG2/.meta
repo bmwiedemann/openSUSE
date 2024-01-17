@@ -1,0 +1,7 @@
+<package name="python-pyPEG2" project="openSUSE:Factory">
+  <title>PEG Parser-Interpreter framework for Python</title>
+  <description>pyPEG is a plain and simple intrinsic parser interpreter framework for Python.
+It is based on Parsing Expression Grammar, PEG.
+With pyPEG you can parse many formal languages in a very easy way.</description>
+  <devel project="devel:languages:python" package="python-pyPEG2"/>
+</package>

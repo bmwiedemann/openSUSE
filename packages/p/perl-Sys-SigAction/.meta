@@ -1,0 +1,13 @@
+<package name="perl-Sys-SigAction" project="openSUSE:Factory">
+  <title>Perl extension for Consistent Signal Handling</title>
+  <description>Sys::SigAction provides EASY access to POSIX::sigaction()
+for signal handling on systems the support sigaction().
+
+perldoc Sys::SigAction for more information.
+
+  Author:	Lincoln A. Baxter &lt;lab@lincolnbaxter.com&gt;
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Sys-SigAction"/>
+  <url>http://www.cpan.org</url>
+</package>

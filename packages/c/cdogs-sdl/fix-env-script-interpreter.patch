@@ -1,0 +1,9 @@
+diff --color -ur cdogs-sdl-1.4.0-orig/graphics/wall/generate.sh cdogs-sdl-1.4.0/graphics/wall/generate.sh
+--- cdogs-sdl-1.4.0-orig/graphics/wall/generate.sh	2022-11-13 07:10:17.000000000 +0100
++++ cdogs-sdl-1.4.0/graphics/wall/generate.sh	2022-12-13 12:00:34.327347621 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ # Use this script to generate all the other versions of wall tiles, given a complete "o" tile
+ # Use "plasteel" as a template
+ name=$1

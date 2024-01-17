@@ -1,0 +1,9 @@
+diff -Nur dtkwidget-2.0.7.1/src/platforms/x11/x11.pri dtkwidget-2.0.7.1-new/src/platforms/x11/x11.pri
+--- dtkwidget-2.0.7.1/src/platforms/x11/x11.pri	2018-03-12 13:04:26.000000000 +0800
++++ dtkwidget-2.0.7.1-new/src/platforms/x11/x11.pri	2018-03-20 11:04:57.219813746 +0800
+@@ -1,3 +1,5 @@
++PKGCONFIG += x11 xext
++
+ HEADERS += \
+     $$PWD/xutil.h
+ 

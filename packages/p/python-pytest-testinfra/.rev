@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d26eaa8cd916f23b33ee3ee932bdbd64</srcmd5>
+    <version>6.3.0</version>
+    <time>1619552118</time>
+    <user>dimstar_suse</user>
+    <comment>Renaming python-testinfra.</comment>
+    <requestid>888761</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4cd265b60848117470f5942191914c71</srcmd5>
+    <version>6.3.0</version>
+    <time>1683403791</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons
+</comment>
+    <requestid>1085224</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eae32ac073ea5cde2e1b7ab9bc06af56</srcmd5>
+    <version>7.0.0</version>
+    <time>1683728337</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.0:
+  * Improved ssh config support in Paramiko backend
+  * Add chroot backend
+  * Add support for Manjaro-Linux
+  * Add support for Cloudlinux
+  * [BREAKING] Drop support for python 3.6 which is EOL
+  * Handle ansible_connection type community.docker.docker
+  * add ssh_extra_args option
+  * Allow to test for user password expiration
+  * Handle ANSIBLE_SSH_COMMON_ARGS and
+    ANSIBLE_SSH_EXTRA_ARGS environment variables for ansible
+    connections
+  * Fix encoding issue in salt connections
+  * Fix AttributeError when &quot;command&quot; is not available and
+    fallback to &quot;which&quot;
+  * Fallback to which when &quot;command -v&quot; fails
+  * Use realpath by default to resolve symlinks instead of
+    &quot;readlink -f&quot;
+  * ansible: Support environment variables
+  * Force package module to resolve to RpmPackage on Fedora
+  * Fix new versions of supervisor may exit with status != 0
+  * Eventually decode ansible output when it's not ascii
+  * Either use python3 or python to get remote encoding
+  * Implement Interface names and default (#615)
+  * Implement Service.systemd_properties (#612)</comment>
+    <requestid>1085841</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>92b9a70112befda847323bee536c1bf1</srcmd5>
+    <version>8.1.0</version>
+    <time>1684846431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088334</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5d5f609a63640911be97297f6d347efc</srcmd5>
+    <version>10.0.0</version>
+    <time>1705353683</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.0.0:
+  * [FIX] Fix output of error message
+  * [FIX] Ansible: Fix for missing group names in get_variables()
+  * [FIX] testinfra/modules/blockdevice: Don't fail on stderr
+  * [DOC] Extend and show the documentation of CommandResult
+  * [FIX] Extend list of valid suffixes for systemd units
+  * [DOC] Add missing Environment doc section
+  * [MISC] Define types for plugin.py
+  * [MISC] Bump actions/checkout from 3 to 4
+  * [FIX] Missing RHEL distribution in package module
+  * [NEW] feat(package): brew support
+  * [NEW] Add Service.exists
+  * [MISC] Make CommandResult a dataclass
+- update to 9.0.0:
+  * [BREAKING] pytest-testinfra now require python &gt;= 3.9
+  * [BREAKING] Drop deprecated module PipPackage
+  * [NEW] Add support for the SSH ControlPath connection sharing
+    option
+  * [FIX] Retry SSH on ConnectionResetError
+  * [FIX] List openSUSE Leap and Tumbleweed explicitly as rpm
+    based distributions
+  * [FIX] Make group name mandatory in group module
+
+  to skip salt backend and still test the rest.
+  * Add arch (architecture) attribute to system_info module
+  * Add a new ansible connection options “force_ansible”, when set
+    to True, testinfra will always call ansible for all commands
+  * Handle all ansible connections types by setting force_ansible=True
+    for connections which doesn’t have a testinfra equivalent connection</comment>
+    <requestid>1138881</requestid>
+  </revision>
+</revisionlist>

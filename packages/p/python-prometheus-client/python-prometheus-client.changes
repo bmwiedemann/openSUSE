@@ -1,0 +1,239 @@
+-------------------------------------------------------------------
+Fri Jan  5 18:19:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.0:
+  * [FEATURE] support HTTPS/TLS in start_http_server. #946
+  * [BUGFIX] fix: error in determining timestamp less than. #979
+- update to 0.18.0:
+  * [CHANGE] Remove support for Python versions < 3.8. #936
+  * [FEATURE] Add `mostrecent` aggregation to Gauge. #967
+  * [ENHANCEMENT] Typing improvements. #935, #970
+  * [ENHANCEMENT] Allow enabling or disabling `_created` metrics
+    from code. #973
+  * [BUGFIX] Change #!/usr/bin/python to #!/usr/bin/env python in
+    remaining places. #945
+- update to 0.17.1:
+  * [BUGFIX] Use #!/usr/bin/env python instead of
+    #!usr/bin/python in bridge/graphite.py. #928
+
+-------------------------------------------------------------------
+Tue May 30 08:12:22 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Wed May 24 23:39:52 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.17.0:
+  * [ENHANCEMENT] Add additional typing.
+  * [BUGFIX] Fix typo in python_gc_objects_collected metadata.
+  * [BUGFIX] Do not include .pyc files in the build wheel.
+
+-------------------------------------------------------------------
+Tue Jan 24 07:59:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.16.0:
+  * [FEATURE] Support HELP text in multiprocess mode.
+  * [ENHANCEMENT] Reduce the mmap minimum size.
+  * [BUGFIX] Use the correct OpenMetrics encoder when
+    application/openmetrics-text is requested in ASGI apps.
+  * [BUGFIX] Allow Prometheus format parser to handle a missing
+    space after labels.
+
+-------------------------------------------------------------------
+Fri Oct 14 01:18:51 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream 0.15.0 release
+  * [CHANGE] Remove choose_formatter. choose_formatter only existed
+    for v0.14.x and was deprecated in v0.14.1. #846
+  * [FEATURE] Support TLS auth when using push gateway with
+    tls_auth_handler. #841
+  * [ENHANCEMENT] Add sum, livemin, and livemax multiprocess
+    modes for Gauges. #794
+
+-------------------------------------------------------------------
+Sat Jun  4 15:39:55 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream 0.14.1 release
+  * [BUGFIX] Revert choose_encoder being renamed to choose_formatter
+    to fix a breaking change.
+
+-------------------------------------------------------------------
+Tue Apr  5 23:26:22 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream 0.14.0 release
+  * [ENHANCEMENT] Continued typing improvements and coverage. #759, #771, #781
+  * [ENHANCEMENT] Allow binding to IPv6 addresses. #657
+  * [ENHANCEMENT] Negotiate gzip content-encoding, enabled by default. #776
+  * [ENHANCEMENT] Allow disabling _created metrics via the
+    PROMETHEUS_DISABLE_CREATED_SERIES environment variable. #774
+  * [BUGFIX] Correct minor typo in exception raised when exemplar labels are too long. #773
+
+-------------------------------------------------------------------
+Wed Feb  9 23:20:57 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to upstream 0.13.1 release
+  * [BUGFIX] Relax some type constraints that were too strict.
+    #754, #755, #756, #758
+  * [BUGFIX] Explicitly export functions with __all__. #757
+
+-------------------------------------------------------------------
+Tue Jan 25 21:25:45 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream 0.13.0 release
+  * [CHANGE] Drop support for Python versions 2.7, 3.4, and 3.5. #718
+  * [FEATURE] Support adding labels when using .time() #730
+  * [ENHANCEMENT] Begin to add type hints to functions. #705
+  * [ENHANCEMENT] Improved go-to-declaration behavior for editors. #747
+  * [BUGFIX] Remove trailing slashes from pushgateway URLS. #722
+  * [BUGFIX] Catch non-integer bucket/count values. #726
+
+-------------------------------------------------------------------
+Sat Nov 13 22:50:42 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream 0.12.0 release
+  * [FEATURE] Exemplar support (excludes multiprocess) #669
+  * [ENHANCEMENT] Add support for Python 3.10 #706
+  * [ENHANCEMENT] Restricted Registry will handle metrics added after restricting #675, #680
+  * [ENHANCEMENT] Raise a more helpful error if a metric is not observable #666
+  * [BUGFIX] Fix instance_ip_grouping_key not working on MacOS #687
+  * [BUGFIX] Fix assertion error from favicion.ico with Python 2.7 #715
+
+-------------------------------------------------------------------
+Fri Aug 27 18:40:02 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Rename back to the correct package name (with dashes;
+  jsc#SLE-20812).
+
+-------------------------------------------------------------------
+Wed Jun  2 13:19:47 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream 0.11.0 release
+  * [CHANGE] Specify that the labelvalues argument on metric constructors
+    is internal by renaming it to _labelvalues. If you are affected by this
+    change, it is likely that the metric was not being registered. #660
+  * [BUGFIX] write_to_textfile will overwrite files in windows. If using
+    python 3.4 or newer the replace will be atomic. #650
+
+-------------------------------------------------------------------
+Thu Apr  8 17:16:38 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream 0.10.1 release
+  * [BUGFIX] Support lowercase prometheus_multiproc_dir environment
+    variable in mark_process_dead.
+
+-------------------------------------------------------------------
+Mon Apr  5 23:44:20 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream 0.10.0 release
+  * [CHANGE] Python 2.6 is no longer supported. #592
+  * [CHANGE] The prometheus_multiproc_dir environment variable is
+    deprecated in favor of PROMETHEUS_MULTIPROC_DIR. #624
+  * [FEATURE] Follow redirects when pushing to Pushgateway using
+    passthrough_redirect_handler. #622
+  * [FEATURE] Metrics support a clear() method to remove all children. #642
+  * [ENHANCEMENT] Tag support in GraphiteBridge. #618
+
+-------------------------------------------------------------------
+Fri Nov 20 12:56:42 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Update to upstream 0.9.0 release
+  * [ENHANCEMENT] Add support for python3.9 (#600)
+  * [ENHANCEMENT] Various updates for latest OpenMetrics draft spec (#576 #577)
+
+-------------------------------------------------------------------
+Tue May 26 08:30:50 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Update to upstream 0.8.0 release
+  * Also disable Twisted build requirement on older code streams due to dependency issues
+
+-------------------------------------------------------------------
+Mon Apr 20 10:53:52 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Thu Feb 27 12:57:33 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Temporarily skip some tests failing on ppc64le due to upstream issues
+  See bsc#1164604
+
+-------------------------------------------------------------------
+Mon Feb 17 14:57:12 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Add Provides and Obsoletes fields to correctly supersede SUSE:SLE-15-SP2:GA/python-prometheus-client
+
+-------------------------------------------------------------------
+Mon Jul 29 11:39:05 UTC 2019 - Ayoub Belarbi <abelarbi@suse.de>
+
+- Require python-futures instead of python2-futures for building for both sle12 and sle15
+
+-------------------------------------------------------------------
+Tue Jul 23 11:11:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.1:
+  * [BUGFIX] multiprocess: don't crash on missing gauge_live/sum files (#424)
+  * [BUGFIX] correctly bind method on Python 2.x (#403)
+
+-------------------------------------------------------------------
+Thu Jun 20 14:57:11 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Remove forgotten v0.6.0.tar.gz tarball.
+
+-------------------------------------------------------------------
+Wed Jun 19 13:59:15 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.7.0
+  * Multiprocess exposition speed boost (#421)
+  * optimize openmetrics text parsing (~4x perf) (#402)
+  * Add python3.7 support (#418)
+  * Change exemplar length limit to be only for label names+values (#397)
+  * Disable gcCollector for pypy (#380)
+
+-------------------------------------------------------------------
+Thu May 23 12:32:36 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.6.0
+  * Better exceptions on exposition failure
+  * Fix deadlock in gcCollector, metrics are now different
+  * Fix thread leak in Python 3.7
+  * parser: ensure samples are of type Sample
+  0.5.0
+  * Be more resilient to certain file corruptions
+  * Permit subclassing of MetricsHandler
+  * Updates based on latest OpenMetrics draft spec discussions
+  * In multiprocess mode, ensure that metrics initialise to the
+    correct file
+  * Avoid re-entrant calls to GC collector's callback
+  0.4.?
+  * Disable GCCollector in multiprocess mode to prevent a deadlock
+  * Fix OpenMetrics http negotiation handling
+  * Counter time series will now always be exposed with _total, and
+    counter metrics will have a _total suffix stripped. This is as
+    the internal data model is now OpenMetrics, rather than
+    Prometheus Text Format
+  * Samples now use a namedtuple
+  * Add OpenMetrics exposition and parser
+  * Add Info, Stateset, Enum, GaugeHistogram support for OpenMetrics
+  * Add timestamp support for Prometheus text format exposition
+  * Add garbage collection metrics
+  * If reading multiprocess file, open it readonly.
+  * Fix bug in WSGI app code.
+  * Write to multiprocess files directly
+  0.3.?
+  * Fix handing of escaping in parser
+  * Fix concurrency issues with timers
+  * 4.5x speedup in parser
+  * Performance improvements for multiproc mode
+  * Fix FD leak in multiproc mode
+- Taking tarball from git because of the tests
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:44 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri May  4 05:38:19 UTC 2018 - tbechtold@suse.com
+
+- Initial packaging (version 0.2.0)

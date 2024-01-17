@@ -1,0 +1,7 @@
+[Unit]
+Description=Run backupninja
+Requires=default.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/backupninja

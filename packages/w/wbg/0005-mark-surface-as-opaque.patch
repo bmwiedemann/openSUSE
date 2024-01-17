@@ -1,0 +1,26 @@
+From 670d577ad0cd45a0c7bf4a264b791a2cd86557c3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Ekl=C3=B6f?= <daniel@ekloef.se>
+Date: Mon, 3 Jul 2023 12:58:33 +0200
+Subject: [PATCH] main: mark surface as opaque
+
+---
+ CHANGELOG.md | 4 ++++
+ main.c       | 5 +++++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/main.c b/main.c
+index 03a7df6..6e938f0 100644
+--- a/main.c
++++ b/main.c
+@@ -267,6 +267,11 @@ add_surface_to_output(struct output *output)
+     wl_surface_set_input_region(surf, empty_region);
+     wl_region_destroy(empty_region);
+ 
++    /* Surface is fully opaque (i.e. non-transparent) */
++    struct wl_region *opaque_region = wl_compositor_create_region(compositor);
++    wl_surface_set_opaque_region(surf, opaque_region);
++    wl_region_destroy(opaque_region);
++
+     struct zwlr_layer_surface_v1 *layer = zwlr_layer_shell_v1_get_layer_surface(
+         layer_shell, surf, output->wl_output,
+         ZWLR_LAYER_SHELL_V1_LAYER_BACKGROUND, "wallpaper");

@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Mon Mar  5 06:11:55 UTC 2018 - coolo@suse.com
+
+- updated to 1.001039
+   see /usr/share/doc/packages/perl-DBIx-Class-Fixtures/Changes
+
+  1.001039  2017-09-25 14:15:55+00:00 UTC
+  
+  - remove trailing comma in tests that was breaking on most JSON parsers.
+  
+  1.001038  2017-09-20 21:13:13+00:00 UTC
+  
+  - stop sorting source names before dumping, this allows for some hackery when you need certain sources to dump first (see https://github.com/dbsrgits/DBIx-Class-Fixtures/pull/12 for details) (cngarrison++)
+  - doc patch for exclude attr (simbabque++)
+  
+  1.001037  2017-09-20 20:42:03+00:00 UTC
+  
+  - ignore virtual columns in dump_object (mmims++)
+
+-------------------------------------------------------------------
+Mon Jun 13 06:54:00 UTC 2016 - coolo@suse.com
+
+- updated to 1.001036
+   see /usr/share/doc/packages/perl-DBIx-Class-Fixtures/Changes
+
+  1.001036  2016-03-21 14:59:55+00:00 UTC
+  
+  - releasing as stable
+  
+  1.00103_5 2016-03-11 20:39:49+00:00 UTC (TRIAL RELEASE)
+  
+  - Will completely ignore sequences in Oracle due to having to drop and recreate them
+  
+  
+  1.001034  2016-01-05 15:05:26+00:00 UTC
+  
+  1.00103_3 2015-12-08 16:33:56+00:00 UTC (TRIAL RELEASE)
+  
+  
+  - RT#108017 bugfix ( hatorikibble++ )
+  - added File::Temp to deps ( hatorikibble++ )
+  
+  1.001032  2015-06-04 15:03:38+00:00 UTC
+  
+  - releasing as stable
+  
+  1.001_031 2015-05-27 14:54:24+00:00 UTC (TRIAL RELEASE)
+  
+  - Fix for an issue where when inserting data into a database,
+      the tables were being sorted alphabetically, rather than in dependency order. ( TBSliver++ )
+  
+  1.001_030 2015-05-27 14:43:34+00:00 UTC (TRIAL RELEASE)
+  
+  - use Test::TempDir::Tiny for better test parallelization and cleanup ( RsrchBoy++ )
+  
+  1.001_029 2015-01-14 15:17:28+00:00 Europe/London
+  
+  - fix for bugtracker pointing to gh, should be rt, added test to identify windows issues
+
+-------------------------------------------------------------------
+Thu Apr 16 20:25:50 UTC 2015 - coolo@suse.com
+
+- updated to 1.001028
+   see /usr/share/doc/packages/perl-DBIx-Class-Fixtures/Changes
+
+  1.001028  2015-01-05 00:40:41+00:00 Europe/London
+  
+  - releasing as stable
+  
+  1.001027_02 2014-12-30 19:50:50+00:00 Europe/London
+  
+  - changed tests to use portable directory management
+  
+  1.001027_01 2014-12-26 17:06:08+00:00 Europe/London
+  
+  - Fix fixture filenames to be compatible with ntfs systems - mrf++
+
+-------------------------------------------------------------------
+Tue Dec  2 10:02:28 UTC 2014 - coolo@suse.com
+
+- initial package 1.001026
+    * created by cpanspec 1.78.08
+

@@ -1,0 +1,1520 @@
+diff -urEbwB python-efl-1.26.0/efl/dbus_mainloop/efl.dbus_mainloop.pyx python-efl-1.26.0.new/efl/dbus_mainloop/efl.dbus_mainloop.pyx
+--- python-efl-1.26.0/efl/dbus_mainloop/efl.dbus_mainloop.pyx	2022-02-27 11:25:13.000000000 +0100
++++ python-efl-1.26.0.new/efl/dbus_mainloop/efl.dbus_mainloop.pyx	2023-08-31 20:29:25.365454245 +0200
+@@ -25,7 +25,7 @@
+ import dbus.mainloop
+ import atexit
+ 
+-cdef dbus_bool_t dbus_py_ecore_set_up_conn(DBusConnection *conn, void *data) with gil:
++cdef dbus_bool_t dbus_py_ecore_set_up_conn(DBusConnection *conn, void *data) noexcept with gil:
+     e_dbus_connection_setup(conn)
+     return True
+ 
+diff -urEbwB python-efl-1.26.0/efl/ecore/efl.ecore_animator.pxi python-efl-1.26.0.new/efl/ecore/efl.ecore_animator.pxi
+--- python-efl-1.26.0/efl/ecore/efl.ecore_animator.pxi	2022-02-27 11:25:13.000000000 +0100
++++ python-efl-1.26.0.new/efl/ecore/efl.ecore_animator.pxi	2023-08-31 20:40:31.313357445 +0200
+@@ -98,7 +98,7 @@
+         self.delete()
+ 
+ 
+-cdef Eina_Bool _ecore_timeline_cb(void *data, double pos) with gil:
++cdef Eina_Bool _ecore_timeline_cb(void *data, double pos) noexcept with gil:
+     assert data != NULL
+     cdef:
+         AnimatorTimeline obj = <AnimatorTimeline>data
+diff -urEbwB python-efl-1.26.0/efl/ecore/efl.ecore_events.pxi python-efl-1.26.0.new/efl/ecore/efl.ecore_events.pxi
+--- python-efl-1.26.0/efl/ecore/efl.ecore_events.pxi	2022-02-27 11:25:13.000000000 +0100
++++ python-efl-1.26.0.new/efl/ecore/efl.ecore_events.pxi	2023-08-31 20:45:50.365546935 +0200
+@@ -35,7 +35,7 @@
+     return _event_type_mapping.get(type)
+ 
+ 
+-cdef Eina_Bool event_handler_cb(void *data, int type, void *event) with gil:
++cdef Eina_Bool event_handler_cb(void *data, int type, void *event) noexcept with gil:
+     cdef EventHandler handler
+     cdef Eina_Bool r
+ 
+@@ -323,7 +323,7 @@
+     return type
+ 
+ 
+-cdef void _event_free_cb(void *data, void *event) with gil:
++cdef void _event_free_cb(void *data, void *event) noexcept with gil:
+     cdef QueuedEvent ev
+ 
+     ev = <QueuedEvent>data
+diff -urEbwB python-efl-1.26.0/efl/ecore/efl.ecore_exe.pxi python-efl-1.26.0.new/efl/ecore/efl.ecore_exe.pxi
+--- python-efl-1.26.0/efl/ecore/efl.ecore_exe.pxi	2022-02-27 11:25:13.000000000 +0100
++++ python-efl-1.26.0.new/efl/ecore/efl.ecore_exe.pxi	2023-08-31 20:49:28.600378646 +0200
+@@ -50,7 +50,7 @@
+     return ", ".join(flags)
+ 
+ 
+-cdef Eina_Bool _exe_event_filter_cb(void *data, int type, void *event) with gil:
++cdef Eina_Bool _exe_event_filter_cb(void *data, int type, void *event) noexcept with gil:
+     cdef:
+         ExeEventFilter self = <ExeEventFilter>data
+         Ecore_Exe_Event_Add *e_add
+@@ -157,7 +157,7 @@
+ _ecore_exe_event_mapping = {}
+ 
+ 
+-cdef void _ecore_exe_pre_free_cb(void *data, const Ecore_Exe *exe) with gil:
++cdef void _ecore_exe_pre_free_cb(void *data, const Ecore_Exe *exe) noexcept with gil:
+     cdef Exe obj
+     try:
+         if data == NULL:
+diff -urEbwB python-efl-1.26.0/efl/ecore/efl.ecore_fd_handler.pxi python-efl-1.26.0.new/efl/ecore/efl.ecore_fd_handler.pxi
+--- python-efl-1.26.0/efl/ecore/efl.ecore_fd_handler.pxi	2022-02-27 11:25:13.000000000 +0100
++++ python-efl-1.26.0.new/efl/ecore/efl.ecore_fd_handler.pxi	2023-08-31 20:43:21.987861863 +0200
+@@ -16,7 +16,7 @@
+ # along with this Python-EFL.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ 
+-cdef void fd_handler_prepare_cb(void *data, Ecore_Fd_Handler *fdh) with gil:
++cdef void fd_handler_prepare_cb(void *data, Ecore_Fd_Handler *fdh) noexcept with gil:
+     cdef FdHandler obj = <FdHandler>data
+     cdef int r
+ 
+@@ -40,7 +40,7 @@
+     return ", ".join(flags)
+ 
+ 
+-cdef Eina_Bool fd_handler_cb(void *data, Ecore_Fd_Handler *fdh) with gil:
++cdef Eina_Bool fd_handler_cb(void *data, Ecore_Fd_Handler *fdh) noexcept with gil:
+     cdef FdHandler obj = <FdHandler>data
+     cdef Eina_Bool r
+ 
+diff -urEbwB python-efl-1.26.0/efl/ecore/efl.ecore_file_download.pxi python-efl-1.26.0.new/efl/ecore/efl.ecore_file_download.pxi
+--- python-efl-1.26.0/efl/ecore/efl.ecore_file_download.pxi	2022-02-27 11:25:13.000000000 +0100
++++ python-efl-1.26.0.new/efl/ecore/efl.ecore_file_download.pxi	2023-08-31 20:50:54.804303787 +0200
+@@ -17,7 +17,7 @@
+ 
+ from cpython cimport PyUnicode_AsUTF8String
+ 
+-cdef void _completion_cb(void *data, const char *file, int status) with gil:
++cdef void _completion_cb(void *data, const char *file, int status) noexcept with gil:
+     obj = <FileDownload>data
+     try:
+         obj._exec_completion(file, status)
+@@ -25,7 +25,7 @@
+         traceback.print_exc()
+ 
+ cdef int _progress_cb(void *data, const char *file, long int dltotal,
+-                    long int dlnow, long int ultotal, long int ulnow) with gil:
++                    long int dlnow, long int ultotal, long int ulnow) noexcept with gil:
+     obj = <FileDownload>data
+     try:
+         return obj._exec_progress(file, dltotal, dlnow, ultotal, ulnow)
+diff -urEbwB python-efl-1.26.0/efl/ecore/efl.ecore_file_monitor.pxi python-efl-1.26.0.new/efl/ecore/efl.ecore_file_monitor.pxi
+--- python-efl-1.26.0/efl/ecore/efl.ecore_file_monitor.pxi	2022-02-27 11:25:13.000000000 +0100
++++ python-efl-1.26.0.new/efl/ecore/efl.ecore_file_monitor.pxi	2023-08-31 20:52:03.721443655 +0200
+@@ -18,7 +18,7 @@
+ from cpython cimport PyUnicode_AsUTF8String
+ 
+ 
+-cdef void _file_monitor_cb(void *data, Ecore_File_Monitor *em, Ecore_File_Event event, const char *path) with gil:
++cdef void _file_monitor_cb(void *data, Ecore_File_Monitor *em, Ecore_File_Event event, const char *path) noexcept with gil:
+     obj = <FileMonitor>data
+     try:
+         obj._exec_monitor(event, path)
+diff -urEbwB python-efl-1.26.0/efl/ecore/efl.ecore.pyx python-efl-1.26.0.new/efl/ecore/efl.ecore.pyx
+--- python-efl-1.26.0/efl/ecore/efl.ecore.pyx	2022-02-27 11:25:13.000000000 +0100
++++ python-efl-1.26.0.new/efl/ecore/efl.ecore.pyx	2023-08-31 20:38:51.186003743 +0200
+@@ -332,7 +332,7 @@
+ ECORE_FILE_PROGRESS_ABORT = enums.ECORE_FILE_PROGRESS_ABORT
+ 
+ 
+-cdef Eina_Bool _ecore_task_cb(void *data) with gil:
++cdef Eina_Bool _ecore_task_cb(void *data) noexcept with gil:
+     cdef:
+         Eo obj = <Eo>data
+         Eina_Bool ret
+diff -urEbwB python-efl-1.26.0/efl/ecore_con/efl.ecore_con_lookup.pxi python-efl-1.26.0.new/efl/ecore_con/efl.ecore_con_lookup.pxi
+--- python-efl-1.26.0/efl/ecore_con/efl.ecore_con_lookup.pxi	2022-02-27 11:25:13.000000000 +0100
++++ python-efl-1.26.0.new/efl/ecore_con/efl.ecore_con_lookup.pxi	2023-08-31 20:54:09.305639255 +0200
+@@ -16,7 +16,7 @@
+ # along with this Python-EFL.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ 
+-cdef void _con_dns_lookup_cb(const char *canonname, const char *ip, sockaddr *sockaddr, int addrlen, void *data) with gil:
++cdef void _con_dns_lookup_cb(const char *canonname, const char *ip, sockaddr *sockaddr, int addrlen, void *data) noexcept with gil:
+     cdef Lookup self = <Lookup>data
+ 
+     try:
+diff -urEbwB python-efl-1.26.0/efl/ecore_con/efl.ecore_con.pyx python-efl-1.26.0.new/efl/ecore_con/efl.ecore_con.pyx
+--- python-efl-1.26.0/efl/ecore_con/efl.ecore_con.pyx	2022-02-27 11:25:13.000000000 +0100
++++ python-efl-1.26.0.new/efl/ecore_con/efl.ecore_con.pyx	2023-08-31 20:53:16.535276934 +0200
+@@ -238,7 +238,7 @@
+     ecore_con_shutdown()
+ 
+ 
+-cdef Eina_Bool _con_event_filter_cb(void *data, int ev_type, void *ev) with gil:
++cdef Eina_Bool _con_event_filter_cb(void *data, int ev_type, void *ev) noexcept with gil:
+     cdef:
+         ConEventFilter filter = <ConEventFilter>data
+         object event_cls
+diff -urEbwB python-efl-1.26.0/efl/ecore_input/efl.ecore_input_events.pxi python-efl-1.26.0.new/efl/ecore_input/efl.ecore_input_events.pxi
+--- python-efl-1.26.0/efl/ecore_input/efl.ecore_input_events.pxi	2022-02-27 11:25:13.000000000 +0100
++++ python-efl-1.26.0.new/efl/ecore_input/efl.ecore_input_events.pxi	2023-08-31 20:55:12.386072374 +0200
+@@ -56,7 +56,7 @@
+     return 1
+ 
+ 
+-cdef Eina_Bool _input_event_handler_cb(void *data, int type, void *event) with gil:
++cdef Eina_Bool _input_event_handler_cb(void *data, int type, void *event) noexcept with gil:
+     cdef EventHandler handler
+     cdef Eina_Bool r
+ 
+diff -urEbwB python-efl-1.26.0/efl/edje/efl.edje_object.pxi python-efl-1.26.0.new/efl/edje/efl.edje_object.pxi
+--- python-efl-1.26.0/efl/edje/efl.edje_object.pxi	2022-02-27 11:26:18.000000000 +0100
++++ python-efl-1.26.0.new/efl/edje/efl.edje_object.pxi	2023-08-31 21:10:37.049092443 +0200
+@@ -19,7 +19,7 @@
+ 
+ cdef void text_change_cb(void *data,
+                          Evas_Object *obj,
+-                         const char *part) with gil:
++                         const char *part) noexcept with gil:
+     cdef Edje self
+     self = <Edje>data
+     if self._text_change_cb is None:
+@@ -34,7 +34,7 @@
+ cdef void message_handler_cb(void *data,
+                              Evas_Object *obj,
+                              Edje_Message_Type type,
+-                             int id, void *msg) with gil:
++                             int id, void *msg) noexcept with gil:
+     cdef Edje self
+     self = <Edje>data
+     if self._message_handler_cb is None:
+@@ -47,7 +47,7 @@
+ 
+ 
+ cdef void signal_cb(void *data, Evas_Object *obj,
+-                    const char *emission, const char *source) with gil:
++                    const char *emission, const char *source) noexcept with gil:
+     cdef Edje self
+     self = object_from_instance(obj)
+     lst = tuple(<object>data)
+diff -urEbwB python-efl-1.26.0/efl/elementary/cnp_callbacks.pxi python-efl-1.26.0.new/efl/elementary/cnp_callbacks.pxi
+--- python-efl-1.26.0/efl/elementary/cnp_callbacks.pxi	2021-08-31 09:02:26.000000000 +0200
++++ python-efl-1.26.0.new/efl/elementary/cnp_callbacks.pxi	2023-08-31 21:39:24.660968334 +0200
+@@ -90,7 +90,7 @@
+             return self.sel_data.action
+ 
+ 
+-cdef Eina_Bool py_elm_drop_cb(void *data, Evas_Object *obj, Elm_Selection_Data *ev) with gil:
++cdef Eina_Bool py_elm_drop_cb(void *data, Evas_Object *obj, Elm_Selection_Data *ev) noexcept with gil:
+     """Callback invoked when the selected data is 'dropped' at its destination.
+ 
+     :param data: Application specific data
+@@ -116,7 +116,7 @@
+     sd.sel_data = NULL
+     return ret
+ 
+-cdef Elm_Object_Item *py_elm_xy_item_get_cb(Evas_Object *obj, Evas_Coord x, Evas_Coord y, int *xposret, int *yposret) with gil:
++cdef Elm_Object_Item *py_elm_xy_item_get_cb(Evas_Object *obj, Evas_Coord x, Evas_Coord y, int *xposret, int *yposret) noexcept with gil:
+     """Callback invoked to find out what object is under (x,y) coords
+ 
+     :param obj: The container object
+@@ -151,7 +151,7 @@
+     else:
+         return NULL
+ 
+-cdef void py_elm_selection_loss_cb(void *data, Elm_Sel_Type selection) with gil:
++cdef void py_elm_selection_loss_cb(void *data, Elm_Sel_Type selection) noexcept with gil:
+     """Callback invoked when the selection ownership for a given selection is lost.
+ 
+     :param data: Application specific data
+@@ -165,7 +165,7 @@
+     cb_func(selection, cb_data)
+ 
+ cdef Evas_Object *py_elm_drag_icon_create_cb(
+-    void *data, Evas_Object *win, Evas_Coord *xoff, Evas_Coord *yoff) with gil:
++    void *data, Evas_Object *win, Evas_Coord *xoff, Evas_Coord *yoff) noexcept with gil:
+     """Callback called to create a drag icon object
+ 
+     :param data: Application specific data
+@@ -209,7 +209,7 @@
+ 
+     return icon.obj
+ 
+-cdef void py_elm_drag_state_cb(void *data, Evas_Object *obj) with gil:
++cdef void py_elm_drag_state_cb(void *data, Evas_Object *obj) noexcept with gil:
+     """Callback called when a drag is finished, enters, or leaves an object
+ 
+     :param data: Application specific data
+@@ -228,7 +228,7 @@
+     except Exception:
+         traceback.print_exc()
+ 
+-cdef void py_elm_drag_done_cb(void *data, Evas_Object *obj, Eina_Bool accepted) with gil:
++cdef void py_elm_drag_done_cb(void *data, Evas_Object *obj, Eina_Bool accepted) noexcept with gil:
+     """Callback called when a drag is finished.
+ 
+     :param data: Application specific data
+@@ -248,7 +248,7 @@
+     except Exception:
+         traceback.print_exc()
+ 
+-cdef void py_elm_drag_accept_cb(void *data, Evas_Object *obj, Eina_Bool doaccept) with gil:
++cdef void py_elm_drag_accept_cb(void *data, Evas_Object *obj, Eina_Bool doaccept) noexcept with gil:
+     """Callback called when a drag is responded to with an accept or deny
+ 
+     :param data: Application specific data
+@@ -269,7 +269,7 @@
+         traceback.print_exc()
+ 
+ cdef void py_elm_drag_pos_cb(void *data, Evas_Object *obj,
+-    Evas_Coord x, Evas_Coord y, Elm_Xdnd_Action action) with gil:
++    Evas_Coord x, Evas_Coord y, Elm_Xdnd_Action action) noexcept with gil:
+     """Callback called when a drag is over an object, and gives object-relative coordinates
+ 
+     :param data: Application specific data
+@@ -293,7 +293,7 @@
+ cdef void py_elm_drag_item_container_pos(
+     void *data, Evas_Object *cont, Elm_Object_Item *it,
+     Evas_Coord x, Evas_Coord y, int xposret, int yposret,
+-    Elm_Xdnd_Action action) with gil:
++    Elm_Xdnd_Action action) noexcept with gil:
+     """
+ 
+     Callback called when a drag is over an object
+@@ -319,7 +319,7 @@
+ 
+ cdef Eina_Bool py_elm_drop_item_container_cb(
+     void *data, Evas_Object *obj, Elm_Object_Item *it,
+-    Elm_Selection_Data *ev, int xposret, int yposret) with gil:
++    Elm_Selection_Data *ev, int xposret, int yposret) noexcept with gil:
+     """
+ 
+     Callback invoked in when the selected data is 'dropped' on container.
+diff -urEbwB python-efl-1.26.0/efl/elementary/entry.pxi python-efl-1.26.0.new/efl/elementary/entry.pxi
+--- python-efl-1.26.0/efl/elementary/entry.pxi	2022-02-27 11:27:16.000000000 +0100
++++ python-efl-1.26.0.new/efl/elementary/entry.pxi	2023-08-31 21:16:01.897992549 +0200
+@@ -18,7 +18,7 @@
+ 
+ include "entry_cdef.pxi"
+ 
+-cdef void _entry_context_menu_callback(void *data, Evas_Object *obj, void *event_info) with gil:
++cdef void _entry_context_menu_callback(void *data, Evas_Object *obj, void *event_info) noexcept with gil:
+     (callback, a, ka) = <object>data
+     try:
+         o = object_from_instance(obj)
+@@ -161,7 +161,7 @@
+         def __get__(self):
+             return _ctouni(self.fltr.rejected)
+ 
+-cdef void py_elm_entry_filter_cb(void *data, Evas_Object *entry, char **text) with gil:
++cdef void py_elm_entry_filter_cb(void *data, Evas_Object *entry, char **text) noexcept with gil:
+     """This callback type is used by entry filters to modify text.
+ 
+     :param data: The data specified as the last param when adding the filter
+diff -urEbwB python-efl-1.26.0/efl/elementary/fileselector.pxi python-efl-1.26.0.new/efl/elementary/fileselector.pxi
+--- python-efl-1.26.0/efl/elementary/fileselector.pxi	2022-02-27 11:27:16.000000000 +0100
++++ python-efl-1.26.0.new/efl/elementary/fileselector.pxi	2023-08-31 21:17:04.908425763 +0200
+@@ -18,7 +18,7 @@
+ 
+ include "fileselector_cdef.pxi"
+ 
+-cdef Eina_Bool py_elm_fileselector_custom_filter_cb(const char *path, Eina_Bool is_dir, void *data) with gil:
++cdef Eina_Bool py_elm_fileselector_custom_filter_cb(const char *path, Eina_Bool is_dir, void *data) noexcept with gil:
+     cb_func, cb_data = <object>data
+     try:
+         return cb_func(_ctouni(path), is_dir, cb_data)
+diff -urEbwB python-efl-1.26.0/efl/elementary/gengrid.pxi python-efl-1.26.0.new/efl/elementary/gengrid.pxi
+--- python-efl-1.26.0/efl/elementary/gengrid.pxi	2022-02-27 11:27:16.000000000 +0100
++++ python-efl-1.26.0.new/efl/elementary/gengrid.pxi	2023-08-31 21:20:48.423295616 +0200
+@@ -18,7 +18,7 @@
+ 
+ include "gengrid_cdef.pxi"
+ 
+-cdef char *_py_elm_gengrid_item_text_get(void *data, Evas_Object *obj, const char *part) with gil:
++cdef char *_py_elm_gengrid_item_text_get(void *data, Evas_Object *obj, const char *part) noexcept with gil:
+     cdef:
+         GengridItem item = <GengridItem>data
+         unicode u = _ctouni(part)
+@@ -40,7 +40,7 @@
+     else:
+         return NULL
+ 
+-cdef Evas_Object *_py_elm_gengrid_item_content_get(void *data, Evas_Object *obj, const char *part) with gil:
++cdef Evas_Object *_py_elm_gengrid_item_content_get(void *data, Evas_Object *obj, const char *part) noexcept with gil:
+     cdef:
+         GengridItem item = <GengridItem>data
+         unicode u = _ctouni(part)
+@@ -63,7 +63,7 @@
+     else:
+         return NULL
+ 
+-cdef Eina_Bool _py_elm_gengrid_item_state_get(void *data, Evas_Object *obj, const char *part) with gil:
++cdef Eina_Bool _py_elm_gengrid_item_state_get(void *data, Evas_Object *obj, const char *part) noexcept with gil:
+     cdef:
+         GengridItem item = <GengridItem>data
+         unicode u = _ctouni(part)
+@@ -81,7 +81,7 @@
+ 
+     return ret if ret is not None else 0
+ 
+-cdef void _py_elm_gengrid_object_item_del(void *data, Evas_Object *obj) with gil:
++cdef void _py_elm_gengrid_object_item_del(void *data, Evas_Object *obj) noexcept with gil:
+     cdef GengridItem item = <GengridItem>data
+ 
+     if item is None:
+@@ -98,7 +98,7 @@
+ 
+     item._unset_obj()
+ 
+-cdef void _py_elm_gengrid_item_func(void *data, Evas_Object *obj, void *event_info) with gil:
++cdef void _py_elm_gengrid_item_func(void *data, Evas_Object *obj, void *event_info) noexcept with gil:
+     cdef GengridItem item
+ 
+     assert data != NULL, "data is NULL in Gengrid select cb"
+@@ -112,7 +112,7 @@
+         except Exception:
+             traceback.print_exc()
+ 
+-cdef int _gengrid_compare_cb(const void *data1, const void *data2) with gil:
++cdef int _gengrid_compare_cb(const void *data1, const void *data2) noexcept with gil:
+     cdef:
+         Elm_Object_Item *citem1 = <Elm_Object_Item *>data1
+         Elm_Object_Item *citem2 = <Elm_Object_Item *>data2
+diff -urEbwB python-efl-1.26.0/efl/elementary/genlist.pxi python-efl-1.26.0.new/efl/elementary/genlist.pxi
+--- python-efl-1.26.0/efl/elementary/genlist.pxi	2022-02-27 11:27:16.000000000 +0100
++++ python-efl-1.26.0.new/efl/elementary/genlist.pxi	2023-08-31 21:23:06.517578065 +0200
+@@ -17,7 +17,7 @@
+ 
+ include "genlist_cdef.pxi"
+ 
+-cdef char *_py_elm_genlist_item_text_get(void *data, Evas_Object *obj, const char *part) with gil:
++cdef char *_py_elm_genlist_item_text_get(void *data, Evas_Object *obj, const char *part) noexcept with gil:
+     cdef:
+         GenlistItem item = <GenlistItem>data
+         unicode u = _ctouni(part)
+@@ -39,7 +39,7 @@
+     else:
+         return NULL
+ 
+-cdef Evas_Object *_py_elm_genlist_item_content_get(void *data, Evas_Object *obj, const char *part) with gil:
++cdef Evas_Object *_py_elm_genlist_item_content_get(void *data, Evas_Object *obj, const char *part) noexcept with gil:
+     cdef:
+         GenlistItem item = <GenlistItem>data
+         unicode u = _ctouni(part)
+@@ -62,7 +62,7 @@
+     else:
+         return NULL
+ 
+-cdef Evas_Object *_py_elm_genlist_item_reusable_content_get(void *data, Evas_Object *obj, const char *part, Evas_Object *old) with gil:
++cdef Evas_Object *_py_elm_genlist_item_reusable_content_get(void *data, Evas_Object *obj, const char *part, Evas_Object *old) noexcept with gil:
+     cdef:
+         GenlistItem item = <GenlistItem>data
+         unicode u = _ctouni(part)
+@@ -86,7 +86,7 @@
+     else:
+         return NULL
+ 
+-cdef Eina_Bool _py_elm_genlist_item_state_get(void *data, Evas_Object *obj, const char *part) with gil:
++cdef Eina_Bool _py_elm_genlist_item_state_get(void *data, Evas_Object *obj, const char *part) noexcept with gil:
+     cdef:
+         GenlistItem item = <GenlistItem>data
+         unicode u = _ctouni(part)
+@@ -106,7 +106,7 @@
+ 
+     return ret
+ 
+-cdef Eina_Bool _py_elm_genlist_item_filter_get(void *data, Evas_Object *obj, void *key) with gil:
++cdef Eina_Bool _py_elm_genlist_item_filter_get(void *data, Evas_Object *obj, void *key) noexcept with gil:
+     cdef:
+         GenlistItem item = <GenlistItem>data
+         object pykey = <object>key
+@@ -126,7 +126,7 @@
+ 
+     return ret
+ 
+-cdef void _py_elm_genlist_object_item_del(void *data, Evas_Object *obj) with gil:
++cdef void _py_elm_genlist_object_item_del(void *data, Evas_Object *obj) noexcept with gil:
+     cdef GenlistItem item = <GenlistItem>data
+ 
+     if item is None:
+@@ -143,7 +143,7 @@
+ 
+     item._unset_obj()
+ 
+-cdef void _py_elm_genlist_item_func(void *data, Evas_Object *obj, void *event_info) with gil:
++cdef void _py_elm_genlist_item_func(void *data, Evas_Object *obj, void *event_info) noexcept with gil:
+     cdef GenlistItem item
+ 
+     assert data != NULL, "data is NULL in Genlist select cb"
+@@ -157,7 +157,7 @@
+         except Exception:
+             traceback.print_exc()
+ 
+-cdef int _py_elm_genlist_compare_func(const void *data1, const void *data2) with gil:
++cdef int _py_elm_genlist_compare_func(const void *data1, const void *data2) noexcept with gil:
+     cdef:
+         Elm_Object_Item *citem1 = <Elm_Object_Item *>data1
+         Elm_Object_Item *citem2 = <Elm_Object_Item *>data2
+diff -urEbwB python-efl-1.26.0/efl/elementary/gesture_layer.pxi python-efl-1.26.0.new/efl/elementary/gesture_layer.pxi
+--- python-efl-1.26.0/efl/elementary/gesture_layer.pxi	2022-02-27 11:27:16.000000000 +0100
++++ python-efl-1.26.0.new/efl/elementary/gesture_layer.pxi	2023-08-31 21:25:34.688596396 +0200
+@@ -303,7 +303,7 @@
+         def __get__(self):
+             return self.info.momentum
+ 
+-cdef Evas_Event_Flags _gesture_layer_taps_event_cb(void *data, void *event_info) with gil:
++cdef Evas_Event_Flags _gesture_layer_taps_event_cb(void *data, void *event_info) noexcept with gil:
+     callback, args, kwargs = <object>data
+     cdef GestureTapsInfo ei = GestureTapsInfo.__new__(GestureTapsInfo)
+     ei.info = <Elm_Gesture_Taps_Info *>event_info
+@@ -313,7 +313,7 @@
+     except Exception:
+         traceback.print_exc()
+ 
+-cdef Evas_Event_Flags _gesture_layer_momentum_event_cb(void *data, void *event_info) with gil:
++cdef Evas_Event_Flags _gesture_layer_momentum_event_cb(void *data, void *event_info) noexcept with gil:
+     callback, args, kwargs = <object>data
+     cdef GestureMomentumInfo ei = GestureMomentumInfo.__new__(GestureMomentumInfo)
+     ei.info = <Elm_Gesture_Momentum_Info *>event_info
+@@ -323,7 +323,7 @@
+     except Exception:
+         traceback.print_exc()
+ 
+-cdef Evas_Event_Flags _gesture_layer_line_event_cb(void *data, void *event_info) with gil:
++cdef Evas_Event_Flags _gesture_layer_line_event_cb(void *data, void *event_info) noexcept with gil:
+     callback, args, kwargs = <object>data
+     cdef GestureLineInfo ei = GestureLineInfo.__new__(GestureLineInfo)
+     ei.info = <Elm_Gesture_Line_Info *>event_info
+@@ -333,7 +333,7 @@
+     except Exception:
+         traceback.print_exc()
+ 
+-cdef Evas_Event_Flags _gesture_layer_zoom_event_cb(void *data, void *event_info) with gil:
++cdef Evas_Event_Flags _gesture_layer_zoom_event_cb(void *data, void *event_info) noexcept with gil:
+     callback, args, kwargs = <object>data
+     cdef GestureZoomInfo ei = GestureZoomInfo.__new__(GestureZoomInfo)
+     ei.info = <Elm_Gesture_Zoom_Info *>event_info
+@@ -343,7 +343,7 @@
+     except Exception:
+         traceback.print_exc()
+ 
+-cdef Evas_Event_Flags _gesture_layer_rotate_event_cb(void *data, void *event_info) with gil:
++cdef Evas_Event_Flags _gesture_layer_rotate_event_cb(void *data, void *event_info) noexcept with gil:
+     callback, args, kwargs = <object>data
+     cdef GestureRotateInfo ei = GestureRotateInfo.__new__(GestureRotateInfo)
+     ei.info = <Elm_Gesture_Rotate_Info *>event_info
+diff -urEbwB python-efl-1.26.0/efl/elementary/index.pxi python-efl-1.26.0.new/efl/elementary/index.pxi
+--- python-efl-1.26.0/efl/elementary/index.pxi	2022-02-27 11:27:16.000000000 +0100
++++ python-efl-1.26.0.new/efl/elementary/index.pxi	2023-08-31 21:26:36.362353591 +0200
+@@ -17,7 +17,7 @@
+ 
+ include "index_cdef.pxi"
+ 
+-cdef int _index_compare_func(const void *data1, const void *data2) with gil:
++cdef int _index_compare_func(const void *data1, const void *data2) noexcept with gil:
+     """Comparison by IndexItem objects"""
+     cdef:
+         Elm_Object_Item *citem1 = <Elm_Object_Item *>data1
+@@ -43,7 +43,7 @@
+     else:
+         return 0
+ 
+-cdef int _index_data_compare_func(const void *data1, const void *data2) with gil:
++cdef int _index_data_compare_func(const void *data1, const void *data2) noexcept with gil:
+     """Comparison by IndexItem data"""
+     cdef:
+         IndexItem item1 = <object>data1
+diff -urEbwB python-efl-1.26.0/efl/elementary/layout.pxi python-efl-1.26.0.new/efl/elementary/layout.pxi
+--- python-efl-1.26.0/efl/elementary/layout.pxi	2022-02-27 11:27:16.000000000 +0100
++++ python-efl-1.26.0.new/efl/elementary/layout.pxi	2023-08-31 21:27:34.872755704 +0200
+@@ -18,7 +18,7 @@
+ include "layout_cdef.pxi"
+ 
+ cdef void layout_signal_callback(void *data, Evas_Object *obj,
+-                    const char *emission, const char *source) with gil:
++                    const char *emission, const char *source) noexcept with gil:
+     cdef Object self = object_from_instance(obj)
+     lst = tuple(<object>data)
+     for func, args, kargs in lst:
+diff -urEbwB python-efl-1.26.0/efl/elementary/map.pxi python-efl-1.26.0.new/efl/elementary/map.pxi
+--- python-efl-1.26.0/efl/elementary/map.pxi	2022-02-27 11:27:16.000000000 +0100
++++ python-efl-1.26.0.new/efl/elementary/map.pxi	2023-08-31 21:29:02.683359182 +0200
+@@ -28,7 +28,7 @@
+         return None
+     return <object>data
+ 
+-cdef void _map_overlay_get_callback(void *data, Evas_Object *map, Elm_Map_Overlay *overlay) with gil:
++cdef void _map_overlay_get_callback(void *data, Evas_Object *map, Elm_Map_Overlay *overlay) noexcept with gil:
+     cdef Object obj
+ 
+     obj = object_from_instance(map)
+@@ -38,11 +38,11 @@
+     except Exception:
+         traceback.print_exc()
+ 
+-cdef void _map_overlay_del_cb(void *data, Evas_Object *map, Elm_Map_Overlay *overlay) with gil:
++cdef void _map_overlay_del_cb(void *data, Evas_Object *map, Elm_Map_Overlay *overlay) noexcept with gil:
+     ov = <object>data
+     ov.__del_cb()
+ 
+-cdef void _map_route_callback(void *data, Evas_Object *map, Elm_Map_Route *route) with gil:
++cdef void _map_route_callback(void *data, Evas_Object *map, Elm_Map_Route *route) noexcept with gil:
+     cdef Object obj
+ 
+     obj = object_from_instance(map)
+@@ -54,7 +54,7 @@
+ 
+     Py_DECREF(<object>data)
+ 
+-cdef void _map_name_callback(void *data, Evas_Object *map, Elm_Map_Name *name) with gil:
++cdef void _map_name_callback(void *data, Evas_Object *map, Elm_Map_Name *name) noexcept with gil:
+     cdef Object obj
+ 
+     obj = object_from_instance(map)
+diff -urEbwB python-efl-1.26.0/efl/elementary/multibuttonentry.pxi python-efl-1.26.0.new/efl/elementary/multibuttonentry.pxi
+--- python-efl-1.26.0/efl/elementary/multibuttonentry.pxi	2022-02-27 11:27:16.000000000 +0100
++++ python-efl-1.26.0.new/efl/elementary/multibuttonentry.pxi	2023-08-31 21:34:32.075623143 +0200
+@@ -19,7 +19,7 @@
+ include "multibuttonentry_cdef.pxi"
+ 
+ cdef Eina_Bool _multibuttonentry_filter_callback(Evas_Object *obj, \
+-    const char *item_label, void *item_data, void *data) with gil:
++    const char *item_label, void *item_data, void *data) noexcept with gil:
+ 
+     cdef:
+         MultiButtonEntry mbe = object_from_instance(obj)
+@@ -41,7 +41,7 @@
+ 
+     return 1
+ 
+-cdef char * _multibuttonentry_format_cb(int count, void *data) with gil:
++cdef char * _multibuttonentry_format_cb(int count, void *data) noexcept with gil:
+     cdef MultiButtonEntry obj = <MultiButtonEntry>data
+     (callback, a, ka) = obj.internal_data["multibuttonentry_format_cb"]
+ 
+@@ -204,7 +204,7 @@
+         return _object_item_to_python(elm_multibuttonentry_item_next_get(self.item))
+ 
+ cdef void _py_elm_mbe_item_added_cb(
+-    void *data, Evas_Object *o, void *event_info) with gil:
++    void *data, Evas_Object *o, void *event_info) noexcept with gil:
+     cdef:
+         MultiButtonEntryItem it
+         Elm_Object_Item *item = <Elm_Object_Item *>event_info
+diff -urEbwB python-efl-1.26.0/efl/elementary/naviframe.pxi python-efl-1.26.0.new/efl/elementary/naviframe.pxi
+--- python-efl-1.26.0/efl/elementary/naviframe.pxi	2022-02-27 11:27:16.000000000 +0100
++++ python-efl-1.26.0.new/efl/elementary/naviframe.pxi	2023-08-31 21:36:42.639853731 +0200
+@@ -17,7 +17,7 @@
+ 
+ include "naviframe_cdef.pxi"
+ 
+-cdef Eina_Bool py_elm_naviframe_item_pop_cb(void *data, Elm_Object_Item *it):
++cdef Eina_Bool py_elm_naviframe_item_pop_cb(void *data, Elm_Object_Item *it) noexcept :
+     cdef:
+         NaviframeItem item = _object_item_to_python(it)
+         object func
+diff -urEbwB python-efl-1.26.0/efl/elementary/object_item.pxi python-efl-1.26.0.new/efl/elementary/object_item.pxi
+--- python-efl-1.26.0/efl/elementary/object_item.pxi	2022-02-27 11:27:16.000000000 +0100
++++ python-efl-1.26.0.new/efl/elementary/object_item.pxi	2023-08-31 21:42:32.288925734 +0200
+@@ -17,7 +17,7 @@
+ 
+ include "object_item_cdef.pxi"
+ 
+-cdef Evas_Object *_tooltip_item_content_create(void *data, Evas_Object *o, Evas_Object *t, void *it) with gil:
++cdef Evas_Object *_tooltip_item_content_create(void *data, Evas_Object *o, Evas_Object *t, void *it) noexcept with gil:
+     cdef:
+         Object ret, obj, tooltip
+         ObjectItem item
+@@ -31,7 +31,7 @@
+        return NULL
+     return ret.obj
+ 
+-cdef void _tooltip_item_data_del_cb(void *data, Evas_Object *o, void *event_info) with gil:
++cdef void _tooltip_item_data_del_cb(void *data, Evas_Object *o, void *event_info) noexcept with gil:
+    Py_DECREF(<object>data)
+ 
+ 
+@@ -40,7 +40,7 @@
+         raise TypeError("Invalid item!")
+     return item.item
+ 
+-cdef _object_item_to_python(Elm_Object_Item *it):
++cdef _object_item_to_python(Elm_Object_Item *it) noexcept:
+     cdef:
+         void *data
+         ObjectItem item
+@@ -60,7 +60,7 @@
+ 
+     return item
+ 
+-cdef _object_item_list_to_python(const Eina_List *lst):
++cdef _object_item_list_to_python(const Eina_List *lst) noexcept:
+     cdef Elm_Object_Item *it
+     ret = []
+     while lst:
+@@ -71,14 +71,14 @@
+             ret.append(o)
+     return ret
+ 
+-cdef void _object_item_del_cb(void *data, Evas_Object *o, void *event_info) with gil:
++cdef void _object_item_del_cb(void *data, Evas_Object *o, void *event_info) noexcept with gil:
+     cdef ObjectItem d
+     if data != NULL:
+         d = <object>data
+         d.item = NULL
+         Py_DECREF(d)
+ 
+-cdef void _object_item_callback(void *data, Evas_Object *obj, void *event_info) with gil:
++cdef void _object_item_callback(void *data, Evas_Object *obj, void *event_info) noexcept with gil:
+     # This should be used with old style items
+     cdef ObjectItem item = <object>data
+     try:
+@@ -87,7 +87,7 @@
+     except Exception:
+         traceback.print_exc()
+ 
+-cdef void _object_item_callback2(void *data, Evas_Object *obj, void *event_info) with gil:
++cdef void _object_item_callback2(void *data, Evas_Object *obj, void *event_info) noexcept with gil:
+     # This should be used with new style items
+     cdef ObjectItem item = <object>data
+     try:
+diff -urEbwB python-efl-1.26.0/efl/elementary/object.pxi python-efl-1.26.0.new/efl/elementary/object.pxi
+--- python-efl-1.26.0/efl/elementary/object.pxi	2022-02-27 11:27:58.000000000 +0100
++++ python-efl-1.26.0.new/efl/elementary/object.pxi	2023-08-31 21:40:57.321605747 +0200
+@@ -20,7 +20,7 @@
+ 
+ include "cnp_callbacks.pxi"
+ 
+-cdef Evas_Object *_tooltip_content_create(void *data, Evas_Object *o, Evas_Object *t) with gil:
++cdef Evas_Object *_tooltip_content_create(void *data, Evas_Object *o, Evas_Object *t) noexcept with gil:
+     cdef Object ret, obj, tooltip
+ 
+     obj = object_from_instance(o)
+@@ -31,12 +31,12 @@
+         return NULL
+     return ret.obj
+ 
+-cdef void _tooltip_data_del_cb(void *data, Evas_Object *o, void *event_info) with gil:
++cdef void _tooltip_data_del_cb(void *data, Evas_Object *o, void *event_info) noexcept with gil:
+     Py_DECREF(<object>data)
+ 
+ 
+ cdef bint _event_dispatcher(Object obj, Object src, Evas_Callback_Type t,
+-    event_info):
++    event_info) noexcept:
+     cdef bint ret
+     for func, args, kargs in obj._elm_event_cbs:
+         try:
+@@ -48,7 +48,7 @@
+     return False
+ 
+ cdef Eina_Bool _event_callback(void *data, Evas_Object *o, \
+-    Evas_Object *src, Evas_Callback_Type t, void *event_info) with gil:
++    Evas_Object *src, Evas_Callback_Type t, void *event_info) noexcept with gil:
+ 
+     cdef:
+         Object obj = object_from_instance(o)
+@@ -79,7 +79,7 @@
+     return ret
+ 
+ cdef void signal_callback(void *data, Evas_Object *obj,
+-                    const char *emission, const char *source) with gil:
++                    const char *emission, const char *source) noexcept with gil:
+     cdef Object self = object_from_instance(obj)
+     lst = tuple(<object>data)
+     for func, args, kargs in lst:
+diff -urEbwB python-efl-1.26.0/efl/elementary/slideshow.pxi python-efl-1.26.0.new/efl/elementary/slideshow.pxi
+--- python-efl-1.26.0/efl/elementary/slideshow.pxi	2022-02-27 11:27:58.000000000 +0100
++++ python-efl-1.26.0.new/efl/elementary/slideshow.pxi	2023-08-31 21:45:51.586963590 +0200
+@@ -18,7 +18,7 @@
+ 
+ include "slideshow_cdef.pxi"
+ 
+-cdef Evas_Object *_py_elm_slideshow_item_get(void *data, Evas_Object *obj) with gil:
++cdef Evas_Object *_py_elm_slideshow_item_get(void *data, Evas_Object *obj) noexcept with gil:
+     cdef:
+         SlideshowItem item = <SlideshowItem>data
+         SlideshowItemClass itc = item.item_class
+@@ -41,7 +41,7 @@
+         return NULL
+ 
+ 
+-cdef void _py_elm_slideshow_item_del(void *data, Evas_Object *obj) with gil:
++cdef void _py_elm_slideshow_item_del(void *data, Evas_Object *obj) noexcept with gil:
+     cdef:
+         SlideshowItem item = <SlideshowItem>data
+         SlideshowItemClass itc = item.item_class
+@@ -58,7 +58,7 @@
+     # item._unset_obj()
+     #Py_DECREF(item)
+ 
+-cdef int _py_elm_slideshow_compare_func(const void *data1, const void *data2) with gil:
++cdef int _py_elm_slideshow_compare_func(const void *data1, const void *data2) noexcept with gil:
+     cdef:
+         SlideshowItem item1 = <SlideshowItem>data1
+         SlideshowItem item2 = <SlideshowItem>data2
+diff -urEbwB python-efl-1.26.0/efl/elementary/toolbar.pxi python-efl-1.26.0.new/efl/elementary/toolbar.pxi
+--- python-efl-1.26.0/efl/elementary/toolbar.pxi	2022-02-27 11:27:58.000000000 +0100
++++ python-efl-1.26.0.new/efl/elementary/toolbar.pxi	2023-08-31 21:48:19.164645484 +0200
+@@ -18,7 +18,7 @@
+ 
+ include "toolbar_cdef.pxi"
+ 
+-cdef void _toolbar_item_state_callback(void *data, Evas_Object *obj, void *event_info) with gil:
++cdef void _toolbar_item_state_callback(void *data, Evas_Object *obj, void *event_info) noexcept with gil:
+     cdef ToolbarItemState state = <object>data
+     cdef ToolbarItem item = ToolbarItem.__new__(ToolbarItem)
+     item.item = <Elm_Object_Item *>event_info
+diff -urEbwB python-efl-1.26.0/efl/elementary/transit.pxi python-efl-1.26.0.new/efl/elementary/transit.pxi
+--- python-efl-1.26.0/efl/elementary/transit.pxi	2022-02-27 11:27:58.000000000 +0100
++++ python-efl-1.26.0.new/efl/elementary/transit.pxi	2023-08-31 21:52:48.463164715 +0200
+@@ -47,7 +47,7 @@
+         """
+         pass
+ 
+-cdef void elm_transit_effect_transition_cb(Elm_Transit_Effect *effect, Elm_Transit *transit, double progress) with gil:
++cdef void elm_transit_effect_transition_cb(Elm_Transit_Effect *effect, Elm_Transit *transit, double progress) noexcept with gil:
+     cdef:
+         TransitCustomEffect fect = <TransitCustomEffect?>effect
+         Transit tsit = fect.transit
+@@ -57,7 +57,7 @@
+     except Exception:
+         traceback.print_exc()
+ 
+-cdef void elm_transit_effect_end_cb(Elm_Transit_Effect *effect, Elm_Transit *transit) with gil:
++cdef void elm_transit_effect_end_cb(Elm_Transit_Effect *effect, Elm_Transit *transit) noexcept with gil:
+     cdef:
+         TransitCustomEffect fect = <TransitCustomEffect?>effect
+         Transit tsit = fect.transit
+@@ -69,7 +69,7 @@
+ 
+     Py_DECREF(fect)
+ 
+-cdef void elm_transit_del_cb(void *data, Elm_Transit *transit) with gil:
++cdef void elm_transit_del_cb(void *data, Elm_Transit *transit) noexcept with gil:
+     cdef:
+         Transit trans
+         tuple args
+diff -urEbwB python-efl-1.26.0/efl/elementary/web.pxi python-efl-1.26.0.new/efl/elementary/web.pxi
+--- python-efl-1.26.0/efl/elementary/web.pxi	2022-02-27 11:29:10.000000000 +0100
++++ python-efl-1.26.0.new/efl/elementary/web.pxi	2023-08-31 21:54:37.743916467 +0200
+@@ -55,7 +55,7 @@
+     return (url, title)
+ 
+ 
+-cdef void _web_console_message_hook(void *data, Evas_Object *obj, const char *message, unsigned int line_number, const char *source_id) with gil:
++cdef void _web_console_message_hook(void *data, Evas_Object *obj, const char *message, unsigned int line_number, const char *source_id) noexcept with gil:
+     cdef Web self = <Web>data
+ 
+     try:
+diff -urEbwB python-efl-1.26.0/efl/emotion/efl.emotion.pyx python-efl-1.26.0.new/efl/emotion/efl.emotion.pyx
+--- python-efl-1.26.0/efl/emotion/efl.emotion.pyx	2022-02-27 11:29:10.000000000 +0100
++++ python-efl-1.26.0.new/efl/emotion/efl.emotion.pyx	2023-08-31 21:55:55.871120390 +0200
+@@ -120,7 +120,7 @@
+ EMOTION_VIS_LAST = enums.EMOTION_VIS_LAST
+ 
+ 
+-cdef void _emotion_callback(void *data, Evas_Object *o, void *ei) with gil:
++cdef void _emotion_callback(void *data, Evas_Object *o, void *ei) noexcept with gil:
+     cdef Emotion obj
+     cdef object event
+     obj = object_from_instance(o)
+diff -urEbwB python-efl-1.26.0/efl/eo/efl.eo.pyx python-efl-1.26.0.new/efl/eo/efl.eo.pyx
+--- python-efl-1.26.0/efl/eo/efl.eo.pyx	2022-02-27 11:29:10.000000000 +0100
++++ python-efl-1.26.0.new/efl/eo/efl.eo.pyx	2023-08-31 21:58:03.808666864 +0200
+@@ -182,7 +182,7 @@
+ ######################################################################
+ 
+ 
+-cdef void _efl_event_del_cb(void *data, const Efl_Event *event) with gil:
++cdef void _efl_event_del_cb(void *data, const Efl_Event *event) noexcept with gil:
+     cdef:
+         Eo self = <Eo>data
+         const char *cls_name = efl_class_name_get(efl_class_get(self.obj))
+diff -urEbwB python-efl-1.26.0/efl/ethumb/efl.ethumb_client.pyx python-efl-1.26.0.new/efl/ethumb/efl.ethumb_client.pyx
+--- python-efl-1.26.0/efl/ethumb/efl.ethumb_client.pyx	2022-02-27 11:29:10.000000000 +0100
++++ python-efl-1.26.0.new/efl/ethumb/efl.ethumb_client.pyx	2023-08-31 22:04:12.914538544 +0200
+@@ -164,7 +164,7 @@
+ ETHUMB_THUMB_CROP = enums.ETHUMB_THUMB_CROP
+ 
+ 
+-cdef void _connect_cb(void *data, Ethumb_Client *client, Eina_Bool success) with gil:
++cdef void _connect_cb(void *data, Ethumb_Client *client, Eina_Bool success) noexcept with gil:
+     cdef EthumbClient self = <EthumbClient>data
+     s = bool(success)
+     try:
+@@ -173,7 +173,7 @@
+     except Exception:
+         traceback.print_exc()
+ 
+-cdef void _on_server_die_cb(void *data, Ethumb_Client *client) with gil:
++cdef void _on_server_die_cb(void *data, Ethumb_Client *client) noexcept with gil:
+     cdef EthumbClient self = <EthumbClient>data
+     if self._on_server_die_callback is not None:
+         try:
+@@ -184,7 +184,7 @@
+ 
+     self.disconnect()
+ 
+-cdef void _generated_cb(void *data, Ethumb_Client *client, int id, const char *file, const char *key, const char *thumb_path, const char *thumb_key, Eina_Bool success) with gil:
++cdef void _generated_cb(void *data, Ethumb_Client *client, int id, const char *file, const char *key, const char *thumb_path, const char *thumb_key, Eina_Bool success) noexcept with gil:
+     obj = <object>data
+     (self, func, args, kargs) = obj
+     status = bool(success != 0)
+@@ -194,11 +194,11 @@
+     except Exception:
+         traceback.print_exc()
+ 
+-cdef void _generated_cb_free_data(void *data) with gil:
++cdef void _generated_cb_free_data(void *data) noexcept with gil:
+     obj = <object>data
+     Py_DECREF(obj)
+ 
+-cdef void _thumb_exists_cb(void *data, Ethumb_Client *client, Ethumb_Exists *thread, Eina_Bool exists) with gil:
++cdef void _thumb_exists_cb(void *data, Ethumb_Client *client, Ethumb_Exists *thread, Eina_Bool exists) noexcept with gil:
+     #TODO
+     print("Not implemented")
+ 
+diff -urEbwB python-efl-1.26.0/efl/ethumb/efl.ethumb.pyx python-efl-1.26.0.new/efl/ethumb/efl.ethumb.pyx
+--- python-efl-1.26.0/efl/ethumb/efl.ethumb.pyx	2022-02-27 11:29:10.000000000 +0100
++++ python-efl-1.26.0.new/efl/ethumb/efl.ethumb.pyx	2023-08-31 22:01:02.689897019 +0200
+@@ -181,7 +181,7 @@
+ ETHUMB_THUMB_CROP = enums.ETHUMB_THUMB_CROP
+ 
+ 
+-cdef void _generate_cb(void *data, cEthumb *e, Eina_Bool success) with gil:
++cdef void _generate_cb(void *data, cEthumb *e, Eina_Bool success) noexcept with gil:
+     obj = <object>data
+     (self, func, args, kargs) = obj
+     try:
+@@ -189,7 +189,7 @@
+     except Exception:
+         traceback.print_exc()
+ 
+-cdef void _generate_free_cb(void *data) with gil:
++cdef void _generate_free_cb(void *data) noexcept with gil:
+     obj = <object>data
+     Py_DECREF(obj)
+ 
+diff -urEbwB python-efl-1.26.0/efl/evas/efl.evas_canvas_callbacks.pxi python-efl-1.26.0.new/efl/evas/efl.evas_canvas_callbacks.pxi
+--- python-efl-1.26.0/efl/evas/efl.evas_canvas_callbacks.pxi	2022-02-27 11:29:10.000000000 +0100
++++ python-efl-1.26.0.new/efl/evas/efl.evas_canvas_callbacks.pxi	2023-08-31 22:11:05.334041339 +0200
+@@ -39,129 +39,129 @@
+     return 1
+ 
+ 
+-cdef void cb_canvas_mouse_in(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_mouse_in(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_MOUSE_IN is not supported by canvas.")
+ 
+-cdef void cb_canvas_mouse_out(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_mouse_out(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_MOUSE_OUT is not supported by canvas.")
+ 
+-cdef void cb_canvas_mouse_down(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_mouse_down(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_MOUSE_DOWN is not supported by canvas.")
+ 
+-cdef void cb_canvas_mouse_up(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_mouse_up(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_MOUSE_UP is not supported by canvas.")
+ 
+-cdef void cb_canvas_mouse_move(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_mouse_move(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_MOUSE_MOVE is not supported by canvas.")
+ 
+-cdef void cb_canvas_multi_down(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_multi_down(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_MULTI_DOWN is not supported by canvas.")
+ 
+-cdef void cb_canvas_multi_up(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_multi_up(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_MULTI_UP is not supported by canvas.")
+ 
+-cdef void cb_canvas_multi_move(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_multi_move(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_MULTI_MOVE is not supported by canvas.")
+ 
+-cdef void cb_canvas_mouse_wheel(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_mouse_wheel(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_MOUSE_WHEEL is not supported by canvas.")
+ 
+-cdef void cb_canvas_free(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_free(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_FREE is not supported by canvas.")
+ 
+-cdef void cb_canvas_key_down(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_key_down(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_KEY_DOWN is not supported by canvas.")
+ 
+-cdef void cb_canvas_key_up(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_key_up(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_KEY_UP is not supported by canvas.")
+ 
+-cdef void cb_canvas_focus_in(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_focus_in(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_FOCUS_IN is not supported by canvas.")
+ 
+-cdef void cb_canvas_focus_out(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_focus_out(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_FOCUS_OUT is not supported by canvas.")
+ 
+-cdef void cb_canvas_show(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_show(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_SHOW is not supported by canvas.")
+ 
+-cdef void cb_canvas_hide(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_hide(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_HIDE is not supported by canvas.")
+ 
+-cdef void cb_canvas_move(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_move(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_MOVE is not supported by canvas.")
+ 
+-cdef void cb_canvas_resize(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_resize(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_RESIZE is not supported by canvas.")
+ 
+-cdef void cb_canvas_restack(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_restack(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_RESTACK is not supported by canvas.")
+ 
+-cdef void cb_canvas_del(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_del(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_DEL is not supported by canvas.")
+ 
+-cdef void cb_canvas_hold(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_hold(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_HOLD is not supported by canvas.")
+ 
+-cdef void cb_canvas_changed_size_hints(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_changed_size_hints(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_CHANGED_SIZE_HINTS is not supported by canvas.")
+ 
+-cdef void cb_canvas_image_preloaded(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_image_preloaded(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_IMAGE_PRELOADED is not supported by canvas.")
+ 
+-cdef void cb_canvas_image_resize(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_image_resize(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_IMAGE_RESIZE is not supported by canvas.")
+ 
+-cdef void cb_canvas_device_changed(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_device_changed(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_DEVICE_CHANGED is not supported by canvas.")
+ 
+-cdef void cb_canvas_canvas_focus_in(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_canvas_focus_in(void *data, Evas *e, void *e_inf) noexcept with gil:
+     cb_canvas_dispatcher2(<Canvas>data, EVAS_CALLBACK_CANVAS_FOCUS_IN)
+ 
+ 
+-cdef void cb_canvas_canvas_focus_out(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_canvas_focus_out(void *data, Evas *e, void *e_inf) noexcept with gil:
+     cb_canvas_dispatcher2(<Canvas>data, EVAS_CALLBACK_CANVAS_FOCUS_OUT)
+ 
+ 
+-cdef void cb_canvas_render_flush_pre(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_render_flush_pre(void *data, Evas *e, void *e_inf) noexcept with gil:
+     cb_canvas_dispatcher2(<Canvas>data, EVAS_CALLBACK_RENDER_FLUSH_PRE)
+ 
+ 
+-cdef void cb_canvas_render_flush_post(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_render_flush_post(void *data, Evas *e, void *e_inf) noexcept with gil:
+     cb_canvas_dispatcher2(<Canvas>data, EVAS_CALLBACK_RENDER_FLUSH_POST)
+ 
+ 
+-cdef void cb_canvas_canvas_object_focus_in(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_canvas_object_focus_in(void *data, Evas *e, void *e_inf) noexcept with gil:
+     cdef Evas_Object *obj = <Evas_Object*>e_inf
+     o = object_from_instance(obj)
+     cb_canvas_dispatcher(<Canvas>data, o, EVAS_CALLBACK_CANVAS_OBJECT_FOCUS_IN)
+ 
+ 
+-cdef void cb_canvas_canvas_object_focus_out(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_canvas_object_focus_out(void *data, Evas *e, void *e_inf) noexcept with gil:
+     cdef Evas_Object *obj = <Evas_Object*>e_inf
+     o = object_from_instance(obj)
+     cb_canvas_dispatcher(<Canvas>data, o, EVAS_CALLBACK_CANVAS_OBJECT_FOCUS_OUT)
+ 
+ 
+-cdef void cb_canvas_image_unloaded(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_image_unloaded(void *data, Evas *e, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_IMAGE_UNLOADED is not supported by canvas.")
+ 
+-cdef void cb_canvas_render_pre(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_render_pre(void *data, Evas *e, void *e_inf) noexcept with gil:
+     #cdef Evas_Object *obj = <Evas_Object*>e_inf
+     #o = object_from_instance(obj)
+     #cb_canvas_dispatcher(<Canvas>data, o, EVAS_CALLBACK_RENDER_PRE)
+     cb_canvas_dispatcher2(<Canvas>data, EVAS_CALLBACK_RENDER_PRE)
+ 
+ 
+-cdef void cb_canvas_render_post(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_render_post(void *data, Evas *e, void *e_inf) noexcept with gil:
+     #cdef Evas_Object *obj = <Evas_Object*>e_inf
+     #o = object_from_instance(obj)
+     #cb_canvas_dispatcher(<Canvas>data, o, EVAS_CALLBACK_RENDER_POST)
+     cb_canvas_dispatcher2(<Canvas>data, EVAS_CALLBACK_RENDER_POST)
+ 
+-cdef void cb_canvas_axis_update(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_axis_update(void *data, Evas *e, void *e_inf) noexcept with gil:
+     cb_canvas_dispatcher2(<Canvas>data, EVAS_CALLBACK_AXIS_UPDATE)
+ 
+-cdef void cb_canvas_viewport_resize(void *data, Evas *e, void *e_inf) with gil:
++cdef void cb_canvas_viewport_resize(void *data, Evas *e, void *e_inf) noexcept with gil:
+     cb_canvas_dispatcher2(<Canvas>data, EVAS_CALLBACK_CANVAS_VIEWPORT_RESIZE)
+ 
+ 
+diff -urEbwB python-efl-1.26.0/efl/evas/efl.evas_object_callbacks.pxi python-efl-1.26.0.new/efl/evas/efl.evas_object_callbacks.pxi
+--- python-efl-1.26.0/efl/evas/efl.evas_object_callbacks.pxi	2022-02-27 11:29:10.000000000 +0100
++++ python-efl-1.26.0.new/efl/evas/efl.evas_object_callbacks.pxi	2023-08-31 22:23:07.188995749 +0200
+@@ -39,7 +39,7 @@
+ 
+ 
+ cdef void cb_object_mouse_in(void *data, Evas *e,
+-                             Evas_Object *obj, void *e_inf) with gil:
++                             Evas_Object *obj, void *e_inf) noexcept with gil:
+     cdef EventMouseIn event
+     event = EventMouseIn()
+     event._set_obj(e_inf)
+@@ -48,7 +48,7 @@
+ 
+ 
+ cdef void cb_object_mouse_out(void *data, Evas *e,
+-                              Evas_Object *obj, void *e_inf) with gil:
++                              Evas_Object *obj, void *e_inf) noexcept with gil:
+     cdef EventMouseOut event
+     event = EventMouseOut()
+     event._set_obj(e_inf)
+@@ -57,7 +57,7 @@
+ 
+ 
+ cdef void cb_object_mouse_down(void *data, Evas *e,
+-                               Evas_Object *obj, void *e_inf) with gil:
++                               Evas_Object *obj, void *e_inf) noexcept with gil:
+     cdef EventMouseDown event
+     event = EventMouseDown()
+     event._set_obj(e_inf)
+@@ -66,7 +66,7 @@
+ 
+ 
+ cdef void cb_object_mouse_up(void *data, Evas *e,
+-                             Evas_Object *obj, void *e_inf) with gil:
++                             Evas_Object *obj, void *e_inf) noexcept with gil:
+     cdef EventMouseUp event
+     event = EventMouseUp()
+     event._set_obj(e_inf)
+@@ -75,7 +75,7 @@
+ 
+ 
+ cdef void cb_object_mouse_move(void *data, Evas *e,
+-                               Evas_Object *obj, void *e_inf) with gil:
++                               Evas_Object *obj, void *e_inf) noexcept with gil:
+     cdef EventMouseMove event
+     event = EventMouseMove()
+     event._set_obj(e_inf)
+@@ -84,7 +84,7 @@
+ 
+ 
+ cdef void cb_object_multi_down(void *data, Evas *e,
+-                               Evas_Object *obj, void *e_inf) with gil:
++                               Evas_Object *obj, void *e_inf) noexcept with gil:
+     cdef EventMultiDown event
+     event = EventMultiDown()
+     event._set_obj(e_inf)
+@@ -92,7 +92,7 @@
+     event._unset_obj()
+ 
+ cdef void cb_object_multi_up(void *data, Evas *e,
+-                             Evas_Object *obj, void *e_inf) with gil:
++                             Evas_Object *obj, void *e_inf) noexcept with gil:
+     cdef EventMultiUp event
+     event = EventMultiUp()
+     event._set_obj(e_inf)
+@@ -101,7 +101,7 @@
+ 
+ 
+ cdef void cb_object_multi_move(void *data, Evas *e,
+-                               Evas_Object *obj, void *e_inf) with gil:
++                               Evas_Object *obj, void *e_inf) noexcept with gil:
+     cdef EventMultiMove event
+     event = EventMultiMove()
+     event._set_obj(e_inf)
+@@ -110,7 +110,7 @@
+ 
+ 
+ cdef void cb_object_mouse_wheel(void *data, Evas *e,
+-                                Evas_Object *obj, void *e_inf) with gil:
++                                Evas_Object *obj, void *e_inf) noexcept with gil:
+     cdef EventMouseWheel event
+     event = EventMouseWheel()
+     event._set_obj(e_inf)
+@@ -119,12 +119,12 @@
+ 
+ 
+ cdef void cb_object_free(void *data, Evas *e,
+-                         Evas_Object *obj, void *e_inf) with gil:
++                         Evas_Object *obj, void *e_inf) noexcept with gil:
+     cb_object_dispatcher2(<Object>data, enums.EVAS_CALLBACK_FREE)
+ 
+ 
+ cdef void cb_object_key_down(void *data, Evas *e,
+-                             Evas_Object *obj, void *e_inf) with gil:
++                             Evas_Object *obj, void *e_inf) noexcept with gil:
+     cdef EventKeyDown event
+     event = EventKeyDown()
+     event._set_obj(e_inf)
+@@ -133,7 +133,7 @@
+ 
+ 
+ cdef void cb_object_key_up(void *data, Evas *e,
+-                           Evas_Object *obj, void *e_inf) with gil:
++                           Evas_Object *obj, void *e_inf) noexcept with gil:
+     cdef EventKeyUp event
+     event = EventKeyUp()
+     event._set_obj(e_inf)
+@@ -142,47 +142,47 @@
+ 
+ 
+ cdef void cb_object_focus_in(void *data, Evas *e,
+-                             Evas_Object *obj, void *e_inf) with gil:
++                             Evas_Object *obj, void *e_inf) noexcept with gil:
+     cb_object_dispatcher2(<Object>data, enums.EVAS_CALLBACK_FOCUS_IN)
+ 
+ 
+ cdef void cb_object_focus_out(void *data, Evas *e,
+-                              Evas_Object *obj, void *e_inf) with gil:
++                              Evas_Object *obj, void *e_inf) noexcept with gil:
+     cb_object_dispatcher2(<Object>data, enums.EVAS_CALLBACK_FOCUS_OUT)
+ 
+ 
+ cdef void cb_object_show(void *data, Evas *e,
+-                         Evas_Object *obj, void *e_inf) with gil:
++                         Evas_Object *obj, void *e_inf) noexcept with gil:
+     cb_object_dispatcher2(<Object>data, enums.EVAS_CALLBACK_SHOW)
+ 
+ 
+ cdef void cb_object_hide(void *data, Evas *e,
+-                         Evas_Object *obj, void *e_inf) with gil:
++                         Evas_Object *obj, void *e_inf) noexcept with gil:
+     cb_object_dispatcher2(<Object>data, enums.EVAS_CALLBACK_HIDE)
+ 
+ 
+ cdef void cb_object_move(void *data, Evas *e,
+-                         Evas_Object *obj, void *e_inf) with gil:
++                         Evas_Object *obj, void *e_inf) noexcept with gil:
+     cb_object_dispatcher2(<Object>data, enums.EVAS_CALLBACK_MOVE)
+ 
+ 
+ cdef void cb_object_resize(void *data, Evas *e,
+-                           Evas_Object *obj, void *e_inf) with gil:
++                           Evas_Object *obj, void *e_inf) noexcept with gil:
+     cb_object_dispatcher2(<Object>data, enums.EVAS_CALLBACK_RESIZE)
+ 
+ 
+ cdef void cb_object_restack(void *data, Evas *e,
+-                            Evas_Object *obj, void *e_inf) with gil:
++                            Evas_Object *obj, void *e_inf) noexcept with gil:
+     cb_object_dispatcher2(<Object>data, enums.EVAS_CALLBACK_RESTACK)
+ 
+ 
+ cdef void cb_object_del(void *data, Evas *e,
+-                        Evas_Object *obj, void *e_inf) with gil:
++                        Evas_Object *obj, void *e_inf) noexcept with gil:
+     cb_object_dispatcher2(<Object>data, enums.EVAS_CALLBACK_DEL)
+ 
+ 
+ cdef void cb_object_hold(void *data, Evas *e,
+-                         Evas_Object *obj, void *e_inf) with gil:
++                         Evas_Object *obj, void *e_inf) noexcept with gil:
+     cdef EventHold event
+     event = EventHold()
+     event._set_obj(e_inf)
+@@ -191,67 +191,67 @@
+ 
+ 
+ cdef void cb_object_changed_size_hints(void *data, Evas *e,
+-                                       Evas_Object *obj, void *e_inf) with gil:
++                                       Evas_Object *obj, void *e_inf) noexcept with gil:
+     cb_object_dispatcher2(<Object>data, enums.EVAS_CALLBACK_CHANGED_SIZE_HINTS)
+ 
+ 
+ cdef void cb_object_image_preloaded(void *data, Evas *e,
+-                                    Evas_Object *obj, void *e_inf) with gil:
++                                    Evas_Object *obj, void *e_inf) noexcept with gil:
+     cb_object_dispatcher2(<Object>data, enums.EVAS_CALLBACK_IMAGE_PRELOADED)
+ 
+ cdef void cb_object_image_resize(void *data, Evas *e,
+-                                    Evas_Object *obj, void *e_inf) with gil:
++                                    Evas_Object *obj, void *e_inf) noexcept with gil:
+     cb_object_dispatcher2(<Object>data, enums.EVAS_CALLBACK_IMAGE_RESIZE)
+ 
+ cdef void cb_object_device_changed(void *data, Evas *e,
+-                                   Evas_Object *obj, void *e_inf) with gil:
++                                   Evas_Object *obj, void *e_inf) noexcept with gil:
+     cb_object_dispatcher2(<Object>data, enums.EVAS_CALLBACK_DEVICE_CHANGED)
+ 
+ cdef void cb_object_canvas_focus_in(void *data, Evas *e,
+-                                    Evas_Object *obj, void *e_inf) with gil:
++                                    Evas_Object *obj, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_FOCUS_IN is not supported by object.")
+ 
+ 
+ cdef void cb_object_canvas_focus_out(void *data, Evas *e,
+-                                     Evas_Object *obj, void *e_inf) with gil:
++                                     Evas_Object *obj, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_FOCUS_OUT is not supported by object.")
+ 
+ 
+ cdef void cb_object_render_flush_pre(void *data, Evas *e,
+-                                     Evas_Object *obj, void *e_inf) with gil:
++                                     Evas_Object *obj, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_RENDER_FLUSH_PRE is not supported by object.")
+ 
+ 
+ cdef void cb_object_render_flush_post(void *data, Evas *e,
+-                                      Evas_Object *obj, void *e_inf) with gil:
++                                      Evas_Object *obj, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_RENDER_FLUSH_POST is not supported by object.")
+ 
+ cdef void cb_object_canvas_object_focus_in(void *data, Evas *e,
+-                                           Evas_Object *obj, void *e_inf) with gil:
++                                           Evas_Object *obj, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_CANVAS_OBJECT_FOCUS_IN is not supported by object.")
+ 
+ cdef void cb_object_canvas_object_focus_out(void *data, Evas *e,
+-                                            Evas_Object *obj, void *e_inf) with gil:
++                                            Evas_Object *obj, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_CANVAS_OBJECT_FOCUS_OUT is not supported by object.")
+ 
+ cdef void cb_object_image_unloaded(void *data, Evas *e,
+-                                   Evas_Object *obj, void *e_inf) with gil:
++                                   Evas_Object *obj, void *e_inf) noexcept with gil:
+     cb_object_dispatcher2(<Object>data, enums.EVAS_CALLBACK_IMAGE_UNLOADED)
+ 
+ cdef void cb_object_canvas_render_pre(void *data, Evas *e,
+-                                      Evas_Object *obj, void *e_inf) with gil:
++                                      Evas_Object *obj, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_RENDER_PRE is not supported by object.")
+ 
+ cdef void cb_object_canvas_render_post(void *data, Evas *e,
+-                                       Evas_Object *obj, void *e_inf) with gil:
++                                       Evas_Object *obj, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_RENDER_POST is not supported by object.")
+ 
+ cdef void cb_object_axis_update(void *data, Evas *e,
+-                                       Evas_Object *obj, void *e_inf) with gil:
++                                       Evas_Object *obj, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_AXIS_UPDATE is not supported by object.")
+ 
+ cdef void cb_object_viewport_resize(void *data, Evas *e,
+-                                       Evas_Object *obj, void *e_inf) with gil:
++                                       Evas_Object *obj, void *e_inf) noexcept with gil:
+     print("EVAS_CALLBACK_CANVAS_VIEWPORT_RESIZE is not supported by object.")
+ 
+ 
+diff -urEbwB python-efl-1.26.0/efl/evas/efl.evas_object_image.pxi python-efl-1.26.0.new/efl/evas/efl.evas_object_image.pxi
+--- python-efl-1.26.0/efl/evas/efl.evas_object_image.pxi	2022-02-27 11:29:10.000000000 +0100
++++ python-efl-1.26.0.new/efl/evas/efl.evas_object_image.pxi	2023-08-31 23:25:15.674441675 +0200
+@@ -24,7 +24,7 @@
+     PyObject_GetBuffer, PyBuffer_Release, PyBUF_SIMPLE
+ 
+ 
+-cdef int _data_size_get(Evas_Object *obj):
++cdef int _data_size_get(Evas_Object *obj) noexcept:
+     cdef int stride, h, bpp, cspace, have_alpha
+     stride = evas_object_image_stride_get(obj)
+     evas_object_image_size_get(obj, NULL, &h)
+@@ -1376,7 +1376,7 @@
+ 
+ cdef void _cb_on_filled_image_resize(void *data, Evas *e,
+                                      Evas_Object *obj,
+-                                     void *event_info) with gil:
++                                     void *event_info) noexcept with gil:
+     cdef int w, h
+     evas_object_geometry_get(obj, NULL, NULL, &w, &h)
+     evas_object_image_fill_set(obj, 0, 0, w, h)
+diff -urEbwB python-efl-1.26.0/efl/evas/efl.evas_object.pxi python-efl-1.26.0.new/efl/evas/efl.evas_object.pxi
+--- python-efl-1.26.0/efl/evas/efl.evas_object.pxi	2022-02-27 11:29:10.000000000 +0100
++++ python-efl-1.26.0.new/efl/evas/efl.evas_object.pxi	2023-08-31 22:27:32.150814199 +0200
+@@ -41,7 +41,7 @@
+ 
+ 
+ cdef void obj_free_cb(void *data, Evas *e,
+-                      Evas_Object *obj, void *event_info) with gil:
++                      Evas_Object *obj, void *event_info) noexcept with gil:
+     cdef Object self = <Object>data
+ 
+     lst = self._event_callbacks[<int>EVAS_CALLBACK_FREE]
+@@ -67,7 +67,7 @@
+ #         obj.event_callback_add(evt, attr_value)
+ 
+ 
+-cdef _object_add_callback_to_list(Object obj, int type, func, args, kargs):
++cdef _object_add_callback_to_list(Object obj, int type, func, args, kargs) noexcept:
+     if type < 0 or type >= evas_object_event_callbacks_len:
+         raise ValueError("Invalid callback type")
+ 
+@@ -81,7 +81,7 @@
+         return True
+ 
+ 
+-cdef _object_del_callback_from_list(Object obj, int type, func):
++cdef _object_del_callback_from_list(Object obj, int type, func) noexcept:
+     if type < 0 or type >= evas_object_event_callbacks_len:
+         raise ValueError("Invalid callback type")
+ 
+diff -urEbwB python-efl-1.26.0/efl/evas/efl.evas_object_smart.pxi python-efl-1.26.0.new/efl/evas/efl.evas_object_smart.pxi
+--- python-efl-1.26.0/efl/evas/efl.evas_object_smart.pxi	2022-02-27 11:25:13.000000000 +0100
++++ python-efl-1.26.0.new/efl/evas/efl.evas_object_smart.pxi	2023-08-31 23:16:52.357705337 +0200
+@@ -27,7 +27,7 @@
+ #cdef object _smart_classes
+ #_smart_classes = list()
+ 
+-cdef list _descriptions_to_list(const Evas_Smart_Cb_Description **arr, unsigned int arr_len):
++cdef list _descriptions_to_list(const Evas_Smart_Cb_Description **arr, unsigned int arr_len) noexcept:
+     cdef:
+         unsigned int i = 0
+         list ret = list()
+@@ -43,7 +43,7 @@
+ 
+     return ret
+ 
+-cdef Evas_Smart_Cb_Description *_descriptions_to_array(descs):
++cdef Evas_Smart_Cb_Description *_descriptions_to_array(descs) noexcept:
+     cdef:
+         unsigned int arr_len = len(descs)
+         Evas_Smart_Cb_Description *arr
+@@ -94,7 +94,7 @@
+             return _ctouni(self.desc.type)
+ 
+ 
+-cdef void _smart_object_delete(Evas_Object *o) with gil:
++cdef void _smart_object_delete(Evas_Object *o) noexcept with gil:
+     cdef:
+         void *tmp
+         Smart cls
+@@ -119,7 +119,7 @@
+         traceback.print_exc()
+ 
+ 
+-cdef void _smart_object_move(Evas_Object *o, Evas_Coord x, Evas_Coord y) with gil:
++cdef void _smart_object_move(Evas_Object *o, Evas_Coord x, Evas_Coord y) noexcept with gil:
+     cdef:
+         void *tmp
+         Smart cls
+@@ -144,7 +144,7 @@
+         traceback.print_exc()
+ 
+ 
+-cdef void _smart_object_resize(Evas_Object *o, Evas_Coord w, Evas_Coord h) with gil:
++cdef void _smart_object_resize(Evas_Object *o, Evas_Coord w, Evas_Coord h) noexcept with gil:
+     cdef:
+         void *tmp
+         Smart cls
+@@ -169,7 +169,7 @@
+         traceback.print_exc()
+ 
+ 
+-cdef void _smart_object_show(Evas_Object *o) with gil:
++cdef void _smart_object_show(Evas_Object *o) noexcept with gil:
+     cdef:
+         void *tmp
+         Smart cls
+@@ -194,7 +194,7 @@
+         traceback.print_exc()
+ 
+ 
+-cdef void _smart_object_hide(Evas_Object *o) with gil:
++cdef void _smart_object_hide(Evas_Object *o) noexcept with gil:
+     cdef:
+         void *tmp
+         Smart cls
+@@ -219,7 +219,7 @@
+         traceback.print_exc()
+ 
+ 
+-cdef void _smart_object_color_set(Evas_Object *o, int r, int g, int b, int a) with gil:
++cdef void _smart_object_color_set(Evas_Object *o, int r, int g, int b, int a) noexcept with gil:
+     cdef:
+         void *tmp
+         Smart cls
+@@ -244,7 +244,7 @@
+         traceback.print_exc()
+ 
+ 
+-cdef void _smart_object_clip_set(Evas_Object *o, Evas_Object *clip) with gil:
++cdef void _smart_object_clip_set(Evas_Object *o, Evas_Object *clip) noexcept with gil:
+     cdef:
+         void *tmp
+         Smart cls
+@@ -272,7 +272,7 @@
+         traceback.print_exc()
+ 
+ 
+-cdef void _smart_object_clip_unset(Evas_Object *o) with gil:
++cdef void _smart_object_clip_unset(Evas_Object *o) noexcept with gil:
+     cdef:
+         void *tmp
+         Smart cls
+@@ -297,7 +297,7 @@
+         traceback.print_exc()
+ 
+ 
+-cdef void _smart_object_calculate(Evas_Object *o) with gil:
++cdef void _smart_object_calculate(Evas_Object *o) noexcept with gil:
+     cdef:
+         void *tmp
+         Smart cls
+@@ -322,7 +322,7 @@
+         traceback.print_exc()
+ 
+ 
+-cdef void _smart_object_member_add(Evas_Object *o, Evas_Object *clip) with gil:
++cdef void _smart_object_member_add(Evas_Object *o, Evas_Object *clip) noexcept with gil:
+     cdef:
+         void *tmp
+         Smart cls
+@@ -350,7 +350,7 @@
+         traceback.print_exc()
+ 
+ 
+-cdef void _smart_object_member_del(Evas_Object *o, Evas_Object *clip) with gil:
++cdef void _smart_object_member_del(Evas_Object *o, Evas_Object *clip) noexcept with gil:
+     cdef:
+         void *tmp
+         Smart cls
+@@ -389,11 +389,11 @@
+         dict kargs
+ 
+ 
+-cdef object _smart_cb_pass_conv(void *addr):
++cdef object _smart_cb_pass_conv(void *addr) noexcept:
+     return <object>addr
+ 
+ 
+-cdef void _smart_callback(void *data, Evas_Object *o, void *event_info) with gil:
++cdef void _smart_callback(void *data, Evas_Object *o, void *event_info) noexcept with gil:
+     if data == NULL:
+         EINA_LOG_DOM_ERR(PY_EFL_EVAS_LOG_DOMAIN, "data is NULL!")
+         return
+diff -urEbwB python-efl-1.26.0/efl/utils/logger.pyx python-efl-1.26.0.new/efl/utils/logger.pyx
+--- python-efl-1.26.0/efl/utils/logger.pyx	2022-02-27 11:29:10.000000000 +0100
++++ python-efl-1.26.0.new/efl/utils/logger.pyx	2023-08-31 23:26:53.738433469 +0200
+@@ -52,7 +52,7 @@
+ 
+ cdef void py_eina_log_print_cb(const Eina_Log_Domain *d, Eina_Log_Level level,
+     const char *file, const char *fnc, int line,
+-    const char *fmt, void *data, va_list args) with gil:
++    const char *fmt, void *data, va_list args) noexcept with gil:
+ 
+     cdef:
+         unicode msg, name, ufile, ufnc
+@@ -91,7 +91,7 @@
+         else:
+             self.setLevel = types.MethodType(setLevel, self)
+ 
+-cdef object add_logger(object name):
++cdef object add_logger(object name) noexcept:
+     logging.setLoggerClass(PyEFLLogger)
+ 
+     log = logging.getLogger(name)

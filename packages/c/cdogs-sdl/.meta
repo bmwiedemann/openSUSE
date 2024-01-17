@@ -1,0 +1,5 @@
+<package name="cdogs-sdl" project="openSUSE:Factory">
+  <title>C-Dogs SDL</title>
+  <description>Enhanced SDL port of DOS arcade game C-Dogs (aka &quot;Cyberdogs 2&quot;)</description>
+  <devel project="games" package="cdogs-sdl"/>
+</package>
