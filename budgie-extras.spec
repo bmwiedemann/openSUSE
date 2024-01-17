@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-extras
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if %{pkg_vcmp budgie-desktop-devel >= 10.8}
+%bcond_without budgie_10_8
+%else
+%bcond_with budgie_10_8
+%endif
+%if %{undefined _distconfdir}
+%define _distconfdir %{_sysconfdir}
+%endif
 Name:           budgie-extras
-Version:        1.6.0
+Version:        1.7.1
 Release:        0
 Summary:        Additional Budgie Desktop enhancements for user experience
 License:        GPL-3.0-or-later
@@ -31,6 +38,7 @@ BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala
+BuildRequires:  pkgconfig(appstream)
 BuildRequires:  pkgconfig(budgie-1.0)
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
@@ -42,10 +50,9 @@ BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnma)
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libwnck-3.0)
 BuildRequires:  pkgconfig(plank)
-BuildRequires:  pkgconfig(appstream)
 # All applets
 Recommends:     budgie-app-launcher-applet
 Recommends:     budgie-brightness-controller-applet
@@ -307,6 +314,7 @@ Budgie TakeaBreak is a pomodoro- like applet, to make sure to take regular break
 Options from Budgie Settings include turning the screen upside down, dim the screen, lock screen or show a countdown message on break time.
 The applet can be accessed quickly from the panel to temporarily switch it off.
 
+%if %{without budgie_10_8}
 %package -n budgie-trash-applet
 Summary:        Trash applet
 Group:          System/GUI/Other
@@ -314,6 +322,7 @@ Requires:       budgie-extras-lang
 
 %description -n budgie-trash-applet
 Trash is a Budgie Desktop applet for productivity.
+%endif
 
 %package -n budgie-visualspace-applet
 Summary:        Visualspace applet
@@ -385,8 +394,11 @@ Budgie Wallpaper Workspace Switcher is an application (applet) to show a differe
 %meson \
   -Dxdg-appdir=%{_distconfdir}/xdg/autostart \
   -Dwith-zeitgeist=false \
-  -Dbuild-all=true \
+  -Dbuild-recommended=true \
   -Dwith-default-schema=false \
+%if %{without budgie_10_8}
+  -Dbuild-trash=true \
+%endif
   %{nil}
 
 %meson_build
@@ -509,8 +521,10 @@ chmod 0644 LICENSE
 %{_libdir}/budgie-desktop/plugins/budgie-takeabreak
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.takeabreak.gschema.xml
 
+%if %{without budgie_10_8}
 %files -n budgie-trash-applet
 %{_libdir}/budgie-desktop/plugins/budgie-trash
+%endif
 
 %files -n budgie-visualspace-applet
 %{_datadir}/pixmaps/visualspace-symbolic.svg
