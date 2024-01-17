@@ -105,4 +105,17 @@
   * release(1.13.5): updated build for py311</comment>
     <requestid>1087746</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>da8ab3a5c01646b97ee2aa10fba81a6c</srcmd5>
+    <version>1.14.0</version>
+    <time>1701902882</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.14.0:
+  * docs: add README info and docstring
+  * docs: add tobytes example
+  * feat: bulk tobytes
+
+  * docs: move &quot;all available functions&quot; higher</comment>
+    <requestid>1131189</requestid>
+  </revision>
 </revisionlist>
