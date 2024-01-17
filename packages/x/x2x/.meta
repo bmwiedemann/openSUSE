@@ -1,6 +1,0 @@
-<package name="x2x" project="openSUSE:Factory">
-  <title>X Window System Display Remote Control</title>
-  <description>x2x allows the keyboard and mouse on one (&quot;from&quot;) X Window System
-display to be used to control another (&quot;to&quot;) X Window System display.</description>
-  <devel project="X11:Utilities" package="x2x"/>
-</package>

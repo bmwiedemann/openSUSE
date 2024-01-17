@@ -1,9 +1,0 @@
-<package name="tesseract-ocr" project="openSUSE:Factory">
-  <title>Tesseract Open Source OCR Engine</title>
-  <description>Tesseract is a free optical character recognition engine originally developed at Hewlett-Packard and currently developed by Google. It is a raw OCR engine - it has no document layout analysis, no output formatting, and no graphical user interface. It only processes a TIFF or BMP image of a single column and creates text from it. It can detect fixed pitch vs proportional text. The engine was in the top 3 in terms of character accuracy in 1995. The source code will read a binary, grey or color image and output text. 
-
-Tesseract can process English, French, Italian, German, Spanish, Brazilian, Portuguese and Dutch and can be trained to work in other languages as well.
-
-</description>
-  <devel project="Publishing" package="tesseract-ocr"/>
-</package>

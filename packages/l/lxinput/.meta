@@ -1,5 +1,0 @@
-<package name="lxinput" project="openSUSE:Factory">
-  <title>Keyboard and mouse configuration tool </title>
-  <description>LXinput is just the LXDE Keyboard and mouse config tool </description>
-  <devel project="X11:lxde" package="lxinput"/>
-</package>

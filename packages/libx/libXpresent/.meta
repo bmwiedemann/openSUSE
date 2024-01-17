@@ -1,5 +1,0 @@
-<package name="libXpresent" project="openSUSE:Factory">
-  <title>libXpresent provides an X Window System client interface to the Present extension to the X protocol.</title>
-  <description>The Present extension provides a way for applications to update their window contents from a pixmap in a well defined fashion, synchronizing with the display refresh and potentially using a more efficient mechanism than copying the contents of the source pixmap.</description>
-  <devel project="X11:XOrg" package="libXpresent"/>
-</package>

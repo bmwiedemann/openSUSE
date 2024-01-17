@@ -1,6 +1,0 @@
-<package name="wpewebkit" project="openSUSE:Factory">
-  <title>Library for rendering web content, WPE Port</title>
-  <description>A WebKit port for Linux-based embedded devices designed with flexibility and hardware acceleration in mind, leveraging common 3D graphics APIs for best performance.</description>
-  <devel project="GNOME:Factory" package="wpewebkit"/>
-  <url>https://wpewebkit.org/</url>
-</package>

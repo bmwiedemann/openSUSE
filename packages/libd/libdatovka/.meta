@@ -1,7 +1,0 @@
-<package name="libdatovka" project="openSUSE:Factory">
-  <title></title>
-  <description>This is a library for accessing ISDS (Informační systém datových schránek /
-Data Box Information System) SOAP services as defined in Czech ISDS Act
-(300/2008 Coll.) and implied documents.</description>
-  <devel project="network" package="libdatovka"/>
-</package>

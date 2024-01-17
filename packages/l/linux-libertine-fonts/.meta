@@ -1,7 +1,0 @@
-<package name="linux-libertine-fonts" project="openSUSE:Factory">
-  <title>Free Serif Fonts</title>
-  <description>Free serif fonts from the LinuxLibertine project. These might be useful
-when exchanging documents using Times fonts.
-</description>
-  <devel project="M17N:fonts" package="linux-libertine-fonts"/>
-</package>

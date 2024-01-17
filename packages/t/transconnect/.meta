@@ -1,6 +1,0 @@
-<package name="transconnect" project="openSUSE:Factory">
-  <title>Allows you to access the internet through a HTTP proxy</title>
-  <description>TransConnect is a program to allow you almost complete access to the
-internet through a HTTP proxy like squid.</description>
-  <devel project="network:utilities" package="transconnect"/>
-</package>

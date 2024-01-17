@@ -1,8 +1,0 @@
-<package name="xdo" project="openSUSE:Factory">
-  <title>xdo</title>
-  <description>Apply the given action to the given windows.
-
-If no window IDs and no options are given, the action applies to the focused window.
-</description>
-  <devel project="X11:Utilities" package="xdo"/>
-</package>

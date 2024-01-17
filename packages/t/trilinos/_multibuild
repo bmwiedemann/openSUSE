@@ -1,9 +1,0 @@
-<multibuild>
-  <package>documentation</package>
-  <package>documentation-hpc</package>
-  <package>serial</package>
-  <package>openmpi4</package>
-  <package>gnu-openmpi4-hpc</package>
-  <package>gnu-mvapich2-hpc</package>
-  <package>gnu-mpich-hpc</package>
-</multibuild>

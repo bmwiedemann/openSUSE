@@ -1,6 +1,0 @@
-<package name="arc-icon-theme" project="openSUSE:Factory">
-  <title>Arc Icon Theme</title>
-  <description>A flat icon theme that mainly includes icons for directories and mimetypes.
-Requires Moka or Adwaita as fallback icons.</description>
-  <devel project="X11:common:Factory" package="arc-icon-theme"/>
-</package>

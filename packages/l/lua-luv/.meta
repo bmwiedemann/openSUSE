@@ -1,5 +1,0 @@
-<package name="lua-luv" project="openSUSE:Factory">
-  <title>libuv bindings for luajit and lua 5.1/5.2</title>
-  <description></description>
-  <devel project="devel:languages:lua" package="lua-luv"/>
-</package>

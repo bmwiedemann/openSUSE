@@ -1,8 +1,0 @@
-<package name="zoo" project="openSUSE:Factory">
-  <title>Pack Program</title>
-  <description>Zoo is a packer based on the Lempel-Ziv algorithm. Lots of files on
-DOS/AmigaDOS and TOS systems used this packer for their archives. The
-compression rate of gzip is not reached, and thus zoo should only be
-used for decompressing old archives.</description>
-  <devel project="Archiving" package="zoo"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="libupnp" project="openSUSE:Factory">
-  <title></title>
-  <description>The portable Universal Plug and Play (UPnP) SDK provides support for building
-UPnP-compliant control points, devices, and bridges on several operating
-systems.</description>
-  <devel project="devel:libraries:c_c++" package="libupnp"/>
-</package>

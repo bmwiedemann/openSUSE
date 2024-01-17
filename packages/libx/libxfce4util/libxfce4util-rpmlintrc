@@ -1,2 +1,0 @@
-# common name used by upstream/downstream projects
-addFilter("libxfce4util-tools.* shlib-policy-missing-lib")

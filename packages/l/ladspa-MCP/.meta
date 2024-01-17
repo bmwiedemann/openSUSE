@@ -1,6 +1,0 @@
-<package name="ladspa-MCP" project="openSUSE:Factory">
-  <title>LADSPA MCP plugin</title>
-  <description>This package contains LADSPA MCP plugin.</description>
-  <devel project="multimedia:libs" package="ladspa-MCP"/>
-  <url>http://users.skynet.be/solaris/linuxaudio/</url>
-</package>

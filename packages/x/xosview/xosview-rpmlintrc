@@ -1,2 +1,0 @@
-addFilter(".*non-etc-or-var-file-marked-as-conffile.*")
-addFilter(".*no-manual-page-for-binary.*")

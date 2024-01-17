@@ -1,9 +1,0 @@
--------------------------------------------------------------------
-Sat Jul  8 17:58:07 UTC 2023 - malcolmlewis@opensuse.org
-
-- Initial build at version 0.16+3.
-- Add waynergy-kde-rpmlintrc: Filter desktopfile-without-binary as
-  this exists in main package which is a requires. Add filter for
-  invalid-desktopfile as this does validate after patching.
-- Add waynergy-kde-fix-desktop.patch: Remove key "TerminalOptions"
-  in group "Desktop Entry" which is deprecated.

@@ -1,7 +1,0 @@
-# I think this is because of lib389?
-addFilter("E: shlib-policy-missing-lib")
-
-# This is a plugin so it belongs here.
-addFilter("E: devel-file-in-non-devel-package.*/usr/lib64/dirsrv/librewriters.so")
-
-

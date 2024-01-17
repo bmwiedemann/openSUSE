@@ -1,3 +1,0 @@
-# library has a slightly other name, ignore this false positive
-addFilter("W: no-dependency-on ldc-runtime*")
-addFilter("W: no-dependency-on ldc-phobos*")

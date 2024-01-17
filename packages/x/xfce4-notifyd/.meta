@@ -1,7 +1,0 @@
-<package name="xfce4-notifyd" project="openSUSE:Factory">
-  <title>Simple notification daemon for Xfce</title>
-  <description>Xfce4-notifyd is a simple, visually-appealing notification daemon for
-Xfce that implements the Freedesktop.org Desktop Notifications
-Specification.</description>
-  <devel project="X11:xfce" package="xfce4-notifyd"/>
-</package>

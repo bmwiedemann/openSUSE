@@ -1,7 +1,0 @@
-<package name="WindowMaker" project="openSUSE:Factory">
-  <title>A Colorful and Flexible Window Manager</title>
-  <description>Window Maker is a colorful and flexible window manager and
-the designated successor of AfterStep. For more details, check
-http://www.windowmaker.org.</description>
-  <devel project="X11:windowmanagers" package="WindowMaker"/>
-</package>

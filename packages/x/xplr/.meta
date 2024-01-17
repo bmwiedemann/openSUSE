@@ -1,6 +1,0 @@
-<package name="xplr" project="openSUSE:Factory">
-  <title>▸[▓▓ xplr] </title>
-  <description>A hackable, minimal, fast TUI file explorer.</description>
-  <devel project="utilities" package="xplr"/>
-  <url>https://github.com/sayanarijit/xplr</url>
-</package>

@@ -1,7 +1,0 @@
-<package name="t38modem" project="openSUSE:Factory">
-  <title>T.38 for OpenH323 (modem-compatible interface for IP telephony)</title>
-  <description>This package contains a modem interface for IP telephony using the
-H.323 and T.38 protocol standards. It implements a 'tty' interface
-which resembles a FAX modem. A sample HylaFAX setup is also provided.</description>
-  <devel project="network:telephony" package="t38modem"/>
-</package>

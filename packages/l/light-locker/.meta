@@ -1,6 +1,0 @@
-<package name="light-locker" project="openSUSE:Factory">
-  <title>A simple session-locker for lightdm</title>
-  <description>light-locker is a simple locker that aims to have simple, sane, secure defaults and be well integrated with the desktop while not carrying any desktop-specific dependencies.
-It relies on LightDM for locking and unlocking your session via systemd-logind.</description>
-  <devel project="X11:Utilities" package="light-locker"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="libzen" project="openSUSE:Factory">
-  <title>Small C++ derivate class to have a simpler life</title>
-  <description>ZenLib is a C++ utility library. It includes classes for handling
-strings, configuration, bit streams, threading, translation
-and cross-platform operating system functions.
-
-</description>
-  <devel project="multimedia:libs" package="libzen"/>
-</package>

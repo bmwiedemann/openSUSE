@@ -1,9 +1,0 @@
-<package name="labplot-kf5" project="openSUSE:Factory">
-  <title>A data analysis and visualization application</title>
-  <description>LabPlot is a free software data analysis and visualization application built on the KDE Platform. It integrates well into a KDE workspace but can just as well be used in another desktop environment.
-
-You can use LabPlot to produce publication quality plots of your data in addition to modeling mathematical functions.
-
-LabPlot allows you to import Origin data files and export plots to many different formats.</description>
-  <devel project="science" package="labplot-kf5"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="libdbi" project="openSUSE:Factory">
-  <title>Database Independent Abstraction Layer for C</title>
-  <description>libdbi implements a database-independent abstraction layer in C, similar to the
-DBI/DBD layer in Perl. Writing one generic set of code, programmers can
-leverage the power of multiple databases and multiple simultaneous database
-connections by using this framework.</description>
-  <devel project="server:database" package="libdbi"/>
-  <url>http://libdbi.sourceforge.net/</url>
-</package>

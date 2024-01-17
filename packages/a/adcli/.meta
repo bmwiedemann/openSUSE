@@ -1,7 +1,0 @@
-<package name="adcli" project="openSUSE:Factory">
-  <title>adcli</title>
-  <description>adcli is a command line tool that can perform actions in an Active Directory domain. Among other things it can be used to join a computer to a domain.
-
-</description>
-  <devel project="network:ldap" package="adcli"/>
-</package>

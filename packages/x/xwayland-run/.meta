@@ -1,7 +1,0 @@
-<package name="xwayland-run" project="openSUSE:Factory">
-  <title>Set of utilities to run headless X/Wayland clients</title>
-  <description>xwayland-run contains a set of small utilities revolving around running
-Xwayland and various Wayland compositor headless.</description>
-  <devel project="X11:Wayland" package="xwayland-run"/>
-  <url>https://gitlab.freedesktop.org/ofourdan/xwayland-run</url>
-</package>

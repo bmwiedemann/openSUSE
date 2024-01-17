@@ -1,9 +1,0 @@
-diff -urEbwB lxqt-session-0.14.0/config/session.conf lxqt-session-0.14.0.new/config/session.conf
---- lxqt-session-0.14.0/config/session.conf	2019-01-24 23:05:42.000000000 +0100
-+++ lxqt-session-0.14.0.new/config/session.conf	2019-02-27 11:29:12.615726091 +0100
-@@ -1,4 +1,5 @@
- [General]
-+window_manager=openbox
- leave_confirmation=true
- 
- [Environment]

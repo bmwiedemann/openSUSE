@@ -1,7 +1,0 @@
-<package name="avrdude" project="openSUSE:Factory">
-  <title>Upload tool for AVR microcontrollers</title>
-  <description>avrdude is a tool for avr microcontrollers and drives many hardware
-in-system programmers. avrdude allows you to program your
-microcontroller through the parallel port of your computer.</description>
-  <devel project="CrossToolchain:avr" package="avrdude"/>
-</package>

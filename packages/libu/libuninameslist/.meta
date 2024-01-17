@@ -1,5 +1,0 @@
-<package name="libuninameslist" project="openSUSE:Factory">
-  <title></title>
-  <description>libuninameslist provides Unicode name and annotation data from the official Unicode Character Database.</description>
-  <devel project="M17N" package="libuninameslist"/>
-</package>

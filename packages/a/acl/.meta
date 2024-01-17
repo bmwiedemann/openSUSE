@@ -1,6 +1,0 @@
-<package name="acl" project="openSUSE:Factory">
-  <title>Commands for Manipulating POSIX Access Control Lists</title>
-  <description>getfacl and setfacl commands for retrieving and setting POSIX access
-control lists.</description>
-  <devel project="Base:System" package="acl"/>
-</package>

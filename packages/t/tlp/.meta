@@ -1,5 +1,0 @@
-<package name="tlp" project="openSUSE:Factory">
-  <title>Save battery power on laptops</title>
-  <description>TLP implements advanced power management for Linux. TLP is a pure command line tool with automated background tasks. It does not contain a GUI.</description>
-  <devel project="hardware" package="tlp"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="webdot" project="openSUSE:Factory">
-  <title>A CGI graph server script that uses tcldot from graphviz</title>
-  <description>A cgi-bin program that produces clickable graphs in web pages when
-provided with an href to a .dot file.  Uses Tcldot from the graphviz
-rpm. By default, only requests from localhost are served.</description>
-  <devel project="graphics" package="webdot"/>
-</package>

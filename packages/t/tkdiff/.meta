@@ -1,5 +1,0 @@
-<package name="tkdiff" project="openSUSE:Factory">
-  <title>2 and 3-way diff/merge tool</title>
-  <description>TkDiff is a graphical 2 and 3-way diff/merge tool.</description>
-  <devel project="devel:tools" package="tkdiff"/>
-</package>

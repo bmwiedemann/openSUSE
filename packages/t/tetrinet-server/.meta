@@ -1,6 +1,0 @@
-<package name="tetrinet-server" project="openSUSE:Factory">
-  <title>The GNU TetriNET server</title>
-  <description>Tetrinetx-qirc1.40c with Async DNS support for high productivity
-server.</description>
-  <devel project="games" package="tetrinet-server"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="zip" project="openSUSE:Factory">
-  <title>File compression program</title>
-  <description>Zip is a compression and file packaging utility. It is compatible with
-PKZIP(tm) 2.04g (Phil Katz ZIP) for MS-DOS systems.</description>
-  <devel project="Archiving" package="zip"/>
-</package>

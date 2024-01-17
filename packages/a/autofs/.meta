@@ -1,8 +1,0 @@
-<package name="autofs" project="openSUSE:Factory">
-  <title>A Kernel-Based Automounter</title>
-  <description>AutoFS is a kernel-based automounter for Linux.  It automatically
-mounts filesystems when you use them, and unmounts them later when
-you are not using them.  This can include network filesystems, CD-ROMs,
-floppies, and so forth.</description>
-  <devel project="filesystems" package="autofs"/>
-</package>

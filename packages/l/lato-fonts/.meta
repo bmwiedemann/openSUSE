@@ -1,7 +1,0 @@
-<package name="lato-fonts" project="openSUSE:Factory">
-  <title>Lato Fonts</title>
-  <description>Lato is a sanserif type­face fam­ily designed in the Sum­mer 2010 by Warsaw-​​based designer Łukasz Dziedzic (“Lato” means “Sum­mer” in Pol­ish). In Decem­ber 2010 the Lato fam­ily was pub­lished under the open-​​source Open Font License by his foundry tyPoland, with sup­port from Google.
-
-In 2013 – 2014, the fam­ily was greatly extended to cover 3000+ glyphs per style. The Lato 2.010 fam­ily now sup­ports 100+ Latin-​​based lan­guages, 50+ Cyrillic-​​based lan­guages as well as Greek and IPA pho­net­ics. In the process, the met­rics and kern­ing of the fam­ily have been revised and four addi­tional weights were created.</description>
-  <devel project="M17N:fonts" package="lato-fonts"/>
-</package>

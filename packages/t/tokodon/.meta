@@ -1,9 +1,0 @@
-<package name="tokodon" project="openSUSE:Factory">
-  <title>Mastodon client by KDE</title>
-  <description>Tokodon is a Mastodon client. It allows you to interact with the Fediverse
-community.
-
-</description>
-  <devel project="KDE:Applications" package="tokodon"/>
-  <url>https://apps.kde.org/tokodon/</url>
-</package>

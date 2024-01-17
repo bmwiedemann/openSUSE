@@ -1,6 +1,0 @@
-<package name="tenmon" project="openSUSE:Factory">
-  <title>tenmon</title>
-  <description>FITS and XISF image viewer, converter and indexer</description>
-  <devel project="graphics" package="tenmon"/>
-  <url>https://gitea.nouspiro.space/nou/tenmon/</url>
-</package>

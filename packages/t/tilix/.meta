@@ -1,5 +1,0 @@
-<package name="tilix" project="openSUSE:Factory">
-  <title>Tilix</title>
-  <description>A tiling terminal emulator for Linux using GTK+ 3</description>
-  <devel project="devel:languages:D" package="tilix"/>
-</package>

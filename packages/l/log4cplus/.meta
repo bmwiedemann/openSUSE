@@ -1,9 +1,0 @@
-<package name="log4cplus" project="openSUSE:Factory">
-  <title>Log4cplus, C++ logging library</title>
-  <description>log4cplus is a simple to use C++ logging API providing thread-safe, 
-flexible, and arbitrarily granular control over log management and 
-configuration. It is modeled after the Java log4j API.
-
-</description>
-  <devel project="devel:libraries:c_c++" package="log4cplus"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="apparmor-rpm-macros" project="openSUSE:Factory">
-  <title>apparmor-rpm-macros</title>
-  <description>Package that provides RPM macros used to setup apparmor profiles for packaging.</description>
-  <devel project="security:apparmor" package="apparmor-rpm-macros"/>
-</package>

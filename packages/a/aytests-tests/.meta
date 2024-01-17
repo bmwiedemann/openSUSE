@@ -1,5 +1,0 @@
-<package name="aytests-tests" project="openSUSE:Factory">
-  <title>AutoYaST integration tests</title>
-  <description>Tests to be run using the AutoYaST integration tests framework (aytests).</description>
-  <devel project="YaST:Head" package="aytests-tests"/>
-</package>

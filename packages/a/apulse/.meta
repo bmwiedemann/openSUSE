@@ -1,5 +1,0 @@
-<package name="apulse" project="openSUSE:Factory">
-  <title>PulseAudio emulation for ALSA</title>
-  <description>PulseAudio emulation intended to be used with Skype.</description>
-  <devel project="multimedia:libs" package="apulse"/>
-</package>

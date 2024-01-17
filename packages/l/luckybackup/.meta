@@ -1,9 +1,0 @@
-<package name="luckybackup" project="openSUSE:Factory">
-  <title>A GUI for backup &amp; synchronization based on rsync.</title>
-  <description>... a powerful, fast and reliable backup &amp; sync tool
-luckyBackup is an application that backs-up and/or synchronizes any directories with the power of rsync.
-
-The advantage over similar applications is (apart from its simple interface) its ability to keep your data safe by checking all declared directories before proceeding in any data manipulation.</description>
-  <devel project="KDE:Extra" package="luckybackup"/>
-  <url>http://luckybackup.sourceforge.net/</url>
-</package>

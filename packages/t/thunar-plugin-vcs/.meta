@@ -1,7 +1,0 @@
-<package name="thunar-plugin-vcs" project="openSUSE:Factory">
-  <title>Thunar Plugin Providing VCS Integration</title>
-  <description>The Thunar VCS Plugin provides integration with Subversion and GIT VCS and
-makes VCS actions available through the context menu.</description>
-  <devel project="X11:xfce" package="thunar-plugin-vcs"/>
-  <url>http://thunar.xfce.org/plugins.html#thunar-archive-plugin</url>
-</package>

@@ -1,8 +1,0 @@
-<package name="asusfan" project="openSUSE:Factory">
-  <title>Fan Control for Nvidia-Based ASUS Graphics Cards</title>
-  <description>This command line tool allows you to control the speed of your graphics
-card's fan, which usually runs at full speed under Linux. It has been
-tested with V9999 and V9750TD models and may work with other cards as
-well.</description>
-  <devel project="hardware" package="asusfan"/>
-</package>

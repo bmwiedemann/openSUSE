@@ -1,8 +1,0 @@
-<package name="xroach" project="openSUSE:Factory">
-  <title>Some cockroaches on your root window</title>
-  <description>Xroach displays disgusting cockroaches on your root window. These
-creepy crawlies scamper around until they find a window to hide under.
-Whenever you move or iconify a window, the exposed orthopteras again
-scamper for cover.</description>
-  <devel project="X11:Utilities" package="xroach"/>
-</package>

@@ -1,8 +1,0 @@
-# Load firmware via fxload
-
-SUBSYSTEM=="usb", ACTION=="add", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="1604", ATTR{idProduct}=="800[157]", RUN+="/usr/bin/usx2yloader"
-SUBSYSTEM=="usb", ACTION=="add", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="1604", ATTR{idProduct}=="8001", RUN+="/sbin/startproc /usr/bin/us428control -m us428"
-SUBSYSTEM=="usb", ACTION=="add", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="1604", ATTR{idProduct}=="8005", RUN+="/sbin/startproc /usr/bin/us428control -m us224"
-SUBSYSTEM=="usb", ACTION=="add", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="1604", ATTR{idProduct}=="8000", RUN+="/sbin/fxload -s /usr/share/alsa/firmware/usx2yloader/tascam_loader.ihx -I /usr/share/alsa/firmware/usx2yloader/us428fw.ihx -D $env{DEVNAME}"
-SUBSYSTEM=="usb", ACTION=="add", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="1604", ATTR{idProduct}=="8004", RUN+="/sbin/fxload -s /usr/share/alsa/firmware/usx2yloader/tascam_loader.ihx -I /usr/share/alsa/firmware/usx2yloader/us224fw.ihx -D $env{DEVNAME}"
-SUBSYSTEM=="usb", ACTION=="add", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="1604", ATTR{idProduct}=="8006", RUN+="/sbin/fxload -s /usr/share/alsa/firmware/usx2yloader/tascam_loader.ihx -I /usr/share/alsa/firmware/usx2yloader/us122fw.ihx -D $env{DEVNAME}"

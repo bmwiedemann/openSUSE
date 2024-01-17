@@ -1,6 +1,0 @@
-<package name="ladspa-blop" project="openSUSE:Factory">
-  <title>LADSPA blop plugin</title>
-  <description></description>
-  <devel project="multimedia:libs" package="ladspa-blop"/>
-  <url>http://blop.sourceforge.net/</url>
-</package>

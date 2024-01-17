@@ -1,5 +1,0 @@
-<package name="zutty" project="openSUSE:Factory">
-  <title>A high-end terminal for low-end systems</title>
-  <description>This package provides the zutty terminal emulator</description>
-  <devel project="X11:terminals" package="zutty"/>
-</package>

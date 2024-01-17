@@ -1,5 +1,0 @@
-<package name="at" project="openSUSE:Factory">
-  <title>A Job Manager</title>
-  <description>This program allows you to run jobs at specified times.</description>
-  <devel project="Base:System" package="at"/>
-</package>

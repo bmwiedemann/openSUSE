@@ -1,6 +1,0 @@
-<package name="timezone" project="openSUSE:Factory">
-  <title>Timezone Descriptions</title>
-  <description>These are configuration files that describe available time zones. You
-can select an appropriate time zone for your system with YaST.</description>
-  <devel project="Base:System" package="timezone"/>
-</package>

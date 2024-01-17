@@ -1,7 +1,0 @@
---- Makefile.orig
-+++ Makefile
-@@ -58,4 +58,3 @@ deb:
- .PHONY: test
- test:
- 	pytest --ignore=test/mount_efs_test
--	flake8

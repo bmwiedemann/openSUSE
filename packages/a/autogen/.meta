@@ -1,9 +1,0 @@
-<package name="autogen" project="openSUSE:Factory">
-  <title>Automated Text File Generator</title>
-  <description>AutoGen is a tool designed for generating program files that contain
-repetitive text with varied substitutions.  Its goal is to simplify the
-maintenance of programs that contain large amounts of repetitious text.
-This is especially valuable if there are several blocks of such text
-that must be kept synchronized in parallel tables.</description>
-  <devel project="Base:System" package="autogen"/>
-</package>

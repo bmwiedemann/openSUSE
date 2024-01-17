@@ -1,7 +1,0 @@
-<package name="libusbauth-configparser" project="openSUSE:Factory">
-  <title>libusbauth-configparser</title>
-  <description>libusbauth-configparser: Library for USB Firewall including flex/bison parser
-
-The library is used to read the usbauth config file into data structures and is used by usbauth and YaST.</description>
-  <devel project="security" package="libusbauth-configparser"/>
-</package>

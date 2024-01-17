@@ -1,8 +1,0 @@
-<package name="azure-cli-core" project="openSUSE:Factory">
-  <title>Microsoft Azure CLI Core Module</title>
-  <description>Microsoft Azure CLI Core Module
-
-</description>
-  <devel project="Cloud:Tools" package="azure-cli-core"/>
-  <url>https://github.com/Azure/azure-cli</url>
-</package>

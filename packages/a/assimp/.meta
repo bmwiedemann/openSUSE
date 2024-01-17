@@ -1,5 +1,0 @@
-<package name="assimp" project="openSUSE:Factory">
-  <title>Library to load and process 3D scenes from various data formats</title>
-  <description>Assimp is a library to load and process geometric scenes from various data formats. It is tailored at typical game scenarios by supporting a node hierarchy, static or skinned meshes, materials, bone animations and potential texture data. The library is not designed for speed, it is primarily useful for importing assets from various sources once and storing it in a engine-specific format for easy and fast every-day-loading.</description>
-  <devel project="games" package="assimp"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="tennebon-dynamic-wallpaper" project="openSUSE:Factory">
-  <title>Tennebon Dynamic wallpaper for GNOME</title>
-  <description>This package contains a dynamic wallpaper based on the Tennebon wallpaper.
-
-A dynamic wallpaper changes depending on the time of the day: it is
-generally bright during the day, and dark during the night.</description>
-  <devel project="GNOME:Apps" package="tennebon-dynamic-wallpaper"/>
-  <url></url>
-</package>

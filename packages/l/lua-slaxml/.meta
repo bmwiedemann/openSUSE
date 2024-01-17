@@ -1,7 +1,0 @@
-<package name="lua-slaxml" project="openSUSE:Factory">
-  <title>SAX-like streaming XML parser for Lua</title>
-  <description>SLAXML is a pure-Lua SAX-like streaming XML parser. It is more robust than many (simpler) pattern-based parsers that exist (such as mine), properly supporting code like &lt;expr test=&quot;5 &gt; 7&quot; /&gt;, CDATA nodes, comments, namespaces, and processing instructions.
-
-It is currently not a truly valid XML parser, however, as it allows certain XML that is syntactically-invalid (not well-formed) to be parsed without reporting an error.</description>
-  <devel project="devel:languages:lua" package="lua-slaxml"/>
-</package>

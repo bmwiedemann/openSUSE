@@ -1,6 +1,0 @@
-<package name="wezterm" project="openSUSE:Factory">
-  <title>wezterm</title>
-  <description>A GPU-accelerated cross-platform terminal emulator and multiplexer.</description>
-  <devel project="X11:terminals" package="wezterm"/>
-  <url>https://github.com/wez/wezterm</url>
-</package>

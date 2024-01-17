@@ -1,9 +1,0 @@
-<package name="tei-xsl-stylesheets" project="openSUSE:Factory">
-  <title>XSL stylesheets for TEI XML</title>
-  <description>Stylesheets to transform TEI XML documents (version p4 and p5) to HTML
-or to XSL Formatting Objects (FO). You can also produce LaTeX output.
-
-Use it with xsltproc (part of libxslt), Saxon, or any other XSLT
-processor.</description>
-  <devel project="Publishing" package="tei-xsl-stylesheets"/>
-</package>

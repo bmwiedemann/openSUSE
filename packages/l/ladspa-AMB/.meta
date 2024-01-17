@@ -1,6 +1,0 @@
-<package name="ladspa-AMB" project="openSUSE:Factory">
-  <title>LADSPA AMB plugin</title>
-  <description>This package provides LADSPA AMB plugin.</description>
-  <devel project="multimedia:libs" package="ladspa-AMB"/>
-  <url>http://users.skynet.be/solaris/linuxaudio/</url>
-</package>

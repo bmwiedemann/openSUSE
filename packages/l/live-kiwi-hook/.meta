@@ -1,5 +1,0 @@
-<package name="live-kiwi-hook" project="openSUSE:Factory">
-  <title>Files that make the net installer available on the live media</title>
-  <description></description>
-  <devel project="Virtualization:Appliances:Images:openSUSE-Tumbleweed" package="live-kiwi-hook"/>
-</package>

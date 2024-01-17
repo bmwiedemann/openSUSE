@@ -1,6 +1,0 @@
-<package name="tlswrap" project="openSUSE:Factory">
-  <title>TLS/SSL FTP wrapper/proxy</title>
-  <description>TLS/SSL FTP wrapper/proxy, allowing you to use your favorite FTP client with
-any TLS/SSL-enabled FTP server.</description>
-  <devel project="network" package="tlswrap"/>
-</package>

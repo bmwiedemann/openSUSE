@@ -1,5 +1,0 @@
-<package name="wget2" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="network:utilities" package="wget2"/>
-</package>

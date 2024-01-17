@@ -1,5 +1,0 @@
-<package name="abi-compliance-checker" project="openSUSE:Factory">
-  <title>A Compliance Checker For library ABIs</title>
-  <description>ABI Compliance Checker (ACC) is an easy-to-use tool for checking backward binary compatibility (BC) of a shared C/C++ library. It checks header files along with shared libraries of old and new versions and analyzes changes in Application Binary Interface (ABI) that may cause compatibility problems: changes in calling stack, v-table changes, removed symbols, etc. Breakage of the binary compatibility may result in crashing or incorrect behavior of applications built with an old version of the library if they run on a new one. The tool is intended for library developers and operating system maintainers who are interested in ensuring binary compatibility, i.e. allow old applications to run with newer library versions without the need to recompile.</description>
-  <devel project="devel:tools" package="abi-compliance-checker"/>
-</package>

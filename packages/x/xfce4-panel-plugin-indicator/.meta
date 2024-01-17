@@ -1,5 +1,0 @@
-<package name="xfce4-panel-plugin-indicator" project="openSUSE:Factory">
-  <title>Plugin to display information from applications in the Xfce panel</title>
-  <description>A small plugin to display information from various applications consistently in the Xfce panel as described in Ubuntu's MessagingMenu design specification.</description>
-  <devel project="X11:Unity" package="xfce4-panel-plugin-indicator"/>
-</package>

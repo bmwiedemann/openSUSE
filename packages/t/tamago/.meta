@@ -1,7 +1,0 @@
-<package name="tamago" project="openSUSE:Factory">
-  <title>Multilingual input method for Emacs</title>
-  <description>Tamago offers a multilingual input environment for GNU Emacs (&gt;= 20.5).
-It is completely written in Emacs Lisp and can use the backends FreeWnn
-(jserver, cserver, tserver), Wnn6, SJ3 Ver.2, and Canna.</description>
-  <devel project="M17N" package="tamago"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="tiny" project="openSUSE:Factory">
-  <title>tiny</title>
-  <description>A terminal IRC client written in Rust.</description>
-  <devel project="utilities" package="tiny"/>
-  <url>https://github.com/osa1/tiny</url>
-</package>

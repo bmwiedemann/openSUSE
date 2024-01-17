@@ -1,5 +1,0 @@
-<package name="translator" project="openSUSE:Factory">
-  <title>Translator</title>
-  <description>Simple text translation app</description>
-  <devel project="X11:Pantheon:Apps" package="translator"/>
-</package>

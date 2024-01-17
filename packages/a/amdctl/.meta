@@ -1,6 +1,0 @@
-<package name="amdctl" project="openSUSE:Factory">
-  <title>amdctl</title>
-  <description>Set P-State voltages and clock speeds on recent AMD CPUs on Linux.</description>
-  <devel project="devel:tools" package="amdctl"/>
-  <url>https://github.com/kevinlekiller/amdctl</url>
-</package>

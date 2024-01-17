@@ -1,6 +1,0 @@
-<package name="linode-cli" project="openSUSE:Factory">
-  <title>The Linode command-line interface</title>
-  <description>The Linode Command Line interface</description>
-  <devel project="Cloud:Tools" package="linode-cli"/>
-  <url>https://github.com/linode/linode-cli</url>
-</package>

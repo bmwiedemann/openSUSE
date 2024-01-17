@@ -1,8 +1,0 @@
-<package name="wl-screenrec" project="openSUSE:Factory">
-  <title>wl-screenrec</title>
-  <description>High performance screen recorder for wlroots Wayland.
-
-Uses dma-buf transfers to get surface, and uses the GPU to do both the pixel format conversion and the encoding, meaning the raw video data never touches the CPU, leaving it free to run your applications.</description>
-  <devel project="X11:Wayland" package="wl-screenrec"/>
-  <url>https://github.com/russelltg/wl-screenrec</url>
-</package>

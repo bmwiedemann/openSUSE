@@ -1,5 +1,0 @@
-<package name="alsa-plugins" project="openSUSE:Factory">
-  <title>Extra Plug-Ins for the ALSA Library</title>
-  <description>This package contains the extra plug-ins for the ALSA library.</description>
-  <devel project="multimedia:libs" package="alsa-plugins"/>
-</package>

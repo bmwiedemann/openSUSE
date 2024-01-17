@@ -1,7 +1,0 @@
-<package name="lucene" project="openSUSE:Factory">
-  <title>High-performance, full-featured text search engine</title>
-  <description>Jakarta Lucene is a high-performance, full-featured text search engine
-written entirely in Java. It is a technology suitable for nearly any
-application that requires full-text search, especially cross-platform.</description>
-  <devel project="Java:packages" package="lucene"/>
-</package>

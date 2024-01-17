@@ -1,4 +1,0 @@
-from Config import *
-
-addFilter("devel-file-in-non-devel-package")
-

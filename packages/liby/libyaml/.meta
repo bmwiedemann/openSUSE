@@ -1,5 +1,0 @@
-<package name="libyaml" project="openSUSE:Factory">
-  <title>A YAML 1.1 parser and emitter written in C</title>
-  <description>A YAML 1.1 parser and emitter written in C</description>
-  <devel project="devel:libraries:c_c++" package="libyaml"/>
-</package>

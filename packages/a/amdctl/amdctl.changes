@@ -1,9 +1,0 @@
--------------------------------------------------------------------
-Thu Aug 31 14:37:03 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
-
-- Version 0.11
-
-New: NB states are displayed for the AMD family 14h (as documented in AMD's BIOS and Kernel Developer’s Guide).
-Fix: The right VID divider is 12.5 mA (as in BrazosTweaker for Windows).
-
-Tested on Lenovo x120e with AMD E-350.

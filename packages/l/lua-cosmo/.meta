@@ -1,8 +1,0 @@
-<package name="lua-cosmo" project="openSUSE:Factory">
-  <title>A “safe templates” engine for Lua</title>
-  <description>Cosmo is a &quot;safe templates&quot; engine.  It allows you to fill nested
-templates, providing many of the advantages of Turing-complete template
-engines, without the downside of allowing arbitrary code in the templates.</description>
-  <devel project="devel:languages:lua" package="lua-cosmo"/>
-  <url>https://github.com/mascarenhas/cosmo</url>
-</package>

@@ -1,5 +1,0 @@
-<package name="ladspa-vlevel" project="openSUSE:Factory">
-  <title>LADSPA vlevel plugin</title>
-  <description></description>
-  <devel project="multimedia:libs" package="ladspa-vlevel"/>
-</package>

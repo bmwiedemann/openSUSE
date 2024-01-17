@@ -1,7 +1,0 @@
-#%PAM-1.0
-# LightDM PAM configuration used only for the greeter session
-auth     required       pam_permit.so
-account  required       pam_permit.so
-password include        common-password
-session  required       pam_loginuid.so
-session  include        common-session

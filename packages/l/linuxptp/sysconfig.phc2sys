@@ -1,9 +1,0 @@
-## Path:           Network/LinuxPTP
-## Description:    Precision Time Protocol (PTP): phc2sys settings
-## Type:           string
-## Default:        "-s eth0 -w"
-## ServiceRestart: phc2sys
-#
-# Arguments when starting phc2sys(8).
-#
-OPTIONS="-s eth0 -w"

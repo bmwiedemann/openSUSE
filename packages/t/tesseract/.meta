@@ -1,5 +1,0 @@
-<package name="tesseract" project="openSUSE:Factory">
-  <title>Tesseract</title>
-  <description>Open Source FPS with cooperative in-game map editing</description>
-  <devel project="games" package="tesseract"/>
-</package>

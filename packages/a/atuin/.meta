@@ -1,6 +1,0 @@
-<package name="atuin" project="openSUSE:Factory">
-  <title>Magical shell history</title>
-  <description>Atuin replaces your existing shell history with a SQLite database, and records additional context for your commands. Additionally, it provides optional and fully encrypted synchronization of your history between machines, via an Atuin server.</description>
-  <devel project="utilities" package="atuin"/>
-  <url>https://github.com/ellie/atuin</url>
-</package>

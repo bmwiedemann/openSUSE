@@ -1,5 +1,0 @@
-<package name="level-zero" project="openSUSE:Factory">
-  <title>oneAPI Level Zero Specification Headers and Loader</title>
-  <description>The objective of the ‘oneAPI’ Level-Zero Application Programming Interface (API) is to provide direct-to-metal interfaces to offload accelerator devices. Its programming interface can be tailored to any device needs and can be adapted to support broader set of languages features such as function pointers, virtual functions, unified memory, and I/O capabilities.</description>
-  <devel project="devel:libraries:c_c++" package="level-zero"/>
-</package>

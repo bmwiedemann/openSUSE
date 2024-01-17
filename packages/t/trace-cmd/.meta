@@ -1,6 +1,0 @@
-<package name="trace-cmd" project="openSUSE:Factory">
-  <title>trace-cmd</title>
-  <description>Ftrace is the Linux kernel internal tracer that is named after the function tracer but also includes a number of other capabilities. It can be configured through the debugfs interface but that is very unwieldly. trace-cmd is a command-line utility to ease the use of Ftrace.</description>
-  <devel project="devel:tools" package="trace-cmd"/>
-  <url>http://elinux.org/Ftrace</url>
-</package>

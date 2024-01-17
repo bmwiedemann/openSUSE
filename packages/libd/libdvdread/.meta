@@ -1,6 +1,0 @@
-<package name="libdvdread" project="openSUSE:Factory">
-  <title>Library for Reading DVD Video Images</title>
-  <description>This package contains shared libraries for accessing DVD images (this
-package does not contain DeCSS algorithms).</description>
-  <devel project="multimedia:libs" package="libdvdread"/>
-</package>

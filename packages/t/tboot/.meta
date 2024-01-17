@@ -1,8 +1,0 @@
-<package name="tboot" project="openSUSE:Factory">
-  <title>Performs a verified launch using Intel(R) TXT</title>
-  <description>Trusted Boot (tboot) is an open source, pre-kernel/VMM module that uses
-Intel(R) Trusted Execution Technology (Intel(R) TXT) to perform a measured
-and verified launch of an OS kernel/VMM.</description>
-  <devel project="security" package="tboot"/>
-  <url>http://sourceforge.net/projects/tboot/</url>
-</package>

@@ -1,8 +1,0 @@
-<package name="timg" project="openSUSE:Factory">
-  <title> A terminal image and video viewer</title>
-  <description>A user-friendly terminal image viewer that uses graphic capabilities of terminals (Sixel, Kitty or iterm2), or 24-Bit color capabilities and unicode character blocks if these are not available.
-
-On terminals that implement the sixel protocol, the Kitty Graphics Protocol, or the iTerm2 Graphics Protocol this displays images in full resolution.</description>
-  <devel project="X11:Utilities" package="timg"/>
-  <url>https://github.com/hzeller/timg</url>
-</package>

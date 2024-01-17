@@ -1,8 +1,0 @@
-<package name="xstroke" project="openSUSE:Factory">
-  <title>Fullscreen gesture recognition for X</title>
-  <description>xstroke is a full-screen gesture recognition program for the X Window
-System. It captures gestures performed with a pointer device, (such as
-a mouse, a stylus, or a pen/tablet), recognizes the gestures and
-performs actions based on the gestures.</description>
-  <devel project="X11:Utilities" package="xstroke"/>
-</package>

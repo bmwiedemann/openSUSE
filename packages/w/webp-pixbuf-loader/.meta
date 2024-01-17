@@ -1,8 +1,0 @@
-<package name="webp-pixbuf-loader" project="openSUSE:Factory">
-  <title>WebP GDK Pixbuf Loader library</title>
-  <description>webp-pixbuf-loader is a plugin  to allow loading WebP images in GTK+ applications.
-
-</description>
-  <devel project="graphics" package="webp-pixbuf-loader"/>
-  <url>https://github.com/aruiz/webp-pixbuf-loader</url>
-</package>

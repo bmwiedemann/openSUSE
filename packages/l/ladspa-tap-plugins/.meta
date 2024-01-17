@@ -1,6 +1,0 @@
-<package name="ladspa-tap-plugins" project="openSUSE:Factory">
-  <title>LADSPA TAP plugins</title>
-  <description></description>
-  <devel project="multimedia:libs" package="ladspa-tap-plugins"/>
-  <url>http://tap-plugins.sourceforge.net/</url>
-</package>

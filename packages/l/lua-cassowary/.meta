@@ -1,8 +1,0 @@
-<package name="lua-cassowary" project="openSUSE:Factory">
-  <title>A Lua port of the cassowary constraint solver engine</title>
-  <description>This is a Lua port of the cassowary constraint solving toolkit.
-It allows you to use Lua to solve algebraic equations and inequalities
-and find the values of unknown variables which satisfy those inequalities.</description>
-  <devel project="devel:languages:lua" package="lua-cassowary"/>
-  <url>https://github.com/sile-typesetter/cassowary.lua</url>
-</package>

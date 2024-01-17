@@ -1,5 +1,0 @@
-<package name="linuxrc-devtools" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="system:install:head" package="linuxrc-devtools"/>
-</package>

@@ -1,7 +1,0 @@
-<package name="linphoneqt" project="openSUSE:Factory">
-  <title>Qt interface for Linphone</title>
-  <description>Linphone is a Web phone with a Qt interface.
-It lets you make two-party calls over IP networks such as the Internet.
-It uses the IETF protocols SIP (Session Initiation Protocol) and RTP (Real-time Transport Protocol) to make calls, so it should be able to communicate with other SIP-based Web phones. With several codecs available, it can be used with high speed connections as well as 28k modems.</description>
-  <devel project="network:telephony" package="linphoneqt"/>
-</package>

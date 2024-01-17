@@ -1,5 +1,0 @@
-<package name="apache-rex" project="openSUSE:Factory">
-  <title>Runnable Examples for Apache httpd</title>
-  <description>This example suite is under development.</description>
-  <devel project="Apache" package="apache-rex"/>
-</package>

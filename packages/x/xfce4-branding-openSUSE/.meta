@@ -1,5 +1,0 @@
-<package name="xfce4-branding-openSUSE" project="openSUSE:Factory">
-  <title>openSUSE branding of the Xfce desktop environment</title>
-  <description>This package provides the openSUSE look and feel for the Xfce desktop environment.</description>
-  <devel project="X11:xfce" package="xfce4-branding-openSUSE"/>
-</package>

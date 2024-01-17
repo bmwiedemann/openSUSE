@@ -1,9 +1,0 @@
-<package name="lzlib" project="openSUSE:Factory">
-  <title>LZMA Compression and Decompression Library</title>
-  <description>The lzlib compression library provides in-memory LZMA compression and
-decompression functions, including integrity checking of the decompressed data.
-The compressed data format used by the library is the lzip format.
-</description>
-  <devel project="Archiving" package="lzlib"/>
-  <url>http://www.nongnu.org/lzip/lzlib.html</url>
-</package>

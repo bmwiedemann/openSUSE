@@ -1,6 +1,0 @@
-<package name="lapce" project="openSUSE:Factory">
-  <title>lapce</title>
-  <description>Lightning-fast and Powerful Code Editor written in Rust</description>
-  <devel project="editors" package="lapce"/>
-  <url>https://github.com/lapce/lapce</url>
-</package>

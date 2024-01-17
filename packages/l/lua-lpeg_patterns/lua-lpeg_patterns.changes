@@ -1,9 +1,0 @@
--------------------------------------------------------------------
-Thu Feb 18 15:53:42 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
-
-- Use %lua_provides macro for default lua versioning
-
--------------------------------------------------------------------
-Tue Aug 18 17:58:12 UTC 2020 - Matej Cepl <mcepl@suse.com>
-
-- Initial packaging of lpeg_patterns 0.5

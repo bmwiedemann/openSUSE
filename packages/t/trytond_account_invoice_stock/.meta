@@ -1,5 +1,0 @@
-<package name="trytond_account_invoice_stock" project="openSUSE:Factory">
-  <title>The account_invoice_stock module of the Tryton application platform.</title>
-  <description></description>
-  <devel project="Application:ERP:GNUHealth:Factory" package="trytond_account_invoice_stock"/>
-</package>

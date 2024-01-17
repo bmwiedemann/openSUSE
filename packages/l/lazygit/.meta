@@ -1,6 +1,0 @@
-<package name="lazygit" project="openSUSE:Factory">
-  <title>Simple terminal UI for git commands</title>
-  <description>lazygit is a terminal UI for git commmands that helps make common and complex git operations easy and accessible without requiring expertise with the git command line.</description>
-  <devel project="devel:languages:go" package="lazygit"/>
-  <url>https://github.com/jesseduffield/lazygit</url>
-</package>

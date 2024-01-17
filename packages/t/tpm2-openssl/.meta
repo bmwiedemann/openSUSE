@@ -1,5 +1,0 @@
-<package name="tpm2-openssl" project="openSUSE:Factory">
-  <title>tpm2-openssl</title>
-  <description></description>
-  <devel project="security" package="tpm2-openssl"/>
-</package>

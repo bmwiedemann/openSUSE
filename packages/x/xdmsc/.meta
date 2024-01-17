@@ -1,9 +1,0 @@
-<package name="xdmsc" project="openSUSE:Factory">
-  <title>Xterminal -- Use SuSE Linux as an X terminal</title>
-  <description>Some useful scripts for using SuSE Linux as an X terminal.
-
-You will find the documentation in the following directory
-
-/usr/share/doc/packages/xdmsc/</description>
-  <devel project="X11:Utilities" package="xdmsc"/>
-</package>

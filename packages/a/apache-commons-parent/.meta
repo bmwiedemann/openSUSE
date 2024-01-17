@@ -1,8 +1,0 @@
-<package name="apache-commons-parent" project="openSUSE:Factory">
-  <title>Apache Commons Parent</title>
-  <description>Commons Parent.
-
-</description>
-  <devel project="Java:packages" package="apache-commons-parent"/>
-  <url>http://svn.apache.org/repos/asf/commons/proper/commons-parent</url>
-</package>

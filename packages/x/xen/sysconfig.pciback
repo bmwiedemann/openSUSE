@@ -1,9 +1,0 @@
-## Path: System/Virtualization
-## Type: string
-## Default: ""
-#
-# Space delimited list of PCI devices to late bind to pciback
-# Format:  <driver>,<PCI ID>
-#
-#XEN_PCI_HIDE_LIST="e1000,0000:0b:00.0 e1000,0000:0b:00.1"
-XEN_PCI_HIDE_LIST=""

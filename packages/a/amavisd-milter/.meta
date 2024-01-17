@@ -1,5 +1,0 @@
-<package name="amavisd-milter" project="openSUSE:Factory">
-  <title>amavisd-new</title>
-  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
-  <devel project="server:mail" package="amavisd-milter"/>
-</package>

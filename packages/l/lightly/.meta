@@ -1,7 +1,0 @@
-<package name="lightly" project="openSUSE:Factory">
-  <title>A modern style for qt applications</title>
-  <description>Lightly is a fork of breeze theme style that aims to be visually modern and minimalistic.
-
-</description>
-  <devel project="KDE:Extra" package="lightly"/>
-</package>

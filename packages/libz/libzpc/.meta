@@ -1,6 +1,0 @@
-<package name="libzpc" project="openSUSE:Factory">
-  <title>IBM Z Protected-key Crypto library</title>
-  <description>The IBM Z Protected-key Crypto library libzpc is an open-source library targeting the 64-bit Linux on IBM Z (s390x) platform. It provides interfaces for cryptographic primitives. The underlying implementations make use of z/Architecture's extensive performance-boosting hardware support and its protected-key feature which ensures that key material is never present in main memory at any time.
-</description>
-  <devel project="security" package="libzpc"/>
-</package>

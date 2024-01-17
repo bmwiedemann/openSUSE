@@ -1,3 +1,0 @@
-# libnotify-tools is not a library dependency
-addFilter("explicit-lib-dependency libnotify-tools")
-

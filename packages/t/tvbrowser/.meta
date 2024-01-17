@@ -1,6 +1,0 @@
-<package name="tvbrowser" project="openSUSE:Factory">
-  <title>Digital TV guide</title>
-  <description>TV-Browser is a Java 1.5 based digital TV guide for more than 140
-TV/Radio channels and some cinemas.</description>
-  <devel project="multimedia:apps" package="tvbrowser"/>
-</package>

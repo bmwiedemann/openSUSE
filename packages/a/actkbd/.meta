@@ -1,6 +1,0 @@
-<package name="actkbd" project="openSUSE:Factory">
-  <title>keyboard shortcut daemon</title>
-  <description>Actkbd is a background daemon that reacts to user-defined keyboard presses and runs specific actions.</description>
-  <devel project="utilities" package="actkbd"/>
-  <url>http://users.softlab.ece.ntua.gr/~thkala/projects/actkbd/</url>
-</package>

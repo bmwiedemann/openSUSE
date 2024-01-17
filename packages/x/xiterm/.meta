@@ -1,5 +1,0 @@
-<package name="xiterm" project="openSUSE:Factory">
-  <title>Internationalized Terminal Emulator for X11</title>
-  <description>Internationalized Terminal Emulator for X11</description>
-  <devel project="M17N" package="xiterm"/>
-</package>

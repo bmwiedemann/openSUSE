@@ -1,7 +1,0 @@
-<package name="labwc" project="openSUSE:Factory">
-  <title>A Wayland window-stacking compositor </title>
-  <description>Labwc is a wlroots-based window-stacking compositor for wayland, inspired by openbox.
-</description>
-  <devel project="X11:Wayland" package="labwc"/>
-  <url>https://github.com/labwc/labwc</url>
-</package>

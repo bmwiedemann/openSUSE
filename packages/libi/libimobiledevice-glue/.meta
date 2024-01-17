@@ -1,9 +1,0 @@
-<package name="libimobiledevice-glue" project="openSUSE:Factory">
-  <title>Native protocols library for iOS devices</title>
-  <description>A library with common code used by libraries and tools around the libimobiledevice project.
-It does not depend on any existing libraries from Apple.
-
-</description>
-  <devel project="hardware" package="libimobiledevice-glue"/>
-  <url>https://www.libimobiledevice.org</url>
-</package>

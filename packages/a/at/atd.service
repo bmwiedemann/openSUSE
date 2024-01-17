@@ -1,9 +1,0 @@
-[Unit]
-Description=Deferred execution scheduler
-After=nss-user-lookup.target time-sync.target
-
-[Service]
-ExecStart=/usr/sbin/atd -f
-
-[Install]
-WantedBy=multi-user.target

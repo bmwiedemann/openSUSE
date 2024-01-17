@@ -1,8 +1,0 @@
-<package name="zathura" project="openSUSE:Factory">
-  <title>A highly customizable PDF reader</title>
-  <description>zathura is a highly customizable and functional document viewer. It provides a minimalistic and space saving interface as well as an easy usage that mainly focuses on keyboard interaction.
-
-</description>
-  <devel project="X11:Utilities" package="zathura"/>
-  <url>http://pwmt.org/projects/zathura/</url>
-</package>

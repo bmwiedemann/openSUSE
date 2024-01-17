@@ -1,5 +1,0 @@
-<package name="trytond_stock" project="openSUSE:Factory">
-  <title>The Stock module of the Tryton application platform.</title>
-  <description></description>
-  <devel project="Application:ERP:GNUHealth:Factory" package="trytond_stock"/>
-</package>

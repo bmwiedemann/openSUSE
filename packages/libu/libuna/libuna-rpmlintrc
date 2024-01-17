@@ -1,2 +1,0 @@
-# guideline does not cover multibuild
-addFilter("libuna1-mini.\S+: E: shlib-policy-name-error SONAME:.*")

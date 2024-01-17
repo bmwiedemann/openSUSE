@@ -1,5 +1,0 @@
-<package name="lxqt-about" project="openSUSE:Factory">
-  <title>About dialog for lxqt</title>
-  <description>About dialog for lxqt</description>
-  <devel project="X11:LXQt" package="lxqt-about"/>
-</package>

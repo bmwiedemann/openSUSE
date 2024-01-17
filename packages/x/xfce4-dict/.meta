@@ -1,8 +1,0 @@
-<package name="xfce4-dict" project="openSUSE:Factory">
-  <title>Xfce4 Dictionary</title>
-  <description>xfce4-dict allows you to search different kinds of dictionary services for
-words or phrases and shows you the result. Currently you can query a Dict
-server(RFC 2229), any online dictionary service by opening a web browser or
-search for words using the aspell/ispell program.</description>
-  <devel project="X11:xfce" package="xfce4-dict"/>
-</package>

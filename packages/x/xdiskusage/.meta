@@ -1,9 +1,0 @@
-<package name="xdiskusage" project="openSUSE:Factory">
-  <title>Grapically displays the amount of disks used for by each subdirectory</title>
-  <description>xdiskusage is a user-friendly program to show you what is using 
-up all your disk space. It is based on the design of xdu 
-written by Phillip C. Dykstra. Changes have been made so it runs 
-&quot;du&quot; for you, and can display the free space left on the disk, 
-and produce a PostScript version of the display.</description>
-  <devel project="X11:Utilities" package="xdiskusage"/>
-</package>

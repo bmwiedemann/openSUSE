@@ -1,9 +1,0 @@
-<package name="libunistring" project="openSUSE:Factory">
-  <title>GNU Unicode string library</title>
-  <description>This portable C library implements Unicode string types in three flavours:
-(UTF-8, UTF-16, UTF-32), together with functions for character processing
-(names, classifications, properties) and functions for string processing
-(iteration, formatted output, width, word breaks, line breaks, normalization,
-case folding and regular expressions).</description>
-  <devel project="devel:libraries:c_c++" package="libunistring"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="xfstests" project="openSUSE:Factory">
-  <title>Filesystem testsuite</title>
-  <description>The filesystem regression test suite. Contains around 1500+ specific tests for userspace and kernelspace for several linux filesystems.</description>
-  <devel project="filesystems" package="xfstests"/>
-  <url>https://git.kernel.org/pub/scm/fs/xfs/xfstests-dev.git/</url>
-</package>

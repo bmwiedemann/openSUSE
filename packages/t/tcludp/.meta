@@ -1,7 +1,0 @@
-<package name="tcludp" project="openSUSE:Factory">
-  <title>UDP Socket Extension for Tcl</title>
-  <description>This package makes the UDP protocol available for Tcl interpreters. It
-allows access to message-oriented UDP through stream-oriented Tcl
-channels.</description>
-  <devel project="devel:languages:tcl" package="tcludp"/>
-</package>

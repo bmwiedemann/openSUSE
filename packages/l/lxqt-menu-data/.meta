@@ -1,5 +1,0 @@
-<package name="lxqt-menu-data" project="openSUSE:Factory">
-  <title>lxqt-menu-data</title>
-  <description>Freedesktop.org compliant menu files for LXQt Panel, Configuration Center and PCManFM-Qt/libfm-qt.</description>
-  <devel project="X11:LXQt" package="lxqt-menu-data"/>
-</package>

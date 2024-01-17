@@ -1,9 +1,0 @@
-<package name="lzo" project="openSUSE:Factory">
-  <title>A Real-Time Data Compression Library</title>
-  <description>LZO is a portable lossless data compression library written in ANSI C.
-It offers pretty fast compression and very fast decompression.
-Decompression requires no memory. LZO is suitable for data compression
-and decompression in real-time. This means it favors speed over
-compression ratio.</description>
-  <devel project="Base:System" package="lzo"/>
-</package>

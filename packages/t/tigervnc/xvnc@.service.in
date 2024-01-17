@@ -1,9 +1,0 @@
-[Unit]
-Description=Xvnc Server
-
-[Service]
-ExecStart=@LIBEXECDIR@/vnc/with-vnc-key.sh /usr/bin/Xvnc -noreset -inetd -once -query localhost -geometry 1024x768 -securitytypes X509None,TLSNone,None -X509Key /etc/vnc/tls.key -X509Cert /etc/vnc/tls.cert -log *:syslog:30 -extension MIT-SHM
-User=vnc
-StandardInput=socket
-StandardOutput=socket
-StandardError=syslog

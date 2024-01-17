@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>wsdd</short>
-  <description>Web Service Discovery</description>
-  <port protocol="tcp" port="5357"/>
-  <include service="ws-discovery-udp"/>
-</service>

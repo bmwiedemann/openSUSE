@@ -1,7 +1,0 @@
-# /etc/hosts.deny
-# Make sure package tcpd is installed on your system for this to work.
-# See 'man tcpd' and 'man 5 hosts_access' as well as /etc/hosts.allow
-# for a detailed description.
-
-http-rman : ALL EXCEPT LOCAL
-

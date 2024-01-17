@@ -1,8 +1,0 @@
-<package name="zstd" project="openSUSE:Factory">
-  <title>Zstandard compression tools</title>
-  <description>Zstd, short for Zstandard, is a fast lossless compression algorithm,
-targeting real-time compression scenarios at zlib-level compression ratio.
-
-Zstd can also offer stronger compression ratios at the cost of compression speed. Speed vs Compression trade-off is configurable by small increments. Decompression speed is preserved and remains roughly the same at all settings, a property shared by most LZ compression algorithms, such as zlib or lzma.</description>
-  <devel project="Archiving" package="zstd"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="xmlcharent" project="openSUSE:Factory">
-  <title>XML Character Entities</title>
-  <description>XML encodings for the 19 standard character entity sets defined in
-non-normative Annex D of [ISO 8879:1986].</description>
-  <devel project="Publishing" package="xmlcharent"/>
-</package>

@@ -1,8 +1,0 @@
-<package name="wol" project="openSUSE:Factory">
-  <title>Wake On Lan client</title>
-  <description>The Wake On Lan client wakes up magic packet compliant machines such as
-boxes with wake-on-lan ethernet-cards. Some workstations provides
-SecureON which extends wake-on-lan with a password. This feature is
-also provided by wol.</description>
-  <devel project="network:utilities" package="wol"/>
-</package>

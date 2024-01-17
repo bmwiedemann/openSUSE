@@ -1,2 +1,0 @@
-#fix of bnc#520532
-addFilter(".*non-etc-or-var-file-marked-as-conffile /usr/share/tomcat/tomcat-webapps/ROOT.*")

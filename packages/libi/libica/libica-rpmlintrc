@@ -1,3 +1,0 @@
-addFilter("libica-tools.* * devel-file-in-non-devel-package * /usr/lib64/libica.so")
-addFilter("libica*.* hidden-file-or-dir /usr/lib64/.libica.so.*.hmac")
-addFilter("libica*.* hidden-file-or-dir /usr/lib64/.libica-cex.so.*.hmac")

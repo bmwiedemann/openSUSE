@@ -1,9 +1,0 @@
-<package name="arphic-fonts" project="openSUSE:Factory">
-  <title>Chinese TrueType fonts by Arphic Technology (only the license text is present in this package)</title>
-  <description>Chinese TrueType fonts by Arphic Technology. This package contains only
-the license texts. The fonts themselves are in the sub-packages
-ttf-arphic-bkai00mp, ttf-arphic-bsmi00lp, ttf-arphic-gkai00mp, and
-ttf-arphic-gbsn00lp.
-</description>
-  <devel project="M17N:fonts" package="arphic-fonts"/>
-</package>

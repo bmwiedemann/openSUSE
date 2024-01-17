@@ -1,8 +1,0 @@
-<package name="wxsvg" project="openSUSE:Factory">
-  <title>A library to create, manipulate and render SVG files</title>
-  <description>WxSVG is a C++ library to create, manipulate and render SVG files.
-
-</description>
-  <devel project="X11:wxWidgets" package="wxsvg"/>
-  <url>https://wxsvg.sourceforge.net</url>
-</package>

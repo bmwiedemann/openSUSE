@@ -1,6 +1,0 @@
-<package name="libhugetlbfs" project="openSUSE:Factory">
-  <title>Hugetlbfs helper library</title>
-  <description>The libhugetlbfs package interacts with the Linux hugetlbfs to
-make large pages available to applications in a transparent manner.</description>
-  <devel project="Base:System" package="libhugetlbfs"/>
-</package>

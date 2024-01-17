@@ -1,8 +1,0 @@
-<package name="attr" project="openSUSE:Factory">
-  <title>Commands for Manipulating Extended Attributes</title>
-  <description>A set of tools for manipulating extended attributes on file system
-objects, in particular getfattr(1) and setfattr(1). An attr(1) command
-is also provided, which is largely compatible with the SGI IRIX tool of
-the same name.</description>
-  <devel project="Base:System" package="attr"/>
-</package>

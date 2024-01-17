@@ -1,8 +1,0 @@
-<package name="ansifilter" project="openSUSE:Factory">
-  <title>ANSI Terminal Escape Code Converter</title>
-  <description>Ansifilter handles text files containing ANSI terminal escape codes.
-The command sequences may be stripped or be interpreted to generate formatted output (HTML, RTF, TeX, LaTeX).
-  </description>
-  <devel project="devel:tools" package="ansifilter"/>
-  <url>http://www.andre-simon.de/</url>
-</package>

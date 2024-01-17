@@ -1,9 +1,0 @@
-<package name="xalan-c" project="openSUSE:Factory">
-  <title>An XSLT Transformation Engine in C++</title>
-  <description>Xalan is an XSL processor for transforming XML documents into HTML,
-text, or other XML document types. Xalan-C++ represents an almost
-complete and robust C++ reference implementation of the W3C
-Recommendations for XSL Transformations (XSLT) and the XML Path
-Language (XPath).</description>
-  <devel project="devel:libraries:c_c++" package="xalan-c"/>
-</package>

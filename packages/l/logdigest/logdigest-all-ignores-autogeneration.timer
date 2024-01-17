@@ -1,9 +1,0 @@
-[Unit]
-Description=Concatenate logdigest ignore files into a single file, every 30 minutes
-
-[Timer]
-OnCalendar=30m
-Persistent=true
-
-[Install]
-WantedBy=timers.target

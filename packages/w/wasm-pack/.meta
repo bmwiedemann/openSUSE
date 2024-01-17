@@ -1,5 +1,0 @@
-<package name="wasm-pack" project="openSUSE:Factory">
-  <title>wasm-pack</title>
-  <description></description>
-  <devel project="devel:languages:rust" package="wasm-pack"/>
-</package>

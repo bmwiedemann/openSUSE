@@ -1,5 +1,0 @@
-<package name="wl-clipboard-rs" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="X11:Wayland" package="wl-clipboard-rs"/>
-</package>

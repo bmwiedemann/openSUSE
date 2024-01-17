@@ -1,5 +1,0 @@
-<package name="ldap-proxy" project="openSUSE:Factory">
-  <title>Small, simple ldap-proxy</title>
-  <description></description>
-  <devel project="network:ldap" package="ldap-proxy"/>
-</package>

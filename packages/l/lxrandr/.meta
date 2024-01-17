@@ -1,5 +1,0 @@
-<package name="lxrandr" project="openSUSE:Factory">
-  <title>Lightweight Monitor Config Tool</title>
-  <description>LXRandR is a lightweight Monitor Config Tool</description>
-  <devel project="X11:lxde" package="lxrandr"/>
-</package>

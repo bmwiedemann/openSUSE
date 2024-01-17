@@ -1,5 +1,0 @@
-<package name="libdnf" project="openSUSE:Factory">
-  <title>libdnf - Library providing simplified C and Python API to libsolv</title>
-  <description>A library that provides a simplified C and Python API to libsolv.</description>
-  <devel project="system:packagemanager:dnf" package="libdnf"/>
-</package>

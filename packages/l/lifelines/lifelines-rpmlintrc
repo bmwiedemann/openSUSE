@@ -1,3 +1,0 @@
-addFilter(".*W:.*name-repeated-in-summary.*C.*Lifelines.*")
-addFilter(".*E:.*devel-file-in-non-devel-package.*/usr/share/lifelines/bib2html.c.*")
-addFilter(".*E:.*devel-file-in-non-devel-package.*/usr/share/lifelines/bury.c.*")

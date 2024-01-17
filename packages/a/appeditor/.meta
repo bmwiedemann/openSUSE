@@ -1,5 +1,0 @@
-<package name="appeditor" project="openSUSE:Factory">
-  <title></title>
-  <description>Application Entry Editor</description>
-  <devel project="X11:Pantheon:Apps" package="appeditor"/>
-</package>

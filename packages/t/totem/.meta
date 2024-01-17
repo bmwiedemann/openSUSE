@@ -1,7 +1,0 @@
-<package name="totem" project="openSUSE:Factory">
-  <title>Movie Player for the GNOME Desktop</title>
-  <description>Totem is a movie player for the GNOME desktop based on GStreamer. It
-features a playlist, a full-screen mode, seek and volume controls, and
-complete keyboard navigation.</description>
-  <devel project="GNOME:Factory" package="totem"/>
-</package>

@@ -1,6 +1,0 @@
-<package name="abiword" project="openSUSE:Factory">
-  <title>A Multiplatform Word Processor</title>
-  <description>AbiWord is a multiplatform word processor with a GTK+ interface on the
-UNIX platform.</description>
-  <devel project="GNOME:Apps" package="abiword"/>
-</package>

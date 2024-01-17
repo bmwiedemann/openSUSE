@@ -1,8 +1,0 @@
-<package name="lua-messagepack" project="openSUSE:Factory">
-  <title> MessagePack is an efficient binary serialization format for Lua 5.1</title>
-  <description>MessagePack is an efficient binary serialization format.
-It lets you exchange data among multiple languages like JSON but it's faster and smaller.
-It's a pure Lua implementation, without dependency.
-And it's really fast with LuaJIT.</description>
-  <devel project="devel:languages:lua" package="lua-messagepack"/>
-</package>

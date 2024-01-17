@@ -1,6 +1,0 @@
-<package name="libyubikey" project="openSUSE:Factory">
-  <title>Yubico C low-level library</title>
-  <description>To integrate decryption and parsing of YubiKey One-Time Passcodes (OTP) into your own server environment, you can use our free software libraries written in C and Java. To be useful, these packages need to be combined with a database and server component. Note that most applications typically talk to a verification server using our client libraries.</description>
-  <devel project="security" package="libyubikey"/>
-  <url>http://code.google.com/p/yubico-c/</url>
-</package>
