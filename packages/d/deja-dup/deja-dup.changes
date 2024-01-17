@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 17 08:33:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 45.2:
+  + Fix not being prompted for packagekit installs during a
+    restore.
+  + Allow using the '~/' alias for the home dir in more text
+    entries.
+  + Add clearer error message when auto-backups can't be set in
+    flatpak mode.
+  + Fix compilation on non-glibc systems.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Nov 22 11:11:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to version 45.1:
