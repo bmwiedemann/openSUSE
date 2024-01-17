@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 14 15:44:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.0:
+  * update tests for latest click
+  * fix license
+  * add typing
+  * switch to poetry
+- reenable tests
+- drop update-tests.patch (upstream)
+
+-------------------------------------------------------------------
 Sun Jun 11 13:43:12 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
