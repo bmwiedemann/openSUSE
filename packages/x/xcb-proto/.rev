@@ -1,0 +1,203 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2ea90798aa6650b96446fd480c2b609b</srcmd5>
+    <version>7.6_1.10.1</version>
+    <time>1399317072</time>
+    <user>coolo</user>
+    <comment>Create package; added COPYING to %doc</comment>
+    <requestid>232206</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>93c7f0214fd10eea7ac1af5dfaa4c49a</srcmd5>
+    <version>7.6_1.11</version>
+    <time>1407391694</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243725</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>93c7f0214fd10eea7ac1af5dfaa4c49a</srcmd5>
+    <version>7.6_1.11</version>
+    <time>1409303675</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b61adcc4733e69c5ebe404172bbcab20</srcmd5>
+    <version>7.6_1.11</version>
+    <time>1411472767</time>
+    <user>coolo</user>
+    <comment>- Update description and other metadata
+- Use full %configure for build, and remove CFLAGS (nothing is
+  compiled)
+- Make file list more compact</comment>
+    <requestid>250637</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>250d5f3234aebe171784f9eecbab21eb</srcmd5>
+    <version>7.6_1.11</version>
+    <time>1451177843</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349312</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8f158df8e1aa02b0e9e26a066afa5af6</srcmd5>
+    <version>7.6_1.12</version>
+    <time>1464017423</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12
+  * here is a new version of xcb-proto for you to enjoy. Highlights
+    are lots of improvements especially to the xinput extension,
+    support for RandR 1.5 and an automatic alignment checker.</comment>
+    <requestid>396744</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4aeaf7509b5512143e21e30ebd1c15b9</srcmd5>
+    <version>7.6_1.12</version>
+    <time>1509820098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538315</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c34d0155cea5f90545a05286c9b06d36</srcmd5>
+    <version>7.6_1.12</version>
+    <time>1511086230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542206</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>015c24cde0c50dcbe6bb853e68b698d7</srcmd5>
+    <version>7.6_1.12</version>
+    <time>1513162584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555546</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>5cbf8d45920bd27c53efa07ee258973b</srcmd5>
+    <version>7.6_1.12</version>
+    <time>1516091166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update xinput to the state when it was enabled by default
+  upstream. (bnc#1074249)
+  * U_SendExtensionEvent-uses-eventstruct.patch
+  * U_add-support-for-eventstruct.patch
+  * U_xinput-typedef-for-event_type_base.patch</comment>
+    <requestid>562816</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>58ebddb7b7d4da2383f28fdb6d201118</srcmd5>
+    <version>7.6_1.12</version>
+    <time>1516358881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566632</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8eee4886b138e46b3e9169f392d7bcc5</srcmd5>
+    <version>7.6_1.13</version>
+    <time>1520502816</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.13
+  * This release of xcb-proto brings support for buffer modifiers and
+    multi-planar buffers through DRI3 v1.2 and Present v1.2, support for
+    leasing KMS devices to clients via RandR 1.6, and also allows clients
+    to send each other XInput2 events via support for the GenericEvent
+    extension's SendExtension event.
+- supersedes U_xinput-typedef-for-event_type_base.patch,
+  U_add-support-for-eventstruct.patch, 
+  U_SendExtensionEvent-uses-eventstruct.patch,
+  U_python-whitespace.patch,
+  U_python3-compat.patch</comment>
+    <requestid>582992</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>904acd9ad24f375c1d1d69590222466a</srcmd5>
+    <version>7.6_1.14</version>
+    <time>1583007509</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.14
+  * Update README for gitlab migration
+  * pkg-config: Add sysroot prefix
+  * screensaver: Use CARD32 encoding for ScreenSaverSuspend 'suspend'
+  * Removed unused member &quot;fds&quot;
+  * Fix size computation of imported lists
+  * Allow access to the original type in the XML</comment>
+    <requestid>778888</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>632e1af863e2abb67147ab3668e95d88</srcmd5>
+    <version>7.6_1.14.1</version>
+    <time>1602440128</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.14.1
+  * This minor bug fix release provides compatibility with 
+    Python 3.9 by replacing usage of deprecated API's which
+    were removed in Python 3.9.</comment>
+    <requestid>840399</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>632b15f3aeeb087d656ca4e9fa785732</srcmd5>
+    <version>7.6_1.15</version>
+    <time>1651856334</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.15
+  * xproto.xml: Update doc text for GrabKey
+  * Fix python version check from 65169c1af7893882c21d1e2a544903212b8d6fb0
+  * Adjust to automake 1.16.4 changes
+  * xfixes: Add ClientDisconnectMode
+  * glx,xprint: place explicit padding between lists
+  * Add element to specify expression that defines length of a struct
+  * xinput: Add length specification for DeviceClass struct
+  * xinput: Add XI v2.4
+  * Add missing fields to errors
+  * Use xml.etree.cElementTree where appropriate</comment>
+    <requestid>974943</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>22e1577a71cbf6d1ff7386a0baddcedc</srcmd5>
+    <version>7.6_1.15.2</version>
+    <time>1655824532</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.15.2
+  * dri3: Update dri3.xml to DRI3 1.3
+  * Add DOUBLE-BUFFER extension specification.
+  * Remove libdir from xcb-proto.pc
+  * Install xcb-proto to $(datarootdir)
+  * Call AC_OUTPUT without arguments</comment>
+    <requestid>984006</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>90ec581fa603e7c145c3c16b0f114fdc</srcmd5>
+    <version>7.6_1.15.2</version>
+    <time>1675516258</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer let xcb-proto-devel provide/obsolete
+  xorg-x11-proto-devel; this looks weird ...</comment>
+    <requestid>1062677</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>34cf6666617c3faa7a8953e9ff40351c</srcmd5>
+    <version>7.6_1.16.0</version>
+    <time>1693383549</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.16.0
+  * gitlab CI: add a basic build test
+  * Add documentation for DAMAGE extension
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * dpms: Add DPMSInfoNotify event (DPMS 1.2)
+  * Document the MIT-SHM extension
+  * Add documentation for XFixes v6
+  * Document BIG-REQUESTS
+  * Add documentation for Composite
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * xinput: qualify CW as from xproto
+  * add PresentOptionAsyncMayTear</comment>
+    <requestid>1106057</requestid>
+  </revision>
+</revisionlist>

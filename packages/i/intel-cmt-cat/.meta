@@ -1,0 +1,22 @@
+<package name="intel-cmt-cat" project="openSUSE:Factory">
+  <title>Monitor LLC occupancy (CMT) and memory bandwidth (MBM)
+  </title>
+  <description>
+This software package provides basic support for
+Intel(R) Resource Director Technology (Intel(R) RDT) including:
+Cache Monitoring Technology (CMT), Memory Bandwidth Monitoring (MBM),
+Cache Allocation Technology (CAT) and Code and Data Prioritization (CDP).
+
+In principle, the software programs the technologies via
+Model Specific Registers (MSR) on a per core or hardware thread basis.
+MSR access is arranged via standard operating system driver: msr on Linux and
+cpuctl on FreeBSD. Presence of the technologies is detected via CPUID
+instruction. In some cases CAT is detected via brand string read from CPUID.
+
+Software detects presence of Linux perf extensions for
+the monitoring technologies. In such case it enables library API's for
+monitoring processes.
+</description>
+  <devel project="server:monitoring" package="intel-cmt-cat"/>
+  <url>https://github.com/01org/intel-cmt-cat</url>
+</package>

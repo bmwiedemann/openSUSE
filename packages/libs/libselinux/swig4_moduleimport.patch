@@ -1,0 +1,13 @@
+Index: libselinux-2.9/src/selinuxswig_python.i
+===================================================================
+--- libselinux-2.9.orig/src/selinuxswig_python.i	2019-03-15 10:32:30.000000000 +0000
++++ libselinux-2.9/src/selinuxswig_python.i	2019-12-16 15:03:46.133451617 +0000
+@@ -6,7 +6,7 @@
+ #define DISABLE_RPM
+ #endif
+ 
+-%module selinux
++%module(moduleimport="import $module") selinux
+ %{
+ 	#include "selinux/selinux.h"
+ %}

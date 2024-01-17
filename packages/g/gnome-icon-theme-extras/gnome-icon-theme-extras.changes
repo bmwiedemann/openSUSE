@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Wed Mar 26 19:05:57 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + No changes since version 3.11.2.
+
+-------------------------------------------------------------------
+Tue Nov 19 21:25:03 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.2:
+  + Build fixes.
+  + Icon: hard drives.
+
+-------------------------------------------------------------------
+Wed Nov 14 07:46:42 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.2:
+  + Increased contrast in 16x16 application-rss+xml.
+
+-------------------------------------------------------------------
+Tue Mar 27 22:07:08 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.4.0:
+  + Added colorhug icon.
+
+-------------------------------------------------------------------
+Fri May  6 12:18:49 CEST 2011 - vuntz@opensuse.org
+
+- Fix URL in Source tag.
+
+-------------------------------------------------------------------
+Wed Apr  6 10:02:00 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + nothing, just love a 3.0.0 at the end of a tarball :)
+
+-------------------------------------------------------------------
+Fri Mar 25 17:06:22 CEST 2011 - opensuse@sukimashita.com
+
+- Update to version 2.90.7:
+  + ZIP disks
+  + iPad
+  + OPML
+  + Samsung Galaxy S
+  + System harddrive (bgo#620239)
+
+-------------------------------------------------------------------
+Wed Aug 25 15:35:35 CEST 2010 - vuntz@opensuse.org
+
+- Add hicolor-icon-theme BuildRequires.
+- Use the new %icon_theme_cache_post/%icon_theme_cache_postun
+  macros in %post/%postun.
+
+-------------------------------------------------------------------
+Thu Apr 29 14:27:03 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.1:
+  + specific media and drive icons
+  + Fixes and tweaks
+
+-------------------------------------------------------------------
+Tue Mar 30 01:41:33 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Add nexus one icon.
+
+-------------------------------------------------------------------
+Mon Mar 29 13:46:52 CEST 2010 - vuntz@opensuse.org
+
+- Clean up packaging for inclusion in Factory.
+
+-------------------------------------------------------------------
+Thu Mar 25 21:32:14 CEST 2010 - opensuse@sukimashita.com
+
+- Added new package.
+

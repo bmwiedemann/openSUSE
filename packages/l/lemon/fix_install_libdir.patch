@@ -1,0 +1,22 @@
+diff -ruN a/lemon/CMakeLists.txt b/lemon/CMakeLists.txt
+--- a/lemon/CMakeLists.txt	2014-07-07 21:40:24.911315501 +0700
++++ b/lemon/CMakeLists.txt	2021-02-02 04:51:05.235918565 +0700
+@@ -66,8 +66,8 @@
+ 
+ INSTALL(
+   TARGETS lemon
+-  ARCHIVE DESTINATION lib
+-  LIBRARY DESTINATION lib
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+   COMPONENT library
+ )
+ 
+@@ -86,6 +86,6 @@
+ 
+ INSTALL(
+   FILES ${CMAKE_CURRENT_BINARY_DIR}/lemon.pc
+-  DESTINATION lib/pkgconfig
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
+ )
+ 

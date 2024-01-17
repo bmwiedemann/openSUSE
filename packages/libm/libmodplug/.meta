@@ -1,0 +1,5 @@
+<package name="libmodplug" project="openSUSE:Factory">
+  <title>Modplug mod music file format library</title>
+  <description>Modplug mod music file format library</description>
+  <devel project="multimedia:libs" package="libmodplug"/>
+</package>

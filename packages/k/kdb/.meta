@@ -1,0 +1,5 @@
+<package name="kdb" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Extra" package="kdb"/>
+</package>

@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0f86709ebf72e2e3a28354a9a8cfc600</srcmd5>
+    <version>3.0~rc1+git20170515.5a17f79</version>
+    <time>1502706919</time>
+    <user>dimstar_suse</user>
+    <comment>no multibuild</comment>
+    <requestid>512782</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f64827f068e004de25e3a8ed11e6e859</srcmd5>
+    <version>3.0~rc1+git20170515.5a17f79</version>
+    <time>1508769490</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide/Obsolete luasocket to avoid conflict wrt bsc#1063306
+
+- Provide/Obsolete luasocket to avoid conflict wrt bsc#1063306
+
+- Provide/Obsolete luasocket to avoid conflict wrt bsc#1063306
+
+- Provide/Obsolete luasocket to avoid conflict wrt bsc#1063306</comment>
+    <requestid>534155</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>60386e3ea2c693dceeb63f7d5167051e</srcmd5>
+    <version>3.0~rc1+git20170515.5a17f79</version>
+    <time>1509787328</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop lua52-luasocket to obsolete lua52 from distribution</comment>
+    <requestid>537925</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1f94c85301284791be9b55ab03f0e0e5</srcmd5>
+    <version>3.0~rc1+git20170515.5a17f79</version>
+    <time>1552901783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684695</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>3239278e21dade462ea70208571e4844</srcmd5>
+    <version>3.0~rc1+git20170515.5a17f79</version>
+    <time>1594805455</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuild and add lua54 build target.</comment>
+    <requestid>819302</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>b08f66524fda79c6b0b158082a6ee9e1</srcmd5>
+    <version>3.0~rc1+git20170515.5a17f79</version>
+    <time>1612466618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867733</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>2cc82727c1b4ae13c72d346d8823d47b</srcmd5>
+    <version>3.0~rc1+git20170515.5a17f79</version>
+    <time>1615362463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>875427</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>c32350f5d2f1da4da05d25209860955b</srcmd5>
+    <version>3.0~rc1+git20170515.5a17f79</version>
+    <time>1626386337</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906052</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>82c0c5395a4842dd2d094f419d99989b</srcmd5>
+    <version>3.1.0</version>
+    <time>1661083860</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998384</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>e3a0c8804a136cc7a4cf7e2fff8506ce</srcmd5>
+    <version>3.1.0</version>
+    <time>1674737894</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1060913 from michals
+
+- Fix unowned %{lua_incdir} directory.
+
+  - Fix missing dependency on lua-macros (boo#1205612)</comment>
+    <requestid>1061046</requestid>
+  </revision>
+</revisionlist>

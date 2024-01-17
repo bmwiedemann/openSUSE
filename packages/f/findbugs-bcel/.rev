@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8ee7a337bf202e056a69ef0e753b356b</srcmd5>
+    <version>5.2</version>
+    <time>1380112229</time>
+    <user>coolo</user>
+    <comment>Required for findbugs so we can start closing java failures in the tree.</comment>
+    <requestid>197975</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e4bedd876f98dadb53dacf9ffee7a8cc</srcmd5>
+    <version>5.2</version>
+    <time>1380864024</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>201891</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>048704bb45dfb0d07e3e6be39082e2ee</srcmd5>
+    <version>5.2</version>
+    <time>1404161384</time>
+    <user>coolo</user>
+    <comment>FWD Java:packages fixes</comment>
+    <requestid>238889</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>048704bb45dfb0d07e3e6be39082e2ee</srcmd5>
+    <version>5.2</version>
+    <time>1409300877</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>6dcb1e28d2448f51d02a0ee0c187ed26</srcmd5>
+    <version>5.2</version>
+    <time>1427983236</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove gpg-offline dep and rely on service</comment>
+    <requestid>293067</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>c43fb8a85b9b0302c1082549d216dc85</srcmd5>
+    <version>5.2</version>
+    <time>1505416639</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>526038</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>788d89d9d5dc8b129d852c438ec87163</srcmd5>
+    <version>5.2</version>
+    <time>1530993635</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620791</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7405c63b7ad8db9472d94a1218d4c264</srcmd5>
+    <version>6.0~20140707svn1547656</version>
+    <time>1546946733</time>
+    <user>dimstar_suse</user>
+    <comment>Ugrade to newer svn snapshot (not so new either, but newer)</comment>
+    <requestid>660080</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,250 @@
+-------------------------------------------------------------------
+Wed Dec  6 22:25:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.1:
+  * Fixed a bug that may cause a crash when cleaning intermediate
+    queue.
+  * Fixed a bug that may cause canceled jobs to still run
+    dependent jobs.
+
+-------------------------------------------------------------------
+Sun Jun 11 13:32:44 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Sat May 27 21:32:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15:
+  * Added `Callback(on_stopped='my_callback)`.
+  * `Callback` now accepts dotted path to function as input.
+  * `queue.enqueue_many()` now supports job dependencies.
+  * `rq worker` CLI script now configures logging based on
+    `DICT_CONFIG` key present in config file.
+  * Whenever possible, `Worker` now uses `lmove()` to implement
+    reliable queue pattern.
+  * `Scheduler` should only release locks that it successfully
+    acquires.
+  * Fixes crashes that may happen by changes to `as_text()`
+    function in v1.14.
+  * Various linting, CI and code quality improvements.
+  * Fixes a crash that happens if Redis connection uses SSL.
+  * Fixes a crash if `job.meta()` is loaded using the wrong
+    serializer.
+  * Added `WorkerPool` (beta) that manages multiple workers in a
+    single CLI.
+  * Added a new `Callback` class that allows more flexibility in
+    declaring job callbacks.
+  * Fixed a regression where jobs with unserializable return
+    value crashes RQ.
+  * Added `--dequeue-strategy` option to RQ's CLI.
+  * Added `--max-idle-time` option to RQ's worker CLI.
+  * Added `--maintenance-interval` option to RQ's worker CLI.
+  * Fixed RQ usage in Windows as well as various other
+    refactorings.
+  * Show more info on `rq info` CLI command. Thanks @iggeehu!
+  * `queue.enqueue_jobs()` now properly account for job
+    dependencies.
+  * `TimerDeathPenalty` now properly handles negative/infinite
+    timeout.
+  * Added `work_horse_killed_handler` argument to `Worker`.
+  * Fixed an issue where results aren't properly persisted on
+    synchronous jobs.
+  * Fixed a bug where job results are not properly persisted when
+    `result_ttl` is `-1`.
+  * Various documentation and logging fixes.
+  * Improve Redis connection reliability.
+  * Scheduler reliability improvements.
+  * Fixed a bug where `dequeue_timeout` ignores `worker_ttl`.
+  * Use `job.return_value()` instead of `job.result` when
+    processing callbacks.
+  * Various internal refactorings to make `Worker` code more
+    easily extendable.
+  * RQ's source code is now black formatted.
+  * RQ now stores multiple job execution results. This feature is
+    only available on Redis >= 5.0 Redis Streams. Please refer to
+    the docs for more info.
+  * Improve performance when enqueueing many jobs at once.
+  * Redis server version is now cached in connection object.
+  * Properly handle `at_front` argument when jobs are scheduled.
+  * Add type hints to RQ's code base.
+  * Fixed a bug where exceptions are logged twice.
+  * Don't delete `job.worker_name` after job is finished.
+
+-------------------------------------------------------------------
+Thu Dec 22 08:21:10 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Set BuildArch to noarch, this package doesn't have anything that depends on
+  the arch.
+
+-------------------------------------------------------------------
+Thu Dec 22 06:34:46 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add multibuild for tests to avoid build cycle with python-sentry-sdk.
+  bsc#1206590
+
+-------------------------------------------------------------------
+Mon Dec  5 15:35:13 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.11.1
+  - queue.enqueue_many() now supports on_success and on on_failure
+    arguments.
+  - You can now pass enqueue_at_front to Dependency() objects to
+    put dependent jobs at the front when they are enqueued.
+  - Fixed a bug where workers may wrongly acquire scheduler locks.
+  - Jobs should not be enqueued if any one of it's dependencies is
+    canceled.
+  - Fixed a bug when handling jobs that have been stopped.
+  - Fixed a bug in handling Redis connections that don't allow
+    SETNAME command.
+- Update to 1.11.0
+  - This will be the last RQ version that supports Python 3.5.
+  - Allow jobs to be enqueued even when their dependencies fail via
+    Dependency(allow_failure=True).
+  - When stopped jobs are deleted, they should also be removed from
+    FailedJobRegistry.
+  - job.requeue() now supports at_front() argument.
+  - Added ssl support for sentinel connections.
+  - SimpleWorker now works better on Windows.
+  - Added on_failure and on_success arguments to @job decorator.
+  - Fixed a bug in dependency handling.
+  - Minor fixes and optimizations
+- Remove https://github.com/rq/rq/issues/1646 items in spec file.
+- Remove -k 'not (test_failure_capture or test_worker)' from pytest.
+
+-------------------------------------------------------------------
+Thu Apr 14 08:52:04 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+
+-------------------------------------------------------------------
+Mon Jan 17 18:35:11 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.10.1
+  - Failure callbacks are now properly called when job is run
+    synchronously. Thanks @ericman93!
+  - Fixes a bug that could cause job keys to be left over when
+    `result_ttl=0`. Thanks @selwin!
+  - Allow `ssl_cert_reqs` argument to be passed to Redis. Thanks
+    @mgcdanny!
+  - Better compatibility with Python 3.10. Thanks @rpkak!
+  - `job.cancel()` should also remove itself from registries.
+    Thanks @joshcoden!
+  - Pubsub threads are now launched in `daemon` mode. Thanks
+    @mik3y!
+  - You can now enqueue jobs from CLI. Docs
+    [here](https://python-rq.org/docs/#cli-enqueueing). Thanks
+    @rpkak!
+  - Added a new `CanceledJobRegistry` to keep track of canceled
+    jobs. Thanks @selwin!
+  - Added custom serializer support to various places in RQ. Thanks
+    @joshcoden!
+  - `cancel_job(job_id, enqueue_dependents=True)` allows you to
+    cancel a job while enqueueing its dependents. Thanks
+    @joshcoden!
+  - Added `job.get_meta()` to fetch fresh meta value directly from
+    Redis. Thanks @aparcar!
+  - Fixes a race condition that could cause jobs to be incorrectly
+    added to FailedJobRegistry. Thanks @selwin!
+  - Requeueing a job now clears `job.exc_info`. Thanks @selwin!
+  - Repo infrastructure improvements by @rpkak.
+  - Other minor fixes by @cesarferradas and @bbayles.
+  - Added success and failure callbacks. You can now do
+    `queue.enqueue(foo, on_success=do_this, on_failure=do_that)`.
+    Thanks @selwin!
+  - Added `queue.enqueue_many()` to enqueue many jobs in one go.
+    Thanks @joshcoden!
+  - Various improvements to CLI commands. Thanks @rpkak!
+  - Minor logging improvements. Thanks @clavigne and @natbusa!
+
+-------------------------------------------------------------------
+Mon Jun 28 14:33:46 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.8.1
+  * You can now declare multiple job dependencies.
+  * Added support for running asyncio tasks.
+  * Now horses are killed by their parent group. This helps in cleanly
+    killing all related processes if job uses multiprocessing.
+  * Fixed scheduler on Python > 3.8.0.
+  * RQ is now aware of which version of Redis server it's running on.
+  * More changes, see upstream changelog.
+
+-------------------------------------------------------------------
+Wed Jul 22 12:38:39 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.4.3
+  * Added job.get_position() and queue.get_job_position(). Thanks @aparcar!
+  * Longer TTLs for worker keys to prevent them from expiring inside the worker lifecycle. Thanks @selwin!
+  * Long job args/kwargs are now truncated during logging. Thanks @JhonnyBn!
+  * job.requeue() now returns the modified job. Thanks @ericatkin!
+- Fix build error for Leap: Since 1.4.0 rq require python >= 3.4.
+
+-------------------------------------------------------------------
+Thu Jun 11 05:04:56 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.4.2:
+  * RQ 1.4.2 (2020-05-26)
+    + Reverted changes to hmset command which causes workers on Redis server < 4 to crash. Thanks @selwin!
+    + Merged in more groundwork to enable jobs with multiple dependencies. Thanks @thomasmatecki!
+  * RQ 1.4.1 (2020-05-16)
+    + Default serializer now uses pickle.HIGHEST_PROTOCOL for backward compatibility reasons. Thanks @bbayles!
+    + Avoid deprecation warnings on redis-py >= 3.5.0. Thanks @bbayles!
+  * RQ 1.4.0 (2020-05-13)
+    + Custom serializer is now supported. Thanks @solababs!
+    + delay() now accepts job_id argument. Thanks @grayshirt!
+    + Fixed a bug that may cause early termination of scheduled or requeued jobs. Thanks @rmartin48!
+    + When a job is scheduled, always add queue name to a set containing active RQ queue names. Thanks @mdawar!
+    + Added --sentry-ca-certs and --sentry-debug parameters to rq worker CLI. Thanks @kichawa!
+    + Jobs cleaned up by StartedJobRegistry are given an exception info. Thanks @selwin!
+
+-------------------------------------------------------------------
+Wed Jun 10 16:49:11 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- BR redis to make the testsuite work
+
+-------------------------------------------------------------------
+Tue May 19 09:27:47 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Thu Mar 19 04:21:53 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.3.0:
+  * RQ 1.3.0 (2020-03-09)
+    + Support for infinite job timeout. Thanks @theY4Kman!
+    + Added __main__ file so you can now do python -m rq.cli. Thanks @bbayles!
+    + Fixes an issue that may cause zombie processes. Thanks @wevsty!
+    + job_id is now passed to logger during failed jobs. Thanks @smaccona!
+    + queue.enqueue_at() and queue.enqueue_in() now supports explicit args and kwargs function invocation. Thanks @selwin!
+  * RQ 1.2.2 (2020-01-31)
+    + Job.fetch() now properly handles unpickleable return values. Thanks @selwin!
+  * RQ 1.2.1 (2020-01-31)
+    + enqueue_at() and enqueue_in() now sets job status to scheduled. Thanks @coolhacker170597!
+    + Failed jobs data are now automatically expired by Redis. Thanks @selwin!
+    + Fixes RQScheduler logging configuration. Thanks @FlorianPerucki!
+  * RQ 1.2.0 (2020-01-04)
+    + This release also contains an alpha version of RQ's builtin job scheduling mechanism. Thanks @selwin!
+    + Various internal API changes in preparation to support multiple job dependencies. Thanks @thomasmatecki!
+    + --verbose or --quiet CLI arguments should override --logging-level. Thanks @zyt312074545!
+    + Fixes a bug in rq info where it doesn't show workers for empty queues. Thanks @zyt312074545!
+    + Fixed queue.enqueue_dependents() on custom Queue classes. Thanks @van-ess0!
+    + RQ and Python versions are now stored in job metadata. Thanks @eoranged!
+    + Added failure_ttl argument to job decorator. Thanks @pax0r!
+
+-------------------------------------------------------------------
+Sat Aug 24 06:01:26 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim conjecture from description.
+
+-------------------------------------------------------------------
+Mon Aug 12 15:07:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.1.0:
+  * Many feature updates and bugfixes to support new python stack
+- Execute tests
+
+-------------------------------------------------------------------
+Mon Feb  4 13:40:07 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

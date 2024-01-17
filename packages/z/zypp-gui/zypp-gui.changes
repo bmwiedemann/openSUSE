@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Fri Jan 12 06:05:06 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update version to 0.3.0
+  + Port to blp file from ui.
+  + Support zst file.
+  + Use NavigationSplitView to replace Leaflet.
+  + Port to async_channel.
+
+-------------------------------------------------------------------
+Mon May 29 03:04:00 UTC 2023 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update version to 0.2.0
+  + Move to GTK4
+
+-------------------------------------------------------------------
+Mon Jul 18 09:57:48 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- require pkexec directly, as it is now a standalone package
+
+-------------------------------------------------------------------
+Fri Nov  5 03:05:36 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Add cargo audit service to detect potential security issues
+
+-------------------------------------------------------------------
+Sun Jul 25 08:50:15 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update version to 0.1.2
+  + Add country flag
+  + Rename package to zypp gui
+  + Remove GPG check option
+  + Don't change the state when state is refreshing, downloading and updating
+  + Start in other desktop, not only in GNOME
+
+-------------------------------------------------------------------
+Tue Jul 20 15:29:35 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- First release version 0.1.1
+  + Add file zypp-gui-0.1.1.tar.xz
+  + Add file zypp.gui.policy
+  + Add file additional.json

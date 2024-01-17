@@ -1,0 +1,14 @@
+diff --git a/src/makefile b/src/makefile
+index 494baab..fb56ba4 100644
+--- a/src/makefile
++++ b/src/makefile
+@@ -177,6 +177,6 @@ DEF_linux=-DLUASOCKET_$(DEBUG) \
+-CFLAGS_linux=$(LUAINC:%=-I%) $(DEF) -Wall -Wshadow -Wextra \
+-	-Wimplicit -O2 -ggdb3 -fpic
+-LDFLAGS_linux=-O -shared -fpic -o
++CFLAGS_linux=$(LUAINC:%=-I%) $(DEF) $(OPTFLAGS) -Wall -Wshadow -Wextra \
++	-Wimplicit -fpic -fvisibility=hidden
++LDFLAGS_linux=-O $(OPTFLAGS) -shared -fpic -o 
+ LD_linux=gcc
+ SOCKET_linux=usocket.o
+ 

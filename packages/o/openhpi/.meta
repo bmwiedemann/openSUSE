@@ -1,0 +1,13 @@
+<package name="openhpi" project="openSUSE:Factory">
+  <title>openhpi SA Forum's Hardware Platform Interface (HPI)</title>
+  <description>OpenHPI is an open source project created with the intent of providing
+an implementation of the SA Forum's Hardware Platform Interface (HPI).
+HPI provides an abstracted interface to managing computer hardware,
+typically for chassis and rack based servers. HPI includes a resource
+modeling; access to and control over sensor, control, watchdog, and
+inventory data associated with resources; abstracted System Event Log
+interfaces; hardware events and alerts; and a managed hotswap
+interface.
+</description>
+  <devel project="systemsmanagement" package="openhpi"/>
+</package>

@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f6dd96e11ccf96c95e8459430e4acd21</srcmd5>
+    <version>1.2.0</version>
+    <time>1562056668</time>
+    <user>dimstar_suse</user>
+    <comment>I need this package as a dependency of frubygem-fog-libvirt.</comment>
+    <requestid>709710</requestid>
+  </revision>
+</revisionlist>

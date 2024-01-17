@@ -1,0 +1,42 @@
+Index: b/gtk3/sub_config_widget.c
+===================================================================
+--- a/gtk3/sub_config_widget.c
++++ b/gtk3/sub_config_widget.c
+@@ -194,7 +194,8 @@ void open_native_file(GtkButton *button,
+         fcitx_utils_get_fcitx_path_with_filename ("libdir", "fcitx/libexec/fcitx-qt5-gui-wrapper")
+     };
+     char* wrapper = NULL;
+-    for (int i = 0; i < FCITX_ARRAY_SIZE(qtguiwrapper); i++) {
++    int i;
++    for (i = 0; i < FCITX_ARRAY_SIZE(qtguiwrapper); i++) {
+         if (qtguiwrapper[i]) {
+             gchar* argv[4];
+             argv[0] = qtguiwrapper[i];
+@@ -218,7 +219,7 @@ void open_native_file(GtkButton *button,
+         g_spawn_async(NULL, argv2, NULL, 0, NULL, NULL, NULL, NULL);
+     }
+ 
+-    for (int i = 0; i < FCITX_ARRAY_SIZE(qtguiwrapper); i++) {
++    for (i = 0; i < FCITX_ARRAY_SIZE(qtguiwrapper); i++) {
+         free(qtguiwrapper[i]);
+     }
+ 
+@@ -271,7 +272,8 @@ void run_plugin(GtkButton* button, gpoin
+         fcitx_utils_get_fcitx_path_with_filename ("libdir", "fcitx/libexec/fcitx-qt5-gui-wrapper")
+     };
+     char* wrapper = NULL;
+-    for (int i = 0; i < FCITX_ARRAY_SIZE(qtguiwrapper); i++) {
++    int i;
++    for (i = 0; i < FCITX_ARRAY_SIZE(qtguiwrapper); i++) {
+         if (qtguiwrapper[i]) {
+             gchar* argv[4];
+             argv[0] = qtguiwrapper[i];
+@@ -295,7 +297,7 @@ void run_plugin(GtkButton* button, gpoin
+         g_spawn_async(NULL, argv2, NULL, 0, NULL, NULL, NULL, NULL);
+     }
+ 
+-    for (int i = 0; i < FCITX_ARRAY_SIZE(qtguiwrapper); i++) {
++    for (i = 0; i < FCITX_ARRAY_SIZE(qtguiwrapper); i++) {
+         free(qtguiwrapper[i]);
+     }
+ 

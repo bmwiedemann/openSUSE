@@ -1,0 +1,5 @@
+<package name="findbugs-bcel" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="findbugs-bcel"/>
+</package>

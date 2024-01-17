@@ -1,0 +1,5 @@
+<package name="python-simplebayes" project="openSUSE:Factory">
+  <title>simplebayes</title>
+  <description>A memory-based, optional-persistence naïve bayesian text classifier.</description>
+  <devel project="devel:languages:python" package="python-simplebayes"/>
+</package>

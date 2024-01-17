@@ -1,0 +1,118 @@
+From: Thomas Renninger <trenn@suse.com>
+Subject: Use /run instead of /var/run
+References: 1185173
+Patch-Mainline: 
+Git-commit: 734ea9b68e505688c0a5929e1dcd0f13e8a6605c
+Git-repo: git@github.com:watologo1/openhpi.git.git
+
+In FHS 3.0, /var/run is replaced by /run:
+
+https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch05s13.html
+
+
+Signed-off-by:  <trenn@suse.com>
+diff --git a/README.daemon b/README.daemon
+index c7925ed1..a433003a 100644
+--- a/README.daemon
++++ b/README.daemon
+@@ -84,7 +84,7 @@ listen on for client connections. If a configuration file is not found the
+ the daemon will listen on port 4743 by default.
+ 
+ Currently, if you are not running as the root user, you must override the default
+-PID file location. Normally the PID file is created in the /var/run subdirectory.
++PID file location. Normally the PID file is created in the /run subdirectory.
+ This directory is not writable by normal users and only the root user can write
+ to this location. Thus the daemon will fail when run as a normal user if the PID
+ file location is not overridden. To override the PID file location you can use
+diff --git a/docs/man/openhpid.8.pod b/docs/man/openhpid.8.pod
+index 010bc510..5c2126d2 100644
+--- a/docs/man/openhpid.8.pod
++++ b/docs/man/openhpid.8.pod
+@@ -20,7 +20,7 @@ file as a command line option (-c) to override the default file.
+ A command option (-p)  or environment variable determines the port number the
+ daemon will listen on for client connections. The default port is 4743.
+ 
+-The daemon creates a PID file in the /var/run subdirectory. This directory is
++The daemon creates a PID file in the /run subdirectory. This directory is
+ only writable by the root user. Thus the daemon will fail when run as a normal
+ user if the PID file location is not overridden.
+ To override the PID file location you can use the -f command line option.
+diff --git a/openhpid/openhpid-posix.cpp b/openhpid/openhpid-posix.cpp
+index 9214013e..08bcf5ab 100644
+--- a/openhpid/openhpid-posix.cpp
++++ b/openhpid/openhpid-posix.cpp
+@@ -333,7 +333,7 @@ static void sig_handler( int signum )
+ int main(int argc, char *argv[])
+ {
+     int ipvflags;
+-    const char *pidfile = "/var/run/openhpid.pid";
++    const char *pidfile = "/run/openhpid.pid";
+     GError *error = NULL;
+     GOptionContext *context;
+ 
+diff --git a/openhpid/openhpid.service.in b/openhpid/openhpid.service.in
+index 69b1348c..59a7791b 100644
+--- a/openhpid/openhpid.service.in
++++ b/openhpid/openhpid.service.in
+@@ -4,7 +4,7 @@ After=syslog.target
+ 
+ [Service]
+ Type=forking
+-PIDFile=/var/run/openhpid.pid
++PIDFile=/run/openhpid.pid
+ ExecStart=@sbindir@/openhpid -c @sysconfdir@/openhpi/openhpi.conf
+ 
+ [Install]
+diff --git a/openhpid/openhpid.sh.in b/openhpid/openhpid.sh.in
+index ab60e176..4870da85 100644
+--- a/openhpid/openhpid.sh.in
++++ b/openhpid/openhpid.sh.in
+@@ -19,7 +19,7 @@
+ #              APIs for client programs.
+ # processname: openhpid
+ # config: the standard openhpi conf file specified on the command line or the env.
+-# pidfile: /var/run/openhpid.pid
++# pidfile: /run/openhpid.pid
+ # 
+ # Author(s):
+ #	W. David Ashley <dashley@us.ibm.com>
+@@ -148,10 +148,10 @@ stop() {
+ 		
+ 		nolsb)
+ 			echo -n "Stopping $prog: "
+-			if test -f /var/run/openhpid.pid && test "`cat /var/run/openhpid.pid`" != ""
++			if test -f /run/openhpid.pid && test "`cat /run/openhpid.pid`" != ""
+          		then
+-            			kill "`cat /var/run/openhpid.pid`"
+-				RETVAL=$?  
++				kill "`cat /run/openhpid.pid`"
++				RETVAL=$?
+ 			else
+ 				RETVAL=0
+ 			fi	          
+@@ -161,10 +161,10 @@ stop() {
+ 	
+ 	print_outcome
+ 	
+-	if test "$RETVAL" -eq 0 && test -f /var/run/openhpid.pid
++	if test "$RETVAL" -eq 0 && test -f /run/openhpid.pid
+ 	then
+ 		rm -f /var/lock/openhpid
+-		rm -f /var/run/openhpid.pid
++		rm -f /run/openhpid.pid
+ 	fi	
+ 
+ }	
+@@ -191,9 +191,9 @@ dstatus() {
+ 			fi	
+ 			;;
+ 		gentoo | nolsb)
+-			if test -f /var/run/openhpid.pid && 
+-				test "`cat /var/run/openhpid.pid`" != "" && 
+-				kill -s 0 "`cat /var/run/openhpid.pid`"
++			if test -f /run/openhpid.pid &&
++				test "`cat /run/openhpid.pid`" != "" &&
++				kill -s 0 "`cat /run/openhpid.pid`"
+ 			then
+ 				echo "$prog is running"
+ 			else

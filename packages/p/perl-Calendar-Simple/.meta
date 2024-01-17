@@ -1,0 +1,13 @@
+<package name="perl-Calendar-Simple" project="openSUSE:Factory">
+  <title>Perl extension to create simple calendars</title>
+  <description>A very simple perl module that models a calendar month.
+
+This function returns a data structure representing the dates in a month. The
+data structure returned is an array of array references. The first level array
+represents the weeks in the month. The second level array contains the actual
+days. By default, each week starts on a Sunday and the value in the array is
+the date of that day. Any days at the beginning of the first week or the end of
+the last week that are from the previous or next month have the value undef.</description>
+  <devel project="devel:languages:perl" package="perl-Calendar-Simple"/>
+  <url>http://search.cpan.org/dist/Calendar-Simple/</url>
+</package>

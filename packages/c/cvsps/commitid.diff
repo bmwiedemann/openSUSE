@@ -1,0 +1,217 @@
+diff --git a/cache.c b/cache.c
+index 5f67a7c..762cfb7 100644
+--- a/cache.c
++++ b/cache.c
+@@ -89,6 +89,7 @@ enum
+     CACHE_NEED_PS_TAG_FLAGS,
+     CACHE_NEED_PS_BRANCH,
+     CACHE_NEED_PS_BRANCH_ADD,
++    CACHE_NEED_PS_COMMITID_OR_DESCR,
+     CACHE_NEED_PS_DESCR,
+     CACHE_NEED_PS_EOD,
+     CACHE_NEED_PS_MEMBERS,
+@@ -108,6 +109,7 @@ time_t read_cache()
+     int tag_flags = 0;
+     char branchbuff[LOG_STR_MAX] = "";
+     int branch_add = 0;
++    char cidbuff[CID_STR_MAX] = "";
+     int logbufflen = LOG_STR_MAX + 1;
+     char * logbuff = malloc(logbufflen);
+     time_t cache_date = -1;
+@@ -286,9 +288,19 @@ time_t read_cache()
+ 		/* remove prefix "branch_add: " and LF from len */
+ 		len -= 12;
+ 		branch_add = atoi(buff + 12);
+-		state = CACHE_NEED_PS_DESCR;
++		state = CACHE_NEED_PS_COMMITID_OR_DESCR;
+ 	    }
+ 	    break;
++	case CACHE_NEED_PS_COMMITID_OR_DESCR:
++	    if (strncmp(buff, "commitid:", 9) == 0)
++	    {
++		/* remove prefix "commitid: " and LF from len */
++		len -= 10;
++		strzncpy(cidbuff, buff + 10, MIN(len, CID_STR_MAX));
++		state = CACHE_NEED_PS_DESCR;
++		break;
++	    }
++	    /* FALLTHROUGH */
+ 	case CACHE_NEED_PS_DESCR:
+ 	    if (strncmp(buff, "descr:", 6) == 0)
+ 		state = CACHE_NEED_PS_EOD;
+@@ -296,8 +308,8 @@ time_t read_cache()
+ 	case CACHE_NEED_PS_EOD:
+ 	    if (strcmp(buff, CACHE_DESCR_BOUNDARY) == 0)
+ 	    {
+-		debug(DEBUG_STATUS, "patch set %s %s %s %s", datebuff, authbuff, logbuff, branchbuff);
+-		ps = get_patch_set(datebuff, logbuff, authbuff, branchbuff, NULL);
++		debug(DEBUG_STATUS, "patch set %s %s %s %s %s", datebuff, authbuff, logbuff, branchbuff, cidbuff);
++		ps = get_patch_set(datebuff, logbuff, authbuff, branchbuff, cidbuff, NULL);
+ 		/* the tag and tag_flags will be assigned by the resolve_global_symbols code 
+ 		 * ps->tag = (strlen(tagbuff)) ? get_string(tagbuff) : NULL;
+ 		 * ps->tag_flags = tag_flags;
+@@ -336,6 +348,7 @@ time_t read_cache()
+ 		tag_flags = 0;
+ 		branchbuff[0] = 0;
+ 		branch_add = 0;
++		cidbuff[0] = 0;
+ 		logbuff[0] = 0;
+ 		state = CACHE_NEED_PS;
+ 	    }
+@@ -523,6 +536,8 @@ static void dump_patch_set(FILE * fp, PatchSet * ps)
+     fprintf(fp, "tag_flags: %d\n", ps->tag_flags);
+     fprintf(fp, "branch: %s\n", ps->branch);
+     fprintf(fp, "branch_add: %d\n", ps->branch_add);
++    if (ps->commitid[0])
++	fprintf(fp, "commitid: %s\n", ps->commitid);
+     fprintf(fp, "descr:\n%s", ps->descr); /* descr is guaranteed to end with LF */
+     fprintf(fp, CACHE_DESCR_BOUNDARY);
+     fprintf(fp, "members:\n");
+diff --git a/cvsps.c b/cvsps.c
+index 981cd78..b91f0c7 100644
+--- a/cvsps.c
++++ b/cvsps.c
+@@ -268,6 +268,7 @@ static void load_from_cvs()
+     PatchSetMember * psm = NULL;
+     char datebuff[20];
+     char authbuff[AUTH_STR_MAX];
++    char cidbuff[CID_STR_MAX];
+     int logbufflen = LOG_STR_MAX + 1;
+     char * logbuff = malloc(logbufflen);
+     int loglen = 0;
+@@ -466,6 +467,19 @@ static void load_from_cvs()
+ 			    psm->post_rev->dead = 1;
+ 		}
+ 
++		cidbuff[0] = 0;
++		p = strstr(buff, "commitid: ");
++		if (p)
++		{
++		    char * op;
++		    p += 10;
++		    op = strchr(p, ';');
++		    if (op)
++		    {
++			strzncpy(cidbuff, p, op - p + 1);
++		    }
++		}
++		
+ 		state = NEED_EOM;
+ 	    }
+ 	    break;
+@@ -474,7 +488,7 @@ static void load_from_cvs()
+ 	    {
+ 		if (psm)
+ 		{
+-		    PatchSet * ps = get_patch_set(datebuff, logbuff, authbuff, psm->post_rev->branch, psm);
++		    PatchSet * ps = get_patch_set(datebuff, logbuff, authbuff, psm->post_rev->branch, cidbuff, psm);
+ 		    patch_set_add_member(ps, psm);
+ 		}
+ 
+@@ -487,7 +501,7 @@ static void load_from_cvs()
+ 	    {
+ 		if (psm)
+ 		{
+-		    PatchSet * ps = get_patch_set(datebuff, logbuff, authbuff, psm->post_rev->branch, psm);
++		    PatchSet * ps = get_patch_set(datebuff, logbuff, authbuff, psm->post_rev->branch, cidbuff, psm);
+ 		    patch_set_add_member(ps, psm);
+ 		    assign_pre_revision(psm, NULL);
+ 		}
+@@ -1199,7 +1213,7 @@ static CvsFile * build_file_by_name(const char * fn)
+     return retval;
+ }
+ 
+-PatchSet * get_patch_set(const char * dte, const char * log, const char * author, const char * branch, PatchSetMember * psm)
++PatchSet * get_patch_set(const char * dte, const char * log, const char * author, const char * branch, const char *commitid, PatchSetMember * psm)
+ {
+     PatchSet * retval = NULL, **find = NULL;
+     int (*cmp1)(const void *,const void*) = (bkcvs) ? compare_patch_sets_bk : compare_patch_sets;
+@@ -1212,6 +1226,7 @@ PatchSet * get_patch_set(const char * dte, const char * log, const char * author
+ 
+     convert_date(&retval->date, dte);
+     retval->author = get_string(author);
++    retval->commitid = get_string(commitid);
+     retval->descr = xstrdup(log);
+     retval->branch = get_string(branch);
+     
+@@ -1267,7 +1282,7 @@ PatchSet * get_patch_set(const char * dte, const char * log, const char * author
+     else
+     {
+ 	debug(DEBUG_STATUS, "new patch set!");
+-	debug(DEBUG_STATUS, "%s %s %s", retval->author, retval->descr, dte);
++	debug(DEBUG_STATUS, "%s %s %s %s", retval->author, retval->descr, retval->commitid, dte);
+ 
+ 	retval->min_date = retval->date - timestamp_fuzz_factor;
+ 	retval->max_date = retval->date + timestamp_fuzz_factor;
+@@ -1639,7 +1654,7 @@ static int compare_patch_sets(const void * v_ps1, const void * v_ps2)
+     int ret;
+     time_t d, min, max;
+ 
+-    /* We order by (author, descr, branch, members, date), but because of the fuzz factor
++    /* We order by (author, descr, branch, commitid, members, date), but because of the fuzz factor
+      * we treat times within a certain distance as equal IFF the author
+      * and descr match.
+      */
+@@ -1656,6 +1671,10 @@ static int compare_patch_sets(const void * v_ps1, const void * v_ps2)
+     if (ret)
+ 	return ret;
+ 
++    ret = strcmp(ps1->commitid, ps2->commitid);
++    if (ret)
++	return ret;
++
+     ret = compare_patch_sets_by_members(ps1, ps2);
+     if (ret)
+ 	return ret;
+@@ -1724,6 +1743,10 @@ static int compare_patch_sets_bytime(const PatchSet * ps1, const PatchSet * ps2)
+ 	return ret;
+ 
+     ret = strcmp(ps1->branch, ps2->branch);
++    if (ret)
++	return ret;
++
++    ret = strcmp(ps1->commitid, ps2->commitid);
+     return ret;
+ }
+ 
+@@ -2072,6 +2095,7 @@ static PatchSet * create_patch_set()
+ 	ps->tag = NULL;
+ 	ps->tag_flags = 0;
+ 	ps->branch_add = 0;
++	ps->commitid = "";
+ 	ps->funk_factor = 0;
+ 	ps->ancestor_branch = NULL;
+ 	CLEAR_LIST_NODE(&ps->collision_link);
+diff --git a/cvsps.h b/cvsps.h
+index 280a253..2638ebe 100644
+--- a/cvsps.h
++++ b/cvsps.h
+@@ -25,7 +25,7 @@ CvsFile * create_cvsfile();
+ CvsFileRevision * cvs_file_add_revision(CvsFile *, const char *);
+ void cvs_file_add_symbol(CvsFile * file, const char * rev, const char * tag);
+ char * cvs_file_add_branch(CvsFile *, const char *, const char *);
+-PatchSet * get_patch_set(const char *, const char *, const char *, const char *, PatchSetMember *);
++PatchSet * get_patch_set(const char *, const char *, const char *, const char *, const char *, PatchSetMember *);
+ PatchSetMember * create_patch_set_member();
+ CvsFileRevision * file_get_revision(CvsFile *, const char *);
+ void patch_set_add_member(PatchSet * ps, PatchSetMember * psm);
+diff --git a/cvsps_types.h b/cvsps_types.h
+index dba145d..f3cc33f 100644
+--- a/cvsps_types.h
++++ b/cvsps_types.h
+@@ -10,6 +10,7 @@
+ 
+ #define LOG_STR_MAX 65536
+ #define AUTH_STR_MAX 64
++#define CID_STR_MAX 64
+ #define REV_STR_MAX 64
+ #define MIN(a, b) ((a) < (b) ? (a) : (b))
+ #define MAX(a, b) ((a) > (b) ? (a) : (b))
+@@ -113,6 +114,7 @@ struct _PatchSet
+     char *descr;
+     char *author;
+     char *tag;
++    char *commitid;
+     int tag_flags;
+     char *branch;
+     char *ancestor_branch;

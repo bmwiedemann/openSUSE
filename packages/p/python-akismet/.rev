@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d177e65cc209f921e5339526f5d829cd</srcmd5>
+    <version>1.0.1</version>
+    <time>1533292677</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by weblate</comment>
+    <requestid>627030</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6c87a70cb85f092af65703c38bcb68f4</srcmd5>
+    <version>1.0.1</version>
+    <time>1573647283</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746353</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4857752aea6e4bf042ca08915affb787</srcmd5>
+    <version>1.1</version>
+    <time>1587162740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794878</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7e127c2d1acef654df06fa9f979e2e95</srcmd5>
+    <version>1.1</version>
+    <time>1639515707</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>940357</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>87473cfb12913cd1a76ed0474dc8fcf5</srcmd5>
+    <version>1.2.1</version>
+    <time>1659721848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992782</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Jun 20 07:14:23 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip one test that requires network.
+- Stop using greedy globbing in %files.
+
+-------------------------------------------------------------------
+Fri Apr 29 10:14:27 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.0.0
+  * Drop python 2.7 and 3.6 support
+  * Switch to pyproject.toml and Poetry
+
+-------------------------------------------------------------------
+Tue Jul 21 06:46:56 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.4.2

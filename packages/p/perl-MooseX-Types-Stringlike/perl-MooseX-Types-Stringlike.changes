@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Fri Jul 25 09:32:03 UTC 2014 - coolo@suse.com
+
+- updated to 0.003
+     [Added]
+ 
+     - new ArrayRefOfStringlike, ArrayRefOfStringable types to facilitate
+       coercion of lists
+
+-------------------------------------------------------------------
+Mon Nov 25 07:39:31 UTC 2013 - coolo@suse.com
+
+- updated to 0.002
+    [DOCUMENTATION]
+    - Fixed missing =encoding command
+
+-------------------------------------------------------------------
+Sun Aug  4 14:43:53 UTC 2013 - coolo@suse.com
+
+- initial package 0.001
+    * created by cpanspec 1.78.07
+

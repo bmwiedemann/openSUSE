@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5fc5f0281856a6a6bf0fe9fbbc933f95</srcmd5>
+    <version>3.8.0</version>
+    <time>1539593037</time>
+    <user>dimstar_suse</user>
+    <comment>First submit (fell off due a bad link in devel project or so,
+but is a needed in SLE15-SP1 due to a feature request).</comment>
+    <requestid>641310</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1f448fb11daaa42602078a865804b899</srcmd5>
+    <version>3.8.0</version>
+    <time>1619552125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888838</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>25dec38259089f57d8b762f0ddadd722</srcmd5>
+    <version>3.8.0</version>
+    <time>1626299938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906324</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e6be74c7dc08ed70c1e88d12286f311b</srcmd5>
+    <version>3.8.0.ge4631e8a</version>
+    <time>1630697178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>916139</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c220d5b1a7be33cb09b8dda04da659ad</srcmd5>
+    <version>3.8.0.ge4631e8a</version>
+    <time>1668782600</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1036505</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>961413508047d41b197d2c671424d97d</srcmd5>
+    <version>3.8.0.ge4631e8a</version>
+    <time>1674810988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061306</requestid>
+  </revision>
+</revisionlist>

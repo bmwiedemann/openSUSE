@@ -1,0 +1,16 @@
+<services>
+  <service name="obs_scm" mode="localonly">
+    <param name="scm">git</param>
+    <param name="version">HEAD</param>
+    <param name="url">https://github.com/open-hpi/openhpi.git</param>
+    <param name="versionformat">3.8.0.g%h</param>
+    <param name="filename">openhpi</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="localonly"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

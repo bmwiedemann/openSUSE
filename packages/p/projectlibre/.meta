@@ -1,0 +1,14 @@
+<package name="projectlibre" project="openSUSE:Factory">
+  <title>project management software</title>
+  <description>
+	  ProjectLibre project management software is an open source alternative to Microsoft Project. We have a community site as well at http://www.projectlibre.org It has been downloaded in 187 countries the first month of release and was just voted Sourceforge's &quot;Project of the Month&quot; ProjectLibre is compatible with Microsoft Project 2003, 2007 and 2010 files. You can simply open them on Linux, Mac OS or Windows and if desired save results back. ProjectLibre has been rewritten and added key features:
+
+	  * Compatibility with Microsoft Project 2010
+	  * User Interface improvement
+	  * Printing (does not allow printing)
+	  * Bug fixes
+
+	  The ProjectLibre team has been the key innovators in project management software dating to the mainframe/Dos/Windows markets and released the very first web-based project solution.....now also in development of a cloud/server replacement of Microsoft Project Server. 
+  </description>
+  <devel project="Office" package="projectlibre"/>
+</package>

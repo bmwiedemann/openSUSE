@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Fri Dec 15 10:43:10 UTC 2017 - tchvatal@suse.com
+
+- Drop check phase again as upstream does not distribute the tests
+  and does not tag properly on github
+
+-------------------------------------------------------------------
+Fri Dec 15 10:07:51 UTC 2017 - mvetter@suse.com
+
+- Use python singlespec
+
+-------------------------------------------------------------------
+Sun Nov  6 18:37:58 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging of version 1.5.8 generated with py2pack
+
